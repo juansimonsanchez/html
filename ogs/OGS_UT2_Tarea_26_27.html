@@ -1,0 +1,2056 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OGS - Ut2 Tarea</title>
+    <style>
+    
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --bg-header: #0f172a;
+    --text-header: #ffffff;
+    --bg-body: #f8fafc;
+    --text-body: #1e293b;
+    --border-color: #cbd5e1;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-body);
+    color: var(--text-body);
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, [id], a[name] {
+    scroll-margin-top: 80px !important;
+}
+
+.headerlink {
+    display: inline-block;
+    margin-left: 0.4rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.8em;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
+h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
+    visibility: visible;
+    opacity: 1;
+}
+
+.headerlink:hover {
+    color: var(--primary);
+}
+
+#site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    background: var(--bg-header);
+    color: var(--text-header);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    height: 62px;
+}
+
+.site-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.top-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.top-nav .nav-btn {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+.top-nav .nav-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 9px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown:hover .dropbtn, .dropbtn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 320px;
+    max-width: 480px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 10001;
+    border: 1px solid #e2e8f0;
+    margin-top: 6px;
+}
+
+.dropdown-content a {
+    color: var(--text-body);
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.92rem;
+    border-bottom: 1px solid #f1f5f9;
+    line-height: 1.4;
+    transition: background 0.15s, color 0.15s;
+    word-break: break-word;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #eff6ff;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block !important;
+}
+
+#page-layout {
+    display: flex;
+    min-height: calc(100vh - 62px);
+}
+
+#left-panel {
+    width: 320px;
+    min-width: 320px;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 1.5rem 1.25rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: sticky;
+    top: 62px;
+    height: calc(100vh - 62px);
+}
+
+#left-panel h3 {
+    font-size: 1rem;
+    margin-top: 0;
+    color: #334155;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
+
+#left-panel nav#TOC, #left-panel #TOC {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+#left-panel ul {
+    list-style-type: none;
+    padding-left: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+#left-panel li {
+    margin: 6px 0;
+}
+
+#left-panel a {
+    color: #475569;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    display: block;
+    transition: color 0.15s;
+}
+
+#left-panel a:hover {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+#main-content {
+    flex: 1;
+    padding: 2.5rem 4rem;
+    box-sizing: border-box;
+    max-width: 100% !important;
+    width: calc(100% - 320px);
+    min-width: 0;
+}
+
+/* TABLAS ELEGANTES Y RESPONSIVE */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1.75rem 0;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    font-size: 0.93rem;
+    background: #ffffff;
+    table-layout: auto !important;
+}
+
+th, td {
+    padding: 10px 14px !important;
+    border: 1px solid #cbd5e1 !important;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+td p, th p {
+    margin: 0 !important;
+    padding: 2px 0 !important;
+}
+
+th {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #0f172a !important;
+}
+
+tr:nth-child(even) td {
+    background-color: #f8fafc !important;
+}
+
+tr:hover td {
+    background-color: #f1f5f9 !important;
+}
+
+/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
+.code-wrapper {
+    position: relative;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0f172a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #334155;
+    color: #f8fafc;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.copy-btn:hover {
+    background: #2563eb;
+}
+
+pre {
+    margin: 0 !important;
+    padding: 1.25rem 1.25rem !important;
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    overflow-x: auto !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+}
+
+code {
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+}
+
+p code, li code {
+    background: #e2e8f0;
+    color: #0f172a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
+
+    </style>
+    <script>
+    
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.dropdown').forEach(dd => {
+        const btn = dd.querySelector('.dropbtn');
+        const content = dd.querySelector('.dropdown-content');
+        if (btn && content) {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = content.style.display === 'block';
+                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
+                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+                if (!isOpen) {
+                    content.style.display = 'block';
+                    btn.classList.add('active');
+                }
+            });
+        }
+    });
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
+        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+    });
+
+    // Controlador universal de clics en enlaces ancla (#...)
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const rawHref = this.getAttribute('href') || '';
+            const hashIdx = rawHref.indexOf('#');
+            if (hashIdx === -1) return;
+            const hash = rawHref.substring(hashIdx + 1);
+            if (!hash) return;
+            
+            let targetId = hash;
+            try { targetId = decodeURIComponent(hash); } catch(err) {}
+
+            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
+            if (!targetEl) {
+                for (let el of document.querySelectorAll('[id]')) {
+                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
+                        targetEl = el;
+                        break;
+                    }
+                }
+            }
+
+            if (targetEl) {
+                e.preventDefault();
+                const headerOffset = 75;
+                const elementPosition = targetEl.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                if (history.pushState) {
+                    history.pushState(null, null, '#' + targetId);
+                }
+            }
+        });
+    });
+});
+
+function copyCode(btn) {
+    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
+    navigator.clipboard.writeText(code).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = '✅ ¡Copiado!';
+        btn.style.background = '#16a34a';
+        setTimeout(() => {
+            btn.innerText = orig;
+            btn.style.background = '#334155';
+        }, 2000);
+    });
+}
+
+    </script>
+</head>
+<body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>OGS &ndash; Ut2 Tarea</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+      <a href="OGS_Presentacion_26_27.html" class="nav-btn">Presentación</a>
+      <a href="OGS_Programacion_26_27.html" class="nav-btn">Programación</a>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Teoría ▾</button>
+        <div class="dropdown-content">
+          <a href="OGS_UT1_Teoria_Fundamentos_26_27.html">OGS UT1 Teoria Fundamentos 26 27</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Tareas y Prácticas ▾</button>
+        <div class="dropdown-content">
+          <a href="OGS_UT1_Tarea_26_27.html">OGS UT1 Tarea 26 27</a>
+          <a href="OGS_UT2_Tarea_26_27.html">OGS UT2 Tarea 26 27</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <aside id="left-panel">
+            <h3>Índice del Tema</h3>
+            <nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#grupo-a-ejercicios-iniciales-y-sencillos-fase-de-asimilación"
+id="toc-grupo-a-ejercicios-iniciales-y-sencillos-fase-de-asimilación">GRUPO
+A: EJERCICIOS INICIALES Y SENCILLOS (Fase de Asimilación)</a>
+<ul>
+<li><a href="#a.1.-secuenciales-entrada-proceso-salida"
+id="toc-a.1.-secuenciales-entrada-proceso-salida">A.1. Secuenciales
+(Entrada, Proceso, Salida)</a></li>
+<li><a href="#a.2.-condicionales-básicos-bifurcaciones"
+id="toc-a.2.-condicionales-básicos-bifurcaciones">A.2. Condicionales
+Básicos (Bifurcaciones)</a></li>
+<li><a href="#a.3.-repetitivos-básicos-bucles"
+id="toc-a.3.-repetitivos-básicos-bucles">A.3. Repetitivos Básicos
+(Bucles)</a></li>
+<li><a href="#a.4.-cadenas-funciones-básicas-y-memoria-lineal-inicial"
+id="toc-a.4.-cadenas-funciones-básicas-y-memoria-lineal-inicial">A.4.
+Cadenas, Funciones Básicas y Memoria Lineal Inicial</a></li>
+</ul></li>
+<li><a
+href="#grupo-b-ejercicios-avanzados-y-de-aplicación-retos-y-perfil-profesional"
+id="toc-grupo-b-ejercicios-avanzados-y-de-aplicación-retos-y-perfil-profesional">GRUPO
+B: EJERCICIOS AVANZADOS Y DE APLICACIÓN (Retos y Perfil Profesional)</a>
+<ul>
+<li><a href="#b.1.-flujos-lógicos-y-condicionales-complejos"
+id="toc-b.1.-flujos-lógicos-y-condicionales-complejos">B.1. Flujos
+Lógicos y Condicionales Complejos</a></li>
+<li><a href="#b.2.-estructuras-repetitivas-avanzadas"
+id="toc-b.2.-estructuras-repetitivas-avanzadas">B.2. Estructuras
+Repetitivas Avanzadas</a></li>
+<li><a href="#b.3.-memoria-arrays-cadenas-complejas-y-modularidad"
+id="toc-b.3.-memoria-arrays-cadenas-complejas-y-modularidad">B.3.
+Memoria (Arrays), Cadenas Complejas y Modularidad</a></li>
+</ul></li>
+</ul>
+</nav>
+        </aside>
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="OGS_UT2_Tarea_26_27.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+
+<h2
+id="grupo-a-ejercicios-iniciales-y-sencillos-fase-de-asimilación">GRUPO
+A: EJERCICIOS INICIALES Y SENCILLOS (Fase de Asimilación) <a class="headerlink" href="#grupo-a-ejercicios-iniciales-y-sencillos-fase-de-asimilación" title="Enlace permanente">¶</a></h2>
+<h3 id="a.1.-secuenciales-entrada-proceso-salida">A.1. Secuenciales
+(Entrada, Proceso, Salida) <a class="headerlink" href="#a.1.-secuenciales-entrada-proceso-salida" title="Enlace permanente">¶</a></h3>
+<h4 id="área-de-un-triángulo">1. Área de un triángulo <a class="headerlink" href="#área-de-un-triángulo" title="Enlace permanente">¶</a></h4>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Algoritmo AreaTriangulo
+// Algoritmo para calcular el área de un triángulo a partir de la
+base y la altura ingresadas por el usuario, empleando la fórmula
+matemática:
+Definir base, altura, area Como Real;
+Escribir "Ingrese la base del triángulo (en cm):";
+Leer base;
+Escribir "Ingrese la altura del triángulo (en cm):";
+Leer altura;
+area &lt;- (base * altura) / 2;
+Escribir "El área del triángulo es: ", area, " cm²";
+FinAlgoritmo</code></pre></div></h4>
+<h4 id="área-de-un-círculo">2. Área de un círculo <a class="headerlink" href="#área-de-un-círculo" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo AreaCirculo<br />
+// Algoritmo para calcular la superficie circular solicitando el radio
+al usuario. Aplica la constante PI integrada en PSeInt:<br />
+Definir radio, area Como Real;<br />
+<br />
+Escribir "Ingrese el radio del círculo:";<br />
+Leer radio;<br />
+<br />
+area &lt;- PI * (radio ^ 2);<br />
+<br />
+Escribir "El área del círculo es: ", area;<br />
+FinAlgoritmo</p>
+<h4 id="ficha-de-usuario">3. Ficha de Usuario <a class="headerlink" href="#ficha-de-usuario" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo FichaUsuario<br />
+// Este programa solicita los datos personales del usuario y calcula
+dinámicamente su edad actual tomando como referencia el año 2026.<br />
+Definir nombre, apellidos, direccion, ciudad, cp Como Cadena;<br />
+Definir anioNacimiento, edad Como Entero;<br />
+<br />
+Escribir "Introduzca su Nombre:";<br />
+Leer nombre;<br />
+Escribir "Introduzca sus Apellidos:";<br />
+Leer apellidos;<br />
+Escribir "Introduzca su Dirección:";<br />
+Leer direccion;<br />
+Escribir "Introduzca su Ciudad:";<br />
+Leer ciudad;<br />
+Escribir "Introduzca su Código Postal (CP):";<br />
+Leer cp;<br />
+Escribir "Introduzca su Año de nacimiento:";<br />
+Leer anioNacimiento;<br />
+<br />
+// Suponiendo el año actual de referencia 2026<br />
+edad &lt;- 2026 - anioNacimiento;<br />
+<br />
+Escribir "Su nombre es ", nombre, " ", apellidos, " y vive en ",
+direccion, " de la ciudad ", ciudad, " con el código postal ", cp, ".
+Tiene ", edad, " años.";<br />
+FinAlgoritmo</p>
+<h4 id="cálculo-de-compra-con-iva">4. Cálculo de Compra con IVA <a class="headerlink" href="#cálculo-de-compra-con-iva" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo CompraConIVA<br />
+// Calcula el coste total de una compra aplicando un tipo impositivo
+estático de IVA del 21%.<br />
+Definir precio, cantidad, subtotal, iva, total Como Real;<br />
+<br />
+Escribir "Ingrese el precio del producto:";<br />
+Leer precio;<br />
+Escribir "Ingrese la cantidad comprada:";<br />
+Leer cantidad;<br />
+<br />
+subtotal &lt;- precio * cantidad;<br />
+iva &lt;- subtotal * 0.21;<br />
+total &lt;- subtotal + iva;<br />
+<br />
+Escribir "--- TICKET DE COMPRA ---";<br />
+Escribir "Subtotal: ", subtotal, " €";<br />
+Escribir "IVA (21%): ", iva, " €";<br />
+Escribir "Total a pagar: ", total, " €";<br />
+FinAlgoritmo</p>
+<h4 id="viaje-de-estudios">5. Viaje de Estudios <a class="headerlink" href="#viaje-de-estudios" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo ViajeEstudios<br />
+// Calcula la parte proporcional a pagar por cada alumno para el
+alquiler de un autobús de viaje de estudios.<br />
+Definir costeAutobus, pagoPorAlumno Como Real;<br />
+Definir cantidadAlumnos Como Entero;<br />
+<br />
+Escribir "Ingrese el coste total del autobús:";<br />
+Leer costeAutobus;<br />
+Escribir "Ingrese la cantidad de alumnos que asistirán:";<br />
+Leer cantidadAlumnos;<br />
+<br />
+Si cantidadAlumnos &gt; 0 Entonces<br />
+pagoPorAlumno &lt;- costeAutobus / cantidadAlumnos;<br />
+Escribir "Cada alumno debe pagar: ", pagoPorAlumno, " €";<br />
+Sino<br />
+Escribir "Error: La cantidad de alumnos debe ser mayor que 0.";<br />
+FinSi<br />
+FinAlgoritmo</p>
+<h4 id="conversor-de-millas">6. Conversor de Millas <a class="headerlink" href="#conversor-de-millas" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo ConversorMillas<br />
+// Programa de conversión métrica que transforma millas terrestres en
+kilómetros utilizando el factor de equivalencia 1 milla = 1.60934
+km.<br />
+Definir millas, kilometros Como Real;<br />
+<br />
+Escribir "Ingrese la distancia en millas terrestres:";<br />
+Leer millas;<br />
+<br />
+kilometros &lt;- millas * 1.60934;<br />
+<br />
+Escribir millas, " millas equivalen a ", kilometros, "
+kilómetros.";<br />
+FinAlgoritmo</p>
+<h3 id="a.2.-condicionales-básicos-bifurcaciones">A.2. Condicionales
+Básicos (Bifurcaciones) <a class="headerlink" href="#a.2.-condicionales-básicos-bifurcaciones" title="Enlace permanente">¶</a></h3>
+<h4 id="paridad-numérica">7. Paridad Numérica <a class="headerlink" href="#paridad-numérica" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo ParidadNumerica<br />
+// Determina si un número entero es par o impar haciendo uso del
+operador matemático de residuo Mod.<br />
+Definir numeroEntero Como Entero;<br />
+<br />
+Escribir "Introduce un número entero:";<br />
+Leer numeroEntero;<br />
+<br />
+Si numeroEntero Mod 2 == 0 Entonces<br />
+Escribir "El número ", numeroEntero, " es PAR.";<br />
+Sino<br />
+Escribir "El número ", numeroEntero, " es IMPAR.";<br />
+FinSi<br />
+FinAlgoritmo</p>
+<h4 id="operaciones-básicas">8. Operaciones Básicas <a class="headerlink" href="#operaciones-básicas" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo OperacionesBasicas<br />
+// Calcula las operaciones aritméticas de dos números. El programa
+cuenta con una validación lógica para impedir indeterminaciones
+matemáticas por división entre cero.<br />
+Definir num1, num2, suma, diferencia, producto, division Como
+Real;<br />
+<br />
+Escribir "Introduce el primer número:";<br />
+Leer num1;<br />
+Escribir "Introduce el segundo número:";<br />
+Leer num2;<br />
+<br />
+suma &lt;- num1 + num2;<br />
+diferencia &lt;- num1 - num2;<br />
+producto &lt;- num1 * num2;<br />
+<br />
+Escribir "Suma: ", suma;<br />
+Escribir "Diferencia: ", diferencia;<br />
+Escribir "Multiplicación: ", producto;<br />
+<br />
+Si num2 &lt;&gt; 0 Entonces<br />
+division &lt;- num1 / num2;<br />
+Escribir "División: ", division;<br />
+Sino<br />
+Escribir "División: No es posible dividir entre cero.";<br />
+FinSi<br />
+FinAlgoritmo</p>
+<h4 id="día-de-la-semana">9. Día de la semana <a class="headerlink" href="#día-de-la-semana" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo DiaSemana<br />
+// Utiliza la estructura de selección múltiple Segun para mapear un
+número del 1 al 7 con su respectivo día de la semana.<br />
+Definir dia Como Entero;<br />
+<br />
+Escribir "Introduce un número del 1 al 7:";<br />
+Leer dia;<br />
+<br />
+Segun dia Hacer<br />
+1: Escribir "Lunes";<br />
+2: Escribir "Martes";<br />
+3: Escribir "Miércoles";<br />
+4: Escribir "Jueves";<br />
+5: Escribir "Viernes";<br />
+6: Escribir "Sábado";<br />
+7: Escribir "Domingo";<br />
+De Otro Modo:<br />
+Escribir "Número inválido. Debe estar entre 1 y 7.";<br />
+FinSegun<br />
+FinAlgoritmo</p>
+<h4 id="mes-del-año">10. Mes del año <a class="headerlink" href="#mes-del-año" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo MesAnio<br />
+// Mapea un número del 1 al 12 con su correspondiente mes del calendario
+utilizando la estructura Segun.<br />
+Definir mes Como Entero;<br />
+<br />
+Escribir "Introduce el número del mes (1 al 12):";<br />
+Leer mes;<br />
+<br />
+Segun mes Hacer<br />
+1: Escribir "Enero";<br />
+2: Escribir "Febrero";<br />
+3: Escribir "Marzo";<br />
+4: Escribir "Abril";<br />
+5: Escribir "Mayo";<br />
+6: Escribir "Junio";<br />
+7: Escribir "Julio";<br />
+8: Escribir "Agosto";<br />
+9: Escribir "Septiembre";<br />
+10: Escribir "Octubre";<br />
+11: Escribir "Noviembre";<br />
+12: Escribir "Diciembre";<br />
+De Otro Modo:<br />
+Escribir "Error: El número debe estar en el rango [1 - 12].";<br />
+FinSegun<br />
+FinAlgoritmo</p>
+<h4 id="selección-de-área-dinámica">11. Selección de Área Dinámica <a class="headerlink" href="#selección-de-área-dinámica" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo AreaDinamica<br />
+// Permite al usuario elegir qué área calcular, solicitando únicamente
+las variables necesarias para el tipo de figura seleccionada.<br />
+Definir opcion Como Caracter;<br />
+Definir base, altura, radio, area Como Real;<br />
+<br />
+Escribir "Seleccione la figura para calcular el área ('T' para
+Triángulo, 'C' para Círculo):";<br />
+Leer opcion;<br />
+<br />
+// Convertimos la opción a Mayúscula para evitar fallos de lectura<br />
+opcion &lt;- Mayusculas(opcion);<br />
+<br />
+Si opcion == 'T' Entonces<br />
+Escribir "Ingrese la base:";<br />
+Leer base;<br />
+Escribir "Ingrese la altura:";<br />
+Leer altura;<br />
+area &lt;- (base * altura) / 2;<br />
+Escribir "El área del triángulo es: ", area;<br />
+Sino<br />
+Si opcion == 'C' Entonces<br />
+Escribir "Ingrese el radio:";<br />
+Leer radio;<br />
+area &lt;- PI * (radio ^ 2);<br />
+Escribir "El área del círculo es: ", area;<br />
+Sino<br />
+Escribir "Opción no reconocida. Debe introducir 'T' o 'C'.";<br />
+FinSi<br />
+FinSi<br />
+FinAlgoritmo</p>
+<h3 id="a.3.-repetitivos-básicos-bucles">A.3. Repetitivos Básicos
+(Bucles) <a class="headerlink" href="#a.3.-repetitivos-básicos-bucles" title="Enlace permanente">¶</a></h3>
+<h4 id="contador-simple">12. Contador Simple <a class="headerlink" href="#contador-simple" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo ContadorSimple<br />
+// Imprime de forma ascendente los números enteros desde el 1 hasta el
+límite especificado por el usuario mediante un bucle Para.<br />
+Definir limite, i Como Entero;<br />
+<br />
+Escribir "Ingrese el número límite hasta el cual desea contar:";<br />
+Leer limite;<br />
+<br />
+Si limite &gt;= 1 Entonces<br />
+Para i &lt;- 1 Hasta limite Con Paso 1 Hacer<br />
+Escribir i;<br />
+FinPara<br />
+Sino<br />
+Escribir "El límite debe ser mayor o igual a 1.";<br />
+FinSi<br />
+FinAlgoritmo</p>
+<h4 id="rango-visual">13. Rango Visual <a class="headerlink" href="#rango-visual" title="Enlace permanente">¶</a></h4>
+<h5 id="versión-a-estructura-mientras">Versión A: Estructura
+Mientras <a class="headerlink" href="#versión-a-estructura-mientras" title="Enlace permanente">¶</a></h5>
+<p>Algoritmo RangoMientras<br />
+// Visualiza los números comprendidos entre dos límites ingresados.
+Implementa dos programas independientes para cubrir las dos estructuras
+repetitivas solicitadas.<br />
+Definir inicio, finNum, aux Como Entero;<br />
+<br />
+Escribir "Ingrese el primer número:";<br />
+Leer inicio;<br />
+Escribir "Ingrese el segundo número:";<br />
+Leer finNum;<br />
+<br />
+// Nos aseguramos de que 'inicio' sea el menor para recorrer de manera
+ascendente<br />
+Si inicio &gt; finNum Entonces<br />
+aux &lt;- inicio;<br />
+inicio &lt;- finNum;<br />
+finNum &lt;- aux;<br />
+FinSi<br />
+<br />
+Escribir "Visualizando rango con bucle 'Mientras':";<br />
+Mientras inicio &lt;= finNum Hacer<br />
+Escribir inicio;<br />
+inicio &lt;- inicio + 1;<br />
+FinMientras<br />
+FinAlgoritmo</p>
+<h5 id="versión-b-estructura-repetir-hasta">Versión B: Estructura
+Repetir-Hasta <a class="headerlink" href="#versión-b-estructura-repetir-hasta" title="Enlace permanente">¶</a></h5>
+<p>Algoritmo RangoRepetirHasta<br />
+// Visualiza los números comprendidos entre dos límites ingresados.
+Implementa dos programas independientes para cubrir las dos estructuras
+repetitivas solicitadas.<br />
+Definir inicio, finNum, aux Como Entero;<br />
+<br />
+Escribir "Ingrese el primer número:";<br />
+Leer inicio;<br />
+Escribir "Ingrese el segundo número:";<br />
+Leer finNum;<br />
+<br />
+Si inicio &gt; finNum Entonces<br />
+aux &lt;- inicio;<br />
+inicio &lt;- finNum;<br />
+finNum &lt;- aux;<br />
+FinSi<br />
+<br />
+Escribir "Visualizando rango con bucle 'Repetir-Hasta':";<br />
+Repetir<br />
+Escribir inicio;<br />
+inicio &lt;- inicio + 1;<br />
+Hasta Que inicio &gt; finNum;<br />
+FinAlgoritmo</p>
+<p>Algoritmo TablaMultiplicarLibre<br />
+// Genera la tabla de multiplicar de cualquier número solicitado hasta
+que el usuario introduzca un valor no válido (cero o negativo).<br />
+Definir num, i Como Entero;<br />
+<br />
+Repetir<br />
+Escribir "Introduzca un número para ver su tabla (0 o negativo para
+salir):";<br />
+Leer num;<br />
+<br />
+Si num &gt; 0 Entonces<br />
+Escribir "--- Tabla del ", num, " ---";<br />
+Para i &lt;- 1 Hasta 10 Con Paso 1 Hacer<br />
+Escribir num, " x ", i, " = ", (num * i);<br />
+FinPara<br />
+Escribir "--------------------";<br />
+FinSi<br />
+Hasta Que num &lt;= 0;<br />
+<br />
+Escribir "Programa finalizado.";<br />
+FinAlgoritmo</p>
+<h4 id="clasificador-de-caracteres">15. Clasificador de Caracteres <a class="headerlink" href="#clasificador-de-caracteres" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo ClasificadorCaracteres<br />
+// Analiza caracteres uno a uno informando si se trata de vocales o
+consonantes, hasta que el usuario digite el carácter '0'.<br />
+Definir car Como Caracter;<br />
+<br />
+Escribir "Ingrese letras una por una. Escriba '0' para terminar.";<br />
+Leer car;<br />
+car &lt;- Mayusculas(car);<br />
+<br />
+Mientras car &lt;&gt; '0' Hacer<br />
+Si car == 'A' O car == 'E' O car == 'I' O car == 'O' O car == 'U'
+Entonces<br />
+Escribir car, " es VOCAL.";<br />
+Sino<br />
+// Comprobación de que sea una letra válida (A-Z) excluyendo
+números/símbolos<br />
+Si car &gt;= 'A' Y car &lt;= 'Z' Entonces<br />
+Escribir car, " es CONSONANTE.";<br />
+Sino<br />
+Escribir car, " no es un carácter alfabético válido.";<br />
+FinSi<br />
+FinSi<br />
+<br />
+Escribir "Ingrese la siguiente letra (o '0' para salir):";<br />
+Leer car;<br />
+car &lt;- Mayusculas(car);<br />
+FinMientras<br />
+<br />
+Escribir "Fin del clasificador.";<br />
+FinAlgoritmo</p>
+<h4 id="acumuladores-suma-y-media">16. Acumuladores (Suma y Media) <a class="headerlink" href="#acumuladores-suma-y-media" title="Enlace permanente">¶</a></h4>
+<h5 id="versión-a-estructura-mientras-1">Versión A: Estructura
+Mientras <a class="headerlink" href="#versión-a-estructura-mientras-1" title="Enlace permanente">¶</a></h5>
+<p>Algoritmo AcumuladorMientras<br />
+// Suma y calcula el promedio de un conjunto indeterminado de números
+ingresados, deteniendo la captura al detectar el número 0.<br />
+Definir num, suma, contador Como Entero;<br />
+Definir media Como Real;<br />
+<br />
+suma &lt;- 0;<br />
+contador &lt;- 0;<br />
+<br />
+Escribir "Ingrese un número (0 para finalizar):";<br />
+Leer num;<br />
+<br />
+Mientras num &lt;&gt; 0 Hacer<br />
+suma &lt;- suma + num;<br />
+contador &lt;- contador + 1;<br />
+Escribir "Ingrese otro número (0 para finalizar):";<br />
+Leer num;<br />
+FinMientras<br />
+<br />
+Si contador &gt; 0 Entonces<br />
+media &lt;- suma / contador;<br />
+Escribir "Suma acumulada: ", suma;<br />
+Escribir "Media aritmética: ", media;<br />
+Sino<br />
+Escribir "No se introdujeron datos numéricos válidos.";<br />
+FinSi<br />
+FinAlgoritmo</p>
+<h5 id="versión-b-estructura-repetir-hasta-1">Versión B: Estructura
+Repetir-Hasta <a class="headerlink" href="#versión-b-estructura-repetir-hasta-1" title="Enlace permanente">¶</a></h5>
+<p>Algoritmo AcumuladorRepetirHasta<br />
+// Suma y calcula el promedio de un conjunto indeterminado de números
+ingresados, deteniendo la captura al detectar el número 0.<br />
+Definir num, suma, contador Como Entero;<br />
+Definir media Como Real;<br />
+<br />
+suma &lt;- 0;<br />
+contador &lt;- 0;<br />
+<br />
+Repetir<br />
+Escribir "Ingrese un número (0 para finalizar):";<br />
+Leer num;<br />
+Si num &lt;&gt; 0 Entonces<br />
+suma &lt;- suma + num;<br />
+contador &lt;- contador + 1;<br />
+FinSi<br />
+Hasta Que num == 0;<br />
+<br />
+Si contador &gt; 0 Entonces<br />
+media &lt;- suma / contador;<br />
+Escribir "Suma acumulada: ", suma;<br />
+Escribir "Media aritmética: ", media;<br />
+Sino<br />
+Escribir "No se introdujeron datos.";<br />
+FinSi<br />
+FinAlgoritmo</p>
+<h4 id="potencia">17. Potencia  <a class="headerlink" href="#potencia" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo PotenciaIterativa<br />
+// Calcula el resultado de elevar una base real a un exponente entero
+utilizando un bucle Para de manera iterativa (multiplicaciones
+sucesivas).<br />
+Definir base, resultado Como Real;<br />
+Definir exponente, i Como Entero;<br />
+<br />
+Escribir "Ingrese la base (Real):";<br />
+Leer base;<br />
+Escribir "Ingrese el exponente (Entero no negativo):";<br />
+Leer exponente;<br />
+<br />
+resultado &lt;- 1;<br />
+<br />
+Si exponente &gt;= 0 Entonces<br />
+Para i &lt;- 1 Hasta exponente Con Paso 1 Hacer<br />
+resultado &lt;- resultado * base;<br />
+FinPara<br />
+Escribir base, "^", exponente, " = ", resultado;<br />
+Sino<br />
+Escribir "Error: El exponente debe ser un entero positivo o
+cero.";<br />
+FinSi<br />
+FinAlgoritmo</p>
+<h4 id="potencia-hasta-negativo">18. Potencia hasta negativo <a class="headerlink" href="#potencia-hasta-negativo" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo PotenciaHastaNegativo<br />
+// Variante del ejercicio de potencia iterativa. Se ejecuta en un bucle
+continuo hasta que el usuario ingrese un exponente negativo.<br />
+Definir base, resultado Como Real;<br />
+Definir exponente, i Como Entero;<br />
+<br />
+Repetir<br />
+Escribir "Ingrese la base real:";<br />
+Leer base;<br />
+Escribir "Ingrese el exponente entero (Exponente negativo para
+salir):";<br />
+Leer exponente;<br />
+<br />
+Si exponente &gt;= 0 Entonces<br />
+resultado &lt;- 1;<br />
+Para i &lt;- 1 Hasta exponente Con Paso 1 Hacer<br />
+resultado &lt;- resultado * base;<br />
+FinPara<br />
+Escribir "Resultado: ", base, "^", exponente, " = ", resultado;<br />
+Escribir "--------------------------------------------";<br />
+FinSi<br />
+<br />
+Hasta Que exponente &lt; 0;<br />
+<br />
+Escribir "Bucle detenido. Saliendo del programa.";<br />
+FinAlgoritmo</p>
+<h3 id="a.4.-cadenas-funciones-básicas-y-memoria-lineal-inicial">A.4.
+Cadenas, Funciones Básicas y Memoria Lineal Inicial <a class="headerlink" href="#a.4.-cadenas-funciones-básicas-y-memoria-lineal-inicial" title="Enlace permanente">¶</a></h3>
+<h4 id="búsqueda-del-menor">19. Búsqueda del Menor <a class="headerlink" href="#búsqueda-del-menor" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo BusquedaMenor<br />
+// Almacena 10 números proporcionados por el usuario en un arreglo y
+localiza el valor mínimo del grupo.<br />
+Definir numeros, i, menor Como Entero;<br />
+Dimension numeros[10];<br />
+<br />
+Escribir "Ingrese 10 números enteros:";<br />
+Para i &lt;- 1 Hasta 10 Con Paso 1 Hacer<br />
+Escribir "Elemento [", i, "]:";<br />
+Leer numeros[i];<br />
+FinPara<br />
+<br />
+// Inicializamos con el primer elemento<br />
+menor &lt;- numeros[1];<br />
+<br />
+Para i &lt;- 2 Hasta 10 Con Paso 1 Hacer<br />
+Si numeros[i] &lt; menor Entonces<br />
+menor &lt;- numeros[i];<br />
+FinSi<br />
+FinPara<br />
+<br />
+Escribir "El número menor introducido es: ", menor;<br />
+FinAlgoritmo</p>
+<h4 id="media-de-datos">20. Media de Datos <a class="headerlink" href="#media-de-datos" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo MediaArreglo<br />
+// Utiliza un arreglo de 5 elementos reales para almacenar los datos
+ingresados y calcula su media aritmética leyendo desde el arreglo.<br />
+Definir datos Como Real;<br />
+Definir i Como Entero;<br />
+Definir suma, media Como Real;<br />
+Dimension datos[5];<br />
+<br />
+suma &lt;- 0;<br />
+<br />
+Para i &lt;- 1 Hasta 5 Con Paso 1 Hacer<br />
+Escribir "Ingrese el dato número ", i, ":";<br />
+Leer datos[i];<br />
+FinPara<br />
+<br />
+// Sumamos los elementos del array<br />
+Para i &lt;- 1 Hasta 5 Con Paso 1 Hacer<br />
+suma &lt;- suma + datos[i];<br />
+FinPara<br />
+<br />
+media &lt;- suma / 5;<br />
+<br />
+Escribir "La media de los datos introducidos es: ", media;<br />
+FinAlgoritmo</p>
+<h4 id="nombres-al-azar">21. Nombres al azar <a class="headerlink" href="#nombres-al-azar" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo NombresAlAzar<br />
+// Declara de forma estática una colección con 10 nombres y escoge uno
+de manera aleatoria a través del generador de enteros Azar o
+Aleatorio.<br />
+Definir listaNombres Como Cadena;<br />
+Definir indiceAleatorio Como Entero;<br />
+Dimension listaNombres[10];<br />
+<br />
+// Asignación estática<br />
+listaNombres[1] &lt;- "Carlos";<br />
+listaNombres[2] &lt;- "Ana";<br />
+listaNombres[3] &lt;- "Beatriz";<br />
+listaNombres[4] &lt;- "Daniel";<br />
+listaNombres[5] &lt;- "Eduardo";<br />
+listaNombres[6] &lt;- "Gabriela";<br />
+listaNombres[7] &lt;- "Helena";<br />
+listaNombres[8] &lt;- "Iván";<br />
+listaNombres[9] &lt;- "Julia";<br />
+listaNombres[10] &lt;- "Lucas";<br />
+<br />
+// Generación de un índice aleatorio entre 1 y 10<br />
+indiceAleatorio &lt;- Aleatorio(1, 10);<br />
+<br />
+Escribir "El nombre seleccionado al azar es: ",
+listaNombres[indiceAleatorio];<br />
+FinAlgoritmo</p>
+<h4 id="tamaño-del-nombre">22. Tamaño del Nombre <a class="headerlink" href="#tamaño-del-nombre" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo TamanoNombre<br />
+// Solicita nombre y apellidos por separado, realiza la concatenación
+insertando los espacios correspondientes y calcula la longitud de la
+cadena resultante.<br />
+Definir nombre, ape1, ape2, nombreCompleto Como Cadena;<br />
+Definir caracteresTotales Como Entero;<br />
+<br />
+Escribir "Ingrese su Nombre:";<br />
+Leer nombre;<br />
+Escribir "Ingrese su Primer Apellido:";<br />
+Leer ape1;<br />
+Escribir "Ingrese su Segundo Apellido:";<br />
+Leer ape2;<br />
+<br />
+nombreCompleto &lt;- nombre + " " + ape1 + " " + ape2;<br />
+caracteresTotales &lt;- Longitud(nombreCompleto);<br />
+<br />
+Escribir "Nombre concatenado: '", nombreCompleto, "'";<br />
+Escribir "Número de caracteres (incluyendo espacios vacíos): ",
+caracteresTotales;<br />
+FinAlgoritmo</p>
+<h4 id="longitud-de-frase">23. Longitud de Frase <a class="headerlink" href="#longitud-de-frase" title="Enlace permanente">¶</a></h4>
+<p>Funcion retorno &lt;- ObtenerLongitud(frase)<br />
+Definir retorno Como Entero;<br />
+retorno &lt;- Longitud(frase);<br />
+FinFuncion<br />
+<br />
+Algoritmo LongitudFrasePrincipal<br />
+// Pide una frase al usuario y delega la responsabilidad de contar su
+longitud a una función personalizada.<br />
+Definir textoUsuario Como Cadena;<br />
+Definir tamano Como Entero;<br />
+<br />
+Escribir "Introduzca una frase:";<br />
+Leer textoUsuario;<br />
+<br />
+tamano &lt;- ObtenerLongitud(textoUsuario);<br />
+<br />
+Escribir "La longitud de la frase procesada por la función es de: ",
+tamano, " caracteres.";<br />
+FinAlgoritmo</p>
+<h4 id="contador-de-vocales">24. Contador de Vocales <a class="headerlink" href="#contador-de-vocales" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo ContadorVocales<br />
+// Analiza iterativamente los caracteres de un texto introducido e
+incrementa un acumulador al detectar vocales.<br />
+Definir frase, letra Como Cadena;<br />
+Definir i, totalVocales Como Entero;<br />
+<br />
+Escribir "Escriba una frase para analizar sus vocales:";<br />
+Leer frase;<br />
+<br />
+totalVocales &lt;- 0;<br />
+frase &lt;- Mayusculas(frase); // Homogeneizar a mayúsculas<br />
+<br />
+Para i &lt;- 1 Hasta Longitud(frase) Con Paso 1 Hacer<br />
+letra &lt;- Subcadena(frase, i, i);<br />
+Si letra == 'A' O letra == 'E' O letra == 'I' O letra == 'O' O letra ==
+'U' Entonces<br />
+totalVocales &lt;- totalVocales + 1;<br />
+FinSi<br />
+FinPara<br />
+<br />
+Escribir "La frase introducida contiene ", totalVocales, "
+vocales.";<br />
+FinAlgoritmo</p>
+<h4 id="número-de-palabras">25. Número de Palabras <a class="headerlink" href="#número-de-palabras" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo NumeroPalabras<br />
+// Determina el número de palabras en un texto contando los espacios en
+blanco que dividen los términos gramaticales.<br />
+Definir frase, letra Como Cadena;<br />
+Definir i, palabras, longitudFrase Como Entero;<br />
+<br />
+Escribir "Escriba una frase:";<br />
+Leer frase;<br />
+<br />
+longitudFrase &lt;- Longitud(frase);<br />
+palabras &lt;- 0;<br />
+<br />
+Si longitudFrase &gt; 0 Entonces<br />
+// Partimos de que hay al menos 1 palabra si la frase no está
+vacía<br />
+palabras &lt;- 1;<br />
+Para i &lt;- 1 Hasta longitudFrase Con Paso 1 Hacer<br />
+letra &lt;- Subcadena(frase, i, i);<br />
+// Si el carácter actual es un espacio y el siguiente no lo es (evitando
+dobles espacios)<br />
+Si letra == " " Y (i &lt; longitudFrase Y Subcadena(frase, i + 1, i + 1)
+&lt;&gt; " ") Entonces<br />
+palabras &lt;- palabras + 1;<br />
+FinSi<br />
+FinPara<br />
+FinSi<br />
+<br />
+Escribir "Número de palabras estimadas: ", palabras;<br />
+FinAlgoritmo</p>
+<h4 id="buscador-de-letras">26. Buscador de Letras <a class="headerlink" href="#buscador-de-letras" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo BuscadorLetras<br />
+// Determina con qué frecuencia se repite una letra específica elegida
+por el usuario dentro de un texto.<br />
+Definir frase, caracterBuscar, charActual Como Cadena;<br />
+Definir i, coincidencias Como Entero;<br />
+<br />
+Escribir "Escriba una frase de texto:";<br />
+Leer frase;<br />
+Escribir "Ingrese el carácter que desea buscar:";<br />
+Leer caracterBuscar;<br />
+<br />
+// Homogeneizamos a mayúsculas para evitar problemas de distinción de
+casos<br />
+frase &lt;- Mayusculas(frase);<br />
+caracterBuscar &lt;- Mayusculas(caracterBuscar);<br />
+coincidencias &lt;- 0;<br />
+<br />
+Para i &lt;- 1 Hasta Longitud(frase) Con Paso 1 Hacer<br />
+charActual &lt;- Subcadena(frase, i, i);<br />
+Si charActual == caracterBuscar Entonces<br />
+coincidencias &lt;- coincidencias + 1;<br />
+FinSi<br />
+FinPara<br />
+<br />
+Escribir "El carácter '", caracterBuscar, "' se encontró ",
+coincidencias, " veces.";<br />
+FinAlgoritmo</p>
+<h2
+id="grupo-b-ejercicios-avanzados-y-de-aplicación-retos-y-perfil-profesional">GRUPO
+B: EJERCICIOS AVANZADOS Y DE APLICACIÓN (Retos y Perfil
+Profesional) <a class="headerlink" href="#grupo-b-ejercicios-avanzados-y-de-aplicación-retos-y-perfil-profesional" title="Enlace permanente">¶</a></h2>
+<h3 id="b.1.-flujos-lógicos-y-condicionales-complejos">B.1. Flujos
+Lógicos y Condicionales Complejos <a class="headerlink" href="#b.1.-flujos-lógicos-y-condicionales-complejos" title="Enlace permanente">¶</a></h3>
+<h4 id="cruce-seguro-algoritmo-estructurado-del-diagrama-de-flujo">27.
+Cruce Seguro (Algoritmo estructurado del Diagrama de Flujo) <a class="headerlink" href="#cruce-seguro-algoritmo-estructurado-del-diagrama-de-flujo" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo CruceSeguroAvenida<br />
+// Descripción del comportamiento lógico y secuencial recomendado para
+modelar mediante diagrama de flujo cómo cruzar una avenida con semáforo
+peatonal de forma correcta.<br />
+Definir colorSemaforo, vehiculosAproximandose Como Cadena;<br />
+Definir cruceExitoso Como Logico;<br />
+<br />
+cruceExitoso &lt;- Falso;<br />
+<br />
+Repetir<br />
+Escribir "Estás en la acera. Observas el semáforo de peatones.";<br />
+Escribir "¿De qué color es la luz del semáforo peatonal? (VERDE /
+ROJO):";<br />
+Leer colorSemaforo;<br />
+colorSemaforo &lt;- Mayusculas(colorSemaforo);<br />
+<br />
+Si colorSemaforo == "ROJO" Entonces<br />
+Escribir "ALERTA DETENCIÓN: No cruzar. Espera seguro en la
+acera.";<br />
+Escribir
+"--------------------------------------------------------";<br />
+Sino<br />
+Si colorSemaforo == "VERDE" Entonces<br />
+Escribir "¿Se aproximan vehículos ignorando la señal o de emergencia?
+(SI / NO):";<br />
+Leer vehiculosAproximandose;<br />
+vehiculosAproximandose &lt;- Mayusculas(vehiculosAproximandose);<br />
+<br />
+Si vehiculosAproximandose == "NO" Entonces<br />
+Escribir "Cruzas la calzada de forma ágil y con precaución.";<br />
+cruceExitoso &lt;- Verdadero;<br />
+Sino<br />
+Escribir "ALERTA DETENCIÓN: Vehículo peligroso aproximándose.
+Espera.";<br />
+Escribir
+"--------------------------------------------------------";<br />
+FinSi<br />
+Sino<br />
+Escribir "Estado desconocido. Mantente a salvo en la acera.";<br />
+FinSi<br />
+FinSi<br />
+Hasta Que cruceExitoso == Verdadero;<br />
+<br />
+Escribir "¡Has cruzado la avenida con total seguridad!";<br />
+FinAlgoritmo</p>
+<h4 id="conversor-de-tiempo-total">28. Conversor de Tiempo Total <a class="headerlink" href="#conversor-de-tiempo-total" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo ConversorTiempoTotal<br />
+// Convierte valores de tiempo en horas, minutos y segundos a su
+equivalente total medido en segundos aplicando la fórmula
+matemática:<br />
+Definir horas, minutos, segundos, segundosTotales Como Entero;<br />
+<br />
+Escribir "Introduzca las horas:";<br />
+Leer horas;<br />
+Escribir "Introduzca los minutos:";<br />
+Leer minutos;<br />
+Escribir "Introduzca los segundos:";<br />
+Leer segundos;<br />
+<br />
+segundosTotales &lt;- (horas * 3600) + (minutos * 60) + segundos;<br />
+<br />
+Escribir "El tiempo ingresado equivale a: ", segundosTotales, " segundos
+en total.";<br />
+FinAlgoritmo</p>
+<h4 id="calificación-universitaria-test">29. Calificación Universitaria
+Test <a class="headerlink" href="#calificación-universitaria-test" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo CalificacionTest<br />
+// Evalúa la puntuación de un examen tipo test de 20 preguntas con
+criterios de penalización (aciertos: 0.5, fallos: 0.1, sin respuesta:
+0).<br />
+Definir aciertos, fallos, enBlanco Como Entero;<br />
+Definir notaFinal Como Real;<br />
+<br />
+Escribir "Ingrese cantidad de respuestas ACERTADAS:";<br />
+Leer aciertos;<br />
+Escribir "Ingrese cantidad de respuestas FALLADAS:";<br />
+Leer fallos;<br />
+Escribir "Ingrese cantidad de respuestas EN BLANCO:";<br />
+Leer enBlanco;<br />
+<br />
+// Validamos que el cómputo total de preguntas no exceda las 20
+planteadas<br />
+Si (aciertos + fallos + enBlanco) == 20 Entonces<br />
+notaFinal &lt;- (aciertos * 0.5) - (fallos * 0.1);<br />
+<br />
+// Controlamos que la nota no resulte negativa<br />
+Si notaFinal &lt; 0 Entonces<br />
+notaFinal &lt;- 0;<br />
+FinSi<br />
+<br />
+Escribir "--- RESULTADOS DE LA EVALUACIÓN ---";<br />
+Escribir "Nota numérica definitiva: ", notaFinal, " / 10.0";<br />
+Sino<br />
+Escribir "Error: La suma de aciertos, fallos y blancos debe ser de 20
+preguntas.";<br />
+FinSi<br />
+FinAlgoritmo</p>
+<h4 id="calculadora-interactiva">30. Calculadora Interactiva <a class="headerlink" href="#calculadora-interactiva" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo CalculadoraInteractiva<br />
+// Una calculadora funcional que procesa una operación aritmética tras
+solicitar al usuario su selección mediante un menú simplificado.<br />
+Definir num1, num2, resultado Como Real;<br />
+Definir operacion Como Caracter;<br />
+Definir operacionValida Como Logico;<br />
+<br />
+operacionValida &lt;- Verdadero;<br />
+<br />
+Escribir "=== CALCULADORA INTERACTIVA ===";<br />
+Escribir "Seleccione una operación básica (+, -, *, /):";<br />
+Leer operacion;<br />
+<br />
+Escribir "Introduzca el primer número:";<br />
+Leer num1;<br />
+Escribir "Introduzca el segundo número:";<br />
+Leer num2;<br />
+<br />
+Segun operacion Hacer<br />
+"+": resultado &lt;- num1 + num2;<br />
+"-": resultado &lt;- num1 - num2;<br />
+"*": resultado &lt;- num1 * num2;<br />
+"/":<br />
+Si num2 &lt;&gt; 0 Entonces<br />
+resultado &lt;- num1 / num2;<br />
+Sino<br />
+Escribir "Error matemático: División entre cero.";<br />
+operacionValida &lt;- Falso;<br />
+FinSi<br />
+De Otro Modo:<br />
+Escribir "Símbolo de operación no reconocido.";<br />
+operacionValida &lt;- Falso;<br />
+FinSegun<br />
+<br />
+Si operacionValida Entonces<br />
+Escribir "El resultado es: ", num1, " ", operacion, " ", num2, " = ",
+resultado;<br />
+FinSi<br />
+FinAlgoritmo</p>
+<h4 id="presupuesto-con-desglose-iva-variable">31. Presupuesto con
+Desglose (IVA Variable) <a class="headerlink" href="#presupuesto-con-desglose-iva-variable" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo PresupuestoIvaVariable<br />
+// Calcula el coste de adquisición de un artículo aplicando un menú
+selectivo para determinar el tipo de IVA fiscal aplicable (21%, 10%, o
+4%).<br />
+Definir producto Como Cadena;<br />
+Definir precio, cantidad, subtotal, ivaSeleccionado, impIva, total Como
+Real;<br />
+Definir opcionIva Como Entero;<br />
+Definir valido Como Logico;<br />
+<br />
+valido &lt;- Verdadero;<br />
+<br />
+Escribir "Nombre del Producto/Servicio:";<br />
+Leer producto;<br />
+Escribir "Precio Unitario (Base Imponible):";<br />
+Leer precio;<br />
+Escribir "Cantidad a facturar:";<br />
+Leer cantidad;<br />
+<br />
+Escribir "Seleccione la tasa impositiva de IVA aplicable:";<br />
+Escribir "1) IVA General (21%)";<br />
+Escribir "2) IVA Reducido (10%)";<br />
+Escribir "3) IVA Superreducido (4%)";<br />
+Leer opcionIva;<br />
+<br />
+Segun opcionIva Hacer<br />
+1: ivaSeleccionado &lt;- 0.21;<br />
+2: ivaSeleccionado &lt;- 0.10;<br />
+3: ivaSeleccionado &lt;- 0.04;<br />
+De Otro Modo:<br />
+Escribir "Selección impositiva errónea.";<br />
+valido &lt;- Falso;<br />
+FinSegun<br />
+<br />
+Si valido Entonces<br />
+subtotal &lt;- precio * cantidad;<br />
+impIva &lt;- subtotal * ivaSeleccionado;<br />
+total &lt;- subtotal + impIva;<br />
+<br />
+Escribir "";<br />
+Escribir "=========================================";<br />
+Escribir " TICKET FISCAL ";<br />
+Escribir "=========================================";<br />
+Escribir "Concepto: ", producto;<br />
+Escribir "Precio/U: ", precio, " € | Cantidad: ", cantidad;<br />
+Escribir "Base Imponible: ", subtotal, " €";<br />
+Escribir "I.V.A aplicado: ", ivaSeleccionado * 100, "% (", impIva, "
+€)";<br />
+Escribir "-----------------------------------------";<br />
+Escribir "Importe Total Neto: ", total, " €";<br />
+Escribir "=========================================";<br />
+FinSi<br />
+FinAlgoritmo</p>
+<h4 id="conversor-de-moneda-bidireccional-con-funciones">32. Conversor
+de Moneda Bidireccional con Funciones <a class="headerlink" href="#conversor-de-moneda-bidireccional-con-funciones" title="Enlace permanente">¶</a></h4>
+<p>Funcion usd &lt;- ConvertirEurToUsd(eur)<br />
+Definir usd Como Real;<br />
+usd &lt;- eur * 1.10; // 1 EUR = 1.10 USD<br />
+FinFuncion<br />
+<br />
+Funcion eur &lt;- ConvertirUsdToEur(usd)<br />
+Definir eur Como Real;<br />
+eur &lt;- usd / 1.10;<br />
+FinFuncion<br />
+<br />
+Algoritmo ConversorMonedaBidireccional<br />
+// Realiza cálculos monetarios bidireccionales haciendo uso de
+subprocesos dedicados para convertir entre divisas (asumiendo un tipo de
+cambio de 1 EUR = 1.10 USD).<br />
+Definir producto, moneda Como Cadena;<br />
+Definir precio, conversor Como Real;<br />
+<br />
+Escribir "Nombre del producto:";<br />
+Leer producto;<br />
+Escribir "Precio del producto:";<br />
+Leer precio;<br />
+Escribir "¿En qué divisa está expresado el precio? (EUR / USD):";<br />
+Leer moneda;<br />
+<br />
+moneda &lt;- Mayusculas(moneda);<br />
+<br />
+Escribir "--- INFORME ECONÓMICO ---";<br />
+Escribir "Artículo evaluado: ", producto;<br />
+<br />
+Si moneda == "EUR" Entonces<br />
+conversor &lt;- ConvertirEurToUsd(precio);<br />
+Escribir "Precio Original: ", precio, " EUR";<br />
+Escribir "Precio Convertido: ", conversor, " USD";<br />
+Sino<br />
+Si moneda == "USD" Entonces<br />
+conversor &lt;- ConvertirUsdToEur(precio);<br />
+Escribir "Precio Original: ", precio, " USD";<br />
+Escribir "Precio Convertido: ", conversor, " EUR";<br />
+Sino<br />
+Escribir "Divisa no compatible en el sistema.";<br />
+FinSi<br />
+FinSi<br />
+FinAlgoritmo</p>
+<h4 id="consola-de-diagnóstico-asir">33. Consola de Diagnóstico
+ASIR <a class="headerlink" href="#consola-de-diagnóstico-asir" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo ConsolaASIR<br />
+// Simula una pequeña terminal técnica que implementa herramientas de
+verificación de redes orientadas al perfil profesional de Administración
+de Sistemas Informáticos en Red.<br />
+Definir opcion Como Entero;<br />
+Definir ipSimulada, cidrVal Como Entero;<br />
+Definir velocidadContratada, usoPorcentaje, libres Como Real;<br />
+<br />
+Repetir<br />
+Escribir "";<br />
+Escribir "=========================================";<br />
+Escribir " CONSOLA DE DIAGNÓSTICO ASIR ";<br />
+Escribir "=========================================";<br />
+Escribir "1) Testear conectividad IP (Ping)";<br />
+Escribir "2) Verificar validez máscara CIDR";<br />
+Escribir "3) Calcular Ancho de Banda Libre";<br />
+Escribir "4) Salir del terminal";<br />
+Escribir "Seleccione una opción:";<br />
+Leer opcion;<br />
+Escribir "-----------------------------------------";<br />
+<br />
+Segun opcion Hacer<br />
+1:<br />
+Escribir "Introduzca el último octeto IP a testear (1-254):";<br />
+Leer ipSimulada;<br />
+Si ipSimulada &gt;= 1 Y ipSimulada &lt;= 254 Entonces<br />
+Escribir "PINGing 192.168.1.", ipSimulada, " con 32 bytes de
+datos:";<br />
+Escribir "Respuesta desde 192.168.1.", ipSimulada, ": bytes=32
+tiempo=12ms TTL=64";<br />
+Escribir "Estado de la interfaz: ACTIVA / CONECTADA";<br />
+Sino<br />
+Escribir "Dirección IP fuera de rango local permitido.";<br />
+FinSi<br />
+2:<br />
+Escribir "Ingrese el número de máscara CIDR a evaluar:";<br />
+Leer cidrVal;<br />
+Si cidrVal &gt;= 8 Y cidrVal &lt;= 30 Entonces<br />
+Escribir "Máscara CIDR /", cidrVal, " es VÁLIDA para direccionamiento
+IPv4.";<br />
+Sino<br />
+Escribir "Máscara CIDR INVÁLIDA (rango idóneo para host entre /8 y
+/30).";<br />
+FinSi<br />
+3:<br />
+Escribir "Velocidad contratada del canal (en Mbps):";<br />
+Leer velocidadContratada;<br />
+Escribir "Porcentaje actual de consumo de red (0-100%):";<br />
+Leer usoPorcentaje;<br />
+<br />
+Si usoPorcentaje &gt;= 0 Y usoPorcentaje &lt;= 100 Entonces<br />
+libres &lt;- velocidadContratada * (1 - (usoPorcentaje / 100));<br />
+Escribir "Capacidad libre disponible actual: ", libres, " Mbps";<br />
+Sino<br />
+Escribir "El porcentaje de uso de canal no es coherente.";<br />
+FinSi<br />
+4:<br />
+Escribir "Cerrando sesión en la terminal...";<br />
+De Otro Modo:<br />
+Escribir "Opción del sistema no implementada.";<br />
+FinSegun<br />
+Hasta Que opcion == 4;<br />
+FinAlgoritmo</p>
+<h3 id="b.2.-estructuras-repetitivas-avanzadas">B.2. Estructuras
+Repetitivas Avanzadas <a class="headerlink" href="#b.2.-estructuras-repetitivas-avanzadas" title="Enlace permanente">¶</a></h3>
+<h4 id="tablas-múltiples-anidadas">34. Tablas Múltiples Anidadas <a class="headerlink" href="#tablas-múltiples-anidadas" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo TablasMultiplicarAnidadas<br />
+// Utiliza bucles anidados para mostrar las tablas de multiplicar
+completas del 1 al 5 en una sola secuencia de salida.<br />
+Definir tabla, multiplicador Como Entero;<br />
+<br />
+Para tabla &lt;- 1 Hasta 5 Con Paso 1 Hacer<br />
+Escribir "==============================";<br />
+Escribir " TABLA DEL ", tabla;<br />
+Escribir "==============================";<br />
+Para multiplicador &lt;- 1 Hasta 10 Con Paso 1 Hacer<br />
+Escribir tabla, " x ", multiplicador, " = ", (tabla *
+multiplicador);<br />
+FinPara<br />
+Escribir ""; // Salto de línea estético<br />
+FinPara<br />
+FinAlgoritmo</p>
+<h4 id="clasificador-estadístico-por-intervalos">35. Clasificador
+Estadístico por Intervalos <a class="headerlink" href="#clasificador-estadístico-por-intervalos" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo ClasificadorIntervalos<br />
+// Recibe números de manera ininterrumpida hasta que se introduzca un
+valor negativo, agrupando los datos estadísticamente en intervalos de
+control.<br />
+Definir num, rango1, rango2, fueraRango Como Entero;<br />
+<br />
+rango1 &lt;- 0; // Cuenta números en el intervalo [1, 10]<br />
+rango2 &lt;- 0; // Cuenta números en el intervalo [11, 20]<br />
+fueraRango &lt;- 0; // Cuenta números fuera de los dos rangos<br />
+<br />
+Repetir<br />
+Escribir "Ingrese un número entero (Valor negativo para
+detener):";<br />
+Leer num;<br />
+<br />
+Si num &gt;= 0 Entonces<br />
+Si num &gt;= 1 Y num &lt;= 10 Entonces<br />
+rango1 &lt;- rango1 + 1;<br />
+Sino<br />
+Si num &gt;= 11 Y num &lt;= 20 Entonces<br />
+rango2 &lt;- rango2 + 1;<br />
+Sino<br />
+fueraRango &lt;- fueraRango + 1;<br />
+FinSi<br />
+FinSi<br />
+FinSi<br />
+Hasta Que num &lt; 0;<br />
+<br />
+Escribir "=== METRICAS ESTADISTICAS DE ENTRADA ===";<br />
+Escribir "Cantidad de números en el intervalo [1, 10]: ", rango1;<br />
+Escribir "Cantidad de números en el intervalo [11, 20]: ", rango2;<br />
+Escribir "Cantidad de números fuera de los intervalos: ",
+fueraRango;<br />
+FinAlgoritmo</p>
+<h4 id="sumatorio-y-factorial-en-rango">36. Sumatorio y Factorial en
+Rango <a class="headerlink" href="#sumatorio-y-factorial-en-rango" title="Enlace permanente">¶</a></h4>
+<p>Funcion sumat &lt;- CalcularSumatorio(num)<br />
+Definir sumat, i Como Entero;<br />
+sumat &lt;- 0;<br />
+Para i &lt;- 1 Hasta num Con Paso 1 Hacer<br />
+sumat &lt;- sumat + i;<br />
+FinPara<br />
+FinFuncion<br />
+<br />
+Funcion fact &lt;- CalcularFactorial(num)<br />
+Definir fact, i Como Entero;<br />
+fact &lt;- 1;<br />
+Para i &lt;- 1 Hasta num Con Paso 1 Hacer<br />
+fact &lt;- fact * i;<br />
+FinPara<br />
+FinFuncion<br />
+<br />
+Algoritmo SumatorioYFactorialEnRango<br />
+// Calcula la sumatoria y el factorial de todos los números dentro de un
+intervalo numérico utilizando funciones matemáticas dedicadas.<br />
+Definir limInf, limSup, i, resS, resF Como Entero;<br />
+<br />
+Escribir "Ingrese el límite inferior del rango:";<br />
+Leer limInf;<br />
+Escribir "Ingrese el límite superior del rango:";<br />
+Leer limSup;<br />
+<br />
+Si limInf &gt; 0 Y limSup &gt;= limInf Entonces<br />
+Para i &lt;- limInf Hasta limSup Con Paso 1 Hacer<br />
+resS &lt;- CalcularSumatorio(i);<br />
+resF &lt;- CalcularFactorial(i);<br />
+Escribir "Número: ", i, " -&gt; Sumatorio: ", resS, " | Factorial: ",
+resF;<br />
+FinPara<br />
+Sino<br />
+Escribir "Asegúrese de ingresar enteros positivos y que el límite
+superior sea mayor o igual al inferior.";<br />
+FinSi<br />
+FinAlgoritmo</p>
+<h4 id="cuadrados-en-rango-numérico">37. Cuadrados en Rango
+Numérico <a class="headerlink" href="#cuadrados-en-rango-numérico" title="Enlace permanente">¶</a></h4>
+<p>Funcion cuad &lt;- ObtenerCuadrado(num)<br />
+Definir cuad Como Entero;<br />
+cuad &lt;- num * num;<br />
+FinFuncion<br />
+<br />
+Algoritmo CuadradosEnRango<br />
+// Calcula e imprime los cuadrados de los números enteros dentro de un
+rango utilizando una función modular.<br />
+Definir limite, i, resultado Como Entero;<br />
+<br />
+Escribir "Ingrese el valor límite superior para calcular
+cuadrados:";<br />
+Leer limite;<br />
+<br />
+Si limite &gt;= 1 Entonces<br />
+Escribir "Cuadrados calculados en el rango [1 - ", limite, "]:";<br />
+Para i &lt;- 1 Hasta limite Con Paso 1 Hacer<br />
+resultado &lt;- ObtenerCuadrado(i);<br />
+Escribir "Número: ", i, " | Cuadrado: ", resultado;<br />
+FinPara<br />
+Sino<br />
+Escribir "El límite de ejecución debe ser un valor igual o superior a
+1.";<br />
+FinSi<br />
+FinAlgoritmo</p>
+<h4 id="telemetría-asir-de-cpu">38. Telemetría ASIR de CPU <a class="headerlink" href="#telemetría-asir-de-cpu" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo TelemetriaCPU<br />
+// Recibe lecturas porcentuales de carga de CPU en bucle y las
+categoriza por niveles de carga, alertando al administrador en caso de
+detectar valores críticos.<br />
+Definir carga, verde, amarillo, rojo Como Entero;<br />
+<br />
+verde &lt;- 0;<br />
+amarillo &lt;- 0;<br />
+rojo &lt;- 0;<br />
+<br />
+Repetir<br />
+Escribir "Ingrese la carga actual del procesador en % (Negativo para
+suspender monitoreo):";<br />
+Leer carga;<br />
+<br />
+Si carga &gt;= 0 Entonces<br />
+Si carga &lt;= 100 Entonces<br />
+Si carga &lt;= 50 Entonces<br />
+verde &lt;- verde + 1;<br />
+Escribir "ESTADO: Normal (Verde)";<br />
+Sino<br />
+Si carga &lt;= 85 Entonces<br />
+amarillo &lt;- amarillo + 1;<br />
+Escribir "ESTADO: Advertencia (Amarillo)";<br />
+Sino<br />
+rojo &lt;- rojo + 1;<br />
+Escribir "ESTADO CRÍTICO: Sobrecarga (Rojo)";<br />
+FinSi<br />
+FinSi<br />
+Sino<br />
+Escribir "Muestra descartada por exceder el 100% de capacidad.";<br />
+FinSi<br />
+Escribir
+"--------------------------------------------------------";<br />
+FinSi<br />
+Hasta Que carga &lt; 0;<br />
+<br />
+Escribir "=== METRICAS GLOBALES DE SISTEMAS ===";<br />
+Escribir "Lecturas en zona segura (&lt;=50%): ", verde;<br />
+Escribir "Lecturas en aviso (51-85%): ", amarillo;<br />
+Escribir "Lecturas en alerta crítica (&gt;85%): ", rojo;<br />
+FinAlgoritmo</p>
+<h3 id="b.3.-memoria-arrays-cadenas-complejas-y-modularidad">B.3.
+Memoria (Arrays), Cadenas Complejas y Modularidad <a class="headerlink" href="#b.3.-memoria-arrays-cadenas-complejas-y-modularidad" title="Enlace permanente">¶</a></h3>
+<h4 id="gestión-completa-de-memoria-lineal">39. Gestión Completa de
+Memoria Lineal <a class="headerlink" href="#gestión-completa-de-memoria-lineal" title="Enlace permanente">¶</a></h4>
+<p>Funcion CalcularMayor(array Por Referencia, maxVal Por Referencia,
+maxPos Por Referencia)<br />
+Definir i Como Entero;<br />
+maxVal &lt;- array[1];<br />
+maxPos &lt;- 1;<br />
+Para i &lt;- 2 Hasta 10 Con Paso 1 Hacer<br />
+Si array[i] &gt; maxVal Entonces<br />
+maxVal &lt;- array[i];<br />
+maxPos &lt;- i;<br />
+FinSi<br />
+FinPara<br />
+FinFuncion<br />
+<br />
+Funcion CalcularMenor(array Por Referencia, minVal Por Referencia,
+minPos Por Referencia)<br />
+Definir i Como Entero;<br />
+minVal &lt;- array[1];<br />
+minPos &lt;- 1;<br />
+Para i &lt;- 2 Hasta 10 Con Paso 1 Hacer<br />
+Si array[i] &lt; minVal Entonces<br />
+minVal &lt;- array[i];<br />
+minPos &lt;- i;<br />
+FinSi<br />
+FinPara<br />
+FinFuncion<br />
+<br />
+Algoritmo GestionMemoriaLineal<br />
+// Valida que un arreglo de 10 elementos contenga únicamente valores en
+el rango [0 - 150]. A través de parámetros por referencia, determina los
+valores extremos y sus posiciones de memoria correspondientes.<br />
+Definir datos, i, maxV, maxP, minV, minP Como Entero;<br />
+Definir reiniciar Como Caracter;<br />
+Dimension datos[10];<br />
+<br />
+Repetir<br />
+Escribir "Ingrese 10 números (Deberán pertenecer estrictamente al rango
+[0 - 150]):";<br />
+Para i &lt;- 1 Hasta 10 Con Paso 1 Hacer<br />
+Repetir<br />
+Escribir "Posición [", i, "]:";<br />
+Leer datos[i];<br />
+Si datos[i] &lt; 0 O datos[i] &gt; 150 Entonces<br />
+Escribir "Valor rechazado. El dato debe estar entre 0 y 150. Pruebe de
+nuevo.";<br />
+FinSi<br />
+Hasta Que datos[i] &gt;= 0 Y datos[i] &lt;= 150;<br />
+FinPara<br />
+<br />
+// Ejecución de rutinas modularizadas por referencia<br />
+CalcularMayor(datos, maxV, maxP);<br />
+CalcularMenor(datos, minV, minP);<br />
+<br />
+Escribir "--- DIAGNÓSTICO DE MEMORIA ---";<br />
+Escribir "Valor Máximo Registrado: ", maxV, " localizado en el índice
+[", maxP, "]";<br />
+Escribir "Valor Mínimo Registrado: ", minV, " localizado en el índice
+[", minP, "]";<br />
+Escribir "---------------------------------";<br />
+<br />
+Escribir "¿Desea iniciar de nuevo el proceso de diagnóstico? (S /
+N):";<br />
+Leer reiniciar;<br />
+reiniciar &lt;- Mayusculas(reiniciar);<br />
+Hasta Que reiniciar == "N";<br />
+<br />
+Escribir "Cierre de gestión de memoria lineal.";<br />
+FinAlgoritmo</p>
+<h4 id="detector-de-pares-en-entornos-aleatorios">40. Detector de Pares
+en Entornos Aleatorios <a class="headerlink" href="#detector-de-pares-en-entornos-aleatorios" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo DetectorParesAleatorios<br />
+// Genera un arreglo de tamaño dinámico N con valores aleatorios y
+extrae únicamente los números que cumplan con el criterio de
+paridad.<br />
+Definir nMax, i Como Entero;<br />
+Escribir "Indique el tamaño que desea asignar a la memoria del vector
+(N):";<br />
+Leer nMax;<br />
+<br />
+Si nMax &gt; 0 Entonces<br />
+Definir arrayGenerado Como Entero;<br />
+Dimension arrayGenerado[nMax];<br />
+<br />
+// Rellenado aleatorio seguro entre [0 - 99]<br />
+Para i &lt;- 1 Hasta nMax Con Paso 1 Hacer<br />
+arrayGenerado[i] &lt;- Aleatorio(0, 99);<br />
+FinPara<br />
+<br />
+Escribir "--- Listado completo de pares detectados ---";<br />
+Para i &lt;- 1 Hasta nMax Con Paso 1 Hacer<br />
+Si arrayGenerado[i] Mod 2 == 0 Entonces<br />
+Escribir "Índice [", i, "] -&gt; Contiene el valor Par: ",
+arrayGenerado[i];<br />
+FinSi<br />
+FinPara<br />
+Sino<br />
+Escribir "Tamaño de memoria incorrecto.";<br />
+FinSi<br />
+FinAlgoritmo</p>
+<h4 id="analizador-de-jitter-de-red">41. Analizador de Jitter de
+Red <a class="headerlink" href="#analizador-de-jitter-de-red" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo AnalizadorJitter<br />
+// Calcula la fluctuación temporal en la latencia de un canal (Jitter) a
+partir del análisis de las variaciones extremas en un arreglo de 5
+lecturas de ping.<br />
+Definir pings, i, pingMax, pingMin, jitter Como Entero;<br />
+Dimension pings[5];<br />
+<br />
+Escribir "Capture 5 muestras de latencia Ping (medido en ms):";<br />
+Para i &lt;- 1 Hasta 5 Con Paso 1 Hacer<br />
+Escribir "Ping [muestreo ", i, "]:";<br />
+Leer pings[i];<br />
+FinPara<br />
+<br />
+// Inicializamos extremos métricos<br />
+pingMax &lt;- pings[1];<br />
+pingMin &lt;- pings[1];<br />
+<br />
+Para i &lt;- 2 Hasta 5 Con Paso 1 Hacer<br />
+Si pings[i] &gt; pingMax Entonces<br />
+pingMax &lt;- pings[i];<br />
+FinSi<br />
+Si pings[i] &lt; pingMin Entonces<br />
+pingMin &lt;- pings[i];<br />
+FinSi<br />
+FinPara<br />
+<br />
+jitter &lt;- pingMax - pingMin;<br />
+<br />
+Escribir "--- INFORME TELEMETRIA DE JITTER ---";<br />
+Escribir "Latencia máxima registrada: ", pingMax, " ms";<br />
+Escribir "Latencia mínima registrada: ", pingMin, " ms";<br />
+Escribir "Jitter de canal resultante: ", jitter, " ms";<br />
+FinAlgoritmo</p>
+<h4 id="detector-de-palíndromos">42. Detector de Palíndromos <a class="headerlink" href="#detector-de-palíndromos" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo DetectorPalindromos<br />
+// Compara los caracteres de una palabra o frase desde los extremos
+hacia el centro para determinar si se lee de igual forma de izquierda a
+derecha que de derecha a izquierda.<br />
+Definir frase, fraseLimpia, letra Como Cadena;<br />
+Definir i, len Como Entero;<br />
+Definir esPalindromo Como Logico;<br />
+<br />
+Escribir "Ingrese la palabra o frase a evaluar:";<br />
+Leer frase;<br />
+<br />
+frase &lt;- Mayusculas(frase);<br />
+fraseLimpia &lt;- "";<br />
+<br />
+// Limpieza previa: omitimos espacios vacíos para evaluar palíndromos
+complejos<br />
+Para i &lt;- 1 Hasta Longitud(frase) Con Paso 1 Hacer<br />
+letra &lt;- Subcadena(frase, i, i);<br />
+Si letra &lt;&gt; " " Entonces<br />
+fraseLimpia &lt;- fraseLimpia + letra;<br />
+FinSi<br />
+Para<br />
+<br />
+len &lt;- Longitud(fraseLimpia);<br />
+esPalindromo &lt;- Verdadero;<br />
+<br />
+// Verificación por extremos contrapuestos<br />
+Para i &lt;- 1 Hasta Trunc(len / 2) Con Paso 1 Hacer<br />
+Si Subcadena(fraseLimpia, i, i) &lt;&gt; Subcadena(fraseLimpia, len - i
++ 1, len - i + 1) Entonces<br />
+esPalindromo &lt;- Falso;<br />
+FinSi<br />
+FinPara<br />
+<br />
+Si esPalindromo Y len &gt; 0 Entonces<br />
+Escribir "La frase es un PALÍNDROMO.";<br />
+Sino<br />
+Escribir "La frase NO es un palíndromo.";<br />
+FinSi<br />
+FinAlgoritmo</p>
+<h4 id="extractor-de-subcadenas">43. Extractor de Subcadenas <a class="headerlink" href="#extractor-de-subcadenas" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo ExtractorSubcadenas<br />
+// Extrae un fragmento específico de un texto delimitado por los índices
+de inicio y fin ingresados, validando previamente que los rangos se
+encuentren dentro del tamaño del texto.<br />
+Definir frase, subcadenaResultado Como Cadena;<br />
+Definir posInicio, posFin, tamano Como Entero;<br />
+<br />
+Escribir "Escriba una frase completa:";<br />
+Leer frase;<br />
+Escribir "Indique el índice de inicio de extracción:";<br />
+Leer posInicio;<br />
+Escribir "Indique el índice de finalización de extracción:";<br />
+Leer posFin;<br />
+<br />
+tamano &lt;- Longitud(frase);<br />
+<br />
+// Bloque de validación condicional compleja<br />
+Si posInicio &gt;= 1 Y posFin &lt;= tamano Y posInicio &lt;= posFin
+Entonces<br />
+subcadenaResultado &lt;- Subcadena(frase, posInicio, posFin);<br />
+Escribir "Fragmento recuperado con éxito: '", subcadenaResultado,
+"'";<br />
+Sino<br />
+Escribir "Error de índice: Compruebe que los límites pertenezcan al
+rango [1 - ", tamano, "].";<br />
+FinSi<br />
+FinAlgoritmo</p>
+<h4 id="algoritmo-de-cálculo-de-letra-dni">44. Algoritmo de Cálculo de
+Letra DNI <a class="headerlink" href="#algoritmo-de-cálculo-de-letra-dni" title="Enlace permanente">¶</a></h4>
+<p>Funcion letra &lt;- BuscarLetraDni(numero)<br />
+Definir letra Como Caracter;<br />
+Definir resto Como Entero;<br />
+Definir mapaLetras Como Caracter;<br />
+Dimension mapaLetras[23];<br />
+<br />
+// Mapeo oficial de asignación del Ministerio del Interior<br />
+mapaLetras[1] &lt;- "T"; mapaLetras[2] &lt;- "R"; mapaLetras[3] &lt;-
+"W";<br />
+mapaLetras[4] &lt;- "A"; mapaLetras[5] &lt;- "G"; mapaLetras[6] &lt;-
+"M";<br />
+mapaLetras[7] &lt;- "Y"; mapaLetras[8] &lt;- "F"; mapaLetras[9] &lt;-
+"P";<br />
+mapaLetras[10] &lt;- "D"; mapaLetras[11] &lt;- "X"; mapaLetras[12] &lt;-
+"B";<br />
+mapaLetras[13] &lt;- "N"; mapaLetras[14] &lt;- "J"; mapaLetras[15] &lt;-
+"Z";<br />
+mapaLetras[16] &lt;- "S"; mapaLetras[17] &lt;- "Q"; mapaLetras[18] &lt;-
+"V";<br />
+mapaLetras[19] &lt;- "H"; mapaLetras[20] &lt;- "L"; mapaLetras[21] &lt;-
+"C";<br />
+mapaLetras[22] &lt;- "K"; mapaLetras[23] &lt;- "E";<br />
+<br />
+// El resto oscila entre 0 y 22<br />
+resto &lt;- numero Mod 23;<br />
+<br />
+// Se ajusta al índice del arreglo [1 - 23]<br />
+letra &lt;- mapaLetras[resto + 1];<br />
+FinFuncion<br />
+<br />
+Algoritmo CalculadorDNI<br />
+// Calcula la letra correspondiente a un número de DNI español
+dividiendo el valor numérico entre 23 y asociando el resto con una tabla
+de caracteres preconfigurada.<br />
+Definir numDni Como Entero;<br />
+Definir letraCalculada Como Caracter;<br />
+<br />
+Escribir "Introduzca los 8 dígitos numéricos de su documento de
+identidad DNI:";<br />
+Leer numDni;<br />
+<br />
+Si numDni &gt;= 1000000 Y numDni &lt;= 99999999 Entonces<br />
+letraCalculada &lt;- BuscarLetraDni(numDni);<br />
+Escribir "La letra correspondiente al número de DNI es: ",
+letraCalculada;<br />
+Escribir "DNI Formateado: ", numDni, "-", letraCalculada;<br />
+Sino<br />
+Escribir "Error: Compruebe el tamaño de los dígitos numéricos de su
+DNI.";<br />
+FinSi<br />
+FinAlgoritmo</p>
+<h4 id="simulador-integral-lotería-primitiva">45. Simulador Integral
+Lotería Primitiva <a class="headerlink" href="#simulador-integral-lotería-primitiva" title="Enlace permanente">¶</a></h4>
+<p>Algoritmo SimuladorLotería<br />
+// Simula el sorteo de la lotería Primitiva utilizando dos estructuras
+paralelas para registrar y comparar la apuesta del usuario con la
+combinación ganadora generada de forma aleatoria.<br />
+Definir apuesta, combinacionGanadora, i, j, aciertos, reintegroUsuario,
+reintegroGanador Como Entero;<br />
+Definir repetido Como Logico;<br />
+Dimension apuesta[6], combinacionGanadora[6];<br />
+<br />
+aciertos &lt;- 0;<br />
+<br />
+Escribir "=== REGISTRO DE APUESTA DE LOTERÍA ===";<br />
+Para i &lt;- 1 Hasta 6 Con Paso 1 Hacer<br />
+Repetir<br />
+Escribir "Seleccione su número ", i, " [Rango 1-49]:";<br />
+Leer apuesta[i];<br />
+<br />
+// Validación de duplicados<br />
+repetido &lt;- Falso;<br />
+Para j &lt;- 1 Hasta i - 1 Con Paso 1 Hacer<br />
+Si apuesta[i] == apuesta[j] Entonces<br />
+repetido &lt;- Verdadero;<br />
+FinSi<br />
+FinPara<br />
+<br />
+Si apuesta[i] &lt; 1 O apuesta[i] &gt; 49 Entonces<br />
+Escribir "Error de rango.";<br />
+Sino<br />
+Si repetido Entonces<br />
+Escribir "No puede duplicar números en su apuesta.";<br />
+FinSi<br />
+FinSi<br />
+Hasta Que apuesta[i] &gt;= 1 Y apuesta[i] &lt;= 49 Y repetido ==
+Falso;<br />
+FinPara<br />
+<br />
+Repetir<br />
+Escribir "Seleccione su reintegro [Rango 0-9]:";<br />
+Leer reintegroUsuario;<br />
+Hasta Que reintegroUsuario &gt;= 0 Y reintegroUsuario &lt;= 9;<br />
+<br />
+// Sorteo de la combinación ganadora sin duplicados<br />
+Para i &lt;- 1 Hasta 6 Con Paso 1 Hacer<br />
+Repetir<br />
+combinacionGanadora[i] &lt;- Aleatorio(1, 49);<br />
+repetido &lt;- Falso;<br />
+Para j &lt;- 1 Hasta i - 1 Con Paso 1 Hacer<br />
+Si combinacionGanadora[i] == combinacionGanadora[j] Entonces<br />
+repetido &lt;- Verdadero;<br />
+FinSi<br />
+FinPara<br />
+Hasta Que repetido == Falso;<br />
+FinPara<br />
+reintegroGanador &lt;- Aleatorio(0, 9);<br />
+<br />
+// Comparación de aciertos en la combinación principal<br />
+Para i &lt;- 1 Hasta 6 Con Paso 1 Hacer<br />
+Para j &lt;- 1 Hasta 6 Con Paso 1 Hacer<br />
+Si apuesta[i] == combinacionGanadora[j] Entonces<br />
+aciertos &lt;- aciertos + 1;<br />
+FinSi<br />
+FinPara<br />
+FinPara<br />
+<br />
+Escribir "";<br />
+Escribir "=========================================";<br />
+Escribir " RESULTADOS DEL SORTEO ";<br />
+Escribir "=========================================";<br />
+Escribir "Su Apuesta: ", apuesta[1], " ", apuesta[2], " ", apuesta[3], "
+", apuesta[4], " ", apuesta[5], " ", apuesta[6], " [R:",
+reintegroUsuario, "]";<br />
+Escribir "Ganadora: ", combinacionGanadora[1], " ",
+combinacionGanadora[2], " ", combinacionGanadora[3], " ",
+combinacionGanadora[4], " ", combinacionGanadora[5], " ",
+combinacionGanadora[6], " [R:", reintegroGanador, "]";<br />
+Escribir "-----------------------------------------";<br />
+Escribir "Aciertos de la combinación principal: ", aciertos, " /
+6";<br />
+Si reintegroUsuario == reintegroGanador Entonces<br />
+Escribir "¡Reintegro acertado! Reembolso garantizado.";<br />
+Sino<br />
+Escribir "Reintegro no acertado.";<br />
+FinSi<br />
+Escribir "=========================================";<br />
+FinAlgoritmo</p>
+<h4 id="calculadora-exacta-de-edad">46. Calculadora Exacta de Edad <a class="headerlink" href="#calculadora-exacta-de-edad" title="Enlace permanente">¶</a></h4>
+<p>Funcion CalcularEdadExacta(d1, m1, a1, d2, m2, a2)<br />
+Definir anios, meses, dias Como Entero;<br />
+<br />
+anios &lt;- a2 - a1;<br />
+<br />
+// Comprobar si aún no se ha cumplido el año en el mes actual<br />
+Si m2 &lt; m1 O (m2 == m1 Y d2 &lt; d1) Entonces<br />
+anios &lt;- anios - 1;<br />
+FinSi<br />
+<br />
+// Cálculo simplificado aproximado de desfases de meses y días<br />
+Si m2 &gt;= m1 Entonces<br />
+meses &lt;- m2 - m1;<br />
+Sino<br />
+meses &lt;- 12 + (m2 - m1);<br />
+FinSi<br />
+<br />
+Si d2 &gt;= d1 Entonces<br />
+dias &lt;- d2 - d1;<br />
+Sino<br />
+meses &lt;- meses - 1;<br />
+// Asignación de ajuste aproximado de días (basado en un mes promedio de
+30 días)<br />
+dias &lt;- 30 + (d2 - d1);<br />
+Si meses &lt; 0 Entonces<br />
+meses &lt;- 11;<br />
+FinSi<br />
+FinSi<br />
+<br />
+Escribir "Edad exacta calculada: ", anios, " años, ", meses, " meses y
+", dias, " días.";<br />
+FinFuncion<br />
+<br />
+Algoritmo CalculadoraExactaDeEdad<br />
+// Calcula de manera precisa la edad de una persona considerando
+diferencias de días y meses para evitar los desfases temporales propios
+de los cálculos simplificados.<br />
+Definir dNac, mNac, aNac Como Entero;<br />
+Definir dAct, mAct, aAct Como Entero;<br />
+<br />
+Escribir "--- INGRESE FECHA DE NACIMIENTO ---";<br />
+Escribir "Día:"; Leer dNac;<br />
+Escribir "Mes:"; Leer mNac;<br />
+Escribir "Año:"; Leer aNac;<br />
+<br />
+Escribir "--- INGRESE FECHA ACTUAL DE REFERENCIA ---";<br />
+Escribir "Día:"; Leer dAct;<br />
+Escribir "Mes:"; Leer mAct;<br />
+Escribir "Año:"; Leer aAct;<br />
+<br />
+// Validación temporal lógica<br />
+Si aAct &gt; aNac O (aAct == aNac Y mAct &gt; mNac) O (aAct == aNac Y
+mAct == mNac Y dAct &gt;= dNac) Entonces<br />
+CalcularEdadExacta(dNac, mNac, aNac, dAct, mAct, aAct);<br />
+Sino<br />
+Escribir "La fecha de nacimiento no puede ser posterior a la fecha
+actual.";<br />
+FinSi<br />
+FinAlgoritmo</p>
+
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OGS - Ut1 Teoria Fundamentos</title>
+    <style>
+    
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --bg-header: #0f172a;
+    --text-header: #ffffff;
+    --bg-body: #f8fafc;
+    --text-body: #1e293b;
+    --border-color: #cbd5e1;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-body);
+    color: var(--text-body);
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, [id], a[name] {
+    scroll-margin-top: 80px !important;
+}
+
+.headerlink {
+    display: inline-block;
+    margin-left: 0.4rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.8em;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
+h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
+    visibility: visible;
+    opacity: 1;
+}
+
+.headerlink:hover {
+    color: var(--primary);
+}
+
+#site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    background: var(--bg-header);
+    color: var(--text-header);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    height: 62px;
+}
+
+.site-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.top-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.top-nav .nav-btn {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+.top-nav .nav-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 9px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown:hover .dropbtn, .dropbtn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 320px;
+    max-width: 480px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 10001;
+    border: 1px solid #e2e8f0;
+    margin-top: 6px;
+}
+
+.dropdown-content a {
+    color: var(--text-body);
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.92rem;
+    border-bottom: 1px solid #f1f5f9;
+    line-height: 1.4;
+    transition: background 0.15s, color 0.15s;
+    word-break: break-word;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #eff6ff;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block !important;
+}
+
+#page-layout {
+    display: flex;
+    min-height: calc(100vh - 62px);
+}
+
+#left-panel {
+    width: 320px;
+    min-width: 320px;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 1.5rem 1.25rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: sticky;
+    top: 62px;
+    height: calc(100vh - 62px);
+}
+
+#left-panel h3 {
+    font-size: 1rem;
+    margin-top: 0;
+    color: #334155;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
+
+#left-panel nav#TOC, #left-panel #TOC {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+#left-panel ul {
+    list-style-type: none;
+    padding-left: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+#left-panel li {
+    margin: 6px 0;
+}
+
+#left-panel a {
+    color: #475569;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    display: block;
+    transition: color 0.15s;
+}
+
+#left-panel a:hover {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+#main-content {
+    flex: 1;
+    padding: 2.5rem 4rem;
+    box-sizing: border-box;
+    max-width: 100% !important;
+    width: calc(100% - 320px);
+    min-width: 0;
+}
+
+/* TABLAS ELEGANTES Y RESPONSIVE */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1.75rem 0;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    font-size: 0.93rem;
+    background: #ffffff;
+    table-layout: auto !important;
+}
+
+th, td {
+    padding: 10px 14px !important;
+    border: 1px solid #cbd5e1 !important;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+td p, th p {
+    margin: 0 !important;
+    padding: 2px 0 !important;
+}
+
+th {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #0f172a !important;
+}
+
+tr:nth-child(even) td {
+    background-color: #f8fafc !important;
+}
+
+tr:hover td {
+    background-color: #f1f5f9 !important;
+}
+
+/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
+.code-wrapper {
+    position: relative;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0f172a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #334155;
+    color: #f8fafc;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.copy-btn:hover {
+    background: #2563eb;
+}
+
+pre {
+    margin: 0 !important;
+    padding: 1.25rem 1.25rem !important;
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    overflow-x: auto !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+}
+
+code {
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+}
+
+p code, li code {
+    background: #e2e8f0;
+    color: #0f172a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
+
+    </style>
+    <script>
+    
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.dropdown').forEach(dd => {
+        const btn = dd.querySelector('.dropbtn');
+        const content = dd.querySelector('.dropdown-content');
+        if (btn && content) {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = content.style.display === 'block';
+                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
+                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+                if (!isOpen) {
+                    content.style.display = 'block';
+                    btn.classList.add('active');
+                }
+            });
+        }
+    });
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
+        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+    });
+
+    // Controlador universal de clics en enlaces ancla (#...)
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const rawHref = this.getAttribute('href') || '';
+            const hashIdx = rawHref.indexOf('#');
+            if (hashIdx === -1) return;
+            const hash = rawHref.substring(hashIdx + 1);
+            if (!hash) return;
+            
+            let targetId = hash;
+            try { targetId = decodeURIComponent(hash); } catch(err) {}
+
+            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
+            if (!targetEl) {
+                for (let el of document.querySelectorAll('[id]')) {
+                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
+                        targetEl = el;
+                        break;
+                    }
+                }
+            }
+
+            if (targetEl) {
+                e.preventDefault();
+                const headerOffset = 75;
+                const elementPosition = targetEl.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                if (history.pushState) {
+                    history.pushState(null, null, '#' + targetId);
+                }
+            }
+        });
+    });
+});
+
+function copyCode(btn) {
+    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
+    navigator.clipboard.writeText(code).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = '✅ ¡Copiado!';
+        btn.style.background = '#16a34a';
+        setTimeout(() => {
+            btn.innerText = orig;
+            btn.style.background = '#334155';
+        }, 2000);
+    });
+}
+
+    </script>
+</head>
+<body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>OGS &ndash; Ut1 Teoria Fundamentos</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+      <a href="OGS_Presentacion_26_27.html" class="nav-btn">Presentación</a>
+      <a href="OGS_Programacion_26_27.html" class="nav-btn">Programación</a>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Teoría ▾</button>
+        <div class="dropdown-content">
+          <a href="OGS_UT1_Teoria_Fundamentos_26_27.html">OGS UT1 Teoria Fundamentos 26 27</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Tareas y Prácticas ▾</button>
+        <div class="dropdown-content">
+          <a href="OGS_UT1_Tarea_26_27.html">OGS UT1 Tarea 26 27</a>
+          <a href="OGS_UT2_Tarea_26_27.html">OGS UT2 Tarea 26 27</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <aside id="left-panel">
+            <h3>Índice del Tema</h3>
+            <nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#section" id="toc-section"></a></li>
+<li><a href="#introducción" id="toc-introducción">1. INTRODUCCIÓN
+</a></li>
+<li><a href="#algorítmica-y-pensamiento-computacional"
+id="toc-algorítmica-y-pensamiento-computacional">2. ALGORÍTMICA Y
+PENSAMIENTO COMPUTACIONAL</a>
+<ul>
+<li><a href="#qué-es-un-algoritmo" id="toc-qué-es-un-algoritmo">2.1.
+¿Qué es un Algoritmo?</a></li>
+<li><a href="#algoritmo-frente-a-programa"
+id="toc-algoritmo-frente-a-programa">2.2. Algoritmo frente a
+Programa</a></li>
+<li><a href="#características-fundamentales-de-los-algoritmos"
+id="toc-características-fundamentales-de-los-algoritmos">2.3.
+Características Fundamentales de los Algoritmos</a></li>
+<li><a href="#diseño-modular-y-estrategia-descendente-top-down"
+id="toc-diseño-modular-y-estrategia-descendente-top-down">2.4. Diseño
+Modular y Estrategia Descendente (Top-Down)</a></li>
+</ul></li>
+<li><a href="#herramientas-de-representación-de-algoritmos"
+id="toc-herramientas-de-representación-de-algoritmos">3. HERRAMIENTAS DE
+REPRESENTACIÓN DE ALGORITMOS</a>
+<ul>
+<li><a href="#diagramas-de-flujo" id="toc-diagramas-de-flujo">3.1.
+Diagramas de Flujo</a></li>
+<li><a href="#pseudocódigo" id="toc-pseudocódigo">3.2.
+Pseudocódigo</a></li>
+</ul></li>
+<li><a href="#fases-del-desarrollo-de-software"
+id="toc-fases-del-desarrollo-de-software">4. FASES DEL DESARROLLO DE
+SOFTWARE</a>
+<ul>
+<li><a href="#fase-de-resolución-del-problema"
+id="toc-fase-de-resolución-del-problema">4.1. Fase de Resolución del
+Problema</a></li>
+<li><a href="#fase-de-implementación"
+id="toc-fase-de-implementación">4.2. Fase de Implementación</a></li>
+<li><a href="#clasificación-de-los-lenguajes-de-programación"
+id="toc-clasificación-de-los-lenguajes-de-programación">4.3.
+Clasificación de los Lenguajes de Programación</a></li>
+<li><a href="#fase-de-explotación-y-mantenimiento"
+id="toc-fase-de-explotación-y-mantenimiento">4.4. Fase de Explotación y
+Mantenimiento</a></li>
+<li><a href="#modelos-de-ciclo-de-vida-del-software"
+id="toc-modelos-de-ciclo-de-vida-del-software">4.5. Modelos de Ciclo de
+Vida del Software</a></li>
+</ul></li>
+<li><a href="#estructuras-de-control-de-flujo"
+id="toc-estructuras-de-control-de-flujo">5. ESTRUCTURAS DE CONTROL DE
+FLUJO</a>
+<ul>
+<li><a href="#estructuras-condicionales"
+id="toc-estructuras-condicionales">5.1. Estructuras
+Condicionales</a></li>
+<li><a href="#estructuras-iterativas-o-bucles"
+id="toc-estructuras-iterativas-o-bucles">5.2. Estructuras Iterativas o
+Bucles</a></li>
+</ul></li>
+<li><a href="#estructuras-de-datos-homogéneas-arrays-arreglos"
+id="toc-estructuras-de-datos-homogéneas-arrays-arreglos">6. ESTRUCTURAS
+DE DATOS HOMOGÉNEAS: ARRAYS (ARREGLOS)</a>
+<ul>
+<li><a href="#concepto-e-indexación" id="toc-concepto-e-indexación">6.1.
+Concepto e Indexación</a></li>
+<li><a href="#declaración-lectura-y-escritura"
+id="toc-declaración-lectura-y-escritura">6.2. Declaración, Lectura y
+Escritura</a></li>
+</ul></li>
+<li><a href="#modularidad-y-programación-estructurada-funciones"
+id="toc-modularidad-y-programación-estructurada-funciones">7.
+MODULARIDAD Y PROGRAMACIÓN ESTRUCTURADA: FUNCIONES</a>
+<ul>
+<li><a href="#limitaciones-de-la-programación-lineal"
+id="toc-limitaciones-de-la-programación-lineal">7.1. Limitaciones de la
+Programación Lineal</a></li>
+<li><a href="#definición-parámetros-y-valores-de-retorno"
+id="toc-definición-parámetros-y-valores-de-retorno">7.2. Definición,
+Parámetros y Valores de Retorno</a></li>
+</ul></li>
+<li><a href="#cuaderno-de-prácticas-resueltas"
+id="toc-cuaderno-de-prácticas-resueltas">8. CUADERNO DE PRÁCTICAS
+RESUELTAS</a>
+<ul>
+<li><a href="#solucionario-de-prácticas-con-arrays"
+id="toc-solucionario-de-prácticas-con-arrays">8.1. Solucionario de
+Prácticas con Arrays</a></li>
+<li><a href="#solucionario-de-prácticas-con-funciones"
+id="toc-solucionario-de-prácticas-con-funciones">8.2. Solucionario de
+Prácticas con Funciones</a></li>
+</ul></li>
+</ul>
+</nav>
+        </aside>
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="OGS_UT1_Teoria_Fundamentos_26_27.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+
+<p><strong>UNIDAD 1:</strong></p>
+<p><strong>FUNDAMENTOS DE LA PROGRAMACIÓN</strong></p>
+<h3 id="section"> <a class="headerlink" href="#section" title="Enlace permanente">¶</a></h3>
+<p><strong>FICHA TÉCNICA DE LA UNIDAD</strong></p>
+<div class="table-wrapper"><table>
+<tbody>
+<tr class="header">
+<td><strong>Unidad Trabajo</strong></td>
+<td>UT1: Fundamentos de programación</td>
+</tr>
+<tr class="odd">
+<td><strong>Resultados de Aprendizaje</strong></td>
+<td>RA1: Analiza los problemas planteados, identificando los entornos de
+aplicación y diseñando algoritmos lógicos para su resolución.</td>
+</tr>
+<tr class="header">
+<td><strong>Criterios de Evaluación</strong></td>
+<td><p>CE 1.a: Fases de resolución de problemas y pensamiento
+computacional.</p>
+<p>CE 1.b: Diseño de algoritmos (pseudocódigo/diagramas).</p>
+<p>CE 1.c: Representaciones lógicas y tablas de verdad.</p>
+<p>CE 1.d: Viabilidad y modularidad.</p></td>
+</tr>
+<tr class="odd">
+<td><strong>Tiempo</strong></td>
+<td>15 horas (15 Sep - 10 Oct / 1º Trimestre)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>ÍNDICE DE CONTENIDOS</strong></p>
+<p><a href="#introducción"><u>1. INTRODUCCIÓN</u></a></p>
+<p><a href="#algorítmica-y-pensamiento-computacional"><u>2. ALGORÍTMICA
+Y PENSAMIENTO COMPUTACIONAL</u></a></p>
+<blockquote>
+<p><a href="#qué-es-un-algoritmo"><u>2.1. ¿Qué es un
+Algoritmo?</u></a></p>
+<p><a href="#algoritmo-frente-a-programa"><u>2.2. Algoritmo frente a
+Programa</u></a></p>
+<p><a href="#características-fundamentales-de-los-algoritmos"><u>2.3.
+Características Fundamentales de los Algoritmos</u></a></p>
+<p><a href="#diseño-modular-y-estrategia-descendente-top-down"><u>2.4.
+Diseño Modular y Estrategia Descendente (Top-Down)</u></a></p>
+</blockquote>
+<p><a href="#herramientas-de-representación-de-algoritmos"><u>3.
+HERRAMIENTAS DE REPRESENTACIÓN DE ALGORITMOS</u></a></p>
+<blockquote>
+<p><a href="#diagramas-de-flujo"><u>3.1. Diagramas de Flujo</u></a></p>
+<p><a href="#pseudocódigo"><u>3.2. Pseudocódigo</u></a></p>
+</blockquote>
+<p><a href="#fases-del-desarrollo-de-software"><u>4. FASES DEL
+DESARROLLO DE SOFTWARE</u></a></p>
+<blockquote>
+<p><a href="#fase-de-resolución-del-problema"><u>4.1. Fase de Resolución
+del Problema</u></a></p>
+<p><a href="#fase-de-implementación"><u>4.2. Fase de
+Implementación</u></a></p>
+<p><a href="#clasificación-de-los-lenguajes-de-programación"><u>4.3.
+Clasificación de los Lenguajes de Programación</u></a></p>
+<p><a href="#fase-de-explotación-y-mantenimiento"><u>4.4. Fase de
+Explotación y Mantenimiento</u></a></p>
+<p><a href="#modelos-de-ciclo-de-vida-del-software"><u>4.5. Modelos de
+Ciclo de Vida del Software</u></a></p>
+</blockquote>
+<p><a href="#estructuras-de-control-de-flujo"><u>5. ESTRUCTURAS DE
+CONTROL DE FLUJO</u></a></p>
+<blockquote>
+<p><a href="#estructuras-condicionales"><u>5.1. Estructuras
+Condicionales</u></a></p>
+<p><a href="#estructuras-iterativas-o-bucles"><u>5.2. Estructuras
+Iterativas o Bucles</u></a></p>
+</blockquote>
+<p><a href="#estructuras-de-datos-homogéneas-arrays-arreglos"><u>6.
+ESTRUCTURAS DE DATOS HOMOGÉNEAS: ARRAYS (ARREGLOS)</u></a></p>
+<blockquote>
+<p><a href="#concepto-e-indexación"><u>6.1. Concepto e
+Indexación</u></a></p>
+<p><a href="#declaración-lectura-y-escritura"><u>6.2. Declaración,
+Lectura y Escritura</u></a></p>
+</blockquote>
+<p><a href="#modularidad-y-programación-estructurada-funciones"><u>7.
+MODULARIDAD Y PROGRAMACIÓN ESTRUCTURADA: FUNCIONES</u></a></p>
+<blockquote>
+<p><a href="#limitaciones-de-la-programación-lineal"><u>7.1.
+Limitaciones de la Programación Lineal</u></a></p>
+<p><a href="#definición-parámetros-y-valores-de-retorno"><u>7.2.
+Definición, Parámetros y Valores de Retorno</u></a></p>
+</blockquote>
+<p><a href="#cuaderno-de-prácticas-resueltas"><u>8. CUADERNO DE
+PRÁCTICAS RESUELTAS</u></a></p>
+<blockquote>
+<p><a href="#solucionario-de-prácticas-con-arrays"><u>8.1. Solucionario
+de Prácticas con Arrays</u></a></p>
+<p><a href="#solucionario-de-prácticas-con-funciones"><u>8.2.
+Solucionario de Prácticas con Funciones</u></a></p>
+</blockquote>
+<h1 id="introducción">1. INTRODUCCIÓN  <a class="headerlink" href="#introducción" title="Enlace permanente">¶</a></h1>
+<p>En el ámbito de la administración de sistemas e infraestructura de
+red, la búsqueda de soluciones automatizadas para optimizar tareas
+cotidianas (como la monitorización de servicios, realización de copias
+de seguridad o análisis de logs) requiere una sistemática rigurosa.
+Llevar a cabo una solución de software implica un proceso metodológico
+estructurado en etapas bien definidas.</p>
+<p>Toda solución informática desarrollada debe medirse bajo criterios de
+calidad de ingeniería de software. Se establecen tres virtudes
+fundamentales:</p>
+<ul>
+<li><blockquote>
+<p><strong>Corrección:</strong> El software debe realizar exactamente la
+tarea para la que fue diseñado, satisfaciendo todas las especificaciones
+y requisitos del problema original.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Eficacia:</strong> Capacidad del software para resolver el
+problema de manera adecuada y producir los resultados esperados bajo
+condiciones normales de operación.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Eficiencia:</strong> Capacidad del software para minimizar el
+coste de ejecución. Esto se traduce en realizar la tarea en un tiempo
+mínimo T de procesamiento y con un uso óptimo y mínimo de los recursos
+físicos de hardware disponibles (espacio en memoria RAM, porcentaje de
+uso de CPU, operaciones de entrada/salida de disco y consumo de ancho de
+banda en red).</p>
+</blockquote></li>
+</ul>
+<h1 id="algorítmica-y-pensamiento-computacional">2. ALGORÍTMICA Y
+PENSAMIENTO COMPUTACIONAL <a class="headerlink" href="#algorítmica-y-pensamiento-computacional" title="Enlace permanente">¶</a></h1>
+<h2 id="qué-es-un-algoritmo">2.1. ¿Qué es un Algoritmo? <a class="headerlink" href="#qué-es-un-algoritmo" title="Enlace permanente">¶</a></h2>
+<p>Un <strong>algorítmo</strong> se define como una secuencia precisa,
+definida, ordenada y finita de instrucciones que describen de forma
+inequívoca los pasos necesarios para hallar la solución a un problema o
+llevar a cabo una tarea concreta.</p>
+<p>Los algoritmos poseen una propiedad fundamental: <strong>son
+independientes de los lenguajes de programación y de las computadoras
+físicas donde se ejecutan</strong>. Un mismo algoritmo puede ser
+traducido a múltiples lenguajes de programación (como Python, Bash,
+PowerShell, C++ o Java) y ejecutarse de manera equivalente en diferentes
+dispositivos hardware (servidores, routers, microcontroladores o
+estaciones de trabajo).</p>
+<h2 id="algoritmo-frente-a-programa">2.2. Algoritmo frente a
+Programa <a class="headerlink" href="#algoritmo-frente-a-programa" title="Enlace permanente">¶</a></h2>
+<p>Para comprender la diferencia, consideremos la analogía de una receta
+de cocina:</p>
+<p><img src="media_OGS_UT1_Teoria_Fundamentos_26_27/media/image6.png"
+style="width:6.26772in;height:0.45833in" /></p>
+<ul>
+<li><blockquote>
+<p>La <strong>receta</strong> representa el algoritmo: un conjunto de
+pasos lógicos abstractos e independientes del cocinero o de la marca de
+los utensilios.</p>
+</blockquote></li>
+<li><blockquote>
+<p>El <strong>programa</strong> es la materialización del algoritmo en
+el mundo de la computación. Para que el ordenador sea capaz de ejecutar
+los pasos lógicos descritos en el algoritmo, estos deben codificarse
+utilizando la sintaxis estricta de un determinado lenguaje de
+programación. El programa resultante procesa datos de
+<strong>entrada</strong> para someterlos a una lógica de
+<strong>procesamiento</strong> y generar una <strong>salida</strong> de
+información legible.</p>
+</blockquote></li>
+</ul>
+<p>-----&gt; | ENTRADAS | ------&gt; | PROCESAMIENTO | ------&gt; |
+SALIDAS | -----&gt;</p>
+<h2 id="características-fundamentales-de-los-algoritmos">2.3.
+Características Fundamentales de los Algoritmos <a class="headerlink" href="#características-fundamentales-de-los-algoritmos" title="Enlace permanente">¶</a></h2>
+<p>Todo algoritmo viable debe cumplir tres reglas de diseño:</p>
+<ol type="1">
+<li><blockquote>
+<p><strong>Precisión:</strong> Debe indicar el orden riguroso de
+realización de cada paso de forma secuencial sin ambigüedades.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Definición:</strong> Si se ejecuta el algoritmo dos o más
+veces utilizando el mismo conjunto de datos de entrada, se debe obtener
+exactamente el mismo resultado en cada ejecución.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Finitud:</strong> El algoritmo debe terminar en algún
+momento. Debe constar de un número finito de pasos lógicos
+estructurados.</p>
+</blockquote></li>
+</ol>
+<h2 id="diseño-modular-y-estrategia-descendente-top-down">2.4. Diseño
+Modular y Estrategia Descendente (Top-Down) <a class="headerlink" href="#diseño-modular-y-estrategia-descendente-top-down" title="Enlace permanente">¶</a></h2>
+<p>Cuando nos enfrentamos a problemas de automatización complejos, la
+estrategia más eficiente consiste en descomponer el problema principal
+en subproblemas más sencillos, y estos, a su vez, en tareas elementales
+que puedan abordarse de forma independiente.</p>
+<p>Este enfoque metodológico se conoce como <strong>diseño
+descendente</strong>, <strong>diseño modular</strong> o <em>top-down
+design</em>, y se fundamenta sobre el paradigma clásico de resolución de
+problemas: <strong>divide y vencerás</strong>.</p>
+<h1 id="herramientas-de-representación-de-algoritmos">3. HERRAMIENTAS DE
+REPRESENTACIÓN DE ALGORITMOS <a class="headerlink" href="#herramientas-de-representación-de-algoritmos" title="Enlace permanente">¶</a></h1>
+<p>Para el análisis, documentación y diseño de algoritmos antes de
+proceder a la fase de codificación, se utilizan principalmente dos
+herramientas estándar:</p>
+<h2 id="diagramas-de-flujo">3.1. Diagramas de Flujo <a class="headerlink" href="#diagramas-de-flujo" title="Enlace permanente">¶</a></h2>
+<p>Técnica gráfica que utiliza símbolos geométricos estandarizados para
+representar la secuencia de operaciones del algoritmo. Es especialmente
+útil en las fases iniciales de análisis lógico.</p>
+<p><strong>Reglas de Construcción de los Diagramas de
+Flujo:</strong></p>
+<ul>
+<li><blockquote>
+<p>Se escriben obligatoriamente de arriba hacia abajo y de izquierda a
+derecha.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Deben poseer obligatoriamente un <strong>único punto de
+Inicio</strong> y un <strong>único punto de Final</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Los símbolos se conectan mediante líneas de flujo que terminan en una
+flecha para indicar la dirección de la información. Se deben emplear
+únicamente líneas horizontales o verticales (está estrictamente
+prohibido el uso de líneas diagonales).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Se debe evitar el cruce de líneas. Si el diagrama es extenso, se
+deben emplear <strong>conectores</strong> normalizados, limitando su uso
+a lo estrictamente necesario.</p>
+</blockquote></li>
+<li><blockquote>
+<p>No se permiten líneas de flujo sueltas o sin conectar.</p>
+</blockquote></li>
+<li><blockquote>
+<p>El texto introducido dentro de cada símbolo geométrico debe ser
+sintético, preciso y perfectamente legible.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Todos los símbolos geométricos del diagrama pueden recibir múltiples
+líneas de flujo de entrada, a excepción del símbolo de Final (que recibe
+flujos de entrada pero no posee salidas).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Solo los símbolos geométricos de decisión (rombos)</strong>
+pueden y deben poseer más de una línea de flujo de salida (típicamente
+dos salidas etiquetadas como "Sí" / "Verdadero" y "No" / "Falso").</p>
+</blockquote></li>
+</ul>
+<h2 id="pseudocódigo">3.2. Pseudocódigo <a class="headerlink" href="#pseudocódigo" title="Enlace permanente">¶</a></h2>
+<p>Es la técnica de descripción algorítmica más utilizada en la
+actualidad. Consiste en una representación intermedia entre el lenguaje
+natural humano y los lenguajes de programación estructurados. Evita la
+rigidez sintáctica de un lenguaje informático sin caer en las
+ambigüedades del lenguaje natural cotidiano.</p>
+<p><strong>Características del Pseudocódigo:</strong></p>
+<ul>
+<li><blockquote>
+<p>Utiliza palabras clave intuitivas (como escribir, leer, Si-Entonces,
+Mientras).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Su traducción a cualquier lenguaje de programación real es directa y
+sencilla.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Se centra exclusivamente en la lógica lúdica del algoritmo,
+abstrayéndose de la sintaxis estricta de compiladores o intérpretes.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Es puramente textual, lo que facilita enormemente su edición,
+corrección y mantenimiento en comparación con las representaciones
+gráficas.</p>
+</blockquote></li>
+</ul>
+<p><strong>Estructura Estándar de un Algoritmo en
+Pseudocódigo:</strong></p>
+<p>Un algoritmo estructurado se divide formalmente en tres bloques
+claramente diferenciados:</p>
+<ol type="1">
+<li><blockquote>
+<p><strong>Cabecera:</strong> Contiene la directiva de declaración con
+el nombre identificativo del algoritmo.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Declaración de Constantes y Variables:</strong> Zona técnica
+donde se especifican los nombres de los espacios de memoria que se van a
+utilizar, indicando explícitamente su tipo de datos (ej. número entero,
+real, cadena de caracteres).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Cuerpo del Algoritmo:</strong> Contiene la secuencia de
+instrucciones encerradas entre las palabras clave Inicio y Fin. Se exige
+el uso sistemático de <strong>indentación (sangrado)</strong> en los
+bloques internos para garantizar una máxima legibilidad.</p>
+</blockquote></li>
+</ol>
+<h1 id="fases-del-desarrollo-de-software">4. FASES DEL DESARROLLO DE
+SOFTWARE <a class="headerlink" href="#fases-del-desarrollo-de-software" title="Enlace permanente">¶</a></h1>
+<p>La construcción de soluciones de software robustas e industriales
+debe seguir fases organizadas de ingeniería:</p>
+<p>[Análisis] -&gt; [Diseño] -&gt; [Codificación] -&gt; [Pruebas] -&gt;
+[Explotación] -&gt; [Mantenimiento]</p>
+<h2 id="fase-de-resolución-del-problema">4.1. Fase de Resolución del
+Problema <a class="headerlink" href="#fase-de-resolución-del-problema" title="Enlace permanente">¶</a></h2>
+<p>Es la etapa analítica previa a la interacción con el ordenador. Se
+desglosa en dos tareas de alta abstracción:</p>
+<ul>
+<li><blockquote>
+<p><strong>Análisis:</strong> Consiste en comprender el problema en
+profundidad y especificar de forma clara y unificada los requisitos
+funcionales. Debe responder a:</p>
+</blockquote>
+<ol type="1">
+<li><blockquote>
+<p><em>¿Cuáles son las salidas deseadas o los resultados
+esperados?</em></p>
+</blockquote></li>
+<li><blockquote>
+<p><em>¿Cuáles son las entradas necesarias o datos de partida
+requeridos?</em></p>
+</blockquote></li>
+</ol></li>
+<li><blockquote>
+<p><strong>Diseño:</strong> Elaboración del algoritmo lógico paso a paso
+utilizando diagramas de flujo o pseudocódigo para resolver el problema
+planteado sobre la base de las especificaciones del análisis.</p>
+</blockquote></li>
+</ul>
+<h2 id="fase-de-implementación">4.2. Fase de Implementación <a class="headerlink" href="#fase-de-implementación" title="Enlace permanente">¶</a></h2>
+<p>Consiste en trasladar el diseño abstracto al entorno informático de
+ejecución. Se divide en:</p>
+<ul>
+<li><blockquote>
+<p><strong>Codificación:</strong> Traducción sintáctica de las
+instrucciones descritas en el algoritmo a un lenguaje de programación
+concreto para generar el denominado <strong>código fuente</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Traducción / Compilación / Interpretación:</strong> El código
+fuente no es directamente entendible por el hardware del computador.
+Debe pasar por un proceso de traducción automática (mediante un
+compilador o un intérprete) para generar el <strong>código
+máquina</strong> ejecutable por la CPU.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Prueba (Testing):</strong> Implantación experimental del
+programa en un entorno simulado para comprobar rigurosamente su
+estabilidad y funcionamiento lógico. Se introducen intencionadamente
+datos correctos, incorrectos y límites para validar y depurar posibles
+fallos lógicos o sintácticos.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Documentación:</strong></p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p><em>Documentación Interna:</em> Comentarios insertados directamente
+en el código fuente para explicar el propósito de variables, funciones y
+estructuras lógicas a futuros administradores.</p>
+</blockquote></li>
+<li><blockquote>
+<p><em>Documentación Externa:</em> Elaboración de manuales técnicos de
+instalación, configuración del entorno y manuales de usuario para la
+explotación del software.</p>
+</blockquote></li>
+</ul></li>
+</ul>
+<h2 id="clasificación-de-los-lenguajes-de-programación">4.3.
+Clasificación de los Lenguajes de Programación <a class="headerlink" href="#clasificación-de-los-lenguajes-de-programación" title="Enlace permanente">¶</a></h2>
+<p>Los lenguajes utilizados para codificar programas se clasifican
+atendiendo a su nivel de abstracción respecto al hardware físico:</p>
+<ul>
+<li><blockquote>
+<p><strong>Lenguajes de Bajo Nivel:</strong> Comprenden el
+<strong>código máquina</strong> (secuencias de bits <img
+src="media_OGS_UT1_Teoria_Fundamentos_26_27/media/image1.png"
+style="width:0.1071in;height:0.26774in" /> y <img
+src="media_OGS_UT1_Teoria_Fundamentos_26_27/media/image5.png"
+style="width:0.1071in;height:0.26774in" />) y el <strong>lenguaje
+ensamblador</strong> (que utiliza códigos mnemotécnicos directamente
+asociados a instrucciones de la CPU). Son lenguajes optimizados de alto
+rendimiento, pero extremadamente difíciles de escribir, leer y portar
+entre arquitecturas de procesador distintas.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Lenguajes de Alto Nivel:</strong> Lenguajes que abstraen la
+arquitectura física del hardware para aproximarse a la lógica del
+lenguaje natural y del pensamiento humano (ej. Python, Java, C#).
+Permiten escribir código multiplataforma fácil de mantener, aunque
+requieren un proceso de traducción intermedio que añade cierta
+sobrecarga de rendimiento.</p>
+</blockquote></li>
+</ul>
+<h2 id="fase-de-explotación-y-mantenimiento">4.4. Fase de Explotación y
+Mantenimiento <a class="headerlink" href="#fase-de-explotación-y-mantenimiento" title="Enlace permanente">¶</a></h2>
+<ul>
+<li><blockquote>
+<p><strong>Explotación:</strong> Momento en el que la aplicación se
+instala de manera definitiva en los sistemas de producción y empieza a
+ser utilizada activamente por el usuario final para resolver los
+problemas operativos reales.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Mantenimiento:</strong> Fase continua y de coste elevado en
+la ingeniería de software. Consiste en la realización de modificaciones,
+optimizaciones de código y corrección de errores latentes
+(<em>bugs</em>) no detectados en la fase de pruebas, así como la
+actualización y adaptación de la aplicación para responder a nuevas
+necesidades del sistema o de la organización.</p>
+</blockquote></li>
+</ul>
+<h2 id="modelos-de-ciclo-de-vida-del-software">4.5. Modelos de Ciclo de
+Vida del Software <a class="headerlink" href="#modelos-de-ciclo-de-vida-del-software" title="Enlace permanente">¶</a></h2>
+<p>Define la estructura organizativa y las fases lógicas por las que
+pasa un producto de software desde su concepción inicial hasta su
+retirada definitiva. Las fases mínimas universales que comprende todo
+ciclo de vida son:</p>
+<ol type="1">
+<li><blockquote>
+<p>Especificación y análisis de requisitos.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Diseño de arquitectura y algoritmos.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Codificación e implementación.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Pruebas integrales y unitarias.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Instalación, despliegue y paso a producción.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Mantenimiento correctivo, evolutivo y adaptativo.</p>
+</blockquote></li>
+</ol>
+<h1 id="estructuras-de-control-de-flujo">5. ESTRUCTURAS DE CONTROL DE
+FLUJO <a class="headerlink" href="#estructuras-de-control-de-flujo" title="Enlace permanente">¶</a></h1>
+<p>En el paradigma de la programación estructurada, las
+<strong>estructuras de control de flujo</strong> permiten romper la
+linealidad estricta de la ejecución de instrucciones de un programa,
+bifurcando la lógica o repitiendo acciones según condiciones dinámicas
+determinadas en tiempo de ejecución.</p>
+<h2 id="estructuras-condicionales">5.1. Estructuras Condicionales <a class="headerlink" href="#estructuras-condicionales" title="Enlace permanente">¶</a></h2>
+<p><strong>A) Estructura Condicional Simple / Doble (Si-Entonces-Sino /
+If-Then-Else)</strong></p>
+<p>Permite bifurcar el flujo de ejecución evaluando una expresión
+condicional booleana (cuyo resultado solo puede ser Verdadero o
+Falso).</p>
+<p><strong>Sintaxis abstracta:</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Si (Expresión_Condicional) Entonces
+Bloque_de_sentencias_1
+SiNo
+Bloque_de_sentencias_2
+Fin Si</code></pre></div><strong>Ejemplo de implementación:</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Escribir "Introduzca la calificación del alumno/a:"
+Leer nota
+Si nota &lt; 5 Entonces
+Escribir "Estado: Suspenso"
+SiNo
+Escribir "Estado: Aprobado"
+Fin Si</code></pre></div><strong>B) Estructuras Condicionales Anidadas</strong></p>
+<p>Permite encadenar condiciones lógicas secuenciales para evaluar
+múltiples escenarios posibles.</p>
+<p><strong>Ejemplo de anidamiento de calificaciones:</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Escribir "Introduzca la nota numérica de la prueba:"
+Leer nota
+Si nota &lt; 5 Entonces
+Escribir "Calificación final: Suspenso"
+SiNo
+Si nota &lt; 7 Entonces
+Escribir "Calificación final: Aprobado"
+SiNo
+Si nota &lt; 9 Entonces
+Escribir "Calificación final: Notable"
+SiNo
+Escribir "Calificación final: Sobresaliente"
+Fin Si
+Fin Si
+Fin Si</code></pre></div><strong>C) Estructura Condicional Múltiple (Según-Hacer /
+Select-Case)</strong></p>
+<p>Es una alternativa elegante y legible para sustituir el anidamiento
+excesivo de condicionales Si-Entonces-Sino cuando se evalúa una única
+variable o expresión frente a diferentes valores fijos o constantes.</p>
+<p><strong>Sintaxis abstracta:</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Segun variable Hacer
+opcion_1:
+secuencia_de_acciones_1
+opcion_2:
+secuencia_de_acciones_2
+opcion_3:
+secuencia_de_acciones_3
+De Otro Modo:
+secuencia_de_acciones_de_otro_modo
+Fin Segun</code></pre></div><strong>Ejemplo práctico:</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Escribir "Introduzca el descriptor cualitativo de la nota (suspenso,
+aprobado, notable, sobresaliente):"
+Leer calificacion
+Segun calificacion Hacer
+"suspenso":
+Escribir "Su nota numérica se encuentra en el rango [0, 5)."
+"aprobado":
+Escribir "Su nota numérica se encuentra en el rango [5, 7)."
+"notable":
+Escribir "Su nota numérica se encuentra en el rango [7, 9)."
+"sobresaliente":
+Escribir "Su nota de excelencia se encuentra en el rango [9,
+10]."
+De Otro Modo:
+Escribir "Error: La calificación introducida no coincide con los
+valores del sistema."
+Fin Segun</code></pre></div>5.2. Estructuras Iterativas o
+Bucles</h2>
+<p><strong>A) Estructura Mientras (While)</strong></p>
+<p>Bucle pre-test. Evalúa la condición booleana <strong>antes</strong>
+de entrar a ejecutar el bloque de instrucciones interno. Si la condición
+es falsa desde el primer análisis, las instrucciones internas no se
+ejecutarán ninguna vez.</p>
+<p><strong>Flujo lógico de ejecución:</strong></p>
+<ol type="1">
+<li><blockquote>
+<p>Se evalúa la condición booleana.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Si es <strong>Verdadera</strong>, se ejecuta el cuerpo del bucle y se
+vuelve de forma automática al paso 1.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Si es <strong>Falsa</strong>, el flujo lógico ignora el cuerpo del
+bucle y continúa ejecutando la instrucción inmediatamente posterior a la
+palabra clave Fin Mientras.</p>
+</blockquote></li>
+</ol>
+<p>[Evalúa Condición]<br />
+/ \<br />
+(Verdadera) (Falsa)<br />
+/ \<br />
+[Cuerpo del Bucle] [Fin Mientras]</p>
+<p><strong>Sintaxis:</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Mientras condicion Hacer
+Secuencia_de_acciones
+Fin Mientras</code></pre></div><strong>Ejemplo (Búsqueda del número secreto):</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>secreto &lt;- 3
+Escribir "Intente adivinar el número secreto. Introduzca un número
+del 0 al 10:"
+Leer num_secreto
+Mientras num_secreto != secreto Hacer
+Escribir "Error: No ha acertado."
+Escribir "Por favor, vuelva a introducir un número entre el 0 y el
+10:"
+Leer num_secreto
+Fin Mientras
+Escribir "¡Felicidades! Ha acertado. El número secreto era ",
+secreto</code></pre></div><strong>B) Estructura Repetir-Hasta Que (Do-While /
+Repeat-Until)</strong></p>
+<p>Bucle post-test. Ejecuta el cuerpo de instrucciones internas al menos
+<strong>una vez</strong> antes de realizar la evaluación lógica de la
+condición en el pie de la estructura.</p>
+<p><strong>Flujo lógico de ejecución:</strong></p>
+<ol type="1">
+<li><blockquote>
+<p>Se ejecuta el cuerpo de sentencias del bucle.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Se evalúa si se cumple la condición booleana de salida.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Si la condición evaluada es <strong>Falsa</strong>, se retorna al
+paso 1 para realizar una nueva iteración.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Si la condición se evalúa como <strong>Verdadera</strong>, se da por
+finalizado el bucle y se continúa con la secuencia ordinaria de
+programa.</p>
+</blockquote></li>
+</ol>
+<p><strong>Sintaxis:</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Repetir
+Secuencia_de_acciones
+Hasta Que condicion</code></pre></div><strong>Ejemplo (Búsqueda del número secreto con validación
+inicial):</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>secreto &lt;- 3
+Repetir
+Escribir "Por favor, introduzca un número entero de prueba entre el 0
+y el 10:"
+Leer num_secreto
+Hasta Que num_secreto = secreto
+Escribir "¡Felicidades! Ha acertado. El número secreto era ",
+secreto</code></pre></div></h4>
+<p><strong>C) Estructura Para-Hasta-Con Paso (For-To-Step)</strong></p>
+<p>Bucle de iteración controlada. Permite repetir un conjunto de
+acciones un número previamente definido de veces. Utiliza de manera
+obligatoria una variable numérica local interna como contador, la cual
+se autoincrementa linealmente según el paso definido hasta alcanzar el
+valor límite final.</p>
+<p><strong>Sintaxis:</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Para variable_numerica &lt;- valor_inicial Hasta valor_final Con
+Paso paso Hacer
+secuencia_de_acciones
+Fin Para</code></pre></div></p>
+<p><strong>Ejemplo (Impresión incremental de números de un
+rango):</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Escribir "Introduzca el límite inferior del rango numérico:"
+Leer menor
+Escribir "Introduzca el límite superior del rango numérico:"
+Leer mayor
+Para contador &lt;- menor Hasta mayor Con Paso 1 Hacer
+Escribir "Valor actual del contador: ", contador
+Fin Para</code></pre></div>6. ESTRUCTURAS
+DE DATOS HOMOGÉNEAS: ARRAYS (ARREGLOS)</h1>
+<h2 id="concepto-e-indexación">6.1. Concepto e Indexación <a class="headerlink" href="#concepto-e-indexación" title="Enlace permanente">¶</a></h2>
+<p>Un <strong>array</strong> (también conocido como arreglo, vector o
+matriz) es una estructura de datos estática y homogénea que permite
+almacenar una colección ordenada de elementos bajo un único
+identificador común (nombre de variable), con la restricción de que
+todos los datos contenidos compartan el mismo tipo de datos.</p>
+<p>El acceso a cada posición física de memoria del array se realiza
+mediante el uso de un <strong>índice numérico entero</strong>. Se debe
+contemplar la regla fundamental de indexación: el direccionamiento del
+array es de base cero. Si un array posee un tamaño total de <img
+src="media_OGS_UT1_Teoria_Fundamentos_26_27/media/image8.png"
+style="width:0.12858in;height:0.27859in" /> elementos, los índices
+utilizables para direccionar sus posiciones de memoria se encontrarán en
+el rango:</p>
+<ul>
+<li><blockquote>
+<p><img src="media_OGS_UT1_Teoria_Fundamentos_26_27/media/image2.png"
+style="width:6.26772in;height:0.45833in" /><strong>Primer elemento del
+array:</strong> Referenciado en el índice <img
+src="media_OGS_UT1_Teoria_Fundamentos_26_27/media/image1.png"
+style="width:0.1071in;height:0.26774in" />.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Último elemento del array:</strong> Referenciado en el índice
+<img src="media_OGS_UT1_Teoria_Fundamentos_26_27/media/image3.png"
+style="width:0.4974in;height:0.26942in" />.</p>
+</blockquote></li>
+</ul>
+<p>Index: 0 1 2 3 4<br />
++------+------+------+------+------+<br />
+Array: | 12 | 45 | 78 | 23 | 56 | (Para un tamaño total n = 5)<br />
++------+------+------+------+------+</p>
+<h2 id="declaración-lectura-y-escritura">6.2. Declaración, Lectura y
+Escritura <a class="headerlink" href="#declaración-lectura-y-escritura" title="Enlace permanente">¶</a></h2>
+<p>Para interactuar con arrays en lenguajes lógicos y pseudocódigo
+estructurado, primero debemos reservar y dimensionar el espacio físico
+requerido:</p>
+<p><strong>Ejemplo de Declaración y Asignación de Valores de un Array de
+5 posiciones:</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>// Reservamos el espacio en memoria para almacenar un array de 5
+elementos
+Dimension array[5]
+// Asignamos valores a cada posición utilizando sus índices de manera
+estricta
+array[1] &lt;- 5
+array[2] &lt;- 10
+array[3] &lt;- 15
+array[4] &lt;- 20
+array[5] &lt;- 25
+// Imprimimos el contenido del array secuencialmente mediante un
+bucle de control controlado
+Para i &lt;- 1 Hasta 5 Con Paso 1 Hacer
+Escribir "Elemento en el índice ", i, " es igual a: ", array[i]
+Fin Para</code></pre></div><em>(Nota técnica: PSeInt en configuraciones flexibles simula arrays
+de base indexada 1 para asimilación estudiantil, pero en lenguajes
+estándar de sistemas e ingeniería de software la indexación real siempre
+se inicia en la dirección lógica</em> <img
+src="media_OGS_UT1_Teoria_Fundamentos_26_27/media/image1.png"
+style="width:0.1071in;height:0.26774in" /><em>)</em>.</p>
+<p><strong>Ejemplo de Carga Dinámica e Impresión de un Array por
+Teclado:</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Dimension array[5]
+// Bucle de lectura y entrada de datos en cada registro
+Para i &lt;- 1 Hasta 5 Con Paso 1 Hacer
+Escribir "Introduzca el valor para la posición ", i, " del
+almacenamiento:"
+Leer array[i]
+Fin Para
+// Bucle de escritura y volcado de resultados
+Escribir "Volcado final del contenido de la estructura en
+memoria:"
+Para i &lt;- 1 Hasta 5 Con Paso 1 Hacer
+Escribir "Índice [", i, "] = ", array[i]
+Fin Para</code></pre></div>7.
+MODULARIDAD Y PROGRAMACIÓN ESTRUCTURADA: FUNCIONES</h1>
+<h2 id="limitaciones-de-la-programación-lineal">7.1. Limitaciones de la
+Programación Lineal <a class="headerlink" href="#limitaciones-de-la-programación-lineal" title="Enlace permanente">¶</a></h2>
+<p>La metodología de programación lineal u ordenada, donde todas las
+instrucciones lógicas del algoritmo se escriben secuencialmente de
+principio a fin, solo resulta viable para la automatización de scripts
+muy sencillos y cortos (con un tamaño inferior a unas pocas decenas de
+líneas de código).</p>
+<p>A medida que las necesidades operativas de la organización crecen,
+los scripts lineales se vuelven insostenibles, dando lugar a los
+siguientes problemas:</p>
+<ul>
+<li><blockquote>
+<p>Gran cantidad de código duplicado e ineficiente.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Dificultad crítica para depurar errores, localizar fallos lógicos o
+interpretar variables desbordadas.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Mantenimiento de software costoso o inviable ante pequeños cambios de
+requerimientos.</p>
+</blockquote></li>
+</ul>
+<p>Para paliar estas limitaciones, la programación estructurada
+implementa la modularización del código a través de las
+<strong>funciones</strong>.</p>
+<h2 id="definición-parámetros-y-valores-de-retorno">7.2. Definición,
+Parámetros y Valores de Retorno <a class="headerlink" href="#definición-parámetros-y-valores-de-retorno" title="Enlace permanente">¶</a></h2>
+<p>Una <strong>función</strong> (también denominada subrutina,
+subprograma o procedimiento) es un bloque estructurado de instrucciones
+de código con un nombre único asociado, diseñado para realizar una
+subtarea específica dentro de una aplicación.</p>
+<p><strong>Componentes de una Función:</strong></p>
+<ul>
+<li><blockquote>
+<p><strong>Variable de Retorno:</strong> Variable opcional que almacena
+el valor resultado devuelto al final de la ejecución de la función.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Identificador o Nombre:</strong> Nombre único utilizado en la
+llamada del script para invocar la ejecución del bloque lógico.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Parámetros / Argumentos:</strong> Colección opcional de
+variables de entrada que se le pasan a la función para realizar sus
+operaciones internas.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Cuerpo / Instrucciones:</strong> Algoritmo modularizado y
+aislado para resolver el subproblema.</p>
+</blockquote></li>
+</ul>
+<p>+--------------------------------+<br />
+Parámetros -----&gt; | FUNCION | -----&gt; Variable de Retorno<br />
+(Entradas) | (Instrucciones de Subprograma) | (Salida)<br />
++--------------------------------+</p>
+<p><strong>Sintaxis abstracta de una Función:</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Funcion variable_de_retorno &lt;- Nombre_funcion ( Parámetros )
+Instrucciones_del_subprograma
+Fin Funcion</code></pre></div><strong>Ventajas Sistemáticas del Uso de Funciones:</strong></p>
+<ol type="1">
+<li><blockquote>
+<p><strong>Legibilidad:</strong> Los scripts principales se reducen a
+llamadas estructuradas fáciles de auditar por cualquier
+administrador.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Reutilización:</strong> Se escribe el algoritmo una única vez
+dentro de la función y puede invocarse tantas veces como sea necesario
+desde cualquier sección de la aplicación.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Facilidad de Pruebas:</strong> Permite verificar y depurar de
+forma unitaria la validez de la lógica de una función aislada del script
+de producción.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Menores Costes de Mantenimiento:</strong> Cualquier
+modificación de requisitos del negocio requiere cambiar la lógica de la
+función centralizada en lugar de múltiples fragmentos de código
+repetidos en todo el servidor.</p>
+</blockquote></li>
+</ol>
+<h1 id="cuaderno-de-prácticas-resueltas">8. CUADERNO DE PRÁCTICAS
+RESUELTAS <a class="headerlink" href="#cuaderno-de-prácticas-resueltas" title="Enlace permanente">¶</a></h1>
+<p>Este apartado compila las soluciones estructuradas de todas las
+actividades prácticas y laboratorios planteados a lo largo de la
+presentación didáctica original.</p>
+<h2 id="solucionario-de-prácticas-con-arrays">8.1. Solucionario de
+Prácticas con Arrays <a class="headerlink" href="#solucionario-de-prácticas-con-arrays" title="Enlace permanente">¶</a></h2>
+<p><strong>Práctica 1: Diseñar un algoritmo que solicite la carga de 10
+números por teclado al usuario y, una vez finalizado el proceso de
+entrada, calcule y muestre por pantalla cuál de todos ellos es el
+menor.</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Algoritmo CalcularMenorDeDiezNumeros
+Dimension coleccion[10]
+// Carga sistemática del array
+Escribir "--- Entrada de Datos al Array ---"
+Para i &lt;- 1 Hasta 10 Con Paso 1 Hacer
+Escribir "Introduzca el valor del registro ", i, ":"
+Leer coleccion[i]
+Fin Para
+// Algoritmo de búsqueda del elemento menor
+menor &lt;- coleccion[1] // Asumimos inicialmente que el primer
+elemento es el menor
+Para i &lt;- 2 Hasta 10 Con Paso 1 Hacer
+Si coleccion[i] &lt; menor Entonces
+menor &lt;- coleccion[i] // Actualizamos el valor menor detectado
+Fin Si
+Fin Para
+Escribir "El menor número de la colección introducida es: ",
+menor
+FinAlgoritmo</code></pre></div><strong>Práctica 2: Desarrollar un programa que solicite 5 números
+al usuario por teclado, los almacene en un array y calcule la media
+aritmética de todos ellos de manera unificada.</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Algoritmo CalcularMediaDeCincoNumeros
+Dimension datos[5]
+acumulador_suma &lt;- 0
+Escribir "--- Entrada de Datos para Promedio ---"
+Para i &lt;- 1 Hasta 5 Con Paso 1 Hacer
+Escribir "Introduzca el dato número ", i, ":"
+Leer datos[i]
+acumulador_suma &lt;- acumulador_suma + datos[i]
+Fin Para
+// Cálculo matemático de la media aritmética
+promedio &lt;- acumulador_suma / 5
+Escribir "La media aritmética de los números introducidos es: ",
+promedio
+FinAlgoritmo</code></pre></div><strong>Práctica 3: Implementar un programa que almacene los nombres
+de 10 personas en un array de cadenas y, a continuación, seleccione e
+imprima en pantalla un nombre completamente al azar de la
+colección.</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Algoritmo SeleccionNombreAleatorio
+Dimension nombres[10]
+// Asignación de nombres estáticos de prueba para el array
+nombres[1] &lt;- "Ana"
+nombres[2] &lt;- "Juan"
+nombres[3] &lt;- "María"
+nombres[4] &lt;- "Carlos"
+nombres[5] &lt;- "Lucía"
+nombres[6] &lt;- "Pedro"
+nombres[7] &lt;- "Elena"
+nombres[8] &lt;- "Mateo"
+nombres[9] &lt;- "Sofía"
+nombres[10] &lt;- "Diego"
+// La función azar(N) de PSeInt devuelve un número pseudoaleatorio
+entre 0 y N-1
+// Ajustamos la lógica para mapear con los índices utilizables [1,
+10]
+indice_seleccionado &lt;- azar(10) + 1
+Escribir "El nombre seleccionado aleatoriamente por el sistema es: ",
+nombres[indice_seleccionado]
+FinAlgoritmo</code></pre></div>8.2. Solucionario de
+Prácticas con Funciones</h2>
+<p><strong>Práctica 1: Crear una función que reciba un número y devuelva
+su cuadrado. Implementarla en un script que imprima de forma ordenada
+los cuadrados de todos los números que se encuentran entre un rango
+mínimo y máximo introducidos por el usuario.</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Funcion retorno_cuadrado &lt;- calcular_cuadrado ( valor )
+retorno_cuadrado &lt;- valor * valor
+Fin Funcion
+Algoritmo ScriptCuadradosRango
+Escribir "Introduzca el número entero que define el límite
+inferior:"
+Leer limite_inferior
+Escribir "Introduzca el número entero que define el límite
+superior:"
+Leer limite_superior
+Si limite_inferior &gt; limite_superior Entonces
+Escribir "Error: El límite inferior no puede ser mayor que el
+superior."
+SiNo
+Escribir "Tabla de cuadrados en el rango [" , limite_inferior, ", ",
+limite_superior, "]:"
+Para contador &lt;- limite_inferior Hasta limite_superior Con Paso 1
+Hacer
+resultado &lt;- calcular_cuadrado(contador)
+Escribir "Número: ", contador, " -&gt; Cuadrado: ", resultado
+Fin Para
+Fin Si
+FinAlgoritmo</code></pre></div><strong>Práctica 2: Desarrollar dos funciones independientes; una
+encargada de calcular el sumatorio de un número entero (acumulando de
+forma recursiva o secuencial) y otra del cálculo del factorial
+(</strong><img
+src="media_OGS_UT1_Teoria_Fundamentos_26_27/media/image7.png"
+style="width:0.22135in;height:0.32676in" /><strong>). Aplicar ambas
+funciones dentro de un programa que recorra e imprima los sumatorios y
+factoriales de un intervalo definido por teclado.</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Funcion acumulado_suma &lt;- calcular_sumatorio ( numero )
+acumulado_suma &lt;- 0
+Para i &lt;- 1 Hasta numero Con Paso 1 Hacer
+acumulado_suma &lt;- acumulador_suma + i
+Fin Para
+Fin Funcion
+Funcion acumulado_factorial &lt;- calcular_factorial ( numero )
+acumulado_factorial &lt;- 1
+Para i &lt;- 1 Hasta numero Con Paso 1 Hacer
+acumulado_factorial &lt;- acumulado_factorial * i
+Fin Para
+Fin Funcion
+Algoritmo EvaluadorSumatoriosYFactoriales
+Escribir "Introduzca el valor menor del rango:"
+Leer menor
+Escribir "Introduzca el valor mayor del rango:"
+Leer mayor
+Si menor &lt; 1 O mayor &lt; menor Entonces
+Escribir "Error: Rango inválido o con valores menores a uno."
+SiNo
+Escribir "Procesando resultados matemáticos:"
+Para contador &lt;- menor Hasta mayor Con Paso 1 Hacer
+sum_res &lt;- calcular_sumatorio(contador)
+fact_res &lt;- calcular_factorial(contador)
+Escribir "Dato: ", contador, " | Sumatorio: ", sum_res, " |
+Factorial: ", fact_res
+Fin Para
+Fin Si
+FinAlgoritmo</code></pre></div><strong>Práctica 3: Implementar una función que retorne si un número
+pasado por argumento es par o impar. Ejecutarla en un programa de
+control interactivo que responda de forma coherente al
+usuario.</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Funcion evaluacion_par &lt;- evaluar_paridad ( valor )
+// Evaluamos usando el residuo de la división entera (operador
+Mod)
+Si valor Mod 2 = 0 Entonces
+evaluacion_par &lt;- Verdadero // Es un número par
+SiNo
+evaluacion_par &lt;- Falso // Es un número impar
+Fin Si
+Fin Funcion
+Algoritmo ControladorParidadInteractiva
+Escribir "Introduzca un número entero para analizar:"
+Leer numero
+Si evaluar_paridad(numero) = Verdadero Entonces
+Escribir "El número ", numero, " es PAR."
+SiNo
+Escribir "El número ", numero, " es IMPAR."
+Fin Si
+FinAlgoritmo</code></pre></div><strong>Práctica 4: Programar una función que realice la conversión
+económica de un precio en dólares estadounidenses a euros. Probarla en
+un programa principal interactivo que pida el valor por
+teclado.</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Funcion euros &lt;- convertir_dolar_a_euro ( dolares )
+// Establecemos una tasa de conversión fija de referencia en 2026
+tasa_conversion &lt;- 0.92
+euros &lt;- dolares * tasa_conversion
+Fin Funcion
+Algoritmo ConversorMonedas
+Escribir "Introduzca el importe total en dólares estadounidenses
+(USD):"
+Leer dolares_entrada
+Si dolares_entrada &lt; 0 Entonces
+Escribir "Error: El importe no puede ser negativo."
+SiNo
+euros_salida &lt;- convertir_dolar_a_euro(dolares_entrada)
+Escribir "Importe: ", dolares_entrada, " USD equivalen a: ",
+euros_salida, " EUR."
+Fin Si
+FinAlgoritmo</code></pre></div><strong>Práctica 5: Desarrollar un conversor análogo de distancias,
+implementando una función para convertir millas imperiales a kilómetros
+del sistema métrico.</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Funcion kilometros &lt;- convertir_millas_a_km ( millas )
+// Una milla terrestre equivale exactamente a 1.60934 kilómetros
+kilometros &lt;- millas * 1.60934
+Fin Funcion
+Algoritmo ConversorDistancias
+Escribir "Introduzca la distancia en millas terrestres:"
+Leer millas_entrada
+Si millas_entrada &lt; 0 Entonces
+Escribir "Error: La distancia no puede ser negativa."
+SiNo
+km_salida &lt;- convertir_millas_a_km(millas_entrada)
+Escribir "Distancia: ", millas_entrada, " millas equivalen a: ",
+km_salida, " km."
+Fin Si
+FinAlgoritmo</code></pre></div><strong>Práctica 6: Desarrollar una función que reciba tres
+parámetros numéricos que representen horas, minutos y segundos,
+respectivamente, y calcule el total de tiempo resultante expresado
+exclusivamente en segundos.</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Funcion total_segundos &lt;- calcular_tiempo_segundos ( h, m, s
+)
+// Realizamos la suma ponderada del tiempo
+total_segundos &lt;- (h * 3600) + (m * 60) + s
+Fin Funcion
+Algoritmo EvaluadorTiempoSistemas
+Escribir "--- Conversor de Tiempo a Segundos ---"
+Escribir "Introduzca el valor de las Horas:"
+Leer horas
+Escribir "Introduzca el valor de los Minutos:"
+Leer minutos
+Escribir "Introduzca el valor de los Segundos:"
+Leer segundos
+// Validación de consistencia temporal en sistemas
+Si horas &lt; 0 O minutos &lt; 0 O minutos &gt; 59 O segundos &lt; 0
+O segundos &gt; 59 Entonces
+Escribir "Error: Formato de tiempo inválido."
+SiNo
+resultado_segundos &lt;- calcular_tiempo_segundos(horas, minutos,
+segundos)
+Escribir "El tiempo acumulado es igual a: ", resultado_segundos, "
+segundos."
+Fin Si
+FinAlgoritmo</code></pre></div></p>
+
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OGS - Programacion</title>
+    <style>
+    
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --bg-header: #0f172a;
+    --text-header: #ffffff;
+    --bg-body: #f8fafc;
+    --text-body: #1e293b;
+    --border-color: #cbd5e1;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-body);
+    color: var(--text-body);
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, [id], a[name] {
+    scroll-margin-top: 80px !important;
+}
+
+.headerlink {
+    display: inline-block;
+    margin-left: 0.4rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.8em;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
+h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
+    visibility: visible;
+    opacity: 1;
+}
+
+.headerlink:hover {
+    color: var(--primary);
+}
+
+#site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    background: var(--bg-header);
+    color: var(--text-header);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    height: 62px;
+}
+
+.site-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.top-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.top-nav .nav-btn {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+.top-nav .nav-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 9px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown:hover .dropbtn, .dropbtn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 320px;
+    max-width: 480px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 10001;
+    border: 1px solid #e2e8f0;
+    margin-top: 6px;
+}
+
+.dropdown-content a {
+    color: var(--text-body);
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.92rem;
+    border-bottom: 1px solid #f1f5f9;
+    line-height: 1.4;
+    transition: background 0.15s, color 0.15s;
+    word-break: break-word;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #eff6ff;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block !important;
+}
+
+#page-layout {
+    display: flex;
+    min-height: calc(100vh - 62px);
+}
+
+#left-panel {
+    width: 320px;
+    min-width: 320px;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 1.5rem 1.25rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: sticky;
+    top: 62px;
+    height: calc(100vh - 62px);
+}
+
+#left-panel h3 {
+    font-size: 1rem;
+    margin-top: 0;
+    color: #334155;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
+
+#left-panel nav#TOC, #left-panel #TOC {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+#left-panel ul {
+    list-style-type: none;
+    padding-left: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+#left-panel li {
+    margin: 6px 0;
+}
+
+#left-panel a {
+    color: #475569;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    display: block;
+    transition: color 0.15s;
+}
+
+#left-panel a:hover {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+#main-content {
+    flex: 1;
+    padding: 2.5rem 4rem;
+    box-sizing: border-box;
+    max-width: 100% !important;
+    width: calc(100% - 320px);
+    min-width: 0;
+}
+
+/* TABLAS ELEGANTES Y RESPONSIVE */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1.75rem 0;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    font-size: 0.93rem;
+    background: #ffffff;
+    table-layout: auto !important;
+}
+
+th, td {
+    padding: 10px 14px !important;
+    border: 1px solid #cbd5e1 !important;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+td p, th p {
+    margin: 0 !important;
+    padding: 2px 0 !important;
+}
+
+th {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #0f172a !important;
+}
+
+tr:nth-child(even) td {
+    background-color: #f8fafc !important;
+}
+
+tr:hover td {
+    background-color: #f1f5f9 !important;
+}
+
+/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
+.code-wrapper {
+    position: relative;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0f172a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #334155;
+    color: #f8fafc;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.copy-btn:hover {
+    background: #2563eb;
+}
+
+pre {
+    margin: 0 !important;
+    padding: 1.25rem 1.25rem !important;
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    overflow-x: auto !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+}
+
+code {
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+}
+
+p code, li code {
+    background: #e2e8f0;
+    color: #0f172a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
+
+    </style>
+    <script>
+    
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.dropdown').forEach(dd => {
+        const btn = dd.querySelector('.dropbtn');
+        const content = dd.querySelector('.dropdown-content');
+        if (btn && content) {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = content.style.display === 'block';
+                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
+                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+                if (!isOpen) {
+                    content.style.display = 'block';
+                    btn.classList.add('active');
+                }
+            });
+        }
+    });
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
+        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+    });
+
+    // Controlador universal de clics en enlaces ancla (#...)
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const rawHref = this.getAttribute('href') || '';
+            const hashIdx = rawHref.indexOf('#');
+            if (hashIdx === -1) return;
+            const hash = rawHref.substring(hashIdx + 1);
+            if (!hash) return;
+            
+            let targetId = hash;
+            try { targetId = decodeURIComponent(hash); } catch(err) {}
+
+            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
+            if (!targetEl) {
+                for (let el of document.querySelectorAll('[id]')) {
+                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
+                        targetEl = el;
+                        break;
+                    }
+                }
+            }
+
+            if (targetEl) {
+                e.preventDefault();
+                const headerOffset = 75;
+                const elementPosition = targetEl.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                if (history.pushState) {
+                    history.pushState(null, null, '#' + targetId);
+                }
+            }
+        });
+    });
+});
+
+function copyCode(btn) {
+    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
+    navigator.clipboard.writeText(code).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = '✅ ¡Copiado!';
+        btn.style.background = '#16a34a';
+        setTimeout(() => {
+            btn.innerText = orig;
+            btn.style.background = '#334155';
+        }, 2000);
+    });
+}
+
+    </script>
+</head>
+<body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>OGS &ndash; Programacion</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+      <a href="OGS_Presentacion_26_27.html" class="nav-btn">Presentación</a>
+      <a href="OGS_Programacion_26_27.html" class="nav-btn">Programación</a>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Teoría ▾</button>
+        <div class="dropdown-content">
+          <a href="OGS_UT1_Teoria_Fundamentos_26_27.html">OGS UT1 Teoria Fundamentos 26 27</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Tareas y Prácticas ▾</button>
+        <div class="dropdown-content">
+          <a href="OGS_UT1_Tarea_26_27.html">OGS UT1 Tarea 26 27</a>
+          <a href="OGS_UT2_Tarea_26_27.html">OGS UT2 Tarea 26 27</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <aside id="left-panel">
+            <h3>Índice del Tema</h3>
+            <nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#section" id="toc-section"></a></li>
+<li><a href="#section-1" id="toc-section-1"></a>
+<ul>
+<li><a href="#section-2" id="toc-section-2"></a></li>
+</ul></li>
+<li><a href="#contextualización.-normativa"
+id="toc-contextualización.-normativa">1. Contextualización.
+Normativa</a></li>
+<li><a href="#resultados-de-aprendizaje-y-criterios"
+id="toc-resultados-de-aprendizaje-y-criterios">2. Resultados de
+Aprendizaje y Criterios</a></li>
+<li><a href="#bloques-de-contenidos-y-distribución-temporal"
+id="toc-bloques-de-contenidos-y-distribución-temporal">4. Bloques de
+Contenidos y Distribución Temporal</a></li>
+<li><a href="#concurrencia-dual-formación-en-empresa"
+id="toc-concurrencia-dual-formación-en-empresa">4. Concurrencia Dual
+(Formación en Empresa)</a></li>
+<li><a href="#metodología-didáctica" id="toc-metodología-didáctica">5.
+Metodología Didáctica</a></li>
+<li><a href="#evaluación-y-calificación"
+id="toc-evaluación-y-calificación">6. Evaluación y Calificación</a></li>
+<li><a href="#materiales-espacios-y-recursos"
+id="toc-materiales-espacios-y-recursos">7. Materiales, Espacios y
+Recursos</a></li>
+<li><a href="#atención-a-la-diversidad-dua"
+id="toc-atención-a-la-diversidad-dua">8. Atención a la Diversidad
+(DUA)</a></li>
+<li><a href="#contenidos-transversales-e-interdisciplinariedad"
+id="toc-contenidos-transversales-e-interdisciplinariedad">9. Contenidos
+Transversales e Interdisciplinariedad</a></li>
+<li><a href="#anexo-concreciones-del-departamento"
+id="toc-anexo-concreciones-del-departamento">10. ANEXO: Concreciones del
+Departamento</a></li>
+</ul>
+</nav>
+        </aside>
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="OGS_Programacion_26_27.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+
+<p><strong>INTRODUCCIÓN A LA PROGRAMACIÓN Y ESTRUCTURAS DE
+DATOS</strong></p>
+<p><strong>Programación Didáctica</strong></p>
+<p>2º C.F.G.S. ADMINISTRADOR DE SISTEMAS INFORMÁTICOS Y REDES</p>
+<p>MODALIDAD PRESENCIAL – MAÑANA</p>
+<p>Curso 2026/2027</p>
+<p><strong>PROFESORES:</strong> Juan Simón Sánchez Sánchez</p>
+<h2 id="section"> <a class="headerlink" href="#section" title="Enlace permanente">¶</a></h2>
+<h2 id="section-1"> <a class="headerlink" href="#section-1" title="Enlace permanente">¶</a></h2>
+<p><strong>Índice</strong></p>
+<p><a href="#contextualización.-normativa"><u>1. Contextualización.
+Normativa</u></a></p>
+<p><a href="#"><u>2. Resultados de Aprendizaje y Criterios</u></a></p>
+<p><a href="#"><u>4. Bloques de Contenidos y Distribución
+Temporal</u></a></p>
+<p><a href="#"><u>4. Concurrencia Dual (Formación en
+Empresa)</u></a></p>
+<p><a href="#metodología-didáctica"><u>5. Metodología
+Didáctica</u></a></p>
+<p><a href="#"><u>6. Evaluación y Calificación</u></a></p>
+<p><a href="#"><u>7. Materiales, Espacios y Recursos</u></a></p>
+<p><a href="#"><u>8. Atención a la Diversidad (DUA)</u></a></p>
+<p><a href="#"><u>9. Contenidos Transversales e
+Interdisciplinariedad</u></a></p>
+<p><a href="#anexo-concreciones-del-departamento"><u>10. ANEXO:
+Concreciones del Departamento</u></a></p>
+<h3 id="section-2"> <a class="headerlink" href="#section-2" title="Enlace permanente">¶</a></h3>
+<h2 id="contextualización.-normativa">1. Contextualización.
+Normativa <a class="headerlink" href="#contextualización.-normativa" title="Enlace permanente">¶</a></h2>
+<p>El módulo se imparte en <strong>Segundo curso</strong>, con una
+<strong>carga horaria</strong> de 3 horas semanales y un
+<strong>total</strong> de 63 horas.</p>
+<p>La presente programación didáctica se rige por el marco normativo
+estatal de la FP y su transposición reglamentaria en la Comunidad
+Autónoma de Andalucía:</p>
+<ul>
+<li><blockquote>
+<p><strong>Ley Orgánica 3/2022, de 31 de marzo</strong>, de ordenación e
+integración de la Formación Profesional.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Real Decreto 659/2023, de 18 de julio</strong>, por el que se
+desarrolla la ordenación del Sistema de Formación Profesional.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Decreto 165/2024</strong>, por el que se establece la
+ordenación general de la Formación Profesional en Andalucía.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Orden de 19 de julio de 2010</strong>, por la que se
+desarrolla el currículo correspondiente al título de Técnico Superior en
+Administración de Sistemas Informáticos en Red en la Comunidad Autónoma
+de Andalucía.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Resolución de 10 de septiembre de 2025</strong>, de la
+dirección general de formación profesional y educación permanente, por
+la que se publica la concreción curricular de los módulos optativos
+autorizados, en el marco del procedimiento establecido para su diseño y
+autorización en los ciclos formativos de grado medio y superior en los
+centros docentes de andalucía para el curso 2025/26</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Orden de 18 de septiembre de 2025</strong>, por la que se
+regula la evaluación, certificación, acreditación y titulación académica
+del alumnado que cursa enseñanzas de los grados D y E del Sistema de
+Formación Profesional en Andalucía.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Orden de 26 de septiembre de 2025</strong>, por la que se
+regula la fase de formación en empresa u organismo equiparado de los
+grados D y E en Andalucía</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Instrucciones de 20 de mayo de 2026</strong> de la Dirección
+General de Formación Profesional y Educación Permanente, para cierres y
+evaluaciones finales en la plataforma Séneca.</p>
+</blockquote></li>
+</ul>
+<p>También se tendrá en cuenta lo recogido en el Proyecto de Centro y la
+Programación del Departamento de Informática.</p>
+<h2 id="resultados-de-aprendizaje-y-criterios">2. Resultados de
+Aprendizaje y Criterios <a class="headerlink" href="#resultados-de-aprendizaje-y-criterios" title="Enlace permanente">¶</a></h2>
+<p>A continuación, se detalla la ponderación curricular oficial asignada
+para cada <strong>Resultado de Aprendizaje (RA)</strong>, desglosando el
+<strong>peso relativo porcentual</strong> de cada uno de sus
+<strong>Criterios de Evaluación (CE)</strong> asociados para el cálculo
+interno de la nota del RA correspondient</p>
+<p><strong>RA1. Analiza los problemas planteados, identificando los
+entornos de aplicación y diseñando algoritmos lógicos para su
+resolución. (Peso total del módulo: 15%)</strong></p>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>CE</strong></th>
+<th><strong>Criterio de Evaluación (CE) Oficial</strong></th>
+<th><strong>Peso</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>CE1.a</strong></td>
+<td>Se han identificado las fases de resolución de un problema
+computacional y el concepto de pensamiento computacional.</td>
+<td>20%</td>
+</tr>
+<tr class="header">
+<td><strong>CE1.b</strong></td>
+<td>Se han diseñado algoritmos lógicos en pseudocódigo o diagramas de
+flujo para resolver problemas de baja complejidad.</td>
+<td>30%</td>
+</tr>
+<tr class="odd">
+<td><strong>CE1.c</strong></td>
+<td>Se han analizado representaciones lógicas y tablas de verdad para
+verificar la validez de un algoritmo.</td>
+<td>30%</td>
+</tr>
+<tr class="header">
+<td><strong>CE1.d</strong></td>
+<td>Se ha evaluado la viabilidad y modularidad de la estructura lógica
+propuesta en el algoritmo básico.</td>
+<td>20%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>RA2. Desarrolla aplicaciones de software aplicando los
+principios de la programación estructurada, modularización y
+manipulación de ficheros. (Peso total del módulo: 25%)</strong></p>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>CE</strong></th>
+<th><strong>Criterio de Evaluación (CE)</strong></th>
+<th><strong>Peso</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>CE2.a</strong></td>
+<td>Se han utilizado tipos de datos simples, operadores lógicos y
+relacionales y variables siguiendo convenciones de nombrado.</td>
+<td>20%</td>
+</tr>
+<tr class="header">
+<td><strong>CE2.b</strong></td>
+<td>Se han codificado estructuras de selección condicional y bucles de
+repetición de forma anidada y eficiente.</td>
+<td>20%</td>
+</tr>
+<tr class="odd">
+<td><strong>CE2.c</strong></td>
+<td>Se han implementado funciones y procedimientos, gestionando la
+modularización y el ámbito (área local y global) de las variables.</td>
+<td>20%</td>
+</tr>
+<tr class="header">
+<td><strong>CE2.d</strong></td>
+<td>Se han programado procesos de lectura y escritura de información
+persistente en ficheros lógicos de texto y estructurados.</td>
+<td>20%</td>
+</tr>
+<tr class="odd">
+<td><strong>CE2.e</strong></td>
+<td>Se ha probado, depurado e interpretado el comportamiento del código
+ante diversas entradas de datos.</td>
+<td>20%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>RA3. Diseña y programa componentes lógicos utilizando el
+paradigma de orientación a objetos (POO) y gestionando excepciones.
+(Peso total del módulo: 25%)</strong></p>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>CE</strong></th>
+<th><strong>Criterio de Evaluación (CE)</strong></th>
+<th><strong>Peso</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>CE3.a</strong></td>
+<td>Se han asimilado los conceptos básicos de clase, instancia, objeto,
+atributos y constructores.</td>
+<td>20%</td>
+</tr>
+<tr class="header">
+<td><strong>CE3.b</strong></td>
+<td>Se han implementado mecanismos de encapsulamiento para proteger el
+acceso interno a las propiedades del objeto.</td>
+<td>20%</td>
+</tr>
+<tr class="odd">
+<td><strong>CE3.c</strong></td>
+<td>Se han programado estructuras complejas utilizando herencia y
+polimorfismo para la reutilización de código.</td>
+<td>20%</td>
+</tr>
+<tr class="header">
+<td><strong>CE3.d</strong></td>
+<td>Se han diseñado y gestionado bloques de control de excepciones para
+asegurar la resiliencia del software.</td>
+<td>20%</td>
+</tr>
+<tr class="odd">
+<td><strong>CE3.e</strong></td>
+<td>Se han identificado y aplicado patrones de diseño de software
+básicos para optimizar la jerarquía de clases.</td>
+<td>20%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>RA4. Implementa estructuras de datos lineales y no lineales,
+evaluando su eficiencia y aplicando algoritmos de búsqueda y ordenación.
+(Peso total del módulo: 25%)</strong></p>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>CE</strong></th>
+<th><strong>Criterio de Evaluación (CE)</strong></th>
+<th><strong>Peso</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>CE4.a</strong></td>
+<td>Se han de gestionar arrays unidimensionales y multidimensionales de
+forma estática y dinámica.</td>
+<td>20%</td>
+</tr>
+<tr class="header">
+<td><strong>CE4.b</strong></td>
+<td>Se han modelado e implementado estructuras lineales complejas
+(listas enlazadas, pilas y colas).</td>
+<td>20%</td>
+</tr>
+<tr class="odd">
+<td><strong>CE4.c</strong></td>
+<td>Se han conceptualizado y programado recorridos de estructuras
+jerárquicas no lineales (árboles y grafos).</td>
+<td>20%</td>
+</tr>
+<tr class="header">
+<td><strong>CE4.d</strong></td>
+<td>Se han aplicado algoritmos de ordenación y búsqueda optimizada sobre
+las diferentes estructuras de datos.</td>
+<td>20%</td>
+</tr>
+<tr class="odd">
+<td><strong>CE4.e</strong></td>
+<td>Se ha evaluado la complejidad y eficiencia temporal de las
+operaciones realizadas sobre las estructuras de datos.</td>
+<td>20%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>RA5. Utiliza entornos de desarrollo integrados y sistemas de
+control de versiones para depurar, probar e integrar código de forma
+colaborativa. (Peso total del módulo: 10%)</strong></p>
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>CE
+Criterio de Evaluación (CE)
+Peso
+
+
+CE5.a
+Se han utilizado herramientas integradas de depuración (debuggers)
+de una IDE para inspeccionar variables y trazas de ejecución.
+25%
+
+
+CE5.b
+Se han automatizado pruebas unitarias para garantizar el control de
+calidad del software.
+25%
+
+
+CE5.c
+Se han resuelto proyectos técnicos colaborativos empleando el
+sistema de control de versiones Git y repositorios remotos.
+25%
+
+
+CE5.d
+Se han aplicado metodologías ágiles sencillas para organizar el
+trabajo en equipo en el desarrollo de código.
+25%</code></pre></div></div>
+<h2 id="bloques-de-contenidos-y-distribución-temporal">4. Bloques de
+Contenidos y Distribución Temporal <a class="headerlink" href="#bloques-de-contenidos-y-distribución-temporal" title="Enlace permanente">¶</a></h2>
+<p>Dado que se trata de un módulo optativo del <strong>segundo curso de
+ASIR</strong>, la carga teórica y práctica presencial en el centro
+educativo se concentra en los dos primeros trimestres del año escolar.
+El tercer trimestre completo se destina al bloque de <strong>Alternancia
+Dual de 400 horas</strong> en la empresa.</p>
+<p>Los <strong>contenidos básico</strong>s contemplados en la resolución
+de 16 de septiembre, son:</p>
+<p>Fundamentos de programación.- Pensamiento computacional y resolución
+de problemas.- Representación digital de la información.- Algoritmos y
+estrategias de solución de problemas.Programación estructurada.- Tipos
+de datos, variables y operadores.- Estructuras de control (condicionales
+y bucles).- Entrada/salida y manipulación de ficheros.- Funciones y
+modularización del código.Programación orientada a objetos.- Clases,
+objetos y métodos.- Encapsulamiento, herencia y polimorfismo.- Patrones
+de diseño básicos.- Gestión de memoria y optimización en POO.Estructuras
+de datos y arrays.- Arrays unidimensionales y multidimensionales.-
+Listas enlazadas, pilas y colas.- Árboles y grafos.- Algoritmos de
+búsqueda y ordenación.- Evaluación de eficiencia y optimización.Entornos
+de desarrollo y control de versiones.- Uso de IDEs y herramientas de
+depuración.- Control de versiones con Git.- Pruebas y aseguramiento de
+la calidad del software.- Trabajo en equipo y metodologías ágiles.</p>
+<p>Con el objetivo de garantizar una secuenciación pedagógica óptima,
+cada Resultado de Aprendizaje se aborda de forma unificada en una única
+Unidad de Trabajo (UT), estructurando las estructuras de datos complejas
+(arrays, listas, diccionarios) con anterioridad al desarrollo de la
+Programación Orientada a Objetos (POO).</p>
+<p><strong>Distribución Temporal y Secuenciación de Unidades de
+Trabajo:</strong></p>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>UT</strong></th>
+<th><strong>Título</strong></th>
+<th><strong>Horas</strong></th>
+<th><strong>Periodo</strong></th>
+<th><strong>RA</strong></th>
+<th><strong>Trim</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>UT1</strong></td>
+<td>Fundamentos de programación</td>
+<td>15 h</td>
+<td>15 Sep - 10 Oct</td>
+<td>RA1</td>
+<td>1º</td>
+</tr>
+<tr class="header">
+<td><strong>UT2</strong></td>
+<td>Programación estructurada</td>
+<td>15 h</td>
+<td>11 Oct - 30 Nov</td>
+<td>RA2</td>
+<td>1º</td>
+</tr>
+<tr class="odd">
+<td><strong>UT3</strong></td>
+<td>Estructuras de datos</td>
+<td>15 h</td>
+<td>1 Dic - 22 Ene</td>
+<td>RA4</td>
+<td>1º y 2º</td>
+</tr>
+<tr class="header">
+<td><strong>UT4</strong></td>
+<td>Programación orientada a objetos</td>
+<td>12 h</td>
+<td>23 Ene - 23 Feb</td>
+<td>RA3</td>
+<td>2º</td>
+</tr>
+<tr class="odd">
+<td><strong>UT5</strong></td>
+<td>Entornos de desarrollo</td>
+<td>6 h</td>
+<td>24 Feb - 12 Mar</td>
+<td>RA5</td>
+<td>2º</td>
+</tr>
+<tr class="header">
+<td><strong>-</strong></td>
+<td><strong>Periodo de Alternancia Dual (Estancia en
+Empresa)</strong></td>
+<td><strong>400 h</strong></td>
+<td><strong>15 Mar - 11 Jun</strong></td>
+<td><strong>RA5 (CE5.a)</strong></td>
+<td><strong>3º</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>-</strong></td>
+<td><strong>Sesión de Evaluación Final</strong></td>
+<td><strong>-</strong></td>
+<td><strong>14 Jun - 22 Jun</strong></td>
+<td><strong>Todos</strong></td>
+<td><strong>3º</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="concurrencia-dual-formación-en-empresa">4. Concurrencia Dual
+(Formación en Empresa) <a class="headerlink" href="#concurrencia-dual-formación-en-empresa" title="Enlace permanente">¶</a></h2>
+<p>Atendiendo al marco andaluz de dualización del <strong>Decreto
+165/2024</strong> y la naturaleza tecnológica de un Ciclo de Grado Medio
+(SMR), se trasladan a la empresa actividades procedimentadas y seguras
+que consolidan los aprendizajes previamente adquiridos por el
+alumnado.</p>
+<p><strong>Criterio de Evaluación seleccionado para la Alternancia
+Dual:</strong></p>
+<ul>
+<li><blockquote>
+<p><strong>RA5 - Criterio de Evaluación a):</strong> <em>Se han
+utilizado herramientas integradas de depuración (debuggers) de una IDE
+para inspeccionar variables y trazas de ejecución.</em></p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p><em>Justificación:</em> Se trata de una competencia transversal
+imprescindible para cualquier administrador de sistemas. Consiste en
+inspeccionar la ejecución paso a paso de un script para detectar cuellos
+de botella o variables incorrectas sin necesidad de realizar desarrollos
+desde cero.</p>
+</blockquote></li>
+</ul></li>
+</ul>
+<p><strong>Actividad Práctica Dual a realizar en la
+Empresa:</strong></p>
+<ul>
+<li><blockquote>
+<p><strong>Actividad 1 (Depuración y Análisis de Scripts del Entorno
+Laboral):</strong><br />
+El alumno o alumna identificará un script o fragmento de código
+utilizado en los procesos diarios de administración de sistemas de la
+organización (en lenguajes como Python, Bash o PowerShell, dedicados a
+tareas comunes como copias de seguridad, lectura de logs o
+sincronización de directorios).<br />
+Bajo la supervisión de su tutor/a laboral, el alumnado deberá abrir el
+código en un entorno de desarrollo integrado o editor de referencia (ej.
+Visual Studio Code) e inspeccionar su funcionamiento lógico y el flujo
+de ejecución. Analizará posibles errores latentes, vulnerabilidades en
+variables de configuración expuestas o ineficiencias de rendimiento y
+redactará una propuesta sencilla de mejoras estructurales (como la
+inclusión de control de excepciones try-except o logs de depuración
+interna) para optimizar el script del departamento.</p>
+</blockquote></li>
+</ul>
+<h2 id="metodología-didáctica">5. Metodología Didáctica <a class="headerlink" href="#metodología-didáctica" title="Enlace permanente">¶</a></h2>
+<p>Utilizaremos una metodología eminentemente
+<strong>activa/práctica</strong>, buscando la
+<strong>participación</strong> y protagonismo del alumnado. Habrá que
+tener en cuenta las <strong>diferencias individuales</strong> y
+<strong>adaptadas al grupo</strong> de alumnos/as. Se buscará la
+motivación, relacionando lo que aprenden con lo que saben y sobre su
+utilidad e importancia en el mundo laboral real. Se basará en el modelo
+de <strong>aprender-haciendo</strong>. Se orientará al alumnado para
+construir sus propios conocimientos a partir de su propio trabajo. Se
+podrían destacar las siguientes metodologías a utilizar:</p>
+<ul>
+<li><blockquote>
+<p><strong>ABP (Aprendizaje Basado en Proyectos):</strong> El alumnado
+desarrollará progresivamente un proyecto práctico continuado de
+sistemas: la creación de una utilidad CLI de auditoría de red que
+consulte logs, cree clases descriptivas de la infraestructura y use
+estructuras lineales de datos eficientes para el procesamiento.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Flipped Classroom para Sintaxis:</strong> Se facilitarán
+píldoras formativas de vídeo interactivas sobre la sintaxis básica en
+Python, delegando las horas del taller presencial a laboratorios guiados
+y resolución colaborativa de bugs y depuración de trazas.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Simulaciones Técnicas de Fallos:</strong> Se proveerá al
+alumnado de fragmentos de código con errores de recursividad infinita,
+desbordamiento de arrays, excepciones de tipo no controladas y
+referencias truncadas para fomentar el uso de herramientas de depuración
+(debugger) integradas en el entorno IDE (VS Code / PyCharm).</p>
+</blockquote></li>
+</ul>
+<p>Las actividades propuestas tendrán en cuenta los siguientes
+aspectos:</p>
+<ul>
+<li><blockquote>
+<p>Los <strong>diferentes ritmos</strong> de aprendizaje.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Integrarse en <strong>proyectos interdisciplinares</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Favorecer la capacidad de <strong>aprender por sí
+mismos</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Promover el <strong>trabajo colaborativo</strong>.</p>
+</blockquote></li>
+</ul>
+<p>También se podrán identificar distintos tipos de actividades de
+detección de conocimientos y capacidades previas, motivación, desarrollo
+de contenidos, refuerzo, ampliación y evaluación.</p>
+<h2 id="evaluación-y-calificación">6. Evaluación y Calificación <a class="headerlink" href="#evaluación-y-calificación" title="Enlace permanente">¶</a></h2>
+<p>Teniendo en cuenta la Orden de 29 de septiembre de 2010 la evaluación
+será continua y por módulos. En la modalidad presencial, la asistencia
+será obligatoria y regular, en caso contrario se perderá el derecho de
+evaluación continua.</p>
+<p>La asistencia deberá ser regular para poder realizar la evaluación
+según el artículo 2 de la <strong>Orden de 18 de septiembre de
+2025</strong><em>,</em> <em>que regula la evaluación, certificación,
+acreditación y titulación académica del alumnado que cursa enseñanzas de
+los grados D y E del Sistema de Formación Profesional en la Comunidad
+Autónoma de Andalucía de la formación profesional inicial en
+Andalucía.</em> En el caso de faltas injustificadas a clase que supongan
+una inasistencia regular, se aplicará en las normas internas de
+funcionamiento del centro.</p>
+<p>Tenemos que decidir en qué instante de tiempo se van a efectuar los
+diferentes procesos de evaluación, remarcando que evaluar no es lo mismo
+que calificar. Para ello lo hemos dividido en tres bloques, los cuales
+pasamos a describir a continuación.</p>
+<ul>
+<li><blockquote>
+<p><em><strong>Inicio</strong></em>: es la realizada al comienzo del
+módulo o al comienzo de una parte que tenga significado en sí misma,
+como puede ser un bloque temático o una unidad cuyo contenido esté bien
+diferenciado del resto. Nos servirá de orientación para conocer la base
+y los conocimientos previos del alumnado</p>
+</blockquote></li>
+<li><blockquote>
+<p><em><strong>Evaluación continua, formativa o procesual:</strong></em>
+se realiza durante el desarrollo del módulo, y con ella podemos valorar
+el progreso del alumnado así como la calidad de la práctica docente.
+Podemos llevarla de forma diaria. Permite ir adaptándonos a las
+circunstancias e ir mejorando el proceso de enseñanza aprendizaje</p>
+</blockquote></li>
+<li><blockquote>
+<p><em><strong>Finalización:</strong></em> se da al término del módulo o
+de alguna parte cuyo contenido esté claramente diferenciado del resto.
+Nos permite valorar el grado de adquisición de los resultados de
+aprendizaje asociados al módulo.</p>
+</blockquote></li>
+</ul>
+<p>Por este motivo, para que el alumnado supere el módulo tendrá que
+<strong>superar todas y cada una de las distintas unidades
+didácticas</strong>, las cuales conducen a la adquisición de las
+competencias profesionales y tienen uno o más resultados de aprendizaje
+asociados.</p>
+<p>La <strong>calificación final</strong> del módulo será la nota
+<strong>ponderada</strong> de los 5 resultados de aprendizaje. Se dará
+por superado el módulo si dicha nota ponderada es mayor o igual a
+cinco.</p>
+<p>Para evaluar cada criterio de evaluación se utilizarán distintos
+<strong>instrumentos de evaluación</strong>:</p>
+<ul>
+<li><blockquote>
+<p><strong>(I<sub>1</sub>) Pruebas teórico/prácticas individuales de
+desarrollo e instalación (60%):</strong> Pruebas presenciales donde el
+alumno debe realizar actividades similares a las realizadas en clase, o
+demostrar la asimilación de conceptos, de forma autónoma.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>(I<sub>2</sub>) Tareas y/o prácticas evaluables
+(30%):</strong> Actividades guiadas y entregables.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>(I<sub>3</sub>) Foros técnicos puntuables y observación de
+actitud/trabajo en clase (10%):</strong> Participación activa e
+interpretación técnica de errores en los hilos de soporte de Moodle.
+Realización de actividades de clase.</p>
+</blockquote></li>
+</ul>
+<p>El alumnado que <strong>no haya perdido la evaluación
+continua</strong> y que no alcance el aprobado en un trimestre (nota de
+5 de forma ponderada o con algún RA inferior a 5) podrá recuperar en el
+segundo trimestre las unidades o actividades que tengan pendientes del
+primero que determine el profesorado; antes del periodo de alternancia
+lo que tenga pendiente del segundo trimestre. Antes de la segunda
+evaluación final, tendrá que recuperar solamente aquellas unidades que
+no haya conseguido superar a lo largo del curso. La nota sustituirá la
+nota antigua por la obtenida en estas pruebas de recuperación. Deberá
+entregará entregar aquellas actividades que sean establecidas</p>
+<p>El <strong>alumnado que ha perdido la evaluación continua</strong>,
+tendrá que realizar una recuperación global del módulo. Para la
+recuperación el profesor determinará el procedimiento e instrumentos
+para alcanzar los resultados de aprendizaje correspondientes. Esta
+procedimiento determinará su calificación.</p>
+<p>Si un alumno faltase el día en que tuviera programada una prueba no
+será una obligación del profesor repetirla aun cuando la falta sea
+justificada oficialmente, sólo podrá realizar la recuperación si el
+profesor lo estima oportuno en la fecha que el profesor programe. El
+alumno siempre podrá recuperar estos contenidos antes de la nota final
+primera. Si esto sucediera deberá presentar un justificante firmado y
+sellado por el médico (u otros justificantes oficiales).</p>
+<p>Finalmente, los alumnos que en alguna actividad (tarea o prueba),
+<strong>copien, lo intenten, se presten a ello o se vea claramente en la
+corrección que lo han hecho</strong>, tendrán la actividad
+correspondiente suspensa hasta la convocatoria final primera, no
+teniendo derecho a realizar recuperaciones de la misma. Si dicha
+situación se produce en el examen final de recuperación, el alumno
+deberá presentarse en la convocatoria final segunda con toda la materia,
+independientemente de lo que se esté examinando en dicha recuperación.
+Si la situación se produce en la convocatoria final segunda, el alumno
+suspenderá la materia este curso. También se considera que han copiado
+la utilización de medios o tecnologías no autorizadas (p.e. Inteligencia
+artificial, dispositivos electrónicos).</p>
+<p>Aquellos <strong>alumnos que no hayan podido realizar la Formación en
+las empresas</strong> DUAL, deberán asistir obligatoriamente a clase. El
+profesor diseñará un plan de trabajo específico para abordar las
+actividades contempladas en el plan formativo de la empresa y reforzar
+los conocimientos adquiridos durante el curso, incidiendo sobre todo en
+aquellas áreas que presentan más dificultad para este tipo de
+alumnado.</p>
+<p>Asimismo, aquel alumnado que desee <strong>mejorar las
+calificaciones</strong> obtenidas durante el curso, deberá informar al
+profesorado para que, en la convocatoria segunda final, este le diseñe
+un plan específico de refuerzo de aquellas áreas donde las
+calificaciones han sido más bajas durante el curso para así mejorar las
+competencias y por tanto la calificación de este alumnado.</p>
+<p>La estrategia de calificación digital está estructurada y publicada
+de forma transparente en la plataforma oficial <strong>Moodle
+Centros</strong>. El calificador está configurado mediante categorías
+ponderadas asociadas a los Resultados de Aprendizaje.</p>
+<p>Dentro de la evaluación se contempla la evaluación de la Programación
+Didáctica mediante cuestionarios que rellenará el profesorado y el
+alumnado. Así mismo se realizará la evaluación de la labor docente y de
+la actitud del alumnado.</p>
+<p><strong>Fórmulas de Calificación:</strong></p>
+<p><strong>1. Nota del Primer Trimestre (1ºT):</strong></p>
+<p><img src="media_OGS_Programacion_26_27/media/image3.png"
+style="width:6.45833in;height:0.58313in" /><strong>2. Nota del Segundo
+Trimestre (2ºT):</strong></p>
+<p><img src="media_OGS_Programacion_26_27/media/image5.png"
+style="width:6.45833in;height:0.58313in" /><strong>3. Aplicación de la
+Evaluación Continua y Pérdida de Evaluación Continua:</strong></p>
+<ul>
+<li><blockquote>
+<p><strong>No existencia de recuperaciones:</strong> En este módulo no
+existirán pruebas parciales o exámenes de recuperación trimestrales
+independientes. Se aplicará estrictamente el principio de
+<strong>evaluación continua</strong>, valorando de forma progresiva la
+adquisición de las competencias en el centro técnico a través del
+portafolio del alumnado y las pruebas teóricas o prácticas.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Pérdida de la evaluación continua:</strong> La acumulación
+del <strong>15% o más de faltas de asistencia sin justificar</strong>
+respecto a la carga lectiva presencial de centro (equivalente a 11 horas
+de ausencia en este módulo) conlleva la pérdida del derecho a la
+evaluación continua. El alumnado en esta circunstancia perderá la opción
+a calificar mediante las tareas sistemáticas y foros de Moodle,
+derivando de forma automática a la Evaluación Final segunda.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Requisito mínimo de superación:</strong> Para superar un RA y
+el cómputo global del módulo, el alumnado deberá obtener
+obligatoriamente una calificación <strong>igual o superior a 5</strong>
+en el promedio de las pruebas teóricas o prácticas
+(<strong>I<sub>1</sub></strong>) y una calificación <strong>igual o
+superior a 5</strong> en el promedio de las tareas o prácticas
+obligatorias (<strong>I<sub>2</sub></strong>) de Moodle Centros.</p>
+</blockquote></li>
+</ul>
+<p><strong>4. Nota de la Evaluación Final primera (Junio):</strong></p>
+<p>Al finalizar el tercer trimestre y tras completarse el bloque de
+alternancia, la calificación final del <strong>RA5</strong> (único RA
+que cuenta con un criterio dualizado en la empresa) se calculará
+integrando la valoración del tutor/a de la empresa
+(<strong>N<sub>e</sub></strong>):</p>
+<p><img src="media_OGS_Programacion_26_27/media/image1.png"
+style="width:6.45833in;height:0.47654in" />La calificación final del
+módulo para la Evaluación Final primera se calculará en Séneca aplicando
+las ponderaciones asignadas a los RAs:</p>
+<p><img src="media_OGS_Programacion_26_27/media/image2.png"
+style="width:6.45833in;height:0.54551in" /><strong>5. Nota de la
+Evaluación Final segunda:</strong></p>
+<p>El alumnado que no alcance el aprobado (calificación ponderada
+inferior a 5 o algún RA suspenso) se presentará a la Evaluación Final
+segunda.</p>
+<p>Para esta convocatoria:</p>
+<ol type="1">
+<li><blockquote>
+<p>El alumnado deberá realizar una <strong>prueba final global</strong>
+de carácter teórico o práctico.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Deberá <strong>entregar y defender ante el profesorado</strong> las
+tareas o prácticas obligatorias que hubieran quedado pendientes de
+entrega o estuvieran calificadas negativamente durante el periodo
+lectivo ordinario, garantizando así la asimilación procedimental de las
+competencias de programación.</p>
+</blockquote></li>
+</ol>
+<h2 id="materiales-espacios-y-recursos">7. Materiales, Espacios y
+Recursos <a class="headerlink" href="#materiales-espacios-y-recursos" title="Enlace permanente">¶</a></h2>
+<ul>
+<li><blockquote>
+<p><strong>Espacios:</strong> Aula polivalente de informática con mesas
+con tomas de corriente, conexiones de red cableada y router para la
+configuración LAN y conexión WIFI. Se dispone de pantalla digital táctil
+como medio de proyección.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Equipamiento Hardware:</strong></p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p>Puestos de alumnos dotados con procesador con tecnología de
+virtualización habilitada en BIOS, un mínimo de 16 GB de RAM
+(preferiblemente 32 GB para levantar entornos multi-contenedor de
+replicación y clusters de bases de datos) y unidad SSD rápida de al
+menos 512 GB.</p>
+</blockquote></li>
+</ul></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Software: Intérprete oficial de Python 3.x, Visual
+Studio Code / PyCharm Community como IDE principal con extensiones de
+depuración, Git instalado localmente, Docker y navegador moderno con
+herramientas de desarrollo habilitadas.</code></pre></div></li>
+<li><blockquote>
+<p><strong>Entornos Virtuales de Aprendizaje:</strong> Plataforma
+<strong>Moodle Centros</strong> de la Junta de Andalucía, estructurada
+rigurosamente por resultados de aprendizaje, con rúbricas de evaluación
+detalladas asociadas a cada entrega de laboratorios, foros puntuables de
+resolución cooperativa de errores técnicos y pruebas conceptuales cortas
+autocorregibles.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Materiales didácticos:</strong> las diferentes herramientas
+que utilizamos el profesorado y el alumnado en el desarrollo del proceso
+de enseñanza-aprendizaje. Sirven no sólo para transmitir conceptos e
+ideas, sino también cumplen otras funciones:</p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p>Aumentan el interés del alumno/a y lo motivan.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Le guían en un determinado proceso.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Le facilitan la sensación de que progresa.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Distinguen lo fundamental de lo accesorio.</p>
+</blockquote></li>
+</ul></li>
+</ul>
+<h2 id="atención-a-la-diversidad-dua">8. Atención a la Diversidad
+(DUA) <a class="headerlink" href="#atención-a-la-diversidad-dua" title="Enlace permanente">¶</a></h2>
+<p>En el presente curso se ha detectado …..,</p>
+<p>Se realizará la adecuación de las actividades formativas garantizando
+el acceso a las pruebas de evaluación. Esta adaptación en ningún caso
+supondrá la supresión de resultados de aprendizaje y objetivos generales
+del ciclo que afecten a la adquisición de la competencia general del
+título.</p>
+<p>Esta programación adopta los principios fundamentales del Diseño
+Universal para el Aprendizaje (DUA) para garantizar la equidad y el
+acceso efectivo del alumnado a las competencias profesionales del
+módulo:</p>
+<ul>
+<li><blockquote>
+<p><strong>Múltiples formas de representación (Qué aprender):</strong>
+Los contenidos conceptuales de bases de datos se facilitarán en diversos
+formatos a través del entorno Moodle Centros: manuales en PDF adaptados,
+esquemas conceptuales interactivos descargables, videotutoriales
+prácticos de codificación SQL subtitulados y referencias a plataformas
+interactivas de simulación SQL.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Múltiples formas de acción y expresión (Cómo
+aprender):</strong> El alumnado podrá demostrar el dominio de los
+resultados de aprendizaje a través de variadas alternativas. Para las
+actividades prácticas integradoras, se les posibilitará la entrega de
+scripts autoejecutables, defensas orales individuales o de pequeños
+vídeos explicativos de la estructura y programación del servidor de base
+de datos que hayan diseñado.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Múltiples formas de implicación (Por qué aprender):</strong>
+Se utilizarán dinámicas de aprendizaje cooperativo en el taller,
+permitiendo que el alumnado con perfiles heterogéneos se complemente. Se
+contextualizará cada UT con casos y problemáticas reales del mercado
+andaluz de almacenamiento y cloud computing, despertando el interés
+profesional del alumnado.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Adaptaciones individuales de acceso:</strong> En completa
+concordancia con las directrices del Departamento de Orientación del
+centro y el Plan de Centro, para el alumnado que cuente con necesidades
+específicas de apoyo educativo (NEAE) diagnosticadas, se aplicarán
+adaptaciones que en ningún caso minorarán las calificaciones finales
+obtenidas (conforme a la corrección de errores de la Orden de 18 de
+septiembre de 2025 publicada en el BOJA). Estas adaptaciones incluyen la
+ampliación del tiempo de realización de pruebas en un 25%, adaptaciones
+visuales de los IDEs de desarrollo, priorización del modelado guiado con
+andamiaje y segmentación de enunciados complejos de SQL en subtareas
+elementales.</p>
+</blockquote></li>
+</ul>
+<h2 id="contenidos-transversales-e-interdisciplinariedad">9. Contenidos
+Transversales e Interdisciplinariedad <a class="headerlink" href="#contenidos-transversales-e-interdisciplinariedad" title="Enlace permanente">¶</a></h2>
+<ul>
+<li><blockquote>
+<p><strong>Sostenibilidad:</strong> Optimización de algoritmos de
+ordenación y búsqueda. El alumnado comprenderá de manera demostrable que
+la diferencia entre resolver un problema con una complejidad temporal
+cuadrática y una complejidad logarítmica ahorra millones de ciclos de
+reloj de CPU de servidores, disminuyendo el consumo energético y el
+calentamiento en los Centros de Datos (CPD).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Educación para la salud (relacionado con los riesgos
+laborales)</strong>. La adquisición de hábitos saludables, sobre todo
+los relacionados con las posturas en el puesto de trabajo, en la
+manipulación de equipos, herramientas y materiales informáticos.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Protección de Datos y Privacidad (relacionado con los riesgos
+laborales):</strong> Concienciación sobre las vulnerabilidades típicas
+provocadas por falta de saneamiento de entradas (inyecciones,
+desbordamientos). Buenas prácticas en el manejo y almacenamiento de
+contraseñas de red en variables de entorno seguras.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Interdisciplinariedad:</strong></p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p><strong>Gestión de Bases de Datos (1º ASIR):</strong> Creación de
+conectores en código Python para consultar e insertar registros de SGBD
+(PostgreSQL/MySQL), aplicando sentencias DML SQL.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Administración de Sistemas Operativos (2º ASIR):</strong>
+Automatización de tareas del sistema operativo mediante la librería os y
+subprocesos de Python, interactuando directamente con el kernel del
+sistema.</p>
+</blockquote></li>
+</ul></li>
+</ul>
+<h2 id="anexo-concreciones-del-departamento">10. ANEXO: Concreciones del
+Departamento <a class="headerlink" href="#anexo-concreciones-del-departamento" title="Enlace permanente">¶</a></h2>
+<p>La presente programación didáctica del módulo se complementa e
+integra de forma vinculante con las directrices generales aprobadas en
+la <strong>Programación del Departamento de Informática y
+Comunicaciones</strong>, las cuales garantizan la cohesión pedagógica y
+organizativa del profesorado del centro:</p>
+<ol type="1">
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Software Común de Referencia: Se fija Python
+3.x como lenguaje unificado y preferente de referencia para la
+impartición de este módulo optativo de ASIR, utilizando
+Git como sistema unificado de control de versiones.</code></pre></div></li>
+<li><blockquote>
+<p><strong>Criterios de Asignación y Control de Estancia Dual:</strong>
+Los alumnos se distribuirán en las empresas basándose en el baremo del
+rendimiento académico obtenido en la suma ponderada del primer y segundo
+trimestre en el centro educativo, requiriendo de una actitud positiva en
+el aula y una asistencia controlada superior al 95%.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Protocolo Unificado de Reclamaciones y Revisión de
+Pruebas:</strong> Especificación clara de los plazos de entrega de
+calificaciones (máximo 10 días tras la prueba) y periodo de
+reclamaciones internas en el centro, conforme a lo estipulado en el
+Proyecto Educativo de Centro (PEC).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Protocolo unificado ante faltas de asistencia (ROF):</strong>
+El alumnado que pierda la evaluación continua al superar el <strong>15%
+de faltas no justificadas</strong> en el módulo (11 horas) perderá la
+opción a las pruebas parciales evaluativas y se derivará directamente a
+realizar una prueba final global práctica individual unificada del total
+de los 5 Resultados de Aprendizaje en la Evaluación Final segunda.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Actividades extraescolares y complementarias</strong>: Se
+recogen en la programación del departamento todas las actividades
+organizadas por el Departamento de Informática</p>
+</blockquote></li>
+</ol>
+
+        </main>
+    </div>
+</body>
+</html>
