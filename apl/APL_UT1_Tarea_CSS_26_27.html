@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APL - Ut1 Tarea Css</title>
+    <style>
+    
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --bg-header: #1e3a8a;
+    --text-header: #ffffff;
+    --bg-body: #f8fafc;
+    --text-body: #1e293b;
+    --border-color: #cbd5e1;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-body);
+    color: var(--text-body);
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, [id], a[name] {
+    scroll-margin-top: 80px !important;
+}
+
+.headerlink {
+    display: inline-block;
+    margin-left: 0.4rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.8em;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
+h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
+    visibility: visible;
+    opacity: 1;
+}
+
+.headerlink:hover {
+    color: var(--primary);
+}
+
+#site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    background: var(--bg-header);
+    color: var(--text-header);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    height: 62px;
+}
+
+.site-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.top-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.top-nav .nav-btn {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+.top-nav .nav-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 9px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown:hover .dropbtn, .dropbtn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 320px;
+    max-width: 480px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 10001;
+    border: 1px solid #e2e8f0;
+    margin-top: 6px;
+}
+
+.dropdown-content a {
+    color: var(--text-body);
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.92rem;
+    border-bottom: 1px solid #f1f5f9;
+    line-height: 1.4;
+    transition: background 0.15s, color 0.15s;
+    word-break: break-word;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #eff6ff;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block !important;
+}
+
+#page-layout {
+    display: flex;
+    min-height: calc(100vh - 62px);
+}
+
+#left-panel {
+    width: 320px;
+    min-width: 320px;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 1.5rem 1.25rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: sticky;
+    top: 62px;
+    height: calc(100vh - 62px);
+}
+
+#left-panel h3 {
+    font-size: 1rem;
+    margin-top: 0;
+    color: #334155;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
+
+#left-panel nav#TOC, #left-panel #TOC {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+#left-panel ul {
+    list-style-type: none;
+    padding-left: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+#left-panel li {
+    margin: 6px 0;
+}
+
+#left-panel a {
+    color: #475569;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    display: block;
+    transition: color 0.15s;
+}
+
+#left-panel a:hover {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+#main-content {
+    flex: 1;
+    padding: 2.5rem 4rem;
+    box-sizing: border-box;
+    max-width: 100% !important;
+    width: calc(100% - 320px);
+    min-width: 0;
+}
+
+/* TABLAS ELEGANTES Y RESPONSIVE */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1.75rem 0;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    font-size: 0.93rem;
+    background: #ffffff;
+    table-layout: auto !important;
+}
+
+th, td {
+    padding: 10px 14px !important;
+    border: 1px solid #cbd5e1 !important;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+td p, th p {
+    margin: 0 !important;
+    padding: 2px 0 !important;
+}
+
+th {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #0f172a !important;
+}
+
+tr:nth-child(even) td {
+    background-color: #f8fafc !important;
+}
+
+tr:hover td {
+    background-color: #f1f5f9 !important;
+}
+
+/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
+.code-wrapper {
+    position: relative;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0f172a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #334155;
+    color: #f8fafc;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.copy-btn:hover {
+    background: #2563eb;
+}
+
+pre {
+    margin: 0 !important;
+    padding: 1.25rem 1.25rem !important;
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    overflow-x: auto !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+}
+
+code {
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+}
+
+p code, li code {
+    background: #e2e8f0;
+    color: #0f172a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
+
+/* RESPONSIVE DESIGN PARA MÓVILES Y TABLETS */
+@media (max-width: 768px) {
+    .header-container {
+        height: auto;
+        flex-direction: column;
+        padding: 0.75rem 1rem;
+        gap: 0.6rem;
+    }
+    
+    .site-title {
+        font-size: 1.05rem;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .site-title img {
+        height: 28px !important;
+    }
+
+    .top-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 0.35rem;
+    }
+
+    .top-nav .nav-btn, .dropbtn {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    .dropdown-content {
+        min-width: 240px;
+        max-width: 90vw;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #page-layout {
+        flex-direction: column;
+    }
+
+    #left-panel {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        position: static !important;
+        border-right: none !important;
+        border-bottom: 2px solid #e2e8f0;
+        padding: 1rem !important;
+    }
+
+    #main-content {
+        width: 100% !important;
+        padding: 1.25rem 1rem !important;
+    }
+
+    iframe {
+        height: 60vh !important;
+    }
+
+    th, td {
+        padding: 8px 10px !important;
+        font-size: 0.85rem !important;
+    }
+
+    pre {
+        padding: 0.85rem !important;
+        font-size: 0.82rem !important;
+    }
+}
+
+    </style>
+    <script>
+    
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.dropdown').forEach(dd => {
+        const btn = dd.querySelector('.dropbtn');
+        const content = dd.querySelector('.dropdown-content');
+        if (btn && content) {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = content.style.display === 'block';
+                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
+                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+                if (!isOpen) {
+                    content.style.display = 'block';
+                    btn.classList.add('active');
+                }
+            });
+        }
+    });
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
+        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+    });
+
+    // Controlador universal de clics en enlaces ancla (#...)
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const rawHref = this.getAttribute('href') || '';
+            const hashIdx = rawHref.indexOf('#');
+            if (hashIdx === -1) return;
+            const hash = rawHref.substring(hashIdx + 1);
+            if (!hash) return;
+            
+            let targetId = hash;
+            try { targetId = decodeURIComponent(hash); } catch(err) {}
+
+            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
+            if (!targetEl) {
+                for (let el of document.querySelectorAll('[id]')) {
+                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
+                        targetEl = el;
+                        break;
+                    }
+                }
+            }
+
+            if (targetEl) {
+                e.preventDefault();
+                const headerOffset = 75;
+                const elementPosition = targetEl.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                if (history.pushState) {
+                    history.pushState(null, null, '#' + targetId);
+                }
+            }
+        });
+    });
+});
+
+function copyCode(btn) {
+    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
+    navigator.clipboard.writeText(code).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = '✅ ¡Copiado!';
+        btn.style.background = '#16a34a';
+        setTimeout(() => {
+            btn.innerText = orig;
+            btn.style.background = '#334155';
+        }, 2000);
+    });
+}
+
+    </script>
+</head>
+<body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>APL &ndash; Ut1 Tarea Css</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+      <a href="APL_Presentacion_26_27.html" class="nav-btn">Presentación</a>
+      <a href="APL_Programacion_26_27.html" class="nav-btn">Programación</a>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Teoría ▾</button>
+        <div class="dropdown-content">
+          <a href="APL_UT1_Teoria_Introduccion_26_27.html">APL UT1 Teoria Introduccion 26 27</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Tareas y Prácticas ▾</button>
+        <div class="dropdown-content">
+          <a href="APL_UT1_Tarea_CSS_26_27.html">APL UT1 Tarea CSS 26 27</a>
+          <a href="APL_UT1_Tarea_HTML_26_27.html">APL UT1 Tarea HTML 26 27</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <aside id="left-panel">
+            <h3>Índice del Tema</h3>
+            <nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#consideraciones-previas"
+id="toc-consideraciones-previas">2. CONSIDERACIONES PREVIAS 📖</a></li>
+<li><a href="#actividades-a-realizar" id="toc-actividades-a-realizar">3.
+ACTIVIDADES A REALIZAR</a>
+<ul>
+<li><a href="#fase-1-selectores-y-tipografía"
+id="toc-fase-1-selectores-y-tipografía">FASE 1: Selectores y Tipografía
+</a></li>
+<li><a href="#section" id="toc-section"></a></li>
+<li><a href="#fase-2-el-modelo-de-caja"
+id="toc-fase-2-el-modelo-de-caja">FASE 2: El Modelo de Caja </a></li>
+<li><a href="#section-1" id="toc-section-1"></a></li>
+<li><a href="#fase-3-introducción-a-flexbox-3-horas"
+id="toc-fase-3-introducción-a-flexbox-3-horas">FASE 3: Introducción a
+Flexbox (3 horas)</a></li>
+<li><a href="#fase-4-menús-y-estados-1.5-horas"
+id="toc-fase-4-menús-y-estados-1.5-horas">FASE 4: Menús y Estados (1.5
+horas)</a></li>
+<li><a href="#section-2" id="toc-section-2"></a></li>
+<li><a href="#fase-5-consolidación-y-cascada"
+id="toc-fase-5-consolidación-y-cascada">FASE 5: Consolidación y Cascada
+</a></li>
+</ul></li>
+<li><a href="#calificación" id="toc-calificación">4. CALIFICACIÓN</a>
+<ul>
+<li><a href="#criterios-de-calificación"
+id="toc-criterios-de-calificación">CRITERIOS DE CALIFICACIÓN</a></li>
+</ul></li>
+</ul>
+</nav>
+        </aside>
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="APL_UT1_Tarea_CSS_26_27.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+
+<p><strong>Tarea 2. CSS</strong></p>
+<h4 id="ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
+ACTIVIDAD <a class="headerlink" href="#ficha-técnica-de-la-actividad" title="Enlace permanente">¶</a></h4>
+<div class="table-wrapper"><table>
+<tbody>
+<tr class="header">
+<td><strong>Unidad Didáctica</strong></td>
+<td><strong>UT1</strong>: Introducción a las aplicaciones web</td>
+</tr>
+<tr class="odd">
+<td><strong>Resultado de Aprendizaje (RA)</strong></td>
+<td><strong>RA2:</strong> Instala sistemas de gestión de aprendizaje a
+distancia, describiendo la estructura del sitio y la jerarquía de
+directorios generada (aplicado a la personalización estética del
+frontend de la aplicación web).</td>
+</tr>
+<tr class="header">
+<td><strong>Criterios de Evaluación (CE)</strong></td>
+<td><p><strong>CE 2.c:</strong> Se han realizado modificaciones en la
+estética o aspecto del sitio.</p>
+<p><strong>CE 2.g:</strong> Se ha documentado la estructura del código
+asegurando su claridad y mantenibilidad.</p></td>
+</tr>
+<tr class="odd">
+<td><strong>Tiempo Estimado</strong></td>
+<td>10 horas</td>
+</tr>
+<tr class="header">
+<td colspan="2"><h4 id="método-de-entrega-y-formato">MÉTODO DE ENTREGA Y
+FORMATO <a class="headerlink" href="#método-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
+<ul>
+<li><blockquote>
+<p><strong>[ ] Documento:</strong> No se requiere memoria en formato PDF
+para esta entrega.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>[x] Archivos de Código:</strong> Se entregará
+obligatoriamente un único archivo comprimido en formato
+<strong>ZIP</strong> (Tarea2_InicialesNombreApellidos.zip).</p>
+</blockquote></li>
+</ul>
+<p>Tarea2_InicialesNombreApellidos/<br />
+├── index.html (Página principal unificada)<br />
+├── servicios.html (Página servicios unificada)<br />
+├── contacto.html (Página contacto unificada)<br />
+├── imagenes/ (Recursos gráficos)<br />
+│ ├── topologia.png<br />
+│ ├── estado_servicios.png<br />
+│ └── soporte_banner.png<br />
+├── css/<br />
+│ └── estilos.css (Hoja de estilos definitiva - Consolidada Fase
+5)<br />
+└── laboratorio/<br />
+├── index.html<br />
+├── servicios.html<br />
+├── contacto.html<br />
+├── index.css<br />
+└── servicios.css</p>
+<p>└── contacto.css</p></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Nota:</strong> <em>El código fuente debe estar validado. La
+autoría se verificará mediante defensa práctica en el aula, donde se
+solicitará al alumno realizar modificaciones en tiempo real.</em></p>
+<p><strong>1. DESCRIPCIÓN GENERAL. OBJETIVOS</strong> 📖</p>
+<p>Un esqueleto HTML plano no transmite el rigor ni la confianza
+necesarios en un entorno corporativo. El diseño visual, la correcta
+alineación de capas y la legibilidad de logs o tablas de subredes son
+habilidades fundamentales para cualquier técnico de sistemas.</p>
+<p>El <strong>objetivo de esta tarea</strong> es aprender a diseñar
+interfaces profesionales mediante un proceso andamiado y altamente
+guiado. El alumno experimentará primero con estilos de fuentes, colores
+y bordes en tres hojas independientes. Posteriormente, analizará los
+diferentes layouts y colocaciones de las etiquetas semánticas y la
+inserción de imágenes en columnas. Para concluir, conservará un backup
+de sus pruebas y consolidará el portal web en una única hoja de estilos
+coherente y validada, profundizando de manera práctica en la precedencia
+y la cascada de CSS3.</p>
+<h2 id="consideraciones-previas">2. CONSIDERACIONES PREVIAS 📖 <a class="headerlink" href="#consideraciones-previas" title="Enlace permanente">¶</a></h2>
+<ul>
+<li><blockquote>
+<p><strong>Rutas Relativas Obligatorias:</strong> Todo elemento enlazado
+(CSS, imágenes) debe llamarse con rutas relativas.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>No Modificar los ID en Formularios:</strong> Respeta los
+selectores e identificadores creados en la unidad de HTML para asegurar
+que las etiquetas &lt;label&gt; permanezcan unidas visualmente a sus
+respectivos &lt;input&gt;.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Validación:</strong> Cada documento HTML creado debe
+validarse con Firefox sin presentar ningún error de marcado
+estructural.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Originalidad</strong>: Se proporciona un documento para ver
+el posible resultado, pero los títulos, textos deben ser originales e
+imágenes se tienen que personalizar, NO pueden ser los mismos. Vuestro
+nombre debe de aparecer en el pie de página</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Previsualización</strong>: Se facilitarán documentos pdf para
+previsualizar una posible solución.</p>
+</blockquote></li>
+</ul>
+<h2 id="actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink" href="#actividades-a-realizar" title="Enlace permanente">¶</a></h2>
+<p>La tarea se divide en 5 fases progresivas. Cada fase debe realizarse
+en los archivos indicados antes de realizar la unificación final.</p>
+<h3 id="fase-1-selectores-y-tipografía">FASE 1: Selectores y Tipografía
+ <a class="headerlink" href="#fase-1-selectores-y-tipografía" title="Enlace permanente">¶</a></h3>
+<ul>
+<li><blockquote>
+<p><strong>Archivo de trabajo (en la carpeta laboratorio):</strong></p>
+</blockquote></li>
+</ul>
+<blockquote>
+<p>index.css (Vinculado a index.html)</p>
+<p>servicios.css (Vinculado a servicios.html)</p>
+<p>laboratorio_practicas/contacto.css (Vinculado a contacto.html)</p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p><strong>Ejercicio 1.1 (Tipografía):</strong> Aplica en cada archivo
+CSS una familia de fuentes diferente (font-family): Arial en index,
+Georgia en servicios, Courier New en contacto. Modificar el color de
+fondo y del texto para el body y las etiquetas estructurales de bloque
+de HTML5</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Ejercicio 1.2 (Selectores):</strong> Define tres clases
+diferentes (.resaltado, .aviso, .destacado) con colores distintos en los
+distintos CSS. Aplica .resaltado al título en index.html (color azul),
+.aviso en servicios.html (color naranja) y .destacado en contacto.html
+(color verde).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Ejercicio 1.3 (Jerarquía):</strong> Cambia el font-weight de
+los h1, h2 y h3 usando selectores de etiqueta para que tengan grosores
+distintos (bold, normal, lighter). Modificar el color de los h1, h2 y
+h3. Modificar también el color del texto</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Ejercicio 1.4 (Estructura Semántica):</strong> Aplica colores
+de fondo (background-color) y colores de texto (color) distintos para
+las etiquetas HTML5 estructurales (&lt;header&gt;, &lt;nav&gt;,
+&lt;main&gt;, &lt;section&gt;, &lt;article&gt;, &lt;footer&gt;) en cada
+archivo CSS de esta fase. Asegúrate de que los colores sean legibles y
+coherentes. Usa el siguiente bloque de código como base, modificando los
+colores en index.css, servicios.css y contacto.css para que cada página
+tenga una identidad visual única.</p>
+</blockquote></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>header, footer {
+background-color: #2c3e50; /* Cambia este valor */
+color: white;
+padding: 15px;
+}
+main, section {
+background-color: #ecf0f1; /* Cambia este valor */
+color: #34495e;
+padding: 20px;
+}</code></pre></div></h3>
+<h3 id="fase-2-el-modelo-de-caja">FASE 2: El Modelo de Caja  <a class="headerlink" href="#fase-2-el-modelo-de-caja" title="Enlace permanente">¶</a></h3>
+<ul>
+<li><blockquote>
+<p><strong>Archivo de trabajo:</strong> Igual que antes</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Ejercicio 2.1 (Espaciado):</strong> Aplica margin de 10px en
+index.html, 20px en servicios.html y 30px en contacto.html a todos los
+contenedores &lt;section&gt;. Compara visualmente cómo afecta al
+diseño.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Ejercicio 2.2 (Pie de página destacado):</strong> Crea la
+clase .tarjeta-servicios y aplícala exclusivamente a la etiqueta
+&lt;footer&gt; de tus tres archivos HTML (index.html, servicios.html y
+contacto.html). Aplica padding progresivo para ver el cambio de volumen
+en el pie de página: 10px, 25px, 40px</p>
+</blockquote></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>.tarjeta-servicios {
+background-color: #ffffff;
+border: 1px solid #ccc;
+padding: 20px; /* Prueba 10px, 20px y 40px en los distintos HTML
+*/
+margin: 15px;
+border-radius: 8px;
+box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+}</code></pre></div>Ejercicio
+2.3 (Personalización de Tablas): Define colores de fondo específicos
+para los encabezados de tabla (&lt;th&gt;) y las celdas (&lt;td&gt;) en
+tus archivos CSS de esta fase.</h3>
+<ul>
+<li><h3 id="index.css-usa-tonos-azules-para-los-encabezados.">index.css:
+Usa tonos azules para los encabezados. <a class="headerlink" href="#index.css-usa-tonos-azules-para-los-encabezados." title="Enlace permanente">¶</a></h3></li>
+<li><h3
+id="servicios.css-usa-tonos-verdes-para-los-encabezados.">servicios.css:
+Usa tonos verdes para los encabezados. <a class="headerlink" href="#servicios.css-usa-tonos-verdes-para-los-encabezados." title="Enlace permanente">¶</a></h3></li>
+<li><h3
+id="contacto.css-usa-tonos-grises-para-los-encabezados.">contacto.css:
+Usa tonos grises para los encabezados. <a class="headerlink" href="#contacto.css-usa-tonos-grises-para-los-encabezados." title="Enlace permanente">¶</a></h3></li>
+</ul></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>/* Ejemplo de código para aplicar en cada archivo */
+th {
+background-color: #004a99; /* Cambia este valor según el archivo
+*/
+color: white;
+}
+td {
+background-color: #f9f9f9;
+}</code></pre></div></h3>
+<h3 id="fase-3-introducción-a-flexbox-3-horas">FASE 3: Introducción a
+Flexbox (3 horas) <a class="headerlink" href="#fase-3-introducción-a-flexbox-3-horas" title="Enlace permanente">¶</a></h3>
+<ul>
+<li><blockquote>
+<p><strong>Archivo de trabajo:</strong> Igual que antes</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Ejercicio 3.1 (Centrado):</strong> Crea la clase
+.contenedor-flex. en los tres archivos CSS. Aplica centrado total a las
+imágenes en index.html y títulos principales.</p>
+</blockquote></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Ejercicio 3.2 (Layout): Crea una estructura con un
+div con 3 div hijos en horizontal usando display: flex. Haz que en
+index.html ocupen el mismo ancho (flex: 1). En cada archivo CSS, prueba
+una alineación distinta: center; space-between; space-around;</code></pre></div></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>.contenedor-flex {
+display: flex;
+justify-content: center; /* cambiar en cada archivo */
+align-items: center;
+height: 300px;
+border: 1px dashed blue;
+}</code></pre></div>FASE 4: Menús y Estados (1.5
+horas)</h3>
+<ul>
+<li><blockquote>
+<p><strong>Archivo de trabajo:</strong> Igual que antes</p>
+</blockquote></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Ejercicio 4.1 (Menú): Crea un menú de navegación
+horizontal eliminando las viñetas (list-style: none) y usando display:
+flex. Define un espaciado entre los elementos y configura un fondo
+oscuro en index.html, fondo claro en servicios.html y fondo transparente
+en contacto.html.</code></pre></div></li>
+<li><blockquote>
+<p><strong>Ejercicio 4.2 (:hover):</strong> Implementa el cambio de
+color al pasar el ratón.</p>
+</blockquote></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>nav a {
+text-decoration: none;
+color: #333;
+padding: 10px;
+transition: all 0.3s ease;
+}
+nav a:hover {
+background-color: #007bff;
+color: white;
+border-radius: 5px;
+}</code></pre></div></h3>
+<h3 id="fase-5-consolidación-y-cascada">FASE 5: Consolidación y Cascada
+ <a class="headerlink" href="#fase-5-consolidación-y-cascada" title="Enlace permanente">¶</a></h3>
+<ol type="1">
+<li><blockquote>
+<p><strong>Archivo de trabajo:</strong> css/estilos.css (Unificación
+final).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Tarea:</strong> Traslada los códigos validados de las fases
+anteriores a estilos.css. Un ejemplo de cada estilo. Vincula los
+archivos HTML a dicho estilo.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Estética Profesional:</strong> Asegura un diseño corporativo
+aplicando: un background-color suave al body; tipografía y márgenes
+cuidados para h1/h2 (con borde inferior opcional); efecto "cebra" en
+tablas mediante tr:nth-child(even) y border-collapse; y estilización
+personalizada de etiquetas &lt;hr&gt; con color y grosor
+específicos.</p>
+</blockquote></li>
+</ol>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>/* Títulos con borde inferior y márgenes */
+h1, h2 {
+color: #2c3e50; /* se debe de cambiar
+border-bottom: 2px solid #007bff; /* Borde inferior azul */
+padding-bottom: 10px;
+margin-bottom: 20px;
+}
+/* Estructura y diseño de tablas */
+table {
+width: 100%;
+border-collapse: collapse; /* Elimina espacios entre bordes de celdas
+*/
+margin-bottom: 20px;
+background-color: #ffffff;
+}
+table th, table td {
+padding: 12px;
+border: 1px solid #ddd;
+text-align: left;
+}
+/* Efecto cebra en tablas */
+tr:nth-child(even) {
+background-color: #e2e8f0; /* Color gris claro para filas pares
+*/
+}
+/* Estilización personalizada de líneas horizontales */
+hr {
+border: 0;
+height: 3px;
+background-color: #007bff; /* Color corporativo */
+margin: 30px 0;
+}</code></pre></div><strong>Reto de Precedencia:</strong> Aplica en contacto.html la
+inyección de estilo interno (etiqueta &lt;style&gt;) y estilo inline
+para sobrescribir los estilos definidos en el archivo estilos.css,
+demostrando la jerarquía de cascada. Documenta con un comentario HTML
+por qué el estilo inline tiene prioridad.</p>
+</blockquote></li>
+</ol>
+<h2 id="calificación">4. CALIFICACIÓN <a class="headerlink" href="#calificación" title="Enlace permanente">¶</a></h2>
+<blockquote>
+<p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
+través de la plataforma, la entrega del documento en formatos editables
+no permitidos (como .docx), capturas con identificación del alumno/a o
+la omisión de los enlaces de las fuentes documentales utilizadas
+penalizará gravemente la nota o invalidará la práctica.</p>
+</blockquote>
+<h3 id="criterios-de-calificación">CRITERIOS DE CALIFICACIÓN <a class="headerlink" href="#criterios-de-calificación" title="Enlace permanente">¶</a></h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>CE y Puntuación Máxima</strong></th>
+<th><strong>Excelente (100% - 90%)</strong></th>
+<th><strong>Adecuado (89% - 50%)</strong></th>
+<th><strong>Insuficiente (49% - 10%)</strong></th>
+<th><strong>No Entregado / Incorrecto (0%)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p><strong>C1: Fases Iniciales (CSS independiente)</strong></p>
+<p><em>(Peso: 2.0 Puntos)</em></p></td>
+<td><strong>2.0</strong> Crea correctamente 3 hojas independientes por
+fase (Fase 1-4) aplicando tipografía, selectores y colores en etiquetas
+semánticas (HTML5) diferenciados.</td>
+<td><strong>1.0</strong> Se crean los archivos pero los estilos se
+repiten sin variación explícita entre las páginas.</td>
+<td><strong>0.5</strong> Faltan archivos o no se observa la diferencia
+entre páginas.</td>
+<td><strong>0</strong> No se realiza la actividad.</td>
+</tr>
+<tr class="header">
+<td><p><strong>C2: Modelo de Caja, Tablas y Footer</strong></p>
+<p><em>(Peso: 2.5 Puntos)</em></p></td>
+<td><strong>2.5</strong> Domina padding/margin/box-shadow. Personaliza
+tablas (colores por archivo) y aplica la clase .tarjeta-servicios al
+footer con estilo progresivo.</td>
+<td><strong>1.25</strong> Implementa conceptos pero con errores en el
+modelo de caja o sin variaciones claras en las tablas.</td>
+<td><strong>0.5</strong> No implementa correctamente el modelo de caja o
+la personalización de tablas/footer.</td>
+<td><strong>0</strong> No define estilos de caja, tablas ni footer.</td>
+</tr>
+<tr class="odd">
+<td><p><strong>C3: Layout, Flexbox y Navegación</strong></p>
+<p><em>(Peso: 2.5 Puntos)</em></p></td>
+<td><strong>2.5</strong> Uso avanzado de Flexbox
+(centrado/distribución). Menú horizontal funcional sin viñetas, con
+estados :hover y transiciones suaves.</td>
+<td><strong>1.25</strong> Layout funcional pero desalineado o menús
+estáticos sin efectos de interacción definidos.</td>
+<td><strong>0.5</strong> El menú o los layouts no presentan estilos
+básicos o están desmaquetados.</td>
+<td><strong>0</strong> No hay layout con Flexbox ni menú navegable.</td>
+</tr>
+<tr class="header">
+<td><p><strong>C4: Consolidación y Estética Profesional</strong></p>
+<p><em>(Peso: 2.0 Puntos)</em></p></td>
+<td><strong>2.0</strong> Unificación impecable en estilos.css. Acabado
+corporativo: tipografía cuidada, bordes, efecto cebra en tablas y líneas
+&lt;hr&gt; personalizadas.</td>
+<td><strong>1.0</strong> Unificación funcional pero con código
+redundante o diseño visual poco cuidado/inconsistente.</td>
+<td><strong>0.5</strong> El portal unificado presenta errores de
+renderizado o faltan los elementos estéticos obligatorios.</td>
+<td><strong>0</strong> No realiza la consolidación final.</td>
+</tr>
+<tr class="odd">
+<td><p><strong>C5: Cascada y Reto de Precedencia</strong></p>
+<p><em>(Peso: 1.0 Punto)</em></p></td>
+<td><strong>1.0</strong> Demuestra y documenta con precisión la
+precedencia (inline &gt; interno &gt; externo) en contacto.html mediante
+comentarios técnicos.</td>
+<td><strong>0.5</strong> Aplica los estilos pero la documentación en el
+código es pobre o inexistente.</td>
+<td><strong>0.2</strong> No realiza el ejercicio de precedencia o faltan
+los estilos solicitados.</td>
+<td><strong>0</strong> No realiza el laboratorio técnico.</td>
+</tr>
+</tbody>
+</table></div>
+
+        </main>
+    </div>
+</body>
+</html>

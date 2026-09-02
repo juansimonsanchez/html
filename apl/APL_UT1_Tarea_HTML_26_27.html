@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APL - Ut1 Tarea Html</title>
+    <style>
+    
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --bg-header: #1e3a8a;
+    --text-header: #ffffff;
+    --bg-body: #f8fafc;
+    --text-body: #1e293b;
+    --border-color: #cbd5e1;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-body);
+    color: var(--text-body);
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, [id], a[name] {
+    scroll-margin-top: 80px !important;
+}
+
+.headerlink {
+    display: inline-block;
+    margin-left: 0.4rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.8em;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
+h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
+    visibility: visible;
+    opacity: 1;
+}
+
+.headerlink:hover {
+    color: var(--primary);
+}
+
+#site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    background: var(--bg-header);
+    color: var(--text-header);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    height: 62px;
+}
+
+.site-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.top-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.top-nav .nav-btn {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+.top-nav .nav-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 9px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown:hover .dropbtn, .dropbtn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 320px;
+    max-width: 480px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 10001;
+    border: 1px solid #e2e8f0;
+    margin-top: 6px;
+}
+
+.dropdown-content a {
+    color: var(--text-body);
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.92rem;
+    border-bottom: 1px solid #f1f5f9;
+    line-height: 1.4;
+    transition: background 0.15s, color 0.15s;
+    word-break: break-word;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #eff6ff;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block !important;
+}
+
+#page-layout {
+    display: flex;
+    min-height: calc(100vh - 62px);
+}
+
+#left-panel {
+    width: 320px;
+    min-width: 320px;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 1.5rem 1.25rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: sticky;
+    top: 62px;
+    height: calc(100vh - 62px);
+}
+
+#left-panel h3 {
+    font-size: 1rem;
+    margin-top: 0;
+    color: #334155;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
+
+#left-panel nav#TOC, #left-panel #TOC {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+#left-panel ul {
+    list-style-type: none;
+    padding-left: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+#left-panel li {
+    margin: 6px 0;
+}
+
+#left-panel a {
+    color: #475569;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    display: block;
+    transition: color 0.15s;
+}
+
+#left-panel a:hover {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+#main-content {
+    flex: 1;
+    padding: 2.5rem 4rem;
+    box-sizing: border-box;
+    max-width: 100% !important;
+    width: calc(100% - 320px);
+    min-width: 0;
+}
+
+/* TABLAS ELEGANTES Y RESPONSIVE */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1.75rem 0;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    font-size: 0.93rem;
+    background: #ffffff;
+    table-layout: auto !important;
+}
+
+th, td {
+    padding: 10px 14px !important;
+    border: 1px solid #cbd5e1 !important;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+td p, th p {
+    margin: 0 !important;
+    padding: 2px 0 !important;
+}
+
+th {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #0f172a !important;
+}
+
+tr:nth-child(even) td {
+    background-color: #f8fafc !important;
+}
+
+tr:hover td {
+    background-color: #f1f5f9 !important;
+}
+
+/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
+.code-wrapper {
+    position: relative;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0f172a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #334155;
+    color: #f8fafc;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.copy-btn:hover {
+    background: #2563eb;
+}
+
+pre {
+    margin: 0 !important;
+    padding: 1.25rem 1.25rem !important;
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    overflow-x: auto !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+}
+
+code {
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+}
+
+p code, li code {
+    background: #e2e8f0;
+    color: #0f172a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
+
+/* RESPONSIVE DESIGN PARA MÓVILES Y TABLETS */
+@media (max-width: 768px) {
+    .header-container {
+        height: auto;
+        flex-direction: column;
+        padding: 0.75rem 1rem;
+        gap: 0.6rem;
+    }
+    
+    .site-title {
+        font-size: 1.05rem;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .site-title img {
+        height: 28px !important;
+    }
+
+    .top-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 0.35rem;
+    }
+
+    .top-nav .nav-btn, .dropbtn {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    .dropdown-content {
+        min-width: 240px;
+        max-width: 90vw;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #page-layout {
+        flex-direction: column;
+    }
+
+    #left-panel {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        position: static !important;
+        border-right: none !important;
+        border-bottom: 2px solid #e2e8f0;
+        padding: 1rem !important;
+    }
+
+    #main-content {
+        width: 100% !important;
+        padding: 1.25rem 1rem !important;
+    }
+
+    iframe {
+        height: 60vh !important;
+    }
+
+    th, td {
+        padding: 8px 10px !important;
+        font-size: 0.85rem !important;
+    }
+
+    pre {
+        padding: 0.85rem !important;
+        font-size: 0.82rem !important;
+    }
+}
+
+    </style>
+    <script>
+    
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.dropdown').forEach(dd => {
+        const btn = dd.querySelector('.dropbtn');
+        const content = dd.querySelector('.dropdown-content');
+        if (btn && content) {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = content.style.display === 'block';
+                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
+                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+                if (!isOpen) {
+                    content.style.display = 'block';
+                    btn.classList.add('active');
+                }
+            });
+        }
+    });
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
+        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+    });
+
+    // Controlador universal de clics en enlaces ancla (#...)
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const rawHref = this.getAttribute('href') || '';
+            const hashIdx = rawHref.indexOf('#');
+            if (hashIdx === -1) return;
+            const hash = rawHref.substring(hashIdx + 1);
+            if (!hash) return;
+            
+            let targetId = hash;
+            try { targetId = decodeURIComponent(hash); } catch(err) {}
+
+            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
+            if (!targetEl) {
+                for (let el of document.querySelectorAll('[id]')) {
+                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
+                        targetEl = el;
+                        break;
+                    }
+                }
+            }
+
+            if (targetEl) {
+                e.preventDefault();
+                const headerOffset = 75;
+                const elementPosition = targetEl.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                if (history.pushState) {
+                    history.pushState(null, null, '#' + targetId);
+                }
+            }
+        });
+    });
+});
+
+function copyCode(btn) {
+    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
+    navigator.clipboard.writeText(code).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = '✅ ¡Copiado!';
+        btn.style.background = '#16a34a';
+        setTimeout(() => {
+            btn.innerText = orig;
+            btn.style.background = '#334155';
+        }, 2000);
+    });
+}
+
+    </script>
+</head>
+<body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>APL &ndash; Ut1 Tarea Html</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+      <a href="APL_Presentacion_26_27.html" class="nav-btn">Presentación</a>
+      <a href="APL_Programacion_26_27.html" class="nav-btn">Programación</a>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Teoría ▾</button>
+        <div class="dropdown-content">
+          <a href="APL_UT1_Teoria_Introduccion_26_27.html">APL UT1 Teoria Introduccion 26 27</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Tareas y Prácticas ▾</button>
+        <div class="dropdown-content">
+          <a href="APL_UT1_Tarea_CSS_26_27.html">APL UT1 Tarea CSS 26 27</a>
+          <a href="APL_UT1_Tarea_HTML_26_27.html">APL UT1 Tarea HTML 26 27</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <aside id="left-panel">
+            <h3>Índice del Tema</h3>
+            <nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#descripción-general.-objetivos"
+id="toc-descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
+OBJETIVOS 📖</a></li>
+<li><a href="#consideraciones-previas"
+id="toc-consideraciones-previas">2. CONSIDERACIONES PREVIAS</a></li>
+<li><a href="#actividades-a-realizar" id="toc-actividades-a-realizar">3.
+ACTIVIDADES A REALIZAR</a></li>
+<li><a href="#calificación" id="toc-calificación">4. CALIFICACIÓN</a>
+<ul>
+<li><a href="#section" id="toc-section"></a></li>
+</ul></li>
+</ul>
+</nav>
+        </aside>
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="APL_UT1_Tarea_HTML_26_27.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+
+<p><strong>Tarea 1. HTML</strong></p>
+<h4 id="ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
+ACTIVIDAD <a class="headerlink" href="#ficha-técnica-de-la-actividad" title="Enlace permanente">¶</a></h4>
+<div class="table-wrapper"><table>
+<tbody>
+<tr class="header">
+<td><strong>Unidad Didáctica</strong></td>
+<td><strong>UT1</strong>: Introducción a las aplicaciones web</td>
+</tr>
+<tr class="odd">
+<td><strong>Resultado de Aprendizaje (RA)</strong></td>
+<td><strong>RA1:</strong> Instala gestores de contenidos, identificando
+sus aplicaciones y configurándolos según requerimientos (enfocado en la
+comprensión íntima de la estructura del código HTML del frontend).</td>
+</tr>
+<tr class="header">
+<td><strong>Criterios de Evaluación (CE)</strong></td>
+<td><p><strong>CE 1.d:</strong> Se ha personalizado la interfaz del
+gestor de contenidos.</p>
+<p><strong>CE 1.g:</strong> Se han instalado y configurado los módulos
+necesarios (analizando la estructura del código fuente).</p></td>
+</tr>
+<tr class="odd">
+<td><strong>Tiempo Estimado</strong></td>
+<td>10 horas</td>
+</tr>
+<tr class="header">
+<td colspan="2"><h4 id="método-de-entrega-y-formato">MÉTODO DE ENTREGA Y
+FORMATO <a class="headerlink" href="#método-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
+<ul>
+<li><blockquote>
+<p><strong>[ ] Documento:</strong> No se requiere memoria en formato PDF
+para esta entrega.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>[x] Archivos de Código:</strong> Se entregará
+obligatoriamente un único archivo comprimido en formato
+<strong>ZIP</strong> (Tarea_InicialesNombreApellidos.zip). Al
+descomprimirlo, debe presentar estrictamente la siguiente jerarquía de
+archivos y carpetas:<br />
+InicialesNombreApellidos/<br />
+├── index.html<br />
+├── servicios.html<br />
+├── contacto.html<br />
+├── imagenes/<br />
+│ ├── topologia.png<br />
+│ ├── estado_servicios.png<br />
+│ └── soporte_banner.png<br />
+└── css/<br />
+└── (Directorio vacío para la próxima unidad de CSS)</p>
+</blockquote></li>
+</ul></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Nota:</strong> <em>El código fuente debe estar validado. La
+autoría se verificará mediante defensa práctica en el aula, donde se
+solicitará al alumno realizar modificaciones en tiempo real.</em></p>
+<h2 id="descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
+OBJETIVOS 📖 <a class="headerlink" href="#descripción-general.-objetivos" title="Enlace permanente">¶</a></h2>
+<p>Como administradores de sistemas microinformáticos, el dominio
+absoluto del lenguaje de marcado <strong>HTML5</strong> es una habilidad
+crítica. Nos permite personalizar paneles de control, depurar plantillas
+en gestores de contenidos (WordPress, Moodle) y maquetar herramientas
+internas de monitorización.</p>
+<p>El <strong>objetivo principal</strong> de esta tarea práctica es
+construir la arquitectura estática de un portal web interno para el
+departamento de informática del centro. Esta interfaz de tres páginas
+independientes pero vinculadas servirá como el <strong>"plano de
+construcción" rígido y semántico</strong> que daremos formato mediante
+CSS en la próxima tarea. Se incidirá de forma rigurosa en la separación
+absoluta entre estructura (HTML) y presentación (CSS).</p>
+<h2 id="consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink" href="#consideraciones-previas" title="Enlace permanente">¶</a></h2>
+<ul>
+<li><blockquote>
+<p><strong>Editor de Código:</strong> Se trabajará con <strong>Visual
+Studio Code</strong>. Queda estrictamente prohibido el uso de editores
+WYSIWYG.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Rutas Relativas:</strong> Todos los enlaces, imágenes y
+recursos deben direccionarse mediante <strong>rutas relativas</strong>
+(ej. imagenes/topologia.png). Si se detecta alguna ruta absoluta local
+(ej. C:/Users/... o file:///...), la actividad se considerará
+suspensa.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Validación:</strong> Cada documento HTML creado debe
+validarse con Firefox sin presentar ningún error de marcado
+estructural.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Originalidad</strong>: Se proporciona un documento para ver
+el posible resultado, pero los títulos, textos deben ser originales e
+imágenes se tienen que personalizar, NO pueden ser los mismos.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Previsualización</strong>: Se facilitarán documentos pdf para
+previsualizar una posible solución.</p>
+</blockquote></li>
+</ul>
+<h2 id="actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink" href="#actividades-a-realizar" title="Enlace permanente">¶</a></h2>
+<h4
+id="actividad-1-arquitectura-semántica-html5-e-interconexión-estructural">Actividad
+1: Arquitectura Semántica HTML5 e Interconexión Estructural <a class="headerlink" href="#actividad-1-arquitectura-semántica-html5-e-interconexión-estructural" title="Enlace permanente">¶</a></h4>
+<p>El alumno debe inicializar las tres páginas HTML que compondrán el
+sitio web:</p>
+<ol type="1">
+<li><blockquote>
+<p>index.html (Página de inicio y bienvenida).</p>
+</blockquote></li>
+<li><blockquote>
+<p>servicios.html (Documentación de despliegues y servicios).</p>
+</blockquote></li>
+<li><blockquote>
+<p>contacto.html (Formularios de reporte e incidencias).</p>
+</blockquote></li>
+</ol>
+<p><strong>Requisitos específicos por página:</strong></p>
+<ul>
+<li><blockquote>
+<p><strong>Estructura Base:</strong> Las tres páginas deben contar con
+la declaración &lt;!DOCTYPE html&gt;, etiqueta &lt;html&gt; con atributo
+de idioma en español (lang="es"), etiqueta &lt;head&gt; con codificación
+de caracteres UTF-8 y metaetiqueta viewport para garantizar la
+adaptabilidad en dispositivos móviles (ver apuntes).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Secciones Semánticas HTML5:</strong> En todas las páginas se
+estructurará el contenido utilizando obligatoriamente las etiquetas
+estructurales de bloque de HTML5: &lt;header&gt;, &lt;nav&gt;,
+&lt;main&gt;, &lt;section&gt;, &lt;article&gt;, &lt;aside&gt; y
+&lt;footer&gt; (deben de abrirse y cerrarse)</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Formatos de Texto y Separación:</strong> Emplea de manera
+lógica los encabezados desde &lt;h1&gt; hasta &lt;h3&gt;, párrafos
+(&lt;p&gt;), líneas horizontales divisorias (&lt;hr&gt;) para separar
+secciones lógicas y texto preformateado (&lt;pre&gt;).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Interconexión (Menú de Navegación):</strong> El &lt;nav&gt;
+situado en el &lt;header&gt; de cada una de las tres páginas debe
+contener una lista no ordenada con enlaces relativos exactos para poder
+navegar entre las tres páginas de forma fluida y cíclica.</p>
+</blockquote></li>
+</ul>
+<p><img src="media_APL_UT1_Tarea_HTML_26_27/media/image10.png"
+style="width:2.10938in;height:0.62353in" /></p>
+<h4
+id="actividad-2-integración-de-listas-simples-anidadas-y-de-verificación">Actividad
+2: Integración de Listas (Simples, Anidadas y de Verificación) <a class="headerlink" href="#actividad-2-integración-de-listas-simples-anidadas-y-de-verificación" title="Enlace permanente">¶</a></h4>
+<p>La documentación del departamento requiere el uso de listas
+estructuradas para organizar recursos y flujos de trabajo. Implementa
+los siguientes requerimientos:</p>
+<ol type="1">
+<li><blockquote>
+<p><strong>Página index.html (Lista Desordenada Simple):</strong> Añade
+una sección con una lista desordenada (&lt;ul&gt;) que enumere los
+pilares de la seguridad del servidor del aula (Cifrado, Copias de
+seguridad, Control de acceso perimetral).</p>
+</blockquote></li>
+</ol>
+<p><img src="media_APL_UT1_Tarea_HTML_26_27/media/image9.png"
+style="width:6.25129in;height:0.98438in" /></p>
+<ol start="2" type="1">
+<li><blockquote>
+<p><strong>Página servicios.html (Lista Anidada Compleja):</strong>
+Documenta los pasos secuenciales para instalar el servidor Apache en
+Linux. Utiliza una lista ordenada (&lt;ol&gt;) para los pasos
+principales, y dentro de cada paso secuencial, anida una lista
+desordenada (&lt;ul&gt;) indicando los comandos exactos o las rutas de
+configuración correspondientes.</p>
+</blockquote></li>
+</ol>
+<p><img src="media_APL_UT1_Tarea_HTML_26_27/media/image7.png"
+style="width:4.23438in;height:1.92571in" /></p>
+<ol start="3" type="1">
+<li><blockquote>
+<p><strong>Página contacto.html (Lista de Ordenada Simple):</strong>
+Muestra al usuario un listado ordenado con los pasos de control
+obligatorios que debe verificar en su puesto informático antes de abrir
+un ticket de soporte de red (ej. Estado del cable de red, Comprobación
+de IP).</p>
+</blockquote></li>
+</ol>
+<p><img src="media_APL_UT1_Tarea_HTML_26_27/media/image3.png"
+style="width:6.26772in;height:1.20833in" /></p>
+<h4 id="actividad-3-inserción-de-imágenes">Actividad 3: Inserción de
+Imágenes  <a class="headerlink" href="#actividad-3-inserción-de-imágenes" title="Enlace permanente">¶</a></h4>
+<p>Inserta una imagen técnica adaptada al contexto en cada una de las
+páginas de la aplicación:</p>
+<ol type="1">
+<li><blockquote>
+<p><strong>En index.html:</strong> Imagen de la topología de red local
+(imagenes/topologia.png).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>En servicios.html:</strong> Imagen descriptiva del estado de
+los servicios desplegados (imagenes/estado_servicios.png).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>En contacto.html:</strong> Banner gráfico del departamento de
+soporte técnico (imagenes/soporte_banner.png).</p>
+</blockquote></li>
+</ol>
+<p><strong>Requisitos comunes para las imágenes:</strong></p>
+<ul>
+<li><blockquote>
+<p>Es estrictamente requerido configurar el atributo alt con un texto
+descriptivo de accesibilidad detallado (no genérico).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Se limitarán las dimensiones físicas de la imagen directamente en
+HTML mediante los atributos width (máximo 500px) y height de forma
+proporcional.</p>
+</blockquote></li>
+</ul>
+<h4 id="actividad-4-creación-de-tablas-de-datos">Actividad 4: Creación
+de Tablas de Datos  <a class="headerlink" href="#actividad-4-creación-de-tablas-de-datos" title="Enlace permanente">¶</a></h4>
+<p>Debes implementar una tabla técnica en cada una de las páginas web
+del proyecto, graduando el nivel de dificultad:</p>
+<ol type="1">
+<li><blockquote>
+<p><strong>Página index.html (Tabla Sencilla):</strong> Crea una tabla
+básica que liste los puertos comunes de red. Columnas:
+<em>Servicio</em>, <em>Puerto</em> y <em>Protocolo</em> (mínimo 4 filas
+de datos).</p>
+</blockquote></li>
+</ol>
+<p><img src="media_APL_UT1_Tarea_HTML_26_27/media/image4.png"
+style="width:2.9963in;height:1.09896in" /></p>
+<ol start="2" type="1">
+<li><blockquote>
+<p><strong>Página servicios.html (Tabla Intermedia):</strong> Diseña una
+tabla de direccionamiento IP de las subredes del centro. Columnas:
+<em>Nombre de Subred</em>, <em>Dirección de Red</em>, <em>Puerta de
+Enlace (Gateway)</em> y <em>DNS Principal</em>. Debe usar de manera
+clara e inequívoca las etiquetas estructurales de tabla: &lt;thead&gt;,
+&lt;tbody&gt; y &lt;tfoot&gt;</p>
+</blockquote></li>
+</ol>
+<p><img src="media_APL_UT1_Tarea_HTML_26_27/media/image8.png"
+style="width:5.30767in;height:1.34896in" /></p>
+<ol start="3" type="1">
+<li><blockquote>
+<p><strong>Página contacto.html (Tabla Compleja):</strong> Diseña una
+tabla avanzada que represente físicamente el armario de servidores
+(Rack) del aula de informática.</p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p><strong>Uso obligatorio de rowspan:</strong> Debes combinar
+verticalmente la primera columna de las filas correspondientes a los
+servidores de bases de datos para indicar que un servidor en cluster
+ocupa dos unidades de rack de altura físicas (ej. U1 y U2
+combinadas).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Uso obligatorio de colspan:</strong> En la parte inferior de
+la tabla, combina horizontalmente todas las columnas para crear una
+celda unificada de advertencia técnica sobre la alimentación
+ininterrumpida (SAI).</p>
+</blockquote></li>
+</ul></li>
+</ol>
+<p><img src="media_APL_UT1_Tarea_HTML_26_27/media/image6.png"
+style="width:6.26772in;height:1.47222in" /></p>
+<h4
+id="actividad-5-sistemas-de-entrada-de-datos-formulario-sencillo-vs.-formulario-complejo">Actividad
+5: Sistemas de Entrada de Datos (Formulario Sencillo vs. Formulario
+Complejo) <a class="headerlink" href="#actividad-5-sistemas-de-entrada-de-datos-formulario-sencillo-vs.-formulario-complejo" title="Enlace permanente">¶</a></h4>
+<p>Para habilitar la interacción del usuario en nuestro portal,
+implementa dos formularios estructurados:</p>
+<ol type="1">
+<li><blockquote>
+<p><strong>Página servicios.html (Formulario Sencillo):</strong><br />
+Construye un buscador interno rápido de IPs o servicios web. Debe
+constar únicamente de una etiqueta &lt;label&gt; asociada, un campo de
+entrada de texto (type="text"), un input de búsqueda corporativa y un
+botón de envío con el texto "Buscar Servicio".</p>
+</blockquote></li>
+</ol>
+<p><img src="media_APL_UT1_Tarea_HTML_26_27/media/image5.png"
+style="width:3.47396in;height:0.70859in" /></p>
+<ol start="2" type="1">
+<li><blockquote>
+<p><strong>Página contacto.html (Formulario Técnico
+Complejo):</strong><br />
+Crea un formulario avanzado de registro de incidencias técnicas que
+contenga todas las opciones de interacción soportadas por HTML5:</p>
+</blockquote></li>
+</ol>
+<p><img src="media_APL_UT1_Tarea_HTML_26_27/media/image2.png"
+style="width:4.82293in;height:4.78646in" /></p>
+<ul>
+<li><blockquote>
+<p>Campos de texto obligatorios (required) para el nombre completo y la
+descripción de la incidencia.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Entradas especializadas HTML5: email (type="email"), contraseña de
+soporte (type="password"), teléfono corporativo (type="tel"), fecha del
+suceso (type="date") y número de puesto afectado (type="number").</p>
+</blockquote></li>
+<li><blockquote>
+<p>Un campo de selección desplegable (&lt;select&gt;) para seleccionar
+el sistema operativo afectado.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Botones de opción mutuamente excluyentes (type="radio") bajo el mismo
+grupo name para determinar la prioridad del ticket.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Casillas de verificación múltiple (type="checkbox") para seleccionar
+los componentes de hardware comprometidos.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Caja de texto multilínea (&lt;textarea&gt;) para comentarios
+adicionales de depuración.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Botón de envío (type="submit") y botón de borrado de datos
+(type="reset").</p>
+</blockquote></li>
+</ul>
+<h2 id="calificación">4. CALIFICACIÓN <a class="headerlink" href="#calificación" title="Enlace permanente">¶</a></h2>
+<blockquote>
+<p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
+través de la plataforma, la entrega del documento en formatos editables
+no permitidos (como .docx), capturas con identificación del alumno/a o
+la omisión de los enlaces de las fuentes documentales utilizadas
+penalizará gravemente la nota o invalidará la práctica.</p>
+</blockquote>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>CE y Puntuación Máxima</strong></th>
+<th><p><strong>Excelente</strong></p>
+<p><strong>(100% - 90%)</strong></p></th>
+<th><p><strong>Adecuado</strong></p>
+<p><strong>(89% - 50%)</strong></p></th>
+<th><p><strong>Insuficiente</strong></p>
+<p><strong>(49% - 10%)</strong></p></th>
+<th><strong>No Entregado / Incorrecto (0%)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p><strong>C1: Estructuración Semántica y Navegación</strong></p>
+<p><em>(Peso: 2.0 Puntos)</em></p></td>
+<td><p><strong>2</strong></p>
+<p>Estructura HTML5 en las 3 páginas utilizando adecuadamente
+&lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;section&gt;, y
+&lt;footer&gt;. Sistema de navegación fluido y funcional mediante rutas
+relativas sin ningún enlace roto.</p></td>
+<td><p><strong>1</strong></p>
+<p>La estructura semántica está presente pero se omiten algunas
+etiquetas estructurales o se abusa del uso de &lt;div&gt;. La navegación
+funciona, pero contiene fallos menores de retorno o rutas
+incorrectas.</p></td>
+<td><p><strong>0.25</strong></p>
+<p>La maquetación carece de semántica lógica. No hay una separación
+estructural y existen múltiples enlaces de navegación rotos o se han
+usado rutas absolutas locales del disco.</p></td>
+<td><p><strong>0</strong></p>
+<p>No se realiza la actividad, los archivos están vacíos o no cumplen
+con los requisitos mínimos de estructuración del portal.</p></td>
+</tr>
+<tr class="header">
+<td><p><strong>C2: Listas e Imágenes Técnicas</strong></p>
+<p><em>(Peso: 2.0 Puntos)</em></p></td>
+<td><p><strong>2</strong></p>
+<p>Se implementan los tres tipos de listas (simple y anidada). Imágenes
+en cada página usando atributos de accesibilidad alt</p></td>
+<td><p><strong>1</strong></p>
+<p>Falta alguna lista o imagen, o el anidamiento de las listas contiene
+errores menores. Los atributos alt son demasiado escuetos o
+genéricos.</p></td>
+<td><p><strong>0.25</strong></p>
+<p>Estructura de listas rotas o mal cerradas. Imágenes no mostradas (por
+rutas erróneas o por no estar guardadas en la subcarpeta. Ausencia total
+de textos descriptivos.</p></td>
+<td><p><strong>0</strong></p>
+<p>No se incluyen listas ni imágenes en ninguna de las páginas del
+proyecto.</p></td>
+</tr>
+<tr class="odd">
+<td><p><strong>C3: Tablas de Datos</strong></p>
+<p><em>(Peso: 2.5 Puntos)</em></p></td>
+<td><p><strong>2.5</strong></p>
+<p>Tres tablas correctamente distribuidas según nivel de dificultad. Uso
+semántico de &lt;thead&gt;, &lt;tbody&gt; y &lt;tfoot&gt;. Aplicación
+perfecta de rowspan en el rack de servidores y colspan para
+avisos.</p></td>
+<td><p><strong>1.25</strong></p>
+<p>Se incluyen las tres tablas pero presentan errores menores en la
+definición semántica de su estructura. La tabla compleja tiene alguna
+celda desalineada debido a un uso impreciso de rowspan o
+colspan.</p></td>
+<td><p><strong>0.5</strong></p>
+<p>Tablas incompletas, rotas o mal estructuradas. No se aplican de forma
+correcta los atributos de combinación de celdas o faltan filas completas
+de datos.</p></td>
+<td><p><strong>0</strong></p>
+<p>No se incluye ninguna tabla de datos en las tres páginas de la
+entrega.</p></td>
+</tr>
+<tr class="header">
+<td><p><strong>C4: Diseño de Formularios</strong></p>
+<p><em>(Peso: 2.5 Puntos)</em></p></td>
+<td><p><strong>2.5</strong></p>
+<p>Formularios sencillo y complejo 100% operativos. Asociación unívoca
+perfecta de todas las &lt;label&gt; con el id de su input mediante for.
+Validación de entradas nativa y exhaustiva.</p></td>
+<td><p><strong>1.25</strong></p>
+<p>Ambos formularios son usables, pero carecen de algunas asociaciones
+semánticas entre etiquetas y campos. Faltan validaciones de tipo de
+datos requeridos.</p></td>
+<td><p><strong>0.5</strong></p>
+<p>Formularios mal estructurados, sin botones funcionales de envío o
+borrado, o con tipos de entrada (type) inapropiados.</p></td>
+<td><p><strong>0</strong></p>
+<p>Ausencia absoluta de formularios en las páginas servicios.html y
+contacto.html.</p></td>
+</tr>
+<tr class="odd">
+<td><p><strong>C5: Validación y Empaquetado del Proyecto</strong></p>
+<p><em>(Peso: 1.0 Punto)</em></p></td>
+<td><p><strong>1</strong></p>
+<p>Todos los documentos HTML5 pasan la validación. El proyecto se
+entrega en un único archivo comprimido .zip respetando minuciosamente la
+jerarquía de carpetas establecida.</p></td>
+<td><p><strong>0.5</strong></p>
+<p>Se detectan advertencias leves (warnings) en el validador oficial
+W3C. La jerarquía de carpetas presenta fallos menores de estructuración
+u organización de nombres de archivo.</p></td>
+<td><p><strong>0.1</strong></p>
+<p>Errores sintácticos de marcado críticos que impiden la correcta
+interpretación del navegador. Archivos sueltos o formato de compresión
+incorrecto (.rar, .7z).</p></td>
+<td><p><strong>0</strong></p>
+<p>No se entrega el archivo comprimido o no es legible (formato
+dañado/corrupto).</p></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="section"> <a class="headerlink" href="#section" title="Enlace permanente">¶</a></h3>
+
+        </main>
+    </div>
+</body>
+</html>
