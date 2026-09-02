@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASGBD - Ut1 Teoria Configuracion</title>
+    <style>
+    
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --bg-header: #1e3a8a;
+    --text-header: #ffffff;
+    --bg-body: #f8fafc;
+    --text-body: #1e293b;
+    --border-color: #cbd5e1;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-body);
+    color: var(--text-body);
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, [id], a[name] {
+    scroll-margin-top: 80px !important;
+}
+
+.headerlink {
+    display: inline-block;
+    margin-left: 0.4rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.8em;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
+h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
+    visibility: visible;
+    opacity: 1;
+}
+
+.headerlink:hover {
+    color: var(--primary);
+}
+
+#site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    background: var(--bg-header);
+    color: var(--text-header);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    height: 62px;
+}
+
+.site-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.top-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.top-nav .nav-btn {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+.top-nav .nav-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 9px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown:hover .dropbtn, .dropbtn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 320px;
+    max-width: 480px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 10001;
+    border: 1px solid #e2e8f0;
+    margin-top: 6px;
+}
+
+.dropdown-content a {
+    color: var(--text-body);
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.92rem;
+    border-bottom: 1px solid #f1f5f9;
+    line-height: 1.4;
+    transition: background 0.15s, color 0.15s;
+    word-break: break-word;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #eff6ff;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block !important;
+}
+
+#page-layout {
+    display: flex;
+    min-height: calc(100vh - 62px);
+}
+
+#left-panel {
+    width: 320px;
+    min-width: 320px;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 1.5rem 1.25rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: sticky;
+    top: 62px;
+    height: calc(100vh - 62px);
+}
+
+#left-panel h3 {
+    font-size: 1rem;
+    margin-top: 0;
+    color: #334155;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
+
+#left-panel nav#TOC, #left-panel #TOC {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+#left-panel ul {
+    list-style-type: none;
+    padding-left: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+#left-panel li {
+    margin: 6px 0;
+}
+
+#left-panel a {
+    color: #475569;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    display: block;
+    transition: color 0.15s;
+}
+
+#left-panel a:hover {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+#main-content {
+    flex: 1;
+    padding: 2.5rem 4rem;
+    box-sizing: border-box;
+    max-width: 100% !important;
+    width: calc(100% - 320px);
+    min-width: 0;
+}
+
+/* TABLAS ELEGANTES Y RESPONSIVE */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1.75rem 0;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    font-size: 0.93rem;
+    background: #ffffff;
+    table-layout: auto !important;
+}
+
+th, td {
+    padding: 10px 14px !important;
+    border: 1px solid #cbd5e1 !important;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+td p, th p {
+    margin: 0 !important;
+    padding: 2px 0 !important;
+}
+
+th {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #0f172a !important;
+}
+
+tr:nth-child(even) td {
+    background-color: #f8fafc !important;
+}
+
+tr:hover td {
+    background-color: #f1f5f9 !important;
+}
+
+/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
+.code-wrapper {
+    position: relative;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0f172a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #334155;
+    color: #f8fafc;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.copy-btn:hover {
+    background: #2563eb;
+}
+
+pre {
+    margin: 0 !important;
+    padding: 1.25rem 1.25rem !important;
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    overflow-x: auto !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+}
+
+code {
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+}
+
+p code, li code {
+    background: #e2e8f0;
+    color: #0f172a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
+
+/* RESPONSIVE DESIGN PARA MÓVILES Y TABLETS */
+@media (max-width: 768px) {
+    .header-container {
+        height: auto;
+        flex-direction: column;
+        padding: 0.75rem 1rem;
+        gap: 0.6rem;
+    }
+    
+    .site-title {
+        font-size: 1.05rem;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .site-title img {
+        height: 28px !important;
+    }
+
+    .top-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 0.35rem;
+    }
+
+    .top-nav .nav-btn, .dropbtn {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    .dropdown-content {
+        min-width: 240px;
+        max-width: 90vw;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #page-layout {
+        flex-direction: column;
+    }
+
+    #left-panel {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        position: static !important;
+        border-right: none !important;
+        border-bottom: 2px solid #e2e8f0;
+        padding: 1rem !important;
+    }
+
+    #main-content {
+        width: 100% !important;
+        padding: 1.25rem 1rem !important;
+    }
+
+    iframe {
+        height: 60vh !important;
+    }
+
+    th, td {
+        padding: 8px 10px !important;
+        font-size: 0.85rem !important;
+    }
+
+    pre {
+        padding: 0.85rem !important;
+        font-size: 0.82rem !important;
+    }
+}
+
+    </style>
+    <script>
+    
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.dropdown').forEach(dd => {
+        const btn = dd.querySelector('.dropbtn');
+        const content = dd.querySelector('.dropdown-content');
+        if (btn && content) {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = content.style.display === 'block';
+                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
+                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+                if (!isOpen) {
+                    content.style.display = 'block';
+                    btn.classList.add('active');
+                }
+            });
+        }
+    });
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
+        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+    });
+
+    // Controlador universal de clics en enlaces ancla (#...)
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const rawHref = this.getAttribute('href') || '';
+            const hashIdx = rawHref.indexOf('#');
+            if (hashIdx === -1) return;
+            const hash = rawHref.substring(hashIdx + 1);
+            if (!hash) return;
+            
+            let targetId = hash;
+            try { targetId = decodeURIComponent(hash); } catch(err) {}
+
+            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
+            if (!targetEl) {
+                for (let el of document.querySelectorAll('[id]')) {
+                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
+                        targetEl = el;
+                        break;
+                    }
+                }
+            }
+
+            if (targetEl) {
+                e.preventDefault();
+                const headerOffset = 75;
+                const elementPosition = targetEl.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                if (history.pushState) {
+                    history.pushState(null, null, '#' + targetId);
+                }
+            }
+        });
+    });
+});
+
+function copyCode(btn) {
+    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
+    navigator.clipboard.writeText(code).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = '✅ ¡Copiado!';
+        btn.style.background = '#16a34a';
+        setTimeout(() => {
+            btn.innerText = orig;
+            btn.style.background = '#334155';
+        }, 2000);
+    });
+}
+
+    </script>
+</head>
+<body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD &ndash; Ut1 Teoria Configuracion</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+      <a href="ASGBD_Presentacion_26_27.html" class="nav-btn">Presentación</a>
+      <a href="ASGBD_Programacion_26_27.html" class="nav-btn">Programación</a>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Teoría ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Teoria_Configuracion_26_27.html">ASGBD UT1 Teoria Configuracion 26 27</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Tareas y Prácticas ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Tarea_Configuracion_26_27.html">ASGBD UT1 Tarea Configuracion 26 27</a>
+          <a href="ASGBD_UT1_Practica_26_27.html">ASGBD UT1 Practica 26 27</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <aside id="left-panel">
+            <h3>Índice del Tema</h3>
+            <nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#ficha-técnica-de-la-unidad"
+id="toc-ficha-técnica-de-la-unidad">FICHA TÉCNICA DE LA UNIDAD</a></li>
+<li><a href="#índice-de-contenidos" id="toc-índice-de-contenidos">ÍNDICE
+DE CONTENIDOS</a></li>
+<li><a href="#introducción-y-contextualización"
+id="toc-introducción-y-contextualización">1. INTRODUCCIÓN Y
+CONTEXTUALIZACIÓN</a></li>
+<li><a href="#aspectos-críticos-en-la-configuración"
+id="toc-aspectos-críticos-en-la-configuración">2. ASPECTOS CRÍTICOS EN
+LA CONFIGURACIÓN</a></li>
+<li><a href="#despliegue-con-contenedores"
+id="toc-despliegue-con-contenedores">3. DESPLIEGUE CON
+CONTENEDORES</a></li>
+<li><a href="#arquitectura-de-almacenamiento-y-archivos-del-motor"
+id="toc-arquitectura-de-almacenamiento-y-archivos-del-motor">4.
+ARQUITECTURA DE ALMACENAMIENTO Y ARCHIVOS DEL MOTOR</a></li>
+<li><a href="#ficheros-de-configuración"
+id="toc-ficheros-de-configuración"><img
+src="media_ASGBD_UT1_Teoria_Configuracion_26_27/media/image4.png"
+style="width:6.45833in;height:0.47027in" />5. FICHEROS DE CONFIGURACIÓN
+</a>
+<ul>
+<li><a href="#regla-de-precedencia-y-sobrescritura"
+id="toc-regla-de-precedencia-y-sobrescritura">Regla de Precedencia y
+Sobrescritura:</a></li>
+</ul></li>
+<li><a href="#gestión-avanzada-de-variables"
+id="toc-gestión-avanzada-de-variables">6. GESTIÓN AVANZADA DE VARIABLES
+</a>
+<ul>
+<li><a href="#ámbitos-de-variables-global-vs-sesión"
+id="toc-ámbitos-de-variables-global-vs-sesión"><strong>6.1</strong>
+Ámbitos de Variables: Global vs Sesión</a></li>
+<li><a href="#variantes-sintácticas-de-asignación-en-mysql"
+id="toc-variantes-sintácticas-de-asignación-en-mysql">6.2 Variantes
+Sintácticas de Asignación en MySQL</a>
+<ul>
+<li><a href="#sintaxis-de-variables-globales-global"
+id="toc-sintaxis-de-variables-globales-global">Sintaxis de Variables
+Globales (GLOBAL):</a></li>
+<li><a href="#sintaxis-de-variables-de-sesión-session-o-local"
+id="toc-sintaxis-de-variables-de-sesión-session-o-local">Sintaxis de
+Variables de Sesión (SESSION o LOCAL):</a></li>
+</ul></li>
+<li><a href="#set-persist-y-set-persist_only"
+id="toc-set-persist-y-set-persist_only"><strong>6.3</strong> SET PERSIST
+y SET PERSIST_ONLY</a></li>
+</ul></li>
+<li><a href="#fundamentos-teóricos-de-los-ficheros-de-registro-logs"
+id="toc-fundamentos-teóricos-de-los-ficheros-de-registro-logs">7.
+FUNDAMENTOS TEÓRICOS DE LOS FICHEROS DE REGISTRO (LOGS)</a>
+<ul>
+<li><a href="#clasificación-general-de-las-anotaciones-de-bitácora"
+id="toc-clasificación-general-de-las-anotaciones-de-bitácora">7.1
+Clasificación General de las Anotaciones de Bitácora</a></li>
+<li><a href="#registro-de-errores-error-log-y-filtros-json"
+id="toc-registro-de-errores-error-log-y-filtros-json"><strong>7.2</strong>
+Registro de Errores (Error Log) y Filtros JSON</a></li>
+<li><a href="#registro-general-de-consultas-general-query-log"
+id="toc-registro-general-de-consultas-general-query-log"><strong>7.3</strong>
+Registro General de Consultas (General Query Log)</a></li>
+<li><a href="#registro-de-consultas-lentas-slow-query-log"
+id="toc-registro-de-consultas-lentas-slow-query-log"><strong>7.4</strong>
+Registro de Consultas Lentas (Slow Query Log)</a></li>
+<li><a href="#el-registro-binario-binary-log"
+id="toc-el-registro-binario-binary-log">7.5 El Registro Binario (Binary
+Log)</a>
+<ul>
+<li><a
+href="#diagnóstico-de-bajo-nivel-y-auditoría-con-performance_schema"
+id="toc-diagnóstico-de-bajo-nivel-y-auditoría-con-performance_schema"><strong>8.</strong>
+DIAGNÓSTICO DE BAJO NIVEL Y AUDITORÍA CON performance_schema</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#section-6" id="toc-section-6"></a></li>
+<li><a href="#buenas-prácticas-con-los-logs"
+id="toc-buenas-prácticas-con-los-logs">9. BUENAS PRÁCTICAS CON LOS
+LOGS</a></li>
+</ul>
+</nav>
+        </aside>
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT1_Teoria_Configuracion_26_27.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+<header id="title-block-header">
+<h1 class="title"><p><span id="_p258qvpregav"
+class="anchor"></span>Unidad 1: </p>
+<p><span id="_6b275d9wwqca" class="anchor"></span>INSTALACIÓN,
+CONFIGURACIÓN Y GESTIÓN DE LOGS EN MYSQL </p></h1>
+</header>
+
+<h3 id="ficha-técnica-de-la-unidad">FICHA TÉCNICA DE LA UNIDAD <a class="headerlink" href="#ficha-técnica-de-la-unidad" title="Enlace permanente">¶</a></h3>
+<div class="table-wrapper"><table>
+<tbody>
+<tr class="header">
+<td><strong>Parámetro</strong></td>
+<td><strong>Detalle</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Unidad Trabajo</strong></td>
+<td>UT1: Instalación, Configuración y Gestión de Logs en MySQL 8.x</td>
+</tr>
+<tr class="header">
+<td><strong>Resultados de Aprendizaje (RA) Asociados</strong></td>
+<td><p><strong>RA1:</strong> Identifica los elementos de un sistema
+gestor de bases de datos analizando sus funciones y relación con el
+sistema operativo.</p>
+<p><strong>RA2:</strong> Instala el sistema gestor de bases de datos
+especificando las opciones de configuración y describiendo la estructura
+de sus elementos.</p></td>
+</tr>
+<tr class="odd">
+<td><strong>Criterios de Evaluación (CE) Cubiertos</strong></td>
+<td><p><strong>CE 1.a:</strong> Se han identificado las funciones de los
+sistemas gestores de bases de datos.</p>
+<p><strong>CE 1.b:</strong> Se ha analizado la estructura de
+almacenamiento de la información.</p>
+<p><strong>CE 2.a:</strong> Se han analizado los requisitos del
+sistema.</p>
+<p><strong>CE 2.b:</strong> Se ha seleccionado el motor de
+almacenamiento.</p>
+<p><strong>CE 2.c:</strong> Se han configurado los parámetros del
+sistema gestor.</p>
+<p><strong>CE 2.e:</strong> Se han verificado los ficheros de log del
+SGBD.</p>
+<p><strong>CE 2.f:</strong> Se han resuelto las incidencias de la
+instalación.</p></td>
+</tr>
+<tr class="header">
+<td><strong>Tiempo</strong></td>
+<td>12 horas (Teoría: 2 / Tarea: 4 / Práctica: 6)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="índice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#índice-de-contenidos" title="Enlace permanente">¶</a></h3>
+<p><a href="#introducción-y-contextualización"><u>1. INTRODUCCIÓN Y
+CONTEXTUALIZACIÓN</u></a></p>
+<p><a href="#aspectos-críticos-en-la-configuración"><u>2. ASPECTOS
+CRÍTICOS EN LA CONFIGURACIÓN</u></a></p>
+<p><a href="#despliegue-con-contenedores"><u>3. DESPLIEGUE CON
+CONTENEDORES</u></a></p>
+<p><a href="#arquitectura-de-almacenamiento-y-archivos-del-motor"><u>4.
+ARQUITECTURA DE ALMACENAMIENTO Y ARCHIVOS DEL MOTOR</u></a></p>
+<p><a href="#ficheros-de-configuración"><u>5. FICHEROS DE
+CONFIGURACIÓN</u></a></p>
+<p><a href="#gestión-avanzada-de-variables"><u>6. GESTIÓN AVANZADA DE
+VARIABLES</u></a></p>
+<blockquote>
+<p><a href="#ámbitos-de-variables-global-vs-sesión"><u>6.1 Ámbitos de
+Variables: Global vs Sesión</u></a></p>
+<p><a href="#variantes-sintácticas-de-asignación-en-mysql"><u>6.2
+Variantes Sintácticas de Asignación en MySQL</u></a></p>
+<p><a href="#set-persist-y-set-persist_only"><u>6.3 SET PERSIST y SET
+PERSIST_ONLY</u></a></p>
+</blockquote>
+<p><a
+href="#fundamentos-teóricos-de-los-ficheros-de-registro-logs"><u>7.
+FUNDAMENTOS TEÓRICOS DE LOS FICHEROS DE REGISTRO (LOGS)</u></a></p>
+<blockquote>
+<p><a
+href="#clasificación-general-de-las-anotaciones-de-bitácora"><u>7.1
+Clasificación General de las Anotaciones de Bitácora</u></a></p>
+<p><a href="#registro-de-errores-error-log-y-filtros-json"><u>7.2
+Registro de Errores (Error Log) y Filtros JSON</u></a></p>
+<p><a href="#registro-general-de-consultas-general-query-log"><u>7.3
+Registro General de Consultas (General Query Log)</u></a></p>
+<p><a href="#registro-de-consultas-lentas-slow-query-log"><u>7.4
+Registro de Consultas Lentas (Slow Query Log)</u></a></p>
+<p><a href="#el-registro-binario-binary-log"><u>7.5 El Registro Binario
+(Binary Log)</u></a></p>
+</blockquote>
+<p><a href="#"><u>8. DIAGNÓSTICO DE BAJO NIVEL Y AUDITORÍA CON
+performance_schema</u></a></p>
+<p><a href="#buenas-prácticas-con-los-logs"><u>9. BUENAS PRÁCTICAS CON
+LOS LOGS</u></a></p>
+<h1 id="introducción-y-contextualización">1. INTRODUCCIÓN Y
+CONTEXTUALIZACIÓN <a class="headerlink" href="#introducción-y-contextualización" title="Enlace permanente">¶</a></h1>
+<p>Para un Administrador de Sistemas Informáticos en Red (SysAdmin), una
+base de datos no es simplemente un repositorio abstracto de datos
+relacionales; es un <strong>servicio crítico de infraestructura</strong>
+que compite de forma directa por los recursos de cómputo del servidor
+host (CPU, memoria, almacenamiento e interfaces de red).</p>
+<p>La optimización de un SGBD como MySQL requiere entender la relación
+directa que existe entre el software del gestor y el kernel del sistema
+operativo. Un mal ajuste de las operaciones de Entrada/Salida (I/O) o
+una configuración deficiente de los límites de memoria puede provocar
+problemas catastróficos, desde la ralentización general de las
+aplicaciones (<em>bottlenecks</em>) hasta la detención abrupta del
+servicio debido al Killer de Falta de Memoria del kernel de Linux
+(<em>OOM Killer</em>).</p>
+<p><strong>Relación Curricular:</strong></p>
+<p>Esta unidad didáctica se conecta con el resto de módulos de ASIR de
+la siguiente manera:</p>
+<ul>
+<li><blockquote>
+<p><strong>ASO (Administración de Sistemas Operativos):</strong> Gestión
+de servicios (systemd), permisos a nivel de sistema de archivos
+compatible con POSIX, gestión de límites de procesos (ulimit) y
+almacenamiento persistente en sistemas Linux.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>SAD (Seguridad y Alta Disponibilidad):</strong> Hardening de
+red, cifrado de transmisiones, monitorización activa y análisis forense
+mediante el parseo automatizado de registros (<em>logs</em>).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>SRI (Servicios de Red e Internet):</strong> Arquitectura
+cliente-servidor, sockets TCP/IP de escucha, balanceo de puertos y
+direccionamiento de sockets Unix de dominio local.</p>
+</blockquote></li>
+</ul>
+<h1 id="aspectos-críticos-en-la-configuración">2. ASPECTOS CRÍTICOS EN
+LA CONFIGURACIÓN <a class="headerlink" href="#aspectos-críticos-en-la-configuración" title="Enlace permanente">¶</a></h1>
+<p>La configuración de un motor de bases de datos empresarial es un
+proceso metodológico que impacta directamente en tres dimensiones:
+<strong>rendimiento</strong>, <strong>seguridad</strong> y
+<strong>disponibilidad</strong>. Un SysAdmin debe evaluar rigurosamente
+los siguientes pilares de configuración al diseñar la infraestructura
+del servidor:</p>
+<ul>
+<li><blockquote>
+<p><strong>Motor de Base de Datos (Storage Engine):</strong> Elegir el
+motor de base de datos adecuado es fundamental. La elección depende de
+las necesidades transaccionales, el volumen de lecturas/escrituras y los
+requerimientos de integridad referencial.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Modelado de Datos:</strong> Diseñar la estructura física de
+la base de datos de manera eficiente. Un diseño normalizado evita
+redundancias y optimiza las rutas de acceso físicas del
+almacenamiento.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Índices:</strong> Configurar índices en las columnas
+utilizadas frecuentemente bajo cláusulas WHERE, JOIN o ORDER BY. Los
+índices mejoran drásticamente el rendimiento al acelerar la recuperación
+de datos, evitando barridos secuenciales completos de tablas (<em>Full
+Table Scans</em>).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Ajuste de Parámetros:</strong> Ajustar el archivo de
+configuración del gestor de acuerdo a las capacidades reales de hardware
+del host (reparto de RAM para estructuras de cachés, asignación de hilos
+de CPU y límites de conexiones).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Capacidad de Almacenamiento:</strong> Planificar el espacio
+físico requerido no solo por las tablas del SGBD, sino también por el
+crecimiento histórico del servicio, archivos temporales, almacenamiento
+de índices y la acumulación de ficheros de log en disco.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Rendimiento:</strong> Supervisar constantemente las métricas
+de carga del motor para realizar ajustes proactivos y reactivos ante
+posibles cuellos de botella de hardware o software.</p>
+</blockquote></li>
+</ul>
+<h1 id="despliegue-con-contenedores">3. DESPLIEGUE CON CONTENEDORES <a class="headerlink" href="#despliegue-con-contenedores" title="Enlace permanente">¶</a></h1>
+<p>El estándar de la industria moderna prioriza entornos inmutables y
+reproducibles frente a las tradicionales instalaciones locales sobre
+sistemas hosts de desarrollo (<em>bare-metal</em>). Utilizar
+<strong>Docker</strong> y <strong>Docker Compose</strong> asegura que
+todo el alumnado trabaje en un entorno idéntico, simulando con absoluta
+precisión los flujos de despliegue en entornos en la nube
+(<em>cloud-native</em>).</p>
+<p>A continuación se presenta un archivo de configuración de producción
+docker-compose.yml ajustado para la UT1. Este archivo monta los
+directorios críticos de configuración, datos y logs sobre el volumen
+físico local para permitir un análisis interactivo sin perder
+persistencia.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>version: '3.8'
+services:
+db:
+image: mysql:8.0
+container_name: mysql-sysadmin-ut1
+restart: always
+environment:
+MYSQL_ROOT_PASSWORD: RootSecurePass_2026
+MYSQL_DATABASE: sysadmin_audit
+ports:
+- "3306:3306"
+volumes:
+# Persistencia del directorio de datos del motor
+- db_data:/var/lib/mysql
+# Mapeo personalizado para aplicar configuraciones
+(/etc/mysql/conf.d/)
+- ./config:/etc/mysql/conf.d
+# Directorio de Logs mapeado para permitir análisis externo directo
+en el host
+- ./logs:/var/log/mysql
+networks:
+- asir-net
+deploy:
+resources:
+limits:
+cpus: '1.5'
+memory: 1500M
+volumes:
+db_data:
+networks:
+asir-net:
+driver: bridge</code></pre></div></p>
+<p><strong>Nota:</strong> Para iniciar este escenario en el aula, el
+alumnado ejecutará en la terminal del sistema operativo local:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>docker compose up -d</code></pre></div>4.
+ARQUITECTURA DE ALMACENAMIENTO Y ARCHIVOS DEL MOTOR</h1>
+<p>En los entornos UNIX, MySQL representa todo recurso como un archivo.
+Comprender dónde y cómo escribe el SGBD es indispensable para gestionar
+operaciones de almacenamiento.</p>
+<ul>
+<li><blockquote>
+<p><strong>Data Directory (/var/lib/mysql):</strong> El directorio raíz
+de los datos. Cada base de datos relacional se mapea directamente con un
+subdirectorio en esta ruta física.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Motores de Almacenamiento (Storage Engines):</strong></p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p><strong>InnoDB:</strong> Motor de almacenamiento predeterminado y el
+único recomendado para entornos transaccionales de producción. Garantiza
+el principio ACID (Atomicidad, Consistencia, Aislamiento y Durabilidad).
+Soporta claves foráneas, bloqueos a nivel de registro y recuperación
+automática tras fallos de energía.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>MyISAM:</strong> Antiguo motor sin soporte transaccional.
+Bloquea tablas enteras durante la escritura, lo que genera problemas
+graves de concurrencia bajo cargas elevadas. Útil únicamente para
+lecturas ultrarrápidas en datos históricos inmutables.</p>
+</blockquote></li>
+</ul></li>
+<li><blockquote>
+<p><strong>Archivos Clave en InnoDB:</strong></p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p>ibdata1: Espacio de tablas del sistema (<em>system tablespace</em>).
+Almacena el diccionario de datos internos de InnoDB y registros de
+deshacer (<em>undo logs</em>).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Archivos .ibd: Espacio de tablas independiente por tabla
+(<em>file-per-table tablespace</em>). Cuando la variable
+innodb_file_per_table está en ON (valor por defecto en MySQL 8), cada
+tabla de una base de datos almacena sus registros e índices
+estructurados de forma física en su propio archivo .ibd.</p>
+</blockquote></li>
+<li><blockquote>
+<p>ib_logfile0 e ib_logfile1: El registro de rehacer (<em>Redo
+Log</em>). Es una estructura de búfer circular en disco a la que InnoDB
+escribe inmediatamente las transacciones modificadas en memoria antes de
+pasarlas a los archivos de datos finales. Esto asegura que, en caso de
+un corte eléctrico, las transacciones comprometidas se puedan
+reconstruir al arrancar el servicio.</p>
+</blockquote></li>
+</ul></li>
+</ul>
+<p>El tamaño recomendado para optimizar el almacenamiento de InnoDB en
+servidores dedicados sigue la regla de dimensionamiento de su memoria
+caché interna (<em>Buffer Pool</em>):</p>
+<p><img
+src="media_ASGBD_UT1_Teoria_Configuracion_26_27/media/image2.png"
+style="width:6.45833in;height:0.47027in" />Para un servidor de base de
+datos con 16 GB de memoria RAM dedicada, la asignación de caché
+sería:</p>
+<h1 id="ficheros-de-configuración"><img
+src="media_ASGBD_UT1_Teoria_Configuracion_26_27/media/image4.png"
+style="width:6.45833in;height:0.47027in" />5. FICHEROS DE CONFIGURACIÓN
+ <a class="headerlink" href="#ficheros-de-configuración" title="Enlace permanente">¶</a></h1>
+<p>En una distribución estándar de Linux (como Debian o Ubuntu), la
+configuración de MySQL está estructurada bajo un modelo de herencia
+jerárquica modular. El archivo de entrada principal es
+/etc/mysql/my.cnf. Sin embargo, para mantener el orden, este archivo
+incluye de forma recursiva todos los subficheros con extensión .cnf
+alojados en directorios específicos:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Directorio para configuraciones del cliente local (mysql,
+mysqldump)
+/etc/mysql/conf.d/
+# Directorio de configuración específico para el servicio demonio del
+servidor (mysqld)
+/etc/mysql/mysql.conf.d/</code></pre></div></h4>
+<h3 id="regla-de-precedencia-y-sobrescritura">Regla de Precedencia y
+Sobrescritura: <a class="headerlink" href="#regla-de-precedencia-y-sobrescritura" title="Enlace permanente">¶</a></h3>
+<p>Si una misma variable se define en múltiples archivos de
+configuración de MySQL, el motor leerá los archivos de forma secuencial
+y aplicará siempre <strong>el último valor leído</strong>. El orden
+secuencial de carga en Linux es:</p>
+<ol type="1">
+<li><blockquote>
+<p>/etc/my.cnf</p>
+</blockquote></li>
+<li><blockquote>
+<p>/etc/mysql/my.cnf</p>
+</blockquote></li>
+<li><blockquote>
+<p>/usr/etc/my.cnf</p>
+</blockquote></li>
+<li><blockquote>
+<p>~/.my.cnf (Configuraciones de perfil de usuario)</p>
+</blockquote></li>
+</ol>
+<p>A continuación, se define un archivo de configuración de producción
+optimizado para el servidor que los alumnos montarán dentro de la
+carpeta local ./config/custom_mysqld.cnf asociada a su contenedor:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>[mysqld]
+# Red y Puertos
+bind-address = 0.0.0.0
+port = 3306
+mysqlx_port = 33060
+# Conexiones y Seguridad
+max_connections = 150
+autocommit = OFF
+default_password_lifetime = 270
+character-set-server = utf8mb4
+# Memoria de InnoDB
+innodb_buffer_pool_size = 900M
+innodb_log_file_size = 128M
+innodb_file_per_table = ON
+# Logs
+general_log = ON
+general_log_file = /var/log/mysql/query.log
+slow_query_log = ON
+slow_query_log_file = /var/log/mysql/slow.log
+long_query_time = 2.000000
+log_queries_not_using_indexes = ON</code></pre></div></h4>
+<h1 id="gestión-avanzada-de-variables">6. GESTIÓN AVANZADA DE VARIABLES
+ <a class="headerlink" href="#gestión-avanzada-de-variables" title="Enlace permanente">¶</a></h1>
+<p>MySQL contiene cientos de variables dinámicas e inmóviles que dictan
+su comportamiento. Para consultarlas desde la línea de comandos de
+manera rápida, un SysAdmin utiliza sentencias SQL basadas en patrones de
+filtrado:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Obtener el valor de las conexiones máximas configuradas
+SHOW VARIABLES LIKE 'max_connections';
+-- Alternativa directa consultando las variables del sistema
+SELECT @@global.max_connections;</code></pre></div></h4>
+<h2 id="ámbitos-de-variables-global-vs-sesión"><strong>6.1</strong>
+Ámbitos de Variables: Global vs Sesión <a class="headerlink" href="#ámbitos-de-variables-global-vs-sesión" title="Enlace permanente">¶</a></h2>
+<p>Es fundamental que el SysAdmin diferencie entre los dos entornos
+lógicos en los que actúa una variable dentro de la memoria RAM de la
+instancia activa:</p>
+<ol type="1">
+<li><blockquote>
+<p><strong>Global (GLOBAL):</strong> Afecta de manera general al SGBD y
+a todas las conexiones entrantes nuevas que se establezcan tras el
+cambio.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Sesión (SESSION o LOCAL):</strong> Afecta única y
+exclusivamente a la conexión activa del cliente que realiza la
+modificación. No altera a los demás usuarios conectados ni a los nuevos
+hilos de comunicación de red.</p>
+</blockquote></li>
+</ol>
+<p>Las asignaciones dinámicas en caliente residen únicamente en la
+memoria RAM volátil. Si el servicio de base de datos se reinicia de
+imprevisto, o el host experimenta un apagado físico, todos estos cambios
+dinámicos se perderán, volviendo a leer los parámetros estáticos de los
+ficheros físicos del disco (/etc/mysql/my.cnf).</p>
+<h2 id="variantes-sintácticas-de-asignación-en-mysql">6.2 Variantes
+Sintácticas de Asignación en MySQL <a class="headerlink" href="#variantes-sintácticas-de-asignación-en-mysql" title="Enlace permanente">¶</a></h2>
+<p>El lenguaje SQL de MySQL permite asignar variables de sistema
+dinámicas a través de diferentes construcciones sintácticas
+equivalentes. El SysAdmin debe conocerlas para interpretar y depurar
+scripts legados de administración:</p>
+<h3 id="sintaxis-de-variables-globales-global">Sintaxis de Variables
+Globales (GLOBAL): <a class="headerlink" href="#sintaxis-de-variables-globales-global" title="Enlace permanente">¶</a></h3>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Forma 1: Directa mediante modificador de palabra clave
+SET GLOBAL max_connections = 1000;
+-- Forma 2: Uso del calificador de ámbito con doble arroba (@@)
+SET @@GLOBAL.max_connections = 1000;</code></pre></div></p>
+<h3 id="sintaxis-de-variables-de-sesión-session-o-local">Sintaxis de
+Variables de Sesión (SESSION o LOCAL): <a class="headerlink" href="#sintaxis-de-variables-de-sesión-session-o-local" title="Enlace permanente">¶</a></h3>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Forma 1: Asignación explícita mediante SESSION
+SET SESSION sql_mode = 'TRADITIONAL';
+-- Forma 2: Uso del modificador local compatible con ANSI
+SET LOCAL sql_mode = 'TRADITIONAL';
+-- Forma 3: Sintaxis abreviada con calificador doble arroba
+(@@SESSION)
+SET @@SESSION.sql_mode = 'TRADITIONAL';
+-- Forma 4: Sintaxis abreviada con calificador de variables locales
+(@@LOCAL)
+SET @@LOCAL.sql_mode = 'TRADITIONAL';
+-- Forma 5: Calificador genérico simplificado (asume por defecto
+@@session)
+SET @@sql_mode = 'TRADITIONAL';
+-- Forma 6: Asignación implícita de sesión
+SET sql_mode = 'TRADITIONAL';</code></pre></div></p>
+<h2 id="set-persist-y-set-persist_only"><strong>6.3</strong> SET PERSIST
+y SET PERSIST_ONLY <a class="headerlink" href="#set-persist-y-set-persist_only" title="Enlace permanente">¶</a></h2>
+<p>Tradicionalmente, para fijar un cambio de forma definitiva, el
+SysAdmin debía conectarse al servidor por SSH, editar manualmente el
+fichero de configuración de MySQL con permisos de superusuario (sudo
+nano /etc/mysql/mysql.conf.d/mysqld.cnf) y reiniciar el demonio.</p>
+<p>MySQL 8.x resuelve este punto de fricción introduciendo la
+<strong>persistencia SQL nativa sin necesidad de acceder al Shell del
+sistema operativo</strong>.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Persistir un cambio en caliente en la memoria del gestor y
+escribirlo en disco de forma concurrente
+SET PERSIST max_connections = 250;
+-- Sintaxis alternativa equivalente
+SET @@PERSIST.max_connections = 250;</code></pre></div></p>
+<p><strong>¿Cómo funciona internamente?</strong></p>
+<p>Al ejecutar la instrucción SET PERSIST, MySQL realiza dos acciones
+automáticas en un solo paso:</p>
+<ol type="1">
+<li><blockquote>
+<p>Aplica el cambio en tiempo de ejecución en la memoria RAM (SET
+GLOBAL).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Genera o modifica un fichero físico en formato JSON ubicado en el
+data directory de la base de datos denominado
+/var/lib/mysql/mysqld-auto.cnf.</p>
+</blockquote></li>
+</ol>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>{
+"Version": 2,
+"mysql_server": {
+"max_connections": {
+"Value": "250",
+"Metadata": {
+"Timestamp": 1778235720000000,
+"User": "root",
+"Host": "localhost"
+}
+}
+}
+}</code></pre></div></p>
+<p>Al arrancar, MySQL carga primero el archivo /etc/mysql/my.cnf
+tradicional y, como última aetpa del proceso de inicialización, lee el
+archivo JSON /var/lib/mysql/mysqld-auto.cnf para <strong>sobrescribir
+todos los parámetros estáticos</strong>.</p>
+<h5 id="el-comando-restrictivo-set-persist_only">El comando restrictivo
+SET PERSIST_ONLY: <a class="headerlink" href="#el-comando-restrictivo-set-persist_only" title="Enlace permanente">¶</a></h5>
+<p>Existen parámetros que son inalterables en RAM con el motor activo y
+requieren obligatoriamente un reinicio físico del servidor de bases de
+datos para su carga (por ejemplo, el puerto de escucha port o la
+asignación de memoria estática innodb_buffer_pool_size). Intentar usar
+SET GLOBAL sobre ellos lanzará un error crítico de ejecución.</p>
+<p>Para estos casos, utilizamos:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Escribe la variable en el archivo de autoconfiguración
+persistente de disco pero NO intenta aplicarla en caliente en RAM
+SET PERSIST_ONLY innodb_buffer_pool_size = 1073741824;
+--
+Escribe la variable en el archivo de autoconfiguración persistente de
+disco pero NO intenta aplicarla en caliente en RAM
+SET PERSIST_ONLY innodb_buffer_pool_size = 1073741824;</code></pre></div></p>
+<h4 id="section-3"> <a class="headerlink" href="#section-3" title="Enlace permanente">¶</a></h4>
+<p>El cambio tomará efectos reales en el siguiente reinicio del
+servicio.</p>
+<p>Comando para limpiar y revocar la persistencia:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Eliminar la persistencia de una variable concreta (volverá a
+heredar el valor del fichero my.cnf en el próximo reinicio)
+RESET PERSIST max_connections;
+-- Limpiar completamente todas las variables añadidas dinámicamente
+al fichero mysqld-auto.cnf
+RESET PERSIST;</code></pre></div>7.
+FUNDAMENTOS TEÓRICOS DE LOS FICHEROS DE REGISTRO (LOGS)</h1>
+<p>Un fichero de registro, LOG o bitácora, almacena información
+cronológica sobre los numerosos eventos producidos en un SGBD, tanto en
+su instalación, como en su explotación diaria y administración avanzada.
+Estos ficheros son <strong>esenciales para conocer el comportamiento
+real del SGBD</strong>, ya que ayudan al administrador a averiguar las
+causas de un mal funcionamiento y a auditar todas las operaciones que
+los clientes realizan en el gestor.</p>
+<h2 id="clasificación-general-de-las-anotaciones-de-bitácora">7.1
+Clasificación General de las Anotaciones de Bitácora <a class="headerlink" href="#clasificación-general-de-las-anotaciones-de-bitácora" title="Enlace permanente">¶</a></h2>
+<p>Cualquier flujo de información dirigido a un fichero de logs supone
+un apunte de información por parte del programa o proceso que se está
+ejecutando. Generalmente, en un sistema de base de datos profesional, se
+pueden distinguir tres tipos de anotaciones:</p>
+<ol type="1">
+<li><blockquote>
+<p><strong>Información de Eventos y Alertas:</strong> Acciones de
+sistema llevadas a cabo sobre o desde la instancia de base de datos
+(arranque del servicio, parada controlada, alertas críticas de
+desbordamiento de RAM o hilos bloqueados).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Estado General de Parámetros de la Instancia:</strong>
+Consejos prácticos de actuación proporcionados por el propio gestor en
+caso de que alguna variable interna sobrepase o no un determinado umbral
+de funcionamiento programado en el software.</p>
+</blockquote></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Transacciones y Operaciones (Mutación de Datos):
+Registro físico de las sentencias ejecutadas por los usuarios que
+afecten de forma directa a la estructura física de la base de datos
+(sentencias DDL como CREATE o ALTER) o a la información contenida en
+ella (sentencias DML como INSERT, UPDATE o DELETE).</code></pre></div></li>
+</ol>
+<h2
+id="registro-de-errores-error-log-y-filtros-json"><strong>7.2</strong>
+Registro de Errores (Error Log) y Filtros JSON <a class="headerlink" href="#registro-de-errores-error-log-y-filtros-json" title="Enlace permanente">¶</a></h2>
+<p>Este registro almacena información esencial sobre fallos del motor de
+almacenamiento, violaciones de acceso de red, interrupciones de
+concurrencia y advertencias en el arranque de la instancia.</p>
+<p><strong>Hardening: Registro en Formato JSON</strong></p>
+<p>A partir de MySQL 8.0, un administrador de sistemas puede estructurar
+el log de errores utilizando formato JSON para su posterior parseo y
+visualización en paneles externos.</p>
+<p>Para activarlo en caliente, debemos cargar el componente filter
+correspondiente del motor:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Instalar el cargador de logs JSON
+INSTALL COMPONENT 'file://component_log_sink_json';
+-- Configurar los logs de errores para que escriban tanto en texto
+tradicional como en formato estructurado JSON
+SET PERSIST log_error_services = 'log_filter_internal;
+log_sink_internal; log_sink_json';</code></pre></div>Esto creará un archivo con formato estructurado denominado
+error.json dentro del directorio asignado de datos.</p>
+<h2
+id="registro-general-de-consultas-general-query-log"><strong>7.3</strong>
+Registro General de Consultas (General Query Log) <a class="headerlink" href="#registro-general-de-consultas-general-query-log" title="Enlace permanente">¶</a></h2>
+<p>Es una bitácora exhaustiva que registra el momento exacto en el que
+cualquier cliente se conecta o desconecta del servidor de bases de
+datos, junto con <strong>todas las sentencias SQL</strong> enviadas al
+motor por el cliente.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Configuración física requerida en
+# /etc/mysql/mysql.conf.d/mysqld.cnf
+general_log = ON
+general_log_file = /var/log/mysql/query.log</code></pre></div></p>
+<p>Advertencia Crítica de Seguridad y Rendimiento en Producción:</p>
+<ul>
+<li><blockquote>
+<p><strong>Degradación del subsistema de I/O (Rendimiento):</strong>
+Cada comando que ejecuta un cliente debe escribirse en un archivo físico
+en disco de manera síncrona antes de responder al usuario. Bajo cargas
+concurrentes elevadas de miles de clientes por segundo, esto destruye la
+velocidad de entrada/salida (<em>I/O bottlenecks</em>), reduciendo
+drásticamente el rendimiento del sistema de almacenamiento del
+servidor.</p>
+</blockquote></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Privacidad e Información Sensible (Seguridad): El
+General Log escribe las sentencias en formato plano ASCII. Si un script
+o sistema web ejecuta comandos de creación de usuarios o inserción de
+datos (INSERT INTO usuarios (usuario, password) VALUES ('sysadmin',
+'SuperSecPass123')), las claves de usuario se escribirán en texto plano
+dentro de /var/log/mysql/query.log. Si un intruso consiguiera acceso de
+lectura al servidor de ficheros del sistema operativo, toda la seguridad
+del sistema se vería comprometida.</code></pre></div></li>
+<li><blockquote>
+<p><strong>Consumo Masivo de Disco (Almacenamiento):</strong> En bases
+de datos con millones de operaciones diarias, este log puede agotar en
+cuestión de horas el espacio total del disco duro si no se parametriza
+una correcta rotación y mantenimiento de espacio físico.</p>
+</blockquote></li>
+</ul>
+<p><strong>Uso Recomendado:</strong> Activar únicamente durante ventanas
+controladas de depuración de software en entornos locales de desarrollo,
+o bajo estrictas auditorías de seguridad a nivel de red aislada.
+Desactivar inmediatamente al finalizar las pruebas.</p>
+<h2
+id="registro-de-consultas-lentas-slow-query-log"><strong>7.4</strong>
+Registro de Consultas Lentas (Slow Query Log) <a class="headerlink" href="#registro-de-consultas-lentas-slow-query-log" title="Enlace permanente">¶</a></h2>
+<p>La herramienta primordial de optimización que tiene un SysAdmin.
+Registra aquellas sentencias SQL cuya ejecución interna en CPU supera el
+umbral de tiempo especificado en milisegundos en la variable de sistema
+long_query_time.</p>
+<p><strong>Configuración e Implementación:</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Activar el motor de registro de consultas lentas a nivel global y
+persistente
+SET PERSIST slow_query_log = ON;
+SET PERSIST slow_query_log_file = '/var/log/mysql/slow.log';
+-- Fijar el umbral de tiempo máximo a 2 segundos exactos
+SET PERSIST long_query_time = 2.000000;
+-- Capturar también todas aquellas consultas ineficientes que no
+utilizan índices para su ejecución
+SET PERSIST log_queries_not_using_indexes = ON;</code></pre></div></p>
+<h5 id="generación-de-prueba-y-simulación-de-latencia">Generación de
+Prueba y Simulación de Latencia: <a class="headerlink" href="#generación-de-prueba-y-simulación-de-latencia" title="Enlace permanente">¶</a></h5>
+<p>Para comprobar que el registro de consultas lentas funciona
+correctamente, el administrador simula una parada del hilo de ejecución
+mediante la función de pausa de MySQL:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Provocar de forma artificial una ejecución lenta controlada de 3
+segundos
+SELECT NOW(), SLEEP(3);</code></pre></div></h5>
+<h5 id="parseo-técnico-del-registro">Parseo Técnico del Registro: <a class="headerlink" href="#parseo-técnico-del-registro" title="Enlace permanente">¶</a></h5>
+<p>Al abrir el fichero /var/log/mysql/slow.log en el host o contenedor,
+el administrador observará la siguiente estructura detallada:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Time: 2026-06-07T11:42:01.354210Z
+# User@Host: root[root] @ localhost [] Id: 12
+# Query_time: 3.001240 Lock_time: 0.000000 Rows_sent: 1
+Rows_examined: 1
+SET timestamp=1778235721;
+SELECT NOW(), SLEEP(3);
+#
+Time: 2026-06-07T11:42:01.354210Z
+# User@Host: root[root] @ localhost [] Id: 12
+# Query_time: 3.001240 Lock_time: 0.000000 Rows_sent: 1 Rows_examined:
+1
+SET timestamp=1778235721;
+SELECT NOW(), SLEEP(3);</code></pre></div></p>
+<p><strong>Métricas Clave de Análisis:</strong></p>
+<ul>
+<li><blockquote>
+<p>Query_time: El tiempo que la consulta bloqueó la CPU del gestor de
+base de datos (<img
+src="media_ASGBD_UT1_Teoria_Configuracion_26_27/media/image3.png"
+style="width:1.69824in;height:0.26047in" />).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Lock_time: El tiempo que la sentencia tuvo que esperar en cola debido
+a un bloqueo de tabla o fila por otra transacción concurrente.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Rows_sent: Cantidad de filas devueltas al cliente.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Rows_examined: El número real de registros que el motor tuvo que
+buscar en el almacenamiento físico en disco antes de poder responder. Si
+Rows_examined es muy elevado en comparación con Rows_sent, significa que
+la consulta no cuenta con un índice B-Tree óptimo y obliga al motor a
+realizar un escaneo completo de la tabla (<em>Full Table Scan</em>).</p>
+</blockquote></li>
+</ul>
+<h2 id="el-registro-binario-binary-log">7.5 El Registro Binario (Binary
+Log) <a class="headerlink" href="#el-registro-binario-binary-log" title="Enlace permanente">¶</a></h2>
+<p>El log binario (binlog) es un registro estructurado que contiene
+todos los eventos que describen cambios en la base de datos, como
+modificaciones de tablas (DDL) o modificaciones en los datos de las
+tablas (DML). Se almacena en formato binario para garantizar la
+velocidad de escritura.</p>
+<h5 id="propósitos-fundamentales"><strong>Propósitos
+Fundamentales:</strong> <a class="headerlink" href="#propósitos-fundamentales" title="Enlace permanente">¶</a></h5>
+<ol type="1">
+<li><blockquote>
+<p><strong>Replicación de Datos:</strong> En un clúster MySQL
+(Maestro-Réplica), el servidor principal (<em>Master</em>) envía las
+instrucciones escritas en su log binario al servidor secundario
+(<em>Replica</em>) para que este ejecute las transacciones locales y
+mantenga el estado de los datos sincronizado.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Operaciones de Recuperación tras Fallos (Recovery):</strong>
+Permite recuperar el estado de una base de datos después de restaurar
+una copia de seguridad en frío. Al ejecutar el binlog a partir de la
+fecha de la copia, el motor re-aplica de forma exacta todas las
+operaciones transaccionales comprometidas hasta el instante del desastre
+(<em>Point-in-time recovery</em>).</p>
+</blockquote></li>
+</ol>
+<h3
+id="diagnóstico-de-bajo-nivel-y-auditoría-con-performance_schema"><strong>8.</strong>
+DIAGNÓSTICO DE BAJO NIVEL Y AUDITORÍA CON performance_schema <a class="headerlink" href="#diagnóstico-de-bajo-nivel-y-auditoría-con-performance_schema" title="Enlace permanente">¶</a></h3>
+<p>El performance_schema es una potente base de datos interna de bajo
+nivel de MySQL encargada de recopilar estadísticas operativas en tiempo
+real de la instancia con una sobrecarga de recursos casi nula.</p>
+<p>Cuando se producen errores recurrentes de conexión de usuarios o
+problemas de autenticación, el SysAdmin puede analizar de forma
+detallada las tablas internas de rendimiento.</p>
+<h4
+id="consulta-para-auditar-incidencias-y-clasificar-errores-por-usuario">Consulta
+para auditar incidencias y clasificar errores por usuario: <a class="headerlink" href="#consulta-para-auditar-incidencias-y-clasificar-errores-por-usuario" title="Enlace permanente">¶</a></h4>
+<p>La tabla events_errors_summary_by_user_by_error monitoriza de forma
+centralizada todos los códigos de error disparados por los distintos
+perfiles de usuario. La siguiente consulta devuelve un desglose de los
+últimos 20 errores registrados para detectar posibles ataques de fuerza
+bruta o desajustes de conexión:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT
+USER,
+ERROR_NUMBER,
+ERROR_NAME,
+COUNT_STAR AS TOTAL_OCURRENCIAS,
+FIRST_SEEN AS PRIMERA_VEZ,
+LAST_SEEN AS ULTIMA_VEZ
+FROM
+performance_schema.events_errors_summary_by_user_by_error
+WHERE
+USER IS NOT NULL AND COUNT_STAR &gt; 0
+ORDER BY
+LAST_SEEN DESC
+LIMIT 20;</code></pre></div></h4>
+<p>Comprobación de Actividad SQL y Contador de consultas realizadas:</p>
+<p>La tabla status_by_user muestra las variables de estado acumuladas
+por hilos de conexión individuales. Para obtener una visión cuantitativa
+de cuántas lecturas de datos (SELECT) ha realizado el usuario root para
+evaluar la carga de trabajo en el servidor:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT
+USER,
+VARIABLE_NAME,
+VARIABLE_VALUE
+FROM
+performance_schema.status_by_user
+WHERE
+USER = 'root' AND VARIABLE_NAME LIKE 'Handler_read%'
+ORDER BY
+CAST(VARIABLE_VALUE AS UNSIGNED) DESC;</code></pre></div></h1>
+<h1 id="buenas-prácticas-con-los-logs">9. BUENAS PRÁCTICAS CON LOS
+LOGS <a class="headerlink" href="#buenas-prácticas-con-los-logs" title="Enlace permanente">¶</a></h1>
+<p>Un servidor de bases de datos de nivel profesional debe garantizar la
+protección, el aislamiento y la autolimpiabilidad de sus archivos
+físicos.</p>
+<p>1. Aislamiento de Permisos en el Sistema de Archivos de Linux:</p>
+<p>Los archivos de logs contienen metadatos y en ocasiones credenciales
+que nunca deben ser expuestos a usuarios locales del sistema operativo
+que no pertenezcan al grupo de administración de la base de datos.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Asignar la propiedad al usuario y grupo del demonio mysqld
+sudo chown -R mysql:mysql /var/log/mysql
+# Restringir permisos de lectura/escritura únicamente al
+propietario
+sudo chmod 750 /var/log/mysql
+sudo chmod 640 /var/log/mysql/*.log</code></pre></div></p>
+<p>2. Rotación de Logs para Evitar que el Disco se Llene:</p>
+<p>Un query.log mal gestionado en producción puede acumular cientos de
+gigabytes en cuestión de días y provocar un fallo total del sistema de
+archivos al agotar los inodos o el espacio de almacenamiento disponible
+del servidor físico.</p>
+<p>Para evitarlo, se configura el servicio logrotate en Linux agregando
+un archivo de configuración específico:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Archivo de Configuración del Rotador de Logs del Sistema Linux:
+/etc/logrotate.d/mysql-server
+/var/log/mysql/*.log {
+weekly
+rotate 4
+size 100M
+compress
+delaycompress
+missingok
+notifempty
+sharedscripts
+postrotate
+# Forzar a MySQL a reabrir y recrear los archivos físicos tras la
+rotación de logs sin reiniciar el servicio
+/usr/bin/mysqladmin flush-logs
+endscript
+}</code></pre></div></p>
+
+        </main>
+    </div>
+</body>
+</html>

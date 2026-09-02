@@ -1,0 +1,1819 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASGBD - Programacion</title>
+    <style>
+    
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --bg-header: #1e3a8a;
+    --text-header: #ffffff;
+    --bg-body: #f8fafc;
+    --text-body: #1e293b;
+    --border-color: #cbd5e1;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-body);
+    color: var(--text-body);
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, [id], a[name] {
+    scroll-margin-top: 80px !important;
+}
+
+.headerlink {
+    display: inline-block;
+    margin-left: 0.4rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.8em;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
+h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
+    visibility: visible;
+    opacity: 1;
+}
+
+.headerlink:hover {
+    color: var(--primary);
+}
+
+#site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    background: var(--bg-header);
+    color: var(--text-header);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    height: 62px;
+}
+
+.site-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.top-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.top-nav .nav-btn {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+.top-nav .nav-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 9px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown:hover .dropbtn, .dropbtn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 320px;
+    max-width: 480px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 10001;
+    border: 1px solid #e2e8f0;
+    margin-top: 6px;
+}
+
+.dropdown-content a {
+    color: var(--text-body);
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.92rem;
+    border-bottom: 1px solid #f1f5f9;
+    line-height: 1.4;
+    transition: background 0.15s, color 0.15s;
+    word-break: break-word;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #eff6ff;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block !important;
+}
+
+#page-layout {
+    display: flex;
+    min-height: calc(100vh - 62px);
+}
+
+#left-panel {
+    width: 320px;
+    min-width: 320px;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 1.5rem 1.25rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: sticky;
+    top: 62px;
+    height: calc(100vh - 62px);
+}
+
+#left-panel h3 {
+    font-size: 1rem;
+    margin-top: 0;
+    color: #334155;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
+
+#left-panel nav#TOC, #left-panel #TOC {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+#left-panel ul {
+    list-style-type: none;
+    padding-left: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+#left-panel li {
+    margin: 6px 0;
+}
+
+#left-panel a {
+    color: #475569;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    display: block;
+    transition: color 0.15s;
+}
+
+#left-panel a:hover {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+#main-content {
+    flex: 1;
+    padding: 2.5rem 4rem;
+    box-sizing: border-box;
+    max-width: 100% !important;
+    width: calc(100% - 320px);
+    min-width: 0;
+}
+
+/* TABLAS ELEGANTES Y RESPONSIVE */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1.75rem 0;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    font-size: 0.93rem;
+    background: #ffffff;
+    table-layout: auto !important;
+}
+
+th, td {
+    padding: 10px 14px !important;
+    border: 1px solid #cbd5e1 !important;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+td p, th p {
+    margin: 0 !important;
+    padding: 2px 0 !important;
+}
+
+th {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #0f172a !important;
+}
+
+tr:nth-child(even) td {
+    background-color: #f8fafc !important;
+}
+
+tr:hover td {
+    background-color: #f1f5f9 !important;
+}
+
+/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
+.code-wrapper {
+    position: relative;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0f172a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #334155;
+    color: #f8fafc;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.copy-btn:hover {
+    background: #2563eb;
+}
+
+pre {
+    margin: 0 !important;
+    padding: 1.25rem 1.25rem !important;
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    overflow-x: auto !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+}
+
+code {
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+}
+
+p code, li code {
+    background: #e2e8f0;
+    color: #0f172a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
+
+/* RESPONSIVE DESIGN PARA MÓVILES Y TABLETS */
+@media (max-width: 768px) {
+    .header-container {
+        height: auto;
+        flex-direction: column;
+        padding: 0.75rem 1rem;
+        gap: 0.6rem;
+    }
+    
+    .site-title {
+        font-size: 1.05rem;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .site-title img {
+        height: 28px !important;
+    }
+
+    .top-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 0.35rem;
+    }
+
+    .top-nav .nav-btn, .dropbtn {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    .dropdown-content {
+        min-width: 240px;
+        max-width: 90vw;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #page-layout {
+        flex-direction: column;
+    }
+
+    #left-panel {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        position: static !important;
+        border-right: none !important;
+        border-bottom: 2px solid #e2e8f0;
+        padding: 1rem !important;
+    }
+
+    #main-content {
+        width: 100% !important;
+        padding: 1.25rem 1rem !important;
+    }
+
+    iframe {
+        height: 60vh !important;
+    }
+
+    th, td {
+        padding: 8px 10px !important;
+        font-size: 0.85rem !important;
+    }
+
+    pre {
+        padding: 0.85rem !important;
+        font-size: 0.82rem !important;
+    }
+}
+
+    </style>
+    <script>
+    
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.dropdown').forEach(dd => {
+        const btn = dd.querySelector('.dropbtn');
+        const content = dd.querySelector('.dropdown-content');
+        if (btn && content) {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = content.style.display === 'block';
+                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
+                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+                if (!isOpen) {
+                    content.style.display = 'block';
+                    btn.classList.add('active');
+                }
+            });
+        }
+    });
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
+        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+    });
+
+    // Controlador universal de clics en enlaces ancla (#...)
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const rawHref = this.getAttribute('href') || '';
+            const hashIdx = rawHref.indexOf('#');
+            if (hashIdx === -1) return;
+            const hash = rawHref.substring(hashIdx + 1);
+            if (!hash) return;
+            
+            let targetId = hash;
+            try { targetId = decodeURIComponent(hash); } catch(err) {}
+
+            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
+            if (!targetEl) {
+                for (let el of document.querySelectorAll('[id]')) {
+                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
+                        targetEl = el;
+                        break;
+                    }
+                }
+            }
+
+            if (targetEl) {
+                e.preventDefault();
+                const headerOffset = 75;
+                const elementPosition = targetEl.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                if (history.pushState) {
+                    history.pushState(null, null, '#' + targetId);
+                }
+            }
+        });
+    });
+});
+
+function copyCode(btn) {
+    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
+    navigator.clipboard.writeText(code).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = '✅ ¡Copiado!';
+        btn.style.background = '#16a34a';
+        setTimeout(() => {
+            btn.innerText = orig;
+            btn.style.background = '#334155';
+        }, 2000);
+    });
+}
+
+    </script>
+</head>
+<body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD &ndash; Programacion</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+      <a href="ASGBD_Presentacion_26_27.html" class="nav-btn">Presentación</a>
+      <a href="ASGBD_Programacion_26_27.html" class="nav-btn">Programación</a>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Teoría ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Teoria_Configuracion_26_27.html">ASGBD UT1 Teoria Configuracion 26 27</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Tareas y Prácticas ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Tarea_Configuracion_26_27.html">ASGBD UT1 Tarea Configuracion 26 27</a>
+          <a href="ASGBD_UT1_Practica_26_27.html">ASGBD UT1 Practica 26 27</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <aside id="left-panel">
+            <h3>Índice del Tema</h3>
+            <nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#administración-de-sistemas-gestores-de-bases-de-datos"
+id="toc-administración-de-sistemas-gestores-de-bases-de-datos">ADMINISTRACIÓN
+DE SISTEMAS GESTORES DE BASES DE DATOS</a></li>
+<li><a href="#programación-didáctica"
+id="toc-programación-didáctica">Programación Didáctica </a></li>
+<li><a href="#curso-20262027" id="toc-curso-20262027">Curso
+2026/2027</a>
+<ul>
+<li><a href="#section" id="toc-section"></a></li>
+<li><a href="#section-1" id="toc-section-1"></a></li>
+<li><a href="#índice" id="toc-índice">Índice</a></li>
+</ul></li>
+<li><a href="#contextualización.-normativa"
+id="toc-contextualización.-normativa">1. Contextualización.
+Normativa</a></li>
+<li><a href="#resultados-de-aprendizaje-y-criterios"
+id="toc-resultados-de-aprendizaje-y-criterios"><strong>2.</strong>
+Resultados de Aprendizaje y Criterios </a>
+<ul>
+<li><a href="#a.-competencias-profesionales-personales-y-sociales"
+id="toc-a.-competencias-profesionales-personales-y-sociales">A.
+Competencias Profesionales, Personales y Sociales:</a></li>
+<li><a href="#b.-objetivos-generales-del-ciclo-formativo"
+id="toc-b.-objetivos-generales-del-ciclo-formativo">B. Objetivos
+Generales del Ciclo Formativo:</a></li>
+<li><a href="#section-2" id="toc-section-2"></a></li>
+<li><a
+href="#ra4.-realiza-tareas-de-administración-de-bases-de-datos-analizando-la-estructura-lógica-y-física-y-aplicando-medidas-de-optimización.-peso-total-del-módulo-15"
+id="toc-ra4.-realiza-tareas-de-administración-de-bases-de-datos-analizando-la-estructura-lógica-y-física-y-aplicando-medidas-de-optimización.-peso-total-del-módulo-15">RA4.
+Realiza tareas de administración de bases de datos analizando la
+estructura lógica y física y aplicando medidas de optimización. (Peso
+total del módulo: 15%)</a></li>
+<li><a
+href="#ra5.-aplica-medidas-de-seguridad-y-control-de-acceso-configurando-perfiles-y-auditorías-de-seguridad.-peso-total-del-módulo-15"
+id="toc-ra5.-aplica-medidas-de-seguridad-y-control-de-acceso-configurando-perfiles-y-auditorías-de-seguridad.-peso-total-del-módulo-15">RA5.
+Aplica medidas de seguridad y control de acceso configurando perfiles y
+auditorías de seguridad. (Peso total del módulo: 15%)</a></li>
+<li><a href="#section-3" id="toc-section-3"></a></li>
+<li><a
+href="#ra6.-asegura-la-disponibilidad-y-recuperación-de-la-información-aplicando-políticas-de-copias-de-seguridad-y-replicación.-peso-total-del-módulo-15"
+id="toc-ra6.-asegura-la-disponibilidad-y-recuperación-de-la-información-aplicando-políticas-de-copias-de-seguridad-y-replicación.-peso-total-del-módulo-15">RA6.
+Asegura la disponibilidad y recuperación de la información aplicando
+políticas de copias de seguridad y replicación. (Peso total del módulo:
+15%)</a></li>
+<li><a
+href="#ra7.-realiza-tareas-de-transferencia-y-migración-de-datos-analizando-formatos-de-intercambio-y-herramientas-de-exportación-e-importación.-peso-total-del-módulo-10"
+id="toc-ra7.-realiza-tareas-de-transferencia-y-migración-de-datos-analizando-formatos-de-intercambio-y-herramientas-de-exportación-e-importación.-peso-total-del-módulo-10">RA7.
+Realiza tareas de transferencia y migración de datos analizando formatos
+de intercambio y herramientas de exportación e importación. (Peso total
+del módulo: 10%)</a></li>
+</ul></li>
+<li><a href="#bloques-de-contenidos-y-distribución-temporal"
+id="toc-bloques-de-contenidos-y-distribución-temporal">3<strong>.
+Bloques de Contenidos y Distribución Temporal</strong></a>
+<ul>
+<li><a
+href="#distribución-temporal-y-secuenciación-de-unidades-de-trabajo"
+id="toc-distribución-temporal-y-secuenciación-de-unidades-de-trabajo">Distribución
+Temporal y Secuenciación de Unidades de Trabajo:</a></li>
+</ul></li>
+<li><a href="#concurrencia-dual-formación-en-empresa"
+id="toc-concurrencia-dual-formación-en-empresa">4<strong>. Concurrencia
+Dual (Formación en Empresa)</strong></a>
+<ul>
+<li><a
+href="#criterios-de-evaluación-seleccionados-para-la-alternancia-dual"
+id="toc-criterios-de-evaluación-seleccionados-para-la-alternancia-dual">Criterios
+de Evaluación seleccionados para la Alternancia Dual:</a></li>
+<li><a
+href="#actividades-prácticas-clave-en-la-empresa-sencillas-y-supervisadas"
+id="toc-actividades-prácticas-clave-en-la-empresa-sencillas-y-supervisadas">Actividades
+Prácticas Clave en la Empresa (Sencillas y Supervisadas):</a></li>
+</ul></li>
+<li><a href="#metodología-didáctica"
+id="toc-metodología-didáctica">5<strong>. Metodología
+Didáctica</strong></a></li>
+<li><a href="#evaluación-y-calificación"
+id="toc-evaluación-y-calificación">6. Evaluación y Calificación</a></li>
+<li><a href="#materiales-espacios-y-recursos"
+id="toc-materiales-espacios-y-recursos"><strong>7. Materiales, Espacios
+y Recursos</strong> </a></li>
+<li><a href="#atención-a-la-diversidad-dua"
+id="toc-atención-a-la-diversidad-dua">8<strong>. Atención a la
+Diversidad (DUA)</strong></a></li>
+<li><a href="#contenidos-transversales-e-interdisciplinariedad"
+id="toc-contenidos-transversales-e-interdisciplinariedad">9<strong>.
+Contenidos Transversales e Interdisciplinariedad</strong></a></li>
+<li><a href="#anexo-concreciones-del-departamento"
+id="toc-anexo-concreciones-del-departamento">10. <strong>ANEXO:
+Concreciones del Departamento</strong></a></li>
+</ul>
+</nav>
+        </aside>
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_Programacion_26_27.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+
+<h1
+id="administración-de-sistemas-gestores-de-bases-de-datos">ADMINISTRACIÓN
+DE SISTEMAS GESTORES DE BASES DE DATOS <a class="headerlink" href="#administración-de-sistemas-gestores-de-bases-de-datos" title="Enlace permanente">¶</a></h1>
+<h1 id="programación-didáctica">Programación Didáctica  <a class="headerlink" href="#programación-didáctica" title="Enlace permanente">¶</a></h1>
+<p>2º C.F.G.S. ADMINISTRADOR DE SISTEMAS INFORMÁTICOS Y REDES</p>
+<p>MODALIDAD PRESENCIAL – MAÑANA</p>
+<h1 id="curso-20262027">Curso 2026/2027 <a class="headerlink" href="#curso-20262027" title="Enlace permanente">¶</a></h1>
+<p><strong>PROFESORES:</strong> Juan Simón Sánchez Sánchez</p>
+<h2 id="section"> <a class="headerlink" href="#section" title="Enlace permanente">¶</a></h2>
+<h2 id="section-1"> <a class="headerlink" href="#section-1" title="Enlace permanente">¶</a></h2>
+<h2 id="índice">Índice <a class="headerlink" href="#índice" title="Enlace permanente">¶</a></h2>
+<p><a href="#contextualización.-normativa"><u>1. Contextualización.
+Normativa</u></a></p>
+<p><a href="#resultados-de-aprendizaje-y-criterios"><u>2. Resultados de
+Aprendizaje y Criterios</u></a></p>
+<blockquote>
+<p><a href="#"><u>A. Competencias Profesionales, Personales y
+Sociales:</u></a></p>
+<p><a href="#"><u>B. Objetivos Generales del Ciclo
+Formativo:</u></a></p>
+<p><a href="#"><u>RA4. Realiza tareas de administración de bases de
+datos analizando la estructura lógica y física y aplicando medidas de
+optimización. (Peso total del módulo: 15%)</u></a></p>
+<p><a href="#"><u>RA5. Aplica medidas de seguridad y control de acceso
+configurando perfiles y auditorías de seguridad. (Peso total del módulo:
+15%)</u></a></p>
+<p><a href="#"><u>RA6. Asegura la disponibilidad y recuperación de la
+información aplicando políticas de copias de seguridad y replicación.
+(Peso total del módulo: 15%)</u></a></p>
+<p><a href="#"><u>RA7. Realiza tareas de transferencia y migración de
+datos analizando formatos de intercambio y herramientas de exportación e
+importación. (Peso total del módulo: 10%)</u></a></p>
+</blockquote>
+<p><a href="#bloques-de-contenidos-y-distribución-temporal"><u>3.
+Bloques de Contenidos y Distribución Temporal</u></a></p>
+<blockquote>
+<p><a href="#"><u>Distribución Temporal y Secuenciación de Unidades de
+Trabajo:</u></a></p>
+</blockquote>
+<p><a href="#concurrencia-dual-formación-en-empresa"><u>4. Concurrencia
+Dual (Formación en Empresa)</u></a></p>
+<blockquote>
+<p><a href="#"><u>Criterios de Evaluación seleccionados para la
+Alternancia Dual:</u></a></p>
+<p><a href="#"><u>Actividades Prácticas Clave en la Empresa (Sencillas y
+Supervisadas):</u></a></p>
+</blockquote>
+<p><a href="#metodología-didáctica"><u>5. Metodología
+Didáctica</u></a></p>
+<p><a href="#evaluación-y-calificación"><u>6. Evaluación y
+Calificación</u></a></p>
+<p><a href="#materiales-espacios-y-recursos"><u>7. Materiales, Espacios
+y Recursos</u></a></p>
+<p><a href="#atención-a-la-diversidad-dua"><u>8. Atención a la
+Diversidad (DUA)</u></a></p>
+<p><a href="#contenidos-transversales-e-interdisciplinariedad"><u>9.
+Contenidos Transversales e Interdisciplinariedad</u></a></p>
+<p><a href="#anexo-concreciones-del-departamento"><u>10. ANEXO:
+Concreciones del Departamento</u></a></p>
+<h1 id="contextualización.-normativa">1. Contextualización.
+Normativa <a class="headerlink" href="#contextualización.-normativa" title="Enlace permanente">¶</a></h1>
+<p>El módulo se imparte en <strong>Segundo curso</strong>, con una
+<strong>carga horaria</strong> de 3 horas semanales y un
+<strong>total</strong> de 63 horas.</p>
+<p>La presente programación didáctica se inserta en el marco legal
+determinado por el Estado y la Comunidad Autónoma de Andalucía:</p>
+<ul>
+<li><blockquote>
+<p><strong>Ley Orgánica 3/2022, de 31 de marzo</strong>, de ordenación e
+integración de la Formación Profesional.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Real Decreto 659/2023, de 18 de julio</strong>, por el que se
+desarrolla la ordenación del Sistema de Formación Profesional.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Decreto 165/2024</strong>, por el que se establece la
+ordenación general de la Formación Profesional en Andalucía.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Orden de 19 de julio de 2010</strong>, por la que se
+desarrolla el currículo correspondiente al título de Técnico Superior en
+Administración de Sistemas Informáticos en Red en la Comunidad Autónoma
+de Andalucía.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Orden de 18 de septiembre de 2025</strong>, por la que se
+regula la evaluación, certificación, acreditación y titulación académica
+del alumnado que cursa enseñanzas de los grados D y E del Sistema de
+Formación Profesional en la Comunidad Autónoma de Andalucía.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Instrucciones de 20 de mayo de 2026</strong> de la Dirección
+General de Formación Profesional y Educación Permanente, por las que se
+establecen aspectos relativos a la evaluación final del alumnado de los
+grados D y E para los centros docentes de Andalucía.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Orden de 26 de septiembre de 2025</strong>, por la que se
+regula la fase de formación en empresa u organismo equiparado de los
+grados D y E en Andalucía</p>
+</blockquote></li>
+</ul>
+<p>También se tendrá en cuenta lo recogido en el Proyecto de Centro y la
+Programación del Departamento de Informática.</p>
+<h1 id="resultados-de-aprendizaje-y-criterios"><strong>2.</strong>
+Resultados de Aprendizaje y Criterios  <a class="headerlink" href="#resultados-de-aprendizaje-y-criterios" title="Enlace permanente">¶</a></h1>
+<p>El módulo profesional de <strong>Administración de Sistemas Gestores
+de Bases de Datos</strong> contribuye al desarrollo de las siguientes
+competencias y objetivos generales descritos en el currículo oficial del
+título de ASIR en Andalucía:</p>
+<h3 id="a.-competencias-profesionales-personales-y-sociales">A.
+Competencias Profesionales, Personales y Sociales: <a class="headerlink" href="#a.-competencias-profesionales-personales-y-sociales" title="Enlace permanente">¶</a></h3>
+<ul>
+<li><blockquote>
+<p><strong>g):</strong> Configurar y gestionar bases de datos,
+garantizando la integridad, consistencia y accesibilidad de los
+datos.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>h):</strong> Gestionar los derechos de acceso y usuarios del
+sistema para garantizar la seguridad de la información.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>s):</strong> Resolver problemas y tomar decisiones
+individuales, siguiendo las normas y procedimientos establecidos,
+definidos dentro del ámbito de su competencia.</p>
+</blockquote></li>
+</ul>
+<h3 id="b.-objetivos-generales-del-ciclo-formativo">B. Objetivos
+Generales del Ciclo Formativo: <a class="headerlink" href="#b.-objetivos-generales-del-ciclo-formativo" title="Enlace permanente">¶</a></h3>
+<ul>
+<li><blockquote>
+<p><strong>d):</strong> Instalar y configurar software de gestión,
+siguiendo especificaciones y analizando entornos de aplicación, para
+administrar aplicaciones.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>e):</strong> Instalar y administrar software de gestión,
+relacionándolo con su explotación, para implantar y gestionar bases de
+datos.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>r):</strong> Resolver problemas y tomar decisiones
+individuales, siguiendo las normas y procedimientos establecidos,
+definidos dentro del ámbito de su competencia, para asegurar la
+explotación y el mantenimiento preventivo del sistema.</p>
+</blockquote></li>
+</ul>
+<p>A continuación, se detalla la ponderación curricular que se asignará
+para cada <strong>Resultado de Aprendizaje (RA)</strong>, desglosando
+asimismo el <strong>peso relativo porcentual</strong> que tiene cada uno
+de sus <strong>Criterios de Evaluación (CE)</strong> asociados para el
+cálculo interno de la nota del RA correspondiente.</p>
+<p><strong>RA1. Implanta sistemas gestores de bases de datos analizando
+sus características y ajustándose a los requerimientos del sistema.
+(Peso total del módulo: 15%)</strong></p>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>CE</strong></th>
+<th><strong>Criterio de Evaluación (CE)</strong></th>
+<th><strong>Peso</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>CE1.a</strong></td>
+<td>Se ha reconocido la utilidad y función de cada uno de los
+componentes de un sistema gestor de bases de datos (SGBD).</td>
+<td>15%</td>
+</tr>
+<tr class="header">
+<td><strong>CE1.b</strong></td>
+<td>Se han analizado los modelos lógicos de almacenamiento del sistema
+gestor de bases de datos.</td>
+<td>20%</td>
+</tr>
+<tr class="odd">
+<td><strong>CE1.c</strong></td>
+<td>Se han analizado los requerimientos del sistema y se ha seleccionado
+el sistema gestor de bases de datos.</td>
+<td>15%</td>
+</tr>
+<tr class="header">
+<td><strong>CE1.d</strong></td>
+<td>Se ha instalado el sistema gestor de bases de datos.</td>
+<td>20%</td>
+</tr>
+<tr class="odd">
+<td><strong>CE1.e</strong></td>
+<td>Se han verificado los registros de eventos de la instalación.</td>
+<td>15%</td>
+</tr>
+<tr class="header">
+<td><strong>CE1.f</strong></td>
+<td>Se han aplicado medidas de seguridad durante la instalación.</td>
+<td>15%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>RA2. Configura el sistema gestor de bases de datos
+interpretando especificaciones técnicas y aplicando herramientas de
+administración. (Peso total del módulo: 15%)</strong></p>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>CE</strong></th>
+<th><strong>Criterio de Evaluación (CE)</strong></th>
+<th><strong>Peso</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>CE2.a</strong></td>
+<td>Se ha verificado el funcionamiento de los servicios del sistema
+gestor de bases de datos.</td>
+<td>15%</td>
+</tr>
+<tr class="header">
+<td><strong>CE2.b</strong></td>
+<td>Se ha configurado el motor de base de datos para optimizar el uso de
+recursos de memoria y procesador.</td>
+<td>25%</td>
+</tr>
+<tr class="odd">
+<td><strong>CE2.c</strong></td>
+<td>Se han configurado los archivos de parámetros del sistema
+gestor.</td>
+<td>20%</td>
+</tr>
+<tr class="header">
+<td><strong>CE2.d</strong></td>
+<td>Se han establecido las conexiones de red y los puertos de escucha
+del SGBD.</td>
+<td>20%</td>
+</tr>
+<tr class="odd">
+<td><strong>CE2.e</strong></td>
+<td>Se han ejecutado herramientas de administración gráfica y de línea
+de comandos.</td>
+<td>20%</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>RA3. Automatiza tareas de administración del sistema gestor,
+realizando guiones y programando tareas. (Peso total del módulo:
+15%)</strong></p>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>CE</strong></th>
+<th><strong>Criterio de Evaluación (CE)</strong></th>
+<th><strong>Peso</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>CE3.a</strong></td>
+<td>Se han diseñado y depurado guiones (scripts) para la automatización
+de tareas administrativas habituales.</td>
+<td>30%</td>
+</tr>
+<tr class="header">
+<td><strong>CE3.b</strong></td>
+<td>Se ha configurado el programador de tareas del SGBD para programar
+la ejecución periódica de tareas.</td>
+<td>25%</td>
+</tr>
+<tr class="odd">
+<td><strong>CE3.c</strong></td>
+<td>Se han gestionado las notificaciones e incidencias generadas durante
+la automatización de tareas.</td>
+<td>25%</td>
+</tr>
+<tr class="header">
+<td><strong>CE3.d</strong></td>
+<td>Se han desarrollado guiones para la monitorización de alertas
+técnicas del servidor.</td>
+<td>20%</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="section-2"> <a class="headerlink" href="#section-2" title="Enlace permanente">¶</a></h3>
+<h3
+id="ra4.-realiza-tareas-de-administración-de-bases-de-datos-analizando-la-estructura-lógica-y-física-y-aplicando-medidas-de-optimización.-peso-total-del-módulo-15">RA4.
+Realiza tareas de administración de bases de datos analizando la
+estructura lógica y física y aplicando medidas de optimización. (Peso
+total del módulo: 15%) <a class="headerlink" href="#ra4.-realiza-tareas-de-administración-de-bases-de-datos-analizando-la-estructura-lógica-y-física-y-aplicando-medidas-de-optimización.-peso-total-del-módulo-15" title="Enlace permanente">¶</a></h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>CE</strong></th>
+<th><strong>Criterio de Evaluación (CE)</strong></th>
+<th><strong>Peso</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>CE4.a</strong></td>
+<td>Se han administrado los archivos de datos e índices, controlando su
+crecimiento y fragmentación física.</td>
+<td>25%</td>
+</tr>
+<tr class="header">
+<td><strong>CE4.b</strong></td>
+<td>Se han gestionado las estructuras de almacenamiento lógico
+(tablespaces, grupos de archivos).</td>
+<td>25%</td>
+</tr>
+<tr class="odd">
+<td><strong>CE4.c</strong></td>
+<td>Se han reorganizado y reconstruido índices para optimizar el
+rendimiento de las búsquedas SQL.</td>
+<td>20%</td>
+</tr>
+<tr class="header">
+<td><strong>CE4.d</strong></td>
+<td>Se han monitorizado los espacios en disco asignados y se han
+aplicado políticas de ampliación.</td>
+<td>15%</td>
+</tr>
+<tr class="odd">
+<td><strong>CE4.e</strong></td>
+<td>Se han analizado los planes de ejecución de consultas para
+identificar cuellos de botella.</td>
+<td>15%</td>
+</tr>
+</tbody>
+</table></div>
+<h3
+id="ra5.-aplica-medidas-de-seguridad-y-control-de-acceso-configurando-perfiles-y-auditorías-de-seguridad.-peso-total-del-módulo-15">RA5.
+Aplica medidas de seguridad y control de acceso configurando perfiles y
+auditorías de seguridad. (Peso total del módulo: 15%) <a class="headerlink" href="#ra5.-aplica-medidas-de-seguridad-y-control-de-acceso-configurando-perfiles-y-auditorías-de-seguridad.-peso-total-del-módulo-15" title="Enlace permanente">¶</a></h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>CE</strong></th>
+<th><strong>Criterio de Evaluación (CE)</strong></th>
+<th><strong>Peso</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>CE5.a</strong></td>
+<td>Se han configurado los métodos de autenticación del sistema gestor
+(integrada, propia del SGBD, externa).</td>
+<td>20%</td>
+</tr>
+<tr class="header">
+<td><strong>CE5.b</strong></td>
+<td>Se han creado usuarios, roles y perfiles con políticas estrictas de
+contraseñas.</td>
+<td>25%</td>
+</tr>
+<tr class="odd">
+<td><strong>CE5.c</strong></td>
+<td>Se han asignado privilegios de sistema y sobre objetos del esquema
+aplicando el principio de mínimo privilegio.</td>
+<td>25%</td>
+</tr>
+<tr class="header">
+<td><strong>CE5.d</strong></td>
+<td>Se han configurado y analizado registros de auditorías de acceso e
+intentos fallidos de conexión.</td>
+<td>15%</td>
+</tr>
+<tr class="odd">
+<td><strong>CE5.e</strong></td>
+<td>Se han aplicado técnicas de cifrado de conexiones para evitar
+intercepciones de red (SSL/TLS).</td>
+<td>15%</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="section-3"> <a class="headerlink" href="#section-3" title="Enlace permanente">¶</a></h3>
+<h3
+id="ra6.-asegura-la-disponibilidad-y-recuperación-de-la-información-aplicando-políticas-de-copias-de-seguridad-y-replicación.-peso-total-del-módulo-15">RA6.
+Asegura la disponibilidad y recuperación de la información aplicando
+políticas de copias de seguridad y replicación. (Peso total del módulo:
+15%) <a class="headerlink" href="#ra6.-asegura-la-disponibilidad-y-recuperación-de-la-información-aplicando-políticas-de-copias-de-seguridad-y-replicación.-peso-total-del-módulo-15" title="Enlace permanente">¶</a></h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>CE</strong></th>
+<th><strong>Criterio de Evaluación (CE)</strong></th>
+<th><strong>Peso</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>CE6.a</strong></td>
+<td>Se han planificado y ejecutado copias de seguridad lógicas
+(exportación de esquemas) y físicas.</td>
+<td>25%</td>
+</tr>
+<tr class="header">
+<td><strong>CE6.b</strong></td>
+<td>Se han diseñado estrategias de recuperación de desastres ante fallos
+lógicos o físicos del almacenamiento.</td>
+<td>25%</td>
+</tr>
+<tr class="odd">
+<td><strong>CE6.c</strong></td>
+<td>Se ha configurado el modo de recuperación del SGBD (logs de
+transacciones activos, archivado).</td>
+<td>20%</td>
+</tr>
+<tr class="header">
+<td><strong>CE6.d</strong></td>
+<td>Se ha implementado un entorno básico de replicación o alta
+disponibilidad de la base de datos.</td>
+<td>15%</td>
+</tr>
+<tr class="odd">
+<td><strong>CE6.e</strong></td>
+<td>Se ha verificado la integridad de las copias de seguridad mediante
+restauraciones automatizadas.</td>
+<td>15%</td>
+</tr>
+</tbody>
+</table></div>
+<h3
+id="ra7.-realiza-tareas-de-transferencia-y-migración-de-datos-analizando-formatos-de-intercambio-y-herramientas-de-exportación-e-importación.-peso-total-del-módulo-10">RA7.
+Realiza tareas de transferencia y migración de datos analizando formatos
+de intercambio y herramientas de exportación e importación. (Peso total
+del módulo: 10%) <a class="headerlink" href="#ra7.-realiza-tareas-de-transferencia-y-migración-de-datos-analizando-formatos-de-intercambio-y-herramientas-de-exportación-e-importación.-peso-total-del-módulo-10" title="Enlace permanente">¶</a></h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>CE</strong></th>
+<th><strong>Criterio de Evaluación (CE)</strong></th>
+<th><strong>Peso</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>CE7.a</strong></td>
+<td>Se han identificado las herramientas del SGBD para la exportación e
+importación de datos.</td>
+<td>20%</td>
+</tr>
+<tr class="header">
+<td><strong>CE7.b</strong></td>
+<td>Se han exportado e importado datos en diferentes formatos (CSV, XML,
+JSON, formatos planos).</td>
+<td>30%</td>
+</tr>
+<tr class="odd">
+<td><strong>CE7.c</strong></td>
+<td>Se han planificado tareas periódicas de carga y transformación de
+datos (procesos ETL sencillos).</td>
+<td>30%</td>
+</tr>
+<tr class="header">
+<td><strong>CE7.d</strong></td>
+<td>Se han documentado las incidencias producidas durante las
+migraciones de información.</td>
+<td>20%</td>
+</tr>
+</tbody>
+</table></div>
+<p>Tabla resumen del peso total de cada RA con respecto al módulo:</p>
+<div class="table-wrapper"><table>
+<tbody>
+<tr class="header">
+<td><strong>Resultado de Aprendizaje (RA)</strong></td>
+<td><strong>Peso</strong></td>
+</tr>
+<tr class="odd">
+<td>RA1. Implanta sistemas gestores de bases de datos analizando sus
+características y ajustándose a los requerimientos del sistema.</td>
+<td>15%</td>
+</tr>
+<tr class="header">
+<td>RA2. Configura el sistema gestor de bases de datos interpretando
+especificaciones técnicas y aplicando herramientas de
+administración.</td>
+<td>15%</td>
+</tr>
+<tr class="odd">
+<td>RA3. Automatiza tareas de administración del sistema gestor,
+realizando guiones y programando tareas.</td>
+<td>15%</td>
+</tr>
+<tr class="header">
+<td>RA4. Realiza tareas de administración de bases de datos analizando
+la estructura lógica y física y aplicando medidas de optimización.</td>
+<td>15%</td>
+</tr>
+<tr class="odd">
+<td>RA5. Aplica medidas de seguridad y control de acceso configurando
+perfiles y auditorías de seguridad.</td>
+<td>15%</td>
+</tr>
+<tr class="header">
+<td>RA6. Asegura la disponibilidad y recuperación de la información
+aplicando políticas de copias de seguridad y replicación.</td>
+<td>15%</td>
+</tr>
+<tr class="odd">
+<td>RA7. Realiza tareas de transferencia y migración de datos analizando
+formatos de intercambio y herramientas de exportación e
+importación.</td>
+<td>10%</td>
+</tr>
+</tbody>
+</table></div>
+<h1 id="bloques-de-contenidos-y-distribución-temporal">3<strong>.
+Bloques de Contenidos y Distribución Temporal</strong> <a class="headerlink" href="#bloques-de-contenidos-y-distribución-temporal" title="Enlace permanente">¶</a></h1>
+<p>Los contenidos básicos asociados al módulo son:</p>
+<div class="table-wrapper"><table>
+<tbody>
+<tr class="header">
+<td><strong>Bloque</strong></td>
+<td><strong>Contenidos</strong></td>
+</tr>
+<tr class="odd">
+<td>Implantación de sistemas gestores de bases de datos</td>
+<td><ul>
+<li><p>Arquitectura de los SGBD. Componentes y funciones.</p></li>
+<li><p>Modelos lógicos de almacenamiento.</p></li>
+<li><p>Requerimientos de instalación.</p></li>
+<li><p>Instalación de sistemas gestores.</p></li>
+<li><p>Verificación de registros y seguridad en la instalación.</p></li>
+</ul></td>
+</tr>
+<tr class="header">
+<td>Configuración de sistemas gestores</td>
+<td><ul>
+<li><p>Funcionamiento de servicios.</p></li>
+<li><p>Optimización de recursos (memoria, procesador).</p></li>
+<li><p>Archivos de parámetros.</p></li>
+<li><p>Configuración de red y puertos de escucha.</p></li>
+<li><p>Herramientas de administración (gráficas y CLI).</p></li>
+</ul></td>
+</tr>
+<tr class="odd">
+<td>Automatización de tareas</td>
+<td><ul>
+<li><p>Diseño y depuración de scripts administrativos.</p></li>
+<li><p>Programación de tareas (schedulers).</p></li>
+<li><p>Gestión de notificaciones e incidencias.</p></li>
+<li><p>Monitorización de alertas técnicas.</p></li>
+</ul></td>
+</tr>
+<tr class="header">
+<td>Administración, almacenamiento y optimización</td>
+<td><ul>
+<li><p>Gestión de archivos de datos e índices.</p></li>
+<li><p>Estructuras de almacenamiento lógico (tablespaces).</p></li>
+<li><p>Optimización de índices y rendimiento SQL.</p></li>
+<li><p>Gestión de espacio y crecimiento.</p></li>
+<li><p>Análisis de planes de ejecución.</p></li>
+</ul></td>
+</tr>
+<tr class="odd">
+<td>Seguridad y control de acceso</td>
+<td><ul>
+<li><p>Métodos de autenticación.</p></li>
+<li><p>Gestión de usuarios, roles y perfiles.</p></li>
+<li><p>Asignación de privilegios (mínimo privilegio).</p></li>
+<li><p>Auditorías de acceso y conexiones.</p></li>
+<li><p>Cifrado de conexiones (SSL/TLS).</p></li>
+</ul></td>
+</tr>
+<tr class="header">
+<td>Disponibilidad y recuperación de la información</td>
+<td><ul>
+<li><p>Estrategias de backup (lógico y físico).</p></li>
+<li><p>Políticas de recuperación ante desastres.</p></li>
+<li><p>Modos de recuperación y logs.</p></li>
+<li><p>Alta disponibilidad y replicación.</p></li>
+<li><p>Verificación de integridad y restauración.</p></li>
+</ul></td>
+</tr>
+<tr class="odd">
+<td>Transferencia y migración de datos</td>
+<td><ul>
+<li><p>Herramientas de importación/exportación.</p></li>
+<li><p>Formatos de intercambio (CSV, XML, JSON).</p></li>
+<li><p>Procesos ETL (Extracción, Transformación, Carga).</p></li>
+<li><p>Documentación de incidencias en migraciones.</p></li>
+</ul></td>
+</tr>
+</tbody>
+</table></div>
+<p>De acuerdo con el calendario oficial previsto para el curso académico
+<strong>2026/2027</strong> en Andalucía, al tratarse de un módulo de
+<strong>segundo curso</strong>, la carga teórica presencial se condensa
+en el centro educativo durante los dos primeros trimestres. El tercer
+trimestre completo se destina al bloque de <strong>Alternancia Dual de
+400 horas en la empresa</strong>.</p>
+<h3
+id="distribución-temporal-y-secuenciación-de-unidades-de-trabajo">Distribución
+Temporal y Secuenciación de Unidades de Trabajo: <a class="headerlink" href="#distribución-temporal-y-secuenciación-de-unidades-de-trabajo" title="Enlace permanente">¶</a></h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>UT</strong></th>
+<th><strong>Título</strong></th>
+<th><strong>Horas</strong></th>
+<th><strong>Periodo</strong></th>
+<th><strong>RA</strong></th>
+<th><strong>Trim</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>UT1</strong></td>
+<td>Instalación y configuración de un sistema gestor de base de
+datos</td>
+<td>12 h</td>
+<td>15 Sep - 30 Sep</td>
+<td>RA1, RA2</td>
+<td>1º</td>
+</tr>
+<tr class="header">
+<td><strong>UT2</strong></td>
+<td>Acceso a la información</td>
+<td>8 h</td>
+<td>1 Oct - 15 Oct</td>
+<td>RA7</td>
+<td>1º</td>
+</tr>
+<tr class="odd">
+<td><strong>UT3</strong></td>
+<td>Programación de scripts de administración</td>
+<td>12 h</td>
+<td>16 Oct - 15 Nov</td>
+<td>RA3</td>
+<td>1º</td>
+</tr>
+<tr class="header">
+<td><strong>UT4</strong></td>
+<td>Gestión de la seguridad de los datos</td>
+<td>12 h</td>
+<td>16 Nov - 15 Dic</td>
+<td>RA5</td>
+<td>1º</td>
+</tr>
+<tr class="odd">
+<td><strong>UT5</strong></td>
+<td>Optimización de consultas</td>
+<td>10 h</td>
+<td>16 Dic - 31 Ene</td>
+<td>RA4</td>
+<td>2º</td>
+</tr>
+<tr class="header">
+<td><strong>UT6</strong></td>
+<td>Bases de datos distribuidas y replicadas</td>
+<td>9 h</td>
+<td>1 Feb - 28 Feb</td>
+<td>RA6</td>
+<td>2º</td>
+</tr>
+<tr class="odd">
+<td><strong>-</strong></td>
+<td><strong>Periodo de Alternancia Dual</strong></td>
+<td><strong>~260 h</strong></td>
+<td><strong>15 Mar - 11 Jun</strong></td>
+<td><strong>RA6, RA7</strong></td>
+<td><strong>3º</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h1 id="concurrencia-dual-formación-en-empresa">4<strong>. Concurrencia
+Dual (Formación en Empresa)</strong> <a class="headerlink" href="#concurrencia-dual-formación-en-empresa" title="Enlace permanente">¶</a></h1>
+<p>Atendiendo al marco andaluz de dualización del <strong>Decreto
+165/2024</strong> y la naturaleza tecnológica de un Ciclo de Grado Medio
+(SMR), se trasladan a la empresa actividades procedimentadas y seguras
+que consolidan los aprendizajes previamente adquiridos por el
+alumnado.</p>
+<h3
+id="criterios-de-evaluación-seleccionados-para-la-alternancia-dual">Criterios
+de Evaluación seleccionados para la Alternancia Dual: <a class="headerlink" href="#criterios-de-evaluación-seleccionados-para-la-alternancia-dual" title="Enlace permanente">¶</a></h3>
+<ol type="1">
+<li><blockquote>
+<p><strong>RA6 - Criterio de Evaluación a):</strong> <em>Se han
+planificado y ejecutado copias de seguridad lógicas (exportación de
+esquemas) y físicas.</em></p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>RA7 - Criterio de Evaluación b):</strong> <em>Se han
+exportado e importado datos en diferentes formatos (CSV, XML, JSON,
+formatos planos).</em></p>
+</blockquote></li>
+</ol>
+<h3
+id="actividades-prácticas-clave-en-la-empresa-sencillas-y-supervisadas">Actividades
+Prácticas Clave en la Empresa (Sencillas y Supervisadas): <a class="headerlink" href="#actividades-prácticas-clave-en-la-empresa-sencillas-y-supervisadas" title="Enlace permanente">¶</a></h3>
+<ul>
+<li><blockquote>
+<p><strong>Actividad 1 (Vinculada a RA6-a):</strong> Configurar y
+testear de manera supervisada un script cron/programador en un entorno
+staging de la empresa para realizar una copia física diaria de un SGBD,
+verificando su integridad levantando dicha copia en una máquina de
+pruebas aislada.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Actividad 2 (Vinculada a RA7-b):</strong> Realizar una
+migración parcial de registros (ej. catálogo de productos o histórico de
+facturas) desde un archivo de texto estructurado (CSV o JSON) hacia una
+base de datos relacional del SGBD corporativo, depurando y documentando
+los posibles errores de codificación de caracteres.</p>
+</blockquote></li>
+</ul>
+<h1 id="metodología-didáctica">5<strong>. Metodología
+Didáctica</strong> <a class="headerlink" href="#metodología-didáctica" title="Enlace permanente">¶</a></h1>
+<p>Utilizaremos una metodología eminentemente
+<strong>activa/práctica</strong>, buscando la
+<strong>participación</strong> y protagonismo del alumnado. Habrá que
+tener en cuenta las <strong>diferencias individuales</strong> y
+<strong>adaptadas al grupo</strong> de alumnos/as. Se buscará la
+motivación, relacionando lo que aprenden con lo que saben y sobre su
+utilidad e importancia en el mundo laboral real. Se basará en el modelo
+de <strong>aprender-haciendo</strong>. Se orientará al alumnado para
+construir sus propios conocimientos a partir de su propio trabajo. Se
+podrían destacar las siguientes metodologías a utilizar:</p>
+<ul>
+<li><blockquote>
+<p><strong>Aprendizaje Basado en Retos (ABR):</strong> En cada unidad de
+trabajo se plantearán "contingencias de administración" (ej. caída
+repentina del servicio por disco lleno, corrupción del log de
+transacciones o pérdida del password de root). El alumnado deberá
+diagnosticar y reparar el SGBD utilizando herramientas oficiales.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>ABP (Aprendizaje Basado en Proyectos):</strong> El alumnado
+desarrollará una intranet corporativa simulada (integrando un CMS
+informativo, un LMS de aprendizaje, un almacenamiento Nextcloud, una
+ofimática colaborativa y un correo Webmail integrado).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Metodología DevOps y Contenedores:</strong> Desde el primer
+día, todas las prácticas se enfocarán utilizando control de versiones y
+entornos dockerizados, permitiendo crear arquitecturas complejas de SGBD
+distribuidos en segundos.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Flipped Classroom y Laboratorios Virtuales:</strong>
+Exposición previa de manuales oficiales de instalación y configuración
+de SGBD (Oracle, PostgreSQL, SQL Server). Las horas presenciales se
+utilizarán para la depuración de problemas de interconexión de red,
+optimización del uso de RAM o configuración de logs.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Tutorización de Pares y Simulacros Técnicos:</strong>
+Prácticas cooperativas de "Red Team / Blue Team" en seguridad de bases
+de datos (RA5) donde una pareja configura las políticas de acceso del
+servidor y la otra intenta auditar o detectar fallos de elevación de
+privilegios.</p>
+</blockquote></li>
+</ul>
+<p>Las actividades propuestas tendrán en cuenta los siguientes
+aspectos:</p>
+<ul>
+<li><blockquote>
+<p>Los <strong>diferentes ritmos</strong> de aprendizaje.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Integrarse en <strong>proyectos interdisciplinares</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Favorecer la capacidad de <strong>aprender por sí
+mismos</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Promover el <strong>trabajo colaborativo</strong>.</p>
+</blockquote></li>
+</ul>
+<p>También se podrán identificar distintos tipos de actividades de
+detección de conocimientos y capacidades previas, motivación, desarrollo
+de contenidos, refuerzo, ampliación y evaluación.</p>
+<h1 id="evaluación-y-calificación">6. Evaluación y Calificación <a class="headerlink" href="#evaluación-y-calificación" title="Enlace permanente">¶</a></h1>
+<p>Teniendo en cuenta la Orden de 29 de septiembre de 2010 la evaluación
+será continua y por módulos. En la modalidad presencial, la asistencia
+será obligatoria y regular, en caso contrario se perderá el derecho de
+evaluación continua.</p>
+<p>La asistencia deberá ser regular para poder realizar la evaluación
+según el artículo 2 de la <strong>Orden de 18 de septiembre de
+2025</strong><em>,</em> <em>que regula la evaluación, certificación,
+acreditación y titulación académica del alumnado que cursa enseñanzas de
+los grados D y E del Sistema de Formación Profesional en la Comunidad
+Autónoma de Andalucía de la formación profesional inicial en
+Andalucía.</em> En el caso de faltas injustificadas a clase que supongan
+una inasistencia regular, se aplicará en las normas internas de
+funcionamiento del centro.</p>
+<p>Tenemos que decidir en qué instante de tiempo se van a efectuar los
+diferentes procesos de evaluación, remarcando que evaluar no es lo mismo
+que calificar. Para ello lo hemos dividido en tres bloques, los cuales
+pasamos a describir a continuación.</p>
+<ul>
+<li><blockquote>
+<p><em><strong>Inicio</strong></em>: es la realizada al comienzo del
+módulo o al comienzo de una parte que tenga significado en sí misma,
+como puede ser un bloque temático o una unidad cuyo contenido esté bien
+diferenciado del resto. Nos servirá de orientación para conocer la base
+y los conocimientos previos del alumnado</p>
+</blockquote></li>
+<li><blockquote>
+<p><em><strong>Evaluación continua, formativa o procesual:</strong></em>
+se realiza durante el desarrollo del módulo, y con ella podemos valorar
+el progreso del alumnado así como la calidad de la práctica docente.
+Podemos llevarla de forma diaria. Permite ir adaptándonos a las
+circunstancias e ir mejorando el proceso de enseñanza aprendizaje</p>
+</blockquote></li>
+<li><blockquote>
+<p><em><strong>Finalización:</strong></em> se da al término del módulo o
+de alguna parte cuyo contenido esté claramente diferenciado del resto.
+Nos permite valorar el grado de adquisición de los resultados de
+aprendizaje asociados al módulo.</p>
+</blockquote></li>
+</ul>
+<p>Por este motivo, para que el alumnado supere el módulo tendrá que
+<strong>superar todas y cada una de las distintas unidades
+didácticas</strong>, las cuales conducen a la adquisición de las
+competencias profesionales y tienen uno o más resultados de aprendizaje
+asociados.</p>
+<p>La <strong>calificación final</strong> del módulo será la nota
+<strong>ponderada</strong> de los 5 resultados de aprendizaje. Se dará
+por superado el módulo si dicha nota ponderada es mayor o igual a
+cinco.</p>
+<p>Para evaluar cada criterio de evaluación se utilizarán distintos
+<strong>instrumentos de evaluación</strong>:</p>
+<ol start="3" type="1">
+<li><blockquote>
+<p><strong>(I<sub>1</sub>) Pruebas teórico/prácticas individuales de
+desarrollo e instalación (60%):</strong> Pruebas presenciales donde el
+alumno debe realizar actividades similares a las realizadas en clase, o
+demostrar la asimilación de conceptos, de forma autónoma.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>(I<sub>2</sub>) Tareas y/o prácticas evaluables
+(30%):</strong> Actividades guiadas y entregables.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>(I<sub>3</sub>) Foros técnicos puntuables y observación de
+actitud/trabajo en clase (10%):</strong> Participación activa e
+interpretación técnica de errores en los hilos de soporte de Moodle.
+Realización de actividades de clase.</p>
+</blockquote></li>
+</ol>
+<p>El alumnado que <strong>no haya perdido la evaluación
+continua</strong> y que no alcance el aprobado en un trimestre (nota de
+5 de forma ponderada o con algún RA inferior a 5) podrá recuperar en el
+segundo trimestre las unidades o actividades que tengan pendientes del
+primero que determine el profesorado; antes del periodo de alternancia
+lo que tenga pendiente del segundo trimestre. Antes de la segunda
+evaluación final, tendrá que recuperar solamente aquellas unidades que
+no haya conseguido superar a lo largo del curso. La nota sustituirá la
+nota antigua por la obtenida en estas pruebas de recuperación. Deberá
+entregará entregar aquellas actividades que sean establecidas</p>
+<p>El <strong>alumnado que ha perdido la evaluación continua</strong>,
+tendrá que realizar una recuperación global del módulo. Para la
+recuperación el profesor determinará el procedimiento e instrumentos
+para alcanzar los resultados de aprendizaje correspondientes. Esta
+procedimiento determinará su calificación.</p>
+<p>Si un alumno faltase el día en que tuviera programada una prueba no
+será una obligación del profesor repetirla aun cuando la falta sea
+justificada oficialmente, sólo podrá realizar la recuperación si el
+profesor lo estima oportuno en la fecha que el profesor programe. El
+alumno siempre podrá recuperar estos contenidos antes de la nota final
+primera. Si esto sucediera deberá presentar un justificante firmado y
+sellado por el médico (u otros justificantes oficiales).</p>
+<p>Finalmente, los alumnos que en alguna actividad (tarea o prueba),
+<strong>copien, lo intenten, se presten a ello o se vea claramente en la
+corrección que lo han hecho</strong>, tendrán la actividad
+correspondiente suspensa hasta la convocatoria final primera, no
+teniendo derecho a realizar recuperaciones de la misma. Si dicha
+situación se produce en el examen final de recuperación, el alumno
+deberá presentarse en la convocatoria final segunda con toda la materia,
+independientemente de lo que se esté examinando en dicha recuperación.
+Si la situación se produce en la convocatoria final segunda, el alumno
+suspenderá la materia este curso. También se considera que han copiado
+la utilización de medios o tecnologías no autorizadas (p.e. Inteligencia
+artificial, dispositivos electrónicos).</p>
+<p>Aquellos <strong>alumnos que no hayan podido realizar la Formación en
+las empresas</strong> DUAL, deberán asistir obligatoriamente a clase. El
+profesor diseñará un plan de trabajo específico para abordar las
+actividades contempladas en el plan formativo de la empresa y reforzar
+los conocimientos adquiridos durante el curso, incidiendo sobre todo en
+aquellas áreas que presentan más dificultad para este tipo de
+alumnado.</p>
+<p>Asimismo, aquel alumnado que desee <strong>mejorar las
+calificaciones</strong> obtenidas durante el curso, deberá informar al
+profesorado para que, en la convocatoria segunda final, este le diseñe
+un plan específico de refuerzo de aquellas áreas donde las
+calificaciones han sido más bajas durante el curso para así mejorar las
+competencias y por tanto la calificación de este alumnado.</p>
+<p>La estrategia de calificación digital está estructurada y publicada
+de forma transparente en la plataforma oficial <strong>Moodle
+Centros</strong>. El calificador está configurado mediante categorías
+ponderadas asociadas a los Resultados de Aprendizaje.</p>
+<p>Dentro de la evaluación se contempla la evaluación de la Programación
+Didáctica mediante cuestionarios que rellenará el profesorado y el
+alumnado. Así mismo se realizará la evaluación de la labor docente y de
+la actitud del alumnado.</p>
+<p><strong>Fórmulas de Calificación:</strong></p>
+<p><strong>1. Nota del Primer Trimestre (1ºT):</strong></p>
+<p><img src="media_ASGBD_Programacion_26_27/media/image3.png"
+style="width:6.26772in;height:0.58333in" /></p>
+<p><strong>2. Nota del Segundo Trimestre (2ºT):</strong></p>
+<p><img src="media_ASGBD_Programacion_26_27/media/image6.png"
+style="width:6.26772in;height:0.58333in" /></p>
+<p><strong>3. Nota Primera Final (Integra el 20% Dual en los RAs/CEs
+seleccionados)</strong></p>
+<p>Una vez finalizado el periodo de alternancia, las notas definitivas
+del RA6 y el RA7 se recalculan integrando la valoración del tutor/a de
+la empresa (N<sub>E</sub>):<img
+src="media_ASGBD_Programacion_26_27/media/image2.png"
+style="width:6.27083in;height:0.36458in" /></p>
+<blockquote>
+<p><img src="media_ASGBD_Programacion_26_27/media/image4.png"
+style="width:4.63542in;height:0.36458in" /></p>
+<p>La calificación de la primera final en Séneca se obtiene mediante la
+suma ponderada del total de los RAs:</p>
+</blockquote>
+<p><img src="media_ASGBD_Programacion_26_27/media/image5.png"
+style="width:6.26772in;height:0.51389in" /></p>
+<ul>
+<li><blockquote>
+<p><em>Requisito de superación:</em> El alumnado debe obtener una
+calificación final igual o superior a 5 (sin decimales) y tener
+aprobados todos los Resultados de Aprendizaje evaluados en el centro con
+una nota mínima de 5 de forma independiente.</p>
+</blockquote></li>
+</ul>
+<p><strong>4. Nota Segunda Final:</strong> se aplicará la misma
+fórmula</p>
+<h1 id="materiales-espacios-y-recursos"><strong>7. Materiales, Espacios
+y Recursos</strong>  <a class="headerlink" href="#materiales-espacios-y-recursos" title="Enlace permanente">¶</a></h1>
+<ul>
+<li><blockquote>
+<p><strong>Espacios:</strong> Aula polivalente de informática con mesas
+con tomas de corriente, conexiones de red cableada y router para la
+configuración LAN y conexión WIFI. Se dispone de pantalla digital táctil
+como medio de proyección.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Equipamiento Hardware:</strong></p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p>Puestos de alumnos dotados con procesador con tecnología de
+virtualización habilitada en BIOS, un mínimo de 16 GB de RAM
+(preferiblemente 32 GB para levantar entornos multi-contenedor de
+replicación y clusters de bases de datos) y unidad SSD rápida de al
+menos 512 GB.</p>
+</blockquote></li>
+</ul></li>
+<li><blockquote>
+<p><strong>Entornos de Software:</strong></p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p>Sistema operativo base: Linux Ubuntu/Debian o Windows
+Server/WSL2.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Sistema de virtualización ligera: <strong>Docker Engine and Docker
+Compose</strong> para el aislamiento absoluto de versiones de SGBD.</p>
+</blockquote></li>
+<li><blockquote>
+<p>SGBD de referencia para prácticas corporativas:
+<strong>MySQL</strong>, <strong>PostgreSQL</strong> y <strong>Microsoft
+SQL Server Express</strong> (para el bloque de configuración mixta en
+Windows/Linux).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Clientes universales de bases de datos: <strong>DBeaver Community
+Edition</strong> o MySQL WorkBench.</p>
+</blockquote></li>
+</ul></li>
+<li><blockquote>
+<p><strong>Entornos Virtuales de Aprendizaje:</strong> Plataforma
+<strong>Moodle Centros</strong> de la Junta de Andalucía, estructurada
+rigurosamente por resultados de aprendizaje, con rúbricas de evaluación
+detalladas asociadas a cada entrega de laboratorios, foros puntuables de
+resolución cooperativa de errores técnicos y pruebas conceptuales cortas
+autocorregibles.</p>
+</blockquote></li>
+</ul>
+<ul>
+<li><blockquote>
+<p><strong>Materiales didácticos:</strong> las diferentes herramientas
+que utilizamos el profesorado y el alumnado en el desarrollo del proceso
+de enseñanza-aprendizaje. Sirven no sólo para transmitir conceptos e
+ideas, sino también cumplen otras funciones:</p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p>Aumentan el interés del alumno/a y lo motivan.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Le guían en un determinado proceso.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Le facilitan la sensación de que progresa.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Distinguen lo fundamental de lo accesorio.</p>
+</blockquote></li>
+</ul></li>
+</ul>
+<h1 id="atención-a-la-diversidad-dua">8<strong>. Atención a la
+Diversidad (DUA)</strong> <a class="headerlink" href="#atención-a-la-diversidad-dua" title="Enlace permanente">¶</a></h1>
+<p>En el presente curso se ha detectado …..,</p>
+<p>Se realizará la adecuación de las actividades formativas garantizando
+el acceso a las pruebas de evaluación. Esta adaptación en ningún caso
+supondrá la supresión de resultados de aprendizaje y objetivos generales
+del ciclo que afecten a la adquisición de la competencia general del
+título.</p>
+<p>Esta programación adopta los principios fundamentales del Diseño
+Universal para el Aprendizaje (DUA) para garantizar la equidad y el
+acceso efectivo del alumnado a las competencias profesionales del
+módulo:</p>
+<ul>
+<li><blockquote>
+<p><strong>Múltiples formas de representación (Qué aprender):</strong>
+Los contenidos conceptuales de bases de datos se facilitarán en diversos
+formatos a través del entorno Moodle Centros: manuales en PDF adaptados,
+esquemas conceptuales interactivos descargables, videotutoriales
+prácticos de codificación SQL subtitulados y referencias a plataformas
+interactivas de simulación SQL.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Múltiples formas de acción y expresión (Cómo
+aprender):</strong> El alumnado podrá demostrar el dominio de los
+resultados de aprendizaje a través de variadas alternativas. Para las
+actividades prácticas integradoras, se les posibilitará la entrega de
+scripts autoejecutables, defensas orales individuales o de pequeños
+vídeos explicativos de la estructura y programación del servidor de base
+de datos que hayan diseñado.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Múltiples formas de implicación (Por qué aprender):</strong>
+Se utilizarán dinámicas de aprendizaje cooperativo en el taller,
+permitiendo que el alumnado con perfiles heterogéneos se complemente. Se
+contextualizará cada UT con casos y problemáticas reales del mercado
+andaluz de almacenamiento y cloud computing, despertando el interés
+profesional del alumnado.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Adaptaciones individuales de acceso:</strong> En completa
+concordancia con las directrices del Departamento de Orientación del
+centro y el Plan de Centro, para el alumnado que cuente con necesidades
+específicas de apoyo educativo (NEAE) diagnosticadas, se aplicarán
+adaptaciones que en ningún caso minorarán las calificaciones finales
+obtenidas (conforme a la corrección de errores de la Orden de 18 de
+septiembre de 2025 publicada en el BOJA). Estas adaptaciones incluyen la
+ampliación del tiempo de realización de pruebas en un 25%, adaptaciones
+visuales de los IDEs de desarrollo, priorización del modelado guiado con
+andamiaje y segmentación de enunciados complejos de SQL en subtareas
+elementales.</p>
+</blockquote></li>
+</ul>
+<h1 id="contenidos-transversales-e-interdisciplinariedad">9<strong>.
+Contenidos Transversales e Interdisciplinariedad</strong> <a class="headerlink" href="#contenidos-transversales-e-interdisciplinariedad" title="Enlace permanente">¶</a></h1>
+<p>El desarrollo curricular de este módulo no se limita exclusivamente a
+contenidos sintácticos, sino que se enriquece mediante la incorporación
+de aspectos transversales y su relación con otros módulos profesionales
+del ciclo formativo:</p>
+<ul>
+<li><blockquote>
+<p><strong>Sostenibilidad:</strong> Se concienciará al alumnado sobre la
+importancia ecológica de la eficiencia de los algoritmos de consulta. Se
+demostrará prácticamente cómo el mal diseño lógico, la ausencia de
+índices o la programación de consultas ineficientes que provoquen
+escaneos completos de tablas (<em>Full Table Scans</em>) incrementan
+exponencialmente el uso de la CPU de los servidores de bases de datos y,
+por consiguiente, el consumo energético en los Centros de Procesamiento
+de Datos (CPDs).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Educación para la salud (relacionado con los riesgos
+laborales)</strong>. La adquisición de hábitos saludables, sobre todo
+los relacionados con las posturas en el puesto de trabajo, en la
+manipulación de equipos, herramientas y materiales informáticos.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Protección de Datos y Privacidad (relacionado con los riesgos
+laborales):</strong> Se integrará el conocimiento de la Ley Orgánica
+3/2018 (LOPDGDD) y el Reglamento General de Protección de Datos (RGPD)
+en el diseño físico de esquemas. El alumnado aprenderá la importancia de
+restringir los privilegios de los usuarios (RA5 y RA6) y la implantación
+de políticas activas de encriptación de datos sensibles para garantizar
+los derechos constitucionales a la privacidad.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Fomento de la Lectura y Competencia Lingüística:</strong> Se
+potenciará la comprensión lectora de documentación técnica oficial, la
+cual se encuentra redactada predominantemente en inglés técnico (como la
+documentación de referencia de MariaDB, PostgreSQL y estándares ANSI
+SQL). Esto preparará al alumnado de ASIR para entornos
+internacionales.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Interdisciplinariedad con el Ciclo Formativo:</strong></p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p><strong>Implantación de Sistemas Operativos (1º ASIR):</strong> Se
+conecta mediante la instalación, configuración y optimización de los
+servicios de SGBD sobre sistemas Linux y Windows Server.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Implantación de Aplicaciones Web (2º ASIR):</strong> Las
+bases de datos creadas, consultadas y mantenidas en este módulo servirán
+como el backend de persistencia imprescindible de los gestores de
+contenidos (CMS) y aplicaciones empresariales que el alumnado desplegará
+en el segundo año.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Gestores de Bases de Datos (1º ASIR):</strong> Proporciona la
+base de modelado y operaciones necesarias para abordar con garantías la
+administración avanzada, del segundo curso.</p>
+</blockquote></li>
+</ul></li>
+</ul>
+<h1 id="anexo-concreciones-del-departamento">10. <strong>ANEXO:
+Concreciones del Departamento</strong> <a class="headerlink" href="#anexo-concreciones-del-departamento" title="Enlace permanente">¶</a></h1>
+<p>La presente programación didáctica del módulo se complementa e
+integra de forma vinculante con las directrices generales aprobadas en
+la <strong>Programación del Departamento de Informática y
+Comunicaciones</strong>, las cuales garantizan la cohesión pedagógica y
+organizativa del profesorado del centro:</p>
+<p><strong>Directrices para el Uso de Herramientas y SGBD
+Comunes:</strong></p>
+<ul>
+<li><blockquote>
+<p>Se establece por consenso del departamento el uso obligatorio del
+SGBD <strong>MariaDB/MySQL</strong> como sistema de referencia para el
+primer curso de ASIR, garantizando la transición directa y sin
+fricciones metodológicas hacia los módulos de implantación de
+aplicaciones web de segundo curso.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Uso de <strong>Docker y Docker Compose</strong> como entorno
+estandarizado de despliegue en las aulas de informática para que todo el
+alumnado trabaje bajo contenedores idénticos de base de datos, evitando
+desajustes por dependencias de sistemas operativos locales.</p>
+</blockquote></li>
+</ul>
+<p><strong>Protocolo Unificado de Reclamaciones y Revisión de
+Pruebas:</strong></p>
+<ul>
+<li><blockquote>
+<p>Especificación clara de los plazos de entrega de calificaciones
+(máximo 10 días tras la prueba) y periodo de reclamaciones internas en
+el centro, conforme a lo estipulado en el Proyecto Educativo de Centro
+(PEC).</p>
+</blockquote></li>
+</ul>
+<p><strong>Criterios de Selección y Reparto de Puestos de Estancia
+Dual:</strong></p>
+<ul>
+<li><blockquote>
+<p>Los alumnos se distribuirán en las empresas basándose en el baremo
+del rendimiento académico obtenido en la suma ponderada del primer y
+segundo trimestre en el centro educativo, requiriendo de una actitud
+positiva en el aula y una asistencia regular.</p>
+</blockquote></li>
+</ul>
+<p><strong>Plan de Fomento de Competencias Lingüísticas y
+Lectura:</strong></p>
+<ul>
+<li><blockquote>
+<p>Inclusión obligatoria en todas las unidades de trabajo de lecturas de
+documentación técnica oficial estructurada en inglés técnico (ANSI/ISO
+SQL), preparando al alumnado para el entorno internacional del sector
+del software.</p>
+</blockquote></li>
+</ul>
+<p><strong>Protocolo unificado ante faltas de asistencia
+(ROF):</strong></p>
+<p>El alumnado que pierda la evaluación continua al superar el 15% de
+faltas no justificadas en el módulo (13 horas) perderá la opción a las
+pruebas trimestres parciales y se derivará directamente a realizar una
+prueba global individual unificada del total de los 5 Resultados de
+Aprendizaje en la convocatoria ordinaria de junio. También deberá de
+entregar y defender aquellas actividades establecidas por el profesor
+que se consideran básicas para alcanzar los objetivos y competencias de
+este módulo</p>
+<p><strong>Actividades complementarias y extraescolares</strong>; Se
+concretarán en la programación del Departamento de Informática.</p>
+
+        </main>
+    </div>
+</body>
+</html>

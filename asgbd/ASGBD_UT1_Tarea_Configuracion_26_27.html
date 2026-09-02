@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASGBD - Ut1 Tarea Configuracion</title>
+    <style>
+    
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --bg-header: #1e3a8a;
+    --text-header: #ffffff;
+    --bg-body: #f8fafc;
+    --text-body: #1e293b;
+    --border-color: #cbd5e1;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-body);
+    color: var(--text-body);
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, [id], a[name] {
+    scroll-margin-top: 80px !important;
+}
+
+.headerlink {
+    display: inline-block;
+    margin-left: 0.4rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.8em;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
+h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
+    visibility: visible;
+    opacity: 1;
+}
+
+.headerlink:hover {
+    color: var(--primary);
+}
+
+#site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    background: var(--bg-header);
+    color: var(--text-header);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    height: 62px;
+}
+
+.site-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.top-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.top-nav .nav-btn {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+.top-nav .nav-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 9px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown:hover .dropbtn, .dropbtn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 320px;
+    max-width: 480px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 10001;
+    border: 1px solid #e2e8f0;
+    margin-top: 6px;
+}
+
+.dropdown-content a {
+    color: var(--text-body);
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.92rem;
+    border-bottom: 1px solid #f1f5f9;
+    line-height: 1.4;
+    transition: background 0.15s, color 0.15s;
+    word-break: break-word;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #eff6ff;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block !important;
+}
+
+#page-layout {
+    display: flex;
+    min-height: calc(100vh - 62px);
+}
+
+#left-panel {
+    width: 320px;
+    min-width: 320px;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 1.5rem 1.25rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: sticky;
+    top: 62px;
+    height: calc(100vh - 62px);
+}
+
+#left-panel h3 {
+    font-size: 1rem;
+    margin-top: 0;
+    color: #334155;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
+
+#left-panel nav#TOC, #left-panel #TOC {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+#left-panel ul {
+    list-style-type: none;
+    padding-left: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+#left-panel li {
+    margin: 6px 0;
+}
+
+#left-panel a {
+    color: #475569;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    display: block;
+    transition: color 0.15s;
+}
+
+#left-panel a:hover {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+#main-content {
+    flex: 1;
+    padding: 2.5rem 4rem;
+    box-sizing: border-box;
+    max-width: 100% !important;
+    width: calc(100% - 320px);
+    min-width: 0;
+}
+
+/* TABLAS ELEGANTES Y RESPONSIVE */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1.75rem 0;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    font-size: 0.93rem;
+    background: #ffffff;
+    table-layout: auto !important;
+}
+
+th, td {
+    padding: 10px 14px !important;
+    border: 1px solid #cbd5e1 !important;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+td p, th p {
+    margin: 0 !important;
+    padding: 2px 0 !important;
+}
+
+th {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #0f172a !important;
+}
+
+tr:nth-child(even) td {
+    background-color: #f8fafc !important;
+}
+
+tr:hover td {
+    background-color: #f1f5f9 !important;
+}
+
+/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
+.code-wrapper {
+    position: relative;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0f172a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #334155;
+    color: #f8fafc;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.copy-btn:hover {
+    background: #2563eb;
+}
+
+pre {
+    margin: 0 !important;
+    padding: 1.25rem 1.25rem !important;
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    overflow-x: auto !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+}
+
+code {
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+}
+
+p code, li code {
+    background: #e2e8f0;
+    color: #0f172a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
+
+/* RESPONSIVE DESIGN PARA MÓVILES Y TABLETS */
+@media (max-width: 768px) {
+    .header-container {
+        height: auto;
+        flex-direction: column;
+        padding: 0.75rem 1rem;
+        gap: 0.6rem;
+    }
+    
+    .site-title {
+        font-size: 1.05rem;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .site-title img {
+        height: 28px !important;
+    }
+
+    .top-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 0.35rem;
+    }
+
+    .top-nav .nav-btn, .dropbtn {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    .dropdown-content {
+        min-width: 240px;
+        max-width: 90vw;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #page-layout {
+        flex-direction: column;
+    }
+
+    #left-panel {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        position: static !important;
+        border-right: none !important;
+        border-bottom: 2px solid #e2e8f0;
+        padding: 1rem !important;
+    }
+
+    #main-content {
+        width: 100% !important;
+        padding: 1.25rem 1rem !important;
+    }
+
+    iframe {
+        height: 60vh !important;
+    }
+
+    th, td {
+        padding: 8px 10px !important;
+        font-size: 0.85rem !important;
+    }
+
+    pre {
+        padding: 0.85rem !important;
+        font-size: 0.82rem !important;
+    }
+}
+
+    </style>
+    <script>
+    
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.dropdown').forEach(dd => {
+        const btn = dd.querySelector('.dropbtn');
+        const content = dd.querySelector('.dropdown-content');
+        if (btn && content) {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = content.style.display === 'block';
+                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
+                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+                if (!isOpen) {
+                    content.style.display = 'block';
+                    btn.classList.add('active');
+                }
+            });
+        }
+    });
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
+        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+    });
+
+    // Controlador universal de clics en enlaces ancla (#...)
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const rawHref = this.getAttribute('href') || '';
+            const hashIdx = rawHref.indexOf('#');
+            if (hashIdx === -1) return;
+            const hash = rawHref.substring(hashIdx + 1);
+            if (!hash) return;
+            
+            let targetId = hash;
+            try { targetId = decodeURIComponent(hash); } catch(err) {}
+
+            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
+            if (!targetEl) {
+                for (let el of document.querySelectorAll('[id]')) {
+                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
+                        targetEl = el;
+                        break;
+                    }
+                }
+            }
+
+            if (targetEl) {
+                e.preventDefault();
+                const headerOffset = 75;
+                const elementPosition = targetEl.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                if (history.pushState) {
+                    history.pushState(null, null, '#' + targetId);
+                }
+            }
+        });
+    });
+});
+
+function copyCode(btn) {
+    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
+    navigator.clipboard.writeText(code).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = '✅ ¡Copiado!';
+        btn.style.background = '#16a34a';
+        setTimeout(() => {
+            btn.innerText = orig;
+            btn.style.background = '#334155';
+        }, 2000);
+    });
+}
+
+    </script>
+</head>
+<body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD &ndash; Ut1 Tarea Configuracion</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+      <a href="ASGBD_Presentacion_26_27.html" class="nav-btn">Presentación</a>
+      <a href="ASGBD_Programacion_26_27.html" class="nav-btn">Programación</a>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Teoría ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Teoria_Configuracion_26_27.html">ASGBD UT1 Teoria Configuracion 26 27</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Tareas y Prácticas ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Tarea_Configuracion_26_27.html">ASGBD UT1 Tarea Configuracion 26 27</a>
+          <a href="ASGBD_UT1_Practica_26_27.html">ASGBD UT1 Practica 26 27</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <aside id="left-panel">
+            <h3>Índice del Tema</h3>
+            <nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#tarea-1-configuración-de-variables-y-sistemas-de-logs"
+id="toc-tarea-1-configuración-de-variables-y-sistemas-de-logs">TAREA 1:
+CONFIGURACIÓN DE VARIABLES Y SISTEMAS DE LOGS</a>
+<ul>
+<li><a href="#ficha-técnica-de-la-actividad"
+id="toc-ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
+ACTIVIDAD</a></li>
+</ul></li>
+<li><a href="#descripción-general.-objetivos"
+id="toc-descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
+OBJETIVOS</a></li>
+<li><a href="#consideraciones-previas"
+id="toc-consideraciones-previas">2. CONSIDERACIONES PREVIAS</a></li>
+<li><a href="#actividades-a-realizar" id="toc-actividades-a-realizar">3.
+ACTIVIDADES A REALIZAR</a></li>
+<li><a href="#calificación" id="toc-calificación">4.
+CALIFICACIÓN</a></li>
+</ul>
+</nav>
+        </aside>
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT1_Tarea_Configuracion_26_27.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+
+<h1 id="tarea-1-configuración-de-variables-y-sistemas-de-logs">TAREA 1:
+CONFIGURACIÓN DE VARIABLES Y SISTEMAS DE LOGS <a class="headerlink" href="#tarea-1-configuración-de-variables-y-sistemas-de-logs" title="Enlace permanente">¶</a></h1>
+<h3 id="ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
+ACTIVIDAD <a class="headerlink" href="#ficha-técnica-de-la-actividad" title="Enlace permanente">¶</a></h3>
+<div class="table-wrapper"><table>
+<tbody>
+<tr class="header">
+<td><strong>Unidad Didáctica</strong></td>
+<td><strong>UT1</strong>: Instalación, Configuración y Gestión de Logs
+en MySQL 8.x</td>
+</tr>
+<tr class="odd">
+<td><strong>Nombre de la Tarea</strong></td>
+<td><strong>Tarea 1</strong>: Configuración de variables y sistemas de
+logs</td>
+</tr>
+<tr class="header">
+<td><strong>Resultado de Aprendizaje (RA)</strong></td>
+<td><p><strong>RA1:</strong> Identifica los elementos de un sistema
+gestor de bases de datos analizando sus funciones y relación con el
+sistema operativo.</p>
+<p><strong>RA2:</strong> Instala el sistema gestor de bases de datos
+especificando las opciones de configuración y describiendo la estructura
+de sus elementos.</p></td>
+</tr>
+<tr class="odd">
+<td><strong>Criterios de Evaluación (CE)</strong></td>
+<td><p><strong>CE 2.c:</strong> Se han configurado los parámetros del
+sistema gestor.</p>
+<p><strong>CE 2.e:</strong> Se han verificado los ficheros de log del
+SGBD.</p>
+<p><strong>CE 2.f:</strong> Se han resuelto las incidencias de la
+instalación.</p></td>
+</tr>
+<tr class="header">
+<td><strong>Tiempo</strong></td>
+<td>4 horas</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="método-de-entrega-y-formato">MÉTODO DE ENTREGA Y FORMATO <a class="headerlink" href="#método-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
+<ul>
+<li><blockquote>
+<p><strong>[ ] Documento:</strong> Entrega de un único archivo
+<strong>PDF</strong> (Tarea_U1_Logs_NombreAlumno.pdf) que contenga las
+respuestas a los ejercicios teóricos y capturas de pantalla justificadas
+de las ejecuciones en la terminal. Las capturas deben mostrar claramente
+la dirección IP de la instancia o el prompt de comandos para verificar
+su autoría.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>[ ] Archivos de Código:</strong> Fichero de configuración del
+servidor (mysqld.cnf o custom_mysqld.cnf) con las directivas modificadas
+y comentadas según los requisitos planteados.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>[ ] Enlace/Texto:</strong> Subida directa al buzón de tareas
+habilitado en la plataforma de Moodle Centros. El profesor podrá
+realizar preguntas aleatorias en clase sobre la resolución de las tareas
+de auditoría.</p>
+</blockquote></li>
+</ul>
+<h1 id="descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
+OBJETIVOS <a class="headerlink" href="#descripción-general.-objetivos" title="Enlace permanente">¶</a></h1>
+<p>Un Administrador de Sistemas (SysAdmin) debe tener un control
+absoluto sobre el estado operativo de su servidor de base de datos. Esto
+implica saber qué registros de actividad (logs) están habilitados en
+cada momento, dónde se almacenan físicamente en el sistema de archivos
+de Linux, cómo alterar el comportamiento del motor modificando variables
+globales en caliente (RAM) y de manera persistente (disco), y cómo
+interrogar directamente al gestor a través del catálogo de rendimiento
+(performance_schema) para diagnosticar incidencias.</p>
+<p>El objetivo de esta tarea es realizar de forma guiada una serie de
+operaciones avanzadas de configuración y verificación de logs y
+variables sobre una instancia activa de MySQL 8.x.</p>
+<h1 id="consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink" href="#consideraciones-previas" title="Enlace permanente">¶</a></h1>
+<ul>
+<li><blockquote>
+<p><strong>Requisito de IP y Prompt:</strong> Para dar por válida
+cualquier captura de pantalla entregada en la memoria, en la consola del
+sistema debe apreciarse el prompt con el usuario del alumno
+(alumno_nombre@servidor:~$) o la dirección IP pública de la máquina
+asignada en OpenStack.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Acceso de Administración:</strong> Todos los comandos SQL
+deben ser ejecutados como el usuario root o un usuario con privilegios
+equivalentes de superusuario (GRANT ALL PRIVILEGES WITH GRANT
+OPTION).</p>
+</blockquote></li>
+</ul>
+<h1 id="actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink" href="#actividades-a-realizar" title="Enlace permanente">¶</a></h1>
+<p>Resuelve de manera ordenada y documentada los siguientes ejercicios
+prácticos en tu entorno de base de datos.</p>
+<h4
+id="ejercicio-1-estado-inicial-e-identificación-física-1.0-punto">Ejercicio
+1: Estado Inicial e Identificación Física (1.0 Punto) <a class="headerlink" href="#ejercicio-1-estado-inicial-e-identificación-física-1.0-punto" title="Enlace permanente">¶</a></h4>
+<p>Determina mediante comandos SQL si el <strong>Log de Consultas
+Generales</strong> (general_log) y el <strong>Log Binario</strong>
+(log_bin) se encuentran activos actualmente en el sistema.</p>
+<ul>
+<li><blockquote>
+<p>Escribe la consulta o comando SQL utilizado para comprobar ambas
+variables de sistema.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Identifica la ruta física exacta en el disco del servidor donde se
+están escribiendo ambos ficheros de log y aporta una captura de pantalla
+del comando SQL y sus resultados.</p>
+</blockquote></li>
+</ul>
+<h4
+id="ejercicio-2-consulta-de-variables-de-entorno-1.0-punto">Ejercicio 2:
+Consulta de Variables de Entorno (1.0 Punto) <a class="headerlink" href="#ejercicio-2-consulta-de-variables-de-entorno-1.0-punto" title="Enlace permanente">¶</a></h4>
+<p>Consulta y documenta los valores que el servidor tiene establecidos
+de forma predeterminada para las siguientes variables de sistema:</p>
+<ol type="1">
+<li><blockquote>
+<p>autocommit</p>
+</blockquote></li>
+<li><blockquote>
+<p>long_query_time</p>
+</blockquote></li>
+<li><blockquote>
+<p>default_password_lifetime<br />
+<em>Aporta captura de pantalla donde se muestre el comando SQL utilizado
+(con filtrado LIKE o acceso directo al ámbito global @@global) y el
+valor de retorno de cada una de ellas.</em></p>
+</blockquote></li>
+</ol>
+<h4
+id="ejercicio-3-modificación-física-del-fichero-de-configuración-2.0-puntos">Ejercicio
+3: Modificación Física del Fichero de Configuración (2.0 Puntos) <a class="headerlink" href="#ejercicio-3-modificación-física-del-fichero-de-configuración-2.0-puntos" title="Enlace permanente">¶</a></h4>
+<p>Accede al sistema de archivos del servidor Linux y edita el fichero
+de configuración de MySQL (normalmente
+/etc/mysql/mysql.conf.d/mysqld.cnf o tu fichero custom en entornos
+dockerizados). Modifica o añade las líneas necesarias bajo la sección
+[mysqld] para que el servidor adopte de forma fija los siguientes
+valores tras un reinicio:</p>
+<ul>
+<li><blockquote>
+<p>autocommit = OFF (Deshabilitar confirmación automática de
+transacciones).</p>
+</blockquote></li>
+<li><blockquote>
+<p>default_password_lifetime = 270 (Las contraseñas de usuarios expiran
+a los 9 meses).</p>
+</blockquote></li>
+<li><blockquote>
+<p>long_query_time = 2.000000 (Considerar consultas lentas aquellas que
+tarden más de 2 segundos).</p>
+</blockquote></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>slow_query_log = ON (Activar el log de consultas lentas).</code></pre></div></li>
+<li><blockquote>
+<p>slow_query_log_file = /var/log/mysql/slow_querys.log (Ruta para el
+almacenamiento de consultas lentas).</p>
+</blockquote></li>
+</ul>
+<p><em>Entrega una captura del fichero de configuración editado
+utilizando la terminal (cat o nano), reinicia el servicio del SGBD y
+demuestra mediante consola SQL que los cambios se han aplicado
+correctamente tras el arranque.</em></p>
+<h4
+id="ejercicio-4-simulación-de-latencia-e-inspección-del-slow-log-2.0-puntos">Ejercicio
+4: Simulación de Latencia e Inspección del Slow Log (2.0 Puntos) <a class="headerlink" href="#ejercicio-4-simulación-de-latencia-e-inspección-del-slow-log-2.0-puntos" title="Enlace permanente">¶</a></h4>
+<ol type="1">
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Conéctate a la base de datos y ejecuta de manera secuencial las
+siguientes dos consultas:
+SELECT NOW(), SLEEP(3);
+SELECT NOW();</code></pre></div></li>
+<li><blockquote>
+<p>Accede al sistema de archivos de tu máquina Linux y abre el fichero
+configurado en el ejercicio anterior (slow_querys.log).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Demuestra mediante captura de pantalla que la consulta lenta ha
+quedado registrada.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Explica el significado técnico de las métricas que acompañan al
+registro de la consulta en el archivo: Query_time, Lock_time, Rows_sent
+y Rows_examined. ¿Se ha registrado también la segunda consulta (SELECT
+NOW();)? Justifica tu respuesta.</p>
+</blockquote></li>
+</ol>
+<h4
+id="ejercicio-5-persistencia-de-variables-dinámicas-en-mysql-8.x-2.0-puntos">Ejercicio
+5: Persistencia de Variables Dinámicas en MySQL 8.x (2.0 Puntos) <a class="headerlink" href="#ejercicio-5-persistencia-de-variables-dinámicas-en-mysql-8.x-2.0-puntos" title="Enlace permanente">¶</a></h4>
+<p>Un cliente requiere que el servidor soporte temporalmente un máximo
+de 250 conexiones simultáneas sin reiniciar el servicio en ese instante,
+pero exige que dicho valor se mantenga si el servidor se apaga en el
+futuro.</p>
+<ol type="1">
+<li><blockquote>
+<p>Ejecuta la sentencia SQL necesaria para aplicar este cambio en
+caliente y asegurar su persistencia nativa en disco.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Comprueba mediante comandos de Linux el contenido del fichero físico
+/var/lib/mysql/mysqld-auto.cnf y realiza una captura donde se muestre la
+estructura JSON interna generada por MySQL 8.x para almacenar este
+cambio.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Indica el comando SQL requerido para revocar la persistencia de esta
+variable y devolverla a su estado predeterminado.</p>
+</blockquote></li>
+</ol>
+<h4
+id="ejercicio-6-auditoría-de-errores-con-performance_schema-2.0-puntos">Ejercicio
+6: Auditoría de Errores con performance_schema (2.0 Puntos) <a class="headerlink" href="#ejercicio-6-auditoría-de-errores-con-performance_schema-2.0-puntos" title="Enlace permanente">¶</a></h4>
+<ol type="1">
+<li><blockquote>
+<p>Fuerza de manera intencionada un error sintáctico o de acceso en el
+gestor (por ejemplo, intentando acceder a una tabla inexistente o a una
+base de datos sin permisos). Anota el código de error producido (ej:
+Error 1146).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Realiza una consulta SQL sobre la tabla
+performance_schema.events_errors_summary_by_user_by_error para obtener
+los últimos errores que ha generado tu usuario activo (ej: root).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Comprueba mediante captura de pantalla que el error provocado en el
+apartado anterior ha quedado registrado en las estadísticas de la tabla
+de rendimiento.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Escribe y ejecuta una consulta SQL sobre la tabla
+performance_schema.status_by_user que permita comprobar el recuento
+total de sentencias de lectura de datos que ha realizado el usuario
+administrador, filtrando por aquellas variables de estado que comiencen
+por la cadena Handler_read%.</p>
+</blockquote></li>
+</ol>
+<h1 id="calificación">4. CALIFICACIÓN <a class="headerlink" href="#calificación" title="Enlace permanente">¶</a></h1>
+<p>La actividad será evaluada según los siguientes criterios de
+ponderación base: Funcionalidad (50%), Memoria y Documentación (40%),
+Presentación (10%).</p>
+<h4 id="criterios-de-calificación-rúbrica-general">CRITERIOS DE
+CALIFICACIÓN (RÚBRICA GENERAL) <a class="headerlink" href="#criterios-de-calificación-rúbrica-general" title="Enlace permanente">¶</a></h4>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>Actividad / Ejercicio</strong></th>
+<th><strong>Muy Bien (100%)</strong></th>
+<th><strong>Bien (60%)</strong></th>
+<th><strong>Insuficiente (0%)</strong></th>
+<th><strong>Peso</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Ej. 1, 2 y 5: Variables y Persistencia</strong></td>
+<td>Identifica con precisión las variables del sistema. Aplica la
+persistencia mediante SET PERSIST y documenta de forma impecable el JSON
+interno del fichero mysqld-auto.cnf.</td>
+<td>Identifica las variables pero confunde la sintaxis de persistencia o
+no aporta la estructura del archivo JSON.</td>
+<td>No determina las variables o confunde los ámbitos global/sesión de
+forma grave.</td>
+<td><strong>30%</strong></td>
+</tr>
+<tr class="header">
+<td><strong>Ej. 3 y 4: Modificación Física y Slow Log</strong></td>
+<td>Modifica con éxito el archivo físico de configuración y aplica los
+logs. Simula la latencia con SLEEP() e interpreta correctamente todas
+las métricas de rendimiento del Slow Log.</td>
+<td>Realiza la configuración física pero no logra interpretar de forma
+técnica las métricas de las consultas registradas en el slow log.</td>
+<td>No modifica los ficheros de configuración, no reinicia el servicio o
+no genera el registro de consultas lentas.</td>
+<td><strong>40%</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Ej. 6: performance_schema</strong></td>
+<td>Provoca el error de acceso con éxito, localiza su código numérico y
+escribe consultas óptimas de auditoría de errores y de estado en la base
+de datos de rendimiento.</td>
+<td>Escribe las consultas de rendimiento pero presenta dificultades para
+asociar el error provocado con el registro interno de la tabla.</td>
+<td>No realiza consultas sobre las tablas de performance_schema o no
+documenta el apartado.</td>
+<td><strong>30%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h4
+id="criterio-específico-de-documentación-y-capturas-1.5-puntos">CRITERIO
+ESPECÍFICO DE DOCUMENTACIÓN Y CAPTURAS (1.5 Puntos) <a class="headerlink" href="#criterio-específico-de-documentación-y-capturas-1.5-puntos" title="Enlace permanente">¶</a></h4>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>Criterio</strong></th>
+<th><strong>Puntuación</strong></th>
+<th><strong>Realizado correctamente</strong></th>
+<th><strong>Realizado con algún error</strong></th>
+<th><strong>No realizado</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Calidad de la documentación y validación</strong></td>
+<td><strong>1.5 Puntos</strong></td>
+<td>Documento impecable en formato PDF. Las capturas son legibles, se
+identifica de forma inequívoca al autor (prompt del terminal o
+comentario SQL) y se explica con detalle cada paso.</td>
+<td>Documento bien estructurado pero faltan comentarios en alguna
+captura de pantalla o la autoría no se aprecia con total claridad en
+todas las imágenes.</td>
+<td>No entrega documento o es totalmente ilegible, sin capturas, o
+copiado de otro alumno (calificación final: 0).</td>
+</tr>
+</tbody>
+</table></div>
+
+        </main>
+    </div>
+</body>
+</html>

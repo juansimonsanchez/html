@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASGBD - Ut1 Practica</title>
+    <style>
+    
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --bg-header: #1e3a8a;
+    --text-header: #ffffff;
+    --bg-body: #f8fafc;
+    --text-body: #1e293b;
+    --border-color: #cbd5e1;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-body);
+    color: var(--text-body);
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, [id], a[name] {
+    scroll-margin-top: 80px !important;
+}
+
+.headerlink {
+    display: inline-block;
+    margin-left: 0.4rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.8em;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
+h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
+    visibility: visible;
+    opacity: 1;
+}
+
+.headerlink:hover {
+    color: var(--primary);
+}
+
+#site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    background: var(--bg-header);
+    color: var(--text-header);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    height: 62px;
+}
+
+.site-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.top-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.top-nav .nav-btn {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+.top-nav .nav-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 9px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown:hover .dropbtn, .dropbtn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 320px;
+    max-width: 480px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 10001;
+    border: 1px solid #e2e8f0;
+    margin-top: 6px;
+}
+
+.dropdown-content a {
+    color: var(--text-body);
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.92rem;
+    border-bottom: 1px solid #f1f5f9;
+    line-height: 1.4;
+    transition: background 0.15s, color 0.15s;
+    word-break: break-word;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #eff6ff;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block !important;
+}
+
+#page-layout {
+    display: flex;
+    min-height: calc(100vh - 62px);
+}
+
+#left-panel {
+    width: 320px;
+    min-width: 320px;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 1.5rem 1.25rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: sticky;
+    top: 62px;
+    height: calc(100vh - 62px);
+}
+
+#left-panel h3 {
+    font-size: 1rem;
+    margin-top: 0;
+    color: #334155;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
+
+#left-panel nav#TOC, #left-panel #TOC {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+#left-panel ul {
+    list-style-type: none;
+    padding-left: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+#left-panel li {
+    margin: 6px 0;
+}
+
+#left-panel a {
+    color: #475569;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    display: block;
+    transition: color 0.15s;
+}
+
+#left-panel a:hover {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+#main-content {
+    flex: 1;
+    padding: 2.5rem 4rem;
+    box-sizing: border-box;
+    max-width: 100% !important;
+    width: calc(100% - 320px);
+    min-width: 0;
+}
+
+/* TABLAS ELEGANTES Y RESPONSIVE */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1.75rem 0;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    font-size: 0.93rem;
+    background: #ffffff;
+    table-layout: auto !important;
+}
+
+th, td {
+    padding: 10px 14px !important;
+    border: 1px solid #cbd5e1 !important;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+td p, th p {
+    margin: 0 !important;
+    padding: 2px 0 !important;
+}
+
+th {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #0f172a !important;
+}
+
+tr:nth-child(even) td {
+    background-color: #f8fafc !important;
+}
+
+tr:hover td {
+    background-color: #f1f5f9 !important;
+}
+
+/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
+.code-wrapper {
+    position: relative;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0f172a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #334155;
+    color: #f8fafc;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.copy-btn:hover {
+    background: #2563eb;
+}
+
+pre {
+    margin: 0 !important;
+    padding: 1.25rem 1.25rem !important;
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    overflow-x: auto !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+}
+
+code {
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+}
+
+p code, li code {
+    background: #e2e8f0;
+    color: #0f172a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
+
+/* RESPONSIVE DESIGN PARA MÓVILES Y TABLETS */
+@media (max-width: 768px) {
+    .header-container {
+        height: auto;
+        flex-direction: column;
+        padding: 0.75rem 1rem;
+        gap: 0.6rem;
+    }
+    
+    .site-title {
+        font-size: 1.05rem;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .site-title img {
+        height: 28px !important;
+    }
+
+    .top-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 0.35rem;
+    }
+
+    .top-nav .nav-btn, .dropbtn {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    .dropdown-content {
+        min-width: 240px;
+        max-width: 90vw;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #page-layout {
+        flex-direction: column;
+    }
+
+    #left-panel {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        position: static !important;
+        border-right: none !important;
+        border-bottom: 2px solid #e2e8f0;
+        padding: 1rem !important;
+    }
+
+    #main-content {
+        width: 100% !important;
+        padding: 1.25rem 1rem !important;
+    }
+
+    iframe {
+        height: 60vh !important;
+    }
+
+    th, td {
+        padding: 8px 10px !important;
+        font-size: 0.85rem !important;
+    }
+
+    pre {
+        padding: 0.85rem !important;
+        font-size: 0.82rem !important;
+    }
+}
+
+    </style>
+    <script>
+    
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.dropdown').forEach(dd => {
+        const btn = dd.querySelector('.dropbtn');
+        const content = dd.querySelector('.dropdown-content');
+        if (btn && content) {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = content.style.display === 'block';
+                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
+                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+                if (!isOpen) {
+                    content.style.display = 'block';
+                    btn.classList.add('active');
+                }
+            });
+        }
+    });
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
+        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+    });
+
+    // Controlador universal de clics en enlaces ancla (#...)
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const rawHref = this.getAttribute('href') || '';
+            const hashIdx = rawHref.indexOf('#');
+            if (hashIdx === -1) return;
+            const hash = rawHref.substring(hashIdx + 1);
+            if (!hash) return;
+            
+            let targetId = hash;
+            try { targetId = decodeURIComponent(hash); } catch(err) {}
+
+            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
+            if (!targetEl) {
+                for (let el of document.querySelectorAll('[id]')) {
+                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
+                        targetEl = el;
+                        break;
+                    }
+                }
+            }
+
+            if (targetEl) {
+                e.preventDefault();
+                const headerOffset = 75;
+                const elementPosition = targetEl.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                if (history.pushState) {
+                    history.pushState(null, null, '#' + targetId);
+                }
+            }
+        });
+    });
+});
+
+function copyCode(btn) {
+    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
+    navigator.clipboard.writeText(code).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = '✅ ¡Copiado!';
+        btn.style.background = '#16a34a';
+        setTimeout(() => {
+            btn.innerText = orig;
+            btn.style.background = '#334155';
+        }, 2000);
+    });
+}
+
+    </script>
+</head>
+<body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD &ndash; Ut1 Practica</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+      <a href="ASGBD_Presentacion_26_27.html" class="nav-btn">Presentación</a>
+      <a href="ASGBD_Programacion_26_27.html" class="nav-btn">Programación</a>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Teoría ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Teoria_Configuracion_26_27.html">ASGBD UT1 Teoria Configuracion 26 27</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Tareas y Prácticas ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Tarea_Configuracion_26_27.html">ASGBD UT1 Tarea Configuracion 26 27</a>
+          <a href="ASGBD_UT1_Practica_26_27.html">ASGBD UT1 Practica 26 27</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <aside id="left-panel">
+            <h3>Índice del Tema</h3>
+            <nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#práctica-1" id="toc-práctica-1">PRÁCTICA 1: </a></li>
+<li><a href="#diseño-explotación-y-observabilidad"
+id="toc-diseño-explotación-y-observabilidad">DISEÑO, EXPLOTACIÓN Y
+OBSERVABILIDAD</a>
+<ul>
+<li><a href="#ficha-técnica-de-la-actividad"
+id="toc-ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
+ACTIVIDAD</a></li>
+<li><a href="#descripción-general.-objetivos"
+id="toc-descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
+OBJETIVOS</a></li>
+<li><a href="#consideraciones-previas"
+id="toc-consideraciones-previas">2. CONSIDERACIONES PREVIAS</a></li>
+<li><a href="#actividades-a-realizar" id="toc-actividades-a-realizar">3.
+ACTIVIDADES A REALIZAR</a></li>
+<li><a href="#calificación" id="toc-calificación">4. CALIFICACIÓN</a>
+<ul>
+<li><a href="#section" id="toc-section"></a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+        </aside>
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT1_Practica_26_27.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+
+<h1 id="práctica-1">PRÁCTICA 1:  <a class="headerlink" href="#práctica-1" title="Enlace permanente">¶</a></h1>
+<h1 id="diseño-explotación-y-observabilidad">DISEÑO, EXPLOTACIÓN Y
+OBSERVABILIDAD <a class="headerlink" href="#diseño-explotación-y-observabilidad" title="Enlace permanente">¶</a></h1>
+<h3 id="ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
+ACTIVIDAD <a class="headerlink" href="#ficha-técnica-de-la-actividad" title="Enlace permanente">¶</a></h3>
+<div class="table-wrapper"><table>
+<tbody>
+<tr class="header">
+<td><strong>Unidad Didáctica</strong></td>
+<td><strong>UT1</strong>: Instalación, Configuración y Gestión de Logs
+en MySQL 8.x</td>
+</tr>
+<tr class="odd">
+<td><strong>Nombre</strong></td>
+<td><strong>Práctica 1:</strong> Diseño, explotación y
+observabilidad</td>
+</tr>
+<tr class="header">
+<td><strong>Resultado de Aprendizaje (RA)</strong></td>
+<td><p><strong>RA1:</strong> Identifica los elementos de un sistema
+gestor de bases de datos analizando sus funciones y relación con el
+sistema operativo.</p>
+<p><strong>RA2:</strong> Instala el sistema gestor de bases de datos
+especificando las opciones de configuración y describiendo la estructura
+de sus elementos.</p></td>
+</tr>
+<tr class="odd">
+<td><strong>Criterios de Evaluación (CE)</strong></td>
+<td><strong>CE 1.a, CE 1.b, CE 2.a, CE 2.b, CE 2.c, CE 2.e, CE
+2.f</strong></td>
+</tr>
+<tr class="header">
+<td><strong>Tiempo Estimado</strong></td>
+<td>6 horas</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="método-de-entrega-y-formato">MÉTODO DE ENTREGA Y FORMATO <a class="headerlink" href="#método-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
+<ul>
+<li><blockquote>
+<p><strong>[ ] Documento:</strong> Una memoria detallada de la práctica
+en formato <strong>PDF</strong>
+(Practica_Completa_UT1_NombreAlumno.pdf). El documento debe estar
+justificado, con tipografía profesional, capturas de pantalla de tamaño
+adecuado con comentarios explicativos debajo de cada una y portadas
+limpias.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>[ ] Archivos de Código:</strong> Un archivo comprimido
+(Fuentes_Repaso_NombreAlumno.tar.gz) que contenga:</p>
+</blockquote>
+<ol type="1">
+<li><blockquote>
+<p>El script SQL de inicialización completo (tienda_repaso.sql).</p>
+</blockquote></li>
+<li><blockquote>
+<p>El fichero de orquestación del escenario (docker-compose.yml).</p>
+</blockquote></li>
+<li><blockquote>
+<p>El fichero de parámetros personalizados (custom_mysqld.cnf).</p>
+</blockquote></li>
+</ol></li>
+<li><blockquote>
+<p><strong>[ ] Enlace/Texto:</strong> Subida del archivo comprimido a
+través de la sección correspondiente en la plataforma virtual Moodle
+Centros. Esta práctica contempla la validación de autoría mediante una
+posible defensa oral en clase.</p>
+</blockquote></li>
+</ul>
+<h2 id="descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
+OBJETIVOS <a class="headerlink" href="#descripción-general.-objetivos" title="Enlace permanente">¶</a></h2>
+<p>En un entorno de producción, la labor de un Administrador de Sistemas
+(SysAdmin) no está desligada de la lógica del software de negocio. Para
+diagnosticar problemas de rendimiento, bloqueos en los hilos de
+ejecución, accesos de red sospechosos o inconsistencias en los datos, es
+vital comprender el diseño relacional y el comportamiento de las
+consultas que las aplicaciones clientes envían de forma continua al
+motor de bases de datos.</p>
+<p>Esta práctica integrada tiene como objetivos:</p>
+<ol type="1">
+<li><blockquote>
+<p><strong>Consolidar los pilares de primer año (Módulo: Gestión de
+Bases de Datos):</strong> Diseñar de forma óptima el esquema relacional,
+implementar la base de datos física mediante lenguaje de definición de
+datos (DDL) y poblar y consultar los datos aplicando lenguaje de
+manipulación de datos avanzado (DML).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Aplicar los contenidos de administración de segundo año
+(Módulo: ASGBD):</strong> Desplegar de forma aislada el gestor (MySQL
+8.x) empleando contenedores con Docker, estructurar el almacenamiento
+persistente e interfaces de red, robustecer el servidor parametrizando
+variables de sistema físicas y dinámicas, configurar los archivos de log
+para auditoría, simular latencia e interrogar las tablas de
+performance_schema para diagnóstico forense.</p>
+</blockquote></li>
+</ol>
+<h2 id="consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink" href="#consideraciones-previas" title="Enlace permanente">¶</a></h2>
+<ul>
+<li><blockquote>
+<p><strong>Escenario Tecnológico:</strong> Se empleará obligatoriamente
+<strong>Docker</strong> y <strong>Docker Compose</strong> en entornos
+Linux para garantizar la uniformidad en el aula y aislar las variables
+del sistema host local.</p>
+</blockquote></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Control Estricto de Copias: Para validar el
+desarrollo, todas las capturas de la terminal del host deben mostrar
+claramente el nombre de usuario de la máquina del alumno (ej:
+alumno_asir@pc-laboratorio:~$). Para las capturas de consultas SQL
+dentro de la terminal de MySQL, el alumno deberá ejecutar como paso
+previo la siguiente consulta de validación:
+SELECT 'Desarrollado por: &lt;Nombre_Alumno&gt; - IP: &lt;IP_Aula&gt;'
+AS autor, NOW();</code></pre></div></li>
+</ul>
+<h2 id="actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink" href="#actividades-a-realizar" title="Enlace permanente">¶</a></h2>
+<p>La práctica de repaso y aplicación se desarrollará siguiendo
+estrictamente las siguientes cuatro fases.</p>
+<h4
+id="fase-1-modelado-relacional-e-implementación-ddl-repaso-1º-gbd">FASE
+1: MODELADO RELACIONAL E IMPLEMENTACIÓN DDL [Repaso 1º GBD] <a class="headerlink" href="#fase-1-modelado-relacional-e-implementación-ddl-repaso-1º-gbd" title="Enlace permanente">¶</a></h4>
+<p>A partir del problema clásico del comercio electrónico, debes
+realizar el paso al modelo relacional e implementar físicamente la
+estructura de datos.</p>
+<h5 id="lógica-de-negocio-y-reglas-de-integridad">Lógica de Negocio y
+Reglas de Integridad: <a class="headerlink" href="#lógica-de-negocio-y-reglas-de-integridad" title="Enlace permanente">¶</a></h5>
+<ul>
+<li><blockquote>
+<p><strong>usuario:</strong> Almacena nif (PK), correo (único y
+obligatorio), nombre, direccion, telefono, login (único y obligatorio) y
+password (obligatorio, guardado en formato cifrado).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>seccion:</strong> Almacena un codigo_seccion (entero
+autoincremental, PK), nombre (único y obligatorio), descripcion y
+fecha_creacion (fecha del sistema por defecto).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>producto:</strong> Almacena codigo_producto (cadena de
+caracteres de longitud variable, PK), nombre (obligatorio), descripcion,
+precio (decimal con dos decimales para los céntimos, obligatorio) y el
+codigo_seccion al que pertenece de forma obligatoria (FK).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>carrito:</strong> Almacena codigo_carrito (autoincremental,
+PK), fecha_compra (tipo fecha, obligatorio), completado (booleano que
+indica si la compra se cerró o sigue activa) y el nif del usuario dueño
+del carro (FK).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>detalle_carrito:</strong> Relación N:M que asocia un carrito
+con múltiples productos, indicando la cantidad de unidades solicitadas
+de cada producto (entero positivo). La clave primaria de esta tabla
+intermedia es compuesta por la unión de las dos claves ajenas.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>datos_bancarios:</strong> Almacena el numero_tarjeta (cadena
+de longitud estándar de tarjeta, PK), fecha_caducidad (tipo fecha,
+obligatoria), cvv (entero de 3 dígitos, obligatorio) y el nif del
+usuario asociado (FK).</p>
+</blockquote></li>
+</ul>
+<h5 id="tareas-técnicas-a-realizar">Tareas técnicas a realizar: <a class="headerlink" href="#tareas-técnicas-a-realizar" title="Enlace permanente">¶</a></h5>
+<ol type="1">
+<li><blockquote>
+<p>Diseña el esquema relacional formalizando claves primarias, claves
+ajenas y restricciones de nulidad y unicidad.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Escribe el script SQL completo denominado tienda_repaso.sql. La base
+de datos debe utilizar obligatoriamente el motor transaccional
+<strong>InnoDB</strong> y el juego de caracteres
+<strong>utf8mb4</strong>.</p>
+</blockquote></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Configura de forma explícita las claves foráneas para que los flujos
+de borrado y modificación se propaguen automáticamente en cascada (ON
+DELETE CASCADE y ON UPDATE CASCADE) en las relaciones críticas entre
+usuarios, carritos, secciones y productos.</code></pre></div></li>
+</ol>
+<h4
+id="fase-2-orquestación-de-red-y-almacenamiento-bajo-docker-asgbd">FASE
+2: ORQUESTACIÓN DE RED Y ALMACENAMIENTO BAJO DOCKER [ASGBD] <a class="headerlink" href="#fase-2-orquestación-de-red-y-almacenamiento-bajo-docker-asgbd" title="Enlace permanente">¶</a></h4>
+<p>Desplegarás el servidor MySQL utilizando contenedores para asegurar
+la portabilidad y aislar los logs del sistema operativo host.</p>
+<h5 id="tareas-técnicas-a-realizar-1">Tareas técnicas a realizar: <a class="headerlink" href="#tareas-técnicas-a-realizar-1" title="Enlace permanente">¶</a></h5>
+<ol type="1">
+<li><blockquote>
+<p>Crea un directorio de trabajo local denominado repaso_ut1/. Dentro de
+él, genera los directorios vacíos ./config y ./logs.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Diseña un archivo docker-compose.yml que levante una instancia de
+MySQL 8.x con:</p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p>Nombre del contenedor: mysql-sysadmin-repaso.</p>
+</blockquote></li>
+<li><blockquote>
+<p>El puerto 3306 mapeado de manera unificada al exterior.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Volumen de persistencia para el directorio de datos internos del
+motor (/var/lib/mysql).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Un montaje tipo <em>Bind-Mount</em> que asocie ./config con la ruta
+de carga de ficheros de configuración modular de MySQL
+(/etc/mysql/conf.d).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Un montaje tipo <em>Bind-Mount</em> que asocie ./logs con el
+directorio interno de escritura de logs del contenedor
+/var/log/mysql.</p>
+</blockquote></li>
+</ul></li>
+<li><blockquote>
+<p>Crea un archivo ./config/custom_mysqld.cnf e introduce las siguientes
+directivas fijas:</p>
+</blockquote>
+<ul>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Desactivar confirmación automática (autocommit = OFF).</code></pre></div></li>
+<li><blockquote>
+<p>Fijar expiración de contraseñas a los 180 días
+(default_password_lifetime = 180).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Habilitar un límite de conexiones simultáneas de 120.</p>
+</blockquote></li>
+</ul></li>
+<li><blockquote>
+<p>Levanta el contenedor de Docker (docker compose up -d) y, mediante
+consultas SQL a las variables de entorno, verifica que el motor ha
+adoptado las configuraciones estáticas definidas en el fichero de
+configuración de la carpeta local ./config.</p>
+</blockquote></li>
+</ol>
+<h4
+id="fase-3-carga-dml-persistencia-en-caliente-y-explotación-de-datos-integrado-1º2º">FASE
+3: CARGA DML, PERSISTENCIA EN CALIENTE Y EXPLOTACIÓN DE DATOS [Integrado
+1º/2º] <a class="headerlink" href="#fase-3-carga-dml-persistencia-en-caliente-y-explotación-de-datos-integrado-1º2º" title="Enlace permanente">¶</a></h4>
+<p>Poblarás tu base de datos y simularás el comportamiento real de un
+cliente interactuando con la tienda virtual de comercio electrónico,
+verificando el registro de logs del sistema.</p>
+<h5 id="tareas-técnicas-a-realizar-2">Tareas técnicas a realizar: <a class="headerlink" href="#tareas-técnicas-a-realizar-2" title="Enlace permanente">¶</a></h5>
+<ol type="1">
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Añade sentencias INSERT en tu script SQL para cargar la información
+de prueba:</code></pre></div>
+<ul>
+<li><blockquote>
+<p>3 usuarios registrados (uno de ellos debe tener el login mi_usuario y
+su contraseña debe guardarse de forma cifrada mediante una función de
+hash como SHA2).</p>
+</blockquote></li>
+<li><blockquote>
+<p>3 secciones en la tienda (una con el nombre exacto Mi_sección y otra
+llamada Electrónica).</p>
+</blockquote></li>
+<li><blockquote>
+<p>5 productos asignados a las diferentes secciones creadas.</p>
+</blockquote></li>
+<li><blockquote>
+<p>2 carritos virtuales (un carro completado y otro pendiente de
+finalizar compra para el usuario mi_usuario).</p>
+</blockquote></li>
+<li><blockquote>
+<p>1 registro de datos bancarios asociado al usuario mi_usuario.</p>
+</blockquote></li>
+</ul></li>
+<li><blockquote>
+<p>Modifica el servidor en caliente de forma <strong>persistente y
+global</strong> utilizando sentencias directas SQL (SET PERSIST) para
+los siguientes requisitos de observabilidad:</p>
+</blockquote>
+<ul>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Activar el General Query Log enviando la salida a
+/var/log/mysql/query.log.</code></pre></div></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Activar el Slow Query Log con un umbral de tiempo
+máximo de long_query_time = 1.500000, enviando la salida a
+/var/log/mysql/slow.log.</code></pre></div></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Activar el registro de consultas ineficientes que no utilizan índices
+(log_queries_not_using_indexes).</code></pre></div></li>
+<li><blockquote>
+<p>Comprueba en tu terminal del host que se ha generado de forma
+automática el archivo JSON mysqld-auto.cnf en el volumen de datos de tu
+contenedor de base de datos.</p>
+</blockquote></li>
+</ul></li>
+<li><blockquote>
+<p>Resuelve y ejecuta las siguientes consultas de negocio sobre tu
+esquema, asegurando que se capturen en tu log general:</p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p><strong>Consulta de login:</strong> Obtener el password cifrado del
+usuario con login mi_usuario para verificar accesos correctos.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Secciones del mes:</strong> Mostrar las secciones que se han
+creado este mes actual.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Coste del carro:</strong> Visualizar el coste total de un
+carrito de compra concreto, calculando el sumatorio de la cantidad por
+el precio de cada producto, filtrando para el usuario con login
+mi_usuario y fecha de compra 12/09/2023.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Verificación de flujos en cascada:</strong> Ejecuta la
+sentencia SQL para borrar un producto de la sección Mi_sección.
+Documenta qué ocurre con los registros de la tabla intermedia
+detalle_carrito y explica cómo ha operado el motor InnoDB.</p>
+</blockquote></li>
+</ul></li>
+</ol>
+<h4 id="fase-4-observabilidad-latencia-y-auditoría-interna-asgbd">FASE
+4: OBSERVABILIDAD, LATENCIA Y AUDITORÍA INTERNA [ASGBD] <a class="headerlink" href="#fase-4-observabilidad-latencia-y-auditoría-interna-asgbd" title="Enlace permanente">¶</a></h4>
+<p>Diagnosticarás problemas de latencia provocados en el sistema y
+auditarás el estado de la instancia consultando las tablas del
+catálogo.</p>
+<h5 id="tareas-de-verificación-a-realizar">Tareas de verificación a
+realizar: <a class="headerlink" href="#tareas-de-verificación-a-realizar" title="Enlace permanente">¶</a></h5>
+<ol type="1">
+<li><blockquote>
+<p>Provoca una consulta lenta de alta latencia artificial (3 segundos)
+mediante la función SLEEP().</p>
+</blockquote></li>
+<li><blockquote>
+<p>Inspecciona desde la terminal de tu sistema operativo host el archivo
+local ./logs/slow.log y aporta una captura donde demuestres su registro.
+Interpreta técnicamente cada una de las métricas que acompañan al
+registro de la consulta en el archivo: Query_time, Lock_time, Rows_sent
+y Rows_examined.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Fuerza un error de sintaxis de forma intencionada e identifica su
+código numérico devuelto por MySQL. Escribe una consulta SQL sobre la
+tabla performance_schema.events_errors_summary_by_user_by_error que
+muestre los últimos errores ocurridos para tu usuario administrador,
+comprobando que se ha registrado tu código de error provocado.</p>
+</blockquote></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Escribe y ejecuta una consulta SQL sobre la tabla
+performance_schema.status_by_user que permita auditar la cantidad total
+de sentencias DML de tipo SELECT realizadas por el usuario administrador
+de la base de datos.</code></pre></div></li>
+</ol>
+<h2 id="calificación">4. CALIFICACIÓN <a class="headerlink" href="#calificación" title="Enlace permanente">¶</a></h2>
+<blockquote>
+<p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
+través de la plataforma, la entrega del documento en formatos editables
+no permitidos (como .docx), capturas con identificación del alumno/a o
+la omisión de los enlaces de las fuentes documentales utilizadas
+penalizará gravemente la nota o invalidará la práctica.</p>
+</blockquote>
+<h3 id="section"> <a class="headerlink" href="#section" title="Enlace permanente">¶</a></h3>
+<p>La actividad será evaluada según los siguientes criterios de
+ponderación base: Funcionalidad (50%), Memoria y Documentación (40%),
+Presentación (10%).</p>
+<h4 id="criterios-de-calificación-rúbrica-general">CRITERIOS DE
+CALIFICACIÓN (RÚBRICA GENERAL) <a class="headerlink" href="#criterios-de-calificación-rúbrica-general" title="Enlace permanente">¶</a></h4>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>Apartado</strong></th>
+<th><strong>Excelente (100%)</strong></th>
+<th><strong>Aceptable (60%)</strong></th>
+<th><strong>Insuficiente (0%)</strong></th>
+<th><strong>Peso</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Fase 1: Diseño y Script DDL (1º)</strong></td>
+<td>Diseño relacional correcto. Script SQL libre de errores. Implementa
+restricciones Unique y flujos de borrado/modificación cascade de manera
+idéntica a los requisitos de diseño del problema.</td>
+<td>El script presenta pequeños fallos sintácticos. Faltan flujos
+cascade en claves ajenas críticas o restricciones Unique.</td>
+<td>No realiza el diseño relacional, no entrega el script SQL o las
+tablas no son transaccionales en InnoDB.</td>
+<td><strong>20%</strong></td>
+</tr>
+<tr class="header">
+<td><strong>Fase 2 y 3: Docker, Carga y Logs (2º)</strong></td>
+<td>Docker Compose funcional con volumen persistente y montajes bind.
+Archivo custom_mysqld.cnf correcto. Carga de datos DML consistente con
+password cifrado. Configura de forma persistente (SET PERSIST) los
+logs.</td>
+<td>Contenedor funcional pero montajes bind erróneos. Faltan variables
+por parametrizar en el custom.cnf o la carga de datos es
+incompleta.</td>
+<td>No despliega con contenedores, no activa los logs en caliente o no
+realiza la carga de datos.</td>
+<td><strong>50%</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Fase 4: Diagnóstico y performance_schema</strong></td>
+<td>Interpreta impecablemente las métricas del Slow Query Log. Realiza
+con total soltura consultas estructuradas de auditoría sobre las tablas
+internas de performance_schema.</td>
+<td>Consulta las tablas de rendimiento pero presenta dificultades para
+asociar el error provocado con el código numérico.</td>
+<td>No realiza consultas sobre las tablas de performance_schema o no
+documenta el apartado.</td>
+<td><strong>30%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h4
+id="criterio-específico-de-documentación-y-capturas-1.5-puntos">CRITERIO
+ESPECÍFICO DE DOCUMENTACIÓN Y CAPTURAS (1.5 Puntos) <a class="headerlink" href="#criterio-específico-de-documentación-y-capturas-1.5-puntos" title="Enlace permanente">¶</a></h4>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>Criterio</strong></th>
+<th><strong>Excelente (1.5 Puntos)</strong></th>
+<th><strong>Aceptable (0.75 Puntos)</strong></th>
+<th><strong>Insuficiente (0 Puntos)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Calidad de la documentación y validación</strong></td>
+<td>Memoria impecable en PDF. Las capturas son legibles, se identifica
+claramente al autor en el prompt de la consola o mediante consulta SQL
+explicativa y se detalla técnicamente cada fase.</td>
+<td>Documento bien estructurado pero faltan comentarios explicativos en
+alguna captura de pantalla o la validación del alumno no es clara en
+todas las imágenes.</td>
+<td>El documento es desordenado, de difícil lectura, sin capturas
+justificadas, o se sospecha copia entre alumnos.</td>
+</tr>
+</tbody>
+</table></div>
+
+        </main>
+    </div>
+</body>
+</html>
