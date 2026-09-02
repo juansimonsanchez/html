@@ -1,0 +1,2044 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GBD - Ut1 Teoria Almacenamiento</title>
+    <style>
+    
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --bg-header: #1e3a8a;
+    --text-header: #ffffff;
+    --bg-body: #f8fafc;
+    --text-body: #1e293b;
+    --border-color: #cbd5e1;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-body);
+    color: var(--text-body);
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, [id], a[name] {
+    scroll-margin-top: 80px !important;
+}
+
+.headerlink {
+    display: inline-block;
+    margin-left: 0.4rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.8em;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
+h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
+    visibility: visible;
+    opacity: 1;
+}
+
+.headerlink:hover {
+    color: var(--primary);
+}
+
+#site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    background: var(--bg-header);
+    color: var(--text-header);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    height: 62px;
+}
+
+.site-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.top-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.top-nav .nav-btn {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+.top-nav .nav-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 9px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown:hover .dropbtn, .dropbtn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 320px;
+    max-width: 480px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 10001;
+    border: 1px solid #e2e8f0;
+    margin-top: 6px;
+}
+
+.dropdown-content a {
+    color: var(--text-body);
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.92rem;
+    border-bottom: 1px solid #f1f5f9;
+    line-height: 1.4;
+    transition: background 0.15s, color 0.15s;
+    word-break: break-word;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #eff6ff;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block !important;
+}
+
+#page-layout {
+    display: flex;
+    min-height: calc(100vh - 62px);
+}
+
+#left-panel {
+    width: 320px;
+    min-width: 320px;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 1.5rem 1.25rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: sticky;
+    top: 62px;
+    height: calc(100vh - 62px);
+}
+
+#left-panel h3 {
+    font-size: 1rem;
+    margin-top: 0;
+    color: #334155;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
+
+#left-panel nav#TOC, #left-panel #TOC {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+#left-panel ul {
+    list-style-type: none;
+    padding-left: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+#left-panel li {
+    margin: 6px 0;
+}
+
+#left-panel a {
+    color: #475569;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    display: block;
+    transition: color 0.15s;
+}
+
+#left-panel a:hover {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+#main-content {
+    flex: 1;
+    padding: 2.5rem 4rem;
+    box-sizing: border-box;
+    max-width: 100% !important;
+    width: calc(100% - 320px);
+    min-width: 0;
+}
+
+/* TABLAS ELEGANTES Y RESPONSIVE */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1.75rem 0;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    font-size: 0.93rem;
+    background: #ffffff;
+    table-layout: auto !important;
+}
+
+th, td {
+    padding: 10px 14px !important;
+    border: 1px solid #cbd5e1 !important;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+td p, th p {
+    margin: 0 !important;
+    padding: 2px 0 !important;
+}
+
+th {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #0f172a !important;
+}
+
+tr:nth-child(even) td {
+    background-color: #f8fafc !important;
+}
+
+tr:hover td {
+    background-color: #f1f5f9 !important;
+}
+
+/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
+.code-wrapper {
+    position: relative;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0f172a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #334155;
+    color: #f8fafc;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.copy-btn:hover {
+    background: #2563eb;
+}
+
+pre {
+    margin: 0 !important;
+    padding: 1.25rem 1.25rem !important;
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    overflow-x: auto !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+}
+
+code {
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+}
+
+p code, li code {
+    background: #e2e8f0;
+    color: #0f172a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
+
+/* RESPONSIVE DESIGN PARA MÓVILES Y TABLETS */
+@media (max-width: 768px) {
+    .header-container {
+        height: auto;
+        flex-direction: column;
+        padding: 0.75rem 1rem;
+        gap: 0.6rem;
+    }
+    
+    .site-title {
+        font-size: 1.05rem;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .site-title img {
+        height: 28px !important;
+    }
+
+    .top-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 0.35rem;
+    }
+
+    .top-nav .nav-btn, .dropbtn {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    .dropdown-content {
+        min-width: 240px;
+        max-width: 90vw;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #page-layout {
+        flex-direction: column;
+    }
+
+    #left-panel {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        position: static !important;
+        border-right: none !important;
+        border-bottom: 2px solid #e2e8f0;
+        padding: 1rem !important;
+    }
+
+    #main-content {
+        width: 100% !important;
+        padding: 1.25rem 1rem !important;
+    }
+
+    iframe {
+        height: 60vh !important;
+    }
+
+    th, td {
+        padding: 8px 10px !important;
+        font-size: 0.85rem !important;
+    }
+
+    pre {
+        padding: 0.85rem !important;
+        font-size: 0.82rem !important;
+    }
+}
+
+    </style>
+    <script>
+    
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.dropdown').forEach(dd => {
+        const btn = dd.querySelector('.dropbtn');
+        const content = dd.querySelector('.dropdown-content');
+        if (btn && content) {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = content.style.display === 'block';
+                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
+                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+                if (!isOpen) {
+                    content.style.display = 'block';
+                    btn.classList.add('active');
+                }
+            });
+        }
+    });
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
+        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+    });
+
+    // Controlador universal de clics en enlaces ancla (#...)
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const rawHref = this.getAttribute('href') || '';
+            const hashIdx = rawHref.indexOf('#');
+            if (hashIdx === -1) return;
+            const hash = rawHref.substring(hashIdx + 1);
+            if (!hash) return;
+            
+            let targetId = hash;
+            try { targetId = decodeURIComponent(hash); } catch(err) {}
+
+            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
+            if (!targetEl) {
+                for (let el of document.querySelectorAll('[id]')) {
+                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
+                        targetEl = el;
+                        break;
+                    }
+                }
+            }
+
+            if (targetEl) {
+                e.preventDefault();
+                const headerOffset = 75;
+                const elementPosition = targetEl.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                if (history.pushState) {
+                    history.pushState(null, null, '#' + targetId);
+                }
+            }
+        });
+    });
+});
+
+function copyCode(btn) {
+    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
+    navigator.clipboard.writeText(code).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = '✅ ¡Copiado!';
+        btn.style.background = '#16a34a';
+        setTimeout(() => {
+            btn.innerText = orig;
+            btn.style.background = '#334155';
+        }, 2000);
+    });
+}
+
+    </script>
+</head>
+<body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>GBD &ndash; Ut1 Teoria Almacenamiento</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+      <a href="GBD_Presentacion_26_27.html" class="nav-btn">Presentación</a>
+      <a href="GBD_Programacion_26_27.html" class="nav-btn">Programación</a>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Teoría ▾</button>
+        <div class="dropdown-content">
+          <a href="GBD_UT1_Teoria_Almacenamiento_26_27.html">GBD UT1 Teoria Almacenamiento 26 27</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <aside id="left-panel">
+            <h3>Índice del Tema</h3>
+            <nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#índice-de-contenidos" id="toc-índice-de-contenidos">ÍNDICE
+DE CONTENIDOS</a></li>
+<li><a href="#almacenamiento-de-la-información"
+id="toc-almacenamiento-de-la-información">1 ALMACENAMIENTO DE LA
+INFORMACIÓN </a></li>
+<li><a href="#sistemas-de-archivos" id="toc-sistemas-de-archivos">2
+SISTEMAS DE ARCHIVOS </a>
+<ul>
+<li><a href="#organización-primaria-de-archivos"
+id="toc-organización-primaria-de-archivos">2.1 ORGANIZACIÓN PRIMARIA DE
+ARCHIVOS </a></li>
+<li><a href="#métodos-de-acceso" id="toc-métodos-de-acceso">2.2 MÉTODOS
+DE ACCESO</a></li>
+</ul></li>
+<li><a href="#sistemas-de-bases-de-datos"
+id="toc-sistemas-de-bases-de-datos">3 SISTEMAS DE BASES DE DATOS </a>
+<ul>
+<li><a href="#conceptos" id="toc-conceptos">3.1 Conceptos</a></li>
+<li><a href="#arquitectura-de-sistemas-de-bases-de-datos"
+id="toc-arquitectura-de-sistemas-de-bases-de-datos">3.2 ARQUITECTURA DE
+SISTEMAS DE BASES DE DATOS </a></li>
+<li><a href="#modelos-de-datos" id="toc-modelos-de-datos">3.2 MODELOS DE
+DATOS </a></li>
+<li><a href="#tipos-de-modelos" id="toc-tipos-de-modelos">3.3 TIPOS DE
+MODELOS </a></li>
+</ul></li>
+<li><a href="#sistemas-gestores-de-bases-de-datos"
+id="toc-sistemas-gestores-de-bases-de-datos">4 SISTEMAS GESTORES DE
+BASES DE DATOS </a>
+<ul>
+<li><a href="#definición-y-objetivos"
+id="toc-definición-y-objetivos">4.1 DEFINICIÓN Y OBJETIVOS </a></li>
+<li><a href="#funciones-del-sistema-gestor-de-base-de-datos"
+id="toc-funciones-del-sistema-gestor-de-base-de-datos">4.2 FUNCIONES DEL
+SISTEMA GESTOR DE BASE DE DATOS</a></li>
+<li><a href="#componentes-de-un-sgbd"
+id="toc-componentes-de-un-sgbd">4.3 COMPONENTES DE UN SGBD </a>
+<ul>
+<li><a href="#section" id="toc-section"><img
+src="media_GBD_UT1_Teoria_Almacenamiento_26_27/media/image10.png"
+style="width:5.44337in;height:4.22251in" /></a></li>
+</ul></li>
+<li><a href="#lenguajes-de-datos" id="toc-lenguajes-de-datos">4.4
+Lenguajes de datos </a></li>
+<li><a href="#usuarios-de-los-sgbd" id="toc-usuarios-de-los-sgbd">4.5
+USUARIOS DE LOS SGBD </a></li>
+<li><a href="#tipos-de-sgbd" id="toc-tipos-de-sgbd">4.6 TIPOS DE SGBD
+</a></li>
+<li><a href="#sistemas-gestores-de-bd-comerciales-y-libres"
+id="toc-sistemas-gestores-de-bd-comerciales-y-libres">4.7 SISTEMAS
+GESTORES DE BD COMERCIALES Y LIBRES 📖</a></li>
+</ul></li>
+<li><a href="#bd-centralizadas-y-distribuidas"
+id="toc-bd-centralizadas-y-distribuidas">5 BD CENTRALIZADAS Y
+DISTRIBUIDAS </a>
+<ul>
+<li><a href="#técnicas-de-fragmentación-replicación-y-distribución"
+id="toc-técnicas-de-fragmentación-replicación-y-distribución">5.1
+TÉCNICAS DE FRAGMENTACIÓN, REPLICACIÓN Y DISTRIBUCIÓN </a></li>
+</ul></li>
+</ul>
+</nav>
+        </aside>
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="GBD_UT1_Teoria_Almacenamiento_26_27.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+<header id="title-block-header">
+<h1 class="title"><p><span id="_240uapu5vu0q"
+class="anchor"></span>Unidad 1</p>
+<p><span id="_urepwnsz0b90" class="anchor"></span>Almacenamiento de la
+información </p></h1>
+</header>
+
+<p><img src="media_GBD_UT1_Teoria_Almacenamiento_26_27/media/image6.png"
+style="width:3.01739in;height:2.02229in" /></p>
+<h4 id="ficha-técnica-de-la-unidad">FICHA TÉCNICA DE LA UNIDAD  <a class="headerlink" href="#ficha-técnica-de-la-unidad" title="Enlace permanente">¶</a></h4>
+<div class="table-wrapper"><table>
+<tbody>
+<tr class="header">
+<td><strong>Unidad Didáctica</strong></td>
+<td>Unidad 1: Almacenamiento de la información</td>
+</tr>
+<tr class="odd">
+<td><strong>Resultados de Aprendizaje</strong></td>
+<td><strong>RA1: Almacena información en bases de datos utilizando
+sistemas de gestión de bases de datos.</strong></td>
+</tr>
+<tr class="header">
+<td><strong>Criterios de Evaluación</strong></td>
+<td>CE1.a, CE1.b, CE1.c, CE1.d, CE1.e, CE1.f.</td>
+</tr>
+<tr class="odd">
+<td><strong>Tiempo Estimado</strong></td>
+<td>12 horas (distribuidas en sesiones de teoría, codificación y
+talleres de diseño)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="índice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#índice-de-contenidos" title="Enlace permanente">¶</a></h3>
+<p><a href="#almacenamiento-de-la-información"><u>1 ALMACENAMIENTO DE LA
+INFORMACIÓN</u></a></p>
+<p><a href="#sistemas-de-archivos"><u>2 SISTEMAS DE ARCHIVOS</u></a></p>
+<blockquote>
+<p><a href="#organización-primaria-de-archivos"><u>2.1 ORGANIZACIÓN
+PRIMARIA DE ARCHIVOS</u></a></p>
+<p><a href="#métodos-de-acceso"><u>2.2 MÉTODOS DE ACCESO</u></a></p>
+</blockquote>
+<p><a href="#sistemas-de-bases-de-datos"><u>3 SISTEMAS DE BASES DE
+DATOS</u></a></p>
+<blockquote>
+<p><a href="#conceptos"><u>3.1 Conceptos</u></a></p>
+<p><a href="#arquitectura-de-sistemas-de-bases-de-datos"><u>3.2
+ARQUITECTURA DE SISTEMAS DE BASES DE DATOS</u></a></p>
+<p><a href="#modelos-de-datos"><u>3.2 MODELOS DE DATOS</u></a></p>
+<p><a href="#tipos-de-modelos"><u>3.3 TIPOS DE MODELOS</u></a></p>
+</blockquote>
+<p><a href="#sistemas-gestores-de-bases-de-datos"><u>4 SISTEMAS GESTORES
+DE BASES DE DATOS</u></a></p>
+<blockquote>
+<p><a href="#definición-y-objetivos"><u>4.1 DEFINICIÓN Y
+OBJETIVOS</u></a></p>
+<p><a href="#funciones-del-sistema-gestor-de-base-de-datos"><u>4.2
+FUNCIONES DEL SISTEMA GESTOR DE BASE DE DATOS</u></a></p>
+<p><a href="#componentes-de-un-sgbd"><u>4.3 COMPONENTES DE UN
+SGBD</u></a></p>
+<p><a href="#lenguajes-de-datos"><u>4.4 Lenguajes de datos</u></a></p>
+<p><a href="#usuarios-de-los-sgbd"><u>4.5 USUARIOS DE LOS
+SGBD</u></a></p>
+<p><a href="#tipos-de-sgbd"><u>4.6 TIPOS DE SGBD</u></a></p>
+<p><a href="#sistemas-gestores-de-bd-comerciales-y-libres"><u>4.7
+SISTEMAS GESTORES DE BD COMERCIALES Y LIBRES</u></a></p>
+</blockquote>
+<p><a href="#bd-centralizadas-y-distribuidas"><u>5 BD CENTRALIZADAS Y
+DISTRIBUIDAS</u></a></p>
+<blockquote>
+<p><a
+href="#técnicas-de-fragmentación-replicación-y-distribución"><u>5.1
+TÉCNICAS DE FRAGMENTACIÓN, REPLICACIÓN Y DISTRIBUCIÓN</u></a></p>
+</blockquote>
+<p><strong>Importante</strong>: los apartados marcados con 📖, son de
+lectura obligatoria aunque no se expliquen durante las clases
+teóricas.</p>
+<h1 id="almacenamiento-de-la-información">1 ALMACENAMIENTO DE LA
+INFORMACIÓN  <a class="headerlink" href="#almacenamiento-de-la-información" title="Enlace permanente">¶</a></h1>
+<p>Todas las aplicaciones informáticas trabajan en última instancia con
+datos o información que deben ser almacenados en un medio físico, como
+discos duros, memorias flash o DVD. Estos medios forman una jerarquía
+que distingue entre tres niveles de almacenamiento: primario, secundario
+e intermedio.</p>
+<p><strong>Almacenamiento primario</strong></p>
+<p>Se refiere a aquellos medios sobre los que la CPU del ordenador puede
+acceder directamente y, por tanto, más rápidamente. Son la memoria
+principal o memoria RAM y las memorias caché de primer y segundo nivel,
+más pequeñas pero más rápidas.</p>
+<p><strong>Almacenamiento secundario</strong></p>
+<p>El almacenamiento secundario de más amplio uso es el disco, aunque
+las cintas se usan sobre todo para copias de seguridad por su
+estabilidad, capacidad y durabilidad.</p>
+<p>Se refiere a dispositivos más lentos, pero de mayor capacidad, como
+los discos ópticos y magnéticos o las cintas. Para acceder a los datos
+la CPU debe copiarlos previamente en el almacenamiento primario.</p>
+<p>La transferencia de información entre memoria y disco tiene lugar en
+unidades de bloque. Cuando se produce una orden de lectura se copia uno
+o varios bloques en el llamado buffer de la memoria (área reservada de
+la memoria principal), si se necesita efectuar una escritura se copia el
+bloque correspondiente al bloque del disco.</p>
+<p>Los discos son dispositivos de acceso aleatorio ya que podemos
+acceder a cualquier bloque de información solamente conociendo su
+dirección física en el disco, sin necesidad de recorrerlos todos.</p>
+<p>Así mismo, las cintas son dispositivos de acceso secuencial, dado que
+los bloques se almacenan de manera contigua y para acceder a uno de
+ellos necesitamos leer todos los anteriores.</p>
+<p><strong>Almacenamiento intermedio</strong></p>
+<p>Cuando se necesita transferir varios bloques de disco a memoria
+principal y se conocen todas las direcciones de bloque es posible
+reservar varias áreas de almacenamiento intermedio o buffers dentro de
+la memoria principal para agilizar la transferencia. De este modo,
+mientras la CPU procesa datos de un buffer puede leer o escribir en
+otro. El uso de este tipo de almacenamiento es muy común en sistemas de
+bases de datos.</p>
+<h1 id="sistemas-de-archivos">2 SISTEMAS DE ARCHIVOS  <a class="headerlink" href="#sistemas-de-archivos" title="Enlace permanente">¶</a></h1>
+<p>En esta sección estudiaremos someramente los conceptos relacionados
+con archivos tanto en lo relativo a su contenido como a su organización
+lógica y física.</p>
+<p>Tradicionalmente, los ficheros se han clasificado de muchas formas,
+según su contenido (texto o binario), según su organización de la
+información (secuencial, directa, indexada) o según su utilidad
+(maestros, históricos, movimientos).</p>
+<p><strong>Registros</strong></p>
+<p>Normalmente la información se almacena en forma de
+<strong>registros</strong>, que son colecciones de valores o elementos
+de información relacionados, cada uno de los cuales corresponde a un
+campo del registro. Por ejemplo, un registro de alumno incluiría
+<strong>campos</strong> como el nombre, fecha de nacimiento o teléfono,
+cuyos valores para cada alumno forman cada registro. A su vez, cada
+campo tiene un <strong>tipo de dato</strong> que especifica el tipo de
+valores que puede tomar. Estos tipos suelen corresponderse con los
+lenguajes de programación. Así, en nuestro ejemplo tendríamos que para
+el nombre del alumno usamos un tipo carácter o char, para la fecha de
+nacimiento un tipo de fecha y para la edad un tipo numérico entero o
+int. Además, cada campo tiene un tamaño determinado en bytes que puede
+ser fijo o variable según los requisitos de la aplicación.</p>
+<p>La unión de estos campos y sus tipos determina el tipo o formato del
+<strong>registro</strong>.</p>
+<p><img
+src="media_GBD_UT1_Teoria_Almacenamiento_26_27/media/image16.png"
+style="width:5.02604in;height:2.41685in" /></p>
+<p><strong>Archivos</strong></p>
+<p>Podemos definir un <strong>fichero</strong> informático como un
+conjunto de registros, grabados sobre un soporte que pueda ser leído por
+el ordenador.</p>
+<p><img src="media_GBD_UT1_Teoria_Almacenamiento_26_27/media/image8.png"
+style="width:3.5276in;height:0.4259in" /></p>
+<p>Estos registros pueden tener longitud fija si todos los registros son
+iguales en tamaño, o variable si los registros son de distinto tipo o
+si, aun siendo iguales en formato tienen campos de tamaño variable u
+opcionales (campos que no necesariamente tienen un valor para cada
+registro, por ejemplo, teléfono en el tipo de registro de alumno podría
+ser un campo opcional).</p>
+<p>Los archivos de registros de longitud fija son más fáciles de
+manipular por parte de los programas, sin embargo desperdician espacio
+en disco. Por el contrario, para el caso de longitud variable los
+programas son más complejos ya que los registros no ocupan posiciones
+fijas, sino que dependen del valor de cada campo.</p>
+<p>Los ficheros son importantes porque son la unidad básica de
+información utilizada por cualquier programa, incluidos los sistemas
+gestores de bases de datos. Todos los datos son, en última instancia
+gestionados mediante ficheros mediante cuatro operaciones básicas:
+<strong>consulta o lectura, inserción, modificación y borrado</strong>.
+Cualquier operación más compleja (como búsqueda, ordenación, etc.) es
+combinación de dos o más operaciones básicas.</p>
+<h2 id="organización-primaria-de-archivos">2.1 ORGANIZACIÓN PRIMARIA DE
+ARCHIVOS  <a class="headerlink" href="#organización-primaria-de-archivos" title="Enlace permanente">¶</a></h2>
+<p>El término <strong>organización de ficheros</strong> se aplica a la
+forma en que se colocan los datos contenidos en los registros de cada
+fichero sobre el soporte informático (disco, cinta, etc.) durante su
+grabación. <img
+src="media_GBD_UT1_Teoria_Almacenamiento_26_27/media/image21.png"
+style="width:2.63021in;height:1.761in" /></p>
+<p>Existen dos formas básicas de organización de ficheros: secuencial y
+relativa. En la organización secuencial los registros se van grabando
+unos a continuación de los otros, en el orden que se van dando de alta,
+mientras que en la organización relativa los registros se graban en las
+posiciones que les corresponda según el valor que guarden en el campo
+denominado clave, que permite identificar el registro dentro del
+fichero.</p>
+<p><strong>Organización secuencial</strong></p>
+<p>Es el tipo más básico de organización. <strong>Los registros se
+colocan secuencialmente uno a continuación del otro y los registros
+nuevos se añaden al final del fichero</strong>.</p>
+<p>La inserción es eficiente al realizarse al final del fichero, pero la
+búsqueda es costosa por ser lineal y bloque a bloque. El borrado es
+ineficiente; genera huecos que no se reutilizan automáticamente,
+requiriendo reorganizaciones periódicas para compactar los
+registros.</p>
+<p>La modificación es compleja al exigir búsqueda y reescritura. En
+registros de longitud variable, si el nuevo dato no cabe, debe tratarse
+como una nueva inserción al final. Existen variantes para mejorar estas
+prestaciones en soportes direccionables.</p>
+<p><strong>Organización secuencial indexada</strong></p>
+<p>Los registros con los datos s<em><strong>e graban en un fichero
+secuencialmente</strong></em>, pero <em><strong>se pueden recuperar con
+acceso directo gracias a la utilización de un fichero adicional, llamado
+índice</strong></em>, que contiene información de la posición que ocupa
+cada registro en el fichero de datos.</p>
+<p><img
+src="media_GBD_UT1_Teoria_Almacenamiento_26_27/media/image20.png"
+style="width:5.58854in;height:2.01447in" /></p>
+<p><strong>La organización secuencial encadenada</strong></p>
+<p>Permite tener los registros <em><strong>ordenados según un orden
+lógico diferente del orden físico</strong></em> en el que están grabados
+gracias a la utilización de unos campos adicionales llamados
+punteros.</p>
+<p><img src="media_GBD_UT1_Teoria_Almacenamiento_26_27/media/image5.png"
+style="width:3.45557in;height:2.35563in" /></p>
+<p><strong>Organización Relativa</strong></p>
+<p>En este tipo de archivos los registros <em><strong>se graban en orden
+según el valor de uno de sus campos llamado campo de
+ordenación</strong></em>. Normalmente se usa un campo especial
+denominado <em><strong>campo clave</strong></em>, cuyos valores son
+distintos para cada registro.</p>
+<p>La organización relativa es ineficiente para accesos aleatorios o por
+campos distintos al de ordenación, requiriendo en esos casos archivos
+adicionales. Mantener el orden físico encarece las inserciones por el
+desplazamiento de registros, mientras que la modificación es compleja si
+afecta al campo clave o varía el tamaño del registro. La eliminación es
+más sencilla mediante marcas y reorganizaciones periódicas.</p>
+<p><img
+src="media_GBD_UT1_Teoria_Almacenamiento_26_27/media/image18.png"
+style="width:4.34896in;height:2.82317in" /></p>
+<p><strong>Dispersión</strong></p>
+<p>En este sistema, se aplica una <em><strong>función de
+aleatorización</strong></em> sobre un <em><strong>campo de
+dispersión</strong></em> para <em><strong>obtener la dirección del
+bloque de disco</strong></em> donde se guardará el registro. Estas
+técnicas de hashing agilizan las búsquedas individuales basadas en dicho
+campo, que suele ser la clave.</p>
+<p>Las técnicas de dispersión o hashing se utilizan para acelerar el
+acceso a los registros cuando se busca un único registro según el
+llamado campo de dispersión. Normalmente este campo suele ser el campo
+clave.</p>
+<p><img src="media_GBD_UT1_Teoria_Almacenamiento_26_27/media/image9.png"
+style="width:3.97455in;height:2.68896in" /></p>
+<p>Existen numerosas funciones de dispersión y su eficacia radica en que
+distribuyan los registros lo más posible minimizando el número de
+colisiones (producida cuando dos valores distintos del campo de
+dispersión producen el mismo valor de dispersión). Para estas
+situaciones se deben implementar medidas de corrección, como usar una
+segunda función, buscar la siguiente posición vacía dentro del bloque o
+usar técnicas de encadenamiento de registros.</p>
+<h2 id="métodos-de-acceso">2.2 MÉTODOS DE ACCESO <a class="headerlink" href="#métodos-de-acceso" title="Enlace permanente">¶</a></h2>
+<p>El método de acceso es el procedimiento para localizar registros en
+un fichero. Para optimizar esta costosa operación se emplean índices:
+estructuras que vinculan valores de un campo (normalmente la clave) con
+su dirección de memoria.</p>
+<p>Similares a un índice analítico, estos listados ordenados facilitan
+búsquedas binarias rápidas al usar un campo de indización y apuntadores
+a bloques. Al ser el archivo de índices reducido, la eficiencia aumenta
+drásticamente.</p>
+<p>Existen varios tipos según la organización física:</p>
+<ul>
+<li><blockquote>
+<p><strong>Índices primarios:</strong> sobre el campo clave de
+ordenación en ficheros ordenados físicamente.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Índice de agrupamiento:</strong> usado cuando el campo de
+ordenación permite valores repetidos (no es clave).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Índice secundario:</strong> cuando el campo de indización es
+distinto al de ordenación.</p>
+</blockquote></li>
+</ul>
+<p><strong>Índices primarios</strong></p>
+<p>Un índice primario es un fichero ordenado de registros de longitud
+fija con dos campos: la clave de ordenamiento del archivo de datos y un
+puntero al bloque de disco. Cada entrada vincula un valor clave con un
+bloque, apuntando así a un grupo de registros.</p>
+<p>Por ejemplo, en un fichero de jugadores de baloncesto indizado por su
+ID secuencial, el índice solo registra el primer identificador de cada
+bloque.</p>
+<p><img
+src="media_GBD_UT1_Teoria_Almacenamiento_26_27/media/image22.png"
+style="width:6.26772in;height:3.16667in" /></p>
+<p>Estos índices son no densos porque cada entrada se asocia a varios
+registros, a diferencia de los índices densos (relación uno a uno). Al
+contener sólo dos campos y una entrada por bloque, son mucho más
+pequeños que el fichero de datos original.</p>
+<p><strong>Índices de agrupamiento</strong> 📖</p>
+<p>Cuando un archivo se ordena mediante un campo no clave (con valores
+repetidos), denominado campo de agrupamiento, se crea un índice de
+agrupamiento para agilizar la localización de registros. Este índice
+consiste en un fichero con el valor del campo y un puntero al primer
+bloque de datos que lo contiene.</p>
+<p><img
+src="media_GBD_UT1_Teoria_Almacenamiento_26_27/media/image23.png"
+style="width:6.07292in;height:3.0275in" /></p>
+<p>Se suele asignar una entrada por cada valor distinto y reservar
+bloques específicos para facilitar inserciones, enlazando bloques
+adicionales mediante punteros si el volumen de datos lo requiere.</p>
+<p>Un ejemplo práctico es la creación de este índice en un fichero de
+jugadores utilizando el número de equipo como criterio de
+ordenación.</p>
+<p>En este caso el índice es sobre un campo que no es clave y se puede
+repetir, como es el número de equipo de los jugadores.</p>
+<p>Hay una entrada de índice por cada equipo que apunta al bloque en el
+que se encuentra dicho equipo.</p>
+<p><strong>Índices secundarios</strong></p>
+<p>Estos archivos ordenados vinculan campos clave con apuntadores a
+bloques. Es posible definir múltiples índices sobre distintos campos de
+un mismo archivo de datos.</p>
+<p><img
+src="media_GBD_UT1_Teoria_Almacenamiento_26_27/media/image26.png"
+style="width:5.78125in;height:5.23583in" /></p>
+<p>Existen índices sobre campos clave (índices densos con una entrada
+por registro) y sobre campos no clave. Un ejemplo común es el uso del
+DNI como clave secundaria para identificar jugadores.</p>
+<p>Aunque consumen más espacio por su volumen de entradas, optimizan las
+búsquedas; al estar ordenados, permiten aplicar búsquedas binarias mucho
+más rápidas que el acceso lineal al archivo de datos original.</p>
+<p><strong>Otros tipos de índice</strong> 📖</p>
+<p>Existen estructuras de índice más complejas.</p>
+<p><strong>Árboles B y B+ :</strong> Son estructuras de árbol muy
+utilizadas en programación y en índices de bases de datos. En este caso,
+un árbol es un fichero en el que hay unos nodos (padres) que apuntan a
+otros (hijos), los cuales a su vez tienen apuntadores a otros nodos y,
+así sucesivamente, con tantos nodos como entradas de índice
+requeridas.</p>
+<blockquote>
+<p><img
+src="media_GBD_UT1_Teoria_Almacenamiento_26_27/media/image11.png"
+style="width:3.81927in;height:1.4346in" /></p>
+</blockquote>
+<p>Los nodos hijos no pueden apuntar a nodos padre, de modo que se forma
+una estructura con un nodo raíz sin padre cuyos nodos hijos son padres
+de otros hasta llegar a los nodos hoja, o nodos sin hijos.</p>
+<blockquote>
+<p><img
+src="media_GBD_UT1_Teoria_Almacenamiento_26_27/media/image13.png"
+style="width:3.57448in;height:1.42622in" /></p>
+</blockquote>
+<p>Estos nodos almacenan apuntadores a nodos hijo, apuntadores a
+registros de datos y valores de campos de los registros de datos y la
+estructura que forman hace muy eficiente la búsqueda de datos.</p>
+<p><strong>Índices hash:</strong> Es posible crear estructuras de acceso
+de tipo índice usando técnicas de dispersión vistas en la sección
+anterior. En este caso, cada entrada de índice se organiza como un
+archivo de dispersión y contiene registros formados por el valor de
+dispersión y un apuntador al bloque de datos. Así, el acceso a una de
+ellas requiere aplicar la función hash correspondiente al valor buscado
+y obtener así el valor del apuntador.</p>
+<p><strong>ACTIVIDADES 1.1</strong></p>
+<ol type="1">
+<li><blockquote>
+<p>Investigue y explique con sus palabras en qué consiste el método de
+búsqueda binaria en ficheros.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Realice un ejemplo de búsqueda secuencial y binaria en clase
+suponiendo que tiene que acceder a un valor dentro de un conjunto
+ordenado de valores. Compute y compare el número de lecturas en ambos
+procesos para varios valores de búsqueda.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Investiga las ventajas e inconvenientes respecto a la actualización
+de datos en ficheros con organización tipo hash.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Investigue la diferencia entre una estructura de índice tipo árbol B
+y B+.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Buscar diez extensiones que identifiquen formatos de ficheros
+binarios. Incluir una pequeña explicación del tipo de fichero
+(aplicación que los utiliza, utilidad,...).</p>
+</blockquote></li>
+</ol>
+<h1 id="sistemas-de-bases-de-datos">3 SISTEMAS DE BASES DE DATOS  <a class="headerlink" href="#sistemas-de-bases-de-datos" title="Enlace permanente">¶</a></h1>
+<p>Inicialmente, cuando las primeras empresas y organizaciones empezaron
+a usar sistemas informáticos trabajaban con sistemas de ficheros. Cada
+equipo trabajaba con sus propios datos y programas y se encargaba de su
+mantenimiento y gestión. Al principio el sistema funcionó pero con el
+tiempo y, sobre todo, con el incremento de la cantidad de información
+así como de los usuarios que la manejaban surgieron problemas
+(<strong>integridad</strong> y <strong>duplicidad</strong> de
+información, <strong>seguridad</strong>, etc., que llevaron finalmente a
+la organización de la información mediante un sistema más ordenado y
+manejable basado en la centralización de la gestión y la organización de
+los datos en forma de bases de datos.</p>
+<p>Pensar en una biblioteca donde existirían distintos archivadores
+(archivos o ficheros) donde los datos de los libros se organizaban por
+autor, por título, por la editorial. En cada archivador se repetiría
+información que ya está en otro.</p>
+<p>No debemos olvidar que en última instancia todo se almacena en
+ficheros. La diferencia es que cuando usamos bases de datos no
+trabajamos directamente con ficheros, sino con estructuras de datos más
+fáciles de manejar.</p>
+<p>Los principales problemas relacionados con el uso de ficheros como
+sistema de almacenamiento de información fueron los siguientes:</p>
+<ul>
+<li><blockquote>
+<p><strong>Separación y aislamiento de los datos:</strong> Cuando los
+datos se separan en distintos ficheros es más complicado acceder a
+ellos, ya que el programador de aplicaciones debe sincronizar el
+procesamiento de los distintos ficheros implicados para asegurar que se
+extraen los datos correctos.</p>
+</blockquote></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Duplicación de datos. La redundancia de datos
+existente en los sistemas de ficheros hace que se desperdicie espacio de
+almacenamiento y, lo que es más importante, puede llevar a que se pierda
+la consistencia de los datos. Se produce una inconsistencia cuando
+copias de los mismos datos no coinciden.</code></pre></div></li>
+<li><blockquote>
+<p><strong>Dependencia de datos.</strong> Ya que la estructura física de
+los datos (la definición de los ficheros y de los registros) se
+encuentra codificada en los programas de aplicación, cualquier cambio en
+dicha estructura es difícil de realizar. El programador debe identificar
+todos los programas afectados por este cambio, modificarlos y volverlos
+a probar, lo que cuesta mucho tiempo y está sujeto a que se produzcan
+errores. A este problema, tan característico de los sistemas de
+ficheros, se le denomina también falta de independencia de datos
+lógica-física.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Formatos de ficheros incompatibles.</strong> Ya que la
+estructura de los ficheros se define en los programas de aplicación, es
+completamente dependiente del lenguaje de programación. La
+incompatibilidad entre ficheros generados por distintos lenguajes hace
+que los ficheros sean difíciles de procesar de modo conjunto.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Consultas fijas y proliferación de programas de
+aplicación.</strong> Desde el punto de vista de los usuarios finales,
+los sistemas de ficheros fueron un gran avance comparados a los sistemas
+manuales. A consecuencia de esto, creció la necesidad de realizar
+distintos tipos de consultas de datos. Sin embargo, los sistemas de
+ficheros son muy dependientes del programador de aplicaciones: cualquier
+consulta o informe que se quiera realizar debe ser programado por él. En
+algunas organizaciones se conformaron con fijar el tipo de consultas e
+informes, siendo imposible realizar otro tipo de consultas que no se
+hubieran tenido en cuenta a la hora de escribir los programas de
+aplicación.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Control de concurrencia.</strong> El acceso de varios
+clientes al mismo fichero genera inconsistencias, ya que un cliente
+puede consultar un fichero mientras otro lo está modificando.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Autorizaciones.</strong> Los errores en los permisos de
+ficheros pueden hacer que un mismo cliente pueda modificar un dato en un
+fichero y no en otro en el que esté repetido.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Catálogo.</strong> Resulta complicado saber dónde están los
+distintos datos. No existe un esquema general que muestre la
+organización de la información.</p>
+</blockquote></li>
+</ul>
+<p>Para trabajar de un modo más efectivo, surgieron las bases de datos
+como modelo de organización de los datos y, con ellas, los sistemas de
+gestión de bases de datos (SGBD) como herramienta que permite la
+implementación y gestión de bases de datos.</p>
+<h2 id="conceptos">3.1 Conceptos <a class="headerlink" href="#conceptos" title="Enlace permanente">¶</a></h2>
+<p>Una <strong>base de datos</strong> es un conjunto de datos
+almacenados entre los que existen relaciones lógicas y ha sido diseñada
+para satisfacer los requerimientos de información de una empresa u
+organización.</p>
+<p>En lugar de almacenarse en ficheros desconectados y de manera
+redundante, los datos en una base de datos están centralizados y
+organizados, de forma que se minimice la redundancia y se facilite su
+gestión. La base de datos no pertenece a un equipo, se comparte por toda
+la organización. Además, la base de datos no solo contiene los datos de
+la organización, también almacena una descripción de dichos datos. Esta
+descripción es lo que se denomina <strong>metadatos</strong>, se
+almacena en el diccionario de datos o catálogo que, en muchos casos, se
+organiza en otra base de datos.</p>
+<p><strong>Conceptos</strong></p>
+<p>Uno de los grandes problemas al que se enfrentan los informáticos
+cuando comienzan su aprendizaje, es el gran número de términos
+desconocidos que debe asimilar, incluyendo el enorme número de sinónimos
+y siglas que se utilizan para nombrar la misma cosa. Tratando, a modo de
+resumen, de aclarar algunos de lo componentes que se pueden encontrar en
+una base de datos, se definen los siguientes conceptos:</p>
+<ul>
+<li><blockquote>
+<p><strong>Dato</strong>: El dato es un trozo de información concreta
+sobre algún concepto o suceso. Por ejemplo, 1996 es un número que
+representa el año de nacimiento de una persona. Los datos se
+caracterizan por pertenecer a un tipo.</p>
+</blockquote></li>
+</ul>
+<blockquote>
+<p><img
+src="media_GBD_UT1_Teoria_Almacenamiento_26_27/media/image19.png"
+style="width:5.67708in;height:1.51708in" /></p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p><strong>Tipo de Dato</strong>: El tipo de dato indica la naturaleza
+del campo. Así, se puede tener datos numéricos, que son aquellos con los
+que se pueden realizar cálculos aritméticos (sumas, restas,
+multiplicaciones...) y los datos alfanuméricos, que son los que
+contienen caracteres alfabéticos y dígitos numéricos. Estos datos
+alfanuméricos y numéricos se pueden combinar para obtener tipos de datos
+más elaborados. Por ejemplo, una Fecha contiene tres datos numéricos, el
+día, el mes y el año.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Campo</strong>: Un campo es un identificador para toda una
+familia de datos. Cada campo pertenece a un tipo de datos. Por ejemplo,
+el campo "FechaNacimiento" representa las fechas de nacimiento de las
+personas que hay en la tabla. Este campo pertenece al tipo de dato
+Fecha. Al campo también se le llama columna.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Registro</strong>: Es una recolección de datos referentes a
+un mismo concepto o suceso. Por ejemplo, los datos de una persona pueden
+ser su NIF, año de nacimiento, su nombre, su dirección, etc. A los
+registros también se les llama tuplas o filas.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Campo Clave</strong>: Es un campo especial que identifica de
+forma única a cada registro. Así, el NIF es único para cada persona, por
+tanto es campo clave.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Tabla</strong>: Es un conjunto de registros bajo un mismo
+nombre que representa el conjunto de todos ellos. Por ejemplo, todos los
+clientes de una base de datos se almacenan en una tabla cuyo nombre es
+Clientes.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Consulta</strong>: Es una instrucción para hacer peticiones a
+una base de datos. Puede ser una búsqueda simple de un registro
+específico o una solicitud para seleccionar todos los registros que
+satisfagan un conjunto de criterios. Aunque en castellano, consulta
+tiene un significado de extracción de información, en inglés query, una
+consulta es una petición, por tanto, además de las consultas de búsqueda
+de información, hay consultas (peticiones) de eliminación o inserción de
+registros, de actualización de registros, cuya ejecución altera los
+valores de los mismos.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Índice</strong>: Es una estructura que almacena los campos
+clave de una tabla, organizándose para hacer más fácil encontrar y
+ordenar los registros de esa tabla. El índice tiene un funcionamiento
+similar al índice de un libro, guardando parejas de elementos: el
+elemento que se desea indexar y su posición en la base de datos.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Vista</strong>: Es una transformación que se hace a una o más
+tablas para obtener una nueva tabla. Esta nueva tabla es una tabla
+virtual, es decir, no está almacenada en los dispositivos de
+almacenamiento del ordenador, aunque sí se almacena su definición.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Informe</strong>: Es un listado ordenado de los campos y
+registros seleccionados en un formato fácil de leer. Generalmente se
+usan como peticiones expresas de un tipo de información por parte de un
+usuario. Por ejemplo, un informe de las facturas impagadas del mes de
+enero ordenado por nombre de cliente.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Guiones: o scripts.</strong> Son un conjunto de
+instrucciones, que ejecutadas de forma ordenada, realizan operaciones
+avanzadas de mantenimiento de los datos almacenados en la base de
+datos.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Procedimientos</strong>: Son un tipo especial de script que
+está almacenado en la base de datos y que forma parte de su esquema.</p>
+</blockquote></li>
+</ul>
+<h2 id="arquitectura-de-sistemas-de-bases-de-datos">3.2 ARQUITECTURA DE
+SISTEMAS DE BASES DE DATOS  <a class="headerlink" href="#arquitectura-de-sistemas-de-bases-de-datos" title="Enlace permanente">¶</a></h2>
+<p>En 1975, el comité ANSI-SPARC (American National Standard Institute -
+Standards Planning and Requirements Committee) propuso un estándar para
+la creación de sistemas de bases de datos basado en una arquitectura de
+tres niveles. El objetivo de la arquitectura de tres niveles es el de
+separar en niveles de abstracción el esquema de una base de datos. Son
+tres formas distintas de ver o representar una misma base de datos.</p>
+<ul>
+<li><blockquote>
+<p><strong>Nivel interno.</strong> Se describe la estructura física de
+la base de datos mediante un esquema interno. Este esquema describe
+todos los detalles para el almacenamiento de la base de datos, así como
+los métodos de acceso. Se habla de ficheros, discos, directorios,
+etc.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Nivel global o conceptual.</strong> Se describe la estructura
+de toda la base de datos para una comunidad de usuarios (todos los de
+una empresa u organización) mediante un esquema conceptual. Este esquema
+oculta los detalles de las estructuras de almacenamiento y se concentra
+en describir entidades (tablas), atributos/campos, relaciones entre los
+datos (tablas) y restricciones.</p>
+</blockquote></li>
+</ul>
+<blockquote>
+<p><img
+src="media_GBD_UT1_Teoria_Almacenamiento_26_27/media/image15.png"
+style="width:4.76628in;height:2.66874in" /></p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p><strong>Nivel externo.</strong> Se describen varios esquemas externos
+o vistas de usuario. Cada esquema externo describe la parte de la base
+de datos que interesa a un grupo de usuarios determinados y oculta a ese
+grupo el resto de la base de datos. En este nivel se puede utilizar un
+modelo conceptual o un modelo lógico para especificar los esquemas. Ese
+es el que percibe el usuario final mediante el uso de aplicaciones. Por
+ejemplo, cuando accedo a la página web de la liga de baloncesto estoy
+consultando una parte de los datos de sus bases de datos. Son lo que
+denominamos vistas.</p>
+</blockquote></li>
+</ul>
+<p>Conviene recalcar que los tres niveles no son más que descripciones
+de los mismos datos, pero en distintos niveles de abstracción. Los
+únicos datos que existen realmente están a nivel físico, almacenados en
+un dispositivo, como puede ser un disco.</p>
+<p>La arquitectura de tres niveles es útil para explicar el concepto de
+<strong>independencia de datos</strong>, que podemos definir como la
+capacidad para modificar el esquema en un nivel del sistema sin tener
+que modificar el esquema del nivel inmediato superior (por ejemplo, un
+cambio nivel externo no afectaría al nivel conceptual). Se pueden
+definir dos tipos de independencia de datos:</p>
+<ul>
+<li><blockquote>
+<p><strong>La independencia lógica.</strong> Es la capacidad de
+modificar el esquema conceptual sin tener que alterar los esquemas
+externos ni los programas de aplicación. Se puede modificar el esquema
+conceptual para ampliar la base de datos o para reducirla. Si, por
+ejemplo, se reduce la base de datos eliminando una entidad, los esquemas
+externos que no se refieran a ella no deberán verse afectados.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>La independencia física.</strong> Es la capacidad de
+modificar el esquema interno sin tener que alterar el esquema conceptual
+(o los externos). Por ejemplo, puede ser necesario reorganizar ciertos
+ficheros físicos con el fin de mejorar el rendimiento de las operaciones
+de consulta o de actualización de datos. Dado que la independencia
+física se refiere solo a la separación entre las aplicaciones y las
+estructuras físicas de almacenamiento, es más fácil de conseguir que la
+independencia lógica.</p>
+</blockquote></li>
+</ul>
+<h2 id="modelos-de-datos">3.2 MODELOS DE DATOS  <a class="headerlink" href="#modelos-de-datos" title="Enlace permanente">¶</a></h2>
+<p>La base de datos consiste entonces en los datos concretos referentes
+a un sistema o parte del mundo que hemos modelado (por ejemplo, nuestra
+base de datos de la liga de baloncesto incluye todos los datos relativos
+a jugadores, equipos, partidos, etc.).</p>
+<p>Estos datos son sencillos de manejar cuando son unos pocos, pero
+cuando su volumen crece se requiere el uso de distintos modelos para
+facilitar el diseño de las mismas (si solo necesitamos registrar los
+nombres de jugadores y equipos no es necesario recurrir a ningún
+modelo).</p>
+<p>Un <strong>modelo de datos</strong> es una colección de herramientas
+conceptuales para <em><strong>describir</strong></em> los datos, las
+relaciones que existen entre ellos y sus restricciones.</p>
+<p>Un modelo nos proporciona mecanismos de abstracción para representar
+una parte del mundo cuyos datos nos interesan. Dicha representación,
+realizada en términos de un modelo dado, recibe el nombre de
+<strong>esquema</strong> y el conjunto de datos que representa es la
+<strong>base de datos</strong>.</p>
+<h2 id="tipos-de-modelos">3.3 TIPOS DE MODELOS  <a class="headerlink" href="#tipos-de-modelos" title="Enlace permanente">¶</a></h2>
+<p>La arquitectura de tres niveles nos obliga a modelar nuestros datos
+en cada nivel. Nos centraremos en los dos primeros (global y externo),
+ya que los del nivel interno son específicos del software utilizado.</p>
+<p>En este sentido distinguimos tres tipos de modelos:</p>
+<ul>
+<li><blockquote>
+<p>Modelos conceptuales.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Modelos lógicos tradicionales.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Modelos lógicos avanzados.</p>
+</blockquote></li>
+</ul>
+<p><strong>Modelos conceptuales</strong></p>
+<p>Se usan para describir datos a nivel global. Con este modelo
+representamos los datos de forma parecida a como nosotros los captamos
+en el mundo real. Este tipo de modelos tienen una capacidad de
+estructuración bastante flexible y permiten especificar restricciones de
+datos explícitamente. Existen diferentes modelos de este tipo, pero el
+más utilizado por su sencillez y eficiencia es el modelo
+Entidad-Relación.</p>
+<p>Denominado por sus siglas MER, este modelo representa la realidad a
+través de entidades, que son objetos que existen y que se distinguen de
+otros por sus características. Por ejemplo, un jugador es una entidad
+con características como su altura, nombre, etc.</p>
+<p><img
+src="media_GBD_UT1_Teoria_Almacenamiento_26_27/media/image24.png"
+style="width:3.79323in;height:2.07154in" /></p>
+<p>Estas características de las entidades en base de datos se llaman
+atributos. A su vez, una entidad se puede asociar o relacionar con más
+entidades a través de relaciones. Así un jugador está vinculado o
+relacionado con un equipo en virtud de la relación pertenece (jugador
+pertenece a equipo).</p>
+<p>Este tipo de modelos utiliza una simbología para representar cada
+elemento. Lo estudiaremos más adelante.</p>
+<p><strong>Modelos lógicos tradicionales</strong></p>
+<p>Los tres modelos de datos más ampliamente aceptados son:</p>
+<ul>
+<li><p><strong>Modelo relacional.</strong> En este modelo se representan
+los datos y las relaciones entre estos, a través de una colección de
+tablas, en las cuales las filas (tuplas) equivalen a cada uno de los
+registros que contendrá la base de datos y las columnas corresponden a
+las características (atributos) de cada registro localizado en la
+tupla.</p></li>
+</ul>
+<blockquote>
+<p><img
+src="media_GBD_UT1_Teoria_Almacenamiento_26_27/media/image17.png"
+style="width:3.75554in;height:2.0058in" /></p>
+<p>También sirven para representar el nivel externo (vistas) de una base
+de datos.</p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p><strong>Modelo de red</strong> 📖<strong>.</strong> Éste es un modelo
+ligeramente distinto del jerárquico; su diferencia fundamental es la
+modificación del concepto de nodo: se permite que un mismo nodo tenga
+varios padres (posibilidad no permitida en el modelo jerárquico).</p>
+</blockquote></li>
+</ul>
+<blockquote>
+<p><img
+src="media_GBD_UT1_Teoria_Almacenamiento_26_27/media/image12.png"
+style="width:3.11302in;height:2.88028in" /></p>
+<p>Fue una gran mejora con respecto al modelo jerárquico, ya que ofrecía
+una solución eficiente al problema de redundancia de datos; pero, aun
+así, la dificultad que significa administrar la información en una base
+de datos de red ha significado que sea un modelo utilizado en su mayoría
+por programadores más que por usuarios finales.</p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p><strong>Modelo jerárquico.</strong> 📖 Éstas son modelos de bases de
+datos que, como su nombre indica, almacenan su información en una
+estructura jerárquica. En este modelo los datos se organizan en una
+forma similar a un árbol (visto al revés), donde un nodo padre de
+información puede tener varios hijos. El nodo que no tiene padres es
+llamado raíz, y a los nodos que no tienen hijos se les conoce como nodos
+hoja.</p>
+</blockquote></li>
+</ul>
+<blockquote>
+<p>Las bases de datos jerárquicas son especialmente útiles en el caso de
+aplicaciones que manejan un gran volumen de información y datos muy
+compartidos, permitiendo crear estructuras estables y de gran
+rendimiento a la hora de acceder a los mismos.</p>
+<p>Es similar al modelo de red en cuanto a las relaciones y datos, ya
+que estos se representan por medio de registros de vínculos entre los
+mismos. La diferencia radica en que están organizados por gráficos de
+tipo árbol en lugar de gráficos arbitrarios.</p>
+<p><img
+src="media_GBD_UT1_Teoria_Almacenamiento_26_27/media/image25.png"
+style="width:4.15165in;height:3.00146in" /></p>
+</blockquote>
+<p><strong>Modelos lógicos avanzados</strong> 📖</p>
+<p>Son modelos de datos relativamente recientes y cada vez más
+utilizados, sobre todo en aplicaciones específicas que manejan nuevos y
+más complejos tipos de datos.</p>
+<ul>
+<li><p><strong>Modelos de datos orientados a objetos.</strong> Estos
+modelos son utilizados, sobre todo, en aplicaciones programadas bajo el
+paradigma de la orientación a objetos. Tratan de almacenar en la base de
+datos no solo los datos (estado), sino también la funcionalidad asociada
+(comportamiento). De este modo, una base de datos está formada por
+objetos relacionados entre sí, siendo los objetos entidades con un
+estado o datos asociados y un comportamiento o funcionalidad
+determinada.</p></li>
+<li><p><strong>Modelos de datos declarativos.</strong> Estos modelos se
+dividen en deductivos y funcionales. Suelen usarse para bases de
+conocimiento, que no son más que bases de datos con mecanismos de
+consulta en los que el trabajo de extracción de información a partir de
+los datos recae en realidad sobre el sistema informático, en lugar de
+sobre el usuario. Estos mecanismos de consulta exigen que la información
+esté distribuida de manera que haga eficiente las búsquedas de los
+datos, ya que normalmente las consultas de este tipo requieren acceder
+una y otra vez a los datos en busca de patrones que se adecúen a las
+características de los datos que ha solicitado el usuario.</p></li>
+</ul>
+<h1 id="sistemas-gestores-de-bases-de-datos">4 SISTEMAS GESTORES DE
+BASES DE DATOS  <a class="headerlink" href="#sistemas-gestores-de-bases-de-datos" title="Enlace permanente">¶</a></h1>
+<p>Los modelos nos permiten representar nuestra información de un modo
+sencillo y en un lenguaje común. Sin embargo, necesitamos un software
+que nos permita llevarlo a cabo o implementar dichos modelos. Este
+software es lo que denominaremos <strong>SGBD</strong>. Lo definiremos a
+continuación.</p>
+<h2 id="definición-y-objetivos">4.1 DEFINICIÓN Y OBJETIVOS  <a class="headerlink" href="#definición-y-objetivos" title="Enlace permanente">¶</a></h2>
+<p>El <strong>sistema de gestión de la base de datos (SGBD)</strong> es
+una aplicación que permite a los usuarios definir, crear y mantener la
+base de datos y proporciona acceso controlado a la misma. Es una
+herramienta que sirve de interfaz entre el usuario y las bases de
+datos.</p>
+<p>En el siguiente esquema se representa el funcionamiento de un sistema
+de información en el que los usuarios acceden a la información usando
+aplicaciones (por ejemplo, un formulario web) que, a su vez, se
+comunican con sistemas gestores, que son los que en última instancia
+acceden a los datos almacenados en las bases de datos mediante la
+interacción con el sistema operativo:</p>
+<p><img src="media_GBD_UT1_Teoria_Almacenamiento_26_27/media/image7.png"
+style="width:3.69615in;height:2.08479in" /></p>
+<p><img
+src="media_GBD_UT1_Teoria_Almacenamiento_26_27/media/image14.png"
+style="width:4.88177in;height:2.78406in" /></p>
+<p>Se observa como en el nivel externo se encuentran los usuarios
+finales que tienen acceso a distintos esquemas, los cuales a su vez se
+derivan del esquema o representación lógica que, a su vez, se traduce a
+un esquema físico o forma de almacenamiento de los datos.</p>
+<p>Los objetivos de un SGBD se pueden resumir en los siguientes:</p>
+<ul>
+<li><blockquote>
+<p>Asegurar los tres niveles de abstracción: físico, lógico y
+externo.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Permitir la independencia física y lógica de los datos.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Garantizar la consistencia de los datos, ya que puede haber datos
+duplicados o derivados que deben mantener sus valores de forma
+coherente.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Ofrecer seguridad de acceso a los datos por parte de usuarios y
+grupos.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Gestión de transacciones de forma que se garantice la ejecución de un
+conjunto de operaciones críticas como una sola operación.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Permitir la concurrencia de usuarios sobre los mismos datos mediante
+bloqueos que mantienen la integridad de los mismos.</p>
+</blockquote></li>
+</ul>
+<h2 id="funciones-del-sistema-gestor-de-base-de-datos">4.2 FUNCIONES DEL
+SISTEMA GESTOR DE BASE DE DATOS <a class="headerlink" href="#funciones-del-sistema-gestor-de-base-de-datos" title="Enlace permanente">¶</a></h2>
+<p>Los SGBD del mercado cumplen con casi todas funciones que a
+continuación se enumeran:</p>
+<p>1. Permiten a los usuarios almacenar datos, acceder a ellos y
+actualizarlos de forma sencilla y con un gran rendimiento, ocultando la
+complejidad y las características físicas de los dispositivos de
+almacenamiento.</p>
+<p>2. Garantizan la integridad de los datos, respetando las reglas y
+restricciones que dicte el programador de la base de datos. Es decir, no
+permiten operaciones que dejen cierto conjunto de datos incompletos o
+incorrectos.</p>
+<p>3. Integran, junto con el sistema operativo, un sistema de seguridad
+que garantiza el acceso a la información exclusivamente a aquellos
+usuarios que dispongan de autorización.</p>
+<p>4. Proporcionan un diccionario de metadatos, que contiene el esquema
+de la base de datos, es decir, cómo están estructurados los datos en
+tablas, registros y campos, las relaciones entre los datos, usuarios,
+permisos, etc. Este diccionario de datos debe ser también accesible de
+la misma forma sencilla que es posible acceder al resto de datos.</p>
+<p>5. Permiten el uso de transacciones, garantizan que todas las
+operaciones de la transacción se realicen correctamente, y en caso de
+alguna incidencia, deshacen los cambios sin ningún tipo de complicación
+adicional.</p>
+<p>6. Ofrecen, mediante completas herramientas, estadísticas sobre el
+uso del gestor, registrando operaciones efectuadas, consultas solicitas,
+operaciones fallidas y cualquier tipo de incidencia. Es posible de este
+modo, monitorizar el uso de la base de datos, y permiten analizar
+hipotéticos malfuncionamientos.</p>
+<p>7. Permiten la concurrencia, es decir, varios usuarios trabajando
+sobre un mismo conjunto de datos. Además, proporcionan mecanismos que
+permiten arbitrar operaciones conflictivas en el acceso o modificación
+de un dato al mismo tiempo por parte de varios usuarios.</p>
+<p>8. Independizan los datos de la aplicación o usuario que esté
+utilizándolos, haciendo más fácil su migración a otras plataformas.</p>
+<p>9. Ofrecen conectividad con el exterior. De esta manera, se puede
+replicar y distribuir bases de datos. Además, todos los SGBD incorporan
+herramientas estándar de conectividad. El protocolo ODBC está muy
+extendido como forma de comunicación entre bases de datos y aplicaciones
+externas.</p>
+<p>10. Incorporan herramientas para la salvaguarda y restauración de la
+información en caso de desastre. Algunos gestores, tienen sofisticados
+mecanismos para poder establecer el estado de una base de datos en
+cualquier punto anterior en el tiempo. Además, deben ofrecer sencillas
+herramientas para la importación y exportación automática de la
+información.</p>
+<h2 id="componentes-de-un-sgbd">4.3 COMPONENTES DE UN SGBD  <a class="headerlink" href="#componentes-de-un-sgbd" title="Enlace permanente">¶</a></h2>
+<h3 id="section"><img
+src="media_GBD_UT1_Teoria_Almacenamiento_26_27/media/image10.png"
+style="width:5.44337in;height:4.22251in" /> <a class="headerlink" href="#section" title="Enlace permanente">¶</a></h3>
+<p>Son los elementos que deben proporcionar los servicios comentados en
+la sección anterior. No se pueden generalizar ya que varían mucho según
+la tecnología. Sin embargo, normalmente todo SGBD incluye los
+siguientes:</p>
+<p><strong>Diccionario de datos</strong></p>
+<p>Esquemas que describen el contenido del SGBD incluyendo los distintos
+objetos con sus propiedades.</p>
+<p><strong>Objetos</strong></p>
+<ul>
+<li><blockquote>
+<p>Tablas base y vistas (tablas derivadas).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Consultas.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Dominios y tipos definidos de datos.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Restricciones de tabla y dominio y aserciones.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Funciones y procedimientos almacenados.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Disparadores o triggers.</p>
+</blockquote></li>
+</ul>
+<p><strong>Herramientas para...</strong></p>
+<ul>
+<li><blockquote>
+<p>Seguridad: de modo que los usuarios no autorizados no puedan acceder
+a la base de datos.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Integridad: que mantiene la integridad y la consistencia de los
+datos.</p>
+</blockquote></li>
+<li><blockquote>
+<p>El control de concurrencia: que permite el acceso compartido a la
+base de datos.</p>
+</blockquote></li>
+<li><blockquote>
+<p>El control de recuperación: que restablece la base de datos después
+de que se produzca un fallo del hardware o del software.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Gestión del diccionario de datos (o catálogo): accesible por el
+usuario que contiene la descripción de los datos de la base de
+datos.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Programación de aplicaciones.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Importación/exportación de datos (migraciones).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Distribución de datos.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Replicación (arquitectura maestro-esclavo).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Sincronización (de equipos replicados).</p>
+</blockquote></li>
+</ul>
+<p><strong>Optimizador de consultas</strong></p>
+<p>Para determinar la estrategia óptima para la ejecución de las
+consultas.</p>
+<p><strong>Gestión de transacciones</strong></p>
+<p>Este módulo realiza el procesamiento de las transacciones.</p>
+<p><strong>Planificador (scheduler)</strong></p>
+<p>Para programar y automatizar la realización de ciertas operaciones y
+procesos.</p>
+<p><strong>Copias de seguridad</strong></p>
+<p>Para garantizar que la base de datos se puede devolver a un estado
+consistente en caso de que se produzca algún fallo o error grave.</p>
+<p>No todos los SGBD presentan la misma funcionalidad, depende de cada
+producto. En general, los grandes SGBD multiusuario ofrecen todas las
+funciones que se acaban de citar y muchas más. Los sistemas modernos son
+conjuntos de programas extremadamente complejos y sofisticados, con
+millones de líneas de código y con una documentación consistente en
+varios volúmenes. Los SGBD están en continua evolución, tratando de
+satisfacer los requerimientos de todo tipo de usuarios. Desde permitir
+el trabajo con nuevos objetos multimedia a sistemas de minería de datos
+capaces de detectar patrones de datos, pasando por sistemas de datos
+distribuidos entre múltiples equipos. Sin duda, a medida que pase el
+tiempo irán surgiendo nuevos requisitos que serán incorporados
+paulatinamente.</p>
+<h2 id="lenguajes-de-datos">4.4 Lenguajes de datos  <a class="headerlink" href="#lenguajes-de-datos" title="Enlace permanente">¶</a></h2>
+<p>Son lenguajes para la manipulación de datos, tanto desde el punto de
+vista de su acceso y modificación como del control y seguridad de los
+mismos. Normalmente se distinguen tres tipos según su funcionalidad.</p>
+<ul>
+<li><blockquote>
+<p><strong>Lenguaje de definición de datos (DDL, Data Definition
+Language).</strong> Sencillo lenguaje artificial para definir y
+describir los objetos de la base de datos, su estructura, relaciones y
+restricciones. Permite, entre otras cosas, la creación, eliminación y
+modificación de las estructuras de la base de datos, es decir, de la
+definición de las tablas, así como de índices y restricciones.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Lenguaje de control de datos (DCL, Data Control
+Language).</strong> Encargado del control y seguridad de los datos
+(privilegios y modos de acceso, etc.). Este lenguaje permite especificar
+los permisos sobre los objetos de las bases de datos (tablas, vistas,
+procedimientos, etc.) así como la creación y eliminación de usuarios y
+cuentas.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Lenguaje de manipulación de datos (DML, Data Manipulation
+Language)</strong> Es el lenguaje encargado de la manipulación del
+contenido de las bases de datos. Permite la inserción, actualización,
+eliminación y consulta de datos en las tablas de las bases de datos.</p>
+</blockquote></li>
+</ul>
+<p>Para todos estos lenguajes se usa principalmente el lenguaje SQL
+(Structured Query Language). Incluye instrucciones para los tres tipos
+de lenguajes comentados y por su sencillez y potencia se ha convertido
+en el lenguaje estándar de los SGBD relacionales.</p>
+<h2 id="usuarios-de-los-sgbd">4.5 USUARIOS DE LOS SGBD  <a class="headerlink" href="#usuarios-de-los-sgbd" title="Enlace permanente">¶</a></h2>
+<p>Generalmente, distinguimos cuatro grupos de usuarios de sistemas
+gestores de bases de datos: los usuarios administradores, los
+diseñadores de la base de datos, los programadores y los usuarios de
+aplicaciones que interactúan con las bases de datos.</p>
+<p><strong>Administradores</strong></p>
+<p>Trabajan en el nivel de abstracción físico relacionado con el
+almacenamiento.</p>
+<p>Distinguimos a los administradores del propio sistema gestor
+encargados de la instalación y configuración del sistema, del control de
+acceso a los recursos, de la seguridad y de la monitorización y
+optimización del sistema gestor.</p>
+<p>Por su parte, los administradores de bases de datos se encargan del
+diseño físico de la misma, implementación y mantenimiento de la base de
+datos.</p>
+<p><strong>Diseñadores de la base de datos</strong></p>
+<p>Realizan el diseño lógico de la base de datos, debiendo identificar
+los datos, las relaciones entre datos y las restricciones sobre los
+datos y sus relaciones. El diseñador de la base de datos debe tener un
+profundo conocimiento de los datos de la empresa y también debe conocer
+sus reglas de negocio. Las reglas de negocio describen las
+características principales de los datos tal y como los ve la empresa.
+Para obtener un buen resultado, el diseñador de la base de datos debe
+implicar en el desarrollo del modelo de datos a todos los usuarios de la
+base de datos, tan pronto como sea posible. El diseño lógico de la base
+de datos es independiente del SGBD concreto que se vaya a utilizar, es
+independiente de los programas de aplicación, de los lenguajes de
+programación y de cualquier otra consideración física.</p>
+<p><strong>Programadores</strong></p>
+<p>Tanto de aplicaciones que, mediante API de lenguajes de programación
+interactúan con las bases de datos como de objetos de la base de datos,
+como rutinas almacenadas o disparadores. Estas aplicaciones servirán a
+los usuarios finales para, de una forma amigable, poder consultar datos,
+insertarlos, actualizarlos y eliminarlos.</p>
+<p><strong>Usuarios finales</strong></p>
+<p>Trabajan en el nivel externo mediante vistas o porciones de las bases
+de datos. Son clientes de las bases de datos que hacen uso de ellas sin
+conocer en absoluto su funcionamiento y organización interna. Son
+personas con pocos o nulos conocimientos de informática.</p>
+<h2 id="tipos-de-sgbd">4.6 TIPOS DE SGBD  <a class="headerlink" href="#tipos-de-sgbd" title="Enlace permanente">¶</a></h2>
+<p>Existen numerosos SGBD en el mercado que podemos clasificar según los
+siguientes criterios:</p>
+<p>Modelo lógico en el que se basan</p>
+<ul>
+<li><blockquote>
+<p>Jerárquico.</p>
+</blockquote></li>
+<li><blockquote>
+<p>En red.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Relacional.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Objeto-relacional.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Orientado a objetos.</p>
+</blockquote></li>
+</ul>
+<p>Número de usuarios</p>
+<ul>
+<li><blockquote>
+<p>Monousuario: solo permiten un usuario.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Multiusuario: permiten la conexión de varios usuarios.</p>
+</blockquote></li>
+</ul>
+<p>Número de sitios</p>
+<ul>
+<li><blockquote>
+<p>Centralizados: en un solo servidor o equipo.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Distribuidos: en varios equipos que pueden ser homogéneos y
+heterogéneos.</p>
+</blockquote></li>
+</ul>
+<p>Ámbito de aplicación</p>
+<ul>
+<li><blockquote>
+<p>Propósito General: orientados a toda clase de aplicaciones.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Propósito Específico: centradas en un tipo específico de
+aplicaciones.</p>
+</blockquote></li>
+</ul>
+<p>Tipos de datos</p>
+<ul>
+<li><blockquote>
+<p>Sistemas relacionales estándar: manejan tipos básicos (int, char,
+etc.).</p>
+</blockquote></li>
+<li><blockquote>
+<p>XML: para el caso de bases de datos que trabajan con documentos
+xml.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Objeto-relacionales: para bases relacionales que incorporan tipos
+complejos de datos.</p>
+</blockquote></li>
+<li><blockquote>
+<p>De objetos: para bases de datos que soportan tipos de objeto con
+datos y métodos asociados.</p>
+</blockquote></li>
+</ul>
+<p>Lenguajes soportados</p>
+<ul>
+<li><blockquote>
+<p>SQL estándar.</p>
+</blockquote></li>
+<li><blockquote>
+<p>NoSQL o nuevo lenguaje de consulta: menos estructurado y orientado a
+bases documentales o de tipo clave-valor. Es muy útil para manejar
+consultas de grandes cantidades de datos distribuidos en clusters de
+servidores.</p>
+</blockquote></li>
+</ul>
+<p>📖 Dentro de todos ellos los que con gran diferencia se han impuesto
+en casi todos los ámbitos del desarrollo han sido los basados en el
+modelo relacional. Ello se ha debido principalmente a su flexibilidad y
+sencillez de manejo. Igualmente, conviene destacar la amplia
+implantación del lenguaje SQL, que se ha convertido en un estándar para
+el manejo de datos en el modelo relacional, lo que ha supuesto una
+ventaja adicional para su desarrollo ya que, además, ha incorporado (en
+su versión SQL1999) aspectos importantes de la orientación a
+objetos.</p>
+<p>Cabe destacar, sin embargo, la creciente popularidad de otros
+lenguajes como NoSQL (Not Only SQL), que se han desarrollado para
+adaptarse a datos masivos y dispersos en muchos servidores.</p>
+<p><strong>Usos de las bases de datos</strong> 📖</p>
+<p>Las bases de datos son ubicuas, están en cualquier tipo de sistema
+informático, a continuación se exponen sólo algunos ejemplos de sus usos
+más frecuentes:</p>
+<ul>
+<li><p>Bases de datos Administrativas: Cualquier empresa necesita
+registrar y relacionar sus clientes, pedidos, facturas, productos,
+etc.</p></li>
+<li><p>Bases de datos Contables: También es necesario gestionar los
+pagos, balances de pérdidas y ganancias, patrimonio, declaraciones de
+hacienda…</p></li>
+<li><p>Bases de datos para motores de búsquedas: Por ejemplo Google o
+Altavista, tienen una base de datos gigantesca donde almacenan
+información sobre todos los documentos de Internet. Posteriormente
+millones de usuarios buscan en la BD de estos motores.</p></li>
+<li><p>Científicas: Recolección de datos climáticos y medioambientales,
+químicos, geológicos...</p></li>
+<li><p>Configuraciones: Almacenan datos de configuración de un sistema
+informático, como por ejemplo, el registro de windows.</p></li>
+<li><p>Bibliotecas: Almacenan información bibliográfica, por ejemplo, la
+famosa tienda virtual amazon o la biblioteca de un instituto.</p></li>
+<li><p>Censos: Guardan información demográfica de pueblos, ciudades y
+países.</p></li>
+<li><p>Virus: Los antivirus guardan información sobre todos los
+potenciales software maliciosos.</p></li>
+<li><p>Otros muchos usos: Militares, videojuegos, deportes,
+etc.</p></li>
+</ul>
+<h2 id="sistemas-gestores-de-bd-comerciales-y-libres">4.7 SISTEMAS
+GESTORES DE BD COMERCIALES Y LIBRES 📖 <a class="headerlink" href="#sistemas-gestores-de-bd-comerciales-y-libres" title="Enlace permanente">¶</a></h2>
+<p>Con el advenimiento de Internet, el software libre se ha consolidado
+como alternativa, técnicamente viable y económicamente sostenible al
+software comercial, contrariamente a lo que a menudo se piensa,
+convirtiéndo el software libre como otra alternativa para ofrecer los
+mismos servicios a un coste cada vez más reducido.</p>
+<p>Sin embargo, debe notarse que lo que comúnmente se denomina software
+libre no significa que sea gratuito ya que muchas empresas ofrecen
+servicios de soporte y mantenimiento para productos (en ocasiones de
+pago como Red Hat o Suse) pero cuyo código sigue siendo accesible.</p>
+<p>Estas alternativas se encuentran tanto para herramientas de ofimática
+como Libreoffice, Openoffice frente a Microsoft Office, como
+herramientas mucho más avanzadas y de de propósito general, como MySQL
+frente SQL Server o a un nivel superior en cuanto a potencialidad, como
+PostgreSQL frente a Oracle, entre otros.</p>
+<p>No obstante, cada vez más los fabricantes ofrecen versiones gratuitas
+(que no libres), aunque con limitaciones en su funcionalidad, de sus
+productos que permiten probarlos y aprender sus interioridades. Estas
+versiones se suelen denominar de tipo express.</p>
+<p>Con independencia de la versión de producto también disponemos, tanto
+en los productos de software libre como en los de pago, de cada vez más
+documentación en línea que facilita enormemente su aprendizaje aunque en
+este sentido los productos de software libre destacan ya que los
+usuarios y comunidades generan una gran cantidad de documentación que
+está permanentemente actualizada.</p>
+<p>Otro factor importante es el humano. Usar software libre a menudo
+implica un mayor conocimiento del producto y, por tanto, personal más
+cualificado. Por el contrario, esto permite un mayor control sobre el
+mismo y sobre las aplicaciones a desarrollar, además de una gran
+independencia con respecto al proveedor del mismo, por no hablar del
+ahorro en cuanto a licencias y costes de mantenimiento y soporte. Los
+sistemas comerciales, por el contrario, suelen ser más cerrados y
+rígidos. En todo caso todas las tecnologías nombradas disponen de
+servicios de soporte y documentación de gran calidad.</p>
+<p>En definitiva, usar software libre o no es una elección del
+consumidor. Debe considerar estos y otros factores de la manera que
+mejor se adapte a sus necesidades.</p>
+<p>No se trata tanto de defender "qué es mejor en sí mismo", sino de
+tener la información y poder elegir "qué es mejor según mis
+circunstancias".</p>
+<p>A la hora de decidirse entre un sistema libre o comercial, un factor
+importante es si disponemos de personal cualificado, en cuyo caso un
+sistema libre es más barato y potente y nos dará más posibilidades y
+flexibilidad.</p>
+<p><strong>ACTIVIDADES 1.2</strong></p>
+<ol type="1">
+<li><blockquote>
+<p>¿Qué se entiende por diseño físico de una base de datos? ¿Qué
+usuarios son los responsables del mismo?</p>
+</blockquote></li>
+<li><blockquote>
+<p>Averigüe en qué consiste y para qué sirve la minería de datos.</p>
+</blockquote></li>
+<li><blockquote>
+<p>¿Qué lenguaje específico usa SQL Server para implementar el lenguaje
+SQL?</p>
+</blockquote></li>
+<li><blockquote>
+<p>Busque al menos 2 sistemas gestores libres (Open Source) y 2
+comerciales e investigue sus ventajas e inconvenientes.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Haga una investigación sobre las diferencias fundamentales entre los
+SGBD orientados a modelos relacionales de datos y los basados en NoSQL,
+como CouchDB, Redis o Cassandra.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Buscar los cinco SGBD más utilizados (unos datos que estén
+actualizados). Incluir sus características principales.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Crea una tabla como las que aparecen en este documento(de alumnos,
+clientes, coches, equipos de fútbol, cantantes,...). Debe de tener 4 o 5
+registros (filas) y 4 o 5 campos (columnas) como mínimo. Indicar cual es
+la clave, nombre de los campos, tipos de datos (entero, decimal, texto,
+fecha, hora, booleano, otro).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Busca en Internet las leyes de Codd para el funcionamiento de
+sistemas gestores de bases de datos relacionales</p>
+</blockquote></li>
+<li><blockquote>
+<p>Indica las funciones que proporcionan los SGBD actuales.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Con los apuntes proporcionados buscar los siguientes conceptos y
+completar con la definición correspondiente: Fichero, Base de datos,
+Sistema gestor de bases de datos, Dato, Campo, registro, tabla,
+consulta, vista y esquema</p>
+</blockquote></li>
+</ol>
+<h1 id="bd-centralizadas-y-distribuidas">5 BD CENTRALIZADAS Y
+DISTRIBUIDAS  <a class="headerlink" href="#bd-centralizadas-y-distribuidas" title="Enlace permanente">¶</a></h1>
+<p>En un sistema de bases de datos centralizado todos los componentes
+(software, datos y soportes físicos) residen en un único lugar físico.
+Los clientes (aplicaciones, funciones, programas cliente, usuarios)
+acceden al sistema a través de distintas interfaces que se conectan al
+servidor. Sin embargo, existe otra arquitectura cada vez más extendida
+en la que se opta por un esquema distribuido en el que los componentes
+se distribuyen en distintos computadores comunicados a través de una red
+de cómputo. Dichos sistemas se conocen con el nombre de Sistemas
+Gestores de Bases de Datos Distribuidas o DDMGS.</p>
+<p>Una <strong>base de datos distribuida</strong> es una colección de
+datos que pertenece lógicamente al mismo sistema pero que se encuentra
+físicamente almacenada en distintas máquinas conectadas por una red.</p>
+<p>El surgimiento de las mismas se debe a varias razones entre las que
+destacan las siguientes:</p>
+<ul>
+<li><blockquote>
+<p><strong>Mejora de rendimiento.</strong> Cuando grandes bases de datos
+se distribuyen en varios sitios las consultas y transacciones que
+afectan a un solo sitio son más rápidas al ser más pequeña la base de
+datos local. Los sitios no se ven congestionados por muchas
+transacciones, ya que éstas se dispersan entre varios sistemas. De este
+modo, cuando una transacción requiera acceso a más de un sitio, estos
+pueden hacerse en paralelo, de forma que se reduce el tiempo de
+respuesta.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Fiabilidad.</strong> Definida como la probabilidad de que un
+sistema esté activo en un tiempo dado. Al distribuirse los datos es más
+fácil asegurar la fiabilidad del sistema, ya que si falla algún sitio es
+poco probable que afecte a la mayoría de transacciones.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Disponibilidad.</strong> Es la probabilidad de que un sistema
+esté activo de manera continuada durante un tiempo. Se ve mejorada por
+las mismas razones expuestas anteriormente. Esta característica se ve
+mejorada especialmente por la replicación de datos en varios
+sistemas.</p>
+</blockquote></li>
+</ul>
+<p><img src="media_GBD_UT1_Teoria_Almacenamiento_26_27/media/image1.png"
+style="width:3.94271in;height:1.67663in" /></p>
+<p><strong>Tipos de aplicaciones</strong></p>
+<p>Muchas aplicaciones tienen un marcado carácter distribuido al estar
+sus componentes dispersos en distintos sitios. Por ejemplo, una cadena
+de supermercados puede tener distintas sedes en distintas ciudades de
+forma que los clientes puedan acceder solamente a sitios y datos de su
+ciudad.</p>
+<p>Por el contrario, distribuir implica una mayor complejidad en el
+diseño, implementación y gestión de los datos, para lo cual un buen
+SGBDD debe incorporar, además de los componentes habituales en un SGBD
+centralizado:</p>
+<ul>
+<li><blockquote>
+<p>Tener acceso a sitios remotos e intercambiar información con los
+mismos para la ejecución de consultas y transacciones.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Disponer de un catálogo con información sobre cómo están distribuidos
+y replicados los datos del sistema distribuido.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Poder optimizar consultas y transacciones sobre datos que estén en
+más de un sitio.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Mantener la integridad en los permisos sobre datos replicados.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Mantener la consistencia de las copias de un elemento replicado.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Garantizar la recuperación del sistema en una caída.</p>
+</blockquote></li>
+</ul>
+<p>Todo ello eleva enormemente la complejidad de tal SGBDD. Debemos
+añadir además la dificultad en el diseño óptimo de bases de datos
+distribuidas, especialmente en cuanto a las dos decisiones importantes:
+qué datos distribuir y qué datos replicar.</p>
+<h2 id="técnicas-de-fragmentación-replicación-y-distribución">5.1
+TÉCNICAS DE FRAGMENTACIÓN, REPLICACIÓN Y DISTRIBUCIÓN  <a class="headerlink" href="#técnicas-de-fragmentación-replicación-y-distribución" title="Enlace permanente">¶</a></h2>
+<p>Diseñar bases de datos distribuidas implica decidir sobre cómo
+fragmentarlas, cómo replicarlas y cómo distribuirlas, además del diseño
+previo de la base de datos en sí.</p>
+<p>La información sobre cómo se hace este proceso se almacena en el
+catálogo global del sistema al que tiene acceso el cliente cuando quiere
+acceder a la información.</p>
+<p>Veremos ahora distintas técnicas para hacer lo anterior.</p>
+<p><strong>Fragmentación</strong></p>
+<p>Consideraremos a nuestra base de datos formada por unidades lógicas
+que son las relaciones o tablas. Supongamos que en nuestro ejemplo de
+banca electrónica queremos separar a nuestros clientes por regiones de
+España para facilitar el acceso. Entonces necesitaríamos dividir la
+tabla de clientes en tres partes almacenando cada una en un computador,
+es lo que denominamos fragmentación horizontal que divide las tuplas
+según una o varias condiciones sobre distintos atributos, en este caso
+sobre el campo región en la tabla clientes. <img
+src="media_GBD_UT1_Teoria_Almacenamiento_26_27/media/image2.png"
+style="width:2.03646in;height:2.9104in" /></p>
+<p>En otra situación podríamos querer dividir la información de un
+cliente en sus campos más accedidos y ligeros (nombre, apellidos,
+dirección) y almacenarla en un servidor más potente, mientras que otros
+campos más pesados (currículum, foto, historial, etc.) podrían
+almacenarse en otro servidor con menos capacidad de proceso pero más
+almacenamiento. Es lo que denominamos fragmentación vertical y debe
+hacerse con cuidado, ya que tenemos que incluir un atributo común,
+usualmente una clave, en ambos fragmentos para poder recuperar la
+información completa cuando sea necesario.</p>
+<p>Por supuesto, existe también la posibilidad de una fragmentación
+mixta que incluya los dos casos comentados.</p>
+<p>Debemos ser conscientes de que fragmentar es un proceso complejo que
+solo debe hacerse cuando se considere necesario por motivos de
+eficiencia, ya que al hacerlo hacemos también más complejo (más costoso
+en términos de CPU y consumo de recursos en general) el acceso a los
+datos por parte de los clientes.</p>
+<p>La información sobre la fragmentación se guarda en lo que se denomina
+un esquema de fragmentación, que es una definición de todos los
+atributos de la base de datos y cómo están fragmentados. Un esquema de
+reparto permite definir dónde repartiremos los fragmentos. Si se da el
+caso de repartirlos en más de un sitio diremos que está replicado.</p>
+<p>Fragmentar permite acercar los datos al consumidor, reducir el
+tráfico de red y mejorar la disponibilidad de los datos.</p>
+<p><strong>Replicación</strong></p>
+<p>Es fundamentalmente útil para mejorar la disponibilidad de los datos.
+El caso más extremo es la replicación en todos los sitios de la misma
+copia de la base de datos, que también es el caso que ofrece mayor
+disponibilidad, aunque puede reducir considerablemente la eficiencia en
+operaciones de actualización dado que cada operación debe realizarse en
+cada base de datos y esto puede traer problemas de integridad y
+consistencia de los mismos. La replicación, como hemos señalado,
+distribuye la carga, acelera consultas y mejora la disponibilidad pero,
+sobre todo, es óptima para sistemas con muchas lecturas. Sin embargo,
+requiere muchas más actualizaciones con el consiguiente consumo de
+almacenamiento. <img
+src="media_GBD_UT1_Teoria_Almacenamiento_26_27/media/image4.png"
+style="width:2.98958in;height:2.54167in" /></p>
+<p><strong>ACTIVIDADES 1.3</strong></p>
+<ol type="1">
+<li><blockquote>
+<p>Investigue sobre SGBD, comerciales o libres, que soporten replicación
+y fragmentación de datos.</p>
+</blockquote></li>
+<li><blockquote>
+<p>¿Cuál es el principal problema que tiene la replicación de datos?</p>
+</blockquote></li>
+<li><blockquote>
+<p>Analice la conveniencia de replicar y fragmentar datos en los
+siguientes sistemas:</p>
+</blockquote></li>
+</ol>
+<blockquote>
+<p>a. Base de datos de películas on line.</p>
+<p>b. Base de datos de un banco.</p>
+</blockquote>
+<ol start="4" type="1">
+<li><blockquote>
+<p>Explica qué son los <strong>metadatos</strong> y qué información
+específica almacena el <strong>diccionario de datos (o
+catálogo)</strong> en un sistema gestor de bases de datos.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Pon tres ejemplos de información administrativa o estructural que
+guarde el catálogo (por ejemplo: definiciones de tablas,
+usuarios/permisos, restricciones, etc.) y explica por qué es fundamental
+para el funcionamiento automático del propio SGBD.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Describe los tres niveles de la arquitectura ANSI/SPARC
+(<strong>nivel interno o físico</strong>, <strong>nivel conceptual o
+global</strong>, y <strong>nivel externo o vistas</strong>). Indica qué
+representa cada uno y qué tipo de usuario interactúa principalmente en
+dicho nivel.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Explica la diferencia entre <strong>independencia lógica</strong> e
+<strong>independencia física</strong> de los datos. Pon un ejemplo
+práctico de un cambio que afecte al nivel físico sin alterar el
+conceptual, y un cambio en el conceptual que no afecte a los esquemas
+externos existentes.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Elabora una tabla comparativa donde se analicen las ventajas y
+desventajas de utilizar un <strong>SGBD frente al almacenamiento
+tradicional en sistemas de ficheros</strong>, teniendo en cuenta
+factores clave como: <em>redundancia de datos, consistencia, control de
+concurrencia, seguridad/autorizaciones e independencia de
+datos</em>.</p>
+</blockquote></li>
+</ol>
+
+        </main>
+    </div>
+</body>
+</html>
