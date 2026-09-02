@@ -1,460 +1,165 @@
 <!DOCTYPE html>
-<html lang="es">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OGS - Programacion</title>
-    <style>
-    
-:root {
-    --primary: #2563eb;
-    --primary-dark: #1d4ed8;
-    --bg-header: #0f172a;
-    --text-header: #ffffff;
-    --bg-body: #f8fafc;
-    --text-body: #1e293b;
-    --border-color: #cbd5e1;
-}
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 80px;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background: var(--bg-body);
-    color: var(--text-body);
-    min-height: 100vh;
-}
-
-h1, h2, h3, h4, h5, h6, [id], a[name] {
-    scroll-margin-top: 80px !important;
-}
-
-.headerlink {
-    display: inline-block;
-    margin-left: 0.4rem;
-    color: #94a3b8;
-    text-decoration: none;
-    font-size: 0.8em;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.2s, color 0.2s;
-}
-
-h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
-h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
-    visibility: visible;
-    opacity: 1;
-}
-
-.headerlink:hover {
-    color: var(--primary);
-}
-
-#site-header {
-    position: sticky;
-    top: 0;
-    z-index: 10000;
-    background: var(--bg-header);
-    color: var(--text-header);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-}
-
-.header-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1.5rem;
-    height: 62px;
-}
-
-.site-title {
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: #ffffff;
-    letter-spacing: -0.01em;
-}
-
-.top-nav {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.top-nav .nav-btn {
-    color: #cbd5e1;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 8px 14px;
-    border-radius: 6px;
-    font-size: 0.95rem;
-    transition: background 0.2s, color 0.2s;
-}
-
-.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
-    background: #1e293b;
-    color: #ffffff;
-}
-
-.top-nav .nav-btn.disabled {
-    opacity: 0.4;
-    pointer-events: none;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropbtn {
-    background: #1e293b;
-    color: #ffffff;
-    padding: 9px 16px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    border: 1px solid #334155;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.dropdown:hover .dropbtn, .dropbtn.active {
-    background: var(--primary);
-    border-color: var(--primary);
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #ffffff;
-    min-width: 320px;
-    max-width: 480px;
-    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
-    border-radius: 8px;
-    overflow: hidden;
-    z-index: 10001;
-    border: 1px solid #e2e8f0;
-    margin-top: 6px;
-}
-
-.dropdown-content a {
-    color: var(--text-body);
-    padding: 12px 18px;
-    text-decoration: none;
-    display: block;
-    font-size: 0.92rem;
-    border-bottom: 1px solid #f1f5f9;
-    line-height: 1.4;
-    transition: background 0.15s, color 0.15s;
-    word-break: break-word;
-}
-
-.dropdown-content a:last-child {
-    border-bottom: none;
-}
-
-.dropdown-content a:hover {
-    background-color: #eff6ff;
-    color: var(--primary);
-    font-weight: 600;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block !important;
-}
-
-#page-layout {
-    display: flex;
-    min-height: calc(100vh - 62px);
-}
-
-#left-panel {
-    width: 320px;
-    min-width: 320px;
-    background: #ffffff;
-    border-right: 1px solid #e2e8f0;
-    padding: 1.5rem 1.25rem;
-    box-sizing: border-box;
-    overflow-y: auto;
-    position: sticky;
-    top: 62px;
-    height: calc(100vh - 62px);
-}
-
-#left-panel h3 {
-    font-size: 1rem;
-    margin-top: 0;
-    color: #334155;
-    border-bottom: 2px solid #e2e8f0;
-    padding-bottom: 0.5rem;
-}
-
-#left-panel nav#TOC, #left-panel #TOC {
-    background: transparent !important;
-    border: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    box-shadow: none !important;
-}
-
-#left-panel ul {
-    list-style-type: none;
-    padding-left: 0.75rem;
-    margin: 0.5rem 0;
-}
-
-#left-panel li {
-    margin: 6px 0;
-}
-
-#left-panel a {
-    color: #475569;
-    text-decoration: none;
-    font-size: 0.9rem;
-    line-height: 1.4;
-    display: block;
-    transition: color 0.15s;
-}
-
-#left-panel a:hover {
-    color: var(--primary);
-    font-weight: 600;
-}
-
-#main-content {
-    flex: 1;
-    padding: 2.5rem 4rem;
-    box-sizing: border-box;
-    max-width: 100% !important;
-    width: calc(100% - 320px);
-    min-width: 0;
-}
-
-/* TABLAS ELEGANTES Y RESPONSIVE */
-.table-wrapper {
-    overflow-x: auto;
-    margin: 1.75rem 0;
-    border-radius: 8px;
-    border: 1px solid #cbd5e1;
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-}
-
-table {
-    width: 100% !important;
-    border-collapse: collapse !important;
-    margin: 0 !important;
-    font-size: 0.93rem;
-    background: #ffffff;
-    table-layout: auto !important;
-}
-
-th, td {
-    padding: 10px 14px !important;
-    border: 1px solid #cbd5e1 !important;
-    text-align: left;
-    vertical-align: top;
-    line-height: 1.5;
-    word-break: normal;
-    overflow-wrap: break-word;
-}
-
-td p, th p {
-    margin: 0 !important;
-    padding: 2px 0 !important;
-}
-
-th {
-    background-color: #0f172a !important;
-    color: #ffffff !important;
-    font-weight: 600;
-    font-size: 0.95rem;
-    border-bottom: 2px solid #0f172a !important;
-}
-
-tr:nth-child(even) td {
-    background-color: #f8fafc !important;
-}
-
-tr:hover td {
-    background-color: #f1f5f9 !important;
-}
-
-/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
-.code-wrapper {
-    position: relative;
-    margin: 1.5rem 0;
-    border-radius: 8px;
-    overflow: hidden;
-    background: #0f172a;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.copy-btn {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    background: #334155;
-    color: #f8fafc;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 5px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
-    z-index: 10;
-}
-
-.copy-btn:hover {
-    background: #2563eb;
-}
-
-pre {
-    margin: 0 !important;
-    padding: 1.25rem 1.25rem !important;
-    background: #0f172a !important;
-    color: #f8fafc !important;
-    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
-    font-size: 0.92rem !important;
-    line-height: 1.6 !important;
-    overflow-x: auto !important;
-    white-space: pre-wrap !important;
-    word-break: break-all !important;
-}
-
-code {
-    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
-}
-
-p code, li code {
-    background: #e2e8f0;
-    color: #0f172a;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 0.9em;
-}
-
-img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
-
-    </style>
-    <script>
-    
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.dropdown').forEach(dd => {
-        const btn = dd.querySelector('.dropbtn');
-        const content = dd.querySelector('.dropdown-content');
-        if (btn && content) {
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const isOpen = content.style.display === 'block';
-                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
-                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
-                if (!isOpen) {
-                    content.style.display = 'block';
-                    btn.classList.add('active');
-                }
-            });
-        }
-    });
-
-    document.addEventListener('click', () => {
-        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
-        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
-    });
-
-    // Controlador universal de clics en enlaces ancla (#...)
-    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const rawHref = this.getAttribute('href') || '';
-            const hashIdx = rawHref.indexOf('#');
-            if (hashIdx === -1) return;
-            const hash = rawHref.substring(hashIdx + 1);
-            if (!hash) return;
-            
-            let targetId = hash;
-            try { targetId = decodeURIComponent(hash); } catch(err) {}
-
-            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
-            if (!targetEl) {
-                for (let el of document.querySelectorAll('[id]')) {
-                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
-                        targetEl = el;
-                        break;
-                    }
-                }
-            }
-
-            if (targetEl) {
-                e.preventDefault();
-                const headerOffset = 75;
-                const elementPosition = targetEl.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-                
-                if (history.pushState) {
-                    history.pushState(null, null, '#' + targetId);
-                }
-            }
-        });
-    });
-});
-
-function copyCode(btn) {
-    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
-    navigator.clipboard.writeText(code).then(() => {
-        const orig = btn.innerText;
-        btn.innerText = '✅ ¡Copiado!';
-        btn.style.background = '#16a34a';
-        setTimeout(() => {
-            btn.innerText = orig;
-            btn.style.background = '#334155';
-        }, 2000);
-    });
-}
-
-    </script>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>OGS_Programacion_26_27</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
 </head>
 <body>
-    <header id="site-header">
-  <div class="header-container">
-    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>OGS &ndash; Programacion</span></div>
-    <nav class="top-nav">
-      <a href="index.html" class="nav-btn">Inicio</a>
-      <a href="OGS_Presentacion_26_27.html" class="nav-btn">Presentación</a>
-      <a href="OGS_Programacion_26_27.html" class="nav-btn">Programación</a>
-      <div class="dropdown">
-        <button class="dropbtn" type="button">Teoría ▾</button>
-        <div class="dropdown-content">
-          <a href="OGS_UT1_Teoria_Fundamentos_26_27.html">OGS UT1 Teoria Fundamentos 26 27</a>
-        </div>
-      </div>
-      <div class="dropdown">
-        <button class="dropbtn" type="button">Tareas y Prácticas ▾</button>
-        <div class="dropdown-content">
-          <a href="OGS_UT1_Tarea_26_27.html">OGS UT1 Tarea 26 27</a>
-          <a href="OGS_UT2_Tarea_26_27.html">OGS UT2 Tarea 26 27</a>
-        </div>
-      </div>
-    </nav>
-  </div>
-</header>
-    <div id="page-layout">
-        <aside id="left-panel">
-            <h3>Índice del Tema</h3>
-            <nav id="TOC" role="doc-toc">
+<nav id="TOC" role="doc-toc">
 <ul>
 <li><a href="#section" id="toc-section"></a></li>
 <li><a href="#section-1" id="toc-section-1"></a>
@@ -491,11 +196,6 @@ id="toc-anexo-concreciones-del-departamento">10. ANEXO: Concreciones del
 Departamento</a></li>
 </ul>
 </nav>
-        </aside>
-        <main id="main-content">
-            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="OGS_Programacion_26_27.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
-            
-
 <p><strong>INTRODUCCIÓN A LA PROGRAMACIÓN Y ESTRUCTURAS DE
 DATOS</strong></p>
 <p><strong>Programación Didáctica</strong></p>
@@ -503,8 +203,8 @@ DATOS</strong></p>
 <p>MODALIDAD PRESENCIAL – MAÑANA</p>
 <p>Curso 2026/2027</p>
 <p><strong>PROFESORES:</strong> Juan Simón Sánchez Sánchez</p>
-<h2 id="section"> <a class="headerlink" href="#section" title="Enlace permanente">¶</a></h2>
-<h2 id="section-1"> <a class="headerlink" href="#section-1" title="Enlace permanente">¶</a></h2>
+<h2 id="section"></h2>
+<h2 id="section-1"></h2>
 <p><strong>Índice</strong></p>
 <p><a href="#contextualización.-normativa"><u>1. Contextualización.
 Normativa</u></a></p>
@@ -522,9 +222,9 @@ Didáctica</u></a></p>
 Interdisciplinariedad</u></a></p>
 <p><a href="#anexo-concreciones-del-departamento"><u>10. ANEXO:
 Concreciones del Departamento</u></a></p>
-<h3 id="section-2"> <a class="headerlink" href="#section-2" title="Enlace permanente">¶</a></h3>
+<h3 id="section-2"></h3>
 <h2 id="contextualización.-normativa">1. Contextualización.
-Normativa <a class="headerlink" href="#contextualización.-normativa" title="Enlace permanente">¶</a></h2>
+Normativa</h2>
 <p>El módulo se imparte en <strong>Segundo curso</strong>, con una
 <strong>carga horaria</strong> de 3 horas semanales y un
 <strong>total</strong> de 63 horas.</p>
@@ -578,7 +278,7 @@ evaluaciones finales en la plataforma Séneca.</p>
 <p>También se tendrá en cuenta lo recogido en el Proyecto de Centro y la
 Programación del Departamento de Informática.</p>
 <h2 id="resultados-de-aprendizaje-y-criterios">2. Resultados de
-Aprendizaje y Criterios <a class="headerlink" href="#resultados-de-aprendizaje-y-criterios" title="Enlace permanente">¶</a></h2>
+Aprendizaje y Criterios</h2>
 <p>A continuación, se detalla la ponderación curricular oficial asignada
 para cada <strong>Resultado de Aprendizaje (RA)</strong>, desglosando el
 <strong>peso relativo porcentual</strong> de cada uno de sus
@@ -587,205 +287,238 @@ interno de la nota del RA correspondient</p>
 <p><strong>RA1. Analiza los problemas planteados, identificando los
 entornos de aplicación y diseñando algoritmos lógicos para su
 resolución. (Peso total del módulo: 15%)</strong></p>
-<div class="table-wrapper"><table>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 85%" />
+<col style="width: 6%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th><strong>CE</strong></th>
 <th><strong>Criterio de Evaluación (CE) Oficial</strong></th>
 <th><strong>Peso</strong></th>
 </tr>
+<tr class="odd">
+<th><strong>CE1.a</strong></th>
+<th>Se han identificado las fases de resolución de un problema
+computacional y el concepto de pensamiento computacional.</th>
+<th>20%</th>
+</tr>
+<tr class="header">
+<th><strong>CE1.b</strong></th>
+<th>Se han diseñado algoritmos lógicos en pseudocódigo o diagramas de
+flujo para resolver problemas de baja complejidad.</th>
+<th>30%</th>
+</tr>
+<tr class="odd">
+<th><strong>CE1.c</strong></th>
+<th>Se han analizado representaciones lógicas y tablas de verdad para
+verificar la validez de un algoritmo.</th>
+<th>30%</th>
+</tr>
+<tr class="header">
+<th><strong>CE1.d</strong></th>
+<th>Se ha evaluado la viabilidad y modularidad de la estructura lógica
+propuesta en el algoritmo básico.</th>
+<th>20%</th>
+</tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td><strong>CE1.a</strong></td>
-<td>Se han identificado las fases de resolución de un problema
-computacional y el concepto de pensamiento computacional.</td>
-<td>20%</td>
-</tr>
-<tr class="header">
-<td><strong>CE1.b</strong></td>
-<td>Se han diseñado algoritmos lógicos en pseudocódigo o diagramas de
-flujo para resolver problemas de baja complejidad.</td>
-<td>30%</td>
-</tr>
-<tr class="odd">
-<td><strong>CE1.c</strong></td>
-<td>Se han analizado representaciones lógicas y tablas de verdad para
-verificar la validez de un algoritmo.</td>
-<td>30%</td>
-</tr>
-<tr class="header">
-<td><strong>CE1.d</strong></td>
-<td>Se ha evaluado la viabilidad y modularidad de la estructura lógica
-propuesta en el algoritmo básico.</td>
-<td>20%</td>
-</tr>
 </tbody>
-</table></div>
+</table>
 <p><strong>RA2. Desarrolla aplicaciones de software aplicando los
 principios de la programación estructurada, modularización y
 manipulación de ficheros. (Peso total del módulo: 25%)</strong></p>
-<div class="table-wrapper"><table>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 83%" />
+<col style="width: 7%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th><strong>CE</strong></th>
 <th><strong>Criterio de Evaluación (CE)</strong></th>
 <th><strong>Peso</strong></th>
 </tr>
+<tr class="odd">
+<th><strong>CE2.a</strong></th>
+<th>Se han utilizado tipos de datos simples, operadores lógicos y
+relacionales y variables siguiendo convenciones de nombrado.</th>
+<th>20%</th>
+</tr>
+<tr class="header">
+<th><strong>CE2.b</strong></th>
+<th>Se han codificado estructuras de selección condicional y bucles de
+repetición de forma anidada y eficiente.</th>
+<th>20%</th>
+</tr>
+<tr class="odd">
+<th><strong>CE2.c</strong></th>
+<th>Se han implementado funciones y procedimientos, gestionando la
+modularización y el ámbito (área local y global) de las variables.</th>
+<th>20%</th>
+</tr>
+<tr class="header">
+<th><strong>CE2.d</strong></th>
+<th>Se han programado procesos de lectura y escritura de información
+persistente en ficheros lógicos de texto y estructurados.</th>
+<th>20%</th>
+</tr>
+<tr class="odd">
+<th><strong>CE2.e</strong></th>
+<th>Se ha probado, depurado e interpretado el comportamiento del código
+ante diversas entradas de datos.</th>
+<th>20%</th>
+</tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td><strong>CE2.a</strong></td>
-<td>Se han utilizado tipos de datos simples, operadores lógicos y
-relacionales y variables siguiendo convenciones de nombrado.</td>
-<td>20%</td>
-</tr>
-<tr class="header">
-<td><strong>CE2.b</strong></td>
-<td>Se han codificado estructuras de selección condicional y bucles de
-repetición de forma anidada y eficiente.</td>
-<td>20%</td>
-</tr>
-<tr class="odd">
-<td><strong>CE2.c</strong></td>
-<td>Se han implementado funciones y procedimientos, gestionando la
-modularización y el ámbito (área local y global) de las variables.</td>
-<td>20%</td>
-</tr>
-<tr class="header">
-<td><strong>CE2.d</strong></td>
-<td>Se han programado procesos de lectura y escritura de información
-persistente en ficheros lógicos de texto y estructurados.</td>
-<td>20%</td>
-</tr>
-<tr class="odd">
-<td><strong>CE2.e</strong></td>
-<td>Se ha probado, depurado e interpretado el comportamiento del código
-ante diversas entradas de datos.</td>
-<td>20%</td>
-</tr>
 </tbody>
-</table></div>
+</table>
 <p><strong>RA3. Diseña y programa componentes lógicos utilizando el
 paradigma de orientación a objetos (POO) y gestionando excepciones.
 (Peso total del módulo: 25%)</strong></p>
-<div class="table-wrapper"><table>
+<table>
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 84%" />
+<col style="width: 7%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th><strong>CE</strong></th>
 <th><strong>Criterio de Evaluación (CE)</strong></th>
 <th><strong>Peso</strong></th>
 </tr>
+<tr class="odd">
+<th><strong>CE3.a</strong></th>
+<th>Se han asimilado los conceptos básicos de clase, instancia, objeto,
+atributos y constructores.</th>
+<th>20%</th>
+</tr>
+<tr class="header">
+<th><strong>CE3.b</strong></th>
+<th>Se han implementado mecanismos de encapsulamiento para proteger el
+acceso interno a las propiedades del objeto.</th>
+<th>20%</th>
+</tr>
+<tr class="odd">
+<th><strong>CE3.c</strong></th>
+<th>Se han programado estructuras complejas utilizando herencia y
+polimorfismo para la reutilización de código.</th>
+<th>20%</th>
+</tr>
+<tr class="header">
+<th><strong>CE3.d</strong></th>
+<th>Se han diseñado y gestionado bloques de control de excepciones para
+asegurar la resiliencia del software.</th>
+<th>20%</th>
+</tr>
+<tr class="odd">
+<th><strong>CE3.e</strong></th>
+<th>Se han identificado y aplicado patrones de diseño de software
+básicos para optimizar la jerarquía de clases.</th>
+<th>20%</th>
+</tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td><strong>CE3.a</strong></td>
-<td>Se han asimilado los conceptos básicos de clase, instancia, objeto,
-atributos y constructores.</td>
-<td>20%</td>
-</tr>
-<tr class="header">
-<td><strong>CE3.b</strong></td>
-<td>Se han implementado mecanismos de encapsulamiento para proteger el
-acceso interno a las propiedades del objeto.</td>
-<td>20%</td>
-</tr>
-<tr class="odd">
-<td><strong>CE3.c</strong></td>
-<td>Se han programado estructuras complejas utilizando herencia y
-polimorfismo para la reutilización de código.</td>
-<td>20%</td>
-</tr>
-<tr class="header">
-<td><strong>CE3.d</strong></td>
-<td>Se han diseñado y gestionado bloques de control de excepciones para
-asegurar la resiliencia del software.</td>
-<td>20%</td>
-</tr>
-<tr class="odd">
-<td><strong>CE3.e</strong></td>
-<td>Se han identificado y aplicado patrones de diseño de software
-básicos para optimizar la jerarquía de clases.</td>
-<td>20%</td>
-</tr>
 </tbody>
-</table></div>
+</table>
 <p><strong>RA4. Implementa estructuras de datos lineales y no lineales,
 evaluando su eficiencia y aplicando algoritmos de búsqueda y ordenación.
 (Peso total del módulo: 25%)</strong></p>
-<div class="table-wrapper"><table>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 84%" />
+<col style="width: 7%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th><strong>CE</strong></th>
 <th><strong>Criterio de Evaluación (CE)</strong></th>
 <th><strong>Peso</strong></th>
 </tr>
+<tr class="odd">
+<th><strong>CE4.a</strong></th>
+<th>Se han de gestionar arrays unidimensionales y multidimensionales de
+forma estática y dinámica.</th>
+<th>20%</th>
+</tr>
+<tr class="header">
+<th><strong>CE4.b</strong></th>
+<th>Se han modelado e implementado estructuras lineales complejas
+(listas enlazadas, pilas y colas).</th>
+<th>20%</th>
+</tr>
+<tr class="odd">
+<th><strong>CE4.c</strong></th>
+<th>Se han conceptualizado y programado recorridos de estructuras
+jerárquicas no lineales (árboles y grafos).</th>
+<th>20%</th>
+</tr>
+<tr class="header">
+<th><strong>CE4.d</strong></th>
+<th>Se han aplicado algoritmos de ordenación y búsqueda optimizada sobre
+las diferentes estructuras de datos.</th>
+<th>20%</th>
+</tr>
+<tr class="odd">
+<th><strong>CE4.e</strong></th>
+<th>Se ha evaluado la complejidad y eficiencia temporal de las
+operaciones realizadas sobre las estructuras de datos.</th>
+<th>20%</th>
+</tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td><strong>CE4.a</strong></td>
-<td>Se han de gestionar arrays unidimensionales y multidimensionales de
-forma estática y dinámica.</td>
-<td>20%</td>
-</tr>
-<tr class="header">
-<td><strong>CE4.b</strong></td>
-<td>Se han modelado e implementado estructuras lineales complejas
-(listas enlazadas, pilas y colas).</td>
-<td>20%</td>
-</tr>
-<tr class="odd">
-<td><strong>CE4.c</strong></td>
-<td>Se han conceptualizado y programado recorridos de estructuras
-jerárquicas no lineales (árboles y grafos).</td>
-<td>20%</td>
-</tr>
-<tr class="header">
-<td><strong>CE4.d</strong></td>
-<td>Se han aplicado algoritmos de ordenación y búsqueda optimizada sobre
-las diferentes estructuras de datos.</td>
-<td>20%</td>
-</tr>
-<tr class="odd">
-<td><strong>CE4.e</strong></td>
-<td>Se ha evaluado la complejidad y eficiencia temporal de las
-operaciones realizadas sobre las estructuras de datos.</td>
-<td>20%</td>
-</tr>
 </tbody>
-</table></div>
+</table>
 <p><strong>RA5. Utiliza entornos de desarrollo integrados y sistemas de
 control de versiones para depurar, probar e integrar código de forma
 colaborativa. (Peso total del módulo: 10%)</strong></p>
-<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>CE
-Criterio de Evaluación (CE)
-Peso
-
-
-CE5.a
-Se han utilizado herramientas integradas de depuración (debuggers)
-de una IDE para inspeccionar variables y trazas de ejecución.
-25%
-
-
-CE5.b
-Se han automatizado pruebas unitarias para garantizar el control de
-calidad del software.
-25%
-
-
-CE5.c
-Se han resuelto proyectos técnicos colaborativos empleando el
-sistema de control de versiones Git y repositorios remotos.
-25%
-
-
-CE5.d
-Se han aplicado metodologías ágiles sencillas para organizar el
-trabajo en equipo en el desarrollo de código.
-25%</code></pre></div></div>
+<table>
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 84%" />
+<col style="width: 7%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>CE</strong></th>
+<th><strong>Criterio de Evaluación (CE)</strong></th>
+<th><strong>Peso</strong></th>
+</tr>
+<tr class="odd">
+<th><strong>CE5.a</strong></th>
+<th>Se han utilizado herramientas integradas de depuración (debuggers)
+de una IDE para inspeccionar variables y trazas de ejecución.</th>
+<th>25%</th>
+</tr>
+<tr class="header">
+<th><strong>CE5.b</strong></th>
+<th>Se han automatizado pruebas unitarias para garantizar el control de
+calidad del software.</th>
+<th>25%</th>
+</tr>
+<tr class="odd">
+<th><strong>CE5.c</strong></th>
+<th>Se han resuelto proyectos técnicos colaborativos empleando el
+sistema de control de versiones Git y repositorios remotos.</th>
+<th>25%</th>
+</tr>
+<tr class="header">
+<th><strong>CE5.d</strong></th>
+<th>Se han aplicado metodologías ágiles sencillas para organizar el
+trabajo en equipo en el desarrollo de código.</th>
+<th>25%</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
 <h2 id="bloques-de-contenidos-y-distribución-temporal">4. Bloques de
-Contenidos y Distribución Temporal <a class="headerlink" href="#bloques-de-contenidos-y-distribución-temporal" title="Enlace permanente">¶</a></h2>
+Contenidos y Distribución Temporal</h2>
 <p>Dado que se trata de un módulo optativo del <strong>segundo curso de
 ASIR</strong>, la carga teórica y práctica presencial en el centro
 educativo se concentra en los dos primeros trimestres del año escolar.
@@ -814,7 +547,15 @@ Unidad de Trabajo (UT), estructurando las estructuras de datos complejas
 Programación Orientada a Objetos (POO).</p>
 <p><strong>Distribución Temporal y Secuenciación de Unidades de
 Trabajo:</strong></p>
-<div class="table-wrapper"><table>
+<table>
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 48%" />
+<col style="width: 9%" />
+<col style="width: 18%" />
+<col style="width: 9%" />
+<col style="width: 8%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th><strong>UT</strong></th>
@@ -824,69 +565,69 @@ Trabajo:</strong></p>
 <th><strong>RA</strong></th>
 <th><strong>Trim</strong></th>
 </tr>
+<tr class="odd">
+<th><strong>UT1</strong></th>
+<th>Fundamentos de programación</th>
+<th>15 h</th>
+<th>15 Sep - 10 Oct</th>
+<th>RA1</th>
+<th>1º</th>
+</tr>
+<tr class="header">
+<th><strong>UT2</strong></th>
+<th>Programación estructurada</th>
+<th>15 h</th>
+<th>11 Oct - 30 Nov</th>
+<th>RA2</th>
+<th>1º</th>
+</tr>
+<tr class="odd">
+<th><strong>UT3</strong></th>
+<th>Estructuras de datos</th>
+<th>15 h</th>
+<th>1 Dic - 22 Ene</th>
+<th>RA4</th>
+<th>1º y 2º</th>
+</tr>
+<tr class="header">
+<th><strong>UT4</strong></th>
+<th>Programación orientada a objetos</th>
+<th>12 h</th>
+<th>23 Ene - 23 Feb</th>
+<th>RA3</th>
+<th>2º</th>
+</tr>
+<tr class="odd">
+<th><strong>UT5</strong></th>
+<th>Entornos de desarrollo</th>
+<th>6 h</th>
+<th>24 Feb - 12 Mar</th>
+<th>RA5</th>
+<th>2º</th>
+</tr>
+<tr class="header">
+<th><strong>-</strong></th>
+<th><strong>Periodo de Alternancia Dual (Estancia en
+Empresa)</strong></th>
+<th><strong>400 h</strong></th>
+<th><strong>15 Mar - 11 Jun</strong></th>
+<th><strong>RA5 (CE5.a)</strong></th>
+<th><strong>3º</strong></th>
+</tr>
+<tr class="odd">
+<th><strong>-</strong></th>
+<th><strong>Sesión de Evaluación Final</strong></th>
+<th><strong>-</strong></th>
+<th><strong>14 Jun - 22 Jun</strong></th>
+<th><strong>Todos</strong></th>
+<th><strong>3º</strong></th>
+</tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td><strong>UT1</strong></td>
-<td>Fundamentos de programación</td>
-<td>15 h</td>
-<td>15 Sep - 10 Oct</td>
-<td>RA1</td>
-<td>1º</td>
-</tr>
-<tr class="header">
-<td><strong>UT2</strong></td>
-<td>Programación estructurada</td>
-<td>15 h</td>
-<td>11 Oct - 30 Nov</td>
-<td>RA2</td>
-<td>1º</td>
-</tr>
-<tr class="odd">
-<td><strong>UT3</strong></td>
-<td>Estructuras de datos</td>
-<td>15 h</td>
-<td>1 Dic - 22 Ene</td>
-<td>RA4</td>
-<td>1º y 2º</td>
-</tr>
-<tr class="header">
-<td><strong>UT4</strong></td>
-<td>Programación orientada a objetos</td>
-<td>12 h</td>
-<td>23 Ene - 23 Feb</td>
-<td>RA3</td>
-<td>2º</td>
-</tr>
-<tr class="odd">
-<td><strong>UT5</strong></td>
-<td>Entornos de desarrollo</td>
-<td>6 h</td>
-<td>24 Feb - 12 Mar</td>
-<td>RA5</td>
-<td>2º</td>
-</tr>
-<tr class="header">
-<td><strong>-</strong></td>
-<td><strong>Periodo de Alternancia Dual (Estancia en
-Empresa)</strong></td>
-<td><strong>400 h</strong></td>
-<td><strong>15 Mar - 11 Jun</strong></td>
-<td><strong>RA5 (CE5.a)</strong></td>
-<td><strong>3º</strong></td>
-</tr>
-<tr class="odd">
-<td><strong>-</strong></td>
-<td><strong>Sesión de Evaluación Final</strong></td>
-<td><strong>-</strong></td>
-<td><strong>14 Jun - 22 Jun</strong></td>
-<td><strong>Todos</strong></td>
-<td><strong>3º</strong></td>
-</tr>
 </tbody>
-</table></div>
+</table>
 <h2 id="concurrencia-dual-formación-en-empresa">4. Concurrencia Dual
-(Formación en Empresa) <a class="headerlink" href="#concurrencia-dual-formación-en-empresa" title="Enlace permanente">¶</a></h2>
+(Formación en Empresa)</h2>
 <p>Atendiendo al marco andaluz de dualización del <strong>Decreto
 165/2024</strong> y la naturaleza tecnológica de un Ciclo de Grado Medio
 (SMR), se trasladan a la empresa actividades procedimentadas y seguras
@@ -931,7 +672,7 @@ inclusión de control de excepciones try-except o logs de depuración
 interna) para optimizar el script del departamento.</p>
 </blockquote></li>
 </ul>
-<h2 id="metodología-didáctica">5. Metodología Didáctica <a class="headerlink" href="#metodología-didáctica" title="Enlace permanente">¶</a></h2>
+<h2 id="metodología-didáctica">5. Metodología Didáctica</h2>
 <p>Utilizaremos una metodología eminentemente
 <strong>activa/práctica</strong>, buscando la
 <strong>participación</strong> y protagonismo del alumnado. Habrá que
@@ -984,7 +725,7 @@ mismos</strong>.</p>
 <p>También se podrán identificar distintos tipos de actividades de
 detección de conocimientos y capacidades previas, motivación, desarrollo
 de contenidos, refuerzo, ampliación y evaluación.</p>
-<h2 id="evaluación-y-calificación">6. Evaluación y Calificación <a class="headerlink" href="#evaluación-y-calificación" title="Enlace permanente">¶</a></h2>
+<h2 id="evaluación-y-calificación">6. Evaluación y Calificación</h2>
 <p>Teniendo en cuenta la Orden de 29 de septiembre de 2010 la evaluación
 será continua y por módulos. En la modalidad presencial, la asistencia
 será obligatoria y regular, en caso contrario se perderá el derecho de
@@ -1175,7 +916,7 @@ competencias de programación.</p>
 </blockquote></li>
 </ol>
 <h2 id="materiales-espacios-y-recursos">7. Materiales, Espacios y
-Recursos <a class="headerlink" href="#materiales-espacios-y-recursos" title="Enlace permanente">¶</a></h2>
+Recursos</h2>
 <ul>
 <li><blockquote>
 <p><strong>Espacios:</strong> Aula polivalente de informática con mesas
@@ -1195,10 +936,12 @@ replicación y clusters de bases de datos) y unidad SSD rápida de al
 menos 512 GB.</p>
 </blockquote></li>
 </ul></li>
-<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Software: Intérprete oficial de Python 3.x, Visual
+<li><blockquote>
+<p><strong>Software:</strong> Intérprete oficial de Python 3.x, Visual
 Studio Code / PyCharm Community como IDE principal con extensiones de
 depuración, Git instalado localmente, Docker y navegador moderno con
-herramientas de desarrollo habilitadas.</code></pre></div></li>
+herramientas de desarrollo habilitadas.</p>
+</blockquote></li>
 <li><blockquote>
 <p><strong>Entornos Virtuales de Aprendizaje:</strong> Plataforma
 <strong>Moodle Centros</strong> de la Junta de Andalucía, estructurada
@@ -1229,7 +972,7 @@ ideas, sino también cumplen otras funciones:</p>
 </ul></li>
 </ul>
 <h2 id="atención-a-la-diversidad-dua">8. Atención a la Diversidad
-(DUA) <a class="headerlink" href="#atención-a-la-diversidad-dua" title="Enlace permanente">¶</a></h2>
+(DUA)</h2>
 <p>En el presente curso se ha detectado …..,</p>
 <p>Se realizará la adecuación de las actividades formativas garantizando
 el acceso a las pruebas de evaluación. Esta adaptación en ningún caso
@@ -1281,7 +1024,7 @@ elementales.</p>
 </blockquote></li>
 </ul>
 <h2 id="contenidos-transversales-e-interdisciplinariedad">9. Contenidos
-Transversales e Interdisciplinariedad <a class="headerlink" href="#contenidos-transversales-e-interdisciplinariedad" title="Enlace permanente">¶</a></h2>
+Transversales e Interdisciplinariedad</h2>
 <ul>
 <li><blockquote>
 <p><strong>Sostenibilidad:</strong> Optimización de algoritmos de
@@ -1322,17 +1065,19 @@ sistema.</p>
 </ul></li>
 </ul>
 <h2 id="anexo-concreciones-del-departamento">10. ANEXO: Concreciones del
-Departamento <a class="headerlink" href="#anexo-concreciones-del-departamento" title="Enlace permanente">¶</a></h2>
+Departamento</h2>
 <p>La presente programación didáctica del módulo se complementa e
 integra de forma vinculante con las directrices generales aprobadas en
 la <strong>Programación del Departamento de Informática y
 Comunicaciones</strong>, las cuales garantizan la cohesión pedagógica y
 organizativa del profesorado del centro:</p>
 <ol type="1">
-<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Software Común de Referencia: Se fija Python
-3.x como lenguaje unificado y preferente de referencia para la
+<li><blockquote>
+<p><strong>Software Común de Referencia:</strong> Se fija <strong>Python
+3.x</strong> como lenguaje unificado y preferente de referencia para la
 impartición de este módulo optativo de ASIR, utilizando
-Git como sistema unificado de control de versiones.</code></pre></div></li>
+<strong>Git</strong> como sistema unificado de control de versiones.</p>
+</blockquote></li>
 <li><blockquote>
 <p><strong>Criterios de Asignación y Control de Estancia Dual:</strong>
 Los alumnos se distribuirán en las empresas basándose en el baremo del
@@ -1361,8 +1106,5 @@ recogen en la programación del departamento todas las actividades
 organizadas por el Departamento de Informática</p>
 </blockquote></li>
 </ol>
-
-        </main>
-    </div>
 </body>
 </html>
