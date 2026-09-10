@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASGBD - Ut3 Teoria Usuarios Roles</title>
+    <style>
+    
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --bg-header: #1e3a8a;
+    --text-header: #ffffff;
+    --bg-body: #f8fafc;
+    --text-body: #1e293b;
+    --border-color: #cbd5e1;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-body);
+    color: var(--text-body);
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, [id], a[name] {
+    scroll-margin-top: 80px !important;
+}
+
+.headerlink {
+    display: inline-block;
+    margin-left: 0.4rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.8em;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
+h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
+    visibility: visible;
+    opacity: 1;
+}
+
+.headerlink:hover {
+    color: var(--primary);
+}
+
+#site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    background: var(--bg-header);
+    color: var(--text-header);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    height: 62px;
+}
+
+.site-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.top-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.top-nav .nav-btn {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+.top-nav .nav-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 9px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown:hover .dropbtn, .dropbtn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 320px;
+    max-width: 480px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 10001;
+    border: 1px solid #e2e8f0;
+    margin-top: 6px;
+}
+
+.dropdown-content a {
+    color: var(--text-body);
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.92rem;
+    border-bottom: 1px solid #f1f5f9;
+    line-height: 1.4;
+    transition: background 0.15s, color 0.15s;
+    word-break: break-word;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #eff6ff;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block !important;
+}
+
+#page-layout {
+    display: flex;
+    min-height: calc(100vh - 62px);
+}
+
+#left-panel {
+    width: 320px;
+    min-width: 320px;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 1.5rem 1.25rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: sticky;
+    top: 62px;
+    height: calc(100vh - 62px);
+}
+
+#left-panel h3 {
+    font-size: 1rem;
+    margin-top: 0;
+    color: #334155;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
+
+#left-panel nav#TOC, #left-panel #TOC {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+#left-panel ul {
+    list-style-type: none;
+    padding-left: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+#left-panel li {
+    margin: 6px 0;
+}
+
+#left-panel a {
+    color: #475569;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    display: block;
+    transition: color 0.15s;
+}
+
+#left-panel a:hover {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+#main-content {
+    flex: 1;
+    padding: 2.5rem 4rem;
+    box-sizing: border-box;
+    max-width: 100% !important;
+    width: calc(100% - 320px);
+    min-width: 0;
+}
+
+/* TABLAS ELEGANTES Y RESPONSIVE */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1.75rem 0;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    font-size: 0.93rem;
+    background: #ffffff;
+    table-layout: auto !important;
+}
+
+th, td {
+    padding: 10px 14px !important;
+    border: 1px solid #cbd5e1 !important;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+td p, th p {
+    margin: 0 !important;
+    padding: 2px 0 !important;
+}
+
+th {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #0f172a !important;
+}
+
+tr:nth-child(even) td {
+    background-color: #f8fafc !important;
+}
+
+tr:hover td {
+    background-color: #f1f5f9 !important;
+}
+
+/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
+.code-wrapper {
+    position: relative;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0f172a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #334155;
+    color: #f8fafc;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.copy-btn:hover {
+    background: #2563eb;
+}
+
+pre {
+    margin: 0 !important;
+    padding: 1.25rem 1.25rem !important;
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    overflow-x: auto !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+}
+
+code {
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+}
+
+p code, li code {
+    background: #e2e8f0;
+    color: #0f172a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
+
+/* RESPONSIVE DESIGN PARA MÓVILES Y TABLETS */
+@media (max-width: 768px) {
+    .header-container {
+        height: auto;
+        flex-direction: column;
+        padding: 0.75rem 1rem;
+        gap: 0.6rem;
+    }
+    
+    .site-title {
+        font-size: 1.05rem;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .site-title img {
+        height: 28px !important;
+    }
+
+    .top-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 0.35rem;
+    }
+
+    .top-nav .nav-btn, .dropbtn {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    .dropdown-content {
+        min-width: 240px;
+        max-width: 90vw;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #page-layout {
+        flex-direction: column;
+    }
+
+    #left-panel {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        position: static !important;
+        border-right: none !important;
+        border-bottom: 2px solid #e2e8f0;
+        padding: 1rem !important;
+    }
+
+    #main-content {
+        width: 100% !important;
+        padding: 1.25rem 1rem !important;
+    }
+
+    iframe {
+        height: 60vh !important;
+    }
+
+    th, td {
+        padding: 8px 10px !important;
+        font-size: 0.85rem !important;
+    }
+
+    pre {
+        padding: 0.85rem !important;
+        font-size: 0.82rem !important;
+    }
+}
+
+    </style>
+    <script>
+    
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.dropdown').forEach(dd => {
+        const btn = dd.querySelector('.dropbtn');
+        const content = dd.querySelector('.dropdown-content');
+        if (btn && content) {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = content.style.display === 'block';
+                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
+                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+                if (!isOpen) {
+                    content.style.display = 'block';
+                    btn.classList.add('active');
+                }
+            });
+        }
+    });
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
+        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+    });
+
+    // Controlador universal de clics en enlaces ancla (#...)
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const rawHref = this.getAttribute('href') || '';
+            const hashIdx = rawHref.indexOf('#');
+            if (hashIdx === -1) return;
+            const hash = rawHref.substring(hashIdx + 1);
+            if (!hash) return;
+            
+            let targetId = hash;
+            try { targetId = decodeURIComponent(hash); } catch(err) {}
+
+            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
+            if (!targetEl) {
+                for (let el of document.querySelectorAll('[id]')) {
+                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
+                        targetEl = el;
+                        break;
+                    }
+                }
+            }
+
+            if (targetEl) {
+                e.preventDefault();
+                const headerOffset = 75;
+                const elementPosition = targetEl.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                if (history.pushState) {
+                    history.pushState(null, null, '#' + targetId);
+                }
+            }
+        });
+    });
+});
+
+function copyCode(btn) {
+    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
+    navigator.clipboard.writeText(code).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = '✅ ¡Copiado!';
+        btn.style.background = '#16a34a';
+        setTimeout(() => {
+            btn.innerText = orig;
+            btn.style.background = '#334155';
+        }, 2000);
+    });
+}
+
+    </script>
+</head>
+<body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD &ndash; Ut3 Teoria Usuarios Roles</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+      <a href="ASGBD_Presentacion.html" class="nav-btn">Presentación</a>
+      <a href="ASGBD_UT2_Tarea_Programacion_Scripts.html" class="nav-btn">Programación</a>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Teoría ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Teoria_Configuracion.html">ASGBD UT1 Teoria Configuracion</a>
+          <a href="ASGBD_UT2_Teoria_Scripts_Administracion.html">ASGBD UT2 Teoria Scripts Administracion</a>
+          <a href="ASGBD_UT3_Teoria_Usuarios_roles.html">ASGBD UT3 Teoria Usuarios roles</a>
+          <a href="ASGBD_UT4_Teoría_Planificación_Seguridad.html">ASGBD UT4 Teoría Planificación Seguridad</a>
+          <a href="ASGBD_UT5_Teoria_Optimizacion_Consultas.html">ASGBD UT5 Teoria Optimizacion Consultas</a>
+          <a href="ASGBD_UT6_Teoría_BD_Distribuidas_alta_disponibilidad.html">ASGBD UT6 Teoría BD Distribuidas alta disponibilidad</a>
+          <a href="ASGBD_Proyecto_integral.html">ASGBD Proyecto integral</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Tareas y Prácticas ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Tarea_Configuracion.html">ASGBD UT1 Tarea Configuracion</a>
+          <a href="ASGBD_UT1_Practica.html">ASGBD UT1 Practica</a>
+          <a href="ASGBD_UT2_Practica._Automatizacion_Mantenimiento.html">ASGBD UT2 Practica. Automatizacion Mantenimiento</a>
+          <a href="ASGBD_UT3_Practica_Auditoria_Automatizacion.html">ASGBD UT3 Practica Auditoria Automatizacion</a>
+          <a href="ASGBD_UT3_Tarea_Enunciado.html">ASGBD UT3 Tarea Enunciado</a>
+          <a href="ASGBD_UT4_Tarea_Eventos.html">ASGBD UT4 Tarea Eventos</a>
+          <a href="ASGBD_UT4_Practica_Automatizacion_Mantenimiento.html">ASGBD UT4 Practica Automatizacion Mantenimiento</a>
+          <a href="ASGBD_UT5_Practica_Automatizacion.html">ASGBD UT5 Practica Automatizacion</a>
+          <a href="ASGBD_UT5_Práctica_Tunning_Servidores_EXPLAIN_Avanzado.html">ASGBD UT5 Práctica Tunning Servidores EXPLAIN Avanzado</a>
+          <a href="ASGBD_UT5_Tarea_Seguridad.html">ASGBD UT5 Tarea Seguridad</a>
+          <a href="ASGBD_UT5_Tarea_Auditoría_Rendimiento_Indexacion.html">ASGBD UT5 Tarea Auditoría Rendimiento Indexacion</a>
+          <a href="ASGBD_UT6_Practica_BD_Distribuidas_Sharding.html">ASGBD UT6 Practica BD Distribuidas Sharding</a>
+          <a href="ASGBD_UT6_Practica_Alta_Disponibilidad.html">ASGBD UT6 Practica Alta Disponibilidad</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <aside id="left-panel">
+            <h3>Índice del Tema</h3>
+            <nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#ficha-técnica-de-la-unidad"
+id="toc-ficha-técnica-de-la-unidad">FICHA TÉCNICA DE LA UNIDAD </a></li>
+<li><a href="#índice-de-contenidos" id="toc-índice-de-contenidos">ÍNDICE
+DE CONTENIDOS</a></li>
+<li><a href="#introducción-y-contextualización"
+id="toc-introducción-y-contextualización">1. INTRODUCCIÓN Y
+CONTEXTUALIZACIÓN</a></li>
+<li><a href="#administración-de-cuentas-de-usuario"
+id="toc-administración-de-cuentas-de-usuario">2. ADMINISTRACIÓN DE
+CUENTAS DE USUARIO</a>
+<ul>
+<li><a href="#sentencia-de-creación-de-cuentas-create-user"
+id="toc-sentencia-de-creación-de-cuentas-create-user">2.1. Sentencia de
+Creación de Cuentas (CREATE USER)</a></li>
+<li><a href="#sintaxis-y-plugins-de-autenticación-en-mysql-8.0"
+id="toc-sintaxis-y-plugins-de-autenticación-en-mysql-8.0">2.2. Sintaxis
+y Plugins de Autenticación en MySQL 8.0</a></li>
+<li><a href="#persistencia-en-el-diccionario-de-datos-mysql.user"
+id="toc-persistencia-en-el-diccionario-de-datos-mysql.user">2.3.
+Persistencia en el Diccionario de Datos (mysql.user)</a></li>
+<li><a href="#eliminación-de-cuentas-drop-user"
+id="toc-eliminación-de-cuentas-drop-user">2.4. Eliminación de Cuentas
+(DROP USER)</a></li>
+</ul></li>
+<li><a href="#el-sistema-de-privilegios-de-mysql"
+id="toc-el-sistema-de-privilegios-de-mysql">3. EL SISTEMA DE PRIVILEGIOS
+DE MYSQL</a>
+<ul>
+<li><a href="#niveles-de-granularidad-de-permisos"
+id="toc-niveles-de-granularidad-de-permisos">3.1. Niveles de
+Granularidad de Permisos</a>
+<ul>
+<li><a href="#privilegios-a-nivel-de-base-de-datos"
+id="toc-privilegios-a-nivel-de-base-de-datos">3.1.1. Privilegios a
+Nivel de Base de Datos</a></li>
+<li><a href="#privilegios-a-nivel-de-tabla-mysql.tables_priv"
+id="toc-privilegios-a-nivel-de-tabla-mysql.tables_priv">3.1.2.
+Privilegios a Nivel de Tabla (mysql.tables_priv)</a></li>
+<li><a href="#privilegios-a-nivel-de-columna-mysql.columns_priv"
+id="toc-privilegios-a-nivel-de-columna-mysql.columns_priv">3.1.3.
+Privilegios a Nivel de Columna (mysql.columns_priv)</a></li>
+<li><a
+href="#privilegios-sobre-rutinas-y-procedimientos-mysql.procs_priv"
+id="toc-privilegios-sobre-rutinas-y-procedimientos-mysql.procs_priv">3.1.4.
+Privilegios sobre Rutinas y Procedimientos (mysql.procs_priv)</a></li>
+</ul></li>
+<li><a href="#delegación-de-capacidades-with-grant-option"
+id="toc-delegación-de-capacidades-with-grant-option">3.2. Delegación de
+Capacidades (WITH GRANT OPTION)</a></li>
+<li><a href="#revocación-de-permisos-revoke"
+id="toc-revocación-de-permisos-revoke">3.3. Revocación de Permisos
+(REVOKE)</a></li>
+<li><a href="#auditoría-de-concesiones-show-grants"
+id="toc-auditoría-de-concesiones-show-grants">3.4. Auditoría de
+Concesiones (SHOW GRANTS)</a></li>
+<li><a href="#sincronización-de-tablas-de-concesión-flush-privileges"
+id="toc-sincronización-de-tablas-de-concesión-flush-privileges">3.5.
+Sincronización de Tablas de Concesión (FLUSH PRIVILEGES)</a></li>
+</ul></li>
+<li><a href="#gestión-avanzada-mediante-roles"
+id="toc-gestión-avanzada-mediante-roles">4. GESTIÓN AVANZADA MEDIANTE
+ROLES </a>
+<ul>
+<li><a href="#concepto-de-rol-en-mysql-8.0"
+id="toc-concepto-de-rol-en-mysql-8.0">4.1. Concepto de Rol en MySQL
+8.0</a></li>
+<li><a href="#roles-administrativos-de-factoría-en-entornos-de-gestión"
+id="toc-roles-administrativos-de-factoría-en-entornos-de-gestión">4.2.
+Roles Administrativos de Factoría en Entornos de Gestión</a></li>
+<li><a href="#ciclo-operativo-de-trabajo-con-roles-rbac-lifecycle"
+id="toc-ciclo-operativo-de-trabajo-con-roles-rbac-lifecycle">4.3. Ciclo
+Operativo de Trabajo con Roles (RBAC Lifecycle)</a></li>
+<li><a href="#estrategias-de-activación-automatización-vs-manual"
+id="toc-estrategias-de-activación-automatización-vs-manual">4.4.
+Estrategias de Activación: Automatización vs Manual</a></li>
+</ul></li>
+</ul>
+</nav>
+        </aside>
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT3_Teoria_Usuarios_roles.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+<header id="title-block-header">
+<h1 class="title"><p><span id="_3ksw69uri6sj"
+class="anchor"></span>Unidad 3: </p>
+<p><span id="_pietf73g5qpy" class="anchor"></span>ADMINISTRACIÓN Y
+CONTROL DE ACCESO: USUARIOS Y ROLES </p></h1>
+</header>
+
+<h3 id="ficha-técnica-de-la-unidad">FICHA TÉCNICA DE LA UNIDAD  <a class="headerlink" href="#ficha-técnica-de-la-unidad" title="Enlace permanente">¶</a></h3>
+<div class="table-wrapper"><table>
+<tbody>
+<tr class="header">
+<td><strong>Unidad trabajo</strong></td>
+<td>UT3. Administración y control de acceso: Privilegios, roles y
+seguridad</td>
+</tr>
+<tr class="odd">
+<td><strong>Resultados de Aprendizaje</strong></td>
+<td><strong>RA5.</strong> Aplica medidas de seguridad y control de
+acceso configurando perfiles y auditorías de seguridad.</td>
+</tr>
+<tr class="header">
+<td><strong>Criterios de Evaluación</strong></td>
+<td><p><strong>CE5.b</strong> Se han creado usuarios, roles y perfiles
+con políticas estrictas de contraseñas.</p>
+<p><strong>CE5.c</strong> Se han asignado privilegios de sistema y sobre
+objetos del esquema aplicando el principio de mínimo
+privilegio.</p></td>
+</tr>
+<tr class="odd">
+<td><strong>Tiempo</strong></td>
+<td>8 horas lectivas</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="índice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#índice-de-contenidos" title="Enlace permanente">¶</a></h3>
+<p><a href="#introducción-y-contextualización"><u>1. INTRODUCCIÓN Y
+CONTEXTUALIZACIÓN</u></a></p>
+<p><a href="#administración-de-cuentas-de-usuario"><u>2. ADMINISTRACIÓN
+DE CUENTAS DE USUARIO</u></a></p>
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>2.1.
+Sentencia de Creación de Cuentas (CREATE USER)
+2.2.
+Sintaxis y Plugins de Autenticación en MySQL 8.0
+2.3.
+Persistencia en el Diccionario de Datos (mysql.user)
+2.4. Eliminación de
+Cuentas (DROP USER)</code></pre></div>
+<p><a href="#el-sistema-de-privilegios-de-mysql"><u>3. EL SISTEMA DE
+PRIVILEGIOS DE MYSQL</u></a></p>
+<blockquote>
+<p><a href="#niveles-de-granularidad-de-permisos"><u>3.1. Niveles de
+Granularidad de Permisos</u></a></p>
+<p><a href="#privilegios-a-nivel-de-base-de-datos"><u>3.1.1. Privilegios
+a Nivel de Base de Datos</u></a></p>
+<p><a href="#privilegios-a-nivel-de-tabla-mysql.tables_priv"><u>3.1.2.
+Privilegios a Nivel de Tabla (mysql.tables_priv)</u></a></p>
+<p><a
+href="#privilegios-a-nivel-de-columna-mysql.columns_priv"><u>3.1.3.
+Privilegios a Nivel de Columna (mysql.columns_priv)</u></a></p>
+<p><a
+href="#privilegios-sobre-rutinas-y-procedimientos-mysql.procs_priv"><u>3.1.4.
+Privilegios sobre Rutinas y Procedimientos
+(mysql.procs_priv)</u></a></p>
+<p><a href="#delegación-de-capacidades-with-grant-option"><u>3.2.
+Delegación de Capacidades (WITH GRANT OPTION)</u></a></p>
+<p><a href="#revocación-de-permisos-revoke"><u>3.3. Revocación de
+Permisos (REVOKE)</u></a></p>
+<p><a href="#auditoría-de-concesiones-show-grants"><u>3.4. Auditoría de
+Concesiones (SHOW GRANTS)</u></a></p>
+<p><a
+href="#sincronización-de-tablas-de-concesión-flush-privileges"><u>3.5.
+Sincronización de Tablas de Concesión (FLUSH PRIVILEGES)</u></a></p>
+</blockquote>
+<p><a href="#gestión-avanzada-mediante-roles"><u>4. GESTIÓN AVANZADA
+MEDIANTE ROLES</u></a></p>
+<blockquote>
+<p><a href="#concepto-de-rol-en-mysql-8.0"><u>4.1. Concepto de Rol en
+MySQL 8.0</u></a></p>
+<p><a
+href="#roles-administrativos-de-factoría-en-entornos-de-gestión"><u>4.2.
+Roles Administrativos de Factoría en Entornos de Gestión</u></a></p>
+<p><a
+href="#ciclo-operativo-de-trabajo-con-roles-rbac-lifecycle"><u>4.3.
+Ciclo Operativo de Trabajo con Roles (RBAC Lifecycle)</u></a></p>
+<p><a href="#estrategias-de-activación-automatización-vs-manual"><u>4.4.
+Estrategias de Activación: Automatización vs Manual</u></a></p>
+</blockquote>
+<h1 id="introducción-y-contextualización">1. INTRODUCCIÓN Y
+CONTEXTUALIZACIÓN <a class="headerlink" href="#introducción-y-contextualización" title="Enlace permanente">¶</a></h1>
+<p>En el ámbito de la administración de sistemas informáticos, los
+Servidores de Gestión de Bases de Datos (SGBD) custodian el activo más
+crítico de cualquier organización: sus datos. Por consiguiente,
+delimitar con precisión milimétrica las fronteras de acceso de cada
+entidad que interactúa con el motor de base de datos no es una tarea
+meramente accesoria, sino una responsabilidad mandatoria de todo
+Administrador de Sistemas (SysAdmin).</p>
+<p>Toda política de seguridad corporativa implantada sobre un SGBD debe
+regirse de manera estricta bajo el <strong>Principio del Menor
+Privilegio (Principle of Least Privilege)</strong>. Este axioma de la
+seguridad informática dictamina que a un usuario, aplicación o proceso
+se le deben conceder única y exclusivamente los privilegios mínimos
+necesarios para completar sus tareas encomendadas, durante el periodo de
+tiempo justo, y en el ámbito espacial idóneo. Minimizar los accesos
+reduce drásticamente la superficie de ataque del servidor, mitigando el
+impacto de inyecciones de código (SQLi), elevaciones de privilegios
+ilegítimas o errores humanos accidentales.</p>
+<p>Esta unidad de trabajo no es una isla de conocimiento aislada; por el
+contrario, actúa como un núcleo interconector de diversas áreas críticas
+del ciclo de Grado Superior en ASIR:</p>
+<ul>
+<li><blockquote>
+<p><strong>Implantación de Sistemas Operativos (ISO):</strong> Se
+asimila de forma directa a la gestión multiusuario de sistemas Linux
+(análisis de archivos de seguridad /etc/passwd y /etc/shadow) y al
+control de accesos mediante ACLs (Access Control Lists).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Planificación y Administración de Redes (PAR):</strong>
+Enlaza con la seguridad de sockets TCP/IP, el aislamiento de puertos de
+escucha del motor (como el puerto por defecto 3306) sobre interfaces o
+subredes específicas (interfaces loopback, VLANs de gestión), y la
+implantación de túneles de comunicación cifrados mediante protocolos
+criptográficos TLS/SSL.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Servicios de Red e Internet (SRI) e Implantación de
+Aplicaciones Web (IAW):</strong> Proporciona el marco de seguridad
+indispensable para la interconexión con entornos de desarrollo y
+producción (como scripts de automatización e infraestructura en Python).
+Al conectar una aplicación web o un script de monitorización Python
+(usando la librería mysql-connector-python o PyMySQL), el SysAdmin nunca
+debe emplear la cuenta root. Se instruirá en la creación de credenciales
+exclusivas no-root con los privilegios mínimos (DML limitado y
+selectivo), garantizando que el compromiso lógico del servidor de
+aplicaciones web o del script de monitorización no otorgue el control
+del motor de bases de datos.</p>
+</blockquote></li>
+</ul>
+<h1 id="administración-de-cuentas-de-usuario">2. ADMINISTRACIÓN DE
+CUENTAS DE USUARIO <a class="headerlink" href="#administración-de-cuentas-de-usuario" title="Enlace permanente">¶</a></h1>
+<h2 id="sentencia-de-creación-de-cuentas-create-user">2.1. Sentencia de
+Creación de Cuentas (CREATE USER) <a class="headerlink" href="#sentencia-de-creación-de-cuentas-create-user" title="Enlace permanente">¶</a></h2>
+<p>En MySQL, una cuenta de usuario se define mediante una estructura
+compuesta por dos partes diferenciadas e indisolubles:
+'nombre_usuario'@'host'. La omisión o alteración de cualquiera de estas
+dos partes rompe el esquema de validación de accesos del motor de base
+de datos.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Sintaxis general base para la provisión de cuentas de usuario
+CREATE USER 'nombre_usuario'@'host' IDENTIFIED WITH
+mysql_native_password BY 'contraseña';</code></pre></div><strong>nombre_usuario:</strong> Identificador alfanumérico que
+representa la cuenta dentro de la instancia.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>host:</strong> El parámetro de red que determina la ubicación
+física o lógica desde la cual el usuario tiene autorización explícita
+para abrir una sesión de red.</p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p>'%': Carácter comodín que indica que el usuario puede establecer
+conexión desde cualquier host o dirección IP externa (acceso remoto
+global).</p>
+</blockquote></li>
+<li><blockquote>
+<p>'localhost': Restringe la comunicación de forma absoluta, permitiendo
+únicamente conexiones procedentes de la misma máquina mediante sockets
+locales del sistema operativo, anulando el acceso por red TCP/IP
+externa.</p>
+</blockquote></li>
+<li><blockquote>
+<p>'172.16.11.10': Permite acotar el acceso exclusivamente a
+direccionamiento de una máquina o pasarela de red específica de
+producción o gestión.</p>
+</blockquote></li>
+</ul></li>
+</ul>
+<h2 id="sintaxis-y-plugins-de-autenticación-en-mysql-8.0">2.2. Sintaxis
+y Plugins de Autenticación en MySQL 8.0 <a class="headerlink" href="#sintaxis-y-plugins-de-autenticación-en-mysql-8.0" title="Enlace permanente">¶</a></h2>
+<p>MySQL 8.0 expande los mecanismos de control de acceso permitiendo
+diversificar los plugins que procesan la validación de las credenciales,
+ofreciendo algoritmos criptográficos más avanzados (como
+caching_sha2_password, el valor por defecto de la versión 8.0).</p>
+<p>A continuación se detalla el comportamiento del servidor ante las
+diferentes variantes sintácticas aplicables al comando:</p>
+<div class="table-wrapper"><table>
+<tbody>
+<tr class="header">
+<td><strong>Cláusula de Autenticación</strong></td>
+<td><strong>Descripción Técnica y Comportamiento del Motor</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>IDENTIFIED BY 'auth_string'</strong></td>
+<td>Crea la cuenta empleando el plugin criptográfico configurado por
+defecto en la directiva global del servidor (típicamente
+caching_sha2_password).</td>
+</tr>
+<tr class="header">
+<td><strong>IDENTIFIED BY RANDOM PASSWORD</strong></td>
+<td>Genera una clave criptográficamente segura y aleatoria de forma
+automática, mostrándola en la consola del administrador para su
+inmediata comunicación.</td>
+</tr>
+<tr class="odd">
+<td><strong>IDENTIFIED WITH auth_plugin</strong></td>
+<td>Invoca un plugin específico de autenticación (por ejemplo,
+validación por sockets del sistema) sin requerir una contraseña
+almacenada internamente.</td>
+</tr>
+<tr class="header">
+<td><strong>IDENTIFIED WITH auth_plugin BY 'auth_string'</strong></td>
+<td>Fuerza explícitamente el uso de un plugin específico junto con la
+contraseña en texto plano, la cual será procesada y hasheada por dicho
+plugin.</td>
+</tr>
+<tr class="odd">
+<td><strong>IDENTIFIED WITH auth_plugin BY RANDOM PASSWORD</strong></td>
+<td>Configura un plugin concreto y asigna una contraseña aleatoria de
+alta seguridad autogenerada en el momento de la ejecución.</td>
+</tr>
+<tr class="header">
+<td><strong>IDENTIFIED WITH auth_plugin AS 'auth_string'</strong></td>
+<td>Permite pasar directamente la cadena ya cifrada o el hash
+precalculado de la contraseña, técnica habitual en tareas de migración y
+scripts SysAdmin.</td>
+</tr>
+</tbody>
+</table></div>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- EJEMPLO PRÁCTICO SYSADMIN: Creación de cuentas con diferentes
+directivas de autenticación
+-- 1. Cuenta para una aplicación interna que requiere compatibilidad
+con el formato clásico de hashes
+CREATE USER 'app_legacy'@'172.16.11.10'
+IDENTIFIED WITH mysql_native_password BY 'ClaveSegura2026!';
+-- 2. Cuenta de administración temporal con contraseña autogenerada
+por el motor
+CREATE USER 'admin_temp'@'%'
+IDENTIFIED BY RANDOM PASSWORD;</code></pre></div><em>Nota de administración histórica:</em> En versiones antiguas de
+MySQL se utilizaba la sentencia SET PASSWORD = PASSWORD('new_secret')
+para cambiar claves; sin embargo, en MySQL 8.0 esta sintaxis está
+obsoleta y se prioriza la sentencia ALTER USER 'user'@'host' IDENTIFIED
+BY 'new_password';.</p>
+<h2 id="persistencia-en-el-diccionario-de-datos-mysql.user">2.3.
+Persistencia en el Diccionario de Datos (mysql.user) <a class="headerlink" href="#persistencia-en-el-diccionario-de-datos-mysql.user" title="Enlace permanente">¶</a></h2>
+<p>Cada vez que se ejecuta un comando CREATE USER, el SGBD valida la
+sintaxis y escribe de forma permanente un nuevo registro en el
+diccionario de datos del motor, específicamente en la tabla del sistema
+<strong>mysql.user</strong>. Esta tabla actúa como el repositorio de
+identidades globales, guardando los hashes de las claves, los plugins
+asignados y los privilegios globales (superusuario).</p>
+<h2 id="eliminación-de-cuentas-drop-user">2.4. Eliminación de Cuentas
+(DROP USER) <a class="headerlink" href="#eliminación-de-cuentas-drop-user" title="Enlace permanente">¶</a></h2>
+<p>Para revocar el acceso permanente e de un usuario en el servidor, se
+debe purgar su registro del diccionario mediante la sentencia:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Eliminación explícita de una cuenta de usuario
+DROP USER 'nombre_usuario'@'host';</code></pre></div></p>
+<h1 id="el-sistema-de-privilegios-de-mysql">3. EL SISTEMA DE PRIVILEGIOS
+DE MYSQL <a class="headerlink" href="#el-sistema-de-privilegios-de-mysql" title="Enlace permanente">¶</a></h1>
+<h2 id="niveles-de-granularidad-de-permisos">3.1. Niveles de
+Granularidad de Permisos <a class="headerlink" href="#niveles-de-granularidad-de-permisos" title="Enlace permanente">¶</a></h2>
+<p>Para cumplir con el <em>Principio del Menor Privilegio</em>, MySQL
+implementa una arquitectura jerárquica con cuatro niveles de
+granularidad bien definidos. A medida que descendemos de nivel, el
+control se vuelve más específico y restrictivo:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>[Nivel Global] --&gt; Afecta a todas las bases de datos (*.*)
+|
+[Nivel de Esquema] --&gt; Afecta a una Base de Datos específica
+(mydb.*)
+|
+[Nivel de Tabla] --&gt; Afecta a una Tabla concreta (mydb.mytbl)
+|
+[Nivel de Columna] --&gt; Restringe la acción a campos específicos
+(col1)</code></pre></div>3.1.1. Privilegios a
+Nivel de Base de Datos</h3>
+<p>Estos privilegios impactan sobre la totalidad de los objetos
+residentes dentro de un esquema (base de datos) determinado utilizando
+la nomenclatura base_de_datos.*.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Estructura base para la concesión a nivel de esquema
+GRANT tipo_de_permiso ON base_de_datos.* TO
+'nombre_usuario'@'host';</code></pre></div>Los privilegios que se pueden acotar a nivel de esquema son:</p>
+<ul>
+<li><blockquote>
+<p><strong>SELECT, INSERT, UPDATE:</strong> Operaciones de lectura y
+manipulación de datos sobre cualquier tabla de la base de datos.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>CREATE:</strong> Concede la facultad de estructurar y crear
+nuevas tablas en el esquema.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>DROP:</strong> Permite eliminar de forma permanente tablas de
+la base de datos.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>ALTER:</strong> Habilita la alteración estructural de tablas
+existentes. <em>Nota técnica:</em> Para ejecutar exitosamente ciertas
+operaciones de alteración, el motor exige que la cuenta posea también el
+privilegio CREATE.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>EVENT:</strong> Faculta al usuario para programar, modificar
+o eliminar tareas temporales automatizadas ejecutadas por el motor
+interno del SGBD (Event Scheduler).</p>
+</blockquote></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>LOCK TABLES: Permite congelar o bloquear
+explícitamente el acceso concurrente a una tabla para realizar lecturas
+o volcados consistentes. Requisito: La cuenta requiere poseer
+explícitamente el permiso SELECT sobre dicha tabla para poder
+bloquearla.</code></pre></div></li>
+<li><blockquote>
+<p><strong>REFERENCES:</strong> Otorga la capacidad indispensable para
+trazar restricciones de clave foránea e integridad referencial entre
+tablas del esquema.</p>
+</blockquote></li>
+</ul>
+<h3 id="privilegios-a-nivel-de-tabla-mysql.tables_priv">3.1.2.
+Privilegios a Nivel de Tabla (mysql.tables_priv) <a class="headerlink" href="#privilegios-a-nivel-de-tabla-mysql.tables_priv" title="Enlace permanente">¶</a></h3>
+<p>Cuando el acceso debe restringirse a un objeto de datos específico,
+los permisos se declaran apuntando de forma unívoca a la tabla en
+cuestión. Internamente, el motor añade registros en la tabla del sistema
+<strong>mysql.tables_priv</strong>, aplicando las validaciones de acceso
+de forma directa sobre esa entidad.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Concesión de control absoluto sobre una tabla concreta
+GRANT ALL ON mydb.mytbl TO 'someuser'@'somehost';
+-- Concesión de accesos de manipulación acotados
+GRANT SELECT, INSERT ON mydb.mytbl TO 'someuser'@'somehost';</code></pre></div>Los privilegios aplicables a este nivel funcional se desglosan
+en:</p>
+<ul>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Gestión Estructural: CREATE (crear una tabla
+específica, permitiendo incluso conceder el permiso antes de que la
+tabla exista en disco), ALTER (modificarla) y DROP (eliminarla).</code></pre></div></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Manipulación de Datos DML: SELECT, INSERT, UPDATE y
+DELETE. Al declararse a nivel de tabla, estas directivas afectan de
+forma automática a la totalidad de las columnas de dicha entidad.</code></pre></div></li>
+<li><blockquote>
+<p><strong>Gestión de Vistas (Visiones Externas):</strong> CREATE VIEW
+(crear vistas sobre la tabla) y SHOW VIEW (inspeccionar los metadatos y
+la sentencia de creación de la vista). <em>Nota:</em> El borrado o
+modificación de una vista requiere obligatoriamente que la cuenta
+ostente el permiso de DROP.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Otros Privilegios de Tabla:</strong> INDEX (crear o eliminar
+índices), REFERENCES (claves foráneas) y TRIGGER (crear, alterar o
+purgar disparadores de auditoría asociados a la tabla).</p>
+</blockquote></li>
+</ul>
+<h3 id="privilegios-a-nivel-de-columna-mysql.columns_priv">3.1.3.
+Privilegios a Nivel de Columna (mysql.columns_priv) <a class="headerlink" href="#privilegios-a-nivel-de-columna-mysql.columns_priv" title="Enlace permanente">¶</a></h3>
+<p>Representa el máximo nivel de aislamiento de datos en MySQL. Permite
+restringir las operaciones básicas de datos a un subconjunto cerrado de
+columnas de una tabla. Estos permisos generan apuntes en la tabla del
+sistema <strong>mysql.columns_priv</strong> y, de forma concurrente,
+actualizan los descriptores en mysql.tables_priv.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Concesión DML restringida por columnas específicas de datos
+GRANT SELECT (col1), INSERT (col1, col2) ON mydb.mytbl TO
+'someuser'@'somehost';</code></pre></div>Los únicos cuatro privilegios aceptados por la sintaxis a este nivel
+atómico son de forma estricta: SELECT, INSERT, UPDATE y REFERENCES.</p>
+<h3
+id="privilegios-sobre-rutinas-y-procedimientos-mysql.procs_priv">3.1.4.
+Privilegios sobre Rutinas y Procedimientos (mysql.procs_priv) <a class="headerlink" href="#privilegios-sobre-rutinas-y-procedimientos-mysql.procs_priv" title="Enlace permanente">¶</a></h3>
+<p>Regulan la creación y ejecución de código procedural alojado en la
+base de datos (bloques de lógica de negocio). Dependiendo del alcance
+del comando, los cambios alteran la tabla mysql.procs_priv (para un
+elemento determinado), mysql.db (esquema completo) o mysql.user
+(global).</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Otorgar derechos globales de creación sobre el esquema de
+datos
+GRANT CREATE ROUTINE ON mydb.* TO 'someuser'@'somehost';
+-- Otorgar derechos de ejecución individuales para una rutina
+crítica
+GRANT EXECUTE ON PROCEDURE mydb.myproc TO 'someuser'@'somehost';</code></pre></div>Clasificación de privilegios de rutinas:</p>
+<ul>
+<li><blockquote>
+<p><strong>Aplicables a cualquier rutina del ámbito:</strong> CREATE
+ROUTINE (crear), ALTER ROUTINE (modificar o borrar de forma masiva) y
+EXECUTE (ejecución global).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Aplicables a una rutina concreta determinada:</strong>
+EXECUTE (ejecutar únicamente esa función o procedimiento) y ALTER
+ROUTINE (modificar o borrar exclusivamente esa pieza de código de la
+rutina).</p>
+</blockquote></li>
+</ul>
+<h2 id="delegación-de-capacidades-with-grant-option">3.2. Delegación de
+Capacidades (WITH GRANT OPTION) <a class="headerlink" href="#delegación-de-capacidades-with-grant-option" title="Enlace permanente">¶</a></h2>
+<p>La inclusión de la cláusula WITH GRANT OPTION al término de una
+sentencia de privilegios faculta al usuario receptor para transferir a
+terceros los mismos permisos exactos que él ha recibido, delegando de
+esta manera la cadena de control.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Concesión de privilegios administrativos de rutinas con capacidad
+de delegación
+GRANT CREATE ROUTINE, ALTER ROUTINE ON mydb.* TO
+'someuser'@'somehost' WITH GRANT OPTION;</code></pre></div>3.3. Revocación de Permisos
+(REVOKE)</h2>
+<p>Para retirar accesos operativos de forma parcial o total a una cuenta
+sin necesidad de destruir su identidad en el servidor, se utiliza el
+comando REVOKE. La declaración del espacio de nombres y los objetos debe
+guardar una correspondencia exacta con el GRANT inicial:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Sintaxis general base para revocar accesos
+REVOKE tipo_de_permiso ON base_de_datos.tabla FROM
+'nombre_usuario'@'host';
+-- EJEMPLO PRÁCTICO SYSADMIN: Revocar privilegios DML globales
+REVOKE INSERT ON *.* FROM 'usuario'@'localhost';</code></pre></div><strong>Reglas de Control para la Revocación:</strong></p>
+<ol type="1">
+<li><blockquote>
+<p>Para quitar un permiso a un usuario, la cuenta que ejecuta el comando
+debe poseer dicho privilegio y haberlo obtenido originalmente con la
+opción de delegación (WITH GRANT OPTION).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Si un administrador posee el permiso de sistema <strong>CREATE
+USER</strong>, está facultado para limpiar de forma masiva todos los
+permisos de una cuenta mediante la sentencia:</p>
+</blockquote></li>
+</ol>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Purga absoluta de privilegios y facultades de delegación de una
+cuenta
+REVOKE ALL PRIVILEGES, GRANT OPTION FROM 'user'@'localhost';</code></pre></div>3.4. Auditoría de
+Concesiones (SHOW GRANTS)</h2>
+<p>Todo SysAdmin debe auditar con regularidad el estado consolidado de
+los accesos del servidor. Para inspeccionar los permisos efectivos de
+una cuenta o de un rol determinado se ejecuta:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Inspección de permisos de una cuenta de usuario
+SHOW GRANTS FOR 'nombre_usuario'@'host';</code></pre></div>3.5.
+Sincronización de Tablas de Concesión (FLUSH PRIVILEGES)</h2>
+<p>Cuando los privilegios se asignan mediante los comandos estándar de
+control (GRANT, REVOKE, CREATE USER), el motor de MySQL actualiza el
+diccionario y recarga de forma inmediata las estructuras en memoria.</p>
+<p>Sin embargo, si realizamos modificaciones directas utilizando
+sentencias DML manuales (como un UPDATE o INSERT sobre la base de datos
+nativa mysql de forma directa), los cambios no surtirán efecto de
+inmediato. En tales escenarios, es de obligado cumplimiento
+ejecutar:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Forzar la recarga en memoria de las tablas de privilegios
+FLUSH PRIVILEGES;</code></pre></div>Este comando sincroniza la memoria interna del servidor con los
+registros físicos del diccionario de datos de forma instantánea,
+aplicando los nuevos controles de seguridad sin interrumpir las
+conexiones ni requerir un reinicio del servicio de MySQL.</p>
+<h1 id="gestión-avanzada-mediante-roles">4. GESTIÓN AVANZADA MEDIANTE
+ROLES  <a class="headerlink" href="#gestión-avanzada-mediante-roles" title="Enlace permanente">¶</a></h1>
+<h2 id="concepto-de-rol-en-mysql-8.0">4.1. Concepto de Rol en MySQL
+8.0 <a class="headerlink" href="#concepto-de-rol-en-mysql-8.0" title="Enlace permanente">¶</a></h2>
+<p>A partir de la versión 8.0, MySQL implementa el control de acceso
+basado en roles (<strong>RBAC - Role-Based Access Control</strong>). Un
+rol se define técnicamente como una abstracción de identidad o
+contenedor intermedio que agrupa una colección de privilegios de
+cualquier nivel.</p>
+<p>En entornos corporativos complejos, este modelo simplifica la
+administración de la seguridad: en lugar de mantener y auditar
+individualmente los privilegios de decenas de técnicos, los permisos se
+asignan a roles estandarizados (p. ej., "Desarrollador", "Cajero",
+"Auditor") y posteriormente los usuarios simplemente heredan estos
+contenedores de permisos.</p>
+<h2 id="roles-administrativos-de-factoría-en-entornos-de-gestión">4.2.
+Roles Administrativos de Factoría en Entornos de Gestión <a class="headerlink" href="#roles-administrativos-de-factoría-en-entornos-de-gestión" title="Enlace permanente">¶</a></h2>
+<p>Las herramientas avanzadas de administración de sistemas de bases de
+datos (como <em>MySQL Workbench</em>) exponen de forma nativa una serie
+de roles de gestión preconfigurados listos para su uso operativo en la
+industria:</p>
+<div class="table-wrapper"><table>
+<tbody>
+<tr class="header">
+<td><strong>Rol en Workbench</strong></td>
+<td><strong>Funciones y Competencias de Administración
+Asignadas</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>DBA</strong></td>
+<td>Administrador de Base de Datos General. Concede la totalidad de los
+privilegios del servidor de forma ilimitada.</td>
+</tr>
+<tr class="header">
+<td><strong>MaintenanceAdmin</strong></td>
+<td>Otorga capacidades orientadas al mantenimiento físico del servidor,
+optimización y desfragmentación de tablas.</td>
+</tr>
+<tr class="odd">
+<td><strong>ProcessAdmin</strong></td>
+<td>Permite supervisar los hilos de ejecución de la instancia y
+finalizar procesos concurrentes (KILL) de otros usuarios.</td>
+</tr>
+<tr class="header">
+<td><strong>UserAdmin</strong></td>
+<td>Faculta la provisión y borrado de cuentas de usuarios, así como el
+restablecimiento de contraseñas.</td>
+</tr>
+<tr class="odd">
+<td><strong>SecurityAdmin</strong></td>
+<td>Permite administrar inicios de sesión a nivel de servidor,
+ejecutando sentencias de concesión y revocación globales.</td>
+</tr>
+<tr class="header">
+<td><strong>MonitorAdmin</strong></td>
+<td>Perfil de mínimos privilegios indispensables para herramientas de
+monitorización y recolección de métricas de rendimiento.</td>
+</tr>
+<tr class="odd">
+<td><strong>DBManager</strong></td>
+<td>Concede control total para la creación, modificación y eliminación
+de bases de datos o esquemas completos.</td>
+</tr>
+<tr class="header">
+<td><strong>DBDesigner</strong></td>
+<td>Permite diseñar esquemas y realizar ingeniería inversa sobre
+cualquier modelo estructural de datos.</td>
+</tr>
+<tr class="odd">
+<td><strong>ReplicationAdmin</strong></td>
+<td>Otorga privilegios para la puesta en marcha, monitorización y
+administración de topologías en replicación (Master/Slave).</td>
+</tr>
+<tr class="header">
+<td><strong>BackupAdmin</strong></td>
+<td>Proporciona los derechos y variables del sistema mínimos necesarios
+para realizar respaldos eficientes de los datos.</td>
+</tr>
+<tr class="odd">
+<td><strong>Custom</strong></td>
+<td>Estado descriptor utilizado para identificar colecciones de
+privilegios a medida asignados de forma directa.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="ciclo-operativo-de-trabajo-con-roles-rbac-lifecycle">4.3. Ciclo
+Operativo de Trabajo con Roles (RBAC Lifecycle) <a class="headerlink" href="#ciclo-operativo-de-trabajo-con-roles-rbac-lifecycle" title="Enlace permanente">¶</a></h2>
+<p>Para desplegar un sistema seguro de control basado en roles, se debe
+completar de manera ordenada un flujo operativo de cuatro fases
+secuenciales:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>[1. CREATE ROLE] ---&gt; [2. GRANT TO ROLE] ---&gt; [3. GRANT ROLE
+TO USER] ---&gt; [4. ACTIVATE ROLE]</code></pre></div><strong>Paso 1: Creación del Rol en el Servidor</strong></p>
+<p>Se utiliza el comando CREATE ROLE, pudiendo opcionalmente verificar
+su existencia previa.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Provisión de nuevos contenedores de privilegios (Roles)
+CREATE ROLE IF NOT EXISTS mantenimiento_basico, mantenimiento_total,
+consulta_basica;</code></pre></div><em>Regla de nomenclatura y comportamiento interno:</em> Es posible
+definir un rol siguiendo el patrón 'nombre_rol'@'host'. Sin embargo, a
+diferencia de las cuentas de usuario, el uso del carácter % se
+interpreta como una cadena <strong>literal</strong> identitaria y no
+como un patrón comodín de red. Si se omite la sección del host, el SGBD
+asignará '%' por defecto.</p>
+<p>Internamente, al registrar un rol, MySQL inserta una fila en la tabla
+de identidades global del diccionario. Herramientas gráficas como MySQL
+Workbench lo listarán en su interfaz junto a los usuarios corrientes,
+pero con una restricción de protección: <strong>su cuenta de sistema
+nace bloqueada y su contraseña expirada de forma permanente</strong>,
+anulando cualquier posibilidad de inicio de sesión directo con la
+identidad de dicho rol.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Creación de un rol con host de conexión de red explícito
+CREATE ROLE IF NOT EXISTS 'rol_dev'@'%';</code></pre></div><strong>Paso 2: Dotación de Privilegios al Rol</strong></p>
+<p>Se asocian los permisos necesarios al rol utilizando la sintaxis
+estándar de GRANT, pero situando el rol como el elemento destino del
+comando.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Ejemplos de asignación a diferentes niveles de granularidad
+GRANT EXECUTE ON *.* TO mantenimiento_total; -- Ámbito Global de
+Sistema
+GRANT SELECT ON employees.* TO mantenimiento_basico; -- Ámbito de
+Base de Datos
+GRANT SELECT ON employees.departments TO consulta_basica; -- Ámbito
+de Tabla</code></pre></div><strong>Paso 3: Vinculación del Rol a las Cuentas de
+Usuario</strong></p>
+<p>Una vez configurado el rol con sus respectivos permisos, se procede a
+conceder dicho rol a los técnicos u operarios de datos que lo
+requieran.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Vincular los roles a cuentas de usuario preexistentes en el
+sistema
+GRANT mantenimiento_basico, consulta_basica TO 'user1'@'%';
+GRANT mantenimiento_total TO 'user2'@'%';</code></pre></div><em>Concepto Avanzado (Mandatory Roles):</em> El administrador del
+sistema puede definir directivas de roles obligatorios
+(mandatory_roles), forzando al motor a asignar de forma automática
+determinados perfiles a toda conexión entrante, garantizando una línea
+base de seguridad homogénea.</p>
+<p><strong>Paso 4: Activación del Rol</strong></p>
+<p>Por diseño de seguridad nativo en MySQL 8.0, el hecho de que un
+usuario tenga un rol asignado no implica que disponga de sus privilegios
+inmediatamente al abrir una conexión. Si el usuario inicia sesión y
+ejecuta la función de diagnóstico de contexto:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Comprobación de roles activos en el hilo de conexión actual
+SELECT CURRENT_ROLE();</code></pre></div></p>
+<p>El motor del sistema devolverá inicialmente el valor NONE. Por lo
+tanto, para poder hacer uso de las capacidades heredadas del rol, es
+imperativo proceder con su <strong>activación</strong>.</p>
+<h2 id="estrategias-de-activación-automatización-vs-manual">4.4.
+Estrategias de Activación: Automatización vs Manual <a class="headerlink" href="#estrategias-de-activación-automatización-vs-manual" title="Enlace permanente">¶</a></h2>
+<p>La activación de los roles asignados se puede gestionar implementando
+dos proximaciones distintas según las necesidades operativas de la
+infraestructura:</p>
+<p><strong>A. Estrategia de Activación Automática (Por
+Defecto)</strong></p>
+<p>Configura la cuenta de usuario para que, en cada inicio de sesión
+entrante, el servidor active de forma automática la totalidad o parte de
+sus roles, haciendo los privilegios transparentes para las aplicaciones
+clientes.</p>
+<p>Esta operación requiere ser ejecutada por un administrador del
+sistema que posea el privilegio CREATE USER (o derechos de modificación
+directa sobre la tabla del sistema mysql.default_roles):</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- 1. Forzar la activación automática de TODOS los roles asignados
+al iniciar sesión
+SET DEFAULT ROLE ALL TO 'user1'@'%', 'user2'@'%';
+-- 2. Configurar la activación automática por defecto de un único rol
+determinado
+SET DEFAULT ROLE mantenimiento_total TO 'user2'@'%';</code></pre></div><strong>B. Estrategia de Activación Manual (Por Sesión en Tiempo de
+Ejecución)</strong></p>
+<p>Otorga al usuario el control operativo para activar o desactivar sus
+capacidades según las necesidades específicas de la tarea que vaya a
+realizar, cumpliendo de forma estricta con el principio de
+compartimentación de privilegios. Para interactuar con sus perfiles en
+tiempo de ejecución, el propio usuario conectado utiliza la instrucción
+SET ROLE:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Cambiar el contexto de la sesión actual de forma manual
+(Ejecutado por el usuario)
+SET ROLE 'mantenimiento_total'; -- Activa el rol indicado y suspende
+el resto
+SET ROLE ALL; -- Activa de forma simultánea todos los roles
+asignados
+SET ROLE NONE; -- Desactiva todos los roles, devolviendo la sesión a
+mínimos privilegios</code></pre></div>Existen variantes avanzadas aplicables a entornos complejos que
+permiten activar de forma masiva todos los perfiles de la cuenta a
+excepción de algunos explícitamente excluidos (SET ROLE ALL EXCEPT
+rol_name), dotando al SysAdmin de una gran versatilidad para orquestar
+entornos de bases de datos altamente seguros y compartimentados.</p>
+
+        </main>
+    </div>
+</body>
+</html>

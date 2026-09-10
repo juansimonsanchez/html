@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASGBD - Ut5 Practica Automatizacion</title>
+    <style>
+    
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --bg-header: #1e3a8a;
+    --text-header: #ffffff;
+    --bg-body: #f8fafc;
+    --text-body: #1e293b;
+    --border-color: #cbd5e1;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-body);
+    color: var(--text-body);
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, [id], a[name] {
+    scroll-margin-top: 80px !important;
+}
+
+.headerlink {
+    display: inline-block;
+    margin-left: 0.4rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.8em;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
+h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
+    visibility: visible;
+    opacity: 1;
+}
+
+.headerlink:hover {
+    color: var(--primary);
+}
+
+#site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    background: var(--bg-header);
+    color: var(--text-header);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    height: 62px;
+}
+
+.site-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.top-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.top-nav .nav-btn {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+.top-nav .nav-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 9px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown:hover .dropbtn, .dropbtn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 320px;
+    max-width: 480px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 10001;
+    border: 1px solid #e2e8f0;
+    margin-top: 6px;
+}
+
+.dropdown-content a {
+    color: var(--text-body);
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.92rem;
+    border-bottom: 1px solid #f1f5f9;
+    line-height: 1.4;
+    transition: background 0.15s, color 0.15s;
+    word-break: break-word;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #eff6ff;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block !important;
+}
+
+#page-layout {
+    display: flex;
+    min-height: calc(100vh - 62px);
+}
+
+#left-panel {
+    width: 320px;
+    min-width: 320px;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 1.5rem 1.25rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: sticky;
+    top: 62px;
+    height: calc(100vh - 62px);
+}
+
+#left-panel h3 {
+    font-size: 1rem;
+    margin-top: 0;
+    color: #334155;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
+
+#left-panel nav#TOC, #left-panel #TOC {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+#left-panel ul {
+    list-style-type: none;
+    padding-left: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+#left-panel li {
+    margin: 6px 0;
+}
+
+#left-panel a {
+    color: #475569;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    display: block;
+    transition: color 0.15s;
+}
+
+#left-panel a:hover {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+#main-content {
+    flex: 1;
+    padding: 2.5rem 4rem;
+    box-sizing: border-box;
+    max-width: 100% !important;
+    width: calc(100% - 320px);
+    min-width: 0;
+}
+
+/* TABLAS ELEGANTES Y RESPONSIVE */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1.75rem 0;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    font-size: 0.93rem;
+    background: #ffffff;
+    table-layout: auto !important;
+}
+
+th, td {
+    padding: 10px 14px !important;
+    border: 1px solid #cbd5e1 !important;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+td p, th p {
+    margin: 0 !important;
+    padding: 2px 0 !important;
+}
+
+th {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #0f172a !important;
+}
+
+tr:nth-child(even) td {
+    background-color: #f8fafc !important;
+}
+
+tr:hover td {
+    background-color: #f1f5f9 !important;
+}
+
+/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
+.code-wrapper {
+    position: relative;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0f172a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #334155;
+    color: #f8fafc;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.copy-btn:hover {
+    background: #2563eb;
+}
+
+pre {
+    margin: 0 !important;
+    padding: 1.25rem 1.25rem !important;
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    overflow-x: auto !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+}
+
+code {
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+}
+
+p code, li code {
+    background: #e2e8f0;
+    color: #0f172a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
+
+/* RESPONSIVE DESIGN PARA MÓVILES Y TABLETS */
+@media (max-width: 768px) {
+    .header-container {
+        height: auto;
+        flex-direction: column;
+        padding: 0.75rem 1rem;
+        gap: 0.6rem;
+    }
+    
+    .site-title {
+        font-size: 1.05rem;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .site-title img {
+        height: 28px !important;
+    }
+
+    .top-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 0.35rem;
+    }
+
+    .top-nav .nav-btn, .dropbtn {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    .dropdown-content {
+        min-width: 240px;
+        max-width: 90vw;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #page-layout {
+        flex-direction: column;
+    }
+
+    #left-panel {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        position: static !important;
+        border-right: none !important;
+        border-bottom: 2px solid #e2e8f0;
+        padding: 1rem !important;
+    }
+
+    #main-content {
+        width: 100% !important;
+        padding: 1.25rem 1rem !important;
+    }
+
+    iframe {
+        height: 60vh !important;
+    }
+
+    th, td {
+        padding: 8px 10px !important;
+        font-size: 0.85rem !important;
+    }
+
+    pre {
+        padding: 0.85rem !important;
+        font-size: 0.82rem !important;
+    }
+}
+
+    </style>
+    <script>
+    
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.dropdown').forEach(dd => {
+        const btn = dd.querySelector('.dropbtn');
+        const content = dd.querySelector('.dropdown-content');
+        if (btn && content) {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = content.style.display === 'block';
+                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
+                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+                if (!isOpen) {
+                    content.style.display = 'block';
+                    btn.classList.add('active');
+                }
+            });
+        }
+    });
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
+        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+    });
+
+    // Controlador universal de clics en enlaces ancla (#...)
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const rawHref = this.getAttribute('href') || '';
+            const hashIdx = rawHref.indexOf('#');
+            if (hashIdx === -1) return;
+            const hash = rawHref.substring(hashIdx + 1);
+            if (!hash) return;
+            
+            let targetId = hash;
+            try { targetId = decodeURIComponent(hash); } catch(err) {}
+
+            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
+            if (!targetEl) {
+                for (let el of document.querySelectorAll('[id]')) {
+                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
+                        targetEl = el;
+                        break;
+                    }
+                }
+            }
+
+            if (targetEl) {
+                e.preventDefault();
+                const headerOffset = 75;
+                const elementPosition = targetEl.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                if (history.pushState) {
+                    history.pushState(null, null, '#' + targetId);
+                }
+            }
+        });
+    });
+});
+
+function copyCode(btn) {
+    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
+    navigator.clipboard.writeText(code).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = '✅ ¡Copiado!';
+        btn.style.background = '#16a34a';
+        setTimeout(() => {
+            btn.innerText = orig;
+            btn.style.background = '#334155';
+        }, 2000);
+    });
+}
+
+    </script>
+</head>
+<body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD &ndash; Ut5 Practica Automatizacion</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+      <a href="ASGBD_Presentacion.html" class="nav-btn">Presentación</a>
+      <a href="ASGBD_UT2_Tarea_Programacion_Scripts.html" class="nav-btn">Programación</a>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Teoría ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Teoria_Configuracion.html">ASGBD UT1 Teoria Configuracion</a>
+          <a href="ASGBD_UT2_Teoria_Scripts_Administracion.html">ASGBD UT2 Teoria Scripts Administracion</a>
+          <a href="ASGBD_UT3_Teoria_Usuarios_roles.html">ASGBD UT3 Teoria Usuarios roles</a>
+          <a href="ASGBD_UT4_Teoría_Planificación_Seguridad.html">ASGBD UT4 Teoría Planificación Seguridad</a>
+          <a href="ASGBD_UT5_Teoria_Optimizacion_Consultas.html">ASGBD UT5 Teoria Optimizacion Consultas</a>
+          <a href="ASGBD_UT6_Teoría_BD_Distribuidas_alta_disponibilidad.html">ASGBD UT6 Teoría BD Distribuidas alta disponibilidad</a>
+          <a href="ASGBD_Proyecto_integral.html">ASGBD Proyecto integral</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Tareas y Prácticas ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Tarea_Configuracion.html">ASGBD UT1 Tarea Configuracion</a>
+          <a href="ASGBD_UT1_Practica.html">ASGBD UT1 Practica</a>
+          <a href="ASGBD_UT2_Practica._Automatizacion_Mantenimiento.html">ASGBD UT2 Practica. Automatizacion Mantenimiento</a>
+          <a href="ASGBD_UT3_Practica_Auditoria_Automatizacion.html">ASGBD UT3 Practica Auditoria Automatizacion</a>
+          <a href="ASGBD_UT3_Tarea_Enunciado.html">ASGBD UT3 Tarea Enunciado</a>
+          <a href="ASGBD_UT4_Tarea_Eventos.html">ASGBD UT4 Tarea Eventos</a>
+          <a href="ASGBD_UT4_Practica_Automatizacion_Mantenimiento.html">ASGBD UT4 Practica Automatizacion Mantenimiento</a>
+          <a href="ASGBD_UT5_Practica_Automatizacion.html">ASGBD UT5 Practica Automatizacion</a>
+          <a href="ASGBD_UT5_Práctica_Tunning_Servidores_EXPLAIN_Avanzado.html">ASGBD UT5 Práctica Tunning Servidores EXPLAIN Avanzado</a>
+          <a href="ASGBD_UT5_Tarea_Seguridad.html">ASGBD UT5 Tarea Seguridad</a>
+          <a href="ASGBD_UT5_Tarea_Auditoría_Rendimiento_Indexacion.html">ASGBD UT5 Tarea Auditoría Rendimiento Indexacion</a>
+          <a href="ASGBD_UT6_Practica_BD_Distribuidas_Sharding.html">ASGBD UT6 Practica BD Distribuidas Sharding</a>
+          <a href="ASGBD_UT6_Practica_Alta_Disponibilidad.html">ASGBD UT6 Practica Alta Disponibilidad</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <aside id="left-panel">
+            <h3>Índice del Tema</h3>
+            <nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#ficha-técnica-de-la-actividad"
+id="toc-ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
+ACTIVIDAD</a></li>
+<li><a href="#descripción-general.-objetivos"
+id="toc-descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
+OBJETIVOS</a></li>
+<li><a href="#actividades-a-realizar" id="toc-actividades-a-realizar">3.
+ACTIVIDADES A REALIZAR</a></li>
+<li><a href="#calificación" id="toc-calificación">4.
+CALIFICACIÓN</a></li>
+</ul>
+</nav>
+        </aside>
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT5_Practica_Automatizacion.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+<header id="title-block-header">
+<h1 class="title"><span id="_mlhg1kf30wlj"
+class="anchor"></span>PRÁCTICA AVANZADA 5.2: SISTEMA INTEGRADO DE
+CONSOLIDACIÓN Y COPIAS DE SEGURIDAD</h1>
+</header>
+
+<h3 id="ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
+ACTIVIDAD <a class="headerlink" href="#ficha-técnica-de-la-actividad" title="Enlace permanente">¶</a></h3>
+<div class="table-wrapper"><table>
+<tbody>
+<tr class="header">
+<td><strong>Unidad Didáctica</strong></td>
+<td>Unidad 5: Planificación de Tareas y Seguridad en Bases de Datos</td>
+</tr>
+<tr class="odd">
+<td><strong>Nombre de la Actividad</strong></td>
+<td>Práctica 5.2: Automatización, Consolidación y Backup Robusto en
+Producción</td>
+</tr>
+<tr class="header">
+<td><strong>Resultados de Aprendizaje</strong></td>
+<td><p><strong>RA3:</strong> Automatiza tareas de administración del
+sistema gestor, realizando guiones y programando tareas.</p>
+<p><strong>RA6:</strong> Asegura la disponibilidad y recuperación de la
+información aplicando políticas de copias de seguridad y
+replicación.</p></td>
+</tr>
+<tr class="odd">
+<td><strong>Criterios de Evaluación</strong></td>
+<td><p><strong>CE 3.b:</strong> Se ha configurado el programador de
+tareas del SGBD para programar la ejecución periódica de tareas.</p>
+<p><strong>CE 6.a:</strong> Se han planificado y ejecutado copias de
+seguridad lógicas (exportación de esquemas) y físicas.</p>
+<p><strong>CE 6.b:</strong> Se han diseñado estrategias de recuperación
+de desastres ante fallos lógicos o físicos.</p>
+<p><strong>CE 6.c:</strong> Se ha configurado el modo de recuperación
+del SGBD (logs de transacciones activos, archivado).</p>
+<p><strong>CE 6.e:</strong> Se ha verificado la integridad de las copias
+de seguridad mediante restauraciones automatizadas.</p></td>
+</tr>
+<tr class="header">
+<td><strong>Tiempo de Realización</strong></td>
+<td>4 horas (Taller práctico individual)</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="método-de-entrega-y-formato">MÉTODO DE ENTREGA Y FORMATO <a class="headerlink" href="#método-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
+<ul>
+<li><blockquote>
+<p><strong>[x] Memoria Técnica (PDF):</strong>
+Practica5_2_Nombre_Alumno.pdf. Debe incluir la explicación del diseño
+del flujo, justificación de los comandos y scripts utilizados, y
+capturas del funcionamiento (logs del planificador de MySQL, ejecución
+del script Bash y verificación de restauración). Es obligatorio que en
+el prompt del sistema se visualice la IP de la instancia y tu usuario
+para certificar la autoría.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>[x] Entregables de Código:</strong> Un archivo comprimido
+.tar.gz que contenga:</p>
+</blockquote>
+<ol type="1">
+<li><blockquote>
+<p>infraestructura.sql (esquema, tablas y evento de consolidación de
+MySQL).</p>
+</blockquote></li>
+<li><blockquote>
+<p>backup_sistema.sh (script de automatización Bash y rotación).</p>
+</blockquote></li>
+<li><blockquote>
+<p>crontab_config.txt (línea de planificación de Cron).</p>
+</blockquote></li>
+</ol></li>
+</ul>
+<h2 id="descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
+OBJETIVOS <a class="headerlink" href="#descripción-general.-objetivos" title="Enlace permanente">¶</a></h2>
+<p>Trabajas como Administrador de Sistemas y Bases de Datos en una
+plataforma de comercio electrónico. La base de datos transaccional,
+llamada ecommerce, almacena un alto volumen de ventas en la tabla
+ventas_temporales. Para evitar que esta tabla ralentice el sistema de
+producción, la dirección técnica ha establecido las siguientes
+directrices:</p>
+<ol type="1">
+<li><blockquote>
+<p><strong>Consolidación Interna (MySQL):</strong> Cada noche a las
+03:00 AM, un evento interno del SGBD debe mover todas las ventas
+completadas del día anterior a una tabla histórica consolidada llamada
+historico_ventas. Los registros consolidados deben ser eliminados de la
+tabla activa de producción de forma transaccional. Toda ejecución del
+evento debe quedar auditada en una tabla de log interna
+(registro_logs).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Copia de Seguridad Externa y Rotación (Bash + Cron):</strong>
+Cada madrugada a las 04:00 AM, un script de sistema en Bash debe
+realizar una copia de seguridad lógica, consistente e InnoDB-safe de la
+base de datos ecommerce. El script debe comprimir el volcado, añadirle
+una marca de tiempo y almacenarlo en /backup/ecommerce/. Además, para
+optimizar el almacenamiento del servidor, el script debe purgar
+automáticamente cualquier copia de seguridad con más de <strong>7
+días</strong> de antigüedad.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Plan de Recuperación (DRP):</strong> Se debe simular un fallo
+total del esquema y verificar el proceso de restauración lógica
+garantizando la integridad de los datos.</p>
+</blockquote></li>
+</ol>
+<h2 id="actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink" href="#actividades-a-realizar" title="Enlace permanente">¶</a></h2>
+<h4 id="fase-1-creación-de-la-infraestructura-en-mysql">Fase 1: Creación
+de la Infraestructura en MySQL <a class="headerlink" href="#fase-1-creación-de-la-infraestructura-en-mysql" title="Enlace permanente">¶</a></h4>
+<p>Crea la base de datos ecommerce y define las siguientes tablas con el
+motor <strong>InnoDB</strong>:</p>
+<ul>
+<li><blockquote>
+<p>ventas_temporales: Contiene id_venta (Autonumérico), cliente
+(VARCHAR), monto (DECIMAL 10,2), fecha_venta (DATETIME) y estado
+(VARCHAR: 'Pendiente', 'Completado').</p>
+</blockquote></li>
+<li><blockquote>
+<p>historico_ventas: Estructura idéntica a la anterior más un campo
+fecha_consolidacion (TIMESTAMP).</p>
+</blockquote></li>
+<li><blockquote>
+<p>registro_logs: Tabla de auditoría interna con id_log (Autonumérico),
+nombre_evento (VARCHAR), mensaje (TEXT) y fecha_registro
+(TIMESTAMP).</p>
+</blockquote></li>
+</ul>
+<p>Puebla la tabla ventas_temporales con al menos 5 registros de prueba,
+asegurando que algunos tengan estado 'Completado' y otros
+'Pendiente'.</p>
+<h4
+id="fase-2-programación-del-evento-de-mantenimiento-ev_consolidar_ventas">Fase
+2: Programación del Evento de Mantenimiento (ev_consolidar_ventas) <a class="headerlink" href="#fase-2-programación-del-evento-de-mantenimiento-ev_consolidar_ventas" title="Enlace permanente">¶</a></h4>
+<ol type="1">
+<li><blockquote>
+<p>Verifica que el planificador de eventos de MySQL está configurado de
+forma persistente y activo.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Crea el evento ev_consolidar_ventas para ejecutarse diariamente a las
+03:00 AM (puedes ajustar el tiempo a EVERY 1 MINUTE de forma temporal
+para las capturas de demostración).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Requisito de Robustez:</strong> La consolidación debe
+realizarse bajo transacciones seguras (START TRANSACTION, COMMIT,
+ROLLBACK). Si el traspaso de registros a historico_ventas tiene éxito,
+se eliminan de ventas_temporales y se guarda un registro en
+registro_logs. Si falla, se hace rollback y se audita el error.</p>
+</blockquote></li>
+</ol>
+<h4
+id="fase-3-script-de-automatización-de-backups-en-bash-backup_sistema.sh">Fase
+3: Script de Automatización de Backups en Bash (backup_sistema.sh) <a class="headerlink" href="#fase-3-script-de-automatización-de-backups-en-bash-backup_sistema.sh" title="Enlace permanente">¶</a></h4>
+<p>Desarrolla un script en /usr/local/bin/backup_sistema.sh que cumpla
+con los siguientes estándares profesionales de administración de
+sistemas:</p>
+<ol type="1">
+<li><blockquote>
+<p>Crear el directorio /backup/ecommerce/ si no existe.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Definir variables para credenciales de MySQL (usando un archivo de
+configuración de accesos seguro o variables cifradas de entorno de forma
+recomendada).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Utilizar mysqldump con el parámetro --single-transaction para no
+bloquear lecturas/escrituras.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Redirigir el archivo .sql resultante, comprimirlo al vuelo usando
+gzip para ahorrar espacio, y nombrarlo con el patrón:
+backup_ecommerce_YYYYMMDD_HHMMSS.sql.gz.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Mecanismo de Rotación Práctica:</strong> Buscar y eliminar de
+manera automática todos los ficheros .gz del directorio
+/backup/ecommerce/ que tengan una fecha de modificación superior a 7
+días.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Guardar la salida y posibles errores del script en un fichero de log
+del sistema /var/log/backup_ecommerce.log.</p>
+</blockquote></li>
+</ol>
+<h4
+id="fase-4-integración-en-el-planificador-de-tareas-de-linux-cron">Fase
+4: Integración en el Planificador de Tareas de Linux (Cron) <a class="headerlink" href="#fase-4-integración-en-el-planificador-de-tareas-de-linux-cron" title="Enlace permanente">¶</a></h4>
+<p>Configura el planificador de Linux (crontab de root) para programar
+la ejecución del script anterior cada madrugada de forma automática a
+las 04:00 AM.</p>
+<h4
+id="fase-5-simulación-de-desastre-y-verificación-de-la-integridad">Fase
+5: Simulación de Desastre y Verificación de la Integridad <a class="headerlink" href="#fase-5-simulación-de-desastre-y-verificación-de-la-integridad" title="Enlace permanente">¶</a></h4>
+<ol type="1">
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Simula una catástrofe de datos haciendo un DROP DATABASE
+ecommerce;.</code></pre></div></li>
+<li><blockquote>
+<p>Procede a restaurar la base de datos a partir del último archivo
+comprimido .gz disponible.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Verifica la consistencia: comprueba que las tablas se han recuperado
+de forma íntegra, con sus restricciones de clave y que el log de eventos
+contiene el historial de consolidación.</p>
+</blockquote></li>
+</ol>
+<h1 id="calificación">4. CALIFICACIÓN <a class="headerlink" href="#calificación" title="Enlace permanente">¶</a></h1>
+<blockquote>
+<p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
+través de la plataforma, la entrega del documento en formatos editables
+no permitidos (como .docx), capturas con identificación del alumno/a o
+la omisión de los enlaces de las fuentes documentales utilizadas
+penalizará gravemente la nota o invalidará la práctica.</p>
+</blockquote>
+<p>La práctica avanzada se calificará sobre un total de <strong>10
+puntos</strong> de acuerdo con la siguiente distribución:</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>Criterio / Bloque</strong></th>
+<th><strong>Excelente (100%)</strong></th>
+<th><strong>Aceptable (50%)</strong></th>
+<th><strong>Insuficiente (0%)</strong></th>
+<th><strong>Peso</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Estructuras SQL y Transacciones</strong></td>
+<td>Infraestructura de tablas InnoDB configurada con precisión y manejo
+transaccional robusto en el evento.</td>
+<td>Tablas creadas, pero el evento carece de control de transacciones o
+de log de auditoría.</td>
+<td>Esquema incorrecto o evento con fallos de sintaxis que no
+compila.</td>
+<td><strong>25%</strong></td>
+</tr>
+<tr class="header">
+<td><strong>Programación de Eventos</strong></td>
+<td>Evento creado, planificado periódicamente de forma correcta y
+verificación del Scheduler activa.</td>
+<td>Evento funcional pero con planificación incorrecta o sin
+configuración persistente en el my.cnf.</td>
+<td>El planificador de eventos está desactivado o el evento no se
+ejecuta.</td>
+<td><strong>15%</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Scripting Bash (mysqldump y compresión)</strong></td>
+<td>Script Bash impecable, modularizado con variables, con volcado
+transaccional consistente y compresión de datos.</td>
+<td>Script funcional pero con rutas a fuego (hardcoded), credenciales
+desprotegidas o sin compresión gzip.</td>
+<td>Script con errores lógicos de ejecución que no completa el volcado
+de datos.</td>
+<td><strong>20%</strong></td>
+</tr>
+<tr class="header">
+<td><strong>Rotación Automática de Backups</strong></td>
+<td>Implementación óptima del comando de purga de archivos antiguos
+(&gt;7 días) en Bash con control de excepciones.</td>
+<td>Intento de rotación que borra archivos de forma insegura o carece de
+validación temporal exacta.</td>
+<td>No se implementa rotación física en disco, saturando el
+almacenamiento del host.</td>
+<td><strong>15%</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Planificación Cron y Simulacro DRP</strong></td>
+<td>Automatización en crontab de Linux impecable. Restauración de
+desastre verificada y documentada con éxito en la memoria.</td>
+<td>Script añadido a crontab pero con errores de path absoluto.
+Restauración manual y con pérdida de permisos.</td>
+<td>No se planifica en Cron o no se demuestra la integridad de la base
+de datos restaurada.</td>
+<td><strong>15%</strong></td>
+</tr>
+<tr class="header">
+<td><strong>Calidad de Documentación y Autoría</strong></td>
+<td>Memoria técnica impecable, legible, justificada teóricamente y
+autoría verificada por el prompt visible.</td>
+<td>Documentación correcta pero desordenada, o faltan capturas de los
+logs del sistema para validar autoría.</td>
+<td>No se entrega memoria técnica, o es un plagio evidente sin
+identificación de host/IP.</td>
+<td><strong>10%</strong></td>
+</tr>
+</tbody>
+</table></div>
+
+        </main>
+    </div>
+</body>
+</html>

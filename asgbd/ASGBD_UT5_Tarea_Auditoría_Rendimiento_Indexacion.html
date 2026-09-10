@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASGBD - Ut5 Tarea Auditoría Rendimiento Indexacion</title>
+    <style>
+    
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --bg-header: #1e3a8a;
+    --text-header: #ffffff;
+    --bg-body: #f8fafc;
+    --text-body: #1e293b;
+    --border-color: #cbd5e1;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-body);
+    color: var(--text-body);
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, [id], a[name] {
+    scroll-margin-top: 80px !important;
+}
+
+.headerlink {
+    display: inline-block;
+    margin-left: 0.4rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.8em;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
+h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
+    visibility: visible;
+    opacity: 1;
+}
+
+.headerlink:hover {
+    color: var(--primary);
+}
+
+#site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    background: var(--bg-header);
+    color: var(--text-header);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    height: 62px;
+}
+
+.site-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.top-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.top-nav .nav-btn {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+.top-nav .nav-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 9px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown:hover .dropbtn, .dropbtn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 320px;
+    max-width: 480px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 10001;
+    border: 1px solid #e2e8f0;
+    margin-top: 6px;
+}
+
+.dropdown-content a {
+    color: var(--text-body);
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.92rem;
+    border-bottom: 1px solid #f1f5f9;
+    line-height: 1.4;
+    transition: background 0.15s, color 0.15s;
+    word-break: break-word;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #eff6ff;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block !important;
+}
+
+#page-layout {
+    display: flex;
+    min-height: calc(100vh - 62px);
+}
+
+#left-panel {
+    width: 320px;
+    min-width: 320px;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 1.5rem 1.25rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: sticky;
+    top: 62px;
+    height: calc(100vh - 62px);
+}
+
+#left-panel h3 {
+    font-size: 1rem;
+    margin-top: 0;
+    color: #334155;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
+
+#left-panel nav#TOC, #left-panel #TOC {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+#left-panel ul {
+    list-style-type: none;
+    padding-left: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+#left-panel li {
+    margin: 6px 0;
+}
+
+#left-panel a {
+    color: #475569;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    display: block;
+    transition: color 0.15s;
+}
+
+#left-panel a:hover {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+#main-content {
+    flex: 1;
+    padding: 2.5rem 4rem;
+    box-sizing: border-box;
+    max-width: 100% !important;
+    width: calc(100% - 320px);
+    min-width: 0;
+}
+
+/* TABLAS ELEGANTES Y RESPONSIVE */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1.75rem 0;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    font-size: 0.93rem;
+    background: #ffffff;
+    table-layout: auto !important;
+}
+
+th, td {
+    padding: 10px 14px !important;
+    border: 1px solid #cbd5e1 !important;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+td p, th p {
+    margin: 0 !important;
+    padding: 2px 0 !important;
+}
+
+th {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #0f172a !important;
+}
+
+tr:nth-child(even) td {
+    background-color: #f8fafc !important;
+}
+
+tr:hover td {
+    background-color: #f1f5f9 !important;
+}
+
+/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
+.code-wrapper {
+    position: relative;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0f172a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #334155;
+    color: #f8fafc;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.copy-btn:hover {
+    background: #2563eb;
+}
+
+pre {
+    margin: 0 !important;
+    padding: 1.25rem 1.25rem !important;
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    overflow-x: auto !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+}
+
+code {
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+}
+
+p code, li code {
+    background: #e2e8f0;
+    color: #0f172a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
+
+/* RESPONSIVE DESIGN PARA MÓVILES Y TABLETS */
+@media (max-width: 768px) {
+    .header-container {
+        height: auto;
+        flex-direction: column;
+        padding: 0.75rem 1rem;
+        gap: 0.6rem;
+    }
+    
+    .site-title {
+        font-size: 1.05rem;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .site-title img {
+        height: 28px !important;
+    }
+
+    .top-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 0.35rem;
+    }
+
+    .top-nav .nav-btn, .dropbtn {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    .dropdown-content {
+        min-width: 240px;
+        max-width: 90vw;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #page-layout {
+        flex-direction: column;
+    }
+
+    #left-panel {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        position: static !important;
+        border-right: none !important;
+        border-bottom: 2px solid #e2e8f0;
+        padding: 1rem !important;
+    }
+
+    #main-content {
+        width: 100% !important;
+        padding: 1.25rem 1rem !important;
+    }
+
+    iframe {
+        height: 60vh !important;
+    }
+
+    th, td {
+        padding: 8px 10px !important;
+        font-size: 0.85rem !important;
+    }
+
+    pre {
+        padding: 0.85rem !important;
+        font-size: 0.82rem !important;
+    }
+}
+
+    </style>
+    <script>
+    
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.dropdown').forEach(dd => {
+        const btn = dd.querySelector('.dropbtn');
+        const content = dd.querySelector('.dropdown-content');
+        if (btn && content) {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = content.style.display === 'block';
+                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
+                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+                if (!isOpen) {
+                    content.style.display = 'block';
+                    btn.classList.add('active');
+                }
+            });
+        }
+    });
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
+        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+    });
+
+    // Controlador universal de clics en enlaces ancla (#...)
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const rawHref = this.getAttribute('href') || '';
+            const hashIdx = rawHref.indexOf('#');
+            if (hashIdx === -1) return;
+            const hash = rawHref.substring(hashIdx + 1);
+            if (!hash) return;
+            
+            let targetId = hash;
+            try { targetId = decodeURIComponent(hash); } catch(err) {}
+
+            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
+            if (!targetEl) {
+                for (let el of document.querySelectorAll('[id]')) {
+                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
+                        targetEl = el;
+                        break;
+                    }
+                }
+            }
+
+            if (targetEl) {
+                e.preventDefault();
+                const headerOffset = 75;
+                const elementPosition = targetEl.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                if (history.pushState) {
+                    history.pushState(null, null, '#' + targetId);
+                }
+            }
+        });
+    });
+});
+
+function copyCode(btn) {
+    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
+    navigator.clipboard.writeText(code).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = '✅ ¡Copiado!';
+        btn.style.background = '#16a34a';
+        setTimeout(() => {
+            btn.innerText = orig;
+            btn.style.background = '#334155';
+        }, 2000);
+    });
+}
+
+    </script>
+</head>
+<body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD &ndash; Ut5 Tarea Auditoría Rendimiento Indexacion</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+      <a href="ASGBD_Presentacion.html" class="nav-btn">Presentación</a>
+      <a href="ASGBD_UT2_Tarea_Programacion_Scripts.html" class="nav-btn">Programación</a>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Teoría ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Teoria_Configuracion.html">ASGBD UT1 Teoria Configuracion</a>
+          <a href="ASGBD_UT2_Teoria_Scripts_Administracion.html">ASGBD UT2 Teoria Scripts Administracion</a>
+          <a href="ASGBD_UT3_Teoria_Usuarios_roles.html">ASGBD UT3 Teoria Usuarios roles</a>
+          <a href="ASGBD_UT4_Teoría_Planificación_Seguridad.html">ASGBD UT4 Teoría Planificación Seguridad</a>
+          <a href="ASGBD_UT5_Teoria_Optimizacion_Consultas.html">ASGBD UT5 Teoria Optimizacion Consultas</a>
+          <a href="ASGBD_UT6_Teoría_BD_Distribuidas_alta_disponibilidad.html">ASGBD UT6 Teoría BD Distribuidas alta disponibilidad</a>
+          <a href="ASGBD_Proyecto_integral.html">ASGBD Proyecto integral</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Tareas y Prácticas ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Tarea_Configuracion.html">ASGBD UT1 Tarea Configuracion</a>
+          <a href="ASGBD_UT1_Practica.html">ASGBD UT1 Practica</a>
+          <a href="ASGBD_UT2_Practica._Automatizacion_Mantenimiento.html">ASGBD UT2 Practica. Automatizacion Mantenimiento</a>
+          <a href="ASGBD_UT3_Practica_Auditoria_Automatizacion.html">ASGBD UT3 Practica Auditoria Automatizacion</a>
+          <a href="ASGBD_UT3_Tarea_Enunciado.html">ASGBD UT3 Tarea Enunciado</a>
+          <a href="ASGBD_UT4_Tarea_Eventos.html">ASGBD UT4 Tarea Eventos</a>
+          <a href="ASGBD_UT4_Practica_Automatizacion_Mantenimiento.html">ASGBD UT4 Practica Automatizacion Mantenimiento</a>
+          <a href="ASGBD_UT5_Practica_Automatizacion.html">ASGBD UT5 Practica Automatizacion</a>
+          <a href="ASGBD_UT5_Práctica_Tunning_Servidores_EXPLAIN_Avanzado.html">ASGBD UT5 Práctica Tunning Servidores EXPLAIN Avanzado</a>
+          <a href="ASGBD_UT5_Tarea_Seguridad.html">ASGBD UT5 Tarea Seguridad</a>
+          <a href="ASGBD_UT5_Tarea_Auditoría_Rendimiento_Indexacion.html">ASGBD UT5 Tarea Auditoría Rendimiento Indexacion</a>
+          <a href="ASGBD_UT6_Practica_BD_Distribuidas_Sharding.html">ASGBD UT6 Practica BD Distribuidas Sharding</a>
+          <a href="ASGBD_UT6_Practica_Alta_Disponibilidad.html">ASGBD UT6 Practica Alta Disponibilidad</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <aside id="left-panel">
+            <h3>Índice del Tema</h3>
+            <nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#tarea-5.1-auditoría-de-rendimiento-e-indexación-en-mysql"
+id="toc-tarea-5.1-auditoría-de-rendimiento-e-indexación-en-mysql">TAREA
+5.1: AUDITORÍA DE RENDIMIENTO E INDEXACIÓN EN MYSQL</a>
+<ul>
+<li><a href="#ficha-técnica-de-la-actividad"
+id="toc-ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
+ACTIVIDAD</a></li>
+<li><a href="#descripción-general.-objetivos"
+id="toc-descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
+OBJETIVOS</a></li>
+<li><a href="#consideraciones-previas"
+id="toc-consideraciones-previas">2. CONSIDERACIONES PREVIAS</a></li>
+<li><a href="#actividades-a-realizar" id="toc-actividades-a-realizar">3.
+ACTIVIDADES A REALIZAR</a></li>
+<li><a href="#calificación" id="toc-calificación">4.
+CALIFICACIÓN</a></li>
+</ul></li>
+</ul>
+</nav>
+        </aside>
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT5_Tarea_Auditoría_Rendimiento_Indexacion.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+
+<h1 id="tarea-5.1-auditoría-de-rendimiento-e-indexación-en-mysql">TAREA
+5.1: AUDITORÍA DE RENDIMIENTO E INDEXACIÓN EN MYSQL <a class="headerlink" href="#tarea-5.1-auditoría-de-rendimiento-e-indexación-en-mysql" title="Enlace permanente">¶</a></h1>
+<h3 id="ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
+ACTIVIDAD <a class="headerlink" href="#ficha-técnica-de-la-actividad" title="Enlace permanente">¶</a></h3>
+<div class="table-wrapper"><table>
+<tbody>
+<tr class="header">
+<td><strong>Unidad Didáctica</strong></td>
+<td>Unidad 5: Optimización de consultas e índices en MySQL /
+MariaDB</td>
+</tr>
+<tr class="odd">
+<td><strong>Nombre de la Tarea</strong></td>
+<td>Tarea 5.1: Auditoría de Rendimiento e Indexación en Servidores de
+Producción</td>
+</tr>
+<tr class="header">
+<td><strong>Resultado de Aprendizaje (RA)</strong></td>
+<td><strong>RA4:</strong> Optimiza el rendimiento del sistema gestor
+monitorizando los accesos y ajustando los parámetros del motor.</td>
+</tr>
+<tr class="odd">
+<td><strong>Criterios de Evaluación (CE)</strong></td>
+<td><p><strong>CE 4.b:</strong> Se han identificado los factores que
+afectan al rendimiento del sistema.</p>
+<p><strong>CE 4.c:</strong> Se han analizado las trazas de ejecución de
+las consultas.</p>
+<p><strong>CE 4.d:</strong> Se han creado índices y otras estructuras de
+optimización.</p>
+<p><strong>CE 4.f:</strong> Se han reestructurado los datos para mejorar
+la velocidad de acceso.</p></td>
+</tr>
+<tr class="header">
+<td><strong>Tiempo Estimado</strong></td>
+<td>6 horas lectivas (equivalente a 3 sesiones de clase en taller de
+sistemas)</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="método-de-entrega-y-formato">MÉTODO DE ENTREGA Y FORMATO <a class="headerlink" href="#método-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
+<ul>
+<li><blockquote>
+<p><strong>[ ] Documento de Memoria:</strong> Documento técnico en
+formato <strong>PDF</strong> (Tarea5_1_NombreAlumno.pdf) con la
+explicación justificada de cada paso y capturas de pantalla de la
+terminal de comandos. El formato debe ser impecable: texto justificado,
+enunciados destacados en negrita y comentarios descriptivos debajo de
+cada captura.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>[ ] Archivo de Código:</strong> Archivo de script SQL
+(tarea5_1_nombrealumno.sql) que contenga todas las sentencias de
+creación de índices, consultas y comandos de análisis, perfectamente
+comentados.</p>
+</blockquote></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>[ ] Verificación de Autoría: Para que las capturas
+de pantalla sean válidas, debe ser visible en todo momento el
+prompt de tu sistema operativo con tu usuario de Linux
+(usuario@instancia-openstack:~$) o se debe incluir al inicio de cada
+bloque de consultas SQL un comentario identificativo de la forma:
+SELECT 'Autor: Nombre Completo del Alumno - Tarea 5.1' AS
+identificador;</code></pre></div></li>
+</ul>
+<h2 id="descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
+OBJETIVOS <a class="headerlink" href="#descripción-general.-objetivos" title="Enlace permanente">¶</a></h2>
+<p>El objetivo fundamental de esta tarea es que el alumno actúe como un
+Administrador de Bases de Datos (DBA) junior que asume la
+responsabilidad de auditar y optimizar el rendimiento de un servidor
+MySQL de desarrollo. Utilizando la base de datos empresarial
+<strong>jardineria</strong>, se deberán detectar ineficiencias críticas
+de acceso a disco (barridos secuenciales completos de tablas o <em>Full
+Table Scans</em>), resolver problemas de pérdida de sargabilidad por
+malas prácticas de desarrollo, evaluar e implementar indexaciones
+compuestas aplicando de manera estricta la regla del prefijo izquierdo,
+y estructurar búsquedas semánticas eficientes mediante índices de texto
+completo (FULLTEXT).</p>
+<h2 id="consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink" href="#consideraciones-previas" title="Enlace permanente">¶</a></h2>
+<ul>
+<li><blockquote>
+<p>Se requiere tener acceso a una instancia de MySQL Server (v8.0+ o
+MariaDB v10.5+) en funcionamiento sobre Ubuntu Server.</p>
+</blockquote></li>
+<li><blockquote>
+<p>La base de datos de producción <strong>jardineria</strong> debe estar
+completamente importada, con datos de pruebas consistentes.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Todas las operaciones de consulta y monitorización se realizarán
+directamente desde la interfaz de línea de comandos de MySQL (<em>MySQL
+Client</em>) en la terminal SSH, evitando interfaces gráficas para
+emular el flujo de trabajo de administración de sistemas sobre
+servidores remotos desatendidos.</p>
+</blockquote></li>
+</ul>
+<h2 id="actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink" href="#actividades-a-realizar" title="Enlace permanente">¶</a></h2>
+<h4
+id="ejercicio-1-inspección-inicial-de-estructuras-de-indexación-1-punto"><strong>Ejercicio
+1: Inspección Inicial de Estructuras de Indexación (1
+Punto)</strong> <a class="headerlink" href="#ejercicio-1-inspección-inicial-de-estructuras-de-indexación-1-punto" title="Enlace permanente">¶</a></h4>
+<p>Consulte de manera exhaustiva cuáles son los índices físicos activos
+en la tabla producto utilizando las instrucciones nativas del
+diccionario de datos de MySQL. Documente la salida y explique
+detalladamente:</p>
+<ol type="1">
+<li><blockquote>
+<p>Qué claves e índices ha identificado.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Qué significa técnicamente el valor devuelto en la columna Non_unique
+para cada uno de ellos.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Qué tipo de estructura física de datos (Index_type) utiliza el motor
+InnoDB para gestionarlos de forma predeterminada.</p>
+</blockquote></li>
+</ol>
+<h4
+id="ejercicio-2-auditoría-comparativa-de-planes-de-ejecución-básicos-1-punto"><strong>Ejercicio
+2: Auditoría Comparativa de Planes de Ejecución Básicos (1
+Punto)</strong> <a class="headerlink" href="#ejercicio-2-auditoría-comparativa-de-planes-de-ejecución-básicos-1-punto" title="Enlace permanente">¶</a></h4>
+<p>Haga uso de la sentencia de diagnóstico EXPLAIN para obtener y
+analizar el plan de ejecución de las dos consultas siguientes:</p>
+<p>-- Consulta A<br />
+SELECT * FROM producto WHERE codigo_producto = 'OR-114';<br />
+<br />
+-- Consulta B<br />
+SELECT * FROM producto WHERE nombre = 'Evonimus Pulchellus';</p>
+<p>Responda razonadamente a las siguientes cuestiones analizando la
+salida del optimizador:</p>
+<ol type="1">
+<li><blockquote>
+<p>¿Cuál de las dos consultas realizará un menor número de comparaciones
+de registros y accesos a disco físico para hallar el resultado?</p>
+</blockquote></li>
+<li><blockquote>
+<p>Indique de manera numérica cuántas comparaciones de filas estima el
+optimizador (rows) para cada caso.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Justifique la causa técnica de esta diferencia analizando los valores
+devueltos en las columnas type y key del EXPLAIN.</p>
+</blockquote></li>
+</ol>
+<h4
+id="ejercicio-3-pérdida-de-sargabilidad-por-funciones-de-fecha-1-punto"><strong>Ejercicio
+3: Pérdida de Sargabilidad por Funciones de Fecha (1
+Punto)</strong> <a class="headerlink" href="#ejercicio-3-pérdida-de-sargabilidad-por-funciones-de-fecha-1-punto" title="Enlace permanente">¶</a></h4>
+<p>Suponga que su equipo de desarrollo web ha propuesto las siguientes
+alternativas para calcular el promedio de facturación total del año 2008
+en la tabla pago:</p>
+<p>-- Alternativa A (Inhabilitando el árbol B-Tree)<br />
+SELECT AVG(total) FROM pago WHERE YEAR(fecha_pago) = 2008;<br />
+<br />
+-- Alternativa B (Sargable en rango puro)<br />
+SELECT AVG(total) FROM pago WHERE fecha_pago &gt;= '2008-01-01' AND
+fecha_pago &lt;= '2008-12-31';</p>
+<p>Asumiendo que existe un índice activo sobre la columna fecha_pago,
+ejecute un análisis EXPLAIN sobre ambas alternativas y responda de forma
+técnica:</p>
+<ol type="1">
+<li><blockquote>
+<p>¿Por qué el optimizador de costes de MySQL descarta el uso del índice
+en la Alternativa A devolviendo un acceso de tipo ALL? Explique qué
+ocurre en la CPU del servidor.</p>
+</blockquote></li>
+<li><blockquote>
+<p>¿Cómo cambia el método de acceso de la columna type en la Alternativa
+B y por qué se considera una práctica de "diseño sargable"?</p>
+</blockquote></li>
+</ol>
+<h4
+id="ejercicio-4-optimización-de-consultas-multitabla-con-relación-inner-join-1-punto"><strong>Ejercicio
+4: Optimización de Consultas Multitabla con Relación INNER JOIN (1
+Punto)</strong> <a class="headerlink" href="#ejercicio-4-optimización-de-consultas-multitabla-con-relación-inner-join-1-punto" title="Enlace permanente">¶</a></h4>
+<p>Se desea optimizar la velocidad de respuesta de la siguiente consulta
+de facturación e histórico de pedidos:</p>
+<p>SELECT * FROM cliente INNER JOIN pedido<br />
+ON cliente.codigo_cliente = pedido.codigo_cliente<br />
+WHERE cliente.nombre_cliente LIKE 'A%';</p>
+<ol type="1">
+<li><blockquote>
+<p>Ejecute un EXPLAIN previo a la optimización para comprobar el número
+de filas estimadas (rows) y el tipo de acceso (type) en ambas
+tablas.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Diseñe e implemente el índice físico más adecuado para acelerar la
+restricción del bloque WHERE.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Vuelva a analizar la traza de la consulta con EXPLAIN y argumente el
+impacto en el rendimiento contrastando las filas analizadas antes y
+después.</p>
+</blockquote></li>
+</ol>
+<h4
+id="ejercicio-5-el-límite-de-los-índices-estándar-ante-comodines-iniciales-1-punto"><strong>Ejercicio
+5: El Límite de los Índices Estándar ante Comodines Iniciales (1
+Punto)</strong> <a class="headerlink" href="#ejercicio-5-el-límite-de-los-índices-estándar-ante-comodines-iniciales-1-punto" title="Enlace permanente">¶</a></h4>
+<p>Analice las siguientes consultas multitabla requeridas por el
+software de administración:</p>
+<p>-- Consulta de Patronaje Intermedio<br />
+SELECT * FROM cliente INNER JOIN pedido<br />
+ON cliente.codigo_cliente = pedido.codigo_cliente<br />
+WHERE cliente.nombre_cliente LIKE '%A%';<br />
+<br />
+-- Consulta de Patronaje Final<br />
+SELECT * FROM cliente INNER JOIN pedido<br />
+ON cliente.codigo_cliente = pedido.codigo_cliente<br />
+WHERE cliente.nombre_cliente LIKE '%A';</p>
+<ol type="1">
+<li><blockquote>
+<p>Justifique detalladamente por qué no es posible optimizar el tiempo
+de ejecución ni el número de lecturas en disco de estas sentencias,
+incluso si existe un índice B-Tree creado sobre la columna
+nombre_cliente.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Explique de qué manera navega el optimizador por la estructura física
+del árbol en estos escenarios específicos y por qué acaba determinando
+realizar un Full Table Scan.</p>
+</blockquote></li>
+</ol>
+<h4
+id="ejercicio-6-implementación-de-índices-invertidos-para-búsquedas-semánticas-1-punto"><strong>Ejercicio
+6: Implementación de Índices Invertidos para Búsquedas Semánticas (1
+Punto)</strong> <a class="headerlink" href="#ejercicio-6-implementación-de-índices-invertidos-para-búsquedas-semánticas-1-punto" title="Enlace permanente">¶</a></h4>
+<p>Cree un índice de tipo FULLTEXT compuesto de forma síncrona sobre las
+columnas nombre y descripcion de la tabla producto de la base de datos
+jardineria.</p>
+<ol type="1">
+<li><blockquote>
+<p>Proporcione la sentencia DDL exacta de alteración estructural (ALTER
+TABLE).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Escriba la sintaxis de consulta SQL optimizada utilizando las
+funciones nativas MATCH() y AGAINST() para buscar el token 'acero'.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Verifique con EXPLAIN que el método de acceso cambia a fulltext y
+argumente la ganancia en el uso de I/O de disco frente a una búsqueda
+basada en operador LIKE convencional.</p>
+</blockquote></li>
+</ol>
+<h4
+id="ejercicio-7-modos-de-explotación-de-índices-fulltext-1-punto"><strong>Ejercicio
+7: Modos de Explotación de Índices FULLTEXT (1 Punto)</strong> <a class="headerlink" href="#ejercicio-7-modos-de-explotación-de-índices-fulltext-1-punto" title="Enlace permanente">¶</a></h4>
+<p>Haciendo uso del índice de texto completo creado en el Ejercicio 6,
+realice las siguientes consultas utilizando la sintaxis formal de MySQL
+y documente la diferencia en los conjuntos de datos obtenidos:</p>
+<ol type="1">
+<li><blockquote>
+<p><strong>Modo Lenguaje Natural:</strong> Busque los productos que
+contengan la palabra 'planta' en modo por defecto (IN NATURAL LANGUAGE
+MODE).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Modo Booleano Restrictivo:</strong> Busque los registros que
+contengan obligatoriamente la palabra 'tronco' pero que no incluyan la
+palabra 'árbol' bajo ningún concepto.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Modo Truncamiento / Comodín de Derecha:</strong> Busque todas
+las variantes léxicas que comiencen por el prefijo 'planta' (por
+ejemplo: "planta", "plantas", "plantón", etc.).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Búsqueda de Frase Literal:</strong> Busque los registros que
+contengan la secuencia secuencial exacta de caracteres "proviene de las
+costas".</p>
+</blockquote></li>
+</ol>
+<h4
+id="ejercicio-8-creación-de-índices-de-columnas-múltiples-compuestos-1-punto"><strong>Ejercicio
+8: Creación de Índices de Columnas Múltiples (Compuestos) (1
+Punto)</strong> <a class="headerlink" href="#ejercicio-8-creación-de-índices-de-columnas-múltiples-compuestos-1-punto" title="Enlace permanente">¶</a></h4>
+<p>Escriba la sentencia DDL para crear un índice secundario no único
+compuesto por las columnas apellido_contacto y nombre_contacto
+pertenecientes a la tabla cliente. El índice físico resultante debe
+llamarse estrictamente idx_apellido_nombre.</p>
+<h4
+id="ejercicio-9-auditoría-analítica-de-la-regla-del-prefijo-izquierdo-1-punto"><strong>Ejercicio
+9: Auditoría Analítica de la Regla del Prefijo Izquierdo (1
+Punto)</strong> <a class="headerlink" href="#ejercicio-9-auditoría-analítica-de-la-regla-del-prefijo-izquierdo-1-punto" title="Enlace permanente">¶</a></h4>
+<p>Ejecute la sentencia diagnóstica EXPLAIN para auditar la eficiencia
+del índice compuesto idx_apellido_nombre creado en el ejercicio anterior
+sobre los siguientes tres escenarios de búsqueda requeridos por el
+servicio técnico:</p>
+<ul>
+<li><blockquote>
+<p><strong>Escenario A (Par Completo):</strong> Buscar el cliente con
+apellido 'Villar' y nombre 'Javier'.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Escenario B (Prefijo Izquierdo Activo):</strong> Buscar el
+cliente utilizando únicamente el apellido 'Villar'.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Escenario C (Prefijo Izquierdo Ausente):</strong> Buscar el
+cliente utilizando únicamente el nombre 'Javier'.</p>
+</blockquote></li>
+</ul>
+<p>Analice de forma crítica el plan de ejecución de cada uno de los tres
+escenarios. Responda:</p>
+<ol type="1">
+<li><blockquote>
+<p>¿Cuántas filas físicas estima examinar el motor en cada caso?</p>
+</blockquote></li>
+<li><blockquote>
+<p>¿En qué escenario se descarta por completo el uso del índice
+compuesto, forzando un barrido completo de la tabla? Justifique el
+motivo técnico basándose en la física de almacenamiento del árbol
+B+.</p>
+</blockquote></li>
+</ol>
+<h4
+id="ejercicio-10-metodología-práctica-de-análisis-de-prefijos-de-columna-1-punto"><strong>Ejercicio
+10: Metodología Práctica de Análisis de Prefijos de Columna (1
+Punto)</strong> <a class="headerlink" href="#ejercicio-10-metodología-práctica-de-análisis-de-prefijos-de-columna-1-punto" title="Enlace permanente">¶</a></h4>
+<p>Como administrador de bases de datos, debe optimizar la columna
+nombre_cliente de la tabla cliente (definida originalmente como un campo
+de texto VARCHAR de tamaño considerable). Para ahorrar consumo de
+memoria RAM en el buffer de índices del SGBD, desea crear un
+<strong>Índice de Prefijo de Columna</strong> óptimo.</p>
+<p>Realice los siguientes pasos analíticos en su servidor de
+pruebas:</p>
+<ol type="1">
+<li><blockquote>
+<p><strong>Cálculo de la Cardinalidad de Base:</strong> Obtenga el
+número exacto de valores únicos globales contenidos en esa columna
+utilizando la combinación de funciones de agrupación COUNT(DISTINCT
+...).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Análisis de Ganancia por Longitud de Prefijo:</strong>
+Ejecute una única consulta SQL que calcule la cardinalidad de valores
+únicos simulando prefijos con longitudes de <img
+src="media_ASGBD_UT5_Tarea_Auditoría_Rendimiento_Indexacion/media/image2.png"
+style="width:1.30192in;height:0.2708in" /> y <img
+src="media_ASGBD_UT5_Tarea_Auditoría_Rendimiento_Indexacion/media/image3.png"
+style="width:0.21419in;height:0.25499in" /> caracteres utilizando la
+función LEFT().</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Selección Técnica del Prefijo:</strong> Identifique
+numéricamente el menor tamaño de prefijo que proporcione un ratio de
+discriminación extremadamente cercano al valor de la cardinalidad global
+de la columna sin prefijo.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Aplicación DDL:</strong> Cree de forma definitiva el índice
+de prefijo en caliente utilizando la longitud <img
+src="media_ASGBD_UT5_Tarea_Auditoría_Rendimiento_Indexacion/media/image4.png"
+style="width:0.19531in;height:0.26727in" /> seleccionada
+justificadamente en el paso anterior.</p>
+</blockquote></li>
+</ol>
+<h2 id="calificación">4. CALIFICACIÓN <a class="headerlink" href="#calificación" title="Enlace permanente">¶</a></h2>
+<blockquote>
+<p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
+través de la plataforma, la entrega del documento en formatos editables
+no permitidos (como .docx), capturas con identificación del alumno/a o
+la omisión de los enlaces de las fuentes documentales utilizadas
+penalizará gravemente la nota o invalidará la práctica.</p>
+</blockquote>
+<h4 id="rúbrica-de-evaluación-técnica">RÚBRICA DE EVALUACIÓN TÉCNICA
+ <a class="headerlink" href="#rúbrica-de-evaluación-técnica" title="Enlace permanente">¶</a></h4>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>Criterio de Evaluación</strong></th>
+<th><strong>Excelente (100%)</strong></th>
+<th><strong>Notable (75%)</strong></th>
+<th><strong>Suficiente (50%)</strong></th>
+<th><strong>Insuficiente (0%)</strong></th>
+<th><strong>Peso</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Contenido Técnico y Funcionalidad</strong></td>
+<td>Todos los comandos SQL se ejecutan de manera impecable y las
+explicaciones justifican con absoluta precisión el comportamiento físico
+de los árboles de datos y del optimizador de MySQL.</td>
+<td>Se ejecutan todos los comandos SQL con errores mínimos de sintaxis.
+Se comprenden los conceptos de optimización, aunque falta profundidad en
+el análisis de costes.</td>
+<td>Faltan comandos o algunos índices no se han creado correctamente.
+Las explicaciones técnicas de los planes de ejecución son débiles.</td>
+<td>No se resuelven las consultas ni se crean las estructuras de
+optimización solicitadas.</td>
+<td><strong>50%</strong></td>
+</tr>
+<tr class="header">
+<td><strong>Análisis de Procedimientos e I/O</strong></td>
+<td>Documenta cada cambio con trazas de EXPLAIN contrastando
+minuciosamente las diferencias de coste (rows, type, key). Propone
+mejoras sargables justificadas.</td>
+<td>Muestra el uso de EXPLAIN pero el contraste de rendimiento se limita
+a listar valores sin relacionarlos directamente con el consumo de
+recursos de hardware.</td>
+<td>Sigue los pasos de manera mecánica sin comprender por qué mejora o
+empeora la ejecución de las consultas.</td>
+<td>No incluye trazas de análisis de planes de ejecución o estas no
+corresponden a sus bases de datos.</td>
+<td><strong>40%</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Calidad de Documentación y Capturas</strong></td>
+<td><strong>Documento impecable (PDF).</strong> Las capturas son
+perfectamente legibles, se identifica de manera inequívoca la autoría
+del alumno mediante el prompt y la IP del servidor. Texto justificado y
+estructurado con comentarios debajo de cada captura.</td>
+<td>Documento bien estructurado en PDF. Las capturas son legibles pero
+falta de forma básica la identificación de autoría en alguna de
+ellas.</td>
+<td>Desorganizado o sin formato adecuado. Dificultad para asociar los
+ejercicios con el script entregado. El formato no es PDF.</td>
+<td>Entrega ilegible, sin capturas, o no se puede verificar de ningún
+modo que el alumno haya ejecutado las prácticas en su servidor.</td>
+<td><strong>10%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h4
+id="criterio-específico-de-documentación-y-capturas-1.5-puntos">CRITERIO
+ESPECÍFICO DE DOCUMENTACIÓN Y CAPTURAS (1.5 Puntos) <a class="headerlink" href="#criterio-específico-de-documentación-y-capturas-1.5-puntos" title="Enlace permanente">¶</a></h4>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>Criterio</strong></th>
+<th><strong>Realizado correctamente (100% - 1.5 Ptos)</strong></th>
+<th><strong>Realizado con algún error (50% - 0.75 Ptos)</strong></th>
+<th><strong>No realizado (0% - 0 Ptos)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Legibilidad e Identificación del Autor</strong></td>
+<td>Todas las capturas de terminal muestran claramente la IP de la
+instancia remota y el nombre de usuario del alumno en el shell, o bien
+el identificador mediante consulta comentada de manera consistente.</td>
+<td>Las capturas carecen de la IP del servidor en algunas fases o la
+identificación no se incluye en todas las ventanas de consulta,
+comprometiendo la trazabilidad completa.</td>
+<td>Capturas genéricas sin ningún elemento que identifique la
+procedencia del entorno de ejecución o el autor.</td>
+</tr>
+</tbody>
+</table></div>
+
+        </main>
+    </div>
+</body>
+</html>

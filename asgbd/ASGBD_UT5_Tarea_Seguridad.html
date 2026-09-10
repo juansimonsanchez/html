@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASGBD - Ut5 Tarea Seguridad</title>
+    <style>
+    
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --bg-header: #1e3a8a;
+    --text-header: #ffffff;
+    --bg-body: #f8fafc;
+    --text-body: #1e293b;
+    --border-color: #cbd5e1;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-body);
+    color: var(--text-body);
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, [id], a[name] {
+    scroll-margin-top: 80px !important;
+}
+
+.headerlink {
+    display: inline-block;
+    margin-left: 0.4rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.8em;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
+h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
+    visibility: visible;
+    opacity: 1;
+}
+
+.headerlink:hover {
+    color: var(--primary);
+}
+
+#site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    background: var(--bg-header);
+    color: var(--text-header);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    height: 62px;
+}
+
+.site-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.top-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.top-nav .nav-btn {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+.top-nav .nav-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 9px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown:hover .dropbtn, .dropbtn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 320px;
+    max-width: 480px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 10001;
+    border: 1px solid #e2e8f0;
+    margin-top: 6px;
+}
+
+.dropdown-content a {
+    color: var(--text-body);
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.92rem;
+    border-bottom: 1px solid #f1f5f9;
+    line-height: 1.4;
+    transition: background 0.15s, color 0.15s;
+    word-break: break-word;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #eff6ff;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block !important;
+}
+
+#page-layout {
+    display: flex;
+    min-height: calc(100vh - 62px);
+}
+
+#left-panel {
+    width: 320px;
+    min-width: 320px;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 1.5rem 1.25rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: sticky;
+    top: 62px;
+    height: calc(100vh - 62px);
+}
+
+#left-panel h3 {
+    font-size: 1rem;
+    margin-top: 0;
+    color: #334155;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
+
+#left-panel nav#TOC, #left-panel #TOC {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+#left-panel ul {
+    list-style-type: none;
+    padding-left: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+#left-panel li {
+    margin: 6px 0;
+}
+
+#left-panel a {
+    color: #475569;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    display: block;
+    transition: color 0.15s;
+}
+
+#left-panel a:hover {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+#main-content {
+    flex: 1;
+    padding: 2.5rem 4rem;
+    box-sizing: border-box;
+    max-width: 100% !important;
+    width: calc(100% - 320px);
+    min-width: 0;
+}
+
+/* TABLAS ELEGANTES Y RESPONSIVE */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1.75rem 0;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    font-size: 0.93rem;
+    background: #ffffff;
+    table-layout: auto !important;
+}
+
+th, td {
+    padding: 10px 14px !important;
+    border: 1px solid #cbd5e1 !important;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+td p, th p {
+    margin: 0 !important;
+    padding: 2px 0 !important;
+}
+
+th {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #0f172a !important;
+}
+
+tr:nth-child(even) td {
+    background-color: #f8fafc !important;
+}
+
+tr:hover td {
+    background-color: #f1f5f9 !important;
+}
+
+/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
+.code-wrapper {
+    position: relative;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0f172a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #334155;
+    color: #f8fafc;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.copy-btn:hover {
+    background: #2563eb;
+}
+
+pre {
+    margin: 0 !important;
+    padding: 1.25rem 1.25rem !important;
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    overflow-x: auto !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+}
+
+code {
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+}
+
+p code, li code {
+    background: #e2e8f0;
+    color: #0f172a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
+
+/* RESPONSIVE DESIGN PARA MÓVILES Y TABLETS */
+@media (max-width: 768px) {
+    .header-container {
+        height: auto;
+        flex-direction: column;
+        padding: 0.75rem 1rem;
+        gap: 0.6rem;
+    }
+    
+    .site-title {
+        font-size: 1.05rem;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .site-title img {
+        height: 28px !important;
+    }
+
+    .top-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 0.35rem;
+    }
+
+    .top-nav .nav-btn, .dropbtn {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    .dropdown-content {
+        min-width: 240px;
+        max-width: 90vw;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #page-layout {
+        flex-direction: column;
+    }
+
+    #left-panel {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        position: static !important;
+        border-right: none !important;
+        border-bottom: 2px solid #e2e8f0;
+        padding: 1rem !important;
+    }
+
+    #main-content {
+        width: 100% !important;
+        padding: 1.25rem 1rem !important;
+    }
+
+    iframe {
+        height: 60vh !important;
+    }
+
+    th, td {
+        padding: 8px 10px !important;
+        font-size: 0.85rem !important;
+    }
+
+    pre {
+        padding: 0.85rem !important;
+        font-size: 0.82rem !important;
+    }
+}
+
+    </style>
+    <script>
+    
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.dropdown').forEach(dd => {
+        const btn = dd.querySelector('.dropbtn');
+        const content = dd.querySelector('.dropdown-content');
+        if (btn && content) {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = content.style.display === 'block';
+                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
+                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+                if (!isOpen) {
+                    content.style.display = 'block';
+                    btn.classList.add('active');
+                }
+            });
+        }
+    });
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
+        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+    });
+
+    // Controlador universal de clics en enlaces ancla (#...)
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const rawHref = this.getAttribute('href') || '';
+            const hashIdx = rawHref.indexOf('#');
+            if (hashIdx === -1) return;
+            const hash = rawHref.substring(hashIdx + 1);
+            if (!hash) return;
+            
+            let targetId = hash;
+            try { targetId = decodeURIComponent(hash); } catch(err) {}
+
+            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
+            if (!targetEl) {
+                for (let el of document.querySelectorAll('[id]')) {
+                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
+                        targetEl = el;
+                        break;
+                    }
+                }
+            }
+
+            if (targetEl) {
+                e.preventDefault();
+                const headerOffset = 75;
+                const elementPosition = targetEl.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                if (history.pushState) {
+                    history.pushState(null, null, '#' + targetId);
+                }
+            }
+        });
+    });
+});
+
+function copyCode(btn) {
+    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
+    navigator.clipboard.writeText(code).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = '✅ ¡Copiado!';
+        btn.style.background = '#16a34a';
+        setTimeout(() => {
+            btn.innerText = orig;
+            btn.style.background = '#334155';
+        }, 2000);
+    });
+}
+
+    </script>
+</head>
+<body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD &ndash; Ut5 Tarea Seguridad</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+      <a href="ASGBD_Presentacion.html" class="nav-btn">Presentación</a>
+      <a href="ASGBD_UT2_Tarea_Programacion_Scripts.html" class="nav-btn">Programación</a>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Teoría ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Teoria_Configuracion.html">ASGBD UT1 Teoria Configuracion</a>
+          <a href="ASGBD_UT2_Teoria_Scripts_Administracion.html">ASGBD UT2 Teoria Scripts Administracion</a>
+          <a href="ASGBD_UT3_Teoria_Usuarios_roles.html">ASGBD UT3 Teoria Usuarios roles</a>
+          <a href="ASGBD_UT4_Teoría_Planificación_Seguridad.html">ASGBD UT4 Teoría Planificación Seguridad</a>
+          <a href="ASGBD_UT5_Teoria_Optimizacion_Consultas.html">ASGBD UT5 Teoria Optimizacion Consultas</a>
+          <a href="ASGBD_UT6_Teoría_BD_Distribuidas_alta_disponibilidad.html">ASGBD UT6 Teoría BD Distribuidas alta disponibilidad</a>
+          <a href="ASGBD_Proyecto_integral.html">ASGBD Proyecto integral</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Tareas y Prácticas ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Tarea_Configuracion.html">ASGBD UT1 Tarea Configuracion</a>
+          <a href="ASGBD_UT1_Practica.html">ASGBD UT1 Practica</a>
+          <a href="ASGBD_UT2_Practica._Automatizacion_Mantenimiento.html">ASGBD UT2 Practica. Automatizacion Mantenimiento</a>
+          <a href="ASGBD_UT3_Practica_Auditoria_Automatizacion.html">ASGBD UT3 Practica Auditoria Automatizacion</a>
+          <a href="ASGBD_UT3_Tarea_Enunciado.html">ASGBD UT3 Tarea Enunciado</a>
+          <a href="ASGBD_UT4_Tarea_Eventos.html">ASGBD UT4 Tarea Eventos</a>
+          <a href="ASGBD_UT4_Practica_Automatizacion_Mantenimiento.html">ASGBD UT4 Practica Automatizacion Mantenimiento</a>
+          <a href="ASGBD_UT5_Practica_Automatizacion.html">ASGBD UT5 Practica Automatizacion</a>
+          <a href="ASGBD_UT5_Práctica_Tunning_Servidores_EXPLAIN_Avanzado.html">ASGBD UT5 Práctica Tunning Servidores EXPLAIN Avanzado</a>
+          <a href="ASGBD_UT5_Tarea_Seguridad.html">ASGBD UT5 Tarea Seguridad</a>
+          <a href="ASGBD_UT5_Tarea_Auditoría_Rendimiento_Indexacion.html">ASGBD UT5 Tarea Auditoría Rendimiento Indexacion</a>
+          <a href="ASGBD_UT6_Practica_BD_Distribuidas_Sharding.html">ASGBD UT6 Practica BD Distribuidas Sharding</a>
+          <a href="ASGBD_UT6_Practica_Alta_Disponibilidad.html">ASGBD UT6 Practica Alta Disponibilidad</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <aside id="left-panel">
+            <h3>Índice del Tema</h3>
+            <nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#tarea-5.1-batería-de-actividades-de-seguridad-de-base"
+id="toc-tarea-5.1-batería-de-actividades-de-seguridad-de-base">============================================================
+TAREA 5.1: BATERÍA DE ACTIVIDADES DE SEGURIDAD DE BASE</a>
+<ul>
+<li><a href="#ficha-técnica-de-la-actividad"
+id="toc-ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
+ACTIVIDAD</a></li>
+<li><a href="#descripción-general-de-la-tarea.-objetivos"
+id="toc-descripción-general-de-la-tarea.-objetivos">1. DESCRIPCIÓN
+GENERAL DE LA TAREA. OBJETIVOS</a></li>
+<li><a href="#consideraciones-previas"
+id="toc-consideraciones-previas">2. CONSIDERACIONES PREVIAS</a></li>
+<li><a href="#actividades-a-realizar-ejercicios-individuales"
+id="toc-actividades-a-realizar-ejercicios-individuales">3. ACTIVIDADES A
+REALIZAR (EJERCICIOS INDIVIDUALES)</a></li>
+<li><a href="#calificación" id="toc-calificación">4.
+CALIFICACIÓN</a></li>
+<li><a href="#solucionario-técnico-detallado"
+id="toc-solucionario-técnico-detallado">5. SOLUCIONARIO TÉCNICO
+DETALLADO</a>
+<ul>
+<li><a
+href="#ejercicio-1-arquitectura-física-de-almacenamiento-y-motores-myisam-innodb-1"
+id="toc-ejercicio-1-arquitectura-física-de-almacenamiento-y-motores-myisam-innodb-1">Ejercicio
+1: Arquitectura física de almacenamiento y Motores (MyISAM /
+InnoDB)</a></li>
+<li><a href="#ejercicio-2-copias-de-seguridad-físicas-en-frío-1"
+id="toc-ejercicio-2-copias-de-seguridad-físicas-en-frío-1">Ejercicio 2:
+Copias de Seguridad Físicas en Frío</a></li>
+<li><a
+href="#ejercicio-3-exportaciónimportación-de-datos-planos-select-into-outfile-load-data-1"
+id="toc-ejercicio-3-exportaciónimportación-de-datos-planos-select-into-outfile-load-data-1">Ejercicio
+3: Exportación/Importación de Datos Planos (SELECT INTO OUTFILE / LOAD
+DATA)</a></li>
+<li><a href="#ejercicio-4-uso-avanzado-de-la-consola-con-mysqldump-1"
+id="toc-ejercicio-4-uso-avanzado-de-la-consola-con-mysqldump-1">Ejercicio
+4: Uso avanzado de la Consola con mysqldump</a></li>
+<li><a
+href="#ejercicio-5-restauración-lógica-mediante-consola-y-comandos-internos-1"
+id="toc-ejercicio-5-restauración-lógica-mediante-consola-y-comandos-internos-1">Ejercicio
+5: Restauración lógica mediante consola y comandos internos</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+        </aside>
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT5_Tarea_Seguridad.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+
+<p>[Ciclo formativo]: Grado Superior en Administración de Sistemas
+Informáticos en Red (ASIR)</p>
+<p>[Módulo]: ASGBD</p>
+<p>[Tipo de Documento]: Tarea / Práctica / Solucionario</p>
+<h1
+id="tarea-5.1-batería-de-actividades-de-seguridad-de-base">============================================================
+TAREA 5.1: BATERÍA DE ACTIVIDADES DE SEGURIDAD DE BASE <a class="headerlink" href="#tarea-5.1-batería-de-actividades-de-seguridad-de-base" title="Enlace permanente">¶</a></h1>
+<h3 id="ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
+ACTIVIDAD <a class="headerlink" href="#ficha-técnica-de-la-actividad" title="Enlace permanente">¶</a></h3>
+<div class="table-wrapper"><table>
+<tbody>
+<tr class="header">
+<td><strong>Parámetro</strong></td>
+<td><strong>Detalle</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Unidad Didáctica</strong></td>
+<td>Unidad 5: Planificación de Tareas y Seguridad en Bases de Datos</td>
+</tr>
+<tr class="header">
+<td><strong>Nombre de la Tarea</strong></td>
+<td>Tarea 5.1: Mecanismos de Salvaguarda y Restauración Básica</td>
+</tr>
+<tr class="odd">
+<td><strong>Resultado de Aprendizaje (RA)</strong></td>
+<td><strong>RA6:</strong> Asegura la disponibilidad y recuperación de la
+información aplicando políticas de copias de seguridad y
+replicación.</td>
+</tr>
+<tr class="header">
+<td><strong>Criterios de Evaluación (CE)</strong></td>
+<td><p><strong>CE 6.a:</strong> Se han planificado y ejecutado copias de
+seguridad lógicas (exportación de esquemas) y físicas.</p>
+<p><strong>CE 6.b:</strong> Se han diseñado estrategias de recuperación
+de desastres ante fallos lógicos o físicos del almacenamiento.</p>
+<p><strong>CE 6.e:</strong> Se ha verificado la integridad de las copias
+de seguridad mediante restauraciones automatizadas.</p></td>
+</tr>
+<tr class="odd">
+<td><strong>Tiempo de Realización Estimado</strong></td>
+<td>4 horas (equivalente a 1 semana de prácticas de taller)</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="método-de-entrega-y-formato">MÉTODO DE ENTREGA Y FORMATO <a class="headerlink" href="#método-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
+<ul>
+<li><blockquote>
+<p><strong>[x] Documento de Memoria:</strong> Documento
+<strong>PDF</strong> (Tarea5_1_Nombre_Alumno.pdf) con la explicación
+técnica de cada apartado, justificación de decisiones y capturas de
+pantalla legibles. Las capturas deben incluir el prompt de comandos
+donde se visualice la dirección IP de la instancia de desarrollo
+(OpenStack/Localhost) y el usuario activo para validar la autoría. El
+formato debe ser limpio, con texto justificado, enunciados en negrita y
+comentarios descriptivos debajo de cada imagen.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>[x] Código SQL:</strong> Fichero de comandos planos
+solucion_actividades.sql debidamente comentado indicando a qué ejercicio
+pertenece cada sentencia.</p>
+</blockquote></li>
+</ul>
+<h3 id="descripción-general-de-la-tarea.-objetivos">1. DESCRIPCIÓN
+GENERAL DE LA TAREA. OBJETIVOS <a class="headerlink" href="#descripción-general-de-la-tarea.-objetivos" title="Enlace permanente">¶</a></h3>
+<p>Como administradores de sistemas (SysAdmins) o administradores de
+bases de datos (DBAs), es crítico dominar las bases lógicas y físicas de
+cómo almacena la información nuestro SGBD. Antes de poder automatizar
+planes de respaldo complejos en un entorno empresarial, debemos entender
+la diferencia entre los motores clásicos de MySQL, aprender a manipular
+los archivos en frío del sistema de ficheros de Linux y controlar las
+herramientas estándares de línea de comandos de exportación lógica como
+mysqldump y directivas del motor (SELECT INTO OUTFILE / LOAD DATA).</p>
+<p>En esta tarea individual, realizarás una batería de 5 ejercicios
+prácticos diseñados para asimilar estos conceptos fundamentales.</p>
+<h3 id="consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink" href="#consideraciones-previas" title="Enlace permanente">¶</a></h3>
+<ul>
+<li><blockquote>
+<p><strong>Entorno de Trabajo:</strong> Máquina virtual (instancia en
+nube OpenStack o local) con <strong>Ubuntu 24.04 LTS</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Software:</strong> MySQL Server 8.0+ instalado y activo.</p>
+</blockquote></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Permisos del sistema: Es necesario poseer
+privilegios de sudo en el sistema operativo Linux anfitrión y acceso
+como root al servidor de base de datos MySQL.</code></pre></div></li>
+<li><blockquote>
+<p><strong>Variable secure_file_priv:</strong> Antes de comenzar,
+comprueba en qué directorio del sistema de archivos Linux tiene tu MySQL
+permitido realizar exportaciones directas de archivos
+(/var/lib/mysql-files/ por defecto).</p>
+</blockquote></li>
+</ul>
+<h3 id="actividades-a-realizar-ejercicios-individuales">3. ACTIVIDADES A
+REALIZAR (EJERCICIOS INDIVIDUALES) <a class="headerlink" href="#actividades-a-realizar-ejercicios-individuales" title="Enlace permanente">¶</a></h3>
+<h4
+id="ejercicio-1-arquitectura-física-de-almacenamiento-y-motores-myisam-innodb">Ejercicio
+1: Arquitectura física de almacenamiento y Motores (MyISAM /
+InnoDB) <a class="headerlink" href="#ejercicio-1-arquitectura-física-de-almacenamiento-y-motores-myisam-innodb" title="Enlace permanente">¶</a></h4>
+<ul>
+<li><blockquote>
+<p>Crea la base de datos liga.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Añade una tabla de tipo MyISAM llamada tabla_myisam con campos
+básicos. Recuerda declarar de forma explícita ENGINE=MyISAM.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Añade otra tabla estándar de tipo InnoDB llamada tabla_innodb (por
+defecto).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Accede al shell del sistema operativo Linux host y localiza la ruta
+física donde MySQL guarda los datos en disco (/var/lib/mysql/).
+Documenta la diferencia estructural entre el directorio de la base de
+datos liga y detalla qué archivos físicos corresponden a las dos tablas
+creadas.</p>
+</blockquote></li>
+</ul>
+<h4 id="ejercicio-2-copias-de-seguridad-físicas-en-frío">Ejercicio 2:
+Copias de Seguridad Físicas en Frío <a class="headerlink" href="#ejercicio-2-copias-de-seguridad-físicas-en-frío" title="Enlace permanente">¶</a></h4>
+<ul>
+<li><blockquote>
+<p>Diseña un protocolo secuencial en la consola de comandos de Linux
+para realizar un respaldo completo físico y en frío de la base de datos
+liga.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Simula una catástrofe de pérdida de datos en la que borres los
+archivos físicos de la base de datos (con el SGBD apagado) y procede a
+su restauración binaria en disco. Comprueba y justifica que el servicio
+arranca de forma íntegra.</p>
+</blockquote></li>
+</ul>
+<h4
+id="ejercicio-3-exportaciónimportación-de-datos-planos-select-into-outfile-load-data">Ejercicio
+3: Exportación/Importación de Datos Planos (SELECT INTO OUTFILE / LOAD
+DATA) <a class="headerlink" href="#ejercicio-3-exportaciónimportación-de-datos-planos-select-into-outfile-load-data" title="Enlace permanente">¶</a></h4>
+<ul>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Exporta los datos de una tabla utilizando la instrucción SELECT INTO
+OUTFILE en formato de texto plano delimitado por comas (.csv o .txt)
+dentro del directorio permitido por el sistema.</code></pre></div></li>
+<li><blockquote>
+<p>Abre el archivo generado en una aplicación de hoja de cálculo (Excel
+o LibreOffice Calc) e incluye una captura mostrando el formato correcto
+de las columnas.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Crea una tabla vacía con la misma estructura y procede a poblarla con
+el archivo plano generado utilizando exclusivamente la sentencia SQL
+LOAD DATA.</p>
+</blockquote></li>
+</ul>
+<h4 id="ejercicio-4-uso-avanzado-de-la-consola-con-mysqldump">Ejercicio
+4: Uso avanzado de la Consola con mysqldump <a class="headerlink" href="#ejercicio-4-uso-avanzado-de-la-consola-con-mysqldump" title="Enlace permanente">¶</a></h4>
+<ul>
+<li><blockquote>
+<p>Realiza las siguientes copias de seguridad a través de la consola del
+sistema operativo utilizando la herramienta mysqldump de MySQL
+(justifica los comandos utilizados):</p>
+</blockquote>
+<ol type="1">
+<li><blockquote>
+<p>Exporta la tabla partidos de la base de datos liga (estructura y
+datos).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Exporta la estructura y datos de la tabla partidos eliminando los
+comentarios del archivo para reducir su peso (parámetro --compact).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Exporta <strong>únicamente la estructura (DDL)</strong> de la tabla
+partidos omitiendo sus datos.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Exporta <strong>únicamente los datos (DML en formato INSERT)</strong>
+omitiendo la creación de tablas.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Exporta toda la base de datos liga en un archivo estructurado en
+formato <strong>XML</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Exporta todas las tablas de liga a archivos separados en formato
+<strong>CSV</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Exporta la base de datos liga completa con sentencias de base de
+datos incluidas.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Exporta la totalidad de bases de datos del servidor MySQL
+(--all-databases).</p>
+</blockquote></li>
+</ol></li>
+</ul>
+<h4
+id="ejercicio-5-restauración-lógica-mediante-consola-y-comandos-internos">Ejercicio
+5: Restauración lógica mediante consola y comandos internos <a class="headerlink" href="#ejercicio-5-restauración-lógica-mediante-consola-y-comandos-internos" title="Enlace permanente">¶</a></h4>
+<ul>
+<li><blockquote>
+<p>Ejecuta y documenta la restauración del respaldo completo generado de
+la base de datos utilizando dos vías:</p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p><strong>Opción A:</strong> A través de la redirección de entrada de
+comandos del sistema operativo (&lt;).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Opción B:</strong> Autenticado en el cliente de MySQL con la
+orden interactiva SOURCE o su equivalente \..</p>
+</blockquote></li>
+</ul></li>
+</ul>
+<h3 id="calificación">4. CALIFICACIÓN <a class="headerlink" href="#calificación" title="Enlace permanente">¶</a></h3>
+<p>La actividad será evaluada según los siguientes criterios de
+ponderación base: Funcionalidad técnica de las sentencias y comandos
+(50%), Memoria, capturas e identificación (40%), Presentación formal del
+PDF (10%).</p>
+<h4 id="criterios-de-calificación-rúbrica-detallada">CRITERIOS DE
+CALIFICACIÓN (RÚBRICA DETALLADA) <a class="headerlink" href="#criterios-de-calificación-rúbrica-detallada" title="Enlace permanente">¶</a></h4>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>Apartado / Criterio</strong></th>
+<th><strong>Muy Bien (100%)</strong></th>
+<th><strong>Notable (75%)</strong></th>
+<th><strong>Bien (50%)</strong></th>
+<th><strong>Mejorable (30%)</strong></th>
+<th><strong>Insuficiente (0%)</strong></th>
+<th><strong>Peso</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Ejercicios 1 y 2 (Motores y Copia Física)</strong></td>
+<td>Identificación de archivos físicos precisa. Protocolo de copia
+física en frío, permisos y restauración binaria totalmente
+funcionales.</td>
+<td>Errores menores en la propiedad física de los archivos (chown) o en
+la explicación de metadatos.</td>
+<td>El servidor arranca pero carece de permisos idóneos. Explicación
+física incompleta.</td>
+<td>Errores críticos en la restauración o apagado en caliente.</td>
+<td>No realizado o pérdida de datos total.</td>
+<td><strong>20%</strong></td>
+</tr>
+<tr class="header">
+<td><strong>Ejercicio 3 (Exportación plana)</strong></td>
+<td>Exportación lógica directa a CSV con control de directorio seguro e
+importación exacta con LOAD DATA.</td>
+<td>Sentencias funcionales pero sin delimitadores óptimos o error en la
+captura de la hoja de cálculo.</td>
+<td>Exporta pero no logra realizar la importación de manera íntegra en
+la tabla clon.</td>
+<td>Errores graves en las rutas del sistema de ficheros de Linux.</td>
+<td>No realizado o errores de compilación constantes.</td>
+<td><strong>15%</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Ejercicio 4 (mysqldump avanzado)</strong></td>
+<td>Uso impecable de todos los parámetros de mysqldump requeridos,
+incluyendo compactación, estructura, datos y formatos especiales.</td>
+<td>Realizado. Pequeños desajustes en el formato CSV de --tab o en el
+volcado XML.</td>
+<td>Faltan 2 o 3 variantes del comando o no se justifican de manera
+técnica sus modificadores.</td>
+<td>Solo ejecuta comandos básicos sin entender el objetivo del
+volcado.</td>
+<td>No entregado o comandos de consola totalmente erróneos.</td>
+<td><strong>20%</strong></td>
+</tr>
+<tr class="header">
+<td><strong>Ejercicio 5 (Restauración externa/interna)</strong></td>
+<td>Restauración lógica completada con éxito por ambas vías (redirección
+Bash y SOURCE interactiva).</td>
+<td>Funcional pero con explicaciones de rutas incompletas.</td>
+<td>Completa una sola vía de restauración lógica de forma
+funcional.</td>
+<td>Errores graves en la importación de scripts SQL.</td>
+<td>No realizado o no se comprueba la restauración.</td>
+<td><strong>15%</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Calidad de la documentación (Capturas)</strong></td>
+<td>Memoria impecable. Capturas perfectamente legibles, se identifica de
+forma inequívoca al autor (prompt del sistema/IP/Host visible) y texto
+con explicaciones técnicas.</td>
+<td>Documento bien estructurado. Capturas legibles pero falta
+identificar de manera clara al autor en alguna sección.</td>
+<td>Capturas borrosas o incompletas. Dificultad parcial para validar la
+autoría del taller.</td>
+<td>Falta documentación esencial o no es posible validar la autoría por
+omisión del prompt.</td>
+<td>No entrega documento o es totalmente ilegible/sin capturas en
+taller.</td>
+<td><strong>20%</strong></td>
+</tr>
+<tr class="header">
+<td><strong>Presentación y Estructura (PDF)</strong></td>
+<td>Documento limpio y profesional. Cumple las indicaciones formales
+(portada, texto justificado, negritas).</td>
+<td>Documento limpio. Faltan detalles de formato menores.</td>
+<td>Desorganizado o sin formato adecuado (ej: formato de texto
+editable).</td>
+<td>Muy desorganizado y difícil de leer.</td>
+<td>Muy pobre o no trabajada.</td>
+<td><strong>10%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="solucionario-técnico-detallado">5. SOLUCIONARIO TÉCNICO
+DETALLADO <a class="headerlink" href="#solucionario-técnico-detallado" title="Enlace permanente">¶</a></h2>
+<h3
+id="ejercicio-1-arquitectura-física-de-almacenamiento-y-motores-myisam-innodb-1">Ejercicio
+1: Arquitectura física de almacenamiento y Motores (MyISAM /
+InnoDB) <a class="headerlink" href="#ejercicio-1-arquitectura-física-de-almacenamiento-y-motores-myisam-innodb-1" title="Enlace permanente">¶</a></h3>
+<p>CREATE DATABASE IF NOT EXISTS liga;<br />
+USE liga;<br />
+<br />
+-- Creación explícita MyISAM<br />
+CREATE TABLE tabla_myisam (<br />
+id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,<br />
+nombre VARCHAR(100) NOT NULL,<br />
+fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP<br />
+) ENGINE=MyISAM;<br />
+<br />
+-- Creación InnoDB<br />
+CREATE TABLE tabla_innodb (<br />
+id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,<br />
+nombre VARCHAR(100) NOT NULL,<br />
+fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP<br />
+) ENGINE=InnoDB;</p>
+<h4 id="explicación-física-sysadmin-linux-host">Explicación física
+(SysAdmin Linux Host): <a class="headerlink" href="#explicación-física-sysadmin-linux-host" title="Enlace permanente">¶</a></h4>
+<p>Ejecutando en el host: sudo ls -lh /var/lib/mysql/liga/</p>
+<ul>
+<li><blockquote>
+<p><strong>MyISAM (tabla_myisam):</strong> Veremos los archivos:</p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p>tabla_myisam.MYD (Almacena de forma plana los datos de los
+registros).</p>
+</blockquote></li>
+<li><blockquote>
+<p>tabla_myisam.MYI (Almacena los índices estructurados).</p>
+</blockquote></li>
+</ul></li>
+<li><blockquote>
+<p><strong>InnoDB (tabla_innodb):</strong> Veremos únicamente el
+archivo:</p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p>tabla_innodb.ibd (Almacena conjuntamente en el mismo archivo los
+datos de filas e índices, aislado gracias a
+innodb_file_per_table=ON).</p>
+</blockquote></li>
+</ul></li>
+</ul>
+<h3 id="ejercicio-2-copias-de-seguridad-físicas-en-frío-1">Ejercicio 2:
+Copias de Seguridad Físicas en Frío <a class="headerlink" href="#ejercicio-2-copias-de-seguridad-físicas-en-frío-1" title="Enlace permanente">¶</a></h3>
+<p># 1. Detener el servicio del motor de base de datos MySQL de forma
+controlada<br />
+sudo systemctl stop mysql<br />
+<br />
+# 2. Verificar que el proceso ha finalizado correctamente<br />
+sudo systemctl status mysql<br />
+<br />
+# 3. Realizar un archivo tar comprimido del directorio físico de la base
+de datos liga<br />
+sudo mkdir -p /backup_ruta_segura<br />
+sudo tar -cpvzf /backup_ruta_segura/backup_fisico_liga.tar.gz
+/var/lib/mysql/liga/<br />
+<br />
+# 4. Simulación de catástrofe de pérdida de datos (borrar directorio
+físico)<br />
+sudo rm -rf /var/lib/mysql/liga/<br />
+<br />
+# 5. Proceso de Restauración binaria en frío<br />
+# Descomprimir el volumen en la ruta original de datos de MySQL<br />
+sudo tar -xpvzf /backup_ruta_segura/backup_fisico_liga.tar.gz -C /<br />
+<br />
+# 6. MUY IMPORTANTE: Asignar de nuevo el propietario y grupo 'mysql' a
+los archivos restaurados<br />
+sudo chown -R mysql:mysql /var/lib/mysql/liga/<br />
+sudo chmod -R 700 /var/lib/mysql/liga/<br />
+<br />
+# 7. Iniciar el servicio del servidor de base de datos<br />
+sudo systemctl start mysql</p>
+<h3
+id="ejercicio-3-exportaciónimportación-de-datos-planos-select-into-outfile-load-data-1">Ejercicio
+3: Exportación/Importación de Datos Planos (SELECT INTO OUTFILE / LOAD
+DATA) <a class="headerlink" href="#ejercicio-3-exportaciónimportación-de-datos-planos-select-into-outfile-load-data-1" title="Enlace permanente">¶</a></h3>
+<p>-- 1. Consultar ruta segura permitida en el SGBD<br />
+SHOW VARIABLES LIKE 'secure_file_priv';<br />
+-- Supongamos que la ruta devuelta es: '/var/lib/mysql-files/'<br />
+<br />
+-- 2. Exportación directa delimitada<br />
+SELECT id, nombre, fecha_registro<br />
+INTO OUTFILE '/var/lib/mysql-files/partidos_export.csv'<br />
+FIELDS TERMINATED BY ','<br />
+OPTIONALLY ENCLOSED BY '"'<br />
+LINES TERMINATED BY '\n'<br />
+FROM liga.tabla_innodb;<br />
+<br />
+-- 3. Importación lógica en tabla clonada<br />
+DROP TABLE IF EXISTS liga.tabla_innodb_backup;<br />
+CREATE TABLE liga.tabla_innodb_backup LIKE liga.tabla_innodb;<br />
+<br />
+LOAD DATA INFILE '/var/lib/mysql-files/partidos_export.csv'<br />
+INTO TABLE liga.tabla_innodb_backup<br />
+FIELDS TERMINATED BY ','<br />
+OPTIONALLY ENCLOSED BY '"'<br />
+LINES TERMINATED BY '\n'<br />
+(id, nombre, fecha_registro);</p>
+<h3
+id="ejercicio-4-uso-avanzado-de-la-consola-con-mysqldump-1">Ejercicio 4:
+Uso avanzado de la Consola con mysqldump <a class="headerlink" href="#ejercicio-4-uso-avanzado-de-la-consola-con-mysqldump-1" title="Enlace permanente">¶</a></h3>
+<p># Supongamos que el usuario es 'root' y la tabla a exportar es
+'tabla_innodb' de la base de datos 'liga'<br />
+<br />
+# 1. Exportar la tabla (estructura DDL y datos DML)<br />
+mysqldump -u root -p liga tabla_innodb &gt;
+01_backup_tabla_completa.sql<br />
+<br />
+# 2. Exportar la estructura y datos compactando el archivo (sin
+comentarios explicativos)<br />
+mysqldump -u root -p --compact liga tabla_innodb &gt;
+02_backup_tabla_compacta.sql<br />
+<br />
+# 3. Exportar ÚNICAMENTE la estructura de la tabla (sin insertar datos
+de registros)<br />
+mysqldump -u root -p --no-data liga tabla_innodb &gt;
+03_backup_tabla_solo_estructura.sql<br />
+<br />
+# 4. Exportar ÚNICAMENTE los datos (sentencias INSERT, omitiendo DDL de
+la tabla)<br />
+mysqldump -u root -p --no-create-info liga tabla_innodb &gt;
+04_backup_tabla_solo_datos.sql<br />
+<br />
+# 5. Exportar la base de datos liga en formato estructurado XML<br />
+mysqldump -u root -p --xml liga &gt; 05_backup_liga_xml.xml<br />
+<br />
+# 6. Exportar las tablas de la BD liga a archivos CSV separados por
+comas<br />
+mysqldump -u root -p --tab=/var/lib/mysql-files/
+--fields-terminated-by=',' --fields-enclosed-by='"'
+--lines-terminated-by='\n' liga<br />
+<br />
+# 7. Exportar la base de datos liga completa (incluyendo definición del
+esquema)<br />
+mysqldump -u root -p --databases liga &gt;
+07_backup_liga_esquema_completo.sql<br />
+<br />
+# 8. Exportar la totalidad de bases de datos del servidor MySQL<br />
+mysqldump -u root -p --all-databases &gt;
+08_backup_completo_servidor.sql</p>
+<h3
+id="ejercicio-5-restauración-lógica-mediante-consola-y-comandos-internos-1">Ejercicio
+5: Restauración lógica mediante consola y comandos internos <a class="headerlink" href="#ejercicio-5-restauración-lógica-mediante-consola-y-comandos-internos-1" title="Enlace permanente">¶</a></h3>
+<h4
+id="opción-a-consola-del-sistema-operativo---redirección-externa">Opción
+A (Consola del Sistema Operativo - Redirección externa): <a class="headerlink" href="#opción-a-consola-del-sistema-operativo---redirección-externa" title="Enlace permanente">¶</a></h4>
+<p># Si el backup incluye la directiva CREATE DATABASE (generado con
+--databases)<br />
+mysql -u root -p &lt; 07_backup_liga_esquema_completo.sql<br />
+<br />
+# Si el backup no incluye la base de datos y solo tiene tablas, se debe
+especificar el destino<br />
+mysql -u root -p liga &lt; 01_backup_tabla_completa.sql</p>
+<h4 id="opción-b-cliente-interactivo-de-mysql">Opción B (Cliente
+interactivo de MySQL): <a class="headerlink" href="#opción-b-cliente-interactivo-de-mysql" title="Enlace permanente">¶</a></h4>
+<p>mysql -u root -p</p>
+<p>mysql&gt; USE liga;<br />
+mysql&gt; SOURCE /var/lib/mysql-files/01_backup_tabla_completa.sql;</p>
+
+        </main>
+    </div>
+</body>
+</html>

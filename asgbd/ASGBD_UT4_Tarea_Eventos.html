@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASGBD - Ut4 Tarea Eventos</title>
+    <style>
+    
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --bg-header: #1e3a8a;
+    --text-header: #ffffff;
+    --bg-body: #f8fafc;
+    --text-body: #1e293b;
+    --border-color: #cbd5e1;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-body);
+    color: var(--text-body);
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, [id], a[name] {
+    scroll-margin-top: 80px !important;
+}
+
+.headerlink {
+    display: inline-block;
+    margin-left: 0.4rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.8em;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
+h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
+    visibility: visible;
+    opacity: 1;
+}
+
+.headerlink:hover {
+    color: var(--primary);
+}
+
+#site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    background: var(--bg-header);
+    color: var(--text-header);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    height: 62px;
+}
+
+.site-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.top-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.top-nav .nav-btn {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+.top-nav .nav-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 9px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown:hover .dropbtn, .dropbtn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 320px;
+    max-width: 480px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 10001;
+    border: 1px solid #e2e8f0;
+    margin-top: 6px;
+}
+
+.dropdown-content a {
+    color: var(--text-body);
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.92rem;
+    border-bottom: 1px solid #f1f5f9;
+    line-height: 1.4;
+    transition: background 0.15s, color 0.15s;
+    word-break: break-word;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #eff6ff;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block !important;
+}
+
+#page-layout {
+    display: flex;
+    min-height: calc(100vh - 62px);
+}
+
+#left-panel {
+    width: 320px;
+    min-width: 320px;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 1.5rem 1.25rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: sticky;
+    top: 62px;
+    height: calc(100vh - 62px);
+}
+
+#left-panel h3 {
+    font-size: 1rem;
+    margin-top: 0;
+    color: #334155;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
+
+#left-panel nav#TOC, #left-panel #TOC {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+#left-panel ul {
+    list-style-type: none;
+    padding-left: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+#left-panel li {
+    margin: 6px 0;
+}
+
+#left-panel a {
+    color: #475569;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    display: block;
+    transition: color 0.15s;
+}
+
+#left-panel a:hover {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+#main-content {
+    flex: 1;
+    padding: 2.5rem 4rem;
+    box-sizing: border-box;
+    max-width: 100% !important;
+    width: calc(100% - 320px);
+    min-width: 0;
+}
+
+/* TABLAS ELEGANTES Y RESPONSIVE */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1.75rem 0;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    font-size: 0.93rem;
+    background: #ffffff;
+    table-layout: auto !important;
+}
+
+th, td {
+    padding: 10px 14px !important;
+    border: 1px solid #cbd5e1 !important;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+td p, th p {
+    margin: 0 !important;
+    padding: 2px 0 !important;
+}
+
+th {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #0f172a !important;
+}
+
+tr:nth-child(even) td {
+    background-color: #f8fafc !important;
+}
+
+tr:hover td {
+    background-color: #f1f5f9 !important;
+}
+
+/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
+.code-wrapper {
+    position: relative;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0f172a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #334155;
+    color: #f8fafc;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.copy-btn:hover {
+    background: #2563eb;
+}
+
+pre {
+    margin: 0 !important;
+    padding: 1.25rem 1.25rem !important;
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    overflow-x: auto !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+}
+
+code {
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+}
+
+p code, li code {
+    background: #e2e8f0;
+    color: #0f172a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
+
+/* RESPONSIVE DESIGN PARA MÓVILES Y TABLETS */
+@media (max-width: 768px) {
+    .header-container {
+        height: auto;
+        flex-direction: column;
+        padding: 0.75rem 1rem;
+        gap: 0.6rem;
+    }
+    
+    .site-title {
+        font-size: 1.05rem;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .site-title img {
+        height: 28px !important;
+    }
+
+    .top-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 0.35rem;
+    }
+
+    .top-nav .nav-btn, .dropbtn {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    .dropdown-content {
+        min-width: 240px;
+        max-width: 90vw;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #page-layout {
+        flex-direction: column;
+    }
+
+    #left-panel {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        position: static !important;
+        border-right: none !important;
+        border-bottom: 2px solid #e2e8f0;
+        padding: 1rem !important;
+    }
+
+    #main-content {
+        width: 100% !important;
+        padding: 1.25rem 1rem !important;
+    }
+
+    iframe {
+        height: 60vh !important;
+    }
+
+    th, td {
+        padding: 8px 10px !important;
+        font-size: 0.85rem !important;
+    }
+
+    pre {
+        padding: 0.85rem !important;
+        font-size: 0.82rem !important;
+    }
+}
+
+    </style>
+    <script>
+    
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.dropdown').forEach(dd => {
+        const btn = dd.querySelector('.dropbtn');
+        const content = dd.querySelector('.dropdown-content');
+        if (btn && content) {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = content.style.display === 'block';
+                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
+                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+                if (!isOpen) {
+                    content.style.display = 'block';
+                    btn.classList.add('active');
+                }
+            });
+        }
+    });
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
+        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+    });
+
+    // Controlador universal de clics en enlaces ancla (#...)
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const rawHref = this.getAttribute('href') || '';
+            const hashIdx = rawHref.indexOf('#');
+            if (hashIdx === -1) return;
+            const hash = rawHref.substring(hashIdx + 1);
+            if (!hash) return;
+            
+            let targetId = hash;
+            try { targetId = decodeURIComponent(hash); } catch(err) {}
+
+            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
+            if (!targetEl) {
+                for (let el of document.querySelectorAll('[id]')) {
+                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
+                        targetEl = el;
+                        break;
+                    }
+                }
+            }
+
+            if (targetEl) {
+                e.preventDefault();
+                const headerOffset = 75;
+                const elementPosition = targetEl.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                if (history.pushState) {
+                    history.pushState(null, null, '#' + targetId);
+                }
+            }
+        });
+    });
+});
+
+function copyCode(btn) {
+    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
+    navigator.clipboard.writeText(code).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = '✅ ¡Copiado!';
+        btn.style.background = '#16a34a';
+        setTimeout(() => {
+            btn.innerText = orig;
+            btn.style.background = '#334155';
+        }, 2000);
+    });
+}
+
+    </script>
+</head>
+<body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD &ndash; Ut4 Tarea Eventos</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+      <a href="ASGBD_Presentacion.html" class="nav-btn">Presentación</a>
+      <a href="ASGBD_UT2_Tarea_Programacion_Scripts.html" class="nav-btn">Programación</a>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Teoría ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Teoria_Configuracion.html">ASGBD UT1 Teoria Configuracion</a>
+          <a href="ASGBD_UT2_Teoria_Scripts_Administracion.html">ASGBD UT2 Teoria Scripts Administracion</a>
+          <a href="ASGBD_UT3_Teoria_Usuarios_roles.html">ASGBD UT3 Teoria Usuarios roles</a>
+          <a href="ASGBD_UT4_Teoría_Planificación_Seguridad.html">ASGBD UT4 Teoría Planificación Seguridad</a>
+          <a href="ASGBD_UT5_Teoria_Optimizacion_Consultas.html">ASGBD UT5 Teoria Optimizacion Consultas</a>
+          <a href="ASGBD_UT6_Teoría_BD_Distribuidas_alta_disponibilidad.html">ASGBD UT6 Teoría BD Distribuidas alta disponibilidad</a>
+          <a href="ASGBD_Proyecto_integral.html">ASGBD Proyecto integral</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Tareas y Prácticas ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Tarea_Configuracion.html">ASGBD UT1 Tarea Configuracion</a>
+          <a href="ASGBD_UT1_Practica.html">ASGBD UT1 Practica</a>
+          <a href="ASGBD_UT2_Practica._Automatizacion_Mantenimiento.html">ASGBD UT2 Practica. Automatizacion Mantenimiento</a>
+          <a href="ASGBD_UT3_Practica_Auditoria_Automatizacion.html">ASGBD UT3 Practica Auditoria Automatizacion</a>
+          <a href="ASGBD_UT3_Tarea_Enunciado.html">ASGBD UT3 Tarea Enunciado</a>
+          <a href="ASGBD_UT4_Tarea_Eventos.html">ASGBD UT4 Tarea Eventos</a>
+          <a href="ASGBD_UT4_Practica_Automatizacion_Mantenimiento.html">ASGBD UT4 Practica Automatizacion Mantenimiento</a>
+          <a href="ASGBD_UT5_Practica_Automatizacion.html">ASGBD UT5 Practica Automatizacion</a>
+          <a href="ASGBD_UT5_Práctica_Tunning_Servidores_EXPLAIN_Avanzado.html">ASGBD UT5 Práctica Tunning Servidores EXPLAIN Avanzado</a>
+          <a href="ASGBD_UT5_Tarea_Seguridad.html">ASGBD UT5 Tarea Seguridad</a>
+          <a href="ASGBD_UT5_Tarea_Auditoría_Rendimiento_Indexacion.html">ASGBD UT5 Tarea Auditoría Rendimiento Indexacion</a>
+          <a href="ASGBD_UT6_Practica_BD_Distribuidas_Sharding.html">ASGBD UT6 Practica BD Distribuidas Sharding</a>
+          <a href="ASGBD_UT6_Practica_Alta_Disponibilidad.html">ASGBD UT6 Practica Alta Disponibilidad</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <aside id="left-panel">
+            <h3>Índice del Tema</h3>
+            <nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#ficha-técnica-de-la-actividad"
+id="toc-ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
+ACTIVIDAD</a></li>
+<li><a href="#descripción-general.-objetivos"
+id="toc-descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
+OBJETIVOS</a></li>
+<li><a href="#consideraciones-previas"
+id="toc-consideraciones-previas">2. CONSIDERACIONES PREVIAS</a></li>
+<li><a href="#actividades-a-realizar" id="toc-actividades-a-realizar">3.
+ACTIVIDADES A REALIZAR</a></li>
+<li><a href="#calificación" id="toc-calificación">4.
+CALIFICACIÓN</a></li>
+</ul>
+</nav>
+        </aside>
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT4_Tarea_Eventos.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+<header id="title-block-header">
+<h1 class="title"><span id="_utg6yqtpjn47"
+class="anchor"></span>PRÁCTICA 5.1: BATERÍA DE ACTIVIDADES DE SEGURIDAD
+Y EVENTOS DE BASE</h1>
+</header>
+
+<h3 id="ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
+ACTIVIDAD <a class="headerlink" href="#ficha-técnica-de-la-actividad" title="Enlace permanente">¶</a></h3>
+<div class="table-wrapper"><table>
+<tbody>
+<tr class="header">
+<td><strong>Unidad Didáctica</strong></td>
+<td>Unidad 5: Planificación de Tareas y Seguridad en Bases de Datos</td>
+</tr>
+<tr class="odd">
+<td><strong>Nombre de la Tarea</strong></td>
+<td>Tarea 5.1: Mecanismos de Salvaguarda, Restauración Básica y
+Eventos</td>
+</tr>
+<tr class="header">
+<td><strong>Resultado de Aprendizaje (RA)</strong></td>
+<td><p><strong>RA3:</strong> Automatiza tareas de administración del
+sistema gestor, realizando guiones y programando tareas.</p>
+<p><strong>RA6:</strong> Asegura la disponibilidad y recuperación de la
+información aplicando políticas de copias de seguridad y
+replicación.</p></td>
+</tr>
+<tr class="odd">
+<td><strong>Criterios de Evaluación (CE)</strong></td>
+<td><p><strong>CE 3.b:</strong> Se ha configurado el programador de
+tareas del SGBD para programar la ejecución periódica de tareas.</p>
+<p><strong>CE 6.a:</strong> Se han planificado y ejecutado copias de
+seguridad lógicas (exportación de esquemas) y físicas.</p>
+<p><strong>CE 6.b:</strong> Se han diseñado estrategias de recuperación
+de desastres ante fallos lógicos o físicos del almacenamiento.</p>
+<p><strong>CE 6.e:</strong> Se ha verificado la integridad de las copias
+de seguridad mediante restauraciones automatizadas.</p></td>
+</tr>
+<tr class="header">
+<td><strong>Tiempo Estimado</strong></td>
+<td>6 horas (equivalente a 1.5 semanas de clases en taller)</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="método-de-entrega-y-formato">MÉTODO DE ENTREGA Y FORMATO <a class="headerlink" href="#método-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
+<ul>
+<li><blockquote>
+<p><strong>[x] Documento de Memoria:</strong> Documento
+<strong>PDF</strong> (Tarea5_1_Nombre_Alumno.pdf) con la explicación
+técnica de cada apartado, justificación de decisiones y capturas de
+pantalla legibles. Las capturas deben incluir el prompt de comandos
+donde se visualice la dirección IP de la instancia de desarrollo y tu
+usuario para validar la autoría. El formato debe ser limpio, con texto
+justificado, enunciados en negrita y comentarios descriptivos debajo de
+cada imagen.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>[x] Código SQL:</strong> Fichero de comandos planos
+solucion_actividades_base.sql debidamente comentado indicando a qué
+ejercicio pertenece cada sentencia.</p>
+</blockquote></li>
+</ul>
+<h2 id="descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
+OBJETIVOS <a class="headerlink" href="#descripción-general.-objetivos" title="Enlace permanente">¶</a></h2>
+<p>Como administradores de sistemas (SysAdmins) o administradores de
+bases de datos (DBAs), es crítico dominar las bases lógicas y físicas de
+cómo almacena la información nuestro SGBD y cómo podemos automatizar de
+forma nativa sus rutinas de mantenimiento.</p>
+<p>Esta tarea de base está diseñada para asimilar los principios físicos
+de almacenamiento en disco de los motores de MySQL, dominar las
+herramientas estándares de línea de comandos de exportación (mysqldump,
+SELECT INTO OUTFILE / LOAD DATA) y aprender a activar, programar y
+monitorizar el planificador de eventos interno de la base de datos de
+manera profesional.</p>
+<h2 id="consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink" href="#consideraciones-previas" title="Enlace permanente">¶</a></h2>
+<ul>
+<li><blockquote>
+<p><strong>Entorno de Trabajo:</strong> Instancia en la nube de
+desarrollo o local con <strong>Ubuntu 24.04 LTS</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Software:</strong> MySQL Server 8.0+ instalado y activo.</p>
+</blockquote></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Permisos del sistema: Es necesario poseer
+privilegios de sudo en el sistema operativo Linux anfitrión y acceso
+como root al servidor de base de datos MySQL.</code></pre></div></li>
+<li><blockquote>
+<p><strong>Variable secure_file_priv:</strong> Antes de comenzar,
+comprueba en qué directorio del sistema de archivos Linux tiene tu MySQL
+permitido realizar exportaciones directas de archivos
+(/var/lib/mysql-files/ por defecto).</p>
+</blockquote></li>
+</ul>
+<h2 id="actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink" href="#actividades-a-realizar" title="Enlace permanente">¶</a></h2>
+<h4 id="bloque-i-arquitectura-física-motores-y-copias-en-frío">BLOQUE I:
+ARQUITECTURA FÍSICA, MOTORES Y COPIAS EN FRÍO <a class="headerlink" href="#bloque-i-arquitectura-física-motores-y-copias-en-frío" title="Enlace permanente">¶</a></h4>
+<p><strong>Ejercicio 1: Arquitectura física de almacenamiento y Motores
+(MyISAM / InnoDB)</strong></p>
+<ul>
+<li><blockquote>
+<p>Crea la base de datos liga.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Añade una tabla de tipo MyISAM llamada tabla_myisam con campos
+básicos. Recuerda declarar de forma explícita ENGINE=MyISAM.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Añade otra tabla estándar de tipo InnoDB llamada tabla_innodb (por
+defecto).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Accede al shell del sistema operativo Linux host y localiza la ruta
+física donde MySQL guarda los datos en disco (/var/lib/mysql/).
+Documenta la diferencia estructural entre el directorio de la base de
+datos liga y detalla qué archivos físicos corresponden a las dos tablas
+creadas.</p>
+</blockquote></li>
+</ul>
+<p><strong>Ejercicio 2: Copias de Seguridad Físicas en Frío</strong></p>
+<ul>
+<li><blockquote>
+<p>Diseña un protocolo secuencial en la consola de comandos de Linux
+para realizar un respaldo completo físico y en frío de la base de datos
+liga.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Simula una catástrofe de pérdida de datos en la que borres los
+archivos físicos de la base de datos (con el SGBD apagado) y procede a
+su restauración binaria en disco. Comprueba y justifica que el servicio
+arranca de forma íntegra.</p>
+</blockquote></li>
+</ul>
+<p><strong>Ejercicio 3: Exportación/Importación de Datos Planos (SELECT
+INTO OUTFILE / LOAD DATA)</strong></p>
+<ul>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Exporta los datos de una tabla utilizando la instrucción SELECT INTO
+OUTFILE en formato de texto plano delimitado por comas (.csv o .txt)
+dentro del directorio permitido por el sistema.</code></pre></div></li>
+<li><blockquote>
+<p>Abre el archivo generado en una aplicación de hoja de cálculo (Excel
+o LibreOffice Calc) e incluye una captura mostrando el formato correcto
+de las columnas.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Crea una tabla vacía con la misma estructura y procede a poblarla con
+el archivo plano generado utilizando exclusivamente la sentencia SQL
+LOAD DATA.</p>
+</blockquote></li>
+</ul>
+<h4 id="bloque-ii-copias-de-seguridad-lógicas-y-restauración">BLOQUE II:
+COPIAS DE SEGURIDAD LÓGICAS Y RESTAURACIÓN <a class="headerlink" href="#bloque-ii-copias-de-seguridad-lógicas-y-restauración" title="Enlace permanente">¶</a></h4>
+<p><strong>Ejercicio 4: Uso avanzado de la Consola con
+mysqldump</strong></p>
+<ul>
+<li><blockquote>
+<p>Realiza las siguientes copias de seguridad a través de la consola del
+sistema operativo utilizando la herramienta mysqldump de MySQL
+(justifica los comandos utilizados):</p>
+</blockquote>
+<ol type="1">
+<li><blockquote>
+<p>Exporta la tabla partidos (créala previamente en liga) de la base de
+datos liga (estructura y datos).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Exporta la estructura y datos de la tabla partidos compactando el
+archivo (--compact).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Exporta <strong>únicamente la estructura (DDL)</strong> de la tabla
+partidos omitiendo sus datos.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Exporta <strong>únicamente los datos (DML en formato INSERT)</strong>
+omitiendo la creación de tablas.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Exporta toda la base de datos liga en un archivo estructurado en
+formato <strong>XML</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Exporta todas las tablas de liga a archivos separados en formato
+<strong>CSV</strong> utilizando parámetros de delimitación (--tab,
+etc.).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Exporta la base de datos liga completa con sentencias de base de
+datos incluidas (--databases).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Exporta la totalidad de bases de datos del servidor MySQL
+(--all-databases).</p>
+</blockquote></li>
+</ol></li>
+</ul>
+<p><strong>Ejercicio 5: Restauración lógica mediante consola y comandos
+internos</strong></p>
+<ul>
+<li><blockquote>
+<p>Ejecuta y documenta la restauración del respaldo completo generado de
+la base de datos utilizando dos vías:</p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p><strong>Opción A:</strong> A través de la redirección de entrada de
+comandos del sistema operativo (&lt;).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Opción B:</strong> Autenticado en el cliente de MySQL con la
+orden interactiva SOURCE o su equivalente \..</p>
+</blockquote></li>
+</ul></li>
+</ul>
+<h4
+id="bloque-iii-planificación-de-tareas-mediante-eventos-mysql-events">BLOQUE
+III: PLANIFICACIÓN DE TAREAS MEDIANTE EVENTOS (MYSQL EVENTS) <a class="headerlink" href="#bloque-iii-planificación-de-tareas-mediante-eventos-mysql-events" title="Enlace permanente">¶</a></h4>
+<p><strong>Ejercicio 6: Verificación y Activación del
+Planificador</strong></p>
+<ul>
+<li><blockquote>
+<p>Ejecuta el comando SQL para verificar el estado actual de la variable
+de sistema event_scheduler. ¿Qué valor obtienes y qué significa
+técnicamente cada estado posible (ON, OFF, DISABLED)?</p>
+</blockquote></li>
+<li><blockquote>
+<p>Si el planificador está en OFF, utiliza el comando SET GLOBAL para
+activarlo en caliente. Luego, verifica los procesos utilizando SHOW
+PROCESSLIST para confirmar la existencia del daemon event_scheduler.
+Explica qué información proporciona cada columna de este comando.</p>
+</blockquote></li>
+</ul>
+<p><strong>Ejercicio 7: Evento de Ejecución Única (AT)</strong></p>
+<ul>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Crea una tabla de log para pruebas:
+CREATE TABLE log_eventos (id INT AUTO_INCREMENT PRIMARY KEY, mensaje
+VARCHAR(100), fecha TIMESTAMP);</code></pre></div></li>
+<li><blockquote>
+<p>Crea un evento que se ejecute una única vez dentro de los próximos 5
+minutos. El cuerpo del evento debe insertar un registro en la tabla
+log_eventos. Identifica si te has apoyado en una IA y qué prompt has
+usado.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Verifica su ejecución consultando la tabla de logs e inspecciona con
+SHOW EVENTS para comprobar que, al no tener configurado PRESERVE, el
+evento se ha auto-eliminado tras finalizar.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Crea un segundo evento de ejecución única equivalente pero
+habilitando de forma explícita ON COMPLETION PRESERVE. Comprueba su
+estado una vez transcurrido el tiempo programado.</p>
+</blockquote></li>
+</ul>
+<p><strong>Ejercicio 8: Evento Recurrente Básico (EVERY)</strong></p>
+<ul>
+<li><blockquote>
+<p>Crea un evento programado para ejecutarse cada 1 minuto, que comience
+su vigencia pasados 3 minutos desde su creación, e inserte una entrada
+con el mensaje "Evento recurrente" en la tabla log_eventos.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Transcurridos 5 minutos de su ciclo de vida, ejecuta un SHOW EVENTS
+para inspeccionar su estado y haz un volcado de la tabla para ver las
+ejecuciones periódicas.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Ejecuta el comando SHOW CREATE EVENT [nombre_evento] y explica
+técnicamente qué información detallada te proporciona su estructura.</p>
+</blockquote></li>
+</ul>
+<p><strong>Ejercicio 9: Evento Recurrente con Fecha de Finalización
+(ENDS)</strong></p>
+<ul>
+<li><blockquote>
+<p>Diseña y ejecuta un evento equivalente al anterior que actúe de forma
+cíclica cada minuto, pero que declare una fecha límite de finalización
+(ENDS) a 5 minutos vista desde su puesta en marcha. Verifica la
+caducidad y detención del evento en el diccionario del sistema.</p>
+</blockquote></li>
+</ul>
+<p><strong>Ejercicio 10: Modificación de Eventos (ALTER
+EVENT)</strong></p>
+<ul>
+<li><blockquote>
+<p>Realiza las operaciones necesarias para modificar el evento
+recurrente con solo hora de inicio de forma dinámica, asignándole ahora
+una fecha de inicio y una fecha de fin específicas en caliente. Verifica
+que los metadatos se han actualizado de forma persistente.</p>
+</blockquote></li>
+</ul>
+<p><strong>Ejercicio 11: Diccionarios de Sistema y Auditoría de
+Logs</strong></p>
+<ul>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Realiza una consulta SELECT * directa sobre la tabla de catálogo
+INFORMATION_SCHEMA.EVENTS y compárala críticamente con los datos que
+expone SHOW EVENTS. ¿Qué columnas adicionales de alto valor
+administrativo localizas?</code></pre></div></li>
+<li><blockquote>
+<p>Accede al shell del host Linux y consulta los registros de ejecución
+del planificador mediante el log de errores de MySQL en el disco
+(/var/log/mysql/error.log). Filtra la información utilizando grep para
+buscar los eventos procesados.</p>
+</blockquote></li>
+</ul>
+<p><strong>Ejercicio 12: Práctica de Eventos Aplicados al
+Negocio</strong></p>
+<p>Completa de forma secuencial las siguientes actividades lógicas
+basadas en eventos:</p>
+<ul>
+<li><blockquote>
+<p><strong>A.</strong> Diseña un evento que, en un día y hora
+específicos, realice una copia de los datos de la tabla equipos (créala
+en liga previamente) en una tabla llamada equipos_temp. El evento debe
+limpiar previamente (TRUNCATE) cualquier dato obsoleto en la tabla
+destino.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>B.</strong> Ejecuta la orden del SGBD para verificar en qué
+momento temporal exacto está planificada la ejecución de la tarea del
+apartado anterior.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>C.</strong> Comprueba la consistencia de los datos en la
+tabla temporal tras dispararse el evento.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>D.</strong> Modifica el evento del apartado A para que, a
+partir de hoy, actúe de forma recurrente cada mes durante el plazo de un
+año.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>E.</strong> Vuelve a comprobar los metadatos lógicos para
+visualizar la actualización del momento de ejecución.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>F.</strong> Realiza una consulta que liste la totalidad de
+eventos creados bajo la base de datos liga.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>G.</strong> Borra uno de los eventos de prueba del sistema
+validando el control de excepciones (IF EXISTS).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>H.</strong> Apoyándote en una IA (especifica el prompt y el
+modelo utilizado), solicita el código para un evento deMySQL que durante
+<strong>1 hora</strong>, registre cada <strong>5 minutos</strong> los
+usuarios concurrentes conectados al servidor MySQL en una tabla de
+auditoría dedicada. Explica mediante comentarios de bloque en el código
+la funcionalidad de cada línea y demuestra su funcionamiento con al
+menos 2 sesiones activas simultáneamente en tu taller.</p>
+</blockquote></li>
+</ul>
+<h2 id="calificación">4. CALIFICACIÓN <a class="headerlink" href="#calificación" title="Enlace permanente">¶</a></h2>
+<blockquote>
+<p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
+través de la plataforma, la entrega del documento en formatos editables
+no permitidos (como .docx), capturas con identificación del alumno/a o
+la omisión de los enlaces de las fuentes documentales utilizadas
+penalizará gravemente la nota o invalidará la práctica.</p>
+</blockquote>
+<p>La actividad se calificará sobre un total de <strong>10
+puntos</strong> distribuidos de la siguiente forma:</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>Bloque / Criterio</strong></th>
+<th><strong>Excelente (100%)</strong></th>
+<th><strong>Aceptable (50%)</strong></th>
+<th><strong>Insuficiente (0%)</strong></th>
+<th><strong>Peso</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Bloque I: Motores, Físicos e Importación</strong></td>
+<td>Distinción perfecta de archivos físicos en disco, protocolo físico
+seguro en frío completado e importación CSV con LOAD DATA exitosa.</td>
+<td>Realizado, pero con explicaciones de motores incompletas o fallos de
+permisos al mover archivos de datos.</td>
+<td>Sin restaurar físicamente en frío o con sentencias SQL planos
+incorrectas.</td>
+<td><strong>20%</strong></td>
+</tr>
+<tr class="header">
+<td><strong>Bloque II: mysqldump y Restauración</strong></td>
+<td>Uso impecable de todos los modificadores de mysqldump requeridos,
+incluyendo DDL, DML, compactación y formatos. Restauración lógica
+exitosa por ambas vías.</td>
+<td>Comandos de mysqldump correctos, pero falta justificar algún
+parámetro o sólo se implementa una de las dos vías de restauración
+lógica.</td>
+<td>Comandos de consola erróneos o fallos graves en la redirección de
+entrada de datos.</td>
+<td><strong>20%</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Bloque III: Verificación y Eventos Básicos</strong></td>
+<td>Configuración de variables globales, creación correcta de eventos
+AT/EVERY/ENDS con y sin PRESERVE, justificando el uso del
+scheduler.</td>
+<td>Eventos creados, pero con errores menores en el cálculo de
+intervalos de fecha o mal entendimiento de la propiedad PRESERVE.</td>
+<td>El planificador de eventos no arranca o los eventos de prueba
+arrojan errores de sintaxis persistentes.</td>
+<td><strong>20%</strong></td>
+</tr>
+<tr class="header">
+<td><strong>Bloque III: Diccionario, Logs y Actividad LIGA</strong></td>
+<td>Auditoría correcta de logs de eventos en error.log de Linux,
+consultas a Information Schema precisas, evento de copia LIGA y evento
+de auditoría IA funcionales y comentados.</td>
+<td>Evento Liga completado, pero falta la extracción de logs del sistema
+Linux o el script de la IA carece de la explicación línea por línea
+requerida.</td>
+<td>No se completan las actividades aplicadas de eventos o no se
+demuestra el funcionamiento del evento de la IA.</td>
+<td><strong>20%</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Calidad de Documentación (Capturas)</strong></td>
+<td>Memoria impecable. Capturas legibles que identifican al autor de
+manera inequívoca (IP/prompt del host visible) y textos explicativos
+técnicos minuciosos.</td>
+<td>Documento bien estructurado. Capturas legibles pero falta
+identificar de manera clara al autor en alguna sección del
+laboratorio.</td>
+<td>Capturas borrosas o no se visualiza la IP/prompt del alumno,
+impidiendo la validación de autoría.</td>
+<td><strong>15%</strong></td>
+</tr>
+<tr class="header">
+<td><strong>Presentación y Estructura (PDF)</strong></td>
+<td>Documento limpio y profesional. Cumple las indicaciones formales
+(portada, texto justificado, negritas).</td>
+<td>Documento limpio. Faltan detalles de formato menores.</td>
+<td>Muy desorganizado y difícil de leer.</td>
+<td><strong>5%</strong></td>
+</tr>
+</tbody>
+</table></div>
+
+        </main>
+    </div>
+</body>
+</html>

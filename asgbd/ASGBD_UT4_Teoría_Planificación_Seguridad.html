@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASGBD - Ut4 Teoría Planificación Seguridad</title>
+    <style>
+    
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --bg-header: #1e3a8a;
+    --text-header: #ffffff;
+    --bg-body: #f8fafc;
+    --text-body: #1e293b;
+    --border-color: #cbd5e1;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-body);
+    color: var(--text-body);
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, [id], a[name] {
+    scroll-margin-top: 80px !important;
+}
+
+.headerlink {
+    display: inline-block;
+    margin-left: 0.4rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.8em;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
+h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
+    visibility: visible;
+    opacity: 1;
+}
+
+.headerlink:hover {
+    color: var(--primary);
+}
+
+#site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    background: var(--bg-header);
+    color: var(--text-header);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    height: 62px;
+}
+
+.site-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.top-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.top-nav .nav-btn {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+.top-nav .nav-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 9px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown:hover .dropbtn, .dropbtn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 320px;
+    max-width: 480px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 10001;
+    border: 1px solid #e2e8f0;
+    margin-top: 6px;
+}
+
+.dropdown-content a {
+    color: var(--text-body);
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.92rem;
+    border-bottom: 1px solid #f1f5f9;
+    line-height: 1.4;
+    transition: background 0.15s, color 0.15s;
+    word-break: break-word;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #eff6ff;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block !important;
+}
+
+#page-layout {
+    display: flex;
+    min-height: calc(100vh - 62px);
+}
+
+#left-panel {
+    width: 320px;
+    min-width: 320px;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 1.5rem 1.25rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: sticky;
+    top: 62px;
+    height: calc(100vh - 62px);
+}
+
+#left-panel h3 {
+    font-size: 1rem;
+    margin-top: 0;
+    color: #334155;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
+
+#left-panel nav#TOC, #left-panel #TOC {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+#left-panel ul {
+    list-style-type: none;
+    padding-left: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+#left-panel li {
+    margin: 6px 0;
+}
+
+#left-panel a {
+    color: #475569;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    display: block;
+    transition: color 0.15s;
+}
+
+#left-panel a:hover {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+#main-content {
+    flex: 1;
+    padding: 2.5rem 4rem;
+    box-sizing: border-box;
+    max-width: 100% !important;
+    width: calc(100% - 320px);
+    min-width: 0;
+}
+
+/* TABLAS ELEGANTES Y RESPONSIVE */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1.75rem 0;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    font-size: 0.93rem;
+    background: #ffffff;
+    table-layout: auto !important;
+}
+
+th, td {
+    padding: 10px 14px !important;
+    border: 1px solid #cbd5e1 !important;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+td p, th p {
+    margin: 0 !important;
+    padding: 2px 0 !important;
+}
+
+th {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #0f172a !important;
+}
+
+tr:nth-child(even) td {
+    background-color: #f8fafc !important;
+}
+
+tr:hover td {
+    background-color: #f1f5f9 !important;
+}
+
+/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
+.code-wrapper {
+    position: relative;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0f172a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #334155;
+    color: #f8fafc;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.copy-btn:hover {
+    background: #2563eb;
+}
+
+pre {
+    margin: 0 !important;
+    padding: 1.25rem 1.25rem !important;
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    overflow-x: auto !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+}
+
+code {
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+}
+
+p code, li code {
+    background: #e2e8f0;
+    color: #0f172a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
+
+/* RESPONSIVE DESIGN PARA MÓVILES Y TABLETS */
+@media (max-width: 768px) {
+    .header-container {
+        height: auto;
+        flex-direction: column;
+        padding: 0.75rem 1rem;
+        gap: 0.6rem;
+    }
+    
+    .site-title {
+        font-size: 1.05rem;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .site-title img {
+        height: 28px !important;
+    }
+
+    .top-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 0.35rem;
+    }
+
+    .top-nav .nav-btn, .dropbtn {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    .dropdown-content {
+        min-width: 240px;
+        max-width: 90vw;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #page-layout {
+        flex-direction: column;
+    }
+
+    #left-panel {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        position: static !important;
+        border-right: none !important;
+        border-bottom: 2px solid #e2e8f0;
+        padding: 1rem !important;
+    }
+
+    #main-content {
+        width: 100% !important;
+        padding: 1.25rem 1rem !important;
+    }
+
+    iframe {
+        height: 60vh !important;
+    }
+
+    th, td {
+        padding: 8px 10px !important;
+        font-size: 0.85rem !important;
+    }
+
+    pre {
+        padding: 0.85rem !important;
+        font-size: 0.82rem !important;
+    }
+}
+
+    </style>
+    <script>
+    
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.dropdown').forEach(dd => {
+        const btn = dd.querySelector('.dropbtn');
+        const content = dd.querySelector('.dropdown-content');
+        if (btn && content) {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = content.style.display === 'block';
+                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
+                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+                if (!isOpen) {
+                    content.style.display = 'block';
+                    btn.classList.add('active');
+                }
+            });
+        }
+    });
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
+        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+    });
+
+    // Controlador universal de clics en enlaces ancla (#...)
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const rawHref = this.getAttribute('href') || '';
+            const hashIdx = rawHref.indexOf('#');
+            if (hashIdx === -1) return;
+            const hash = rawHref.substring(hashIdx + 1);
+            if (!hash) return;
+            
+            let targetId = hash;
+            try { targetId = decodeURIComponent(hash); } catch(err) {}
+
+            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
+            if (!targetEl) {
+                for (let el of document.querySelectorAll('[id]')) {
+                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
+                        targetEl = el;
+                        break;
+                    }
+                }
+            }
+
+            if (targetEl) {
+                e.preventDefault();
+                const headerOffset = 75;
+                const elementPosition = targetEl.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                if (history.pushState) {
+                    history.pushState(null, null, '#' + targetId);
+                }
+            }
+        });
+    });
+});
+
+function copyCode(btn) {
+    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
+    navigator.clipboard.writeText(code).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = '✅ ¡Copiado!';
+        btn.style.background = '#16a34a';
+        setTimeout(() => {
+            btn.innerText = orig;
+            btn.style.background = '#334155';
+        }, 2000);
+    });
+}
+
+    </script>
+</head>
+<body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD &ndash; Ut4 Teoría Planificación Seguridad</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+      <a href="ASGBD_Presentacion.html" class="nav-btn">Presentación</a>
+      <a href="ASGBD_UT2_Tarea_Programacion_Scripts.html" class="nav-btn">Programación</a>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Teoría ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Teoria_Configuracion.html">ASGBD UT1 Teoria Configuracion</a>
+          <a href="ASGBD_UT2_Teoria_Scripts_Administracion.html">ASGBD UT2 Teoria Scripts Administracion</a>
+          <a href="ASGBD_UT3_Teoria_Usuarios_roles.html">ASGBD UT3 Teoria Usuarios roles</a>
+          <a href="ASGBD_UT4_Teoría_Planificación_Seguridad.html">ASGBD UT4 Teoría Planificación Seguridad</a>
+          <a href="ASGBD_UT5_Teoria_Optimizacion_Consultas.html">ASGBD UT5 Teoria Optimizacion Consultas</a>
+          <a href="ASGBD_UT6_Teoría_BD_Distribuidas_alta_disponibilidad.html">ASGBD UT6 Teoría BD Distribuidas alta disponibilidad</a>
+          <a href="ASGBD_Proyecto_integral.html">ASGBD Proyecto integral</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Tareas y Prácticas ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Tarea_Configuracion.html">ASGBD UT1 Tarea Configuracion</a>
+          <a href="ASGBD_UT1_Practica.html">ASGBD UT1 Practica</a>
+          <a href="ASGBD_UT2_Practica._Automatizacion_Mantenimiento.html">ASGBD UT2 Practica. Automatizacion Mantenimiento</a>
+          <a href="ASGBD_UT3_Practica_Auditoria_Automatizacion.html">ASGBD UT3 Practica Auditoria Automatizacion</a>
+          <a href="ASGBD_UT3_Tarea_Enunciado.html">ASGBD UT3 Tarea Enunciado</a>
+          <a href="ASGBD_UT4_Tarea_Eventos.html">ASGBD UT4 Tarea Eventos</a>
+          <a href="ASGBD_UT4_Practica_Automatizacion_Mantenimiento.html">ASGBD UT4 Practica Automatizacion Mantenimiento</a>
+          <a href="ASGBD_UT5_Practica_Automatizacion.html">ASGBD UT5 Practica Automatizacion</a>
+          <a href="ASGBD_UT5_Práctica_Tunning_Servidores_EXPLAIN_Avanzado.html">ASGBD UT5 Práctica Tunning Servidores EXPLAIN Avanzado</a>
+          <a href="ASGBD_UT5_Tarea_Seguridad.html">ASGBD UT5 Tarea Seguridad</a>
+          <a href="ASGBD_UT5_Tarea_Auditoría_Rendimiento_Indexacion.html">ASGBD UT5 Tarea Auditoría Rendimiento Indexacion</a>
+          <a href="ASGBD_UT6_Practica_BD_Distribuidas_Sharding.html">ASGBD UT6 Practica BD Distribuidas Sharding</a>
+          <a href="ASGBD_UT6_Practica_Alta_Disponibilidad.html">ASGBD UT6 Practica Alta Disponibilidad</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <aside id="left-panel">
+            <h3>Índice del Tema</h3>
+            <nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#ficha-técnica-de-la-unidad"
+id="toc-ficha-técnica-de-la-unidad">FICHA TÉCNICA DE LA UNIDAD </a></li>
+<li><a href="#índice-de-contenidos" id="toc-índice-de-contenidos">ÍNDICE
+DE CONTENIDOS</a></li>
+<li><a href="#introducción-y-contextualización"
+id="toc-introducción-y-contextualización">1. INTRODUCCIÓN Y
+CONTEXTUALIZACIÓN</a></li>
+<li><a href="#planificación-de-tareas-automáticas-mediante-eventos"
+id="toc-planificación-de-tareas-automáticas-mediante-eventos">2.
+PLANIFICACIÓN DE TAREAS AUTOMÁTICAS MEDIANTE EVENTOS</a>
+<ul>
+<li><a href="#introducción-al-planificador-de-eventos-event-scheduler"
+id="toc-introducción-al-planificador-de-eventos-event-scheduler">2.1.
+Introducción al Planificador de Eventos (Event Scheduler)</a></li>
+<li><a href="#verificación-y-activación-del-planificador"
+id="toc-verificación-y-activación-del-planificador">2.2. Verificación y
+Activación del Planificador</a></li>
+<li><a href="#section" id="toc-section"></a></li>
+<li><a href="#sintaxis-de-creación-de-eventos-create-event"
+id="toc-sintaxis-de-creación-de-eventos-create-event">2.3. Sintaxis de
+Creación de Eventos (CREATE EVENT)</a></li>
+<li><a href="#ejemplos-prácticos-de-creación-de-eventos"
+id="toc-ejemplos-prácticos-de-creación-de-eventos">2.4. Ejemplos
+Prácticos de Creación de Eventos</a></li>
+<li><a
+href="#gestión-de-eventos-modificación-activación-desactivación-y-eliminación"
+id="toc-gestión-de-eventos-modificación-activación-desactivación-y-eliminación">2.5.
+Gestión de Eventos: Modificación, Activación, Desactivación y
+Eliminación</a></li>
+<li><a href="#visualización-y-monitorización-de-eventos-en-el-sistema"
+id="toc-visualización-y-monitorización-de-eventos-en-el-sistema">2.6.
+Visualización y Monitorización de Eventos en el Sistema</a></li>
+</ul></li>
+<li><a href="#gestión-de-la-seguridad-de-los-datos"
+id="toc-gestión-de-la-seguridad-de-los-datos">3. GESTIÓN DE LA SEGURIDAD
+DE LOS DATOS </a>
+<ul>
+<li><a href="#clasificación-y-tipos-de-copias-de-seguridad-backup"
+id="toc-clasificación-y-tipos-de-copias-de-seguridad-backup">3.1.
+Clasificación y Tipos de Copias de Seguridad (Backup)</a></li>
+<li><a href="#directorio-de-datos-de-mysql-y-estructura-de-archivos"
+id="toc-directorio-de-datos-de-mysql-y-estructura-de-archivos">3.2.
+Directorio de Datos de MySQL y Estructura de Archivos</a></li>
+<li><a href="#copias-de-seguridad-físicas-o-binarias"
+id="toc-copias-de-seguridad-físicas-o-binarias">3.3. Copias de Seguridad
+Físicas o Binarias</a></li>
+<li><a href="#copias-de-seguridad-lógicas-o-textuales"
+id="toc-copias-de-seguridad-lógicas-o-textuales">3.4. Copias de
+Seguridad Lógicas o Textuales</a>
+<ul>
+<li><a href="#sentencias-sql-de-importaciónexportación"
+id="toc-sentencias-sql-de-importaciónexportación">3.4.1. Sentencias SQL
+de Importación/Exportación</a></li>
+<li><a href="#uso-avanzado-de-mysqldump"
+id="toc-uso-avanzado-de-mysqldump">3.4.2. Uso Avanzado de
+mysqldump</a></li>
+</ul></li>
+<li><a href="#restauración-de-copias-de-seguridad-lógicas"
+id="toc-restauración-de-copias-de-seguridad-lógicas">3.5. Restauración
+de Copias de Seguridad Lógicas</a></li>
+<li><a href="#gestión-de-backups-mediante-interfaces-gráficas"
+id="toc-gestión-de-backups-mediante-interfaces-gráficas">3.6. Gestión
+de Backups mediante Interfaces Gráficas</a></li>
+</ul></li>
+<li><a href="#buenas-prácticas" id="toc-buenas-prácticas">4. BUENAS
+PRÁCTICAS</a></li>
+</ul>
+</nav>
+        </aside>
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT4_Teoría_Planificación_Seguridad.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+<header id="title-block-header">
+<h1 class="title"><p><span id="_1udktzfa19rd"
+class="anchor"></span>Unidad 4: </p>
+<p><span id="_3njx1jfwe0ud" class="anchor"></span>PLANIFICACIÓN DE
+TAREAS Y SEGURIDAD EN BBDD</p></h1>
+</header>
+
+<h3 id="ficha-técnica-de-la-unidad">FICHA TÉCNICA DE LA UNIDAD  <a class="headerlink" href="#ficha-técnica-de-la-unidad" title="Enlace permanente">¶</a></h3>
+<div class="table-wrapper"><table>
+<tbody>
+<tr class="header">
+<td><strong>Unidad Didáctica</strong></td>
+<td>Unidad 4: Planificación de Tareas y Seguridad en Bases de Datos</td>
+</tr>
+<tr class="odd">
+<td><strong>Resultados de Aprendizaje</strong></td>
+<td><p><strong>RA3:</strong> Automatiza tareas de administración del
+sistema gestor, realizando guiones y programando tareas.</p>
+<p><strong>RA6:</strong> Asegura la disponibilidad y recuperación de la
+información aplicando políticas de copias de seguridad y
+replicación.</p></td>
+</tr>
+<tr class="header">
+<td><strong>Criterios de Evaluación</strong></td>
+<td><p><strong>CE 3.b:</strong> Se ha configurado el programador de
+tareas del SGBD para programar la ejecución periódica de tareas.</p>
+<p><strong>CE 6.a:</strong> Se han planificado y ejecutado copias de
+seguridad lógicas (exportación de esquemas) y físicas.</p>
+<p><strong>CE 6.b:</strong> Se han diseñado estrategias de recuperación
+de desastres ante fallos lógicos o físicos del almacenamiento.</p>
+<p><strong>CE 6.c:</strong> Se ha configurado el modo de recuperación
+del SGBD (logs de transacciones activos, archivado).</p>
+<p><strong>CE 6.e:</strong> Se ha verificado la integridad de las copias
+de seguridad mediante restauraciones automatizadas.</p></td>
+</tr>
+<tr class="odd">
+<td><strong>Tiempo</strong></td>
+<td>12 horas (equivalente a 4 semanas de clase en régimen
+presencial)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="índice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#índice-de-contenidos" title="Enlace permanente">¶</a></h3>
+<p><a href="#introducción-y-contextualización"><u>1. INTRODUCCIÓN Y
+CONTEXTUALIZACIÓN</u></a></p>
+<p><a href="#planificación-de-tareas-automáticas-mediante-eventos"><u>2.
+PLANIFICACIÓN DE TAREAS AUTOMÁTICAS MEDIANTE EVENTOS</u></a></p>
+<blockquote>
+<p><a
+href="#introducción-al-planificador-de-eventos-event-scheduler"><u>2.1.
+Introducción al Planificador de Eventos (Event Scheduler)</u></a></p>
+<p><a href="#verificación-y-activación-del-planificador"><u>2.2.
+Verificación y Activación del Planificador</u></a></p>
+<p><a href="#sintaxis-de-creación-de-eventos-create-event"><u>2.3.
+Sintaxis de Creación de Eventos (CREATE EVENT)</u></a></p>
+<p><a href="#ejemplos-prácticos-de-creación-de-eventos"><u>2.4. Ejemplos
+Prácticos de Creación de Eventos</u></a></p>
+<p><a
+href="#gestión-de-eventos-modificación-activación-desactivación-y-eliminación"><u>2.5.
+Gestión de Eventos: Modificación, Activación, Desactivación y
+Eliminación</u></a></p>
+<p><a
+href="#visualización-y-monitorización-de-eventos-en-el-sistema"><u>2.6.
+Visualización y Monitorización de Eventos en el Sistema</u></a></p>
+</blockquote>
+<p><a href="#gestión-de-la-seguridad-de-los-datos"><u>3. GESTIÓN DE LA
+SEGURIDAD DE LOS DATOS</u></a></p>
+<blockquote>
+<p><a
+href="#clasificación-y-tipos-de-copias-de-seguridad-backup"><u>3.1.
+Clasificación y Tipos de Copias de Seguridad (Backup)</u></a></p>
+<p><a
+href="#directorio-de-datos-de-mysql-y-estructura-de-archivos"><u>3.2.
+Directorio de Datos de MySQL y Estructura de Archivos</u></a></p>
+<p><a href="#copias-de-seguridad-físicas-o-binarias"><u>3.3. Copias de
+Seguridad Físicas o Binarias</u></a></p>
+<p><a href="#copias-de-seguridad-lógicas-o-textuales"><u>3.4. Copias de
+Seguridad Lógicas o Textuales</u></a></p>
+<p><a href="#sentencias-sql-de-importaciónexportación"><u>3.4.1.
+Sentencias SQL de Importación/Exportación</u></a></p>
+<p><a href="#uso-avanzado-de-mysqldump"><u>3.4.2. Uso Avanzado de
+mysqldump</u></a></p>
+<p><a href="#restauración-de-copias-de-seguridad-lógicas"><u>3.5.
+Restauración de Copias de Seguridad Lógicas</u></a></p>
+<p><a href="#gestión-de-backups-mediante-interfaces-gráficas"><u>3.6.
+Gestión de Backups mediante Interfaces Gráficas</u></a></p>
+</blockquote>
+<p><a href="#buenas-prácticas"><u>4. BUENAS PRÁCTICAS</u></a></p>
+<h1 id="introducción-y-contextualización">1. INTRODUCCIÓN Y
+CONTEXTUALIZACIÓN <a class="headerlink" href="#introducción-y-contextualización" title="Enlace permanente">¶</a></h1>
+<p>El papel de un Administrador de Sistemas de Bases de Datos (DBA) y de
+un Administrador de Sistemas (SysAdmin) implica garantizar la
+continuidad del negocio mediante políticas de alta disponibilidad, la
+programación inteligente de tareas recurrentes y el diseño de planes de
+contingencia ante pérdidas de datos.</p>
+<p>Esta unidad didáctica aborda de forma integral la automatización
+interna de tareas de mantenimiento mediante el planificador nativo de
+eventos de MySQL y profundiza en las bases teóricas y herramientas
+prácticas para salvaguardar y restaurar bases de datos en entornos de
+producción.</p>
+<p>Esta unidad se relaciona directamente con el módulo de
+<em>Implantación de Sistemas Operativos</em> (1º ASIR) al administrar y
+interactuar con servicios y rutas del sistema operativo Linux host (como
+directorios /var/lib/mysql/ o permisos de log de errores), y sienta las
+bases lógicas de seguridad y recuperación necesarias para el módulo de
+<em>Implantación de Aplicaciones Web</em> (2º ASIR), donde las bases de
+datos mantenidas actuarán como el motor de persistencia back-end de
+servidores de producción corporativos.</p>
+<h1 id="planificación-de-tareas-automáticas-mediante-eventos">2.
+PLANIFICACIÓN DE TAREAS AUTOMÁTICAS MEDIANTE EVENTOS <a class="headerlink" href="#planificación-de-tareas-automáticas-mediante-eventos" title="Enlace permanente">¶</a></h1>
+<h2 id="introducción-al-planificador-de-eventos-event-scheduler">2.1.
+Introducción al Planificador de Eventos (Event Scheduler) <a class="headerlink" href="#introducción-al-planificador-de-eventos-event-scheduler" title="Enlace permanente">¶</a></h2>
+<p>Un evento en MySQL es un objeto de base de datos que encapsula
+sentencias SQL destinadas a ejecutarse de forma automática en un momento
+de tiempo programado o a intervalos periódicos.</p>
+<p>En entornos Linux, los eventos de MySQL sustituyen de manera óptima a
+las herramientas del programador de sistema operativo (<em>cron
+jobs</em>). Ejecutar las tareas de mantenimiento directamente en el SGBD
+reduce la sobrecarga de conexiones TCP/IP de scripts externos de
+mantenimiento y mejora la portabilidad de los modelos de base de datos
+entre distintos entornos.</p>
+<h2 id="verificación-y-activación-del-planificador">2.2. Verificación y
+Activación del Planificador <a class="headerlink" href="#verificación-y-activación-del-planificador" title="Enlace permanente">¶</a></h2>
+<p>El planificador de eventos funciona como un hilo daemon en el
+servidor. El estado del planificador se controla mediante la variable de
+sistema global event_scheduler. Sus valores pueden ser:</p>
+<ul>
+<li><blockquote>
+<p><strong>OFF (o 0):</strong> El hilo del planificador está parado.
+(Valor inicial por defecto en muchas distribuciones).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>ON (o 1):</strong> El planificador está activo y procesando
+la cola de tareas automáticas.</p>
+</blockquote></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DISABLED: El hilo está deshabilitado físicamente y
+no se puede activar dinámicamente en caliente.</code></pre></div></li>
+</ul>
+<p><strong>Verificación:</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SHOW VARIABLES LIKE 'event_scheduler';
+-- O alternativamente mediante consulta directa:
+SELECT @@global.event_scheduler;</code></pre></div><strong>Activación Dinámica (en caliente):</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SET GLOBAL event_scheduler = ON;</code></pre></div><strong>Configuración Permanente:</strong></p>
+<p>Para evitar que se desactive tras un reinicio del servicio, se añade
+al fichero de configuración (/etc/mysql/mysql.conf.d/mysqld.cnf o
+my.ini):</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>[mysqld]
+event_scheduler=ON</code></pre></div></h2>
+<h2 id="sintaxis-de-creación-de-eventos-create-event">2.3. Sintaxis de
+Creación de Eventos (CREATE EVENT) <a class="headerlink" href="#sintaxis-de-creación-de-eventos-create-event" title="Enlace permanente">¶</a></h2>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>CREATE
+[DEFINER = { user | CURRENT_USER }]
+EVENT
+[IF NOT EXISTS] event_name
+ON SCHEDULE schedule
+[ON COMPLETION [NOT] PRESERVE]
+[ENABLE | DISABLE | DISABLE ON SLAVE]
+[COMMENT 'string']
+DO event_body;
+schedule: {
+AT timestamp [+ INTERVAL interval] ...
+| EVERY interval
+[STARTS timestamp [+ INTERVAL interval] ...]
+[ENDS timestamp [+ INTERVAL interval] ...]
+}</code></pre></div></p>
+<p>Cláusulas Clave:</p>
+<ul>
+<li><blockquote>
+<p><strong>DEFINER:</strong> Define el nivel de privilegios y el
+contexto de seguridad con el que se ejecutará el cuerpo del evento.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>ON SCHEDULE:</strong> Define cuándo actúa. AT se emplea para
+ejecuciones únicas, mientras que EVERY planifica intervalos
+cíclicos.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>ON COMPLETION PRESERVE:</strong> Al activarlo, el evento no
+se elimina del diccionario de datos una vez haya concluido su vigencia
+temporal o su ejecución única (por defecto es NOT PRESERVE y el SGBD lo
+destruye de forma automática).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>DISABLE ON SLAVE:</strong> Evita que el evento se replique y
+ejecute de manera concurrente en servidores esclavos de lectura,
+limitando su ejecución exclusivamente al servidor maestro.</p>
+</blockquote></li>
+</ul>
+<h2 id="ejemplos-prácticos-de-creación-de-eventos">2.4. Ejemplos
+Prácticos de Creación de Eventos <a class="headerlink" href="#ejemplos-prácticos-de-creación-de-eventos" title="Enlace permanente">¶</a></h2>
+<p><strong>Ejemplo 1: Evento de Ejecución Única (AT)</strong></p>
+<p>Un evento que se ejecutará de forma única pasados exactamente 5
+minutos desde su creación para depurar registros huérfanos. Se mantendrá
+registrado en el sistema tras concluir.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>CREATE EVENT IF NOT EXISTS ev_depurar_huerfanos_unico
+ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 5 MINUTE
+ON COMPLETION PRESERVE
+COMMENT 'Limpia registros de transacciones huérfanas una única
+vez.'
+DO
+DELETE FROM tienda.pedidos_temporales
+WHERE completado = 0 AND fecha_creacion &lt; NOW() - INTERVAL 1
+HOUR;</code></pre></div></h5>
+<p><strong>Ejemplo 2: Evento Periódico (EVERY) con Bloque de Sentencias
+y delimitador</strong></p>
+<p>Para programar un evento que ejecute múltiples operaciones complejas,
+se debe encapsular la lógica en un bloque estructurado (BEGIN ... END) y
+redefinir el delimitador temporal de fin de instrucción:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER $$
+CREATE EVENT IF NOT EXISTS ev_mantenimiento_mensual_ventas
+ON SCHEDULE EVERY 1 MONTH
+STARTS (CURRENT_TIMESTAMP + INTERVAL 1 DAY) -- Empieza mañana
+COMMENT 'Agrupa ventas del mes pasado en histórico y vacía tablas
+transaccionales.'
+DO
+BEGIN
+-- 1. Copiar históricos de facturas
+INSERT INTO historico.facturas_antiguas
+SELECT * FROM tienda.facturas
+WHERE fecha_emision &lt; DATE_SUB(NOW(), INTERVAL 1 MONTH);
+-- 2. Eliminar de la tabla caliente de producción
+DELETE FROM tienda.facturas
+WHERE fecha_emision &lt; DATE_SUB(NOW(), INTERVAL 1 MONTH);
+END$$
+DELIMITER ;</code></pre></div></p>
+<h2
+id="gestión-de-eventos-modificación-activación-desactivación-y-eliminación">2.5.
+Gestión de Eventos: Modificación, Activación, Desactivación y
+Eliminación <a class="headerlink" href="#gestión-de-eventos-modificación-activación-desactivación-y-eliminación" title="Enlace permanente">¶</a></h2>
+<p><strong>Modificación de Eventos (ALTER EVENT)</strong></p>
+<p>Permite cambiar las propiedades de planificación, estado o
+comportamiento de un evento existente de forma dinâmica sin afectar al
+diccionario de datos:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Desactivar temporalmente el evento de mantenimiento
+ALTER EVENT ev_mantenimiento_mensual_ventas DISABLE;
+-- Modificar su planificación para que se ejecute a partir de hoy en
+tiempo real
+ALTER EVENT ev_mantenimiento_mensual_ventas
+ON SCHEDULE EVERY 1 MONTH STARTS NOW()
+ENABLE;</code></pre></div></p>
+<p><strong>Borrado de Eventos (DROP EVENT)</strong></p>
+<p>Elimina definitivamente un evento del servidor de bases de datos:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DROP EVENT IF EXISTS ev_depurar_huerfanos_unico;</code></pre></div></p>
+<h2 id="visualización-y-monitorización-de-eventos-en-el-sistema">2.6.
+Visualización y Monitorización de Eventos en el Sistema <a class="headerlink" href="#visualización-y-monitorización-de-eventos-en-el-sistema" title="Enlace permanente">¶</a></h2>
+<p><strong>Listado de Eventos Activos en el Esquema actual</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SHOW EVENTS;</code></pre></div></h5>
+<p><strong>Consulta del Diccionario de Datos del Sistema:</strong></p>
+<p>La vista de catálogo INFORMATION_SCHEMA.EVENTS almacena metadatos
+críticos para auditar el rendimiento y planificación de tareas (como
+cuándo fue la última ejecución real):</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT EVENT_SCHEMA, EVENT_NAME, STATUS, LAST_EXECUTED FROM
+INFORMATION_SCHEMA.EVENTS WHERE EVENT_SCHEMA = 'tienda';</code></pre></div></h5>
+<p><strong>Logs de errores y estado del planificador:</strong></p>
+<p>El inicio, parada o fallos en tiempo de ejecución del cuerpo de un
+evento se registran en el fichero de errores de MySQL en disco. En
+Linux, se puede auditar con:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>sudo cat /var/log/mysql/error.log | grep -i "Event"</code></pre></div></p>
+<h1 id="gestión-de-la-seguridad-de-los-datos">3. GESTIÓN DE LA SEGURIDAD
+DE LOS DATOS  <a class="headerlink" href="#gestión-de-la-seguridad-de-los-datos" title="Enlace permanente">¶</a></h1>
+<h2 id="clasificación-y-tipos-de-copias-de-seguridad-backup">3.1.
+Clasificación y Tipos de Copias de Seguridad (Backup) <a class="headerlink" href="#clasificación-y-tipos-de-copias-de-seguridad-backup" title="Enlace permanente">¶</a></h2>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>Tipo de Clasificación</strong></th>
+<th><strong>Variantes</strong></th>
+<th><strong>Explicación Técnica y Comportamiento</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Disponibilidad del Servicio</strong></td>
+<td><strong>En Frío (<em>Offline</em>)</strong></td>
+<td>Se detiene el servidor de base de datos. No hay transacciones.
+Garantiza consistencia absoluta de archivos pero introduce
+<em>downtime</em>.</td>
+</tr>
+<tr class="header">
+<td></td>
+<td><strong>En Caliente (<em>Online</em>)</strong></td>
+<td>El servidor sigue activo. Permite lecturas y escrituras
+concurrentes. Requiere motores transaccionales (InnoDB) para evitar
+incoherencias.</td>
+</tr>
+<tr class="odd">
+<td><strong>Formato del Respaldo</strong></td>
+<td><strong>Física o Binaria</strong></td>
+<td>Copia directa de archivos de datos estructurados de disco. Velocidad
+de restauración y copia muy rápida. Poca portabilidad.</td>
+</tr>
+<tr class="header">
+<td></td>
+<td><strong>Lógica o Textual</strong></td>
+<td>Exporta la información a sentencias SQL legibles (CREATE, INSERT) o
+texto plano delimitado. Excelente portabilidad. Lentitud en
+restauración.</td>
+</tr>
+<tr class="odd">
+<td><strong>Alcance de la Información</strong></td>
+<td><strong>Completa (<em>Full</em>)</strong></td>
+<td>Respaldo del 100% de esquemas, vistas, índices y datos del
+servidor.</td>
+</tr>
+<tr class="header">
+<td></td>
+<td><strong>Incremental</strong></td>
+<td>Respalda únicamente los bloques de datos modificados desde el último
+backup realizado.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="directorio-de-datos-de-mysql-y-estructura-de-archivos">3.2.
+Directorio de Datos de MySQL y Estructura de Archivos <a class="headerlink" href="#directorio-de-datos-de-mysql-y-estructura-de-archivos" title="Enlace permanente">¶</a></h2>
+<p>En sistemas Linux, MySQL utiliza el siguiente directorio por defecto
+para el almacenamiento físico: /var/lib/mysql/</p>
+<p>Dentro de esta ruta se crea un directorio para cada base de datos.
+Los archivos que componen una tabla física dependen directamente de su
+motor de almacenamiento:</p>
+<ul>
+<li><blockquote>
+<p><strong>Archivos MyISAM:</strong></p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p>.frm: Definición y metadatos de la estructura de la tabla (en desuso
+en MySQL 8.0).</p>
+</blockquote></li>
+<li><blockquote>
+<p>.MYD (<em>MyData</em>): Almacena los registros de datos físicos de la
+tabla.</p>
+</blockquote></li>
+<li><blockquote>
+<p>.myi (<em>MyIndex</em>): Almacena los índices estructurados de
+MyISAM.</p>
+</blockquote></li>
+</ul></li>
+<li><blockquote>
+<p><strong>Archivos InnoDB:</strong></p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p>.ibd: Almacena conjuntamente los datos lógicos y los índices de una
+tabla de tipo InnoDB (siempre que la variable global de motor
+innodb_file_per_table esté activada).</p>
+</blockquote></li>
+</ul></li>
+</ul>
+<h2 id="copias-de-seguridad-físicas-o-binarias">3.3. Copias de Seguridad
+Físicas o Binarias <a class="headerlink" href="#copias-de-seguridad-físicas-o-binarias" title="Enlace permanente">¶</a></h2>
+<p><strong>Operación de copia física en caliente de tablas
+MyISAM:</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- 1. Cerrar tablas e impedir escrituras externas bloqueando para
+lectura
+FLUSH TABLES producto FOR EXPORT;</code></pre></div><em>(En este punto, el SysAdmin copia de forma segura los archivos
+.MYD y .myi de la ruta física /var/lib/mysql/tienda/ a un directorio
+externo de almacenamiento).</em></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- 2. Liberar el bloqueo para restaurar la operatividad en caliente
+del servidor
+UNLOCK TABLES;</code></pre></div><strong>Operación de restauración física de tablas InnoDB (DISCARD /
+IMPORT):</strong></p>
+<p>Dado que InnoDB gestiona su propio espacio de tablas
+(<em>tablespace</em>), la restauración física de un archivo .ibd de
+forma individual requiere el siguiente procedimiento:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- 1. Desasociar el espacio de tablas lógico actual en MySQL
+ALTER TABLE tienda.producto DISCARD TABLESPACE;</code></pre></div><em>(El SysAdmin copia de forma manual el archivo físico
+producto.ibd de respaldo al directorio /var/lib/mysql/tienda/ y le
+asigna la propiedad de usuario necesaria: chown mysql:mysql)</em>.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- 2. Importar el nuevo espacio de tablas restaurado
+ALTER TABLE tienda.producto IMPORT TABLESPACE;</code></pre></div>3.4. Copias de
+Seguridad Lógicas o Textuales</h2>
+<h3 id="sentencias-sql-de-importaciónexportación">3.4.1. Sentencias SQL
+de Importación/Exportación <a class="headerlink" href="#sentencias-sql-de-importaciónexportación" title="Enlace permanente">¶</a></h3>
+<p><strong>Exportación de Datos (SELECT ... INTO OUTFILE)</strong></p>
+<p>Vuelca los datos de una consulta en formato de texto plano
+estructurado. Requiere el uso del directorio seguro de MySQL (auditable
+mediante la variable global secure_file_priv):</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT codigo, nombre, cantidad_en_stock INTO OUTFILE
+'/var/lib/mysql-files/fabricante_backup.txt' FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n' FROM tienda.fabricante;</code></pre></div><strong>Importación de Datos (LOAD DATA)</strong></p>
+<p>Carga un archivo de texto estructurado de forma inmediata en una
+tabla previamente definida:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>LOAD DATA INFILE '/var/lib/mysql-files/fabricante_backup.txt' INTO
+TABLE tienda.fabricante_copia FIELDS TERMINATED BY ',' LINES TERMINATED
+BY '\n';</code></pre></div>3.4.2. Uso Avanzado de
+mysqldump</h3>
+<p>La herramienta principal de administración de copias lógicas en
+consola es mysqldump. Su sintaxis y modos de uso principales son:</p>
+<p><strong>A. Exportar una única tabla de una base de datos
+específica:</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>mysqldump -u root -p tienda producto &gt;
+backup_producto_tienda.sql</code></pre></div><strong>B. Exportar una o varias bases de datos completas (incluye
+sentencias CREATE DATABASE):</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>mysqldump -u root -p --databases tienda biblioteca &gt;
+backup_sistemas.sql</code></pre></div><strong>C. Exportar toda la instancia de MySQL (todas las bases de
+datos de usuario y sistema):</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>mysqldump -u root -p --all-databases &gt;
+backup_completo_servidor.sql</code></pre></div><strong>Parámetros Útiles de Optimización de mysqldump:</strong></p>
+<ul>
+<li><blockquote>
+<p>--no-data: Copia únicamente la estructura de las tablas (crea el
+esquema DDL), omitiendo la inserción de datos.</p>
+</blockquote></li>
+<li><blockquote>
+<p>--no-create-info: Copia exclusivamente los datos en sentencias INSERT
+(DML), útil para poblar tablas existentes sin alterarlas.</p>
+</blockquote></li>
+<li><blockquote>
+<p>--single-transaction: Permite realizar copias consistentes en
+caliente de tablas <strong>InnoDB</strong> sin bloquear las
+transacciones ni escrituras concurrentes del servidor.</p>
+</blockquote></li>
+</ul>
+<h2 id="restauración-de-copias-de-seguridad-lógicas">3.5. Restauración
+de Copias de Seguridad Lógicas <a class="headerlink" href="#restauración-de-copias-de-seguridad-lógicas" title="Enlace permanente">¶</a></h2>
+<p>Para ejecutar las sentencias SQL contenidas en un archivo de volcado
+lógico de manera externa, se emplea el cliente estándar de terminal de
+MySQL y el operador de redirección:</p>
+<p><strong>Opción A: Desde el terminal del sistema operativo
+(Redirección externa &lt;)</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Si el backup tiene sentencias 'CREATE DATABASE' integradas:
+mysql -u root -p &lt; backup_sistemas.sql
+-- Si el backup no las tiene, se especifica la base de datos de
+destino:
+mysql -u root -p tienda &lt; backup_producto_tienda.sql</code></pre></div><strong>Opción B: Desde el intérprete de comandos interno de MySQL
+(source)</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>mysql&gt; USE tienda;
+mysql&gt; SOURCE /var/lib/mysql-files/backup_producto_tienda.sql;</code></pre></div>3.6. Gestión
+de Backups mediante Interfaces Gráficas</h2>
+<ul>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>MySQL Workbench: Ofrece el módulo Data
+Export y Data Import que encapsulan el
+funcionamiento de la utilidad de consola mysqldump bajo una interfaz
+gráfica de pestañas para exportar e importar cómodamente esquemas o
+carpetas autocontenidas de proyectos.</code></pre></div></li>
+<li><blockquote>
+<p><strong>phpMyAdmin:</strong> Proporciona un entorno web de
+administración que permite descargar respaldos comprimidos de bases de
+datos directamente mediante el navegador, ajustando parámetros de
+exportación DDL/DML, y subir ficheros .sql para su ejecución mediante el
+cargador integrado.</p>
+</blockquote></li>
+</ul>
+<h1 id="buenas-prácticas">4. BUENAS PRÁCTICAS <a class="headerlink" href="#buenas-prácticas" title="Enlace permanente">¶</a></h1>
+<p>Como administradores de sistemas gestores de bases de datos, podemos
+automatizar de manera muy ágil rutinas de mantenimiento complejas
+combinando de forma segura ambas partes de la materia:</p>
+<ol type="1">
+<li><blockquote>
+<p><strong>Purga periódica de Logs transaccionales:</strong> Diseñar un
+evento diario que vacíe tablas de errores transaccionales volátiles de
+poco valor histórico antes de que se ejecute la copia lógica de
+seguridad (mysqldump). De esta forma, reducimos el peso en disco del
+backup y optimizamos el almacenamiento.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Historial de Operaciones de Backup en Eventos:</strong> Al
+planificar tareas que copien tablas transaccionales a tablas temporales
+locales (por ejemplo, equipos a equipos_temp), es recomendable registrar
+una entrada en un log de eventos propio que documente la hora exacta y
+el usuario que disparó la operación para que esta información quede
+recogida y salvaguardada en la auditoría general del sistema.</p>
+</blockquote></li>
+</ol>
+
+        </main>
+    </div>
+</body>
+</html>

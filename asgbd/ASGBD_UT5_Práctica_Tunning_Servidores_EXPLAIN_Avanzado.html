@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASGBD - Ut5 Práctica Tunning Servidores Explain Avanzado</title>
+    <style>
+    
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --bg-header: #1e3a8a;
+    --text-header: #ffffff;
+    --bg-body: #f8fafc;
+    --text-body: #1e293b;
+    --border-color: #cbd5e1;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-body);
+    color: var(--text-body);
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, [id], a[name] {
+    scroll-margin-top: 80px !important;
+}
+
+.headerlink {
+    display: inline-block;
+    margin-left: 0.4rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.8em;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
+h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
+    visibility: visible;
+    opacity: 1;
+}
+
+.headerlink:hover {
+    color: var(--primary);
+}
+
+#site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    background: var(--bg-header);
+    color: var(--text-header);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    height: 62px;
+}
+
+.site-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.top-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.top-nav .nav-btn {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+.top-nav .nav-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 9px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown:hover .dropbtn, .dropbtn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 320px;
+    max-width: 480px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 10001;
+    border: 1px solid #e2e8f0;
+    margin-top: 6px;
+}
+
+.dropdown-content a {
+    color: var(--text-body);
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.92rem;
+    border-bottom: 1px solid #f1f5f9;
+    line-height: 1.4;
+    transition: background 0.15s, color 0.15s;
+    word-break: break-word;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #eff6ff;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block !important;
+}
+
+#page-layout {
+    display: flex;
+    min-height: calc(100vh - 62px);
+}
+
+#left-panel {
+    width: 320px;
+    min-width: 320px;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 1.5rem 1.25rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: sticky;
+    top: 62px;
+    height: calc(100vh - 62px);
+}
+
+#left-panel h3 {
+    font-size: 1rem;
+    margin-top: 0;
+    color: #334155;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
+
+#left-panel nav#TOC, #left-panel #TOC {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+#left-panel ul {
+    list-style-type: none;
+    padding-left: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+#left-panel li {
+    margin: 6px 0;
+}
+
+#left-panel a {
+    color: #475569;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    display: block;
+    transition: color 0.15s;
+}
+
+#left-panel a:hover {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+#main-content {
+    flex: 1;
+    padding: 2.5rem 4rem;
+    box-sizing: border-box;
+    max-width: 100% !important;
+    width: calc(100% - 320px);
+    min-width: 0;
+}
+
+/* TABLAS ELEGANTES Y RESPONSIVE */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1.75rem 0;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    font-size: 0.93rem;
+    background: #ffffff;
+    table-layout: auto !important;
+}
+
+th, td {
+    padding: 10px 14px !important;
+    border: 1px solid #cbd5e1 !important;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+td p, th p {
+    margin: 0 !important;
+    padding: 2px 0 !important;
+}
+
+th {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #0f172a !important;
+}
+
+tr:nth-child(even) td {
+    background-color: #f8fafc !important;
+}
+
+tr:hover td {
+    background-color: #f1f5f9 !important;
+}
+
+/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
+.code-wrapper {
+    position: relative;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0f172a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #334155;
+    color: #f8fafc;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.copy-btn:hover {
+    background: #2563eb;
+}
+
+pre {
+    margin: 0 !important;
+    padding: 1.25rem 1.25rem !important;
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    overflow-x: auto !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+}
+
+code {
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+}
+
+p code, li code {
+    background: #e2e8f0;
+    color: #0f172a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
+
+/* RESPONSIVE DESIGN PARA MÓVILES Y TABLETS */
+@media (max-width: 768px) {
+    .header-container {
+        height: auto;
+        flex-direction: column;
+        padding: 0.75rem 1rem;
+        gap: 0.6rem;
+    }
+    
+    .site-title {
+        font-size: 1.05rem;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .site-title img {
+        height: 28px !important;
+    }
+
+    .top-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 0.35rem;
+    }
+
+    .top-nav .nav-btn, .dropbtn {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    .dropdown-content {
+        min-width: 240px;
+        max-width: 90vw;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #page-layout {
+        flex-direction: column;
+    }
+
+    #left-panel {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        position: static !important;
+        border-right: none !important;
+        border-bottom: 2px solid #e2e8f0;
+        padding: 1rem !important;
+    }
+
+    #main-content {
+        width: 100% !important;
+        padding: 1.25rem 1rem !important;
+    }
+
+    iframe {
+        height: 60vh !important;
+    }
+
+    th, td {
+        padding: 8px 10px !important;
+        font-size: 0.85rem !important;
+    }
+
+    pre {
+        padding: 0.85rem !important;
+        font-size: 0.82rem !important;
+    }
+}
+
+    </style>
+    <script>
+    
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.dropdown').forEach(dd => {
+        const btn = dd.querySelector('.dropbtn');
+        const content = dd.querySelector('.dropdown-content');
+        if (btn && content) {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = content.style.display === 'block';
+                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
+                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+                if (!isOpen) {
+                    content.style.display = 'block';
+                    btn.classList.add('active');
+                }
+            });
+        }
+    });
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
+        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+    });
+
+    // Controlador universal de clics en enlaces ancla (#...)
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const rawHref = this.getAttribute('href') || '';
+            const hashIdx = rawHref.indexOf('#');
+            if (hashIdx === -1) return;
+            const hash = rawHref.substring(hashIdx + 1);
+            if (!hash) return;
+            
+            let targetId = hash;
+            try { targetId = decodeURIComponent(hash); } catch(err) {}
+
+            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
+            if (!targetEl) {
+                for (let el of document.querySelectorAll('[id]')) {
+                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
+                        targetEl = el;
+                        break;
+                    }
+                }
+            }
+
+            if (targetEl) {
+                e.preventDefault();
+                const headerOffset = 75;
+                const elementPosition = targetEl.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                if (history.pushState) {
+                    history.pushState(null, null, '#' + targetId);
+                }
+            }
+        });
+    });
+});
+
+function copyCode(btn) {
+    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
+    navigator.clipboard.writeText(code).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = '✅ ¡Copiado!';
+        btn.style.background = '#16a34a';
+        setTimeout(() => {
+            btn.innerText = orig;
+            btn.style.background = '#334155';
+        }, 2000);
+    });
+}
+
+    </script>
+</head>
+<body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD &ndash; Ut5 Práctica Tunning Servidores Explain Avanzado</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+      <a href="ASGBD_Presentacion.html" class="nav-btn">Presentación</a>
+      <a href="ASGBD_UT2_Tarea_Programacion_Scripts.html" class="nav-btn">Programación</a>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Teoría ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Teoria_Configuracion.html">ASGBD UT1 Teoria Configuracion</a>
+          <a href="ASGBD_UT2_Teoria_Scripts_Administracion.html">ASGBD UT2 Teoria Scripts Administracion</a>
+          <a href="ASGBD_UT3_Teoria_Usuarios_roles.html">ASGBD UT3 Teoria Usuarios roles</a>
+          <a href="ASGBD_UT4_Teoría_Planificación_Seguridad.html">ASGBD UT4 Teoría Planificación Seguridad</a>
+          <a href="ASGBD_UT5_Teoria_Optimizacion_Consultas.html">ASGBD UT5 Teoria Optimizacion Consultas</a>
+          <a href="ASGBD_UT6_Teoría_BD_Distribuidas_alta_disponibilidad.html">ASGBD UT6 Teoría BD Distribuidas alta disponibilidad</a>
+          <a href="ASGBD_Proyecto_integral.html">ASGBD Proyecto integral</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Tareas y Prácticas ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Tarea_Configuracion.html">ASGBD UT1 Tarea Configuracion</a>
+          <a href="ASGBD_UT1_Practica.html">ASGBD UT1 Practica</a>
+          <a href="ASGBD_UT2_Practica._Automatizacion_Mantenimiento.html">ASGBD UT2 Practica. Automatizacion Mantenimiento</a>
+          <a href="ASGBD_UT3_Practica_Auditoria_Automatizacion.html">ASGBD UT3 Practica Auditoria Automatizacion</a>
+          <a href="ASGBD_UT3_Tarea_Enunciado.html">ASGBD UT3 Tarea Enunciado</a>
+          <a href="ASGBD_UT4_Tarea_Eventos.html">ASGBD UT4 Tarea Eventos</a>
+          <a href="ASGBD_UT4_Practica_Automatizacion_Mantenimiento.html">ASGBD UT4 Practica Automatizacion Mantenimiento</a>
+          <a href="ASGBD_UT5_Practica_Automatizacion.html">ASGBD UT5 Practica Automatizacion</a>
+          <a href="ASGBD_UT5_Práctica_Tunning_Servidores_EXPLAIN_Avanzado.html">ASGBD UT5 Práctica Tunning Servidores EXPLAIN Avanzado</a>
+          <a href="ASGBD_UT5_Tarea_Seguridad.html">ASGBD UT5 Tarea Seguridad</a>
+          <a href="ASGBD_UT5_Tarea_Auditoría_Rendimiento_Indexacion.html">ASGBD UT5 Tarea Auditoría Rendimiento Indexacion</a>
+          <a href="ASGBD_UT6_Practica_BD_Distribuidas_Sharding.html">ASGBD UT6 Practica BD Distribuidas Sharding</a>
+          <a href="ASGBD_UT6_Practica_Alta_Disponibilidad.html">ASGBD UT6 Practica Alta Disponibilidad</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <aside id="left-panel">
+            <h3>Índice del Tema</h3>
+            <nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#práctica-5-diagnóstico-de-rendimiento-y-tuning"
+id="toc-práctica-5-diagnóstico-de-rendimiento-y-tuning">PRÁCTICA 5:
+DIAGNÓSTICO DE RENDIMIENTO Y TUNING</a>
+<ul>
+<li><a href="#ficha-técnica-de-la-actividad"
+id="toc-ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
+ACTIVIDAD</a></li>
+<li><a href="#descripción-general.-objetivos"
+id="toc-descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
+OBJETIVOS</a></li>
+<li><a href="#consideraciones-previas"
+id="toc-consideraciones-previas">2. CONSIDERACIONES PREVIAS</a></li>
+<li><a href="#actividades-a-realizar" id="toc-actividades-a-realizar">3.
+ACTIVIDADES A REALIZAR</a></li>
+<li><a href="#calificación" id="toc-calificación">4.
+CALIFICACIÓN</a></li>
+</ul></li>
+</ul>
+</nav>
+        </aside>
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT5_Práctica_Tunning_Servidores_EXPLAIN_Avanzado.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+
+<h1 id="práctica-5-diagnóstico-de-rendimiento-y-tuning">PRÁCTICA 5:
+DIAGNÓSTICO DE RENDIMIENTO Y TUNING <a class="headerlink" href="#práctica-5-diagnóstico-de-rendimiento-y-tuning" title="Enlace permanente">¶</a></h1>
+<h3 id="ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
+ACTIVIDAD <a class="headerlink" href="#ficha-técnica-de-la-actividad" title="Enlace permanente">¶</a></h3>
+<div class="table-wrapper"><table>
+<tbody>
+<tr class="header">
+<td><strong>Unidad Didáctica</strong></td>
+<td>Unidad 5: Optimización de consultas e índices en MySQL /
+MariaDB</td>
+</tr>
+<tr class="odd">
+<td><strong>Nombre de la Práctica</strong></td>
+<td>Práctica 5: Tunning de Configuración y Diagnóstico de Consultas
+Complejas con EXPLAIN</td>
+</tr>
+<tr class="header">
+<td><strong>Resultado de Aprendizaje (RA)</strong></td>
+<td><strong>RA4:</strong> Optimiza el rendimiento del sistema gestor
+monitorizando los accesos y ajustando los parámetros del motor.</td>
+</tr>
+<tr class="odd">
+<td><strong>Criterios de Evaluación (CE)</strong></td>
+<td><p><strong>CE 4.b:</strong> Se han identificado los factores que
+afectan al rendimiento del sistema.</p>
+<p><strong>CE 4.c:</strong> Se han analizado las trazas de ejecución de
+las consultas.</p>
+<p><strong>CE 4.d:</strong> Se han creado índices y otras estructuras de
+optimización.</p>
+<p><strong>CE 4.f:</strong> Se han reestructurado los datos para mejorar
+la velocidad de acceso.</p></td>
+</tr>
+<tr class="header">
+<td><strong>Tiempo Estimado</strong></td>
+<td>8 horas lectivas (equivalente a 4 sesiones de clase práctica en
+laboratorio)</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="método-de-entrega-y-formato">MÉTODO DE ENTREGA Y FORMATO <a class="headerlink" href="#método-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
+<ul>
+<li><blockquote>
+<p><strong>[ ] Informe de Diagnóstico y Tuning:</strong> Documento
+formal en formato <strong>PDF</strong> (Practica5_DBA_NombreAlumno.pdf)
+que contenga:</p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p>Portada formal.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Secciones destacadas en negrita con texto justificado.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Capturas de terminal legibles en formato limpio sobre fondo
+oscuro.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Cuadros comparativos que resuman el rendimiento antes y después del
+proceso de tuning.</p>
+</blockquote></li>
+</ul></li>
+<li><blockquote>
+<p><strong>[ ] Script de Entrega SQL:</strong> Archivo .sql con las DDL
+de optimización implementadas y las DML de prueba, comentadas de forma
+exhaustiva para justificar la ingeniería del servidor.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>[ ] Verificación de Trazabilidad:</strong> Cada imagen de
+consola debe capturar el indicador completo de terminal del alumno,
+mostrando la dirección IP pública o interna de su instancia en la nube
+de pruebas para asegurar la autoría.</p>
+</blockquote></li>
+</ul>
+<h2 id="descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
+OBJETIVOS <a class="headerlink" href="#descripción-general.-objetivos" title="Enlace permanente">¶</a></h2>
+<p>En un entorno de producción real, el rendimiento de las bases de
+datos no se limita de forma única al diseño de índices individuales. A
+menudo, un mal tuning de las variables internas del motor de
+almacenamiento de bases de datos (InnoDB en este caso) o la ausencia de
+monitorización avanzada mediante esquemas del sistema (sys y
+performance_schema) provocan graves retrasos de servicio.</p>
+<p>En esta práctica, el alumno asumirá el rol de un
+<strong>Administrador de Sistemas de Bases de Datos (DBA)</strong> que
+se enfrenta a un servidor MySQL saturado por la ineficiencia. Sus
+objetivos principales son:</p>
+<ol type="1">
+<li><blockquote>
+<p><strong>Analizar y ajustar parámetros críticos del motor en caliente
+y frío</strong> a través del archivo de configuración general
+(mysqld.cnf).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Monitorizar accesos e identificar cuellos de botella
+reales</strong> mediante la base de datos de rendimiento sys.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Auditar, refactorizar y reestructurar consultas multitabla
+complejas</strong> con alto coste de CPU/RAM utilizando la traza
+avanzada del planificador EXPLAIN.</p>
+</blockquote></li>
+</ol>
+<h2 id="consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink" href="#consideraciones-previas" title="Enlace permanente">¶</a></h2>
+<ul>
+<li><blockquote>
+<p>Se utilizará la instancia virtual Linux del alumno sobre
+infraestructura OpenStack (o similar).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Se trabajará con la base de datos de pruebas corporativa jardineria
+ampliada con un generador masivo de registros para asegurar un volumen
+de almacenamiento realista en tablas medianas.</p>
+</blockquote></li>
+<li><blockquote>
+<p>La interacción con la instancia de MySQL se realizará exclusivamente
+a través de sesión SSH interactiva utilizando clientes nativos.</p>
+</blockquote></li>
+</ul>
+<h2 id="actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink" href="#actividades-a-realizar" title="Enlace permanente">¶</a></h2>
+<h4
+id="fase-1-tunning-de-variables-del-motor-innodb-y-configuración-del-servidor"><strong>Fase
+1: Tunning de Variables del Motor InnoDB y Configuración del
+Servidor</strong> <a class="headerlink" href="#fase-1-tunning-de-variables-del-motor-innodb-y-configuración-del-servidor" title="Enlace permanente">¶</a></h4>
+<p>El alumno debe auditar el estado de los recursos físicos del host que
+están asignados al SGBD.</p>
+<ol type="1">
+<li><blockquote>
+<p><strong>Consulta de Estado Inicial:</strong> Ejecute los comandos de
+inspección en consola de MySQL para consultar los valores establecidos
+de forma predeterminada para las variables del motor:</p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p>max_connections (Límite máximo de sesiones concurrentes de red).</p>
+</blockquote></li>
+<li><blockquote>
+<p>innodb_buffer_pool_size (La asignación de memoria RAM para caché de
+páginas de datos e índices InnoDB).</p>
+</blockquote></li>
+<li><blockquote>
+<p>innodb_log_file_size (Tamaño máximo reservado para el archivo del
+Redo Log de transacciones en disco).</p>
+</blockquote></li>
+</ul></li>
+<li><blockquote>
+<p><strong>Ajuste Físico en Frío:</strong> Modifique el archivo de
+configuración general del servicio (habitualmente
+/etc/mysql/mysql.conf.d/mysqld.cnf) utilizando privilegios de
+administrador de sistemas para establecer los siguientes valores
+orientados a un host de producción de 4 GB de RAM:<br />
+[mysqld]<br />
+max_connections = 150<br />
+innodb_buffer_pool_size = 1536M<br />
+innodb_log_file_size = 256M<br />
+innodb_flush_log_at_trx_commit = 2</p>
+</blockquote></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Reinicio y Verificación: Reinicie el servicio de
+forma limpia utilizando el gestor del sistema (systemctl restart mysql).
+Verifique en los ficheros de log de errores del sistema
+(/var/log/mysql/error.log) que la asignación física de memoria buffer se
+ha inicializado correctamente. Capture la salida y verifique de forma
+interactiva en la consola con SHOW VARIABLES que los nuevos valores
+están cargados en caliente.</code></pre></div></li>
+</ol>
+<h4
+id="fase-2-diagnóstico-de-sentencias-lentas-y-consultas-más-ejecutadas"><strong>Fase
+2: Diagnóstico de Sentencias Lentas y Consultas más
+Ejecutadas</strong> <a class="headerlink" href="#fase-2-diagnóstico-de-sentencias-lentas-y-consultas-más-ejecutadas" title="Enlace permanente">¶</a></h4>
+<p>Antes de tocar el esquema, el DBA debe saber exactamente qué
+consultas están lastrando el rendimiento del host.</p>
+<ol type="1">
+<li><blockquote>
+<p><strong>Activación de los Trazados de Rendimiento:</strong> Asegúrese
+de que el esquema performance_schema está habilitado.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Uso de la Base de Datos SYS:</strong> Acceda a la base de
+datos de administración simplificada sys de MySQL.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Identificación de Sentencias Ineficientes:</strong> Ejecute
+una consulta de auditoría técnica sobre la vista
+statements_with_temp_tables u statements_with_sorting para listar las
+consultas que están provocando la creación de tablas temporales en
+memoria o disco o que tienen altos costes de ordenación secuencial.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Consulta de Mayor Ejecución:</strong> Extraiga las 5
+estructuras de sentencias agrupadas que consumen un mayor porcentaje de
+tiempo acumulado de CPU en el SGBD utilizando la tabla
+events_statements_summary_by_digest de performance_schema, visualizando
+las columnas DIGEST_TEXT y COUNT_STAR.</p>
+</blockquote></li>
+</ol>
+<h4
+id="fase-3-optimización-estructural-de-consultas-multitabla-complejas"><strong>Fase
+3: Optimización Estructural de Consultas Multitabla
+Complejas</strong> <a class="headerlink" href="#fase-3-optimización-estructural-de-consultas-multitabla-complejas" title="Enlace permanente">¶</a></h4>
+<p>Se ha reportado una caída de rendimiento masiva en la plataforma web
+al consultar el siguiente reporte histórico de facturación de agentes de
+ventas:</p>
+<p>SELECT<br />
+e.nombre AS agente,<br />
+e.puesto,<br />
+c.nombre_cliente AS cliente,<br />
+p.codigo_pedido,<br />
+p.fecha_pedido,<br />
+SUM(dp.cantidad * dp.precio_unidad) AS subtotal_pedido<br />
+FROM empleado e<br />
+LEFT JOIN cliente c ON e.codigo_empleado =
+c.codigo_empleado_rep_ventas<br />
+LEFT JOIN pedido p ON c.codigo_cliente = p.codigo_cliente<br />
+LEFT JOIN detalle_pedido dp ON p.codigo_pedido = dp.codigo_pedido<br />
+WHERE c.pais = 'USA' AND dp.cantidad &gt; 20<br />
+GROUP BY e.codigo_empleado, c.codigo_cliente, p.codigo_pedido<br />
+ORDER BY subtotal_pedido DESC;</p>
+<ol type="1">
+<li><blockquote>
+<p><strong>Auditoría con EXPLAIN (Antes de Optimizar):</strong> Ejecute
+el diagnóstico del plan de ejecución sobre la consulta multitabla
+anterior. Documente de forma técnica y exhaustiva los valores de:</p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p>La columna type en cada uno de los pasos de las tablas unidas
+(JOIN).</p>
+</blockquote></li>
+<li><blockquote>
+<p>El número estimado de filas procesadas (rows) y su producto
+cartesiano resultante.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Los avisos de la columna Extra (por ejemplo, busque la existencia de
+Using temporary o Using filesort).</p>
+</blockquote></li>
+</ul></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Identificación de Cuellos de Botella: Identifique
+razonadamente qué relaciones JOIN o filtrados WHERE están obligando al
+motor a procesar de forma secuencial completa las tablas.</code></pre></div></li>
+<li><blockquote>
+<p><strong>Estrategia de Optimización (DDL):</strong> Diseñe e
+implemente las estructuras físicas de optimización necesarias:</p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p>Considere la implementación de índices compuestos estratégicos para
+las claves foráneas que unifican las relaciones multitabla, ordenándolas
+adecuadamente según el prefijo izquierdo.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Establezca un índice compuesto que permita cubrir tanto la
+restricción de país como el enlazado del código del cliente.</p>
+</blockquote></li>
+</ul></li>
+<li><blockquote>
+<p><strong>Auditoría con EXPLAIN (Después de Optimizar):</strong> Vuelva
+a ejecutar el diagnóstico de la traza sobre la consulta original.
+Compare en un cuadro estructurado:</p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p>La reducción en el número total de estimaciones de accesos físicos
+(rows).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Los cambios en el método de acceso de cada paso (ALL a ref o
+range).</p>
+</blockquote></li>
+<li><blockquote>
+<p>La remoción o permanencia de costosas tablas temporales internas en
+el servidor.</p>
+</blockquote></li>
+</ul></li>
+</ol>
+<h2 id="calificación">4. CALIFICACIÓN <a class="headerlink" href="#calificación" title="Enlace permanente">¶</a></h2>
+<blockquote>
+<p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
+través de la plataforma, la entrega del documento en formatos editables
+no permitidos (como .docx), capturas con identificación del alumno/a o
+la omisión de los enlaces de las fuentes documentales utilizadas
+penalizará gravemente la nota o invalidará la práctica.</p>
+</blockquote>
+<h4 id="criterios-de-calificación">CRITERIOS DE CALIFICACIÓN <a class="headerlink" href="#criterios-de-calificación" title="Enlace permanente">¶</a></h4>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>Apartado / Criterio</strong></th>
+<th><strong>Excelente (100% - 10 Puntos)</strong></th>
+<th><strong>Notable (75% - 7.5 Puntos)</strong></th>
+<th><strong>Suficiente (50% - 5 Puntos)</strong></th>
+<th><strong>Insuficiente (0% - 0 Puntos)</strong></th>
+<th><strong>Peso</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Fase 1: Tunning de Variables (InnoDB)</strong></td>
+<td>Modifica correctamente los archivos de configuración. Calcula los
+buffers basándose en la RAM real asignada y verifica de forma
+interactiva en caliente.</td>
+<td>Modifica las variables solicitadas, pero no comprueba los logs de
+error de MySQL ni valida la optimización física de la memoria del
+buffer.</td>
+<td>Cambia los parámetros del motor usando sentencias temporales y la
+configuración se pierde al reiniciar. No justifica los valores de las
+variables.</td>
+<td>No realiza el tuning del archivo de configuración general o lo hace
+con parámetros incoherentes que impiden arrancar el servicio.</td>
+<td><strong>20%</strong></td>
+</tr>
+<tr class="header">
+<td><strong>Fase 2: Diagnóstico SYS / Performance Schema</strong></td>
+<td>Identifica con precisión absoluta las consultas más lentas y
+costosas de CPU del SGBD utilizando las vistas de sys y
+performance_schema.</td>
+<td>Utiliza consultas de sys, pero confunde los errores de sintaxis
+generales con problemas de eficiencia de bajo nivel de disco.</td>
+<td>Extrae trazas genéricas del log general pero no sabe interpretar la
+tabla de sumario digest del motor.</td>
+<td>No realiza auditoría de rendimiento ni utiliza la base de datos de
+rendimiento nativa.</td>
+<td><strong>20%</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Fase 3: Optimización Multitabla (DDL)</strong></td>
+<td>Diseña e implementa una indexación compuesta e individual óptima
+para la consulta del reporte. Argumenta perfectamente la sargabilidad de
+los cambios.</td>
+<td>Crea los índices necesarios, pero comete errores en la disposición
+de columnas para el Left-Prefix Rule. Mejora parcialmente el
+rendimiento.</td>
+<td>Consigue optimizar alguna tabla, pero la consulta sigue generando
+altos costes de ordenación (filesort) y mantiene tipos de acceso
+ineficientes.</td>
+<td>Crea índices genéricos e innecesarios en todas las columnas de forma
+aleatoria, empeorando el rendimiento general en operaciones de
+escritura.</td>
+<td><strong>30%</strong></td>
+</tr>
+<tr class="header">
+<td><strong>Fase 3: Diagnóstico Comparativo (EXPLAIN)</strong></td>
+<td>Contrasta minuciosamente en un cuadro de síntesis el coste antes y
+después en disco e I/O de CPU. Interpreta técnicamente cada columna del
+plan.</td>
+<td>Muestra el EXPLAIN final pero no realiza el análisis comparativo
+numérico de la reducción del producto cartesiano de accesos.</td>
+<td>El análisis de costes se limita a decir si la consulta va rápida o
+lenta, sin examinar los metadatos de MySQL.</td>
+<td>No incluye capturas ni explicaciones que justifiquen el uso de
+EXPLAIN.</td>
+<td><strong>20%</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Calidad Documentación e Identificación</strong></td>
+<td>Documento PDF impecable, profesional y con la autoría perfectamente
+identificada en terminal (prompt con IP / usuario visible). Formato
+limpio.</td>
+<td>Documento limpio y organizado, pero falta alguna de las
+identificaciones de autoría básicas en alguna de las capturas del
+informe.</td>
+<td>Desorganizado, con capturas descuadradas o de mala calidad. El
+archivo de entrega no está justificado o no corresponde a formato
+PDF.</td>
+<td>Documentación muy pobre o inexistente. No se identifica al autor y
+la IP de la instancia remota cambia constantemente sin
+justificación.</td>
+<td><strong>10%</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Total Práctica: 10 Puntos</strong></p>
+
+        </main>
+    </div>
+</body>
+</html>

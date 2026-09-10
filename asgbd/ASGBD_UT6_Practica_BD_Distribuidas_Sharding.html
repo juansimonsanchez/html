@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASGBD - Ut6 Practica Bd Distribuidas Sharding</title>
+    <style>
+    
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --bg-header: #1e3a8a;
+    --text-header: #ffffff;
+    --bg-body: #f8fafc;
+    --text-body: #1e293b;
+    --border-color: #cbd5e1;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-body);
+    color: var(--text-body);
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, [id], a[name] {
+    scroll-margin-top: 80px !important;
+}
+
+.headerlink {
+    display: inline-block;
+    margin-left: 0.4rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.8em;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
+h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
+    visibility: visible;
+    opacity: 1;
+}
+
+.headerlink:hover {
+    color: var(--primary);
+}
+
+#site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    background: var(--bg-header);
+    color: var(--text-header);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    height: 62px;
+}
+
+.site-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.top-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.top-nav .nav-btn {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+.top-nav .nav-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 9px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown:hover .dropbtn, .dropbtn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 320px;
+    max-width: 480px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 10001;
+    border: 1px solid #e2e8f0;
+    margin-top: 6px;
+}
+
+.dropdown-content a {
+    color: var(--text-body);
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.92rem;
+    border-bottom: 1px solid #f1f5f9;
+    line-height: 1.4;
+    transition: background 0.15s, color 0.15s;
+    word-break: break-word;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #eff6ff;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block !important;
+}
+
+#page-layout {
+    display: flex;
+    min-height: calc(100vh - 62px);
+}
+
+#left-panel {
+    width: 320px;
+    min-width: 320px;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 1.5rem 1.25rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: sticky;
+    top: 62px;
+    height: calc(100vh - 62px);
+}
+
+#left-panel h3 {
+    font-size: 1rem;
+    margin-top: 0;
+    color: #334155;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
+
+#left-panel nav#TOC, #left-panel #TOC {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+#left-panel ul {
+    list-style-type: none;
+    padding-left: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+#left-panel li {
+    margin: 6px 0;
+}
+
+#left-panel a {
+    color: #475569;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    display: block;
+    transition: color 0.15s;
+}
+
+#left-panel a:hover {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+#main-content {
+    flex: 1;
+    padding: 2.5rem 4rem;
+    box-sizing: border-box;
+    max-width: 100% !important;
+    width: calc(100% - 320px);
+    min-width: 0;
+}
+
+/* TABLAS ELEGANTES Y RESPONSIVE */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1.75rem 0;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    font-size: 0.93rem;
+    background: #ffffff;
+    table-layout: auto !important;
+}
+
+th, td {
+    padding: 10px 14px !important;
+    border: 1px solid #cbd5e1 !important;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+td p, th p {
+    margin: 0 !important;
+    padding: 2px 0 !important;
+}
+
+th {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #0f172a !important;
+}
+
+tr:nth-child(even) td {
+    background-color: #f8fafc !important;
+}
+
+tr:hover td {
+    background-color: #f1f5f9 !important;
+}
+
+/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
+.code-wrapper {
+    position: relative;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0f172a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #334155;
+    color: #f8fafc;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.copy-btn:hover {
+    background: #2563eb;
+}
+
+pre {
+    margin: 0 !important;
+    padding: 1.25rem 1.25rem !important;
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    overflow-x: auto !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+}
+
+code {
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+}
+
+p code, li code {
+    background: #e2e8f0;
+    color: #0f172a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
+
+/* RESPONSIVE DESIGN PARA MÓVILES Y TABLETS */
+@media (max-width: 768px) {
+    .header-container {
+        height: auto;
+        flex-direction: column;
+        padding: 0.75rem 1rem;
+        gap: 0.6rem;
+    }
+    
+    .site-title {
+        font-size: 1.05rem;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .site-title img {
+        height: 28px !important;
+    }
+
+    .top-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 0.35rem;
+    }
+
+    .top-nav .nav-btn, .dropbtn {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    .dropdown-content {
+        min-width: 240px;
+        max-width: 90vw;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #page-layout {
+        flex-direction: column;
+    }
+
+    #left-panel {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        position: static !important;
+        border-right: none !important;
+        border-bottom: 2px solid #e2e8f0;
+        padding: 1rem !important;
+    }
+
+    #main-content {
+        width: 100% !important;
+        padding: 1.25rem 1rem !important;
+    }
+
+    iframe {
+        height: 60vh !important;
+    }
+
+    th, td {
+        padding: 8px 10px !important;
+        font-size: 0.85rem !important;
+    }
+
+    pre {
+        padding: 0.85rem !important;
+        font-size: 0.82rem !important;
+    }
+}
+
+    </style>
+    <script>
+    
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.dropdown').forEach(dd => {
+        const btn = dd.querySelector('.dropbtn');
+        const content = dd.querySelector('.dropdown-content');
+        if (btn && content) {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = content.style.display === 'block';
+                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
+                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+                if (!isOpen) {
+                    content.style.display = 'block';
+                    btn.classList.add('active');
+                }
+            });
+        }
+    });
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
+        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+    });
+
+    // Controlador universal de clics en enlaces ancla (#...)
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const rawHref = this.getAttribute('href') || '';
+            const hashIdx = rawHref.indexOf('#');
+            if (hashIdx === -1) return;
+            const hash = rawHref.substring(hashIdx + 1);
+            if (!hash) return;
+            
+            let targetId = hash;
+            try { targetId = decodeURIComponent(hash); } catch(err) {}
+
+            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
+            if (!targetEl) {
+                for (let el of document.querySelectorAll('[id]')) {
+                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
+                        targetEl = el;
+                        break;
+                    }
+                }
+            }
+
+            if (targetEl) {
+                e.preventDefault();
+                const headerOffset = 75;
+                const elementPosition = targetEl.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                if (history.pushState) {
+                    history.pushState(null, null, '#' + targetId);
+                }
+            }
+        });
+    });
+});
+
+function copyCode(btn) {
+    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
+    navigator.clipboard.writeText(code).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = '✅ ¡Copiado!';
+        btn.style.background = '#16a34a';
+        setTimeout(() => {
+            btn.innerText = orig;
+            btn.style.background = '#334155';
+        }, 2000);
+    });
+}
+
+    </script>
+</head>
+<body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD &ndash; Ut6 Practica Bd Distribuidas Sharding</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+      <a href="ASGBD_Presentacion.html" class="nav-btn">Presentación</a>
+      <a href="ASGBD_UT2_Tarea_Programacion_Scripts.html" class="nav-btn">Programación</a>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Teoría ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Teoria_Configuracion.html">ASGBD UT1 Teoria Configuracion</a>
+          <a href="ASGBD_UT2_Teoria_Scripts_Administracion.html">ASGBD UT2 Teoria Scripts Administracion</a>
+          <a href="ASGBD_UT3_Teoria_Usuarios_roles.html">ASGBD UT3 Teoria Usuarios roles</a>
+          <a href="ASGBD_UT4_Teoría_Planificación_Seguridad.html">ASGBD UT4 Teoría Planificación Seguridad</a>
+          <a href="ASGBD_UT5_Teoria_Optimizacion_Consultas.html">ASGBD UT5 Teoria Optimizacion Consultas</a>
+          <a href="ASGBD_UT6_Teoría_BD_Distribuidas_alta_disponibilidad.html">ASGBD UT6 Teoría BD Distribuidas alta disponibilidad</a>
+          <a href="ASGBD_Proyecto_integral.html">ASGBD Proyecto integral</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Tareas y Prácticas ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Tarea_Configuracion.html">ASGBD UT1 Tarea Configuracion</a>
+          <a href="ASGBD_UT1_Practica.html">ASGBD UT1 Practica</a>
+          <a href="ASGBD_UT2_Practica._Automatizacion_Mantenimiento.html">ASGBD UT2 Practica. Automatizacion Mantenimiento</a>
+          <a href="ASGBD_UT3_Practica_Auditoria_Automatizacion.html">ASGBD UT3 Practica Auditoria Automatizacion</a>
+          <a href="ASGBD_UT3_Tarea_Enunciado.html">ASGBD UT3 Tarea Enunciado</a>
+          <a href="ASGBD_UT4_Tarea_Eventos.html">ASGBD UT4 Tarea Eventos</a>
+          <a href="ASGBD_UT4_Practica_Automatizacion_Mantenimiento.html">ASGBD UT4 Practica Automatizacion Mantenimiento</a>
+          <a href="ASGBD_UT5_Practica_Automatizacion.html">ASGBD UT5 Practica Automatizacion</a>
+          <a href="ASGBD_UT5_Práctica_Tunning_Servidores_EXPLAIN_Avanzado.html">ASGBD UT5 Práctica Tunning Servidores EXPLAIN Avanzado</a>
+          <a href="ASGBD_UT5_Tarea_Seguridad.html">ASGBD UT5 Tarea Seguridad</a>
+          <a href="ASGBD_UT5_Tarea_Auditoría_Rendimiento_Indexacion.html">ASGBD UT5 Tarea Auditoría Rendimiento Indexacion</a>
+          <a href="ASGBD_UT6_Practica_BD_Distribuidas_Sharding.html">ASGBD UT6 Practica BD Distribuidas Sharding</a>
+          <a href="ASGBD_UT6_Practica_Alta_Disponibilidad.html">ASGBD UT6 Practica Alta Disponibilidad</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <aside id="left-panel">
+            <h3>Índice del Tema</h3>
+            <nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#ud-6---práctica.-bases-de-datos-distribuidas-y-alta-disponibilidad"
+id="toc-ud-6---práctica.-bases-de-datos-distribuidas-y-alta-disponibilidad">UD
+6 - Práctica. Bases de Datos Distribuidas y Alta Disponibilidad</a></li>
+<li><a href="#section" id="toc-section"></a></li>
+<li><a href="#descripción-general.-objetivos"
+id="toc-descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
+OBJETIVOS</a></li>
+<li><a href="#actividades-a-realizar" id="toc-actividades-a-realizar">2.
+ACTIVIDADES A REALIZAR</a></li>
+<li><a href="#calificación" id="toc-calificación">3. CALIFICACIÓN</a>
+<ul>
+<li><a href="#section-1" id="toc-section-1"></a></li>
+</ul></li>
+</ul>
+</nav>
+        </aside>
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT6_Practica_BD_Distribuidas_Sharding.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+
+<h2
+id="ud-6---práctica.-bases-de-datos-distribuidas-y-alta-disponibilidad">UD
+6 - Práctica. Bases de Datos Distribuidas y Alta Disponibilidad <a class="headerlink" href="#ud-6---práctica.-bases-de-datos-distribuidas-y-alta-disponibilidad" title="Enlace permanente">¶</a></h2>
+<h4 id="ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
+ACTIVIDAD <a class="headerlink" href="#ficha-técnica-de-la-actividad" title="Enlace permanente">¶</a></h4>
+<div class="table-wrapper"><table>
+<tbody>
+<tr class="header">
+<td><strong>Unidad Didáctica</strong></td>
+<td>UD 6: Bases de Datos Distribuidas</td>
+</tr>
+<tr class="odd">
+<td><strong>Resultado de Aprendizaje (RA)</strong></td>
+<td><strong>RA6:</strong> Aplica criterios de integridad, disponibilidad
+y rendimiento en la administración de bases de datos distribuidas,
+analizando y configurando mecanismos de replicación y
+fragmentación.</td>
+</tr>
+<tr class="header">
+<td><strong>Criterios de Evaluación (CE)</strong></td>
+<td><p><strong>CE 6.a:</strong> Se han identificado las ventajas e
+inconvenientes de las bases de datos distribuidas.</p>
+<p><strong>CE 6.d:</strong> Se han configurado y verificado escenarios
+de fragmentación de datos.</p>
+<p><strong>CE 6.f:</strong> Se han utilizado herramientas de balanceo de
+carga.</p></td>
+</tr>
+<tr class="odd">
+<td><strong>Método de entrega</strong></td>
+<td><strong>Documento PDF</strong> con explicaciones y capturas. Para
+validar la autoría, debe aparecer el nombre del alumno en el prompt del
+terminal o como comentario SQL. Posibilidad de defensa oral.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="section"> <a class="headerlink" href="#section" title="Enlace permanente">¶</a></h2>
+<h2 id="descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
+OBJETIVOS <a class="headerlink" href="#descripción-general.-objetivos" title="Enlace permanente">¶</a></h2>
+<p><strong>Objetivo:</strong> Implementar un sistema de fragmentación
+horizontal (<em>sharding</em>) utilizando dos nodos MySQL y un
+orquestador ProxySQL basado en la arquitectura de contenedores
+proporcionada.</p>
+<h2 id="actividades-a-realizar">2. ACTIVIDADES A REALIZAR <a class="headerlink" href="#actividades-a-realizar" title="Enlace permanente">¶</a></h2>
+<h4 id="fase-1-preparación-entorno">Fase 1: Preparación (Entorno) <a class="headerlink" href="#fase-1-preparación-entorno" title="Enlace permanente">¶</a></h4>
+<ol type="1">
+<li><blockquote>
+<p>Disponer de <strong>Docker y Docker Compose</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Utilizar el archivo docker-compose.yml y los scripts de
+inicialización de la carpeta init/.</p>
+</blockquote></li>
+<li><blockquote>
+<p>El escenario consta de: mysql-shard-1 (puerto 3310), mysql-shard-2
+(puerto 3308) y proxysql (puertos 6032/6033).</p>
+</blockquote></li>
+</ol>
+<h4 id="fase-2-desarrollo">Fase 2: Desarrollo <a class="headerlink" href="#fase-2-desarrollo" title="Enlace permanente">¶</a></h4>
+<p><strong>Ejercicio 1: Despliegue de la Infraestructura (1.5
+puntos)</strong></p>
+<ul>
+<li><blockquote>
+<p>Levantar el escenario: docker-compose up -d.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Verificar el estado con docker ps y comprobar conectividad a los
+puertos expuestos.</p>
+</blockquote></li>
+</ul>
+<p><strong>Ejercicio 2: Verificación de la Fragmentación Manual (2.5
+puntos)</strong></p>
+<ul>
+<li><blockquote>
+<p>Consultar la tabla users en ambos shards directamente.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Analizar el criterio de distribución (IDs pares/impares o
+rangos).</p>
+</blockquote></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Entrega: Capturas de SELECT * FROM users; en ambos
+contenedores.</code></pre></div></li>
+</ul>
+<p><strong>Ejercicio 3: Configuración Técnica de ProxySQL (3
+puntos)</strong> El alumno debe configurar el enrutamiento para que sea
+transparente al cliente. Pasos obligatorios:</p>
+<ol type="1">
+<li><blockquote>
+<p><strong>Acceso a Administración (Puerto 6032):</strong> docker exec
+-it proxysql mysql -u admin -padmin -h 127.0.0.1 -P 6032</p>
+</blockquote></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Configurar Backends (Hostgroups):
+-- Shard 1 (ID 1-50) -&gt; HG 1 | Shard 2 (ID &gt; 50) -&gt; HG 2
+INSERT INTO mysql_servers(hostgroup_id, hostname, port) VALUES (1,
+'mysql-shard-1', 3306), (2, 'mysql-shard-2', 3306);
+LOAD MYSQL SERVERS TO RUNTIME; SAVE MYSQL SERVERS TO DISK;</code></pre></div></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Configurar Usuario de Tráfico:
+INSERT INTO mysql_users(username, password, default_hostgroup) VALUES
+('root', 'root_password', 1);
+LOAD MYSQL USERS TO RUNTIME; SAVE MYSQL USERS TO DISK;</code></pre></div></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Reglas de Enrutamiento (Sharding Logic):
+-- Redirigir según el ID en la consulta (Regex)
+INSERT INTO mysql_query_rules (rule_id, active, match_digest,
+destination_hostgroup, apply)
+VALUES (1, 1, 'id\s*=\s*([1-9]|[1-4][0-9]|50)', 1, 1),
+(2, 1, 'id\s*=\s*([5-9][0-9]|[1-9][0-9]{2,})', 2, 1);
+LOAD MYSQL QUERY RULES TO RUNTIME; SAVE MYSQL QUERY RULES TO DISK;</code></pre></div></li>
+</ol>
+<p><strong>Ejercicio 4: Pruebas de Transparencia (2 puntos)</strong></p>
+<ul>
+<li><blockquote>
+<p>Realizar consultas al puerto <strong>6033</strong> buscando un ID de
+cada rango.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Verificar en stats.stats_mysql_query_digest que las consultas han ido
+a hostgroups distintos.</p>
+</blockquote></li>
+</ul>
+<p><strong>Ejercicio 5: Gestión de Fallos (1 punto)</strong></p>
+<ul>
+<li><blockquote>
+<p>Detener un shard y documentar el comportamiento del sistema
+distribuido ante la pérdida de un fragmento.</p>
+</blockquote></li>
+</ul>
+<h2 id="calificación">3. CALIFICACIÓN <a class="headerlink" href="#calificación" title="Enlace permanente">¶</a></h2>
+<blockquote>
+<p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
+través de la plataforma, la entrega del documento en formatos editables
+no permitidos (como .docx), capturas con identificación del alumno/a o
+la omisión de los enlaces de las fuentes documentales utilizadas
+penalizará gravemente la nota o invalidará la práctica.</p>
+</blockquote>
+<h3 id="section-1"> <a class="headerlink" href="#section-1" title="Enlace permanente">¶</a></h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>Apartado</strong></th>
+<th><strong>Realizado correctamente (100%)</strong></th>
+<th><strong>Realizado con errores (40%)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Ej. 1: Despliegue</strong></td>
+<td>Escenario funcional y verificado.</td>
+<td>Error en puertos o redes.</td>
+</tr>
+<tr class="header">
+<td><strong>Ej. 2: Sharding</strong></td>
+<td>Identifica correctamente la fragmentación.</td>
+<td>No diferencia los shards.</td>
+</tr>
+<tr class="odd">
+<td><strong>Ej. 3: ProxySQL</strong></td>
+<td><strong>Reglas aplicadas y persistidas.</strong></td>
+<td>Error en Regex o Hostgroups.</td>
+</tr>
+<tr class="header">
+<td><strong>Ej. 4: Pruebas</strong></td>
+<td>Demuestra el enrutamiento transparente.</td>
+<td>Acceso fallido o manual.</td>
+</tr>
+<tr class="odd">
+<td><strong>Ej. 5: Fallos</strong></td>
+<td>Análisis técnico coherente del error.</td>
+<td>Solo captura sin texto.</td>
+</tr>
+<tr class="header">
+<td><strong>Presentación</strong></td>
+<td>Documentación limpia, autoría clara.</td>
+<td>Falta identificación o mala calidad.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Total: 10 Puntos</strong></p>
+
+        </main>
+    </div>
+</body>
+</html>

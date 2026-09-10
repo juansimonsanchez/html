@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASGBD - Ut2 Practica. Automatizacion Mantenimiento</title>
+    <style>
+    
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --bg-header: #1e3a8a;
+    --text-header: #ffffff;
+    --bg-body: #f8fafc;
+    --text-body: #1e293b;
+    --border-color: #cbd5e1;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-body);
+    color: var(--text-body);
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, [id], a[name] {
+    scroll-margin-top: 80px !important;
+}
+
+.headerlink {
+    display: inline-block;
+    margin-left: 0.4rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.8em;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
+h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
+    visibility: visible;
+    opacity: 1;
+}
+
+.headerlink:hover {
+    color: var(--primary);
+}
+
+#site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    background: var(--bg-header);
+    color: var(--text-header);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    height: 62px;
+}
+
+.site-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.top-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.top-nav .nav-btn {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+.top-nav .nav-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 9px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown:hover .dropbtn, .dropbtn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 320px;
+    max-width: 480px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 10001;
+    border: 1px solid #e2e8f0;
+    margin-top: 6px;
+}
+
+.dropdown-content a {
+    color: var(--text-body);
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.92rem;
+    border-bottom: 1px solid #f1f5f9;
+    line-height: 1.4;
+    transition: background 0.15s, color 0.15s;
+    word-break: break-word;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #eff6ff;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block !important;
+}
+
+#page-layout {
+    display: flex;
+    min-height: calc(100vh - 62px);
+}
+
+#left-panel {
+    width: 320px;
+    min-width: 320px;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 1.5rem 1.25rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: sticky;
+    top: 62px;
+    height: calc(100vh - 62px);
+}
+
+#left-panel h3 {
+    font-size: 1rem;
+    margin-top: 0;
+    color: #334155;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
+
+#left-panel nav#TOC, #left-panel #TOC {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+#left-panel ul {
+    list-style-type: none;
+    padding-left: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+#left-panel li {
+    margin: 6px 0;
+}
+
+#left-panel a {
+    color: #475569;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    display: block;
+    transition: color 0.15s;
+}
+
+#left-panel a:hover {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+#main-content {
+    flex: 1;
+    padding: 2.5rem 4rem;
+    box-sizing: border-box;
+    max-width: 100% !important;
+    width: calc(100% - 320px);
+    min-width: 0;
+}
+
+/* TABLAS ELEGANTES Y RESPONSIVE */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1.75rem 0;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    font-size: 0.93rem;
+    background: #ffffff;
+    table-layout: auto !important;
+}
+
+th, td {
+    padding: 10px 14px !important;
+    border: 1px solid #cbd5e1 !important;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+td p, th p {
+    margin: 0 !important;
+    padding: 2px 0 !important;
+}
+
+th {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #0f172a !important;
+}
+
+tr:nth-child(even) td {
+    background-color: #f8fafc !important;
+}
+
+tr:hover td {
+    background-color: #f1f5f9 !important;
+}
+
+/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
+.code-wrapper {
+    position: relative;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0f172a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #334155;
+    color: #f8fafc;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.copy-btn:hover {
+    background: #2563eb;
+}
+
+pre {
+    margin: 0 !important;
+    padding: 1.25rem 1.25rem !important;
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    overflow-x: auto !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+}
+
+code {
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+}
+
+p code, li code {
+    background: #e2e8f0;
+    color: #0f172a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
+
+/* RESPONSIVE DESIGN PARA MÓVILES Y TABLETS */
+@media (max-width: 768px) {
+    .header-container {
+        height: auto;
+        flex-direction: column;
+        padding: 0.75rem 1rem;
+        gap: 0.6rem;
+    }
+    
+    .site-title {
+        font-size: 1.05rem;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .site-title img {
+        height: 28px !important;
+    }
+
+    .top-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 0.35rem;
+    }
+
+    .top-nav .nav-btn, .dropbtn {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    .dropdown-content {
+        min-width: 240px;
+        max-width: 90vw;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #page-layout {
+        flex-direction: column;
+    }
+
+    #left-panel {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        position: static !important;
+        border-right: none !important;
+        border-bottom: 2px solid #e2e8f0;
+        padding: 1rem !important;
+    }
+
+    #main-content {
+        width: 100% !important;
+        padding: 1.25rem 1rem !important;
+    }
+
+    iframe {
+        height: 60vh !important;
+    }
+
+    th, td {
+        padding: 8px 10px !important;
+        font-size: 0.85rem !important;
+    }
+
+    pre {
+        padding: 0.85rem !important;
+        font-size: 0.82rem !important;
+    }
+}
+
+    </style>
+    <script>
+    
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.dropdown').forEach(dd => {
+        const btn = dd.querySelector('.dropbtn');
+        const content = dd.querySelector('.dropdown-content');
+        if (btn && content) {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = content.style.display === 'block';
+                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
+                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+                if (!isOpen) {
+                    content.style.display = 'block';
+                    btn.classList.add('active');
+                }
+            });
+        }
+    });
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
+        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+    });
+
+    // Controlador universal de clics en enlaces ancla (#...)
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const rawHref = this.getAttribute('href') || '';
+            const hashIdx = rawHref.indexOf('#');
+            if (hashIdx === -1) return;
+            const hash = rawHref.substring(hashIdx + 1);
+            if (!hash) return;
+            
+            let targetId = hash;
+            try { targetId = decodeURIComponent(hash); } catch(err) {}
+
+            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
+            if (!targetEl) {
+                for (let el of document.querySelectorAll('[id]')) {
+                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
+                        targetEl = el;
+                        break;
+                    }
+                }
+            }
+
+            if (targetEl) {
+                e.preventDefault();
+                const headerOffset = 75;
+                const elementPosition = targetEl.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                if (history.pushState) {
+                    history.pushState(null, null, '#' + targetId);
+                }
+            }
+        });
+    });
+});
+
+function copyCode(btn) {
+    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
+    navigator.clipboard.writeText(code).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = '✅ ¡Copiado!';
+        btn.style.background = '#16a34a';
+        setTimeout(() => {
+            btn.innerText = orig;
+            btn.style.background = '#334155';
+        }, 2000);
+    });
+}
+
+    </script>
+</head>
+<body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD &ndash; Ut2 Practica. Automatizacion Mantenimiento</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+      <a href="ASGBD_Presentacion.html" class="nav-btn">Presentación</a>
+      <a href="ASGBD_UT2_Tarea_Programacion_Scripts.html" class="nav-btn">Programación</a>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Teoría ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Teoria_Configuracion.html">ASGBD UT1 Teoria Configuracion</a>
+          <a href="ASGBD_UT2_Teoria_Scripts_Administracion.html">ASGBD UT2 Teoria Scripts Administracion</a>
+          <a href="ASGBD_UT3_Teoria_Usuarios_roles.html">ASGBD UT3 Teoria Usuarios roles</a>
+          <a href="ASGBD_UT4_Teoría_Planificación_Seguridad.html">ASGBD UT4 Teoría Planificación Seguridad</a>
+          <a href="ASGBD_UT5_Teoria_Optimizacion_Consultas.html">ASGBD UT5 Teoria Optimizacion Consultas</a>
+          <a href="ASGBD_UT6_Teoría_BD_Distribuidas_alta_disponibilidad.html">ASGBD UT6 Teoría BD Distribuidas alta disponibilidad</a>
+          <a href="ASGBD_Proyecto_integral.html">ASGBD Proyecto integral</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Tareas y Prácticas ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Tarea_Configuracion.html">ASGBD UT1 Tarea Configuracion</a>
+          <a href="ASGBD_UT1_Practica.html">ASGBD UT1 Practica</a>
+          <a href="ASGBD_UT2_Practica._Automatizacion_Mantenimiento.html">ASGBD UT2 Practica. Automatizacion Mantenimiento</a>
+          <a href="ASGBD_UT3_Practica_Auditoria_Automatizacion.html">ASGBD UT3 Practica Auditoria Automatizacion</a>
+          <a href="ASGBD_UT3_Tarea_Enunciado.html">ASGBD UT3 Tarea Enunciado</a>
+          <a href="ASGBD_UT4_Tarea_Eventos.html">ASGBD UT4 Tarea Eventos</a>
+          <a href="ASGBD_UT4_Practica_Automatizacion_Mantenimiento.html">ASGBD UT4 Practica Automatizacion Mantenimiento</a>
+          <a href="ASGBD_UT5_Practica_Automatizacion.html">ASGBD UT5 Practica Automatizacion</a>
+          <a href="ASGBD_UT5_Práctica_Tunning_Servidores_EXPLAIN_Avanzado.html">ASGBD UT5 Práctica Tunning Servidores EXPLAIN Avanzado</a>
+          <a href="ASGBD_UT5_Tarea_Seguridad.html">ASGBD UT5 Tarea Seguridad</a>
+          <a href="ASGBD_UT5_Tarea_Auditoría_Rendimiento_Indexacion.html">ASGBD UT5 Tarea Auditoría Rendimiento Indexacion</a>
+          <a href="ASGBD_UT6_Practica_BD_Distribuidas_Sharding.html">ASGBD UT6 Practica BD Distribuidas Sharding</a>
+          <a href="ASGBD_UT6_Practica_Alta_Disponibilidad.html">ASGBD UT6 Practica Alta Disponibilidad</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <aside id="left-panel">
+            <h3>Índice del Tema</h3>
+            <nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#práctica-integradora-unidad-4-sistema-de-auditoría-monitorización-y-mantenimiento-de-bases-de-datos-en-producción"
+id="toc-práctica-integradora-unidad-4-sistema-de-auditoría-monitorización-y-mantenimiento-de-bases-de-datos-en-producción">Práctica
+Integradora Unidad 4: Sistema de Auditoría, Monitorización y
+Mantenimiento de Bases de Datos en Producción</a></li>
+<li><a href="#descripción-general.-objetivos"
+id="toc-descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
+OBJETIVOS</a></li>
+<li><a href="#arquitectura-de-datos-de-la-práctica"
+id="toc-arquitectura-de-datos-de-la-práctica">2. Arquitectura de Datos
+de la Práctica</a></li>
+<li><a href="#requerimientos-técnicos-de-la-práctica"
+id="toc-requerimientos-técnicos-de-la-práctica">3. Requerimientos
+Técnicos de la Práctica</a>
+<ul>
+<li><a href="#reto-a-el-script-de-salud-de-sistemas-bash"
+id="toc-reto-a-el-script-de-salud-de-sistemas-bash">Reto A: El Script de
+Salud de Sistemas (Bash)</a></li>
+<li><a href="#reto-b-auditoría-de-cambios-de-configuración-triggers"
+id="toc-reto-b-auditoría-de-cambios-de-configuración-triggers">Reto B:
+Auditoría de Cambios de Configuración (Triggers)</a></li>
+<li><a
+href="#reto-c-diagnóstico-automatizado-de-tablas-metadatos-e-information-schema"
+id="toc-reto-c-diagnóstico-automatizado-de-tablas-metadatos-e-information-schema">Reto
+C: Diagnóstico Automatizado de Tablas (Metadatos e Information
+Schema)</a></li>
+<li><a href="#reto-d-archivado-de-datos-mediante-cursores-sql"
+id="toc-reto-d-archivado-de-datos-mediante-cursores-sql">Reto D:
+Archivado de Datos mediante Cursores (SQL)</a></li>
+<li><a href="#calificación" id="toc-calificación">4.
+CALIFICACIÓN</a></li>
+<li><a href="#section" id="toc-section"></a></li>
+</ul></li>
+</ul>
+</nav>
+        </aside>
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT2_Practica._Automatizacion_Mantenimiento.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+
+<h1
+id="práctica-integradora-unidad-4-sistema-de-auditoría-monitorización-y-mantenimiento-de-bases-de-datos-en-producción">Práctica
+Integradora Unidad 4: Sistema de Auditoría, Monitorización y
+Mantenimiento de Bases de Datos en Producción <a class="headerlink" href="#práctica-integradora-unidad-4-sistema-de-auditoría-monitorización-y-mantenimiento-de-bases-de-datos-en-producción" title="Enlace permanente">¶</a></h1>
+<h1 id="descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
+OBJETIVOS <a class="headerlink" href="#descripción-general.-objetivos" title="Enlace permanente">¶</a></h1>
+<p>Trabajas como Administrador de Bases de Datos (DBA) y SysAdmin en
+<strong>"Almería E-Market"</strong>, un portal de comercio electrónico
+en plena expansión. Tras el último periodo de rebajas, el servidor MySQL
+sufrió severas degradaciones de rendimiento y se detectaron
+modificaciones no autorizadas en tablas sensibles de configuración y
+privilegios.</p>
+<p>El Director de Tecnología (CTO) te ha encargado diseñar e implementar
+un <strong>entorno automatizado de mantenimiento preventivo, auditoría
+de seguridad y análisis de salud de base de datos</strong> utilizando
+programación nativa del servidor (SQL) combinada con scripts de
+automatización del sistema operativo (Bash).</p>
+<h1 id="arquitectura-de-datos-de-la-práctica">2. Arquitectura de Datos
+de la Práctica <a class="headerlink" href="#arquitectura-de-datos-de-la-práctica" title="Enlace permanente">¶</a></h1>
+<p>Antes de comenzar, debes simular el ecosistema de la base de datos
+empresarial ejecutando la siguiente estructura:</p>
+<p>CREATE DATABASE IF NOT EXISTS almeria_emarket;<br />
+USE almeria_emarket;<br />
+<br />
+-- Tabla 1: Tabla transaccional crítica que sufre gran
+fragmentación<br />
+CREATE TABLE pedidos (<br />
+id_pedido INT AUTO_INCREMENT PRIMARY KEY,<br />
+fecha_pedido TIMESTAMP DEFAULT CURRENT_TIMESTAMP,<br />
+cliente_email VARCHAR(100),<br />
+total DECIMAL(10,2)<br />
+);<br />
+<br />
+-- Tabla 2: Tabla de configuración de sistema (objetivo de
+seguridad)<br />
+CREATE TABLE configuracion_tienda (<br />
+parametro VARCHAR(50) PRIMARY KEY,<br />
+valor VARCHAR(100),<br />
+ultima_modificacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE
+CURRENT_TIMESTAMP,<br />
+modificado_por VARCHAR(100)<br />
+);<br />
+<br />
+-- Insertar configuración por defecto<br />
+INSERT INTO configuracion_tienda (parametro, valor, modificado_por)
+VALUES<br />
+('MANTENIMIENTO_MODE', 'FALSE', 'root@localhost'),<br />
+('DESCUENTO_GLOBAL', '10%', 'root@localhost');</p>
+<h1 id="requerimientos-técnicos-de-la-práctica">3. Requerimientos
+Técnicos de la Práctica <a class="headerlink" href="#requerimientos-técnicos-de-la-práctica" title="Enlace permanente">¶</a></h1>
+<p>La práctica se divide en <strong>cuatro retos técnicos
+integrados</strong>. Debes aportar tanto el código fuente como las
+explicaciones teóricas de su funcionamiento.</p>
+<h3 id="reto-a-el-script-de-salud-de-sistemas-bash">Reto A: El Script de
+Salud de Sistemas (Bash) <a class="headerlink" href="#reto-a-el-script-de-salud-de-sistemas-bash" title="Enlace permanente">¶</a></h3>
+<p>Crea un script de Bash llamado monitor_emarket.sh que realice las
+siguientes acciones de forma secuencial y desasistida:</p>
+<ol type="1">
+<li><blockquote>
+<p>Compruebe si el servicio de MySQL está activo. Si no lo está, intente
+levantarlo e informe del estado.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Compruebe el almacenamiento del servidor. Si el tamaño físico de la
+base de datos almeria_emarket supera un límite ficticio (ej. 1 MB para
+pruebas), invoque de manera automática a un procedimiento almacenado
+dentro de MySQL que limpie los logs.</p>
+</blockquote></li>
+<li><blockquote>
+<p>El script de Bash debe registrar todas sus acciones añadiendo líneas
+a un archivo de registro del sistema ubicado en
+/var/log/emarket_mantenimiento.log (puedes simularlo en tu home de
+usuario si no tienes permisos de superusuario).</p>
+</blockquote></li>
+</ol>
+<h3 id="reto-b-auditoría-de-cambios-de-configuración-triggers">Reto B:
+Auditoría de Cambios de Configuración (Triggers) <a class="headerlink" href="#reto-b-auditoría-de-cambios-de-configuración-triggers" title="Enlace permanente">¶</a></h3>
+<p>Necesitamos bloquear y auditar cualquier intento de modificar la
+tabla configuracion_tienda.</p>
+<ol type="1">
+<li><blockquote>
+<p>Crea una tabla de logs denominada auditoria_config. Debe registrar:
+id_log (PK), usuario_sistema, parametro_afectado, valor_antiguo,
+valor_nuevo, fecha_operacion.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Diseña un disparador tg_auditar_config que actúe de manera automática
+guardando los detalles anteriores cada vez que se realice un cambio de
+valores (UPDATE).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Diseña un disparador tg_prohibir_delete_config que <strong>impida
+físicamente</strong> que cualquier usuario (incluido root) elimine
+registros de esta tabla de configuración de tienda, lanzando una señal
+de error específica (SIGNAL SQLSTATE).</p>
+</blockquote></li>
+</ol>
+<h3
+id="reto-c-diagnóstico-automatizado-de-tablas-metadatos-e-information-schema">Reto
+C: Diagnóstico Automatizado de Tablas (Metadatos e Information
+Schema) <a class="headerlink" href="#reto-c-diagnóstico-automatizado-de-tablas-metadatos-e-information-schema" title="Enlace permanente">¶</a></h3>
+<p>El SGBD pierde rendimiento si existen tablas sin índice primario o
+con excesivo espacio asignado sin usar.</p>
+<ol type="1">
+<li><blockquote>
+<p>Crea un procedimiento almacenado sp_diagnostico_tablas que realice
+una consulta analítica contra information_schema.tables y
+information_schema.table_constraints.</p>
+</blockquote></li>
+<li><blockquote>
+<p>El procedimiento debe devolver un informe listando todas las tablas
+del esquema actual (almeria_emarket) que:</p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p>No tengan clave primaria (PRIMARY KEY) definida.</p>
+</blockquote></li>
+<li><blockquote>
+<p>O tengan un índice de fragmentación (espacio libre o data_free)
+superior al 10% del total de la tabla.</p>
+</blockquote></li>
+</ul></li>
+</ol>
+<h3 id="reto-d-archivado-de-datos-mediante-cursores-sql">Reto D:
+Archivado de Datos mediante Cursores (SQL) <a class="headerlink" href="#reto-d-archivado-de-datos-mediante-cursores-sql" title="Enlace permanente">¶</a></h3>
+<p>Para evitar que la tabla pedidos crezca indefinidamente y ralentice
+los índices de búsqueda, debemos archivar los pedidos que tengan más de
+un año de antigüedad.</p>
+<ol type="1">
+<li><blockquote>
+<p>Crea una tabla idéntica en estructura llamada historico_pedidos.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Diseña un procedimiento almacenado sp_archivar_pedidos_antiguos que
+use un <strong>CURSOR</strong> para recorrer los pedidos anteriores a
+una fecha dada.</p>
+</blockquote></li>
+<li><blockquote>
+<p>El cursor debe leer fila por fila, insertar cada pedido antiguo en
+historico_pedidos y, una vez confirmado el volcado, eliminarlo de la
+tabla original pedidos garantizando la integridad de los datos.</p>
+</blockquote></li>
+</ol>
+<h2 id="calificación">4. CALIFICACIÓN <a class="headerlink" href="#calificación" title="Enlace permanente">¶</a></h2>
+<blockquote>
+<p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
+través de la plataforma, la entrega del documento en formatos editables
+no permitidos (como .docx), capturas con identificación del alumno/a o
+la omisión de los enlaces de las fuentes documentales utilizadas
+penalizará gravemente la nota o invalidará la práctica.</p>
+</blockquote>
+<h2 id="section"> <a class="headerlink" href="#section" title="Enlace permanente">¶</a></h2>
+<p>| <strong>Criterio</strong> | <strong>Excelente (9-10)</strong> |
+<strong>Aceptable (5-8)</strong> | <strong>Insuficiente (0-4)</strong> |
+<strong>Peso</strong> |</p>
+<p>| <strong>Reto A: Bash Scripting</strong> | El script se ejecuta sin
+errores, comprueba el servicio, calcula tamaños dinámicamente y loguea
+cada evento con formato limpio. | El script funciona pero tiene
+contraseñas explícitas en texto plano o el cálculo del tamaño de la BD
+es estático o manual. | El script tiene fallos de sintaxis, no comprueba
+la salud o no escribe logs. | 2.5 pts |</p>
+<p>| <strong>Reto B: Triggers</strong> | Diseña correctamente la
+auditoría, captura el usuario activo y bloquea operaciones de borrado
+mediante SQLSTATE correctos. | Implementa los triggers pero no controla
+bien las variables NEW o OLD o usa excepciones genéricas sin documentar.
+| No controla eventos, faltan los disparadores o no bloquean la
+eliminación. | 2.5 pts |</p>
+<p>| <strong>Reto C: Diagnóstico Catálogo</strong> | Obtiene con total
+precisión los datos de fragmentación y claves primarias utilizando JOINs
+correctos en information_schema. | La consulta al catálogo funciona pero
+el cálculo de la fragmentación de datos está mal estructurado o no
+filtra por esquema. | No hace uso de metadatos o la consulta devuelve
+datos erróneos de almacenamiento. | 2.5 pts |</p>
+<p>| <strong>Reto D: Cursor de Archivado</strong> | El cursor procesa e
+integra el flujo de lectura, inserción y borrado ordenadamente,
+controlando la excepción NOT FOUND. | El cursor realiza la inserción
+pero no controla correctamente el borrado o carece del manejador de
+salida seguro del bucle. | No implementa cursor, utiliza un query simple
+delete/insert (no se adecúa al requisito técnico del examen). | 2.5 pts
+|</p>
+
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASGBD - Ut5 Teoria Optimizacion Consultas</title>
+    <style>
+    
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --bg-header: #1e3a8a;
+    --text-header: #ffffff;
+    --bg-body: #f8fafc;
+    --text-body: #1e293b;
+    --border-color: #cbd5e1;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-body);
+    color: var(--text-body);
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, [id], a[name] {
+    scroll-margin-top: 80px !important;
+}
+
+.headerlink {
+    display: inline-block;
+    margin-left: 0.4rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.8em;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
+h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
+    visibility: visible;
+    opacity: 1;
+}
+
+.headerlink:hover {
+    color: var(--primary);
+}
+
+#site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    background: var(--bg-header);
+    color: var(--text-header);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    height: 62px;
+}
+
+.site-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.top-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.top-nav .nav-btn {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+.top-nav .nav-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 9px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown:hover .dropbtn, .dropbtn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 320px;
+    max-width: 480px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 10001;
+    border: 1px solid #e2e8f0;
+    margin-top: 6px;
+}
+
+.dropdown-content a {
+    color: var(--text-body);
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.92rem;
+    border-bottom: 1px solid #f1f5f9;
+    line-height: 1.4;
+    transition: background 0.15s, color 0.15s;
+    word-break: break-word;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #eff6ff;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block !important;
+}
+
+#page-layout {
+    display: flex;
+    min-height: calc(100vh - 62px);
+}
+
+#left-panel {
+    width: 320px;
+    min-width: 320px;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 1.5rem 1.25rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: sticky;
+    top: 62px;
+    height: calc(100vh - 62px);
+}
+
+#left-panel h3 {
+    font-size: 1rem;
+    margin-top: 0;
+    color: #334155;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
+
+#left-panel nav#TOC, #left-panel #TOC {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+#left-panel ul {
+    list-style-type: none;
+    padding-left: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+#left-panel li {
+    margin: 6px 0;
+}
+
+#left-panel a {
+    color: #475569;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    display: block;
+    transition: color 0.15s;
+}
+
+#left-panel a:hover {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+#main-content {
+    flex: 1;
+    padding: 2.5rem 4rem;
+    box-sizing: border-box;
+    max-width: 100% !important;
+    width: calc(100% - 320px);
+    min-width: 0;
+}
+
+/* TABLAS ELEGANTES Y RESPONSIVE */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1.75rem 0;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    font-size: 0.93rem;
+    background: #ffffff;
+    table-layout: auto !important;
+}
+
+th, td {
+    padding: 10px 14px !important;
+    border: 1px solid #cbd5e1 !important;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+td p, th p {
+    margin: 0 !important;
+    padding: 2px 0 !important;
+}
+
+th {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #0f172a !important;
+}
+
+tr:nth-child(even) td {
+    background-color: #f8fafc !important;
+}
+
+tr:hover td {
+    background-color: #f1f5f9 !important;
+}
+
+/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
+.code-wrapper {
+    position: relative;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0f172a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #334155;
+    color: #f8fafc;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.copy-btn:hover {
+    background: #2563eb;
+}
+
+pre {
+    margin: 0 !important;
+    padding: 1.25rem 1.25rem !important;
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    overflow-x: auto !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+}
+
+code {
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+}
+
+p code, li code {
+    background: #e2e8f0;
+    color: #0f172a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
+
+/* RESPONSIVE DESIGN PARA MÓVILES Y TABLETS */
+@media (max-width: 768px) {
+    .header-container {
+        height: auto;
+        flex-direction: column;
+        padding: 0.75rem 1rem;
+        gap: 0.6rem;
+    }
+    
+    .site-title {
+        font-size: 1.05rem;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .site-title img {
+        height: 28px !important;
+    }
+
+    .top-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 0.35rem;
+    }
+
+    .top-nav .nav-btn, .dropbtn {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    .dropdown-content {
+        min-width: 240px;
+        max-width: 90vw;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #page-layout {
+        flex-direction: column;
+    }
+
+    #left-panel {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        position: static !important;
+        border-right: none !important;
+        border-bottom: 2px solid #e2e8f0;
+        padding: 1rem !important;
+    }
+
+    #main-content {
+        width: 100% !important;
+        padding: 1.25rem 1rem !important;
+    }
+
+    iframe {
+        height: 60vh !important;
+    }
+
+    th, td {
+        padding: 8px 10px !important;
+        font-size: 0.85rem !important;
+    }
+
+    pre {
+        padding: 0.85rem !important;
+        font-size: 0.82rem !important;
+    }
+}
+
+    </style>
+    <script>
+    
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.dropdown').forEach(dd => {
+        const btn = dd.querySelector('.dropbtn');
+        const content = dd.querySelector('.dropdown-content');
+        if (btn && content) {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = content.style.display === 'block';
+                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
+                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+                if (!isOpen) {
+                    content.style.display = 'block';
+                    btn.classList.add('active');
+                }
+            });
+        }
+    });
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
+        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+    });
+
+    // Controlador universal de clics en enlaces ancla (#...)
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const rawHref = this.getAttribute('href') || '';
+            const hashIdx = rawHref.indexOf('#');
+            if (hashIdx === -1) return;
+            const hash = rawHref.substring(hashIdx + 1);
+            if (!hash) return;
+            
+            let targetId = hash;
+            try { targetId = decodeURIComponent(hash); } catch(err) {}
+
+            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
+            if (!targetEl) {
+                for (let el of document.querySelectorAll('[id]')) {
+                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
+                        targetEl = el;
+                        break;
+                    }
+                }
+            }
+
+            if (targetEl) {
+                e.preventDefault();
+                const headerOffset = 75;
+                const elementPosition = targetEl.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                if (history.pushState) {
+                    history.pushState(null, null, '#' + targetId);
+                }
+            }
+        });
+    });
+});
+
+function copyCode(btn) {
+    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
+    navigator.clipboard.writeText(code).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = '✅ ¡Copiado!';
+        btn.style.background = '#16a34a';
+        setTimeout(() => {
+            btn.innerText = orig;
+            btn.style.background = '#334155';
+        }, 2000);
+    });
+}
+
+    </script>
+</head>
+<body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD &ndash; Ut5 Teoria Optimizacion Consultas</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+      <a href="ASGBD_Presentacion.html" class="nav-btn">Presentación</a>
+      <a href="ASGBD_UT2_Tarea_Programacion_Scripts.html" class="nav-btn">Programación</a>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Teoría ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Teoria_Configuracion.html">ASGBD UT1 Teoria Configuracion</a>
+          <a href="ASGBD_UT2_Teoria_Scripts_Administracion.html">ASGBD UT2 Teoria Scripts Administracion</a>
+          <a href="ASGBD_UT3_Teoria_Usuarios_roles.html">ASGBD UT3 Teoria Usuarios roles</a>
+          <a href="ASGBD_UT4_Teoría_Planificación_Seguridad.html">ASGBD UT4 Teoría Planificación Seguridad</a>
+          <a href="ASGBD_UT5_Teoria_Optimizacion_Consultas.html">ASGBD UT5 Teoria Optimizacion Consultas</a>
+          <a href="ASGBD_UT6_Teoría_BD_Distribuidas_alta_disponibilidad.html">ASGBD UT6 Teoría BD Distribuidas alta disponibilidad</a>
+          <a href="ASGBD_Proyecto_integral.html">ASGBD Proyecto integral</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Tareas y Prácticas ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Tarea_Configuracion.html">ASGBD UT1 Tarea Configuracion</a>
+          <a href="ASGBD_UT1_Practica.html">ASGBD UT1 Practica</a>
+          <a href="ASGBD_UT2_Practica._Automatizacion_Mantenimiento.html">ASGBD UT2 Practica. Automatizacion Mantenimiento</a>
+          <a href="ASGBD_UT3_Practica_Auditoria_Automatizacion.html">ASGBD UT3 Practica Auditoria Automatizacion</a>
+          <a href="ASGBD_UT3_Tarea_Enunciado.html">ASGBD UT3 Tarea Enunciado</a>
+          <a href="ASGBD_UT4_Tarea_Eventos.html">ASGBD UT4 Tarea Eventos</a>
+          <a href="ASGBD_UT4_Practica_Automatizacion_Mantenimiento.html">ASGBD UT4 Practica Automatizacion Mantenimiento</a>
+          <a href="ASGBD_UT5_Practica_Automatizacion.html">ASGBD UT5 Practica Automatizacion</a>
+          <a href="ASGBD_UT5_Práctica_Tunning_Servidores_EXPLAIN_Avanzado.html">ASGBD UT5 Práctica Tunning Servidores EXPLAIN Avanzado</a>
+          <a href="ASGBD_UT5_Tarea_Seguridad.html">ASGBD UT5 Tarea Seguridad</a>
+          <a href="ASGBD_UT5_Tarea_Auditoría_Rendimiento_Indexacion.html">ASGBD UT5 Tarea Auditoría Rendimiento Indexacion</a>
+          <a href="ASGBD_UT6_Practica_BD_Distribuidas_Sharding.html">ASGBD UT6 Practica BD Distribuidas Sharding</a>
+          <a href="ASGBD_UT6_Practica_Alta_Disponibilidad.html">ASGBD UT6 Practica Alta Disponibilidad</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <aside id="left-panel">
+            <h3>Índice del Tema</h3>
+            <nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#ficha-técnica-de-la-unidad-didáctica"
+id="toc-ficha-técnica-de-la-unidad-didáctica">FICHA TÉCNICA DE LA UNIDAD
+DIDÁCTICA</a></li>
+<li><a href="#índice-de-contenidos" id="toc-índice-de-contenidos">ÍNDICE
+DE CONTENIDOS</a></li>
+<li><a href="#introducción" id="toc-introducción">1.
+INTRODUCCIÓN</a></li>
+<li><a href="#fundamentos-y-estructura-de-los-índices"
+id="toc-fundamentos-y-estructura-de-los-índices">2. FUNDAMENTOS Y
+ESTRUCTURA DE LOS ÍNDICES</a>
+<ul>
+<li><a href="#la-regla-del-equilibrio-de-escritura-lectura"
+id="toc-la-regla-del-equilibrio-de-escritura-lectura">2.1 La Regla del
+Equilibrio de Escritura-Lectura</a></li>
+<li><a href="#tipos-de-índices-lógicos"
+id="toc-tipos-de-índices-lógicos">2.2 Tipos de Índices Lógicos</a></li>
+<li><a href="#arquitectura-física-de-almacenamiento-árboles-b"
+id="toc-arquitectura-física-de-almacenamiento-árboles-b">2.3
+Arquitectura Física de Almacenamiento: Árboles B</a></li>
+</ul></li>
+<li><a href="#gestión-avanzada-de-índices"
+id="toc-gestión-avanzada-de-índices">3. GESTIÓN AVANZADA DE ÍNDICES</a>
+<ul>
+<li><a href="#creación-de-índices" id="toc-creación-de-índices">3.1
+Creación de Índices</a></li>
+<li><a href="#índices-compuestos-y-la-regla-del-prefijo-izquierdo"
+id="toc-índices-compuestos-y-la-regla-del-prefijo-izquierdo">3.2 Índices
+Compuestos y la Regla del Prefijo Izquierdo</a></li>
+<li><a href="#índices-de-prefijo-de-columna"
+id="toc-índices-de-prefijo-de-columna">3.3 Índices de Prefijo de
+Columna</a></li>
+<li><a href="#índices-de-texto-completo-fulltext"
+id="toc-índices-de-texto-completo-fulltext">3.4 Índices de Texto
+Completo (FULLTEXT)</a></li>
+<li><a href="#índices-funcionales" id="toc-índices-funcionales">3.5
+Índices Funcionales</a></li>
+</ul></li>
+<li><a href="#mantenimiento-y-diagnóstico-de-índices"
+id="toc-mantenimiento-y-diagnóstico-de-índices">4. MANTENIMIENTO Y
+DIAGNÓSTICO DE ÍNDICES</a>
+<ul>
+<li><a href="#inspección-del-estado-de-índices"
+id="toc-inspección-del-estado-de-índices">4.1 Inspección del Estado de
+Índices</a></li>
+<li><a href="#reorganización-desfragmentación-y-estadísticas"
+id="toc-reorganización-desfragmentación-y-estadísticas">4.2
+Reorganización, Desfragmentación y Estadísticas</a></li>
+</ul></li>
+<li><a href="#planes-de-ejecución-con-explain"
+id="toc-planes-de-ejecución-con-explain">5. PLANES DE EJECUCIÓN CON
+EXPLAIN</a>
+<ul>
+<li><a href="#estructura-e-interpretación-de-columnas-clave"
+id="toc-estructura-e-interpretación-de-columnas-clave">5.1 Estructura e
+Interpretación de Columnas Clave</a></li>
+</ul></li>
+<li><a href="#casos-prácticos-y-escenarios"
+id="toc-casos-prácticos-y-escenarios">6. CASOS PRÁCTICOS Y ESCENARIOS
+</a>
+<ul>
+<li><a href="#caso-1-optimización-de-búsquedas-simples"
+id="toc-caso-1-optimización-de-búsquedas-simples">6.1 Caso 1:
+Optimización de Búsquedas Simples</a></li>
+<li><a href="#caso-2-pérdida-de-sargabilidad-por-uso-de-funciones"
+id="toc-caso-2-pérdida-de-sargabilidad-por-uso-de-funciones">6.2 Caso 2:
+Pérdida de Sargabilidad por Uso de Funciones</a></li>
+<li><a
+href="#caso-3-búsquedas-de-patrones-intermedios-like-text-vs.-fulltext"
+id="toc-caso-3-búsquedas-de-patrones-intermedios-like-text-vs.-fulltext">6.3
+Caso 3: Búsquedas de Patrones Intermedios (LIKE %text%) vs.
+FULLTEXT</a></li>
+</ul></li>
+</ul>
+</nav>
+        </aside>
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT5_Teoria_Optimizacion_Consultas.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+<header id="title-block-header">
+<h1 class="title"><p><span id="_t0rtsb50ppov"
+class="anchor"></span>Unidad 5: </p>
+<p><span id="_47jljcyfydqy" class="anchor"></span>OPTIMIZACIÓN DE
+CONSULTAS E ÍNDICES EN SGBD</p></h1>
+</header>
+
+<h3 id="ficha-técnica-de-la-unidad-didáctica">FICHA TÉCNICA DE LA UNIDAD
+DIDÁCTICA <a class="headerlink" href="#ficha-técnica-de-la-unidad-didáctica" title="Enlace permanente">¶</a></h3>
+<div class="table-wrapper"><table>
+<tbody>
+<tr class="header">
+<td><strong>Unidad de Trabajo</strong></td>
+<td>Unidad 5: Optimización de consultas e índices en MySQL /
+MariaDB</td>
+</tr>
+<tr class="odd">
+<td><strong>Módulo Profesional</strong></td>
+<td>Administración de Sistemas Gestores de Bases de Datos (ASGBD -
+Código: 0377)</td>
+</tr>
+<tr class="header">
+<td><strong>Ciclo Formativo</strong></td>
+<td>2º Curso del Grado Superior en Administración de Sistemas
+Informáticos en Red (ASIR)</td>
+</tr>
+<tr class="odd">
+<td><strong>Resultados de Aprendizaje (RA)</strong></td>
+<td><strong>RA4:</strong> Optimiza el rendimiento del sistema gestor
+monitorizando los accesos y ajustando los parámetros del motor.</td>
+</tr>
+<tr class="header">
+<td><strong>Criterios de Evaluación (CE)</strong></td>
+<td><p><strong>CE 4.b:</strong> Se han identificado los factores que
+afectan al rendimiento del sistema.</p>
+<p><strong>CE 4.c:</strong> Se han analizado las trazas de ejecución de
+las consultas.</p>
+<p><strong>CE 4.d:</strong> Se han creado índices y otras estructuras de
+optimización.</p>
+<p><strong>CE 4.f:</strong> Se han reestructurado los datos para mejorar
+la velocidad de acceso.</p></td>
+</tr>
+<tr class="odd">
+<td><strong>Tiempo Estimado</strong></td>
+<td>10 horas lectivas</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="índice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#índice-de-contenidos" title="Enlace permanente">¶</a></h3>
+<p><a href="#introducción"><u>1. INTRODUCCIÓN</u></a></p>
+<p><a href="#fundamentos-y-estructura-de-los-índices"><u>2. FUNDAMENTOS
+Y ESTRUCTURA DE LOS ÍNDICES</u></a></p>
+<blockquote>
+<p><a href="#la-regla-del-equilibrio-de-escritura-lectura"><u>2.1 La
+Regla del Equilibrio de Escritura-Lectura</u></a></p>
+<p><a href="#tipos-de-índices-lógicos"><u>2.2 Tipos de Índices
+Lógicos</u></a></p>
+<p><a href="#arquitectura-física-de-almacenamiento-árboles-b"><u>2.3
+Arquitectura Física de Almacenamiento: Árboles B</u></a></p>
+</blockquote>
+<p><a href="#gestión-avanzada-de-índices"><u>3. GESTIÓN AVANZADA DE
+ÍNDICES</u></a></p>
+<blockquote>
+<p><a href="#creación-de-índices"><u>3.1 Creación de Índices</u></a></p>
+<p><a href="#índices-compuestos-y-la-regla-del-prefijo-izquierdo"><u>3.2
+Índices Compuestos y la Regla del Prefijo Izquierdo</u></a></p>
+<p><a href="#índices-de-prefijo-de-columna"><u>3.3 Índices de Prefijo de
+Columna</u></a></p>
+<p><a href="#índices-de-texto-completo-fulltext"><u>3.4 Índices de Texto
+Completo (FULLTEXT)</u></a></p>
+<p><a href="#índices-funcionales"><u>3.5 Índices Funcionales</u></a></p>
+</blockquote>
+<p><a href="#mantenimiento-y-diagnóstico-de-índices"><u>4. MANTENIMIENTO
+Y DIAGNÓSTICO DE ÍNDICES</u></a></p>
+<blockquote>
+<p><a href="#inspección-del-estado-de-índices"><u>4.1 Inspección del
+Estado de Índices</u></a></p>
+<p><a href="#reorganización-desfragmentación-y-estadísticas"><u>4.2
+Reorganización, Desfragmentación y Estadísticas</u></a></p>
+</blockquote>
+<p><a href="#planes-de-ejecución-con-explain"><u>5. PLANES DE EJECUCIÓN
+CON EXPLAIN</u></a></p>
+<blockquote>
+<p><a href="#estructura-e-interpretación-de-columnas-clave"><u>5.1
+Estructura e Interpretación de Columnas Clave</u></a></p>
+</blockquote>
+<p><a href="#casos-prácticos-y-escenarios"><u>6. CASOS PRÁCTICOS Y
+ESCENARIOS</u></a></p>
+<blockquote>
+<p><a href="#caso-1-optimización-de-búsquedas-simples"><u>6.1 Caso 1:
+Optimización de Búsquedas Simples</u></a></p>
+<p><a href="#caso-2-pérdida-de-sargabilidad-por-uso-de-funciones"><u>6.2
+Caso 2: Pérdida de Sargabilidad por Uso de Funciones</u></a></p>
+<p><a
+href="#caso-3-búsquedas-de-patrones-intermedios-like-text-vs.-fulltext"><u>6.3
+Caso 3: Búsquedas de Patrones Intermedios (LIKE %text%) vs.
+FULLTEXT</u></a></p>
+</blockquote>
+<h1 id="introducción">1. INTRODUCCIÓN <a class="headerlink" href="#introducción" title="Enlace permanente">¶</a></h1>
+<p>En entornos corporativos y servidores de alta concurrencia, el tiempo
+de respuesta de las consultas SQL es un factor crítico de
+infraestructura. Para un Administrador de Sistemas (SysAdmin) o
+Administrador de Bases de Datos (DBA), el rendimiento del hardware del
+host (CPU, operaciones de I/O en disco, consumo de memoria RAM) está
+directamente acoplado a la eficiencia de las consultas ejecutadas sobre
+el motor de bases de datos.</p>
+<p>La optimización de consultas (<em>Query Optimization</em>) busca
+minimizar el coste de ejecución del plan seleccionado por el SGBD. La
+herramienta de mayor impacto directo sobre este proceso es la creación e
+implementación estratégica de <strong>índices</strong>.</p>
+<h1 id="fundamentos-y-estructura-de-los-índices">2. FUNDAMENTOS Y
+ESTRUCTURA DE LOS ÍNDICES <a class="headerlink" href="#fundamentos-y-estructura-de-los-índices" title="Enlace permanente">¶</a></h1>
+<p>Un índice es una estructura de datos física auxiliar que el motor de
+almacenamiento (por ejemplo, <em>InnoDB</em> en MySQL) asocia a una
+tabla para acelerar la localización de registros sin necesidad de
+realizar barridos secuenciales completos de los archivos de datos en
+disco (<em>Full Table Scans</em>).</p>
+<h2 id="la-regla-del-equilibrio-de-escritura-lectura">2.1 La Regla del
+Equilibrio de Escritura-Lectura <a class="headerlink" href="#la-regla-del-equilibrio-de-escritura-lectura" title="Enlace permanente">¶</a></h2>
+<p>Aunque los índices aceleran exponencialmente las lecturas (SELECT),
+introducen un coste que el administrador debe balancear
+cuidadosamente:</p>
+<ul>
+<li><blockquote>
+<p><strong>Sobrecarga de Almacenamiento:</strong> Cada índice requiere
+su propio espacio físico de almacenamiento en el tablespace (archivos
+.ibd).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Sobrecarga en Operaciones DML (INSERT, UPDATE,
+DELETE):</strong> Cada vez que un registro muta, se inserta o se borra
+de una tabla, el motor de bases de datos debe reorganizar y reescribir
+de forma síncrona las estructuras de índices asociadas en disco,
+penalizando el rendimiento de escritura.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Complejidad del Optimizador:</strong> Un exceso de índices
+incrementa el tiempo de computación que el optimizador de costes de
+MySQL requiere para evaluar y decidir el plan de ejecución más
+óptimo.</p>
+</blockquote></li>
+</ul>
+<h2 id="tipos-de-índices-lógicos">2.2 Tipos de Índices Lógicos <a class="headerlink" href="#tipos-de-índices-lógicos" title="Enlace permanente">¶</a></h2>
+<p>Los SGBD clasifican los índices lógicos en función de la naturaleza
+de los datos que indexan y de las restricciones semánticas
+aplicadas:</p>
+<ol type="1">
+<li><blockquote>
+<p><strong>Índices de Clave Primaria (<em>Primary Key</em>):</strong>
+Identifican un registro de manera unívoca. No permiten valores
+duplicados ni nulos (NULL). En InnoDB, la Clave Primaria determina
+físicamente el orden en el que se almacenan las filas en disco (Índice
+Clustered o Agrupado).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Índices de Clave Ajena (<em>Foreign Key</em>):</strong>
+Indizan de forma automática las columnas que actúan como enlaces
+relacionales con otras tablas para optimizar el rendimiento de las
+operaciones JOIN y verificar la integridad referencial de forma
+ágil.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Índices Únicos (<em>Unique Index</em>):</strong> Garantizan
+que no existan registros repetidos en la columna indexada. A diferencia
+de las claves primarias, admiten valores nulos (NULL).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Índices con Valores Repetidos (Índices Secundarios o No
+Únicos):</strong> Optimizan las búsquedas de columnas no restrictivas
+(por ejemplo, apellidos, estados de pedidos o códigos de país).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Índices de Columnas Múltiples (Compuestos):</strong>
+Estructurados sobre una secuencia de varias columnas pertenecientes a la
+misma tabla.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Índices de Texto Completo (<em>Fulltext</em>):</strong>
+Especializados en la búsqueda léxica y semántica de grandes campos de
+caracteres de texto (VARCHAR, TEXT), permitiendo búsquedas rápidas
+mediante palabras clave.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Índices Funcionales:</strong> Permiten generar índices sobre
+el resultado de evaluar expresiones o funciones sobre los datos en lugar
+de los valores planos de la columna.</p>
+</blockquote></li>
+</ol>
+<h2 id="arquitectura-física-de-almacenamiento-árboles-b">2.3
+Arquitectura Física de Almacenamiento: Árboles B <a class="headerlink" href="#arquitectura-física-de-almacenamiento-árboles-b" title="Enlace permanente">¶</a></h2>
+<p>En MySQL/MariaDB, la inmensa mayoría de los índices tradicionales se
+organizan físicamente bajo estructuras de <strong>Árboles B</strong>
+(específicamente <em>B+ Trees</em> en motores modernos como InnoDB).</p>
+<p>La selectividad de un índice se puede medir de forma matemática. La
+<strong>Selectividad ($$$)</strong> de un índice viene dada por la razón
+entre el número de valores únicos y el número total de registros de la
+tabla:</p>
+<p><img
+src="media_ASGBD_UT5_Teoria_Optimizacion_Consultas/media/image2.png"
+style="width:6.25in;height:0.37202in" />Una selectividad óptima se
+aproxima a $1$ (por ejemplo, en un índice de clave primaria o un campo
+NIF), lo que indica que el índice discriminará eficientemente las
+búsquedas. Una selectividad cercana a $0$ (por ejemplo, indexar el campo
+<em>género</em> o <em>estado_activo</em>) indica que el índice apenas
+aportará ventajas y el optimizador de costes preferirá realizar un
+escaneo completo de la tabla.</p>
+<p><strong>Esquema Conceptual de B+ Tree en InnoDB:</strong></p>
+<p>En un árbol B+, los nodos internos contienen únicamente claves de
+indexación y punteros de navegación, mientras que la información física
+real (los registros de datos o los punteros de clave primaria) reside
+exclusivamente en los <strong>nodos hoja</strong>. Adicionalmente, todos
+los nodos hoja están doblemente enlazados entre sí, lo que facilita
+enormemente las consultas de rango y las ordenaciones secuenciales
+rápidas.</p>
+<p>[ Nodo Raíz ]<br />
+/ \<br />
+[ Nodo Interno ] [ Nodo Interno ]<br />
+/ \ / \<br />
+[Hoja] &lt;-&gt; [Hoja] &lt;-&gt; [Hoja] &lt;-&gt; [Hoja]<br />
+(Datos) (Datos) (Datos) (Datos)</p>
+<h1 id="gestión-avanzada-de-índices">3. GESTIÓN AVANZADA DE ÍNDICES <a class="headerlink" href="#gestión-avanzada-de-índices" title="Enlace permanente">¶</a></h1>
+<h2 id="creación-de-índices">3.1 Creación de Índices <a class="headerlink" href="#creación-de-índices" title="Enlace permanente">¶</a></h2>
+<p>MySQL permite declarar índices mediante tres mecanismos
+diferenciados.</p>
+<p><strong>Método 1: Sentencia Directa CREATE INDEX</strong></p>
+<p>Es la sentencia estándar e imperativa para crear índices secundarios
+en caliente sobre tablas ya existentes.</p>
+<p>-- Crear un índice no único estándar<br />
+CREATE INDEX idx_pais ON cliente(pais);<br />
+<br />
+-- Crear un índice único restrictivo<br />
+CREATE UNIQUE INDEX idx_email ON empleado(email);</p>
+<p><strong>Método 2: Sentencia de Alteración Estructural ALTER
+TABLE</strong></p>
+<p>Permite añadir índices utilizando la sintaxis de alteración física de
+la tabla. Con este método es posible omitir el nombre del índice de
+forma explícita; el motor le asignará de forma automática el nombre de
+la columna indexada.</p>
+<p>-- Creación con nombre explícito<br />
+ALTER TABLE cliente ADD INDEX idx_nombre (nombre);<br />
+<br />
+-- Creación sin especificar nombre (se llamará de forma implícita
+"nombre")<br />
+ALTER TABLE cliente ADD INDEX (nombre);</p>
+<p><strong>Método 3: Declaración inline en CREATE TABLE</strong></p>
+<p>Definición de índices físicos de manera concurrente en la estructura
+de creación inicial de la tabla.</p>
+<p>CREATE TABLE cliente (<br />
+id INT UNSIGNED AUTO_INCREMENT,<br />
+nombre VARCHAR(50) NOT NULL,<br />
+email VARCHAR(150) NOT NULL,<br />
+telefono VARCHAR(9) NOT NULL,<br />
+PRIMARY KEY (id),<br />
+UNIQUE KEY uq_email (email),<br />
+INDEX idx_nombre (nombre)<br />
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;</p>
+<h2 id="índices-compuestos-y-la-regla-del-prefijo-izquierdo">3.2 Índices
+Compuestos y la Regla del Prefijo Izquierdo <a class="headerlink" href="#índices-compuestos-y-la-regla-del-prefijo-izquierdo" title="Enlace permanente">¶</a></h2>
+<p>Un <strong>Índice Compuesto</strong> es aquel creado sobre más de una
+columna de forma conjunta. Su utilidad y explotación sigue de manera
+estricta la <strong>Regla del Prefijo Izquierdo</strong>
+(<em>Left-Prefix Rule</em>).</p>
+<p><strong>Ejemplo de Declaración:</strong></p>
+<p>CREATE INDEX idx_apellido_nombre ON cliente (apellido_contacto,
+nombre_contacto);</p>
+<p>Este índice compuesto físico se almacena ordenado jerárquicamente:
+primero por apellido_contacto y, ante colisión de apellidos, se ordena
+internamente por nombre_contacto. Por tanto, el optimizador de MySQL
+solo podrá utilizar este índice en consultas que filtren:</p>
+<ol type="1">
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Por el apellido y nombre simultáneamente (WHERE apellido_contacto =
+'Gómez' AND nombre_contacto = 'Ana').</code></pre></div></li>
+<li><blockquote>
+<p>Únicamente por la columna del prefijo izquierdo (WHERE
+apellido_contacto = 'Gómez').</p>
+</blockquote></li>
+</ol>
+<p><strong>¿Qué ocurre si filtramos únicamente por
+nombre_contacto?</strong> El optimizador <strong>no podrá utilizar el
+índice</strong> y se verá obligado a realizar un escaneo completo de la
+tabla, ya que el árbol no está ordenado globalmente por nombres, sino
+por apellidos primero.</p>
+<h2 id="índices-de-prefijo-de-columna">3.3 Índices de Prefijo de
+Columna <a class="headerlink" href="#índices-de-prefijo-de-columna" title="Enlace permanente">¶</a></h2>
+<p>Para optimizar el tamaño de los índices y ahorrar consumo de memoria
+RAM en el buffer de índices, se puede limitar el árbol para que almacene
+únicamente los primeros caracteres de una columna de tipo cadena de
+texto de gran longitud.</p>
+<p>-- Columna nombre_cliente definida originalmente como
+VARCHAR(50)<br />
+-- Creamos un índice que almacenará solo los primeros 25
+caracteres<br />
+CREATE INDEX idx_nombre_cliente ON cliente (nombre_cliente(25));</p>
+<p><strong>Cálculo Metodológico de la Longitud Óptima del
+Prefijo:</strong></p>
+<p>Para determinar el número óptimo de caracteres necesarios para el
+prefijo de forma que no perdamos discriminación, debemos evaluar de
+forma analítica la ganancia de valores distintos agregando bytes.</p>
+<p>-- 1. Evaluamos la cardinalidad total de valores únicos en la columna
+entera<br />
+SELECT COUNT(DISTINCT nombre_cliente) FROM cliente;<br />
+<br />
+-- 2. Evaluamos la cardinalidad de valores únicos utilizando un prefijo
+de N caracteres<br />
+SELECT<br />
+COUNT(DISTINCT LEFT(nombre_cliente, 5)) AS pref_5,<br />
+COUNT(DISTINCT LEFT(nombre_cliente, 10)) AS pref_10,<br />
+COUNT(DISTINCT LEFT(nombre_cliente, 12)) AS pref_12,<br />
+COUNT(DISTINCT LEFT(nombre_cliente, 15)) AS pref_15<br />
+FROM cliente;</p>
+<p>El DBA seleccionará el menor prefijo $N$ que proporcione una
+cardinalidad de valores únicos muy cercana al 100% de la columna sin
+prefijo. De este modo, optimizamos el tamaño del archivo indexado en el
+disco sin introducir falsos positivos de búsqueda en el índice.</p>
+<h2 id="índices-de-texto-completo-fulltext">3.4 Índices de Texto
+Completo (FULLTEXT) <a class="headerlink" href="#índices-de-texto-completo-fulltext" title="Enlace permanente">¶</a></h2>
+<p>Los índices estándar basados en Árboles B no son eficientes para
+realizar búsquedas semánticas sobre grandes campos de texto
+desestructurado. Para resolver esto, MySQL proporciona los índices
+FULLTEXT en los motores InnoDB y MyISAM, implementando índices
+invertidos estructurados léxicamente.</p>
+<p><strong>Ejemplo de Declaración:</strong></p>
+<p>CREATE FULLTEXT INDEX idx_nombre_descripcion ON producto(nombre,
+descripcion);</p>
+<p><strong>Sintaxis de Consulta:</strong></p>
+<p>La explotación de estos índices se realiza utilizando las funciones
+específicas MATCH() y AGAINST().</p>
+<p>SELECT nombre, descripcion<br />
+FROM producto<br />
+WHERE MATCH(nombre, descripcion) AGAINST ('acero' IN NATURAL LANGUAGE
+MODE);</p>
+<p><strong>Modos de Búsqueda Full-Text:</strong></p>
+<ol type="1">
+<li><blockquote>
+<p><strong>IN NATURAL LANGUAGE MODE (Por defecto):</strong> Trata los
+datos de entrada como una frase en lenguaje natural. No admite
+operadores lógicos ni caracteres de control especiales.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>IN BOOLEAN MODE:</strong> Permite el uso de operadores
+booleanos avanzados para definir condiciones complejas:</p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p>+ : Indica que la palabra <strong>debe</strong> aparecer de forma
+obligatoria.</p>
+</blockquote></li>
+<li><blockquote>
+<p>- : Indica que la palabra <strong>no debe</strong> aparecer en el
+resultado.</p>
+</blockquote></li>
+<li><blockquote>
+<p>* : Actúa como comodín de truncamiento a la derecha de la cadena (por
+ejemplo, fruta* busca "fruta", "frutas", "frutales").</p>
+</blockquote></li>
+<li><blockquote>
+<p>" " : Delimita una frase literal que debe coincidir de forma
+secuencial exacta.</p>
+</blockquote></li>
+</ul></li>
+</ol>
+<p><strong>Ejemplo en Modo Booleano:</strong></p>
+<p>-- Buscar filas con la palabra "planta" de forma obligatoria, pero
+que NO contengan la palabra "árbol"<br />
+SELECT * FROM producto<br />
+WHERE MATCH(nombre, descripcion) AGAINST ('+planta -arbol' IN BOOLEAN
+MODE);</p>
+<h2 id="índices-funcionales">3.5 Índices Funcionales <a class="headerlink" href="#índices-funcionales" title="Enlace permanente">¶</a></h2>
+<p>A partir de la versión <strong>8.0.13 de MySQL</strong>, es posible
+generar índices físicos sobre el resultado devuelto de expresiones,
+funciones de manipulación de cadenas de caracteres u operaciones
+matemáticas.</p>
+<p><strong>Ejemplo de Declaración:</strong></p>
+<p>-- Crear un índice sobre la expresión del año de la columna
+fecha_pago<br />
+CREATE INDEX idx_year_functional_index ON pago ((YEAR(fecha_pago)));</p>
+<h1 id="mantenimiento-y-diagnóstico-de-índices">4. MANTENIMIENTO Y
+DIAGNÓSTICO DE ÍNDICES <a class="headerlink" href="#mantenimiento-y-diagnóstico-de-índices" title="Enlace permanente">¶</a></h1>
+<h2 id="inspección-del-estado-de-índices">4.1 Inspección del Estado de
+Índices <a class="headerlink" href="#inspección-del-estado-de-índices" title="Enlace permanente">¶</a></h2>
+<p>Un SysAdmin debe auditar con frecuencia el estado físico de sus
+tablas e índices para evaluar si es preciso reconstruirlos.</p>
+<p><strong>Comando SHOW INDEX:</strong></p>
+<p>SHOW INDEX FROM cliente FROM jardineria;</p>
+<h4 id="atributos-clave-devueltos-en-show-index">Atributos Clave
+devueltos en SHOW INDEX: <a class="headerlink" href="#atributos-clave-devueltos-en-show-index" title="Enlace permanente">¶</a></h4>
+<ul>
+<li><blockquote>
+<p><strong>Table:</strong> El nombre físico de la tabla asociada.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Non_unique:</strong> Si devuelve 0, indica que es un índice
+único (no permite duplicidad física). Si es 1, permite valores
+duplicados.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Key_name:</strong> Nombre del índice.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Seq_in_index:</strong> Orden posicional de la columna actual
+dentro de un índice compuesto (comienza en 1).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Column_name:</strong> Nombre físico del campo indexado.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Collation:</strong> Ordenamiento del índice (en árboles B
+suele ser A para orden ascendente, o NULL si no hay ordenamiento).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Cardinality:</strong> Una estimación de la cantidad de
+valores únicos almacenados en el índice. A mayor número de cardinalidad
+respecto al número de filas de la tabla, mayor selectividad tendrá.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Index_type:</strong> El método de almacenamiento físico
+utilizado (por ejemplo, BTREE, FULLTEXT).</p>
+</blockquote></li>
+</ul>
+<p>También es viable realizar diagnósticos rápidos utilizando DESCRIBE o
+SHOW COLUMNS:</p>
+<p>DESCRIBE cliente;</p>
+<p>La columna Key mostrará etiquetas descriptivas como PRI (Primary
+Key), UNI (Unique Index), o MUL (índice no único con valores repetidos o
+columna prefijo de índice compuesto).</p>
+<h2 id="reorganización-desfragmentación-y-estadísticas">4.2
+Reorganización, Desfragmentación y Estadísticas <a class="headerlink" href="#reorganización-desfragmentación-y-estadísticas" title="Enlace permanente">¶</a></h2>
+<p>Con la actividad de inserción y borrado, los índices sufren
+degradación de rendimiento por fragmentación física. El motor dispone de
+dos comandos de mantenimiento crítico:</p>
+<p><strong>Comando ANALYZE TABLE:</strong></p>
+<p>Analiza y almacena en el diccionario de datos del SGBD la
+distribución exacta de claves de la tabla. El optimizador utiliza estas
+estadísticas para calcular los costes de los planes de consulta y
+decidir el orden óptimo de los JOIN. Se aconseja ejecutarlo tras cargas
+masivas de datos.</p>
+<p>ANALYZE TABLE cliente, pago;</p>
+<p><strong>Comando OPTIMIZE TABLE:</strong></p>
+<p>Realiza una desfragmentación de las tablas de datos e índices,
+liberando el espacio vacío que ha quedado reservado por operaciones de
+borrado previas, y reordenando físicamente las claves en disco.</p>
+<p>OPTIMIZE TABLE cliente;</p>
+<h1 id="planes-de-ejecución-con-explain">5. PLANES DE EJECUCIÓN CON
+EXPLAIN <a class="headerlink" href="#planes-de-ejecución-con-explain" title="Enlace permanente">¶</a></h1>
+<p>EXPLAIN es la instrucción diagnóstica que nos permite analizar de qué
+manera el motor de almacenamiento de bases de datos va a resolver una
+consulta SQL antes de ejecutarla, desglosando los costes previstos.</p>
+<p>EXPLAIN SELECT nombre_contacto, telefono FROM cliente WHERE pais =
+'France';</p>
+<h2 id="estructura-e-interpretación-de-columnas-clave">5.1 Estructura e
+Interpretación de Columnas Clave <a class="headerlink" href="#estructura-e-interpretación-de-columnas-clave" title="Enlace permanente">¶</a></h2>
+<p>Al ejecutar EXPLAIN, el SGBD devuelve una fila por cada tabla
+implicada en la consulta con la siguiente estructura de columnas:</p>
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Columna
+Significado Técnico e Impacto en el
+Rendimiento
+
+
+id
+Secuenciador identificativo del identificador de la consulta del
+select.
+
+
+select_type
+El tipo de consulta analizada (por ejemplo: SIMPLE para consultas
+sin subconsultas ni uniones, PRIMARY para el SELECT principal en
+subconsultas, SUBQUERY).
+
+
+table
+La tabla física del disco sobre la cual se está procesando la
+información.
+
+
+type
+La columna más crítica del EXPLAIN. Indica el
+método de acceso que el motor va a realizar para recuperar las filas. Se
+evalúa de mejor a peor rendimiento. (Ver detalle a continuación).
+
+
+possible_keys
+Los nombres de los índices de la tabla que el optimizador podría
+haber utilizado para recuperar los datos.
+
+
+key
+El índice que el optimizador ha seleccionado finalmente para
+ejecutar la consulta. Si es NULL, indica que MySQL no está utilizando
+ningún índice.
+
+
+key_len
+La longitud en bytes de la clave del índice seleccionada por el
+motor. Útil para determinar cuántas columnas de un índice compuesto se
+están utilizando realmente.
+
+
+ref
+Muestra qué columnas o constantes se comparan con el índice
+especificado en la columna key.
+
+
+rows
+El número aproximado de filas físicas que el motor estima que tendrá
+que leer y analizar en disco para retornar el conjunto de datos de la
+consulta.
+
+
+filtered
+Porcentaje estimado de filas filtradas que serán evaluadas por el
+motor antes de aplicar las condiciones del WHERE sobre el total de filas
+indicadas en rows.
+
+
+Extra
+Información adicional sobre cómo procesa MySQL la consulta (por
+ejemplo: Using index indica que la consulta se resuelve íntegramente
+leyendo el índice sin consultar la tabla física; Using filesort indica
+un coste de CPU muy alto debido a ordenaciones en memoria sin índices;
+Using temporary indica la creación de tablas temporales internas).</code></pre></div></div>
+<p><strong>Valores de la Columna type (Ordenados de mejor a peor
+rendimiento):</strong></p>
+<ol type="1">
+<li><blockquote>
+<p><strong>system:</strong> La tabla tiene una única fila (caso
+excepcional).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>const:</strong> La tabla se lee como máximo una vez al inicio
+de la consulta por coincidencia exacta con una clave primaria o un
+índice único (UNIQUE). Es el acceso de tiempo constante óptimo.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>eq_ref:</strong> Se utiliza un índice único o clave primaria
+para resolver un JOIN con la tabla anterior. Se accede de forma unívoca
+a un registro por cada fila procesada de la primera tabla.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>ref:</strong> Se realiza una búsqueda por índice secundario
+no único utilizando un operador de coincidencia exacta (=).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>range:</strong> Se realiza un escaneo de un rango ordenado de
+claves de un índice, resolviendo condiciones que usan operadores como
+&gt;, &lt;, BETWEEN, IN(), o LIKE 'prefix%'.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>index:</strong> Se escanea el árbol de índices de forma
+completa en lugar de la tabla física (evita I/O de disco pesado de
+columnas no indexadas, pero requiere procesar el árbol entero).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>ALL:</strong> <strong>Full Table Scan.</strong> El motor
+realiza un escaneo secuencial de todas las páginas de datos físicas de
+la tabla en disco. Extremadamente ineficiente en tablas medianas y
+grandes, provocando un elevado consumo de CPU y disco.</p>
+</blockquote></li>
+</ol>
+<h1 id="casos-prácticos-y-escenarios">6. CASOS PRÁCTICOS Y ESCENARIOS
+ <a class="headerlink" href="#casos-prácticos-y-escenarios" title="Enlace permanente">¶</a></h1>
+<h2 id="caso-1-optimización-de-búsquedas-simples">6.1 Caso 1:
+Optimización de Búsquedas Simples <a class="headerlink" href="#caso-1-optimización-de-búsquedas-simples" title="Enlace permanente">¶</a></h2>
+<p><strong>Consulta Original:</strong></p>
+<p>SELECT nombre_contacto, telefono FROM cliente WHERE pais =
+'France';</p>
+<p><strong>Análisis Inicial con EXPLAIN:</strong></p>
+<p>EXPLAIN SELECT nombre_contacto, telefono FROM cliente WHERE pais =
+'France';</p>
+<p><strong>Resultado del Plan:</strong></p>
+<ul>
+<li><blockquote>
+<p>type = ALL</p>
+</blockquote></li>
+<li><blockquote>
+<p>possible_keys = NULL</p>
+</blockquote></li>
+<li><blockquote>
+<p>key = NULL</p>
+</blockquote></li>
+<li><blockquote>
+<p>rows = 36 (Número total de filas de la tabla cliente)</p>
+</blockquote></li>
+<li><blockquote>
+<p>Extra = Using where</p>
+</blockquote></li>
+</ul>
+<p><strong>Diagnóstico:</strong> Como no existe un índice físico sobre
+el campo pais, el motor de base de datos se ve obligado a realizar un
+escaneo completo de toda la tabla para comprobar el valor del país en
+cada una de las 36 filas de datos.</p>
+<p><strong>Corrección y Optimización:</strong></p>
+<p>-- Creamos un índice secundario B-Tree sobre la columna de
+filtrado<br />
+CREATE INDEX idx_pais ON cliente(pais);</p>
+<p><strong>Análisis Posterior con EXPLAIN:</strong></p>
+<p>EXPLAIN SELECT nombre_contacto, telefono FROM cliente WHERE pais =
+'France';</p>
+<h5 id="resultado-del-plan-optimizado">Resultado del Plan
+Optimizado: <a class="headerlink" href="#resultado-del-plan-optimizado" title="Enlace permanente">¶</a></h5>
+<ul>
+<li><blockquote>
+<p>type = ref</p>
+</blockquote></li>
+<li><blockquote>
+<p>possible_keys = idx_pais</p>
+</blockquote></li>
+<li><blockquote>
+<p>key = idx_pais</p>
+</blockquote></li>
+<li><blockquote>
+<p>rows = 2</p>
+</blockquote></li>
+<li><blockquote>
+<p>Extra = NULL</p>
+</blockquote></li>
+</ul>
+<p><strong>Diagnóstico:</strong> Tras la creación de la estructura del
+índice, el motor accede directamente a las direcciones físicas de los
+registros utilizando el árbol idx_pais. El tiempo de respuesta es
+óptimo: ya no requiere un escaneo completo en disco, limitando la
+lectura a las únicas 2 filas estimadas que cumplen la condición de
+búsqueda.</p>
+<h2 id="caso-2-pérdida-de-sargabilidad-por-uso-de-funciones">6.2 Caso 2:
+Pérdida de Sargabilidad por Uso de Funciones <a class="headerlink" href="#caso-2-pérdida-de-sargabilidad-por-uso-de-funciones" title="Enlace permanente">¶</a></h2>
+<p>Un fallo de diseño muy recurrente en administración de bases de datos
+es escribir consultas que utilicen funciones matemáticas, de
+manipulación de cadenas de texto o de fecha directamente sobre la
+columna de filtrado bajo un bloque WHERE. Esto inhabilita la capacidad
+del motor de aprovechar un índice tradicional (la consulta pierde su
+<strong>Sargabilidad</strong> - <em>Search Argument Able</em>).</p>
+<p><strong>Escenario de Comparación:</strong></p>
+<p><strong>Opción A: Consulta usando la función YEAR sobre la columna
+fecha_pago</strong></p>
+<p>SELECT AVG(total) FROM pago WHERE YEAR(fecha_pago) = 2008;</p>
+<p><strong>Opción B: Consulta usando condiciones de rango sobre la
+columna fecha_pago</strong></p>
+<p>SELECT AVG(total) FROM pago<br />
+WHERE fecha_pago &gt;= '2008-01-01' AND fecha_pago &lt;=
+'2008-12-31';</p>
+<p><strong>Evaluación de Rendimiento con EXPLAIN (asumiendo que existe
+un índice sobre fecha_pago):</strong></p>
+<ul>
+<li><blockquote>
+<p>Al analizar la <strong>Opción A</strong>, el motor devuelve type =
+ALL. Esto sucede porque, para evaluar el año de cada fecha de pago, el
+motor debe extraer de forma secuencial cada registro físico de la tabla
+en disco, pasar el valor de la fecha por la función YEAR() en la CPU del
+host y comprobar si el resultado es igual a 2008. Al aplicar la función
+a nivel de columna, <strong>el SGBD inhabilita el árbol B-Tree</strong>,
+forzando un escaneo completo.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Al analizar la <strong>Opción B</strong>, el motor devuelve type =
+range y selecciona el índice idx_fecha_pago. El motor puede navegar
+directamente por la estructura del índice de forma sargable,
+identificando el inicio del rango ('2008-01-01') y recuperando de forma
+consecutiva las claves de forma secuencial hasta llegar al fin del rango
+('2008-12-31').</p>
+</blockquote></li>
+</ul>
+<blockquote>
+<p>💡 <strong>Nota de Ingeniería de Rendimiento (DBA):</strong> En MySQL
+8.0, si el uso de la función YEAR() es un requisito obligatorio del
+desarrollo, el SysAdmin puede forzar al optimizador a utilizar el índice
+mediante un <strong>Índice Funcional</strong> (CREATE INDEX idx ON pago
+((YEAR(fecha_pago)))). No obstante, en términos generales de
+portabilidad y buenas prácticas, siempre es preferible reescribir las
+consultas en formato de rangos numéricos puros para mantener la
+sargabilidad estándar del sistema.</p>
+</blockquote>
+<h2
+id="caso-3-búsquedas-de-patrones-intermedios-like-text-vs.-fulltext">6.3
+Caso 3: Búsquedas de Patrones Intermedios (LIKE %text%) vs.
+FULLTEXT <a class="headerlink" href="#caso-3-búsquedas-de-patrones-intermedios-like-text-vs.-fulltext" title="Enlace permanente">¶</a></h2>
+<p><strong>Consulta Ineficiente con Patrón Intermedio:</strong></p>
+<p>SELECT * FROM producto WHERE nombre LIKE '%acero%' OR descripcion
+LIKE '%acero%';</p>
+<p><strong>Análisis con EXPLAIN:</strong></p>
+<p>EXPLAIN SELECT * FROM producto WHERE nombre LIKE '%acero%' OR
+descripcion LIKE '%acero%';</p>
+<p><strong>Resultado del Plan:</strong></p>
+<ul>
+<li><blockquote>
+<p>type = ALL</p>
+</blockquote></li>
+<li><blockquote>
+<p>rows = 276 (Barrido secuencial completo de la tabla de productos)</p>
+</blockquote></li>
+</ul>
+<p><strong>¿Por qué un índice estándar B-Tree no sirve en un LIKE
+%text%?</strong> Los árboles B ordenan y asocian las cadenas por sus
+prefijos. Si el patrón de búsqueda comienza por el carácter comodín %
+(por ejemplo, %acero), el motor de bases de datos no puede determinar
+por qué nodo o rama del árbol empezar a navegar, ya que no conoce los
+caracteres iniciales de la palabra, viéndose obligado a descartar el
+índice y realizar un escaneo completo (type = ALL).</p>
+<p><strong>Solución de Optimización mediante Índices de Texto
+Completo:</strong></p>
+<p>-- 1. Creamos el índice físico invertido de texto completo<br />
+CREATE FULLTEXT INDEX idx_nombre_descripcion ON producto (nombre,
+descripcion);<br />
+<br />
+-- 2. Reescribimos la consulta utilizando la sintaxis MATCH /
+AGAINST<br />
+SELECT * FROM producto<br />
+WHERE MATCH(nombre, descripcion) AGAINST ('acero');</p>
+<p><strong>Análisis con EXPLAIN del Plan Optimizado:</strong></p>
+<p>EXPLAIN SELECT * FROM producto WHERE MATCH(nombre, descripcion)
+AGAINST ('acero');</p>
+<p><strong>Resultado del Plan:</strong></p>
+<ul>
+<li><blockquote>
+<p>type = fulltext</p>
+</blockquote></li>
+<li><blockquote>
+<p>possible_keys = idx_nombre_descripcion</p>
+</blockquote></li>
+<li><blockquote>
+<p>key = idx_nombre_descripcion</p>
+</blockquote></li>
+<li><blockquote>
+<p>rows = 1 (MySQL lee directamente la lista invertida correspondiente
+al token 'acero' en un solo paso)</p>
+</blockquote></li>
+</ul>
+
+        </main>
+    </div>
+</body>
+</html>

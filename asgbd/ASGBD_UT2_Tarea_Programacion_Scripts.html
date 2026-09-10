@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASGBD - Ut2 Tarea Programacion Scripts</title>
+    <style>
+    
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --bg-header: #1e3a8a;
+    --text-header: #ffffff;
+    --bg-body: #f8fafc;
+    --text-body: #1e293b;
+    --border-color: #cbd5e1;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-body);
+    color: var(--text-body);
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, [id], a[name] {
+    scroll-margin-top: 80px !important;
+}
+
+.headerlink {
+    display: inline-block;
+    margin-left: 0.4rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.8em;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
+h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
+    visibility: visible;
+    opacity: 1;
+}
+
+.headerlink:hover {
+    color: var(--primary);
+}
+
+#site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    background: var(--bg-header);
+    color: var(--text-header);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    height: 62px;
+}
+
+.site-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.top-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.top-nav .nav-btn {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+.top-nav .nav-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 9px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown:hover .dropbtn, .dropbtn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 320px;
+    max-width: 480px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 10001;
+    border: 1px solid #e2e8f0;
+    margin-top: 6px;
+}
+
+.dropdown-content a {
+    color: var(--text-body);
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.92rem;
+    border-bottom: 1px solid #f1f5f9;
+    line-height: 1.4;
+    transition: background 0.15s, color 0.15s;
+    word-break: break-word;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #eff6ff;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block !important;
+}
+
+#page-layout {
+    display: flex;
+    min-height: calc(100vh - 62px);
+}
+
+#left-panel {
+    width: 320px;
+    min-width: 320px;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 1.5rem 1.25rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: sticky;
+    top: 62px;
+    height: calc(100vh - 62px);
+}
+
+#left-panel h3 {
+    font-size: 1rem;
+    margin-top: 0;
+    color: #334155;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
+
+#left-panel nav#TOC, #left-panel #TOC {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+#left-panel ul {
+    list-style-type: none;
+    padding-left: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+#left-panel li {
+    margin: 6px 0;
+}
+
+#left-panel a {
+    color: #475569;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    display: block;
+    transition: color 0.15s;
+}
+
+#left-panel a:hover {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+#main-content {
+    flex: 1;
+    padding: 2.5rem 4rem;
+    box-sizing: border-box;
+    max-width: 100% !important;
+    width: calc(100% - 320px);
+    min-width: 0;
+}
+
+/* TABLAS ELEGANTES Y RESPONSIVE */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1.75rem 0;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    font-size: 0.93rem;
+    background: #ffffff;
+    table-layout: auto !important;
+}
+
+th, td {
+    padding: 10px 14px !important;
+    border: 1px solid #cbd5e1 !important;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+td p, th p {
+    margin: 0 !important;
+    padding: 2px 0 !important;
+}
+
+th {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #0f172a !important;
+}
+
+tr:nth-child(even) td {
+    background-color: #f8fafc !important;
+}
+
+tr:hover td {
+    background-color: #f1f5f9 !important;
+}
+
+/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
+.code-wrapper {
+    position: relative;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0f172a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #334155;
+    color: #f8fafc;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.copy-btn:hover {
+    background: #2563eb;
+}
+
+pre {
+    margin: 0 !important;
+    padding: 1.25rem 1.25rem !important;
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    overflow-x: auto !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+}
+
+code {
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+}
+
+p code, li code {
+    background: #e2e8f0;
+    color: #0f172a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
+
+/* RESPONSIVE DESIGN PARA MÓVILES Y TABLETS */
+@media (max-width: 768px) {
+    .header-container {
+        height: auto;
+        flex-direction: column;
+        padding: 0.75rem 1rem;
+        gap: 0.6rem;
+    }
+    
+    .site-title {
+        font-size: 1.05rem;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .site-title img {
+        height: 28px !important;
+    }
+
+    .top-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 0.35rem;
+    }
+
+    .top-nav .nav-btn, .dropbtn {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    .dropdown-content {
+        min-width: 240px;
+        max-width: 90vw;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #page-layout {
+        flex-direction: column;
+    }
+
+    #left-panel {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        position: static !important;
+        border-right: none !important;
+        border-bottom: 2px solid #e2e8f0;
+        padding: 1rem !important;
+    }
+
+    #main-content {
+        width: 100% !important;
+        padding: 1.25rem 1rem !important;
+    }
+
+    iframe {
+        height: 60vh !important;
+    }
+
+    th, td {
+        padding: 8px 10px !important;
+        font-size: 0.85rem !important;
+    }
+
+    pre {
+        padding: 0.85rem !important;
+        font-size: 0.82rem !important;
+    }
+}
+
+    </style>
+    <script>
+    
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.dropdown').forEach(dd => {
+        const btn = dd.querySelector('.dropbtn');
+        const content = dd.querySelector('.dropdown-content');
+        if (btn && content) {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = content.style.display === 'block';
+                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
+                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+                if (!isOpen) {
+                    content.style.display = 'block';
+                    btn.classList.add('active');
+                }
+            });
+        }
+    });
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
+        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+    });
+
+    // Controlador universal de clics en enlaces ancla (#...)
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const rawHref = this.getAttribute('href') || '';
+            const hashIdx = rawHref.indexOf('#');
+            if (hashIdx === -1) return;
+            const hash = rawHref.substring(hashIdx + 1);
+            if (!hash) return;
+            
+            let targetId = hash;
+            try { targetId = decodeURIComponent(hash); } catch(err) {}
+
+            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
+            if (!targetEl) {
+                for (let el of document.querySelectorAll('[id]')) {
+                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
+                        targetEl = el;
+                        break;
+                    }
+                }
+            }
+
+            if (targetEl) {
+                e.preventDefault();
+                const headerOffset = 75;
+                const elementPosition = targetEl.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                if (history.pushState) {
+                    history.pushState(null, null, '#' + targetId);
+                }
+            }
+        });
+    });
+});
+
+function copyCode(btn) {
+    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
+    navigator.clipboard.writeText(code).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = '✅ ¡Copiado!';
+        btn.style.background = '#16a34a';
+        setTimeout(() => {
+            btn.innerText = orig;
+            btn.style.background = '#334155';
+        }, 2000);
+    });
+}
+
+    </script>
+</head>
+<body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD &ndash; Ut2 Tarea Programacion Scripts</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+      <a href="ASGBD_Presentacion.html" class="nav-btn">Presentación</a>
+      <a href="ASGBD_UT2_Tarea_Programacion_Scripts.html" class="nav-btn">Programación</a>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Teoría ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Teoria_Configuracion.html">ASGBD UT1 Teoria Configuracion</a>
+          <a href="ASGBD_UT2_Teoria_Scripts_Administracion.html">ASGBD UT2 Teoria Scripts Administracion</a>
+          <a href="ASGBD_UT3_Teoria_Usuarios_roles.html">ASGBD UT3 Teoria Usuarios roles</a>
+          <a href="ASGBD_UT4_Teoría_Planificación_Seguridad.html">ASGBD UT4 Teoría Planificación Seguridad</a>
+          <a href="ASGBD_UT5_Teoria_Optimizacion_Consultas.html">ASGBD UT5 Teoria Optimizacion Consultas</a>
+          <a href="ASGBD_UT6_Teoría_BD_Distribuidas_alta_disponibilidad.html">ASGBD UT6 Teoría BD Distribuidas alta disponibilidad</a>
+          <a href="ASGBD_Proyecto_integral.html">ASGBD Proyecto integral</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Tareas y Prácticas ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Tarea_Configuracion.html">ASGBD UT1 Tarea Configuracion</a>
+          <a href="ASGBD_UT1_Practica.html">ASGBD UT1 Practica</a>
+          <a href="ASGBD_UT2_Practica._Automatizacion_Mantenimiento.html">ASGBD UT2 Practica. Automatizacion Mantenimiento</a>
+          <a href="ASGBD_UT3_Practica_Auditoria_Automatizacion.html">ASGBD UT3 Practica Auditoria Automatizacion</a>
+          <a href="ASGBD_UT3_Tarea_Enunciado.html">ASGBD UT3 Tarea Enunciado</a>
+          <a href="ASGBD_UT4_Tarea_Eventos.html">ASGBD UT4 Tarea Eventos</a>
+          <a href="ASGBD_UT4_Practica_Automatizacion_Mantenimiento.html">ASGBD UT4 Practica Automatizacion Mantenimiento</a>
+          <a href="ASGBD_UT5_Practica_Automatizacion.html">ASGBD UT5 Practica Automatizacion</a>
+          <a href="ASGBD_UT5_Práctica_Tunning_Servidores_EXPLAIN_Avanzado.html">ASGBD UT5 Práctica Tunning Servidores EXPLAIN Avanzado</a>
+          <a href="ASGBD_UT5_Tarea_Seguridad.html">ASGBD UT5 Tarea Seguridad</a>
+          <a href="ASGBD_UT5_Tarea_Auditoría_Rendimiento_Indexacion.html">ASGBD UT5 Tarea Auditoría Rendimiento Indexacion</a>
+          <a href="ASGBD_UT6_Practica_BD_Distribuidas_Sharding.html">ASGBD UT6 Practica BD Distribuidas Sharding</a>
+          <a href="ASGBD_UT6_Practica_Alta_Disponibilidad.html">ASGBD UT6 Practica Alta Disponibilidad</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <aside id="left-panel">
+            <h3>Índice del Tema</h3>
+            <nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#tarea-unidad-4-programación-de-scripts-de-administración-y-automatización-curso-2526"
+id="toc-tarea-unidad-4-programación-de-scripts-de-administración-y-automatización-curso-2526">Tarea
+Unidad 4: Programación de Scripts de Administración y Automatización
+(Curso 25/26)</a>
+<ul>
+<li><a href="#descripción-general.-objetivos"
+id="toc-descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
+OBJETIVOS</a></li>
+<li><a
+href="#bloque-i-estructuras-básicas-funciones-y-control-de-flujo-repaso"
+id="toc-bloque-i-estructuras-básicas-funciones-y-control-de-flujo-repaso">2.
+Bloque I: Estructuras Básicas, Funciones y Control de Flujo (Repaso)</a>
+<ul>
+<li><a href="#ejercicio-1-procedimiento-sumador"
+id="toc-ejercicio-1-procedimiento-sumador">Ejercicio 1: Procedimiento
+Sumador</a></li>
+<li><a href="#ejercicio-2-función-sumadora"
+id="toc-ejercicio-2-función-sumadora">Ejercicio 2: Función
+Sumadora</a></li>
+<li><a href="#ejercicio-3-control-de-signo-y-paridad"
+id="toc-ejercicio-3-control-de-signo-y-paridad">Ejercicio 3: Control de
+Signo y Paridad</a></li>
+<li><a href="#ejercicio-4-contador-de-homónimos"
+id="toc-ejercicio-4-contador-de-homónimos">Ejercicio 4: Contador de
+Homónimos</a></li>
+<li><a href="#ejercicio-5-bucle-de-capitanes"
+id="toc-ejercicio-5-bucle-de-capitanes">Ejercicio 5: Bucle de
+Capitanes</a></li>
+</ul></li>
+<li><a href="#bloque-ii-estructuras-avanzadas---cursores"
+id="toc-bloque-ii-estructuras-avanzadas---cursores">3. Bloque II:
+Estructuras Avanzadas - Cursores</a>
+<ul>
+<li><a href="#ejercicio-6-cursor-de-resultados-límites-puntuación-de-90"
+id="toc-ejercicio-6-cursor-de-resultados-límites-puntuación-de-90">Ejercicio
+6: Cursor de Resultados Límites (Puntuación de 90)</a></li>
+<li><a
+href="#ejercicio-7-búsqueda-del-máximo-salario-sin-funciones-de-agregado"
+id="toc-ejercicio-7-búsqueda-del-máximo-salario-sin-funciones-de-agregado">Ejercicio
+7: Búsqueda del Máximo Salario sin funciones de agregado</a></li>
+<li><a href="#ejercicio-8-equipo-con-mayor-actividad"
+id="toc-ejercicio-8-equipo-con-mayor-actividad">Ejercicio 8: Equipo con
+Mayor Actividad</a></li>
+<li><a
+href="#ejercicio-9-procedimiento-con-cursor-para-modificación-de-salarios-mantenimiento"
+id="toc-ejercicio-9-procedimiento-con-cursor-para-modificación-de-salarios-mantenimiento">Ejercicio
+9: Procedimiento con Cursor para Modificación de Salarios
+(Mantenimiento)</a></li>
+</ul></li>
+<li><a href="#bloque-iii-automatización-mediante-disparadores-triggers"
+id="toc-bloque-iii-automatización-mediante-disparadores-triggers">4.
+Bloque III: Automatización mediante Disparadores (Triggers)</a>
+<ul>
+<li><a href="#ejercicio-10-control-de-salarios-negativos"
+id="toc-ejercicio-10-control-de-salarios-negativos">Ejercicio 10:
+Control de Salarios Negativos</a></li>
+<li><a href="#ejercicio-11-actualización-dinámica-de-clasificación"
+id="toc-ejercicio-11-actualización-dinámica-de-clasificación">Ejercicio
+11: Actualización Dinámica de Clasificación</a></li>
+<li><a href="#ejercicio-12-auditoría-integral-de-la-tabla-equipos"
+id="toc-ejercicio-12-auditoría-integral-de-la-tabla-equipos">Ejercicio
+12: Auditoría Integral de la Tabla Equipos</a></li>
+<li><a
+href="#ejercicio-13-restricción-de-inserciones-por-privilegio-de-usuario"
+id="toc-ejercicio-13-restricción-de-inserciones-por-privilegio-de-usuario">Ejercicio
+13: Restricción de Inserciones por Privilegio de Usuario</a></li>
+</ul></li>
+<li><a href="#bloque-iv-administración-e-interacción-con-el-catálogo"
+id="toc-bloque-iv-administración-e-interacción-con-el-catálogo">5.
+Bloque IV: Administración e Interacción con el Catálogo</a>
+<ul>
+<li><a href="#ejercicio-14-replicador-del-comando-describe-desc"
+id="toc-ejercicio-14-replicador-del-comando-describe-desc">Ejercicio 14:
+Replicador del Comando Describe (DESC)</a></li>
+<li><a href="#ejercicio-15-purga-programada-de-partidos-antiguos"
+id="toc-ejercicio-15-purga-programada-de-partidos-antiguos">Ejercicio
+15: Purga Programada de Partidos Antiguos</a></li>
+</ul></li>
+<li><a href="#rúbrica-de-evaluación-y-calificación-detallada"
+id="toc-rúbrica-de-evaluación-y-calificación-detallada">6. Rúbrica de
+Evaluación y Calificación Detallada</a>
+<ul>
+<li><a href="#distribución-de-puntos-por-ejercicio"
+id="toc-distribución-de-puntos-por-ejercicio">Distribución de Puntos por
+Ejercicio:</a></li>
+</ul></li>
+<li><a href="#solucionario-oficial-de-la-tarea"
+id="toc-solucionario-oficial-de-la-tarea">7. Solucionario Oficial de la
+Tarea</a></li>
+</ul></li>
+</ul>
+</nav>
+        </aside>
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT2_Tarea_Programacion_Scripts.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+
+<h1
+id="tarea-unidad-4-programación-de-scripts-de-administración-y-automatización-curso-2526">Tarea
+Unidad 4: Programación de Scripts de Administración y Automatización
+(Curso 25/26) <a class="headerlink" href="#tarea-unidad-4-programación-de-scripts-de-administración-y-automatización-curso-2526" title="Enlace permanente">¶</a></h1>
+<h2 id="descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
+OBJETIVOS <a class="headerlink" href="#descripción-general.-objetivos" title="Enlace permanente">¶</a></h2>
+<p>Esta tarea consolida las competencias de programación dentro del
+servidor de bases de datos (procedimientos, funciones y disparadores) y
+su interacción con los metadatos del SGBD para labores de
+administración.</p>
+<p>Para la realización de esta entrega, utilizaremos la base de datos de
+la <strong>"Liga de Baloncesto"</strong> (liga), cuya estructura de
+tablas (equipos, jugadores, partidos, estadisticas) debió ser desplegada
+previamente.</p>
+<h2
+id="bloque-i-estructuras-básicas-funciones-y-control-de-flujo-repaso">2.
+Bloque I: Estructuras Básicas, Funciones y Control de Flujo
+(Repaso) <a class="headerlink" href="#bloque-i-estructuras-básicas-funciones-y-control-de-flujo-repaso" title="Enlace permanente">¶</a></h2>
+<h3 id="ejercicio-1-procedimiento-sumador">Ejercicio 1: Procedimiento
+Sumador <a class="headerlink" href="#ejercicio-1-procedimiento-sumador" title="Enlace permanente">¶</a></h3>
+<ul>
+<li><blockquote>
+<p><strong>Enunciado:</strong> Diseña un procedimiento almacenado
+sp_sumar_valores al cual le pases dos valores numéricos enteros como
+parámetros de entrada (IN) y devuelva la suma de ambos en una variable
+de salida (OUT).</p>
+</blockquote></li>
+</ul>
+<h3 id="ejercicio-2-función-sumadora">Ejercicio 2: Función Sumadora <a class="headerlink" href="#ejercicio-2-función-sumadora" title="Enlace permanente">¶</a></h3>
+<ul>
+<li><blockquote>
+<p><strong>Enunciado:</strong> Crea una función almacenada
+fn_sumar_valores que tenga exactamente la misma funcionalidad del
+ejercicio anterior (recibir dos enteros y retornar su suma).</p>
+</blockquote></li>
+</ul>
+<h3 id="ejercicio-3-control-de-signo-y-paridad">Ejercicio 3: Control de
+Signo y Paridad <a class="headerlink" href="#ejercicio-3-control-de-signo-y-paridad" title="Enlace permanente">¶</a></h3>
+<ul>
+<li><blockquote>
+<p><strong>Enunciado:</strong> Crea un procedimiento sp_analizar_suma
+que invoque internamente al procedimiento o función de los ejercicios
+anteriores. Debe recibir dos números de entrada y devolver dos
+parámetros de salida:</p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p>El primer parámetro de salida (OUT) devolverá un carácter
+representativo: '&gt;' si la suma es positiva, '&lt;' si es negativa, o
+'=' si es igual a cero.</p>
+</blockquote></li>
+<li><blockquote>
+<p>El segundo parámetro de salida (OUT) será un valor booleano
+(TINYINT(1) o BOOLEAN) que indique si la suma es par (TRUE/1) o impar
+(FALSE/0).</p>
+</blockquote></li>
+</ul></li>
+</ul>
+<h3 id="ejercicio-4-contador-de-homónimos">Ejercicio 4: Contador de
+Homónimos <a class="headerlink" href="#ejercicio-4-contador-de-homónimos" title="Enlace permanente">¶</a></h3>
+<ul>
+<li><blockquote>
+<p><strong>Enunciado:</strong> Escribe una función
+fn_contar_jugadores_nombre que reciba como parámetro el nombre de un
+jugador y devuelva el número de jugadores que se llaman exactamente así
+dentro de la tabla jugadores.</p>
+</blockquote></li>
+</ul>
+<h3 id="ejercicio-5-bucle-de-capitanes">Ejercicio 5: Bucle de
+Capitanes <a class="headerlink" href="#ejercicio-5-bucle-de-capitanes" title="Enlace permanente">¶</a></h3>
+<ul>
+<li><blockquote>
+<p><strong>Enunciado:</strong> Crea un procedimiento
+sp_contar_por_capitan que emplee una estructura de bucle repetitivo
+(WHILE, LOOP o REPEAT) para calcular y mostrar por pantalla cuántos
+jugadores tienen asignado como capitán de equipo a los IDs del 1 al 14
+de forma secuencial.</p>
+</blockquote></li>
+</ul>
+<h2 id="bloque-ii-estructuras-avanzadas---cursores">3. Bloque II:
+Estructuras Avanzadas - Cursores <a class="headerlink" href="#bloque-ii-estructuras-avanzadas---cursores" title="Enlace permanente">¶</a></h2>
+<h3
+id="ejercicio-6-cursor-de-resultados-límites-puntuación-de-90">Ejercicio
+6: Cursor de Resultados Límites (Puntuación de 90) <a class="headerlink" href="#ejercicio-6-cursor-de-resultados-límites-puntuación-de-90" title="Enlace permanente">¶</a></h3>
+<ul>
+<li><blockquote>
+<p><strong>Enunciado:</strong> Diseña un procedimiento
+sp_partidos_puntuacion_limite que utilice un <strong>CURSOR</strong>
+para recorrer los partidos. El procedimiento debe imprimir o visualizar
+el nombre de los equipos enfrentados y sus respectivos resultados
+únicamente cuando alguno de los dos equipos haya alcanzado exactamente
+los 90 puntos en el encuentro.</p>
+</blockquote></li>
+</ul>
+<h3
+id="ejercicio-7-búsqueda-del-máximo-salario-sin-funciones-de-agregado">Ejercicio
+7: Búsqueda del Máximo Salario sin funciones de agregado <a class="headerlink" href="#ejercicio-7-búsqueda-del-máximo-salario-sin-funciones-de-agregado" title="Enlace permanente">¶</a></h3>
+<ul>
+<li><blockquote>
+<p><strong>Enunciado:</strong> Crea un procedimiento
+sp_jugador_max_salario que utilice un <strong>CURSOR</strong> para
+obtener los nombres de los jugadores y sus salarios. El procedimiento
+debe calcular y mostrar el nombre del jugador con el salario más alto
+del club <strong>sin utilizar la función predefinida MAX()</strong>.</p>
+</blockquote></li>
+</ul>
+<h3 id="ejercicio-8-equipo-con-mayor-actividad">Ejercicio 8: Equipo con
+Mayor Actividad <a class="headerlink" href="#ejercicio-8-equipo-con-mayor-actividad" title="Enlace permanente">¶</a></h3>
+<ul>
+<li><blockquote>
+<p><strong>Enunciado:</strong> Crea un procedimiento
+sp_equipo_mas_partidos que utilice un <strong>CURSOR</strong> para
+analizar el número de partidos jugados por cada equipo. Debe mostrar el
+nombre del equipo que más encuentros ha disputado a lo largo de la liga
+<strong>sin utilizar la función MAX()</strong>.</p>
+</blockquote></li>
+</ul>
+<h3
+id="ejercicio-9-procedimiento-con-cursor-para-modificación-de-salarios-mantenimiento">Ejercicio
+9: Procedimiento con Cursor para Modificación de Salarios
+(Mantenimiento) <a class="headerlink" href="#ejercicio-9-procedimiento-con-cursor-para-modificación-de-salarios-mantenimiento" title="Enlace permanente">¶</a></h3>
+<ul>
+<li><blockquote>
+<p><strong>Enunciado:</strong> Crea un procedimiento
+sp_incrementar_salario_jugadores con un cursor al que se le pasará un
+porcentaje o una cantidad fija. El cursor deberá recorrer a todos los
+jugadores de la base de datos e ir incrementando su salario de forma
+individual.</p>
+</blockquote></li>
+</ul>
+<h2 id="bloque-iii-automatización-mediante-disparadores-triggers">4.
+Bloque III: Automatización mediante Disparadores (Triggers) <a class="headerlink" href="#bloque-iii-automatización-mediante-disparadores-triggers" title="Enlace permanente">¶</a></h2>
+<h3 id="ejercicio-10-control-de-salarios-negativos">Ejercicio 10:
+Control de Salarios Negativos <a class="headerlink" href="#ejercicio-10-control-de-salarios-negativos" title="Enlace permanente">¶</a></h3>
+<ul>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Enunciado: Crea un disparador
+tg_salario_positivo_before_update que controle la actualización de
+salarios sobre la tabla jugadores. En caso de que se intente asignar un
+salario menor o igual a 0, el disparador debe cancelar el cambio
+manteniendo el salario anterior del jugador de manera silenciosa, o
+lanzar un error personalizado.</code></pre></div></li>
+</ul>
+<h3 id="ejercicio-11-actualización-dinámica-de-clasificación">Ejercicio
+11: Actualización Dinámica de Clasificación <a class="headerlink" href="#ejercicio-11-actualización-dinámica-de-clasificación" title="Enlace permanente">¶</a></h3>
+<ul>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Enunciado: Crea un disparador
+tg_actualizar_puntos_equipos de tipo AFTER INSERT sobre la tabla
+partidos. Cada vez que se inserte un partido, el disparador debe
+identificar cuál ha sido el equipo vencedor y sumarle de forma
+automática 1 punto en su casillero de clasificación en la tabla equipos.
+Realiza pruebas de inserción para verificar su funcionamiento.</code></pre></div></li>
+</ul>
+<h3 id="ejercicio-12-auditoría-integral-de-la-tabla-equipos">Ejercicio
+12: Auditoría Integral de la Tabla Equipos <a class="headerlink" href="#ejercicio-12-auditoría-integral-de-la-tabla-equipos" title="Enlace permanente">¶</a></h3>
+<ul>
+<li><blockquote>
+<p><strong>Enunciado:</strong> Diseña un sistema de auditoría para
+monitorizar los cambios en la tabla equipos.</p>
+</blockquote>
+<ol type="1">
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Crea una tabla de logs llamada auditoria_equipos con los campos:
+id_log (PK, Auto), usuario, operacion (INSERT / UPDATE / DELETE),
+fecha_hora e id_equipo_afectado.</code></pre></div></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Crea tres disparadores (AFTER INSERT, AFTER UPDATE y AFTER DELETE)
+que alimenten de forma automática esta tabla registrando quién realizó
+la operación, la fecha exacta y la tabla afectada.</code></pre></div></li>
+</ol></li>
+</ul>
+<h3
+id="ejercicio-13-restricción-de-inserciones-por-privilegio-de-usuario">Ejercicio
+13: Restricción de Inserciones por Privilegio de Usuario <a class="headerlink" href="#ejercicio-13-restricción-de-inserciones-por-privilegio-de-usuario" title="Enlace permanente">¶</a></h3>
+<ul>
+<li><blockquote>
+<p><strong>Enunciado:</strong> Crea un disparador tg_insert_solo_root
+para la tabla equipos. El disparador debe validar si el usuario que está
+realizando la operación es el administrador supremo (root@localhost). Si
+cualquier otro usuario intenta realizar un insert, el trigger debe
+abortar la operación utilizando SIGNAL SQLSTATE '45000' con un mensaje
+descriptivo de denegación de privilegios.</p>
+</blockquote></li>
+</ul>
+<h2 id="bloque-iv-administración-e-interacción-con-el-catálogo">5.
+Bloque IV: Administración e Interacción con el Catálogo <a class="headerlink" href="#bloque-iv-administración-e-interacción-con-el-catálogo" title="Enlace permanente">¶</a></h2>
+<h3 id="ejercicio-14-replicador-del-comando-describe-desc">Ejercicio 14:
+Replicador del Comando Describe (DESC) <a class="headerlink" href="#ejercicio-14-replicador-del-comando-describe-desc" title="Enlace permanente">¶</a></h3>
+<ul>
+<li><blockquote>
+<p><strong>Enunciado:</strong> Diseña un procedimiento almacenado
+llamado sp_describir_tabla que reciba como parámetro de entrada el
+nombre de una tabla. El procedimiento debe consultar las vistas del
+sistema en information_schema.columns para mostrar por pantalla: el
+nombre de la columna, el tipo de dato, si permite nulos (YES/NO) y su
+valor predeterminado (reproduciendo de forma personalizada la salida de
+la orden DESCRIBE o DESC).</p>
+</blockquote></li>
+</ul>
+<h3 id="ejercicio-15-purga-programada-de-partidos-antiguos">Ejercicio
+15: Purga Programada de Partidos Antiguos <a class="headerlink" href="#ejercicio-15-purga-programada-de-partidos-antiguos" title="Enlace permanente">¶</a></h3>
+<ul>
+<li><blockquote>
+<p><strong>Enunciado:</strong> Desarrolla un procedimiento
+sp_purgar_partidos al cual se le pasará una fecha como parámetro de
+entrada. El procedimiento eliminará de forma segura todos los registros
+de partidos disputados con anterioridad a la fecha indicada para reducir
+el peso en tablas históricas.</p>
+</blockquote></li>
+</ul>
+<h2 id="rúbrica-de-evaluación-y-calificación-detallada">6. Rúbrica de
+Evaluación y Calificación Detallada <a class="headerlink" href="#rúbrica-de-evaluación-y-calificación-detallada" title="Enlace permanente">¶</a></h2>
+<p>La evaluación de la tarea se basará en una puntuación máxima de
+<strong>10 puntos</strong>, distribuidos de la siguiente manera:</p>
+<h3 id="distribución-de-puntos-por-ejercicio">Distribución de Puntos por
+Ejercicio: <a class="headerlink" href="#distribución-de-puntos-por-ejercicio" title="Enlace permanente">¶</a></h3>
+<ul>
+<li><blockquote>
+<p><strong>Bloque I: Estructuras Básicas (2.0 puntos en
+total)</strong></p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p><strong>Ejercicio 1 (0.4 pts):</strong> Definición de parámetros
+IN/OUT y asignación correcta de la suma.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Ejercicio 2 (0.4 pts):</strong> Estructura correcta de
+función, cláusula RETURNS y RETURN.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Ejercicio 3 (0.4 pts):</strong> Invocación interna de
+subprogramas y estructuras condicionales (IF-ELSE).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Ejercicio 4 (0.4 pts):</strong> Consulta condicional sobre
+tablas dentro de una función con retorno escalar.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Ejercicio 5 (0.4 pts):</strong> Lógica y control del bucle
+repetitivo (WHILE/LOOP) y salida formateada.</p>
+</blockquote></li>
+</ul></li>
+<li><blockquote>
+<p><strong>Bloque II: Uso de Cursores (3.0 puntos en total)</strong></p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p><strong>Ejercicio 6 (0.75 pts):</strong> Declaración, apertura,
+lectura recursiva y cierre del cursor con filtrado de datos.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Ejercicio 7 (0.75 pts):</strong> Algoritmo de cálculo de
+máximo relativo mediante variables de estado sin MAX().</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Ejercicio 8 (0.75 pts):</strong> Correcta construcción de la
+consulta de base del cursor (uniones/agrupaciones) y cálculo del
+máximo.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Ejercicio 9 (0.75 pts):</strong> Integración de actualización
+DML de registros fila a fila mediante el cursor.</p>
+</blockquote></li>
+</ul></li>
+<li><blockquote>
+<p><strong>Bloque III: Diseño de Disparadores (3.0 puntos en
+total)</strong></p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p><strong>Ejercicio 10 (0.75 pts):</strong> Control temporal (BEFORE
+UPDATE) y manejo seguro del estado de las variables NEW y OLD.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Ejercicio 11 (0.75 pts):</strong> Lógica condicional compleja
+tras una inserción (AFTER INSERT) para identificar al ganador del
+encuentro.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Ejercicio 12 (0.75 pts):</strong> Definición de tabla de
+auditoría de logs y correcta separación de eventos en tres disparadores
+distintos.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Ejercicio 13 (0.75 pts):</strong> Implementación de la
+directiva de seguridad controlando la variable del sistema USER() y
+bloqueando con SIGNAL.</p>
+</blockquote></li>
+</ul></li>
+<li><blockquote>
+<p><strong>Bloque IV: Administración de Metadatos (2.0 puntos en
+total)</strong></p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p><strong>Ejercicio 14 (1.0 pt):</strong> Consulta dinámica sobre
+information_schema.columns y formateo adecuado de la salida.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Ejercicio 15 (1.0 pt):</strong> Purga de registros y control
+de integridad de datos referenciales en tablas enlazadas.</p>
+</blockquote></li>
+</ul></li>
+</ul>
+<h2 id="solucionario-oficial-de-la-tarea">7. Solucionario Oficial de la
+Tarea <a class="headerlink" href="#solucionario-oficial-de-la-tarea" title="Enlace permanente">¶</a></h2>
+<p>A continuación se detalla la resolución técnica completa de todos los
+ejercicios planteados para la base de datos liga.</p>
+<p>-- Asegurar que trabajamos en el esquema correcto<br />
+CREATE DATABASE IF NOT EXISTS liga;<br />
+USE liga;<br />
+<br />
+--
+==============================================================================<br />
+-- SOLUCIONARIO BLOQUE I: ESTRUCTURAS BÁSICAS<br />
+--
+==============================================================================<br />
+<br />
+-- Ejercicio 1: Procedimiento Sumador<br />
+DELIMITER //<br />
+CREATE PROCEDURE sp_sumar_valores(<br />
+IN p_num1 INT,<br />
+IN p_num2 INT,<br />
+OUT p_resultado INT<br />
+)<br />
+BEGIN<br />
+SET p_resultado = p_num1 + p_num2;<br />
+END //<br />
+DELIMITER ;<br />
+<br />
+-- Ejercicio 2: Función Sumadora<br />
+DELIMITER //<br />
+CREATE FUNCTION fn_sumar_valores(<br />
+p_num1 INT,<br />
+p_num2 INT<br />
+)<br />
+RETURNS INT<br />
+DETERMINISTIC<br />
+BEGIN<br />
+RETURN p_num1 + p_num2;<br />
+END //<br />
+DELIMITER ;<br />
+<br />
+-- Ejercicio 3: Control de Signo y Paridad<br />
+DELIMITER //<br />
+CREATE PROCEDURE sp_analizar_suma(<br />
+IN p_val1 INT,<br />
+IN p_val2 INT,<br />
+OUT p_signo CHAR(1),<br />
+OUT p_es_par BOOLEAN<br />
+)<br />
+BEGIN<br />
+DECLARE v_suma INT;<br />
+<br />
+-- Invocamos la función creada en el Ejercicio 2<br />
+SET v_suma = fn_sumar_valores(p_val1, p_val2);<br />
+<br />
+-- Evaluar signo de la suma<br />
+IF v_suma &gt; 0 THEN<br />
+SET p_signo = '&gt;';<br />
+ELSEIF v_suma &lt; 0 THEN<br />
+SET p_signo = '&lt;';<br />
+ELSE<br />
+SET p_signo = '=';<br />
+END IF;<br />
+<br />
+-- Evaluar paridad utilizando operador módulo (%)<br />
+IF v_suma % 2 = 0 THEN<br />
+SET p_es_par = TRUE;<br />
+ELSE<br />
+SET p_es_par = FALSE;<br />
+END IF;<br />
+END //<br />
+DELIMITER ;<br />
+<br />
+-- Ejercicio 4: Contador de Homónimos<br />
+DELIMITER //<br />
+CREATE FUNCTION fn_contar_jugadores_nombre(<br />
+p_nombre VARCHAR(100)<br />
+)<br />
+RETURNS INT<br />
+READS SQL DATA<br />
+BEGIN<br />
+DECLARE v_cantidad INT;<br />
+<br />
+SELECT COUNT(*) INTO v_cantidad<br />
+FROM jugadores<br />
+WHERE nombre = p_nombre;<br />
+<br />
+RETURN v_cantidad;<br />
+END //<br />
+DELIMITER ;<br />
+<br />
+-- Ejercicio 5: Bucle de Capitanes<br />
+DELIMITER //<br />
+CREATE PROCEDURE sp_contar_por_capitan()<br />
+BEGIN<br />
+DECLARE v_iterador INT DEFAULT 1;<br />
+DECLARE v_total_jugadores INT;<br />
+<br />
+-- Bucle para recorrer de forma secuencial del ID 1 al 14<br />
+WHILE v_iterador &lt;= 14 DO<br />
+SELECT COUNT(*) INTO v_total_jugadores<br />
+FROM jugadores<br />
+WHERE id_capitan = v_iterador;<br />
+<br />
+-- Mostrar por pantalla el resultado de la iteración actual<br />
+SELECT CONCAT('El capitán con ID ', v_iterador, ' lidera a ',
+v_total_jugadores, ' jugadores.') AS 'Resultado';<br />
+<br />
+-- Incrementar el contador del bucle<br />
+SET v_iterador = v_iterador + 1;<br />
+END WHILE;<br />
+END //<br />
+DELIMITER ;<br />
+<br />
+<br />
+--
+==============================================================================<br />
+-- SOLUCIONARIO BLOQUE II: CURSORES<br />
+--
+==============================================================================<br />
+<br />
+-- Ejercicio 6: Cursor de Resultados Límites (Puntuación de 90)<br />
+DELIMITER //<br />
+CREATE PROCEDURE sp_partidos_puntuacion_limite()<br />
+BEGIN<br />
+-- Variables del cursor<br />
+DECLARE v_eq_local VARCHAR(100);<br />
+DECLARE v_eq_visitante VARCHAR(100);<br />
+DECLARE v_puntos_local INT;<br />
+DECLARE v_puntos_visitante INT;<br />
+DECLARE fin_bucle INT DEFAULT FALSE;<br />
+<br />
+-- Declaración del cursor sobre partidos<br />
+DECLARE cursor_partidos CURSOR FOR<br />
+SELECT elocal, evisitante, puntos_local, puntos_visitante<br />
+FROM partidos;<br />
+<br />
+-- Manejador de fin de datos<br />
+DECLARE CONTINUE HANDLER FOR NOT FOUND SET fin_bucle = TRUE;<br />
+<br />
+OPEN cursor_partidos;<br />
+<br />
+bucle_partidos: LOOP<br />
+FETCH cursor_partidos INTO v_eq_local, v_eq_visitante, v_puntos_local,
+v_puntos_visitante;<br />
+<br />
+IF fin_bucle THEN<br />
+LEAVE bucle_partidos;<br />
+END IF;<br />
+<br />
+-- Verificar si alguno de los dos alcanzó exactamente 90 puntos<br />
+IF v_puntos_local = 90 OR v_puntos_visitante = 90 THEN<br />
+SELECT CONCAT(v_eq_local, ' (', v_puntos_local, ') vs (',
+v_puntos_visitante, ') ', v_eq_visitante) AS 'Partido Límite 90';<br />
+END IF;<br />
+END LOOP bucle_partidos;<br />
+<br />
+CLOSE cursor_partidos;<br />
+END //<br />
+DELIMITER ;<br />
+<br />
+-- Ejercicio 7: Búsqueda del Máximo Salario sin funciones de
+agregado<br />
+DELIMITER //<br />
+CREATE PROCEDURE sp_jugador_max_salario()<br />
+BEGIN<br />
+DECLARE v_nombre VARCHAR(100);<br />
+DECLARE v_salario DECIMAL(10,2);<br />
+DECLARE v_max_nombre VARCHAR(100) DEFAULT '';<br />
+DECLARE v_max_salario DECIMAL(10,2) DEFAULT 0.00;<br />
+DECLARE fin_bucle INT DEFAULT FALSE;<br />
+<br />
+DECLARE cursor_salarios CURSOR FOR<br />
+SELECT nombre, salario FROM jugadores;<br />
+<br />
+DECLARE CONTINUE HANDLER FOR NOT FOUND SET fin_bucle = TRUE;<br />
+<br />
+OPEN cursor_salarios;<br />
+<br />
+bucle_salarios: LOOP<br />
+FETCH cursor_salarios INTO v_nombre, v_salario;<br />
+<br />
+IF fin_bucle THEN<br />
+LEAVE bucle_salarios;<br />
+END IF;<br />
+<br />
+-- Algoritmo de comparación clásica<br />
+IF v_salario &gt; v_max_salario THEN<br />
+SET v_max_salario = v_salario;<br />
+SET v_max_nombre = v_nombre;<br />
+END IF;<br />
+END LOOP bucle_salarios;<br />
+<br />
+CLOSE cursor_salarios;<br />
+<br />
+-- Retornar el resultado calculado<br />
+SELECT v_max_nombre AS 'Jugador Mejor Pagado', v_max_salario AS
+'Salario';<br />
+END //<br />
+DELIMITER ;<br />
+<br />
+-- Ejercicio 8: Equipo con Mayor Actividad<br />
+DELIMITER //<br />
+CREATE PROCEDURE sp_equipo_mas_partidos()<br />
+BEGIN<br />
+DECLARE v_equipo VARCHAR(100);<br />
+DECLARE v_partidos INT;<br />
+DECLARE v_max_equipo VARCHAR(100) DEFAULT '';<br />
+DECLARE v_max_partidos INT DEFAULT -1;<br />
+DECLARE fin_bucle INT DEFAULT FALSE;<br />
+<br />
+-- Consulta base que cuenta los partidos de cada equipo (tanto local
+como visitante)<br />
+DECLARE cursor_actividad CURSOR FOR<br />
+SELECT eq.nombre, COUNT(part.id_partido)<br />
+FROM equipos eq<br />
+LEFT JOIN partidos part ON eq.nombre = part.elocal OR eq.nombre =
+part.evisitante<br />
+GROUP BY eq.nombre;<br />
+<br />
+DECLARE CONTINUE HANDLER FOR NOT FOUND SET fin_bucle = TRUE;<br />
+<br />
+OPEN cursor_actividad;<br />
+<br />
+bucle_actividad: LOOP<br />
+FETCH cursor_actividad INTO v_equipo, v_partidos;<br />
+<br />
+IF fin_bucle THEN<br />
+LEAVE bucle_actividad;<br />
+END IF;<br />
+<br />
+IF v_partidos &gt; v_max_partidos THEN<br />
+SET v_max_partidos = v_partidos;<br />
+SET v_max_equipo = v_equipo;<br />
+END IF;<br />
+END LOOP bucle_actividad;<br />
+<br />
+CLOSE cursor_actividad;<br />
+<br />
+SELECT v_max_equipo AS 'Equipo Más Activo', v_max_partidos AS 'Partidos
+Jugados';<br />
+END //<br />
+DELIMITER ;<br />
+<br />
+-- Ejercicio 9: Procedimiento con Cursor para Modificación de
+Salarios<br />
+DELIMITER //<br />
+CREATE PROCEDURE sp_incrementar_salario_jugadores(<br />
+IN p_incremento_porcentaje DECIMAL(5,2)<br />
+)<br />
+BEGIN<br />
+DECLARE v_id_jugador INT;<br />
+DECLARE v_salario_actual DECIMAL(10,2);<br />
+DECLARE fin_bucle INT DEFAULT FALSE;<br />
+<br />
+DECLARE cursor_modificacion CURSOR FOR<br />
+SELECT id_jugador, salario FROM jugadores;<br />
+<br />
+DECLARE CONTINUE HANDLER FOR NOT FOUND SET fin_bucle = TRUE;<br />
+<br />
+OPEN cursor_modificacion;<br />
+<br />
+bucle_modificacion: LOOP<br />
+FETCH cursor_modificacion INTO v_id_jugador, v_salario_actual;<br />
+<br />
+IF fin_bucle THEN<br />
+LEAVE bucle_modificacion;<br />
+END IF;<br />
+<br />
+-- Ejecutar la actualización individual del registro actual<br />
+UPDATE jugadores<br />
+SET salario = v_salario_actual * (1 + (p_incremento_porcentaje /
+100))<br />
+WHERE id_jugador = v_id_jugador;<br />
+<br />
+END LOOP bucle_modificacion;<br />
+<br />
+CLOSE cursor_modificacion;<br />
+END //<br />
+DELIMITER ;<br />
+<br />
+<br />
+--
+==============================================================================<br />
+-- SOLUCIONARIO BLOQUE III: DISPARADORES (TRIGGERS)<br />
+--
+==============================================================================<br />
+<br />
+-- Ejercicio 10: Control de Salarios Negativos<br />
+DELIMITER //<br />
+CREATE TRIGGER tg_salario_positivo_before_update<br />
+BEFORE UPDATE ON jugadores<br />
+FOR EACH ROW<br />
+BEGIN<br />
+-- Si el nuevo salario es negativo o nulo, mantener el anterior de
+manera silenciosa<br />
+IF NEW.salario &lt;= 0 THEN<br />
+SET NEW.salario = OLD.salario;<br />
+END IF;<br />
+END //<br />
+DELIMITER ;<br />
+<br />
+-- Ejercicio 11: Actualización Dinámica de Clasificación<br />
+DELIMITER //<br />
+CREATE TRIGGER tg_actualizar_puntos_equipos<br />
+AFTER INSERT ON partidos<br />
+FOR EACH ROW<br />
+BEGIN<br />
+-- El trigger determina el ganador del partido y suma 1 punto en su
+casillero<br />
+IF NEW.puntos_local &gt; NEW.puntos_visitante THEN<br />
+UPDATE equipos SET puntos = puntos + 1 WHERE nombre = NEW.elocal;<br />
+ELSEIF NEW.puntos_visitante &gt; NEW.puntos_local THEN<br />
+UPDATE equipos SET puntos = puntos + 1 WHERE nombre =
+NEW.evisitante;<br />
+END IF;<br />
+END //<br />
+DELIMITER ;<br />
+<br />
+-- Ejercicio 12: Auditoría Integral de la Tabla Equipos<br />
+-- 12.1. Creación de la tabla de auditoría<br />
+CREATE TABLE IF NOT EXISTS auditoria_equipos (<br />
+id_log INT AUTO_INCREMENT PRIMARY KEY,<br />
+usuario VARCHAR(100),<br />
+operacion VARCHAR(20),<br />
+fecha_hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,<br />
+id_equipo_afectado INT<br />
+);<br />
+<br />
+-- 12.2. Triggers de auditoría individualizados por evento<br />
+DELIMITER //<br />
+CREATE TRIGGER tg_auditoria_equipos_insert<br />
+AFTER INSERT ON equipos<br />
+FOR EACH ROW<br />
+BEGIN<br />
+INSERT INTO auditoria_equipos (usuario, operacion,
+id_equipo_afectado)<br />
+VALUES (USER(), 'INSERT', NEW.id_equipo);<br />
+END //<br />
+<br />
+CREATE TRIGGER tg_auditoria_equipos_update<br />
+AFTER UPDATE ON equipos<br />
+FOR EACH ROW<br />
+BEGIN<br />
+INSERT INTO auditoria_equipos (usuario, operacion,
+id_equipo_afectado)<br />
+VALUES (USER(), 'UPDATE', NEW.id_equipo);<br />
+END //<br />
+<br />
+CREATE TRIGGER tg_auditoria_equipos_delete<br />
+AFTER DELETE ON equipos<br />
+FOR EACH ROW<br />
+BEGIN<br />
+INSERT INTO auditoria_equipos (usuario, operacion,
+id_equipo_afectado)<br />
+VALUES (USER(), 'DELETE', OLD.id_equipo);<br />
+END //<br />
+DELIMITER ;<br />
+<br />
+-- Ejercicio 13: Restricción de Inserciones por Privilegio de
+Usuario<br />
+DELIMITER //<br />
+CREATE TRIGGER tg_insert_solo_root<br />
+BEFORE INSERT ON equipos<br />
+FOR EACH ROW<br />
+BEGIN<br />
+-- Validar si el usuario actual es root de manera local<br />
+IF USER() != 'root@localhost' THEN<br />
+SIGNAL SQLSTATE '45000'<br />
+SET MESSAGE_TEXT = 'ERROR DE SEGURIDAD: Únicamente el usuario ROOT está
+autorizado para añadir equipos.';<br />
+END IF;<br />
+END //<br />
+DELIMITER ;<br />
+<br />
+<br />
+--
+==============================================================================<br />
+-- SOLUCIONARIO BLOQUE IV: ADMINISTRACIÓN Y CATÁLOGO<br />
+--
+==============================================================================<br />
+<br />
+-- Ejercicio 14: Replicador del Comando Describe<br />
+DELIMITER //<br />
+CREATE PROCEDURE sp_describir_tabla(<br />
+IN p_nombre_tabla VARCHAR(64)<br />
+)<br />
+BEGIN<br />
+-- Selección estructurada de metadatos de la tabla especificada en el
+esquema activo<br />
+SELECT<br />
+column_name AS 'Field',<br />
+column_type AS 'Type',<br />
+is_nullable AS 'Null',<br />
+column_key AS 'Key',<br />
+column_default AS 'Default'<br />
+FROM information_schema.columns<br />
+WHERE table_schema = DATABASE() -- Utiliza el esquema actual
+activo<br />
+AND table_name = p_nombre_tabla;<br />
+END //<br />
+DELIMITER ;<br />
+<br />
+-- Ejercicio 15: Purga Programada de Partidos Antiguos<br />
+DELIMITER //<br />
+CREATE PROCEDURE sp_purgar_partidos(<br />
+IN p_fecha_corte DATE<br />
+)<br />
+BEGIN<br />
+-- Eliminación segura de los registros de partidos anteriores a la fecha
+de corte<br />
+DELETE FROM partidos<br />
+WHERE fecha &lt; p_fecha_corte;<br />
+END //<br />
+DELIMITER ;</p>
+
+        </main>
+    </div>
+</body>
+</html>

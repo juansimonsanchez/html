@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASGBD - Ut2 Teoria Scripts Administracion</title>
+    <style>
+    
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --bg-header: #1e3a8a;
+    --text-header: #ffffff;
+    --bg-body: #f8fafc;
+    --text-body: #1e293b;
+    --border-color: #cbd5e1;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-body);
+    color: var(--text-body);
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, [id], a[name] {
+    scroll-margin-top: 80px !important;
+}
+
+.headerlink {
+    display: inline-block;
+    margin-left: 0.4rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.8em;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
+h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
+    visibility: visible;
+    opacity: 1;
+}
+
+.headerlink:hover {
+    color: var(--primary);
+}
+
+#site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    background: var(--bg-header);
+    color: var(--text-header);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    height: 62px;
+}
+
+.site-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.top-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.top-nav .nav-btn {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+.top-nav .nav-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 9px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown:hover .dropbtn, .dropbtn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 320px;
+    max-width: 480px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 10001;
+    border: 1px solid #e2e8f0;
+    margin-top: 6px;
+}
+
+.dropdown-content a {
+    color: var(--text-body);
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.92rem;
+    border-bottom: 1px solid #f1f5f9;
+    line-height: 1.4;
+    transition: background 0.15s, color 0.15s;
+    word-break: break-word;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #eff6ff;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block !important;
+}
+
+#page-layout {
+    display: flex;
+    min-height: calc(100vh - 62px);
+}
+
+#left-panel {
+    width: 320px;
+    min-width: 320px;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 1.5rem 1.25rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: sticky;
+    top: 62px;
+    height: calc(100vh - 62px);
+}
+
+#left-panel h3 {
+    font-size: 1rem;
+    margin-top: 0;
+    color: #334155;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
+
+#left-panel nav#TOC, #left-panel #TOC {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+#left-panel ul {
+    list-style-type: none;
+    padding-left: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+#left-panel li {
+    margin: 6px 0;
+}
+
+#left-panel a {
+    color: #475569;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    display: block;
+    transition: color 0.15s;
+}
+
+#left-panel a:hover {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+#main-content {
+    flex: 1;
+    padding: 2.5rem 4rem;
+    box-sizing: border-box;
+    max-width: 100% !important;
+    width: calc(100% - 320px);
+    min-width: 0;
+}
+
+/* TABLAS ELEGANTES Y RESPONSIVE */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1.75rem 0;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    font-size: 0.93rem;
+    background: #ffffff;
+    table-layout: auto !important;
+}
+
+th, td {
+    padding: 10px 14px !important;
+    border: 1px solid #cbd5e1 !important;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+td p, th p {
+    margin: 0 !important;
+    padding: 2px 0 !important;
+}
+
+th {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #0f172a !important;
+}
+
+tr:nth-child(even) td {
+    background-color: #f8fafc !important;
+}
+
+tr:hover td {
+    background-color: #f1f5f9 !important;
+}
+
+/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
+.code-wrapper {
+    position: relative;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0f172a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #334155;
+    color: #f8fafc;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.copy-btn:hover {
+    background: #2563eb;
+}
+
+pre {
+    margin: 0 !important;
+    padding: 1.25rem 1.25rem !important;
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    overflow-x: auto !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+}
+
+code {
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+}
+
+p code, li code {
+    background: #e2e8f0;
+    color: #0f172a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
+
+/* RESPONSIVE DESIGN PARA MÓVILES Y TABLETS */
+@media (max-width: 768px) {
+    .header-container {
+        height: auto;
+        flex-direction: column;
+        padding: 0.75rem 1rem;
+        gap: 0.6rem;
+    }
+    
+    .site-title {
+        font-size: 1.05rem;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .site-title img {
+        height: 28px !important;
+    }
+
+    .top-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 0.35rem;
+    }
+
+    .top-nav .nav-btn, .dropbtn {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    .dropdown-content {
+        min-width: 240px;
+        max-width: 90vw;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #page-layout {
+        flex-direction: column;
+    }
+
+    #left-panel {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        position: static !important;
+        border-right: none !important;
+        border-bottom: 2px solid #e2e8f0;
+        padding: 1rem !important;
+    }
+
+    #main-content {
+        width: 100% !important;
+        padding: 1.25rem 1rem !important;
+    }
+
+    iframe {
+        height: 60vh !important;
+    }
+
+    th, td {
+        padding: 8px 10px !important;
+        font-size: 0.85rem !important;
+    }
+
+    pre {
+        padding: 0.85rem !important;
+        font-size: 0.82rem !important;
+    }
+}
+
+    </style>
+    <script>
+    
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.dropdown').forEach(dd => {
+        const btn = dd.querySelector('.dropbtn');
+        const content = dd.querySelector('.dropdown-content');
+        if (btn && content) {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = content.style.display === 'block';
+                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
+                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+                if (!isOpen) {
+                    content.style.display = 'block';
+                    btn.classList.add('active');
+                }
+            });
+        }
+    });
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
+        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+    });
+
+    // Controlador universal de clics en enlaces ancla (#...)
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const rawHref = this.getAttribute('href') || '';
+            const hashIdx = rawHref.indexOf('#');
+            if (hashIdx === -1) return;
+            const hash = rawHref.substring(hashIdx + 1);
+            if (!hash) return;
+            
+            let targetId = hash;
+            try { targetId = decodeURIComponent(hash); } catch(err) {}
+
+            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
+            if (!targetEl) {
+                for (let el of document.querySelectorAll('[id]')) {
+                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
+                        targetEl = el;
+                        break;
+                    }
+                }
+            }
+
+            if (targetEl) {
+                e.preventDefault();
+                const headerOffset = 75;
+                const elementPosition = targetEl.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                if (history.pushState) {
+                    history.pushState(null, null, '#' + targetId);
+                }
+            }
+        });
+    });
+});
+
+function copyCode(btn) {
+    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
+    navigator.clipboard.writeText(code).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = '✅ ¡Copiado!';
+        btn.style.background = '#16a34a';
+        setTimeout(() => {
+            btn.innerText = orig;
+            btn.style.background = '#334155';
+        }, 2000);
+    });
+}
+
+    </script>
+</head>
+<body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD &ndash; Ut2 Teoria Scripts Administracion</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+      <a href="ASGBD_Presentacion.html" class="nav-btn">Presentación</a>
+      <a href="ASGBD_UT2_Tarea_Programacion_Scripts.html" class="nav-btn">Programación</a>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Teoría ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Teoria_Configuracion.html">ASGBD UT1 Teoria Configuracion</a>
+          <a href="ASGBD_UT2_Teoria_Scripts_Administracion.html">ASGBD UT2 Teoria Scripts Administracion</a>
+          <a href="ASGBD_UT3_Teoria_Usuarios_roles.html">ASGBD UT3 Teoria Usuarios roles</a>
+          <a href="ASGBD_UT4_Teoría_Planificación_Seguridad.html">ASGBD UT4 Teoría Planificación Seguridad</a>
+          <a href="ASGBD_UT5_Teoria_Optimizacion_Consultas.html">ASGBD UT5 Teoria Optimizacion Consultas</a>
+          <a href="ASGBD_UT6_Teoría_BD_Distribuidas_alta_disponibilidad.html">ASGBD UT6 Teoría BD Distribuidas alta disponibilidad</a>
+          <a href="ASGBD_Proyecto_integral.html">ASGBD Proyecto integral</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Tareas y Prácticas ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Tarea_Configuracion.html">ASGBD UT1 Tarea Configuracion</a>
+          <a href="ASGBD_UT1_Practica.html">ASGBD UT1 Practica</a>
+          <a href="ASGBD_UT2_Practica._Automatizacion_Mantenimiento.html">ASGBD UT2 Practica. Automatizacion Mantenimiento</a>
+          <a href="ASGBD_UT3_Practica_Auditoria_Automatizacion.html">ASGBD UT3 Practica Auditoria Automatizacion</a>
+          <a href="ASGBD_UT3_Tarea_Enunciado.html">ASGBD UT3 Tarea Enunciado</a>
+          <a href="ASGBD_UT4_Tarea_Eventos.html">ASGBD UT4 Tarea Eventos</a>
+          <a href="ASGBD_UT4_Practica_Automatizacion_Mantenimiento.html">ASGBD UT4 Practica Automatizacion Mantenimiento</a>
+          <a href="ASGBD_UT5_Practica_Automatizacion.html">ASGBD UT5 Practica Automatizacion</a>
+          <a href="ASGBD_UT5_Práctica_Tunning_Servidores_EXPLAIN_Avanzado.html">ASGBD UT5 Práctica Tunning Servidores EXPLAIN Avanzado</a>
+          <a href="ASGBD_UT5_Tarea_Seguridad.html">ASGBD UT5 Tarea Seguridad</a>
+          <a href="ASGBD_UT5_Tarea_Auditoría_Rendimiento_Indexacion.html">ASGBD UT5 Tarea Auditoría Rendimiento Indexacion</a>
+          <a href="ASGBD_UT6_Practica_BD_Distribuidas_Sharding.html">ASGBD UT6 Practica BD Distribuidas Sharding</a>
+          <a href="ASGBD_UT6_Practica_Alta_Disponibilidad.html">ASGBD UT6 Practica Alta Disponibilidad</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <aside id="left-panel">
+            <h3>Índice del Tema</h3>
+            <nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#section" id="toc-section"></a></li>
+<li><a href="#repaso-teórico" id="toc-repaso-teórico">1. Repaso
+Teórico</a>
+<ul>
+<li><a href="#procedimientos-almacenados-stored-procedures"
+id="toc-procedimientos-almacenados-stored-procedures">1.1.
+Procedimientos Almacenados (Stored Procedures)</a></li>
+<li><a href="#section-1" id="toc-section-1"></a></li>
+<li><a href="#funciones-almacenadas-stored-functions"
+id="toc-funciones-almacenadas-stored-functions">1.2. Funciones
+Almacenadas (Stored Functions)</a></li>
+<li><a href="#section-2" id="toc-section-2"></a></li>
+<li><a href="#disparadores-triggers" id="toc-disparadores-triggers">1.3.
+Disparadores (Triggers)</a></li>
+</ul></li>
+<li><a href="#ventajas-de-la-programación-en-la-administración"
+id="toc-ventajas-de-la-programación-en-la-administración">2. Ventajas
+de la programación en la administración</a></li>
+<li><a href="#catálogo-del-sistema-metadatos"
+id="toc-catálogo-del-sistema-metadatos">3. Catálogo del Sistema
+(Metadatos)</a>
+<ul>
+<li><a href="#information_schema-el-diccionario-de-datos"
+id="toc-information_schema-el-diccionario-de-datos">3.1.
+information_schema (El Diccionario de Datos)</a></li>
+<li><a
+href="#base-de-datos-mysql-el-repositorio-de-seguridad-y-privilegios"
+id="toc-base-de-datos-mysql-el-repositorio-de-seguridad-y-privilegios">3.2.
+Base de Datos mysql (El Repositorio de Seguridad y Privilegios)</a></li>
+<li><a href="#base-de-datos-performance_schema"
+id="toc-base-de-datos-performance_schema">3.3. Base de Datos
+performance_schema </a></li>
+<li><a href="#base-de-datos-sys-la-abstracción-simplificada"
+id="toc-base-de-datos-sys-la-abstracción-simplificada">3.4. Base de
+Datos sys (La Abstracción Simplificada)</a>
+<ul>
+<li><a href="#section-3" id="toc-section-3"></a></li>
+</ul></li>
+</ul></li>
+<li><a href="#automatización-mediante-scripts-externos-bash"
+id="toc-automatización-mediante-scripts-externos-bash">4.
+Automatización Mediante Scripts Externos (Bash)</a></li>
+<li><a
+href="#ejemplos-prácticos-de-scripts-de-administración-sencillos-y-documentados"
+id="toc-ejemplos-prácticos-de-scripts-de-administración-sencillos-y-documentados">5.
+Ejemplos Prácticos de Scripts de Administración (Sencillos y
+Documentados)</a></li>
+</ul>
+</nav>
+        </aside>
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT2_Teoria_Scripts_Administracion.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+<header id="title-block-header">
+<h1 class="title"><p><span id="_ruzpc7qwqt9g"
+class="anchor"></span>Unidad 2:</p>
+<p><span id="_ajt4s0x9q7xf" class="anchor"></span>Scripts de
+Administración y Automatización en el SGBD</p></h1>
+</header>
+
+<p><strong>FICHA TÉCNICA DE LA UNIDAD</strong></p>
+<div class="table-wrapper"><table>
+<tbody>
+<tr class="header">
+<td><strong>Unidad Trabajo</strong></td>
+<td>UD 2: Scripts de Administración y Automatización en el SGBD</td>
+</tr>
+<tr class="odd">
+<td><strong>Resultados de Aprendizaje Asociados</strong></td>
+<td><strong>RA3:</strong> Automatiza tareas de administración del
+sistema gestor, realizando guiones y programando tareas.</td>
+</tr>
+<tr class="header">
+<td><strong>Criterios de Evaluación</strong></td>
+<td>CE 3.a, CE 3.b, CE 3.c, CE 3.d</td>
+</tr>
+<tr class="odd">
+<td><strong>Tiempo</strong></td>
+<td>12 horas lectivas (equivalente a unas 4 semanas de clase en el
+módulo ASGBD)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="section"> <a class="headerlink" href="#section" title="Enlace permanente">¶</a></h2>
+<p><strong>ÍNDICE DE CONTENIDOS</strong></p>
+<p><a href="#repaso-teórico"><u>1. Repaso Teórico</u></a></p>
+<blockquote>
+<p><a href="#procedimientos-almacenados-stored-procedures"><u>1.1.
+Procedimientos Almacenados (Stored Procedures)</u></a></p>
+<p><a href="#funciones-almacenadas-stored-functions"><u>1.2. Funciones
+Almacenadas (Stored Functions)</u></a></p>
+<p><a href="#disparadores-triggers"><u>1.3. Disparadores
+(Triggers)</u></a></p>
+</blockquote>
+<p><a href="#ventajas-de-la-programación-en-la-administración"><u>2.
+Ventajas de la programación en la administración</u></a></p>
+<p><a href="#catálogo-del-sistema-metadatos"><u>3. Catálogo del Sistema
+(Metadatos)</u></a></p>
+<blockquote>
+<p><a href="#information_schema-el-diccionario-de-datos"><u>3.1.
+information_schema (El Diccionario de Datos)</u></a></p>
+<p><a
+href="#base-de-datos-mysql-el-repositorio-de-seguridad-y-privilegios"><u>3.2.
+Base de Datos mysql (El Repositorio de Seguridad y
+Privilegios)</u></a></p>
+<p><a href="#base-de-datos-performance_schema"><u>3.3. Base de Datos
+performance_schema</u></a></p>
+<p><a href="#base-de-datos-sys-la-abstracción-simplificada"><u>3.4. Base
+de Datos sys (La Abstracción Simplificada)</u></a></p>
+</blockquote>
+<p><a href="#automatización-mediante-scripts-externos-bash"><u>4.
+Automatización Mediante Scripts Externos (Bash)</u></a></p>
+<p><a
+href="#ejemplos-prácticos-de-scripts-de-administración-sencillos-y-documentados"><u>5.
+Ejemplos Prácticos de Scripts de Administración (Sencillos y
+Documentados)</u></a></p>
+<h1 id="repaso-teórico">1. Repaso Teórico <a class="headerlink" href="#repaso-teórico" title="Enlace permanente">¶</a></h1>
+<p>La administración moderna de bases de datos no se limita a ejecutar
+consultas interactivas. Para garantizar la eficiencia, seguridad y
+automatización, los SGBD permiten almacenar lógica programada
+directamente en el servidor.</p>
+<p>A continuación, repasamos los tres pilares de la programación en base
+de datos: <strong>Procedimientos Almacenados</strong>,
+<strong>Funciones</strong> y <strong>Disparadores
+(Triggers)</strong>.</p>
+<h2 id="procedimientos-almacenados-stored-procedures">1.1.
+Procedimientos Almacenados (Stored Procedures) <a class="headerlink" href="#procedimientos-almacenados-stored-procedures" title="Enlace permanente">¶</a></h2>
+<p>Son subprogramas que se compilan y almacenan en el SGBD. Pueden
+realizar operaciones complejas, alterar datos en múltiples tablas y
+ejecutar sentencias DDL (Data Definition Language).</p>
+<ul>
+<li><blockquote>
+<p><strong>Parámetros:</strong></p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p>IN (Entrada): El valor se pasa al procedimiento pero no se puede
+modificar hacia el exterior.</p>
+</blockquote></li>
+<li><blockquote>
+<p>OUT (Salida): El procedimiento asigna un valor a este parámetro para
+devolverlo al entorno que lo invocó.</p>
+</blockquote></li>
+<li><blockquote>
+<p>INOUT (Entrada/Salida): El parámetro aporta un valor inicial y puede
+ser modificado dentro del procedimiento para devolver el nuevo
+estado.</p>
+</blockquote></li>
+</ul></li>
+<li><blockquote>
+<p><strong>Invocación:</strong> Se ejecutan explícitamente mediante la
+instrucción CALL nombre_procedimiento(parametros);.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Uso Administrativo:</strong> Ideales para tareas de
+mantenimiento repetitivas (ej. creación masiva de usuarios,
+particionamiento de tablas, purgas programadas de logs).</p>
+</blockquote></li>
+</ul>
+<p><strong>Ejemplo de Sintaxis Básica (MySQL)</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
+CREATE PROCEDURE sp_crear_usuario_lectura(
+IN p_username VARCHAR(50),
+IN p_password VARCHAR(50),
+IN p_db VARCHAR(50)
+)
+BEGIN
+-- Generar la sentencia dinámicamente y ejecutarla de forma
+segura
+SET @sql_create = CONCAT('CREATE USER "', p_username, '"@"localhost"
+IDENTIFIED BY "', p_password, '";');
+PREPARE stmt1 FROM @sql_create;
+EXECUTE stmt1;
+DEALLOCATE PREPARE stmt1;
+SET @sql_grant = CONCAT('GRANT SELECT ON ', p_db, '.* TO "',
+p_username, '"@"localhost";');
+PREPARE stmt2 FROM @sql_grant;
+EXECUTE stmt2;
+DEALLOCATE PREPARE stmt2;
+FLUSH PRIVILEGES;
+END //
+DELIMITER ;</code></pre></div></h2>
+<h2 id="funciones-almacenadas-stored-functions">1.2. Funciones
+Almacenadas (Stored Functions) <a class="headerlink" href="#funciones-almacenadas-stored-functions" title="Enlace permanente">¶</a></h2>
+<p>A diferencia de los procedimientos, las funciones están diseñadas
+específicamente para <strong>calcular y devolver un único valor
+escalar</strong> (un número, una cadena de texto, una fecha).</p>
+<ul>
+<li><blockquote>
+<p><strong>Características Clave:</strong></p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p>Deben contener obligatoriamente al menos una cláusula RETURN.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>No</strong> pueden invocar sentencias de transacción (COMMIT
+o ROLLBACK) ni modificar directamente el estado de las tablas en la
+mayoría de escenarios de consulta estándar.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Se pueden integrar directamente dentro de sentencias SQL estándar
+(SELECT, WHERE, ORDER BY).</p>
+</blockquote></li>
+</ul></li>
+<li><blockquote>
+<p><strong>Uso Administrativo:</strong> Ideales para normalizar
+formatos, calcular métricas rápidas de rendimiento o formatear salidas
+del catálogo.</p>
+</blockquote></li>
+</ul>
+<p><strong>Ejemplo de Sintaxis Básica (MySQL)</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
+CREATE FUNCTION fn_obtener_tamano_megas(p_bytes BIGINT)
+RETURNS DECIMAL(10,2)
+DETERMINISTIC
+BEGIN
+RETURN p_bytes / 1024 / 1024;
+END //
+DELIMITER ;
+-- Uso de la función en una consulta administrativa:
+SELECT table_name, fn_obtener_tamano_megas(data_length) AS
+'Tamano_MB'
+FROM information_schema.tables
+WHERE table_schema = 'mi_base_datos';</code></pre></div></h2>
+<h2 id="disparadores-triggers">1.3. Disparadores (Triggers) <a class="headerlink" href="#disparadores-triggers" title="Enlace permanente">¶</a></h2>
+<p>Un disparador es un bloque de código que se ejecuta <strong>de manera
+automática</strong> en respuesta a un evento DML (INSERT, UPDATE o
+DELETE) sobre una tabla específica.</p>
+<ul>
+<li><blockquote>
+<p><strong>Estructura temporal:</strong></p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p>BEFORE: Se ejecuta antes de que los cambios se validen e inserten en
+la base de datos (útil para validación y saneamiento de datos).</p>
+</blockquote></li>
+<li><blockquote>
+<p>AFTER: Se ejecuta después de que el cambio se ha confirmado en la
+tabla (ideal para auditorías, propagación de datos y
+sincronizaciones).</p>
+</blockquote></li>
+</ul></li>
+<li><blockquote>
+<p><strong>Variables Especiales:</strong></p>
+</blockquote>
+<ul>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>OLD: Accede a los valores de la fila antes del
+evento (disponible en UPDATE y DELETE).</code></pre></div></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>NEW: Accede a los nuevos valores que se van a guardar (disponible en
+INSERT y UPDATE).</code></pre></div></li>
+</ul></li>
+<li><blockquote>
+<p><strong>Uso Administrativo:</strong> Monitorización de cambios
+críticos, auditoría de seguridad (saber quién modificó qué y cuándo) e
+integridad referencial compleja.</p>
+</blockquote></li>
+</ul>
+<p><strong>Ejemplo de Sintaxis de Auditoría (MySQL)</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>CREATE TABLE log_cambios_privilegios (
+id INT AUTO_INCREMENT PRIMARY KEY,
+usuario_afectado VARCHAR(100),
+accion VARCHAR(20),
+fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+realizado_por VARCHAR(100)
+);
+DELIMITER //
+CREATE TRIGGER tg_auditoria_usuarios_update
+AFTER UPDATE ON mysql.user
+FOR EACH ROW
+BEGIN
+INSERT INTO log_cambios_privilegios (usuario_afectado, accion,
+realizado_por)
+VALUES (OLD.user, 'MODIFICACION_PERMISOS', USER());
+END //
+DELIMITER ;</code></pre></div>2. Ventajas
+de la programación en la administración</h1>
+<p>El uso de estos elementos dentro del SGBD ofrece tres ventajas
+operativas críticas para un Administrador de Sistemas de Bases de Datos
+(ASGBD):</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>Ventaja</strong></th>
+<th><strong>Descripción Técnica</strong></th>
+<th><strong>Impacto en la Administración</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Reutilización y Mantenimiento</strong></td>
+<td>Encapsula la lógica de negocio y administración. Si un proceso de
+backup cambia, solo se modifica el objeto en el servidor, no las
+aplicaciones externas.</td>
+<td>Menor duplicación de código y reducción del error humano.</td>
+</tr>
+<tr class="header">
+<td><strong>Seguridad de Acceso</strong></td>
+<td>Permite restringir el acceso directo a tablas físicas mediante
+permisos GRANT EXECUTE sobre procedimientos específicos.</td>
+<td>El usuario opera la BD a través de "cajas negras" controladas.</td>
+</tr>
+<tr class="odd">
+<td><strong>Rendimiento de Red</strong></td>
+<td>Reduce el tráfico de red enviando únicamente la orden CALL en lugar
+de miles de sentencias SQL secuenciales.</td>
+<td>Ejecuciones mucho más rápidas en redes congestionadas o entornos
+cloud.</td>
+</tr>
+</tbody>
+</table></div>
+<h1 id="catálogo-del-sistema-metadatos">3. Catálogo del Sistema
+(Metadatos) <a class="headerlink" href="#catálogo-del-sistema-metadatos" title="Enlace permanente">¶</a></h1>
+<p>MySQL almacena la información sobre su propia estructura (metadatos)
+en esquemas específicos. Dominar estos catálogos es la herramienta más
+potente de un Administrador de Sistemas (SysAdmin), ya que permite
+auditar el servidor, monitorizar el almacenamiento y diagnosticar la
+degradación de rendimiento directamente mediante sentencias SQL.</p>
+<h2 id="information_schema-el-diccionario-de-datos">3.1.
+information_schema (El Diccionario de Datos) <a class="headerlink" href="#information_schema-el-diccionario-de-datos" title="Enlace permanente">¶</a></h2>
+<p>Es una base de datos virtual de solo lectura definida por el estándar
+ANSI SQL. Actúa como el diccionario de datos del SGBD. No contiene
+archivos de datos físicos; en su lugar, MySQL genera sus tablas
+dinámicamente en memoria al consultarlas.</p>
+<ul>
+<li><blockquote>
+<p><strong>SCHEMATA:</strong> Almacena información sobre las bases de
+datos existentes en el servidor (nombres, juegos de caracteres
+predeterminados, etc.).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>TABLES:</strong> Contiene metadatos de todas las tablas
+físicas y vistas (motor de almacenamiento, número estimado de filas,
+tamaño de los datos y de los índices).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>COLUMNS:</strong> Detalla cada columna de cada tabla (tipos
+de datos, nulabilidad, privilegios asignados).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>STATISTICS:</strong> Proporciona información de bajo nivel
+sobre los índices de las tablas del sistema.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>ROUTINES:</strong> Almacena información sobre los
+procedimientos y funciones del SGBD.</p>
+</blockquote></li>
+</ul>
+<p><strong>Caso Práctico 1: Obtener el tamaño en disco de cada base de
+datos</strong></p>
+<p>Esta consulta calcula el espacio real en disco de cada base de datos
+(Datos + Índices) expresado en Megabytes:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT
+table_schema AS 'Base de Datos',
+ROUND(SUM(data_length + index_length) / 1024 / 1024, 2) AS 'Tamaño
+total (MB)',
+ROUND(SUM(data_length) / 1024 / 1024, 2) AS 'Solo Datos (MB)',
+ROUND(SUM(index_length) / 1024 / 1024, 2) AS 'Solo Índices (MB)'
+FROM information_schema.tables
+GROUP BY table_schema
+ORDER BY (SUM(data_length + index_length)) DESC;</code></pre></div></p>
+<p><strong>Caso Práctico 2: Detectar tablas sin Clave Primaria (Primary
+Key)</strong></p>
+<p>La falta de claves primarias degrada catastróficamente el
+rendimiento, especialmente en entornos con replicación activa
+(Master-Slave) o clústeres.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT
+t.table_schema AS 'Base de Datos',
+t.table_name AS 'Tabla sin PK'
+FROM information_schema.tables t
+LEFT JOIN information_schema.table_constraints tc
+ON t.table_schema = tc.table_schema
+AND t.table_name = tc.table_name
+AND tc.constraint_type = 'PRIMARY KEY'
+WHERE tc.constraint_name IS NULL
+AND t.table_schema NOT IN ('information_schema', 'mysql',
+'performance_schema', 'sys')
+AND t.table_type = 'BASE TABLE';</code></pre></div>3.2.
+Base de Datos mysql (El Repositorio de Seguridad y Privilegios)</h2>
+<p>A diferencia de information_schema, la base de datos mysql contiene
+tablas físicas persistentes en el disco. Es el cerebro de la seguridad
+de accesos del servidor.</p>
+<ul>
+<li><blockquote>
+<p><strong>user:</strong> Almacena los usuarios creados, hosts
+permitidos, contraseñas cifradas y privilegios globales del sistema.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>db:</strong> Controla los privilegios específicos de los
+usuarios sobre bases de datos completas.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>tables_priv y columns_priv:</strong> Regulan accesos
+extremadamente granulares a nivel de tabla o columna.</p>
+</blockquote></li>
+</ul>
+<p><strong>Caso Práctico 3: Auditoría rápida de expiración de
+contraseñas de usuarios</strong></p>
+<p>Para cumplir con normativas de seguridad (como el RGPD), un SysAdmin
+debe controlar la antigüedad y vigencia de las cuentas del sistema:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT
+user AS 'Usuario',
+host AS 'Host de Origen',
+password_expired AS '¿Expirada?',
+password_last_changed AS 'Último cambio',
+password_lifetime AS 'Días de ciclo de vida'
+FROM mysql.user
+WHERE ssl_type != '' OR password_expired = 'Y' OR user !=
+'mysql.infoschema';</code></pre></div>3.3. Base de Datos
+performance_schema </h2>
+<p>Se enfoca de forma estricta en el rendimiento físico del servidor.
+Cuenta con una arquitectura basada en <strong>Instrumentos</strong>
+(código fuente monitorizado) y <strong>Consumidores</strong> (tablas del
+motor de almacenamiento en memoria que recopilan las métricas).</p>
+<ul>
+<li><blockquote>
+<p><strong>events_statements_summary_by_digest:</strong> Agrupa
+estadísticas sobre patrones de consultas (digests), facilitando
+identificar cuáles consumen más CPU o tiempo de ejecución.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>threads:</strong> Muestra información técnica detallada sobre
+los hilos de ejecución activos del servidor.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>events_errors_summary_by_user_by_error:</strong> Registra
+resúmenes históricos de los errores de sintaxis o conexión provocados
+por cada usuario del sistema.</p>
+</blockquote></li>
+</ul>
+<p><strong>Caso Práctico 4: Listar los errores más comunes provocados
+por los usuarios</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT
+user AS 'Usuario',
+error_number AS 'Código de Error',
+error_name AS 'Nombre de Error',
+sum_error_raised AS 'Veces provocado',
+first_seen AS 'Primera detección',
+last_seen AS 'Último registro'
+FROM performance_schema.events_errors_summary_by_user_by_error
+WHERE sum_error_raised &gt; 0
+ORDER BY sum_error_raised DESC;</code></pre></div>3.4. Base de
+Datos sys (La Abstracción Simplificada)</h2>
+<p>La complejidad de performance_schema dificulta su uso rutinario en el
+día a día del SysAdmin. Para solucionar esto, MySQL incluye la base de
+datos sys, que agrupa vistas estructuradas de forma intuitiva, funciones
+y procedimientos predefinidos.</p>
+<p><strong>Caso Práctico 5: Identificar las consultas SQL que provocan
+mayor latencia</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT
+query AS 'Sentencia SQL',
+db AS 'Base de Datos',
+exec_count AS 'Total Ejecuciones',
+total_latency AS 'Tiempo Total acumulado',
+max_latency AS 'Peor latencia registrada'
+FROM sys.statement_analysis
+ORDER BY total_latency DESC
+LIMIT 5;</code></pre></div></h3>
+<p><strong>Caso Práctico 6: Encontrar tablas con lecturas
+completas</strong></p>
+<p>La monitorización sistemática de consultas que no aprovechan los
+índices evita problemas de degradación del disco físico y ahorra energía
+en el centro de datos.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT
+schemaname AS 'Base de Datos',
+tablename AS 'Tabla',
+scans AS 'Lecturas Completas',
+rows_sel AS 'Filas devueltas'
+FROM sys.schema_tables_with_full_table_scans
+ORDER BY scans DESC;</code></pre></div>4.
+Automatización Mediante Scripts Externos (Bash)</h1>
+<p>La verdadera automatización de la administración ocurre cuando
+conectamos el SGBD con el Sistema Operativo utilizando scripts de
+consola (por ejemplo, Bash en sistemas Linux).</p>
+<p>Para que un script de Bash interactúe con MySQL de forma desasistida,
+solemos utilizar el cliente de línea de comandos de MySQL mediante la
+estructura:</p>
+<p>mysql -u "usuario" -p"contraseña" -e "CONSULTA_SQL"</p>
+<p><strong>Buenas Prácticas de Seguridad:</strong> Exponer la contraseña
+directamente en el script utilizando -p"mi_password" es una
+vulnerabilidad grave (cualquier usuario del sistema podría verla
+ejecutando ps aux).</p>
+<p><strong>Recomendación:</strong> Utilizar archivos de configuración
+seguros limitados por permisos de lectura para el usuario de sistema
+(ej. archivo .my.cnf con permisos 600).</p>
+<h1
+id="ejemplos-prácticos-de-scripts-de-administración-sencillos-y-documentados">5.
+Ejemplos Prácticos de Scripts de Administración (Sencillos y
+Documentados) <a class="headerlink" href="#ejemplos-prácticos-de-scripts-de-administración-sencillos-y-documentados" title="Enlace permanente">¶</a></h1>
+<p>Para asentar estos conceptos, a continuación se presentan tres
+scripts sencillos para administración de sistemas Linux/MySQL. Están
+diseñados bajo criterios didácticos, con un nivel de complejidad
+progresivo y comentarios exhaustivos de cada instrucción.</p>
+<p><strong>Script 1: Comprobación de Salud del Servidor (Health
+Check)</strong></p>
+<p>Este script verifica si el servicio MySQL está activo en el sistema
+operativo y si responde a consultas básicas. Si falla, genera una alerta
+visual y un registro en el log del sistema.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>#!/bin/bash
+#
+======================================================================
+# SCRIPT DE COMPROBACIÓN DE SALUD DE MYSQL
+# Autor: Gema ASGBD
+# Propósito: Verificar la disponibilidad del servicio local de
+MySQL.
+#
+=======================================================================
+# 1. Variables de Configuración
+USER_BD="root"
+PASS_BD="ContrasenaSegura123" # Reemplazar con credenciales del
+entorno
+FECHA_LOG=$(date "+%Y-%m-%d %H:%M:%S")
+echo "=== INICIANDO CONTROL DE SALUD DEL SGBD ($FECHA_LOG) ==="
+# 2. Comprobar si el proceso del servicio se está ejecutando en el
+S.O.
+if ! systemctl is-active --quiet mysql; then
+echo "[ALERTA] El servicio systemd de MySQL está CAÍDO."
+echo "[ACCIÓN] Intentando levantar el servicio de manera
+automática..."
+sudo systemctl start mysql
+sleep 3 # Esperar tres segundos para que se estabilice el
+arranque
+fi
+# 3. Comprobar si el motor responde a consultas básicas mediante ping
+administrativo
+if mysqladmin -u "$USER_BD" -p"$PASS_BD" ping &amp;&gt;/dev/null;
+then
+echo "[OK] MySQL está levantado y responde de manera óptima a las
+peticiones."
+else
+echo "[CRÍTICO] El servicio está activo pero rechaza la conexión de
+base de datos."
+exit 1
+fi
+echo "=== CONTROL DE SALUD FINALIZADO ==="
+exit 0</code></pre></div><strong>Script 2: Copia de Seguridad Sencilla (Backup
+Automatizado)</strong></p>
+<p>Genera un respaldo (.sql) de una base de datos específica, le asigna
+una marca de tiempo para no sobreescribir copias anteriores y comprime
+el archivo para ahorrar espacio en disco.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>#!/bin/bash
+#
+=======================================================================
+# SCRIPT DE COPIA DE SEGURIDAD INDIVIDUAL
+# Autor: Gema ASGBD
+# Propósito: Realizar respaldo físico, comprimir y mantener orden en
+el almacén.
+#
+=======================================================================
+# 1. Variables de Configuración
+USER_BD="root"
+PASS_BD="ContrasenaSegura123"
+BD_NOMBRE="tienda_informatica" # Base de datos a respaldar
+RUTA_DESTINO="/var/backups/mysql" # Directorio donde se guardarán los
+backups
+MARCA_TIEMPO=$(date "+%Y%m%d_%H%M%S") # Formato:
+AñoMesDía_HoraMinutoSegundo
+FICHERO_BACKUP="$RUTA_DESTINO/backup_${BD_NOMBRE}_${MARCA_TIEMPO}.sql"
+# 2. Creación segura del directorio de destino si no existe
+if [ ! -d "$RUTA_DESTINO" ]; then
+echo "Creando el directorio de respaldos en $RUTA_DESTINO..."
+mkdir -p "$RUTA_DESTINO"
+fi
+echo "Iniciando copia de seguridad de la base de datos:
+$BD_NOMBRE..."
+# 3. Ejecución del volcado de datos con mysqldump
+mysqldump -u "$USER_BD" -p"$PASS_BD" "$BD_NOMBRE" &gt;
+"$FICHERO_BACKUP"
+# 4. Verificación del resultado del comando anterior (usando $?)
+if [ $? -eq 0 ]; then
+echo "¡Volcado generado con éxito! Procediendo a la
+compresión..."
+# Comprimir el archivo .sql resultante a formato .gz
+gzip "$FICHERO_BACKUP"
+echo "Copia de seguridad completada y guardada como:
+${FICHERO_BACKUP}.gz"
+else
+echo "[ERROR] Ocurrió un fallo durante el volcado de la base de
+datos."
+exit 1
+fi
+exit 0</code></pre></div><strong>Script 3: Comprobación de Consumo y Limpieza de
+Logs</strong></p>
+<p>Un administrador debe controlar el tamaño de la base de datos. Este
+script consulta el catálogo information_schema para verificar si el
+tamaño supera un límite seguro y limpia una tabla histórica si es
+necesario para liberar espacio.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>#!/bin/bash
+#
+=======================================================================
+# SCRIPT DE DIAGNÓSTICO DE TAMAÑO Y PURGA DE TABLAS
+# Autor: Gema ASGBD
+# Propósito: Consultar información de metadatos y liberar espacio si
+excede límites.
+#
+=======================================================================
+# 1. Variables de Configuración
+USER_BD="root"
+PASS_BD="ContrasenaSegura123"
+LIMITE_MB=500 # Límite máximo de alerta en Megabytes
+# 2. Consulta de metadatos (Suma total de datos de todas las BD en
+MB)
+QUERY_TAMAÑO="SELECT ROUND(SUM(data_length + index_length) / 1024 /
+1024, 2) FROM information_schema.tables;"
+echo "Consultando el tamaño total ocupado en disco por el
+SGBD..."
+TAMANO_ACTUAL=$(mysql -u "$USER_BD" -p"$PASS_BD" -AN -e
+"$QUERY_TAMAÑO")
+# Nota: -AN le indica a mysql que devuelva el resultado plano, sin
+cabeceras de tabla.
+echo "Tamaño de datos actual en el servidor: $TAMANO_ACTUAL MB"
+# 3. Comprobar si supera el límite establecido
+# Usamos comparación de números flotantes de Bash mediante 'bc' o
+conversión entera rápida
+TAMANO_ENTERO=${TAMANO_ACTUAL%.*} # Extrae la parte entera para
+simplificar en Bash
+if [ "$TAMANO_ENTERO" -gt "$LIMITE_MB" ]; then
+echo "[AVISO] Se ha superado el umbral seguro de $LIMITE_MB MB."
+echo "[MANTENIMIENTO] Procediendo a purgar datos antiguos de la tabla
+de logs..."
+# Consulta SQL de mantenimiento (vaciar registros de log más antiguos
+de 30 días)
+QUERY_PURGA="DELETE FROM logs_sistema.registro_eventos WHERE
+fecha_evento &lt; NOW() - INTERVAL 30 DAY;"
+mysql -u "$USER_BD" -p"$PASS_BD" -e "$QUERY_PURGA"
+echo "Purga de registros completada."
+else
+echo "[INFORMACIÓN] El espacio ocupado está dentro de los rangos
+óptimos de operación."
+fi
+exit 0</code></pre></div></p>
+
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASGBD - Proyecto Integral</title>
+    <style>
+    
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --bg-header: #1e3a8a;
+    --text-header: #ffffff;
+    --bg-body: #f8fafc;
+    --text-body: #1e293b;
+    --border-color: #cbd5e1;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-body);
+    color: var(--text-body);
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, [id], a[name] {
+    scroll-margin-top: 80px !important;
+}
+
+.headerlink {
+    display: inline-block;
+    margin-left: 0.4rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.8em;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
+h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
+    visibility: visible;
+    opacity: 1;
+}
+
+.headerlink:hover {
+    color: var(--primary);
+}
+
+#site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    background: var(--bg-header);
+    color: var(--text-header);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    height: 62px;
+}
+
+.site-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.top-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.top-nav .nav-btn {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+.top-nav .nav-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 9px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown:hover .dropbtn, .dropbtn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 320px;
+    max-width: 480px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 10001;
+    border: 1px solid #e2e8f0;
+    margin-top: 6px;
+}
+
+.dropdown-content a {
+    color: var(--text-body);
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.92rem;
+    border-bottom: 1px solid #f1f5f9;
+    line-height: 1.4;
+    transition: background 0.15s, color 0.15s;
+    word-break: break-word;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #eff6ff;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block !important;
+}
+
+#page-layout {
+    display: flex;
+    min-height: calc(100vh - 62px);
+}
+
+#left-panel {
+    width: 320px;
+    min-width: 320px;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 1.5rem 1.25rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: sticky;
+    top: 62px;
+    height: calc(100vh - 62px);
+}
+
+#left-panel h3 {
+    font-size: 1rem;
+    margin-top: 0;
+    color: #334155;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
+
+#left-panel nav#TOC, #left-panel #TOC {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+#left-panel ul {
+    list-style-type: none;
+    padding-left: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+#left-panel li {
+    margin: 6px 0;
+}
+
+#left-panel a {
+    color: #475569;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    display: block;
+    transition: color 0.15s;
+}
+
+#left-panel a:hover {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+#main-content {
+    flex: 1;
+    padding: 2.5rem 4rem;
+    box-sizing: border-box;
+    max-width: 100% !important;
+    width: calc(100% - 320px);
+    min-width: 0;
+}
+
+/* TABLAS ELEGANTES Y RESPONSIVE */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1.75rem 0;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    font-size: 0.93rem;
+    background: #ffffff;
+    table-layout: auto !important;
+}
+
+th, td {
+    padding: 10px 14px !important;
+    border: 1px solid #cbd5e1 !important;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+td p, th p {
+    margin: 0 !important;
+    padding: 2px 0 !important;
+}
+
+th {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #0f172a !important;
+}
+
+tr:nth-child(even) td {
+    background-color: #f8fafc !important;
+}
+
+tr:hover td {
+    background-color: #f1f5f9 !important;
+}
+
+/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
+.code-wrapper {
+    position: relative;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0f172a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #334155;
+    color: #f8fafc;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.copy-btn:hover {
+    background: #2563eb;
+}
+
+pre {
+    margin: 0 !important;
+    padding: 1.25rem 1.25rem !important;
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    overflow-x: auto !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+}
+
+code {
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+}
+
+p code, li code {
+    background: #e2e8f0;
+    color: #0f172a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
+
+/* RESPONSIVE DESIGN PARA MÓVILES Y TABLETS */
+@media (max-width: 768px) {
+    .header-container {
+        height: auto;
+        flex-direction: column;
+        padding: 0.75rem 1rem;
+        gap: 0.6rem;
+    }
+    
+    .site-title {
+        font-size: 1.05rem;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .site-title img {
+        height: 28px !important;
+    }
+
+    .top-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 0.35rem;
+    }
+
+    .top-nav .nav-btn, .dropbtn {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    .dropdown-content {
+        min-width: 240px;
+        max-width: 90vw;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #page-layout {
+        flex-direction: column;
+    }
+
+    #left-panel {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        position: static !important;
+        border-right: none !important;
+        border-bottom: 2px solid #e2e8f0;
+        padding: 1rem !important;
+    }
+
+    #main-content {
+        width: 100% !important;
+        padding: 1.25rem 1rem !important;
+    }
+
+    iframe {
+        height: 60vh !important;
+    }
+
+    th, td {
+        padding: 8px 10px !important;
+        font-size: 0.85rem !important;
+    }
+
+    pre {
+        padding: 0.85rem !important;
+        font-size: 0.82rem !important;
+    }
+}
+
+    </style>
+    <script>
+    
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.dropdown').forEach(dd => {
+        const btn = dd.querySelector('.dropbtn');
+        const content = dd.querySelector('.dropdown-content');
+        if (btn && content) {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = content.style.display === 'block';
+                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
+                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+                if (!isOpen) {
+                    content.style.display = 'block';
+                    btn.classList.add('active');
+                }
+            });
+        }
+    });
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
+        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+    });
+
+    // Controlador universal de clics en enlaces ancla (#...)
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const rawHref = this.getAttribute('href') || '';
+            const hashIdx = rawHref.indexOf('#');
+            if (hashIdx === -1) return;
+            const hash = rawHref.substring(hashIdx + 1);
+            if (!hash) return;
+            
+            let targetId = hash;
+            try { targetId = decodeURIComponent(hash); } catch(err) {}
+
+            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
+            if (!targetEl) {
+                for (let el of document.querySelectorAll('[id]')) {
+                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
+                        targetEl = el;
+                        break;
+                    }
+                }
+            }
+
+            if (targetEl) {
+                e.preventDefault();
+                const headerOffset = 75;
+                const elementPosition = targetEl.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                if (history.pushState) {
+                    history.pushState(null, null, '#' + targetId);
+                }
+            }
+        });
+    });
+});
+
+function copyCode(btn) {
+    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
+    navigator.clipboard.writeText(code).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = '✅ ¡Copiado!';
+        btn.style.background = '#16a34a';
+        setTimeout(() => {
+            btn.innerText = orig;
+            btn.style.background = '#334155';
+        }, 2000);
+    });
+}
+
+    </script>
+</head>
+<body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD &ndash; Proyecto Integral</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+      <a href="ASGBD_Presentacion.html" class="nav-btn">Presentación</a>
+      <a href="ASGBD_UT2_Tarea_Programacion_Scripts.html" class="nav-btn">Programación</a>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Teoría ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Teoria_Configuracion.html">ASGBD UT1 Teoria Configuracion</a>
+          <a href="ASGBD_UT2_Teoria_Scripts_Administracion.html">ASGBD UT2 Teoria Scripts Administracion</a>
+          <a href="ASGBD_UT3_Teoria_Usuarios_roles.html">ASGBD UT3 Teoria Usuarios roles</a>
+          <a href="ASGBD_UT4_Teoría_Planificación_Seguridad.html">ASGBD UT4 Teoría Planificación Seguridad</a>
+          <a href="ASGBD_UT5_Teoria_Optimizacion_Consultas.html">ASGBD UT5 Teoria Optimizacion Consultas</a>
+          <a href="ASGBD_UT6_Teoría_BD_Distribuidas_alta_disponibilidad.html">ASGBD UT6 Teoría BD Distribuidas alta disponibilidad</a>
+          <a href="ASGBD_Proyecto_integral.html">ASGBD Proyecto integral</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Tareas y Prácticas ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Tarea_Configuracion.html">ASGBD UT1 Tarea Configuracion</a>
+          <a href="ASGBD_UT1_Practica.html">ASGBD UT1 Practica</a>
+          <a href="ASGBD_UT2_Practica._Automatizacion_Mantenimiento.html">ASGBD UT2 Practica. Automatizacion Mantenimiento</a>
+          <a href="ASGBD_UT3_Practica_Auditoria_Automatizacion.html">ASGBD UT3 Practica Auditoria Automatizacion</a>
+          <a href="ASGBD_UT3_Tarea_Enunciado.html">ASGBD UT3 Tarea Enunciado</a>
+          <a href="ASGBD_UT4_Tarea_Eventos.html">ASGBD UT4 Tarea Eventos</a>
+          <a href="ASGBD_UT4_Practica_Automatizacion_Mantenimiento.html">ASGBD UT4 Practica Automatizacion Mantenimiento</a>
+          <a href="ASGBD_UT5_Practica_Automatizacion.html">ASGBD UT5 Practica Automatizacion</a>
+          <a href="ASGBD_UT5_Práctica_Tunning_Servidores_EXPLAIN_Avanzado.html">ASGBD UT5 Práctica Tunning Servidores EXPLAIN Avanzado</a>
+          <a href="ASGBD_UT5_Tarea_Seguridad.html">ASGBD UT5 Tarea Seguridad</a>
+          <a href="ASGBD_UT5_Tarea_Auditoría_Rendimiento_Indexacion.html">ASGBD UT5 Tarea Auditoría Rendimiento Indexacion</a>
+          <a href="ASGBD_UT6_Practica_BD_Distribuidas_Sharding.html">ASGBD UT6 Practica BD Distribuidas Sharding</a>
+          <a href="ASGBD_UT6_Practica_Alta_Disponibilidad.html">ASGBD UT6 Practica Alta Disponibilidad</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <aside id="left-panel">
+            <h3>Índice del Tema</h3>
+            <nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#proyecto-integral-configuración-explotación-optimización-y-alta-disponibilidad-de-aerodata-solutions-de-la-ud1-a-la-ud6"
+id="toc-proyecto-integral-configuración-explotación-optimización-y-alta-disponibilidad-de-aerodata-solutions-de-la-ud1-a-la-ud6"><strong>====================================================================
+PROYECTO INTEGRAL: CONFIGURACIÓN, EXPLOTACIÓN, OPTIMIZACIÓN Y ALTA
+DISPONIBILIDAD DE "AERODATA SOLUTIONS" (DE LA UD1 A LA UD6)</strong></a>
+<ul>
+<li><a href="#introducción-general-al-proyecto"
+id="toc-introducción-general-al-proyecto"><strong>INTRODUCCIÓN GENERAL
+AL PROYECTO</strong></a></li>
+<li><a
+href="#fase-1-instalación-configuración-de-parámetros-y-gestión-de-logs-asociada-a-la-ud1"
+id="toc-fase-1-instalación-configuración-de-parámetros-y-gestión-de-logs-asociada-a-la-ud1"><strong>FASE
+1: INSTALACIÓN, CONFIGURACIÓN DE PARÁMETROS Y GESTIÓN DE LOGS (ASOCIADA
+A LA UD1)</strong></a>
+<ul>
+<li><a href="#ficha-técnica-de-la-actividad-1"
+id="toc-ficha-técnica-de-la-actividad-1">FICHA TÉCNICA DE LA ACTIVIDAD
+<strong>1</strong></a></li>
+<li><a href="#descripción-general-de-la-tarea.-objetivos"
+id="toc-descripción-general-de-la-tarea.-objetivos">1. DESCRIPCIÓN
+GENERAL DE LA TAREA. OBJETIVOS</a></li>
+<li><a href="#consideraciones-previas"
+id="toc-consideraciones-previas">2. CONSIDERACIONES PREVIAS</a></li>
+<li><a href="#explicación-detallada-paso-a-paso"
+id="toc-explicación-detallada-paso-a-paso">3. EXPLICACIÓN DETALLADA
+(PASO A PASO)</a></li>
+<li><a href="#preguntas-teóricas-y-de-investigación"
+id="toc-preguntas-teóricas-y-de-investigación"><strong>4. PREGUNTAS
+TEÓRICAS Y DE INVESTIGACIÓN</strong></a></li>
+<li><a href="#rúbrica-de-evaluación-de-la-fase-1"
+id="toc-rúbrica-de-evaluación-de-la-fase-1"><strong>5. RÚBRICA DE
+EVALUACIÓN DE LA FASE 1</strong></a></li>
+</ul></li>
+<li><a
+href="#fase-2-control-de-acceso-roles-rbac-y-seguridad-asociada-a-la-ud2"
+id="toc-fase-2-control-de-acceso-roles-rbac-y-seguridad-asociada-a-la-ud2"><strong>FASE
+2: CONTROL DE ACCESO, ROLES (RBAC) Y SEGURIDAD (ASOCIADA A LA
+UD2)</strong></a>
+<ul>
+<li><a href="#ficha-técnica-de-la-actividad-2"
+id="toc-ficha-técnica-de-la-actividad-2"><strong>FICHA TÉCNICA DE LA
+ACTIVIDAD 2</strong></a></li>
+<li><a href="#descripción-general-de-la-tarea.-objetivos-1"
+id="toc-descripción-general-de-la-tarea.-objetivos-1"><strong>1.
+DESCRIPCIÓN GENERAL DE LA TAREA. OBJETIVOS</strong></a></li>
+<li><a href="#consideraciones-previas-1"
+id="toc-consideraciones-previas-1"><strong>2. CONSIDERACIONES
+PREVIAS</strong></a></li>
+<li><a href="#explicación-detallada-paso-a-paso-1"
+id="toc-explicación-detallada-paso-a-paso-1"><strong>3. EXPLICACIÓN
+DETALLADA (PASO A PASO)</strong></a></li>
+<li><a href="#preguntas-teóricas-y-de-investigación-1"
+id="toc-preguntas-teóricas-y-de-investigación-1"><strong>4. PREGUNTAS
+TEÓRICAS Y DE INVESTIGACIÓN</strong></a></li>
+<li><a href="#rúbrica-de-evaluación-de-la-fase-2"
+id="toc-rúbrica-de-evaluación-de-la-fase-2"><strong>5. RÚBRICA DE
+EVALUACIÓN DE LA FASE 2</strong></a></li>
+</ul></li>
+<li><a
+href="#fase-3-automatización-de-lógica-de-negocio-procedimientos-funciones-y-disparadores-asociada-a-la-ud3"
+id="toc-fase-3-automatización-de-lógica-de-negocio-procedimientos-funciones-y-disparadores-asociada-a-la-ud3"><strong>FASE
+3: AUTOMATIZACIÓN DE LÓGICA DE NEGOCIO (PROCEDIMIENTOS, FUNCIONES Y
+DISPARADORES) (ASOCIADA A LA UD3)</strong></a>
+<ul>
+<li><a href="#ficha-técnica-de-la-actividad-3"
+id="toc-ficha-técnica-de-la-actividad-3"><strong>FICHA TÉCNICA DE LA
+ACTIVIDAD 3</strong></a></li>
+<li><a href="#descripción-general-de-la-tarea.-objetivos-2"
+id="toc-descripción-general-de-la-tarea.-objetivos-2"><strong>1.
+DESCRIPCIÓN GENERAL DE LA TAREA. OBJETIVOS</strong></a></li>
+<li><a href="#consideraciones-previas-2"
+id="toc-consideraciones-previas-2"><strong>2. CONSIDERACIONES
+PREVIAS</strong></a></li>
+<li><a href="#explicación-detallada-paso-a-paso-2"
+id="toc-explicación-detallada-paso-a-paso-2"><strong>3. EXPLICACIÓN
+DETALLADA (PASO A PASO)</strong></a></li>
+<li><a href="#preguntas-teóricas-y-de-investigación-2"
+id="toc-preguntas-teóricas-y-de-investigación-2"><strong>4. PREGUNTAS
+TEÓRICAS Y DE INVESTIGACIÓN</strong></a></li>
+<li><a href="#rúbrica-de-evaluación-de-la-fase-3"
+id="toc-rúbrica-de-evaluación-de-la-fase-3"><strong>5. RÚBRICA DE
+EVALUACIÓN DE LA FASE 3</strong></a></li>
+</ul></li>
+<li><a
+href="#fase-4-planificación-de-tareas-y-eventos-programados-en-el-servidor-asociada-a-la-ud4"
+id="toc-fase-4-planificación-de-tareas-y-eventos-programados-en-el-servidor-asociada-a-la-ud4"><strong>FASE
+4: PLANIFICACIÓN DE TAREAS Y EVENTOS PROGRAMADOS EN EL SERVIDOR
+(ASOCIADA A LA UD4)</strong></a>
+<ul>
+<li><a href="#ficha-técnica-de-la-actividad-4"
+id="toc-ficha-técnica-de-la-actividad-4"><strong>FICHA TÉCNICA DE LA
+ACTIVIDAD 4</strong></a></li>
+<li><a href="#descripción-general-de-la-tarea.-objetivos-3"
+id="toc-descripción-general-de-la-tarea.-objetivos-3"><strong>1.
+DESCRIPCIÓN GENERAL DE LA TAREA. OBJETIVOS</strong></a></li>
+<li><a href="#consideraciones-previas-3"
+id="toc-consideraciones-previas-3"><strong>2. CONSIDERACIONES
+PREVIAS</strong></a></li>
+<li><a href="#explicación-detallada-paso-a-paso-3"
+id="toc-explicación-detallada-paso-a-paso-3"><strong>3. EXPLICACIÓN
+DETALLADA (PASO A PASO)</strong></a></li>
+<li><a href="#preguntas-teóricas-y-de-investigación-3"
+id="toc-preguntas-teóricas-y-de-investigación-3"><strong>4. PREGUNTAS
+TEÓRICAS Y DE INVESTIGACIÓN</strong></a></li>
+<li><a href="#rúbrica-de-evaluación-de-la-fase-4"
+id="toc-rúbrica-de-evaluación-de-la-fase-4"><strong>5. RÚBRICA DE
+EVALUACIÓN DE LA FASE 4</strong></a></li>
+</ul></li>
+<li><a
+href="#fase-5-tuning-diagnóstico-avanzado-con-explain-y-estrategias-de-indexación-asociada-a-la-ud5"
+id="toc-fase-5-tuning-diagnóstico-avanzado-con-explain-y-estrategias-de-indexación-asociada-a-la-ud5"><strong>FASE
+5: TUNING, DIAGNÓSTICO AVANZADO CON EXPLAIN Y ESTRATEGIAS DE INDEXACIÓN
+(ASOCIADA A LA UD5)</strong></a>
+<ul>
+<li><a href="#ficha-técnica-de-la-actividad-5"
+id="toc-ficha-técnica-de-la-actividad-5"><strong>FICHA TÉCNICA DE LA
+ACTIVIDAD 5</strong></a></li>
+<li><a href="#descripción-general-de-la-tarea.-objetivos-4"
+id="toc-descripción-general-de-la-tarea.-objetivos-4"><strong>1.
+DESCRIPCIÓN GENERAL DE LA TAREA. OBJETIVOS</strong></a></li>
+<li><a href="#consideraciones-previas-4"
+id="toc-consideraciones-previas-4"><strong>2. CONSIDERACIONES
+PREVIAS</strong></a></li>
+<li><a href="#explicación-detallada-paso-a-paso-4"
+id="toc-explicación-detallada-paso-a-paso-4"><strong>3. EXPLICACIÓN
+DETALLADA (PASO A PASO)</strong></a></li>
+<li><a href="#preguntas-teóricas-y-de-investigación-4"
+id="toc-preguntas-teóricas-y-de-investigación-4"><strong>4. PREGUNTAS
+TEÓRICAS Y DE INVESTIGACIÓN</strong></a></li>
+<li><a href="#rúbrica-de-evaluación-de-la-fase-5"
+id="toc-rúbrica-de-evaluación-de-la-fase-5"><strong>5. RÚBRICA DE
+EVALUACIÓN DE LA FASE 5</strong></a></li>
+</ul></li>
+<li><a
+href="#fase-6-alta-disponibilidad-bases-de-datos-distribuidas-y-enrutamiento-con-proxysql-asociada-a-la-ud6"
+id="toc-fase-6-alta-disponibilidad-bases-de-datos-distribuidas-y-enrutamiento-con-proxysql-asociada-a-la-ud6"><strong>FASE
+6: ALTA DISPONIBILIDAD, BASES DE DATOS DISTRIBUIDAS Y ENRUTAMIENTO CON
+PROXYSQL (ASOCIADA A LA UD6)</strong></a>
+<ul>
+<li><a href="#ficha-técnica-de-la-actividad-6"
+id="toc-ficha-técnica-de-la-actividad-6"><strong>FICHA TÉCNICA DE LA
+ACTIVIDAD 6</strong></a></li>
+<li><a href="#descripción-general-de-la-tarea.-objetivos-5"
+id="toc-descripción-general-de-la-tarea.-objetivos-5"><strong>1.
+DESCRIPCIÓN GENERAL DE LA TAREA. OBJETIVOS</strong></a></li>
+<li><a href="#consideraciones-previas-5"
+id="toc-consideraciones-previas-5"><strong>2. CONSIDERACIONES
+PREVIAS</strong></a></li>
+<li><a href="#explicación-detallada-paso-a-paso-5"
+id="toc-explicación-detallada-paso-a-paso-5"><strong>3. EXPLICACIÓN
+DETALLADA (PASO A PASO)</strong></a></li>
+<li><a href="#preguntas-teóricas-y-de-investigación-5"
+id="toc-preguntas-teóricas-y-de-investigación-5"><strong>4. PREGUNTAS
+TEÓRICAS Y DE INVESTIGACIÓN</strong></a></li>
+<li><a href="#rúbrica-de-evaluación-de-la-fase-6"
+id="toc-rúbrica-de-evaluación-de-la-fase-6"><strong>5. RÚBRICA DE
+EVALUACIÓN DE LA FASE 6</strong></a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+        </aside>
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_Proyecto_integral.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+
+<p>[Ciclo formativo]: Grado Superior en Administración de Sistemas
+Informáticos en Red (ASIR)</p>
+<p>[Módulo]: ASGBD (Administración de Sistemas Gestores de Bases de
+Datos) [Tipo de Documento]: Proyecto Integral de Explotación, Hardening,
+Automatización, Big Data, IA y Sistemas Distribuidos (6 Fases)</p>
+<h1
+id="proyecto-integral-configuración-explotación-optimización-y-alta-disponibilidad-de-aerodata-solutions-de-la-ud1-a-la-ud6"><strong>====================================================================
+PROYECTO INTEGRAL: CONFIGURACIÓN, EXPLOTACIÓN, OPTIMIZACIÓN Y ALTA
+DISPONIBILIDAD DE "AERODATA SOLUTIONS" (DE LA UD1 A LA
+UD6)</strong> <a class="headerlink" href="#proyecto-integral-configuración-explotación-optimización-y-alta-disponibilidad-de-aerodata-solutions-de-la-ud1-a-la-ud6" title="Enlace permanente">¶</a></h1>
+<h3 id="introducción-general-al-proyecto"><strong>INTRODUCCIÓN GENERAL
+AL PROYECTO</strong> <a class="headerlink" href="#introducción-general-al-proyecto" title="Enlace permanente">¶</a></h3>
+<p>¡Bienvenido al equipo de ingeniería de <strong>AeroData Solutions
+S.L.</strong>! Acabas de ser contratado como Administrador de Sistemas y
+DBA Principal (Database Administrator). La compañía ofrece servicios
+críticos de consultoría aeronáutica, control de tráfico de pasajeros y
+análisis de trayectorias de vuelo a escala internacional utilizando un
+volumen masivo de datos.</p>
+<p>Tu objetivo a lo largo del curso académico es construir la
+infraestructura de datos de la empresa desde cero, escalando el servidor
+desde un único nodo hasta una arquitectura distribuida y monitorizada
+mediante Inteligencia Artificial (IA), estructurada en 6 fases
+lógicas:</p>
+<h2
+id="fase-1-instalación-configuración-de-parámetros-y-gestión-de-logs-asociada-a-la-ud1"><strong>FASE
+1: INSTALACIÓN, CONFIGURACIÓN DE PARÁMETROS Y GESTIÓN DE LOGS (ASOCIADA
+A LA UD1)</strong> <a class="headerlink" href="#fase-1-instalación-configuración-de-parámetros-y-gestión-de-logs-asociada-a-la-ud1" title="Enlace permanente">¶</a></h2>
+<h3 id="ficha-técnica-de-la-actividad-1">FICHA TÉCNICA DE LA ACTIVIDAD
+<strong>1</strong> <a class="headerlink" href="#ficha-técnica-de-la-actividad-1" title="Enlace permanente">¶</a></h3>
+<div class="table-wrapper"><table>
+<tbody>
+<tr class="header">
+<td><strong>Parámetro</strong></td>
+<td><strong>Detalle</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Unidad Didáctica</strong></td>
+<td>UD 1: Instalación, Configuración y Gestión de Logs en MySQL 8.x</td>
+</tr>
+<tr class="header">
+<td><strong>Nombre de la Tarea</strong></td>
+<td>Despliegue de Infraestructura Persistente y Auditoría de Parámetros
+de Explotación</td>
+</tr>
+<tr class="odd">
+<td><strong>Resultado de Aprendizaje (RA)</strong></td>
+<td><p><strong>RA1:</strong> Identifica los elementos de un SGBD
+analizando sus funciones...</p>
+<p><strong>RA2:</strong> Instala el SGBD especificando opciones de
+configuración...</p></td>
+</tr>
+<tr class="header">
+<td><strong>Criterios de Evaluación (CE)</strong></td>
+<td>CE 1.b, CE 1.c, CE 2.a, CE 2.b, CE 2.c, CE 2.e, CE 2.f</td>
+</tr>
+<tr class="odd">
+<td><strong>Tiempo de Realización Estimado</strong></td>
+<td>3 horas de laboratorio práctico (1 sesión)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="descripción-general-de-la-tarea.-objetivos">1. DESCRIPCIÓN
+GENERAL DE LA TAREA. OBJETIVOS <a class="headerlink" href="#descripción-general-de-la-tarea.-objetivos" title="Enlace permanente">¶</a></h3>
+<p>El departamento de desarrollo necesita desplegar una instancia limpia
+y aislada de MySQL 8.0 en la infraestructura local. Debes automatizar el
+despliegue mediante Docker, parametrizar la memoria del motor de
+almacenamiento InnoDB para un uso eficiente de los recursos del host y
+activar de forma persistente los sistemas de logs y auditorías.</p>
+<h3 id="consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink" href="#consideraciones-previas" title="Enlace permanente">¶</a></h3>
+<p>Asegúrate de contar con Docker y Docker Compose instalados en tu
+máquina virtual Ubuntu Server. El contenedor deberá mapear los volúmenes
+del motor para evitar pérdidas accidentales de datos si el servicio se
+reinicia.</p>
+<h3 id="explicación-detallada-paso-a-paso">3. EXPLICACIÓN DETALLADA
+(PASO A PASO) <a class="headerlink" href="#explicación-detallada-paso-a-paso" title="Enlace permanente">¶</a></h3>
+<ol type="1">
+<li><blockquote>
+<p><strong>Despliegue de Contenedores:</strong> Diseña un archivo
+docker-compose.yml que levante un servicio MySQL 8.x mapeando el puerto
+<img src="media_ASGBD_Proyecto_integral/media/image1.png"
+style="width:0.42839in;height:0.26121in" /> del host, configurando
+almacenamiento persistente para /var/lib/mysql y un montaje de tipo bind
+para un archivo custom.cnf.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Hardening de Configuración (custom.cnf):</strong> Configura
+los parámetros bajo el bloque [mysqld] para asegurar el comportamiento
+del servidor:</p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p>Limita las conexiones simultáneas fijando un umbral razonable
+(max_connections).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Deshabilita la importación de archivos locales arbitrarios mediante
+la directiva local_infile = OFF.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Habilita el Log General de Consultas y el Log de Consultas Lentas
+(slow_query_log), estableciendo un umbral de detección de consultas
+lentas de <img src="media_ASGBD_Proyecto_integral/media/image8.png"
+style="width:0.27376in;height:0.26323in" /> segundos (long_query_time =
+2.0).</p>
+</blockquote></li>
+</ul></li>
+<li><blockquote>
+<p><strong>Persistencia Dinámica:</strong> Entra al terminal de la base
+de datos y demuestra cómo leer y modificar una variable global (ej:
+autocommit) en caliente usando persistencia de configuración del motor
+(SET PERSIST), documentando el impacto en el archivo de
+autoconfiguración persistente de MySQL (mysqld-auto.cnf).</p>
+</blockquote></li>
+</ol>
+<h3 id="preguntas-teóricas-y-de-investigación"><strong>4. PREGUNTAS
+TEÓRICAS Y DE INVESTIGACIÓN</strong> <a class="headerlink" href="#preguntas-teóricas-y-de-investigación" title="Enlace permanente">¶</a></h3>
+<ol type="1">
+<li><blockquote>
+<p>¿Cuál es el impacto en términos de rendimiento de E/S y
+almacenamiento físico si decidimos mantener activo el general_log = ON
+permanentemente en un entorno de Big Data en producción?</p>
+</blockquote></li>
+<li><blockquote>
+<p>Explica brevemente la diferencia práctica entre una variable con
+alcance GLOBAL, SESSION y PERSIST dentro del ciclo de vida del SGBD.</p>
+</blockquote></li>
+</ol>
+<h3 id="rúbrica-de-evaluación-de-la-fase-1"><strong>5. RÚBRICA DE
+EVALUACIÓN DE LA FASE 1</strong> <a class="headerlink" href="#rúbrica-de-evaluación-de-la-fase-1" title="Enlace permanente">¶</a></h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>Criterio</strong></th>
+<th><strong>Excelente (100%)</strong></th>
+<th><strong>Aceptable (60%)</strong></th>
+<th><strong>Insuficiente (20%)</strong></th>
+<th><strong>Peso</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Despliegue y Persistencia</strong></td>
+<td>El archivo docker-compose.yml monta volúmenes correctos y SET
+PERSIST escribe con éxito en mysqld-auto.cnf.</td>
+<td>El contenedor funciona pero el volumen no persiste los datos o se
+omitió el mapeo de la configuración bind.</td>
+<td>No se ejecuta en Docker, no persiste datos o carece de archivo de
+configuración.</td>
+<td>50%</td>
+</tr>
+<tr class="header">
+<td><strong>Ficheros de Log</strong></td>
+<td>Activa y comprueba el registro de logs del sistema generando
+consultas forzadas con funciones de retardo.</td>
+<td>Configura los logs pero no demuestra su funcionamiento o el umbral
+de consultas lentas es erróneo.</td>
+<td>Los logs están desactivados o no se localizan los archivos en el
+volumen.</td>
+<td>50%</td>
+</tr>
+</tbody>
+</table></div>
+<h2
+id="fase-2-control-de-acceso-roles-rbac-y-seguridad-asociada-a-la-ud2"><strong>FASE
+2: CONTROL DE ACCESO, ROLES (RBAC) Y SEGURIDAD (ASOCIADA A LA
+UD2)</strong> <a class="headerlink" href="#fase-2-control-de-acceso-roles-rbac-y-seguridad-asociada-a-la-ud2" title="Enlace permanente">¶</a></h2>
+<h3 id="ficha-técnica-de-la-actividad-2"><strong>FICHA TÉCNICA DE LA
+ACTIVIDAD 2</strong> <a class="headerlink" href="#ficha-técnica-de-la-actividad-2" title="Enlace permanente">¶</a></h3>
+<div class="table-wrapper"><table>
+<tbody>
+<tr class="header">
+<td><strong>Parámetro</strong></td>
+<td><strong>Detalle</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Unidad Didáctica</strong></td>
+<td>UD 2: Gestión de Acceso, Usuarios, Privilegios y Seguridad
+Lógica</td>
+</tr>
+<tr class="header">
+<td><strong>Nombre de la Tarea</strong></td>
+<td>Diseño e Implementación del Modelo RBAC Corporativo de AeroData</td>
+</tr>
+<tr class="odd">
+<td><strong>Resultado de Aprendizaje (RA)</strong></td>
+<td><strong>RA5:</strong> Aplica medidas de seguridad física, lógica y
+de control de acceso en el SGBD...</td>
+</tr>
+<tr class="header">
+<td><strong>Criterios de Evaluación (CE)</strong></td>
+<td>CE 5.a, CE 5.b, CE 5.c, CE 5.f</td>
+</tr>
+<tr class="odd">
+<td><strong>Tiempo de Realización Estimado</strong></td>
+<td>3 horas de laboratorio práctico (1 sesión)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="descripción-general-de-la-tarea.-objetivos-1"><strong>1.
+DESCRIPCIÓN GENERAL DE LA TAREA. OBJETIVOS</strong> <a class="headerlink" href="#descripción-general-de-la-tarea.-objetivos-1" title="Enlace permanente">¶</a></h3>
+<p>AeroData Solutions requiere un sistema estricto de accesos lógicos
+para el cumplimiento de normativas de seguridad de datos. Implementarás
+un modelo de seguridad basado en roles (RBAC) y configurarás políticas
+globales de contraseñas de nivel empresarial en MySQL.</p>
+<h3 id="consideraciones-previas-1"><strong>2. CONSIDERACIONES
+PREVIAS</strong> <a class="headerlink" href="#consideraciones-previas-1" title="Enlace permanente">¶</a></h3>
+<p>La base de datos del sistema mysql contiene los privilegios y accesos
+globales de la instancia. Todas las sentencias de creación de roles,
+asignación y herencia de privilegios deben realizarse con la cuenta
+administrativa con máximos privilegios (root).</p>
+<h3 id="explicación-detallada-paso-a-paso-1"><strong>3. EXPLICACIÓN
+DETALLADA (PASO A PASO)</strong> <a class="headerlink" href="#explicación-detallada-paso-a-paso-1" title="Enlace permanente">¶</a></h3>
+<ol type="1">
+<li><blockquote>
+<p><strong>Configuración de Políticas de Hardening de Claves:</strong>
+Modifica tu archivo custom.cnf para exigir que las contraseñas globales
+tengan un tiempo de caducidad máximo de 90 días, requieran un histórico
+que impida reutilizar las últimas 3 contraseñas y bloquee cuentas
+automáticamente tras 3 intentos fallidos de autenticación.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Creación de Roles Corporativos:</strong> Implementa en código
+SQL puro los siguientes perfiles de acceso:</p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p><strong>Rol aerodata_analyst:</strong> Acceso exclusivo de lectura
+(SELECT) sobre el esquema analítico global.</p>
+</blockquote></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Rol aerodata_operator: Permiso para consultar,
+insertar y actualizar reservas y tickets, pero con bloqueo estricto de
+borrado (DELETE denegado).</code></pre></div></li>
+<li><blockquote>
+<p><strong>Rol aerodata_admin:</strong> Administrador secundario del
+esquema de vuelos, con capacidad para gestionar usuarios y roles
+locales, pero restringido para alterar datos internos del motor.</p>
+</blockquote></li>
+</ul></li>
+<li><blockquote>
+<p><strong>Mapeo de Usuarios:</strong> Crea un usuario para cada
+departamento asignado, configúrale sus credenciales, asígnale el rol
+correspondiente y activa la funcionalidad SET DEFAULT ROLE para que las
+credenciales hereden el alcance de permisos inmediatamente al iniciar
+sesión.</p>
+</blockquote></li>
+</ol>
+<h3 id="preguntas-teóricas-y-de-investigación-1"><strong>4. PREGUNTAS
+TEÓRICAS Y DE INVESTIGACIÓN</strong> <a class="headerlink" href="#preguntas-teóricas-y-de-investigación-1" title="Enlace permanente">¶</a></h3>
+<ol type="1">
+<li><blockquote>
+<p>Investiga el principio de seguridad informática del "Menor
+Privilegio" (<em>Least Privilege</em>). ¿Cómo contribuye el uso de roles
+(RBAC) a la mitigación de ataques de inyección SQL o robo de
+credenciales en comparación con otorgar accesos individuales?</p>
+</blockquote></li>
+<li><blockquote>
+<p>Explica cómo maneja MySQL la herencia de permisos y de qué manera la
+vista mysql.role_edges documenta las dependencias del diccionario de
+datos.</p>
+</blockquote></li>
+</ol>
+<h3 id="rúbrica-de-evaluación-de-la-fase-2"><strong>5. RÚBRICA DE
+EVALUACIÓN DE LA FASE 2</strong> <a class="headerlink" href="#rúbrica-de-evaluación-de-la-fase-2" title="Enlace permanente">¶</a></h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>Criterio</strong></th>
+<th><strong>Excelente (100%)</strong></th>
+<th><strong>Aceptable (60%)</strong></th>
+<th><strong>Insuficiente (20%)</strong></th>
+<th><strong>Peso</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Estructura RBAC</strong></td>
+<td>Creación y concesión granular de privilegios a los 3 roles
+corporativos sin solapamientos.</td>
+<td>Los roles están creados pero carecen de la directiva de activación
+automática de herencia de roles.</td>
+<td>Se asignaron privilegios directos a usuarios sin utilizar roles o
+existen fugas graves de permisos.</td>
+<td>60%</td>
+</tr>
+<tr class="header">
+<td><strong>Políticas de Claves</strong></td>
+<td>Modifica la configuración global de robustez de contraseñas y
+demuestra el bloqueo de intentos de accesos.</td>
+<td>Las variables de hardening de contraseñas están presentes pero el
+plugin no las valida de forma restrictiva.</td>
+<td>No se aplican medidas de endurecimiento de credenciales, exponiendo
+el motor a ataques de fuerza bruta.</td>
+<td>40%</td>
+</tr>
+</tbody>
+</table></div>
+<h2
+id="fase-3-automatización-de-lógica-de-negocio-procedimientos-funciones-y-disparadores-asociada-a-la-ud3"><strong>FASE
+3: AUTOMATIZACIÓN DE LÓGICA DE NEGOCIO (PROCEDIMIENTOS, FUNCIONES Y
+DISPARADORES) (ASOCIADA A LA UD3)</strong> <a class="headerlink" href="#fase-3-automatización-de-lógica-de-negocio-procedimientos-funciones-y-disparadores-asociada-a-la-ud3" title="Enlace permanente">¶</a></h2>
+<h3 id="ficha-técnica-de-la-actividad-3"><strong>FICHA TÉCNICA DE LA
+ACTIVIDAD 3</strong> <a class="headerlink" href="#ficha-técnica-de-la-actividad-3" title="Enlace permanente">¶</a></h3>
+<div class="table-wrapper"><table>
+<tbody>
+<tr class="header">
+<td><strong>Parámetro</strong></td>
+<td><strong>Detalle</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Unidad Didáctica</strong></td>
+<td>UD 3: Automatización de Tareas de Explotación - Programación SQL del
+Servidor</td>
+</tr>
+<tr class="header">
+<td><strong>Nombre de la Tarea</strong></td>
+<td>Desarrollo de Triggers de Integridad, Funciones Analíticas y
+Procedimientos con Cursores</td>
+</tr>
+<tr class="odd">
+<td><strong>Resultado de Aprendizaje (RA)</strong></td>
+<td><strong>RA3:</strong> Automatiza tareas de administración del
+sistema gestor, realizando guiones y programando tareas...</td>
+</tr>
+<tr class="header">
+<td><strong>Criterios de Evaluación (CE)</strong></td>
+<td>CE 3.a, CE 3.b</td>
+</tr>
+<tr class="odd">
+<td><strong>Tiempo de Realización Estimado</strong></td>
+<td>4 horas de laboratorio práctico (2 sesiones)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="descripción-general-de-la-tarea.-objetivos-2"><strong>1.
+DESCRIPCIÓN GENERAL DE LA TAREA. OBJETIVOS</strong> <a class="headerlink" href="#descripción-general-de-la-tarea.-objetivos-2" title="Enlace permanente">¶</a></h3>
+<p>Los flujos de inserción de vuelos requieren reglas de validación en
+tiempo real para impedir anomalías en la programación espacial del
+aeropuerto. Además, el departamento de control necesita generar informes
+consolidados de pasajeros y automatizar el traspaso de datos históricos
+para liberar memoria activa de almacenamiento en disco.</p>
+<h3 id="consideraciones-previas-2"><strong>2. CONSIDERACIONES
+PREVIAS</strong> <a class="headerlink" href="#consideraciones-previas-2" title="Enlace permanente">¶</a></h3>
+<p>Dado que utilizaremos la base de datos real airportdb, debes asegurar
+la consistencia transaccional de los datos históricos. Asegúrate de
+declarar correctamente los bloques transaccionales e incluir los
+manejadores de salida (DECLARE CONTINUE HANDLER) al procesar los
+cursores lógicos.</p>
+<h3 id="explicación-detallada-paso-a-paso-2"><strong>3. EXPLICACIÓN
+DETALLADA (PASO A PASO)</strong> <a class="headerlink" href="#explicación-detallada-paso-a-paso-2" title="Enlace permanente">¶</a></h3>
+<ol type="1">
+<li><blockquote>
+<p><strong>Trigger de Integridad Espacial
+(tr_validar_ruta_vuelo):</strong> Desarrolla un disparador BEFORE INSERT
+en la tabla de vuelos (flight) que verifique dos condiciones:</p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p>El aeropuerto de salida (from_airport) y el de llegada (to_airport)
+no pueden coincidir.</p>
+</blockquote></li>
+<li><blockquote>
+<p>La fecha programada de salida (scheduled_departure) debe ser
+estrictamente posterior al instante actual (NOW()).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Si alguna condición falla, detén la operación mediante el lanzamiento
+de un error estructurado (SIGNAL SQLSTATE '45000').</p>
+</blockquote></li>
+</ul></li>
+<li><blockquote>
+<p><strong>Función de Formateo Analítico
+(listado_pasajeros_vuelo):</strong> Crea una función que reciba el
+identificador de un vuelo y, mediante el uso de un
+<strong>Cursor</strong>, recorra los datos de los pasajeros asociados al
+mismo, devolviendo un único string concatenado con los nombres separados
+por un guion medio (-).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Procedimiento Almacenado con Control de Errores y
+Transacciones (archivar_vuelos_antiguos):</strong> Desarrolla un
+procedimiento transaccional seguro que busque todos los registros de
+vuelos completados cuya fecha sea anterior a un parámetro temporal dado.
+El procedimiento debe:</p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p>Declarar un cursor para iterar de manera ordenada las filas
+afectadas.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Mover cada vuelo a una tabla histórica de auditoría (flight_history)
+y eliminarlo de la tabla operativa principal.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Garantizar el aislamiento utilizando bloques transaccionales seguros
+(START TRANSACTION, COMMIT y ROLLBACK en caso de excepciones
+imprevistas).</p>
+</blockquote></li>
+</ul></li>
+</ol>
+<h3 id="preguntas-teóricas-y-de-investigación-2"><strong>4. PREGUNTAS
+TEÓRICAS Y DE INVESTIGACIÓN</strong> <a class="headerlink" href="#preguntas-teóricas-y-de-investigación-2" title="Enlace permanente">¶</a></h3>
+<ol type="1">
+<li><blockquote>
+<p>¿Por qué se considera que las rutinas almacenadas (procedimientos y
+funciones) mejoran el rendimiento de la red corporativa al ejecutar
+consultas analíticas complejas en comparación con consultas SQL crudas
+enviadas de forma individual desde aplicaciones cliente remotas?</p>
+</blockquote></li>
+<li><blockquote>
+<p>Explica qué es un SQLSTATE y por qué es importante mapear los códigos
+de error estándar en aplicaciones críticas de administración de bases de
+datos.</p>
+</blockquote></li>
+</ol>
+<h3 id="rúbrica-de-evaluación-de-la-fase-3"><strong>5. RÚBRICA DE
+EVALUACIÓN DE LA FASE 3</strong> <a class="headerlink" href="#rúbrica-de-evaluación-de-la-fase-3" title="Enlace permanente">¶</a></h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>Criterio</strong></th>
+<th><strong>Excelente (100%)</strong></th>
+<th><strong>Aceptable (60%)</strong></th>
+<th><strong>Insuficiente (20%)</strong></th>
+<th><strong>Peso</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Trigger e Integridad</strong></td>
+<td>Disparador implementado correctamente, validando campos de ruta y
+fechas, controlando excepciones de inserción.</td>
+<td>El disparador funciona pero el manejo de errores es vago o no impide
+inserciones con fechas pasadas de manera estricta.</td>
+<td>No se lanza el disparador o provoca un bloqueo general de sintaxis
+SQL que impide el despliegue del esquema.</td>
+<td>30%</td>
+</tr>
+<tr class="header">
+<td><strong>Cursores y Funciones</strong></td>
+<td>Función funcional con cursores e iteración limpia de filas
+concatenadas con formato de delimitadores.</td>
+<td>La función recopila datos pero no utiliza cursor o tiene fugas de
+formato al no limpiar strings vacíos de inicio.</td>
+<td>Error lógico de fin de bucle infinito o la función carece de retorno
+estructurado válido.</td>
+<td>30%</td>
+</tr>
+<tr class="odd">
+<td><strong>Transacciones y Robustez</strong></td>
+<td>Procedimiento con manejo estricto de transacciones lógicas
+integrales que garantiza la consistencia física de la migración.</td>
+<td>El procedimiento migra datos pero no utiliza un manejador de
+excepciones dinámico ni aplica rollback en caídas.</td>
+<td>No realiza borrado en la tabla origen o no implementa cursores ni
+transacciones mínimas de aislamiento.</td>
+<td>40%</td>
+</tr>
+</tbody>
+</table></div>
+<h2
+id="fase-4-planificación-de-tareas-y-eventos-programados-en-el-servidor-asociada-a-la-ud4"><strong>FASE
+4: PLANIFICACIÓN DE TAREAS Y EVENTOS PROGRAMADOS EN EL SERVIDOR
+(ASOCIADA A LA UD4)</strong> <a class="headerlink" href="#fase-4-planificación-de-tareas-y-eventos-programados-en-el-servidor-asociada-a-la-ud4" title="Enlace permanente">¶</a></h2>
+<h3 id="ficha-técnica-de-la-actividad-4"><strong>FICHA TÉCNICA DE LA
+ACTIVIDAD 4</strong> <a class="headerlink" href="#ficha-técnica-de-la-actividad-4" title="Enlace permanente">¶</a></h3>
+<div class="table-wrapper"><table>
+<tbody>
+<tr class="header">
+<td><strong>Parámetro</strong></td>
+<td><strong>Detalle</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Unidad Didáctica</strong></td>
+<td>UD 4: Planificación de Tareas Automáticas del SGBD</td>
+</tr>
+<tr class="header">
+<td><strong>Nombre de la Tarea</strong></td>
+<td>Programación de Automatizaciones de Mantenimiento y Extracción de
+Estadísticas</td>
+</tr>
+<tr class="odd">
+<td><strong>Resultado de Aprendizaje (RA)</strong></td>
+<td><strong>RA3:</strong> Automatiza tareas de administración del
+sistema gestor, realizando guiones y programando tareas...</td>
+</tr>
+<tr class="header">
+<td><strong>Criterios de Evaluación (CE)</strong></td>
+<td>CE 3.b, CE 4.b</td>
+</tr>
+<tr class="odd">
+<td><strong>Tiempo de Realización Estimado</strong></td>
+<td>2 horas de laboratorio práctico (1 sesión)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="descripción-general-de-la-tarea.-objetivos-3"><strong>1.
+DESCRIPCIÓN GENERAL DE LA TAREA. OBJETIVOS</strong> <a class="headerlink" href="#descripción-general-de-la-tarea.-objetivos-3" title="Enlace permanente">¶</a></h3>
+<p>AeroData Solutions requiere que las tareas rutinarias de purga de
+logs antiguos y agregación de métricas de ingresos se ejecuten en
+segundo plano sin requerir intervención manual de un SysAdmin.
+Configurarás el planificador de eventos interno de MySQL y diseñarás
+rutinas autónomas automatizadas.</p>
+<h3 id="consideraciones-previas-3"><strong>2. CONSIDERACIONES
+PREVIAS</strong> <a class="headerlink" href="#consideraciones-previas-3" title="Enlace permanente">¶</a></h3>
+<p>El planificador de eventos (event_scheduler) de MySQL debe estar
+activado a nivel global. Asegúrate de configurar este parámetro en
+caliente y garantizar que persista de manera segura si se reinicia el
+contenedor de base de datos.</p>
+<h3 id="explicación-detallada-paso-a-paso-3"><strong>3. EXPLICACIÓN
+DETALLADA (PASO A PASO)</strong> <a class="headerlink" href="#explicación-detallada-paso-a-paso-3" title="Enlace permanente">¶</a></h3>
+<ol type="1">
+<li><blockquote>
+<p><strong>Activación de Tareas Automáticas:</strong> Realiza la
+consulta SQL de variables de estado para comprobar la situación del
+programador de eventos. Actívalo tanto de manera global y dinámica en
+memoria de acceso rápido como de forma persistente dentro de tu archivo
+custom.cnf de configuración.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Creación del Evento de Mantenimiento Físico
+(ev_purgar_vuelos_cancelados):</strong> Diseña un evento programado
+recurrente que se ejecute diariamente de forma indefinida para eliminar
+permanentemente de la base de datos operativa aquellos vuelos marcados
+con el estado 'Cancelled' que cuenten con más de 30 días de
+antigüedad.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Creación del Evento de Inteligencia de Negocio
+(ev_actualizar_estadisticas_diarias):</strong> Diseña un evento que se
+ejecute a intervalos regulares de una hora para agrupar e insertar
+estadísticas de ingresos totales por billetes vendidos en una tabla de
+auditoría analítica (daily_analytics), guardando marcas temporales de
+auditoría de ejecución del sistema.</p>
+</blockquote></li>
+</ol>
+<h3 id="preguntas-teóricas-y-de-investigación-3"><strong>4. PREGUNTAS
+TEÓRICAS Y DE INVESTIGACIÓN</strong> <a class="headerlink" href="#preguntas-teóricas-y-de-investigación-3" title="Enlace permanente">¶</a></h3>
+<ol type="1">
+<li><blockquote>
+<p>¿Qué ventajas e inconvenientes tiene planificar tareas de base de
+datos directamente con el Event Scheduler interno de MySQL frente a
+utilizar el programador de tareas del sistema operativo Linux (Cron o
+systemd-timers)?</p>
+</blockquote></li>
+<li><blockquote>
+<p>¿Cómo se audita la ejecución o los fallos de un evento en MySQL?
+Describe la tabla de sistema correspondiente y dónde se registran sus
+trazas de error.</p>
+</blockquote></li>
+</ol>
+<h3 id="rúbrica-de-evaluación-de-la-fase-4"><strong>5. RÚBRICA DE
+EVALUACIÓN DE LA FASE 4</strong> <a class="headerlink" href="#rúbrica-de-evaluación-de-la-fase-4" title="Enlace permanente">¶</a></h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>Criterio</strong></th>
+<th><strong>Excelente (100%)</strong></th>
+<th><strong>Aceptable (60%)</strong></th>
+<th><strong>Insuficiente (20%)</strong></th>
+<th><strong>Peso</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Planificador global</strong></td>
+<td>Habilitación persistente del planificador de eventos verificado
+mediante consultas directas a variables globales.</td>
+<td>Activa el planificador de manera dinámica pero omite configurarlo en
+el archivo custom.cnf de configuración física.</td>
+<td>El planificador permanece desactivado o bloqueado a nivel de sistema
+operativo.</td>
+<td>30%</td>
+</tr>
+<tr class="header">
+<td><strong>Diseño de Eventos</strong></td>
+<td>Implementación y verificación de eventos recurrentes de purga y
+acumulación analítica con inserción precisa de metadatos.</td>
+<td>Los eventos se ejecutan pero carecen de intervalos lógicos
+consistentes o de rangos temporales controlados.</td>
+<td>Los eventos fallan al ejecutarse debido a incoherencias en tipos de
+datos o errores sintácticos de SQL.</td>
+<td>70%</td>
+</tr>
+</tbody>
+</table></div>
+<h2
+id="fase-5-tuning-diagnóstico-avanzado-con-explain-y-estrategias-de-indexación-asociada-a-la-ud5"><strong>FASE
+5: TUNING, DIAGNÓSTICO AVANZADO CON EXPLAIN Y ESTRATEGIAS DE INDEXACIÓN
+(ASOCIADA A LA UD5)</strong> <a class="headerlink" href="#fase-5-tuning-diagnóstico-avanzado-con-explain-y-estrategias-de-indexación-asociada-a-la-ud5" title="Enlace permanente">¶</a></h2>
+<h3 id="ficha-técnica-de-la-actividad-5"><strong>FICHA TÉCNICA DE LA
+ACTIVIDAD 5</strong> <a class="headerlink" href="#ficha-técnica-de-la-actividad-5" title="Enlace permanente">¶</a></h3>
+<div class="table-wrapper"><table>
+<tbody>
+<tr class="header">
+<td><strong>Parámetro</strong></td>
+<td><strong>Detalle</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Unidad Didáctica</strong></td>
+<td>UD 5: Optimización de Consultas, Índices y Rendimiento Físico</td>
+</tr>
+<tr class="header">
+<td><strong>Nombre de la Tarea</strong></td>
+<td>Auditoría de Planes de Ejecución y Reestructuración de
+Almacenamiento Big Data</td>
+</tr>
+<tr class="odd">
+<td><strong>Resultado de Aprendizaje (RA)</strong></td>
+<td><strong>RA4:</strong> Optimiza el rendimiento del sistema gestor
+monitorizando los accesos y ajustando los parámetros del motor...</td>
+</tr>
+<tr class="header">
+<td><strong>Criterios de Evaluación (CE)</strong></td>
+<td>CE 4.b, CE 4.c, CE 4.d, CE 4.f</td>
+</tr>
+<tr class="odd">
+<td><strong>Tiempo de Realización Estimado</strong></td>
+<td>4 horas de laboratorio práctico (2 sesiones)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="descripción-general-de-la-tarea.-objetivos-4"><strong>1.
+DESCRIPCIÓN GENERAL DE LA TAREA. OBJETIVOS</strong> <a class="headerlink" href="#descripción-general-de-la-tarea.-objetivos-4" title="Enlace permanente">¶</a></h3>
+<p>Con la importación masiva de la base de datos real de pruebas de
+Oracle <strong>airportdb</strong> (con más de 10 millones de filas), las
+consultas analíticas de los analistas bloquean la base de datos. Serás
+el consultor técnico encargado de diagnosticar el coste físico de
+accesos, reestructurar la indexación de las tablas más densas utilizando
+reglas de prefijos y optimizar consultas complejas.</p>
+<h3 id="consideraciones-previas-4"><strong>2. CONSIDERACIONES
+PREVIAS</strong> <a class="headerlink" href="#consideraciones-previas-4" title="Enlace permanente">¶</a></h3>
+<p>La optimización física es un balance de velocidad y almacenamiento.
+Debes justificar el impacto de cada nuevo índice analizando la reducción
+matemática de filas escaneadas en el árbol binario.</p>
+<h3 id="explicación-detallada-paso-a-paso-4"><strong>3. EXPLICACIÓN
+DETALLADA (PASO A PASO)</strong> <a class="headerlink" href="#explicación-detallada-paso-a-paso-4" title="Enlace permanente">¶</a></h3>
+<ol type="1">
+<li><blockquote>
+<p><strong>Carga y Medición de Datos Masivos:</strong> Importa la base
+de datos airportdb. Realiza una consulta SQL interrogando a la base de
+datos de metadatos information_schema.tables para documentar con
+exactitud el tamaño físico ocupado en megabytes por el esquema en
+disco.</p>
+</blockquote></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Diagnóstico Técnico mediante EXPLAIN: Analiza la
+siguiente consulta que asocia vuelos y pasajeros para calcular ingresos
+por aeropuerto con precios superiores a la media global:
+SELECT a.airport_code, COUNT(f.flight_id) FROM airport a
+JOIN flight f ON a.airport_code = f.from_airport
+JOIN booking b ON f.flight_id = b.flight_id
+GROUP BY a.airport_code HAVING SUM(b.price) &gt; (SELECT AVG(price) FROM
+booking);</code></pre></div>
+<ul>
+<li><blockquote>
+<p>Ejecuta la consulta usando el prefijo EXPLAIN ANALYZE o EXPLAIN
+FORMAT=JSON. Documenta el tipo de acceso (ALL, index, range), costo
+total estimado del producto cartesiano de accesos de la consulta y la
+presencia de ordenamientos temporales pesados (Using filesort).</p>
+</blockquote></li>
+</ul></li>
+<li><blockquote>
+<p><strong>Estrategia de Optimización y Left-Prefix Rule:</strong></p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p>Diseña un índice compuesto óptimo aplicando la regla del prefijo
+izquierdo para acelerar la consulta del paso anterior.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Análisis de Prefijos Óptimos:</strong> Para optimizar las
+búsquedas sobre el campo de texto name de la tabla de pasajeros sin
+malgastar espacio en disco, determina la longitud de prefijo óptima
+ejecutando comparativas de cardinalidad incremental con consultas del
+tipo:<img src="media_ASGBD_Proyecto_integral/media/image7.png"
+style="width:6.45833in;height:0.50758in" /><br />
+Crea el índice con el límite de caracteres óptimo calculado.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Aplica un índice de tipo FULLTEXT en el campo descriptivo y demuestra
+la diferencia de coste del plan de ejecución usando la sintaxis nativa
+MATCH...AGAINST.</p>
+</blockquote></li>
+</ul></li>
+</ol>
+<h3 id="preguntas-teóricas-y-de-investigación-4"><strong>4. PREGUNTAS
+TEÓRICAS Y DE INVESTIGACIÓN</strong> <a class="headerlink" href="#preguntas-teóricas-y-de-investigación-4" title="Enlace permanente">¶</a></h3>
+<ol type="1">
+<li><blockquote>
+<p>Explica técnicamente por qué un exceso de índices no estructurados en
+una base de datos con alto tráfico de operaciones de escritura (alto
+rendimiento transaccional OLTP) degrada severamente el rendimiento
+general del sistema.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Compara el uso de índices de estructura interna de árbol binario
+estructurado B-Tree con los índices Hash. ¿En qué escenario técnico
+exacto es preferible cada uno?</p>
+</blockquote></li>
+</ol>
+<h3 id="rúbrica-de-evaluación-de-la-fase-5"><strong>5. RÚBRICA DE
+EVALUACIÓN DE LA FASE 5</strong> <a class="headerlink" href="#rúbrica-de-evaluación-de-la-fase-5" title="Enlace permanente">¶</a></h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>Criterio</strong></th>
+<th><strong>Excelente (100%)</strong></th>
+<th><strong>Aceptable (60%)</strong></th>
+<th><strong>Insuficiente (20%)</strong></th>
+<th><strong>Peso</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Diagnóstico de Costes</strong></td>
+<td>Realiza análisis detallado del EXPLAIN, identificando costes de
+bucles anidados e I/O de disco.</td>
+<td>Presenta el plan del EXPLAIN pero carece de interpretación técnica
+de los tipos de accesos e índices.</td>
+<td>No utiliza comandos de análisis o confunde la velocidad de ejecución
+con optimización lógica.</td>
+<td>30%</td>
+</tr>
+<tr class="header">
+<td><strong>Índices y Left-Prefix</strong></td>
+<td>Aplica correctamente la Left-Prefix Rule e identifica
+matemáticamente la longitud de prefijo óptima mediante consultas de
+cardinalidad.</td>
+<td>Crea índices genéricos pero sin fundamentación o análisis previo del
+porcentaje de duplicados.</td>
+<td>La creación de índices es aleatoria, ineficiente o provoca
+colisiones de bloqueos de lectura.</td>
+<td>40%</td>
+</tr>
+<tr class="odd">
+<td><strong>Búsqueda Avanzada</strong></td>
+<td>Implementa búsquedas de texto con índices FULLTEXT y optimiza costes
+de planes de ejecución.</td>
+<td>Crea el índice FULLTEXT pero omite documentar la reducción del coste
+total del plan de ejecución.</td>
+<td>No utiliza FULLTEXT o realiza consultas ineficientes con LIKE de
+comodín que escanean el 100% de la tabla.</td>
+<td>30%</td>
+</tr>
+</tbody>
+</table></div>
+<h2
+id="fase-6-alta-disponibilidad-bases-de-datos-distribuidas-y-enrutamiento-con-proxysql-asociada-a-la-ud6"><strong>FASE
+6: ALTA DISPONIBILIDAD, BASES DE DATOS DISTRIBUIDAS Y ENRUTAMIENTO CON
+PROXYSQL (ASOCIADA A LA UD6)</strong> <a class="headerlink" href="#fase-6-alta-disponibilidad-bases-de-datos-distribuidas-y-enrutamiento-con-proxysql-asociada-a-la-ud6" title="Enlace permanente">¶</a></h2>
+<h3 id="ficha-técnica-de-la-actividad-6"><strong>FICHA TÉCNICA DE LA
+ACTIVIDAD 6</strong> <a class="headerlink" href="#ficha-técnica-de-la-actividad-6" title="Enlace permanente">¶</a></h3>
+<div class="table-wrapper"><table>
+<tbody>
+<tr class="header">
+<td><strong>Parámetro</strong></td>
+<td><strong>Detalle</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Unidad Didáctica</strong></td>
+<td>UD 6: Bases de Datos Distribuidas y Alta Disponibilidad</td>
+</tr>
+<tr class="header">
+<td><strong>Nombre de la Tarea</strong></td>
+<td>Despliegue de un Escenario Multiclúster Fragmentado y Configuración
+de ProxySQL</td>
+</tr>
+<tr class="odd">
+<td><strong>Resultado de Aprendizaje (RA)</strong></td>
+<td><strong>RA6:</strong> Aplica criterios de integridad, disponibilidad
+y rendimiento en la administración de bases de datos
+distribuidas...</td>
+</tr>
+<tr class="header">
+<td><strong>Criterios de Evaluación (CE)</strong></td>
+<td>CE 6.a, CE 6.b, CE 6.c, CE 6.d, CE 6.f, CE 6.g</td>
+</tr>
+<tr class="odd">
+<td><strong>Tiempo de Realización Estimado</strong></td>
+<td>4 horas de laboratorio práctico (2 sesiones)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="descripción-general-de-la-tarea.-objetivos-5"><strong>1.
+DESCRIPCIÓN GENERAL DE LA TAREA. OBJETIVOS</strong> <a class="headerlink" href="#descripción-general-de-la-tarea.-objetivos-5" title="Enlace permanente">¶</a></h3>
+<p>AeroData Solutions requiere una infraestructura de base de datos
+elástica de alto rendimiento capaz de escalar horizontalmente y resistir
+fallos de hardware en producción. Configurarás una arquitectura
+distribuida multicompartimento (Sharding) utilizando contenedores con
+dos Shards independientes y un orquestador ProxySQL para el enrutamiento
+de consultas transparentes según rangos de clave primaria.</p>
+<h3 id="consideraciones-previas-5"><strong>2. CONSIDERACIONES
+PREVIAS</strong> <a class="headerlink" href="#consideraciones-previas-5" title="Enlace permanente">¶</a></h3>
+<p>Este laboratorio avanzado de sistemas simulará entornos distribuidos
+de alta complejidad utilizando redes internas virtuales de Docker
+Compose. Es de vital importancia asegurar que los puertos y los grupos
+de host de ProxySQL estén alineados en sus configuraciones lógicas.</p>
+<h3 id="explicación-detallada-paso-a-paso-5"><strong>3. EXPLICACIÓN
+DETALLADA (PASO A PASO)</strong> <a class="headerlink" href="#explicación-detallada-paso-a-paso-5" title="Enlace permanente">¶</a></h3>
+<ol type="1">
+<li><blockquote>
+<p><strong>Despliegue del Escenario Distribuido:</strong> Diseña una
+arquitectura en un archivo docker-compose-distributed.yml que
+configure:</p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p><strong>mysql-shard-1</strong> (Almacena el fragmento del rango
+inferior de IDs).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>mysql-shard-2</strong> (Almacena el fragmento del rango
+superior de IDs).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>proxysql</strong> (Nodo proxy de control encargado del
+balanceo y enrutamiento inteligente).</p>
+</blockquote></li>
+</ul></li>
+<li><blockquote>
+<p><strong>Configuración de la Lógica de Sharding en ProxySQL:</strong>
+Accede a la interfaz de administración lúdica de ProxySQL (mysql en el
+puerto administrativo <img
+src="media_ASGBD_Proyecto_integral/media/image5.png"
+style="width:0.42839in;height:0.26121in" />) y realiza las siguientes
+configuraciones lógicas:</p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p>Registra los dos Shards de MySQL en grupos de hosts diferenciados:
+hostgroup 1 (Shard 1) y hostgroup 2 (Shard 2).</p>
+</blockquote></li>
+<li><blockquote>
+<p>Crea las <strong>Reglas de Enrutamiento Inteligente</strong>
+(mysql_query_rules) utilizando expresiones regulares (Regex) de forma
+que:</p>
+</blockquote>
+<ul>
+<li><blockquote>
+<p>Consultas filtradas por identificador de reserva menor o igual a <img
+src="media_ASGBD_Proyecto_integral/media/image2.png"
+style="width:0.21419in;height:0.25499in" /> (<img
+src="media_ASGBD_Proyecto_integral/media/image6.png"
+style="width:0.68522in;height:0.26994in" />) se enruten de forma
+transparente al Shard 1.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Consultas filtradas por identificador superior a <img
+src="media_ASGBD_Proyecto_integral/media/image2.png"
+style="width:0.21419in;height:0.25499in" /> (<img
+src="media_ASGBD_Proyecto_integral/media/image3.png"
+style="width:0.68522in;height:0.26994in" />) se enruten de forma
+transparente al Shard 2.</p>
+</blockquote></li>
+</ul></li>
+</ul></li>
+<li><blockquote>
+<p><strong>Simulación de Caídas y Resiliencia:</strong> Comprueba la
+transparencia del enrutador ejecutando consultas desde el puerto público
+de ProxySQL (<img src="media_ASGBD_Proyecto_integral/media/image4.png"
+style="width:0.42839in;height:0.26121in" />) verificando mediante
+estadísticas de uso interno de ProxySQL que las peticiones se desvían de
+forma autónoma al servidor correspondiente. Posteriormente, detén
+físicamente uno de los contenedores (docker stop) y documenta
+técnicamente el comportamiento del sistema distribuido ante la pérdida
+temporal de un nodo de datos.</p>
+</blockquote></li>
+</ol>
+<h3 id="preguntas-teóricas-y-de-investigación-5"><strong>4. PREGUNTAS
+TEÓRICAS Y DE INVESTIGACIÓN</strong> <a class="headerlink" href="#preguntas-teóricas-y-de-investigación-5" title="Enlace permanente">¶</a></h3>
+<ol type="1">
+<li><blockquote>
+<p>Explica las implicaciones lógicas y de consistencia del Teorema de
+CAP en entornos distribuidos complejos de bases de datos. ¿Cómo se
+posiciona MySQL Group Replication o un escenario de Sharding clásico
+frente a dicho teorema?</p>
+</blockquote></li>
+<li><blockquote>
+<p>¿Qué ventaja técnica crítica aporta un balanceador intermedio como
+ProxySQL en la gestión de colas de conexión de cliente frente a conectar
+las aplicaciones web directamente a las IPs de las réplicas o
+shards?</p>
+</blockquote></li>
+</ol>
+<h3 id="rúbrica-de-evaluación-de-la-fase-6"><strong>5. RÚBRICA DE
+EVALUACIÓN DE LA FASE 6</strong> <a class="headerlink" href="#rúbrica-de-evaluación-de-la-fase-6" title="Enlace permanente">¶</a></h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>Criterio</strong></th>
+<th><strong>Excelente (100%)</strong></th>
+<th><strong>Aceptable (60%)</strong></th>
+<th><strong>Insuficiente (20%)</strong></th>
+<th><strong>Peso</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Infraestructura Distribuida</strong></td>
+<td>Levanta de forma impecable el clúster coordinado con redes virtuales
+aisladas y persistencia sin pérdidas de datos.</td>
+<td>Despliega los nodos pero tiene fallos de conectividad o asignación
+de puertos duplicados en el host.</td>
+<td>Los contenedores colisionan o fallan de forma repetida debido a
+incoherencias de red interna de Docker.</td>
+<td>40%</td>
+</tr>
+<tr class="header">
+<td><strong>Reglas de Sharding</strong></td>
+<td>Configura ProxySQL mediante Regex de enrutamiento y demuestra la
+transparencia del proceso en el balanceador.</td>
+<td>Crea reglas de ProxySQL básicas pero el enrutamiento tiene fugas de
+derivación a hostgroups equivocados.</td>
+<td>No implementa reglas de ProxySQL, forzando un escaneo secuencial en
+un único host centralizado.</td>
+<td>40%</td>
+</tr>
+<tr class="odd">
+<td><strong>Prueba de Resiliencia</strong></td>
+<td>Simula con éxito la caída del nodo de datos y documenta de forma
+detallada el impacto en la disponibilidad.</td>
+<td>Simula la desconexión del servidor pero carece de un reporte sobre
+el estado de la comunicación y excepciones.</td>
+<td>No demuestra la caída del sistema o confunde la inaccesibilidad con
+el funcionamiento transparente.</td>
+<td>20%</td>
+</tr>
+</tbody>
+</table></div>
+
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASGBD - Ut3 Practica Auditoria Automatizacion</title>
+    <style>
+    
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --bg-header: #1e3a8a;
+    --text-header: #ffffff;
+    --bg-body: #f8fafc;
+    --text-body: #1e293b;
+    --border-color: #cbd5e1;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-body);
+    color: var(--text-body);
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, [id], a[name] {
+    scroll-margin-top: 80px !important;
+}
+
+.headerlink {
+    display: inline-block;
+    margin-left: 0.4rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.8em;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
+h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
+    visibility: visible;
+    opacity: 1;
+}
+
+.headerlink:hover {
+    color: var(--primary);
+}
+
+#site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    background: var(--bg-header);
+    color: var(--text-header);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    height: 62px;
+}
+
+.site-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.top-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.top-nav .nav-btn {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+.top-nav .nav-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 9px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown:hover .dropbtn, .dropbtn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 320px;
+    max-width: 480px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 10001;
+    border: 1px solid #e2e8f0;
+    margin-top: 6px;
+}
+
+.dropdown-content a {
+    color: var(--text-body);
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.92rem;
+    border-bottom: 1px solid #f1f5f9;
+    line-height: 1.4;
+    transition: background 0.15s, color 0.15s;
+    word-break: break-word;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #eff6ff;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block !important;
+}
+
+#page-layout {
+    display: flex;
+    min-height: calc(100vh - 62px);
+}
+
+#left-panel {
+    width: 320px;
+    min-width: 320px;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 1.5rem 1.25rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: sticky;
+    top: 62px;
+    height: calc(100vh - 62px);
+}
+
+#left-panel h3 {
+    font-size: 1rem;
+    margin-top: 0;
+    color: #334155;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
+
+#left-panel nav#TOC, #left-panel #TOC {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+#left-panel ul {
+    list-style-type: none;
+    padding-left: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+#left-panel li {
+    margin: 6px 0;
+}
+
+#left-panel a {
+    color: #475569;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    display: block;
+    transition: color 0.15s;
+}
+
+#left-panel a:hover {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+#main-content {
+    flex: 1;
+    padding: 2.5rem 4rem;
+    box-sizing: border-box;
+    max-width: 100% !important;
+    width: calc(100% - 320px);
+    min-width: 0;
+}
+
+/* TABLAS ELEGANTES Y RESPONSIVE */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1.75rem 0;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    font-size: 0.93rem;
+    background: #ffffff;
+    table-layout: auto !important;
+}
+
+th, td {
+    padding: 10px 14px !important;
+    border: 1px solid #cbd5e1 !important;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+td p, th p {
+    margin: 0 !important;
+    padding: 2px 0 !important;
+}
+
+th {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #0f172a !important;
+}
+
+tr:nth-child(even) td {
+    background-color: #f8fafc !important;
+}
+
+tr:hover td {
+    background-color: #f1f5f9 !important;
+}
+
+/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
+.code-wrapper {
+    position: relative;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0f172a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #334155;
+    color: #f8fafc;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.copy-btn:hover {
+    background: #2563eb;
+}
+
+pre {
+    margin: 0 !important;
+    padding: 1.25rem 1.25rem !important;
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    overflow-x: auto !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+}
+
+code {
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+}
+
+p code, li code {
+    background: #e2e8f0;
+    color: #0f172a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
+
+/* RESPONSIVE DESIGN PARA MÓVILES Y TABLETS */
+@media (max-width: 768px) {
+    .header-container {
+        height: auto;
+        flex-direction: column;
+        padding: 0.75rem 1rem;
+        gap: 0.6rem;
+    }
+    
+    .site-title {
+        font-size: 1.05rem;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .site-title img {
+        height: 28px !important;
+    }
+
+    .top-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 0.35rem;
+    }
+
+    .top-nav .nav-btn, .dropbtn {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    .dropdown-content {
+        min-width: 240px;
+        max-width: 90vw;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #page-layout {
+        flex-direction: column;
+    }
+
+    #left-panel {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        position: static !important;
+        border-right: none !important;
+        border-bottom: 2px solid #e2e8f0;
+        padding: 1rem !important;
+    }
+
+    #main-content {
+        width: 100% !important;
+        padding: 1.25rem 1rem !important;
+    }
+
+    iframe {
+        height: 60vh !important;
+    }
+
+    th, td {
+        padding: 8px 10px !important;
+        font-size: 0.85rem !important;
+    }
+
+    pre {
+        padding: 0.85rem !important;
+        font-size: 0.82rem !important;
+    }
+}
+
+    </style>
+    <script>
+    
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.dropdown').forEach(dd => {
+        const btn = dd.querySelector('.dropbtn');
+        const content = dd.querySelector('.dropdown-content');
+        if (btn && content) {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = content.style.display === 'block';
+                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
+                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+                if (!isOpen) {
+                    content.style.display = 'block';
+                    btn.classList.add('active');
+                }
+            });
+        }
+    });
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
+        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+    });
+
+    // Controlador universal de clics en enlaces ancla (#...)
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const rawHref = this.getAttribute('href') || '';
+            const hashIdx = rawHref.indexOf('#');
+            if (hashIdx === -1) return;
+            const hash = rawHref.substring(hashIdx + 1);
+            if (!hash) return;
+            
+            let targetId = hash;
+            try { targetId = decodeURIComponent(hash); } catch(err) {}
+
+            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
+            if (!targetEl) {
+                for (let el of document.querySelectorAll('[id]')) {
+                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
+                        targetEl = el;
+                        break;
+                    }
+                }
+            }
+
+            if (targetEl) {
+                e.preventDefault();
+                const headerOffset = 75;
+                const elementPosition = targetEl.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                if (history.pushState) {
+                    history.pushState(null, null, '#' + targetId);
+                }
+            }
+        });
+    });
+});
+
+function copyCode(btn) {
+    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
+    navigator.clipboard.writeText(code).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = '✅ ¡Copiado!';
+        btn.style.background = '#16a34a';
+        setTimeout(() => {
+            btn.innerText = orig;
+            btn.style.background = '#334155';
+        }, 2000);
+    });
+}
+
+    </script>
+</head>
+<body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD &ndash; Ut3 Practica Auditoria Automatizacion</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+      <a href="ASGBD_Presentacion.html" class="nav-btn">Presentación</a>
+      <a href="ASGBD_UT2_Tarea_Programacion_Scripts.html" class="nav-btn">Programación</a>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Teoría ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Teoria_Configuracion.html">ASGBD UT1 Teoria Configuracion</a>
+          <a href="ASGBD_UT2_Teoria_Scripts_Administracion.html">ASGBD UT2 Teoria Scripts Administracion</a>
+          <a href="ASGBD_UT3_Teoria_Usuarios_roles.html">ASGBD UT3 Teoria Usuarios roles</a>
+          <a href="ASGBD_UT4_Teoría_Planificación_Seguridad.html">ASGBD UT4 Teoría Planificación Seguridad</a>
+          <a href="ASGBD_UT5_Teoria_Optimizacion_Consultas.html">ASGBD UT5 Teoria Optimizacion Consultas</a>
+          <a href="ASGBD_UT6_Teoría_BD_Distribuidas_alta_disponibilidad.html">ASGBD UT6 Teoría BD Distribuidas alta disponibilidad</a>
+          <a href="ASGBD_Proyecto_integral.html">ASGBD Proyecto integral</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Tareas y Prácticas ▾</button>
+        <div class="dropdown-content">
+          <a href="ASGBD_UT1_Tarea_Configuracion.html">ASGBD UT1 Tarea Configuracion</a>
+          <a href="ASGBD_UT1_Practica.html">ASGBD UT1 Practica</a>
+          <a href="ASGBD_UT2_Practica._Automatizacion_Mantenimiento.html">ASGBD UT2 Practica. Automatizacion Mantenimiento</a>
+          <a href="ASGBD_UT3_Practica_Auditoria_Automatizacion.html">ASGBD UT3 Practica Auditoria Automatizacion</a>
+          <a href="ASGBD_UT3_Tarea_Enunciado.html">ASGBD UT3 Tarea Enunciado</a>
+          <a href="ASGBD_UT4_Tarea_Eventos.html">ASGBD UT4 Tarea Eventos</a>
+          <a href="ASGBD_UT4_Practica_Automatizacion_Mantenimiento.html">ASGBD UT4 Practica Automatizacion Mantenimiento</a>
+          <a href="ASGBD_UT5_Practica_Automatizacion.html">ASGBD UT5 Practica Automatizacion</a>
+          <a href="ASGBD_UT5_Práctica_Tunning_Servidores_EXPLAIN_Avanzado.html">ASGBD UT5 Práctica Tunning Servidores EXPLAIN Avanzado</a>
+          <a href="ASGBD_UT5_Tarea_Seguridad.html">ASGBD UT5 Tarea Seguridad</a>
+          <a href="ASGBD_UT5_Tarea_Auditoría_Rendimiento_Indexacion.html">ASGBD UT5 Tarea Auditoría Rendimiento Indexacion</a>
+          <a href="ASGBD_UT6_Practica_BD_Distribuidas_Sharding.html">ASGBD UT6 Practica BD Distribuidas Sharding</a>
+          <a href="ASGBD_UT6_Practica_Alta_Disponibilidad.html">ASGBD UT6 Practica Alta Disponibilidad</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <aside id="left-panel">
+            <h3>Índice del Tema</h3>
+            <nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#ut3---tarea-2-práctica-avanzada-de-gestión-de-identidades-auditoría-y-automatización-en-mysql-8.0"
+id="toc-ut3---tarea-2-práctica-avanzada-de-gestión-de-identidades-auditoría-y-automatización-en-mysql-8.0">UT3
+- Tarea 2: Práctica Avanzada de Gestión de Identidades, Auditoría y
+Automatización en MySQL 8.0</a>
+<ul>
+<li><a href="#consideraciones-previas"
+id="toc-consideraciones-previas">1. CONSIDERACIONES PREVIAS</a></li>
+<li><a href="#escenario-profesional-contexto-real-de-producción"
+id="toc-escenario-profesional-contexto-real-de-producción">Escenario
+Profesional (Contexto Real de Producción)</a></li>
+<li><a href="#actividades-a-realizar" id="toc-actividades-a-realizar">2.
+ACTIVIDADES A REALIZAR</a></li>
+<li><a href="#fase-1-políticas-de-contraseñas-y-bloqueos-hardening"
+id="toc-fase-1-políticas-de-contraseñas-y-bloqueos-hardening">Fase 1:
+Políticas de Contraseñas y Bloqueos (Hardening)</a>
+<ul>
+<li><a href="#requisitos-técnicos"
+id="toc-requisitos-técnicos"><strong>Requisitos
+Técnicos:</strong></a></li>
+<li><a href="#script-sql-de-hardening-fase-1"
+id="toc-script-sql-de-hardening-fase-1"><strong>Script SQL de Hardening
+(Fase 1):</strong></a></li>
+</ul></li>
+<li><a href="#fase-2-implementación-de-seguridad-basada-en-roles-rbac"
+id="toc-fase-2-implementación-de-seguridad-basada-en-roles-rbac"><strong>Fase
+2: Implementación de Seguridad Basada en Roles (RBAC)</strong></a>
+<ul>
+<li><a href="#definición-de-roles-y-permisos"
+id="toc-definición-de-roles-y-permisos"><strong>Definición de Roles y
+Permisos:</strong></a></li>
+<li><a href="#tarea-del-alumno" id="toc-tarea-del-alumno"><strong>Tarea
+del Alumno:</strong></a></li>
+<li><a href="#solucionario-de-la-configuración-rbac-fase-2"
+id="toc-solucionario-de-la-configuración-rbac-fase-2"><strong>Solucionario
+de la Configuración RBAC (Fase 2):</strong></a></li>
+</ul></li>
+<li><a
+href="#fase-3-integración-y-automatización-segura-con-python-pariaw-interdisciplinar"
+id="toc-fase-3-integración-y-automatización-segura-con-python-pariaw-interdisciplinar"><strong>Fase
+3: Integración y Automatización Segura con Python (PAR/IAW
+Interdisciplinar)</strong></a>
+<ul>
+<li><a href="#configuración-del-usuario-de-servicio-sql"
+id="toc-configuración-del-usuario-de-servicio-sql"><strong>Configuración
+del Usuario de Servicio (SQL):</strong></a></li>
+<li><a
+href="#script-de-python-para-monitorización-de-almacenamiento-monitor_space.py"
+id="toc-script-de-python-para-monitorización-de-almacenamiento-monitor_space.py"><strong>Script
+de Python para Monitorización de Almacenamiento
+(monitor_space.py):</strong></a></li>
+</ul></li>
+<li><a
+href="#fase-4-auditoría-avanzada-de-cuentas-mediante-catálogos-del-sistema"
+id="toc-fase-4-auditoría-avanzada-de-cuentas-mediante-catálogos-del-sistema"><strong>Fase
+4: Auditoría Avanzada de Cuentas mediante Catálogos del
+Sistema</strong></a>
+<ul>
+<li><a href="#consultas-de-auditoría-requeridas"
+id="toc-consultas-de-auditoría-requeridas"><strong>Consultas de
+Auditoría requeridas:</strong></a></li>
+</ul></li>
+<li><a href="#calificación" id="toc-calificación">4.
+CALIFICACIÓN</a></li>
+<li><a href="#section" id="toc-section"></a></li>
+</ul></li>
+</ul>
+</nav>
+        </aside>
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT3_Practica_Auditoria_Automatizacion.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+
+<h1
+id="ut3---tarea-2-práctica-avanzada-de-gestión-de-identidades-auditoría-y-automatización-en-mysql-8.0">UT3
+- Tarea 2: Práctica Avanzada de Gestión de Identidades, Auditoría y
+Automatización en MySQL 8.0 <a class="headerlink" href="#ut3---tarea-2-práctica-avanzada-de-gestión-de-identidades-auditoría-y-automatización-en-mysql-8.0" title="Enlace permanente">¶</a></h1>
+<h2 id="consideraciones-previas">1. CONSIDERACIONES PREVIAS <a class="headerlink" href="#consideraciones-previas" title="Enlace permanente">¶</a></h2>
+<h2 id="escenario-profesional-contexto-real-de-producción">Escenario
+Profesional (Contexto Real de Producción) <a class="headerlink" href="#escenario-profesional-contexto-real-de-producción" title="Enlace permanente">¶</a></h2>
+<p>Trabajas como Administrador de Sistemas y Bases de Datos
+(SysAdmin/DBA) en <strong>SanaSalud S.A.</strong>, una empresa
+proveedora de servicios médicos de alta disponibilidad. El SGBD
+corporativo (MySQL 8.0) custodia información clínica y datos personales
+extremadamente sensibles sometidos al Reglamento General de Protección
+de Datos (RGPD) y a la Ley Orgánica de Protección de Datos y Garantía de
+Derechos Digitales (LOPDGDD).</p>
+<p>Recientemente se ha detectado una fuga de credenciales debido a la
+existencia de scripts con contraseñas en texto claro
+(<em>hardcoded</em>) y cuentas con permisos globales desproporcionados.
+La dirección de sistemas te encarga la reestructuración completa del
+sistema de control de accesos e identidades bajo las siguientes
+premisas:</p>
+<ol type="1">
+<li><blockquote>
+<p><strong>Políticas de endurecimiento (Hardening) de
+credenciales.</strong></p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Seguridad basada en Roles (RBAC) para el personal de la
+clínica.</strong></p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Integración segura de un Script de Monitorización
+automatizado en Python sin credenciales expuestas.</strong></p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Auditoría periódica de las tablas de diccionario del
+sistema.</strong></p>
+</blockquote></li>
+</ol>
+<h2 id="actividades-a-realizar">2. ACTIVIDADES A REALIZAR <a class="headerlink" href="#actividades-a-realizar" title="Enlace permanente">¶</a></h2>
+<h2 id="fase-1-políticas-de-contraseñas-y-bloqueos-hardening">Fase 1:
+Políticas de Contraseñas y Bloqueos (Hardening) <a class="headerlink" href="#fase-1-políticas-de-contraseñas-y-bloqueos-hardening" title="Enlace permanente">¶</a></h2>
+<p>Como primera medida de mitigación de riesgos, debes activar e
+implementar políticas estrictas sobre el ciclo de vida de las
+credenciales de los usuarios utilizando los componentes nativos de MySQL
+8.0.</p>
+<h3 id="requisitos-técnicos"><strong>Requisitos Técnicos:</strong> <a class="headerlink" href="#requisitos-técnicos" title="Enlace permanente">¶</a></h3>
+<p>Escribe un script SQL que configure una cuenta de usuario
+administrativa llamada sec_auditor@localhost que cumpla obligatoriamente
+con las siguientes reglas de hardening:</p>
+<ul>
+<li><blockquote>
+<p>Debe expirar de forma forzosa cada <strong>90 días</strong> para
+obligar a su rotación.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Si se introduce de forma errónea la contraseña <strong>3 veces
+consecutivas</strong>, la cuenta debe bloquearse de forma automática y
+temporal durante <strong>5 días</strong> para evitar ataques de fuerza
+bruta.</p>
+</blockquote></li>
+<li><blockquote>
+<p>No se debe permitir la reutilización de ninguna de las últimas
+<strong>3 contraseñas</strong> históricas del usuario, ni claves que
+tengan menos de <strong>365 días</strong> de antigüedad.</p>
+</blockquote></li>
+</ul>
+<h3 id="script-sql-de-hardening-fase-1"><strong>Script SQL de Hardening
+(Fase 1):</strong> <a class="headerlink" href="#script-sql-de-hardening-fase-1" title="Enlace permanente">¶</a></h3>
+<p>-- Creación y configuración de la cuenta con políticas de Hardening
+integradas<br />
+CREATE USER IF NOT EXISTS 'sec_auditor'@'localhost'<br />
+IDENTIFIED BY 'SanaSecure#2026'<br />
+PASSWORD EXPIRE INTERVAL 90 DAY<br />
+FAILED_LOGIN_ATTEMPTS 3 PASSWORD_LOCK_TIME 5<br />
+PASSWORD REUSE INTERVAL 365 DAY<br />
+PASSWORD REUSE HISTORY 3;<br />
+<br />
+-- Modificación de parámetros globales del servidor para hacer estas
+políticas obligatorias<br />
+-- (Opcional, requiere privilegios de SYSTEM_VARIABLES_ADMIN o
+SUPER)<br />
+SET GLOBAL default_password_lifetime = 90;<br />
+SET GLOBAL disconnect_on_expired_password = ON;</p>
+<h2
+id="fase-2-implementación-de-seguridad-basada-en-roles-rbac"><strong>Fase
+2: Implementación de Seguridad Basada en Roles (RBAC)</strong> <a class="headerlink" href="#fase-2-implementación-de-seguridad-basada-en-roles-rbac" title="Enlace permanente">¶</a></h2>
+<p>Para evitar la asignación caótica de permisos individuales,
+estructurarás el acceso del personal de la clínica mediante el control
+de accesos basado en roles (RBAC) sobre la base de datos corporativa
+sanasalud_db (la cual consta de las tablas pacientes,
+historiales_clinicos, personal_medico y citas_medicas).</p>
+<h3 id="definición-de-roles-y-permisos"><strong>Definición de Roles y
+Permisos:</strong> <a class="headerlink" href="#definición-de-roles-y-permisos" title="Enlace permanente">¶</a></h3>
+<ol type="1">
+<li><blockquote>
+<p><strong>rol_sanitario:</strong> Acceso de lectura (SELECT) a la
+información general de pacientes y citas para coordinar consultas, y
+permisos completos de manipulación (SELECT, INSERT, UPDATE) sobre
+historiales_clinicos para la práctica asistencial. No debe tener
+permisos de borrado (DELETE).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>rol_administrativo:</strong> Permisos completos (SELECT,
+INSERT, UPDATE, DELETE) en las tablas pacientes y citas_medicas para la
+gestión administrativa de admisiones. No debe tener visibilidad ni
+acceso de lectura a la tabla historiales_clinicos.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>rol_auditor_seguridad:</strong> Permiso de lectura exclusiva
+(SELECT) en todas las tablas del esquema sanasalud_db y acceso a las
+vistas de monitorización del rendimiento.</p>
+</blockquote></li>
+</ol>
+<h3 id="tarea-del-alumno"><strong>Tarea del Alumno:</strong> <a class="headerlink" href="#tarea-del-alumno" title="Enlace permanente">¶</a></h3>
+<ul>
+<li><blockquote>
+<p>Crear los roles indicados.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Crear tres cuentas de usuario reales: doctor_gomez@localhost,
+recepcionista_perez@localhost y agente_auditor@localhost.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Vincular cada cuenta a su respectivo rol de seguridad.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Garantizar la activación automática de dichos roles al iniciar la
+sesión del usuario (SET DEFAULT ROLE).</p>
+</blockquote></li>
+</ul>
+<h3
+id="solucionario-de-la-configuración-rbac-fase-2"><strong>Solucionario
+de la Configuración RBAC (Fase 2):</strong> <a class="headerlink" href="#solucionario-de-la-configuración-rbac-fase-2" title="Enlace permanente">¶</a></h3>
+<p>-- 1. Creación de la base de datos de pruebas para el escenario<br />
+CREATE DATABASE IF NOT EXISTS sanasalud_db;<br />
+USE sanasalud_db;<br />
+<br />
+-- Creación física de las tablas del escenario<br />
+CREATE TABLE IF NOT EXISTS pacientes (<br />
+id_paciente INT AUTO_INCREMENT PRIMARY KEY,<br />
+nombre VARCHAR(100),<br />
+nif VARCHAR(9) UNIQUE,<br />
+telefono VARCHAR(15)<br />
+);<br />
+<br />
+CREATE TABLE IF NOT EXISTS citas_medicas (<br />
+id_cita INT AUTO_INCREMENT PRIMARY KEY,<br />
+id_paciente INT,<br />
+fecha_hora DATETIME,<br />
+box VARCHAR(10),<br />
+FOREIGN KEY (id_paciente) REFERENCES pacientes(id_paciente)<br />
+);<br />
+<br />
+CREATE TABLE IF NOT EXISTS historiales_clinicos (<br />
+id_historial INT AUTO_INCREMENT PRIMARY KEY,<br />
+id_paciente INT,<br />
+diagnostico TEXT,<br />
+tratamiento TEXT,<br />
+fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,<br />
+FOREIGN KEY (id_paciente) REFERENCES pacientes(id_paciente)<br />
+);<br />
+<br />
+-- 2. Creación de los Roles<br />
+CREATE ROLE IF NOT EXISTS 'rol_sanitario', 'rol_administrativo',
+'rol_auditor_seguridad';<br />
+<br />
+-- 3. Dotación de privilegios a los Roles<br />
+-- Rol Sanitario<br />
+GRANT SELECT ON sanasalud_db.pacientes TO 'rol_sanitario';<br />
+GRANT SELECT ON sanasalud_db.citas_medicas TO 'rol_sanitario';<br />
+GRANT SELECT, INSERT, UPDATE ON sanasalud_db.historiales_clinicos TO
+'rol_sanitario';<br />
+<br />
+-- Rol Administrativo<br />
+GRANT SELECT, INSERT, UPDATE, DELETE ON sanasalud_db.pacientes TO
+'rol_administrativo';<br />
+GRANT SELECT, INSERT, UPDATE, DELETE ON sanasalud_db.citas_medicas TO
+'rol_administrativo';<br />
+<br />
+-- Rol Auditor de Seguridad<br />
+GRANT SELECT ON sanasalud_db.* TO 'rol_auditor_seguridad';<br />
+<br />
+-- 4. Creación de usuarios reales<br />
+CREATE USER 'doctor_gomez'@'localhost' IDENTIFIED BY
+'DocGomezPass#2026';<br />
+CREATE USER 'recepcionista_perez'@'localhost' IDENTIFIED BY
+'RecepPerezPass#2026';<br />
+CREATE USER 'agente_auditor'@'localhost' IDENTIFIED BY
+'AgentAuditPass#2026';<br />
+<br />
+-- 5. Asignación de Roles a los usuarios<br />
+GRANT 'rol_sanitario' TO 'doctor_gomez'@'localhost';<br />
+GRANT 'rol_administrativo' TO 'recepcionista_perez'@'localhost';<br />
+GRANT 'rol_auditor_seguridad' TO 'agente_auditor'@'localhost';<br />
+<br />
+-- 6. Configuración de Activación Automática por Defecto (Muy
+importante)<br />
+SET DEFAULT ROLE 'rol_sanitario' TO 'doctor_gomez'@'localhost';<br />
+SET DEFAULT ROLE 'rol_administrativo' TO
+'recepcionista_perez'@'localhost';<br />
+SET DEFAULT ROLE 'rol_auditor_seguridad' TO
+'agente_auditor'@'localhost';<br />
+<br />
+-- Sincronizar diccionario<br />
+FLUSH PRIVILEGES;</p>
+<h2
+id="fase-3-integración-y-automatización-segura-con-python-pariaw-interdisciplinar"><strong>Fase
+3: Integración y Automatización Segura con Python (PAR/IAW
+Interdisciplinar)</strong> <a class="headerlink" href="#fase-3-integración-y-automatización-segura-con-python-pariaw-interdisciplinar" title="Enlace permanente">¶</a></h2>
+<p>Uno de los errores más graves en entornos de producción es programar
+scripts en Bash, Python o PHP que contienen la contraseña del usuario
+administrador (root) en texto claro (<em>hardcoded</em>).</p>
+<p>Para resolver esta vulnerabilidad, diseñarás una solución
+profesional:</p>
+<ol type="1">
+<li><blockquote>
+<p>Crearás una cuenta de servicio de mínimos privilegios en MySQL
+llamada monitor_agent@localhost.</p>
+</blockquote></li>
+<li><blockquote>
+<p>Implementarás un script en Python que recupera la credencial de
+conexión de forma dinámica a través de una <strong>variable de entorno
+del sistema operativo</strong>, evitando escribir claves en los archivos
+de código fuente.</p>
+</blockquote></li>
+</ol>
+<h3 id="configuración-del-usuario-de-servicio-sql"><strong>Configuración
+del Usuario de Servicio (SQL):</strong> <a class="headerlink" href="#configuración-del-usuario-de-servicio-sql" title="Enlace permanente">¶</a></h3>
+<p>-- Usuario exclusivo para el microservicio de monitorización<br />
+CREATE USER 'monitor_agent'@'localhost' IDENTIFIED BY
+'SanaMonitorAgentPass2026#';<br />
+<br />
+-- Conceder accesos de sólo lectura a las tablas de metadatos del
+motor<br />
+GRANT SELECT ON information_schema.* TO
+'monitor_agent'@'localhost';<br />
+GRANT SELECT ON sanasalud_db.* TO 'monitor_agent'@'localhost';</p>
+<h3
+id="script-de-python-para-monitorización-de-almacenamiento-monitor_space.py"><strong>Script
+de Python para Monitorización de Almacenamiento
+(monitor_space.py):</strong> <a class="headerlink" href="#script-de-python-para-monitorización-de-almacenamiento-monitor_space.py" title="Enlace permanente">¶</a></h3>
+<p>#!/usr/bin/env python3<br />
+# -*- coding: utf-8 -*-<br />
+"""<br />
+SanaSalud S.A. - Script de Monitorización de Almacenamiento Seguro<br />
+Módulo: ASGBD / IAW (ASIR)<br />
+Este script demuestra las mejores prácticas de SysAdmin:<br />
+- Recupera las credenciales de conexión desde variables de entorno del
+S.O.<br />
+- Conecta usando un usuario de mínimos privilegios
+('monitor_agent').<br />
+- Previene fugas de contraseñas por exposición de archivos de código
+fuente.<br />
+"""<br />
+<br />
+import os<br />
+import sys<br />
+import mysql.connector<br />
+from mysql.connector import Error<br />
+<br />
+def obtener_credenciales():<br />
+"""Recupera los parámetros de conexión y credenciales desde el entorno
+del S.O."""<br />
+db_host = os.getenv('DB_SANA_HOST', 'localhost')<br />
+db_user = os.getenv('DB_SANA_USER', 'monitor_agent')<br />
+db_pass = os.getenv('DB_SANA_PASS') # Contraseña almacenada de forma
+segura en el entorno<br />
+db_name = os.getenv('DB_SANA_NAME', 'sanasalud_db')<br />
+<br />
+if not db_pass:<br />
+print("[!] ERROR CRÍTICO: La variable de entorno 'DB_SANA_PASS' no está
+definida.", file=sys.stderr)<br />
+print("[i] Para definirla en Linux/macOS, ejecuta de antemano en tu
+terminal:\n", file=sys.stderr)<br />
+print(" export DB_SANA_PASS='SanaMonitorAgentPass2026#'\n",
+file=sys.stderr)<br />
+print("[i] Para definirla en Windows (Command Prompt), ejecuta:\n",
+file=sys.stderr)<br />
+print(" set DB_SANA_PASS=SanaMonitorAgentPass2026#\n",
+file=sys.stderr)<br />
+sys.exit(1)<br />
+<br />
+return db_host, db_user, db_pass, db_name<br />
+<br />
+def monitorizar_almacenamiento():<br />
+host, user, password, database = obtener_credenciales()<br />
+connection = None<br />
+try:<br />
+connection = mysql.connector.connect(<br />
+host=host,<br />
+user=user,<br />
+password=password,<br />
+database=database<br />
+)<br />
+<br />
+if connection.is_connected():<br />
+cursor = connection.cursor(dictionary=True)<br />
+<br />
+# Consulta avanzada al diccionario de datos para medir el peso de cada
+tabla de la clínica<br />
+query = """<br />
+SELECT<br />
+table_name AS 'Tabla',<br />
+ROUND(((data_length + index_length) / 1024 / 1024), 4) AS
+'Tamano_MB',<br />
+table_rows AS 'Filas'<br />
+FROM information_schema.TABLES<br />
+WHERE table_schema = %s<br />
+ORDER BY (data_length + index_length) DESC;<br />
+"""<br />
+<br />
+cursor.execute(query, (database,))<br />
+tablas = cursor.fetchall()<br />
+<br />
+print("================================================================")<br />
+print(f" REPORTE DE USO DE ESPACIO EN DISCO: {database.upper()}")<br />
+print("================================================================")<br />
+for tabla in tablas:<br />
+print(f" -&gt; Tabla: {tabla['Tabla']:&lt;25} | Filas:
+{tabla['Filas']:&lt;8} | Tamaño: {tabla['Tamano_MB']:&gt;8} MB")<br />
+print("================================================================")<br />
+<br />
+cursor.close()<br />
+<br />
+except Error as e:<br />
+print(f"[!] Error de conexión a la base de datos: {e}",
+file=sys.stderr)<br />
+finally:<br />
+if connection and connection.is_connected():<br />
+connection.close()<br />
+print("[i] Conexión cerrada de forma segura por el agente de
+monitorización.")<br />
+<br />
+if __name__ == "__main__":<br />
+monitorizar_almacenamiento()</p>
+<h2
+id="fase-4-auditoría-avanzada-de-cuentas-mediante-catálogos-del-sistema"><strong>Fase
+4: Auditoría Avanzada de Cuentas mediante Catálogos del
+Sistema</strong> <a class="headerlink" href="#fase-4-auditoría-avanzada-de-cuentas-mediante-catálogos-del-sistema" title="Enlace permanente">¶</a></h2>
+<p>Como Auditor de Seguridad / DBA, tu tarea no es sólo configurar los
+accesos, sino también programar consultas de supervisión de forma
+periódica contra el catálogo interno de MySQL para detectar posibles
+agujeros de seguridad.</p>
+<h3 id="consultas-de-auditoría-requeridas"><strong>Consultas de
+Auditoría requeridas:</strong> <a class="headerlink" href="#consultas-de-auditoría-requeridas" title="Enlace permanente">¶</a></h3>
+<h4 id="detección-de-comodines-inseguros-de-red"><strong>1. Detección de
+comodines inseguros de red</strong> <a class="headerlink" href="#detección-de-comodines-inseguros-de-red" title="Enlace permanente">¶</a></h4>
+<p>Muestra todos los usuarios y roles configurados que permiten el
+acceso desde cualquier ubicación remota (%), omitiendo las cuentas
+legítimas autorizadas:</p>
+<p>SELECT user, host, plugin<br />
+FROM mysql.user<br />
+WHERE host = '%' AND user NOT IN ('root', 'mysql.sys');</p>
+<h4 id="localización-de-algoritmos-obsoletos-o-débiles"><strong>2.
+Localización de algoritmos obsoletos o débiles</strong> <a class="headerlink" href="#localización-de-algoritmos-obsoletos-o-débiles" title="Enlace permanente">¶</a></h4>
+<p>Localiza cuentas que sigan utilizando el algoritmo heredado de hash
+mysql_native_password en lugar de la encriptación moderna SHA-256
+(caching_sha2_password):</p>
+<p>SELECT user, host, plugin, password_last_changed<br />
+FROM mysql.user<br />
+WHERE plugin = 'mysql_native_password';</p>
+<h4
+id="auditoría-de-asignación-y-herencia-de-roles-mapeo-de-privilegios"><strong>3.
+Auditoría de asignación y herencia de Roles (Mapeo de
+privilegios)</strong> <a class="headerlink" href="#auditoría-de-asignación-y-herencia-de-roles-mapeo-de-privilegios" title="Enlace permanente">¶</a></h4>
+<p>Muestra un reporte claro que relacione los usuarios de la base de
+datos con los roles que tienen asociados y el estado de activación por
+defecto:</p>
+<p>SELECT<br />
+FROM_USER AS 'Rol_Origen',<br />
+TO_USER AS 'Usuario_Destino',<br />
+WITH_ADMIN_OPTION AS 'Puede_Delegar'<br />
+FROM mysql.role_edges;</p>
+<h4
+id="identificación-de-cuentas-bloqueadas-o-con-claves-expiradas"><strong>4.
+Identificación de cuentas bloqueadas o con claves
+expiradas</strong> <a class="headerlink" href="#identificación-de-cuentas-bloqueadas-o-con-claves-expiradas" title="Enlace permanente">¶</a></h4>
+<p>Lista los usuarios que tienen suspendido el acceso temporal o
+permanentemente por motivos de seguridad:</p>
+<p>SELECT user, host, account_locked, password_expired,
+password_lifetime<br />
+FROM mysql.user<br />
+WHERE account_locked = 'Y' OR password_expired = 'Y';</p>
+<h2 id="calificación">4. CALIFICACIÓN <a class="headerlink" href="#calificación" title="Enlace permanente">¶</a></h2>
+<blockquote>
+<p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
+través de la plataforma, la entrega del documento en formatos editables
+no permitidos (como .docx), capturas con identificación del alumno/a o
+la omisión de los enlaces de las fuentes documentales utilizadas
+penalizará gravemente la nota o invalidará la práctica.</p>
+</blockquote>
+<h2 id="section"> <a class="headerlink" href="#section" title="Enlace permanente">¶</a></h2>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>Sección Evaluada</strong></th>
+<th><strong>Descripción Técnica Exigida al Alumno</strong></th>
+<th><strong>Puntuación</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Fase 1: Hardening</strong></td>
+<td>Implementación exacta de la directiva de intentos fallidos,
+intervalo de reuso de contraseñas e histórico de contraseñas en
+MySQL.</td>
+<td><strong>2.5 pts</strong></td>
+</tr>
+<tr class="header">
+<td><strong>Fase 2: RBAC</strong></td>
+<td>Creación limpia de roles y asignación selectiva a los tres perfiles
+de la clínica sin solapamientos. Activación automática mediante SET
+DEFAULT ROLE.</td>
+<td><strong>2.5 pts</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>Fase 3: Automatización</strong></td>
+<td>Puesta en marcha de variables de entorno en el sistema operativo del
+alumno y ejecución sin errores del script en Python.</td>
+<td><strong>3.0 pts</strong></td>
+</tr>
+<tr class="header">
+<td><strong>Fase 4: Consultas Auditoras</strong></td>
+<td>Ejecución correcta de consultas SQL contra la base de datos mysql
+para reportar riesgos y metadatos de accesos.</td>
+<td><strong>2.0 pts</strong></td>
+</tr>
+</tbody>
+</table></div>
+
+        </main>
+    </div>
+</body>
+</html>
