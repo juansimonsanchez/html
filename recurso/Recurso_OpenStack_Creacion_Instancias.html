@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RECORTAR - Openstack Creacion Instancias</title>
+    <style>
+    
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --bg-header: #1e3a8a;
+    --text-header: #ffffff;
+    --bg-body: #f8fafc;
+    --text-body: #1e293b;
+    --border-color: #cbd5e1;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-body);
+    color: var(--text-body);
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, [id], a[name] {
+    scroll-margin-top: 80px !important;
+}
+
+.headerlink {
+    display: inline-block;
+    margin-left: 0.4rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.8em;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
+h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
+    visibility: visible;
+    opacity: 1;
+}
+
+.headerlink:hover {
+    color: var(--primary);
+}
+
+#site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    background: var(--bg-header);
+    color: var(--text-header);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    height: 62px;
+}
+
+.site-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.top-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.top-nav .nav-btn {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+.top-nav .nav-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 9px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown:hover .dropbtn, .dropbtn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 320px;
+    max-width: 480px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 10001;
+    border: 1px solid #e2e8f0;
+    margin-top: 6px;
+}
+
+.dropdown-content a {
+    color: var(--text-body);
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.92rem;
+    border-bottom: 1px solid #f1f5f9;
+    line-height: 1.4;
+    transition: background 0.15s, color 0.15s;
+    word-break: break-word;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #eff6ff;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block !important;
+}
+
+#page-layout {
+    display: flex;
+    min-height: calc(100vh - 62px);
+}
+
+#left-panel {
+    width: 320px;
+    min-width: 320px;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 1.5rem 1.25rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: sticky;
+    top: 62px;
+    height: calc(100vh - 62px);
+}
+
+#left-panel h3 {
+    font-size: 1rem;
+    margin-top: 0;
+    color: #334155;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
+
+#left-panel nav#TOC, #left-panel #TOC {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+#left-panel ul {
+    list-style-type: none;
+    padding-left: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+#left-panel li {
+    margin: 6px 0;
+}
+
+#left-panel a {
+    color: #475569;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    display: block;
+    transition: color 0.15s;
+}
+
+#left-panel a:hover {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+#main-content {
+    flex: 1;
+    padding: 2.5rem 4rem;
+    box-sizing: border-box;
+    max-width: 100% !important;
+    width: calc(100% - 320px);
+    min-width: 0;
+}
+
+/* TABLAS ELEGANTES Y RESPONSIVE */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1.75rem 0;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    font-size: 0.93rem;
+    background: #ffffff;
+    table-layout: auto !important;
+}
+
+th, td {
+    padding: 10px 14px !important;
+    border: 1px solid #cbd5e1 !important;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+td p, th p {
+    margin: 0 !important;
+    padding: 2px 0 !important;
+}
+
+th {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #0f172a !important;
+}
+
+tr:nth-child(even) td {
+    background-color: #f8fafc !important;
+}
+
+tr:hover td {
+    background-color: #f1f5f9 !important;
+}
+
+/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
+.code-wrapper {
+    position: relative;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0f172a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #334155;
+    color: #f8fafc;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.copy-btn:hover {
+    background: #2563eb;
+}
+
+pre {
+    margin: 0 !important;
+    padding: 1.25rem 1.25rem !important;
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    overflow-x: auto !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+}
+
+code {
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+}
+
+p code, li code {
+    background: #e2e8f0;
+    color: #0f172a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
+
+/* RESPONSIVE DESIGN PARA MÓVILES Y TABLETS */
+@media (max-width: 768px) {
+    .header-container {
+        height: auto;
+        flex-direction: column;
+        padding: 0.75rem 1rem;
+        gap: 0.6rem;
+    }
+    
+    .site-title {
+        font-size: 1.05rem;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .site-title img {
+        height: 28px !important;
+    }
+
+    .top-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 0.35rem;
+    }
+
+    .top-nav .nav-btn, .dropbtn {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    .dropdown-content {
+        min-width: 240px;
+        max-width: 90vw;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #page-layout {
+        flex-direction: column;
+    }
+
+    #left-panel {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        position: static !important;
+        border-right: none !important;
+        border-bottom: 2px solid #e2e8f0;
+        padding: 1rem !important;
+    }
+
+    #main-content {
+        width: 100% !important;
+        padding: 1.25rem 1rem !important;
+    }
+
+    iframe {
+        height: 60vh !important;
+    }
+
+    th, td {
+        padding: 8px 10px !important;
+        font-size: 0.85rem !important;
+    }
+
+    pre {
+        padding: 0.85rem !important;
+        font-size: 0.82rem !important;
+    }
+}
+
+    </style>
+    <script>
+    
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.dropdown').forEach(dd => {
+        const btn = dd.querySelector('.dropbtn');
+        const content = dd.querySelector('.dropdown-content');
+        if (btn && content) {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = content.style.display === 'block';
+                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
+                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+                if (!isOpen) {
+                    content.style.display = 'block';
+                    btn.classList.add('active');
+                }
+            });
+        }
+    });
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
+        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+    });
+
+    // Controlador universal de clics en enlaces ancla (#...)
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const rawHref = this.getAttribute('href') || '';
+            const hashIdx = rawHref.indexOf('#');
+            if (hashIdx === -1) return;
+            const hash = rawHref.substring(hashIdx + 1);
+            if (!hash) return;
+            
+            let targetId = hash;
+            try { targetId = decodeURIComponent(hash); } catch(err) {}
+
+            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
+            if (!targetEl) {
+                for (let el of document.querySelectorAll('[id]')) {
+                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
+                        targetEl = el;
+                        break;
+                    }
+                }
+            }
+
+            if (targetEl) {
+                e.preventDefault();
+                const headerOffset = 75;
+                const elementPosition = targetEl.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                if (history.pushState) {
+                    history.pushState(null, null, '#' + targetId);
+                }
+            }
+        });
+    });
+});
+
+function copyCode(btn) {
+    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
+    navigator.clipboard.writeText(code).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = '✅ ¡Copiado!';
+        btn.style.background = '#16a34a';
+        setTimeout(() => {
+            btn.innerText = orig;
+            btn.style.background = '#334155';
+        }, 2000);
+    });
+}
+
+    </script>
+</head>
+<body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>RECORTAR &ndash; Openstack Creacion Instancias</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Teoría ▾</button>
+        <div class="dropdown-content">
+          <a href="Recurso_OpenStack_Conexion_VPN.html">Recurso OpenStack Conexion VPN</a>
+          <a href="Recurso_OpenStack_Creacion_Instancias.html">Recurso OpenStack Creacion Instancias</a>
+          <a href="Recurso_Instalacion_docker_ubuntu.html">Recurso Instalacion docker ubuntu</a>
+          <a href="Recurso_Instrucciones_actividades.html">Recurso Instrucciones actividades</a>
+          <a href="Recurso_Instalacion_apache_php_mysql.html">Recurso Instalacion apache php mysql</a>
+          <a href="Recurso_ejemplo_documentacion.html">Recurso ejemplo documentacion</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <aside id="left-panel">
+            <h3>Índice del Tema</h3>
+            <nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#qué-es-openstack" id="toc-qué-es-openstack">¿Qué es
+OpenStack? </a></li>
+<li><a href="#para-qué-lo-vamos-a-utilizar"
+id="toc-para-qué-lo-vamos-a-utilizar">¿Para qué lo vamos a
+utilizar?</a></li>
+<li><a href="#creación-de-una-instancia"
+id="toc-creación-de-una-instancia">Creación de una instancia<img
+src="media_Recurso_OpenStack_Creacion_Instancias/media/image4.png"
+style="width:2.4576in;height:2.54688in" /></a></li>
+<li><a href="#conexión-a-nuestra-instancia"
+id="toc-conexión-a-nuestra-instancia">Conexión a nuestra instancia</a>
+<ul>
+<li><a href="#conexión-desde-consola"
+id="toc-conexión-desde-consola">4.1. Conexión desde consola</a></li>
+<li><a href="#error-por-reutilización-de-ip-flotante"
+id="toc-error-por-reutilización-de-ip-flotante">4.2. Error por
+reutilización de IP flotante</a></li>
+<li><a href="#conexión-desde-openstack"
+id="toc-conexión-desde-openstack">4.3. Conexión desde OpenStack</a></li>
+<li><a href="#copiar-archivos-a-la-instancia"
+id="toc-copiar-archivos-a-la-instancia">4.4. Copiar archivos a la
+instancia </a></li>
+</ul></li>
+</ul>
+</nav>
+        </aside>
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="Recurso_OpenStack_Creacion_Instancias.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+<header id="title-block-header">
+<h1 class="title"><span id="_kdsnqtp1h3ss"
+class="anchor"></span><strong>Creación y uso de instancias en
+OpenStack</strong></h1>
+</header>
+
+<p><a href="#qué-es-openstack"><u>1. ¿Qué es OpenStack?</u></a></p>
+<p><a href="#para-qué-lo-vamos-a-utilizar"><u>2. ¿Para qué lo vamos a
+utilizar?</u></a></p>
+<p><a href="#creación-de-una-instancia"><u>3. Creación de una
+instancia</u></a></p>
+<p><a href="#conexión-a-nuestra-instancia"><u>4. Conexión a nuestra
+instancia</u></a></p>
+<blockquote>
+<p><a href="#conexión-desde-consola"><u>4.1. Conexión desde
+consola</u></a></p>
+<p><a href="#error-por-reutilización-de-ip-flotante"><u>4.2. Error por
+reutilización de IP flotante</u></a></p>
+<p><a href="#conexión-desde-openstack"><u>4.3. Conexión desde
+OpenStack</u></a></p>
+<p><a href="#copiar-archivos-a-la-instancia"><u>4.4. Copiar archivos a
+la instancia</u></a></p>
+</blockquote>
+<h1 id="qué-es-openstack">¿Qué es OpenStack?  <a class="headerlink" href="#qué-es-openstack" title="Enlace permanente">¶</a></h1>
+<p>Primero tenemos que saber algo sobre la computación en la nube. El
+<strong>Cloud Computing</strong> o la <strong>computación en la
+nube</strong> se basa en la entrega de servicios de tipo informático a
+petición y a través de internet. Algunos de estos servicios son el
+almacenamiento, los servidores, centros de datos, redes, software y
+desarrollar aplicaciones, entre otros.</p>
+<p><strong>OpenStack</strong> es la plataforma Cloud Computing de
+software libre y de código abierto más importante y que más ha crecido
+en los últimos años.</p>
+<p>Está diseñada para ofrecer nubes públicas o privadas orientadas a
+ofrecer infraestructuras como servicio a los usuarios (Iaas).</p>
+<p>Con ella es posible crear un sistema en la nube (público o privado),
+utilizado para gestionar diversos recursos computacionales, de
+almacenamiento y redes.</p>
+<p>Para más información se puede consultar la siguiente documentación de
+<a href="https://openstack.iescelia.org/"><u>Openstack en el IES Celia
+Viñas</u></a>.</p>
+<h1 id="para-qué-lo-vamos-a-utilizar">¿Para qué lo vamos a
+utilizar? <a class="headerlink" href="#para-qué-lo-vamos-a-utilizar" title="Enlace permanente">¶</a></h1>
+<p>En nuestro caso nos va a permitir crear instancias (lo que serían
+máquinas virtuales) en la nube, que van a ser accesibles tanto desde la
+red del departamento como desde el exterior. Lo que actualmente hacíamos
+con VirtualBox (con los inconvenientes que esto tenía), ahora lo vamos a
+hacer con OpenStack, y podremos acceder desde cualquier lugar. En estas
+instancias vamos a configurar distintos sistemas gestores de bases de
+datos, servidores, sistemas operativos, etc., para las distintas
+actividades y prácticas.</p>
+<h1 id="creación-de-una-instancia">Creación de una instancia<img
+src="media_Recurso_OpenStack_Creacion_Instancias/media/image4.png"
+style="width:2.4576in;height:2.54688in" /> <a class="headerlink" href="#creación-de-una-instancia" title="Enlace permanente">¶</a></h1>
+<p>Tanto desde la red del departamento, como desde el exterior (con la
+VPN del departamento, ver el siguiente <a
+href="https://docs.google.com/document/d/1RWOL-poQkPQflSKgC64M2DPy3FrCQht9yLszdioofaM/edit?usp=sharing"><u>documento</u></a>),
+podemos acceder a OpenStack desde nuestro navegador en la dirección <a
+href="http://172.16.0.11/"><u>http://172.16.0.11/</u></a> o <a
+href="http://openstack.celia"><u>http://openstack.celia</u></a> Nos
+tendremos que identificar con nuestro usuario y contraseña.</p>
+<p>Ahora mismo, vuestro usuario y contraseña son los mismos, es decir,
+vuestro usuario de Pasen se utiliza tanto como usuario y contraseña de
+openstack. El dominio es <strong>Default</strong></p>
+<p>Lo primero que veremos será la página correspondiente a una visión
+general de nuestra cuenta.</p>
+<p><img
+src="media_Recurso_OpenStack_Creacion_Instancias/media/image5.png"
+style="width:5.43887in;height:4.04753in" /></p>
+<p>Si accedemos a Instancias, podremos ver las instancias que tenemos
+creadas, crear nuevas, detenerlas, iniciarlas o borrarlas.</p>
+<p><img
+src="media_Recurso_OpenStack_Creacion_Instancias/media/image22.png"
+style="width:8.12197in;height:3.07609in" /></p>
+<p><img
+src="media_Recurso_OpenStack_Creacion_Instancias/media/image19.png"
+style="width:1.5in;height:0.42434in" /></p>
+<p>Para crear una nueva instancia, pulsaremos en el botón</p>
+<p>En el asistente que nos aparece vamos a realizar lo siguiente:</p>
+<p><strong>Paso 1:</strong> Asignaremos un nombre a la instancia.
+También podemos darle una descripción. Pulsar en
+<em><strong>Siguiente</strong></em>.</p>
+<p><img
+src="media_Recurso_OpenStack_Creacion_Instancias/media/image10.png"
+style="width:6.13542in;height:2.19729in" /></p>
+<p><strong>Paso 2: IMPORTANTE.</strong> Seleccionamos en Crear nuevo
+volumen <strong>No</strong>.</p>
+<p><img
+src="media_Recurso_OpenStack_Creacion_Instancias/media/image17.png"
+style="width:6.30894in;height:1.44649in" /></p>
+<p>Si el profesor proporciona una instantánea se indica en el Origen de
+arranque <img
+src="media_Recurso_OpenStack_Creacion_Instancias/media/image11.png"
+style="width:5.08854in;height:0.7692in" /></p>
+<p>Pulsaremos <em><strong>Siguiente</strong></em> y pasaremos al Paso
+3.</p>
+<p><strong>Paso 3</strong>: En la parte inferior de esta ventana,
+seleccionaremos el tipo de instancia.</p>
+<p><img
+src="media_Recurso_OpenStack_Creacion_Instancias/media/image18.png"
+style="width:5.70833in;height:1.40691in" /></p>
+<p>En nuestro caso, el sistema operativo elegido será Ubuntu 24.04.
+Pulsamos <em><strong>Siguiente</strong></em>.</p>
+<p><strong>Paso 4</strong>: Escogemos el tamaño de la instancia. Tenemos
+distintas opciones, de las que cogeremos la normal, medium o large. El
+tamaño establece cuántos núcleos tendrá asignados, cantidad de RAM y
+espacio total de Disco.</p>
+<p><img
+src="media_Recurso_OpenStack_Creacion_Instancias/media/image6.png"
+style="width:6.27083in;height:2.65691in" /></p>
+<p><strong>Paso 5</strong>: En el siguiente paso no vamos a modificar
+nada, dejando la configuración que nos proporciona. Por defecto,
+nuestras máquinas están asociadas a una subred interna asociada a
+nuestra cuenta.</p>
+<p><img
+src="media_Recurso_OpenStack_Creacion_Instancias/media/image9.png"
+style="width:6.27083in;height:1.90691in" /></p>
+<p><strong>Paso 6</strong>: Pulsaremos
+<em><strong>Siguiente</strong></em> también en las opciones Puertos de
+red, Grupos de seguridad y Crear Par de claves.</p>
+<p><strong>Paso 7</strong>: En el paso Configuración vamos a incluir un
+script para crear la contraseña al usuario de nuestra instancia:</p>
+<p><img
+src="media_Recurso_OpenStack_Creacion_Instancias/media/image15.png"
+style="width:4.27604in;height:2.68915in" /></p>
+<p>Incluiremos las siguientes líneas, modificando la contraseña</p>
+<blockquote>
+<p>#cloud-config</p>
+<p>password: nueva_password</p>
+<p>chpasswd: { expire: False }</p>
+<p>ssh_pwauth: True</p>
+</blockquote>
+<p>La primera línea con el texto #cloud-config es obligatoria.</p>
+<p>La clave password indica cuál será la nueva contraseña del usuario de
+la imagen.</p>
+<p>La clave chpasswd indica que la contraseña no caduca y no tiene que
+ser cambiada después de iniciar sesión la primera vez.</p>
+<p>La clave ssh_pwauth indica que se habilita el acceso por SSH con
+contraseña.</p>
+<p>Tras el paso anterior podemos Ejecutar nuestra Instancia, dejando las
+opciones que vienen por defecto en los siguientes pasos del
+asistente.</p>
+<p>Después de unos segundos</p>
+<p><img
+src="media_Recurso_OpenStack_Creacion_Instancias/media/image13.png"
+style="width:6.26772in;height:0.69444in" /></p>
+<p>tendremos nuestra instancia corriendo (en ejecución). Ahora podemos
+realizar distintas acciones, algunas de ellas son:</p>
+<p><img
+src="media_Recurso_OpenStack_Creacion_Instancias/media/image3.png"
+style="width:2.35573in;height:1.05694in" /></p>
+<p>Faltan por realizar algunas acciones en la configuración de la
+instancia.</p>
+<p><strong>Asociar una IP Flotante</strong>: asignar una IP que sea
+accesible desde fuera de OpenStack (desde la red del departamento o
+desde el exterior) Esa IP que vamos a asignar pertenece a la red-externa
+de OpenStack y accesible desde la red del departamento. Se le puede dar
+una descripción y podemos ver cuantas hemos asignado ya.</p>
+<p><img
+src="media_Recurso_OpenStack_Creacion_Instancias/media/image16.png"
+style="width:3.41823in;height:1.66916in" /></p>
+<p>Ahora nos aparecerá en el apartado de IPs flotantes, la IP asociada y
+con la que podremos conectarnos a nuestra máquina</p>
+<p><img
+src="media_Recurso_OpenStack_Creacion_Instancias/media/image2.png"
+style="width:6.45309in;height:1.68295in" /></p>
+<p>Volvemos a Computación e Instancias. La IP que aparece será la que
+utilizaremos para conectarnos a nuestra máquina</p>
+<p><img
+src="media_Recurso_OpenStack_Creacion_Instancias/media/image20.png"
+style="width:6.26772in;height:0.68056in" /></p>
+<p>Si pulsamos sobre el nombre de la Instancia, podemos ver los datos
+generales de nuestra Instancia, configuración, IPs, puertos abiertos,
+etc.</p>
+<p>En Red &gt; Grupos de seguridad podemos acceder, modificar y ver la
+configuración de nuestros puertos.</p>
+<p><img
+src="media_Recurso_OpenStack_Creacion_Instancias/media/image1.png"
+style="width:6.26772in;height:1.94444in" /></p>
+<h1 id="conexión-a-nuestra-instancia">Conexión a nuestra instancia <a class="headerlink" href="#conexión-a-nuestra-instancia" title="Enlace permanente">¶</a></h1>
+<h2 id="conexión-desde-consola">4.1. Conexión desde consola <a class="headerlink" href="#conexión-desde-consola" title="Enlace permanente">¶</a></h2>
+<p>Ya tenemos nuestra instancia preparada. Para conectarnos a ella
+utilizaremos SSH. En un terminal usaremos:</p>
+<p>ssh ubuntu@IP_flotante</p>
+<p><img
+src="media_Recurso_OpenStack_Creacion_Instancias/media/image14.png"
+style="width:6.27083in;height:2.93927in" /></p>
+<p>Tened en cuenta que somos los administradores. Si lo hacemos desde
+nuestra casa tenemos que tener la conexión a la VPN del departamento</p>
+<h2 id="error-por-reutilización-de-ip-flotante">4.2. Error por
+reutilización de IP flotante <a class="headerlink" href="#error-por-reutilización-de-ip-flotante" title="Enlace permanente">¶</a></h2>
+<p>Otro error con el que nos podemos encontrar es el siguiente:</p>
+<p><img
+src="media_Recurso_OpenStack_Creacion_Instancias/media/image8.png"
+style="width:6.26772in;height:1.69444in" /></p>
+<p>Esto se produce cuando hemos tenido otra instancia con esa IP
+Flotante y hemos cambiado la clave privada. En este caso accedes al
+archivo known_hosts y borramos los datos que teníamos asociados.</p>
+<h2 id="conexión-desde-openstack">4.3. Conexión desde OpenStack <a class="headerlink" href="#conexión-desde-openstack" title="Enlace permanente">¶</a></h2>
+<p>Si realizamos esto podremos conectarnos también desde el propio
+navegador, accediendo a OpenStack (<a
+href="http://openstack.celia"><u>http://openstack.celia</u></a>),
+pulsamos sobre nuestra instancia y accediendo a Consola.</p>
+<p><img
+src="media_Recurso_OpenStack_Creacion_Instancias/media/image7.png"
+style="width:6.26772in;height:3.88889in" /></p>
+<h2 id="copiar-archivos-a-la-instancia">4.4. Copiar archivos a la
+instancia  <a class="headerlink" href="#copiar-archivos-a-la-instancia" title="Enlace permanente">¶</a></h2>
+<p>La mejor forma de transferir archivos a nuestra instancia es mediante
+el comando scp (en linux):</p>
+<p><strong>scp [origen] [destino]</strong></p>
+<p>donde para hacer referencia a nuestra instancia utilizaremos
+ubuntu@ip_flotante:/ruta</p>
+<p>Ejemplos para copiar archivos/carpetas desde nuestro ordenador:</p>
+<ul>
+<li><blockquote>
+<p>Para copiar un archivo de la carpeta actual a la carpeta en nuestra
+instancia:</p>
+</blockquote></li>
+</ul>
+<p>scp ejercicio1.html ubuntu@172.16.11.152:/var/www/html</p>
+<ul>
+<li><blockquote>
+<p>Para copiar un conjunto de archivos de la carpeta actual a una
+carpeta en nuestra instancia:</p>
+</blockquote></li>
+</ul>
+<p>scp *.* ubuntu@172.16.11.152:/var/www/html</p>
+<ul>
+<li><blockquote>
+<p>Para copiar una carpeta con todas los archivos y subcarpetas a una
+carpeta determinada en nuestra instancia</p>
+</blockquote></li>
+</ul>
+<p>scp -r Carpeta ubuntu@172.16.11.152:/var/www/html</p>
+
+        </main>
+    </div>
+</body>
+</html>
