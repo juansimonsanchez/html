@@ -1,471 +1,613 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APLI - UT1 Tarea Html</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APLI - UT1 Tarea Html</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
 </head>
+
 <body>
-    <header id="site-header">
-  <div class="header-container">
-    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>APLI &ndash; UT1 Tarea Html</span></div>
-    <nav class="top-nav">
-      <a href="index.html" class="nav-btn">Inicio</a>
-    </nav>
-  </div>
-</header>
-    <div id="page-layout">
-        
-        <main id="main-content">
-            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="APL_UT1_Tarea_HTML_26_27.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
-            
-
-<h1 id="tarea-1.-html">Tarea 1. HTML <a class="headerlink" href="#tarea-1.-html" title="Enlace permanente">¶</a></h1>
-<h3 id="ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
-ACTIVIDAD <a class="headerlink" href="#ficha-técnica-de-la-actividad" title="Enlace permanente">¶</a></h3>
-<div class="table-wrapper"><table>
-<tbody>
-<tr class="header">
-<td><strong>Unidad Didáctica</strong></td>
-<td><strong>UT1</strong>: Introducción a las aplicaciones web</td>
-</tr>
-<tr class="odd">
-<td><strong>Resultado de Aprendizaje (RA)</strong></td>
-<td><strong>RA1:</strong> Instala gestores de contenidos, identificando
-sus aplicaciones y configurándolos según requerimientos (enfocado en la
-comprensión íntima de la estructura del código HTML del frontend).</td>
-</tr>
-<tr class="header">
-<td><strong>Criterios de Evaluación (CE)</strong></td>
-<td><p><strong>CE 1.d:</strong> Se ha personalizado la interfaz del
-gestor de contenidos.</p>
-<p><strong>CE 1.g:</strong> Se han instalado y configurado los módulos
-necesarios (analizando la estructura del código fuente).</p></td>
-</tr>
-<tr class="odd">
-<td><strong>Tiempo Estimado</strong></td>
-<td>10 horas</td>
-</tr>
-<tr class="header">
-<td colspan="2"><h4 id="método-de-entrega-y-formato">Método de entrega y
-formato <a class="headerlink" href="#método-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
-<p><strong>[ ] Documento:</strong> No se requiere memoria en formato PDF
-para esta entrega.</p>
-<p><strong>[x] Archivos de Código:</strong> Se entregará
-obligatoriamente un único archivo comprimido en formato
-<strong>ZIP</strong> (Tarea_InicialesNombreApellidos.zip). Al
-descomprimirlo, debe presentar estrictamente la siguiente jerarquía de
-archivos y carpetas:<br />
-InicialesNombreApellidos/<br />
-├── index.html<br />
-├── servicios.html<br />
-├── contacto.html<br />
-├── imagenes/<br />
-│ ├── topologia.png<br />
-│ ├── estado_servicios.png<br />
-│ └── soporte_banner.png<br />
-└── css/<br />
-└── (Directorio vacío para la próxima unidad de CSS)</p></td>
-</tr>
-</tbody>
-</table></div>
-<p><strong>Nota:</strong> <em>El código fuente debe estar validado. La
-autoría se verificará mediante defensa práctica en el aula, donde se
-solicitará al alumno realizar modificaciones en tiempo real.</em></p>
-<h2 id="descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
-OBJETIVOS 📖 <a class="headerlink" href="#descripción-general.-objetivos" title="Enlace permanente">¶</a></h2>
-<p>Como administradores de sistemas microinformáticos, el dominio
-absoluto del lenguaje de marcado <strong>HTML5</strong> es una habilidad
-crítica. Nos permite personalizar paneles de control, depurar plantillas
-en gestores de contenidos (WordPress, Moodle) y maquetar herramientas
-internas de monitorización.</p>
-<p>El <strong>objetivo principal</strong> de esta tarea práctica es
-construir la arquitectura estática de un portal web interno para el
-departamento de informática del centro. Esta interfaz de tres páginas
-independientes pero vinculadas servirá como el <strong>"plano de
-construcción" rígido y semántico</strong> que daremos formato mediante
-CSS en la próxima tarea. Se incidirá de forma rigurosa en la separación
-absoluta entre estructura (HTML) y presentación (CSS).</p>
-<h2 id="consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink" href="#consideraciones-previas" title="Enlace permanente">¶</a></h2>
-<ul>
-<li><blockquote>
-<p><strong>Editor de Código:</strong> Se trabajará con <strong>Visual
-Studio Code</strong>. Queda estrictamente prohibido el uso de editores
-WYSIWYG.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Rutas Relativas:</strong> Todos los enlaces, imágenes y
-recursos deben direccionarse mediante <strong>rutas relativas</strong>
-(ej. imagenes/topologia.png). Si se detecta alguna ruta absoluta local
-(ej. C:/Users/... o file:///...), la actividad se considerará
-suspensa.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Validación:</strong> Cada documento HTML creado debe
-validarse con Firefox sin presentar ningún error de marcado
-estructural.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Originalidad</strong>: Se proporciona un documento para ver
-el posible resultado, pero los títulos, textos deben ser originales e
-imágenes se tienen que personalizar, NO pueden ser los mismos.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Previsualización</strong>: Se facilitarán documentos pdf para
-previsualizar una posible solución.</p>
-</blockquote></li>
-</ul>
-<h2 id="actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink" href="#actividades-a-realizar" title="Enlace permanente">¶</a></h2>
-<h4
-id="actividad-1-arquitectura-semántica-html5-e-interconexión-estructural">Actividad
-1: Arquitectura Semántica HTML5 e Interconexión Estructural <a class="headerlink" href="#actividad-1-arquitectura-semántica-html5-e-interconexión-estructural" title="Enlace permanente">¶</a></h4>
-<p>El alumno debe inicializar las tres páginas HTML que compondrán el
-sitio web:</p>
-<ol type="1">
-<li><blockquote>
-<p>index.html (Página de inicio y bienvenida).</p>
-</blockquote></li>
-<li><blockquote>
-<p>servicios.html (Documentación de despliegues y servicios).</p>
-</blockquote></li>
-<li><blockquote>
-<p>contacto.html (Formularios de reporte e incidencias).</p>
-</blockquote></li>
-</ol>
-<p><strong>Requisitos específicos por página:</strong></p>
-<ul>
-<li><blockquote>
-<p><strong>Estructura Base:</strong> Las tres páginas deben contar con
-la declaración &lt;!DOCTYPE html&gt;, etiqueta &lt;html&gt; con atributo
-de idioma en español (lang="es"), etiqueta &lt;head&gt; con codificación
-de caracteres UTF-8 y metaetiqueta viewport para garantizar la
-adaptabilidad en dispositivos móviles (ver apuntes).</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Secciones Semánticas HTML5:</strong> En todas las páginas se
-estructurará el contenido utilizando obligatoriamente las etiquetas
-estructurales de bloque de HTML5: &lt;header&gt;, &lt;nav&gt;,
-&lt;main&gt;, &lt;section&gt;, &lt;article&gt;, &lt;aside&gt; y
-&lt;footer&gt; (deben de abrirse y cerrarse)</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Formatos de Texto y Separación:</strong> Emplea de manera
-lógica los encabezados desde &lt;h1&gt; hasta &lt;h3&gt;, párrafos
-(&lt;p&gt;), líneas horizontales divisorias (&lt;hr&gt;) para separar
-secciones lógicas y texto preformateado (&lt;pre&gt;).</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Interconexión (Menú de Navegación):</strong> El &lt;nav&gt;
-situado en el &lt;header&gt; de cada una de las tres páginas debe
-contener una lista no ordenada con enlaces relativos exactos para poder
-navegar entre las tres páginas de forma fluida y cíclica.</p>
-</blockquote></li>
-</ul>
-<p><img src="media_APL_UT1_Tarea_HTML_26_27/media/image4.png"
-style="width:2.10938in;height:0.62353in" /></p>
-<h4
-id="actividad-2-integración-de-listas-simples-anidadas-y-de-verificación">Actividad
-2: Integración de Listas (Simples, Anidadas y de Verificación) <a class="headerlink" href="#actividad-2-integración-de-listas-simples-anidadas-y-de-verificación" title="Enlace permanente">¶</a></h4>
-<p>La documentación del departamento requiere el uso de listas
-estructuradas para organizar recursos y flujos de trabajo. Implementa
-los siguientes requerimientos:</p>
-<ol type="1">
-<li><blockquote>
-<p><strong>Página index.html (Lista Desordenada Simple):</strong> Añade
-una sección con una lista desordenada (&lt;ul&gt;) que enumere los
-pilares de la seguridad del servidor del aula (Cifrado, Copias de
-seguridad, Control de acceso perimetral).</p>
-</blockquote></li>
-</ol>
-<p><img src="media_APL_UT1_Tarea_HTML_26_27/media/image3.png"
-style="width:6.25129in;height:0.98438in" /></p>
-<ol start="2" type="1">
-<li><blockquote>
-<p><strong>Página servicios.html (Lista Anidada Compleja):</strong>
-Documenta los pasos secuenciales para instalar el servidor Apache en
-Linux. Utiliza una lista ordenada (&lt;ol&gt;) para los pasos
-principales, y dentro de cada paso secuencial, anida una lista
-desordenada (&lt;ul&gt;) indicando los comandos exactos o las rutas de
-configuración correspondientes.</p>
-</blockquote></li>
-</ol>
-<p><img src="media_APL_UT1_Tarea_HTML_26_27/media/image1.png"
-style="width:4.23438in;height:1.92571in" /></p>
-<ol start="3" type="1">
-<li><blockquote>
-<p><strong>Página contacto.html (Lista de Ordenada Simple):</strong>
-Muestra al usuario un listado ordenado con los pasos de control
-obligatorios que debe verificar en su puesto informático antes de abrir
-un ticket de soporte de red (ej. Estado del cable de red, Comprobación
-de IP).</p>
-</blockquote></li>
-</ol>
-<p><img src="media_APL_UT1_Tarea_HTML_26_27/media/image5.png"
-style="width:6.26772in;height:1.20833in" /></p>
-<h4 id="actividad-3-inserción-de-imágenes">Actividad 3: Inserción de
-Imágenes  <a class="headerlink" href="#actividad-3-inserción-de-imágenes" title="Enlace permanente">¶</a></h4>
-<p>Inserta una imagen técnica adaptada al contexto en cada una de las
-páginas de la aplicación:</p>
-<ol type="1">
-<li><blockquote>
-<p><strong>En index.html:</strong> Imagen de la topología de red local
-(imagenes/topologia.png).</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>En servicios.html:</strong> Imagen descriptiva del estado de
-los servicios desplegados (imagenes/estado_servicios.png).</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>En contacto.html:</strong> Banner gráfico del departamento de
-soporte técnico (imagenes/soporte_banner.png).</p>
-</blockquote></li>
-</ol>
-<p><strong>Requisitos comunes para las imágenes:</strong></p>
-<ul>
-<li><blockquote>
-<p>Es estrictamente requerido configurar el atributo alt con un texto
-descriptivo de accesibilidad detallado (no genérico).</p>
-</blockquote></li>
-<li><blockquote>
-<p>Se limitarán las dimensiones físicas de la imagen directamente en
-HTML mediante los atributos width (máximo 500px) y height de forma
-proporcional.</p>
-</blockquote></li>
-</ul>
-<h4 id="actividad-4-creación-de-tablas-de-datos">Actividad 4: Creación
-de Tablas de Datos  <a class="headerlink" href="#actividad-4-creación-de-tablas-de-datos" title="Enlace permanente">¶</a></h4>
-<p>Debes implementar una tabla técnica en cada una de las páginas web
-del proyecto, graduando el nivel de dificultad:</p>
-<ol type="1">
-<li><blockquote>
-<p><strong>Página index.html (Tabla Sencilla):</strong> Crea una tabla
-básica que liste los puertos comunes de red. Columnas:
-<em>Servicio</em>, <em>Puerto</em> y <em>Protocolo</em> (mínimo 4 filas
-de datos).</p>
-</blockquote></li>
-</ol>
-<p><img src="media_APL_UT1_Tarea_HTML_26_27/media/image10.png"
-style="width:2.9963in;height:1.09896in" /></p>
-<ol start="2" type="1">
-<li><blockquote>
-<p><strong>Página servicios.html (Tabla Intermedia):</strong> Diseña una
-tabla de direccionamiento IP de las subredes del centro. Columnas:
-<em>Nombre de Subred</em>, <em>Dirección de Red</em>, <em>Puerta de
-Enlace (Gateway)</em> y <em>DNS Principal</em>. Debe usar de manera
-clara e inequívoca las etiquetas estructurales de tabla: &lt;thead&gt;,
-&lt;tbody&gt; y &lt;tfoot&gt;</p>
-</blockquote></li>
-</ol>
-<p><img src="media_APL_UT1_Tarea_HTML_26_27/media/image8.png"
-style="width:5.30767in;height:1.34896in" /></p>
-<ol start="3" type="1">
-<li><blockquote>
-<p><strong>Página contacto.html (Tabla Compleja):</strong> Diseña una
-tabla avanzada que represente físicamente el armario de servidores
-(Rack) del aula de informática.</p>
-</blockquote>
-<ul>
-<li><blockquote>
-<p><strong>Uso obligatorio de rowspan:</strong> Debes combinar
-verticalmente la primera columna de las filas correspondientes a los
-servidores de bases de datos para indicar que un servidor en cluster
-ocupa dos unidades de rack de altura físicas (ej. U1 y U2
-combinadas).</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Uso obligatorio de colspan:</strong> En la parte inferior de
-la tabla, combina horizontalmente todas las columnas para crear una
-celda unificada de advertencia técnica sobre la alimentación
-ininterrumpida (SAI).</p>
-</blockquote></li>
-</ul></li>
-</ol>
-<p><img src="media_APL_UT1_Tarea_HTML_26_27/media/image6.png"
-style="width:6.26772in;height:1.47222in" /></p>
-<h4
-id="actividad-5-sistemas-de-entrada-de-datos-formulario-sencillo-vs.-formulario-complejo">Actividad
-5: Sistemas de Entrada de Datos (Formulario Sencillo vs. Formulario
-Complejo) <a class="headerlink" href="#actividad-5-sistemas-de-entrada-de-datos-formulario-sencillo-vs.-formulario-complejo" title="Enlace permanente">¶</a></h4>
-<p>Para habilitar la interacción del usuario en nuestro portal,
-implementa dos formularios estructurados:</p>
-<ol type="1">
-<li><blockquote>
-<p><strong>Página servicios.html (Formulario Sencillo):</strong><br />
-Construye un buscador interno rápido de IPs o servicios web. Debe
-constar únicamente de una etiqueta &lt;label&gt; asociada, un campo de
-entrada de texto (type="text"), un input de búsqueda corporativa y un
-botón de envío con el texto "Buscar Servicio".</p>
-</blockquote></li>
-</ol>
-<p><img src="media_APL_UT1_Tarea_HTML_26_27/media/image7.png"
-style="width:3.47396in;height:0.70859in" /></p>
-<ol start="2" type="1">
-<li><blockquote>
-<p><strong>Página contacto.html (Formulario Técnico
-Complejo):</strong><br />
-Crea un formulario avanzado de registro de incidencias técnicas que
-contenga todas las opciones de interacción soportadas por HTML5:</p>
-</blockquote></li>
-</ol>
-<p><img src="media_APL_UT1_Tarea_HTML_26_27/media/image9.png"
-style="width:4.82293in;height:4.78646in" /></p>
-<ul>
-<li><blockquote>
-<p>Campos de texto obligatorios (required) para el nombre completo y la
-descripción de la incidencia.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Entradas especializadas HTML5: email (type="email"), contraseña de
-soporte (type="password"), teléfono corporativo (type="tel"), fecha del
-suceso (type="date") y número de puesto afectado (type="number").</p>
-</blockquote></li>
-<li><blockquote>
-<p>Un campo de selección desplegable (&lt;select&gt;) para seleccionar
-el sistema operativo afectado.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Botones de opción mutuamente excluyentes (type="radio") bajo el mismo
-grupo name para determinar la prioridad del ticket.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Casillas de verificación múltiple (type="checkbox") para seleccionar
-los componentes de hardware comprometidos.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Caja de texto multilínea (&lt;textarea&gt;) para comentarios
-adicionales de depuración.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Botón de envío (type="submit") y botón de borrado de datos
-(type="reset").</p>
-</blockquote></li>
-</ul>
-<h2 id="calificación">4. CALIFICACIÓN <a class="headerlink" href="#calificación" title="Enlace permanente">¶</a></h2>
-<blockquote>
-<p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
-través de la plataforma, la entrega del documento en formatos editables
-no permitidos (como .docx), capturas con identificación del alumno/a o
-la omisión de los enlaces de las fuentes documentales utilizadas
-penalizará gravemente la nota o invalidará la práctica.</p>
-</blockquote>
-<div class="table-wrapper"><table>
-<thead>
-<tr class="header">
-<th><strong>CE y Puntuación Máxima</strong></th>
-<th><p><strong>Excelente</strong></p>
-<p><strong>(100% - 90%)</strong></p></th>
-<th><p><strong>Adecuado</strong></p>
-<p><strong>(89% - 50%)</strong></p></th>
-<th><p><strong>Insuficiente</strong></p>
-<p><strong>(49% - 10%)</strong></p></th>
-<th><strong>No Entregado / Incorrecto (0%)</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><p><strong>C1: Estructuración Semántica y Navegación</strong></p>
-<p><em>(Peso: 2.0 Puntos)</em></p></td>
-<td><p><strong>2</strong></p>
-<p>Estructura HTML5 en las 3 páginas utilizando adecuadamente
-&lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;section&gt;, y
-&lt;footer&gt;. Sistema de navegación fluido y funcional mediante rutas
-relativas sin ningún enlace roto.</p></td>
-<td><p><strong>1</strong></p>
-<p>La estructura semántica está presente pero se omiten algunas
-etiquetas estructurales o se abusa del uso de &lt;div&gt;. La navegación
-funciona, pero contiene fallos menores de retorno o rutas
-incorrectas.</p></td>
-<td><p><strong>0.25</strong></p>
-<p>La maquetación carece de semántica lógica. No hay una separación
-estructural y existen múltiples enlaces de navegación rotos o se han
-usado rutas absolutas locales del disco.</p></td>
-<td><p><strong>0</strong></p>
-<p>No se realiza la actividad, los archivos están vacíos o no cumplen
-con los requisitos mínimos de estructuración del portal.</p></td>
-</tr>
-<tr class="header">
-<td><p><strong>C2: Listas e Imágenes Técnicas</strong></p>
-<p><em>(Peso: 2.0 Puntos)</em></p></td>
-<td><p><strong>2</strong></p>
-<p>Se implementan los tres tipos de listas (simple y anidada). Imágenes
-en cada página usando atributos de accesibilidad alt</p></td>
-<td><p><strong>1</strong></p>
-<p>Falta alguna lista o imagen, o el anidamiento de las listas contiene
-errores menores. Los atributos alt son demasiado escuetos o
-genéricos.</p></td>
-<td><p><strong>0.25</strong></p>
-<p>Estructura de listas rotas o mal cerradas. Imágenes no mostradas (por
-rutas erróneas o por no estar guardadas en la subcarpeta. Ausencia total
-de textos descriptivos.</p></td>
-<td><p><strong>0</strong></p>
-<p>No se incluyen listas ni imágenes en ninguna de las páginas del
-proyecto.</p></td>
-</tr>
-<tr class="odd">
-<td><p><strong>C3: Tablas de Datos</strong></p>
-<p><em>(Peso: 2.5 Puntos)</em></p></td>
-<td><p><strong>2.5</strong></p>
-<p>Tres tablas correctamente distribuidas según nivel de dificultad. Uso
-semántico de &lt;thead&gt;, &lt;tbody&gt; y &lt;tfoot&gt;. Aplicación
-perfecta de rowspan en el rack de servidores y colspan para
-avisos.</p></td>
-<td><p><strong>1.25</strong></p>
-<p>Se incluyen las tres tablas pero presentan errores menores en la
-definición semántica de su estructura. La tabla compleja tiene alguna
-celda desalineada debido a un uso impreciso de rowspan o
-colspan.</p></td>
-<td><p><strong>0.5</strong></p>
-<p>Tablas incompletas, rotas o mal estructuradas. No se aplican de forma
-correcta los atributos de combinación de celdas o faltan filas completas
-de datos.</p></td>
-<td><p><strong>0</strong></p>
-<p>No se incluye ninguna tabla de datos en las tres páginas de la
-entrega.</p></td>
-</tr>
-<tr class="header">
-<td><p><strong>C4: Diseño de Formularios</strong></p>
-<p><em>(Peso: 2.5 Puntos)</em></p></td>
-<td><p><strong>2.5</strong></p>
-<p>Formularios sencillo y complejo 100% operativos. Asociación unívoca
-perfecta de todas las &lt;label&gt; con el id de su input mediante for.
-Validación de entradas nativa y exhaustiva.</p></td>
-<td><p><strong>1.25</strong></p>
-<p>Ambos formularios son usables, pero carecen de algunas asociaciones
-semánticas entre etiquetas y campos. Faltan validaciones de tipo de
-datos requeridos.</p></td>
-<td><p><strong>0.5</strong></p>
-<p>Formularios mal estructurados, sin botones funcionales de envío o
-borrado, o con tipos de entrada (type) inapropiados.</p></td>
-<td><p><strong>0</strong></p>
-<p>Ausencia absoluta de formularios en las páginas servicios.html y
-contacto.html.</p></td>
-</tr>
-<tr class="odd">
-<td><p><strong>C5: Validación y Empaquetado del Proyecto</strong></p>
-<p><em>(Peso: 1.0 Punto)</em></p></td>
-<td><p><strong>1</strong></p>
-<p>Todos los documentos HTML5 pasan la validación. El proyecto se
-entrega en un único archivo comprimido .zip respetando minuciosamente la
-jerarquía de carpetas establecida.</p></td>
-<td><p><strong>0.5</strong></p>
-<p>Se detectan advertencias leves (warnings) en el validador oficial
-W3C. La jerarquía de carpetas presenta fallos menores de estructuración
-u organización de nombres de archivo.</p></td>
-<td><p><strong>0.1</strong></p>
-<p>Errores sintácticos de marcado críticos que impiden la correcta
-interpretación del navegador. Archivos sueltos o formato de compresión
-incorrecto (.rar, .7z).</p></td>
-<td><p><strong>0</strong></p>
-<p>No se entrega el archivo comprimido o no es legible (formato
-dañado/corrupto).</p></td>
-</tr>
-</tbody>
-</table></div>
-<h3 id="section"> <a class="headerlink" href="#section" title="Enlace permanente">¶</a></h3>
-
-        </main>
+  <header id="site-header">
+    <div class="header-container">
+      <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo"
+          style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>APLI
+          &ndash; UT1 Tarea Html</span></div>
+      <nav class="top-nav">
+        <a href="index.html" class="nav-btn">Inicio</a>
+      </nav>
     </div>
+  </header>
+  <div id="page-layout">
+
+    <main id="main-content">
+      <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="APL_UT1_Tarea_HTML_26_27.pdf"
+          download
+          style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥
+          Descargar PDF</a></div>
+
+
+      <h1 id="tarea-1.-html">Tarea 1. HTML <a class="headerlink" href="#tarea-1.-html" title="Enlace permanente">¶</a>
+      </h1>
+      <h3 id="ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
+        ACTIVIDAD <a class="headerlink" href="#ficha-técnica-de-la-actividad" title="Enlace permanente">¶</a></h3>
+      <div class="table-wrapper">
+        <table>
+          <tbody>
+            <tr class="header">
+              <td><strong>Unidad Didáctica</strong></td>
+              <td><strong>UT1</strong>: Introducción a las aplicaciones web</td>
+            </tr>
+            <tr class="odd">
+              <td><strong>Resultado de Aprendizaje (RA)</strong></td>
+              <td><strong>RA1:</strong> Instala gestores de contenidos, identificando
+                sus aplicaciones y configurándolos según requerimientos (enfocado en la
+                comprensión íntima de la estructura del código HTML del frontend).</td>
+            </tr>
+            <tr class="header">
+              <td><strong>Criterios de Evaluación (CE)</strong></td>
+              <td>
+                <p><strong>CE 1.d:</strong> Se ha personalizado la interfaz del
+                  gestor de contenidos.</p>
+                <p><strong>CE 1.g:</strong> Se han instalado y configurado los módulos
+                  necesarios (analizando la estructura del código fuente).</p>
+              </td>
+            </tr>
+            <tr class="odd">
+              <td><strong>Tiempo Estimado</strong></td>
+              <td>10 horas</td>
+            </tr>
+            <tr class="header">
+              <td colspan="2">
+                <h4 id="método-de-entrega-y-formato">Método de entrega y
+                  formato <a class="headerlink" href="#método-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
+                <p><strong>[ ] Documento:</strong> No se requiere memoria en formato PDF
+                  para esta entrega.</p>
+                <p><strong>[x] Archivos de Código:</strong> Se entregará
+                  obligatoriamente un único archivo comprimido en formato
+                  <strong>ZIP</strong> (Tarea_InicialesNombreApellidos.zip). Al
+                  descomprimirlo, debe presentar estrictamente la siguiente jerarquía de
+                  archivos y carpetas:<br />
+                  InicialesNombreApellidos/<br />
+                  ├── index.html<br />
+                  ├── servicios.html<br />
+                  ├── contacto.html<br />
+                  ├── imagenes/<br />
+                  │ ├── topologia.png<br />
+                  │ ├── estado_servicios.png<br />
+                  │ └── soporte_banner.png<br />
+                  └── css/<br />
+                  └── (Directorio vacío para la próxima unidad de CSS)
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Nota:</strong> <em>El código fuente debe estar validado. La
+          autoría se verificará mediante defensa práctica en el aula, donde se
+          solicitará al alumno realizar modificaciones en tiempo real.</em></p>
+      <h2 id="descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
+        OBJETIVOS 📖 <a class="headerlink" href="#descripción-general.-objetivos" title="Enlace permanente">¶</a></h2>
+      <p>Como administradores de sistemas microinformáticos, el dominio
+        absoluto del lenguaje de marcado <strong>HTML5</strong> es una habilidad
+        crítica. Nos permite personalizar paneles de control, depurar plantillas
+        en gestores de contenidos (WordPress, Moodle) y maquetar herramientas
+        internas de monitorización.</p>
+      <p>El <strong>objetivo principal</strong> de esta tarea práctica es
+        construir la arquitectura estática de un portal web interno para el
+        departamento de informática del centro. Esta interfaz de tres páginas
+        independientes pero vinculadas servirá como el <strong>"plano de
+          construcción" rígido y semántico</strong> que daremos formato mediante
+        CSS en la próxima tarea. Se incidirá de forma rigurosa en la separación
+        absoluta entre estructura (HTML) y presentación (CSS).</p>
+      <h2 id="consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink" href="#consideraciones-previas"
+          title="Enlace permanente">¶</a></h2>
+      <ul>
+        <li>
+          <blockquote>
+            <p><strong>Editor de Código:</strong> Se trabajará con <strong>Visual
+                Studio Code</strong>. Queda estrictamente prohibido el uso de editores
+              WYSIWYG.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Rutas Relativas:</strong> Todos los enlaces, imágenes y
+              recursos deben direccionarse mediante <strong>rutas relativas</strong>
+              (ej. imagenes/topologia.png). Si se detecta alguna ruta absoluta local
+              (ej. C:/Users/... o file:///...), la actividad se considerará
+              suspensa.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Validación:</strong> Cada documento HTML creado debe
+              validarse con Firefox sin presentar ningún error de marcado
+              estructural.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Originalidad</strong>: Se proporciona un documento para ver
+              el posible resultado, pero los títulos, textos deben ser originales e
+              imágenes se tienen que personalizar, NO pueden ser los mismos.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Previsualización</strong>: Se facilitarán documentos pdf para
+              previsualizar una posible solución.</p>
+          </blockquote>
+        </li>
+      </ul>
+      <h2 id="actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink" href="#actividades-a-realizar"
+          title="Enlace permanente">¶</a></h2>
+      <h4 id="actividad-1-arquitectura-semántica-html5-e-interconexión-estructural">Actividad
+        1: Arquitectura Semántica HTML5 e Interconexión Estructural <a class="headerlink"
+          href="#actividad-1-arquitectura-semántica-html5-e-interconexión-estructural" title="Enlace permanente">¶</a>
+      </h4>
+      <p>El alumno debe inicializar las tres páginas HTML que compondrán el
+        sitio web:</p>
+      <ol type="1">
+        <li>
+          <blockquote>
+            <p>index.html (Página de inicio y bienvenida).</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p>servicios.html (Documentación de despliegues y servicios).</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p>contacto.html (Formularios de reporte e incidencias).</p>
+          </blockquote>
+        </li>
+      </ol>
+      <p><strong>Requisitos específicos por página:</strong></p>
+      <ul>
+        <li>
+          <blockquote>
+            <p><strong>Estructura Base:</strong> Las tres páginas deben contar con
+              la declaración &lt;!DOCTYPE html&gt;, etiqueta &lt;html&gt; con atributo
+              de idioma en español (lang="es"), etiqueta &lt;head&gt; con codificación
+              de caracteres UTF-8 y metaetiqueta viewport para garantizar la
+              adaptabilidad en dispositivos móviles (ver apuntes).</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Secciones Semánticas HTML5:</strong> En todas las páginas se
+              estructurará el contenido utilizando obligatoriamente las etiquetas
+              estructurales de bloque de HTML5: &lt;header&gt;, &lt;nav&gt;,
+              &lt;main&gt;, &lt;section&gt;, &lt;article&gt;, &lt;aside&gt; y
+              &lt;footer&gt; (deben de abrirse y cerrarse)</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Formatos de Texto y Separación:</strong> Emplea de manera
+              lógica los encabezados desde &lt;h1&gt; hasta &lt;h3&gt;, párrafos
+              (&lt;p&gt;), líneas horizontales divisorias (&lt;hr&gt;) para separar
+              secciones lógicas y texto preformateado (&lt;pre&gt;).</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Interconexión (Menú de Navegación):</strong> El &lt;nav&gt;
+              situado en el &lt;header&gt; de cada una de las tres páginas debe
+              contener una lista no ordenada con enlaces relativos exactos para poder
+              navegar entre las tres páginas de forma fluida y cíclica.</p>
+          </blockquote>
+        </li>
+      </ul>
+      <p><img src="media_APL_UT1_Tarea_HTML_26_27/media/image4.png" style="width:2.10938in;height:0.62353in" /></p>
+      <h4 id="actividad-2-integración-de-listas-simples-anidadas-y-de-verificación">Actividad
+        2: Integración de Listas (Simples, Anidadas y de Verificación) <a class="headerlink"
+          href="#actividad-2-integración-de-listas-simples-anidadas-y-de-verificación" title="Enlace permanente">¶</a>
+      </h4>
+      <p>La documentación del departamento requiere el uso de listas
+        estructuradas para organizar recursos y flujos de trabajo. Implementa
+        los siguientes requerimientos:</p>
+      <ol type="1">
+        <li>
+          <blockquote>
+            <p><strong>Página index.html (Lista Desordenada Simple):</strong> Añade
+              una sección con una lista desordenada (&lt;ul&gt;) que enumere los
+              pilares de la seguridad del servidor del aula (Cifrado, Copias de
+              seguridad, Control de acceso perimetral).</p>
+          </blockquote>
+        </li>
+      </ol>
+      <p><img src="media_APL_UT1_Tarea_HTML_26_27/media/image3.png" style="width:6.25129in;height:0.98438in" /></p>
+      <ol start="2" type="1">
+        <li>
+          <blockquote>
+            <p><strong>Página servicios.html (Lista Anidada Compleja):</strong>
+              Documenta los pasos secuenciales para instalar el servidor Apache en
+              Linux. Utiliza una lista ordenada (&lt;ol&gt;) para los pasos
+              principales, y dentro de cada paso secuencial, anida una lista
+              desordenada (&lt;ul&gt;) indicando los comandos exactos o las rutas de
+              configuración correspondientes.</p>
+          </blockquote>
+        </li>
+      </ol>
+      <p><img src="media_APL_UT1_Tarea_HTML_26_27/media/image1.png" style="width:4.23438in;height:1.92571in" /></p>
+      <ol start="3" type="1">
+        <li>
+          <blockquote>
+            <p><strong>Página contacto.html (Lista de Ordenada Simple):</strong>
+              Muestra al usuario un listado ordenado con los pasos de control
+              obligatorios que debe verificar en su puesto informático antes de abrir
+              un ticket de soporte de red (ej. Estado del cable de red, Comprobación
+              de IP).</p>
+          </blockquote>
+        </li>
+      </ol>
+      <p><img src="media_APL_UT1_Tarea_HTML_26_27/media/image5.png" style="width:6.26772in;height:1.20833in" /></p>
+      <h4 id="actividad-3-inserción-de-imágenes">Actividad 3: Inserción de
+        Imágenes <a class="headerlink" href="#actividad-3-inserción-de-imágenes" title="Enlace permanente">¶</a></h4>
+      <p>Inserta una imagen técnica adaptada al contexto en cada una de las
+        páginas de la aplicación:</p>
+      <ol type="1">
+        <li>
+          <blockquote>
+            <p><strong>En index.html:</strong> Imagen de la topología de red local
+              (imagenes/topologia.png).</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>En servicios.html:</strong> Imagen descriptiva del estado de
+              los servicios desplegados (imagenes/estado_servicios.png).</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>En contacto.html:</strong> Banner gráfico del departamento de
+              soporte técnico (imagenes/soporte_banner.png).</p>
+          </blockquote>
+        </li>
+      </ol>
+      <p><strong>Requisitos comunes para las imágenes:</strong></p>
+      <ul>
+        <li>
+          <blockquote>
+            <p>Es estrictamente requerido configurar el atributo alt con un texto
+              descriptivo de accesibilidad detallado (no genérico).</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p>Se limitarán las dimensiones físicas de la imagen directamente en
+              HTML mediante los atributos width (máximo 500px) y height de forma
+              proporcional.</p>
+          </blockquote>
+        </li>
+      </ul>
+      <h4 id="actividad-4-creación-de-tablas-de-datos">Actividad 4: Creación
+        de Tablas de Datos <a class="headerlink" href="#actividad-4-creación-de-tablas-de-datos"
+          title="Enlace permanente">¶</a></h4>
+      <p>Debes implementar una tabla técnica en cada una de las páginas web
+        del proyecto, graduando el nivel de dificultad:</p>
+      <ol type="1">
+        <li>
+          <blockquote>
+            <p><strong>Página index.html (Tabla Sencilla):</strong> Crea una tabla
+              básica que liste los puertos comunes de red. Columnas:
+              <em>Servicio</em>, <em>Puerto</em> y <em>Protocolo</em> (mínimo 4 filas
+              de datos).
+            </p>
+          </blockquote>
+        </li>
+      </ol>
+      <p><img src="media_APL_UT1_Tarea_HTML_26_27/media/image10.png" style="width:2.9963in;height:1.09896in" /></p>
+      <ol start="2" type="1">
+        <li>
+          <blockquote>
+            <p><strong>Página servicios.html (Tabla Intermedia):</strong> Diseña una
+              tabla de direccionamiento IP de las subredes del centro. Columnas:
+              <em>Nombre de Subred</em>, <em>Dirección de Red</em>, <em>Puerta de
+                Enlace (Gateway)</em> y <em>DNS Principal</em>. Debe usar de manera
+              clara e inequívoca las etiquetas estructurales de tabla: &lt;thead&gt;,
+              &lt;tbody&gt; y &lt;tfoot&gt;
+            </p>
+          </blockquote>
+        </li>
+      </ol>
+      <p><img src="media_APL_UT1_Tarea_HTML_26_27/media/image8.png" style="width:5.30767in;height:1.34896in" /></p>
+      <ol start="3" type="1">
+        <li>
+          <blockquote>
+            <p><strong>Página contacto.html (Tabla Compleja):</strong> Diseña una
+              tabla avanzada que represente físicamente el armario de servidores
+              (Rack) del aula de informática.</p>
+          </blockquote>
+          <ul>
+            <li>
+              <blockquote>
+                <p><strong>Uso obligatorio de rowspan:</strong> Debes combinar
+                  verticalmente la primera columna de las filas correspondientes a los
+                  servidores de bases de datos para indicar que un servidor en cluster
+                  ocupa dos unidades de rack de altura físicas (ej. U1 y U2
+                  combinadas).</p>
+              </blockquote>
+            </li>
+            <li>
+              <blockquote>
+                <p><strong>Uso obligatorio de colspan:</strong> En la parte inferior de
+                  la tabla, combina horizontalmente todas las columnas para crear una
+                  celda unificada de advertencia técnica sobre la alimentación
+                  ininterrumpida (SAI).</p>
+              </blockquote>
+            </li>
+          </ul>
+        </li>
+      </ol>
+      <p><img src="media_APL_UT1_Tarea_HTML_26_27/media/image6.png" style="width:6.26772in;height:1.47222in" /></p>
+      <h4 id="actividad-5-sistemas-de-entrada-de-datos-formulario-sencillo-vs.-formulario-complejo">Actividad
+        5: Sistemas de Entrada de Datos (Formulario Sencillo vs. Formulario
+        Complejo) <a class="headerlink"
+          href="#actividad-5-sistemas-de-entrada-de-datos-formulario-sencillo-vs.-formulario-complejo"
+          title="Enlace permanente">¶</a></h4>
+      <p>Para habilitar la interacción del usuario en nuestro portal,
+        implementa dos formularios estructurados:</p>
+      <ol type="1">
+        <li>
+          <blockquote>
+            <p><strong>Página servicios.html (Formulario Sencillo):</strong><br />
+              Construye un buscador interno rápido de IPs o servicios web. Debe
+              constar únicamente de una etiqueta &lt;label&gt; asociada, un campo de
+              entrada de texto (type="text"), un input de búsqueda corporativa y un
+              botón de envío con el texto "Buscar Servicio".</p>
+          </blockquote>
+        </li>
+      </ol>
+      <p><img src="media_APL_UT1_Tarea_HTML_26_27/media/image7.png" style="width:3.47396in;height:0.70859in" /></p>
+      <ol start="2" type="1">
+        <li>
+          <blockquote>
+            <p><strong>Página contacto.html (Formulario Técnico
+                Complejo):</strong><br />
+              Crea un formulario avanzado de registro de incidencias técnicas que
+              contenga todas las opciones de interacción soportadas por HTML5:</p>
+          </blockquote>
+        </li>
+      </ol>
+      <p><img src="media_APL_UT1_Tarea_HTML_26_27/media/image9.png" style="width:4.82293in;height:4.78646in" /></p>
+      <ul>
+        <li>
+          <blockquote>
+            <p>Campos de texto obligatorios (required) para el nombre completo y la
+              descripción de la incidencia.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p>Entradas especializadas HTML5: email (type="email"), contraseña de
+              soporte (type="password"), teléfono corporativo (type="tel"), fecha del
+              suceso (type="date") y número de puesto afectado (type="number").</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p>Un campo de selección desplegable (&lt;select&gt;) para seleccionar
+              el sistema operativo afectado.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p>Botones de opción mutuamente excluyentes (type="radio") bajo el mismo
+              grupo name para determinar la prioridad del ticket.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p>Casillas de verificación múltiple (type="checkbox") para seleccionar
+              los componentes de hardware comprometidos.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p>Caja de texto multilínea (&lt;textarea&gt;) para comentarios
+              adicionales de depuración.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p>Botón de envío (type="submit") y botón de borrado de datos
+              (type="reset").</p>
+          </blockquote>
+        </li>
+      </ul>
+      <h2 id="calificación">4. CALIFICACIÓN <a class="headerlink" href="#calificación" title="Enlace permanente">¶</a>
+      </h2>
+      <blockquote>
+        <p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
+          través de la plataforma, la entrega del documento en formatos editables
+          no permitidos (como .docx), capturas con identificación del alumno/a o
+          la omisión de los enlaces de las fuentes documentales utilizadas
+          penalizará gravemente la nota o invalidará la práctica.</p>
+      </blockquote>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr class="header">
+              <th><strong>CE y Puntuación Máxima</strong></th>
+              <th>
+                <p><strong>Excelente</strong></p>
+                <p><strong>(100% - 90%)</strong></p>
+              </th>
+              <th>
+                <p><strong>Adecuado</strong></p>
+                <p><strong>(89% - 50%)</strong></p>
+              </th>
+              <th>
+                <p><strong>Insuficiente</strong></p>
+                <p><strong>(49% - 10%)</strong></p>
+              </th>
+              <th><strong>No Entregado / Incorrecto (0%)</strong></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="odd">
+              <td>
+                <p><strong>C1: Estructuración Semántica y Navegación</strong></p>
+                <p><em>(Peso: 2.0 Puntos)</em></p>
+              </td>
+              <td>
+                <p><strong>2</strong></p>
+                <p>Estructura HTML5 en las 3 páginas utilizando adecuadamente
+                  &lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;section&gt;, y
+                  &lt;footer&gt;. Sistema de navegación fluido y funcional mediante rutas
+                  relativas sin ningún enlace roto.</p>
+              </td>
+              <td>
+                <p><strong>1</strong></p>
+                <p>La estructura semántica está presente pero se omiten algunas
+                  etiquetas estructurales o se abusa del uso de &lt;div&gt;. La navegación
+                  funciona, pero contiene fallos menores de retorno o rutas
+                  incorrectas.</p>
+              </td>
+              <td>
+                <p><strong>0.25</strong></p>
+                <p>La maquetación carece de semántica lógica. No hay una separación
+                  estructural y existen múltiples enlaces de navegación rotos o se han
+                  usado rutas absolutas locales del disco.</p>
+              </td>
+              <td>
+                <p><strong>0</strong></p>
+                <p>No se realiza la actividad, los archivos están vacíos o no cumplen
+                  con los requisitos mínimos de estructuración del portal.</p>
+              </td>
+            </tr>
+            <tr class="header">
+              <td>
+                <p><strong>C2: Listas e Imágenes Técnicas</strong></p>
+                <p><em>(Peso: 2.0 Puntos)</em></p>
+              </td>
+              <td>
+                <p><strong>2</strong></p>
+                <p>Se implementan los tres tipos de listas (simple y anidada). Imágenes
+                  en cada página usando atributos de accesibilidad alt</p>
+              </td>
+              <td>
+                <p><strong>1</strong></p>
+                <p>Falta alguna lista o imagen, o el anidamiento de las listas contiene
+                  errores menores. Los atributos alt son demasiado escuetos o
+                  genéricos.</p>
+              </td>
+              <td>
+                <p><strong>0.25</strong></p>
+                <p>Estructura de listas rotas o mal cerradas. Imágenes no mostradas (por
+                  rutas erróneas o por no estar guardadas en la subcarpeta. Ausencia total
+                  de textos descriptivos.</p>
+              </td>
+              <td>
+                <p><strong>0</strong></p>
+                <p>No se incluyen listas ni imágenes en ninguna de las páginas del
+                  proyecto.</p>
+              </td>
+            </tr>
+            <tr class="odd">
+              <td>
+                <p><strong>C3: Tablas de Datos</strong></p>
+                <p><em>(Peso: 2.5 Puntos)</em></p>
+              </td>
+              <td>
+                <p><strong>2.5</strong></p>
+                <p>Tres tablas correctamente distribuidas según nivel de dificultad. Uso
+                  semántico de &lt;thead&gt;, &lt;tbody&gt; y &lt;tfoot&gt;. Aplicación
+                  perfecta de rowspan en el rack de servidores y colspan para
+                  avisos.</p>
+              </td>
+              <td>
+                <p><strong>1.25</strong></p>
+                <p>Se incluyen las tres tablas pero presentan errores menores en la
+                  definición semántica de su estructura. La tabla compleja tiene alguna
+                  celda desalineada debido a un uso impreciso de rowspan o
+                  colspan.</p>
+              </td>
+              <td>
+                <p><strong>0.5</strong></p>
+                <p>Tablas incompletas, rotas o mal estructuradas. No se aplican de forma
+                  correcta los atributos de combinación de celdas o faltan filas completas
+                  de datos.</p>
+              </td>
+              <td>
+                <p><strong>0</strong></p>
+                <p>No se incluye ninguna tabla de datos en las tres páginas de la
+                  entrega.</p>
+              </td>
+            </tr>
+            <tr class="header">
+              <td>
+                <p><strong>C4: Diseño de Formularios</strong></p>
+                <p><em>(Peso: 2.5 Puntos)</em></p>
+              </td>
+              <td>
+                <p><strong>2.5</strong></p>
+                <p>Formularios sencillo y complejo 100% operativos. Asociación unívoca
+                  perfecta de todas las &lt;label&gt; con el id de su input mediante for.
+                  Validación de entradas nativa y exhaustiva.</p>
+              </td>
+              <td>
+                <p><strong>1.25</strong></p>
+                <p>Ambos formularios son usables, pero carecen de algunas asociaciones
+                  semánticas entre etiquetas y campos. Faltan validaciones de tipo de
+                  datos requeridos.</p>
+              </td>
+              <td>
+                <p><strong>0.5</strong></p>
+                <p>Formularios mal estructurados, sin botones funcionales de envío o
+                  borrado, o con tipos de entrada (type) inapropiados.</p>
+              </td>
+              <td>
+                <p><strong>0</strong></p>
+                <p>Ausencia absoluta de formularios en las páginas servicios.html y
+                  contacto.html.</p>
+              </td>
+            </tr>
+            <tr class="odd">
+              <td>
+                <p><strong>C5: Validación y Empaquetado del Proyecto</strong></p>
+                <p><em>(Peso: 1.0 Punto)</em></p>
+              </td>
+              <td>
+                <p><strong>1</strong></p>
+                <p>Todos los documentos HTML5 pasan la validación. El proyecto se
+                  entrega en un único archivo comprimido .zip respetando minuciosamente la
+                  jerarquía de carpetas establecida.</p>
+              </td>
+              <td>
+                <p><strong>0.5</strong></p>
+                <p>Se detectan advertencias leves (warnings) en el validador oficial
+                  W3C. La jerarquía de carpetas presenta fallos menores de estructuración
+                  u organización de nombres de archivo.</p>
+              </td>
+              <td>
+                <p><strong>0.1</strong></p>
+                <p>Errores sintácticos de marcado críticos que impiden la correcta
+                  interpretación del navegador. Archivos sueltos o formato de compresión
+                  incorrecto (.rar, .7z).</p>
+              </td>
+              <td>
+                <p><strong>0</strong></p>
+                <p>No se entrega el archivo comprimido o no es legible (formato
+                  dañado/corrupto).</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 id="section"> <a class="headerlink" href="#section" title="Enlace permanente">¶</a></h3>
+
+    </main>
+  </div>
 </body>
+
 </html>

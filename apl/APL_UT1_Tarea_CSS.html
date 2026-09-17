@@ -1,177 +1,217 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APLI - UT1 Tarea Css</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-</head>
-<body>
-    <header id="site-header">
-  <div class="header-container">
-    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>APLI &ndash; UT1 Tarea Css</span></div>
-    <nav class="top-nav">
-      <a href="index.html" class="nav-btn">Inicio</a>
-    </nav>
-  </div>
-</header>
-    <div id="page-layout">
-        
-        <main id="main-content">
-            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="APL_UT1_Tarea_CSS_26_27.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
-            
 
-<h1 id="tarea-2.-css">Tarea 2. CSS <a class="headerlink" href="#tarea-2.-css" title="Enlace permanente">¶</a></h1>
-<h3 id="ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
-ACTIVIDAD <a class="headerlink" href="#ficha-técnica-de-la-actividad" title="Enlace permanente">¶</a></h3>
-<div class="table-wrapper"><table>
-<tbody>
-<tr class="header">
-<td><strong>Unidad Didáctica</strong></td>
-<td><strong>UT1</strong>: Introducción a las aplicaciones web</td>
-</tr>
-<tr class="odd">
-<td><strong>Resultado de Aprendizaje (RA)</strong></td>
-<td><strong>RA2:</strong> Instala sistemas de gestión de aprendizaje a
-distancia, describiendo la estructura del sitio y la jerarquía de
-directorios generada (aplicado a la personalización estética del
-frontend de la aplicación web).</td>
-</tr>
-<tr class="header">
-<td><strong>Criterios de Evaluación (CE)</strong></td>
-<td><p><strong>CE 2.c:</strong> Se han realizado modificaciones en la
-estética o aspecto del sitio.</p>
-<p><strong>CE 2.g:</strong> Se ha documentado la estructura del código
-asegurando su claridad y mantenibilidad.</p></td>
-</tr>
-<tr class="odd">
-<td><strong>Tiempo Estimado</strong></td>
-<td>7 horas</td>
-</tr>
-<tr class="header">
-<td colspan="2"><h4 id="método-de-entrega-y-formato">MÉTODO DE ENTREGA Y
-FORMATO <a class="headerlink" href="#método-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
-<p><strong>[ ] Documento:</strong> No se requiere memoria en formato PDF
-para esta entrega.</p>
-<p><strong>[x] Archivos de Código:</strong> Se entregará
-obligatoriamente un único archivo comprimido en formato
-<strong>ZIP</strong> (Tarea2_InicialesNombreApellidos.zip).</p>
-<p>Tarea2_InicialesNombreApellidos/<br />
-├── index.html (Página principal unificada)<br />
-├── servicios.html (Página servicios unificada)<br />
-├── contacto.html (Página contacto unificada)<br />
-├── imagenes/ (Recursos gráficos)<br />
-│ ├── topologia.png<br />
-│ ├── estado_servicios.png<br />
-│ └── soporte_banner.png<br />
-├── css/<br />
-│ └── estilos.css (Hoja de estilos definitiva - Consolidada Fase
-5)<br />
-└── laboratorio/<br />
-├── index.html<br />
-├── servicios.html<br />
-├── contacto.html<br />
-├── index.css<br />
-└── servicios.css</p>
-<p>└── contacto.css</p></td>
-</tr>
-</tbody>
-</table></div>
-<p><strong>Nota:</strong> <em>El código fuente debe estar validado. La
-autoría se verificará mediante defensa práctica en el aula, donde se
-solicitará al alumno realizar modificaciones en tiempo real.</em></p>
-<h2 id="descripción-general.-objetivos"><strong>1. DESCRIPCIÓN GENERAL.
-OBJETIVOS</strong> 📖 <a class="headerlink" href="#descripción-general.-objetivos" title="Enlace permanente">¶</a></h2>
-<p>Un esqueleto HTML plano no transmite el rigor ni la confianza
-necesarios en un entorno corporativo. El diseño visual, la correcta
-alineación de capas y la legibilidad de logs o tablas de subredes son
-habilidades fundamentales para cualquier técnico de sistemas.</p>
-<p>El <strong>objetivo de esta tarea</strong> es aprender a diseñar
-interfaces profesionales mediante un proceso andamiado y altamente
-guiado. El alumno experimentará primero con estilos de fuentes, colores
-y bordes en tres hojas independientes. Posteriormente, analizará los
-diferentes layouts y colocaciones de las etiquetas semánticas y la
-inserción de imágenes en columnas. Para concluir, conservará un backup
-de sus pruebas y consolidará el portal web en una única hoja de estilos
-coherente y validada, profundizando de manera práctica en la precedencia
-y la cascada de CSS3.</p>
-<h2 id="consideraciones-previas">2. CONSIDERACIONES PREVIAS 📖 <a class="headerlink" href="#consideraciones-previas" title="Enlace permanente">¶</a></h2>
-<ul>
-<li><blockquote>
-<p><strong>Rutas Relativas Obligatorias:</strong> Todo elemento enlazado
-(CSS, imágenes) debe llamarse con rutas relativas.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>No Modificar los ID en Formularios:</strong> Respeta los
-selectores e identificadores creados en la unidad de HTML para asegurar
-que las etiquetas &lt;label&gt; permanezcan unidas visualmente a sus
-respectivos &lt;input&gt;.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Validación:</strong> Cada documento HTML creado debe
-validarse con Firefox sin presentar ningún error de marcado
-estructural.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Originalidad</strong>: Se proporciona un documento para ver
-el posible resultado, pero los títulos, textos deben ser originales e
-imágenes se tienen que personalizar, NO pueden ser los mismos. Vuestro
-nombre debe de aparecer en el pie de página</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Previsualización</strong>: Se facilitarán documentos pdf para
-previsualizar una posible solución.</p>
-</blockquote></li>
-</ul>
-<h2 id="actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink" href="#actividades-a-realizar" title="Enlace permanente">¶</a></h2>
-<p>La tarea se divide en 5 fases progresivas. Cada fase debe realizarse
-en los archivos indicados antes de realizar la unificación final.</p>
-<h3 id="fase-1-selectores-y-tipografía">FASE 1: Selectores y Tipografía
- <a class="headerlink" href="#fase-1-selectores-y-tipografía" title="Enlace permanente">¶</a></h3>
-<ul>
-<li><blockquote>
-<p><strong>Archivo de trabajo (en la carpeta laboratorio):</strong></p>
-</blockquote></li>
-</ul>
-<blockquote>
-<p>index.css (Vinculado a index.html)</p>
-<p>servicios.css (Vinculado a servicios.html)</p>
-<p>laboratorio_practicas/contacto.css (Vinculado a contacto.html)</p>
-</blockquote>
-<ul>
-<li><blockquote>
-<p><strong>Ejercicio 1.1 (Tipografía):</strong> Aplica en cada archivo
-CSS una familia de fuentes diferente (font-family): Arial en index,
-Georgia en servicios, Courier New en contacto. Modificar el color de
-fondo y del texto para el body y las etiquetas estructurales de bloque
-de HTML5</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Ejercicio 1.2 (Selectores):</strong> Define tres clases
-diferentes (.resaltado, .aviso, .destacado) con colores distintos en los
-distintos CSS. Aplica .resaltado al título en index.html (color azul),
-.aviso en servicios.html (color naranja) y .destacado en contacto.html
-(color verde).</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Ejercicio 1.3 (Jerarquía):</strong> Cambia el font-weight de
-los h1, h2 y h3 usando selectores de etiqueta para que tengan grosores
-distintos (bold, normal, lighter). Modificar el color de los h1, h2 y
-h3. Modificar también el color del texto</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Ejercicio 1.4 (Estructura Semántica):</strong> Aplica colores
-de fondo (background-color) y colores de texto (color) distintos para
-las etiquetas HTML5 estructurales (&lt;header&gt;, &lt;nav&gt;,
-&lt;main&gt;, &lt;section&gt;, &lt;article&gt;, &lt;footer&gt;) en cada
-archivo CSS de esta fase. Asegúrate de que los colores sean legibles y
-coherentes. Usa el siguiente bloque de código como base, modificando los
-colores en index.css, servicios.css y contacto.css para que cada página
-tenga una identidad visual única.</p>
-</blockquote></li>
-</ul>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>header, footer {
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APLI - UT1 Tarea Css</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+</head>
+
+<body>
+  <header id="site-header">
+    <div class="header-container">
+      <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo"
+          style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>APLI
+          &ndash; UT1 Tarea Css</span></div>
+      <nav class="top-nav">
+        <a href="index.html" class="nav-btn">Inicio</a>
+      </nav>
+    </div>
+  </header>
+  <div id="page-layout">
+
+    <main id="main-content">
+      <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="APL_UT1_Tarea_CSS_26_27.pdf"
+          download
+          style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥
+          Descargar PDF</a></div>
+
+
+      <h1 id="tarea-2.-css">Tarea 2. CSS <a class="headerlink" href="#tarea-2.-css" title="Enlace permanente">¶</a></h1>
+      <h3 id="ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
+        ACTIVIDAD <a class="headerlink" href="#ficha-técnica-de-la-actividad" title="Enlace permanente">¶</a></h3>
+      <div class="table-wrapper">
+        <table>
+          <tbody>
+            <tr class="header">
+              <td><strong>Unidad Didáctica</strong></td>
+              <td><strong>UT1</strong>: Introducción a las aplicaciones web</td>
+            </tr>
+            <tr class="odd">
+              <td><strong>Resultado de Aprendizaje (RA)</strong></td>
+              <td><strong>RA2:</strong> Instala sistemas de gestión de aprendizaje a
+                distancia, describiendo la estructura del sitio y la jerarquía de
+                directorios generada (aplicado a la personalización estética del
+                frontend de la aplicación web).</td>
+            </tr>
+            <tr class="header">
+              <td><strong>Criterios de Evaluación (CE)</strong></td>
+              <td>
+                <p><strong>CE 2.c:</strong> Se han realizado modificaciones en la
+                  estética o aspecto del sitio.</p>
+                <p><strong>CE 2.g:</strong> Se ha documentado la estructura del código
+                  asegurando su claridad y mantenibilidad.</p>
+              </td>
+            </tr>
+            <tr class="odd">
+              <td><strong>Tiempo Estimado</strong></td>
+              <td>7 horas</td>
+            </tr>
+            <tr class="header">
+              <td colspan="2">
+                <h4 id="método-de-entrega-y-formato">MÉTODO DE ENTREGA Y
+                  FORMATO <a class="headerlink" href="#método-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
+                <p><strong>[ ] Documento:</strong> No se requiere memoria en formato PDF
+                  para esta entrega.</p>
+                <p><strong>[x] Archivos de Código:</strong> Se entregará
+                  obligatoriamente un único archivo comprimido en formato
+                  <strong>ZIP</strong> (Tarea2_InicialesNombreApellidos.zip).
+                </p>
+                <p>Tarea2_InicialesNombreApellidos/<br />
+                  ├── index.html (Página principal unificada)<br />
+                  ├── servicios.html (Página servicios unificada)<br />
+                  ├── contacto.html (Página contacto unificada)<br />
+                  ├── imagenes/ (Recursos gráficos)<br />
+                  │ ├── topologia.png<br />
+                  │ ├── estado_servicios.png<br />
+                  │ └── soporte_banner.png<br />
+                  ├── css/<br />
+                  │ └── estilos.css (Hoja de estilos definitiva - Consolidada Fase
+                  5)<br />
+                  └── laboratorio/<br />
+                  ├── index.html<br />
+                  ├── servicios.html<br />
+                  ├── contacto.html<br />
+                  ├── index.css<br />
+                  └── servicios.css</p>
+                <p>└── contacto.css</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Nota:</strong> <em>El código fuente debe estar validado. La
+          autoría se verificará mediante defensa práctica en el aula, donde se
+          solicitará al alumno realizar modificaciones en tiempo real.</em></p>
+      <h2 id="descripción-general.-objetivos"><strong>1. DESCRIPCIÓN GENERAL.
+          OBJETIVOS</strong> 📖 <a class="headerlink" href="#descripción-general.-objetivos"
+          title="Enlace permanente">¶</a></h2>
+      <p>Un esqueleto HTML plano no transmite el rigor ni la confianza
+        necesarios en un entorno corporativo. El diseño visual, la correcta
+        alineación de capas y la legibilidad de logs o tablas de subredes son
+        habilidades fundamentales para cualquier técnico de sistemas.</p>
+      <p>El <strong>objetivo de esta tarea</strong> es aprender a diseñar
+        interfaces profesionales mediante un proceso andamiado y altamente
+        guiado. El alumno experimentará primero con estilos de fuentes, colores
+        y bordes en tres hojas independientes. Posteriormente, analizará los
+        diferentes layouts y colocaciones de las etiquetas semánticas y la
+        inserción de imágenes en columnas. Para concluir, conservará un backup
+        de sus pruebas y consolidará el portal web en una única hoja de estilos
+        coherente y validada, profundizando de manera práctica en la precedencia
+        y la cascada de CSS3.</p>
+      <h2 id="consideraciones-previas">2. CONSIDERACIONES PREVIAS 📖 <a class="headerlink"
+          href="#consideraciones-previas" title="Enlace permanente">¶</a></h2>
+      <ul>
+        <li>
+          <blockquote>
+            <p><strong>Rutas Relativas Obligatorias:</strong> Todo elemento enlazado
+              (CSS, imágenes) debe llamarse con rutas relativas.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>No Modificar los ID en Formularios:</strong> Respeta los
+              selectores e identificadores creados en la unidad de HTML para asegurar
+              que las etiquetas &lt;label&gt; permanezcan unidas visualmente a sus
+              respectivos &lt;input&gt;.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Validación:</strong> Cada documento HTML creado debe
+              validarse con Firefox sin presentar ningún error de marcado
+              estructural.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Originalidad</strong>: Se proporciona un documento para ver
+              el posible resultado, pero los títulos, textos deben ser originales e
+              imágenes se tienen que personalizar, NO pueden ser los mismos. Vuestro
+              nombre debe de aparecer en el pie de página</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Previsualización</strong>: Se facilitarán documentos pdf para
+              previsualizar una posible solución.</p>
+          </blockquote>
+        </li>
+      </ul>
+      <h2 id="actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink" href="#actividades-a-realizar"
+          title="Enlace permanente">¶</a></h2>
+      <p>La tarea se divide en 5 fases progresivas. Cada fase debe realizarse
+        en los archivos indicados antes de realizar la unificación final.</p>
+      <h3 id="fase-1-selectores-y-tipografía">FASE 1: Selectores y Tipografía
+        <a class="headerlink" href="#fase-1-selectores-y-tipografía" title="Enlace permanente">¶</a>
+      </h3>
+      <ul>
+        <li>
+          <blockquote>
+            <p><strong>Archivo de trabajo (en la carpeta laboratorio):</strong></p>
+          </blockquote>
+        </li>
+      </ul>
+      <blockquote>
+        <p>index.css (Vinculado a index.html)</p>
+        <p>servicios.css (Vinculado a servicios.html)</p>
+        <p>laboratorio_practicas/contacto.css (Vinculado a contacto.html)</p>
+      </blockquote>
+      <ul>
+        <li>
+          <blockquote>
+            <p><strong>Ejercicio 1.1 (Tipografía):</strong> Aplica en cada archivo
+              CSS una familia de fuentes diferente (font-family): Arial en index,
+              Georgia en servicios, Courier New en contacto. Modificar el color de
+              fondo y del texto para el body y las etiquetas estructurales de bloque
+              de HTML5</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Ejercicio 1.2 (Selectores):</strong> Define tres clases
+              diferentes (.resaltado, .aviso, .destacado) con colores distintos en los
+              distintos CSS. Aplica .resaltado al título en index.html (color azul),
+              .aviso en servicios.html (color naranja) y .destacado en contacto.html
+              (color verde).</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Ejercicio 1.3 (Jerarquía):</strong> Cambia el font-weight de
+              los h1, h2 y h3 usando selectores de etiqueta para que tengan grosores
+              distintos (bold, normal, lighter). Modificar el color de los h1, h2 y
+              h3. Modificar también el color del texto</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Ejercicio 1.4 (Estructura Semántica):</strong> Aplica colores
+              de fondo (background-color) y colores de texto (color) distintos para
+              las etiquetas HTML5 estructurales (&lt;header&gt;, &lt;nav&gt;,
+              &lt;main&gt;, &lt;section&gt;, &lt;article&gt;, &lt;footer&gt;) en cada
+              archivo CSS de esta fase. Asegúrate de que los colores sean legibles y
+              coherentes. Usa el siguiente bloque de código como base, modificando los
+              colores en index.css, servicios.css y contacto.css para que cada página
+              tenga una identidad visual única.</p>
+          </blockquote>
+        </li>
+      </ul>
+      <p>
+      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+        <pre><code>header, footer {
 background-color: #2c3e50; /* Cambia este valor */
 color: white;
 padding: 15px;
@@ -180,27 +220,38 @@ main, section {
 background-color: #ecf0f1; /* Cambia este valor */
 color: #34495e;
 padding: 20px;
-}</code></pre></div></h3>
-<h3 id="fase-2-el-modelo-de-caja">FASE 2: El Modelo de Caja  <a class="headerlink" href="#fase-2-el-modelo-de-caja" title="Enlace permanente">¶</a></h3>
-<ul>
-<li><blockquote>
-<p><strong>Archivo de trabajo:</strong> Igual que antes</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Ejercicio 2.1 (Espaciado):</strong> Aplica margin de 10px en
-index.html, 20px en servicios.html y 30px en contacto.html a todos los
-contenedores &lt;section&gt;. Compara visualmente cómo afecta al
-diseño.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Ejercicio 2.2 (Pie de página destacado):</strong> Crea la
-clase .tarjeta-servicios y aplícala exclusivamente a la etiqueta
-&lt;footer&gt; de tus tres archivos HTML (index.html, servicios.html y
-contacto.html). Aplica padding progresivo para ver el cambio de volumen
-en el pie de página: 10px, 25px, 40px</p>
-</blockquote></li>
-</ul>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>.tarjeta-servicios {
+}</code></pre>
+      </div>
+      </h3>
+      <h3 id="fase-2-el-modelo-de-caja">FASE 2: El Modelo de Caja <a class="headerlink" href="#fase-2-el-modelo-de-caja"
+          title="Enlace permanente">¶</a></h3>
+      <ul>
+        <li>
+          <blockquote>
+            <p><strong>Archivo de trabajo:</strong> Igual que antes</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Ejercicio 2.1 (Espaciado):</strong> Aplica margin de 10px en
+              index.html, 20px en servicios.html y 30px en contacto.html a todos los
+              contenedores &lt;section&gt;. Compara visualmente cómo afecta al
+              diseño.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Ejercicio 2.2 (Pie de página destacado):</strong> Crea la
+              clase .tarjeta-servicios y aplícala exclusivamente a la etiqueta
+              &lt;footer&gt; de tus tres archivos HTML (index.html, servicios.html y
+              contacto.html). Aplica padding progresivo para ver el cambio de volumen
+              en el pie de página: 10px, 25px, 40px</p>
+          </blockquote>
+        </li>
+      </ul>
+      <p>
+      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+        <pre><code>.tarjeta-servicios {
 background-color: #ffffff;
 border: 1px solid #ccc;
 padding: 20px; /* Prueba 10px, 20px y 40px en los distintos HTML
@@ -208,22 +259,33 @@ padding: 20px; /* Prueba 10px, 20px y 40px en los distintos HTML
 margin: 15px;
 border-radius: 8px;
 box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
-}</code></pre></div>Ejercicio
-2.3 (Personalización de Tablas): Define colores de fondo específicos
-para los encabezados de tabla (&lt;th&gt;) y las celdas (&lt;td&gt;) en
-tus archivos CSS de esta fase.</h3>
-<ul>
-<li><h3 id="index.css-usa-tonos-azules-para-los-encabezados.">index.css:
-Usa tonos azules para los encabezados. <a class="headerlink" href="#index.css-usa-tonos-azules-para-los-encabezados." title="Enlace permanente">¶</a></h3></li>
-<li><h3
-id="servicios.css-usa-tonos-verdes-para-los-encabezados.">servicios.css:
-Usa tonos verdes para los encabezados. <a class="headerlink" href="#servicios.css-usa-tonos-verdes-para-los-encabezados." title="Enlace permanente">¶</a></h3></li>
-<li><h3
-id="contacto.css-usa-tonos-grises-para-los-encabezados.">contacto.css:
-Usa tonos grises para los encabezados. <a class="headerlink" href="#contacto.css-usa-tonos-grises-para-los-encabezados." title="Enlace permanente">¶</a></h3></li>
-</ul></li>
-</ul>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>/* Ejemplo de código para aplicar en cada archivo */
+}</code></pre>
+      </div>Ejercicio
+      2.3 (Personalización de Tablas): Define colores de fondo específicos
+      para los encabezados de tabla (&lt;th&gt;) y las celdas (&lt;td&gt;) en
+      tus archivos CSS de esta fase.</h3>
+      <ul>
+        <li>
+          <h3 id="index.css-usa-tonos-azules-para-los-encabezados.">index.css:
+            Usa tonos azules para los encabezados. <a class="headerlink"
+              href="#index.css-usa-tonos-azules-para-los-encabezados." title="Enlace permanente">¶</a></h3>
+        </li>
+        <li>
+          <h3 id="servicios.css-usa-tonos-verdes-para-los-encabezados.">servicios.css:
+            Usa tonos verdes para los encabezados. <a class="headerlink"
+              href="#servicios.css-usa-tonos-verdes-para-los-encabezados." title="Enlace permanente">¶</a></h3>
+        </li>
+        <li>
+          <h3 id="contacto.css-usa-tonos-grises-para-los-encabezados.">contacto.css:
+            Usa tonos grises para los encabezados. <a class="headerlink"
+              href="#contacto.css-usa-tonos-grises-para-los-encabezados." title="Enlace permanente">¶</a></h3>
+        </li>
+      </ul>
+      </li>
+      </ul>
+      <p>
+      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+        <pre><code>/* Ejemplo de código para aplicar en cada archivo */
 th {
 background-color: #004a99; /* Cambia este valor según el archivo
 */
@@ -231,50 +293,70 @@ color: white;
 }
 td {
 background-color: #f9f9f9;
-}</code></pre></div></h3>
-<h3 id="fase-3-introducción-a-flexbox-3-horas">FASE 3: Introducción a
-Flexbox (3 horas) <a class="headerlink" href="#fase-3-introducción-a-flexbox-3-horas" title="Enlace permanente">¶</a></h3>
-<ul>
-<li><blockquote>
-<p><strong>Archivo de trabajo:</strong> Igual que antes</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Ejercicio 3.1 (Centrado):</strong> Crea la clase
-.contenedor-flex. en los tres archivos CSS. Aplica centrado total a las
-imágenes en index.html y títulos principales.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Ejercicio 3.2 (Layout):</strong> Crea una estructura con un
-div con 3 div hijos en horizontal usando display: flex. Haz que en
-index.html ocupen el mismo ancho (flex: 1). En cada archivo CSS, prueba
-una alineación distinta: center; space-between; space-around;</p>
-</blockquote></li>
-</ul>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>.contenedor-flex {
+}</code></pre>
+      </div>
+      </h3>
+      <h3 id="fase-3-introducción-a-flexbox-3-horas">FASE 3: Introducción a
+        Flexbox (3 horas) <a class="headerlink" href="#fase-3-introducción-a-flexbox-3-horas"
+          title="Enlace permanente">¶</a></h3>
+      <ul>
+        <li>
+          <blockquote>
+            <p><strong>Archivo de trabajo:</strong> Igual que antes</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Ejercicio 3.1 (Centrado):</strong> Crea la clase
+              .contenedor-flex. en los tres archivos CSS. Aplica centrado total a las
+              imágenes en index.html y títulos principales.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Ejercicio 3.2 (Layout):</strong> Crea una estructura con un
+              div con 3 div hijos en horizontal usando display: flex. Haz que en
+              index.html ocupen el mismo ancho (flex: 1). En cada archivo CSS, prueba
+              una alineación distinta: center; space-between; space-around;</p>
+          </blockquote>
+        </li>
+      </ul>
+      <p>
+      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+        <pre><code>.contenedor-flex {
 display: flex;
 justify-content: center; /* cambiar en cada archivo */
 align-items: center;
 height: 300px;
 border: 1px dashed blue;
-}</code></pre></div>FASE 4: Menús y Estados (1.5
-horas)</h3>
-<ul>
-<li><blockquote>
-<p><strong>Archivo de trabajo:</strong> Igual que antes</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Ejercicio 4.1 (Menú): </strong>Crea un menú de navegación
-horizontal eliminando las viñetas (list-style: none) y usando display:
-flex. Define un espaciado entre los elementos y configura un fondo
-oscuro en index.html, fondo claro en servicios.html y fondo transparente
-en contacto.html.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Ejercicio 4.2 (:hover):</strong> Implementa el cambio de
-color al pasar el ratón.</p>
-</blockquote></li>
-</ul>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>nav a {
+}</code></pre>
+      </div>FASE 4: Menús y Estados (1.5
+      horas)</h3>
+      <ul>
+        <li>
+          <blockquote>
+            <p><strong>Archivo de trabajo:</strong> Igual que antes</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Ejercicio 4.1 (Menú): </strong>Crea un menú de navegación
+              horizontal eliminando las viñetas (list-style: none) y usando display:
+              flex. Define un espaciado entre los elementos y configura un fondo
+              oscuro en index.html, fondo claro en servicios.html y fondo transparente
+              en contacto.html.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Ejercicio 4.2 (:hover):</strong> Implementa el cambio de
+              color al pasar el ratón.</p>
+          </blockquote>
+        </li>
+      </ul>
+      <p>
+      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+        <pre><code>nav a {
 text-decoration: none;
 color: #333;
 padding: 10px;
@@ -284,29 +366,40 @@ nav a:hover {
 background-color: #007bff;
 color: white;
 border-radius: 5px;
-}</code></pre></div></h3>
-<h3 id="fase-5-consolidación-y-cascada">FASE 5: Consolidación y Cascada
- <a class="headerlink" href="#fase-5-consolidación-y-cascada" title="Enlace permanente">¶</a></h3>
-<ol type="1">
-<li><blockquote>
-<p><strong>Archivo de trabajo:</strong> css/estilos.css (Unificación
-final).</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Tarea:</strong> Traslada los códigos validados de las fases
-anteriores a estilos.css. Un ejemplo de cada estilo. Vincula los
-archivos HTML a dicho estilo.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Estética Profesional:</strong> Asegura un diseño corporativo
-aplicando: un background-color suave al body; tipografía y márgenes
-cuidados para h1/h2 (con borde inferior opcional); efecto "cebra" en
-tablas mediante tr:nth-child(even) y border-collapse; y estilización
-personalizada de etiquetas &lt;hr&gt; con color y grosor
-específicos.</p>
-</blockquote></li>
-</ol>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>/* Títulos con borde inferior y márgenes */
+}</code></pre>
+      </div>
+      </h3>
+      <h3 id="fase-5-consolidación-y-cascada">FASE 5: Consolidación y Cascada
+        <a class="headerlink" href="#fase-5-consolidación-y-cascada" title="Enlace permanente">¶</a>
+      </h3>
+      <ol type="1">
+        <li>
+          <blockquote>
+            <p><strong>Archivo de trabajo:</strong> css/estilos.css (Unificación
+              final).</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Tarea:</strong> Traslada los códigos validados de las fases
+              anteriores a estilos.css. Un ejemplo de cada estilo. Vincula los
+              archivos HTML a dicho estilo.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Estética Profesional:</strong> Asegura un diseño corporativo
+              aplicando: un background-color suave al body; tipografía y márgenes
+              cuidados para h1/h2 (con borde inferior opcional); efecto "cebra" en
+              tablas mediante tr:nth-child(even) y border-collapse; y estilización
+              personalizada de etiquetas &lt;hr&gt; con color y grosor
+              específicos.</p>
+          </blockquote>
+        </li>
+      </ol>
+      <p>
+      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+        <pre><code>/* Títulos con borde inferior y márgenes */
 h1, h2 {
 color: #2c3e50; /* se debe de cambiar
 border-bottom: 2px solid #007bff; /* Borde inferior azul */
@@ -337,97 +430,114 @@ border: 0;
 height: 3px;
 background-color: #007bff; /* Color corporativo */
 margin: 30px 0;
-}</code></pre></div><strong>Reto de Precedencia:</strong> Aplica en contacto.html la
-inyección de estilo interno (etiqueta &lt;style&gt;) y estilo inline
-para sobrescribir los estilos definidos en el archivo estilos.css,
-demostrando la jerarquía de cascada. Documenta con un comentario HTML
-por qué el estilo inline tiene prioridad.</p>
-</blockquote></li>
-</ol>
-<h2 id="calificación">4. CALIFICACIÓN <a class="headerlink" href="#calificación" title="Enlace permanente">¶</a></h2>
-<blockquote>
-<p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
-través de la plataforma, la entrega del documento en formatos editables
-no permitidos (como .docx), capturas con identificación del alumno/a o
-la omisión de los enlaces de las fuentes documentales utilizadas
-penalizará gravemente la nota o invalidará la práctica.</p>
-</blockquote>
-<h3 id="criterios-de-calificación">CRITERIOS DE CALIFICACIÓN <a class="headerlink" href="#criterios-de-calificación" title="Enlace permanente">¶</a></h3>
-<div class="table-wrapper"><table>
-<thead>
-<tr class="header">
-<th><strong>CE y Puntuación Máxima</strong></th>
-<th><strong>Excelente (100% - 90%)</strong></th>
-<th><strong>Adecuado (89% - 50%)</strong></th>
-<th><strong>Insuficiente (49% - 10%)</strong></th>
-<th><strong>No Entregado / Incorrecto (0%)</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><p><strong>C1: Fases Iniciales (CSS independiente)</strong></p>
-<p><em>(Peso: 2.0 Puntos)</em></p></td>
-<td><strong>2.0</strong> Crea correctamente 3 hojas independientes por
-fase (Fase 1-4) aplicando tipografía, selectores y colores en etiquetas
-semánticas (HTML5) diferenciados.</td>
-<td><strong>1.0</strong> Se crean los archivos pero los estilos se
-repiten sin variación explícita entre las páginas.</td>
-<td><strong>0.5</strong> Faltan archivos o no se observa la diferencia
-entre páginas.</td>
-<td><strong>0</strong> No se realiza la actividad.</td>
-</tr>
-<tr class="header">
-<td><p><strong>C2: Modelo de Caja, Tablas y Footer</strong></p>
-<p><em>(Peso: 2.5 Puntos)</em></p></td>
-<td><strong>2.5</strong> Domina padding/margin/box-shadow. Personaliza
-tablas (colores por archivo) y aplica la clase .tarjeta-servicios al
-footer con estilo progresivo.</td>
-<td><strong>1.25</strong> Implementa conceptos pero con errores en el
-modelo de caja o sin variaciones claras en las tablas.</td>
-<td><strong>0.5</strong> No implementa correctamente el modelo de caja o
-la personalización de tablas/footer.</td>
-<td><strong>0</strong> No define estilos de caja, tablas ni footer.</td>
-</tr>
-<tr class="odd">
-<td><p><strong>C3: Layout, Flexbox y Navegación</strong></p>
-<p><em>(Peso: 2.5 Puntos)</em></p></td>
-<td><strong>2.5</strong> Uso avanzado de Flexbox
-(centrado/distribución). Menú horizontal funcional sin viñetas, con
-estados :hover y transiciones suaves.</td>
-<td><strong>1.25</strong> Layout funcional pero desalineado o menús
-estáticos sin efectos de interacción definidos.</td>
-<td><strong>0.5</strong> El menú o los layouts no presentan estilos
-básicos o están desmaquetados.</td>
-<td><strong>0</strong> No hay layout con Flexbox ni menú navegable.</td>
-</tr>
-<tr class="header">
-<td><p><strong>C4: Consolidación y Estética Profesional</strong></p>
-<p><em>(Peso: 2.0 Puntos)</em></p></td>
-<td><strong>2.0</strong> Unificación impecable en estilos.css. Acabado
-corporativo: tipografía cuidada, bordes, efecto cebra en tablas y líneas
-&lt;hr&gt; personalizadas.</td>
-<td><strong>1.0</strong> Unificación funcional pero con código
-redundante o diseño visual poco cuidado/inconsistente.</td>
-<td><strong>0.5</strong> El portal unificado presenta errores de
-renderizado o faltan los elementos estéticos obligatorios.</td>
-<td><strong>0</strong> No realiza la consolidación final.</td>
-</tr>
-<tr class="odd">
-<td><p><strong>C5: Cascada y Reto de Precedencia</strong></p>
-<p><em>(Peso: 1.0 Punto)</em></p></td>
-<td><strong>1.0</strong> Demuestra y documenta con precisión la
-precedencia (inline &gt; interno &gt; externo) en contacto.html mediante
-comentarios técnicos.</td>
-<td><strong>0.5</strong> Aplica los estilos pero la documentación en el
-código es pobre o inexistente.</td>
-<td><strong>0.2</strong> No realiza el ejercicio de precedencia o faltan
-los estilos solicitados.</td>
-<td><strong>0</strong> No realiza el laboratorio técnico.</td>
-</tr>
-</tbody>
-</table></div>
+}</code></pre>
+      </div><strong>Reto de Precedencia:</strong> Aplica en contacto.html la
+      inyección de estilo interno (etiqueta &lt;style&gt;) y estilo inline
+      para sobrescribir los estilos definidos en el archivo estilos.css,
+      demostrando la jerarquía de cascada. Documenta con un comentario HTML
+      por qué el estilo inline tiene prioridad.</p>
+      </blockquote>
+      </li>
+      </ol>
+      <h2 id="calificación">4. CALIFICACIÓN <a class="headerlink" href="#calificación" title="Enlace permanente">¶</a>
+      </h2>
+      <blockquote>
+        <p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
+          través de la plataforma, la entrega del documento en formatos editables
+          no permitidos (como .docx), capturas con identificación del alumno/a o
+          la omisión de los enlaces de las fuentes documentales utilizadas
+          penalizará gravemente la nota o invalidará la práctica.</p>
+      </blockquote>
+      <h3 id="criterios-de-calificación">CRITERIOS DE CALIFICACIÓN <a class="headerlink"
+          href="#criterios-de-calificación" title="Enlace permanente">¶</a></h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr class="header">
+              <th><strong>CE y Puntuación Máxima</strong></th>
+              <th><strong>Excelente (100% - 90%)</strong></th>
+              <th><strong>Adecuado (89% - 50%)</strong></th>
+              <th><strong>Insuficiente (49% - 10%)</strong></th>
+              <th><strong>No Entregado / Incorrecto (0%)</strong></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="odd">
+              <td>
+                <p><strong>C1: Fases Iniciales (CSS independiente)</strong></p>
+                <p><em>(Peso: 2.0 Puntos)</em></p>
+              </td>
+              <td><strong>2.0</strong> Crea correctamente 3 hojas independientes por
+                fase (Fase 1-4) aplicando tipografía, selectores y colores en etiquetas
+                semánticas (HTML5) diferenciados.</td>
+              <td><strong>1.0</strong> Se crean los archivos pero los estilos se
+                repiten sin variación explícita entre las páginas.</td>
+              <td><strong>0.5</strong> Faltan archivos o no se observa la diferencia
+                entre páginas.</td>
+              <td><strong>0</strong> No se realiza la actividad.</td>
+            </tr>
+            <tr class="header">
+              <td>
+                <p><strong>C2: Modelo de Caja, Tablas y Footer</strong></p>
+                <p><em>(Peso: 2.5 Puntos)</em></p>
+              </td>
+              <td><strong>2.5</strong> Domina padding/margin/box-shadow. Personaliza
+                tablas (colores por archivo) y aplica la clase .tarjeta-servicios al
+                footer con estilo progresivo.</td>
+              <td><strong>1.25</strong> Implementa conceptos pero con errores en el
+                modelo de caja o sin variaciones claras en las tablas.</td>
+              <td><strong>0.5</strong> No implementa correctamente el modelo de caja o
+                la personalización de tablas/footer.</td>
+              <td><strong>0</strong> No define estilos de caja, tablas ni footer.</td>
+            </tr>
+            <tr class="odd">
+              <td>
+                <p><strong>C3: Layout, Flexbox y Navegación</strong></p>
+                <p><em>(Peso: 2.5 Puntos)</em></p>
+              </td>
+              <td><strong>2.5</strong> Uso avanzado de Flexbox
+                (centrado/distribución). Menú horizontal funcional sin viñetas, con
+                estados :hover y transiciones suaves.</td>
+              <td><strong>1.25</strong> Layout funcional pero desalineado o menús
+                estáticos sin efectos de interacción definidos.</td>
+              <td><strong>0.5</strong> El menú o los layouts no presentan estilos
+                básicos o están desmaquetados.</td>
+              <td><strong>0</strong> No hay layout con Flexbox ni menú navegable.</td>
+            </tr>
+            <tr class="header">
+              <td>
+                <p><strong>C4: Consolidación y Estética Profesional</strong></p>
+                <p><em>(Peso: 2.0 Puntos)</em></p>
+              </td>
+              <td><strong>2.0</strong> Unificación impecable en estilos.css. Acabado
+                corporativo: tipografía cuidada, bordes, efecto cebra en tablas y líneas
+                &lt;hr&gt; personalizadas.</td>
+              <td><strong>1.0</strong> Unificación funcional pero con código
+                redundante o diseño visual poco cuidado/inconsistente.</td>
+              <td><strong>0.5</strong> El portal unificado presenta errores de
+                renderizado o faltan los elementos estéticos obligatorios.</td>
+              <td><strong>0</strong> No realiza la consolidación final.</td>
+            </tr>
+            <tr class="odd">
+              <td>
+                <p><strong>C5: Cascada y Reto de Precedencia</strong></p>
+                <p><em>(Peso: 1.0 Punto)</em></p>
+              </td>
+              <td><strong>1.0</strong> Demuestra y documenta con precisión la
+                precedencia (inline &gt; interno &gt; externo) en contacto.html mediante
+                comentarios técnicos.</td>
+              <td><strong>0.5</strong> Aplica los estilos pero la documentación en el
+                código es pobre o inexistente.</td>
+              <td><strong>0.2</strong> No realiza el ejercicio de precedencia o faltan
+                los estilos solicitados.</td>
+              <td><strong>0</strong> No realiza el laboratorio técnico.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-        </main>
-    </div>
+    </main>
+  </div>
 </body>
+
 </html>
