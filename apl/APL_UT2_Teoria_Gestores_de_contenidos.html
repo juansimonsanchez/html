@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APLI - UT2 Teoría Gestores De Contenidos</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+</head>
+
+<body>
+  <header id="site-header">
+    <div class="header-container">
+      <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo"
+          style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>APLI
+          &ndash; UT2 Teoría Gestores De Contenidos</span></div>
+      <nav class="top-nav">
+        <a href="index.html" class="nav-btn">Inicio</a>
+
+      </nav>
+    </div>
+  </header>
+  <div id="page-layout">
+    <main id="main-content">
+      <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a
+          href="UT2_Teoría_Gestores_de_contenidos.pdf" download
+          style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥
+          Descargar PDF</a></div>
+
+
+      <h1 id="ut2.-gestores-de-contenidos-cms">UT2. GESTORES DE CONTENIDOS
+        (CMS) <a class="headerlink" href="#ut2.-gestores-de-contenidos-cms" title="Enlace permanente">¶</a></h1>
+      <h3 id="ficha-técnica-de-la-unidad">FICHA TÉCNICA DE LA UNIDAD <a class="headerlink"
+          href="#ficha-técnica-de-la-unidad" title="Enlace permanente">¶</a></h3>
+      <div class="table-wrapper">
+        <table>
+          <tbody>
+            <tr class="header">
+              <td><strong>Resultados de Aprendizaje (RA)</strong></td>
+              <td><strong>RA1:</strong> Instala gestores de contenidos, identificando
+                sus aplicaciones y configurándolos según requerimientos.</td>
+            </tr>
+            <tr class="odd">
+              <td><strong>Criterios de Evaluación (CE)</strong></td>
+              <td><strong>RA1:</strong> c, e, f, h, i, j</td>
+            </tr>
+            <tr class="header">
+              <td><strong>Tiempo</strong></td>
+              <td>Total: 20 horas (Teoría: 3 h / Práctica: 17 h)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 id="section"> <a class="headerlink" href="#section" title="Enlace permanente">¶</a></h3>
+      <h3 id="índice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#índice-de-contenidos"
+          title="Enlace permanente">¶</a></h3>
+      <p><a href="#"><u>1. INTRODUCCIÓN Y CONTEXTUALIZACIÓN</u></a></p>
+      <blockquote>
+        <p><a href="#objetivos-de-la-unidad"><u>1.1. Objetivos de la
+              unidad</u></a></p>
+        <p><a href="#relación-curricular"><u>1.2. Relación
+              Curricular</u></a></p>
+      </blockquote>
+      <p><a href="#concepto-y-funciones-de-un-cms"><u>2. CONCEPTO Y FUNCIONES
+            DE UN CMS</u></a></p>
+      <blockquote>
+        <p><a href="#evolución-de-la-web-de-páginas-estáticas-a-dinámicas"><u>2.1.
+              Evolución de la Web: De páginas estáticas a dinámicas</u></a></p>
+        <p><a href="#funciones-básicas-de-un-gestor-de-contenidos"><u>2.2.
+              Funciones básicas de un gestor de contenidos</u></a></p>
+      </blockquote>
+      <p><a href="#clasificación-de-los-cms"><u>3. CLASIFICACIÓN DE LOS
+            CMS</u></a></p>
+      <blockquote>
+        <p><a href="#según-su-uso-o-funcionalidad-principal"><u>3.1. Según su
+              uso o funcionalidad principal</u></a></p>
+        <p><a href="#según-su-tipo-de-licencia"><u>3.2. Según su tipo de
+              licencia</u></a></p>
+      </blockquote>
+      <p><a href="#arquitectura-y-tecnologías"><u>4. ARQUITECTURA Y
+            TECNOLOGÍAS</u></a></p>
+      <blockquote>
+        <p><a href="#el-stack-tecnológico-web-de-referencia"><u>4.1. El stack
+              tecnológico web de referencia</u></a></p>
+        <p><a href="#estructura-interna-separación-de-frontend-y-backend"><u>4.2.
+              Estructura interna: Separación de frontend y backend</u></a></p>
+      </blockquote>
+      <p><a href="#criterios-para-la-selección-de-un-cms"><u>5. CRITERIOS PARA
+            LA SELECCIÓN DE UN CMS</u></a></p>
+      <p><a href="#introducción-a-wordpress"><u>6. INTRODUCCIÓN A
+            WORDPRESS</u></a></p>
+      <blockquote>
+        <p><a href="#características-principales"><u>6.1. Características
+              principales</u></a></p>
+        <p><a href="#componentes-básicos-del-ecosistema-wordpress"><u>6.2.
+              Componentes básicos del ecosistema WordPress</u></a></p>
+      </blockquote>
+      <h1 id="introducción-y-contextualización">1. INTRODUCCIÓN Y
+        CONTEXTUALIZACIÓN <a class="headerlink" href="#introducción-y-contextualización" title="Enlace permanente">¶</a>
+      </h1>
+      <h2 id="objetivos-de-la-unidad">1.1. Objetivos de la unidad <a class="headerlink" href="#objetivos-de-la-unidad"
+          title="Enlace permanente">¶</a></h2>
+      <p>El objetivo fundamental de esta unidad es capacitar al alumnado para
+        implantar, personalizar y administrar sistemas gestores de contenidos
+        (CMS) de forma autónoma y segura. En el tejido empresarial actual, la
+        presencia en la web ya no se gestiona mediante código crudo modificado a
+        mano en cada actualización, sino a través de plataformas que automatizan
+        el ciclo de vida de la información digital. Un técnico de soporte
+        informático debe dominar la infraestructura subyacente que sostiene
+        estas aplicaciones para responder ante problemas de instalación,
+        configuración de extensiones, asignación de permisos y directivas de
+        seguridad.</p>
+      <h2 id="relación-curricular">1.2. Relación Curricular <a class="headerlink" href="#relación-curricular"
+          title="Enlace permanente">¶</a></h2>
+      <p>Esta unidad didáctica se conecta de forma directa con los siguientes
+        módulos del ciclo formativo:</p>
+      <ul>
+        <li>
+          <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <pre><code>Implantación de Sistemas Operativos (1º SMR): Aporta
+la base indispensable para la gestión de permisos en sistemas de
+archivos (como el uso correcto de chmod y chown en Linux) y la
+administración de servicios del sistema.</code></pre>
+          </div>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Servicios en Red (2º SMR):</strong> Concurre de manera
+              simultánea en la configuración de la resolución de nombres de dominio
+              (DNS) y los protocolos de transferencia de archivos (FTP/SFTP)
+              necesarios para la puesta en producción y publicación del gestor.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Seguridad Informática (2º SMR):</strong> Proporciona los
+              conceptos de confidencialidad, integridad y disponibilidad aplicados
+              aquí al endurecimiento (<em>hardening</em>) del CMS frente a
+              vulnerabilidades.</p>
+          </blockquote>
+        </li>
+      </ul>
+      <h1 id="concepto-y-funciones-de-un-cms">2. CONCEPTO Y FUNCIONES DE UN
+        CMS <a class="headerlink" href="#concepto-y-funciones-de-un-cms" title="Enlace permanente">¶</a></h1>
+      <h2 id="evolución-de-la-web-de-páginas-estáticas-a-dinámicas">2.1.
+        Evolución de la Web: De páginas estáticas a dinámicas <a class="headerlink"
+          href="#evolución-de-la-web-de-páginas-estáticas-a-dinámicas" title="Enlace permanente">¶</a></h2>
+      <p>En los inicios de la web, la creación y edición de sitios se
+        realizaba mediante archivos estáticos escritos directamente en lenguajes
+        como HTML y editados mediante herramientas básicas o suites
+        tradicionales. Modificar el menú global de un portal de 180 páginas
+        implicaba editar manualmente 180 archivos de texto estructurado, un
+        proceso propenso a fallos y con costes de mantenimiento inasumibles.</p>
+      <p>La aparición de los lenguajes de script de servidor (principalmente
+        PHP) y los sistemas gestores de bases de datos relacionales propició el
+        nacimiento de la <strong>página web dinámica</strong>. En este entorno,
+        el archivo físico con el texto de la noticia no existe en el
+        almacenamiento del servidor; la información se aloja de forma
+        estructurada en tablas de una base de datos. Cuando un cliente solicita
+        una URL, el servidor web recupera los datos dinámicamente y renderiza el
+        código HTML resultante en tiempo de ejecución.</p>
+      <h2 id="funciones-básicas-de-un-gestor-de-contenidos">2.2. Funciones
+        básicas de un gestor de contenidos <a class="headerlink" href="#funciones-básicas-de-un-gestor-de-contenidos"
+          title="Enlace permanente">¶</a></h2>
+      <p>Un CMS es una herramienta software de nivel de aplicación que permite
+        crear, organizar, administrar y publicar documentos digitales y otros
+        contenidos multimedia de forma colaborativa. Su principal aportación
+        metodológica es que <strong>separa claramente la capa de datos e
+          información de la capa de presentación y diseño</strong>.</p>
+      <p>Las cuatro funciones esenciales de cualquier CMS corporativo son:</p>
+      <ol type="1">
+        <li>
+          <blockquote>
+            <p><strong>Creación de contenidos:</strong> Ofrece entornos de edición
+              accesibles para personal no técnico sin requerir conocimientos de
+              lenguajes de marcado complejos. Utiliza editores visuales potentes que
+              previsualizan el resultado estructural en tiempo real.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Gestión de contenidos:</strong> Almacena de manera indexada
+              los metadatos de la información (autoría, fecha de publicación, última
+              modificación, categoría y etiquetas de taxonomía) facilitando la
+              organización interna y la reutilización de componentes.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Publicación de contenidos:</strong> Controla el ciclo de vida
+              del documento, permitiendo guardar borradores de forma automatizada o
+              programar la visibilidad pública para una fecha y hora específicas
+              utilizando plantillas homogéneas para todo el sitio web.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Presentación del gestor:</strong> Expone la interfaz de
+              administración del núcleo del sistema operativo del CMS para configurar
+              parámetros de localización fundamentales como el huso horario, los
+              idiomas activos o el formato de moneda base.</p>
+          </blockquote>
+        </li>
+      </ol>
+      <h1 id="clasificación-de-los-cms">3. CLASIFICACIÓN DE LOS CMS <a class="headerlink"
+          href="#clasificación-de-los-cms" title="Enlace permanente">¶</a></h1>
+      <h2 id="según-su-uso-o-funcionalidad-principal">3.1. Según su uso o
+        funcionalidad principal <a class="headerlink" href="#según-su-uso-o-funcionalidad-principal"
+          title="Enlace permanente">¶</a></h2>
+      <p>Los gestores de contenidos se han especializado para optimizar los
+        flujos de trabajo específicos de diferentes modelos de negocio o
+        servicios web:</p>
+      <ul>
+        <li>
+          <blockquote>
+            <p><strong>Propósito general / Portales institucionales:</strong>
+              Diseñados para estructurar de manera jerárquica portales corporativos de
+              alta complejidad, con sistemas avanzados de menús y taxonomías.
+              Ejemplos: <em>Joomla</em>, <em>Drupal</em>.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Plataformas de Bitácoras (Blogs):</strong> Optimizados para
+              la publicación continua de contenidos informativos organizados de manera
+              cronológica inversa (las entradas más recientes aparecen en primer
+              lugar). Ejemplo original: <em>WordPress</em> (hoy evolucionado a
+              propósito general) o <em>Blogger</em>.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Sitios de desarrollo colaborativo (Wikis):</strong>
+              Repositorios de documentación donde múltiples usuarios editan el
+              contenido de forma concurrente, manteniendo un control estricto del
+              historial de revisiones para auditoría informática. Ejemplos:
+              <em>MediaWiki</em>, <em>DokuWiki</em>.
+            </p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Gestores de comercio electrónico (E-Commerce):</strong>
+              Orientados específicamente a la construcción de tiendas virtuales,
+              integrando pasarelas de pago seguro, control logístico de inventariado y
+              bases de datos transaccionales de clientes. Ejemplos:
+              <em>PrestaShop</em>, <em>Magento</em>.
+            </p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Sistemas de gestión de aprendizaje (LMS -
+                E-Learning):</strong> Plataformas web dedicadas a la formación a
+              distancia estructuradas mediante cursos virtuales, herramientas de
+              comunicación asíncrona, entrega de actividades y cuadernos de
+              calificación centralizados. Ejemplo de referencia institucional en
+              Andalucía: <em>Moodle Centros</em>.</p>
+          </blockquote>
+        </li>
+      </ul>
+      <h2 id="según-su-tipo-de-licencia">3.2. Según su tipo de licencia <a class="headerlink"
+          href="#según-su-tipo-de-licencia" title="Enlace permanente">¶</a></h2>
+      <p>El análisis de costes de licenciamiento es un factor determinante en
+        la toma de decisiones tecnológicas de la empresa:</p>
+      <ul>
+        <li>
+          <blockquote>
+            <p><strong>Licencia Pública General (GPL / Código Abierto):</strong>
+              Software de distribución libre que permite al técnico inspeccionar el
+              código fuente, modificarlo sin restricciones legales para adaptarlo a la
+              empresa y redistribuirlo de forma gratuita.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Software Privativo:</strong> Aplicaciones comerciales con
+              código cerrado cuyo uso está sujeto al pago de licencias por volumen o
+              suscripción. Está terminantemente prohibido alterar el núcleo de la
+              aplicación.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Freeware / Shareware:</strong> Modelos mixtos comunes en
+              entornos cloud. Permiten el uso sin coste de versiones básicas limitadas
+              en capacidades de almacenamiento o funcionalidades técnicas, requiriendo
+              un pago (<em>upgrade</em>) para desbloquear características avanzadas de
+              nivel Enterprise.</p>
+          </blockquote>
+        </li>
+      </ul>
+      <h1 id="arquitectura-y-tecnologías">4. ARQUITECTURA Y TECNOLOGÍAS <a class="headerlink"
+          href="#arquitectura-y-tecnologías" title="Enlace permanente">¶</a></h1>
+      <h2 id="el-stack-tecnológico-web-de-referencia">4.1. El stack
+        tecnológico web de referencia <a class="headerlink" href="#el-stack-tecnológico-web-de-referencia"
+          title="Enlace permanente">¶</a></h2>
+      <p>La inmensa mayoría de los gestores de contenidos de código abierto se
+        despliegan sobre arquitecturas de tres capas bien definidas, típicamente
+        representadas por el acrónimo <strong>LAMP</strong> (Linux, Apache,
+        MySQL, PHP) o variantes con contenedores modernos:</p>
+      <blockquote>
+        <p><img src="media_UT2_Teoría_Gestores_de_contenidos/media/image2.png"
+            style="width:4.17785in;height:2.85239in" /></p>
+      </blockquote>
+      <ul>
+        <li>
+          <blockquote>
+            <p><strong>Servidor Web (Capa HTTP):</strong> Encargado de despachar el
+              contenido estático y reenviar las peticiones dinámicas al procesador de
+              scripts. Los estándares de la industria son <em>Apache HTTP Server</em>
+              y <em>Nginx</em>.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Servidor de Aplicaciones (Intérprete de Backend):</strong>
+              Lenguaje encargado de ejecutar las directivas lógicas del gestor,
+              verificar las sesiones de usuario y procesar la información del sistema
+              de archivos. <em>PHP</em> domina de forma absoluta este sector
+              tecnológico.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Servidor de Base de Datos Relacional:</strong> Motor
+              encargado del almacenamiento físico permanente de la configuración
+              global del sitio, las credenciales cifradas, los textos de los artículos
+              y los comentarios. Los sistemas de referencia obligados son
+              <em>MySQL</em> y <em>MariaDB</em>.
+            </p>
+          </blockquote>
+        </li>
+      </ul>
+      <h2 id="estructura-interna-separación-de-frontend-y-backend">4.2.
+        Estructura interna: Separación de frontend y backend <a class="headerlink"
+          href="#estructura-interna-separación-de-frontend-y-backend" title="Enlace permanente">¶</a></h2>
+      <p>Un aspecto arquitectónico clave que el alumnado debe comprender es el
+        aislamiento funcional de los entornos del gestor:</p>
+      <ul>
+        <li>
+          <blockquote>
+            <p><strong>Frontend:</strong> Representa la cara pública de la
+              aplicación. Es la interfaz visible que renderiza el navegador web del
+              visitante, construida mediante estándares limpios de HTML5, hojas de
+              estilo CSS3 y scripts de cliente JavaScript. Su diseño visual y
+              adaptabilidad (<em>responsive</em>) dependen del tema o plantilla
+              instalada.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Backend:</strong> Constituye la consola o panel privado de
+              administración restringido exclusivamente a los usuarios con privilegios
+              técnicos. Desde este entorno se monitorizan los logs del sistema, se
+              gestionan las actualizaciones críticas de seguridad, se instalan
+              extensiones y se gestionan los roles de acceso.</p>
+          </blockquote>
+        </li>
+      </ul>
+      <blockquote>
+        <p><img src="media_UT2_Teoría_Gestores_de_contenidos/media/image3.jpg"
+            style="width:4.17502in;height:2.98856in" /></p>
+      </blockquote>
+      <h1 id="criterios-para-la-selección-de-un-cms">5. CRITERIOS PARA LA
+        SELECCIÓN DE UN CMS <a class="headerlink" href="#criterios-para-la-selección-de-un-cms"
+          title="Enlace permanente">¶</a></h1>
+      <p>A la hora de asesorar a una organización sobre qué plataforma
+        implantar, el técnico informático no debe basarse en preferencias
+        personales, sino evaluar de forma analítica los siguientes parámetros de
+        viabilidad:</p>
+      <div class="table-wrapper">
+        <table>
+          <tbody>
+            <tr class="header">
+              <td><strong>Parámetro Técnico</strong></td>
+              <td><strong>Aspectos Clave a Evaluar</strong></td>
+            </tr>
+            <tr class="odd">
+              <td><strong>Arquitectura de Persistencia</strong></td>
+              <td>
+                <p>Compatibilidad nativa del software con el SGBD corporativo ya
+                  desplegado en la infraestructura de la empresa (ej: MariaDB, PostgreSQL,
+                  SQL Server) . Aspectos Clave a Evaluar:</p>
+                <p><strong>Arquitectura de Persistencia.</strong> Compatibilidad nativa
+                  del software con el SGBD corporativo ya desplegado en la infraestructura
+                  de la empresa (ej: MariaDB, PostgreSQL, SQL Server)</p>
+                <p><strong>Soporte y Comunidad.</strong> Frecuencia de publicación de
+                  parches de seguridad oficiales, hoja de ruta (roadmap) del software y
+                  existencia de documentación técnica oficial de calidad</p>
+                <p><strong>Ecosistema de Extensiones.</strong> Disponibilidad de módulos
+                  o plugins listos para implantar que cubran los requerimientos del
+                  cliente sin necesidad de programar código a medida desde cero.</p>
+                <p><strong>Modelo de Permisos y Roles.</strong> Capacidad del CMS para
+                  crear perfiles granulares (ej. Administrador, Editor, Autor, Suscriptor)
+                  limitando el acceso según el principio de mínimo privilegio.</p>
+                <p><strong>Políticas de Copias de Seguridad.</strong> Facilidad para
+                  automatizar backups en caliente tanto del sistema de archivos (uploads,
+                  temas) como del archivo estructurado .sql de la base de datos</p>
+              </td>
+            </tr>
+            <tr class="header">
+              <td><strong>Soporte y Comunidad</strong></td>
+              <td>Frecuencia de publicación de parches de seguridad oficiales, hoja de
+                ruta (<em>roadmap</em>) del software y existencia de documentación
+                técnica oficial de calidad</td>
+            </tr>
+            <tr class="odd">
+              <td><strong>Ecosistema de Extensiones</strong></td>
+              <td>Disponibilidad de módulos o <em>plugins</em> listos para implantar
+                que cubran los requerimientos del cliente sin necesidad de programar
+                código a medida desde cero</td>
+            </tr>
+            <tr class="header">
+              <td><strong>Modelo de Permisos y Roles</strong></td>
+              <td>Capacidad del CMS para crear perfiles granulares (ej. Administrador,
+                Editor, Autor, Suscriptor) limitando el acceso según el principio de
+                mínimo privilegio</td>
+            </tr>
+            <tr class="odd">
+              <td><strong>Políticas de Copias de Seguridad</strong></td>
+              <td>Facilidad para automatizar backups en caliente tanto del sistema de
+                archivos (<em>uploads</em>, temas) como del archivo estructurado .sql de
+                la base de datos</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h1 id="introducción-a-wordpress">6. INTRODUCCIÓN A WORDPRESS <a class="headerlink"
+          href="#introducción-a-wordpress" title="Enlace permanente">¶</a></h1>
+      <h2 id="características-principales">6.1. Características
+        principales <a class="headerlink" href="#características-principales" title="Enlace permanente">¶</a></h2>
+      <p>WordPress es, estadísticamente, el CMS de código abierto más
+        utilizado a nivel global en internet para el despliegue de portales web
+        corporativos y blogs. Publicado bajo licencia pública general GPL y
+        desarrollado principalmente sobre el lenguaje PHP, ofrece una gestión
+        simplificada vía web al tiempo que expone una infraestructura interna
+        altamente modular y escalable para administradores de sistemas.</p>
+      <p>Es obligatorio que el técnico informático diferencie con precisión
+        absoluta el origen del servicio:</p>
+      <ul>
+        <li>
+          <blockquote>
+            <p><strong>WordPress.org:</strong> Descarga directa del paquete de
+              software libre (.zip) para ser implantado de forma local o en servidores
+              cloud controlados en su totalidad por el administrador. Ofrece libertad
+              técnica absoluta de configuración.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>WordPress.com:</strong> Servicio comercial de alojamiento
+              gestionado (<em>SaaS</em>) en la nube propiedad de la empresa
+              Automattic. Cuenta con severas limitaciones de configuración en sus
+              niveles gratuitos. En el desarrollo de este módulo trabajaremos
+              exclusivamente con soluciones basadas en
+              <strong>WordPress.org</strong>.
+            </p>
+          </blockquote>
+        </li>
+      </ul>
+      <h2 id="componentes-básicos-del-ecosistema-wordpress">6.2. Componentes
+        básicos del ecosistema WordPress <a class="headerlink" href="#componentes-básicos-del-ecosistema-wordpress"
+          title="Enlace permanente">¶</a></h2>
+      <p>Para la posterior fase práctica de taller, identificamos los tres
+        pilares lógicos que forman la estructura de archivos de la
+        plataforma]:</p>
+      <ol type="1">
+        <li>
+          <blockquote>
+            <p><strong>El Núcleo (<em>Core</em>):</strong> Conjunto de archivos PHP
+              estándar suministrados oficialmente por WordPress que implementan las
+              funciones del motor del gestor, el tratamiento de consultas a la base de
+              datos MySQL/MariaDB y la lógica del panel de administración privado.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Los Temas (<em>Themes</em> / Plantillas):</strong> Archivos
+              de estilos y maquetación encargados exclusivamente de definir la
+              apariencia estética de la web de cara al público (frontend) sin alterar
+              en ningún caso los datos reales almacenados en las tablas de la base de
+              datos.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Las Extensiones (<em>Plugins</em>):</strong> Componentes
+              software adicionales creados por la comunidad de desarrolladores que se
+              integran en el sistema base para añadir nuevas capacidades técnicas que
+              el núcleo no incorpora de serie (ej: herramientas de optimización SEO,
+              firewalls a nivel de aplicación web, sistemas de almacenamiento en caché
+              distribuidos, etc.)</p>
+          </blockquote>
+        </li>
+      </ol>
+
+    </main>
+  </div>
+</body>
+
+</html>
