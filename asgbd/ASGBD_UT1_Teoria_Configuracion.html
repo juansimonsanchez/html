@@ -763,37 +763,40 @@ directorios críticos de configuración, datos y logs sobre el volumen
 físico local para permitir un análisis interactivo sin perder
 persistencia.</p>
 <p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>version: '3.8'
+version: '3.8'
+
 services:
-db:
-image: mysql:8.0
-container_name: mysql-sysadmin-ut1
-restart: always
-environment:
-MYSQL_ROOT_PASSWORD: RootSecurePass_2026
-MYSQL_DATABASE: sysadmin_audit
-ports:
-- "3306:3306"
+  db:
+    image: mysql:8.0
+    container_name: mysql-sysadmin-ut1
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: RootSecurePass_2026
+      MYSQL_DATABASE: sysadmin_audit
+    ports:
+      - "3306:3306"
+    volumes:
+      # Persistencia del directorio de datos del motor
+      - db_data:/var/lib/mysql
+      # Mapeo personalizado para aplicar configuraciones (/etc/mysql/conf.d/)
+      - ./config:/etc/mysql/conf.d
+      # Directorio de Logs mapeado para permitir análisis externo directo en el host
+      - ./logs:/var/log/mysql
+    networks:
+      - asir-net
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 1500M
+
 volumes:
-# Persistencia del directorio de datos del motor
-- db_data:/var/lib/mysql
-# Mapeo personalizado para aplicar configuraciones
-(/etc/mysql/conf.d/)
-- ./config:/etc/mysql/conf.d
-# Directorio de Logs mapeado para permitir análisis externo directo
-en el host
-- ./logs:/var/log/mysql
+  db_data:
+
 networks:
-- asir-net
-deploy:
-resources:
-limits:
-cpus: '1.5'
-memory: 1500M
-volumes:
-db_data:
-networks:
-asir-net:
-driver: bridge</code></pre></div></p>
+  asir-net:
+    driver: bridge
+</code></pre></div></p>
 <p><strong>Nota:</strong> Para iniciar este escenario en el aula, el
 alumnado ejecutará en la terminal del sistema operativo local:</p>
 <p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>docker compose up -d</code></pre></div>4.
