@@ -14,7 +14,7 @@
         <div class="header-container">
             <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo"
                     style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD
-                    &ndash; UT1 Teoria Configuracion</span></div>
+                    &ndash; UT1 Teoria Instalación, Configuracion y gestión de logs</span></div>
             <nav class="top-nav">
                 <a href="index.html" class="nav-btn">Inicio</a>
             </nav>
@@ -129,10 +129,10 @@
             <h1 id="introducción-y-contextualización">1. INTRODUCCIÓN Y
                 CONTEXTUALIZACIÓN <a class="headerlink" href="#introducción-y-contextualización"
                     title="Enlace permanente">¶</a></h1>
-            <p>Para un Administrador de Sistemas Informáticos en Red (SysAdmin), una
-                base de datos no es simplemente un repositorio abstracto de datos
+            <p>Para un Administrador de Sistemas Informáticos en Red, una
+                base de datos no es simplemente un repositorio de datos
                 relacionales; es un <strong>servicio crítico de infraestructura</strong>
-                que compite de forma directa por los recursos de cómputo del servidor
+                que compite de forma directa por los recursos del servidor
                 host (CPU, memoria, almacenamiento e interfaces de red).</p>
             <p>La optimización de un SGBD como MySQL requiere entender la relación
                 directa que existe entre el software del gestor y el kernel del sistema
@@ -150,14 +150,13 @@
                     <blockquote>
                         <p><strong>ASO (Administración de Sistemas Operativos):</strong> Gestión
                             de servicios (systemd), permisos a nivel de sistema de archivos, gestión de límites de
-                            procesos y
-                            almacenamiento persistente en sistemas Linux.</p>
+                            procesos y almacenamiento persistente en sistemas Linux.</p>
                     </blockquote>
                 </li>
                 <li>
                     <blockquote>
                         <p><strong>SAD (Seguridad y Alta Disponibilidad):</strong> Hardening de
-                            red, cifrado de transmisiones, monitorización activa y análisis forense
+                            red (seguridad de red), cifrado de transmisiones, monitorización activa y análisis forense
                             mediante el parseo automatizado de registros (<em>logs</em>).</p>
                     </blockquote>
                 </li>
@@ -185,7 +184,7 @@
                         <p><strong>Motor de Base de Datos (Storage Engine):</strong> Elegir el
                             motor de base de datos adecuado es fundamental. La elección depende de
                             las necesidades transaccionales, el volumen de lecturas/escrituras y los
-                            requerimientos de integridad referencial.</p>
+                            requerimientos de integridad referencial. MySQL admite varios motores de almacenamiento, como InnoDB, MyISAM, y más. La elección del motor de almacenamiento depende de tus necesidades específicas. InnoDB es ampliamente utilizado debido a su capacidad de manejar transacciones y su fiabilidad en la recuperación de datos.</p>
                     </blockquote>
                 </li>
                 <li>
@@ -225,10 +224,49 @@
                     <blockquote>
                         <p><strong>Rendimiento:</strong> Supervisar constantemente las métricas
                             de carga del motor para realizar ajustes proactivos y reactivos ante
-                            posibles cuellos de botella de hardware o software.</p>
+                            posibles cuellos de botella de hardware o software. Configura adecuadamente los tamaños de búferes como el búfer del sistema de almacenamiento en caché (InnoDB Buffer Pool), el búfer de consulta (Query Cache), y el búfer de índices (Key Buffer), entre otros, para optimizar el rendimiento.
+</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Copias de seguridad y recuperación:</strong> Configura rutinas de copia de seguridad y restauración para proteger tus datos contra la pérdida o daño. Define políticas de retención y realiza pruebas de recuperación regularmente. onfigura rutinas de copia de seguridad regulares para proteger tus datos. MySQL ofrece herramientas como mysqldump y utilidades de replicación para este propósito.
+</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Seguridad:</strong> Aplica medidas de seguridad, como autenticación, autorización y cifrado de datos, para proteger la base de datos contra amenazas internas y externas. Configura la autenticación y autorización de usuarios de forma adecuada. Limita el acceso a la base de datos solo a los usuarios necesarios y utiliza contraseñas fuertes. Considera la encriptación de datos en tránsito y en reposo</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Alta disponibilidad:</strong> Configura la base de datos para garantizar la alta disponibilidad. Esto puede incluir la implementación de réplicas, clústeres o grupos de disponibilidad, según el motor de base de datos que estés utilizando.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Monitorización:</strong> Utiliza herramientas de monitorización para supervisar el estado de la base de datos en tiempo real. Esto te permitirá identificar problemas y tomar medidas preventivas. Habilita el registro de MySQL y utiliza herramientas de monitoreo para seguir de cerca el rendimiento y detectar problemas. Puedes utilizar herramientas como MySQL Workbench, phpMyAdmin o soluciones de terceros.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Mantenimiento:</strong> Realiza tareas de mantenimiento regular, como la limpieza de registros obsoletos, la reorganización de tablas y la optimización del rendimiento.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Escalabilidad:</strong> Diseña la base de datos con la escalabilidad en mente, para que puedas manejar un aumento en la carga de trabajo a medida que tu aplicación crezca. Si es necesario, configura la replicación para mejorar la alta disponibilidad y la escalabilidad. MySQL ofrece opciones como la replicación maestro-esclavo o el grupo de alta disponibilidad (MySQL Group Replication).
+</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Cumplimiento normativo:</strong> Si estás manejando datos sensibles o personales, asegúrate de configurar MySQL cumpliendo con las regulaciones de privacidad y seguridad de datos aplicables, como el Reglamento General de Protección de Datos (RGPD) en la Unión Europea.</p>
                     </blockquote>
                 </li>
             </ul>
+            <p>La configuración de MySQL puede variar según tus necesidades específicas, por lo que es importante entender bien tus requisitos y las características de tu aplicación para realizar una configuración óptima. También es recomendable mantener un registro de la configuración y realizar un seguimiento de los cambios para facilitar la administración y el mantenimiento a lo largo del tiempo.</p>
             <h1 id="despliegue-con-contenedores">3. DESPLIEGUE CON CONTENEDORES <a class="headerlink"
                     href="#despliegue-con-contenedores" title="Enlace permanente">¶</a></h1>
             <p>El estándar de la industria moderna prioriza entornos inmutables y
@@ -247,15 +285,15 @@
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                 <pre><code>version: '3.8'
-version: '3.8'
 
 services:
   db:
     image: mysql:8.0
     container_name: mysql-sysadmin-ut1
     restart: always
+    command: --default-authentication-plugin=mysql_native_password
     environment:
-      MYSQL_ROOT_PASSWORD: RootSecurePass_2026
+      MYSQL_ROOT_PASSWORD: RootPass_2026
       MYSQL_DATABASE: sysadmin_audit
     ports:
       - "3306:3306"
@@ -287,9 +325,20 @@ networks:
                 alumnado ejecutará en la terminal del sistema operativo local:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>docker compose up -d</code></pre>
-            </div>4.
-            ARQUITECTURA DE ALMACENAMIENTO Y ARCHIVOS DEL MOTOR</h1>
+                <pre><code># Iniciar contenedor
+docker compose up -d
+# Detener contenedor
+docker compose down -v
+# Comprobar contenedores activos
+docker ps
+# Reiniciar contenedor tras cambios de configuración
+docker compose restart
+# Entrar al contenedor
+docker exec -it mysql-sysadmin-ut1 bash
+# Ejecutar MySQl
+mysql -u root -p RootPass_2026 -P 3306</code>
+</code></pre>
+            </div><h1>4. ARQUITECTURA DE ALMACENAMIENTO Y ARCHIVOS DEL MOTOR</h1>
             <p>En los entornos UNIX, MySQL representa todo recurso como un archivo.
                 Comprender dónde y cómo escribe el SGBD es indispensable para gestionar
                 operaciones de almacenamiento.</p>
@@ -363,11 +412,11 @@ networks:
                 servidores dedicados sigue la regla de dimensionamiento de su memoria
                 caché interna (<em>Buffer Pool</em>):</p>
             <p><img src="media_ASGBD_UT1_Teoria_Configuracion/media/image4.png"
-                    style="width:6.45833in;height:0.47027in" /><br>Para un servidor de base de
+                    style="width:300 px;height:auto" /><br>Para un servidor de base de
                 datos con 16 GB de memoria RAM dedicada, la asignación de caché
                 sería:</p>
             <img src="media_ASGBD_UT1_Teoria_Configuracion/media/image3.png"
-                style="width:6.45833in;height:0.47027in" /><br>
+                style="width:200 px;height:auto" /><br>
             <h1 id="ficheros-de-configuración">5. FICHEROS DE CONFIGURACIÓN
                 <a class="headerlink" href="#ficheros-de-configuración" title="Enlace permanente">¶</a>
             </h1>
@@ -379,11 +428,9 @@ networks:
                 alojados en directorios específicos:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code># Directorio para configuraciones del cliente local (mysql,
-mysqldump)
+                <pre><code># Directorio para configuraciones del cliente local (mysql,mysqldump)
 /etc/mysql/conf.d/
-# Directorio de configuración específico para el servicio demonio del
-servidor (mysqld)
+# Directorio de configuración específico para el servicio demonio del servidor (mysqld)
 /etc/mysql/mysql.conf.d/</code></pre>
             </div>
             </h4>
@@ -416,6 +463,8 @@ servidor (mysqld)
                     </blockquote>
                 </li>
             </ol>
+            <p>En sistemas Windows: El archivo de configuración se llama my.ini.
+La ubicación predeterminada puede variar según la versión de MySQL y la forma en que se instaló, pero suele encontrarse en la carpeta de instalación de MySQL, como C:\Program Files\MySQL\MySQL Server x.x</p>
             <p>A continuación, se define un archivo de configuración de producción
                 optimizado para el servidor que los alumnos montarán dentro de la
                 carpeta local ./config/custom_mysqld.cnf asociada a su contenedor:</p>
@@ -459,6 +508,59 @@ SHOW VARIABLES LIKE 'max_connections';
 SELECT @@global.max_connections;</code></pre>
             </div>
             </h4>
+<p>El archivo de configuración de MySQL puede contener una amplia variedad de parámetros que permiten ajustar y personalizar el comportamiento del servidor MySQL. Estos parámetros se dividen en varias categorías, y algunos de los parámetros más comunes incluyen:</p>
+<ul>
+    <li>Parámetros de configuración general</li>
+<ul>
+    <li>port: El puerto en el que el servidor MySQL escucha las conexiones.</li>
+    <li>bind-address: La dirección IP en la que el servidor MySQL acepta conexiones. Puedes configurarlo para escuchar en todas las interfaces (0.0.0.0) o una dirección IP específica.</li>
+    <li>socket: La ubicación del archivo de socket Unix para las conexiones locales.</li>
+    <li>basedir: La ubicación base del directorio de instalación de MySQL.</li>
+    <li>datadir: La ubicación del directorio de datos de MySQL.</li>
+    <li>pid-file: La ubicación del archivo que almacena el PID del servidor MySQL.</li>
+</ul>
+    <li>Parámetros de seguridad</li>
+<ul>
+    <li>user: El usuario del sistema operativo bajo el cual se ejecutará el servidor MySQL.</li>
+    <li>password: La contraseña de root para el acceso al servidor MySQL. Este parámetro es importante para establecer la contraseña de administrador en la instalación inicial.</li>
+    <li>skip-networking: Deshabilita la comunicación de red, lo que puede aumentar la seguridad en sistemas locales.</li>
+</ul>
+    <li>Parámetros de almacenamiento y memoria</li>
+<ul>
+    <li>innodb_buffer_pool_size: Tamaño del búfer del sistema de almacenamiento en caché InnoDB.</li>
+    <li>key_buffer_size: Tamaño del búfer de índices (en motores MyISAM).</li>
+    <li>tmp_table_size y max_heap_table_size: Tamaño de las tablas temporales en memoria.</li>
+    <li>innodb_log_file_size: Tamaño de los archivos de registro de transacciones InnoDB.</li>
+</ul>
+    <li>Parámetros de rendimiento</li>
+<ul>
+    <li>query_cache_size: Tamaño del búfer de consulta (Query Cache) que almacena consultas en caché.</li>
+    <li>max_connections: Número máximo de conexiones simultáneas permitidas.</li>
+    <li>thread_cache_size: Número de hilos que se mantienen en caché para conexiones nuevas.</li>
+    <li>innodb_flush_log_at_trx_commit: Controla cuándo se escriben los registros de transacciones en los archivos de registro.</li>
+</ul>
+    <li>Parámetros de replicación y alta disponibilidad</li>
+<ul>
+    <li>server-id: Identificador único del servidor en un entorno de replicación.</li>
+    <li>log-bin: Habilita el registro binario para la replicación.</li>
+    <li>binlog_format: Formato del registro binario (por ejemplo, ROW, STATEMENT, MIXED).</li>
+    <li>gtid_mode y enforce_gtid_consistency: Configuración para el uso de Identificadores Globales Únicos (GTID) en la replicación.</li>
+</ul>
+    <li>Parámetros de seguridad de autenticación</li>
+<ul>
+    <li>skip-grant-tables: Inicia MySQL sin la autenticación, útil para restablecer contraseñas.</li>
+    <li>validate_password_policy: Política de seguridad de contraseñas (por ejemplo, MEDIUM o STRONG).</li>
+    <li>skip-name-resolve: Evita la resolución inversa de nombres de host para acelerar la autenticación.</li>
+</ul>
+    <li>Otros parámetros</li>
+<ul>
+    <li>log-error: Ubicación del archivo de registro de errores.</li>
+    <li>slow_query_log: Habilita el registro de consultas lentas.</li>
+    <li>log_queries_not_using_indexes: Registra consultas que no utilizan índices.</li>
+    <li>character-set-server: Juego de caracteres predeterminado del servidor.</li>
+</ul>
+Es importante tener en cuenta que la configuración exacta puede variar según la versión de MySQL y las necesidades específicas de tu aplicación. Los parámetros se pueden agregar, modificar o eliminar según tus requisitos. Además, se recomienda consultar la documentación oficial de MySQL y la referencia de configuración para obtener detalles específicos sobre cada parámetro y sus valores posibles.
+
             <h2 id="ámbitos-de-variables-global-vs-sesión"><strong>6.1</strong>
                 Ámbitos de Variables: Global vs Sesión <a class="headerlink"
                     href="#ámbitos-de-variables-global-vs-sesión" title="Enlace permanente">¶</a></h2>
@@ -501,6 +603,7 @@ SELECT @@global.max_connections;</code></pre>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                 <pre><code>-- Forma 1: Directa mediante modificador de palabra clave
 SET GLOBAL max_connections = 1000;
+
 -- Forma 2: Uso del calificador de ámbito con doble arroba (@@)
 SET @@GLOBAL.max_connections = 1000;</code></pre>
             </div>
@@ -512,17 +615,22 @@ SET @@GLOBAL.max_connections = 1000;</code></pre>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                 <pre><code>-- Forma 1: Asignación explícita mediante SESSION
 SET SESSION sql_mode = 'TRADITIONAL';
+
 -- Forma 2: Uso del modificador local compatible con ANSI
 SET LOCAL sql_mode = 'TRADITIONAL';
+
 -- Forma 3: Sintaxis abreviada con calificador doble arroba
 (@@SESSION)
 SET @@SESSION.sql_mode = 'TRADITIONAL';
+
 -- Forma 4: Sintaxis abreviada con calificador de variables locales
 (@@LOCAL)
 SET @@LOCAL.sql_mode = 'TRADITIONAL';
+
 -- Forma 5: Calificador genérico simplificado (asume por defecto
 @@session)
 SET @@sql_mode = 'TRADITIONAL';
+
 -- Forma 6: Asignación implícita de sesión
 SET sql_mode = 'TRADITIONAL';</code></pre>
             </div>
@@ -540,8 +648,7 @@ SET sql_mode = 'TRADITIONAL';</code></pre>
             </p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>-- Persistir un cambio en caliente en la memoria del gestor y
-escribirlo en disco de forma concurrente
+                <pre><code>-- Persistir un cambio en caliente en la memoria del gestor y escribirlo en disco de forma concurrente
 SET PERSIST max_connections = 250;
 -- Sintaxis alternativa equivalente
 SET @@PERSIST.max_connections = 250;</code></pre>
@@ -570,14 +677,14 @@ SET @@PERSIST.max_connections = 250;</code></pre>
                 <pre><code>{
 "Version": 2,
 "mysql_server": {
-"max_connections": {
-"Value": "250",
-"Metadata": {
-"Timestamp": 1778235720000000,
-"User": "root",
-"Host": "localhost"
-}
-}
+    "max_connections": {
+        "Value": "250",
+        "Metadata": {
+            "Timestamp": 1778235720000000,
+            "User": "root",
+            "Host": "localhost"
+        }
+    }
 }
 }</code></pre>
             </div>
@@ -597,12 +704,9 @@ SET @@PERSIST.max_connections = 250;</code></pre>
             <p>Para estos casos, utilizamos:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>-- Escribe la variable en el archivo de autoconfiguración
-persistente de disco pero NO intenta aplicarla en caliente en RAM
+                <pre><code>-- Escribe la variable en el archivo de autoconfiguración persistente de disco pero NO intenta aplicarla en caliente en RAM
 SET PERSIST_ONLY innodb_buffer_pool_size = 1073741824;
---
-Escribe la variable en el archivo de autoconfiguración persistente de
-disco pero NO intenta aplicarla en caliente en RAM
+-- Escribe la variable en el archivo de autoconfiguración persistente de disco pero NO intenta aplicarla en caliente en RAM
 SET PERSIST_ONLY innodb_buffer_pool_size = 1073741824;</code></pre>
             </div>
             </p>
@@ -612,11 +716,9 @@ SET PERSIST_ONLY innodb_buffer_pool_size = 1073741824;</code></pre>
             <p>Comando para limpiar y revocar la persistencia:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>-- Eliminar la persistencia de una variable concreta (volverá a
-heredar el valor del fichero my.cnf en el próximo reinicio)
+                <pre><code>-- Eliminar la persistencia de una variable concreta (volverá a heredar el valor del fichero my.cnf en el próximo reinicio)
 RESET PERSIST max_connections;
--- Limpiar completamente todas las variables añadidas dinámicamente
-al fichero mysqld-auto.cnf
+-- Limpiar completamente todas las variables añadidas dinámicamente al fichero mysqld-auto.cnf
 RESET PERSIST;</code></pre>
             </div>
             <h1>7. FUNDAMENTOS TEÓRICOS DE LOS FICHEROS DE REGISTRO (LOGS)</h1>
@@ -677,8 +779,7 @@ RESET PERSIST;</code></pre>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                 <pre><code>-- Instalar el cargador de logs JSON
 INSTALL COMPONENT 'file://component_log_sink_json';
--- Configurar los logs de errores para que escriban tanto en texto
-tradicional como en formato estructurado JSON
+-- Configurar los logs de errores para que escriban tanto en texto tradicional como en formato estructurado JSON
 SET PERSIST log_error_services = 'log_filter_internal;
 log_sink_internal; log_sink_json';</code></pre>
             </div>Esto creará un archivo con formato estructurado denominado
@@ -692,8 +793,7 @@ log_sink_internal; log_sink_json';</code></pre>
                 motor por el cliente.</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code># Configuración física requerida en
-# /etc/mysql/mysql.conf.d/mysqld.cnf
+                <pre><code># Configuración física requerida en /etc/mysql/mysql.conf.d/mysqld.cnf
 general_log = ON
 general_log_file = /var/log/mysql/query.log</code></pre>
             </div>
@@ -746,14 +846,12 @@ general_log_file = /var/log/mysql/query.log</code></pre>
             <p><strong>Configuración e Implementación:</strong></p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>-- Activar el motor de registro de consultas lentas a nivel global y
-persistente
+                <pre><code>-- Activar el motor de registro de consultas lentas a nivel global y persistente
 SET PERSIST slow_query_log = ON;
 SET PERSIST slow_query_log_file = '/var/log/mysql/slow.log';
--- Fijar el umbral de tiempo máximo a 2 segundos exactos
+-- Fijar el umbral de tiempo máximo a 2 segundos exactos 
 SET PERSIST long_query_time = 2.000000;
--- Capturar también todas aquellas consultas ineficientes que no
-utilizan índices para su ejecución
+-- Capturar también todas aquellas consultas ineficientes que no utilizan índices para su ejecución
 SET PERSIST log_queries_not_using_indexes = ON;</code></pre>
             </div>
             </p>
@@ -765,8 +863,7 @@ SET PERSIST log_queries_not_using_indexes = ON;</code></pre>
                 mediante la función de pausa de MySQL:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>-- Provocar de forma artificial una ejecución lenta controlada de 3
-segundos
+                <pre><code>-- Provocar de forma artificial una ejecución lenta controlada de 3 segundos
 SELECT NOW(), SLEEP(3);</code></pre>
             </div>
             </h5>
@@ -782,11 +879,9 @@ SELECT NOW(), SLEEP(3);</code></pre>
 Rows_examined: 1
 SET timestamp=1778235721;
 SELECT NOW(), SLEEP(3);
-#
-Time: 2026-06-07T11:42:01.354210Z
+# Time: 2026-06-07T11:42:01.354210Z
 # User@Host: root[root] @ localhost [] Id: 12
-# Query_time: 3.001240 Lock_time: 0.000000 Rows_sent: 1 Rows_examined:
-1
+# Query_time: 3.001240 Lock_time: 0.000000 Rows_sent: 1 Rows_examined:1
 SET timestamp=1778235721;
 SELECT NOW(), SLEEP(3);</code></pre>
             </div>
@@ -872,19 +967,10 @@ SELECT NOW(), SLEEP(3);</code></pre>
                 bruta o desajustes de conexión:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>SELECT
-USER,
-ERROR_NUMBER,
-ERROR_NAME,
-COUNT_STAR AS TOTAL_OCURRENCIAS,
-FIRST_SEEN AS PRIMERA_VEZ,
-LAST_SEEN AS ULTIMA_VEZ
-FROM
-performance_schema.events_errors_summary_by_user_by_error
-WHERE
-USER IS NOT NULL AND COUNT_STAR &gt; 0
-ORDER BY
-LAST_SEEN DESC
+                <pre><code>SELECT USER,ERROR_NUMBER, ERROR_NAME, COUNT_STAR AS TOTAL_OCURRENCIAS, FIRST_SEEN AS PRIMERA_VEZ, LAST_SEEN AS ULTIMA_VEZ
+FROM performance_schema.events_errors_summary_by_user_by_error
+WHERE USER IS NOT NULL AND COUNT_STAR &gt; 0
+ORDER BY LAST_SEEN DESC
 LIMIT 20;</code></pre>
             </div>
             </h4>
@@ -895,16 +981,10 @@ LIMIT 20;</code></pre>
                 evaluar la carga de trabajo en el servidor:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>SELECT
-USER,
-VARIABLE_NAME,
-VARIABLE_VALUE
-FROM
-performance_schema.status_by_user
-WHERE
-USER = 'root' AND VARIABLE_NAME LIKE 'Handler_read%'
-ORDER BY
-CAST(VARIABLE_VALUE AS UNSIGNED) DESC;</code></pre>
+                <pre><code>SELECT USER, VARIABLE_NAME, VARIABLE_VALUE 
+FROM performance_schema.status_by_user
+WHERE USER = 'root' AND VARIABLE_NAME LIKE 'Handler_read%'
+ORDER BY CAST(VARIABLE_VALUE AS UNSIGNED) DESC;</code></pre>
             </div>
             </h1>
             <h1 id="buenas-prácticas-con-los-logs">9. BUENAS PRÁCTICAS CON LOS
@@ -920,8 +1000,7 @@ CAST(VARIABLE_VALUE AS UNSIGNED) DESC;</code></pre>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                 <pre><code># Asignar la propiedad al usuario y grupo del demonio mysqld
 sudo chown -R mysql:mysql /var/log/mysql
-# Restringir permisos de lectura/escritura únicamente al
-propietario
+# Restringir permisos de lectura/escritura únicamente al propietario
 sudo chmod 750 /var/log/mysql
 sudo chmod 640 /var/log/mysql/*.log</code></pre>
             </div>
@@ -935,22 +1014,20 @@ sudo chmod 640 /var/log/mysql/*.log</code></pre>
                 un archivo de configuración específico:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code># Archivo de Configuración del Rotador de Logs del Sistema Linux:
-/etc/logrotate.d/mysql-server
+                <pre><code># Archivo de Configuración del Rotador de Logs del Sistema Linux: /etc/logrotate.d/mysql-server
 /var/log/mysql/*.log {
-weekly
-rotate 4
-size 100M
-compress
-delaycompress
-missingok
-notifempty
-sharedscripts
-postrotate
-# Forzar a MySQL a reabrir y recrear los archivos físicos tras la
-rotación de logs sin reiniciar el servicio
-/usr/bin/mysqladmin flush-logs
-endscript
+    weekly
+    rotate 4
+    size 100M
+    compress
+    delaycompress
+    missingok
+    notifempty
+    sharedscripts
+    postrotate
+    # Forzar a MySQL a reabrir y recrear los archivos físicos tras la rotación de logs sin reiniciar el servicio
+        /usr/bin/mysqladmin flush-logs
+    endscript
 }</code></pre>
             </div>
             </p>
