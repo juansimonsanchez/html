@@ -92,39 +92,37 @@
                         CONTEXTUALIZACIÓN</u></a></p>
             <p><a href="#aspectos-críticos-en-la-configuración"><u>2. ASPECTOS
                         CRÍTICOS EN LA CONFIGURACIÓN</u></a></p>
-            <p><a href="#despliegue-con-contenedores"><u>3. DESPLIEGUE CON
-                        CONTENEDORES</u></a></p>
-            <p><a href="#arquitectura-de-almacenamiento-y-archivos-del-motor"><u>4.
+            <p><a href="#arquitectura-de-almacenamiento-y-archivos-del-motor"><u>3.
                         ARQUITECTURA DE ALMACENAMIENTO Y ARCHIVOS DEL MOTOR</u></a></p>
-            <p><a href="#ficheros-de-configuración"><u>5. FICHEROS DE
+            <p><a href="#ficheros-de-configuración"><u>4. FICHEROS DE
                         CONFIGURACIÓN</u></a></p>
-            <p><a href="#gestión-avanzada-de-variables"><u>6. GESTIÓN AVANZADA DE
+            <p><a href="#gestión-avanzada-de-variables"><u>5. GESTIÓN AVANZADA DE
                         VARIABLES</u></a></p>
             <blockquote>
-                <p><a href="#ámbitos-de-variables-global-vs-sesión"><u>6.1 Ámbitos de
+                <p><a href="#ámbitos-de-variables-global-vs-sesión"><u>5.1 Ámbitos de
                             Variables: Global vs Sesión</u></a></p>
-                <p><a href="#variantes-sintácticas-de-asignación-en-mysql"><u>6.2
+                <p><a href="#variantes-sintácticas-de-asignación-en-mysql"><u>5.2
                             Variantes Sintácticas de Asignación en MySQL</u></a></p>
-                <p><a href="#set-persist-y-set-persist_only"><u>6.3 SET PERSIST y SET
+                <p><a href="#set-persist-y-set-persist_only"><u>5.3 SET PERSIST y SET
                             PERSIST_ONLY</u></a></p>
             </blockquote>
-            <p><a href="#fundamentos-teóricos-de-los-ficheros-de-registro-logs"><u>7.
+            <p><a href="#fundamentos-teóricos-de-los-ficheros-de-registro-logs"><u>6.
                         FUNDAMENTOS TEÓRICOS DE LOS FICHEROS DE REGISTRO (LOGS)</u></a></p>
             <blockquote>
-                <p><a href="#clasificación-general-de-las-anotaciones-de-bitácora"><u>7.1
+                <p><a href="#clasificación-general-de-las-anotaciones-de-bitácora"><u>6.1
                             Clasificación General de las Anotaciones de Bitácora</u></a></p>
-                <p><a href="#registro-de-errores-error-log-y-filtros-json"><u>7.2
+                <p><a href="#registro-de-errores-error-log-y-filtros-json"><u>6.2
                             Registro de Errores (Error Log) y Filtros JSON</u></a></p>
-                <p><a href="#registro-general-de-consultas-general-query-log"><u>7.3
+                <p><a href="#registro-general-de-consultas-general-query-log"><u>6.3
                             Registro General de Consultas (General Query Log)</u></a></p>
-                <p><a href="#registro-de-consultas-lentas-slow-query-log"><u>7.4
+                <p><a href="#registro-de-consultas-lentas-slow-query-log"><u>6.4
                             Registro de Consultas Lentas (Slow Query Log)</u></a></p>
-                <p><a href="#el-registro-binario-binary-log"><u>7.5 El Registro Binario
+                <p><a href="#el-registro-binario-binary-log"><u>6.5 El Registro Binario
                             (Binary Log)</u></a></p>
             </blockquote>
-            <p><a href="#"><u>8. DIAGNÓSTICO DE BAJO NIVEL Y AUDITORÍA CON
+            <p><a href="#"><u>7. DIAGNÓSTICO DE BAJO NIVEL Y AUDITORÍA CON
                         performance_schema</u></a></p>
-            <p><a href="#buenas-prácticas-con-los-logs"><u>9. BUENAS PRÁCTICAS CON
+            <p><a href="#buenas-prácticas-con-los-logs"><u>8. BUENAS PRÁCTICAS CON
                         LOS LOGS</u></a></p>
             <h1 id="introducción-y-contextualización">1. INTRODUCCIÓN Y
                 CONTEXTUALIZACIÓN <a class="headerlink" href="#introducción-y-contextualización"
@@ -267,78 +265,7 @@
                 </li>
             </ul>
             <p>La configuración de MySQL puede variar según tus necesidades específicas, por lo que es importante entender bien tus requisitos y las características de tu aplicación para realizar una configuración óptima. También es recomendable mantener un registro de la configuración y realizar un seguimiento de los cambios para facilitar la administración y el mantenimiento a lo largo del tiempo.</p>
-            <h1 id="despliegue-con-contenedores">3. DESPLIEGUE CON CONTENEDORES <a class="headerlink"
-                    href="#despliegue-con-contenedores" title="Enlace permanente">¶</a></h1>
-            <p>El estándar de la industria moderna prioriza entornos inmutables y
-                reproducibles frente a las tradicionales instalaciones locales sobre
-                sistemas hosts de desarrollo (<em>bare-metal</em>). Utilizar
-                <strong>Docker</strong> y <strong>Docker Compose</strong> asegura que
-                todo el alumnado trabaje en un entorno idéntico, simulando con absoluta
-                precisión los flujos de despliegue en entornos en la nube
-                (<em>cloud-native</em>).
-            </p>
-            <p>A continuación se presenta un archivo de configuración de producción
-                docker-compose.yml ajustado para la UT1. Este archivo monta los
-                directorios críticos de configuración, datos y logs sobre el volumen
-                físico local para permitir un análisis interactivo sin perder
-                persistencia.</p>
-            <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>version: '3.8'
-
-services:
-  db:
-    image: mysql:8.0
-    container_name: mysql-sysadmin-ut1
-    restart: always
-    command: --default-authentication-plugin=mysql_native_password
-    environment:
-      MYSQL_ROOT_PASSWORD: RootPass_2026
-      MYSQL_DATABASE: sysadmin_audit
-    ports:
-      - "3306:3306"
-    volumes:
-      # Persistencia del directorio de datos del motor
-      - db_data:/var/lib/mysql
-      # Mapeo personalizado para aplicar configuraciones (/etc/mysql/conf.d/)
-      - ./config:/etc/mysql/conf.d
-      # Directorio de Logs mapeado para permitir análisis externo directo en el host
-      - ./logs:/var/log/mysql
-    networks:
-      - asir-net
-    deploy:
-      resources:
-        limits:
-          cpus: '1.5'
-          memory: 1500M
-
-volumes:
-  db_data:
-
-networks:
-  asir-net:
-    driver: bridge
-</code></pre>
-            </div>
-            </p>
-            <p><strong>Nota:</strong> Para iniciar este escenario en el aula, el
-                alumnado ejecutará en la terminal del sistema operativo local:</p>
-            <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code># Iniciar contenedor
-docker compose up -d
-# Detener contenedor
-docker compose down -v
-# Comprobar contenedores activos
-docker ps
-# Reiniciar contenedor tras cambios de configuración
-docker compose restart
-# Entrar al contenedor
-docker exec -it mysql-sysadmin-ut1 bash
-# Ejecutar MySQl
-mysql -u root -p RootPass_2026 -P 3306</code>
-</code></pre>
-            </div><h1>4. ARQUITECTURA DE ALMACENAMIENTO Y ARCHIVOS DEL MOTOR</h1>
+            <h1>3. ARQUITECTURA DE ALMACENAMIENTO Y ARCHIVOS DEL MOTOR</h1>
             <p>En los entornos UNIX, MySQL representa todo recurso como un archivo.
                 Comprender dónde y cómo escribe el SGBD es indispensable para gestionar
                 operaciones de almacenamiento.</p>
@@ -417,7 +344,7 @@ mysql -u root -p RootPass_2026 -P 3306</code>
                 sería:</p>
             <img src="media_ASGBD_UT1_Teoria_Configuracion/media/image3.png"
                 style="width:200 px;height:auto" /><br>
-            <h1 id="ficheros-de-configuración">5. FICHEROS DE CONFIGURACIÓN
+            <h1 id="ficheros-de-configuración">4. FICHEROS DE CONFIGURACIÓN
                 <a class="headerlink" href="#ficheros-de-configuración" title="Enlace permanente">¶</a>
             </h1>
             <p>En una distribución estándar de Linux (como Debian o Ubuntu), la
@@ -493,7 +420,7 @@ long_query_time = 2.000000
 log_queries_not_using_indexes = ON</code></pre>
             </div>
             </h4>
-            <h1 id="gestión-avanzada-de-variables">6. GESTIÓN AVANZADA DE VARIABLES
+            <h1 id="gestión-avanzada-de-variables">5. GESTIÓN AVANZADA DE VARIABLES
                 <a class="headerlink" href="#gestión-avanzada-de-variables" title="Enlace permanente">¶</a>
             </h1>
             <p>MySQL contiene cientos de variables dinámicas e inmóviles que dictan
@@ -561,7 +488,7 @@ SELECT @@global.max_connections;</code></pre>
 </ul>
 Es importante tener en cuenta que la configuración exacta puede variar según la versión de MySQL y las necesidades específicas de tu aplicación. Los parámetros se pueden agregar, modificar o eliminar según tus requisitos. Además, se recomienda consultar la documentación oficial de MySQL y la referencia de configuración para obtener detalles específicos sobre cada parámetro y sus valores posibles.
 
-            <h2 id="ámbitos-de-variables-global-vs-sesión"><strong>6.1</strong>
+            <h2 id="ámbitos-de-variables-global-vs-sesión"><strong>5.1</strong>
                 Ámbitos de Variables: Global vs Sesión <a class="headerlink"
                     href="#ámbitos-de-variables-global-vs-sesión" title="Enlace permanente">¶</a></h2>
             <p>Es fundamental que el SysAdmin diferencie entre los dos entornos
@@ -589,7 +516,7 @@ Es importante tener en cuenta que la configuración exacta puede variar según l
                 imprevisto, o el host experimenta un apagado físico, todos estos cambios
                 dinámicos se perderán, volviendo a leer los parámetros estáticos de los
                 ficheros físicos del disco (/etc/mysql/my.cnf).</p>
-            <h2 id="variantes-sintácticas-de-asignación-en-mysql">6.2 Variantes
+            <h2 id="variantes-sintácticas-de-asignación-en-mysql">5.2 Variantes
                 Sintácticas de Asignación en MySQL <a class="headerlink"
                     href="#variantes-sintácticas-de-asignación-en-mysql" title="Enlace permanente">¶</a></h2>
             <p>El lenguaje SQL de MySQL permite asignar variables de sistema
@@ -635,7 +562,7 @@ SET @@sql_mode = 'TRADITIONAL';
 SET sql_mode = 'TRADITIONAL';</code></pre>
             </div>
             </p>
-            <h2 id="set-persist-y-set-persist_only"><strong>6.3</strong> SET PERSIST
+            <h2 id="set-persist-y-set-persist_only"><strong>5.3</strong> SET PERSIST
                 y SET PERSIST_ONLY <a class="headerlink" href="#set-persist-y-set-persist_only"
                     title="Enlace permanente">¶</a></h2>
             <p>Tradicionalmente, para fijar un cambio de forma definitiva, el
@@ -721,7 +648,7 @@ RESET PERSIST max_connections;
 -- Limpiar completamente todas las variables añadidas dinámicamente al fichero mysqld-auto.cnf
 RESET PERSIST;</code></pre>
             </div>
-            <h1>7. FUNDAMENTOS TEÓRICOS DE LOS FICHEROS DE REGISTRO (LOGS)</h1>
+            <h1>6. FUNDAMENTOS TEÓRICOS DE LOS FICHEROS DE REGISTRO (LOGS)</h1>
             <p>Un fichero de registro, LOG o bitácora, almacena información
                 cronológica sobre los numerosos eventos producidos en un SGBD, tanto en
                 su instalación, como en su explotación diaria y administración avanzada.
@@ -729,7 +656,7 @@ RESET PERSIST;</code></pre>
                     real del SGBD</strong>, ya que ayudan al administrador a averiguar las
                 causas de un mal funcionamiento y a auditar todas las operaciones que
                 los clientes realizan en el gestor.</p>
-            <h2 id="clasificación-general-de-las-anotaciones-de-bitácora">7.1
+            <h2 id="clasificación-general-de-las-anotaciones-de-bitácora">6.1
                 Clasificación General de las Anotaciones de Bitácora <a class="headerlink"
                     href="#clasificación-general-de-las-anotaciones-de-bitácora" title="Enlace permanente">¶</a></h2>
             <p>Cualquier flujo de información dirigido a un fichero de logs supone
@@ -763,7 +690,7 @@ RESET PERSIST;</code></pre>
                     </blockquote>
                 </li>
             </ol>
-            <h2 id="registro-de-errores-error-log-y-filtros-json"><strong>7.2</strong>
+            <h2 id="registro-de-errores-error-log-y-filtros-json"><strong>6.2</strong>
                 Registro de Errores (Error Log) y Filtros JSON <a class="headerlink"
                     href="#registro-de-errores-error-log-y-filtros-json" title="Enlace permanente">¶</a></h2>
             <p>Este registro almacena información esencial sobre fallos del motor de
@@ -784,7 +711,7 @@ SET PERSIST log_error_services = 'log_filter_internal;
 log_sink_internal; log_sink_json';</code></pre>
             </div>Esto creará un archivo con formato estructurado denominado
             error.json dentro del directorio asignado de datos.</p>
-            <h2 id="registro-general-de-consultas-general-query-log"><strong>7.3</strong>
+            <h2 id="registro-general-de-consultas-general-query-log"><strong>6.3</strong>
                 Registro General de Consultas (General Query Log) <a class="headerlink"
                     href="#registro-general-de-consultas-general-query-log" title="Enlace permanente">¶</a></h2>
             <p>Es una bitácora exhaustiva que registra el momento exacto en el que
@@ -836,7 +763,7 @@ general_log_file = /var/log/mysql/query.log</code></pre>
                 controladas de depuración de software en entornos locales de desarrollo,
                 o bajo estrictas auditorías de seguridad a nivel de red aislada.
                 Desactivar inmediatamente al finalizar las pruebas.</p>
-            <h2 id="registro-de-consultas-lentas-slow-query-log"><strong>7.4</strong>
+            <h2 id="registro-de-consultas-lentas-slow-query-log">6.4
                 Registro de Consultas Lentas (Slow Query Log) <a class="headerlink"
                     href="#registro-de-consultas-lentas-slow-query-log" title="Enlace permanente">¶</a></h2>
             <p>La herramienta primordial de optimización que tiene un SysAdmin.
@@ -915,7 +842,7 @@ SELECT NOW(), SLEEP(3);</code></pre>
                     </blockquote>
                 </li>
             </ul>
-            <h2 id="el-registro-binario-binary-log">7.5 El Registro Binario (Binary
+            <h2 id="el-registro-binario-binary-log">6.5 El Registro Binario (Binary
                 Log) <a class="headerlink" href="#el-registro-binario-binary-log" title="Enlace permanente">¶</a></h2>
             <p>El log binario (binlog) es un registro estructurado que contiene
                 todos los eventos que describen cambios en la base de datos, como
@@ -946,7 +873,7 @@ SELECT NOW(), SLEEP(3);</code></pre>
                     </blockquote>
                 </li>
             </ol>
-            <h1 id="diagnóstico-de-bajo-nivel-y-auditoría-con-performance_schema"><strong>8.</strong>
+            <h1 id="diagnóstico-de-bajo-nivel-y-auditoría-con-performance_schema"><strong>7.</strong>
                 DIAGNÓSTICO DE BAJO NIVEL Y AUDITORÍA CON performance_schema <a class="headerlink"
                     href="#diagnóstico-de-bajo-nivel-y-auditoría-con-performance_schema" title="Enlace permanente">¶</a>
             </h1>
@@ -987,7 +914,7 @@ WHERE USER = 'root' AND VARIABLE_NAME LIKE 'Handler_read%'
 ORDER BY CAST(VARIABLE_VALUE AS UNSIGNED) DESC;</code></pre>
             </div>
             </h1>
-            <h1 id="buenas-prácticas-con-los-logs">9. BUENAS PRÁCTICAS CON LOS
+            <h1 id="buenas-prácticas-con-los-logs">8. BUENAS PRÁCTICAS CON LOS
                 LOGS <a class="headerlink" href="#buenas-prácticas-con-los-logs" title="Enlace permanente">¶</a></h1>
             <p>Un servidor de bases de datos de nivel profesional debe garantizar la
                 protección, el aislamiento y la autolimpiabilidad de sus archivos
