@@ -192,8 +192,8 @@
                 Programa <a class="headerlink" href="#algoritmo-frente-a-programa" title="Enlace permanente">¶</a></h2>
             <p>Para comprender la diferencia, consideremos la analogía de una receta
                 de cocina:</p>
-            <p><img src="media_OGS_UT1_Teoria_Fundamentos/media/image6.png" style="width:6.26772in;height:0.45833in" />
-            </p>
+            <img src="media_OGS_UT1_Teoria_Fundamentos/media/image6.png" style="width:7.26772in;height:1.45833in" />
+            
             <ul>
                 <li>
                     <blockquote>
@@ -592,9 +592,9 @@
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                 <pre><code>Si (Expresión_Condicional) Entonces
-Bloque_de_sentencias_1
+    Bloque_de_sentencias_1
 SiNo
-Bloque_de_sentencias_2
+    Bloque_de_sentencias_2
 Fin Si</code></pre>
             </div><strong>Ejemplo de implementación:</strong></p>
             <p>
@@ -602,9 +602,9 @@ Fin Si</code></pre>
                 <pre><code>Escribir "Introduzca la calificación del alumno/a:"
 Leer nota
 Si nota &lt; 5 Entonces
-Escribir "Estado: Suspenso"
+    Escribir "Estado: Suspenso"
 SiNo
-Escribir "Estado: Aprobado"
+    Escribir "Estado: Aprobado"
 Fin Si</code></pre>
             </div><strong>B) Estructuras Condicionales Anidadas</strong></p>
             <p>Permite encadenar condiciones lógicas secuenciales para evaluar
@@ -615,17 +615,17 @@ Fin Si</code></pre>
                 <pre><code>Escribir "Introduzca la nota numérica de la prueba:"
 Leer nota
 Si nota &lt; 5 Entonces
-Escribir "Calificación final: Suspenso"
+    Escribir "Calificación final: Suspenso"
 SiNo
-Si nota &lt; 7 Entonces
-Escribir "Calificación final: Aprobado"
-SiNo
-Si nota &lt; 9 Entonces
-Escribir "Calificación final: Notable"
-SiNo
-Escribir "Calificación final: Sobresaliente"
-Fin Si
-Fin Si
+    Si nota &lt; 7 Entonces
+        Escribir "Calificación final: Aprobado"
+    SiNo
+        Si nota &lt; 9 Entonces
+            Escribir "Calificación final: Notable"
+        SiNo
+            Escribir "Calificación final: Sobresaliente"
+        Fin Si
+    Fin Si
 Fin Si</code></pre>
             </div><strong>C) Estructura Condicional Múltiple (Según-Hacer /
                 Select-Case)</strong></p>
@@ -637,13 +637,13 @@ Fin Si</code></pre>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                 <pre><code>Segun variable Hacer
 opcion_1:
-secuencia_de_acciones_1
+    secuencia_de_acciones_1
 opcion_2:
-secuencia_de_acciones_2
+    secuencia_de_acciones_2
 opcion_3:
-secuencia_de_acciones_3
+    secuencia_de_acciones_3
 De Otro Modo:
-secuencia_de_acciones_de_otro_modo
+    secuencia_de_acciones_de_otro_modo
 Fin Segun</code></pre>
             </div><strong>Ejemplo práctico:</strong></p>
             <p>
@@ -653,17 +653,15 @@ aprobado, notable, sobresaliente):"
 Leer calificacion
 Segun calificacion Hacer
 "suspenso":
-Escribir "Su nota numérica se encuentra en el rango [0, 5)."
+    Escribir "Su nota numérica se encuentra en el rango [0, 5)."
 "aprobado":
-Escribir "Su nota numérica se encuentra en el rango [5, 7)."
+    Escribir "Su nota numérica se encuentra en el rango [5, 7)."
 "notable":
-Escribir "Su nota numérica se encuentra en el rango [7, 9)."
+    Escribir "Su nota numérica se encuentra en el rango [7, 9)."
 "sobresaliente":
-Escribir "Su nota de excelencia se encuentra en el rango [9,
-10]."
+    Escribir "Su nota de excelencia se encuentra en el rango [9, 10]."
 De Otro Modo:
-Escribir "Error: La calificación introducida no coincide con los
-valores del sistema."
+    Escribir "Error: La calificación introducida no coincide con losvalores del sistema."
 Fin Segun</code></pre>
             </div>
             <h2 id="estructuras-condicionales">5.2. Estructuras Iterativas o
@@ -699,23 +697,20 @@ Fin Segun</code></pre>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                 <pre><code>Mientras condicion Hacer
-Secuencia_de_acciones
+    Secuencia_de_acciones
 Fin Mientras</code></pre>
             </div><strong>Ejemplo (Búsqueda del número secreto):</strong></p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                 <pre><code>secreto &lt;- 3
-Escribir "Intente adivinar el número secreto. Introduzca un número
-del 0 al 10:"
+Escribir "Intente adivinar el número secreto. Introduzca un número del 0 al 10:"
 Leer num_secreto
 Mientras num_secreto != secreto Hacer
-Escribir "Error: No ha acertado."
-Escribir "Por favor, vuelva a introducir un número entre el 0 y el
-10:"
-Leer num_secreto
+    Escribir "Error: No ha acertado."
+    Escribir "Por favor, vuelva a introducir un número entre el 0 y el 10:"
+    Leer num_secreto
 Fin Mientras
-Escribir "¡Felicidades! Ha acertado. El número secreto era ",
-secreto</code></pre>
+Escribir "¡Felicidades! Ha acertado. El número secreto era ", secreto</code></pre>
             </div><strong>B) Estructura Repetir-Hasta Que (Do-While /
                 Repeat-Until)</strong></p>
             <p>Bucle post-test. Ejecuta el cuerpo de instrucciones internas al menos
@@ -752,7 +747,7 @@ secreto</code></pre>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                 <pre><code>Repetir
-Secuencia_de_acciones
+    Secuencia_de_acciones
 Hasta Que condicion</code></pre>
             </div><strong>Ejemplo (Búsqueda del número secreto con validación
                 inicial):</strong></p>
@@ -760,12 +755,10 @@ Hasta Que condicion</code></pre>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                 <pre><code>secreto &lt;- 3
 Repetir
-Escribir "Por favor, introduzca un número entero de prueba entre el 0
-y el 10:"
-Leer num_secreto
+    Escribir "Por favor, introduzca un número entero de prueba entre el 0 y el 10:"
+    Leer num_secreto
 Hasta Que num_secreto = secreto
-Escribir "¡Felicidades! Ha acertado. El número secreto era ",
-secreto</code></pre>
+Escribir "¡Felicidades! Ha acertado. El número secreto era ",secreto</code></pre>
             </div>
             </h4>
             <p><strong>C) Estructura Para-Hasta-Con Paso (For-To-Step)</strong></p>
@@ -777,9 +770,8 @@ secreto</code></pre>
             <p><strong>Sintaxis:</strong></p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>Para variable_numerica &lt;- valor_inicial Hasta valor_final Con
-Paso paso Hacer
-secuencia_de_acciones
+                <pre><code>Para variable_numerica &lt;- valor_inicial Hasta valor_final Con Paso paso Hacer
+    secuencia_de_acciones
 Fin Para</code></pre>
             </div>
             </p>
@@ -792,7 +784,7 @@ Leer menor
 Escribir "Introduzca el límite superior del rango numérico:"
 Leer mayor
 Para contador &lt;- menor Hasta mayor Con Paso 1 Hacer
-Escribir "Valor actual del contador: ", contador
+    Escribir "Valor actual del contador: ", contador
 Fin Para</code></pre>
             </div>
             <h1 id="estructuras-de-control-de-flujo">6. ESTRUCTURAS
@@ -853,7 +845,7 @@ array[5] &lt;- 25
 // Imprimimos el contenido del array secuencialmente mediante un
 bucle de control controlado
 Para i &lt;- 1 Hasta 5 Con Paso 1 Hacer
-Escribir "Elemento en el índice ", i, " es igual a: ", array[i]
+    Escribir "Elemento en el índice ", i, " es igual a: ", array[i]
 Fin Para</code></pre>
             </div><em>(Nota técnica: PSeInt en configuraciones flexibles simula arrays
                 de base indexada 1 para asimilación estudiantil, pero en lenguajes
@@ -866,15 +858,13 @@ Fin Para</code></pre>
                 <pre><code>Dimension array[5]
 // Bucle de lectura y entrada de datos en cada registro
 Para i &lt;- 1 Hasta 5 Con Paso 1 Hacer
-Escribir "Introduzca el valor para la posición ", i, " del
-almacenamiento:"
-Leer array[i]
+    Escribir "Introduzca el valor para la posición ", i, " del almacenamiento:"
+    Leer array[i]
 Fin Para
 // Bucle de escritura y volcado de resultados
-Escribir "Volcado final del contenido de la estructura en
-memoria:"
-Para i &lt;- 1 Hasta 5 Con Paso 1 Hacer
-Escribir "Índice [", i, "] = ", array[i]
+Escribir "Volcado final del contenido de la estructura en memoria:"
+Para i &lt;- 1 Hasta 5 Con Paso 1 Hace
+    Escribir "Índice [", i, "] = ", array[i]
 Fin Para</code></pre>
             </div>
             <h1 id="cuaderno-de-prácticas-resueltas">7.
@@ -956,7 +946,7 @@ Fin Para</code></pre>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                 <pre><code>Funcion variable_de_retorno &lt;- Nombre_funcion ( Parámetros )
-Instrucciones_del_subprograma
+    Instrucciones_del_subprograma
 Fin Funcion</code></pre>
             </div><strong>Ventajas Sistemáticas del Uso de Funciones:</strong></p>
             <ol type="1">
@@ -1010,19 +1000,17 @@ Dimension coleccion[10]
 // Carga sistemática del array
 Escribir "--- Entrada de Datos al Array ---"
 Para i &lt;- 1 Hasta 10 Con Paso 1 Hacer
-Escribir "Introduzca el valor del registro ", i, ":"
-Leer coleccion[i]
+    Escribir "Introduzca el valor del registro ", i, ":"
+    Leer coleccion[i]
 Fin Para
 // Algoritmo de búsqueda del elemento menor
-menor &lt;- coleccion[1] // Asumimos inicialmente que el primer
-elemento es el menor
+menor &lt;- coleccion[1] // Asumimos inicialmente que el primer elemento es el menor
 Para i &lt;- 2 Hasta 10 Con Paso 1 Hacer
-Si coleccion[i] &lt; menor Entonces
-menor &lt;- coleccion[i] // Actualizamos el valor menor detectado
-Fin Si
+    Si coleccion[i] &lt; menor Entonces
+        menor &lt;- coleccion[i] // Actualizamos el valor menor detectado
+    Fin Si
 Fin Para
-Escribir "El menor número de la colección introducida es: ",
-menor
+Escribir "El menor número de la colección introducida es: ", menor
 FinAlgoritmo</code></pre>
             </div><strong>Práctica 2: Desarrollar un programa que solicite 5 números
                 al usuario por teclado, los almacene en un array y calcule la media
@@ -1034,9 +1022,9 @@ Dimension datos[5]
 acumulador_suma &lt;- 0
 Escribir "--- Entrada de Datos para Promedio ---"
 Para i &lt;- 1 Hasta 5 Con Paso 1 Hacer
-Escribir "Introduzca el dato número ", i, ":"
-Leer datos[i]
-acumulador_suma &lt;- acumulador_suma + datos[i]
+    Escribir "Introduzca el dato número ", i, ":"
+    Leer datos[i]
+    acumulador_suma &lt;- acumulador_suma + datos[i]
 Fin Para
 // Cálculo matemático de la media aritmética
 promedio &lt;- acumulador_suma / 5
@@ -1062,15 +1050,13 @@ nombres[7] &lt;- "Elena"
 nombres[8] &lt;- "Mateo"
 nombres[9] &lt;- "Sofía"
 nombres[10] &lt;- "Diego"
-// La función azar(N) de PSeInt devuelve un número pseudoaleatorio
-entre 0 y N-1
-// Ajustamos la lógica para mapear con los índices utilizables [1,
-10]
+// La función azar(N) de PSeInt devuelve un número pseudoaleatorio entre 0 y N-1
+// Ajustamos la lógica para mapear con los índices utilizables [1,10]
 indice_seleccionado &lt;- azar(10) + 1
 Escribir "El nombre seleccionado aleatoriamente por el sistema es: ",
 nombres[indice_seleccionado]
 FinAlgoritmo</code></pre>
-            </div>
+            </div>  
             <h2 id="solucionario-de-prácticas-con-arrays">8.2. Solucionario de
                 Prácticas con Funciones <a class="headerlink" href="#solucionario-de-prácticas-con-arrays"
                     title="Enlace permanente">¶</a></h2>
@@ -1082,26 +1068,21 @@ FinAlgoritmo</code></pre>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                 <pre><code>Funcion retorno_cuadrado &lt;- calcular_cuadrado ( valor )
-retorno_cuadrado &lt;- valor * valor
+    retorno_cuadrado &lt;- valor * valor
 Fin Funcion
 Algoritmo ScriptCuadradosRango
-Escribir "Introduzca el número entero que define el límite
-inferior:"
+Escribir "Introduzca el número entero que define el límite inferior:"
 Leer limite_inferior
-Escribir "Introduzca el número entero que define el límite
-superior:"
+Escribir "Introduzca el número entero que define el límite superior:"
 Leer limite_superior
 Si limite_inferior &gt; limite_superior Entonces
-Escribir "Error: El límite inferior no puede ser mayor que el
-superior."
+    Escribir "Error: El límite inferior no puede ser mayor que el superior."
 SiNo
-Escribir "Tabla de cuadrados en el rango [" , limite_inferior, ", ",
-limite_superior, "]:"
-Para contador &lt;- limite_inferior Hasta limite_superior Con Paso 1
-Hacer
-resultado &lt;- calcular_cuadrado(contador)
-Escribir "Número: ", contador, " -&gt; Cuadrado: ", resultado
-Fin Para
+    Escribir "Tabla de cuadrados en el rango [" , limite_inferior, ", ", limite_superior, "]:"
+    Para contador &lt;- limite_inferior Hasta limite_superior Con Paso 1 Hacer
+        resultado &lt;- calcular_cuadrado(contador)
+        Escribir "Número: ", contador, " -&gt; Cuadrado: ", resultado
+    Fin Para
 Fin Si
 FinAlgoritmo</code></pre>
             </div><strong>Práctica 2: Desarrollar dos funciones independientes; una
@@ -1115,13 +1096,13 @@ FinAlgoritmo</code></pre>
                 <pre><code>Funcion acumulado_suma &lt;- calcular_sumatorio ( numero )
 acumulado_suma &lt;- 0
 Para i &lt;- 1 Hasta numero Con Paso 1 Hacer
-acumulado_suma &lt;- acumulador_suma + i
+    acumulado_suma &lt;- acumulador_suma + i
 Fin Para
 Fin Funcion
 Funcion acumulado_factorial &lt;- calcular_factorial ( numero )
 acumulado_factorial &lt;- 1
 Para i &lt;- 1 Hasta numero Con Paso 1 Hacer
-acumulado_factorial &lt;- acumulado_factorial * i
+    acumulado_factorial &lt;- acumulado_factorial * i
 Fin Para
 Fin Funcion
 Algoritmo EvaluadorSumatoriosYFactoriales
@@ -1130,14 +1111,14 @@ Leer menor
 Escribir "Introduzca el valor mayor del rango:"
 Leer mayor
 Si menor &lt; 1 O mayor &lt; menor Entonces
-Escribir "Error: Rango inválido o con valores menores a uno."
+    Escribir "Error: Rango inválido o con valores menores a uno."
 SiNo
-Escribir "Procesando resultados matemáticos:"
+    Escribir "Procesando resultados matemáticos:"
 Para contador &lt;- menor Hasta mayor Con Paso 1 Hacer
-sum_res &lt;- calcular_sumatorio(contador)
-fact_res &lt;- calcular_factorial(contador)
-Escribir "Dato: ", contador, " | Sumatorio: ", sum_res, " |
-Factorial: ", fact_res
+    sum_res &lt;- calcular_sumatorio(contador)
+    fact_res &lt;- calcular_factorial(contador)
+    Escribir "Dato: ", contador, " | Sumatorio: ", sum_res, " |
+    Factorial: ", fact_res
 Fin Para
 Fin Si
 FinAlgoritmo</code></pre>
@@ -1148,21 +1129,20 @@ FinAlgoritmo</code></pre>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                 <pre><code>Funcion evaluacion_par &lt;- evaluar_paridad ( valor )
-// Evaluamos usando el residuo de la división entera (operador
-Mod)
+// Evaluamos usando el residuo de la división entera (operador Mod)
 Si valor Mod 2 = 0 Entonces
-evaluacion_par &lt;- Verdadero // Es un número par
+    evaluacion_par &lt;- Verdadero // Es un número par
 SiNo
-evaluacion_par &lt;- Falso // Es un número impar
+    evaluacion_par &lt;- Falso // Es un número impar
 Fin Si
 Fin Funcion
 Algoritmo ControladorParidadInteractiva
 Escribir "Introduzca un número entero para analizar:"
 Leer numero
 Si evaluar_paridad(numero) = Verdadero Entonces
-Escribir "El número ", numero, " es PAR."
+    Escribir "El número ", numero, " es PAR."
 SiNo
-Escribir "El número ", numero, " es IMPAR."
+    Escribir "El número ", numero, " es IMPAR."
 Fin Si
 FinAlgoritmo</code></pre>
             </div><strong>Práctica 4: Programar una función que realice la conversión
@@ -1177,15 +1157,13 @@ tasa_conversion &lt;- 0.92
 euros &lt;- dolares * tasa_conversion
 Fin Funcion
 Algoritmo ConversorMonedas
-Escribir "Introduzca el importe total en dólares estadounidenses
-(USD):"
+Escribir "Introduzca el importe total en dólares estadounidenses (USD):"
 Leer dolares_entrada
 Si dolares_entrada &lt; 0 Entonces
-Escribir "Error: El importe no puede ser negativo."
+    Escribir "Error: El importe no puede ser negativo."
 SiNo
-euros_salida &lt;- convertir_dolar_a_euro(dolares_entrada)
-Escribir "Importe: ", dolares_entrada, " USD equivalen a: ",
-euros_salida, " EUR."
+    euros_salida &lt;- convertir_dolar_a_euro(dolares_entrada)
+    Escribir "Importe: ", dolares_entrada, " USD equivalen a: ",euros_salida, " EUR."
 Fin Si
 FinAlgoritmo</code></pre>
             </div><strong>Práctica 5: Desarrollar un conversor análogo de distancias,
@@ -1201,11 +1179,11 @@ Algoritmo ConversorDistancias
 Escribir "Introduzca la distancia en millas terrestres:"
 Leer millas_entrada
 Si millas_entrada &lt; 0 Entonces
-Escribir "Error: La distancia no puede ser negativa."
+    Escribir "Error: La distancia no puede ser negativa."
 SiNo
-km_salida &lt;- convertir_millas_a_km(millas_entrada)
-Escribir "Distancia: ", millas_entrada, " millas equivalen a: ",
-km_salida, " km."
+    km_salida &lt;- convertir_millas_a_km(millas_entrada)
+    Escribir "Distancia: ", millas_entrada, " millas equivalen a: ",
+    km_salida, " km."
 Fin Si
 FinAlgoritmo</code></pre>
             </div><strong>Práctica 6: Desarrollar una función que reciba tres
@@ -1228,14 +1206,11 @@ Leer minutos
 Escribir "Introduzca el valor de los Segundos:"
 Leer segundos
 // Validación de consistencia temporal en sistemas
-Si horas &lt; 0 O minutos &lt; 0 O minutos &gt; 59 O segundos &lt; 0
-O segundos &gt; 59 Entonces
-Escribir "Error: Formato de tiempo inválido."
+Si horas &lt; 0 O minutos &lt; 0 O minutos &gt; 59 O segundos &lt; 0 O segundos &gt; 59 Entonces
+    Escribir "Error: Formato de tiempo inválido."
 SiNo
-resultado_segundos &lt;- calcular_tiempo_segundos(horas, minutos,
-segundos)
-Escribir "El tiempo acumulado es igual a: ", resultado_segundos, "
-segundos."
+    resultado_segundos &lt;- calcular_tiempo_segundos(horas, minutos,segundos)
+    Escribir "El tiempo acumulado es igual a: ", resultado_segundos, " segundos."
 Fin Si
 FinAlgoritmo</code></pre>
             </div>

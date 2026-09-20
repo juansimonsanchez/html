@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RECURSO - Mysql</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+</head>
+
+<body>
+  <header id="site-header">
+    <div class="header-container">
+      <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo"
+          style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>RECURSO
+          &ndash; Mysql</span></div>
+    </div>
+  </header>
+  <div id="page-layout">
+    <main id="main-content">
+      <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="Recurso_MySQL.pdf" download
+          style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥
+          Descargar PDF</a></div>
+
+
+      <h1 id="despliegue-de-mysql"><strong>DESPLIEGUE DE MYSQL</strong> <a class="headerlink"
+          href="#despliegue-de-mysql" title="Enlace permanente">¶</a></h1>
+      <p>El estándar de la industria moderna prioriza entornos inmutables y
+        reproducibles frente a las tradicionales instalaciones locales sobre
+        sistemas hosts de desarrollo (<em>bare-metal</em>). Utilizar
+        <strong>Docker</strong> y <strong>Docker Compose</strong> asegura que
+        todo el alumnado trabaje en un entorno idéntico. Con este recurso
+        aprenderas a realizar la instalación de MySQL o utilizar MySQL con
+        contenedores Docker
+      </p>
+      <h2 id="instalación-de-mysql-en-ubuntu">Instalación de MySQL en
+        Ubuntu <a class="headerlink" href="#instalación-de-mysql-en-ubuntu" title="Enlace permanente">¶</a></h2>
+      <h3 id="paso-1-actualizar-el-repositorio-e-instalar-mysql-server">Paso
+        1: Actualizar el repositorio e instalar MySQL Server <a class="headerlink"
+          href="#paso-1-actualizar-el-repositorio-e-instalar-mysql-server" title="Enlace permanente">¶</a></h3>
+      <p>Ejecuta el gestor de paquetes apt para instalar la versión oficial
+        incluida en los repositorios de Ubuntu:</p>
+      <p>
+      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+        <pre><code>sudo apt update
+sudo apt install -y mysql-server</code></pre>
+      </div><strong>Paso 2: Verificar que el servicio esté activo</strong></p>
+      <p>Una vez finalizada la instalación, verifica que el motor de la base
+        de datos esté ejecutándose correctamente:</p>
+      <p>
+      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+        <pre><code>sudo systemctl status mysql</code></pre>
+      </div><em>Deberías ver el estado en verde como active (running).</em></p>
+      <p><strong>Paso 3: Configurar la seguridad inicial
+          (mysql_secure_installation)</strong></p>
+      <p>Ejecuta el script de seguridad integrado para establecer reglas
+        básicas (como cambiar la política de contraseñas y eliminar usuarios
+        anónimos):</p>
+      <p>
+      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+        <pre><code>sudo mysql_secure_installation</code></pre>
+      </div>El asistente te hará las siguientes preguntas:</p>
+      <ol type="1">
+        <li>
+          <blockquote>
+            <p><strong>VALIDATE PASSWORD COMPONENT</strong>: Presiona y si deseas
+              exigir contraseñas complejas, o n si prefieres contraseñas sencillas
+              para entornos de desarrollo.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Set root password</strong>: Define una contraseña para el
+              usuario root de MySQL.</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Remove anonymous users?</strong>: Responde y (elimina
+              usuarios anónimos).</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Disallow root login remotely?</strong>: Responde y (por
+              seguridad, se limita a root a conectarse solo localmente) y n en caso
+              contrario</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Remove test database and access to it?</strong>: Responde y
+              (elimina la base de datos de prueba) y n en caso contrario</p>
+          </blockquote>
+        </li>
+        <li>
+          <blockquote>
+            <p><strong>Reload privilege tables now?</strong>: Responde y (aplica los
+              cambios inmediatamente).</p>
+          </blockquote>
+        </li>
+      </ol>
+      <p><strong>Paso 4: Cambiar la autenticación del usuario root (Opcional
+          pero recomendado)</strong></p>
+      <p>En Ubuntu, el usuario root de MySQL usa por defecto el plugin
+        auth_socket, lo que exige usar sudo mysql para entrar. Si prefieres
+        acceder mediante usuario y contraseña tradicionales (por ejemplo, desde
+        un cliente gráfico como DBeaver o Workbench):</p>
+      <ol type="1">
+        <li>
+          <blockquote>
+            <p>Accede a la consola de MySQL:</p>
+          </blockquote>
+        </li>
+      </ol>
+      <p>
+      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+        <pre><code>sudo mysql</code></pre>
+      </div>Cambia el método de autenticación y asigna una contraseña ejecutando
+      la siguiente consulta SQL (reemplaza TuPasswordSegura123! por tu
+      clave):</p>
+      </blockquote>
+      </li>
+      </ol>
+      <p>
+      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+        <pre><code>ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password
+BY 'TuPasswordSegura123!';
+FLUSH PRIVILEGES;
+EXIT;</code></pre>
+      </div>Cuidado para no tener problema y poder acceder desde cualquier
+      equipo establecer como método de autenticación mysql_native_password</p>
+      <p>
+      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+        <pre><code>ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password
+BY 'TuPasswordSegura123!';
+FLUSH PRIVILEGES;
+EXIT;</code></pre>
+      </div>Paso 5: Comprobar el acceso
+      local</h3>
+      <p>Ahora puedes iniciar sesión en MySQL con tu usuario y contraseña
+        mediante el cliente local:</p>
+      <p>
+      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+        <pre><code>mysql -u root -p</code></pre>
+      </div>
+      </p>
+      <h2 id="instalación-de-mysql-en-opensuse">Instalación de MySQL en
+        OpenSuse <a class="headerlink" href="#instalación-de-mysql-en-opensuse" title="Enlace permanente">¶</a></h2>
+      <h2 id="primeros-pasos-con-mysql">Primeros pasos con MySQL <a class="headerlink" href="#primeros-pasos-con-mysql"
+          title="Enlace permanente">¶</a></h2>
+      <h2 id="uso-de-mysql-con-docker-y-docker-componse">Uso de MySQL con
+        Docker y Docker Componse <a class="headerlink" href="#uso-de-mysql-con-docker-y-docker-componse"
+          title="Enlace permanente">¶</a></h2>
+      <h3 id="versión-avanzada-1-2º-asir---ut1">Versión avanzada 1 (2º ASIR -
+        UT1) <a class="headerlink" href="#versión-avanzada-1-2º-asir---ut1" title="Enlace permanente">¶</a></h3>
+      <p>Este archivo monta los directorios críticos de configuración, datos y
+        logs sobre el volumen físico local para permitir un análisis interactivo
+        sin perder persistencia.</p>
+      <p>
+      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+        <pre><code>version: '3.8'
+services:
+db:
+image: mysql:8.0
+container_name: mysql-sysadmin-ut1
+restart: always
+command: --default-authentication-plugin=mysql_native_password
+environment:
+MYSQL_ROOT_PASSWORD: RootPass_2026
+MYSQL_DATABASE: sysadmin_audit
+ports:
+- "3306:3306"
+volumes:
+# Persistencia del directorio de datos del motor
+- db_data:/var/lib/mysql
+# Mapeo personalizado para aplicar configuraciones
+(/etc/mysql/conf.d/)
+- ./config:/etc/mysql/conf.d
+# Directorio de Logs mapeado para permitir análisis externo directo
+en el host
+- ./logs:/var/log/mysql
+networks:
+- asir-net
+deploy:
+resources:
+limits:
+cpus: '1.5'
+memory: 1500M
+volumes:
+db_data:
+networks:
+asir-net:
+driver: bridge</code></pre>
+      </div>
+      </p>
+      <p>
+      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+        <pre><code># Iniciar contenedor
+docker compose up -d
+# Detener contenedor
+docker compose down -v
+# Comprobar contenedores activos
+docker ps
+# Reiniciar contenedor tras cambios de configuración
+docker compose restart
+# Entrar al contenedor
+docker exec -it mysql-sysadmin-ut1 bash
+# Ejecutar MySQL
+mysql -u root -p -P 3306</code></pre>
+      </div>Si no tenemos instalado MySQL en el servidor necesitaremos un
+      cliente:</p>
+      <p>
+      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+        <pre><code>sudo apt install mysql-client-core-8.0
+# El acceso en este caso será con:
+mysql -u root -p -h 127.0.0.1 -P 3306</code></pre>
+      </div>
+      </p>
+
+    </main>
+  </div>
+</body>
+
+</html>
