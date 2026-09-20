@@ -1,0 +1,2197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GBD - Ut5 Teoria Consultas</title>
+    <style>
+    
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --bg-header: #1e3a8a;
+    --text-header: #ffffff;
+    --bg-body: #f8fafc;
+    --text-body: #1e293b;
+    --border-color: #cbd5e1;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-body);
+    color: var(--text-body);
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, [id], a[name] {
+    scroll-margin-top: 80px !important;
+}
+
+.headerlink {
+    display: inline-block;
+    margin-left: 0.4rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.8em;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
+h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
+    visibility: visible;
+    opacity: 1;
+}
+
+.headerlink:hover {
+    color: var(--primary);
+}
+
+#site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    background: var(--bg-header);
+    color: var(--text-header);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    height: 62px;
+}
+
+.site-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.top-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.top-nav .nav-btn {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+.top-nav .nav-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 9px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown:hover .dropbtn, .dropbtn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 320px;
+    max-width: 480px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 10001;
+    border: 1px solid #e2e8f0;
+    margin-top: 6px;
+}
+
+.dropdown-content a {
+    color: var(--text-body);
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.92rem;
+    border-bottom: 1px solid #f1f5f9;
+    line-height: 1.4;
+    transition: background 0.15s, color 0.15s;
+    word-break: break-word;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #eff6ff;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block !important;
+}
+
+#page-layout {
+    display: flex;
+    min-height: calc(100vh - 62px);
+}
+
+#left-panel {
+    width: 320px;
+    min-width: 320px;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 1.5rem 1.25rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: sticky;
+    top: 62px;
+    height: calc(100vh - 62px);
+}
+
+#left-panel h3 {
+    font-size: 1rem;
+    margin-top: 0;
+    color: #334155;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
+
+#left-panel nav#TOC, #left-panel #TOC {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+#left-panel ul {
+    list-style-type: none;
+    padding-left: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+#left-panel li {
+    margin: 6px 0;
+}
+
+#left-panel a {
+    color: #475569;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    display: block;
+    transition: color 0.15s;
+}
+
+#left-panel a:hover {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+#main-content {
+    flex: 1;
+    padding: 2.5rem 4rem;
+    box-sizing: border-box;
+    max-width: 100% !important;
+    width: calc(100% - 320px);
+    min-width: 0;
+}
+
+/* TABLAS ELEGANTES Y RESPONSIVE */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1.75rem 0;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    font-size: 0.93rem;
+    background: #ffffff;
+    table-layout: auto !important;
+}
+
+th, td {
+    padding: 10px 14px !important;
+    border: 1px solid #cbd5e1 !important;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+td p, th p {
+    margin: 0 !important;
+    padding: 2px 0 !important;
+}
+
+th {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #0f172a !important;
+}
+
+tr:nth-child(even) td {
+    background-color: #f8fafc !important;
+}
+
+tr:hover td {
+    background-color: #f1f5f9 !important;
+}
+
+/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
+.code-wrapper {
+    position: relative;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0f172a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #334155;
+    color: #f8fafc;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.copy-btn:hover {
+    background: #2563eb;
+}
+
+pre {
+    margin: 0 !important;
+    padding: 1.25rem 1.25rem !important;
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    overflow-x: auto !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+}
+
+code {
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+}
+
+p code, li code {
+    background: #e2e8f0;
+    color: #0f172a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
+
+/* RESPONSIVE DESIGN PARA MÓVILES Y TABLETS */
+@media (max-width: 768px) {
+    .header-container {
+        height: auto;
+        flex-direction: column;
+        padding: 0.75rem 1rem;
+        gap: 0.6rem;
+    }
+    
+    .site-title {
+        font-size: 1.05rem;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .site-title img {
+        height: 28px !important;
+    }
+
+    .top-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 0.35rem;
+    }
+
+    .top-nav .nav-btn, .dropbtn {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    .dropdown-content {
+        min-width: 240px;
+        max-width: 90vw;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #page-layout {
+        flex-direction: column;
+    }
+
+    #left-panel {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        position: static !important;
+        border-right: none !important;
+        border-bottom: 2px solid #e2e8f0;
+        padding: 1rem !important;
+    }
+
+    #main-content {
+        width: 100% !important;
+        padding: 1.25rem 1rem !important;
+    }
+
+    iframe {
+        height: 60vh !important;
+    }
+
+    th, td {
+        padding: 8px 10px !important;
+        font-size: 0.85rem !important;
+    }
+
+    pre {
+        padding: 0.85rem !important;
+        font-size: 0.82rem !important;
+    }
+}
+
+    </style>
+    <script>
+    
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.dropdown').forEach(dd => {
+        const btn = dd.querySelector('.dropbtn');
+        const content = dd.querySelector('.dropdown-content');
+        if (btn && content) {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = content.style.display === 'block';
+                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
+                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+                if (!isOpen) {
+                    content.style.display = 'block';
+                    btn.classList.add('active');
+                }
+            });
+        }
+    });
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
+        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+    });
+
+    // Controlador universal de clics en enlaces ancla (#...)
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const rawHref = this.getAttribute('href') || '';
+            const hashIdx = rawHref.indexOf('#');
+            if (hashIdx === -1) return;
+            const hash = rawHref.substring(hashIdx + 1);
+            if (!hash) return;
+            
+            let targetId = hash;
+            try { targetId = decodeURIComponent(hash); } catch(err) {}
+
+            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
+            if (!targetEl) {
+                for (let el of document.querySelectorAll('[id]')) {
+                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
+                        targetEl = el;
+                        break;
+                    }
+                }
+            }
+
+            if (targetEl) {
+                e.preventDefault();
+                const headerOffset = 75;
+                const elementPosition = targetEl.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                if (history.pushState) {
+                    history.pushState(null, null, '#' + targetId);
+                }
+            }
+        });
+    });
+});
+
+function copyCode(btn) {
+    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
+    navigator.clipboard.writeText(code).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = '✅ ¡Copiado!';
+        btn.style.background = '#16a34a';
+        setTimeout(() => {
+            btn.innerText = orig;
+            btn.style.background = '#334155';
+        }, 2000);
+    });
+}
+
+    </script>
+</head>
+<body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>GBD &ndash; Ut5 Teoria Consultas</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+      <a href="GBD_UT8_Teoria_Programacion.html" class="nav-btn">Programación</a>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Teoría ▾</button>
+        <div class="dropdown-content">
+          <a href="GBD_UT1_Teoria_Almacenamiento.html">GBD UT1 Teoria Almacenamiento</a>
+          <a href="GBD_UT2_Teoria_Diagramas.html">GBD UT2 Teoria Diagramas</a>
+          <a href="GBD_UT3_Teoria_Modelo.html">GBD UT3 Teoria Modelo</a>
+          <a href="GBD_UT4_Teoria_DDL.html">GBD UT4 Teoria DDL</a>
+          <a href="GBD_UT5_Teoria_Consultas.html">GBD UT5 Teoria Consultas</a>
+          <a href="GBD_UT6_Teoria_Vistas.html">GBD UT6 Teoria Vistas</a>
+          <a href="GBD_UT7_Teoria_DML.html">GBD UT7 Teoria DML</a>
+          <a href="GBD_UT9_Teoria_Seguridad.html">GBD UT9 Teoria Seguridad</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <aside id="left-panel">
+            <h3>Índice del Tema</h3>
+            <nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#ficha-técnica-de-la-unidad-didáctica"
+id="toc-ficha-técnica-de-la-unidad-didáctica">FICHA TÉCNICA DE LA UNIDAD
+DIDÁCTICA</a></li>
+<li><a href="#índice-de-contenidos" id="toc-índice-de-contenidos">ÍNDICE
+DE CONTENIDOS</a></li>
+<li><a href="#introducción-al-lenguaje-dml"
+id="toc-introducción-al-lenguaje-dml">1. INTRODUCCIÓN AL LENGUAJE DML
+</a></li>
+<li><a href="#consultas-básicas-sobre-una-tabla"
+id="toc-consultas-básicas-sobre-una-tabla">2. CONSULTAS BÁSICAS SOBRE
+UNA TABLA</a>
+<ul>
+<li><a href="#estructura-general" id="toc-estructura-general">2.1
+Estructura General </a></li>
+<li><a href="#la-cláusula-select" id="toc-la-cláusula-select">2.2 La
+Cláusula SELECT</a>
+<ul>
+<li><a href="#proyección-total-select"
+id="toc-proyección-total-select">2.2.1 Proyección Total (SELECT *)
+</a></li>
+<li><a href="#proyección-parcial-de-columnas"
+id="toc-proyección-parcial-de-columnas">2.2.2 Proyección Parcial de
+Columnas</a></li>
+<li><a href="#comentarios-en-sentencias-sql"
+id="toc-comentarios-en-sentencias-sql">2.2.3 Comentarios en Sentencias
+SQL</a></li>
+<li><a href="#expresiones-y-columnas-calculadas"
+id="toc-expresiones-y-columnas-calculadas">2.2.4 Expresiones y Columnas
+Calculadas</a></li>
+<li><a href="#section" id="toc-section"></a></li>
+<li><a href="#renombrado-de-columnas-as"
+id="toc-renombrado-de-columnas-as">2.2.5 Renombrado de Columnas
+(AS)</a></li>
+<li><a href="#section-1" id="toc-section-1"></a></li>
+<li><a href="#funciones-escalares-cadenas-matemáticas-y-fechas"
+id="toc-funciones-escalares-cadenas-matemáticas-y-fechas">2.2.6
+Funciones Escalares (Cadenas, Matemáticas y Fechas)</a></li>
+<li><a href="#modificadores-de-resultados-distinct-all-y-distinctrow"
+id="toc-modificadores-de-resultados-distinct-all-y-distinctrow">2.2.7
+Modificadores de Resultados: DISTINCT, ALL y DISTINCTROW</a></li>
+</ul></li>
+<li><a href="#cláusula-where-filtrado"
+id="toc-cláusula-where-filtrado">2.3 Cláusula WHERE (Filtrado)</a>
+<ul>
+<li><a href="#operadores-de-comparación-y-lógicos"
+id="toc-operadores-de-comparación-y-lógicos">2.3.1 Operadores de
+Comparación y Lógicos</a></li>
+<li><a href="#section-2" id="toc-section-2"></a></li>
+<li><a href="#evaluación-de-rangos-between-y-listas-de-valores-in"
+id="toc-evaluación-de-rangos-between-y-listas-de-valores-in">2.3.2
+Evaluación de Rangos (BETWEEN) y Listas de Valores (IN)</a></li>
+<li><a href="#búsqueda-de-patrones-de-texto-like"
+id="toc-búsqueda-de-patrones-de-texto-like">2.3.3 Búsqueda de Patrones
+de Texto (LIKE)</a></li>
+<li><a href="#tratamiento-de-la-ausencia-de-datos-is-null-is-not-null"
+id="toc-tratamiento-de-la-ausencia-de-datos-is-null-is-not-null">2.3.4
+Tratamiento de la Ausencia de Datos (IS NULL / IS NOT NULL)</a></li>
+<li><a href="#filtrado-especiales-booleanos-horas-y-marcas-de-tiempo"
+id="toc-filtrado-especiales-booleanos-horas-y-marcas-de-tiempo">2.3.5
+Filtrado especiales (Booleanos, Horas y Marcas de Tiempo)</a></li>
+</ul></li>
+<li><a href="#cláusula-order-by-clasificación-física-de-resultados"
+id="toc-cláusula-order-by-clasificación-física-de-resultados">2.4
+Cláusula ORDER BY: Clasificación Física de Resultados</a>
+<ul>
+<li><a href="#ordenación-ascendente-asc-y-descendente-desc"
+id="toc-ordenación-ascendente-asc-y-descendente-desc">2.4.1 Ordenación
+Ascendente (ASC) y Descendente (DESC)</a></li>
+<li><a href="#ordenación-por-múltiples-atributos"
+id="toc-ordenación-por-múltiples-atributos">2.4.2 Ordenación por
+Múltiples Atributos</a></li>
+</ul></li>
+<li><a href="#cláusula-limit-paginación-y-control-del-tránsito-de-red"
+id="toc-cláusula-limit-paginación-y-control-del-tránsito-de-red">2.5
+Cláusula LIMIT: Paginación y Control del Tránsito de Red</a></li>
+</ul></li>
+<li><a href="#consultas-sobre-varias-tablas"
+id="toc-consultas-sobre-varias-tablas">3. CONSULTAS SOBRE VARIAS TABLAS
+</a>
+<ul>
+<li><a
+href="#concepto-de-producto-cartesiano-composición-cruzada-o-cross-join"
+id="toc-concepto-de-producto-cartesiano-composición-cruzada-o-cross-join">3.1
+Concepto de Producto Cartesiano (Composición Cruzada o CROSS
+JOIN)</a></li>
+<li><a href="#composición-interna-inner-join"
+id="toc-composición-interna-inner-join">3.2 Composición Interna (INNER
+JOIN)</a>
+<ul>
+<li><a href="#sintaxis-explícita-on-using-vs.-implícita-equi-join"
+id="toc-sintaxis-explícita-on-using-vs.-implícita-equi-join">3.2.1
+Sintaxis Explícita (ON / USING) vs. Implícita (Equi-Join)</a></li>
+<li><a href="#uniones-equivalentes-y-no-equivalentes"
+id="toc-uniones-equivalentes-y-no-equivalentes">3.2.2 Uniones
+Equivalentes y No Equivalentes </a></li>
+<li><a href="#autocomposición-o-unión-reflexiva-self-join"
+id="toc-autocomposición-o-unión-reflexiva-self-join">3.2.3
+Autocomposición o Unión Reflexiva (Self-Join)</a></li>
+</ul></li>
+<li><a href="#composición-de-tres-o-más-tablas-y-rutas-de-intersección"
+id="toc-composición-de-tres-o-más-tablas-y-rutas-de-intersección">3.2.4
+Composición de Tres o Más Tablas y Rutas de Intersección</a>
+<ul>
+<li><a href="#section-3" id="toc-section-3"></a></li>
+</ul></li>
+<li><a href="#composición-externa-outer-join"
+id="toc-composición-externa-outer-join">3.3 Composición Externa (OUTER
+JOIN)</a>
+<ul>
+<li><a href="#composición-externa-izquierda-left-join"
+id="toc-composición-externa-izquierda-left-join">3.3.1 Composición
+Externa Izquierda (LEFT JOIN)</a></li>
+<li><a href="#composición-externa-derecha-right-join"
+id="toc-composición-externa-derecha-right-join">3.3.2 Composición
+Externa Derecha (RIGHT JOIN)</a></li>
+<li><a href="#ausencia-de-full-outer-join-en-mysql"
+id="toc-ausencia-de-full-outer-join-en-mysql">3.3.3 Ausencia de FULL
+OUTER JOIN en MySQL </a></li>
+<li><a href="#composiciones-externas-naturales-y-sus-riesgos"
+id="toc-composiciones-externas-naturales-y-sus-riesgos">3.3.4
+Composiciones Externas Naturales y sus Riesgos</a></li>
+</ul></li>
+<li><a
+href="#gestión-de-tablas-de-distintas-bases-de-datos-en-el-mismo-servidor"
+id="toc-gestión-de-tablas-de-distintas-bases-de-datos-en-el-mismo-servidor">3.4
+Gestión de Tablas de Distintas Bases de Datos en el Mismo
+Servidor</a></li>
+</ul></li>
+<li><a href="#consultas-de-agregación-y-resumen"
+id="toc-consultas-de-agregación-y-resumen">4. CONSULTAS DE AGREGACIÓN Y
+RESUMEN</a>
+<ul>
+<li><a href="#funciones-de-agregación"
+id="toc-funciones-de-agregación">4.1 Funciones de Agregación</a>
+<ul>
+<li><a href="#comportamiento-y-diferencias-entre-count-y-countcolumna"
+id="toc-comportamiento-y-diferencias-entre-count-y-countcolumna">4.1.1
+Comportamiento y Diferencias entre COUNT(*) y COUNT(columna)</a></li>
+<li><a href="#agregación-de-valores-únicos-count-distinct"
+id="toc-agregación-de-valores-únicos-count-distinct">4.1.2 Agregación de
+Valores Únicos (COUNT DISTINCT)</a></li>
+<li><a
+href="#interacción-de-las-funciones-de-agregación-con-valores-nulos"
+id="toc-interacción-de-las-funciones-de-agregación-con-valores-nulos">4.1.3
+Interacción de las Funciones de Agregación con Valores Nulos</a></li>
+</ul></li>
+<li><a href="#cláusula-group-by-agrupamiento-de-registros"
+id="toc-cláusula-group-by-agrupamiento-de-registros">4.2 Cláusula GROUP
+BY: Agrupamiento de Registros</a>
+<ul>
+<li><a href="#mecánica-de-particionado"
+id="toc-mecánica-de-particionado">4.2.1 Mecánica de
+Particionado</a></li>
+<li><a href="#agrupamiento-sobre-múltiples-atributos"
+id="toc-agrupamiento-sobre-múltiples-atributos">4.2.2 Agrupamiento
+sobre Múltiples Atributos</a></li>
+</ul></li>
+<li><a href="#cláusula-having-filtrado-de-grupos"
+id="toc-cláusula-having-filtrado-de-grupos">4.3 Cláusula HAVING:
+Filtrado de Grupos</a>
+<ul>
+<li><a href="#diferencias-críticas-de-procesamiento-where-vs.-having"
+id="toc-diferencias-críticas-de-procesamiento-where-vs.-having">4.3.1
+Diferencias Críticas de Procesamiento: WHERE vs. HAVING</a></li>
+</ul></li>
+<li><a
+href="#errores-comunes-en-consultas-de-resumen-y-only_full_group_by"
+id="toc-errores-comunes-en-consultas-de-resumen-y-only_full_group_by">4.4
+Errores Comunes en Consultas de Resumen y ONLY_FULL_GROUP_BY</a></li>
+</ul></li>
+<li><a href="#subconsultas-consultas-anidadas"
+id="toc-subconsultas-consultas-anidadas">5. SUBCONSULTAS (CONSULTAS
+ANIDADAS)</a>
+<ul>
+<li><a href="#introducción-y-tipología-de-subconsultas"
+id="toc-introducción-y-tipología-de-subconsultas">5.1 Introducción y
+Tipología de Subconsultas</a></li>
+<li><a href="#subconsultas-de-valor-escalar"
+id="toc-subconsultas-de-valor-escalar">5.2 Subconsultas de Valor
+Escalar</a></li>
+<li><a href="#subconsultas-de-fila-o-de-lista-múltiples-filas"
+id="toc-subconsultas-de-fila-o-de-lista-múltiples-filas">5.3
+Subconsultas de Fila o de Lista (Múltiples Filas)</a></li>
+<li><a href="#subconsultas-de-tabla-cláusula-from-derived-tables"
+id="toc-subconsultas-de-tabla-cláusula-from-derived-tables">5.4
+Subconsultas de Tabla (Cláusula FROM / Derived Tables)</a></li>
+<li><a href="#subconsultas-correlacionadas-vs.-no-correlacionadas"
+id="toc-subconsultas-correlacionadas-vs.-no-correlacionadas">5.5
+Subconsultas Correlacionadas vs. No Correlacionadas</a></li>
+<li><a href="#comprobación-de-existencia-exists-y-not-exists"
+id="toc-comprobación-de-existencia-exists-y-not-exists">5.6 Comprobación
+de Existencia (EXISTS y NOT EXISTS)</a></li>
+<li><a href="#errores-comunes-de-execution-en-subconsultas"
+id="toc-errores-comunes-de-execution-en-subconsultas">5.7 Errores
+Comunes de Execution en Subconsultas</a></li>
+</ul></li>
+<li><a href="#errores-comunes-y-guía-de-buenas-prácticas"
+id="toc-errores-comunes-y-guía-de-buenas-prácticas">6. ERRORES COMUNES Y
+GUÍA DE BUENAS PRÁCTICAS</a></li>
+<li><a href="#anexo-i-funciones-de-mysql-más-utilizadas"
+id="toc-anexo-i-funciones-de-mysql-más-utilizadas">7. ANEXO I: FUNCIONES
+DE MYSQL MÁS UTILIZADAS</a>
+<ul>
+<li><a href="#funciones-de-cadenas-de-texto"
+id="toc-funciones-de-cadenas-de-texto">7.1 Funciones de Cadenas de
+Texto</a></li>
+<li><a href="#funciones-matemáticas" id="toc-funciones-matemáticas">7.2
+Funciones Matemáticas</a></li>
+<li><a href="#funciones-de-fecha-y-hora"
+id="toc-funciones-de-fecha-y-hora">7.3 Funciones de Fecha y
+Hora</a></li>
+<li><a href="#funciones-de-control-de-flujo-y-lógica"
+id="toc-funciones-de-control-de-flujo-y-lógica">7.4 Funciones de Control
+de Flujo y Lógica</a></li>
+</ul></li>
+<li><a href="#anexo-ii-script-sql" id="toc-anexo-ii-script-sql">8. ANEXO
+II: SCRIPT SQL </a></li>
+</ul>
+</nav>
+        </aside>
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="GBD_UT5_Teoria_Consultas.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+<header id="title-block-header">
+<h1 class="title"><p><span id="_b6l4wb6vg5a3"
+class="anchor"></span>UNIDAD 5</p>
+<p><span id="_urguw69s1cj3" class="anchor"></span>CONSULTAS<br />
+</p></h1>
+</header>
+
+<h3 id="ficha-técnica-de-la-unidad-didáctica">FICHA TÉCNICA DE LA UNIDAD
+DIDÁCTICA <a class="headerlink" href="#ficha-técnica-de-la-unidad-didáctica" title="Enlace permanente">¶</a></h3>
+<div class="table-wrapper"><table>
+<tbody>
+<tr class="header">
+<td><strong>Unidad Didáctica</strong></td>
+<td>Unidad Didáctica 5: Recuperación de Información en MySQL (Lenguaje
+de Manipulación de Datos - Consultas DML)</td>
+</tr>
+<tr class="odd">
+<td><strong>Resultados de Aprendizaje</strong></td>
+<td><strong>RA4:</strong> Realiza consultas sobre los datos almacenados
+en la base de datos utilizando herramientas gráficas y el lenguaje de
+manipulación de datos.</td>
+</tr>
+<tr class="header">
+<td><strong>Criterios de Evaluación</strong></td>
+<td>CE4.a, CE4.b, CE4.c, CE4.d, CE4.e, CE4.f, CE4.g, CE4.h, CE4.i</td>
+</tr>
+<tr class="odd">
+<td><strong>Tiempo Estimado</strong></td>
+<td>36 Horas (Planificado para 6 semanas de sesiones teórico-prácticas
+por su alta densidad de contenido)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="índice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#índice-de-contenidos" title="Enlace permanente">¶</a></h3>
+<p><a href="#introducción-al-lenguaje-dml"><u>1. INTRODUCCIÓN AL
+LENGUAJE DML</u></a></p>
+<p><a href="#consultas-básicas-sobre-una-tabla"><u>2. CONSULTAS BÁSICAS
+SOBRE UNA TABLA</u></a></p>
+<blockquote>
+<p><a href="#estructura-general"><u>2.1 Estructura General</u></a></p>
+<p><a href="#la-cláusula-select"><u>2.2 La Cláusula SELECT</u></a></p>
+<p><a href="#proyección-total-select"><u>2.2.1 Proyección Total (SELECT
+*)</u></a></p>
+<p><a href="#proyección-parcial-de-columnas"><u>2.2.2 Proyección Parcial
+de Columnas</u></a></p>
+<p><a href="#comentarios-en-sentencias-sql"><u>2.2.3 Comentarios en
+Sentencias SQL</u></a></p>
+<p><a href="#expresiones-y-columnas-calculadas"><u>2.2.4 Expresiones y
+Columnas Calculadas</u></a></p>
+<p><a href="#renombrado-de-columnas-as"><u>2.2.5 Renombrado de Columnas
+(AS)</u></a></p>
+<p><a href="#funciones-escalares-cadenas-matemáticas-y-fechas"><u>2.2.6
+Funciones Escalares (Cadenas, Matemáticas y Fechas)</u></a></p>
+<p><a
+href="#modificadores-de-resultados-distinct-all-y-distinctrow"><u>2.2.7
+Modificadores de Resultados: DISTINCT, ALL y DISTINCTROW</u></a></p>
+<p><a href="#cláusula-where-filtrado"><u>2.3 Cláusula WHERE
+(Filtrado)</u></a></p>
+<p><a href="#operadores-de-comparación-y-lógicos"><u>2.3.1 Operadores de
+Comparación y Lógicos</u></a></p>
+<p><a
+href="#evaluación-de-rangos-between-y-listas-de-valores-in"><u>2.3.2
+Evaluación de Rangos (BETWEEN) y Listas de Valores (IN)</u></a></p>
+<p><a href="#búsqueda-de-patrones-de-texto-like"><u>2.3.3 Búsqueda de
+Patrones de Texto (LIKE)</u></a></p>
+<p><a
+href="#tratamiento-de-la-ausencia-de-datos-is-null-is-not-null"><u>2.3.4
+Tratamiento de la Ausencia de Datos (IS NULL / IS NOT NULL)</u></a></p>
+<p><a
+href="#filtrado-especiales-booleanos-horas-y-marcas-de-tiempo"><u>2.3.5
+Filtrado por Tipos Especiales (Booleanos, Horas y Marcas de
+Tiempo)</u></a></p>
+<p><a
+href="#cláusula-order-by-clasificación-física-de-resultados"><u>2.4
+Cláusula ORDER BY: Clasificación Física de Resultados</u></a></p>
+<p><a href="#ordenación-ascendente-asc-y-descendente-desc"><u>2.4.1
+Ordenación Ascendente (ASC) y Descendente (DESC)</u></a></p>
+<p><a href="#ordenación-por-múltiples-atributos"><u>2.4.2 Ordenación por
+Múltiples Atributos</u></a></p>
+<p><a
+href="#cláusula-limit-paginación-y-control-del-tránsito-de-red"><u>2.5
+Cláusula LIMIT: Paginación y Control del Tránsito de Red</u></a></p>
+</blockquote>
+<p><a href="#consultas-sobre-varias-tablas"><u>3. CONSULTAS SOBRE VARIAS
+TABLAS</u></a></p>
+<blockquote>
+<p><a
+href="#concepto-de-producto-cartesiano-composición-cruzada-o-cross-join"><u>3.1
+Concepto de Producto Cartesiano (Composición Cruzada o CROSS
+JOIN)</u></a></p>
+<p><a href="#composición-interna-inner-join"><u>3.2 Composición Interna
+(INNER JOIN)</u></a></p>
+<p><a
+href="#sintaxis-explícita-on-using-vs.-implícita-equi-join"><u>3.2.1
+Sintaxis Explícita (ON / USING) vs. Implícita (Equi-Join)</u></a></p>
+<p><a href="#uniones-equivalentes-y-no-equivalentes"><u>3.2.2 Uniones
+Equivalentes (Equi-Joins) y No Equivalentes (Non-Equi-Joins)</u></a></p>
+<p><a href="#autocomposición-o-unión-reflexiva-self-join"><u>3.2.3
+Autocomposición o Unión Reflexiva (Self-Join)</u></a></p>
+<p><a
+href="#composición-de-tres-o-más-tablas-y-rutas-de-intersección"><u>3.2.4
+Composición de Tres o Más Tablas y Rutas de Intersección</u></a></p>
+<p><a href="#composición-externa-outer-join"><u>3.3 Composición Externa
+(OUTER JOIN)</u></a></p>
+<p><a href="#composición-externa-izquierda-left-join"><u>3.3.1
+Composición Externa Izquierda (LEFT JOIN)</u></a></p>
+<p><a href="#composición-externa-derecha-right-join"><u>3.3.2
+Composición Externa Derecha (RIGHT JOIN)</u></a></p>
+<p><a href="#ausencia-de-full-outer-join-en-mysql"><u>3.3.3 Ausencia de
+FULL OUTER JOIN en MySQL y su Simulación vía UNION</u></a></p>
+<p><a href="#composiciones-externas-naturales-y-sus-riesgos"><u>3.3.4
+Composiciones Externas Naturales y sus Riesgos</u></a></p>
+<p><a
+href="#gestión-de-tablas-de-distintas-bases-de-datos-en-el-mismo-servidor"><u>3.4
+Gestión de Tablas de Distintas Bases de Datos en el Mismo
+Servidor</u></a></p>
+</blockquote>
+<p><a href="#consultas-de-agregación-y-resumen"><u>4. CONSULTAS DE
+AGREGACIÓN Y RESUMEN</u></a></p>
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>4.1 Funciones de
+Agregación
+4.1.1
+Comportamiento y Diferencias entre COUNT(*) y COUNT(columna)
+4.1.2
+Agregación de Valores Únicos (COUNT DISTINCT)
+4.1.3
+Interacción de las Funciones de Agregación con Valores Nulos
+4.2
+Cláusula GROUP BY: Agrupamiento de Registros
+4.2.1 Mecánica de
+Particionado
+4.2.2
+Agrupamiento sobre Múltiples Atributos
+4.3 Cláusula HAVING:
+Filtrado de Grupos
+4.3.1
+Diferencias Críticas de Procesamiento: WHERE vs. HAVING
+4.4
+Errores Comunes en Consultas de Resumen y ONLY_FULL_GROUP_BY</code></pre></div>
+<p><a href="#subconsultas-consultas-anidadas"><u>5. SUBCONSULTAS
+(CONSULTAS ANIDADAS)</u></a></p>
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>5.1
+Introducción y Tipología de Subconsultas
+5.2 Subconsultas de Valor
+Escalar
+5.3
+Subconsultas de Fila o de Lista (Múltiples Filas)
+5.3.1
+Operadores de Comparación con Conjuntos: IN y NOT IN
+5.3.2
+Operadores de Cuantificación: ANY / SOME y ALL
+5.3.3
+El Peligro Crítico de NOT IN con Valores Nulos en la
+Subconsulta
+5.4
+Subconsultas de Tabla (Cláusula FROM / Derived Tables)
+5.5
+Subconsultas Correlacionadas vs. No Correlacionadas
+5.6
+Comprobación de Existencia (EXISTS y NOT EXISTS)
+5.7
+Errores Comunes de Execution en Subconsultas</code></pre></div>
+<p><a href="#errores-comunes-y-guía-de-buenas-prácticas"><u>6. ERRORES
+COMUNES Y GUÍA DE BUENAS PRÁCTICAS</u></a></p>
+<p><a href="#anexo-i-funciones-de-mysql-más-utilizadas"><u>7. ANEXO I:
+FUNCIONES DE MYSQL MÁS UTILIZADAS</u></a></p>
+<blockquote>
+<p><a href="#funciones-de-cadenas-de-texto"><u>7.1 Funciones de Cadenas
+de Texto</u></a></p>
+<p><a href="#funciones-matemáticas"><u>7.2 Funciones
+Matemáticas</u></a></p>
+<p><a href="#funciones-de-fecha-y-hora"><u>7.3 Funciones de Fecha y
+Hora</u></a></p>
+<p><a href="#funciones-de-control-de-flujo-y-lógica"><u>7.4 Funciones de
+Control de Flujo y Lógica</u></a></p>
+</blockquote>
+<p><a href="#anexo-ii-script-sql"><u>8. ANEXO II: SCRIPT SQL DE CREACIÓN
+Y CARGA PRÁCTICA (practica_dml)</u></a></p>
+<h1 id="introducción-al-lenguaje-dml">1. INTRODUCCIÓN AL LENGUAJE DML
+ <a class="headerlink" href="#introducción-al-lenguaje-dml" title="Enlace permanente">¶</a></h1>
+<p>A diferencia de los lenguajes de programación imperativos
+tradicionales (C, Java, Python), donde el desarrollador define el
+algoritmo paso a paso (<em>cómo</em> obtener los datos), SQL es un
+lenguaje <strong>declarativo</strong>. El usuario describe formalmente
+la estructura de los datos que desea recuperar (<em>qué</em> obtener), y
+es el <strong>Optimizador de Consultas</strong> de MySQL el encargado de
+calcular el plan de ejecución físico más eficiente para acceder al disco
+y la memoria.</p>
+<p>Para un Administrador de Sistemas, comprender el flujo interno de una
+consulta dentro de la instancia de MySQL es vital para diagnosticar
+latencias y cuellos de botella:</p>
+<p>[Conexión Cliente] ---&gt; [Hebra de Conexión] ---&gt; [Analizador
+Sintáctico/Semántico (Parser)]<br />
+|<br />
+[Resultados al Cliente] &lt;-- [Motor de Almacenamiento (InnoDB)] &lt;--
+[Optimizador de Consultas]</p>
+<ol type="1">
+<li><blockquote>
+<p><strong>Parser &amp; Preprocesador:</strong> Valida la sintaxis SQL
+de la consulta y verifica que las tablas y columnas existan en el
+diccionario de datos.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Optimizador:</strong> Evalúa múltiples planes de acceso
+alternativos (uso de índices primarios, secundarios, escaneo de tablas
+completas) y calcula el coste estimado de I/O de CPU y disco para elegir
+el plan óptimo.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Motor de Ejecución (Storage Engine):</strong> Solicita las
+páginas de datos requeridas al motor físico (generadamente InnoDB),
+aprovechando el Buffer Pool en memoria RAM para minimizar el acceso
+físico a disco.</p>
+</blockquote></li>
+</ol>
+<p>Uno de los errores conceptuales más frecuentes en estudiantes de
+administración de sistemas es asumir que MySQL procesa las cláusulas en
+el mismo orden en que se escriben en el editor. El orden lógico de
+procesamiento determina de forma rigurosa la visibilidad de los alias de
+columnas y el alcance de los filtros:</p>
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Orden de Escritura
+Orden de Ejecución Lógico
+
+
+1. SELECT &lt;columnas&gt;
+1. FROM &lt;tablas&gt; (Carga el origen de datos)
+
+
+2. FROM &lt;origen_datos&gt;
+2. ON &lt;condiciones_unión&gt; (Filtra las composiciones)
+
+
+3. WHERE &lt;condición_filtro&gt;
+3. JOIN &lt;tablas_asociadas&gt; (Instancia el producto
+cartesiano)
+
+
+4. GROUP BY &lt;atributos&gt;
+4. WHERE &lt;condiciones_tuplas&gt; (Filtra filas individuales)
+
+
+5. HAVING &lt;condición_grupo&gt;
+5. GROUP BY &lt;atributos&gt; (Segmenta en subgrupos)
+
+
+6. ORDER BY &lt;atributos&gt;
+6. HAVING &lt;condiciones_grupo&gt; (Filtra los subgrupos
+creados)
+
+
+7. LIMIT &lt;desplaz., cantidad&gt;
+7. SELECT &lt;columnas&gt; (Proyecta y calcula alias)
+
+
+
+8. DISTINCT (Elimina duplicados remanentes)
+
+
+
+9. ORDER BY &lt;atributos&gt; (Ordena el conjunto final de
+salida)
+
+
+
+10. LIMIT (Recorta la porción de datos solicitada)</code></pre></div></div>
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Nota
+de Diseño: Debido a que la cláusula SELECT se ejecuta en el
+paso número , los alias definidos con la palabra clave AS no están
+disponibles en la cláusula WHERE (paso ). No obstante, sí se pueden
+emplear en ORDER BY (paso ) y LIMIT (paso ).</code></pre></div></div>
+<h1 id="consultas-básicas-sobre-una-tabla">2. CONSULTAS BÁSICAS SOBRE
+UNA TABLA <a class="headerlink" href="#consultas-básicas-sobre-una-tabla" title="Enlace permanente">¶</a></h1>
+<h2 id="estructura-general">2.1 Estructura General  <a class="headerlink" href="#estructura-general" title="Enlace permanente">¶</a></h2>
+<p>La sintaxis mínima para invocar una proyección de datos se compone
+del comando SELECT acoplado al origen físico provisto por FROM.</p>
+<h5
+id="documentación-oficial-consulta-la-sintaxis-gramatical-formal-y-todos-los-modificadores-disponibles-para-este-comando-de-proyección-en-mysql-manual---select-statement.">🔗
+<strong>Documentación Oficial:</strong> Consulta la sintaxis gramatical
+formal y todos los modificadores disponibles para este comando de
+proyección en <a
+href="https://dev.mysql.com/doc/refman/8.0/en/select.html"><u>MySQL
+Manual - SELECT Statement</u></a>. <a class="headerlink" href="#documentación-oficial-consulta-la-sintaxis-gramatical-formal-y-todos-los-modificadores-disponibles-para-este-comando-de-proyección-en-mysql-manual---select-statement." title="Enlace permanente">¶</a></h5>
+<h2 id="la-cláusula-select">2.2 La Cláusula SELECT <a class="headerlink" href="#la-cláusula-select" title="Enlace permanente">¶</a></h2>
+<h3 id="proyección-total-select">2.2.1 Proyección Total (SELECT *)  <a class="headerlink" href="#proyección-total-select" title="Enlace permanente">¶</a></h3>
+<p>Aunque el uso del asterisco comodín (*) es ampliamente recurrente en
+entornos de desarrollo rápido, <strong>está estrictamente desaconsejado
+en entornos de producción</strong> debido a:</p>
+<ol type="1">
+<li><blockquote>
+<p><strong>Saturación del Tránsito de Red:</strong> Recuperar columnas
+innecesarias (especialmente campos TEXT o BLOB) desperdicia ancho de
+banda entre el servidor de base de datos y el servidor de
+aplicaciones.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Invalidación de Índices de Cubrimiento (Covering
+Indexes):</strong> Si una consulta requiere solo dos columnas indexadas,
+y se utiliza *, MySQL se verá obligado a leer los bloques de datos de la
+clave primaria del disco (o el índice agrupado) en lugar de servir la
+petición utilizando únicamente el índice secundario en memoria RAM.</p>
+</blockquote></li>
+</ol>
+<h3 id="proyección-parcial-de-columnas">2.2.2 Proyección Parcial de
+Columnas <a class="headerlink" href="#proyección-parcial-de-columnas" title="Enlace permanente">¶</a></h3>
+<p>Especifica explícitamente los campos requeridos, optimizando el
+rendimiento físico de la consulta.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Recuperación optimizada de datos identificativos de empleados
+SELECT codigo_empleado, nombre, apellido1, email
+FROM empleado;</code></pre></div></p>
+<h3 id="comentarios-en-sentencias-sql">2.2.3 Comentarios en Sentencias
+SQL <a class="headerlink" href="#comentarios-en-sentencias-sql" title="Enlace permanente">¶</a></h3>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Comentario de línea única estándar SQL
+# Comentario de línea única específico de MySQL
+/*
+Comentario multilinea
+de utilidad para documentar scripts SysAdmin complejos
+*/</code></pre></div></p>
+<h3 id="expresiones-y-columnas-calculadas">2.2.4 Expresiones y Columnas
+Calculadas <a class="headerlink" href="#expresiones-y-columnas-calculadas" title="Enlace permanente">¶</a></h3>
+<p>La cláusula SELECT puede computar expresiones matemáticas directas de
+tipo constante o valores dinámicos derivados de los atributos de cada
+registro.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Cálculo dinámico de precios incrementados con el IVA (21%)
+SELECT codigo_producto, nombre, precio_venta, (precio_venta *
+1.21)
+FROM producto;</code></pre></div></h3>
+<h3 id="renombrado-de-columnas-as">2.2.5 Renombrado de Columnas
+(AS) <a class="headerlink" href="#renombrado-de-columnas-as" title="Enlace permanente">¶</a></h3>
+<p>Para dotar de legibilidad semántica a las columnas calculadas, se
+asignan alias mediante la cláusula AS.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT codigo_producto, nombre, precio_venta AS precio_base,
+(precio_venta * 1.21) AS precio_pvd_iva
+FROM producto;</code></pre></div></h3>
+<h3 id="funciones-escalares-cadenas-matemáticas-y-fechas">2.2.6
+Funciones Escalares (Cadenas, Matemáticas y Fechas) <a class="headerlink" href="#funciones-escalares-cadenas-matemáticas-y-fechas" title="Enlace permanente">¶</a></h3>
+<p>MySQL implementa un vasto catálogo de funciones de transformación
+rápida en el hilo de ejecución de la consulta.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Manipulación avanzada de cadenas de texto y fechas de pedidos
+SELECT
+CONCAT(nombre, ' ', apellido1) AS nombre_completo,
+UPPER(email) AS email_mayusculas
+FROM empleado;
+SELECT
+fecha_esperada,
+fecha_entrega,
+DATEDIFF(fecha_entrega, fecha_esperada) AS desviacion_dias
+FROM pedido;</code></pre></div>2.2.7
+Modificadores de Resultados: DISTINCT, ALL y DISTINCTROW</h3>
+<p>El modificador DISTINCT instruye al motor a ordenar temporalmente los
+resultados de salida para purgar todas aquellas tuplas duplicadas.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Recuperación de los códigos de fabricantes únicos que tienen
+productos registrados
+SELECT DISTINCT codigo_fabricante
+FROM producto;</code></pre></div>2.3 Cláusula WHERE (Filtrado)</h2>
+<p>La cláusula WHERE evalúa condiciones lógicas sobre las filas del
+origen de datos. Solo aquellas filas cuya evaluación resulta en TRUE
+pasan al siguiente paso del flujo lógico.</p>
+<h3 id="operadores-de-comparación-y-lógicos">2.3.1 Operadores de
+Comparación y Lógicos <a class="headerlink" href="#operadores-de-comparación-y-lógicos" title="Enlace permanente">¶</a></h3>
+<ul>
+<li><blockquote>
+<p><strong>Comparadores:</strong> =, &lt;&gt;, !=, &lt;, &lt;=, &gt;,
+&gt;=.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Conectores lógicos:</strong> AND, OR, NOT.</p>
+</blockquote></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Filtrado estricto combinado
+SELECT nombre, gama, precio_venta
+FROM producto
+WHERE gama = 'Herramientas' AND precio_venta &gt;= 100.00;</code></pre></div></h3>
+<h3 id="evaluación-de-rangos-between-y-listas-de-valores-in">2.3.2
+Evaluación de Rangos (BETWEEN) y Listas de Valores (IN) <a class="headerlink" href="#evaluación-de-rangos-between-y-listas-de-valores-in" title="Enlace permanente">¶</a></h3>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Filtrado por rango inclusivo (Equivale a precio_venta &gt;= 50
+AND precio_venta &lt;= 150)
+SELECT nombre, precio_venta
+FROM producto
+WHERE precio_venta BETWEEN 50.00 AND 150.00;
+-- Filtrado por pertenencia a una lista discreta de valores
+SELECT nombre, gama
+FROM producto
+WHERE gama IN ('Herramientas', 'Frutales', 'Ornamentales');</code></pre></div></p>
+<h3 id="búsqueda-de-patrones-de-texto-like">2.3.3 Búsqueda de Patrones
+de Texto (LIKE) <a class="headerlink" href="#búsqueda-de-patrones-de-texto-like" title="Enlace permanente">¶</a></h3>
+<p>Permite la comparación parcial de strings mediante caracteres
+comodín:</p>
+<ul>
+<li><blockquote>
+<p>% representa cualquier secuencia de cero o más caracteres.</p>
+</blockquote></li>
+<li><blockquote>
+<p>_ representa exactamente un único carácter físico.</p>
+</blockquote></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Recupera productos cuyo nombre empiece con "Maza", contenga
+cualquier carácter intermedio y termine en "a"
+SELECT nombre
+FROM producto
+WHERE nombre LIKE 'Maza%a';
+-- Recupera correos que tengan exactamente un carácter antes de la
+arroba (Ej. "j@empresa.com")
+SELECT email
+FROM empleado
+WHERE email LIKE '_@%';</code></pre></div>2.3.4
+Tratamiento de la Ausencia de Datos (IS NULL / IS NOT NULL)</h3>
+<p>En el modelo relacional y SQL, NULL no equivale a un valor numérico
+cero, ni a una cadena de texto vacía "". Representa la "ausencia de
+valor" o "desconocimiento". Las comparaciones directas con = (como
+columna = NULL) <strong>siempre devolverán un resultado de tipo
+indeterminado (UNKNOWN)</strong> bajo la lógica triestatal de SQL. Por
+ende, para evaluar la presencia o ausencia de datos, deben emplearse de
+forma exclusiva los operadores estructurados IS NULL y IS NOT NULL.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- IDENTIFICACIÓN CORRECTA de clientes que no tienen representante
+de ventas asociado
+SELECT nombre_cliente
+FROM cliente
+WHERE codigo_empleado_rep_ventas IS NULL;</code></pre></div></p>
+<div class="table-wrapper"><table>
+<tbody>
+<tr class="header">
+<td></td>
+<td>🔗 Documentación Oficial: Para comprender a fondo el funcionamiento
+de la lógica de tres valores (True, False, Unknown) y el manejo de
+marcas de ausencia, lee MySQL Manual - Working with NULL Values.</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="filtrado-especiales-booleanos-horas-y-marcas-de-tiempo">2.3.5
+Filtrado especiales (Booleanos, Horas y Marcas de Tiempo) <a class="headerlink" href="#filtrado-especiales-booleanos-horas-y-marcas-de-tiempo" title="Enlace permanente">¶</a></h3>
+<p>Para un administrador de sistemas, es fundamental controlar el
+filtrado de estados booleanos y rangos temporales específicos de tipo
+TIME o DATETIME:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- 1. Filtrado de campos BOOLEAN (Soportados internamente como
+TINYINT(1) en MySQL)
+-- Recupera únicamente los clientes VIP que tienen activado el estado
+premium
+SELECT nombre_cliente, pais, limite_credito
+FROM cliente
+WHERE es_premium = TRUE; -- También se puede escribir simplemente:
+WHERE es_premium
+-- 2. Filtrado por rango horario específico (tipo TIME)
+-- Recupera los empleados cuyo turno de mañana inicia a las 08:00:00
+o antes
+SELECT nombre, apellido1, hora_entrada
+FROM empleado
+WHERE hora_entrada &lt;= '08:00:00';
+-- 3. Filtrado por marcas de tiempo completas (tipo DATETIME o
+TIMESTAMP)
+-- Recupera los clientes que se registraron a partir de una fecha y
+hora específicas en producción
+SELECT nombre_cliente, fecha_alta
+FROM cliente
+WHERE fecha_alta &gt;= '2026-01-01 00:00:00';</code></pre></div></p>
+<h2 id="cláusula-order-by-clasificación-física-de-resultados">2.4
+Cláusula ORDER BY: Clasificación Física de Resultados <a class="headerlink" href="#cláusula-order-by-clasificación-física-de-resultados" title="Enlace permanente">¶</a></h2>
+<p>Ordena el conjunto final de registros devueltos. Por defecto, si no
+se especifica el sentido, el motor aplica un orden ascendente (ASC).</p>
+<h3 id="ordenación-ascendente-asc-y-descendente-desc">2.4.1 Ordenación
+Ascendente (ASC) y Descendente (DESC) <a class="headerlink" href="#ordenación-ascendente-asc-y-descendente-desc" title="Enlace permanente">¶</a></h3>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Ordenación explícita descendente de precios
+SELECT nombre, precio_venta
+FROM producto
+WHERE gama = 'Herramientas'
+ORDER BY precio_venta DESC;</code></pre></div></p>
+<h3 id="ordenación-por-múltiples-atributos">2.4.2 Ordenación por
+Múltiples Atributos <a class="headerlink" href="#ordenación-por-múltiples-atributos" title="Enlace permanente">¶</a></h3>
+<p>Permite la ordenación jerárquica: si hay valores idénticos en la
+primera columna, se clasifican según los criterios de las columnas
+sucesivas.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Ordena alfabéticamente por apellido; ante apellidos iguales,
+ordena de forma descendente por nombre
+SELECT apellido1, nombre
+FROM empleado
+ORDER BY apellido1 ASC, nombre DESC;</code></pre></div></p>
+<h2 id="cláusula-limit-paginación-y-control-del-tránsito-de-red">2.5
+Cláusula LIMIT: Paginación y Control del Tránsito de Red <a class="headerlink" href="#cláusula-limit-paginación-y-control-del-tránsito-de-red" title="Enlace permanente">¶</a></h2>
+<p>La cláusula LIMIT restringe la cantidad de tuplas enviadas de vuelta
+al host cliente, lo cual es vital para estructurar consultas de
+paginación en interfaces y limitar el consumo de RAM de los hilos de
+conexión.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Recuperación de los 5 productos más caros de la tienda
+SELECT nombre, precio_venta
+FROM producto
+ORDER BY precio_venta DESC
+LIMIT 5;
+-- Paginación avanzada: LIMIT &lt;desplazamiento (offset)&gt;,
+&lt;cantidad_tuplas&gt;
+-- Salta los primeros 10 registros y recupera las 5 filas siguientes
+(Registros del 11 al 15)
+SELECT nombre, precio_venta
+FROM producto
+ORDER BY precio_venta DESC
+LIMIT 10, 5;</code></pre></div></p>
+<p>🔗 Documentación Oficial: Revisa detalles técnicos y de optimización
+de la cláusula de limitación física de filas en <a
+href="https://dev.mysql.com/doc/refman/8.0/en/limit-optimization.html">MySQL
+Manual - LIMIT Query Optimization</a>.</p>
+</blockquote>
+<h1 id="consultas-sobre-varias-tablas">3. CONSULTAS SOBRE VARIAS TABLAS
+ <a class="headerlink" href="#consultas-sobre-varias-tablas" title="Enlace permanente">¶</a></h1>
+<h2
+id="concepto-de-producto-cartesiano-composición-cruzada-o-cross-join">3.1
+Concepto de Producto Cartesiano (Composición Cruzada o CROSS JOIN) <a class="headerlink" href="#concepto-de-producto-cartesiano-composición-cruzada-o-cross-join" title="Enlace permanente">¶</a></h2>
+<p>Si intentamos consultar múltiples tablas en una sentencia
+separándolas por comas en el FROM, o invocando explícitamente CROSS JOIN
+sin especificar una condición de enlace, el motor ejecutará un
+<strong>producto cartesiano</strong>. Esto significa que asociará cada
+registro de la primera tabla con absolutamente todos los registros de la
+segunda tabla.</p>
+<p>Filas resultantes= Filas de Tabla A x Filas de Tabla B</p>
+<p>Si la Tabla A contiene 10000 registros y la Tabla B 5000, el producto
+cartesiano instanciará temporalmente en el servidor un conjunto de
+<strong>50 millones de registros</strong>, saturando la memoria del
+proceso mysqld y pudiendo bloquear el servicio.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Producto cartesiano explícito (Ejecutar solo bajo estricta
+necesidad de diseño)
+SELECT * FROM fabricante CROSS JOIN producto;</code></pre></div></p>
+<h2 id="composición-interna-inner-join">3.2 Composición Interna (INNER
+JOIN) <a class="headerlink" href="#composición-interna-inner-join" title="Enlace permanente">¶</a></h2>
+<p>La composición interna evalúa la intersección estricta de dos o más
+conjuntos. El motor devolverá únicamente aquellas tuplas que tengan una
+coincidencia real en ambas tablas basándose en la condición lógica de
+emparejamiento.</p>
+<h3 id="sintaxis-explícita-on-using-vs.-implícita-equi-join">3.2.1
+Sintaxis Explícita (ON / USING) vs. Implícita (Equi-Join) <a class="headerlink" href="#sintaxis-explícita-on-using-vs.-implícita-equi-join" title="Enlace permanente">¶</a></h3>
+<p>Existen dos vías para implementar la unión física, siendo la
+explícita mediante la cláusula INNER JOIN ... ON la estándar y
+recomendada para preservar la legibilidad del código frente a filtros
+lógicos.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- VÍA 1: Sintaxis Explícita Estándar (Recomendada)
+SELECT producto.nombre, fabricante.nombre AS fabricante
+FROM producto
+INNER JOIN fabricante
+ON producto.codigo_fabricante = fabricante.codigo;
+-- VÍA 2: Sintaxis Explícita abreviada mediante USING (Válida solo si
+ambas columnas se llaman idéntico en las dos tablas)
+-- SELECT producto.nombre, fabricante.nombre FROM producto INNER JOIN
+fabricante USING (codigo_fabricante);
+-- VÍA 3: Sintaxis Implícita Clásica (Desaconsejada por mezclar
+filtros relacionales con condiciones lógicas)
+SELECT producto.nombre, fabricante.nombre AS fabricante
+FROM producto, fabricante
+WHERE producto.codigo_fabricante = fabricante.codigo;</code></pre></div></p>
+<p>🔗 Documentación Oficial: Puedes aprender más sobre los algoritmos
+internos de MySQL para resolver uniones, como el Nested-Loop Join, en <a
+href="https://dev.mysql.com/doc/refman/8.0/en/join.html">MySQL Manual -
+JOIN Syntax</a>.</p>
+</blockquote>
+<h3 id="uniones-equivalentes-y-no-equivalentes">3.2.2 Uniones
+Equivalentes y No Equivalentes  <a class="headerlink" href="#uniones-equivalentes-y-no-equivalentes" title="Enlace permanente">¶</a></h3>
+<ul>
+<li><blockquote>
+<p><strong>Equi-Join:</strong> La condición de enlace utiliza
+estrictamente el operador de igualdad (=). Es la más común para enlazar
+Claves Ajenas con Claves Primarias.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Non-Equi-Join:</strong> La condición de enlace utiliza
+operadores relacionales diferentes al de igualdad (&lt;, &gt;, BETWEEN,
+etc.).</p>
+</blockquote></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Ejemplo de Non-Equi-Join para asociar salarios con categorías de
+rango de nómina
+SELECT E.nombre, E.salario, G.grado_salarial
+FROM empleado E
+INNER JOIN grado_nomina G
+ON E.salario BETWEEN G.salario_minimo AND G.salario_maximo;</code></pre></div>3.2.3
+Autocomposición o Unión Reflexiva (Self-Join)</h3>
+<p>La autocomposición consiste en relacionar una tabla consigo misma.
+Para implementarla, <strong>es obligatorio el uso de alias de
+tabla</strong> para simular ante el analizador de MySQL que se trata de
+dos orígenes de datos físicos distintos.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Recupera el nombre de los empleados junto al nombre de su
+supervisor directo
+SELECT
+E.nombre AS empleado,
+J.nombre AS jefe
+FROM empleado E
+INNER JOIN empleado J
+ON E.codigo_jefe = J.codigo_empleado;</code></pre></div></p>
+<h2 id="composición-de-tres-o-más-tablas-y-rutas-de-intersección">3.2.4
+Composición de Tres o Más Tablas y Rutas de Intersección <a class="headerlink" href="#composición-de-tres-o-más-tablas-y-rutas-de-intersección" title="Enlace permanente">¶</a></h2>
+<p>Al unir más de dos tablas, el orden semántico debe definir un camino
+relacional coherente para evitar la aparición accidental de productos
+cartesianos intermedios.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Unión encadenada: Cliente -&gt; Empleado (Rep Ventas) -&gt;
+Oficina
+SELECT
+C.nombre_cliente,
+CONCAT(E.nombre, ' ', E.apellido1) AS representante,
+O.ciudad AS ciudad_oficina
+FROM cliente C
+INNER JOIN empleado E ON C.codigo_empleado_rep_ventas =
+E.codigo_empleado
+INNER JOIN oficina O ON E.codigo_oficina = O.codigo_oficina;</code></pre></div></h3>
+<h2 id="composición-externa-outer-join">3.3 Composición Externa (OUTER
+JOIN) <a class="headerlink" href="#composición-externa-outer-join" title="Enlace permanente">¶</a></h2>
+<p>En ocasiones, requerimos recuperar los registros de una tabla aunque
+no tengan correspondencia o relación en la otra tabla (por ejemplo,
+queremos listar todos los fabricantes, tengan o no productos en nuestro
+catálogo). Para este fin se utilizan las composiciones externas.</p>
+<h3 id="composición-externa-izquierda-left-join">3.3.1 Composición
+Externa Izquierda (LEFT JOIN) <a class="headerlink" href="#composición-externa-izquierda-left-join" title="Enlace permanente">¶</a></h3>
+<p>Recupera absolutamente <strong>todas las filas de la tabla declarada
+a la izquierda</strong> de la instrucción LEFT JOIN. Para aquellos
+registros que no posean una correspondencia en la tabla de la derecha,
+el motor rellenará los atributos correspondientes a esta última con
+valores NULL.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Recupera TODOS los fabricantes de la base de datos con sus
+respectivos productos
+-- Fabricantes como "Xiaomi" que no tienen productos, aparecerán con
+NULL en las columnas de producto
+SELECT fabricante.nombre, producto.nombre AS producto
+FROM fabricante
+LEFT JOIN producto
+ON fabricante.codigo = producto.codigo_fabricante;</code></pre></div>3.3.2 Composición
+Externa Derecha (RIGHT JOIN)</h3>
+<p>Funciona de forma análoga a LEFT JOIN pero preservando la totalidad
+del conjunto de datos de la <strong>tabla declarada a la
+derecha</strong> de la instrucción.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Comportamiento equivalente al anterior invirtiendo el orden de
+las tablas
+SELECT fabricante.nombre, producto.nombre AS producto
+FROM producto
+RIGHT JOIN fabricante
+ON producto.codigo_fabricante = fabricante.codigo;</code></pre></div></p>
+<p><strong>Recomendación de Ingeniería de Software:</strong> Se prefiere
+el uso sistemático de LEFT JOIN por legibilidad y facilidad de lectura
+humana (procesamiento de izquierda a derecha), evitando la alternancia
+confusa con RIGHT JOIN en el mismo bloque de código.</p>
+</blockquote>
+<h3 id="ausencia-de-full-outer-join-en-mysql">3.3.3 Ausencia de FULL
+OUTER JOIN en MySQL  <a class="headerlink" href="#ausencia-de-full-outer-join-en-mysql" title="Enlace permanente">¶</a></h3>
+<p>El estándar SQL define la sentencia FULL OUTER JOIN para recuperar la
+unión externa de ambos extremos (coincidentes y no coincidentes). MySQL
+<strong>no implementa de forma nativa</strong> esta composición. Sin
+embargo, los administradores pueden simular este comportamiento exacto
+ejecutando un LEFT JOIN y un RIGHT JOIN unificados mediante el operador
+de conjunto UNION (el cual remueve duplicados del set final).</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Simulación de FULL OUTER JOIN en MySQL
+SELECT E.nombre AS empleado, D.nombre AS departamento
+FROM empleado E
+LEFT JOIN departamento D ON E.codigo_departamento = D.codigo
+UNION
+SELECT E.nombre AS empleado, D.nombre AS departamento
+FROM empleado E
+RIGHT JOIN departamento D ON E.codigo_departamento = D.codigo;</code></pre></div></p>
+<h3 id="composiciones-externas-naturales-y-sus-riesgos">3.3.4
+Composiciones Externas Naturales y sus Riesgos <a class="headerlink" href="#composiciones-externas-naturales-y-sus-riesgos" title="Enlace permanente">¶</a></h3>
+<p>La instrucción NATURAL LEFT JOIN o NATURAL RIGHT JOIN asocia las
+tablas buscando implícitamente columnas con nombres exactamente
+idénticos en ambos extremos. <strong>Su uso en entornos corporativos
+está estrictamente prohibido</strong> debido a que un cambio de
+estructura físico posterior en el DDL (por ejemplo, añadir una columna
+de auditoría llamada fecha_modificacion en ambas tablas) alterará de
+forma invisible e instantánea la condición de enlace del JOIN, rompiendo
+la lógica de la aplicación.</p>
+<h2
+id="gestión-de-tablas-de-distintas-bases-de-datos-en-el-mismo-servidor">3.4
+Gestión de Tablas de Distintas Bases de Datos en el Mismo Servidor <a class="headerlink" href="#gestión-de-tablas-de-distintas-bases-de-datos-en-el-mismo-servidor" title="Enlace permanente">¶</a></h2>
+<p>Si el usuario de la conexión de base de datos posee los privilegios
+globales necesarios (SELECT_PRIV), MySQL permite enlazar datos entre
+esquemas distintos dentro de la misma instancia cualificando los objetos
+mediante el prefijo del nombre del esquema:
+&lt;nombre_bd&gt;.&lt;nombre_tabla&gt;.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Intersección entre bases de datos de entornos de facturación e
+inventario (Ejemplo ilustrativo de producción)
+SELECT F.id_factura, I.nombre_articulo
+FROM facturacion_prod.facturas F
+INNER JOIN inventario_prod.articulos I
+ON F.codigo_articulo = I.id_articulo;</code></pre></div></p>
+<h1 id="consultas-de-agregación-y-resumen">4. CONSULTAS DE AGREGACIÓN Y
+RESUMEN <a class="headerlink" href="#consultas-de-agregación-y-resumen" title="Enlace permanente">¶</a></h1>
+<p>Las consultas de resumen reducen la granularidad de los datos
+individuales, transformando conjuntos masivos de filas en tuplas
+analíticas consolidadas.</p>
+<h2 id="funciones-de-agregación">4.1 Funciones de Agregación <a class="headerlink" href="#funciones-de-agregación" title="Enlace permanente">¶</a></h2>
+<p>Las funciones de agregación operan sobre colecciones de valores de
+una columna y devuelven un único valor escalar descriptivo del
+conjunto.</p>
+<h3 id="comportamiento-y-diferencias-entre-count-y-countcolumna">4.1.1
+Comportamiento y Diferencias entre COUNT(*) y COUNT(columna) <a class="headerlink" href="#comportamiento-y-diferencias-entre-count-y-countcolumna" title="Enlace permanente">¶</a></h3>
+<ul>
+<li><blockquote>
+<p>COUNT(*): Cuenta el número absoluto de filas físicas que componen el
+conjunto de resultados, <strong>incluyendo tuplas con valores nulos o
+duplicados</strong>.</p>
+</blockquote></li>
+<li><blockquote>
+<p>COUNT(columna): Evalúa la columna especificada y devuelve el número
+de registros en los que dicha columna posee un valor <strong>distinto de
+NULL</strong>.</p>
+</blockquote></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Caso de estudio en producción (basado en nuestra tabla
+'cliente'):
+-- Supongamos clientes con y sin representante de ventas asignado
+SELECT COUNT(*) FROM cliente; -- Resultado: Conteo total de
+clientes
+SELECT COUNT(codigo_empleado_rep_ventas) FROM cliente; -- Cuenta solo
+los que no tengan NULL en esa columna</code></pre></div></p>
+<h3 id="agregación-de-valores-únicos-count-distinct">4.1.2 Agregación de
+Valores Únicos (COUNT DISTINCT) <a class="headerlink" href="#agregación-de-valores-únicos-count-distinct" title="Enlace permanente">¶</a></h3>
+<p>Permite omitir los valores duplicados antes de ejecutar la acción
+aritmética de conteo de registros.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Determina cuántos países distintos tienen clientes
+registrados
+SELECT COUNT(DISTINCT pais) FROM cliente;</code></pre></div></p>
+<h3
+id="interacción-de-las-funciones-de-agregación-con-valores-nulos">4.1.3
+Interacción de las Funciones de Agregación con Valores Nulos <a class="headerlink" href="#interacción-de-las-funciones-de-agregación-con-valores-nulos" title="Enlace permanente">¶</a></h3>
+<p>Con la excepción de COUNT(*), todas las funciones de agregación (SUM,
+AVG, MIN, MAX) <strong>ignoran por completo los valores NULL</strong>
+para sus cálculos matemáticos:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- AVG calcula la media dividiendo la suma total únicamente entre
+los registros que NO tengan NULL
+-- En nuestro script de prácticas, 'comision' puede tener valores
+NULL
+SELECT AVG(comision) FROM empleado;</code></pre></div></p>
+<h2 id="cláusula-group-by-agrupamiento-de-registros">4.2 Cláusula GROUP
+BY: Agrupamiento de Registros <a class="headerlink" href="#cláusula-group-by-agrupamiento-de-registros" title="Enlace permanente">¶</a></h2>
+<p>La cláusula GROUP BY subdivide el conjunto de datos de la tabla
+original en pequeños subgrupos lógicos basados en el valor común de una
+o más columnas especificadas.</p>
+<h3 id="mecánica-de-particionado">4.2.1 Mecánica de Particionado <a class="headerlink" href="#mecánica-de-particionado" title="Enlace permanente">¶</a></h3>
+<p>Datos de entrada (Tabla Producto):<br />
+[Gama: Htas, Precio: 10]<br />
+[Gama: Htas, Precio: 20] GROUP BY Gama [Gama: Htas, Suma: 30]<br />
+[Gama: Jrdn, Precio: 15] -------------&gt; [Gama: Jrdn, Suma: 15]</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Suma total de los precios de venta agrupados por el código del
+fabricante asociado
+SELECT codigo_fabricante, SUM(precio_venta) AS total_ventas
+FROM producto
+GROUP BY codigo_fabricante;</code></pre></div>4.2.2 Agrupamiento
+sobre Múltiples Atributos</h3>
+<p>Permite la creación de subgrupos anidados para informes detallados
+multi-nivel.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Agrupamiento cruzado por gama y fabricante
+SELECT gama, codigo_fabricante, COUNT(*) AS total_productos
+FROM producto
+GROUP BY gama, codigo_fabricante;</code></pre></div>4.3 Cláusula HAVING:
+Filtrado de Grupos</h2>
+<p>La cláusula HAVING aplica filtros condicionales a los registros
+consolidados <strong>después de que se ha ejecutado el agrupamiento
+físico</strong> de los datos.</p>
+<h3 id="diferencias-críticas-de-procesamiento-where-vs.-having">4.3.1
+Diferencias Críticas de Procesamiento: WHERE vs. HAVING <a class="headerlink" href="#diferencias-críticas-de-procesamiento-where-vs.-having" title="Enlace permanente">¶</a></h3>
+<ul>
+<li><blockquote>
+<p>WHERE: Se procesa <strong>antes</strong> de agrupar los datos (GROUP
+BY). Filtra registros individuales de la tabla. <strong>Nunca</strong>
+puede contener una función de agregación (por ejemplo, WHERE
+SUM(precio_venta) &gt; 100 lanzará un error de sintaxis).</p>
+</blockquote></li>
+<li><blockquote>
+<p>HAVING: Se procesa <strong>después</strong> de agrupar los datos.
+Filtra los resultados consolidados de las funciones de agregación
+basándose en el grupo completo.</p>
+</blockquote></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- FILTRADO COMBINADO CORRECTO:
+-- Filtra primero los productos que valen más de 10 euros y, tras
+agrupar por fabricante,
+-- muestra solo aquellos fabricantes que tienen más de 1 producto que
+cumpla dicho requisito.
+SELECT codigo_fabricante, COUNT(*) AS volumen_productos
+FROM producto
+WHERE precio_venta &gt; 10.00
+GROUP BY codigo_fabricante
+HAVING COUNT(*) &gt; 1;</code></pre></div></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- FILTRADO COMBINADO CORRECTO:
+-- Filtra primero los productos que valen más de 10 euros y, tras
+agrupar por fabricante,
+-- muestra solo aquellos fabricantes que tienen más de 1 producto que
+cumpla dicho requisito.
+SELECT codigo_fabricante, COUNT(*) AS volumen_productos
+FROM producto
+WHERE precio_venta &gt; 10.00
+GROUP BY codigo_fabricante
+HAVING COUNT(*) &gt; 1;</code></pre></div>4.4
+Errores Comunes en Consultas de Resumen y ONLY_FULL_GROUP_BY</h2>
+<p>Uno de los mayores dolores de cabeza para los administradores de
+sistemas al desplegar código heredado en MySQL 8.0+ es el comportamiento
+derivado del modo estricto de SQL ONLY_FULL_GROUP_BY.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- CONSULTA INVÁLIDA bajo el estándar de producción (Lanza ERROR
+1055)
+SELECT codigo_fabricante, nombre, COUNT(*)
+FROM producto
+GROUP BY codigo_fabricante;</code></pre></div></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- CONSULTA INVÁLIDA bajo el estándar de producción (Lanza ERROR
+1055)
+SELECT codigo_fabricante, nombre, COUNT(*)
+FROM producto
+GROUP BY codigo_fabricante;</code></pre></div><strong>Explicación Técnica del Error:</strong> En la consulta
+anterior, agrupamos los datos por codigo_fabricante. Sin embargo, en el
+SELECT estamos solicitando la proyección de la columna nombre. Como
+pueden existir muchos nombres de productos distintos para un mismo
+código de fabricante, el motor no sabe qué nombre de producto individual
+mostrar en la tupla de salida. Para solucionar esto sin desactivar la
+variable global sql_mode, la consulta debe reescribirse para que todas
+las columnas proyectadas en el SELECT estén presentes en el GROUP BY o
+se encuentren dentro de una función de agregación (como MAX(nombre) o
+GROUP_CONCAT(nombre)).</p>
+<p>🔗 <strong>Documentación Oficial:</strong> Amplía información sobre
+el control de agregaciones de tipo unívoco y las políticas de
+restricción de SQL en <a
+href="https://dev.mysql.com/doc/refman/8.0/en/group-by-handling.html"><u>MySQL
+Manual - GROUP BY Handling and ONLY_FULL_GROUP_BY</u></a>.</p>
+</blockquote>
+<h1 id="subconsultas-consultas-anidadas">5. SUBCONSULTAS (CONSULTAS
+ANIDADAS) <a class="headerlink" href="#subconsultas-consultas-anidadas" title="Enlace permanente">¶</a></h1>
+<p>Una subconsulta es una sentencia SELECT anidada dentro de otra
+consulta de nivel superior (llamada consulta externa). Las subconsultas
+permiten estructurar soluciones complejas sin requerir múltiples pasos o
+llamadas desde el lenguaje de programación de backend.</p>
+<h2 id="introducción-y-tipología-de-subconsultas">5.1 Introducción y
+Tipología de Subconsultas <a class="headerlink" href="#introducción-y-tipología-de-subconsultas" title="Enlace permanente">¶</a></h2>
+<p>Según el resultado que devuelve la consulta interna, las clasificamos
+en:</p>
+<ol type="1">
+<li><blockquote>
+<p><strong>Escalar:</strong> Devuelve una única fila con una única
+columna (un solo valor).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>De Fila:</strong> Devuelve una única fila con múltiples
+columnas asociadas.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>De Lista / Columna:</strong> Devuelve una columna con
+múltiples registros lógicos.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>De Tabla:</strong> Devuelve un conjunto bidimensional
+completo de filas y columnas (Derived Table).</p>
+</blockquote></li>
+</ol>
+<blockquote>
+<p>🔗 <strong>Documentación Oficial:</strong> Consulta las reglas de
+análisis semántico del anidamiento de sentencias DML en <a
+href="https://dev.mysql.com/doc/refman/8.0/en/subqueries.html"><u>MySQL
+Manual - Subquery Syntax</u></a>.</p>
+</blockquote>
+<h2 id="subconsultas-de-valor-escalar">5.2 Subconsultas de Valor
+Escalar <a class="headerlink" href="#subconsultas-de-valor-escalar" title="Enlace permanente">¶</a></h2>
+<p>Suelen acoplarse con operadores de comparación relacionales clásicos
+en las cláusulas WHERE o HAVING.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Obtener los datos de los productos que tienen el precio máximo
+registrado
+SELECT * FROM producto
+WHERE precio_venta = (SELECT MAX(precio_venta) FROM producto);</code></pre></div></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Obtener los datos de los productos que tienen el precio máximo
+registrado
+SELECT * FROM producto
+WHERE precio_venta = (SELECT MAX(precio_venta) FROM producto);</code></pre></div>5.3
+Subconsultas de Fila o de Lista (Múltiples Filas)</h2>
+<h4 id="operadores-de-comparación-con-conjuntos-in-y-not-in">5.3.1
+Operadores de Comparación con Conjuntos: IN y NOT IN <a class="headerlink" href="#operadores-de-comparación-con-conjuntos-in-y-not-in" title="Enlace permanente">¶</a></h4>
+<ul>
+<li><blockquote>
+<p>IN: Evalúa si el atributo de la consulta externa coincide con alguno
+de los elementos del conjunto devuelto por la subconsulta.</p>
+</blockquote></li>
+<li><blockquote>
+<p>NOT IN: Evalúa que el atributo de la consulta externa no coincida con
+ningún elemento del conjunto devuelto por la subconsulta.</p>
+</blockquote></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Obtener productos de fabricantes ubicados en España
+SELECT * FROM producto
+WHERE codigo_fabricante IN (SELECT codigo FROM fabricante WHERE pais
+= 'España');</code></pre></div></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Obtener productos de fabricantes ubicados en España
+SELECT * FROM producto
+WHERE codigo_fabricante IN (SELECT codigo FROM fabricante WHERE pais
+= 'España');</code></pre></div>5.3.2 Operadores
+de Cuantificación: ANY / SOME y ALL</h4>
+<ul>
+<li><blockquote>
+<p>ANY o SOME: El criterio de comparación se cumple si la evaluación
+lógica resulta en TRUE para <strong>al menos uno</strong> de los valores
+del conjunto de la subconsulta (Equivale semánticamente a un conector
+relacional OR masivo).</p>
+</blockquote></li>
+<li><blockquote>
+<p>ALL: El criterio de comparación se cumple si la evaluación lógica
+resulta en TRUE para <strong>absolutamente todos</strong> los elementos
+del conjunto devuelto por la subconsulta (Equivale a un conector
+relacional AND masivo).</p>
+</blockquote></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Obtener los productos cuyo precio de venta sea mayor que TODOS
+los productos de la gama 'Herramientas'
+SELECT nombre, precio_venta
+FROM producto
+WHERE precio_venta &gt; ALL (SELECT precio_venta FROM producto WHERE
+gama = 'Herramientas');</code></pre></div></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Obtener los productos cuyo precio de venta sea mayor que TODOS
+los productos de la gama 'Herramientas'
+SELECT nombre, precio_venta
+FROM producto
+WHERE precio_venta &gt; ALL (SELECT precio_venta FROM producto WHERE
+gama = 'Herramientas');</code></pre></div>5.3.3
+El Peligro Crítico de NOT IN con Valores Nulos en la Subconsulta</h4>
+<blockquote>
+<p><strong>Advertencia:</strong> Si la subconsulta interna invocada
+mediante un operador NOT IN devuelve, en su conjunto de datos, al menos
+un solo registro con valor NULL, <strong>la consulta externa completa no
+devolverá ninguna fila</strong>.</p>
+</blockquote>
+<p>Esto se debe a que SQL evalúa la condición de exclusión como:</p>
+<p><img src="media_GBD_UT5_Teoria_Consultas/media/image2.png"
+style="width:4.80208in;height:0.31667in" /></p>
+<p>Cualquier comparación de desigualdad física con NULL resulta en
+UNKNOWN, invalidando toda la expresión lógica conectorizada con AND.
+Para mitigar esto, es obligatorio filtrar explícitamente los valores
+nulos en el filtro de la subconsulta interna:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- CONTROL CORRECTO DE NOT IN PARA SEGURIDAD DE DATOS
+SELECT nombre
+FROM departamento
+WHERE codigo NOT IN (
+SELECT codigo_departamento
+FROM empleado
+WHERE codigo_departamento IS NOT NULL
+);</code></pre></div></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- CONTROL CORRECTO DE NOT IN PARA SEGURIDAD DE DATOS
+SELECT nombre
+FROM departamento
+WHERE codigo NOT IN (
+SELECT codigo_departamento
+FROM empleado
+WHERE codigo_departamento IS NOT NULL
+);</code></pre></div>5.4
+Subconsultas de Tabla (Cláusula FROM / Derived Tables)</h2>
+<p>Cuando se anida una subconsulta dentro de la cláusula FROM, esta
+actúa temporalmente como una tabla lógica residente en memoria (tabla
+derivada o inline view). <strong>En MySQL, es estrictamente obligatorio
+asignar un alias de tabla a estas estructuras</strong> para evitar
+fallos sintácticos graves del parser del sistema.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Uso de Derived Table con alias 'subtabla'
+SELECT AVG(subtabla.precio_maximo) AS media_maxima
+FROM (
+SELECT codigo_fabricante, MAX(precio_venta) AS precio_maximo
+FROM producto
+GROUP BY codigo_fabricante
+) AS subtabla;</code></pre></div></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Uso de Derived Table con alias 'subtabla'
+SELECT AVG(subtabla.precio_maximo) AS media_maxima
+FROM (
+SELECT codigo_fabricante, MAX(precio_venta) AS precio_maximo
+FROM producto
+GROUP BY codigo_fabricante
+) AS subtabla;</code></pre></div>5.5
+Subconsultas Correlacionadas vs. No Correlacionadas</h2>
+<ul>
+<li><blockquote>
+<p><strong>Subconsulta No Correlacionada:</strong> Se ejecuta una única
+vez. El motor ejecuta la consulta interna de forma autónoma y
+proporciona el resultado final a la consulta externa.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>Subconsulta Correlacionada:</strong> El filtro de la consulta
+interna <strong>hace referencia explícita a una columna de la tabla
+declarada en la consulta externa</strong>. En consecuencia, el
+optimizador debe evaluar la subconsulta de forma interactiva
+<strong>para cada una de las filas candidatas</strong> de la consulta
+externa, lo cual puede degradar gravemente el rendimiento en tablas con
+millones de registros si no existen índices optimizados.</p>
+</blockquote></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Ejemplo correlacionado: Encuentra productos que son más caros que
+la media de su propia gama
+SELECT P_Ext.nombre, P_Ext.precio_venta, P_Ext.gama
+FROM producto P_Ext
+WHERE P_Ext.precio_venta &gt; (
+SELECT AVG(P_Int.precio_venta)
+FROM producto P_Int
+WHERE P_Int.gama = P_Ext.gama
+);</code></pre></div></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Ejemplo correlacionado: Encuentra productos que son más caros que
+la media de su propia gama
+SELECT P_Ext.nombre, P_Ext.precio_venta, P_Ext.gama
+FROM producto P_Ext
+WHERE P_Ext.precio_venta &gt; (
+SELECT AVG(P_Int.precio_venta)
+FROM producto P_Int
+WHERE P_Int.gama = P_Ext.gama
+);</code></pre></div>🔗 <strong>Documentación Oficial:</strong> Para comprender cómo el
+motor reescribe u optimiza de manera interna las subconsultas
+correlacionadas, consulta <a
+href="https://dev.mysql.com/doc/refman/8.0/en/subquery-optimization.html"><u>MySQL
+Manual - Optimizing Subqueries</u></a>.</p>
+</blockquote>
+<h2 id="comprobación-de-existencia-exists-y-not-exists">5.6 Comprobación
+de Existencia (EXISTS y NOT EXISTS) <a class="headerlink" href="#comprobación-de-existencia-exists-y-not-exists" title="Enlace permanente">¶</a></h2>
+<p>El operador EXISTS devuelve TRUE si la subconsulta interna encuentra
+al menos un registro que cumpla la condición. Es un operador altamente
+optimizado por MySQL: una vez que el motor lo localiza, interrumpe
+inmediatamente el escaneo de la subconsulta (early exit), minimizando
+las operaciones de lectura en disco.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Obtener aquellos clientes que han efectuado al menos un
+pedido
+SELECT C.nombre_cliente
+FROM cliente C
+WHERE EXISTS (
+SELECT 1
+FROM pedido P
+WHERE P.codigo_cliente = C.codigo_cliente
+);</code></pre></div></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Obtener aquellos clientes que han efectuado al menos un
+pedido
+SELECT C.nombre_cliente
+FROM cliente C
+WHERE EXISTS (
+SELECT 1
+FROM pedido P
+WHERE P.codigo_cliente = C.codigo_cliente
+);</code></pre></div><strong>Rendimiento:</strong> En la subconsulta interna de un EXISTS
+o NOT EXISTS, es irrelevante la columna proyectada (SELECT *, SELECT 1,
+etc.). Se aconseja utilizar SELECT 1 para facilitar la lectura del
+código, ya que el optimizador descarta la proyección de columnas y se
+centra en validar la condición del filtro de correlación.</p>
+</blockquote>
+<h2 id="errores-comunes-de-execution-en-subconsultas">5.7 Errores
+Comunes de Execution en Subconsultas <a class="headerlink" href="#errores-comunes-de-execution-en-subconsultas" title="Enlace permanente">¶</a></h2>
+<p><strong>Error 1242 (Subquery returns more than 1 row)</strong></p>
+<p>Ocurre cuando una subconsulta asociada a un comparador unitario (como
+=, &lt; o &gt;) devuelve dos o más registros en tiempo de ejecución de
+la base de datos.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- ERROR EN PRODUCCIÓN si se intenta buscar un precio máximo con
+operadores de igualdad y la subconsulta devuelve varios valores
+-- SELECT * FROM producto WHERE precio_venta = (SELECT precio_venta
+FROM producto ORDER BY precio_venta DESC LIMIT 2);</code></pre></div></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- ERROR EN PRODUCCIÓN si se intenta buscar un precio máximo con
+operadores de igualdad y la subconsulta devuelve varios valores
+-- SELECT * FROM producto WHERE precio_venta = (SELECT precio_venta
+FROM producto ORDER BY precio_venta DESC LIMIT 2);</code></pre></div>Para solucionarlo, debemos modificar el comparador = por un operador
+de conjunto como IN o redefinir el límite de la subconsulta para
+asegurar la obtención de un único valor escalar (ej. mediante
+MAX()).</p>
+<h1 id="errores-comunes-y-guía-de-buenas-prácticas">6. ERRORES COMUNES Y
+GUÍA DE BUENAS PRÁCTICAS <a class="headerlink" href="#errores-comunes-y-guía-de-buenas-prácticas" title="Enlace permanente">¶</a></h1>
+<p>Para mantener un servidor MySQL con altas prestaciones bajo cargas de
+trabajo corporativas, el Administrador de Sistemas debe vigilar el
+comportamiento del DML:</p>
+<ol type="1">
+<li><blockquote>
+<p><strong>Evitar las composiciones cruzadas accidentales (CROSS JOIN
+implícitos):</strong> Validar siempre que cada INNER JOIN o LEFT JOIN
+cuente con su correspondiente cláusula restrictiva de coincidencia
+física (ON o USING).</p>
+</blockquote></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Utilizar filtros WHERE sobre columnas indexadas:
+Para evitar lecturas completas de tabla (Full Table Scans), asegúrate de
+que los filtros de búsqueda frecuente y las columnas que enlazan JOINs
+cuenten con un índice secundario asociado en la estructura DDL de la
+base de datos.</code></pre></div></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>No utilizar funciones directamente sobre columnas
+filtradas: Si consultas WHERE YEAR(fecha_registro) = 2026,
+MySQL se verá obligado a procesar la función matemática para cada fila
+de la tabla, invalidando los índices asociados a fecha_registro. En su
+lugar, utiliza rangos planos: WHERE fecha_registro BETWEEN '2026-01-01'
+AND '2026-12-31'.</code></pre></div></li>
+<li><blockquote>
+<p><strong>Validar las consultas analíticas en producción:</strong>
+Herramientas como EXPLAIN (analizadas a fondo en la Unidad 10) deben ser
+ejecutadas de forma sistemática ante cualquier consulta que devuelva
+latencias de respuesta superiores a los 100 ms en los logs de consultas
+lentas (slow_query_log).</p>
+</blockquote></li>
+</ol>
+<h1 id="anexo-i-funciones-de-mysql-más-utilizadas">7. ANEXO I: FUNCIONES
+DE MYSQL MÁS UTILIZADAS <a class="headerlink" href="#anexo-i-funciones-de-mysql-más-utilizadas" title="Enlace permanente">¶</a></h1>
+<p>Este catálogo técnico detalla el comportamiento de las funciones
+nativas indispensables para la transformación de datos directamente en
+el motor de bases de datos.</p>
+<blockquote>
+<p>🔗 <strong>Documentación Oficial:</strong> Tienes a tu disposición la
+guía de referencia alfabética y funcional de operadores y funciones
+nativas de MySQL en <a
+href="https://dev.mysql.com/doc/refman/8.0/en/functions.html"><u>MySQL
+Manual - Functions and Operators</u></a>.</p>
+</blockquote>
+<h2 id="funciones-de-cadenas-de-texto">7.1 Funciones de Cadenas de
+Texto <a class="headerlink" href="#funciones-de-cadenas-de-texto" title="Enlace permanente">¶</a></h2>
+<ul>
+<li></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT CONCAT(nombre, ' ', apellido1) AS nombre_completo FROM
+empleado;
+SELECT UPPER(email) FROM empleado;
+SELECT SUBSTRING(nombre, 1, 3) AS iniciales FROM empleado;
+SELECT nombre, CHAR_LENGTH(nombre) AS longitud FROM producto;
+SELECT REPLACE(email, 'empresa.com', 'corporativo.es') FROM
+empleado;
+SELECT TRIM(' Texto con espacios ') AS limpio;</code></pre></div>🔗 <strong>Documentación Oficial:</strong> Para explorar todas las
+operaciones de procesamiento de texto con codificación multibyte
+(utf8mb4), accede a <a
+href="https://dev.mysql.com/doc/refman/8.0/en/string-functions.html"><u>MySQL
+Manual - String Functions</u></a>.</p>
+</blockquote>
+<h2 id="funciones-matemáticas">7.2 Funciones Matemáticas <a class="headerlink" href="#funciones-matemáticas" title="Enlace permanente">¶</a></h2>
+<ul>
+<li></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT ROUND(precio_venta, 1) FROM producto;
+SELECT FLOOR(15.99) AS bajo, CEIL(15.01) AS alto;
+SELECT ABS(-25.35) AS valor_absoluto;
+SELECT MOD(10, 3) AS resto;
+SELECT POW(2, 3) AS resultado_potencia;</code></pre></div>🔗 <strong>Documentación Oficial:</strong> El desglose completo de
+constantes y operaciones aritméticas de precisión de punto flotante se
+encuentra en <a
+href="https://dev.mysql.com/doc/refman/8.0/en/mathematical-functions.html"><u>MySQL
+Manual - Numeric Functions</u></a>.</p>
+</blockquote>
+<h2 id="funciones-de-fecha-y-hora">7.3 Funciones de Fecha y Hora <a class="headerlink" href="#funciones-de-fecha-y-hora" title="Enlace permanente">¶</a></h2>
+<ul>
+<li></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT NOW() AS registro_temporal_servidor;
+SELECT CURDATE() AS fecha_hoy;
+SELECT DATE_ADD(CURDATE(), INTERVAL 30 DAY) AS fecha_vencimiento;
+SELECT DATEDIFF(fecha_entrega, fecha_esperada) FROM pedido;
+SELECT DATE_FORMAT(fecha_esperada, '%d/%m/%Y') AS formato_espanol
+FROM pedido;
+SELECT YEAR(fecha_esperada) AS anio_pedido FROM pedido;</code></pre></div>🔗 <strong>Documentación Oficial:</strong> El tratamiento de zonas
+horarias e intervalos temporales complejos está descrito de forma
+exhaustiva en <a
+href="https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html"><u>MySQL
+Manual - Date and Time Functions</u></a>.</p>
+</blockquote>
+<h2 id="funciones-de-control-de-flujo-y-lógica">7.4 Funciones de Control
+de Flujo y Lógica <a class="headerlink" href="#funciones-de-control-de-flujo-y-lógica" title="Enlace permanente">¶</a></h2>
+<ul>
+<li></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT COALESCE(comision, 0.00) AS comision_final FROM empleado;
+SELECT IFNULL(comision, 0) FROM empleado;
+SELECT nombre, IF(precio_venta &gt; 100, 'Caro', 'Asequible') AS
+categoria FROM producto;
+SELECT nombre, CASE WHEN precio_venta &lt; 50 THEN 'Bajo' WHEN
+precio_venta BETWEEN 50 AND 150 THEN 'Medio' ELSE 'Alto' END AS
+rango_precio FROM producto;</code></pre></div>🔗 <strong>Documentación Oficial:</strong> Descubre más sobre la
+evaluación perezosa y estructuras condicionales aplicadas al conjunto de
+datos en <a
+href="https://dev.mysql.com/doc/refman/8.0/en/flow-control-functions.html"><u>MySQL
+Manual - Flow Control Functions</u></a>.</p>
+</blockquote>
+<h1 id="anexo-ii-script-sql">8. ANEXO II: SCRIPT SQL  <a class="headerlink" href="#anexo-ii-script-sql" title="Enlace permanente">¶</a></h1>
+<p>Este script DDL y DML autoejecutable genera de forma íntegra el
+esquema físico para que puedan probar la totalidad de consultas y
+funciones explicadas en el tema.</p>
+<blockquote>
+<p>🔗 <strong>Documentación Oficial:</strong> Para comprender el
+comportamiento transaccional del motor utilizado en este script, la
+gestión del almacenamiento en espacio de tablas (<em>tablespaces</em>) y
+las políticas de bloqueo físico, puedes visitar <a
+href="https://dev.mysql.com/doc/refman/8.0/en/innodb-storage-engine.html"><u>MySQL
+Manual - InnoDB Storage Engine</u></a>.</p>
+</blockquote>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>--
+=============================================================================
+-- BASE DE DATOS DE PRÁCTICAS DML - UNIDAD 5 (ESQUEMA ENRIQUECIDO
+PARA ASIR)
+-- Diseñado para el ciclo de ASIR (Módulo: Gestión de Bases de
+Datos)
+--
+=============================================================================
+DROP DATABASE IF EXISTS practica_dml;
+CREATE DATABASE practica_dml CHARACTER SET utf8mb4 COLLATE
+utf8mb4_spanish_ci;
+USE practica_dml;
+-- 1. Creación de la tabla DEPARTAMENTO
+-- Demuestra el uso de tipos numéricos estándar e incrementos de
+tamaño en nombres
+CREATE TABLE departamento (
+codigo INT PRIMARY KEY,
+nombre VARCHAR(80) NOT NULL,
+presupuesto DECIMAL(12,2) DEFAULT 0.00 -- Diferenciación de escala en
+punto fijo
+) ENGINE=InnoDB;
+-- 2. Creación de la tabla OFICINA
+-- Incorpora SMALLINT para optimizar almacenamiento en bytes
+físicos
+CREATE TABLE oficina (
+codigo_oficina VARCHAR(10) PRIMARY KEY,
+ciudad VARCHAR(50) NOT NULL,
+telefono VARCHAR(20) NOT NULL,
+superficie SMALLINT UNSIGNED NOT NULL CHECK (superficie &gt; 0) --
+Espacio físico en metros cuadrados
+) ENGINE=InnoDB;
+-- 3. Creación de la tabla EMPLEADO
+-- Integra fechas de contratación (DATE), horas de entrada (TIME) y
+estados lógicos (BOOLEAN)
+CREATE TABLE empleado (
+codigo_empleado INT PRIMARY KEY,
+nombre VARCHAR(50) NOT NULL,
+apellido1 VARCHAR(50) NOT NULL,
+email VARCHAR(120) UNIQUE NOT NULL,
+salario DECIMAL(10,2) NOT NULL,
+comision DECIMAL(10,2) DEFAULT NULL,
+codigo_oficina VARCHAR(10),
+codigo_departamento INT,
+codigo_jefe INT,
+fecha_contratacion DATE NOT NULL,
+hora_entrada TIME DEFAULT '08:00:00', -- Ejemplo de tipo de tiempo
+(hora del turno)
+activo BOOLEAN DEFAULT TRUE, -- Atributo booleano de control de
+accesos
+FOREIGN KEY (codigo_oficina) REFERENCES oficina(codigo_oficina) ON
+UPDATE CASCADE ON DELETE SET NULL,
+FOREIGN KEY (codigo_departamento) REFERENCES departamento(codigo) ON
+UPDATE CASCADE ON DELETE SET NULL,
+FOREIGN KEY (codigo_jefe) REFERENCES empleado(codigo_empleado) ON
+UPDATE CASCADE ON DELETE SET NULL
+) ENGINE=InnoDB;
+-- 4. Creación de la tabla CLIENTE
+-- Combina lógica de fidelización VIP (BOOLEAN), precisión decimal
+ampliada y marcas temporales (DATETIME)
+CREATE TABLE cliente (
+codigo_cliente INT PRIMARY KEY,
+nombre_cliente VARCHAR(100) NOT NULL,
+codigo_empleado_rep_ventas INT,
+pais VARCHAR(50) DEFAULT 'España',
+es_premium BOOLEAN DEFAULT FALSE, -- Clasificación booleana
+limite_credito DECIMAL(12,2) DEFAULT 1000.00, -- Capacidad de
+solvencia fiscal
+fecha_alta DATETIME DEFAULT CURRENT_TIMESTAMP, -- Sello temporal
+completo de alta
+FOREIGN KEY (codigo_empleado_rep_ventas) REFERENCES
+empleado(codigo_empleado) ON UPDATE CASCADE ON DELETE SET NULL
+) ENGINE=InnoDB;
+-- 5. Creación de la tabla FABRICANTE
+-- Contiene un campo TEXT para almacenar bloques de documentación
+técnica de gran tamaño
+CREATE TABLE fabricante (
+codigo INT PRIMARY KEY,
+nombre VARCHAR(100) NOT NULL,
+pais VARCHAR(50) NOT NULL,
+descripcion TEXT DEFAULT NULL -- Almacena grandes volúmenes de texto
+libre
+) ENGINE=InnoDB;
+-- 6. Creación de la tabla PRODUCTO
+CREATE TABLE producto (
+codigo_producto VARCHAR(15) PRIMARY KEY,
+nombre VARCHAR(100) NOT NULL,
+precio_venta DECIMAL(10,2) NOT NULL CHECK (precio_venta &gt;=
+0.00),
+gama VARCHAR(50) NOT NULL,
+codigo_fabricante INT NOT NULL,
+stock_seguridad INT DEFAULT 10,
+FOREIGN KEY (codigo_fabricante) REFERENCES fabricante(codigo) ON
+UPDATE CASCADE ON DELETE RESTRICT
+) ENGINE=InnoDB;
+-- 7. Creación de la tabla PEDIDO
+-- Incluye timestamps de auditoría de transacciones SysAdmin
+CREATE TABLE pedido (
+codigo_pedido INT PRIMARY KEY,
+codigo_cliente INT NOT NULL,
+fecha_pedido DATE NOT NULL,
+hora_pedido TIME NOT NULL,
+fecha_esperada DATE NOT NULL,
+fecha_entrega DATETIME DEFAULT NULL, -- Puede demorarse o contener
+horas de descarga
+comentarios TEXT DEFAULT NULL,
+ultima_modificacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE
+CURRENT_TIMESTAMP, -- Auditoría SysAdmin
+FOREIGN KEY (codigo_cliente) REFERENCES cliente(codigo_cliente) ON
+UPDATE CASCADE ON DELETE CASCADE
+) ENGINE=InnoDB;
+-- 8. Creación de la tabla GRADO_NOMINA
+CREATE TABLE grado_nomina (
+grado_salarial INT PRIMARY KEY,
+salario_minimo DECIMAL(10,2) NOT NULL,
+salario_maximo DECIMAL(10,2) NOT NULL
+) ENGINE=InnoDB;
+--
+=============================================================================
+-- INSERCIÓN DE DATOS DE EJEMPLO (DML - SEEDING ENRIQUECIDO)
+--
+=============================================================================
+-- Inserciones en DEPARTAMENTO
+INSERT INTO departamento (codigo, nombre, presupuesto) VALUES
+(10, 'Dirección General', 350000.00),
+(20, 'Ventas y Expansión', 180000.00),
+(30, 'Soporte de Sistemas y DevOps', 250000.00),
+(40, 'Recursos Humanos y RSE', 90000.00),
+(50, 'I+D+i Tecnológico', 150000.00), -- Nuevos departamentos para
+cruces avanzados
+(60, 'Marketing y Comunicación', 0.00);
+-- Inserciones en OFICINA
+INSERT INTO oficina (codigo_oficina, ciudad, telefono, superficie)
+VALUES
+('OFI-MAD', 'Madrid', '+34 912 345 678', 1200),
+('OFI-BAR', 'Barcelona', '+34 931 234 567', 850),
+('OFI-SEV', 'Sevilla', '+34 954 123 456', 500),
+('OFI-VAL', 'Valencia', '+34 963 987 654', 420),
+('OFI-BIL', 'Bilbao', '+34 944 555 666', 310);
+-- Inserciones en EMPLEADO (Cumpliendo dependencias jerárquicas de
+jefes)
+-- Directores de nivel 1 (jefe NULL)
+INSERT INTO empleado (codigo_empleado, nombre, apellido1, email,
+salario, comision, codigo_oficina, codigo_departamento, codigo_jefe,
+fecha_contratacion, hora_entrada, activo) VALUES
+(1, 'Alberto', 'Gómez', 'a.gomez@empresa.com', 4200.00, NULL,
+'OFI-MAD', 10, NULL, '2020-01-15', '07:30:00', TRUE);
+-- Mandos intermedios y coordinadores (jefe: 1)
+INSERT INTO empleado (codigo_empleado, nombre, apellido1, email,
+salario, comision, codigo_oficina, codigo_departamento, codigo_jefe,
+fecha_contratacion, hora_entrada, activo) VALUES
+(2, 'Beatriz', 'Ruiz', 'b.ruiz@empresa.com', 2800.00, 500.00,
+'OFI-BAR', 20, 1, '2021-03-10', '08:00:00', TRUE),
+(3, 'Carlos', 'López', 'c.lopez@empresa.com', 2400.00, NULL,
+'OFI-MAD', 30, 1, '2021-06-01', '08:00:00', TRUE),
+(4, 'Sonia', 'Benítez', 's.benitez@empresa.com', 1900.00, 150.00,
+'OFI-SEV', 20, 1, '2022-09-18', '08:30:00', TRUE);
+-- Técnicos y personal operativo
+INSERT INTO empleado (codigo_empleado, nombre, apellido1, email,
+salario, comision, codigo_oficina, codigo_departamento, codigo_jefe,
+fecha_contratacion, hora_entrada, activo) VALUES
+(5, 'José', 'Sanz', 'j@empresa.com', 1500.00, NULL, 'OFI-MAD', 30, 3,
+'2023-11-20', '08:00:00', TRUE),
+(6, 'Diana', 'Mendoza', 'd.mendoza@empresa.com', 1450.00, NULL,
+'OFI-BAR', 30, 3, '2024-02-01', '08:15:00', TRUE),
+(7, 'Felipe', 'Torres', 'f.torres@empresa.com', 1200.00, 50.00,
+'OFI-SEV', 20, 4, '2024-05-15', '09:00:00', FALSE), -- Empleado
+inactivo
+(8, 'Elena', 'Guerrero', 'e.guerrero@empresa.com', 1700.00, NULL,
+'OFI-VAL', 40, 1, '2022-10-10', '08:30:00', TRUE);
+-- Inserciones en CLIENTE (Con combinaciones booleanas y límites de
+créditos diversos)
+INSERT INTO cliente (codigo_cliente, nombre_cliente,
+codigo_empleado_rep_ventas, pais, es_premium, limite_credito,
+fecha_alta) VALUES
+(101, 'Jardines de Almería S.L.', 2, 'España', TRUE, 50000.00,
+'2022-01-10 10:30:00'),
+(102, 'Viveros del Cantábrico', 4, 'España', FALSE, 12000.00,
+'2023-04-15 11:00:00'),
+(103, 'Suministros Globales Portugal', 2, 'Portugal', TRUE, 75000.00,
+'2023-08-20 09:15:00'),
+(104, 'Cliente Autónomo Huerto', NULL, 'España', FALSE, 500.00,
+'2024-11-01 16:45:00'),
+(105, 'Boutique Floral París', 4, 'Francia', TRUE, 120000.00,
+'2025-02-18 12:00:00'),
+(106, 'AgroInsumos del Sur S.A.', 2, 'España', TRUE, 45000.00,
+'2025-05-30 08:30:00'),
+(107, 'Horticultura Silvestre', NULL, 'Chile', FALSE, 3000.00,
+'2026-01-15 14:22:00'),
+(108, 'Jardines de Toscana', 8, 'Italia', TRUE, 90000.00, '2026-03-10
+10:00:00');
+-- Inserciones en FABRICANTE (Incluso con bloques descriptivos
+extensos TEXT)
+INSERT INTO fabricante (codigo, nombre, pais, descripcion) VALUES
+(1, 'Bellota', 'España', 'Fabricante líder en herramientas de mano de
+forjado de alta resistencia y durabilidad para agricultura.'),
+(2, 'Gardena', 'Alemania', 'Líder europeo en herramientas de riego
+inteligente, robótica de jardín y accesorios ergonómicos.'),
+(3, 'Husqvarna', 'Suecia', 'Maquinaria pesada forestal y de
+jardinería profesional, incluyendo motosierras, sopladoras e hilos de
+corte.'),
+(4, 'Xiaomi', 'China', 'Marca global de tecnología inteligente,
+incluyendo sensores de humedad de tierra IoT y control inteligente de
+invernaderos.'),
+(5, 'Sanz', 'España', 'Distribuidor tradicional de abonos minerales
+de lenta liberación y fitosanitarios domésticos ecológicos.'),
+(6, 'Fiskars', 'Finlandia', 'Herramientas de corte de precisión,
+tijeras de podar de alta gama y hachas ligeras con tecnología de
+absorción.');
+-- Inserciones en PRODUCTO (Gamas: Herramientas, Frutales,
+Ornamentales)
+INSERT INTO producto (codigo_producto, nombre, precio_venta, gama,
+codigo_fabricante, stock_seguridad) VALUES
+('PROD-H01', 'Maza de goma pesada', 125.50, 'Herramientas', 1,
+15),
+('PROD-H02', 'Tijera de podar ergonómica', 45.00, 'Herramientas', 2,
+30),
+('PROD-H03', 'Hacha de mano Fiskars X7', 55.00, 'Herramientas', 6,
+12),
+('PROD-F01', 'Manzano de flor injertado', 85.00, 'Frutales', 1,
+5),
+('PROD-F02', 'Cerezo japonés', 150.00, 'Frutales', 2, 8),
+('PROD-F03', 'Limonero de cuatro estaciones', 110.00, 'Frutales', 5,
+4),
+('PROD-O01', 'Rosa silvestre', 25.00, 'Ornamentales', 1, 50),
+('PROD-O02', 'Maza de madera de arce', 75.00, 'Ornamentales', 3,
+20),
+('PROD-O03', 'Orquídea Phalaenopsis Premium', 35.00, 'Ornamentales',
+5, 25),
+('PROD-O04', 'Sensor de humedad IoT Bluetooth', 19.99,
+'Ornamentales', 4, 100);
+-- Inserciones en PEDIDO (Combina fecha, hora y fecha
+esperada/entrega precisa)
+INSERT INTO pedido (codigo_pedido, codigo_cliente, fecha_pedido,
+hora_pedido, fecha_esperada, fecha_entrega, comentarios) VALUES
+(501, 101, '2026-05-15', '09:30:00', '2026-06-01', '2026-05-31
+14:30:00', 'Cliente solicita descarga en muelle posterior.'),
+(502, 102, '2026-06-01', '11:15:00', '2026-06-15', '2026-06-20
+18:00:00', 'Retraso logístico ajeno a fábrica. Compensar portes.'),
+(503, 101, '2026-06-18', '08:00:00', '2026-07-01', NULL, 'Pendiente
+de confirmación de aduanas.'),
+(504, 105, '2026-06-10', '16:00:00', '2026-06-25', '2026-06-24
+10:15:00', 'Pedido internacional prioritario.'),
+(505, 103, '2026-06-12', '12:45:00', '2026-06-28', NULL, 'En tránsito
+terrestre internacional.'),
+(506, 106, '2026-06-14', '10:00:00', '2026-06-30', '2026-06-29
+09:00:00', 'Entregado en palets termo-sellados.'),
+(507, 108, '2026-06-15', '17:30:00', '2026-07-05', NULL, 'Envío
+especial consolidado.'),
+(508, 101, '2026-06-16', '14:20:00', '2026-07-01', NULL, 'Segundo
+pedido recurrente del mes.');
+-- Inserciones en GRADO_NOMINA
+INSERT INTO grado_nomina (grado_salarial, salario_minimo,
+salario_maximo) VALUES
+(1, 1000.00, 1999.99),
+(2, 2000.00, 2999.99),
+(3, 3000.00, 4199.99),
+(4, 4200.00, 6000.00); -- Ampliado a grado 4 para cubrir salarios de
+directores principales</code></pre></div></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>--
+=============================================================================
+-- BASE DE DATOS DE PRÁCTICAS DML - UNIDAD 5 (ESQUEMA ENRIQUECIDO
+PARA ASIR)
+-- Diseñado para el ciclo de ASIR (Módulo: Gestión de Bases de
+Datos)
+--
+=============================================================================
+DROP DATABASE IF EXISTS practica_dml;
+CREATE DATABASE practica_dml CHARACTER SET utf8mb4 COLLATE
+utf8mb4_spanish_ci;
+USE practica_dml;
+-- 1. Creación de la tabla DEPARTAMENTO
+CREATE TABLE departamento (
+codigo INT PRIMARY KEY,
+nombre VARCHAR(80) NOT NULL,
+presupuesto DECIMAL(12,2) DEFAULT 0.00
+) ENGINE=InnoDB;
+-- [Resto del script truncado por brevedad, siguiendo el patrón de
+los ejemplos anteriores]</code></pre></div></p>
+
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GBD - Ut8 Teoria Programacion</title>
+    <style>
+    
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --bg-header: #1e3a8a;
+    --text-header: #ffffff;
+    --bg-body: #f8fafc;
+    --text-body: #1e293b;
+    --border-color: #cbd5e1;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg-body);
+    color: var(--text-body);
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, [id], a[name] {
+    scroll-margin-top: 80px !important;
+}
+
+.headerlink {
+    display: inline-block;
+    margin-left: 0.4rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.8em;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
+h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
+    visibility: visible;
+    opacity: 1;
+}
+
+.headerlink:hover {
+    color: var(--primary);
+}
+
+#site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+    background: var(--bg-header);
+    color: var(--text-header);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    height: 62px;
+}
+
+.site-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+
+.top-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.top-nav .nav-btn {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
+    background: #1e293b;
+    color: #ffffff;
+}
+
+.top-nav .nav-btn.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background: #1e293b;
+    color: #ffffff;
+    padding: 9px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dropdown:hover .dropbtn, .dropbtn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 320px;
+    max-width: 480px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 10001;
+    border: 1px solid #e2e8f0;
+    margin-top: 6px;
+}
+
+.dropdown-content a {
+    color: var(--text-body);
+    padding: 12px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.92rem;
+    border-bottom: 1px solid #f1f5f9;
+    line-height: 1.4;
+    transition: background 0.15s, color 0.15s;
+    word-break: break-word;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: #eff6ff;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block !important;
+}
+
+#page-layout {
+    display: flex;
+    min-height: calc(100vh - 62px);
+}
+
+#left-panel {
+    width: 320px;
+    min-width: 320px;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 1.5rem 1.25rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    position: sticky;
+    top: 62px;
+    height: calc(100vh - 62px);
+}
+
+#left-panel h3 {
+    font-size: 1rem;
+    margin-top: 0;
+    color: #334155;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
+
+#left-panel nav#TOC, #left-panel #TOC {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+#left-panel ul {
+    list-style-type: none;
+    padding-left: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+#left-panel li {
+    margin: 6px 0;
+}
+
+#left-panel a {
+    color: #475569;
+    text-decoration: none;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    display: block;
+    transition: color 0.15s;
+}
+
+#left-panel a:hover {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+#main-content {
+    flex: 1;
+    padding: 2.5rem 4rem;
+    box-sizing: border-box;
+    max-width: 100% !important;
+    width: calc(100% - 320px);
+    min-width: 0;
+}
+
+/* TABLAS ELEGANTES Y RESPONSIVE */
+.table-wrapper {
+    overflow-x: auto;
+    margin: 1.75rem 0;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    font-size: 0.93rem;
+    background: #ffffff;
+    table-layout: auto !important;
+}
+
+th, td {
+    padding: 10px 14px !important;
+    border: 1px solid #cbd5e1 !important;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+td p, th p {
+    margin: 0 !important;
+    padding: 2px 0 !important;
+}
+
+th {
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #0f172a !important;
+}
+
+tr:nth-child(even) td {
+    background-color: #f8fafc !important;
+}
+
+tr:hover td {
+    background-color: #f1f5f9 !important;
+}
+
+/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
+.code-wrapper {
+    position: relative;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #0f172a;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #334155;
+    color: #f8fafc;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 10;
+}
+
+.copy-btn:hover {
+    background: #2563eb;
+}
+
+pre {
+    margin: 0 !important;
+    padding: 1.25rem 1.25rem !important;
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    overflow-x: auto !important;
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+}
+
+code {
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
+}
+
+p code, li code {
+    background: #e2e8f0;
+    color: #0f172a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
+
+/* RESPONSIVE DESIGN PARA MÓVILES Y TABLETS */
+@media (max-width: 768px) {
+    .header-container {
+        height: auto;
+        flex-direction: column;
+        padding: 0.75rem 1rem;
+        gap: 0.6rem;
+    }
+    
+    .site-title {
+        font-size: 1.05rem;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .site-title img {
+        height: 28px !important;
+    }
+
+    .top-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 0.35rem;
+    }
+
+    .top-nav .nav-btn, .dropbtn {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+    .dropdown-content {
+        min-width: 240px;
+        max-width: 90vw;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    #page-layout {
+        flex-direction: column;
+    }
+
+    #left-panel {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        position: static !important;
+        border-right: none !important;
+        border-bottom: 2px solid #e2e8f0;
+        padding: 1rem !important;
+    }
+
+    #main-content {
+        width: 100% !important;
+        padding: 1.25rem 1rem !important;
+    }
+
+    iframe {
+        height: 60vh !important;
+    }
+
+    th, td {
+        padding: 8px 10px !important;
+        font-size: 0.85rem !important;
+    }
+
+    pre {
+        padding: 0.85rem !important;
+        font-size: 0.82rem !important;
+    }
+}
+
+    </style>
+    <script>
+    
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.dropdown').forEach(dd => {
+        const btn = dd.querySelector('.dropbtn');
+        const content = dd.querySelector('.dropdown-content');
+        if (btn && content) {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = content.style.display === 'block';
+                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
+                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+                if (!isOpen) {
+                    content.style.display = 'block';
+                    btn.classList.add('active');
+                }
+            });
+        }
+    });
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
+        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+    });
+
+    // Controlador universal de clics en enlaces ancla (#...)
+    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const rawHref = this.getAttribute('href') || '';
+            const hashIdx = rawHref.indexOf('#');
+            if (hashIdx === -1) return;
+            const hash = rawHref.substring(hashIdx + 1);
+            if (!hash) return;
+            
+            let targetId = hash;
+            try { targetId = decodeURIComponent(hash); } catch(err) {}
+
+            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
+            if (!targetEl) {
+                for (let el of document.querySelectorAll('[id]')) {
+                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
+                        targetEl = el;
+                        break;
+                    }
+                }
+            }
+
+            if (targetEl) {
+                e.preventDefault();
+                const headerOffset = 75;
+                const elementPosition = targetEl.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
+                if (history.pushState) {
+                    history.pushState(null, null, '#' + targetId);
+                }
+            }
+        });
+    });
+});
+
+function copyCode(btn) {
+    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
+    navigator.clipboard.writeText(code).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = '✅ ¡Copiado!';
+        btn.style.background = '#16a34a';
+        setTimeout(() => {
+            btn.innerText = orig;
+            btn.style.background = '#334155';
+        }, 2000);
+    });
+}
+
+    </script>
+</head>
+<body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>GBD &ndash; Ut8 Teoria Programacion</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+      <a href="GBD_UT8_Teoria_Programacion.html" class="nav-btn">Programación</a>
+      <div class="dropdown">
+        <button class="dropbtn" type="button">Teoría ▾</button>
+        <div class="dropdown-content">
+          <a href="GBD_UT1_Teoria_Almacenamiento.html">GBD UT1 Teoria Almacenamiento</a>
+          <a href="GBD_UT2_Teoria_Diagramas.html">GBD UT2 Teoria Diagramas</a>
+          <a href="GBD_UT3_Teoria_Modelo.html">GBD UT3 Teoria Modelo</a>
+          <a href="GBD_UT4_Teoria_DDL.html">GBD UT4 Teoria DDL</a>
+          <a href="GBD_UT5_Teoria_Consultas.html">GBD UT5 Teoria Consultas</a>
+          <a href="GBD_UT6_Teoria_Vistas.html">GBD UT6 Teoria Vistas</a>
+          <a href="GBD_UT7_Teoria_DML.html">GBD UT7 Teoria DML</a>
+          <a href="GBD_UT9_Teoria_Seguridad.html">GBD UT9 Teoria Seguridad</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <aside id="left-panel">
+            <h3>Índice del Tema</h3>
+            <nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#introducción-y-contextualización"
+id="toc-introducción-y-contextualización">1. INTRODUCCIÓN Y
+CONTEXTUALIZACIÓN</a></li>
+<li><a href="#procedimientos-almacenados"
+id="toc-procedimientos-almacenados">2. PROCEDIMIENTOS ALMACENADOS </a>
+<ul>
+<li><a href="#sintaxis-general-y-uso-de-delimiter"
+id="toc-sintaxis-general-y-uso-de-delimiter">2.1 Sintaxis general y uso
+de DELIMITER</a></li>
+<li><a href="#gestión-de-parámetros-in-out-y-inout"
+id="toc-gestión-de-parámetros-in-out-y-inout">2.2 Gestión de
+Parámetros: IN, OUT y INOUT</a></li>
+<li><a href="#ámbito-de-variables-locales-y-asignaciones-declare-set"
+id="toc-ámbito-de-variables-locales-y-asignaciones-declare-set">2.3
+Ámbito de Variables Locales y Asignaciones (DECLARE, SET)</a></li>
+</ul></li>
+<li><a href="#funciones-almacenadas" id="toc-funciones-almacenadas">3.
+FUNCIONES ALMACENADAS</a>
+<ul>
+<li><a href="#diferencias-con-procedimientos-y-restricciones-de-retorno"
+id="toc-diferencias-con-procedimientos-y-restricciones-de-retorno">3.1
+Diferencias con procedimientos y restricciones de retorno</a></li>
+<li><a href="#modificadores-de-comportamiento-de-funciones-en-mysql"
+id="toc-modificadores-de-comportamiento-de-funciones-en-mysql">3.2
+Modificadores de comportamiento de funciones en MySQL</a></li>
+</ul></li>
+<li><a href="#estructuras-de-control-de-flujo"
+id="toc-estructuras-de-control-de-flujo">4. ESTRUCTURAS DE CONTROL DE
+FLUJO</a>
+<ul>
+<li><a href="#condicionales-if-then-else-y-case"
+id="toc-condicionales-if-then-else-y-case">4.1 Condicionales
+(IF-THEN-ELSE y CASE)</a></li>
+<li><a href="#estructuras-iterativas-loop-repeat-y-while"
+id="toc-estructuras-iterativas-loop-repeat-y-while">4.2 Estructuras
+Iterativas (LOOP, REPEAT y WHILE)</a></li>
+</ul></li>
+<li><a href="#manejo-de-excepciones-y-errores-en-mysql"
+id="toc-manejo-de-excepciones-y-errores-en-mysql">5. MANEJO DE
+EXCEPCIONES Y ERRORES EN MYSQL</a>
+<ul>
+<li><a href="#el-uso-de-declare...-handler"
+id="toc-el-uso-de-declare...-handler">5.1 El uso de DECLARE...
+HANDLER</a></li>
+</ul></li>
+<li><a href="#cursores" id="toc-cursores">6. CURSORES</a>
+<ul>
+<li><a href="#ciclo-de-vida-de-un-cursor"
+id="toc-ciclo-de-vida-de-un-cursor">6.1 Ciclo de vida de un
+cursor</a></li>
+</ul></li>
+<li><a href="#disparadores-triggers" id="toc-disparadores-triggers">7.
+DISPARADORES (TRIGGERS)</a>
+<ul>
+<li><a href="#lógica-de-ejecución-beforeafter-e-insertupdatedelete"
+id="toc-lógica-de-ejecución-beforeafter-e-insertupdatedelete">7.1 Lógica
+de ejecución: BEFORE/AFTER e INSERT/UPDATE/DELETE</a></li>
+<li><a
+href="#pseudotablas-old-y-new-y-su-aplicación-en-la-integridad-de-datos"
+id="toc-pseudotablas-old-y-new-y-su-aplicación-en-la-integridad-de-datos">7.2
+Pseudotablas OLD y NEW y su aplicación en la integridad de
+datos</a></li>
+</ul></li>
+<li><a href="#enlaces-de-referencia-y-documentación-oficial"
+id="toc-enlaces-de-referencia-y-documentación-oficial">8. ENLACES DE
+REFERENCIA Y DOCUMENTACIÓN OFICIAL</a></li>
+</ul>
+</nav>
+        </aside>
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="GBD_UT8_Teoria_Programacion.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+<header id="title-block-header">
+<h1 class="title"><p><span id="_fwhgxg5kxgvz"
+class="anchor"></span>UNIDAD 8</p>
+<p><span id="_msdbmn2xan7j" class="anchor"></span>PROGRAMACIÓN DE BASES
+DE DATOS EN MYSQL<br />
+</p></h1>
+</header>
+
+<p><strong>FICHA TÉCNICA DE LA UNIDAD DIDÁCTICA</strong></p>
+<div class="table-wrapper"><table>
+<tbody>
+<tr class="header">
+<td><strong>Unidad Didáctica</strong></td>
+<td>Unidad Didáctica 8: Programación de bases de datos: Procedimientos,
+funciones y triggers en MySQL</td>
+</tr>
+<tr class="odd">
+<td><strong>Resultados de Aprendizaje</strong></td>
+<td><strong>RA6:</strong> Programa procedimientos almacenados, funciones
+y disparadores (triggers) analizando su funcionamiento e integrando
+lógica procedimental en el SGBD para garantizar la automatización,
+integridad y rendimiento de los datos.</td>
+</tr>
+<tr class="header">
+<td><strong>Criterios de Evaluación</strong></td>
+<td><p><strong>CE6.a</strong> (Se han identificado los lenguajes de
+programación disponibles),</p>
+<p><strong>CE6.b</strong> (Se han definido procedimientos con paso de
+parámetros),</p>
+<p><strong>CE6.c</strong> (Se han creado funciones),</p>
+<p><strong>CE6.d</strong> (Se han utilizado estructuras de control de
+flujo),</p>
+<p><strong>CE6.e</strong> (Se han utilizado cursores),</p>
+<p><strong>CE6.f</strong> (Se ha realizado el control de
+excepciones),</p>
+<p><strong>CE6.g</strong> (Se han creado disparadores),</p>
+<p><strong>CE6.h</strong> (Se han depurado y probado los subprogramas
+creados).</p></td>
+</tr>
+<tr class="odd">
+<td><strong>Tiempo Estimado</strong></td>
+<td>24 Horas (Distribuidas en 4 semanas de sesiones teórico-prácticas
+orientadas a la optimización de la lógica del servidor).</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>ÍNDICE DE CONTENIDOS</strong></p>
+<p><a href="#"><u>1. INTRODUCCIÓN Y CONTEXTUALIZACIÓN</u></a></p>
+<p><a href="#"><u>2. PROCEDIMIENTOS ALMACENADOS</u></a></p>
+<blockquote>
+<p><a href="#"><u>2.1 Sintaxis general y uso de DELIMITER</u></a></p>
+<p><a href="#"><u>2.2 Gestión de Parámetros: IN, OUT y INOUT</u></a></p>
+<p><a href="#"><u>2.3 Ámbito de Variables Locales y Asignaciones
+(DECLARE, SET)</u></a></p>
+</blockquote>
+<p><a href="#"><u>3. FUNCIONES ALMACENADAS</u></a></p>
+<blockquote>
+<p><a href="#"><u>3.1 Diferencias con procedimientos y restricciones de
+retorno</u></a></p>
+<p><a href="#"><u>3.2 Modificadores de comportamiento de funciones en
+MySQL</u></a></p>
+</blockquote>
+<p><a href="#"><u>4. ESTRUCTURAS DE CONTROL DE FLUJO</u></a></p>
+<blockquote>
+<p><a href="#"><u>4.1 Condicionales (IF-THEN-ELSE y CASE)</u></a></p>
+<p><a href="#"><u>4.2 Estructuras Iterativas (LOOP, REPEAT y
+WHILE)</u></a></p>
+</blockquote>
+<p><a href="#"><u>5. MANEJO DE EXCEPCIONES Y ERRORES EN
+MYSQL</u></a></p>
+<blockquote>
+<p><a href="#"><u>5.1 El uso de DECLARE... HANDLER</u></a></p>
+</blockquote>
+<p><a href="#"><u>6. CURSORES</u></a></p>
+<blockquote>
+<p><a href="#"><u>6.1 Ciclo de vida de un cursor</u></a></p>
+</blockquote>
+<p><a href="#"><u>7. DISPARADORES (TRIGGERS)</u></a></p>
+<blockquote>
+<p><a href="#"><u>7.1 Lógica de ejecución: BEFORE/AFTER e
+INSERT/UPDATE/DELETE</u></a></p>
+<p><a href="#"><u>7.2 Pseudotablas OLD y NEW y su aplicación en la
+integridad de datos</u></a></p>
+</blockquote>
+<p><a href="#"><u>8. ENLACES DE REFERENCIA Y DOCUMENTACIÓN
+OFICIAL</u></a></p>
+<h1 id="introducción-y-contextualización">1. INTRODUCCIÓN Y
+CONTEXTUALIZACIÓN <a class="headerlink" href="#introducción-y-contextualización" title="Enlace permanente">¶</a></h1>
+<p>La administración moderna de bases de datos a nivel de
+infraestructura no se limita a ejecutar consultas DML de manera
+interactiva. Para garantizar la eficiencia de los sistemas de red, la
+seguridad de la información y la automatización de procesos, los
+administradores de sistemas deben ser capaces de almacenar lógica
+programada directamente en el servidor SGBD.</p>
+<p>Esta unidad se conecta directamente con:</p>
+<ul>
+<li><blockquote>
+<p><strong>GBD (Unidad 5 y 6):</strong> Emplea de manera avanzada
+comandos DML de consultas simples, agrupaciones y composiciones de
+tablas (JOIN) dentro de la lógica del servidor.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>ISO (Implantación de Sistemas Operativos):</strong> Se
+relaciona con la automatización mediante scripting. Un <em>SysAdmin</em>
+puede encapsular flujos complejos dentro de procedimientos en el
+servidor de base de datos y activarlos desde tareas programadas del
+sistema operativo (<em>cron jobs</em> o <em>Windows Task
+Scheduler</em>).</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>SAD (Seguridad y Alta Disponibilidad) / GBD
+(Seguridad):</strong> El uso de rutinas almacenadas permite retirar
+permisos directos de lectura/escritura (SELECT, INSERT, UPDATE) sobre
+las tablas de producción de la base de datos
+<strong>Jardinería</strong>, otorgando únicamente privilegios de
+ejecución (EXECUTE) sobre procedimientos. Esto mitiga de forma casi
+absoluta los ataques de <strong>inyección SQL</strong> (<em>SQL
+Injection</em>).</p>
+</blockquote></li>
+</ul>
+<h1 id="procedimientos-almacenados">2. PROCEDIMIENTOS ALMACENADOS  <a class="headerlink" href="#procedimientos-almacenados" title="Enlace permanente">¶</a></h1>
+<p>Un procedimiento almacenado es un conjunto de sentencias SQL
+preparadas y guardadas en el SGBD para poder ser reutilizadas
+repetidamente de forma eficiente [7].</p>
+<h2 id="sintaxis-general-y-uso-de-delimiter">2.1 Sintaxis general y uso
+de DELIMITER <a class="headerlink" href="#sintaxis-general-y-uso-de-delimiter" title="Enlace permanente">¶</a></h2>
+<p>Por defecto, el SGBD interpreta el carácter punto y coma (;) como el
+terminador de una sentencia SQL. Al definir un bloque de código
+procedimental que contiene múltiples sentencias finalizadas con ;,
+necesitamos indicarle al motor de MySQL que cambie temporalmente este
+símbolo para que compile todo el bloque como una sola instrucción. Esto
+se logra con la directiva DELIMITER [7].</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Cambiamos el terminador por defecto a doble barra inclinada
+DELIMITER //
+DROP PROCEDURE IF EXISTS ejemplo_basico//
+CREATE PROCEDURE ejemplo_basico()
+BEGIN
+-- El terminador temporal es //, el ; interno no interrumpe la
+compilación
+SELECT 'Procedimiento almacenado de Jardinería inicializado
+correctamente' AS mensaje;
+END//
+-- Restauramos el delimitador estándar
+DELIMITER ;
+-- Invocación del procedimiento
+CALL ejemplo_basico();</code></pre></div>2.2 Gestión de
+Parámetros: IN, OUT y INOUT</h2>
+<p>MySQL permite especificar tres tipos de dirección para los parámetros
+de entrada y salida de un procedimiento almacenado [7, 11.2]:</p>
+<ul>
+<li><blockquote>
+<p><strong>IN (Entrada):</strong> Es el valor que se pasa al
+procedimiento al llamarlo. Se trata de un parámetro de solo lectura
+dentro de la rutina (es el comportamiento por defecto si se omite la
+palabra clave) [7].</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>OUT (Salida):</strong> Almacena el valor calculado por el
+procedimiento y lo devuelve al entorno de llamada, generalmente
+asignándole a una variable de usuario (con prefijo @) [7, 11.2].</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>INOUT (Entrada/Salida):</strong> Se inicia al llamar al
+procedimiento, puede ser modificado por la rutina y devuelve el nuevo
+valor de vuelta al llamante [11.2].</p>
+</blockquote></li>
+</ul>
+<p>A continuación se muestra la implementación de un procedimiento para
+actualizar el límite de crédito de un cliente de la base de datos
+<strong>Jardinería</strong> utilizando un parámetro IN, y otro
+procedimiento procedimental para calcular estadísticas de un cliente con
+parámetros OUT.</p>
+<p>Ejemplo de parámetro IN (Actualización de Límite de Crédito):</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
+DROP PROCEDURE IF EXISTS sp_actualizar_limite_credito//
+CREATE PROCEDURE sp_actualizar_limite_credito(
+IN p_codigo_cliente INT,
+IN p_porcentaje_incremento DECIMAL(5,2)
+)
+BEGIN
+-- Modifica el límite de crédito aplicando el incremento
+porcentual
+UPDATE cliente
+SET limite_credito = limite_credito * (1 + (p_porcentaje_incremento /
+100))
+WHERE codigo_cliente = p_codigo_cliente;
+END//
+DELIMITER ;
+-- Probamos el procedimiento con el cliente 101 incrementando un
+15.5% su crédito
+CALL sp_actualizar_limite_credito(101, 15.50);</code></pre></div>Ejemplo de parámetros OUT (Extracción de estadísticas de
+ventas):</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
+DROP PROCEDURE IF EXISTS sp_obtener_estadisticas_cliente//
+CREATE PROCEDURE sp_obtener_estadisticas_cliente(
+IN p_codigo_cliente INT,
+OUT p_total_pedidos INT,
+OUT p_total_pagado DECIMAL(15,2)
+)
+BEGIN
+-- Contamos el número de pedidos realizados por el cliente
+SELECT COUNT(*) INTO p_total_pedidos
+FROM pedido
+WHERE codigo_cliente = p_codigo_cliente;
+-- Calculamos el acumulado total de los pagos registrados por este
+cliente
+SELECT COALESCE(SUM(total), 0) INTO p_total_pagado
+FROM pago
+WHERE codigo_cliente = p_codigo_cliente;
+END//
+DELIMITER ;
+-- Invocación utilizando variables de sesión de MySQL para recoger
+las salidas
+CALL sp_obtener_estadisticas_cliente(101, @pedidos, @pagado);
+-- Visualizamos los resultados
+SELECT @pedidos AS pedidos_realizados, @pagado AS
+total_euros_pagados;</code></pre></div>2.3
+Ámbito de Variables Locales y Asignaciones (DECLARE, SET)</h2>
+<p>Las variables internas deben declararse obligatoriamente al principio
+de un bloque BEGIN ... END utilizando la instrucción DECLARE [11.2].
+Tras su declaración, se les puede dar un valor inicial con la cláusula
+DEFAULT o modificarse utilizando SET u obteniendo datos mediante la
+cláusula INTO dentro de un SELECT.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
+DROP PROCEDURE IF EXISTS sp_demo_variables_jardineria//
+CREATE PROCEDURE sp_demo_variables_jardineria(
+IN p_codigo_oficina VARCHAR(10)
+)
+BEGIN
+-- Declaración de variables locales tipadas
+DECLARE v_ciudad_oficina VARCHAR(50);
+DECLARE v_cantidad_empleados INT DEFAULT 0;
+-- Asignación directa por consulta DML
+SELECT ciudad INTO v_ciudad_oficina
+FROM oficina
+WHERE codigo_oficina = p_codigo_oficina;
+-- Asignación por recuento
+SELECT COUNT(*) INTO v_cantidad_empleados
+FROM empleado
+WHERE codigo_oficina = p_codigo_oficina;
+-- Presentación de resultados
+SELECT v_ciudad_oficina AS ciudad, v_cantidad_empleados AS
+num_empleados_activos;
+END//
+DELIMITER ;
+CALL sp_demo_variables_jardineria('BCN-ES');</code></pre></div>3. FUNCIONES ALMACENADAS</h1>
+<p>Una función almacenada es una rutina que toma parámetros de entrada,
+ejecuta lógica procedural y <strong>devuelve un único valor
+escalar</strong> al entorno de llamada.</p>
+<h2 id="diferencias-con-procedimientos-y-restricciones-de-retorno">3.1
+Diferencias con procedimientos y restricciones de retorno <a class="headerlink" href="#diferencias-con-procedimientos-y-restricciones-de-retorno" title="Enlace permanente">¶</a></h2>
+<p>A diferencia de los procedimientos almacenados, las funciones:</p>
+<ol type="1">
+<li><blockquote>
+<p>Deben especificar la cláusula RETURNS en su cabecera para definir el
+tipo de datos del resultado.</p>
+</blockquote></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Contienen obligatoriamente al menos una sentencia RETURN que finaliza
+la ejecución de la función.</code></pre></div></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>No se invocan con la sentencia CALL, sino que se pueden utilizar
+directamente dentro de sentencias DML (como parte de un SELECT, WHERE u
+ORDER BY), optimizando la legibilidad de las consultas complejas.</code></pre></div></li>
+</ol>
+<h2 id="modificadores-de-comportamiento-de-funciones-en-mysql">3.2
+Modificadores de comportamiento de funciones en MySQL <a class="headerlink" href="#modificadores-de-comportamiento-de-funciones-en-mysql" title="Enlace permanente">¶</a></h2>
+<p>Al compilar funciones en MySQL con el motor InnoDB activo, es
+obligatorio declarar sus características de acceso a datos para que el
+planificador y el motor de replicación trabajen con seguridad lógica
+[1.9.3]:</p>
+<ul>
+<li><blockquote>
+<p>DETERMINISTIC: El resultado devuelto será idéntico siempre que se
+proporcionen los mismos parámetros de entrada.</p>
+</blockquote></li>
+<li><blockquote>
+<p>NOT DETERMINISTIC: El resultado puede cambiar aun pasando los mismos
+parámetros (por ejemplo, funciones que consulten la fecha actual o
+generen números aleatorios).</p>
+</blockquote></li>
+<li><blockquote>
+<p>READS SQL DATA: Indica que la rutina realizará consultas de lectura
+(SELECT) sobre tablas de la base de datos [1.9.3].</p>
+</blockquote></li>
+<li><blockquote>
+<p>MODIFIES SQL DATA: Indica que la rutina ejecutará modificaciones
+(INSERT, UPDATE, DELETE).</p>
+</blockquote></li>
+</ul>
+<p>Ejemplo (Calcular deuda de un cliente de Jardinería):</p>
+<p>Implementación de una función procedimental que calcula la diferencia
+acumulada entre el total facturado en pedidos al cliente y los pagos que
+este ha liquidado.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
+DROP FUNCTION IF EXISTS fn_calcular_deuda_cliente//
+CREATE FUNCTION fn_calcular_deuda_cliente(
+p_codigo_cliente INT
+)
+RETURNS DECIMAL(15,2)
+READS SQL DATA
+BEGIN
+DECLARE v_total_pedidos DECIMAL(15,2) DEFAULT 0.00;
+DECLARE v_total_pagado DECIMAL(15,2) DEFAULT 0.00;
+DECLARE v_deuda DECIMAL(15,2) DEFAULT 0.00;
+-- 1. Calcular el coste total acumulado de todos los pedidos
+detallados del cliente
+SELECT COALESCE(SUM(dp.cantidad * dp.precio_unidad), 0.00) INTO
+v_total_pedidos
+FROM pedido p
+JOIN detalle_pedido dp ON p.codigo_pedido = dp.codigo_pedido
+WHERE p.codigo_cliente = p_codigo_cliente;
+-- 2. Calcular la suma de todos los pagos realizados por el
+cliente
+SELECT COALESCE(SUM(total), 0.00) INTO v_total_pagado
+FROM pago p
+WHERE p.codigo_cliente = p_codigo_cliente;
+-- 3. Restar para obtener la deuda activa
+SET v_deuda = v_total_pedidos - v_total_pagado;
+RETURN v_deuda;
+END//
+DELIMITER ;
+-- Invocación directa dentro de una consulta DML SELECT estándar de
+Jardinería
+SELECT
+codigo_cliente,
+nombre_cliente,
+limite_credito,
+fn_calcular_deuda_cliente(codigo_cliente) AS saldo_deudor_activo
+FROM cliente
+WHERE ciudad = 'Madrid';</code></pre></div>4. ESTRUCTURAS DE CONTROL DE
+FLUJO</h1>
+<p>La programación procedural de bases de datos permite redirigir el
+orden de procesamiento de las sentencias utilizando estructuras lógicas
+avanzadas de decisión y repetición.</p>
+<h2 id="condicionales-if-then-else-y-case">4.1 Condicionales
+(IF-THEN-ELSE y CASE) <a class="headerlink" href="#condicionales-if-then-else-y-case" title="Enlace permanente">¶</a></h2>
+<p>Permiten ejecutar diferentes fragmentos de código basándose en la
+evaluación de una condición booleana.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
+DROP PROCEDURE IF EXISTS sp_evaluar_riesgo_cliente//
+CREATE PROCEDURE sp_evaluar_riesgo_cliente(
+IN p_codigo_cliente INT,
+OUT p_nivel_riesgo VARCHAR(30)
+)
+BEGIN
+DECLARE v_deuda DECIMAL(15,2);
+DECLARE v_limite DECIMAL(15,2);
+-- Ejecutamos la llamada a la función previamente programada
+SET v_deuda = fn_calcular_deuda_cliente(p_codigo_cliente);
+-- Extraemos el límite de crédito asignado
+SELECT limite_credito INTO v_limite
+FROM cliente
+WHERE codigo_cliente = p_codigo_cliente;
+-- Bifurcación condicional compleja IF-THEN-ELSE
+IF v_deuda &lt;= 0.00 THEN
+SET p_nivel_riesgo = 'EXCELENTE (SIN DEUDA)';
+ELSEIF v_deuda &gt; v_limite THEN
+SET p_nivel_riesgo = 'CRÍTICO: LÍMITE EXCEDIDO';
+ELSEIF v_deuda &gt; (v_limite * 0.75) THEN
+SET p_nivel_riesgo = 'ATENCIÓN: DEUDA ELEVADA (&gt;75%)';
+ELSE
+SET p_nivel_riesgo = 'RIESGO BAJO / CONTROLADO';
+END IF;
+END//
+DELIMITER ;
+CALL sp_evaluar_riesgo_cliente(101, @riesgo);
+SELECT @riesgo AS estado_riesgo_financiero;</code></pre></div>4.2 Estructuras
+Iterativas (LOOP, REPEAT y WHILE)</h2>
+<p>MySQL proporciona estructuras nativas para realizar bucles lógicos
+[11.2]. En entornos de producción de administración de sistemas, es
+indispensable etiquetar estos bucles para gestionar flujos de control
+complejos mediante sentencias de escape como LEAVE (equivalente a
+<em>break</em>) o ITERATE (equivalente a <em>continue</em>)
+[12.1.8.2].</p>
+<p>A continuación se muestra un ejemplo comparativo de implementación de
+secuencias mediante bucles procedurales aplicados a un escenario
+administrativo para poblar una tabla de auditoría con rangos
+numéricos.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Creamos una tabla auxiliar para almacenar históricos o rangos
+CREATE TABLE IF NOT EXISTS auxiliar_rangos (
+iteracion INT UNSIGNED PRIMARY KEY,
+mensaje_logs VARCHAR(100)
+);
+-- Implementación usando WHILE: Verifica la condición antes de entrar
+al bucle
+DELIMITER //
+DROP PROCEDURE IF EXISTS sp_llenar_while//
+CREATE PROCEDURE sp_llenar_while(IN p_tope INT)
+BEGIN
+DECLARE v_contador INT DEFAULT 1;
+TRUNCATE TABLE auxiliar_rangos;
+WHILE v_contador &lt;= p_tope DO
+INSERT INTO auxiliar_rangos VALUES (v_contador, CONCAT('Registro
+automatizado por bucle WHILE: ', v_contador));
+SET v_contador = v_contador + 1;
+END WHILE;
+END//
+-- Implementación usando REPEAT: Ejecuta el bloque y luego evalúa la
+condición de salida
+DROP PROCEDURE IF EXISTS sp_llenar_repeat//
+CREATE PROCEDURE sp_llenar_repeat(IN p_tope INT)
+BEGIN
+DECLARE v_contador INT DEFAULT 1;
+TRUNCATE TABLE auxiliar_rangos;
+REPEAT
+INSERT INTO auxiliar_rangos VALUES (v_contador, CONCAT('Registro
+automatizado por bucle REPEAT: ', v_contador));
+SET v_contador = v_contador + 1;
+UNTIL v_contador &gt; p_tope
+END REPEAT;
+END//
+-- Implementación usando LOOP: Bucle infinito controlado manualmente
+mediante LEAVE e ITERATE
+DROP PROCEDURE IF EXISTS sp_llenar_loop//
+CREATE PROCEDURE sp_llenar_loop(IN p_tope INT)
+BEGIN
+DECLARE v_contador INT DEFAULT 0;
+TRUNCATE TABLE auxiliar_rangos;
+mi_bucle: LOOP
+SET v_contador = v_contador + 1;
+-- Condición de parada de emergencia
+IF v_contador &gt; p_tope THEN
+LEAVE mi_bucle;
+END IF;
+-- Saltarse números pares en la inserción (Uso de ITERATE)
+IF MOD(v_contador, 2) = 0 THEN
+ITERATE mi_bucle;
+END IF;
+INSERT INTO auxiliar_rangos VALUES (v_contador, CONCAT('Registro
+impar automatizado por bucle LOOP: ', v_contador));
+END LOOP mi_bucle;
+END//
+DELIMITER ;
+CALL sp_llenar_loop(5);
+SELECT * FROM auxiliar_rangos;</code></pre></div>5. MANEJO DE
+EXCEPCIONES Y ERRORES EN MYSQL</h1>
+<p>El código procedimental que ejecuta cambios DML puede fallar debido a
+violaciones de integridad referencial, registros duplicados en claves
+primarias o caídas del sistema. Para evitar que la transacción completa
+aborte de forma incontrolada, MySQL ofrece el uso de manejadores de
+error declarativos [1.9].</p>
+<h2 id="el-uso-de-declare...-handler">5.1 El uso de DECLARE...
+HANDLER <a class="headerlink" href="#el-uso-de-declare...-handler" title="Enlace permanente">¶</a></h2>
+<p>La sintaxis general para registrar un manejador de eventos
+excepcionales es la siguiente:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DECLARE {CONTINUE | EXIT} HANDLER FOR condicion_error sentencia;</code></pre></div>Donde:</p>
+<ul>
+<li><blockquote>
+<p><strong>CONTINUE:</strong> Ejecuta la sentencia correctora asociada y
+continúa con el flujo lógico del bloque procedimental tras la
+instrucción que generó la alerta [1.9].</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>EXIT:</strong> Detiene la ejecución del bloque actual (BEGIN
+... END) de manera inmediata tras realizar las acciones de resolución de
+errores establecidas [1.9].</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>condicion_error:</strong> Puede ser un código de error
+numérico interno del SGBD, un estándar SQLSTATE de la industria o
+palabras clave genéricas como SQLEXCEPTION, SQLWARNING o NOT FOUND
+[1.9].</p>
+</blockquote></li>
+</ul>
+<p>Ejemplo de registro de pago de cliente seguro ante claves
+duplicadas:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
+DROP PROCEDURE IF EXISTS sp_registrar_pago_seguro//
+CREATE PROCEDURE sp_registrar_pago_seguro(
+IN p_codigo_cliente INT,
+IN p_forma_pago VARCHAR(40),
+IN p_id_transaccion VARCHAR(50),
+IN p_fecha_pago DATE,
+IN p_total DECIMAL(15,2),
+OUT p_resultado_operacion VARCHAR(100)
+)
+BEGIN
+-- Manejador específico para el Error 1062 de MySQL (Entrada
+duplicada en clave primaria)
+DECLARE EXIT HANDLER FOR 1062
+BEGIN
+SET p_resultado_operacion = CONCAT('RECHAZADO: El ID de transacción
+"', p_id_transaccion, '" ya existe en el histórico de pagos.');
+END;
+-- Manejador general para cualquier otro tipo de error de restricción
+o datos (Llave foránea incorrecta, etc.)
+DECLARE EXIT HANDLER FOR SQLEXCEPTION
+BEGIN
+SET p_resultado_operacion = 'RECHAZADO: Error general de integridad
+de base de datos.';
+END;
+-- Intentamos la inserción en la tabla de Jardinería
+INSERT INTO pago (codigo_cliente, forma_pago, id_transaccion,
+fecha_pago, total)
+VALUES (p_codigo_cliente, p_forma_pago, p_id_transaccion,
+p_fecha_pago, p_total);
+SET p_resultado_operacion = 'OPERACIÓN COMPLETADA CON ÉXITO';
+END//
+DELIMITER ;
+-- Intentamos registrar una transacción segura
+CALL sp_registrar_pago_seguro(1, 'Transferencia', 'TR-REG-001',
+'2026-06-19', 450.50, @estado);
+SELECT @estado;
+-- Volvemos a llamar al procedimiento con la misma transacción para
+provocar la excepción de duplicidad controlada
+CALL sp_registrar_pago_seguro(1, 'Transferencia', 'TR-REG-001',
+'2026-06-19', 450.50, @estado);
+SELECT @estado;</code></pre></div>6. CURSORES</h1>
+<p>Un cursor es una estructura procedimental en memoria que permite
+iterar y procesar, registro por registro, el conjunto de filas devuelto
+por una consulta SELECT.</p>
+<h2 id="ciclo-de-vida-de-un-cursor">6.1 Ciclo de vida de un cursor <a class="headerlink" href="#ciclo-de-vida-de-un-cursor" title="Enlace permanente">¶</a></h2>
+<p>El uso de un cursor sigue estrictamente un proceso secuencial de 4
+pasos [1.8.7]:</p>
+<ol type="1">
+<li><blockquote>
+<p><strong>DECLARE:</strong> Define el cursor vinculándolo a una
+consulta SQL selectiva. Esta instrucción debe colocarse después de
+declarar todas las variables locales pero antes de los manejadores de
+excepciones.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>OPEN:</strong> Ejecuta la consulta SQL e inicializa el
+puntero en memoria, dejándolo preparado para la extracción.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>FETCH:</strong> Extrae secuencialmente los valores de la fila
+actual donde apunta el puntero, asignando dichos valores a variables
+locales locales previamente declaradas.</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>CLOSE:</strong> Libera la memoria consumida por el cursor. Si
+se omite, MySQL cerrará el cursor automáticamente al finalizar la
+rutina.</p>
+</blockquote></li>
+</ol>
+<p>Ejemplo (Actualización masiva de Límite de Crédito basado en la
+actividad real del cliente):</p>
+<p>Implementaremos un procedimiento que audite a todos los clientes de
+<strong>Jardinería</strong> mediante un cursor procedimental. Si un
+cliente ha acumulado en pagos efectivos más del 80% de su límite de
+crédito actual, el SGBD ampliará proactivamente su límite crediticio un
+25%.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
+DROP PROCEDURE IF EXISTS sp_optimizar_credito_clientes_activos//
+CREATE PROCEDURE sp_optimizar_credito_clientes_activos()
+BEGIN
+-- 1. Declarar variables de control interno
+DECLARE v_finalizado INT DEFAULT FALSE;
+DECLARE v_codigo_cliente INT;
+DECLARE v_limite_actual DECIMAL(15,2);
+DECLARE v_total_pagos DECIMAL(15,2);
+-- 2. Declaración del cursor sobre todos los clientes activos con
+crédito
+DECLARE cursor_clientes CURSOR FOR
+SELECT codigo_cliente, limite_credito
+FROM cliente
+WHERE limite_credito &gt; 0.00;
+-- 3. Handler asociado para controlar cuándo el cursor se queda sin
+filas (NOT FOUND)
+DECLARE CONTINUE HANDLER FOR NOT FOUND SET v_finalizado = TRUE;
+-- 4. Abrir la consulta y cargar el puntero
+OPEN cursor_clientes;
+bucle_extraccion: LOOP
+-- 5. Extraer registro actual
+FETCH cursor_clientes INTO v_codigo_cliente, v_limite_actual;
+-- Control del escape del bucle
+IF v_finalizado THEN
+LEAVE bucle_extraccion;
+END IF;
+-- 6. Ejecutar lógica procedural para evaluar la regla de negocio
+SELECT COALESCE(SUM(total), 0.00) INTO v_total_pagos
+FROM pago
+WHERE codigo_cliente = v_codigo_cliente;
+-- Si el total de pagos reales acumulados supera el 80% de su límite,
+aumentamos el límite
+IF v_total_pagos &gt; (v_limite_actual * 0.80) THEN
+UPDATE cliente
+SET limite_credito = v_limite_actual * 1.25
+WHERE codigo_cliente = v_codigo_cliente;
+END IF;
+END LOOP bucle_extraccion;
+-- 7. Cerrar cursor para liberar recursos de red
+CLOSE cursor_clientes;
+END//
+DELIMITER ;
+-- Ejecutamos la reevaluación de límites del sistema completo de
+Jardinería
+CALL sp_optimizar_credito_clientes_activos();</code></pre></div>7. DISPARADORES (TRIGGERS)</h1>
+<p>Un disparador o <em>trigger</em> es un objeto de base de datos
+asociado a una tabla que se activa de manera automática e implícita
+cuando se ejecuta un evento DML de modificación de datos (INSERT, UPDATE
+o DELETE) sobre dicha tabla [1.8.8].</p>
+<h2 id="lógica-de-ejecución-beforeafter-e-insertupdatedelete">7.1 Lógica
+de ejecución: BEFORE/AFTER e INSERT/UPDATE/DELETE <a class="headerlink" href="#lógica-de-ejecución-beforeafter-e-insertupdatedelete" title="Enlace permanente">¶</a></h2>
+<p>Un disparador puede configurarse para activarse en dos instantes
+temporales distintos:</p>
+<ul>
+<li><blockquote>
+<p><strong>BEFORE:</strong> Se ejecuta antes de que los cambios se
+validen e intenten almacenar en el disco del servidor. Es la opción
+idónea para realizar operaciones de validación, saneamiento de datos de
+entrada o cálculo de campos calculados [1.8.8].</p>
+</blockquote></li>
+<li><blockquote>
+<p><strong>AFTER:</strong> Se ejecuta una vez que los cambios han sido
+aplicados con éxito en la tabla de datos. Es ideal para mantener
+registros de auditoría o históricos en tablas paralelas [1.8.8].</p>
+</blockquote></li>
+</ul>
+<h2
+id="pseudotablas-old-y-new-y-su-aplicación-en-la-integridad-de-datos">7.2
+Pseudotablas OLD y NEW y su aplicación en la integridad de datos <a class="headerlink" href="#pseudotablas-old-y-new-y-su-aplicación-en-la-integridad-de-datos" title="Enlace permanente">¶</a></h2>
+<p>Dependiendo del tipo de instrucción DML ejecutada, el cuerpo del
+trigger tiene acceso a los valores mediante las variables
+contextuales:</p>
+<ul>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>NEW: Objeto temporal que contiene los valores de las
+columnas que se están insertando o modificando. (Disponible en INSERT y
+UPDATE) [1.8.8].</code></pre></div></li>
+<li><blockquote>
+<p><strong>OLD:</strong> Objeto temporal que contiene los valores de las
+columnas previos a la actualización o eliminación. (Disponible en UPDATE
+y DELETE) [1.8.8].</p>
+</blockquote></li>
+</ul>
+<div class="table-wrapper"><table>
+<thead>
+<tr class="header">
+<th><strong>Operación</strong></th>
+<th><strong>Acceso a NEW</strong></th>
+<th><strong>Acceso a OLD</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>INSERT</strong></td>
+<td>Sí (Lectura / Modificación en BEFORE)</td>
+<td>No</td>
+</tr>
+<tr class="header">
+<td><strong>UPDATE</strong></td>
+<td>Sí (Lectura / Modificación en BEFORE)</td>
+<td>Sí (Solo Lectura)</td>
+</tr>
+<tr class="odd">
+<td><strong>DELETE</strong></td>
+<td>No</td>
+<td>Sí (Solo Lectura)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Ejemplo de Trigger BEFORE INSERT (Validación de stock e integridad
+referencial):</p>
+<p>Un SysAdmin debe impedir que se registre un pedido de productos de
+jardinería si no existe stock real suficiente en el inventario,
+previniendo incoherencias comerciales.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
+DROP TRIGGER IF EXISTS trigger_validar_stock_before_insert//
+CREATE TRIGGER trigger_validar_stock_before_insert
+BEFORE INSERT ON detalle_pedido
+FOR EACH ROW
+BEGIN
+DECLARE v_stock_disponible INT;
+-- Obtener la cantidad de existencias físicas reales del producto
+seleccionado
+SELECT cantidad_en_stock INTO v_stock_disponible
+FROM producto
+WHERE codigo_producto = NEW.codigo_producto;
+-- Si se solicita mayor cantidad que la disponible, generamos una
+excepción personalizada
+IF NEW.cantidad &gt; v_stock_disponible THEN
+SIGNAL SQLSTATE '45000'
+SET MESSAGE_TEXT = 'OPERACIÓN RECHAZADA: Stock insuficiente para
+procesar la línea del producto.';
+END IF;
+END//
+DELIMITER ;</code></pre></div>Ejemplo de Trigger AFTER INSERT (Auditoría e Históricos
+automáticos):</p>
+<p>Implementaremos un disparador que nos permita registrar en tiempo
+real un log de pagos que van realizando los clientes. Primero creamos
+una tabla dedicada a centralizar las notificaciones de pagos [1.10].</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>eroría-- Creamos la tabla de soporte técnico de notificaciones
+CREATE TABLE IF NOT EXISTS notificaciones (
+id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+fecha_hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+total DECIMAL(15,2) NOT NULL,
+codigo_cliente INT NOT NULL
+);
+DELIMITER //
+DROP TRIGGER IF EXISTS trigger_notificar_pago_after_insert//
+CREATE TRIGGER trigger_notificar_pago_after_insert
+AFTER INSERT ON pago
+FOR EACH ROW
+BEGIN
+-- Almacena de manera automática el pago registrado en nuestra tabla
+de notificaciones
+INSERT INTO notificaciones (total, codigo_cliente)
+VALUES (NEW.total, NEW.codigo_cliente);
+END//
+DELIMITER ;</code></pre></div>8. ENLACES DE
+REFERENCIA Y DOCUMENTACIÓN OFICIAL</h1>
+<p>Para profundizar en la sintaxis procedimental avanzada, gestión de
+pilas de llamadas y optimización de ejecución del motor de rutinas
+almacenadas en MySQL 8.0, consulta los siguientes recursos del manual
+técnico oficial:</p>
+<ul>
+<li><blockquote>
+<p><a
+href="https://dev.mysql.com/doc/refman/8.0/en/stored-objects.html"><u>MySQL
+8.0 Reference Manual: Stored Objects (Procedures &amp;
+Functions)</u></a></p>
+</blockquote></li>
+<li><blockquote>
+<p><a
+href="https://dev.mysql.com/doc/refman/8.0/en/triggers.html"><u>MySQL
+8.0 Reference Manual: Trigger Syntax and Examples</u></a></p>
+</blockquote></li>
+<li><blockquote>
+<p><a
+href="https://dev.mysql.com/doc/refman/8.0/en/flow-control-statements.html"><u>MySQL
+8.0 Reference Manual: Flow Control Statements</u></a></p>
+</blockquote></li>
+<li><blockquote>
+<p><a
+href="https://dev.mysql.com/doc/refman/8.0/en/cursors.html"><u>MySQL 8.0
+Reference Manual: Cursors implementation</u></a></p>
+</blockquote></li>
+<li><blockquote>
+<p><a
+href="https://dev.mysql.com/doc/refman/8.0/en/declare-handler.html"><u>MySQL
+8.0 Reference Manual: Condition Handling and SIGNAL SQLSTATE</u></a></p>
+</blockquote></li>
+</ul>
+
+        </main>
+    </div>
+</body>
+</html>
