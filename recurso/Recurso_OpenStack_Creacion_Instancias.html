@@ -1,273 +1,266 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RECURSO - Openstack Creacion Instancias</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RECURSO - Openstack Creacion Instancias</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
 </head>
+
 <body>
-    <header id="site-header">
-  <div class="header-container">
-    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>RECURSO &ndash; Openstack Creacion Instancias</span></div>
-    <nav class="top-nav">
-      <a href="index.html" class="nav-btn">Inicio</a>
-      <div class="dropdown">
-        <button class="dropbtn" type="button">Teoría ▾</button>
-        <div class="dropdown-content">
-          <a href="Recurso_Instalación_apache_php_mysql.html">Recurso Instalación apache php mysql</a>
-          <a href="Recurso_OpenStack_Conexión_VPN.html">Recurso OpenStack Conexión VPN</a>
-          <a href="Recurso_OpenStack_Creacion_Instancias.html">Recurso OpenStack Creacion Instancias</a>
-          <a href="Recurso_Instalación_docker_ubuntu.html">Recurso Instalación docker ubuntu</a>
-          <a href="Recurso_MySQL.html">Recurso MySQL</a>
-        </div>
-      </div>
-    </nav>
-  </div>
-</header>
-    <div id="page-layout">
-        <main id="main-content">
-            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="Recurso_OpenStack_Creacion_Instancias.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
-            
-<header id="title-block-header">
-<h1 class="title"><span id="_kdsnqtp1h3ss"
-class="anchor"></span><strong>Creación y uso de instancias en
-OpenStack</strong></h1>
-</header>
+  <header id="site-header">
+    <div class="header-container">
+      <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo"
+          style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>RECURSO
+          &ndash; Openstack Creacion Instancias</span></div>
+      <nav class="top-nav">
 
-<p><a href="#qué-es-openstack"><u>1. ¿Qué es OpenStack?</u></a></p>
-<p><a href="#para-qué-lo-vamos-a-utilizar"><u>2. ¿Para qué lo vamos a
-utilizar?</u></a></p>
-<p><a href="#creación-de-una-instancia"><u>3. Creación de una
-instancia</u></a></p>
-<p><a href="#conexión-a-nuestra-instancia"><u>4. Conexión a nuestra
-instancia</u></a></p>
-<blockquote>
-<p><a href="#conexión-desde-consola"><u>4.1. Conexión desde
-consola</u></a></p>
-<p><a href="#error-por-reutilización-de-ip-flotante"><u>4.2. Error por
-reutilización de IP flotante</u></a></p>
-<p><a href="#conexión-desde-openstack"><u>4.3. Conexión desde
-OpenStack</u></a></p>
-<p><a href="#copiar-archivos-a-la-instancia"><u>4.4. Copiar archivos a
-la instancia</u></a></p>
-</blockquote>
-<h1 id="qué-es-openstack">¿Qué es OpenStack?  <a class="headerlink" href="#qué-es-openstack" title="Enlace permanente">¶</a></h1>
-<p>Primero tenemos que saber algo sobre la computación en la nube. El
-<strong>Cloud Computing</strong> o la <strong>computación en la
-nube</strong> se basa en la entrega de servicios de tipo informático a
-petición y a través de internet. Algunos de estos servicios son el
-almacenamiento, los servidores, centros de datos, redes, software y
-desarrollar aplicaciones, entre otros.</p>
-<p><strong>OpenStack</strong> es la plataforma Cloud Computing de
-software libre y de código abierto más importante y que más ha crecido
-en los últimos años.</p>
-<p>Está diseñada para ofrecer nubes públicas o privadas orientadas a
-ofrecer infraestructuras como servicio a los usuarios (Iaas).</p>
-<p>Con ella es posible crear un sistema en la nube (público o privado),
-utilizado para gestionar diversos recursos computacionales, de
-almacenamiento y redes.</p>
-<p>Para más información se puede consultar la siguiente documentación de
-<a href="https://openstack.iescelia.org/"><u>Openstack en el IES Celia
-Viñas</u></a>.</p>
-<h1 id="para-qué-lo-vamos-a-utilizar">¿Para qué lo vamos a
-utilizar? <a class="headerlink" href="#para-qué-lo-vamos-a-utilizar" title="Enlace permanente">¶</a></h1>
-<p>En nuestro caso nos va a permitir crear instancias (lo que serían
-máquinas virtuales) en la nube, que van a ser accesibles tanto desde la
-red del departamento como desde el exterior. Lo que actualmente hacíamos
-con VirtualBox (con los inconvenientes que esto tenía), ahora lo vamos a
-hacer con OpenStack, y podremos acceder desde cualquier lugar. En estas
-instancias vamos a configurar distintos sistemas gestores de bases de
-datos, servidores, sistemas operativos, etc., para las distintas
-actividades y prácticas.</p>
-<h1 id="creación-de-una-instancia">Creación de una instancia<img
-src="media_Recurso_OpenStack_Creacion_Instancias/media/image2.png"
-style="width:2.4576in;height:2.54688in" /> <a class="headerlink" href="#creación-de-una-instancia" title="Enlace permanente">¶</a></h1>
-<p>Tanto desde la red del departamento, como desde el exterior (con la
-VPN del departamento, ver el siguiente <a
-href="https://docs.google.com/document/d/1RWOL-poQkPQflSKgC64M2DPy3FrCQht9yLszdioofaM/edit?usp=sharing"><u>documento</u></a>),
-podemos acceder a OpenStack desde nuestro navegador en la dirección <a
-href="http://172.16.0.11/"><u>http://172.16.0.11/</u></a> o <a
-href="http://openstack.celia"><u>http://openstack.celia</u></a> Nos
-tendremos que identificar con nuestro usuario y contraseña.</p>
-<p>Ahora mismo, vuestro usuario y contraseña son los mismos, es decir,
-vuestro usuario de Pasen se utiliza tanto como usuario y contraseña de
-openstack. El dominio es <strong>Default</strong></p>
-<p>Lo primero que veremos será la página correspondiente a una visión
-general de nuestra cuenta.</p>
-<p><img
-src="media_Recurso_OpenStack_Creacion_Instancias/media/image17.png"
-style="width:5.43887in;height:4.04753in" /></p>
-<p>Si accedemos a Instancias, podremos ver las instancias que tenemos
-creadas, crear nuevas, detenerlas, iniciarlas o borrarlas.</p>
-<p><img
-src="media_Recurso_OpenStack_Creacion_Instancias/media/image22.png"
-style="width:8.12197in;height:3.07609in" /></p>
-<p><img
-src="media_Recurso_OpenStack_Creacion_Instancias/media/image12.png"
-style="width:1.5in;height:0.42434in" /></p>
-<p>Para crear una nueva instancia, pulsaremos en el botón</p>
-<p>En el asistente que nos aparece vamos a realizar lo siguiente:</p>
-<p><strong>Paso 1:</strong> Asignaremos un nombre a la instancia.
-También podemos darle una descripción. Pulsar en
-<em><strong>Siguiente</strong></em>.</p>
-<p><img
-src="media_Recurso_OpenStack_Creacion_Instancias/media/image3.png"
-style="width:6.13542in;height:2.19729in" /></p>
-<p><strong>Paso 2: IMPORTANTE.</strong> Seleccionamos en Crear nuevo
-volumen <strong>No</strong>.</p>
-<p><img
-src="media_Recurso_OpenStack_Creacion_Instancias/media/image15.png"
-style="width:6.30894in;height:1.44649in" /></p>
-<p>Si el profesor proporciona una instantánea se indica en el Origen de
-arranque</p>
-<p><img
-src="media_Recurso_OpenStack_Creacion_Instancias/media/image5.png"
-style="width:5.08854in;height:0.7692in" /></p>
-<p>Pulsaremos <em><strong>Siguiente</strong></em> y pasaremos al Paso
-3.</p>
-<p><strong>Paso 3</strong>: En la parte inferior de esta ventana,
-seleccionaremos el tipo de instancia.</p>
-<p><img
-src="media_Recurso_OpenStack_Creacion_Instancias/media/image8.png"
-style="width:5.70833in;height:1.40691in" /></p>
-<p>En nuestro caso, el sistema operativo elegido será Ubuntu 24.04.
-Pulsamos <em><strong>Siguiente</strong></em>.</p>
-<p><strong>Paso 4</strong>: Escogemos el tamaño de la instancia. Tenemos
-distintas opciones, de las que cogeremos la normal, medium o large. El
-tamaño establece cuántos núcleos tendrá asignados, cantidad de RAM y
-espacio total de Disco.</p>
-<p><img
-src="media_Recurso_OpenStack_Creacion_Instancias/media/image19.png"
-style="width:6.27083in;height:2.65691in" /></p>
-<p><strong>Paso 5</strong>: En el siguiente paso no vamos a modificar
-nada, dejando la configuración que nos proporciona. Por defecto,
-nuestras máquinas están asociadas a una subred interna asociada a
-nuestra cuenta.</p>
-<p><img
-src="media_Recurso_OpenStack_Creacion_Instancias/media/image7.png"
-style="width:6.27083in;height:1.90691in" /></p>
-<p><strong>Paso 6</strong>: Pulsaremos
-<em><strong>Siguiente</strong></em> también en las opciones Puertos de
-red, Grupos de seguridad y Crear Par de claves.</p>
-<p><strong>Paso 7</strong>: En el paso Configuración vamos a incluir un
-script para crear la contraseña al usuario de nuestra instancia:</p>
-<p><img
-src="media_Recurso_OpenStack_Creacion_Instancias/media/image10.png"
-style="width:4.27604in;height:2.68915in" /></p>
-<p>Incluiremos las siguientes líneas, modificando la contraseña</p>
-<blockquote>
-<p>#cloud-config</p>
-<p>password: nueva_password</p>
-<p>chpasswd: { expire: False }</p>
-<p>ssh_pwauth: True</p>
-</blockquote>
-<p>La primera línea con el texto #cloud-config es obligatoria.</p>
-<p>La clave password indica cuál será la nueva contraseña del usuario de
-la imagen.</p>
-<p>La clave chpasswd indica que la contraseña no caduca y no tiene que
-ser cambiada después de iniciar sesión la primera vez.</p>
-<p>La clave ssh_pwauth indica que se habilita el acceso por SSH con
-contraseña.</p>
-<p>Tras el paso anterior podemos Ejecutar nuestra Instancia, dejando las
-opciones que vienen por defecto en los siguientes pasos del
-asistente.</p>
-<p>Después de unos segundos</p>
-<p><img
-src="media_Recurso_OpenStack_Creacion_Instancias/media/image18.png"
-style="width:6.26772in;height:0.69444in" /></p>
-<p>tendremos nuestra instancia corriendo (en ejecución). Ahora podemos
-realizar distintas acciones, algunas de ellas son:</p>
-<p><img
-src="media_Recurso_OpenStack_Creacion_Instancias/media/image6.png"
-style="width:2.35573in;height:1.05694in" /></p>
-<p>Faltan por realizar algunas acciones en la configuración de la
-instancia.</p>
-<p><strong>Asociar una IP Flotante</strong>: asignar una IP que sea
-accesible desde fuera de OpenStack (desde la red del departamento o
-desde el exterior) Esa IP que vamos a asignar pertenece a la red-externa
-de OpenStack y accesible desde la red del departamento. Se le puede dar
-una descripción y podemos ver cuantas hemos asignado ya.</p>
-<p><img
-src="media_Recurso_OpenStack_Creacion_Instancias/media/image16.png"
-style="width:3.41823in;height:1.66916in" /></p>
-<p>Ahora nos aparecerá en el apartado de IPs flotantes, la IP asociada y
-con la que podremos conectarnos a nuestra máquina</p>
-<p><img
-src="media_Recurso_OpenStack_Creacion_Instancias/media/image9.png"
-style="width:6.45309in;height:1.68295in" /></p>
-<p>Volvemos a Computación e Instancias. La IP que aparece será la que
-utilizaremos para conectarnos a nuestra máquina</p>
-<p><img
-src="media_Recurso_OpenStack_Creacion_Instancias/media/image14.png"
-style="width:6.26772in;height:0.68056in" /></p>
-<p>Si pulsamos sobre el nombre de la Instancia, podemos ver los datos
-generales de nuestra Instancia, configuración, IPs, puertos abiertos,
-etc.</p>
-<p>En Red &gt; Grupos de seguridad podemos acceder, modificar y ver la
-configuración de nuestros puertos.</p>
-<p><img
-src="media_Recurso_OpenStack_Creacion_Instancias/media/image13.png"
-style="width:6.26772in;height:1.94444in" /></p>
-<h1 id="conexión-a-nuestra-instancia">Conexión a nuestra instancia <a class="headerlink" href="#conexión-a-nuestra-instancia" title="Enlace permanente">¶</a></h1>
-<h2 id="conexión-desde-consola">4.1. Conexión desde consola <a class="headerlink" href="#conexión-desde-consola" title="Enlace permanente">¶</a></h2>
-<p>Ya tenemos nuestra instancia preparada. Para conectarnos a ella
-utilizaremos SSH. En un terminal usaremos:</p>
-<p>ssh ubuntu@IP_flotante</p>
-<p><img
-src="media_Recurso_OpenStack_Creacion_Instancias/media/image20.png"
-style="width:6.27083in;height:2.93927in" /></p>
-<p>Tened en cuenta que somos los administradores. Si lo hacemos desde
-nuestra casa tenemos que tener la conexión a la VPN del departamento</p>
-<h2 id="error-por-reutilización-de-ip-flotante">4.2. Error por
-reutilización de IP flotante <a class="headerlink" href="#error-por-reutilización-de-ip-flotante" title="Enlace permanente">¶</a></h2>
-<p>Otro error con el que nos podemos encontrar es el siguiente:</p>
-<p><img
-src="media_Recurso_OpenStack_Creacion_Instancias/media/image11.png"
-style="width:6.26772in;height:1.69444in" /></p>
-<p>Esto se produce cuando hemos tenido otra instancia con esa IP
-Flotante y hemos cambiado la clave privada. En este caso accedes al
-archivo known_hosts y borramos los datos que teníamos asociados.</p>
-<h2 id="conexión-desde-openstack">4.3. Conexión desde OpenStack <a class="headerlink" href="#conexión-desde-openstack" title="Enlace permanente">¶</a></h2>
-<p>Si realizamos esto podremos conectarnos también desde el propio
-navegador, accediendo a OpenStack (<a
-href="http://openstack.celia"><u>http://openstack.celia</u></a>),
-pulsamos sobre nuestra instancia y accediendo a Consola.</p>
-<p><img
-src="media_Recurso_OpenStack_Creacion_Instancias/media/image1.png"
-style="width:6.26772in;height:3.88889in" /></p>
-<h2 id="copiar-archivos-a-la-instancia">4.4. Copiar archivos a la
-instancia  <a class="headerlink" href="#copiar-archivos-a-la-instancia" title="Enlace permanente">¶</a></h2>
-<p>La mejor forma de transferir archivos a nuestra instancia es mediante
-el comando scp (en linux):</p>
-<p><strong>scp [origen] [destino]</strong></p>
-<p>donde para hacer referencia a nuestra instancia utilizaremos
-ubuntu@ip_flotante:/ruta</p>
-<p>Ejemplos para copiar archivos/carpetas desde nuestro ordenador:</p>
-<ul>
-<li><blockquote>
-<p>Para copiar un archivo de la carpeta actual a la carpeta en nuestra
-instancia:</p>
-</blockquote></li>
-</ul>
-<p>scp ejercicio1.html ubuntu@172.16.11.152:/var/www/html</p>
-<ul>
-<li><blockquote>
-<p>Para copiar un conjunto de archivos de la carpeta actual a una
-carpeta en nuestra instancia:</p>
-</blockquote></li>
-</ul>
-<p>scp *.* ubuntu@172.16.11.152:/var/www/html</p>
-<ul>
-<li><blockquote>
-<p>Para copiar una carpeta con todas los archivos y subcarpetas a una
-carpeta determinada en nuestra instancia</p>
-</blockquote></li>
-</ul>
-<p>scp -r Carpeta ubuntu@172.16.11.152:/var/www/html</p>
 
-        </main>
+      </nav>
     </div>
+  </header>
+  <div id="page-layout">
+    <main id="main-content">
+      <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a
+          href="Recurso_OpenStack_Creacion_Instancias.pdf" download
+          style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥
+          Descargar PDF</a></div>
+
+      <header id="title-block-header">
+        <h1 class="title"><span id="_kdsnqtp1h3ss" class="anchor"></span><strong>Creación y uso de instancias en
+            OpenStack</strong></h1>
+      </header>
+
+      <p><a href="#qué-es-openstack"><u>1. ¿Qué es OpenStack?</u></a></p>
+      <p><a href="#para-qué-lo-vamos-a-utilizar"><u>2. ¿Para qué lo vamos a
+            utilizar?</u></a></p>
+      <p><a href="#creación-de-una-instancia"><u>3. Creación de una
+            instancia</u></a></p>
+      <p><a href="#conexión-a-nuestra-instancia"><u>4. Conexión a nuestra
+            instancia</u></a></p>
+      <blockquote>
+        <p><a href="#conexión-desde-consola"><u>4.1. Conexión desde
+              consola</u></a></p>
+        <p><a href="#error-por-reutilización-de-ip-flotante"><u>4.2. Error por
+              reutilización de IP flotante</u></a></p>
+        <p><a href="#conexión-desde-openstack"><u>4.3. Conexión desde
+              OpenStack</u></a></p>
+        <p><a href="#copiar-archivos-a-la-instancia"><u>4.4. Copiar archivos a
+              la instancia</u></a></p>
+      </blockquote>
+      <h1 id="qué-es-openstack">¿Qué es OpenStack? <a class="headerlink" href="#qué-es-openstack"
+          title="Enlace permanente">¶</a></h1>
+      <p>Primero tenemos que saber algo sobre la computación en la nube. El
+        <strong>Cloud Computing</strong> o la <strong>computación en la
+          nube</strong> se basa en la entrega de servicios de tipo informático a
+        petición y a través de internet. Algunos de estos servicios son el
+        almacenamiento, los servidores, centros de datos, redes, software y
+        desarrollar aplicaciones, entre otros.
+      </p>
+      <p><strong>OpenStack</strong> es la plataforma Cloud Computing de
+        software libre y de código abierto más importante y que más ha crecido
+        en los últimos años.</p>
+      <p>Está diseñada para ofrecer nubes públicas o privadas orientadas a
+        ofrecer infraestructuras como servicio a los usuarios (Iaas).</p>
+      <p>Con ella es posible crear un sistema en la nube (público o privado),
+        utilizado para gestionar diversos recursos computacionales, de
+        almacenamiento y redes.</p>
+      <p>Para más información se puede consultar la siguiente documentación de
+        <a href="https://openstack.iescelia.org/"><u>Openstack en el IES Celia
+            Viñas</u></a>.
+      </p>
+      <h1 id="para-qué-lo-vamos-a-utilizar">¿Para qué lo vamos a
+        utilizar? <a class="headerlink" href="#para-qué-lo-vamos-a-utilizar" title="Enlace permanente">¶</a></h1>
+      <p>En nuestro caso nos va a permitir crear instancias (lo que serían
+        máquinas virtuales) en la nube, que van a ser accesibles tanto desde la
+        red del departamento como desde el exterior. Lo que actualmente hacíamos
+        con VirtualBox (con los inconvenientes que esto tenía), ahora lo vamos a
+        hacer con OpenStack, y podremos acceder desde cualquier lugar. En estas
+        instancias vamos a configurar distintos sistemas gestores de bases de
+        datos, servidores, sistemas operativos, etc., para las distintas
+        actividades y prácticas.</p>
+      <h1 id="creación-de-una-instancia">Creación de una instancia<img
+          src="media_Recurso_OpenStack_Creacion_Instancias/media/image2.png" style="width:2.4576in;height:2.54688in" />
+        <a class="headerlink" href="#creación-de-una-instancia" title="Enlace permanente">¶</a></h1>
+      <p>Tanto desde la red del departamento, como desde el exterior (con la
+        VPN del departamento, ver el siguiente <a
+          href="https://docs.google.com/document/d/1RWOL-poQkPQflSKgC64M2DPy3FrCQht9yLszdioofaM/edit?usp=sharing"><u>documento</u></a>),
+        podemos acceder a OpenStack desde nuestro navegador en la dirección <a
+          href="http://172.16.0.11/"><u>http://172.16.0.11/</u></a> o <a
+          href="http://openstack.celia"><u>http://openstack.celia</u></a> Nos
+        tendremos que identificar con nuestro usuario y contraseña.</p>
+      <p>Ahora mismo, vuestro usuario y contraseña son los mismos, es decir,
+        vuestro usuario de Pasen se utiliza tanto como usuario y contraseña de
+        openstack. El dominio es <strong>Default</strong></p>
+      <p>Lo primero que veremos será la página correspondiente a una visión
+        general de nuestra cuenta.</p>
+      <p><img src="media_Recurso_OpenStack_Creacion_Instancias/media/image17.png"
+          style="width:5.43887in;height:4.04753in" /></p>
+      <p>Si accedemos a Instancias, podremos ver las instancias que tenemos
+        creadas, crear nuevas, detenerlas, iniciarlas o borrarlas.</p>
+      <p><img src="media_Recurso_OpenStack_Creacion_Instancias/media/image22.png"
+          style="width:8.12197in;height:3.07609in" /></p>
+      <p><img src="media_Recurso_OpenStack_Creacion_Instancias/media/image12.png"
+          style="width:1.5in;height:0.42434in" /></p>
+      <p>Para crear una nueva instancia, pulsaremos en el botón</p>
+      <p>En el asistente que nos aparece vamos a realizar lo siguiente:</p>
+      <p><strong>Paso 1:</strong> Asignaremos un nombre a la instancia.
+        También podemos darle una descripción. Pulsar en
+        <em><strong>Siguiente</strong></em>.
+      </p>
+      <p><img src="media_Recurso_OpenStack_Creacion_Instancias/media/image3.png"
+          style="width:6.13542in;height:2.19729in" /></p>
+      <p><strong>Paso 2: IMPORTANTE.</strong> Seleccionamos en Crear nuevo
+        volumen <strong>No</strong>.</p>
+      <p><img src="media_Recurso_OpenStack_Creacion_Instancias/media/image15.png"
+          style="width:6.30894in;height:1.44649in" /></p>
+      <p>Si el profesor proporciona una instantánea se indica en el Origen de
+        arranque</p>
+      <p><img src="media_Recurso_OpenStack_Creacion_Instancias/media/image5.png"
+          style="width:5.08854in;height:0.7692in" /></p>
+      <p>Pulsaremos <em><strong>Siguiente</strong></em> y pasaremos al Paso
+        3.</p>
+      <p><strong>Paso 3</strong>: En la parte inferior de esta ventana,
+        seleccionaremos el tipo de instancia.</p>
+      <p><img src="media_Recurso_OpenStack_Creacion_Instancias/media/image8.png"
+          style="width:5.70833in;height:1.40691in" /></p>
+      <p>En nuestro caso, el sistema operativo elegido será Ubuntu 24.04.
+        Pulsamos <em><strong>Siguiente</strong></em>.</p>
+      <p><strong>Paso 4</strong>: Escogemos el tamaño de la instancia. Tenemos
+        distintas opciones, de las que cogeremos la normal, medium o large. El
+        tamaño establece cuántos núcleos tendrá asignados, cantidad de RAM y
+        espacio total de Disco.</p>
+      <p><img src="media_Recurso_OpenStack_Creacion_Instancias/media/image19.png"
+          style="width:6.27083in;height:2.65691in" /></p>
+      <p><strong>Paso 5</strong>: En el siguiente paso no vamos a modificar
+        nada, dejando la configuración que nos proporciona. Por defecto,
+        nuestras máquinas están asociadas a una subred interna asociada a
+        nuestra cuenta.</p>
+      <p><img src="media_Recurso_OpenStack_Creacion_Instancias/media/image7.png"
+          style="width:6.27083in;height:1.90691in" /></p>
+      <p><strong>Paso 6</strong>: Pulsaremos
+        <em><strong>Siguiente</strong></em> también en las opciones Puertos de
+        red, Grupos de seguridad y Crear Par de claves.
+      </p>
+      <p><strong>Paso 7</strong>: En el paso Configuración vamos a incluir un
+        script para crear la contraseña al usuario de nuestra instancia:</p>
+      <p><img src="media_Recurso_OpenStack_Creacion_Instancias/media/image10.png"
+          style="width:4.27604in;height:2.68915in" /></p>
+      <p>Incluiremos las siguientes líneas, modificando la contraseña</p>
+      <blockquote>
+        <p>#cloud-config</p>
+        <p>password: nueva_password</p>
+        <p>chpasswd: { expire: False }</p>
+        <p>ssh_pwauth: True</p>
+      </blockquote>
+      <p>La primera línea con el texto #cloud-config es obligatoria.</p>
+      <p>La clave password indica cuál será la nueva contraseña del usuario de
+        la imagen.</p>
+      <p>La clave chpasswd indica que la contraseña no caduca y no tiene que
+        ser cambiada después de iniciar sesión la primera vez.</p>
+      <p>La clave ssh_pwauth indica que se habilita el acceso por SSH con
+        contraseña.</p>
+      <p>Tras el paso anterior podemos Ejecutar nuestra Instancia, dejando las
+        opciones que vienen por defecto en los siguientes pasos del
+        asistente.</p>
+      <p>Después de unos segundos</p>
+      <p><img src="media_Recurso_OpenStack_Creacion_Instancias/media/image18.png"
+          style="width:6.26772in;height:0.69444in" /></p>
+      <p>tendremos nuestra instancia corriendo (en ejecución). Ahora podemos
+        realizar distintas acciones, algunas de ellas son:</p>
+      <p><img src="media_Recurso_OpenStack_Creacion_Instancias/media/image6.png"
+          style="width:2.35573in;height:1.05694in" /></p>
+      <p>Faltan por realizar algunas acciones en la configuración de la
+        instancia.</p>
+      <p><strong>Asociar una IP Flotante</strong>: asignar una IP que sea
+        accesible desde fuera de OpenStack (desde la red del departamento o
+        desde el exterior) Esa IP que vamos a asignar pertenece a la red-externa
+        de OpenStack y accesible desde la red del departamento. Se le puede dar
+        una descripción y podemos ver cuantas hemos asignado ya.</p>
+      <p><img src="media_Recurso_OpenStack_Creacion_Instancias/media/image16.png"
+          style="width:3.41823in;height:1.66916in" /></p>
+      <p>Ahora nos aparecerá en el apartado de IPs flotantes, la IP asociada y
+        con la que podremos conectarnos a nuestra máquina</p>
+      <p><img src="media_Recurso_OpenStack_Creacion_Instancias/media/image9.png"
+          style="width:6.45309in;height:1.68295in" /></p>
+      <p>Volvemos a Computación e Instancias. La IP que aparece será la que
+        utilizaremos para conectarnos a nuestra máquina</p>
+      <p><img src="media_Recurso_OpenStack_Creacion_Instancias/media/image14.png"
+          style="width:6.26772in;height:0.68056in" /></p>
+      <p>Si pulsamos sobre el nombre de la Instancia, podemos ver los datos
+        generales de nuestra Instancia, configuración, IPs, puertos abiertos,
+        etc.</p>
+      <p>En Red &gt; Grupos de seguridad podemos acceder, modificar y ver la
+        configuración de nuestros puertos.</p>
+      <p><img src="media_Recurso_OpenStack_Creacion_Instancias/media/image13.png"
+          style="width:6.26772in;height:1.94444in" /></p>
+      <h1 id="conexión-a-nuestra-instancia">Conexión a nuestra instancia <a class="headerlink"
+          href="#conexión-a-nuestra-instancia" title="Enlace permanente">¶</a></h1>
+      <h2 id="conexión-desde-consola">4.1. Conexión desde consola <a class="headerlink" href="#conexión-desde-consola"
+          title="Enlace permanente">¶</a></h2>
+      <p>Ya tenemos nuestra instancia preparada. Para conectarnos a ella
+        utilizaremos SSH. En un terminal usaremos:</p>
+      <p>ssh ubuntu@IP_flotante</p>
+      <p><img src="media_Recurso_OpenStack_Creacion_Instancias/media/image20.png"
+          style="width:6.27083in;height:2.93927in" /></p>
+      <p>Tened en cuenta que somos los administradores. Si lo hacemos desde
+        nuestra casa tenemos que tener la conexión a la VPN del departamento</p>
+      <h2 id="error-por-reutilización-de-ip-flotante">4.2. Error por
+        reutilización de IP flotante <a class="headerlink" href="#error-por-reutilización-de-ip-flotante"
+          title="Enlace permanente">¶</a></h2>
+      <p>Otro error con el que nos podemos encontrar es el siguiente:</p>
+      <p><img src="media_Recurso_OpenStack_Creacion_Instancias/media/image11.png"
+          style="width:6.26772in;height:1.69444in" /></p>
+      <p>Esto se produce cuando hemos tenido otra instancia con esa IP
+        Flotante y hemos cambiado la clave privada. En este caso accedes al
+        archivo known_hosts y borramos los datos que teníamos asociados.</p>
+      <h2 id="conexión-desde-openstack">4.3. Conexión desde OpenStack <a class="headerlink"
+          href="#conexión-desde-openstack" title="Enlace permanente">¶</a></h2>
+      <p>Si realizamos esto podremos conectarnos también desde el propio
+        navegador, accediendo a OpenStack (<a href="http://openstack.celia"><u>http://openstack.celia</u></a>),
+        pulsamos sobre nuestra instancia y accediendo a Consola.</p>
+      <p><img src="media_Recurso_OpenStack_Creacion_Instancias/media/image1.png"
+          style="width:6.26772in;height:3.88889in" /></p>
+      <h2 id="copiar-archivos-a-la-instancia">4.4. Copiar archivos a la
+        instancia <a class="headerlink" href="#copiar-archivos-a-la-instancia" title="Enlace permanente">¶</a></h2>
+      <p>La mejor forma de transferir archivos a nuestra instancia es mediante
+        el comando scp (en linux):</p>
+      <p><strong>scp [origen] [destino]</strong></p>
+      <p>donde para hacer referencia a nuestra instancia utilizaremos
+        ubuntu@ip_flotante:/ruta</p>
+      <p>Ejemplos para copiar archivos/carpetas desde nuestro ordenador:</p>
+      <ul>
+        <li>
+          <blockquote>
+            <p>Para copiar un archivo de la carpeta actual a la carpeta en nuestra
+              instancia:</p>
+          </blockquote>
+        </li>
+      </ul>
+      <p>scp ejercicio1.html ubuntu@172.16.11.152:/var/www/html</p>
+      <ul>
+        <li>
+          <blockquote>
+            <p>Para copiar un conjunto de archivos de la carpeta actual a una
+              carpeta en nuestra instancia:</p>
+          </blockquote>
+        </li>
+      </ul>
+      <p>scp *.* ubuntu@172.16.11.152:/var/www/html</p>
+      <ul>
+        <li>
+          <blockquote>
+            <p>Para copiar una carpeta con todas los archivos y subcarpetas a una
+              carpeta determinada en nuestra instancia</p>
+          </blockquote>
+        </li>
+      </ul>
+      <p>scp -r Carpeta ubuntu@172.16.11.152:/var/www/html</p>
+
+    </main>
+  </div>
 </body>
+
 </html>
