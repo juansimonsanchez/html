@@ -47,8 +47,7 @@
 sudo apt update
 sudo apt install -y ca-certificates curl
 sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o
-/etc/apt/keyrings/docker.asc
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
 sudo chmod a+r /etc/apt/keyrings/docker.asc</code></pre>
       </div>
       </p>
@@ -56,11 +55,8 @@ sudo chmod a+r /etc/apt/keyrings/docker.asc</code></pre>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
         <pre><code># Añadir el repositorio a las fuentes de APT:
 echo \
-"deb [arch=$(dpkg --print-architecture)
-signed-by=/etc/apt/keyrings/docker.asc]
-https://download.docker.com/linux/ubuntu \
-$(. /etc/os-release &amp;&amp; echo "$VERSION_CODENAME") stable" |
-\
+"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+$(. /etc/os-release &amp;&amp; echo "$VERSION_CODENAME") stable" | \
 sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
 sudo apt update</code></pre>
       </div>
@@ -68,8 +64,7 @@ sudo apt update</code></pre>
       <p>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
         <pre><code># Instalar los paquetes necesarios:
-sudo apt install -y docker-ce docker-ce-cli containerd.io
-docker-buildx-plugin docker-compose-plugin</code></pre>
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</code></pre>
       </div>
       </p>
       <p>
