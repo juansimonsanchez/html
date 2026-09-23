@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Formulario técnico y apertura de incidencias de red">
+    <meta name="author" content="Departamento de Informática">
+    <title>Contacto y Soporte - Departamento de Informática</title>
+</head>
+<body>
+
+    <!-- Cabecera principal -->
+    <header>
+        <h1 class="destacado">Soporte Técnico y Reporte de Incidencias</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="servicios.html">Servicios y Despliegues</a></li>
+                <li><a href="contacto.html">Soporte e Incidencias</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <hr>
+
+    <!-- Contenido principal -->
+    <main>
+        <!-- Sección 1: Banner e Instrucciones -->
+        <section>
+            <h2>Centro de Asistencia a Puestos</h2>
+            <div class="contenedor-flex">
+                <img src="imagenes/soporte_banner.png" alt="Banner del departamento de soporte con logotipo de mantenimiento y asistencia" width="500" height="200">
+            </div>
+            
+            <article>
+                <h3>Comprobaciones Previas Obligatorias</h3>
+                <p>Antes de registrar una incidencia, realice en orden los siguientes pasos en su puesto:</p>
+                <ol>
+                    <li>Verificar el estado del cable de red Ethernet (conector RJ45 firmemente acoplado y LED de enlace encendido).</li>
+                    <li>Comprobar la obtención de IP correcta mediante consola (ejecutando <code>ip a</code> o <code>ipconfig</code>).</li>
+                    <li>Ejecutar una prueba de conectividad local con <code>ping 192.168.1.1</code>.</li>
+                    <li>Reiniciar el equipo si la interfaz no responde tras los pasos anteriores.</li>
+                </ol>
+            </article>
+        </section>
+
+        <hr>
+
+        <!-- Sección 2: Tabla Compleja de Armario Rack -->
+        <section>
+            <h2>Estructura del Armario Rack (CPD Aula 1)</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Unidad (U)</th>
+                        <th>Dispositivo / Servidor</th>
+                        <th>IP Asignada</th>
+                        <th>Función</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>U4</td>
+                        <td>Patch Panel Cat6</td>
+                        <td>N/A</td>
+                        <td>Terminación de cableado estructurado</td>
+                    </tr>
+                    <tr>
+                        <td>U3</td>
+                        <td>Switch Gestionable Cisco 2960</td>
+                        <td>192.168.1.2</td>
+                        <td>Distribución de VLANs</td>
+                    </tr>
+                    <tr>
+                        <!-- rowspan de 2 alturas para el cluster de BBDD -->
+                        <td rowspan="2">U1 - U2 (Chasis 2U)</td>
+                        <td>Servidor Cluster BBDD Nodo A</td>
+                        <td>172.16.0.10</td>
+                        <td>MySQL Master</td>
+                    </tr>
+                    <tr>
+                        <td>Servidor Cluster BBDD Nodo B</td>
+                        <td>172.16.0.11</td>
+                        <td>MySQL Replica</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <!-- colspan combinando las 4 columnas para advertencia del SAI -->
+                        <td colspan="4">⚠️ ADVERTENCIA: La base del rack cuenta con un SAI de 3000VA conectado a la línea de emergencia. No conectar cargas resistivas.</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+
+        <hr>
+
+        <!-- Sección 3: Formulario Técnico Complejo -->
+        <section>
+            <h2>Apertura de Incidencia Técnica</h2>
+            <form action="procesar_soporte.php" method="POST">
+                <fieldset>
+                    <legend>Datos del Puesto y Usuario</legend>
+
+                    <div>
+                        <label for="txtNombreCompleto">Nombre Completo:</label>
+                        <input type="text" id="txtNombreCompleto" name="nombre_completo" placeholder="Ej: Juan Pérez Sánchez" required>
+                    </div>
+
+                    <div>
+                        <label for="txtEmail">Correo Electrónico Corporativo:</label>
+                        <input type="email" id="txtEmail" name="email" placeholder="usuario@iesceliavinas.es" required>
+                    </div>
+
+                    <div>
+                        <label for="txtPassword">Contraseña de Soporte / PIN:</label>
+                        <input type="password" id="txtPassword" name="password_soporte" required>
+                    </div>
+
+                    <div>
+                        <label for="txtTelefono">Teléfono de Contacto:</label>
+                        <input type="tel" id="txtTelefono" name="telefono" placeholder="600123456">
+                    </div>
+
+                    <div>
+                        <label for="txtFecha">Fecha del Suceso:</label>
+                        <input type="date" id="txtFecha" name="fecha_incidencia" required>
+                    </div>
+
+                    <div>
+                        <label for="numPuesto">Número de Puesto Afectado (1-30):</label>
+                        <input type="number" id="numPuesto" name="numero_puesto" min="1" max="30" required>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Detalles Técnicos de la Incidencia</legend>
+
+                    <div>
+                        <label for="selSistemaOperativo">Sistema Operativo Afectado:</label>
+                        <select id="selSistemaOperativo" name="sistema_operativo">
+                            <option value="debian">GNU/Linux Debian 12</option>
+                            <option value="ubuntu">Ubuntu Desktop 24.04 LTS</option>
+                            <option value="win11">Windows 11 Pro</option>
+                            <option value="winserver">Windows Server 2022</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <p>Prioridad de la Incidencia:</p>
+                        <input type="radio" id="radBaja" name="prioridad" value="baja" checked>
+                        <label for="radBaja">Baja (Consultas o dudas menores)</label><br>
+
+                        <input type="radio" id="radMedia" name="prioridad" value="media">
+                        <label for="radMedia">Media (Afecta a tareas secundarias)</label><br>
+
+                        <input type="radio" id="radAlta" name="prioridad" value="alta">
+                        <label for="radAlta">Alta (Puesto completamente inoperativo)</label>
+                    </div>
+
+                    <div>
+                        <p>Componentes de Hardware Comprometidos:</p>
+                        <input type="checkbox" id="chkTarjetaRed" name="componentes[]" value="tarjeta_red">
+                        <label for="chkTarjetaRed">Tarjeta de Red / Puerto RJ45</label><br>
+
+                        <input type="checkbox" id="chkMonitor" name="componentes[]" value="monitor">
+                        <label for="chkMonitor">Monitor / Salida de Vídeo</label><br>
+
+                        <input type="checkbox" id="chkPerifericos" name="componentes[]" value="perifericos">
+                        <label for="chkPerifericos">Teclado / Ratón</label><br>
+
+                        <input type="checkbox" id="chkAlmacenamiento" name="componentes[]" value="disco">
+                        <label for="chkAlmacenamiento">Unidad SSD / Disco Local</label>
+                    </div>
+
+                    <div>
+                        <label for="txtDescripcion">Descripción Detallada de la Incidencia:</label><br>
+                        <textarea id="txtDescripcion" name="descripcion" rows="5" cols="60" placeholder="Detalla los síntomas y mensajes de error..." required></textarea>
+                    </div>
+                </fieldset>
+
+                <div>
+                    <input type="submit" value="Enviar Reporte de Incidencia">
+                    <input type="reset" value="Restablecer Formulario">
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <hr>
+
+    <!-- Barra lateral -->
+    <aside>
+        <h3>Horario de Atención</h3>
+        <p>Guardias de soporte de lunes a viernes en el taller de informática de 8:15 a 14:45.</p>
+    </aside>
+
+    <hr>
+
+    <!-- Pie de página -->
+    <footer>
+        <address>
+            Departamento de Informática - IES Celia Viñas<br>
+            Contacto: <a href="mailto:admin@iesceliavinas.local">admin@iesceliavinas.local</a>
+        </address>
+        <p><small>&copy; 2026 Todos los derechos reservados.</small></p>
+    </footer>
+
+</body>
+</html>

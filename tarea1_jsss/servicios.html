@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Documentación de despliegues y servicios de red">
+    <meta name="author" content="Departamento de Informática">
+    <title>Servicios y Despliegues - Departamento de Informática</title>
+</head>
+<body>
+
+    <!-- Cabecera principal -->
+    <header>
+        <h1 class="aviso">Servicios y Despliegues de Red</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="servicios.html">Servicios y Despliegues</a></li>
+                <li><a href="contacto.html">Soporte e Incidencias</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <hr>
+
+    <!-- Contenido principal -->
+    <main>
+        <!-- Sección 1: Monitorización e Imagen -->
+        <section>
+            <h2>Estado de los Servicios Desplegados</h2>
+            <p>Monitorización en tiempo real de los demonios y contenedores en producción:</p>
+            <div class="contenedor-flex">
+                <img src="imagenes/estado_servicios.png" alt="Panel de monitorización con el estado activo de Apache, MySQL y SSH" width="480" height="280">
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- Sección 2: Procedimiento de Instalación (Lista Anidada) -->
+        <section>
+            <h2>Guía de Instalación del Servidor Apache en GNU/Linux</h2>
+            <ol>
+                <li>
+                    Actualización de los repositorios del sistema operativo:
+                    <ul>
+                        <li>Comando: <code>sudo apt update &amp;&amp; sudo apt upgrade -y</code></li>
+                        <li>Verificación: <code>/var/log/apt/history.log</code></li>
+                    </ul>
+                </li>
+                <li>
+                    Instalación del paquete base y módulos necesarios:
+                    <ul>
+                        <li>Comando: <code>sudo apt install apache2 apache2-utils -y</code></li>
+                    </ul>
+                </li>
+                <li>
+                    Configuración del sitio web virtual (Virtual Host):
+                    <ul>
+                        <li>Ruta de configuración: <code>/etc/apache2/sites-available/departamento.conf</code></li>
+                        <li>Ruta raíz de documentos (DocumentRoot): <code>/var/www/departamento</code></li>
+                        <li>Activación del sitio: <code>sudo a2ensite departamento.conf</code></li>
+                    </ul>
+                </li>
+                <li>
+                    Reinicio y validación del demonio:
+                    <ul>
+                        <li>Comando: <code>sudo systemctl restart apache2</code></li>
+                        <li>Comprobación de estado: <code>sudo systemctl status apache2</code></li>
+                    </ul>
+                </li>
+            </ol>
+        </section>
+
+        <hr>
+
+        <!-- Sección 3: Formulario Sencillo (Buscador) -->
+        <section>
+            <h2>Buscador Rápido de Servicios e IPs</h2>
+            <form action="servicios.html" method="GET">
+                <fieldset>
+                    <legend>Consulta de Inventario</legend>
+                    <label for="txtBuscarServicio">Nombre de servicio o dirección IP:</label>
+                    <input type="text" id="txtBuscarServicio" name="criterio_busqueda" placeholder="Ej: 192.168.1.10 o apache2" required>
+                    <input type="submit" value="Buscar Servicio">
+                </fieldset>
+            </form>
+        </section>
+
+        <hr>
+
+        <!-- Sección 4: Tabla Intermedia de Subredes -->
+        <section>
+            <h2>Direccionamiento IP de las Subredes del Centro</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Nombre de Subred</th>
+                        <th>Dirección de Red</th>
+                        <th>Puerta de Enlace (Gateway)</th>
+                        <th>DNS Principal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Aula de Informática 1</td>
+                        <td>192.168.10.0/24</td>
+                        <td>192.168.10.1</td>
+                        <td>192.168.1.254</td>
+                    </tr>
+                    <tr>
+                        <td>Aula de Informática 2</td>
+                        <td>192.168.20.0/24</td>
+                        <td>192.168.20.1</td>
+                        <td>192.168.1.254</td>
+                    </tr>
+                    <tr>
+                        <td>Servidores y DMZ</td>
+                        <td>172.16.0.0/24</td>
+                        <td>172.16.0.1</td>
+                        <td>8.8.8.8</td>
+                    </tr>
+                    <tr>
+                        <td>Administración / Gestión</td>
+                        <td>192.168.1.0/24</td>
+                        <td>192.168.1.1</td>
+                        <td>192.168.1.254</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4">Total de subredes activas: 4 subredes enrutadas por firewall perimetral.</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+    </main>
+
+    <hr>
+
+    <!-- Barra lateral -->
+    <aside>
+        <h3>Documentación Adicional</h3>
+        <p>Consulta la wiki interna para consultar los rangos DHCP asignados a los laboratorios de prácticas.</p>
+    </aside>
+
+    <hr>
+
+    <!-- Pie de página -->
+    <footer>
+        <address>
+            Departamento de Informática - IES Celia Viñas<br>
+            Contacto: <a href="mailto:admin@iesceliavinas.local">admin@iesceliavinas.local</a>
+        </address>
+        <p><small>&copy; 2026 Todos los derechos reservados.</small></p>
+    </footer>
+
+</body>
+</html>

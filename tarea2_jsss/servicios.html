@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios y Despliegues - Departamento de Informática</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <header>
+        <h1 class="aviso">Servicios y Despliegues de Red</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="servicios.html">Servicios y Despliegues</a></li>
+                <li><a href="contacto.html">Soporte e Incidencias</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <hr>
+
+    <main>
+        <section>
+            <h2>Estado de los Servicios Desplegados</h2>
+            <div class="contenedor-flex">
+                <img src="imagenes/servicios.png" alt="Estado actual de monitorización de los servicios de red" width="480" height="280">
+            </div>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Guía de Instalación del Servidor Apache en Linux</h2>
+            <ol>
+                <li>
+                    Actualización de repositorios:
+                    <ul>
+                        <li><code>sudo apt update</code></li>
+                    </ul>
+                </li>
+                <li>
+                    Instalación del paquete Apache2:
+                    <ul>
+                        <li><code>sudo apt install apache2 -y</code></li>
+                    </ul>
+                </li>
+                <li>
+                    Configuración del Virtual Host:
+                    <ul>
+                        <li>Ruta: <code>/etc/apache2/sites-available/portal.conf</code></li>
+                    </ul>
+                </li>
+            </ol>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Búsqueda de Servicios</h2>
+            <form action="servicios.html" method="GET">
+                <fieldset>
+                    <legend>Buscador Interno</legend>
+                    <label for="txtBuscar">Buscar Servicio o IP:</label>
+                    <input type="text" id="txtBuscar" name="query" placeholder="Ej: Apache o 192.168.1.1">
+                    <input type="submit" value="Buscar Servicio">
+                </fieldset>
+            </form>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Direccionamiento IP de las Subredes</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre de Subred</th>
+                        <th>Dirección de Red</th>
+                        <th>Puerta de Enlace (Gateway)</th>
+                        <th>DNS Principal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Aula 1</td>
+                        <td>192.168.10.0/24</td>
+                        <td>192.168.10.1</td>
+                        <td>192.168.1.254</td>
+                    </tr>
+                    <tr>
+                        <td>Aula 2</td>
+                        <td>192.168.20.0/24</td>
+                        <td>192.168.20.1</td>
+                        <td>192.168.1.254</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4">Total: 2 subredes configuradas.</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+    </main>
+
+    <hr>
+
+    <aside>
+        <h3>Documentación</h3>
+        <p>Consulte las guías adicionales en el repositorio interno del departamento.</p>
+    </aside>
+
+    <hr>
+
+    <footer>
+        <address>
+            Departamento de Informática - IES Celia Viñas<br>
+            Contacto: <a href="mailto:admin@iesceliavinas.local">admin@iesceliavinas.local</a>
+        </address>
+        <p><small>&copy; 2026 Todos los derechos reservados.</small></p>
+    </footer>
+
+</body>
+</html>

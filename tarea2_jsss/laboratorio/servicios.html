@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios y Despliegues - Departamento de Informática</title>
+    <!-- Vinculación a la hoja CSS independiente de la Fase 1-4 -->
+    <link rel="stylesheet" href="servicios.css">
+</head>
+<body>
+
+    <header>
+        <!-- Fase 1.2: .aviso en servicios.html -->
+        <h1 class="aviso">Servicios y Despliegues de Red</h1>
+        <!-- Fase 4.1: Menú con fondo claro -->
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="servicios.html">Servicios y Despliegues</a></li>
+                <li><a href="contacto.html">Soporte e Incidencias</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <hr>
+
+    <main>
+        <!-- Fase 2.1: margin de 20px en servicios.html -->
+        <section>
+            <h2>Estado de los Servicios Desplegados</h2>
+            <!-- Fase 3.1: .contenedor-flex con alineación space-between -->
+            <div class="contenedor-flex">
+                <img src="estado_servicios.png" alt="Estado de los Servicios" width="450" height="250">
+            </div>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Demostración de Distribución de Columnas (space-between)</h2>
+            <!-- Fase 3.2: 3 divs en horizontal con alineación space-between -->
+            <div class="layout-horizontal">
+                <!-- Fase 2.2: .tarjeta-servicios con padding de 25px -->
+                <div class="tarjeta-servicios">
+                    <h3>Módulo Web</h3>
+                    <p>Servicio Apache2 activo.</p>
+                </div>
+                <div class="tarjeta-servicios">
+                    <h3>Módulo BBDD</h3>
+                    <p>Servicio MySQL activo.</p>
+                </div>
+                <div class="tarjeta-servicios">
+                    <h3>Módulo Red</h3>
+                    <p>Enrutamiento configurado.</p>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Guía de Instalación del Servidor Apache en Linux</h2>
+            <ol>
+                <li>
+                    Actualización de los repositorios:
+                    <ul>
+                        <li><code>sudo apt update</code></li>
+                    </ul>
+                </li>
+                <li>
+                    Instalación del demonio web:
+                    <ul>
+                        <li><code>sudo apt install apache2 -y</code></li>
+                    </ul>
+                </li>
+                <li>
+                    Creación del Virtual Host:
+                    <ul>
+                        <li>Ruta: <code>/etc/apache2/sites-available/portal.conf</code></li>
+                    </ul>
+                </li>
+            </ol>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Buscador Rápido de Servicios</h2>
+            <form action="servicios.html" method="GET">
+                <fieldset>
+                    <legend>Búsqueda en Inventario</legend>
+                    <label for="txtBuscar">Servicio o IP:</label>
+                    <input type="text" id="txtBuscar" name="query" placeholder="Ej: Apache o 192.168.1.1">
+                    <input type="submit" value="Buscar Servicio">
+                </fieldset>
+            </form>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Direccionamiento IP de las Subredes</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Nombre de Subred</th>
+                        <th>Dirección de Red</th>
+                        <th>Puerta de Enlace (Gateway)</th>
+                        <th>DNS Principal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Aula 1</td>
+                        <td>192.168.10.0/24</td>
+                        <td>192.168.10.1</td>
+                        <td>192.168.1.254</td>
+                    </tr>
+                    <tr>
+                        <td>Aula 2</td>
+                        <td>192.168.20.0/24</td>
+                        <td>192.168.20.1</td>
+                        <td>192.168.1.254</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4">Total: 2 subredes activas.</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+    </main>
+
+    <hr>
+
+    <aside>
+        <h3>Documentación Adicional</h3>
+        <p>Consulte las wikis internas para configuraciones de DMZ.</p>
+    </aside>
+
+    <hr>
+
+    <footer>
+        <address>
+            Departamento de Informática - IES Celia Viñas<br>
+            Contacto: <a href="mailto:admin@iesceliavinas.local">admin@iesceliavinas.local</a>
+        </address>
+        <p><small>&copy; 2026 Todos los derechos reservados.</small></p>
+    </footer>
+
+</body>
+</html>

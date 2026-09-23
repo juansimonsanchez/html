@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Departamento de Informática</title>
+    <!-- Vinculación a la hoja CSS independiente de la Fase 1-4 -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <header>
+        <!-- Fase 1.2: .resaltado aplicado al título en index.html -->
+        <h1 class="resaltado">Panel de Control - Departamento de Informática</h1>
+        <!-- Fase 4.1: Menú con fondo oscuro -->
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="servicios.html">Servicios y Despliegues</a></li>
+                <li><a href="contacto.html">Soporte e Incidencias</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <hr>
+
+    <main>
+        <!-- Fase 2.1: margin de 10px en index.html -->
+        <section>
+            <h2>Pilares de Seguridad del Servidor</h2>
+            <p>Bienvenido al portal técnico interno del departamento de informática.</p>
+            <ul>
+                <li>Cifrado perimetral y túneles SSH.</li>
+                <li>Copias de seguridad incrementales.</li>
+                <li>Control de acceso mediante firewall.</li>
+            </ul>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Demostración de Layout Horizontal</h2>
+            <!-- Fase 3.2: 3 divs hijos en horizontal con flex: 1 y justify-content: center -->
+            <div class="layout-horizontal">
+                <!-- Fase 2.2: .tarjeta-servicios con padding de 10px -->
+                <div class="tarjeta-servicios">
+                    <h3>Servicio Web</h3>
+                    <p>Apache2 configurado con Virtual Hosts.</p>
+                </div>
+                <div class="tarjeta-servicios">
+                    <h3>Servicio BBDD</h3>
+                    <p>MySQL activo en puerto 3306.</p>
+                </div>
+                <div class="tarjeta-servicios">
+                    <h3>Servicio SSH</h3>
+                    <p>OpenSSH configurado para acceso remoto.</p>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Topología de la Red Local</h2>
+            <!-- Fase 3.1: .contenedor-flex con centrado total -->
+            <div class="contenedor-flex">
+                <img src="topologia.png" alt="Topología de Red Local" width="450" height="260">
+            </div>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Puertos de Red Corporativos</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Servicio</th>
+                        <th>Puerto</th>
+                        <th>Protocolo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>HTTP</td><td>80</td><td>TCP</td></tr>
+                    <tr><td>HTTPS</td><td>443</td><td>TCP</td></tr>
+                    <tr><td>SSH</td><td>22</td><td>TCP</td></tr>
+                    <tr><td>DNS</td><td>53</td><td>UDP / TCP</td></tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <hr>
+
+    <aside>
+        <h3>Avisos del Sistema</h3>
+        <p>Mantenimiento programado para este fin de semana en el CPD.</p>
+    </aside>
+
+    <hr>
+
+    <footer>
+        <address>
+            Departamento de Informática - IES Celia Viñas<br>
+            Contacto: <a href="mailto:admin@iesceliavinas.local">admin@iesceliavinas.local</a>
+        </address>
+        <p><small>&copy; 2026 Todos los derechos reservados.</small></p>
+    </footer>
+
+</body>
+</html>

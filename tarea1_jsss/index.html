@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portal interno del Departamento de Informática del IES Celia Viñas">
+    <meta name="author" content="Departamento de Informática">
+    <title>Inicio - Departamento de Informática</title>
+</head>
+<body>
+
+    <!-- Cabecera principal -->
+    <header>
+        <h1 class="resaltado">Panel de Control - Departamento de Informática</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="servicios.html">Servicios y Despliegues</a></li>
+                <li><a href="contacto.html">Soporte e Incidencias</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <hr>
+
+    <!-- Contenido principal -->
+    <main>
+        <!-- Sección 1: Bienvenida y Pilares de Seguridad -->
+        <section>
+            <h2>Bienvenida al Portal Técnico</h2>
+            <p>Este portal centraliza la monitorización, la documentación de despliegues y la gestión de incidencias de la infraestructura de red del centro.</p>
+            
+            <article>
+                <h3>Pilares de Seguridad del Servidor del Aula</h3>
+                <p>Todo el equipamiento debe cumplir estrictamente con los siguientes estándares:</p>
+                <ul>
+                    <li><strong>Cifrado:</strong> Implementación de túneles SSH y protocolos HTTPS con certificados TLS válidos.</li>
+                    <li><strong>Copias de seguridad:</strong> Políticas de backup incremental diario y completo semanal en almacenamiento NAS independiente.</li>
+                    <li><strong>Control de acceso perimetral:</strong> Filtrado exhaustivo mediante firewall por software y hardware con listas de control de acceso (ACL).</li>
+                </ul>
+            </article>
+        </section>
+
+        <hr>
+
+        <!-- Sección 2: Topología de Red -->
+        <section>
+            <h2>Topología de la Red Local</h2>
+            <p>Esquema de direccionamiento y distribución de los switches de planta y servidores del aula:</p>
+            <div class="contenedor-flex">
+                <img src="imagenes/topologia.png" alt="Diagrama de topología de red con switches, router perimetral y servidores" width="500" height="300">
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- Sección 3: Tabla de Puertos Comunes -->
+        <section>
+            <h2>Puertos de Red Corporativos</h2>
+            <p>Relación de puertos estándar abiertos en el cortafuegos interno:</p>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Servicio</th>
+                        <th>Puerto</th>
+                        <th>Protocolo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>HTTP (Web)</td>
+                        <td>80</td>
+                        <td>TCP</td>
+                    </tr>
+                    <tr>
+                        <td>HTTPS (Web Segura)</td>
+                        <td>443</td>
+                        <td>TCP</td>
+                    </tr>
+                    <tr>
+                        <td>SSH (Terminal Remoto)</td>
+                        <td>22</td>
+                        <td>TCP</td>
+                    </tr>
+                    <tr>
+                        <td>DNS (Resolución de Nombres)</td>
+                        <td>53</td>
+                        <td>UDP / TCP</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <hr>
+
+    <!-- Barra lateral -->
+    <aside>
+        <h3>Avisos del Sistema</h3>
+        <p>El próximo viernes a las 15:00 se realizarán tareas de mantenimiento preventivo en el cuadro del SAI.</p>
+    </aside>
+
+    <hr>
+
+    <!-- Pie de página -->
+    <footer>
+        <address>
+            Departamento de Informática - IES Celia Viñas<br>
+            Contacto: <a href="mailto:admin@iesceliavinas.local">admin@iesceliavinas.local</a>
+        </address>
+        <p><small>&copy; 2026 Todos los derechos reservados.</small></p>
+    </footer>
+
+</body>
+</html>

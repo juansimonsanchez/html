@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto e Incidencias - Departamento de Informática</title>
+
+    <!-- 1. Hoja externa consolidada -->
+    <link rel="stylesheet" href="css/estilos.css">
+
+    <!-- 2. Reto de Precedencia: Estilo interno en <head> -->
+    <style>
+        .destacado {
+            color: #6f42c1; /* Púrpura definido en estilo interno */
+        }
+    </style>
+</head>
+<body>
+
+    <!--
+    ============================================================================
+    DOCUMENTACIÓN RETO DE PRECEDENCIA (FASE 5):
+    El estilo inline (definido con el atributo style="..." directamente en la
+    etiqueta HTML) posee una especificidad superior frente a las reglas
+    definidas en la hoja externa (css/estilos.css) y en el bloque interno (<style>).
+    Por ello, el color 'red' declarado en línea sobrescribe al color '#6f42c1'
+    del <style> y al color '#28a745' de estilos.css.
+    ============================================================================
+    -->
+
+    <header>
+        <!-- 3. Reto de Precedencia: Estilo inline que sobrescribe a los anteriores -->
+        <h1 class="destacado" style="color: red;">Soporte Técnico y Reporte de Incidencias</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="servicios.html">Servicios y Despliegues</a></li>
+                <li><a href="contacto.html">Soporte e Incidencias</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <hr>
+
+    <main>
+        <section>
+            <h2>Centro de Asistencia a Puestos</h2>
+            <div class="contenedor-flex">
+                <img src="imagenes/soporte.png" alt="Banner del departamento de soporte técnico" width="500" height="200">
+            </div>
+            
+            <article>
+                <h3>Pasos de Control Obligatorios Previos</h3>
+                <ol>
+                    <li>Verificar la conexión del cable de red Ethernet.</li>
+                    <li>Comprobar la asignación de dirección IP.</li>
+                    <li>Probar conectividad con la puerta de enlace mediante ping.</li>
+                </ol>
+            </article>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Armario Rack del Aula</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Unidad (U)</th>
+                        <th>Dispositivo</th>
+                        <th>IP</th>
+                        <th>Función</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>U3</td>
+                        <td>Switch Cisco</td>
+                        <td>192.168.1.2</td>
+                        <td>Distribución de red</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">U1 - U2</td>
+                        <td>Servidor BD Master</td>
+                        <td>172.16.0.10</td>
+                        <td>Base de datos principal</td>
+                    </tr>
+                    <tr>
+                        <td>Servidor BD Replica</td>
+                        <td>172.16.0.11</td>
+                        <td>Base de datos réplica</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4">Advertencia: Conectado a línea de SAI de 3000VA.</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Formulario de Reporte de Incidencias</h2>
+            <form action="contacto.html" method="POST">
+                <fieldset>
+                    <legend>Datos de Contacto</legend>
+
+                    <div>
+                        <label for="txtNombre">Nombre Completo:</label>
+                        <input type="text" id="txtNombre" name="nombre" required>
+                    </div>
+
+                    <div>
+                        <label for="txtEmail">Correo Electrónico:</label>
+                        <input type="email" id="txtEmail" name="email" required>
+                    </div>
+
+                    <div>
+                        <label for="txtPassword">Contraseña de Soporte:</label>
+                        <input type="password" id="txtPassword" name="password" required>
+                    </div>
+
+                    <div>
+                        <label for="txtTel">Teléfono Corporativo:</label>
+                        <input type="tel" id="txtTel" name="telefono">
+                    </div>
+
+                    <div>
+                        <label for="txtFecha">Fecha del Suceso:</label>
+                        <input type="date" id="txtFecha" name="fecha" required>
+                    </div>
+
+                    <div>
+                        <label for="numPuesto">Número de Puesto Afectado:</label>
+                        <input type="number" id="numPuesto" name="puesto" min="1" max="30" required>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Detalle de la Incidencia</legend>
+
+                    <div>
+                        <label for="selSO">Sistema Operativo Afectado:</label>
+                        <select id="selSO" name="so">
+                            <option value="linux">Debian GNU/Linux</option>
+                            <option value="win11">Windows 11</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <p>Prioridad:</p>
+                        <input type="radio" id="radBaja" name="prioridad" value="baja" checked>
+                        <label for="radBaja">Baja</label>
+                        <input type="radio" id="radMedia" name="prioridad" value="media">
+                        <label for="radMedia">Media</label>
+                        <input type="radio" id="radAlta" name="prioridad" value="alta">
+                        <label for="radAlta">Alta</label>
+                    </div>
+
+                    <div>
+                        <p>Componentes Comprometidos:</p>
+                        <input type="checkbox" id="chkRed" name="componentes[]" value="red">
+                        <label for="chkRed">Tarjeta de Red</label>
+                        <input type="checkbox" id="chkMonitor" name="componentes[]" value="monitor">
+                        <label for="chkMonitor">Monitor</label>
+                    </div>
+
+                    <div>
+                        <label for="txtComentarios">Descripción de la Incidencia:</label>
+                        <textarea id="txtComentarios" name="descripcion" rows="4" cols="50" required></textarea>
+                    </div>
+                </fieldset>
+
+                <div>
+                    <input type="submit" value="Enviar Reporte">
+                    <input type="reset" value="Restablecer">
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <hr>
+
+    <aside>
+        <h3>Horario de Atención</h3>
+        <p>Lunes a viernes de 8:15 a 14:45.</p>
+    </aside>
+
+    <hr>
+
+    <footer>
+        <address>
+            Departamento de Informática - IES Celia Viñas<br>
+            Contacto: <a href="mailto:admin@iesceliavinas.local">admin@iesceliavinas.local</a>
+        </address>
+        <p><small>&copy; 2026 Todos los derechos reservados.</small></p>
+    </footer>
+
+</body>
+</html>

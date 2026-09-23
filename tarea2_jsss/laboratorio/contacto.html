@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto y Soporte - Departamento de Informática</title>
+    <!-- Vinculación a la hoja CSS independiente de la Fase 1-4 -->
+    <link rel="stylesheet" href="contacto.css">
+</head>
+<body>
+
+    <header>
+        <!-- Fase 1.2: .destacado en contacto.html -->
+        <h1 class="destacado">Soporte Técnico y Reporte de Incidencias</h1>
+        <!-- Fase 4.1: Menú con fondo transparente -->
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="servicios.html">Servicios y Despliegues</a></li>
+                <li><a href="contacto.html">Soporte e Incidencias</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <hr>
+
+    <main>
+        <!-- Fase 2.1: margin de 30px en contacto.html -->
+        <section>
+            <h2>Centro de Asistencia a Puestos</h2>
+            <!-- Fase 3.1: .contenedor-flex con alineación space-around -->
+            <div class="contenedor-flex">
+                <img src="soporte.png" alt="Banner de Soporte Técnico" width="450" height="180">
+            </div>
+            
+            <article>
+                <h3>Pasos de Control Obligatorios Previos</h3>
+                <ol>
+                    <li>Verificar la conexión del cable de red Ethernet.</li>
+                    <li>Comprobar la obtención de IP correcta.</li>
+                    <li>Ejecutar una prueba de ping con el router.</li>
+                </ol>
+            </article>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Demostración de Distribución de Columnas (space-around)</h2>
+            <!-- Fase 3.2: 3 divs en horizontal con alineación space-around -->
+            <div class="layout-horizontal">
+                <!-- Fase 2.2: .tarjeta-servicios con padding de 40px -->
+                <div class="tarjeta-servicios">
+                    <h3>Canal Telefónico</h3>
+                    <p>Extensión 204.</p>
+                </div>
+                <div class="tarjeta-servicios">
+                    <h3>Canal Email</h3>
+                    <p>soporte@iesceliavinas.local</p>
+                </div>
+                <div class="tarjeta-servicios">
+                    <h3>Canal Presencial</h3>
+                    <p>Taller de Informática.</p>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Estructura del Armario Rack</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Unidad (U)</th>
+                        <th>Dispositivo</th>
+                        <th>IP</th>
+                        <th>Función</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>U3</td>
+                        <td>Switch Cisco 2960</td>
+                        <td>192.168.1.2</td>
+                        <td>Distribución de VLANs</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">U1 - U2</td>
+                        <td>Servidor Cluster BBDD Nodo A</td>
+                        <td>172.16.0.10</td>
+                        <td>MySQL Master</td>
+                    </tr>
+                    <tr>
+                        <td>Servidor Cluster BBDD Nodo B</td>
+                        <td>172.16.0.11</td>
+                        <td>MySQL Replica</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4">Advertencia: Alimentación conectada a SAI de 3000VA.</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Formulario de Registro de Incidencias</h2>
+            <form action="contacto.html" method="POST">
+                <fieldset>
+                    <legend>Datos del Usuario</legend>
+
+                    <div>
+                        <label for="txtNombre">Nombre Completo:</label>
+                        <input type="text" id="txtNombre" name="nombre" required>
+                    </div>
+
+                    <div>
+                        <label for="txtEmail">Correo Electrónico:</label>
+                        <input type="email" id="txtEmail" name="email" required>
+                    </div>
+
+                    <div>
+                        <label for="txtPass">Contraseña de Soporte:</label>
+                        <input type="password" id="txtPass" name="password" required>
+                    </div>
+
+                    <div>
+                        <label for="txtTel">Teléfono:</label>
+                        <input type="tel" id="txtTel" name="telefono">
+                    </div>
+
+                    <div>
+                        <label for="txtFecha">Fecha:</label>
+                        <input type="date" id="txtFecha" name="fecha" required>
+                    </div>
+
+                    <div>
+                        <label for="numPuesto">Número de Puesto:</label>
+                        <input type="number" id="numPuesto" name="puesto" min="1" max="30" required>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Detalles Técnicos</legend>
+
+                    <div>
+                        <label for="selSO">Sistema Operativo:</label>
+                        <select id="selSO" name="so">
+                            <option value="debian">Debian GNU/Linux</option>
+                            <option value="win11">Windows 11</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <p>Prioridad:</p>
+                        <input type="radio" id="radBaja" name="prioridad" value="baja" checked>
+                        <label for="radBaja">Baja</label>
+                        <input type="radio" id="radMedia" name="prioridad" value="media">
+                        <label for="radMedia">Media</label>
+                        <input type="radio" id="radAlta" name="prioridad" value="alta">
+                        <label for="radAlta">Alta</label>
+                    </div>
+
+                    <div>
+                        <p>Componentes Afectados:</p>
+                        <input type="checkbox" id="chkRed" name="componentes[]" value="red">
+                        <label for="chkRed">Tarjeta de Red</label>
+                        <input type="checkbox" id="chkMonitor" name="componentes[]" value="monitor">
+                        <label for="chkMonitor">Monitor</label>
+                    </div>
+
+                    <div>
+                        <label for="txtDesc">Descripción:</label><br>
+                        <textarea id="txtDesc" name="descripcion" rows="4" cols="50" required></textarea>
+                    </div>
+                </fieldset>
+
+                <div>
+                    <input type="submit" value="Enviar Incidencia">
+                    <input type="reset" value="Restablecer">
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <hr>
+
+    <aside>
+        <h3>Horario de Atención</h3>
+        <p>Lunes a viernes de 8:15 a 14:45.</p>
+    </aside>
+
+    <hr>
+
+    <footer>
+        <address>
+            Departamento de Informática - IES Celia Viñas<br>
+            Contacto: <a href="mailto:admin@iesceliavinas.local">admin@iesceliavinas.local</a>
+        </address>
+        <p><small>&copy; 2026 Todos los derechos reservados.</small></p>
+    </footer>
+
+</body>
+</html>
