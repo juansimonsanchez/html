@@ -892,12 +892,22 @@ Email: &lt;a href="mailto:juansimonsanchez@gmail.com"&gt;juansimonsanchez@gmail.
 8.&lt;/p&gt;</code></pre>
             </div>
             </h4>
-            <p><strong>EJERCICIOS</strong>. Incluir <strong>SIEMPRE </strong>una etiqueta meta con vuestro nombre como autor </p>
-            <blockquote><p><strong>Ejercicio 0. Primeros ejemplos. </strong>
-            Crea una página llamada ejercicio0.html con un título de pestaña 'Ejemplos de la teoría' y un encabezado h1 que diga 'Ejemplos incluidos en la teoría'. Incluir todos los ejemplos del apartado 6.3. </p>
-            <p><strong>Ejercicio 1. Primera página </strong> Crea una página llamada ejercicio1.html con un título de pestaña 'Mi primera web' y un encabezado h1 que diga 'Bienvenido'.</p>
-            <p><strong>Ejercicio 2. Párrafos y saltos </strong> Incluir en el archivo html anterior dos párrafos. En el segundo, fuerza dos saltos de línea con la etiqueta br.</p>
-            <p><strong>Ejercicio 3. Formato. </strong>Incluir en el archivo html anterior un párrafo donde aparezcan una palabra en negrita, otra en cursiva y una fórmula con subíndice o superíndice.</p></blockquote>
+            <div>
+                <p><strong>Actividades de clase</strong>. Incluir <strong>SIEMPRE </strong>una etiqueta meta con vuestro
+                    nombre como autor </p>
+                <blockquote>
+                    <p><strong>Ejercicio 0. Primeros ejemplos. </strong>
+                        Crea una página llamada ejercicio0.html con un título de pestaña 'Ejemplos de la teoría' y un
+                        encabezado h1 que diga 'Ejemplos incluidos en la teoría'. Incluir todos los ejemplos del
+                        apartado 6.3. </p>
+                    <p><strong>Ejercicio 1. Primera página </strong> Crea una página llamada ejercicio1.html con un
+                        título de pestaña 'Mi primera web' y un encabezado h1 que diga 'Bienvenido'.</p>
+                    <p><strong>Ejercicio 2. Párrafos y saltos </strong> Incluir en el archivo html anterior dos
+                        párrafos. En el segundo, fuerza dos saltos de línea con la etiqueta br.</p>
+                    <p><strong>Ejercicio 3. Formato. </strong>Incluir en el archivo html anterior un párrafo donde
+                        aparezcan una palabra en negrita, otra en cursiva y una fórmula con subíndice o superíndice.</p>
+                </blockquote>
+            </div>
 
             <h3 id="estructuración-mediante-listas">6.4. Estructuración mediante
                 Listas <a class="headerlink" href="#estructuración-mediante-listas" title="Enlace permanente">¶</a></h3>
@@ -998,6 +1008,66 @@ un servidor conectado a Internet.&lt;/dd&gt;
                     </blockquote>
                 </li>
             </ul>
+
+
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;!-- Ejemplo de tabla sencilla --&gt;
+&lt;table border="1" &gt;
+&lt;thead&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Servicio&lt;/th&gt;
+        &lt;th&gt;Puerto TCP&lt;/th&gt;
+        &lt;th&gt;Función Principal&lt;/th&gt;
+    &lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+    &lt;tr&gt;
+        &lt;td&gt;HTTP&lt;/td&gt;
+        &lt;td&gt;80&lt;/td&gt;
+        &lt;td&gt;Transferencia de páginas web sin cifrar&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;HTTPS&lt;/td&gt;
+        &lt;td&gt;443&lt;/td&gt;
+        &lt;td&gt;Navegación segura con cifrado SSL/TLS&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+                </code></pre>
+            </div>
+            </p>
+
+                        <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;!-- Ejemplo de tabla con colspan y rowspan --&gt;
+&lt;table border="1" &gt;
+&lt;thead&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Servicio&lt;/th&gt;
+        &lt;th&gt;Puerto TCP&lt;/th&gt;
+        &lt;th&gt;Función Principal&lt;/th&gt;
+    &lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+        &lt;td rowspan="2"&gt;ssh&lt;/td&gt;
+        &lt;td&gt;22&lt;/td&gt;
+        &lt;td&gt;Acceso remoto seguro&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;80&lt;/td&gt;
+        &lt;td&gt;Transferencia de páginas web sin cifrar&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;HTTPS&lt;/td&gt;
+        &lt;td colspan="2"&gt;Navegación segura con cifrado SSL/TLS&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+                </code></pre>
+            </div>
+            </p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                 <pre><code>&lt;!-- Ejemplo de tabla semántica con estilos CSS básicos integrados --&gt;
@@ -1199,14 +1269,35 @@ Geografía&lt;/a&gt;&lt;/h2&gt;</code></pre>
             </p>
             <p>En este contexto, la marca de encabezado se utiliza exclusivamente
                 para dotar de jerarquía visual al contenido definido.</p>
-            <h3 id="formularios">6.8. Formularios <a class="headerlink" href="#formularios"
-                    title="Enlace permanente">¶</a></h3>
-            <p>Un formulario web (&lt;form&gt;) es el mecanismo básico que permite
-                recopilar información introducida por el usuario y enviarla a un
-                servidor web o motor dinámico para su procesamiento.</p>
-            <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>&lt;!-- Ejemplo de formulario básico de contacto --&gt;
+            <p><strong>Actividades de clase</strong>. Incluir <strong>SIEMPRE </strong>una etiqueta meta con vuestro
+                nombre como autor. Modificar el título de la pestaña e incluir un encabezado h1 con el mismo texto
+                descriptivo del contenido de la página </p>
+            <blockquote>
+                <p><strong>Ejercicio 4. Imagen. </strong>
+                    Crea una página llamada ejercicio2.html (con un título de pestaña y h1 p.e. 'Ejemplos de imágenes').
+                    Busca y descarga una imagen de Almería. Inserta la imagen 5 veces con un texto alternativo. Cada
+                    imagen aparecerá con un tamaño distinto. Debajo, añade un enlace a la web externa donde aparece la
+                    imagen.</p>
+                <p><strong>Ejercicio 5. Enlaces entre páginas </strong> Crea dos páginas html, llamadas ejercicio3.html
+                    y ejercicio4.html. Desde la primera se debe poder ir a la segunda, y desde la segunda volver a la
+                    principal.</p>
+                <p><strong>Ejercicio 6. Listas </strong> En la página llamada ejercicio3.html, crea una lista
+                    desordenada con 5 aficiones (deportes, música, cine, lectura, viajes) y una lista ordenada con los
+                    pasos para abrir el navegador y visitar una web.</p>
+                <p><strong>Ejercicio 7. Tabla básica. </strong> En la página llamada ejercicio4.html, diseña una tabla
+                    con tres columnas: Nombre, Asignatura y Nota. Añade tres filas de datos.</p>
+                <p><strong>Ejercicio 8. Tabla con combinación. </strong>En el mismo archivo ejercicio4.html, crea una
+                    tabla de horario en la que una asignatura ocupe dos horas consecutivas usando rowspan o colspan.</p>
+            </blockquote>
+    </div>
+
+    <h3 id="formularios">6.8. Formularios <a class="headerlink" href="#formularios" title="Enlace permanente">¶</a></h3>
+    <p>Un formulario web (&lt;form&gt;) es el mecanismo básico que permite
+        recopilar información introducida por el usuario y enviarla a un
+        servidor web o motor dinámico para su procesamiento.</p>
+    <p>
+    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+        <pre><code>&lt;!-- Ejemplo de formulario básico de contacto --&gt;
 &lt;form action="procesar_contacto.php" method="POST"&gt;
 &lt;fieldset&gt;
     &lt;legend&gt;Formulario de Soporte Técnico&lt;/legend&gt;
@@ -1233,149 +1324,149 @@ Geografía&lt;/a&gt;&lt;/h2&gt;</code></pre>
     &lt;/div&gt;
 &lt;/fieldset&gt;
 &lt;/form&gt;</code></pre>
-            </div>
-            </p>
-            <p>Tipos de Control comunes en un formulario:</p>
-            <ol type="1">
-                <li>
-                    <blockquote>
-                        <p><strong>Cuadro de texto (type="text"):</strong> Entrada estándar para
-                            una sola línea.</p>
-                    </blockquote>
-                </li>
-                <li>
-                    <blockquote>
-                        <p><strong>Cuadro de contraseña (type="password"):</strong> Oculta los
-                            caracteres introducidos utilizando puntos o asteriscos.</p>
-                    </blockquote>
-                </li>
-                <li>
-                    <blockquote>
-                        <p><strong>Cuadro multilínea (&lt;textarea&gt;):</strong> Permite
-                            entradas de texto de varias líneas.</p>
-                    </blockquote>
-                </li>
-                <li>
-                    <blockquote>
-                        <p><strong>Casilla de verificación (type="checkbox"):</strong> Opciones
-                            independientes y no excluyentes.</p>
-                    </blockquote>
-                </li>
-                <li>
-                    <blockquote>
-                        <p><strong>Botón de radio (type="radio"):</strong> Opciones mutuamente
-                            excluyentes (se debe asociar el mismo atributo name para definir el
-                            grupo).</p>
-                    </blockquote>
-                </li>
-                <li>
-                    <blockquote>
-                        <p><strong>Lista Desplegable (&lt;select&gt;):</strong> Permite
-                            seleccionar una de varias opciones de una lista:</p>
-                    </blockquote>
-                </li>
-            </ol>
-            <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>&lt;select id="selSO" name="sistema_operativo"&gt;
+    </div>
+    </p>
+    <p>Tipos de Control comunes en un formulario:</p>
+    <ol type="1">
+        <li>
+            <blockquote>
+                <p><strong>Cuadro de texto (type="text"):</strong> Entrada estándar para
+                    una sola línea.</p>
+            </blockquote>
+        </li>
+        <li>
+            <blockquote>
+                <p><strong>Cuadro de contraseña (type="password"):</strong> Oculta los
+                    caracteres introducidos utilizando puntos o asteriscos.</p>
+            </blockquote>
+        </li>
+        <li>
+            <blockquote>
+                <p><strong>Cuadro multilínea (&lt;textarea&gt;):</strong> Permite
+                    entradas de texto de varias líneas.</p>
+            </blockquote>
+        </li>
+        <li>
+            <blockquote>
+                <p><strong>Casilla de verificación (type="checkbox"):</strong> Opciones
+                    independientes y no excluyentes.</p>
+            </blockquote>
+        </li>
+        <li>
+            <blockquote>
+                <p><strong>Botón de radio (type="radio"):</strong> Opciones mutuamente
+                    excluyentes (se debe asociar el mismo atributo name para definir el
+                    grupo).</p>
+            </blockquote>
+        </li>
+        <li>
+            <blockquote>
+                <p><strong>Lista Desplegable (&lt;select&gt;):</strong> Permite
+                    seleccionar una de varias opciones de una lista:</p>
+            </blockquote>
+        </li>
+    </ol>
+    <p>
+    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+        <pre><code>&lt;select id="selSO" name="sistema_operativo"&gt;
     &lt;option value="win"&gt;Windows Server&lt;/option&gt;
     &lt;option value="linux" selected&gt;GNU/Linux Debian&lt;/option&gt;
 &lt;/select&gt;</code></pre>
-            </div>6.9. Comentarios dentro de
-            Código</h3>
-            <p>La etiqueta &lt;!-- ... --&gt; permite insertar notas explicativas
-                dentro del código que serán totalmente ignoradas por el navegador web en
-                pantalla, ayudando al técnico y programadores a organizar el código
-                fuente.</p>
-            <h2 id="capa-de-diseño-y-maquetación-css3">7. CAPA DE DISEÑO Y
-                MAQUETACIÓN: CSS3 <a class="headerlink" href="#capa-de-diseño-y-maquetación-css3"
-                    title="Enlace permanente">¶</a></h2>
-            <h3 id="introducción-a-css3-y-modos-de-aplicación">7.1. Introducción a
-                CSS3 y Modos de Aplicación <a class="headerlink" href="#introducción-a-css3-y-modos-de-aplicación"
-                    title="Enlace permanente">¶</a></h3>
-            <p><strong>CSS3</strong> (<em>Cascading Style Sheets</em>) es el
-                lenguaje que controla la presentación visual y estética del documento
-                (colores, fuentes, márgenes, diseño y disposición espacial de
-                elementos).</p>
-            <p>Existen cuatro métodos válidos para aplicar estilos a un sitio web,
-                ordenados por su nivel de jerarquía y buenas prácticas:</p>
-            <ol type="1">
-                <li>
-                    <blockquote>
-                        <p><strong>Estilo en línea (Atributo style):</strong> Se aplica
-                            directamente en la propia etiqueta HTML. Útil solo para pruebas rápidas
-                            de laboratorio:</p>
-                    </blockquote>
-                </li>
-            </ol>
-            <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>&lt;p style="color: blue; font-size: 14px;"&gt;Este párrafo tiene estilos inline.&lt;/p&gt;</code></pre>
-            </div><strong>Estilo Interno (Etiqueta &lt;style&gt;):</strong> Se ubica
-            en la sección del &lt;head&gt; del documento, afectando exclusivamente a
-            esa página:</p>
+    </div>6.9. Comentarios dentro de
+    Código</h3>
+    <p>La etiqueta &lt;!-- ... --&gt; permite insertar notas explicativas
+        dentro del código que serán totalmente ignoradas por el navegador web en
+        pantalla, ayudando al técnico y programadores a organizar el código
+        fuente.</p>
+    <h2 id="capa-de-diseño-y-maquetación-css3">7. CAPA DE DISEÑO Y
+        MAQUETACIÓN: CSS3 <a class="headerlink" href="#capa-de-diseño-y-maquetación-css3"
+            title="Enlace permanente">¶</a></h2>
+    <h3 id="introducción-a-css3-y-modos-de-aplicación">7.1. Introducción a
+        CSS3 y Modos de Aplicación <a class="headerlink" href="#introducción-a-css3-y-modos-de-aplicación"
+            title="Enlace permanente">¶</a></h3>
+    <p><strong>CSS3</strong> (<em>Cascading Style Sheets</em>) es el
+        lenguaje que controla la presentación visual y estética del documento
+        (colores, fuentes, márgenes, diseño y disposición espacial de
+        elementos).</p>
+    <p>Existen cuatro métodos válidos para aplicar estilos a un sitio web,
+        ordenados por su nivel de jerarquía y buenas prácticas:</p>
+    <ol type="1">
+        <li>
+            <blockquote>
+                <p><strong>Estilo en línea (Atributo style):</strong> Se aplica
+                    directamente en la propia etiqueta HTML. Útil solo para pruebas rápidas
+                    de laboratorio:</p>
             </blockquote>
-            </li>
-            </ol>
-            <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>&lt;head&gt;
+        </li>
+    </ol>
+    <p>
+    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+        <pre><code>&lt;p style="color: blue; font-size: 14px;"&gt;Este párrafo tiene estilos inline.&lt;/p&gt;</code></pre>
+    </div><strong>Estilo Interno (Etiqueta &lt;style&gt;):</strong> Se ubica
+    en la sección del &lt;head&gt; del documento, afectando exclusivamente a
+    esa página:</p>
+    </blockquote>
+    </li>
+    </ol>
+    <p>
+    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+        <pre><code>&lt;head&gt;
     &lt;style type="text/css"&gt;
         p { color: darkblue; font-size: 16px; }
     &lt;/style&gt;
 &lt;/head&gt;</code></pre>
-            </div><strong>Hojas de estilo externas (Recomendada en
-                producción):</strong> Se crea un archivo con extensión .css
-            independiente y se vincula en la cabecera de todas las páginas HTML del
-            sitio mediante la etiqueta &lt;link&gt;:</p>
-            </blockquote>
-            </li>
-            </ol>
-            <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>&lt;head&gt;
+    </div><strong>Hojas de estilo externas (Recomendada en
+        producción):</strong> Se crea un archivo con extensión .css
+    independiente y se vincula en la cabecera de todas las páginas HTML del
+    sitio mediante la etiqueta &lt;link&gt;:</p>
+    </blockquote>
+    </li>
+    </ol>
+    <p>
+    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+        <pre><code>&lt;head&gt;
 &lt;link rel="stylesheet" type="text/css" href="estilos.css"&gt;
 &lt;/head&gt;</code></pre>
-            </div>
-            </p>
-            <ol start="4" type="1">
-                <li>
-                    <blockquote>
-                        <p><strong>Importación CSS (@import):</strong> Permite importar una hoja
-                            de estilos externa desde dentro de otra declaración CSS:</p>
-                    </blockquote>
-                </li>
-            </ol>
-            <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>@import url("tipografias.css");</code></pre>
-            </div>
-            </h4>
-            <h3 id="reglas-selectores-de-elemento-clases-e-identificadores">7.2.
-                Reglas, Selectores de Elemento, Clases e Identificadores <a class="headerlink"
-                    href="#reglas-selectores-de-elemento-clases-e-identificadores" title="Enlace permanente">¶</a></h3>
-            <p>Una regla CSS consta de la siguiente estructura sintáctica:
-                <em><strong>selector {atributo: valor; …}</strong></em>
-            </p>
-            <ul>
-                <li>
-                    <blockquote>
-                        <p><strong>Selector de Elemento o Etiqueta:</strong> Aplica los estilos
-                            de forma global a todas las etiquetas del mismo tipo presentes en la web
-                            (ej: h1, p, table).</p>
-                    </blockquote>
-                </li>
-                <li>
-                    <blockquote>
-                        <p><strong>Selector de Clase (.nombre_clase):</strong> Reutilizable. Se
-                            aplica a múltiples elementos diferentes usando el atributo
-                            class="nombre_clase":</p>
-                    </blockquote>
-                </li>
-            </ul>
-            <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>/* Definición del estilo en el archivo CSS */
+    </div>
+    </p>
+    <ol start="4" type="1">
+        <li>
+            <blockquote>
+                <p><strong>Importación CSS (@import):</strong> Permite importar una hoja
+                    de estilos externa desde dentro de otra declaración CSS:</p>
+            </blockquote>
+        </li>
+    </ol>
+    <p>
+    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+        <pre><code>@import url("tipografias.css");</code></pre>
+    </div>
+    </h4>
+    <h3 id="reglas-selectores-de-elemento-clases-e-identificadores">7.2.
+        Reglas, Selectores de Elemento, Clases e Identificadores <a class="headerlink"
+            href="#reglas-selectores-de-elemento-clases-e-identificadores" title="Enlace permanente">¶</a></h3>
+    <p>Una regla CSS consta de la siguiente estructura sintáctica:
+        <em><strong>selector {atributo: valor; …}</strong></em>
+    </p>
+    <ul>
+        <li>
+            <blockquote>
+                <p><strong>Selector de Elemento o Etiqueta:</strong> Aplica los estilos
+                    de forma global a todas las etiquetas del mismo tipo presentes en la web
+                    (ej: h1, p, table).</p>
+            </blockquote>
+        </li>
+        <li>
+            <blockquote>
+                <p><strong>Selector de Clase (.nombre_clase):</strong> Reutilizable. Se
+                    aplica a múltiples elementos diferentes usando el atributo
+                    class="nombre_clase":</p>
+            </blockquote>
+        </li>
+    </ul>
+    <p>
+    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+        <pre><code>/* Definición del estilo en el archivo CSS */
 .texto-alerta {
 color: red;
 font-weight: bold;
@@ -1383,98 +1474,98 @@ font-weight: bold;
 &lt;!-- Aplicación del estilo en el documento HTML --&gt;
 &lt;p class="texto-alerta"&gt;Atención: El servidor web requiere
 actualización de seguridad.&lt;/p&gt;</code></pre>
-            </div><strong>Selector de Identificador (#nombre_id):</strong> Único en
-            toda la página web. Se aplica exclusivamente a un único elemento usando
-            el atributo id="nombre_id":</p>
-            </blockquote>
-            </li>
-            </ul>
-            <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>#menu-principal {
+    </div><strong>Selector de Identificador (#nombre_id):</strong> Único en
+    toda la página web. Se aplica exclusivamente a un único elemento usando
+    el atributo id="nombre_id":</p>
+    </blockquote>
+    </li>
+    </ul>
+    <p>
+    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+        <pre><code>#menu-principal {
 background-color: #333333;
 padding: 10px;
 }</code></pre>
-            </div><strong>Contenedores (&lt;div&gt; vs &lt;span&gt;):</strong></p>
+    </div><strong>Contenedores (&lt;div&gt; vs &lt;span&gt;):</strong></p>
+    </blockquote>
+    <ul>
+        <li>
+            <blockquote>
+                <p>&lt;div&gt; es un contenedor genérico en bloque. Inicia en una línea
+                    nueva y ocupa todo el ancho disponible, ideal para estructurar grandes
+                    bloques o secciones de la web.</p>
             </blockquote>
-            <ul>
-                <li>
-                    <blockquote>
-                        <p>&lt;div&gt; es un contenedor genérico en bloque. Inicia en una línea
-                            nueva y ocupa todo el ancho disponible, ideal para estructurar grandes
-                            bloques o secciones de la web.</p>
-                    </blockquote>
-                </li>
-                <li>
-                    <blockquote>
-                        <p>&lt;span&gt; es un contenedor en línea. No altera el flujo de la
-                            línea ni genera saltos, idóneo para dar formato a palabras sueltas
-                            dentro de un párrafo.</p>
-                    </blockquote>
-                </li>
-            </ul>
-            </li>
-            </ul>
-            <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>&lt;div style="background-color: lightgrey; padding: 20px;"&gt;
+        </li>
+        <li>
+            <blockquote>
+                <p>&lt;span&gt; es un contenedor en línea. No altera el flujo de la
+                    línea ni genera saltos, idóneo para dar formato a palabras sueltas
+                    dentro de un párrafo.</p>
+            </blockquote>
+        </li>
+    </ul>
+    </li>
+    </ul>
+    <p>
+    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+        <pre><code>&lt;div style="background-color: lightgrey; padding: 20px;"&gt;
 Este es un contenedor div que ocupa todo el ancho disponible.
 &lt;span&gt;Y este es un elemento span dentro del div que solo ocupa
 el espacio necesario.&lt;/span&gt;
 &lt;/div&gt;</code></pre>
-            </div>
-            </h4>
-            <h3 id="ejemplos-de-estilos">7.3. Ejemplos de estilos<br> <a class="headerlink" href="#ejemplos-de-estilos"
-                    title="Enlace permanente">¶</a></h3>
-            <img src="media_APL_UT1_Teoria_Introduccion_26_27/media/image18.png" style="width:300 px;height:auto" />
-            <img src="media_APL_UT1_Teoria_Introduccion_26_27/media/image16.png" style="width:300 px;height:auto" /><br>
-            <img src="media_APL_UT1_Teoria_Introduccion_26_27/media/image13.png" style="width:300 px;height:auto" />
-            <img src="media_APL_UT1_Teoria_Introduccion_26_27/media/image12.png" style="width:300 px;height:auto" />
-            <img src="media_APL_UT1_Teoria_Introduccion_26_27/media/image9.png" style="width:300 px;height:auto" />
-            <img src="media_APL_UT1_Teoria_Introduccion_26_27/media/image5.png" style="width:300 px;height:auto" />
-            <img src="media_APL_UT1_Teoria_Introduccion_26_27/media/image2.png" style="width:300 px;height:auto" />
-            <img src="media_APL_UT1_Teoria_Introduccion_26_27/media/image7.png" style="width:300 px;height:auto" />
+    </div>
+    </h4>
+    <h3 id="ejemplos-de-estilos">7.3. Ejemplos de estilos<br> <a class="headerlink" href="#ejemplos-de-estilos"
+            title="Enlace permanente">¶</a></h3>
+    <img src="media_APL_UT1_Teoria_Introduccion_26_27/media/image18.png" style="width:300 px;height:auto" />
+    <img src="media_APL_UT1_Teoria_Introduccion_26_27/media/image16.png" style="width:300 px;height:auto" /><br>
+    <img src="media_APL_UT1_Teoria_Introduccion_26_27/media/image13.png" style="width:300 px;height:auto" />
+    <img src="media_APL_UT1_Teoria_Introduccion_26_27/media/image12.png" style="width:300 px;height:auto" />
+    <img src="media_APL_UT1_Teoria_Introduccion_26_27/media/image9.png" style="width:300 px;height:auto" />
+    <img src="media_APL_UT1_Teoria_Introduccion_26_27/media/image5.png" style="width:300 px;height:auto" />
+    <img src="media_APL_UT1_Teoria_Introduccion_26_27/media/image2.png" style="width:300 px;height:auto" />
+    <img src="media_APL_UT1_Teoria_Introduccion_26_27/media/image7.png" style="width:300 px;height:auto" />
 
-            <h3 id="el-modelo-de-caja-box-model">7.4. El Modelo de Caja (Box
-                Model) <a class="headerlink" href="#el-modelo-de-caja-box-model" title="Enlace permanente">¶</a></h3>
-            <p>Cada elemento HTML que dibuja el navegador en pantalla se representa
-                conceptualmente como una caja rectangular compuesta por cuatro capas
-                físicas:</p>
-            <ul>
-                <li>
-                    <blockquote>
-                        <p><strong>Content (Contenido):</strong> Zona física interna donde se
-                            renderiza el texto, imágenes o elementos hijos (width y height).</p>
-                    </blockquote>
-                </li>
-                <li>
-                    <blockquote>
-                        <p><strong>Padding (Relleno):</strong> Espacio interno transparente que
-                            separa el contenido del borde del contenedor. Toma el color de fondo
-                            asignado.</p>
-                    </blockquote>
-                </li>
-                <li>
-                    <blockquote>
-                        <p><strong>Border (Borde):</strong> Línea límite que envuelve al
-                            elemento, configurable en grosor, estilo y color.</p>
-                    </blockquote>
-                </li>
-                <li>
-                    <blockquote>
-                        <p><strong>Margin (Margen):</strong> Espacio exterior totalmente
-                            transparente que separa la caja actual de las cajas colindantes en la
-                            web.</p>
-                    </blockquote>
-                </li>
-            </ul>
+    <h3 id="el-modelo-de-caja-box-model">7.4. El Modelo de Caja (Box
+        Model) <a class="headerlink" href="#el-modelo-de-caja-box-model" title="Enlace permanente">¶</a></h3>
+    <p>Cada elemento HTML que dibuja el navegador en pantalla se representa
+        conceptualmente como una caja rectangular compuesta por cuatro capas
+        físicas:</p>
+    <ul>
+        <li>
             <blockquote>
-                <p><img src="media_APL_UT1_Teoria_Introduccion_26_27/media/image4.png"
-                        style="width:2.66062in;height:2.08854in" /></p>
+                <p><strong>Content (Contenido):</strong> Zona física interna donde se
+                    renderiza el texto, imágenes o elementos hijos (width y height).</p>
             </blockquote>
-            <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>/* Ejemplo aplicado de un contenedor con el modelo de cajas */
+        </li>
+        <li>
+            <blockquote>
+                <p><strong>Padding (Relleno):</strong> Espacio interno transparente que
+                    separa el contenido del borde del contenedor. Toma el color de fondo
+                    asignado.</p>
+            </blockquote>
+        </li>
+        <li>
+            <blockquote>
+                <p><strong>Border (Borde):</strong> Línea límite que envuelve al
+                    elemento, configurable en grosor, estilo y color.</p>
+            </blockquote>
+        </li>
+        <li>
+            <blockquote>
+                <p><strong>Margin (Margen):</strong> Espacio exterior totalmente
+                    transparente que separa la caja actual de las cajas colindantes en la
+                    web.</p>
+            </blockquote>
+        </li>
+    </ul>
+    <blockquote>
+        <p><img src="media_APL_UT1_Teoria_Introduccion_26_27/media/image4.png"
+                style="width:2.66062in;height:2.08854in" /></p>
+    </blockquote>
+    <p>
+    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+        <pre><code>/* Ejemplo aplicado de un contenedor con el modelo de cajas */
 .caja-noticia {
 width: 300px;
 padding: 15px;
@@ -1483,86 +1574,86 @@ margin: 20px;
 box-sizing: border-box; /* Asegura que padding y borde no aumenten el
 ancho total */
 }</code></pre>
-            </div>El posicionamiento permite alterar la forma natural en que se
-            disponen los elementos en el flujo del navegador:</p>
-            <ul>
-                <li>
-                    <blockquote>
-                        <p><strong>position: relative</strong>: El elemento se desplaza tomando
-                            como referencia su posición original en el documento.</p>
-                    </blockquote>
-                </li>
-                <li>
-                    <blockquote>
-                        <p><strong>position: absolute</strong>: El elemento se ubica con
-                            precisión milimétrica (indicando coordenadas top, left, right, bottom)
-                            tomando como referencia el borde de su contenedor posicionado más
-                            cercano o la ventana del navegador.</p>
-                    </blockquote>
-                </li>
-                <li>
-                    <blockquote>
-                        <p><strong>z-index</strong>: Establece el orden de superposición
-                            vertical de capas (a mayor número, la caja se dibuja por encima de las
-                            capas con menor índice).</p>
-                    </blockquote>
-                </li>
-            </ul>
-            <p>La sintaxis <strong>shorthand</strong> (abreviada) permite escribir
-                en una sola línea múltiples subpropiedades, reduciendo la cantidad de
-                líneas que el navegador debe descargar:</p>
-            <ul>
-                <li>font: p { font: italic bold 14px/1.6 Arial,
-                    sans-serif; } (estilo, grosor, tamaño, interlineado y familia).</li>
-                <li>background: body { background: #fafafa
-                    url('fondo.png') no-repeat fixed center; }</li>
-                <li>margin / padding:</li>
-                <ul>
-                    <li>margin: 10px; (los cuatro lados iguales).</li>
-                    <li>margin: 10px 20px; (superior/inferior, izquierda/derecha).</li>
-                    <li>margin: 10px 15px 20px 25px; (orden horario: arriba, derecha, abajo,
-                        izquierda).</li>
-                </ul>
-                </li>
-                <li>
-                    <blockquote>
-                        <p><strong>border:</strong> h1 { border: 2px solid #1a4f8a; }</p>
-                    </blockquote>
-                </li>
-            </ul>
-            <h3 id="frameworks-css-concepto-layouts-y-rejillas">7.7. Frameworks CSS
-                (Concepto, Layouts y Rejillas) 📖 <a class="headerlink"
-                    href="#frameworks-css-concepto-layouts-y-rejillas" title="Enlace permanente">¶</a></h3>
-            <p>Un <strong>Framework CSS</strong> (como Bootstrap o Tailwind) es un
-                conjunto de archivos CSS predefinidos que aceleran las tareas de diseño
-                e integración mediante:</p>
-            <ul>
-                <li>
-                    <blockquote>
-                        <p><strong>Layouts (Rejillas):</strong> Dividen el lienzo en columnas
-                            para alinear elementos con total precisión espacial.</p>
-                    </blockquote>
-                </li>
-                <li>
-                    <blockquote>
-                        <p><strong>css-reset:</strong> Soluciona incompatibilidades de
-                            visualización entre navegadores.</p>
-                    </blockquote>
-                </li>
-                <li>
-                    <blockquote>
-                        <p><em>Ventaja:</em> Aceleración drástica de la maquetación web.</p>
-                    </blockquote>
-                </li>
-                <li>
-                    <blockquote>
-                        <p><em>Desventaja:</em> Incrementa el tamaño de descarga inicial del
-                            sitio web.</p>
-                    </blockquote>
-                </li>
-            </ul>
+    </div>El posicionamiento permite alterar la forma natural en que se
+    disponen los elementos en el flujo del navegador:</p>
+    <ul>
+        <li>
+            <blockquote>
+                <p><strong>position: relative</strong>: El elemento se desplaza tomando
+                    como referencia su posición original en el documento.</p>
+            </blockquote>
+        </li>
+        <li>
+            <blockquote>
+                <p><strong>position: absolute</strong>: El elemento se ubica con
+                    precisión milimétrica (indicando coordenadas top, left, right, bottom)
+                    tomando como referencia el borde de su contenedor posicionado más
+                    cercano o la ventana del navegador.</p>
+            </blockquote>
+        </li>
+        <li>
+            <blockquote>
+                <p><strong>z-index</strong>: Establece el orden de superposición
+                    vertical de capas (a mayor número, la caja se dibuja por encima de las
+                    capas con menor índice).</p>
+            </blockquote>
+        </li>
+    </ul>
+    <p>La sintaxis <strong>shorthand</strong> (abreviada) permite escribir
+        en una sola línea múltiples subpropiedades, reduciendo la cantidad de
+        líneas que el navegador debe descargar:</p>
+    <ul>
+        <li>font: p { font: italic bold 14px/1.6 Arial,
+            sans-serif; } (estilo, grosor, tamaño, interlineado y familia).</li>
+        <li>background: body { background: #fafafa
+            url('fondo.png') no-repeat fixed center; }</li>
+        <li>margin / padding:</li>
+        <ul>
+            <li>margin: 10px; (los cuatro lados iguales).</li>
+            <li>margin: 10px 20px; (superior/inferior, izquierda/derecha).</li>
+            <li>margin: 10px 15px 20px 25px; (orden horario: arriba, derecha, abajo,
+                izquierda).</li>
+        </ul>
+        </li>
+        <li>
+            <blockquote>
+                <p><strong>border:</strong> h1 { border: 2px solid #1a4f8a; }</p>
+            </blockquote>
+        </li>
+    </ul>
+    <h3 id="frameworks-css-concepto-layouts-y-rejillas">7.7. Frameworks CSS
+        (Concepto, Layouts y Rejillas) 📖 <a class="headerlink" href="#frameworks-css-concepto-layouts-y-rejillas"
+            title="Enlace permanente">¶</a></h3>
+    <p>Un <strong>Framework CSS</strong> (como Bootstrap o Tailwind) es un
+        conjunto de archivos CSS predefinidos que aceleran las tareas de diseño
+        e integración mediante:</p>
+    <ul>
+        <li>
+            <blockquote>
+                <p><strong>Layouts (Rejillas):</strong> Dividen el lienzo en columnas
+                    para alinear elementos con total precisión espacial.</p>
+            </blockquote>
+        </li>
+        <li>
+            <blockquote>
+                <p><strong>css-reset:</strong> Soluciona incompatibilidades de
+                    visualización entre navegadores.</p>
+            </blockquote>
+        </li>
+        <li>
+            <blockquote>
+                <p><em>Ventaja:</em> Aceleración drástica de la maquetación web.</p>
+            </blockquote>
+        </li>
+        <li>
+            <blockquote>
+                <p><em>Desventaja:</em> Incrementa el tamaño de descarga inicial del
+                    sitio web.</p>
+            </blockquote>
+        </li>
+    </ul>
 
-        </main>
+    </main>
     </div>
 </body>
 
