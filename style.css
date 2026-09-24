@@ -22,6 +22,42 @@ body {
     min-height: 100vh;
 }
 
+@page {
+    size: A4;
+    margin: 18mm 12mm 20mm 12mm;
+}
+
+@media print {
+    #site-header,
+    header#site-header,
+    .top-nav,
+    .nav-btn,
+    .dropdown,
+    .dropbtn,
+    a[download],
+    button,
+    .copy-btn,
+    #left-panel,
+    .headerlink {
+        display: none !important;
+    }
+
+    body,
+    #page-layout,
+    #main-content,
+    main {
+        display: block !important;
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    html {
+        background: #ffffff !important;
+    }
+}
+
 h1, h2, h3, h4, h5, h6, [id], a[name] {
     scroll-margin-top: 80px !important;
 }
