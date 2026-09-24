@@ -4,500 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GBD - Ut6 Teoria Vistas</title>
-    <style>
-    
-:root {
-    --primary: #2563eb;
-    --primary-dark: #1d4ed8;
-    --bg-header: #1e3a8a;
-    --text-header: #ffffff;
-    --bg-body: #f8fafc;
-    --text-body: #1e293b;
-    --border-color: #cbd5e1;
-}
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 80px;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background: var(--bg-body);
-    color: var(--text-body);
-    min-height: 100vh;
-}
-
-h1, h2, h3, h4, h5, h6, [id], a[name] {
-    scroll-margin-top: 80px !important;
-}
-
-.headerlink {
-    display: inline-block;
-    margin-left: 0.4rem;
-    color: #94a3b8;
-    text-decoration: none;
-    font-size: 0.8em;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.2s, color 0.2s;
-}
-
-h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
-h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
-    visibility: visible;
-    opacity: 1;
-}
-
-.headerlink:hover {
-    color: var(--primary);
-}
-
-#site-header {
-    position: sticky;
-    top: 0;
-    z-index: 10000;
-    background: var(--bg-header);
-    color: var(--text-header);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-}
-
-.header-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1.5rem;
-    height: 62px;
-}
-
-.site-title {
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: #ffffff;
-    letter-spacing: -0.01em;
-}
-
-.top-nav {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.top-nav .nav-btn {
-    color: #cbd5e1;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 8px 14px;
-    border-radius: 6px;
-    font-size: 0.95rem;
-    transition: background 0.2s, color 0.2s;
-}
-
-.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
-    background: #1e293b;
-    color: #ffffff;
-}
-
-.top-nav .nav-btn.disabled {
-    opacity: 0.4;
-    pointer-events: none;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropbtn {
-    background: #1e293b;
-    color: #ffffff;
-    padding: 9px 16px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    border: 1px solid #334155;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.dropdown:hover .dropbtn, .dropbtn.active {
-    background: var(--primary);
-    border-color: var(--primary);
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #ffffff;
-    min-width: 320px;
-    max-width: 480px;
-    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
-    border-radius: 8px;
-    overflow: hidden;
-    z-index: 10001;
-    border: 1px solid #e2e8f0;
-    margin-top: 6px;
-}
-
-.dropdown-content a {
-    color: var(--text-body);
-    padding: 12px 18px;
-    text-decoration: none;
-    display: block;
-    font-size: 0.92rem;
-    border-bottom: 1px solid #f1f5f9;
-    line-height: 1.4;
-    transition: background 0.15s, color 0.15s;
-    word-break: break-word;
-}
-
-.dropdown-content a:last-child {
-    border-bottom: none;
-}
-
-.dropdown-content a:hover {
-    background-color: #eff6ff;
-    color: var(--primary);
-    font-weight: 600;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block !important;
-}
-
-#page-layout {
-    display: flex;
-    min-height: calc(100vh - 62px);
-}
-
-#left-panel {
-    width: 320px;
-    min-width: 320px;
-    background: #ffffff;
-    border-right: 1px solid #e2e8f0;
-    padding: 1.5rem 1.25rem;
-    box-sizing: border-box;
-    overflow-y: auto;
-    position: sticky;
-    top: 62px;
-    height: calc(100vh - 62px);
-}
-
-#left-panel h3 {
-    font-size: 1rem;
-    margin-top: 0;
-    color: #334155;
-    border-bottom: 2px solid #e2e8f0;
-    padding-bottom: 0.5rem;
-}
-
-#left-panel nav#TOC, #left-panel #TOC {
-    background: transparent !important;
-    border: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    box-shadow: none !important;
-}
-
-#left-panel ul {
-    list-style-type: none;
-    padding-left: 0.75rem;
-    margin: 0.5rem 0;
-}
-
-#left-panel li {
-    margin: 6px 0;
-}
-
-#left-panel a {
-    color: #475569;
-    text-decoration: none;
-    font-size: 0.9rem;
-    line-height: 1.4;
-    display: block;
-    transition: color 0.15s;
-}
-
-#left-panel a:hover {
-    color: var(--primary);
-    font-weight: 600;
-}
-
-#main-content {
-    flex: 1;
-    padding: 2.5rem 4rem;
-    box-sizing: border-box;
-    max-width: 100% !important;
-    width: calc(100% - 320px);
-    min-width: 0;
-}
-
-/* TABLAS ELEGANTES Y RESPONSIVE */
-.table-wrapper {
-    overflow-x: auto;
-    margin: 1.75rem 0;
-    border-radius: 8px;
-    border: 1px solid #cbd5e1;
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-}
-
-table {
-    width: 100% !important;
-    border-collapse: collapse !important;
-    margin: 0 !important;
-    font-size: 0.93rem;
-    background: #ffffff;
-    table-layout: auto !important;
-}
-
-th, td {
-    padding: 10px 14px !important;
-    border: 1px solid #cbd5e1 !important;
-    text-align: left;
-    vertical-align: top;
-    line-height: 1.5;
-    word-break: normal;
-    overflow-wrap: break-word;
-}
-
-td p, th p {
-    margin: 0 !important;
-    padding: 2px 0 !important;
-}
-
-th {
-    background-color: #0f172a !important;
-    color: #ffffff !important;
-    font-weight: 600;
-    font-size: 0.95rem;
-    border-bottom: 2px solid #0f172a !important;
-}
-
-tr:nth-child(even) td {
-    background-color: #f8fafc !important;
-}
-
-tr:hover td {
-    background-color: #f1f5f9 !important;
-}
-
-/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
-.code-wrapper {
-    position: relative;
-    margin: 1.5rem 0;
-    border-radius: 8px;
-    overflow: hidden;
-    background: #0f172a;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.copy-btn {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    background: #334155;
-    color: #f8fafc;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 5px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
-    z-index: 10;
-}
-
-.copy-btn:hover {
-    background: #2563eb;
-}
-
-pre {
-    margin: 0 !important;
-    padding: 1.25rem 1.25rem !important;
-    background: #0f172a !important;
-    color: #f8fafc !important;
-    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
-    font-size: 0.92rem !important;
-    line-height: 1.6 !important;
-    overflow-x: auto !important;
-    white-space: pre-wrap !important;
-    word-break: break-all !important;
-}
-
-code {
-    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
-}
-
-p code, li code {
-    background: #e2e8f0;
-    color: #0f172a;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 0.9em;
-}
-
-img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
-
-/* RESPONSIVE DESIGN PARA MÓVILES Y TABLETS */
-@media (max-width: 768px) {
-    .header-container {
-        height: auto;
-        flex-direction: column;
-        padding: 0.75rem 1rem;
-        gap: 0.6rem;
-    }
-    
-    .site-title {
-        font-size: 1.05rem;
-        text-align: center;
-        justify-content: center;
-    }
-
-    .site-title img {
-        height: 28px !important;
-    }
-
-    .top-nav {
-        flex-wrap: wrap;
-        justify-content: center;
-        width: 100%;
-        gap: 0.35rem;
-    }
-
-    .top-nav .nav-btn, .dropbtn {
-        padding: 6px 10px;
-        font-size: 0.85rem;
-    }
-
-    .dropdown-content {
-        min-width: 240px;
-        max-width: 90vw;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    #page-layout {
-        flex-direction: column;
-    }
-
-    #left-panel {
-        width: 100% !important;
-        min-width: 0 !important;
-        height: auto !important;
-        position: static !important;
-        border-right: none !important;
-        border-bottom: 2px solid #e2e8f0;
-        padding: 1rem !important;
-    }
-
-    #main-content {
-        width: 100% !important;
-        padding: 1.25rem 1rem !important;
-    }
-
-    iframe {
-        height: 60vh !important;
-    }
-
-    th, td {
-        padding: 8px 10px !important;
-        font-size: 0.85rem !important;
-    }
-
-    pre {
-        padding: 0.85rem !important;
-        font-size: 0.82rem !important;
-    }
-}
-
-    </style>
-    <script>
-    
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.dropdown').forEach(dd => {
-        const btn = dd.querySelector('.dropbtn');
-        const content = dd.querySelector('.dropdown-content');
-        if (btn && content) {
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const isOpen = content.style.display === 'block';
-                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
-                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
-                if (!isOpen) {
-                    content.style.display = 'block';
-                    btn.classList.add('active');
-                }
-            });
-        }
-    });
-
-    document.addEventListener('click', () => {
-        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
-        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
-    });
-
-    // Controlador universal de clics en enlaces ancla (#...)
-    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const rawHref = this.getAttribute('href') || '';
-            const hashIdx = rawHref.indexOf('#');
-            if (hashIdx === -1) return;
-            const hash = rawHref.substring(hashIdx + 1);
-            if (!hash) return;
-            
-            let targetId = hash;
-            try { targetId = decodeURIComponent(hash); } catch(err) {}
-
-            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
-            if (!targetEl) {
-                for (let el of document.querySelectorAll('[id]')) {
-                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
-                        targetEl = el;
-                        break;
-                    }
-                }
-            }
-
-            if (targetEl) {
-                e.preventDefault();
-                const headerOffset = 75;
-                const elementPosition = targetEl.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-                
-                if (history.pushState) {
-                    history.pushState(null, null, '#' + targetId);
-                }
-            }
-        });
-    });
-});
-
-function copyCode(btn) {
-    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
-    navigator.clipboard.writeText(code).then(() => {
-        const orig = btn.innerText;
-        btn.innerText = '✅ ¡Copiado!';
-        btn.style.background = '#16a34a';
-        setTimeout(() => {
-            btn.innerText = orig;
-            btn.style.background = '#334155';
-        }, 2000);
-    });
-}
-
-    </script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 <body>
     <header id="site-header">
@@ -505,110 +13,16 @@ function copyCode(btn) {
     <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>GBD &ndash; Ut6 Teoria Vistas</span></div>
     <nav class="top-nav">
       <a href="index.html" class="nav-btn">Inicio</a>
-      <a href="GBD_UT8_Teoria_Programacion.html" class="nav-btn">Programación</a>
-      <div class="dropdown">
-        <button class="dropbtn" type="button">Teoría ▾</button>
-        <div class="dropdown-content">
-          <a href="GBD_UT1_Teoria_Almacenamiento.html">GBD UT1 Teoria Almacenamiento</a>
-          <a href="GBD_UT2_Teoria_Diagramas.html">GBD UT2 Teoria Diagramas</a>
-          <a href="GBD_UT3_Teoria_Modelo.html">GBD UT3 Teoria Modelo</a>
-          <a href="GBD_UT4_Teoria_DDL.html">GBD UT4 Teoria DDL</a>
-          <a href="GBD_UT5_Teoria_Consultas.html">GBD UT5 Teoria Consultas</a>
-          <a href="GBD_UT6_Teoria_Vistas.html">GBD UT6 Teoria Vistas</a>
-          <a href="GBD_UT7_Teoria_DML.html">GBD UT7 Teoria DML</a>
-          <a href="GBD_UT9_Teoria_Seguridad.html">GBD UT9 Teoria Seguridad</a>
-        </div>
-      </div>
     </nav>
   </div>
 </header>
     <div id="page-layout">
-        <aside id="left-panel">
-            <h3>Índice del Tema</h3>
-            <nav id="TOC" role="doc-toc">
-<ul>
-<li><a href="#ficha-técnica-de-la-unidad-didáctica"
-id="toc-ficha-técnica-de-la-unidad-didáctica">FICHA TÉCNICA DE LA UNIDAD
-DIDÁCTICA</a></li>
-<li><a href="#índice-de-contenidos" id="toc-índice-de-contenidos">ÍNDICE
-DE CONTENIDOS</a></li>
-<li><a href="#introducción-y-contextualización"
-id="toc-introducción-y-contextualización">1. INTRODUCCIÓN Y
-CONTEXTUALIZACIÓN</a>
-<ul>
-<li><a href="#qué-es-una-vista" id="toc-qué-es-una-vista">1.1 ¿Qué es
-una vista?</a></li>
-</ul></li>
-<li><a href="#operaciones-ddl-sobre-vistas"
-id="toc-operaciones-ddl-sobre-vistas">2. OPERACIONES DDL SOBRE
-VISTAS</a>
-<ul>
-<li><a href="#creación-de-vistas-create-or-replace-view"
-id="toc-creación-de-vistas-create-or-replace-view">2.1 Creación de
-Vistas (CREATE OR REPLACE VIEW)</a>
-<ul>
-<li><a href="#sintaxis-completa-y-parámetros-del-motor"
-id="toc-sintaxis-completa-y-parámetros-del-motor">2.1.1 Sintaxis
-Completa y Parámetros del Motor</a></li>
-<li><a href="#algoritmos-de-procesamiento-de-vistas"
-id="toc-algoritmos-de-procesamiento-de-vistas">2.1.2 Algoritmos de
-Procesamiento de Vistas</a></li>
-<li><a href="#definición-de-alias-de-columnas"
-id="toc-definición-de-alias-de-columnas">2.1.3 Definición de Alias de
-Columnas</a></li>
-</ul></li>
-<li><a href="#section-1" id="toc-section-1"></a></li>
-<li><a href="#eliminación-de-vistas-drop-view"
-id="toc-eliminación-de-vistas-drop-view">2.2 Eliminación de Vistas (DROP
-VIEW)</a></li>
-<li><a href="#section-2" id="toc-section-2"></a></li>
-<li><a href="#renombrado-de-vistas-rename-table"
-id="toc-renombrado-de-vistas-rename-table">2.3 Renombrado de Vistas
-(RENAME TABLE)</a></li>
-<li><a href="#section-3" id="toc-section-3"></a></li>
-<li><a href="#metadatos-e-inspección-de-vistas"
-id="toc-metadatos-e-inspección-de-vistas">2.4 Metadatos e Inspección de
-Vistas</a></li>
-</ul></li>
-<li><a href="#section-4" id="toc-section-4"></a></li>
-<li><a href="#vistas-actualizables" id="toc-vistas-actualizables">3.
-VISTAS ACTUALIZABLES </a>
-<ul>
-<li><a href="#restricciones-de-modificación-insert-update-delete"
-id="toc-restricciones-de-modificación-insert-update-delete">3.1
-Restricciones de Modificación (INSERT, UPDATE, DELETE)</a></li>
-<li><a href="#la-cláusula-with-check-option"
-id="toc-la-cláusula-with-check-option">3.2 La Cláusula WITH CHECK
-OPTION</a>
-<ul>
-<li><a href="#prevención-de-inconsistencias-lógicas"
-id="toc-prevención-de-inconsistencias-lógicas">3.2.1 Prevención de
-Inconsistencias Lógicas</a></li>
-<li><a href="#diferencias-entre-cascaded-y-local"
-id="toc-diferencias-entre-cascaded-y-local">3.2.2 Diferencias entre
-CASCADED y LOCAL</a></li>
-</ul></li>
-</ul></li>
-<li><a href="#casos-de-uso-avanzados" id="toc-casos-de-uso-avanzados">4.
-CASOS DE USO AVANZADOS</a>
-<ul>
-<li><a href="#ejemplo-1-seguridad-lógica-en-la-tabla-empleados"
-id="toc-ejemplo-1-seguridad-lógica-en-la-tabla-empleados">4.1 Ejemplo 1:
-Seguridad Lógica en la Tabla Empleados </a></li>
-<li><a href="#ejemplo-2-simplificación-de-relaciones-complejas"
-id="toc-ejemplo-2-simplificación-de-relaciones-complejas">4.2 Ejemplo 2:
-Simplificación de Relaciones Complejas </a></li>
-<li><a href="#ejemplo-3-prevención-de-inconsistencias-de-tipo"
-id="toc-ejemplo-3-prevención-de-inconsistencias-de-tipo">4.3 Ejemplo 3:
-Prevención de Inconsistencias de Tipo</a></li>
-<li><a
-href="#ejemplo-4-análisis-de-una-vista-de-terceros-no-actualizable"
-id="toc-ejemplo-4-análisis-de-una-vista-de-terceros-no-actualizable">4.4
-Ejemplo 4: Análisis de una Vista de Terceros No Actualizable</a></li>
-</ul></li>
-</ul>
-</nav>
-        </aside>
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="GBD_UT6_Teoria_Vistas.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+    
+    
+        
         <main id="main-content">
             <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="GBD_UT6_Teoria_Vistas.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
             
@@ -621,7 +35,7 @@ class="anchor"></span>UNIDAD 6</p>
 
 <h3 id="ficha-técnica-de-la-unidad-didáctica">FICHA TÉCNICA DE LA UNIDAD
 DIDÁCTICA <a class="headerlink" href="#ficha-técnica-de-la-unidad-didáctica" title="Enlace permanente">¶</a></h3>
-<div class="table-wrapper"><table>
+<div class="table-wrapper"><div class="table-wrapper"><table>
 <tbody>
 <tr class="header">
 <td><strong>Unidad Didáctica</strong></td>
@@ -645,7 +59,7 @@ src="media_GBD_UT6_Teoria_Vistas/media/image2.png"
 style="height:0.23116in" /> semana de sesiones teórico-prácticas)</td>
 </tr>
 </tbody>
-</table></div>
+</table></div></div>
 <h3 id="índice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#índice-de-contenidos" title="Enlace permanente">¶</a></h3>
 <p><a href="#introducción-y-contextualización"><u>1. INTRODUCCIÓN Y
 CONTEXTUALIZACIÓN</u></a></p>
@@ -654,7 +68,7 @@ CONTEXTUALIZACIÓN</u></a></p>
 </blockquote>
 <p><a href="#operaciones-ddl-sobre-vistas"><u>2. OPERACIONES DDL SOBRE
 VISTAS</u></a></p>
-<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>2.1 Creación
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>2.1 Creación
 de Vistas (CREATE OR REPLACE VIEW)
 2.1.1 Sintaxis
 Completa y Parámetros del Motor
@@ -667,7 +81,7 @@ Vistas (DROP VIEW)
 2.3 Renombrado de
 Vistas (RENAME TABLE)
 2.4 Metadatos e
-Inspección de Vistas</code></pre></div>
+Inspección de Vistas</code></pre></div></div>
 <p><a href="#vistas-actualizables"><u>3. VISTAS
 ACTUALIZABLES</u></a></p>
 <blockquote>
@@ -749,14 +163,14 @@ Completa y Parámetros del Motor <a class="headerlink" href="#sintaxis-completa-
 <p>La creación de vistas en MySQL permite definir modificadores que
 influyen directamente en la optimización y en los privilegios de
 ejecución del motor.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>CREATE
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>CREATE
 [OR REPLACE]
 [ALGORITHM = {UNDEFINED | MERGE | TEMPTABLE}]
 [DEFINER = user]
 [SQL SECURITY { DEFINER | INVOKER }]
 VIEW view_name [(column_list)]
 AS select_statement
-[WITH [CASCADED | LOCAL] CHECK OPTION];</code></pre></div></h5>
+[WITH [CASCADED | LOCAL] CHECK OPTION];</code></pre></div></div></h5>
 <h5
 id="documentación-oficial-consulta-la-sintaxis-gramatical-formal-y-todos-los-modificadores-disponibles-para-este-comando-create-view-en-mysql-reference-manual---create-view-syntax">🔗
 Documentación Oficial: Consulta la sintaxis gramatical formal y todos
@@ -798,7 +212,7 @@ nombres físicos del diseño relacional.</p>
 <p>Si deseamos proyectar el personal de la oficina de Madrid ocultando
 sus atributos sensibles de salario, podemos definir alias en la cabecera
 del SELECT:</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>USE practica_dml;
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>USE practica_dml;
 CREATE OR REPLACE VIEW v_personal_madrid (ID, Empleado, Correo,
 Ciudad) AS
 SELECT
@@ -807,38 +221,38 @@ CONCAT(nombre, ' ', apellido1),
 email,
 'Madrid'
 FROM empleado
-WHERE codigo_oficina = 'OFI-MAD';</code></pre></div></h2>
+WHERE codigo_oficina = 'OFI-MAD';</code></pre></div></div></h2>
 <h2 id="eliminación-de-vistas-drop-view">2.2 Eliminación de Vistas (DROP
 VIEW) <a class="headerlink" href="#eliminación-de-vistas-drop-view" title="Enlace permanente">¶</a></h2>
 <p>Al eliminar una vista, únicamente se destruye su definición en el
 catálogo de metadatos. Las tablas físicas y los datos subyacentes
 permanecen inalterados.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DROP VIEW [IF EXISTS]
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DROP VIEW [IF EXISTS]
 view_name [, view_name] ...
-[RESTRICT | CASCADE];</code></pre></div></p>
+[RESTRICT | CASCADE];</code></pre></div></div></p>
 <p><strong>Ejemplo de uso práctico:</strong></p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DROP VIEW IF EXISTS v_personal_madrid;</code></pre></div></h2>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DROP VIEW IF EXISTS v_personal_madrid;</code></pre></div></div></h2>
 <h2 id="renombrado-de-vistas-rename-table">2.3 Renombrado de Vistas
 (RENAME TABLE) <a class="headerlink" href="#renombrado-de-vistas-rename-table" title="Enlace permanente">¶</a></h2>
 <p>Dado que las vistas se comportan en gran medida como tablas lógicas
 en el espacio de nombres de la base de datos, se utiliza el comando
 estándar de renombrado de tablas para modificar su identificador en el
 esquema.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>RENAME TABLE old_view_name TO new_view_name;</code></pre></div><strong>Ejemplo de uso práctico:</strong></p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>RENAME TABLE v_personal_madrid TO v_empleados_capital;</code></pre></div></h2>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>RENAME TABLE old_view_name TO new_view_name;</code></pre></div></div><strong>Ejemplo de uso práctico:</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>RENAME TABLE v_personal_madrid TO v_empleados_capital;</code></pre></div></div></h2>
 <h2 id="metadatos-e-inspección-de-vistas">2.4 Metadatos e Inspección de
 Vistas <a class="headerlink" href="#metadatos-e-inspección-de-vistas" title="Enlace permanente">¶</a></h2>
 <p>En un servidor corporativo con cientos de objetos, el administrador
 necesita auditar y verificar el catálogo físico de tablas para aislar
 exclusivamente las vistas del esquema y consultar su código fuente DDL
 de creación.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Listar todos los objetos indicando si son tablas base o
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Listar todos los objetos indicando si son tablas base o
 vistas
 SHOW FULL TABLES;
 -- Filtrar y mostrar únicamente las vistas del esquema activo
 SHOW FULL TABLES WHERE Table_type = 'VIEW';
 -- Consultar la sentencia exacta de creación (auditoría lógica)
-SHOW CREATE VIEW v_empleados_capital;</code></pre></div></h1>
+SHOW CREATE VIEW v_empleados_capital;</code></pre></div></div></h1>
 <h1 id="vistas-actualizables">3. VISTAS ACTUALIZABLES  <a class="headerlink" href="#vistas-actualizables" title="Enlace permanente">¶</a></h1>
 <h2 id="restricciones-de-modificación-insert-update-delete">3.1
 Restricciones de Modificación (INSERT, UPDATE, DELETE) <a class="headerlink" href="#restricciones-de-modificación-insert-update-delete" title="Enlace permanente">¶</a></h2>
@@ -918,7 +332,7 @@ Seguridad Lógica en la Tabla Empleados  <a class="headerlink" href="#ejemplo-1-
 para el personal técnico que muestre información del empleado, su email,
 fecha de contratación y oficina, ocultando sus campos sensibles de
 nómina (salario y comision).</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Creación de la vista segura
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Creación de la vista segura
 CREATE OR REPLACE VIEW v_empleados_publico AS
 SELECT
 codigo_empleado,
@@ -931,7 +345,7 @@ FROM empleado
 WHERE activo = TRUE;
 -- Consulta plana realizada por el usuario de soporte técnico
 SELECT * FROM v_empleados_publico WHERE codigo_oficina =
-'OFI-BAR';</code></pre></div></p>
+'OFI-BAR';</code></pre></div></div></p>
 <p><em>Análisis técnico:</em> Al conceder privilegios únicamente sobre
 v_empleados_publico y no sobre la tabla física empleado, se impide que
 usuarios con privilegios limitados conozcan el costo salarial
@@ -942,7 +356,7 @@ Simplificación de Relaciones Complejas  <a class="headerlink" href="#ejemplo-2-
 necesita pintar de forma unificada el catálogo de productos con sus
 respectivos fabricantes asociados sin tener que escribir consultas INNER
 JOIN repetidamente en el código de la aplicación.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Creación de la vista integradora de inventario
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Creación de la vista integradora de inventario
 CREATE OR REPLACE VIEW v_inventario_fabricantes AS
 SELECT
 p.codigo_producto AS Cod_Prod,
@@ -952,9 +366,9 @@ p.gama AS Categoria,
 f.nombre AS Fabricante,
 f.pais AS Pais_Origen
 FROM producto p
-INNER JOIN fabricante f ON p.codigo_fabricante = f.codigo;</code></pre></div></p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Consulta unificada directa desde la aplicación cliente
-SELECT * FROM v_inventario_fabricantes WHERE PVP &lt; 50.00;</code></pre></div><em>Análisis técnico:</em> Esta vista es un ejemplo de composición
+INNER JOIN fabricante f ON p.codigo_fabricante = f.codigo;</code></pre></div></div></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Consulta unificada directa desde la aplicación cliente
+SELECT * FROM v_inventario_fabricantes WHERE PVP &lt; 50.00;</code></pre></div></div><em>Análisis técnico:</em> Esta vista es un ejemplo de composición
 interna (INNER JOIN). <strong>No es actualizable con INSERT</strong> de
 forma directa ya que afecta a múltiples tablas (producto y fabricante)
 de manera simultánea en su proyección de origen.</p>
@@ -966,7 +380,7 @@ exclusivamente a la gama de 'Herramientas'. Debe garantizarse que, a
 través de dicho canal de edición, no sea posible agregar o renombrar un
 producto hacia otra gama distinta (como 'Ornamentales' o
 'Frutales').</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Creación de la vista restrictiva de gama
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Creación de la vista restrictiva de gama
 CREATE OR REPLACE VIEW v_gestion_herramientas AS
 SELECT
 codigo_producto,
@@ -991,14 +405,14 @@ VALUES ('PROD-O99', 'Ficus Benjamina Gigante', 45.00, 'Ornamentales',
 5);
 -- Error esperado en el motor de base de datos:
 -- ERROR 1369 (HY000): CHECK OPTION failed
-'practica_dml.v_gestion_herramientas'</code></pre></div>4.4
+'practica_dml.v_gestion_herramientas'</code></pre></div></div>4.4
 Ejemplo 4: Análisis de una Vista de Terceros No Actualizable</h2>
 <p>La base de datos Sakila de MySQL utiliza de forma extensa vistas para
 simplificar estructuras lógicas orientadas a la facturación y generación
 de informes de películas.</p>
 <p>Analicemos la estructura sintáctica de la vista de producción
 customer_list:</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>CREATE VIEW customer_list AS
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>CREATE VIEW customer_list AS
 SELECT
 cu.customer_id AS ID,
 CONCAT(cu.first_name, ' ', cu.last_name) AS name,
@@ -1012,7 +426,7 @@ cu.store_id AS SID
 FROM customer AS cu
 JOIN address AS a ON cu.address_id = a.address_id
 JOIN city ON a.city_id = city.city_id
-JOIN country ON city.country_id = country.country_id;</code></pre></div></p>
+JOIN country ON city.country_id = country.country_id;</code></pre></div></div></p>
 <p><em>Análisis técnico para debate y auditoría:</em></p>
 <ul>
 <li><blockquote>
@@ -1024,6 +438,9 @@ joins encadenados. Al violar las reglas de actualizabilidad, el motor
 físico impedirá cualquier acción DML de inserción a través de esta.</p>
 </blockquote></li>
 </ul>
+
+        </main>
+    </div>
 
         </main>
     </div>

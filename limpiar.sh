@@ -13,7 +13,7 @@ echo "======================================================================"
 find . -type d \( -name "docs" -o -name "site"  \) -exec rm -rf {} + 2>/dev/null
 
 # 2. Borrar archivos HTML generados
-find . -type f -name "*.html" -exec rm -f {} + 2>/dev/null
+# find . -type f -name "*.html" -exec rm -f {} + 2>/dev/null
 
 # 3. Borrar archivos de configuración mkdocs.yml generados
 find . -type f -name "mkdocs.yml" -exec rm -f {} + 2>/dev/null

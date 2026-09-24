@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASGBD - UT1 Teoria Configuracion</title>
+    <title>ASGBD - Ut1 Teoria Configuracion</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
-
 <body>
     <header id="site-header">
-        <div class="header-container">
-            <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo"
-                    style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD
-                    &ndash; UT1 Teoria Instalación, Configuracion y gestión de logs</span></div>
-            <nav class="top-nav">
-                <a href="index.html" class="nav-btn">Inicio</a>
-            </nav>
-        </div>
-    </header>
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD &ndash; Ut1 Teoria Configuracion</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+    </nav>
+  </div>
+</header>
     <div id="page-layout">
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT1_Teoria_Configuracion.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+    
+    
 
         <main id="main-content">
             <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a
@@ -39,17 +40,17 @@
             <h3 id="ficha-técnica-de-la-unidad">FICHA TÉCNICA DE LA UNIDAD <a class="headerlink"
                     href="#ficha-técnica-de-la-unidad" title="Enlace permanente">¶</a></h3>
             <div class="table-wrapper">
-                <table>
-                    <tbody>
-                        <tr class="header">
+                <div class="table-wrapper"><table>
+<tbody>
+<tr class="header">
                             <td><strong>Parámetro</strong></td>
                             <td><strong>Detalle</strong></td>
                         </tr>
-                        <tr class="odd">
+<tr class="odd">
                             <td><strong>Unidad Trabajo</strong></td>
                             <td>UT1: Instalación, Configuración y Gestión de Logs en MySQL 8.x</td>
                         </tr>
-                        <tr class="header">
+<tr class="header">
                             <td><strong>Resultados de Aprendizaje (RA) Asociados</strong></td>
                             <td>
                                 <p><strong>RA1:</strong> Identifica los elementos de un sistema
@@ -60,7 +61,7 @@
                                     de sus elementos.</p>
                             </td>
                         </tr>
-                        <tr class="odd">
+<tr class="odd">
                             <td><strong>Criterios de Evaluación (CE) Cubiertos</strong></td>
                             <td>
                                 <p><strong>CE 1.a:</strong> Se han identificado las funciones de los
@@ -79,12 +80,12 @@
                                     instalación.</p>
                             </td>
                         </tr>
-                        <tr class="header">
+<tr class="header">
                             <td><strong>Tiempo</strong></td>
                             <td>12 horas (Teoría: 2 / Tarea: 4 / Práctica: 6)</td>
                         </tr>
-                    </tbody>
-                </table>
+</tbody>
+</table></div>
             </div>
             <h3 id="índice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#índice-de-contenidos"
                     title="Enlace permanente">¶</a></h3>
@@ -355,10 +356,10 @@
                 alojados en directorios específicos:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code># Directorio para configuraciones del cliente local (mysql,mysqldump)
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Directorio para configuraciones del cliente local (mysql,mysqldump)
 /etc/mysql/conf.d/
 # Directorio de configuración específico para el servicio demonio del servidor (mysqld)
-/etc/mysql/mysql.conf.d/</code></pre>
+/etc/mysql/mysql.conf.d/</code></pre></div>
             </div>
             </h4>
             <h3 id="regla-de-precedencia-y-sobrescritura">Regla de Precedencia y
@@ -397,7 +398,7 @@ La ubicación predeterminada puede variar según la versión de MySQL y la forma
                 carpeta local ./config/custom_mysqld.cnf asociada a su contenedor:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>[mysqld]
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>[mysqld]
 # Red y Puertos
 bind-address = 0.0.0.0
 port = 3306
@@ -417,7 +418,7 @@ general_log_file = /var/log/mysql/query.log
 slow_query_log = ON
 slow_query_log_file = /var/log/mysql/slow.log
 long_query_time = 2.000000
-log_queries_not_using_indexes = ON</code></pre>
+log_queries_not_using_indexes = ON</code></pre></div>
             </div>
             </h4>
             <h1 id="gestión-avanzada-de-variables">5. GESTIÓN AVANZADA DE VARIABLES
@@ -429,10 +430,10 @@ log_queries_not_using_indexes = ON</code></pre>
                 filtrado:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>-- Obtener el valor de las conexiones máximas configuradas
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Obtener el valor de las conexiones máximas configuradas
 SHOW VARIABLES LIKE 'max_connections';
 -- Alternativa directa consultando las variables del sistema
-SELECT @@global.max_connections;</code></pre>
+SELECT @@global.max_connections;</code></pre></div>
             </div>
             </h4>
 <p>El archivo de configuración de MySQL puede contener una amplia variedad de parámetros que permiten ajustar y personalizar el comportamiento del servidor MySQL. Estos parámetros se dividen en varias categorías, y algunos de los parámetros más comunes incluyen:</p>
@@ -528,11 +529,11 @@ Es importante tener en cuenta que la configuración exacta puede variar según l
                     title="Enlace permanente">¶</a></h3>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>-- Forma 1: Directa mediante modificador de palabra clave
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Forma 1: Directa mediante modificador de palabra clave
 SET GLOBAL max_connections = 1000;
 
 -- Forma 2: Uso del calificador de ámbito con doble arroba (@@)
-SET @@GLOBAL.max_connections = 1000;</code></pre>
+SET @@GLOBAL.max_connections = 1000;</code></pre></div>
             </div>
             </p>
             <h3 id="sintaxis-de-variables-de-sesión-session-o-local">Sintaxis de
@@ -540,7 +541,7 @@ SET @@GLOBAL.max_connections = 1000;</code></pre>
                     href="#sintaxis-de-variables-de-sesión-session-o-local" title="Enlace permanente">¶</a></h3>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>-- Forma 1: Asignación explícita mediante SESSION
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Forma 1: Asignación explícita mediante SESSION
 SET SESSION sql_mode = 'TRADITIONAL';
 
 -- Forma 2: Uso del modificador local compatible con ANSI
@@ -559,7 +560,7 @@ SET @@LOCAL.sql_mode = 'TRADITIONAL';
 SET @@sql_mode = 'TRADITIONAL';
 
 -- Forma 6: Asignación implícita de sesión
-SET sql_mode = 'TRADITIONAL';</code></pre>
+SET sql_mode = 'TRADITIONAL';</code></pre></div>
             </div>
             </p>
             <h2 id="set-persist-y-set-persist_only"><strong>5.3</strong> SET PERSIST
@@ -575,10 +576,10 @@ SET sql_mode = 'TRADITIONAL';</code></pre>
             </p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>-- Persistir un cambio en caliente en la memoria del gestor y escribirlo en disco de forma concurrente
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Persistir un cambio en caliente en la memoria del gestor y escribirlo en disco de forma concurrente
 SET PERSIST max_connections = 250;
 -- Sintaxis alternativa equivalente
-SET @@PERSIST.max_connections = 250;</code></pre>
+SET @@PERSIST.max_connections = 250;</code></pre></div>
             </div>
             </p>
             <p><strong>¿Cómo funciona internamente?</strong></p>
@@ -601,7 +602,7 @@ SET @@PERSIST.max_connections = 250;</code></pre>
             </ol>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>{
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>{
 "Version": 2,
 "mysql_server": {
     "max_connections": {
@@ -613,7 +614,7 @@ SET @@PERSIST.max_connections = 250;</code></pre>
         }
     }
 }
-}</code></pre>
+}</code></pre></div>
             </div>
             </p>
             <p>Al arrancar, MySQL carga primero el archivo /etc/mysql/my.cnf
@@ -631,10 +632,10 @@ SET @@PERSIST.max_connections = 250;</code></pre>
             <p>Para estos casos, utilizamos:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>-- Escribe la variable en el archivo de autoconfiguración persistente de disco pero NO intenta aplicarla en caliente en RAM
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Escribe la variable en el archivo de autoconfiguración persistente de disco pero NO intenta aplicarla en caliente en RAM
 SET PERSIST_ONLY innodb_buffer_pool_size = 1073741824;
 -- Escribe la variable en el archivo de autoconfiguración persistente de disco pero NO intenta aplicarla en caliente en RAM
-SET PERSIST_ONLY innodb_buffer_pool_size = 1073741824;</code></pre>
+SET PERSIST_ONLY innodb_buffer_pool_size = 1073741824;</code></pre></div>
             </div>
             </p>
             <h4 id="section-3"> <a class="headerlink" href="#section-3" title="Enlace permanente">¶</a></h4>
@@ -643,10 +644,10 @@ SET PERSIST_ONLY innodb_buffer_pool_size = 1073741824;</code></pre>
             <p>Comando para limpiar y revocar la persistencia:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>-- Eliminar la persistencia de una variable concreta (volverá a heredar el valor del fichero my.cnf en el próximo reinicio)
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Eliminar la persistencia de una variable concreta (volverá a heredar el valor del fichero my.cnf en el próximo reinicio)
 RESET PERSIST max_connections;
 -- Limpiar completamente todas las variables añadidas dinámicamente al fichero mysqld-auto.cnf
-RESET PERSIST;</code></pre>
+RESET PERSIST;</code></pre></div>
             </div>
             <h1>6. FUNDAMENTOS TEÓRICOS DE LOS FICHEROS DE REGISTRO (LOGS)</h1>
             <p>Un fichero de registro, LOG o bitácora, almacena información
@@ -681,13 +682,11 @@ RESET PERSIST;</code></pre>
                     </blockquote>
                 </li>
                 <li>
-                    <blockquote>
-                        <p><strong>Transacciones y Operaciones (Mutación de Datos):</strong>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Transacciones y Operaciones (Mutación de Datos):
                             Registro físico de las sentencias ejecutadas por los usuarios que
                             afecten de forma directa a la estructura física de la base de datos
                             (sentencias DDL como CREATE o ALTER) o a la información contenida en
-                            ella (sentencias DML como INSERT, UPDATE o DELETE).</p>
-                    </blockquote>
+                            ella (sentencias DML como INSERT, UPDATE o DELETE).</code></pre></div>
                 </li>
             </ol>
             <h2 id="registro-de-errores-error-log-y-filtros-json"><strong>6.2</strong>
@@ -704,11 +703,11 @@ RESET PERSIST;</code></pre>
                 correspondiente del motor:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>-- Instalar el cargador de logs JSON
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Instalar el cargador de logs JSON
 INSTALL COMPONENT 'file://component_log_sink_json';
 -- Configurar los logs de errores para que escriban tanto en texto tradicional como en formato estructurado JSON
 SET PERSIST log_error_services = 'log_filter_internal;
-log_sink_internal; log_sink_json';</code></pre>
+log_sink_internal; log_sink_json';</code></pre></div>
             </div>Esto creará un archivo con formato estructurado denominado
             error.json dentro del directorio asignado de datos.</p>
             <h2 id="registro-general-de-consultas-general-query-log"><strong>6.3</strong>
@@ -720,9 +719,9 @@ log_sink_internal; log_sink_json';</code></pre>
                 motor por el cliente.</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code># Configuración física requerida en /etc/mysql/mysql.conf.d/mysqld.cnf
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Configuración física requerida en /etc/mysql/mysql.conf.d/mysqld.cnf
 general_log = ON
-general_log_file = /var/log/mysql/query.log</code></pre>
+general_log_file = /var/log/mysql/query.log</code></pre></div>
             </div>
             </p>
             <p>Advertencia Crítica de Seguridad y Rendimiento en Producción:</p>
@@ -739,16 +738,14 @@ general_log_file = /var/log/mysql/query.log</code></pre>
                     </blockquote>
                 </li>
                 <li>
-                    <blockquote>
-                        <p><strong>Privacidad e Información Sensible (Seguridad): </strong>El
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Privacidad e Información Sensible (Seguridad): El
                             General Log escribe las sentencias en formato plano ASCII. Si un script
                             o sistema web ejecuta comandos de creación de usuarios o inserción de
                             datos (INSERT INTO usuarios (usuario, password) VALUES ('sysadmin',
                             'SuperSecPass123')), las claves de usuario se escribirán en texto plano
                             dentro de /var/log/mysql/query.log. Si un intruso consiguiera acceso de
                             lectura al servidor de ficheros del sistema operativo, toda la seguridad
-                            del sistema se vería comprometida.</p>
-                    </blockquote>
+                            del sistema se vería comprometida.</code></pre></div>
                 </li>
                 <li>
                     <blockquote>
@@ -773,13 +770,13 @@ general_log_file = /var/log/mysql/query.log</code></pre>
             <p><strong>Configuración e Implementación:</strong></p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>-- Activar el motor de registro de consultas lentas a nivel global y persistente
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Activar el motor de registro de consultas lentas a nivel global y persistente
 SET PERSIST slow_query_log = ON;
 SET PERSIST slow_query_log_file = '/var/log/mysql/slow.log';
 -- Fijar el umbral de tiempo máximo a 2 segundos exactos 
 SET PERSIST long_query_time = 2.000000;
 -- Capturar también todas aquellas consultas ineficientes que no utilizan índices para su ejecución
-SET PERSIST log_queries_not_using_indexes = ON;</code></pre>
+SET PERSIST log_queries_not_using_indexes = ON;</code></pre></div>
             </div>
             </p>
             <h5 id="generación-de-prueba-y-simulación-de-latencia">Generación de
@@ -790,8 +787,8 @@ SET PERSIST log_queries_not_using_indexes = ON;</code></pre>
                 mediante la función de pausa de MySQL:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>-- Provocar de forma artificial una ejecución lenta controlada de 3 segundos
-SELECT NOW(), SLEEP(3);</code></pre>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Provocar de forma artificial una ejecución lenta controlada de 3 segundos
+SELECT NOW(), SLEEP(3);</code></pre></div>
             </div>
             </h5>
             <h5 id="parseo-técnico-del-registro">Parseo Técnico del Registro: <a class="headerlink"
@@ -800,7 +797,7 @@ SELECT NOW(), SLEEP(3);</code></pre>
                 el administrador observará la siguiente estructura detallada:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code># Time: 2026-06-07T11:42:01.354210Z
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Time: 2026-06-07T11:42:01.354210Z
 # User@Host: root[root] @ localhost [] Id: 12
 # Query_time: 3.001240 Lock_time: 0.000000 Rows_sent: 1
 Rows_examined: 1
@@ -810,7 +807,7 @@ SELECT NOW(), SLEEP(3);
 # User@Host: root[root] @ localhost [] Id: 12
 # Query_time: 3.001240 Lock_time: 0.000000 Rows_sent: 1 Rows_examined:1
 SET timestamp=1778235721;
-SELECT NOW(), SLEEP(3);</code></pre>
+SELECT NOW(), SLEEP(3);</code></pre></div>
             </div>
             </p>
             <p><strong>Métricas Clave de Análisis:</strong></p>
@@ -894,11 +891,11 @@ SELECT NOW(), SLEEP(3);</code></pre>
                 bruta o desajustes de conexión:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>SELECT USER,ERROR_NUMBER, ERROR_NAME, COUNT_STAR AS TOTAL_OCURRENCIAS, FIRST_SEEN AS PRIMERA_VEZ, LAST_SEEN AS ULTIMA_VEZ
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT USER,ERROR_NUMBER, ERROR_NAME, COUNT_STAR AS TOTAL_OCURRENCIAS, FIRST_SEEN AS PRIMERA_VEZ, LAST_SEEN AS ULTIMA_VEZ
 FROM performance_schema.events_errors_summary_by_user_by_error
 WHERE USER IS NOT NULL AND COUNT_STAR &gt; 0
 ORDER BY LAST_SEEN DESC
-LIMIT 20;</code></pre>
+LIMIT 20;</code></pre></div>
             </div>
             </h4>
             <p>Comprobación de Actividad SQL y Contador de consultas realizadas:</p>
@@ -908,10 +905,10 @@ LIMIT 20;</code></pre>
                 evaluar la carga de trabajo en el servidor:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code>SELECT USER, VARIABLE_NAME, VARIABLE_VALUE 
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT USER, VARIABLE_NAME, VARIABLE_VALUE 
 FROM performance_schema.status_by_user
 WHERE USER = 'root' AND VARIABLE_NAME LIKE 'Handler_read%'
-ORDER BY CAST(VARIABLE_VALUE AS UNSIGNED) DESC;</code></pre>
+ORDER BY CAST(VARIABLE_VALUE AS UNSIGNED) DESC;</code></pre></div>
             </div>
             </h1>
             <h1 id="buenas-prácticas-con-los-logs">8. BUENAS PRÁCTICAS CON LOS
@@ -925,11 +922,11 @@ ORDER BY CAST(VARIABLE_VALUE AS UNSIGNED) DESC;</code></pre>
                 que no pertenezcan al grupo de administración de la base de datos.</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code># Asignar la propiedad al usuario y grupo del demonio mysqld
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Asignar la propiedad al usuario y grupo del demonio mysqld
 sudo chown -R mysql:mysql /var/log/mysql
 # Restringir permisos de lectura/escritura únicamente al propietario
 sudo chmod 750 /var/log/mysql
-sudo chmod 640 /var/log/mysql/*.log</code></pre>
+sudo chmod 640 /var/log/mysql/*.log</code></pre></div>
             </div>
             </p>
             <p>2. Rotación de Logs para Evitar que el Disco se Llene:</p>
@@ -941,7 +938,7 @@ sudo chmod 640 /var/log/mysql/*.log</code></pre>
                 un archivo de configuración específico:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code># Archivo de Configuración del Rotador de Logs del Sistema Linux: /etc/logrotate.d/mysql-server
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Archivo de Configuración del Rotador de Logs del Sistema Linux: /etc/logrotate.d/mysql-server
 /var/log/mysql/*.log {
     weekly
     rotate 4
@@ -955,12 +952,14 @@ sudo chmod 640 /var/log/mysql/*.log</code></pre>
     # Forzar a MySQL a reabrir y recrear los archivos físicos tras la rotación de logs sin reiniciar el servicio
         /usr/bin/mysqladmin flush-logs
     endscript
-}</code></pre>
+}</code></pre></div>
             </div>
             </p>
 
         </main>
     </div>
-</body>
 
+        </main>
+    </div>
+</body>
 </html>

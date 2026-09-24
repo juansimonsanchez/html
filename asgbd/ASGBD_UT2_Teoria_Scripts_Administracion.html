@@ -4,500 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ASGBD - Ut2 Teoria Scripts Administracion</title>
-    <style>
-    
-:root {
-    --primary: #2563eb;
-    --primary-dark: #1d4ed8;
-    --bg-header: #1e3a8a;
-    --text-header: #ffffff;
-    --bg-body: #f8fafc;
-    --text-body: #1e293b;
-    --border-color: #cbd5e1;
-}
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 80px;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background: var(--bg-body);
-    color: var(--text-body);
-    min-height: 100vh;
-}
-
-h1, h2, h3, h4, h5, h6, [id], a[name] {
-    scroll-margin-top: 80px !important;
-}
-
-.headerlink {
-    display: inline-block;
-    margin-left: 0.4rem;
-    color: #94a3b8;
-    text-decoration: none;
-    font-size: 0.8em;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.2s, color 0.2s;
-}
-
-h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
-h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
-    visibility: visible;
-    opacity: 1;
-}
-
-.headerlink:hover {
-    color: var(--primary);
-}
-
-#site-header {
-    position: sticky;
-    top: 0;
-    z-index: 10000;
-    background: var(--bg-header);
-    color: var(--text-header);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-}
-
-.header-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1.5rem;
-    height: 62px;
-}
-
-.site-title {
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: #ffffff;
-    letter-spacing: -0.01em;
-}
-
-.top-nav {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.top-nav .nav-btn {
-    color: #cbd5e1;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 8px 14px;
-    border-radius: 6px;
-    font-size: 0.95rem;
-    transition: background 0.2s, color 0.2s;
-}
-
-.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
-    background: #1e293b;
-    color: #ffffff;
-}
-
-.top-nav .nav-btn.disabled {
-    opacity: 0.4;
-    pointer-events: none;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropbtn {
-    background: #1e293b;
-    color: #ffffff;
-    padding: 9px 16px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    border: 1px solid #334155;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.dropdown:hover .dropbtn, .dropbtn.active {
-    background: var(--primary);
-    border-color: var(--primary);
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #ffffff;
-    min-width: 320px;
-    max-width: 480px;
-    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
-    border-radius: 8px;
-    overflow: hidden;
-    z-index: 10001;
-    border: 1px solid #e2e8f0;
-    margin-top: 6px;
-}
-
-.dropdown-content a {
-    color: var(--text-body);
-    padding: 12px 18px;
-    text-decoration: none;
-    display: block;
-    font-size: 0.92rem;
-    border-bottom: 1px solid #f1f5f9;
-    line-height: 1.4;
-    transition: background 0.15s, color 0.15s;
-    word-break: break-word;
-}
-
-.dropdown-content a:last-child {
-    border-bottom: none;
-}
-
-.dropdown-content a:hover {
-    background-color: #eff6ff;
-    color: var(--primary);
-    font-weight: 600;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block !important;
-}
-
-#page-layout {
-    display: flex;
-    min-height: calc(100vh - 62px);
-}
-
-#left-panel {
-    width: 320px;
-    min-width: 320px;
-    background: #ffffff;
-    border-right: 1px solid #e2e8f0;
-    padding: 1.5rem 1.25rem;
-    box-sizing: border-box;
-    overflow-y: auto;
-    position: sticky;
-    top: 62px;
-    height: calc(100vh - 62px);
-}
-
-#left-panel h3 {
-    font-size: 1rem;
-    margin-top: 0;
-    color: #334155;
-    border-bottom: 2px solid #e2e8f0;
-    padding-bottom: 0.5rem;
-}
-
-#left-panel nav#TOC, #left-panel #TOC {
-    background: transparent !important;
-    border: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    box-shadow: none !important;
-}
-
-#left-panel ul {
-    list-style-type: none;
-    padding-left: 0.75rem;
-    margin: 0.5rem 0;
-}
-
-#left-panel li {
-    margin: 6px 0;
-}
-
-#left-panel a {
-    color: #475569;
-    text-decoration: none;
-    font-size: 0.9rem;
-    line-height: 1.4;
-    display: block;
-    transition: color 0.15s;
-}
-
-#left-panel a:hover {
-    color: var(--primary);
-    font-weight: 600;
-}
-
-#main-content {
-    flex: 1;
-    padding: 2.5rem 4rem;
-    box-sizing: border-box;
-    max-width: 100% !important;
-    width: calc(100% - 320px);
-    min-width: 0;
-}
-
-/* TABLAS ELEGANTES Y RESPONSIVE */
-.table-wrapper {
-    overflow-x: auto;
-    margin: 1.75rem 0;
-    border-radius: 8px;
-    border: 1px solid #cbd5e1;
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-}
-
-table {
-    width: 100% !important;
-    border-collapse: collapse !important;
-    margin: 0 !important;
-    font-size: 0.93rem;
-    background: #ffffff;
-    table-layout: auto !important;
-}
-
-th, td {
-    padding: 10px 14px !important;
-    border: 1px solid #cbd5e1 !important;
-    text-align: left;
-    vertical-align: top;
-    line-height: 1.5;
-    word-break: normal;
-    overflow-wrap: break-word;
-}
-
-td p, th p {
-    margin: 0 !important;
-    padding: 2px 0 !important;
-}
-
-th {
-    background-color: #0f172a !important;
-    color: #ffffff !important;
-    font-weight: 600;
-    font-size: 0.95rem;
-    border-bottom: 2px solid #0f172a !important;
-}
-
-tr:nth-child(even) td {
-    background-color: #f8fafc !important;
-}
-
-tr:hover td {
-    background-color: #f1f5f9 !important;
-}
-
-/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
-.code-wrapper {
-    position: relative;
-    margin: 1.5rem 0;
-    border-radius: 8px;
-    overflow: hidden;
-    background: #0f172a;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.copy-btn {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    background: #334155;
-    color: #f8fafc;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 5px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
-    z-index: 10;
-}
-
-.copy-btn:hover {
-    background: #2563eb;
-}
-
-pre {
-    margin: 0 !important;
-    padding: 1.25rem 1.25rem !important;
-    background: #0f172a !important;
-    color: #f8fafc !important;
-    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
-    font-size: 0.92rem !important;
-    line-height: 1.6 !important;
-    overflow-x: auto !important;
-    white-space: pre-wrap !important;
-    word-break: break-all !important;
-}
-
-code {
-    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
-}
-
-p code, li code {
-    background: #e2e8f0;
-    color: #0f172a;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 0.9em;
-}
-
-img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
-
-/* RESPONSIVE DESIGN PARA MÓVILES Y TABLETS */
-@media (max-width: 768px) {
-    .header-container {
-        height: auto;
-        flex-direction: column;
-        padding: 0.75rem 1rem;
-        gap: 0.6rem;
-    }
-    
-    .site-title {
-        font-size: 1.05rem;
-        text-align: center;
-        justify-content: center;
-    }
-
-    .site-title img {
-        height: 28px !important;
-    }
-
-    .top-nav {
-        flex-wrap: wrap;
-        justify-content: center;
-        width: 100%;
-        gap: 0.35rem;
-    }
-
-    .top-nav .nav-btn, .dropbtn {
-        padding: 6px 10px;
-        font-size: 0.85rem;
-    }
-
-    .dropdown-content {
-        min-width: 240px;
-        max-width: 90vw;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    #page-layout {
-        flex-direction: column;
-    }
-
-    #left-panel {
-        width: 100% !important;
-        min-width: 0 !important;
-        height: auto !important;
-        position: static !important;
-        border-right: none !important;
-        border-bottom: 2px solid #e2e8f0;
-        padding: 1rem !important;
-    }
-
-    #main-content {
-        width: 100% !important;
-        padding: 1.25rem 1rem !important;
-    }
-
-    iframe {
-        height: 60vh !important;
-    }
-
-    th, td {
-        padding: 8px 10px !important;
-        font-size: 0.85rem !important;
-    }
-
-    pre {
-        padding: 0.85rem !important;
-        font-size: 0.82rem !important;
-    }
-}
-
-    </style>
-    <script>
-    
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.dropdown').forEach(dd => {
-        const btn = dd.querySelector('.dropbtn');
-        const content = dd.querySelector('.dropdown-content');
-        if (btn && content) {
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const isOpen = content.style.display === 'block';
-                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
-                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
-                if (!isOpen) {
-                    content.style.display = 'block';
-                    btn.classList.add('active');
-                }
-            });
-        }
-    });
-
-    document.addEventListener('click', () => {
-        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
-        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
-    });
-
-    // Controlador universal de clics en enlaces ancla (#...)
-    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const rawHref = this.getAttribute('href') || '';
-            const hashIdx = rawHref.indexOf('#');
-            if (hashIdx === -1) return;
-            const hash = rawHref.substring(hashIdx + 1);
-            if (!hash) return;
-            
-            let targetId = hash;
-            try { targetId = decodeURIComponent(hash); } catch(err) {}
-
-            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
-            if (!targetEl) {
-                for (let el of document.querySelectorAll('[id]')) {
-                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
-                        targetEl = el;
-                        break;
-                    }
-                }
-            }
-
-            if (targetEl) {
-                e.preventDefault();
-                const headerOffset = 75;
-                const elementPosition = targetEl.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-                
-                if (history.pushState) {
-                    history.pushState(null, null, '#' + targetId);
-                }
-            }
-        });
-    });
-});
-
-function copyCode(btn) {
-    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
-    navigator.clipboard.writeText(code).then(() => {
-        const orig = btn.innerText;
-        btn.innerText = '✅ ¡Copiado!';
-        btn.style.background = '#16a34a';
-        setTimeout(() => {
-            btn.innerText = orig;
-            btn.style.background = '#334155';
-        }, 2000);
-    });
-}
-
-    </script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 <body>
     <header id="site-header">
@@ -505,96 +13,16 @@ function copyCode(btn) {
     <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD &ndash; Ut2 Teoria Scripts Administracion</span></div>
     <nav class="top-nav">
       <a href="index.html" class="nav-btn">Inicio</a>
-      <a href="ASGBD_Presentacion.html" class="nav-btn">Presentación</a>
-      <a href="ASGBD_UT2_Tarea_Programacion_Scripts.html" class="nav-btn">Programación</a>
-      <div class="dropdown">
-        <button class="dropbtn" type="button">Teoría ▾</button>
-        <div class="dropdown-content">
-          <a href="ASGBD_UT1_Teoria_Configuracion.html">ASGBD UT1 Teoria Configuracion</a>
-          <a href="ASGBD_UT2_Teoria_Scripts_Administracion.html">ASGBD UT2 Teoria Scripts Administracion</a>
-          <a href="ASGBD_UT3_Teoria_Usuarios_roles.html">ASGBD UT3 Teoria Usuarios roles</a>
-          <a href="ASGBD_UT4_Teoría_Planificación_Seguridad.html">ASGBD UT4 Teoría Planificación Seguridad</a>
-          <a href="ASGBD_UT5_Teoria_Optimizacion_Consultas.html">ASGBD UT5 Teoria Optimizacion Consultas</a>
-          <a href="ASGBD_UT6_Teoría_BD_Distribuidas_alta_disponibilidad.html">ASGBD UT6 Teoría BD Distribuidas alta disponibilidad</a>
-          <a href="ASGBD_Proyecto_integral.html">ASGBD Proyecto integral</a>
-        </div>
-      </div>
-      <div class="dropdown">
-        <button class="dropbtn" type="button">Tareas y Prácticas ▾</button>
-        <div class="dropdown-content">
-          <a href="ASGBD_UT1_Tarea_Configuracion.html">ASGBD UT1 Tarea Configuracion</a>
-          <a href="ASGBD_UT1_Practica.html">ASGBD UT1 Practica</a>
-          <a href="ASGBD_UT2_Practica._Automatizacion_Mantenimiento.html">ASGBD UT2 Practica. Automatizacion Mantenimiento</a>
-          <a href="ASGBD_UT3_Practica_Auditoria_Automatizacion.html">ASGBD UT3 Practica Auditoria Automatizacion</a>
-          <a href="ASGBD_UT3_Tarea_Enunciado.html">ASGBD UT3 Tarea Enunciado</a>
-          <a href="ASGBD_UT4_Tarea_Eventos.html">ASGBD UT4 Tarea Eventos</a>
-          <a href="ASGBD_UT4_Practica_Automatizacion_Mantenimiento.html">ASGBD UT4 Practica Automatizacion Mantenimiento</a>
-          <a href="ASGBD_UT5_Practica_Automatizacion.html">ASGBD UT5 Practica Automatizacion</a>
-          <a href="ASGBD_UT5_Práctica_Tunning_Servidores_EXPLAIN_Avanzado.html">ASGBD UT5 Práctica Tunning Servidores EXPLAIN Avanzado</a>
-          <a href="ASGBD_UT5_Tarea_Seguridad.html">ASGBD UT5 Tarea Seguridad</a>
-          <a href="ASGBD_UT5_Tarea_Auditoría_Rendimiento_Indexacion.html">ASGBD UT5 Tarea Auditoría Rendimiento Indexacion</a>
-          <a href="ASGBD_UT6_Practica_BD_Distribuidas_Sharding.html">ASGBD UT6 Practica BD Distribuidas Sharding</a>
-          <a href="ASGBD_UT6_Practica_Alta_Disponibilidad.html">ASGBD UT6 Practica Alta Disponibilidad</a>
-        </div>
-      </div>
     </nav>
   </div>
 </header>
     <div id="page-layout">
-        <aside id="left-panel">
-            <h3>Índice del Tema</h3>
-            <nav id="TOC" role="doc-toc">
-<ul>
-<li><a href="#section" id="toc-section"></a></li>
-<li><a href="#repaso-teórico" id="toc-repaso-teórico">1. Repaso
-Teórico</a>
-<ul>
-<li><a href="#procedimientos-almacenados-stored-procedures"
-id="toc-procedimientos-almacenados-stored-procedures">1.1.
-Procedimientos Almacenados (Stored Procedures)</a></li>
-<li><a href="#section-1" id="toc-section-1"></a></li>
-<li><a href="#funciones-almacenadas-stored-functions"
-id="toc-funciones-almacenadas-stored-functions">1.2. Funciones
-Almacenadas (Stored Functions)</a></li>
-<li><a href="#section-2" id="toc-section-2"></a></li>
-<li><a href="#disparadores-triggers" id="toc-disparadores-triggers">1.3.
-Disparadores (Triggers)</a></li>
-</ul></li>
-<li><a href="#ventajas-de-la-programación-en-la-administración"
-id="toc-ventajas-de-la-programación-en-la-administración">2. Ventajas
-de la programación en la administración</a></li>
-<li><a href="#catálogo-del-sistema-metadatos"
-id="toc-catálogo-del-sistema-metadatos">3. Catálogo del Sistema
-(Metadatos)</a>
-<ul>
-<li><a href="#information_schema-el-diccionario-de-datos"
-id="toc-information_schema-el-diccionario-de-datos">3.1.
-information_schema (El Diccionario de Datos)</a></li>
-<li><a
-href="#base-de-datos-mysql-el-repositorio-de-seguridad-y-privilegios"
-id="toc-base-de-datos-mysql-el-repositorio-de-seguridad-y-privilegios">3.2.
-Base de Datos mysql (El Repositorio de Seguridad y Privilegios)</a></li>
-<li><a href="#base-de-datos-performance_schema"
-id="toc-base-de-datos-performance_schema">3.3. Base de Datos
-performance_schema </a></li>
-<li><a href="#base-de-datos-sys-la-abstracción-simplificada"
-id="toc-base-de-datos-sys-la-abstracción-simplificada">3.4. Base de
-Datos sys (La Abstracción Simplificada)</a>
-<ul>
-<li><a href="#section-3" id="toc-section-3"></a></li>
-</ul></li>
-</ul></li>
-<li><a href="#automatización-mediante-scripts-externos-bash"
-id="toc-automatización-mediante-scripts-externos-bash">4.
-Automatización Mediante Scripts Externos (Bash)</a></li>
-<li><a
-href="#ejemplos-prácticos-de-scripts-de-administración-sencillos-y-documentados"
-id="toc-ejemplos-prácticos-de-scripts-de-administración-sencillos-y-documentados">5.
-Ejemplos Prácticos de Scripts de Administración (Sencillos y
-Documentados)</a></li>
-</ul>
-</nav>
-        </aside>
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT2_Teoria_Scripts_Administracion.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+    
+    
+        
         <main id="main-content">
             <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT2_Teoria_Scripts_Administracion.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
             
@@ -606,7 +34,7 @@ Administración y Automatización en el SGBD</p></h1>
 </header>
 
 <p><strong>FICHA TÉCNICA DE LA UNIDAD</strong></p>
-<div class="table-wrapper"><table>
+<div class="table-wrapper"><div class="table-wrapper"><table>
 <tbody>
 <tr class="header">
 <td><strong>Unidad Trabajo</strong></td>
@@ -627,7 +55,7 @@ sistema gestor, realizando guiones y programando tareas.</td>
 módulo ASGBD)</td>
 </tr>
 </tbody>
-</table></div>
+</table></div></div>
 <h2 id="section"> <a class="headerlink" href="#section" title="Enlace permanente">¶</a></h2>
 <p><strong>ÍNDICE DE CONTENIDOS</strong></p>
 <p><a href="#repaso-teórico"><u>1. Repaso Teórico</u></a></p>
@@ -705,7 +133,7 @@ particionamiento de tablas, purgas programadas de logs).</p>
 </blockquote></li>
 </ul>
 <p><strong>Ejemplo de Sintaxis Básica (MySQL)</strong></p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
 CREATE PROCEDURE sp_crear_usuario_lectura(
 IN p_username VARCHAR(50),
 IN p_password VARCHAR(50),
@@ -726,7 +154,7 @@ EXECUTE stmt2;
 DEALLOCATE PREPARE stmt2;
 FLUSH PRIVILEGES;
 END //
-DELIMITER ;</code></pre></div></h2>
+DELIMITER ;</code></pre></div></div></h2>
 <h2 id="funciones-almacenadas-stored-functions">1.2. Funciones
 Almacenadas (Stored Functions) <a class="headerlink" href="#funciones-almacenadas-stored-functions" title="Enlace permanente">¶</a></h2>
 <p>A diferencia de los procedimientos, las funciones están diseñadas
@@ -757,7 +185,7 @@ del catálogo.</p>
 </blockquote></li>
 </ul>
 <p><strong>Ejemplo de Sintaxis Básica (MySQL)</strong></p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
 CREATE FUNCTION fn_obtener_tamano_megas(p_bytes BIGINT)
 RETURNS DECIMAL(10,2)
 DETERMINISTIC
@@ -769,7 +197,7 @@ DELIMITER ;
 SELECT table_name, fn_obtener_tamano_megas(data_length) AS
 'Tamano_MB'
 FROM information_schema.tables
-WHERE table_schema = 'mi_base_datos';</code></pre></div></h2>
+WHERE table_schema = 'mi_base_datos';</code></pre></div></div></h2>
 <h2 id="disparadores-triggers">1.3. Disparadores (Triggers) <a class="headerlink" href="#disparadores-triggers" title="Enlace permanente">¶</a></h2>
 <p>Un disparador es un bloque de código que se ejecuta <strong>de manera
 automática</strong> en respuesta a un evento DML (INSERT, UPDATE o
@@ -793,10 +221,10 @@ sincronizaciones).</p>
 <p><strong>Variables Especiales:</strong></p>
 </blockquote>
 <ul>
-<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>OLD: Accede a los valores de la fila antes del
-evento (disponible en UPDATE y DELETE).</code></pre></div></li>
-<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>NEW: Accede a los nuevos valores que se van a guardar (disponible en
-INSERT y UPDATE).</code></pre></div></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>OLD: Accede a los valores de la fila antes del
+evento (disponible en UPDATE y DELETE).</code></pre></div></div></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>NEW: Accede a los nuevos valores que se van a guardar (disponible en
+INSERT y UPDATE).</code></pre></div></div></li>
 </ul></li>
 <li><blockquote>
 <p><strong>Uso Administrativo:</strong> Monitorización de cambios
@@ -805,7 +233,7 @@ integridad referencial compleja.</p>
 </blockquote></li>
 </ul>
 <p><strong>Ejemplo de Sintaxis de Auditoría (MySQL)</strong></p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>CREATE TABLE log_cambios_privilegios (
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>CREATE TABLE log_cambios_privilegios (
 id INT AUTO_INCREMENT PRIMARY KEY,
 usuario_afectado VARCHAR(100),
 accion VARCHAR(20),
@@ -821,12 +249,12 @@ INSERT INTO log_cambios_privilegios (usuario_afectado, accion,
 realizado_por)
 VALUES (OLD.user, 'MODIFICACION_PERMISOS', USER());
 END //
-DELIMITER ;</code></pre></div>2. Ventajas
+DELIMITER ;</code></pre></div></div>2. Ventajas
 de la programación en la administración</h1>
 <p>El uso de estos elementos dentro del SGBD ofrece tres ventajas
 operativas críticas para un Administrador de Sistemas de Bases de Datos
 (ASGBD):</p>
-<div class="table-wrapper"><table>
+<div class="table-wrapper"><div class="table-wrapper"><table>
 <thead>
 <tr class="header">
 <th><strong>Ventaja</strong></th>
@@ -856,7 +284,7 @@ de miles de sentencias SQL secuenciales.</td>
 cloud.</td>
 </tr>
 </tbody>
-</table></div>
+</table></div></div>
 <h1 id="catálogo-del-sistema-metadatos">3. Catálogo del Sistema
 (Metadatos) <a class="headerlink" href="#catálogo-del-sistema-metadatos" title="Enlace permanente">¶</a></h1>
 <p>MySQL almacena la información sobre su propia estructura (metadatos)
@@ -898,7 +326,7 @@ procedimientos y funciones del SGBD.</p>
 datos</strong></p>
 <p>Esta consulta calcula el espacio real en disco de cada base de datos
 (Datos + Índices) expresado en Megabytes:</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT
 table_schema AS 'Base de Datos',
 ROUND(SUM(data_length + index_length) / 1024 / 1024, 2) AS 'Tamaño
 total (MB)',
@@ -906,13 +334,13 @@ ROUND(SUM(data_length) / 1024 / 1024, 2) AS 'Solo Datos (MB)',
 ROUND(SUM(index_length) / 1024 / 1024, 2) AS 'Solo Índices (MB)'
 FROM information_schema.tables
 GROUP BY table_schema
-ORDER BY (SUM(data_length + index_length)) DESC;</code></pre></div></p>
+ORDER BY (SUM(data_length + index_length)) DESC;</code></pre></div></div></p>
 <p><strong>Caso Práctico 2: Detectar tablas sin Clave Primaria (Primary
 Key)</strong></p>
 <p>La falta de claves primarias degrada catastróficamente el
 rendimiento, especialmente en entornos con replicación activa
 (Master-Slave) o clústeres.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT
 t.table_schema AS 'Base de Datos',
 t.table_name AS 'Tabla sin PK'
 FROM information_schema.tables t
@@ -923,7 +351,7 @@ AND tc.constraint_type = 'PRIMARY KEY'
 WHERE tc.constraint_name IS NULL
 AND t.table_schema NOT IN ('information_schema', 'mysql',
 'performance_schema', 'sys')
-AND t.table_type = 'BASE TABLE';</code></pre></div>3.2.
+AND t.table_type = 'BASE TABLE';</code></pre></div></div>3.2.
 Base de Datos mysql (El Repositorio de Seguridad y Privilegios)</h2>
 <p>A diferencia de information_schema, la base de datos mysql contiene
 tablas físicas persistentes en el disco. Es el cerebro de la seguridad
@@ -946,7 +374,7 @@ extremadamente granulares a nivel de tabla o columna.</p>
 contraseñas de usuarios</strong></p>
 <p>Para cumplir con normativas de seguridad (como el RGPD), un SysAdmin
 debe controlar la antigüedad y vigencia de las cuentas del sistema:</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT
 user AS 'Usuario',
 host AS 'Host de Origen',
 password_expired AS '¿Expirada?',
@@ -954,7 +382,7 @@ password_last_changed AS 'Último cambio',
 password_lifetime AS 'Días de ciclo de vida'
 FROM mysql.user
 WHERE ssl_type != '' OR password_expired = 'Y' OR user !=
-'mysql.infoschema';</code></pre></div>3.3. Base de Datos
+'mysql.infoschema';</code></pre></div></div>3.3. Base de Datos
 performance_schema </h2>
 <p>Se enfoca de forma estricta en el rendimiento físico del servidor.
 Cuenta con una arquitectura basada en <strong>Instrumentos</strong>
@@ -978,7 +406,7 @@ por cada usuario del sistema.</p>
 </ul>
 <p><strong>Caso Práctico 4: Listar los errores más comunes provocados
 por los usuarios</strong></p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT
 user AS 'Usuario',
 error_number AS 'Código de Error',
 error_name AS 'Nombre de Error',
@@ -987,7 +415,7 @@ first_seen AS 'Primera detección',
 last_seen AS 'Último registro'
 FROM performance_schema.events_errors_summary_by_user_by_error
 WHERE sum_error_raised &gt; 0
-ORDER BY sum_error_raised DESC;</code></pre></div>3.4. Base de
+ORDER BY sum_error_raised DESC;</code></pre></div></div>3.4. Base de
 Datos sys (La Abstracción Simplificada)</h2>
 <p>La complejidad de performance_schema dificulta su uso rutinario en el
 día a día del SysAdmin. Para solucionar esto, MySQL incluye la base de
@@ -995,7 +423,7 @@ datos sys, que agrupa vistas estructuradas de forma intuitiva, funciones
 y procedimientos predefinidos.</p>
 <p><strong>Caso Práctico 5: Identificar las consultas SQL que provocan
 mayor latencia</strong></p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT
 query AS 'Sentencia SQL',
 db AS 'Base de Datos',
 exec_count AS 'Total Ejecuciones',
@@ -1003,19 +431,19 @@ total_latency AS 'Tiempo Total acumulado',
 max_latency AS 'Peor latencia registrada'
 FROM sys.statement_analysis
 ORDER BY total_latency DESC
-LIMIT 5;</code></pre></div></h3>
+LIMIT 5;</code></pre></div></div></h3>
 <p><strong>Caso Práctico 6: Encontrar tablas con lecturas
 completas</strong></p>
 <p>La monitorización sistemática de consultas que no aprovechan los
 índices evita problemas de degradación del disco físico y ahorra energía
 en el centro de datos.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT
 schemaname AS 'Base de Datos',
 tablename AS 'Tabla',
 scans AS 'Lecturas Completas',
 rows_sel AS 'Filas devueltas'
 FROM sys.schema_tables_with_full_table_scans
-ORDER BY scans DESC;</code></pre></div>4.
+ORDER BY scans DESC;</code></pre></div></div>4.
 Automatización Mediante Scripts Externos (Bash)</h1>
 <p>La verdadera automatización de la administración ocurre cuando
 conectamos el SGBD con el Sistema Operativo utilizando scripts de
@@ -1044,7 +472,7 @@ Check)</strong></p>
 <p>Este script verifica si el servicio MySQL está activo en el sistema
 operativo y si responde a consultas básicas. Si falla, genera una alerta
 visual y un registro en el log del sistema.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>#!/bin/bash
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>#!/bin/bash
 #
 ======================================================================
 # SCRIPT DE COMPROBACIÓN DE SALUD DE MYSQL
@@ -1081,12 +509,12 @@ base de datos."
 exit 1
 fi
 echo "=== CONTROL DE SALUD FINALIZADO ==="
-exit 0</code></pre></div><strong>Script 2: Copia de Seguridad Sencilla (Backup
+exit 0</code></pre></div></div><strong>Script 2: Copia de Seguridad Sencilla (Backup
 Automatizado)</strong></p>
 <p>Genera un respaldo (.sql) de una base de datos específica, le asigna
 una marca de tiempo para no sobreescribir copias anteriores y comprime
 el archivo para ahorrar espacio en disco.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>#!/bin/bash
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>#!/bin/bash
 #
 =======================================================================
 # SCRIPT DE COPIA DE SEGURIDAD INDIVIDUAL
@@ -1127,13 +555,13 @@ echo "[ERROR] Ocurrió un fallo durante el volcado de la base de
 datos."
 exit 1
 fi
-exit 0</code></pre></div><strong>Script 3: Comprobación de Consumo y Limpieza de
+exit 0</code></pre></div></div><strong>Script 3: Comprobación de Consumo y Limpieza de
 Logs</strong></p>
 <p>Un administrador debe controlar el tamaño de la base de datos. Este
 script consulta el catálogo information_schema para verificar si el
 tamaño supera un límite seguro y limpia una tabla histórica si es
 necesario para liberar espacio.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>#!/bin/bash
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>#!/bin/bash
 #
 =======================================================================
 # SCRIPT DE DIAGNÓSTICO DE TAMAÑO Y PURGA DE TABLAS
@@ -1176,7 +604,10 @@ else
 echo "[INFORMACIÓN] El espacio ocupado está dentro de los rangos
 óptimos de operación."
 fi
-exit 0</code></pre></div></p>
+exit 0</code></pre></div></div></p>
+
+        </main>
+    </div>
 
         </main>
     </div>

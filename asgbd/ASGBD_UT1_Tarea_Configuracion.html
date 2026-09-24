@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,20 +7,21 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
-
 <body>
     <header id="site-header">
-        <div class="header-container">
-            <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo"
-                    style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD
-                    &ndash; UT1 Tarea Configuracion</span></div>
-            <nav class="top-nav">
-                <a href="index.html" class="nav-btn">Inicio</a>
-
-            </nav>
-        </div>
-    </header>
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD &ndash; Ut1 Tarea Configuracion</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+    </nav>
+  </div>
+</header>
     <div id="page-layout">
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT1_Tarea_Configuracion.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+    
+    
 
         <main id="main-content">
             <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a
@@ -37,19 +37,19 @@
                 ACTIVIDAD <a class="headerlink" href="#ficha-técnica-de-la-actividad" title="Enlace permanente">¶</a>
             </h3>
             <div class="table-wrapper">
-                <table>
-                    <tbody>
-                        <tr class="header">
+                <div class="table-wrapper"><table>
+<tbody>
+<tr class="header">
                             <td><strong>Unidad Didáctica</strong></td>
                             <td><strong>UT1</strong>: Instalación, Configuración y Gestión de Logs
                                 en MySQL 8.x</td>
                         </tr>
-                        <tr class="odd">
+<tr class="odd">
                             <td><strong>Nombre de la Tarea</strong></td>
                             <td><strong>Tarea 1</strong>: Configuración de variables y sistemas de
                                 logs</td>
                         </tr>
-                        <tr class="header">
+<tr class="header">
                             <td><strong>Resultado de Aprendizaje (RA)</strong></td>
                             <td>
                                 <p><strong>RA1:</strong> Identifica los elementos de un sistema
@@ -60,7 +60,7 @@
                                     de sus elementos.</p>
                             </td>
                         </tr>
-                        <tr class="odd">
+<tr class="odd">
                             <td><strong>Criterios de Evaluación (CE)</strong></td>
                             <td>
                                 <p><strong>CE 2.c:</strong> Se han configurado los parámetros del
@@ -71,12 +71,12 @@
                                     instalación.</p>
                             </td>
                         </tr>
-                        <tr class="header">
+<tr class="header">
                             <td><strong>Tiempo</strong></td>
                             <td>4 horas</td>
                         </tr>
-                    </tbody>
-                </table>
+</tbody>
+</table></div>
             </div>
             <h4 id="método-de-entrega-y-formato">MÉTODO DE ENTREGA Y FORMATO <a class="headerlink"
                     href="#método-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
@@ -343,18 +343,18 @@
                 CALIFICACIÓN (RÚBRICA GENERAL) <a class="headerlink" href="#criterios-de-calificación-rúbrica-general"
                     title="Enlace permanente">¶</a></h4>
             <div class="table-wrapper">
-                <table>
-                    <thead>
-                        <tr class="header">
+                <div class="table-wrapper"><table>
+<thead>
+<tr class="header">
                             <th><strong>Actividad / Ejercicio</strong></th>
                             <th><strong>Muy Bien (100%)</strong></th>
                             <th><strong>Bien (60%)</strong></th>
                             <th><strong>Insuficiente (0%)</strong></th>
                             <th><strong>Peso</strong></th>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="odd">
+</thead>
+<tbody>
+<tr class="odd">
                             <td><strong>Ej. 1, 2 y 5: Variables y Persistencia</strong></td>
                             <td>Identifica con precisión las variables del sistema. Aplica la
                                 persistencia mediante SET PERSIST y documenta de forma impecable el JSON
@@ -365,7 +365,7 @@
                                 forma grave.</td>
                             <td><strong>30%</strong></td>
                         </tr>
-                        <tr class="header">
+<tr class="header">
                             <td><strong>Ej. 3 y 4: Modificación Física y Slow Log</strong></td>
                             <td>Modifica con éxito el archivo físico de configuración y aplica los
                                 logs. Simula la latencia con SLEEP() e interpreta correctamente todas
@@ -376,7 +376,7 @@
                                 no genera el registro de consultas lentas.</td>
                             <td><strong>40%</strong></td>
                         </tr>
-                        <tr class="odd">
+<tr class="odd">
                             <td><strong>Ej. 6: performance_schema</strong></td>
                             <td>Provoca el error de acceso con éxito, localiza su código numérico y
                                 escribe consultas óptimas de auditoría de errores y de estado en la base
@@ -387,26 +387,26 @@
                                 documenta el apartado.</td>
                             <td><strong>30%</strong></td>
                         </tr>
-                    </tbody>
-                </table>
+</tbody>
+</table></div>
             </div>
             <h4 id="criterio-específico-de-documentación-y-capturas-1.5-puntos">CRITERIO
                 ESPECÍFICO DE DOCUMENTACIÓN Y CAPTURAS (1.5 Puntos) <a class="headerlink"
                     href="#criterio-específico-de-documentación-y-capturas-1.5-puntos" title="Enlace permanente">¶</a>
             </h4>
             <div class="table-wrapper">
-                <table>
-                    <thead>
-                        <tr class="header">
+                <div class="table-wrapper"><table>
+<thead>
+<tr class="header">
                             <th><strong>Criterio</strong></th>
                             <th><strong>Puntuación</strong></th>
                             <th><strong>Realizado correctamente</strong></th>
                             <th><strong>Realizado con algún error</strong></th>
                             <th><strong>No realizado</strong></th>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="odd">
+</thead>
+<tbody>
+<tr class="odd">
                             <td><strong>Calidad de la documentación y validación</strong></td>
                             <td><strong>1.5 Puntos</strong></td>
                             <td>Documento impecable en formato PDF. Las capturas son legibles, se
@@ -418,12 +418,14 @@
                             <td>No entrega documento o es totalmente ilegible, sin capturas, o
                                 copiado de otro alumno (calificación final: 0).</td>
                         </tr>
-                    </tbody>
-                </table>
+</tbody>
+</table></div>
             </div>
 
         </main>
     </div>
-</body>
 
+        </main>
+    </div>
+</body>
 </html>

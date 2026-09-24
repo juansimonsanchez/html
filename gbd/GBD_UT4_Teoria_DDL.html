@@ -4,500 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GBD - Ut4 Teoria Ddl</title>
-    <style>
-    
-:root {
-    --primary: #2563eb;
-    --primary-dark: #1d4ed8;
-    --bg-header: #1e3a8a;
-    --text-header: #ffffff;
-    --bg-body: #f8fafc;
-    --text-body: #1e293b;
-    --border-color: #cbd5e1;
-}
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 80px;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background: var(--bg-body);
-    color: var(--text-body);
-    min-height: 100vh;
-}
-
-h1, h2, h3, h4, h5, h6, [id], a[name] {
-    scroll-margin-top: 80px !important;
-}
-
-.headerlink {
-    display: inline-block;
-    margin-left: 0.4rem;
-    color: #94a3b8;
-    text-decoration: none;
-    font-size: 0.8em;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.2s, color 0.2s;
-}
-
-h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
-h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
-    visibility: visible;
-    opacity: 1;
-}
-
-.headerlink:hover {
-    color: var(--primary);
-}
-
-#site-header {
-    position: sticky;
-    top: 0;
-    z-index: 10000;
-    background: var(--bg-header);
-    color: var(--text-header);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-}
-
-.header-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1.5rem;
-    height: 62px;
-}
-
-.site-title {
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: #ffffff;
-    letter-spacing: -0.01em;
-}
-
-.top-nav {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.top-nav .nav-btn {
-    color: #cbd5e1;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 8px 14px;
-    border-radius: 6px;
-    font-size: 0.95rem;
-    transition: background 0.2s, color 0.2s;
-}
-
-.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
-    background: #1e293b;
-    color: #ffffff;
-}
-
-.top-nav .nav-btn.disabled {
-    opacity: 0.4;
-    pointer-events: none;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropbtn {
-    background: #1e293b;
-    color: #ffffff;
-    padding: 9px 16px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    border: 1px solid #334155;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.dropdown:hover .dropbtn, .dropbtn.active {
-    background: var(--primary);
-    border-color: var(--primary);
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #ffffff;
-    min-width: 320px;
-    max-width: 480px;
-    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
-    border-radius: 8px;
-    overflow: hidden;
-    z-index: 10001;
-    border: 1px solid #e2e8f0;
-    margin-top: 6px;
-}
-
-.dropdown-content a {
-    color: var(--text-body);
-    padding: 12px 18px;
-    text-decoration: none;
-    display: block;
-    font-size: 0.92rem;
-    border-bottom: 1px solid #f1f5f9;
-    line-height: 1.4;
-    transition: background 0.15s, color 0.15s;
-    word-break: break-word;
-}
-
-.dropdown-content a:last-child {
-    border-bottom: none;
-}
-
-.dropdown-content a:hover {
-    background-color: #eff6ff;
-    color: var(--primary);
-    font-weight: 600;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block !important;
-}
-
-#page-layout {
-    display: flex;
-    min-height: calc(100vh - 62px);
-}
-
-#left-panel {
-    width: 320px;
-    min-width: 320px;
-    background: #ffffff;
-    border-right: 1px solid #e2e8f0;
-    padding: 1.5rem 1.25rem;
-    box-sizing: border-box;
-    overflow-y: auto;
-    position: sticky;
-    top: 62px;
-    height: calc(100vh - 62px);
-}
-
-#left-panel h3 {
-    font-size: 1rem;
-    margin-top: 0;
-    color: #334155;
-    border-bottom: 2px solid #e2e8f0;
-    padding-bottom: 0.5rem;
-}
-
-#left-panel nav#TOC, #left-panel #TOC {
-    background: transparent !important;
-    border: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    box-shadow: none !important;
-}
-
-#left-panel ul {
-    list-style-type: none;
-    padding-left: 0.75rem;
-    margin: 0.5rem 0;
-}
-
-#left-panel li {
-    margin: 6px 0;
-}
-
-#left-panel a {
-    color: #475569;
-    text-decoration: none;
-    font-size: 0.9rem;
-    line-height: 1.4;
-    display: block;
-    transition: color 0.15s;
-}
-
-#left-panel a:hover {
-    color: var(--primary);
-    font-weight: 600;
-}
-
-#main-content {
-    flex: 1;
-    padding: 2.5rem 4rem;
-    box-sizing: border-box;
-    max-width: 100% !important;
-    width: calc(100% - 320px);
-    min-width: 0;
-}
-
-/* TABLAS ELEGANTES Y RESPONSIVE */
-.table-wrapper {
-    overflow-x: auto;
-    margin: 1.75rem 0;
-    border-radius: 8px;
-    border: 1px solid #cbd5e1;
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-}
-
-table {
-    width: 100% !important;
-    border-collapse: collapse !important;
-    margin: 0 !important;
-    font-size: 0.93rem;
-    background: #ffffff;
-    table-layout: auto !important;
-}
-
-th, td {
-    padding: 10px 14px !important;
-    border: 1px solid #cbd5e1 !important;
-    text-align: left;
-    vertical-align: top;
-    line-height: 1.5;
-    word-break: normal;
-    overflow-wrap: break-word;
-}
-
-td p, th p {
-    margin: 0 !important;
-    padding: 2px 0 !important;
-}
-
-th {
-    background-color: #0f172a !important;
-    color: #ffffff !important;
-    font-weight: 600;
-    font-size: 0.95rem;
-    border-bottom: 2px solid #0f172a !important;
-}
-
-tr:nth-child(even) td {
-    background-color: #f8fafc !important;
-}
-
-tr:hover td {
-    background-color: #f1f5f9 !important;
-}
-
-/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
-.code-wrapper {
-    position: relative;
-    margin: 1.5rem 0;
-    border-radius: 8px;
-    overflow: hidden;
-    background: #0f172a;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.copy-btn {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    background: #334155;
-    color: #f8fafc;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 5px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
-    z-index: 10;
-}
-
-.copy-btn:hover {
-    background: #2563eb;
-}
-
-pre {
-    margin: 0 !important;
-    padding: 1.25rem 1.25rem !important;
-    background: #0f172a !important;
-    color: #f8fafc !important;
-    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
-    font-size: 0.92rem !important;
-    line-height: 1.6 !important;
-    overflow-x: auto !important;
-    white-space: pre-wrap !important;
-    word-break: break-all !important;
-}
-
-code {
-    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
-}
-
-p code, li code {
-    background: #e2e8f0;
-    color: #0f172a;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 0.9em;
-}
-
-img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
-
-/* RESPONSIVE DESIGN PARA MÓVILES Y TABLETS */
-@media (max-width: 768px) {
-    .header-container {
-        height: auto;
-        flex-direction: column;
-        padding: 0.75rem 1rem;
-        gap: 0.6rem;
-    }
-    
-    .site-title {
-        font-size: 1.05rem;
-        text-align: center;
-        justify-content: center;
-    }
-
-    .site-title img {
-        height: 28px !important;
-    }
-
-    .top-nav {
-        flex-wrap: wrap;
-        justify-content: center;
-        width: 100%;
-        gap: 0.35rem;
-    }
-
-    .top-nav .nav-btn, .dropbtn {
-        padding: 6px 10px;
-        font-size: 0.85rem;
-    }
-
-    .dropdown-content {
-        min-width: 240px;
-        max-width: 90vw;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    #page-layout {
-        flex-direction: column;
-    }
-
-    #left-panel {
-        width: 100% !important;
-        min-width: 0 !important;
-        height: auto !important;
-        position: static !important;
-        border-right: none !important;
-        border-bottom: 2px solid #e2e8f0;
-        padding: 1rem !important;
-    }
-
-    #main-content {
-        width: 100% !important;
-        padding: 1.25rem 1rem !important;
-    }
-
-    iframe {
-        height: 60vh !important;
-    }
-
-    th, td {
-        padding: 8px 10px !important;
-        font-size: 0.85rem !important;
-    }
-
-    pre {
-        padding: 0.85rem !important;
-        font-size: 0.82rem !important;
-    }
-}
-
-    </style>
-    <script>
-    
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.dropdown').forEach(dd => {
-        const btn = dd.querySelector('.dropbtn');
-        const content = dd.querySelector('.dropdown-content');
-        if (btn && content) {
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const isOpen = content.style.display === 'block';
-                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
-                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
-                if (!isOpen) {
-                    content.style.display = 'block';
-                    btn.classList.add('active');
-                }
-            });
-        }
-    });
-
-    document.addEventListener('click', () => {
-        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
-        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
-    });
-
-    // Controlador universal de clics en enlaces ancla (#...)
-    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const rawHref = this.getAttribute('href') || '';
-            const hashIdx = rawHref.indexOf('#');
-            if (hashIdx === -1) return;
-            const hash = rawHref.substring(hashIdx + 1);
-            if (!hash) return;
-            
-            let targetId = hash;
-            try { targetId = decodeURIComponent(hash); } catch(err) {}
-
-            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
-            if (!targetEl) {
-                for (let el of document.querySelectorAll('[id]')) {
-                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
-                        targetEl = el;
-                        break;
-                    }
-                }
-            }
-
-            if (targetEl) {
-                e.preventDefault();
-                const headerOffset = 75;
-                const elementPosition = targetEl.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-                
-                if (history.pushState) {
-                    history.pushState(null, null, '#' + targetId);
-                }
-            }
-        });
-    });
-});
-
-function copyCode(btn) {
-    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
-    navigator.clipboard.writeText(code).then(() => {
-        const orig = btn.innerText;
-        btn.innerText = '✅ ¡Copiado!';
-        btn.style.background = '#16a34a';
-        setTimeout(() => {
-            btn.innerText = orig;
-            btn.style.background = '#334155';
-        }, 2000);
-    });
-}
-
-    </script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 <body>
     <header id="site-header">
@@ -505,148 +13,16 @@ function copyCode(btn) {
     <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>GBD &ndash; Ut4 Teoria Ddl</span></div>
     <nav class="top-nav">
       <a href="index.html" class="nav-btn">Inicio</a>
-      <a href="GBD_UT8_Teoria_Programacion.html" class="nav-btn">Programación</a>
-      <div class="dropdown">
-        <button class="dropbtn" type="button">Teoría ▾</button>
-        <div class="dropdown-content">
-          <a href="GBD_UT1_Teoria_Almacenamiento.html">GBD UT1 Teoria Almacenamiento</a>
-          <a href="GBD_UT2_Teoria_Diagramas.html">GBD UT2 Teoria Diagramas</a>
-          <a href="GBD_UT3_Teoria_Modelo.html">GBD UT3 Teoria Modelo</a>
-          <a href="GBD_UT4_Teoria_DDL.html">GBD UT4 Teoria DDL</a>
-          <a href="GBD_UT5_Teoria_Consultas.html">GBD UT5 Teoria Consultas</a>
-          <a href="GBD_UT6_Teoria_Vistas.html">GBD UT6 Teoria Vistas</a>
-          <a href="GBD_UT7_Teoria_DML.html">GBD UT7 Teoria DML</a>
-          <a href="GBD_UT9_Teoria_Seguridad.html">GBD UT9 Teoria Seguridad</a>
-        </div>
-      </div>
     </nav>
   </div>
 </header>
     <div id="page-layout">
-        <aside id="left-panel">
-            <h3>Índice del Tema</h3>
-            <nav id="TOC" role="doc-toc">
-<ul>
-<li><a href="#ficha-técnica-de-la-unidad-didáctica"
-id="toc-ficha-técnica-de-la-unidad-didáctica">FICHA TÉCNICA DE LA UNIDAD
-DIDÁCTICA</a></li>
-<li><a href="#índice-de-contenidos" id="toc-índice-de-contenidos">ÍNDICE
-DE CONTENIDOS</a></li>
-<li><a href="#introducción-y-contextualización"
-id="toc-introducción-y-contextualización">1. INTRODUCCIÓN Y
-CONTEXTUALIZACIÓN</a></li>
-<li><a href="#el-lenguaje-ddl-de-sql" id="toc-el-lenguaje-ddl-de-sql">2.
-EL LENGUAJE DDL DE SQL</a></li>
-<li><a href="#manipulación-de-bases-de-datos-en-mysql"
-id="toc-manipulación-de-bases-de-datos-en-mysql">3. MANIPULACIÓN DE
-BASES DE DATOS EN MYSQL</a>
-<ul>
-<li><a href="#creación-de-bases-de-datos-parámetros-del-sistema"
-id="toc-creación-de-bases-de-datos-parámetros-del-sistema">3.1 Creación
-de Bases de Datos: Parámetros del Sistema</a>
-<ul>
-<li><a href="#definición-de-character-set-y-colaciones-collate"
-id="toc-definición-de-character-set-y-colaciones-collate">3.1.3
-Definición de CHARACTER SET y Colaciones (COLLATE)</a></li>
-<li><a
-href="#impacto-del-cotejamiento-en-la-ordenación-física-de-tablas"
-id="toc-impacto-del-cotejamiento-en-la-ordenación-física-de-tablas">3.1.4
-Impacto del Cotejamiento en la Ordenación Física de Tablas</a></li>
-</ul></li>
-<li><a href="#section-2" id="toc-section-2"></a></li>
-<li><a href="#modificación-de-bases-de-datos-alter-database"
-id="toc-modificación-de-bases-de-datos-alter-database">3.2 Modificación
-de Bases de Datos (ALTER DATABASE)</a></li>
-<li><a href="#section-3" id="toc-section-3"></a></li>
-<li><a href="#eliminación-segura-drop-database"
-id="toc-eliminación-segura-drop-database">3.3 Eliminación Segura (DROP
-DATABASE)</a></li>
-</ul></li>
-<li><a href="#manipulación-de-tablas" id="toc-manipulación-de-tablas">4.
-MANIPULACIÓN DE TABLAS </a>
-<ul>
-<li><a href="#sentencia-de-creación-create-table"
-id="toc-sentencia-de-creación-create-table">4.1 Sentencia de Creación
-(CREATE TABLE)</a>
-<ul>
-<li><a href="#section-4" id="toc-section-4"></a></li>
-<li><a href="#restricciones-de-integridad-y-atributos-de-columna"
-id="toc-restricciones-de-integridad-y-atributos-de-columna">4.1.1
-Restricciones de Integridad y Atributos de Columna</a></li>
-<li><a
-href="#integridad-referencial-opciones-en-claves-ajenas-foreign-key"
-id="toc-integridad-referencial-opciones-en-claves-ajenas-foreign-key">4.1.2
-Integridad Referencial: Opciones en Claves Ajenas (FOREIGN KEY)</a></li>
-<li><a href="#section-5" id="toc-section-5"></a></li>
-<li><a href="#configuración-de-opciones-de-tabla"
-id="toc-configuración-de-opciones-de-tabla">4.1.3 Configuración de
-Opciones de Tabla</a></li>
-</ul></li>
-<li><a href="#modificación-estructural-alter-table"
-id="toc-modificación-estructural-alter-table">4.2 Modificación
-Estructural (ALTER TABLE)</a>
-<ul>
-<li><a href="#redefinición-de-atributos-modify"
-id="toc-redefinición-de-atributos-modify">4.2.1 Redefinición de
-Atributos (MODIFY)</a></li>
-<li><a href="#section-6" id="toc-section-6"></a></li>
-<li><a href="#renombrado-y-cambio-estructurado-change"
-id="toc-renombrado-y-cambio-estructurado-change">4.2.2 Renombrado y
-Cambio Estructurado (CHANGE)</a></li>
-<li><a href="#gestión-de-valores-por-defecto-alter-...-setdrop-default"
-id="toc-gestión-de-valores-por-defecto-alter-...-setdrop-default">4.2.3
-Gestión de Valores por Defecto (ALTER ... SET/DROP DEFAULT)</a></li>
-<li><a href="#adición-y-eliminación-de-atributos-add-drop-column"
-id="toc-adición-y-eliminación-de-atributos-add-drop-column">4.2.4
-Adición y Eliminación de Atributos (ADD / DROP COLUMN)</a></li>
-</ul></li>
-<li><a href="#eliminación-de-tablas-drop-table"
-id="toc-eliminación-de-tablas-drop-table">4.3 Eliminación de Tablas
-(DROP TABLE)</a></li>
-</ul></li>
-<li><a href="#tipos-de-datos-en-mysql"
-id="toc-tipos-de-datos-en-mysql">5. TIPOS DE DATOS EN MYSQL</a>
-<ul>
-<li><a href="#clasificación-y-representación-en-memoria-de-enteros"
-id="toc-clasificación-y-representación-en-memoria-de-enteros">5.1
-Clasificación y Representación en Memoria de Enteros</a>
-<ul>
-<li><a href="#atributo-zerofill-y-el-mito-de-int-11"
-id="toc-atributo-zerofill-y-el-mito-de-int-11">5.1.1 Atributo ZEROFILL y
-el mito de INT (11)</a></li>
-<li><a href="#tipos-especiales-bit-bool-serial"
-id="toc-tipos-especiales-bit-bool-serial">5.1.2 Tipos Especiales (BIT,
-BOOL, SERIAL)</a></li>
-</ul></li>
-<li><a
-href="#datos-en-punto-flotante-valores-aproximados-y-precisión-computacional"
-id="toc-datos-en-punto-flotante-valores-aproximados-y-precisión-computacional">5.2
-Datos en Punto Flotante (Valores Aproximados y Precisión
-Computacional)</a></li>
-<li><a
-href="#datos-en-punto-fijo-valores-exactos-para-datos-financieros"
-id="toc-datos-en-punto-fijo-valores-exactos-para-datos-financieros">5.3
-Datos en Punto Fijo (Valores Exactos para Datos Financieros)</a></li>
-<li><a href="#fechas-y-tiempo" id="toc-fechas-y-tiempo">5.4 Fechas y
-Tiempo </a></li>
-<li><a href="#cadenas-de-caracteres" id="toc-cadenas-de-caracteres">5.5
-Cadenas de Caracteres </a></li>
-<li><a href="#datos-binarios" id="toc-datos-binarios">5.6 Datos Binarios
-</a></li>
-<li><a href="#tipos-estructurados-especiales-enum-set"
-id="toc-tipos-estructurados-especiales-enum-set">5.7 Tipos Estructurados
-Especiales (ENUM, SET)</a></li>
-<li><a href="#tipos-no-relacionales-almacenamiento-y-operaciones-json"
-id="toc-tipos-no-relacionales-almacenamiento-y-operaciones-json">5.8
-Tipos No Relacionales: Almacenamiento y Operaciones JSON</a></li>
-<li><a href="#section-7" id="toc-section-7"></a></li>
-<li><a href="#configuración-y-gestión-de-sql_mode"
-id="toc-configuración-y-gestión-de-sql_mode">5.9 Configuración y Gestión
-de sql_mode</a></li>
-</ul></li>
-</ul>
-</nav>
-        </aside>
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="GBD_UT4_Teoria_DDL.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+    
+    
+        
         <main id="main-content">
             <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="GBD_UT4_Teoria_DDL.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
             
@@ -659,7 +35,7 @@ DATOS EN MYSQL (DDL)</p></h1>
 
 <h3 id="ficha-técnica-de-la-unidad-didáctica">FICHA TÉCNICA DE LA UNIDAD
 DIDÁCTICA <a class="headerlink" href="#ficha-técnica-de-la-unidad-didáctica" title="Enlace permanente">¶</a></h3>
-<div class="table-wrapper"><table>
+<div class="table-wrapper"><div class="table-wrapper"><table>
 <tbody>
 <tr class="header">
 <td><strong>Unidad Didáctica</strong></td>
@@ -682,7 +58,7 @@ de datos.</td>
 teórico-prácticas)</td>
 </tr>
 </tbody>
-</table></div>
+</table></div></div>
 <h3 id="índice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#índice-de-contenidos" title="Enlace permanente">¶</a></h3>
 <p><a href="#introducción-y-contextualización"><u>1. INTRODUCCIÓN Y
 CONTEXTUALIZACIÓN</u></a></p>
@@ -690,7 +66,7 @@ CONTEXTUALIZACIÓN</u></a></p>
 SQL</u></a></p>
 <p><a href="#manipulación-de-bases-de-datos-en-mysql"><u>3. MANIPULACIÓN
 DE BASES DE DATOS EN MYSQL</u></a></p>
-<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>3.1
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>3.1
 Creación de Bases de Datos: Parámetros del Sistema
 3.1.1
 Conceptos de Codificación de Caracteres: Estándar Unicode
@@ -704,10 +80,10 @@ Impacto del Cotejamiento en la Ordenación Física de Tablas
 3.2
 Modificación de Bases de Datos (ALTER DATABASE)
 3.3 Eliminación Segura
-(DROP DATABASE)</code></pre></div>
+(DROP DATABASE)</code></pre></div></div>
 <p><a href="#manipulación-de-tablas"><u>4. MANIPULACIÓN DE
 TABLAS</u></a></p>
-<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>4.1 Sentencia de
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>4.1 Sentencia de
 Creación (CREATE TABLE)
 4.1.1
 Restricciones de Integridad y Atributos de Columna
@@ -727,7 +103,7 @@ Gestión de Valores por Defecto (ALTER ... SET/DROP DEFAULT)
 4.2.4
 Adición y Eliminación de Atributos (ADD / DROP COLUMN)
 4.3 Eliminación de
-Tablas (DROP TABLE)</code></pre></div>
+Tablas (DROP TABLE)</code></pre></div></div>
 <p><a href="#tipos-de-datos-en-mysql"><u>5. TIPOS DE DATOS EN
 MYSQL</u></a></p>
 <blockquote>
@@ -782,7 +158,7 @@ sistema. Las sentencias de esta especificación se ejecutan de forma
 síncrona en el diccionario de datos de MySQL e impactan directamente
 sobre el sistema de archivos del servidor (por ejemplo, ficheros .ibd en
 motores InnoDB).</p>
-<div class="table-wrapper"><table>
+<div class="table-wrapper"><div class="table-wrapper"><table>
 <tbody>
 <tr class="header">
 <td></td>
@@ -794,7 +170,7 @@ datos de MySQL, accede a MySQL Manual - Data Definition
 Statements. <a class="headerlink" href="#documentación-oficial-para-consultar-la-lista-de-todas-las-sentencias-de-definición-de-datos-y-la-gestión-del-diccionario-de-datos-de-mysql-accede-a-mysql-manual---data-definition-statements." title="Enlace permanente">¶</a></h6></td>
 </tr>
 </tbody>
-</table></div>
+</table></div></div>
 <p>Estructura jerárquica de comandos SQL de definición</p>
 <ul>
 <li><blockquote>
@@ -832,13 +208,13 @@ de Bases de Datos: Parámetros del Sistema <a class="headerlink" href="#creació
 absolutos. La directiva IF NOT EXISTS evita que se interrumpa la
 ejecución de scripts automatizados de despliegue (como Ansible o scripts
 de Shell) si el esquema ya se encuentra en el servidor.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Creación básica (Aplica el juego de caracteres del servidor por
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Creación básica (Aplica el juego de caracteres del servidor por
 defecto)
 CREATE DATABASE IF NOT EXISTS sysadmin_prod;
 -- Creación óptima recomendada para compatibilidad internacional
 CREATE DATABASE IF NOT EXISTS sysadmin_prod
 CHARACTER SET utf8mb4
-COLLATE utf8mb4_unicode_ci;</code></pre></div></h5>
+COLLATE utf8mb4_unicode_ci;</code></pre></div></div></h5>
 <h4 id="conceptos-de-codificación-de-caracteres-estándar-unicode">3.1.1
 Conceptos de Codificación de Caracteres: Estándar Unicode <a class="headerlink" href="#conceptos-de-codificación-de-caracteres-estándar-unicode" title="Enlace permanente">¶</a></h4>
 <p>Unicode define un conjunto universal de caracteres mapeado
@@ -896,7 +272,7 @@ valor de la representación numérica binaria en memoria del carácter.</p>
 </blockquote></li>
 </ul></li>
 </ul>
-<div class="table-wrapper"><table>
+<div class="table-wrapper"><div class="table-wrapper"><table>
 <tbody>
 <tr class="header">
 <td></td>
@@ -908,15 +284,15 @@ Unicode completo, revisa MySQL Manual - Character Sets, Collations,
 Unicode. <a class="headerlink" href="#documentación-oficial-para-profundizar-sobre-cómo-mysql-maneja-los-juegos-de-caracteres-dinámicos-y-la-compatibilidad-con-unicode-completo-revisa-mysql-manual---character-sets-collations-unicode." title="Enlace permanente">¶</a></h6></td>
 </tr>
 </tbody>
-</table></div>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Inspección del juego de caracteres y colaciones disponibles en el
+</table></div></div>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Inspección del juego de caracteres y colaciones disponibles en el
 motor
 SHOW CHARACTER SET;
 SHOW COLLATION LIKE "utf8mb4%";
 -- Consulta del juego de caracteres y la colación configurados en la
 base de datos actual
 USE sysadmin_prod;
-SELECT @@character_set_database, @@collation_database;</code></pre></div></h5>
+SELECT @@character_set_database, @@collation_database;</code></pre></div></div></h5>
 <h3
 id="impacto-del-cotejamiento-en-la-ordenación-física-de-tablas">3.1.4
 Impacto del Cotejamiento en la Ordenación Física de Tablas <a class="headerlink" href="#impacto-del-cotejamiento-en-la-ordenación-física-de-tablas" title="Enlace permanente">¶</a></h3>
@@ -924,7 +300,7 @@ Impacto del Cotejamiento en la Ordenación Física de Tablas <a class="headerlin
 BY). A continuación se ejemplifica cómo se almacena y ordena el
 diccionario de datos en base al cotejamiento asignado a la columna o
 tabla:</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Creación de tabla de prueba con codificación clásica latina
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Creación de tabla de prueba con codificación clásica latina
 CREATE TABLE tabla_cotejo (
 cadena CHAR(3) CHARACTER SET latin1
 );
@@ -944,22 +320,22 @@ latin1_swedish_ci;
 tienen códigos menores que minúsculas)
 -- Salida esperada: AAA -&gt; BBB -&gt; aaa -&gt; bbb
 SELECT cadena FROM tabla_cotejo ORDER BY cadena COLLATE
-latin1_bin;</code></pre></div></h2>
+latin1_bin;</code></pre></div></div></h2>
 <h2 id="modificación-de-bases-de-datos-alter-database">3.2 Modificación
 de Bases de Datos (ALTER DATABASE) <a class="headerlink" href="#modificación-de-bases-de-datos-alter-database" title="Enlace permanente">¶</a></h2>
 <p>Permite alterar los parámetros estructurales por defecto del esquema
 sin necesidad de recrear los objetos internos.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Cambio de codificación en caliente para dar soporte a Unicode
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Cambio de codificación en caliente para dar soporte a Unicode
 completo
 ALTER DATABASE sysadmin_prod CHARACTER SET utf8mb4 COLLATE
-utf8mb4_unicode_ci;</code></pre></div></h2>
+utf8mb4_unicode_ci;</code></pre></div></div></h2>
 <h2 id="eliminación-segura-drop-database">3.3 Eliminación Segura (DROP
 DATABASE) <a class="headerlink" href="#eliminación-segura-drop-database" title="Enlace permanente">¶</a></h2>
 <p>Elimina físicamente el directorio que contiene los ficheros de la
 base de datos y todas sus tablas. Debe usarse con extrema precaución en
 scripts de automatización.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Eliminación controlada de un esquema de datos
-DROP DATABASE IF EXISTS sysadmin_prod;</code></pre></div></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Eliminación controlada de un esquema de datos
+DROP DATABASE IF EXISTS sysadmin_prod;</code></pre></div></div></p>
 <h1 id="manipulación-de-tablas">4. MANIPULACIÓN DE TABLAS  <a class="headerlink" href="#manipulación-de-tablas" title="Enlace permanente">¶</a></h1>
 <h2 id="sentencia-de-creación-create-table">4.1 Sentencia de Creación
 (CREATE TABLE) <a class="headerlink" href="#sentencia-de-creación-create-table" title="Enlace permanente">¶</a></h2>
@@ -971,7 +347,7 @@ id="documentación-oficial-la-sintaxis-formal-opciones-avanzadas-y-limitaciones-
 avanzadas y limitaciones de la sentencia de creación se detallan en <a
 href="https://dev.mysql.com/doc/refman/8.0/en/create-table.html"><u>MySQL
 Manual - CREATE TABLE Statement</u></a>. <a class="headerlink" href="#documentación-oficial-la-sintaxis-formal-opciones-avanzadas-y-limitaciones-de-la-sentencia-de-creación-se-detallan-en-mysql-manual---create-table-statement." title="Enlace permanente">¶</a></h6>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Creación de la base de datos para el despliegue del esquema
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Creación de la base de datos para el despliegue del esquema
 CREATE DATABASE IF NOT EXISTS logistica_empresa CHARSET utf8mb4;
 USE logistica_empresa;
 -- Creación de Tabla Principal (Entidad Fuerte)
@@ -997,7 +373,7 @@ CONSTRAINT chk_precio_positivo CHECK (precio &gt; 0),
 -- Definición de la clave ajena
 CONSTRAINT fk_pieza_categoria FOREIGN KEY (id_categoria)
 REFERENCES categoria(id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;</code></pre></div></h3>
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;</code></pre></div></div></h3>
 <h3 id="restricciones-de-integridad-y-atributos-de-columna">4.1.1
 Restricciones de Integridad y Atributos de Columna <a class="headerlink" href="#restricciones-de-integridad-y-atributos-de-columna" title="Enlace permanente">¶</a></h3>
 <ul>
@@ -1053,7 +429,7 @@ funcionamiento, restricciones e impacto de rendimiento de las
 restricciones de clave ajena, visita <a
 href="https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html"><u>MySQL
 Manual - FOREIGN KEY Constraints</u></a>. <a class="headerlink" href="#documentación-oficial-para-comprender-a-fondo-el-funcionamiento-restricciones-e-impacto-de-rendimiento-de-las-restricciones-de-clave-ajena-visita-mysql-manual---foreign-key-constraints." title="Enlace permanente">¶</a></h6>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Ejemplo de configuración relacional con Cascade para gestión
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Ejemplo de configuración relacional con Cascade para gestión
 automatizada
 CREATE TABLE pieza_cascade (
 id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -1063,7 +439,7 @@ CONSTRAINT fk_pieza_cat_cascade FOREIGN KEY (id_categoria)
 REFERENCES categoria(id)
 ON DELETE CASCADE
 ON UPDATE CASCADE
-) ENGINE=InnoDB;</code></pre></div></h3>
+) ENGINE=InnoDB;</code></pre></div></div></h3>
 <h3 id="configuración-de-opciones-de-tabla">4.1.3 Configuración de
 Opciones de Tabla <a class="headerlink" href="#configuración-de-opciones-de-tabla" title="Enlace permanente">¶</a></h3>
 <p>Al final de la sentencia de creación se definen opciones físicas de
@@ -1078,11 +454,11 @@ nivel de fila e integridad referencial real.</p>
 inserción autonumérico.</p>
 </blockquote></li>
 </ul>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Configuración avanzada de almacenamiento
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Configuración avanzada de almacenamiento
 CREATE TABLE usuarios_logs (
 id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 accion VARCHAR(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8mb4;</code></pre></div>4.2 Modificación
+) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8mb4;</code></pre></div></div>4.2 Modificación
 Estructural (ALTER TABLE)</h2>
 <p>Esencial para aplicar parches de migración de datos en entornos de
 producción sin pérdida de registros existentes.</p>
@@ -1097,31 +473,31 @@ Manual - ALTER TABLE Statement</u></a>. <a class="headerlink" href="#documentaci
 Atributos (MODIFY) <a class="headerlink" href="#redefinición-de-atributos-modify" title="Enlace permanente">¶</a></h3>
 <p>Modifica el tipo de dato o las restricciones asociadas a una columna
 existente, manteniendo el nombre de esta.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Cambiar la columna "nombre" para aceptar más caracteres y hacerla
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Cambiar la columna "nombre" para aceptar más caracteres y hacerla
 obligatoria
-ALTER TABLE categoria MODIFY nombre VARCHAR(150) NOT NULL;</code></pre></div></h3>
+ALTER TABLE categoria MODIFY nombre VARCHAR(150) NOT NULL;</code></pre></div></div></h3>
 <h3 id="renombrado-y-cambio-estructurado-change">4.2.2 Renombrado y
 Cambio Estructurado (CHANGE) <a class="headerlink" href="#renombrado-y-cambio-estructurado-change" title="Enlace permanente">¶</a></h3>
 <p>Permite renombrar una columna física además de redefinir su tipo de
 dato de forma simultánea.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Modifica el nombre de la columna "nombre" a
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Modifica el nombre de la columna "nombre" a
 "nombre_categoria"
 ALTER TABLE categoria CHANGE nombre nombre_categoria VARCHAR(100) NOT
-NULL;</code></pre></div></p>
+NULL;</code></pre></div></div></p>
 <h3 id="gestión-de-valores-por-defecto-alter-...-setdrop-default">4.2.3
 Gestión de Valores por Defecto (ALTER ... SET/DROP DEFAULT) <a class="headerlink" href="#gestión-de-valores-por-defecto-alter-...-setdrop-default" title="Enlace permanente">¶</a></h3>
 <p>Permite la modificación del metadato por defecto sin modificar el
 tipo de columna.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Añadir rol por defecto al registrar un usuario nuevo
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Añadir rol por defecto al registrar un usuario nuevo
 ALTER TABLE usuarios_logs ADD COLUMN rol ENUM("SysAdmin", "Operador")
 NOT NULL;
 ALTER TABLE usuarios_logs ALTER rol SET DEFAULT "Operador";
 -- Eliminar valor por defecto
-ALTER TABLE usuarios_logs ALTER rol DROP DEFAULT;</code></pre></div>4.2.4
+ALTER TABLE usuarios_logs ALTER rol DROP DEFAULT;</code></pre></div></div>4.2.4
 Adición y Eliminación de Atributos (ADD / DROP COLUMN)</h3>
 <p>Define las reglas físicas de ubicación de nuevas columnas dentro de
 la estructura de la tupla física en disco.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Añade una columna al final de la tabla
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Añade una columna al final de la tabla
 ALTER TABLE usuarios_logs ADD COLUMN timestamp_registro TIMESTAMP NOT
 NULL;
 -- Añade columnas controlando la posición exacta
@@ -1129,14 +505,14 @@ ALTER TABLE usuarios_logs ADD COLUMN ip_origen VARCHAR(45) NOT NULL
 AFTER accion;
 ALTER TABLE usuarios_logs ADD COLUMN id_interno INT FIRST;
 -- Eliminar columna física y sus datos asociados permanentemente
-ALTER TABLE usuarios_logs DROP COLUMN id_interno;</code></pre></div></p>
+ALTER TABLE usuarios_logs DROP COLUMN id_interno;</code></pre></div></div></p>
 <h2 id="eliminación-de-tablas-drop-table">4.3 Eliminación de Tablas
 (DROP TABLE) <a class="headerlink" href="#eliminación-de-tablas-drop-table" title="Enlace permanente">¶</a></h2>
 <p>Elimina la estructura de metadatos, los índices físicos y los datos
 contenidos de la tabla del disco.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Borrado unitario y múltiple controlado
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Borrado unitario y múltiple controlado
 DROP TABLE IF EXISTS pieza;
-DROP TABLE IF EXISTS pieza_cascade, usuarios_logs;</code></pre></div></p>
+DROP TABLE IF EXISTS pieza_cascade, usuarios_logs;</code></pre></div></div></p>
 <h1 id="tipos-de-datos-en-mysql">5. TIPOS DE DATOS EN MYSQL <a class="headerlink" href="#tipos-de-datos-en-mysql" title="Enlace permanente">¶</a></h1>
 <p>Elegir de forma óptima el tipo de dato previene el desperdicio de
 almacenamiento en disco y la saturación del pool de memoria (Buffer Pool
@@ -1150,7 +526,7 @@ href="https://dev.mysql.com/doc/refman/8.0/en/data-types.html"><u>MySQL
 Manual - Data Types</u></a>. <a class="headerlink" href="#documentación-oficial-para-consultar-la-referencia-técnica-de-todos-los-tipos-de-datos-disponibles-rangos-y-almacenamiento-físico-en-bytes-revisa-mysql-manual---data-types." title="Enlace permanente">¶</a></h6>
 <h2 id="clasificación-y-representación-en-memoria-de-enteros">5.1
 Clasificación y Representación en Memoria de Enteros <a class="headerlink" href="#clasificación-y-representación-en-memoria-de-enteros" title="Enlace permanente">¶</a></h2>
-<div class="table-wrapper"><table>
+<div class="table-wrapper"><div class="table-wrapper"><table>
 <thead>
 <tr class="header">
 <th><strong>Tipo de Dato</strong></th>
@@ -1191,7 +567,7 @@ Clasificación y Representación en Memoria de Enteros <a class="headerlink" hre
 <td>0 a 2⁶⁴-1</td>
 </tr>
 </tbody>
-</table></div>
+</table></div></div>
 <h3 id="atributo-zerofill-y-el-mito-de-int-11">5.1.1 Atributo ZEROFILL y
 el mito de INT (11) <a class="headerlink" href="#atributo-zerofill-y-el-mito-de-int-11" title="Enlace permanente">¶</a></h3>
 <p>La declaración de un tipo de dato como INT(11) no restringe el
@@ -1200,12 +576,12 @@ exclusivamente un metadato de formato de salida visual. Cuando se
 utiliza conjuntamente con el modificador ZEROFILL, MySQL rellenará con
 ceros a la izquierda de forma visual en las terminales que soporten este
 atributo hasta alcanzar el tamaño especificado.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Ejemplo práctico de visualización
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Ejemplo práctico de visualización
 CREATE TABLE demo_zerofill (
 numero INT(4) ZEROFILL
 );
 INSERT INTO demo_zerofill VALUES (5);
--- Al hacer SELECT, la salida mostrada será: "0005"</code></pre></div></p>
+-- Al hacer SELECT, la salida mostrada será: "0005"</code></pre></div></div></p>
 <h3 id="tipos-especiales-bit-bool-serial">5.1.2 Tipos Especiales (BIT,
 BOOL, SERIAL) <a class="headerlink" href="#tipos-especiales-bit-bool-serial" title="Enlace permanente">¶</a></h3>
 <ul>
@@ -1253,13 +629,13 @@ se compone el número entero (rango de 1 a 65), D representa el número de
 cifras decimales (rango de 0 a 30).</p>
 </blockquote></li>
 </ul>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Definición idónea para transacciones bancarias o e-commerce
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Definición idónea para transacciones bancarias o e-commerce
 CREATE TABLE transaccion (
 id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 importe DECIMAL(10,2) NOT NULL -- Permite hasta 8 dígitos enteros y 2
 decimales
-);</code></pre></div>5.4 Fechas y Tiempo </h2>
-<div class="table-wrapper"><table>
+);</code></pre></div></div>5.4 Fechas y Tiempo </h2>
+<div class="table-wrapper"><div class="table-wrapper"><table>
 <thead>
 <tr class="header">
 <th><strong>Tipo de Dato</strong></th>
@@ -1300,7 +676,7 @@ decimales
 <td>1901 a 2155</td>
 </tr>
 </tbody>
-</table></div>
+</table></div></div>
 <p>⚠️ <strong>El problema del año 2038:</strong> Los campos TIMESTAMP
 almacenan los datos internamente como el número de segundos
 transcurridos desde la época Unix (1970-01-01 00:00:00 UTC). Al ser un
@@ -1382,7 +758,7 @@ ventajas operativas de almacenar documentos no relacionales de forma
 nativa en <a
 href="https://dev.mysql.com/doc/refman/8.0/en/json.html"><u>MySQL Manual
 - JSON Data Type</u></a>. <a class="headerlink" href="#documentación-oficial-conoce-todas-las-funciones-y-ventajas-operativas-de-almacenar-documentos-no-relacionales-de-forma-nativa-en-mysql-manual---json-data-type." title="Enlace permanente">¶</a></h6>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Creación de tabla para almacenamiento no relacional
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Creación de tabla para almacenamiento no relacional
 estructurado
 CREATE TABLE auditoria_config (
 id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -1396,7 +772,7 @@ INSERT INTO auditoria_config (metadatos) VALUES
 operadores directos -&gt;
 SELECT metadatos-&gt;"$.servidor" AS servidor,
 metadatos-&gt;"$.servicios[0]" AS puerto_principal
-FROM auditoria_config;</code></pre></div></h2>
+FROM auditoria_config;</code></pre></div></div></h2>
 <h2 id="configuración-y-gestión-de-sql_mode">5.9 Configuración y Gestión
 de sql_mode <a class="headerlink" href="#configuración-y-gestión-de-sql_mode" title="Enlace permanente">¶</a></h2>
 <p>La variable del sistema sql_mode define el nivel de rigor del motor a
@@ -1409,7 +785,7 @@ modo estricto en la prevención de la inserción de datos corruptos o
 fuera de rango en producción, consulta <a
 href="https://dev.mysql.com/doc/refman/8.0/en/sql-mode.html"><u>MySQL
 Manual - Server SQL Modes</u></a>. <a class="headerlink" href="#documentación-oficial-para-comprender-los-efectos-del-modo-estricto-en-la-prevención-de-la-inserción-de-datos-corruptos-o-fuera-de-rango-en-producción-consulta-mysql-manual---server-sql-modes." title="Enlace permanente">¶</a></h6>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Consulta del valor actual de sql_mode del servidor
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Consulta del valor actual de sql_mode del servidor
 SELECT @@GLOBAL.sql_mode;
 SELECT @@SESSION.sql_mode;
 -- Configuración del modo estricto estandarizado (SysAdmin de
@@ -1427,7 +803,10 @@ valor TINYINT UNSIGNED
 impide la inserción
 -- Si sql_mode es vacío (" "): Inserta el valor máximo representable
 (255) y muestra un WARNING
-INSERT INTO test_overflow VALUES (300);</code></pre></div></p>
+INSERT INTO test_overflow VALUES (300);</code></pre></div></div></p>
+
+        </main>
+    </div>
 
         </main>
     </div>

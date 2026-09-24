@@ -4,500 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GBD - Ut8 Teoria Programacion</title>
-    <style>
-    
-:root {
-    --primary: #2563eb;
-    --primary-dark: #1d4ed8;
-    --bg-header: #1e3a8a;
-    --text-header: #ffffff;
-    --bg-body: #f8fafc;
-    --text-body: #1e293b;
-    --border-color: #cbd5e1;
-}
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 80px;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background: var(--bg-body);
-    color: var(--text-body);
-    min-height: 100vh;
-}
-
-h1, h2, h3, h4, h5, h6, [id], a[name] {
-    scroll-margin-top: 80px !important;
-}
-
-.headerlink {
-    display: inline-block;
-    margin-left: 0.4rem;
-    color: #94a3b8;
-    text-decoration: none;
-    font-size: 0.8em;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.2s, color 0.2s;
-}
-
-h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
-h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
-    visibility: visible;
-    opacity: 1;
-}
-
-.headerlink:hover {
-    color: var(--primary);
-}
-
-#site-header {
-    position: sticky;
-    top: 0;
-    z-index: 10000;
-    background: var(--bg-header);
-    color: var(--text-header);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-}
-
-.header-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1.5rem;
-    height: 62px;
-}
-
-.site-title {
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: #ffffff;
-    letter-spacing: -0.01em;
-}
-
-.top-nav {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.top-nav .nav-btn {
-    color: #cbd5e1;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 8px 14px;
-    border-radius: 6px;
-    font-size: 0.95rem;
-    transition: background 0.2s, color 0.2s;
-}
-
-.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
-    background: #1e293b;
-    color: #ffffff;
-}
-
-.top-nav .nav-btn.disabled {
-    opacity: 0.4;
-    pointer-events: none;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropbtn {
-    background: #1e293b;
-    color: #ffffff;
-    padding: 9px 16px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    border: 1px solid #334155;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.dropdown:hover .dropbtn, .dropbtn.active {
-    background: var(--primary);
-    border-color: var(--primary);
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #ffffff;
-    min-width: 320px;
-    max-width: 480px;
-    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
-    border-radius: 8px;
-    overflow: hidden;
-    z-index: 10001;
-    border: 1px solid #e2e8f0;
-    margin-top: 6px;
-}
-
-.dropdown-content a {
-    color: var(--text-body);
-    padding: 12px 18px;
-    text-decoration: none;
-    display: block;
-    font-size: 0.92rem;
-    border-bottom: 1px solid #f1f5f9;
-    line-height: 1.4;
-    transition: background 0.15s, color 0.15s;
-    word-break: break-word;
-}
-
-.dropdown-content a:last-child {
-    border-bottom: none;
-}
-
-.dropdown-content a:hover {
-    background-color: #eff6ff;
-    color: var(--primary);
-    font-weight: 600;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block !important;
-}
-
-#page-layout {
-    display: flex;
-    min-height: calc(100vh - 62px);
-}
-
-#left-panel {
-    width: 320px;
-    min-width: 320px;
-    background: #ffffff;
-    border-right: 1px solid #e2e8f0;
-    padding: 1.5rem 1.25rem;
-    box-sizing: border-box;
-    overflow-y: auto;
-    position: sticky;
-    top: 62px;
-    height: calc(100vh - 62px);
-}
-
-#left-panel h3 {
-    font-size: 1rem;
-    margin-top: 0;
-    color: #334155;
-    border-bottom: 2px solid #e2e8f0;
-    padding-bottom: 0.5rem;
-}
-
-#left-panel nav#TOC, #left-panel #TOC {
-    background: transparent !important;
-    border: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    box-shadow: none !important;
-}
-
-#left-panel ul {
-    list-style-type: none;
-    padding-left: 0.75rem;
-    margin: 0.5rem 0;
-}
-
-#left-panel li {
-    margin: 6px 0;
-}
-
-#left-panel a {
-    color: #475569;
-    text-decoration: none;
-    font-size: 0.9rem;
-    line-height: 1.4;
-    display: block;
-    transition: color 0.15s;
-}
-
-#left-panel a:hover {
-    color: var(--primary);
-    font-weight: 600;
-}
-
-#main-content {
-    flex: 1;
-    padding: 2.5rem 4rem;
-    box-sizing: border-box;
-    max-width: 100% !important;
-    width: calc(100% - 320px);
-    min-width: 0;
-}
-
-/* TABLAS ELEGANTES Y RESPONSIVE */
-.table-wrapper {
-    overflow-x: auto;
-    margin: 1.75rem 0;
-    border-radius: 8px;
-    border: 1px solid #cbd5e1;
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-}
-
-table {
-    width: 100% !important;
-    border-collapse: collapse !important;
-    margin: 0 !important;
-    font-size: 0.93rem;
-    background: #ffffff;
-    table-layout: auto !important;
-}
-
-th, td {
-    padding: 10px 14px !important;
-    border: 1px solid #cbd5e1 !important;
-    text-align: left;
-    vertical-align: top;
-    line-height: 1.5;
-    word-break: normal;
-    overflow-wrap: break-word;
-}
-
-td p, th p {
-    margin: 0 !important;
-    padding: 2px 0 !important;
-}
-
-th {
-    background-color: #0f172a !important;
-    color: #ffffff !important;
-    font-weight: 600;
-    font-size: 0.95rem;
-    border-bottom: 2px solid #0f172a !important;
-}
-
-tr:nth-child(even) td {
-    background-color: #f8fafc !important;
-}
-
-tr:hover td {
-    background-color: #f1f5f9 !important;
-}
-
-/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
-.code-wrapper {
-    position: relative;
-    margin: 1.5rem 0;
-    border-radius: 8px;
-    overflow: hidden;
-    background: #0f172a;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.copy-btn {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    background: #334155;
-    color: #f8fafc;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 5px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
-    z-index: 10;
-}
-
-.copy-btn:hover {
-    background: #2563eb;
-}
-
-pre {
-    margin: 0 !important;
-    padding: 1.25rem 1.25rem !important;
-    background: #0f172a !important;
-    color: #f8fafc !important;
-    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
-    font-size: 0.92rem !important;
-    line-height: 1.6 !important;
-    overflow-x: auto !important;
-    white-space: pre-wrap !important;
-    word-break: break-all !important;
-}
-
-code {
-    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
-}
-
-p code, li code {
-    background: #e2e8f0;
-    color: #0f172a;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 0.9em;
-}
-
-img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
-
-/* RESPONSIVE DESIGN PARA MÓVILES Y TABLETS */
-@media (max-width: 768px) {
-    .header-container {
-        height: auto;
-        flex-direction: column;
-        padding: 0.75rem 1rem;
-        gap: 0.6rem;
-    }
-    
-    .site-title {
-        font-size: 1.05rem;
-        text-align: center;
-        justify-content: center;
-    }
-
-    .site-title img {
-        height: 28px !important;
-    }
-
-    .top-nav {
-        flex-wrap: wrap;
-        justify-content: center;
-        width: 100%;
-        gap: 0.35rem;
-    }
-
-    .top-nav .nav-btn, .dropbtn {
-        padding: 6px 10px;
-        font-size: 0.85rem;
-    }
-
-    .dropdown-content {
-        min-width: 240px;
-        max-width: 90vw;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    #page-layout {
-        flex-direction: column;
-    }
-
-    #left-panel {
-        width: 100% !important;
-        min-width: 0 !important;
-        height: auto !important;
-        position: static !important;
-        border-right: none !important;
-        border-bottom: 2px solid #e2e8f0;
-        padding: 1rem !important;
-    }
-
-    #main-content {
-        width: 100% !important;
-        padding: 1.25rem 1rem !important;
-    }
-
-    iframe {
-        height: 60vh !important;
-    }
-
-    th, td {
-        padding: 8px 10px !important;
-        font-size: 0.85rem !important;
-    }
-
-    pre {
-        padding: 0.85rem !important;
-        font-size: 0.82rem !important;
-    }
-}
-
-    </style>
-    <script>
-    
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.dropdown').forEach(dd => {
-        const btn = dd.querySelector('.dropbtn');
-        const content = dd.querySelector('.dropdown-content');
-        if (btn && content) {
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const isOpen = content.style.display === 'block';
-                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
-                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
-                if (!isOpen) {
-                    content.style.display = 'block';
-                    btn.classList.add('active');
-                }
-            });
-        }
-    });
-
-    document.addEventListener('click', () => {
-        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
-        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
-    });
-
-    // Controlador universal de clics en enlaces ancla (#...)
-    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const rawHref = this.getAttribute('href') || '';
-            const hashIdx = rawHref.indexOf('#');
-            if (hashIdx === -1) return;
-            const hash = rawHref.substring(hashIdx + 1);
-            if (!hash) return;
-            
-            let targetId = hash;
-            try { targetId = decodeURIComponent(hash); } catch(err) {}
-
-            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
-            if (!targetEl) {
-                for (let el of document.querySelectorAll('[id]')) {
-                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
-                        targetEl = el;
-                        break;
-                    }
-                }
-            }
-
-            if (targetEl) {
-                e.preventDefault();
-                const headerOffset = 75;
-                const elementPosition = targetEl.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-                
-                if (history.pushState) {
-                    history.pushState(null, null, '#' + targetId);
-                }
-            }
-        });
-    });
-});
-
-function copyCode(btn) {
-    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
-    navigator.clipboard.writeText(code).then(() => {
-        const orig = btn.innerText;
-        btn.innerText = '✅ ¡Copiado!';
-        btn.style.background = '#16a34a';
-        setTimeout(() => {
-            btn.innerText = orig;
-            btn.style.background = '#334155';
-        }, 2000);
-    });
-}
-
-    </script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 <body>
     <header id="site-header">
@@ -505,97 +13,16 @@ function copyCode(btn) {
     <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>GBD &ndash; Ut8 Teoria Programacion</span></div>
     <nav class="top-nav">
       <a href="index.html" class="nav-btn">Inicio</a>
-      <a href="GBD_UT8_Teoria_Programacion.html" class="nav-btn">Programación</a>
-      <div class="dropdown">
-        <button class="dropbtn" type="button">Teoría ▾</button>
-        <div class="dropdown-content">
-          <a href="GBD_UT1_Teoria_Almacenamiento.html">GBD UT1 Teoria Almacenamiento</a>
-          <a href="GBD_UT2_Teoria_Diagramas.html">GBD UT2 Teoria Diagramas</a>
-          <a href="GBD_UT3_Teoria_Modelo.html">GBD UT3 Teoria Modelo</a>
-          <a href="GBD_UT4_Teoria_DDL.html">GBD UT4 Teoria DDL</a>
-          <a href="GBD_UT5_Teoria_Consultas.html">GBD UT5 Teoria Consultas</a>
-          <a href="GBD_UT6_Teoria_Vistas.html">GBD UT6 Teoria Vistas</a>
-          <a href="GBD_UT7_Teoria_DML.html">GBD UT7 Teoria DML</a>
-          <a href="GBD_UT9_Teoria_Seguridad.html">GBD UT9 Teoria Seguridad</a>
-        </div>
-      </div>
     </nav>
   </div>
 </header>
     <div id="page-layout">
-        <aside id="left-panel">
-            <h3>Índice del Tema</h3>
-            <nav id="TOC" role="doc-toc">
-<ul>
-<li><a href="#introducción-y-contextualización"
-id="toc-introducción-y-contextualización">1. INTRODUCCIÓN Y
-CONTEXTUALIZACIÓN</a></li>
-<li><a href="#procedimientos-almacenados"
-id="toc-procedimientos-almacenados">2. PROCEDIMIENTOS ALMACENADOS </a>
-<ul>
-<li><a href="#sintaxis-general-y-uso-de-delimiter"
-id="toc-sintaxis-general-y-uso-de-delimiter">2.1 Sintaxis general y uso
-de DELIMITER</a></li>
-<li><a href="#gestión-de-parámetros-in-out-y-inout"
-id="toc-gestión-de-parámetros-in-out-y-inout">2.2 Gestión de
-Parámetros: IN, OUT y INOUT</a></li>
-<li><a href="#ámbito-de-variables-locales-y-asignaciones-declare-set"
-id="toc-ámbito-de-variables-locales-y-asignaciones-declare-set">2.3
-Ámbito de Variables Locales y Asignaciones (DECLARE, SET)</a></li>
-</ul></li>
-<li><a href="#funciones-almacenadas" id="toc-funciones-almacenadas">3.
-FUNCIONES ALMACENADAS</a>
-<ul>
-<li><a href="#diferencias-con-procedimientos-y-restricciones-de-retorno"
-id="toc-diferencias-con-procedimientos-y-restricciones-de-retorno">3.1
-Diferencias con procedimientos y restricciones de retorno</a></li>
-<li><a href="#modificadores-de-comportamiento-de-funciones-en-mysql"
-id="toc-modificadores-de-comportamiento-de-funciones-en-mysql">3.2
-Modificadores de comportamiento de funciones en MySQL</a></li>
-</ul></li>
-<li><a href="#estructuras-de-control-de-flujo"
-id="toc-estructuras-de-control-de-flujo">4. ESTRUCTURAS DE CONTROL DE
-FLUJO</a>
-<ul>
-<li><a href="#condicionales-if-then-else-y-case"
-id="toc-condicionales-if-then-else-y-case">4.1 Condicionales
-(IF-THEN-ELSE y CASE)</a></li>
-<li><a href="#estructuras-iterativas-loop-repeat-y-while"
-id="toc-estructuras-iterativas-loop-repeat-y-while">4.2 Estructuras
-Iterativas (LOOP, REPEAT y WHILE)</a></li>
-</ul></li>
-<li><a href="#manejo-de-excepciones-y-errores-en-mysql"
-id="toc-manejo-de-excepciones-y-errores-en-mysql">5. MANEJO DE
-EXCEPCIONES Y ERRORES EN MYSQL</a>
-<ul>
-<li><a href="#el-uso-de-declare...-handler"
-id="toc-el-uso-de-declare...-handler">5.1 El uso de DECLARE...
-HANDLER</a></li>
-</ul></li>
-<li><a href="#cursores" id="toc-cursores">6. CURSORES</a>
-<ul>
-<li><a href="#ciclo-de-vida-de-un-cursor"
-id="toc-ciclo-de-vida-de-un-cursor">6.1 Ciclo de vida de un
-cursor</a></li>
-</ul></li>
-<li><a href="#disparadores-triggers" id="toc-disparadores-triggers">7.
-DISPARADORES (TRIGGERS)</a>
-<ul>
-<li><a href="#lógica-de-ejecución-beforeafter-e-insertupdatedelete"
-id="toc-lógica-de-ejecución-beforeafter-e-insertupdatedelete">7.1 Lógica
-de ejecución: BEFORE/AFTER e INSERT/UPDATE/DELETE</a></li>
-<li><a
-href="#pseudotablas-old-y-new-y-su-aplicación-en-la-integridad-de-datos"
-id="toc-pseudotablas-old-y-new-y-su-aplicación-en-la-integridad-de-datos">7.2
-Pseudotablas OLD y NEW y su aplicación en la integridad de
-datos</a></li>
-</ul></li>
-<li><a href="#enlaces-de-referencia-y-documentación-oficial"
-id="toc-enlaces-de-referencia-y-documentación-oficial">8. ENLACES DE
-REFERENCIA Y DOCUMENTACIÓN OFICIAL</a></li>
-</ul>
-</nav>
-        </aside>
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="GBD_UT8_Teoria_Programacion.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+    
+    
+        
         <main id="main-content">
             <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="GBD_UT8_Teoria_Programacion.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
             
@@ -608,7 +35,7 @@ DE DATOS EN MYSQL<br />
 </header>
 
 <p><strong>FICHA TÉCNICA DE LA UNIDAD DIDÁCTICA</strong></p>
-<div class="table-wrapper"><table>
+<div class="table-wrapper"><div class="table-wrapper"><table>
 <tbody>
 <tr class="header">
 <td><strong>Unidad Didáctica</strong></td>
@@ -644,7 +71,7 @@ creados).</p></td>
 orientadas a la optimización de la lógica del servidor).</td>
 </tr>
 </tbody>
-</table></div>
+</table></div></div>
 <p><strong>ÍNDICE DE CONTENIDOS</strong></p>
 <p><a href="#"><u>1. INTRODUCCIÓN Y CONTEXTUALIZACIÓN</u></a></p>
 <p><a href="#"><u>2. PROCEDIMIENTOS ALMACENADOS</u></a></p>
@@ -731,7 +158,7 @@ procedimental que contiene múltiples sentencias finalizadas con ;,
 necesitamos indicarle al motor de MySQL que cambie temporalmente este
 símbolo para que compile todo el bloque como una sola instrucción. Esto
 se logra con la directiva DELIMITER [7].</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Cambiamos el terminador por defecto a doble barra inclinada
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Cambiamos el terminador por defecto a doble barra inclinada
 DELIMITER //
 DROP PROCEDURE IF EXISTS ejemplo_basico//
 CREATE PROCEDURE ejemplo_basico()
@@ -744,7 +171,7 @@ END//
 -- Restauramos el delimitador estándar
 DELIMITER ;
 -- Invocación del procedimiento
-CALL ejemplo_basico();</code></pre></div>2.2 Gestión de
+CALL ejemplo_basico();</code></pre></div></div>2.2 Gestión de
 Parámetros: IN, OUT y INOUT</h2>
 <p>MySQL permite especificar tres tipos de dirección para los parámetros
 de entrada y salida de un procedimiento almacenado [7, 11.2]:</p>
@@ -772,7 +199,7 @@ actualizar el límite de crédito de un cliente de la base de datos
 procedimiento procedimental para calcular estadísticas de un cliente con
 parámetros OUT.</p>
 <p>Ejemplo de parámetro IN (Actualización de Límite de Crédito):</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
 DROP PROCEDURE IF EXISTS sp_actualizar_limite_credito//
 CREATE PROCEDURE sp_actualizar_limite_credito(
 IN p_codigo_cliente INT,
@@ -789,9 +216,9 @@ END//
 DELIMITER ;
 -- Probamos el procedimiento con el cliente 101 incrementando un
 15.5% su crédito
-CALL sp_actualizar_limite_credito(101, 15.50);</code></pre></div>Ejemplo de parámetros OUT (Extracción de estadísticas de
+CALL sp_actualizar_limite_credito(101, 15.50);</code></pre></div></div>Ejemplo de parámetros OUT (Extracción de estadísticas de
 ventas):</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
 DROP PROCEDURE IF EXISTS sp_obtener_estadisticas_cliente//
 CREATE PROCEDURE sp_obtener_estadisticas_cliente(
 IN p_codigo_cliente INT,
@@ -815,14 +242,14 @@ las salidas
 CALL sp_obtener_estadisticas_cliente(101, @pedidos, @pagado);
 -- Visualizamos los resultados
 SELECT @pedidos AS pedidos_realizados, @pagado AS
-total_euros_pagados;</code></pre></div>2.3
+total_euros_pagados;</code></pre></div></div>2.3
 Ámbito de Variables Locales y Asignaciones (DECLARE, SET)</h2>
 <p>Las variables internas deben declararse obligatoriamente al principio
 de un bloque BEGIN ... END utilizando la instrucción DECLARE [11.2].
 Tras su declaración, se les puede dar un valor inicial con la cláusula
 DEFAULT o modificarse utilizando SET u obteniendo datos mediante la
 cláusula INTO dentro de un SELECT.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
 DROP PROCEDURE IF EXISTS sp_demo_variables_jardineria//
 CREATE PROCEDURE sp_demo_variables_jardineria(
 IN p_codigo_oficina VARCHAR(10)
@@ -844,7 +271,7 @@ SELECT v_ciudad_oficina AS ciudad, v_cantidad_empleados AS
 num_empleados_activos;
 END//
 DELIMITER ;
-CALL sp_demo_variables_jardineria('BCN-ES');</code></pre></div>3. FUNCIONES ALMACENADAS</h1>
+CALL sp_demo_variables_jardineria('BCN-ES');</code></pre></div></div>3. FUNCIONES ALMACENADAS</h1>
 <p>Una función almacenada es una rutina que toma parámetros de entrada,
 ejecuta lógica procedural y <strong>devuelve un único valor
 escalar</strong> al entorno de llamada.</p>
@@ -856,11 +283,11 @@ Diferencias con procedimientos y restricciones de retorno <a class="headerlink" 
 <p>Deben especificar la cláusula RETURNS en su cabecera para definir el
 tipo de datos del resultado.</p>
 </blockquote></li>
-<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Contienen obligatoriamente al menos una sentencia RETURN que finaliza
-la ejecución de la función.</code></pre></div></li>
-<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>No se invocan con la sentencia CALL, sino que se pueden utilizar
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Contienen obligatoriamente al menos una sentencia RETURN que finaliza
+la ejecución de la función.</code></pre></div></div></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>No se invocan con la sentencia CALL, sino que se pueden utilizar
 directamente dentro de sentencias DML (como parte de un SELECT, WHERE u
-ORDER BY), optimizando la legibilidad de las consultas complejas.</code></pre></div></li>
+ORDER BY), optimizando la legibilidad de las consultas complejas.</code></pre></div></div></li>
 </ol>
 <h2 id="modificadores-de-comportamiento-de-funciones-en-mysql">3.2
 Modificadores de comportamiento de funciones en MySQL <a class="headerlink" href="#modificadores-de-comportamiento-de-funciones-en-mysql" title="Enlace permanente">¶</a></h2>
@@ -891,7 +318,7 @@ generen números aleatorios).</p>
 <p>Implementación de una función procedimental que calcula la diferencia
 acumulada entre el total facturado en pedidos al cliente y los pagos que
 este ha liquidado.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
 DROP FUNCTION IF EXISTS fn_calcular_deuda_cliente//
 CREATE FUNCTION fn_calcular_deuda_cliente(
 p_codigo_cliente INT
@@ -927,7 +354,7 @@ nombre_cliente,
 limite_credito,
 fn_calcular_deuda_cliente(codigo_cliente) AS saldo_deudor_activo
 FROM cliente
-WHERE ciudad = 'Madrid';</code></pre></div>4. ESTRUCTURAS DE CONTROL DE
+WHERE ciudad = 'Madrid';</code></pre></div></div>4. ESTRUCTURAS DE CONTROL DE
 FLUJO</h1>
 <p>La programación procedural de bases de datos permite redirigir el
 orden de procesamiento de las sentencias utilizando estructuras lógicas
@@ -936,7 +363,7 @@ avanzadas de decisión y repetición.</p>
 (IF-THEN-ELSE y CASE) <a class="headerlink" href="#condicionales-if-then-else-y-case" title="Enlace permanente">¶</a></h2>
 <p>Permiten ejecutar diferentes fragmentos de código basándose en la
 evaluación de una condición booleana.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
 DROP PROCEDURE IF EXISTS sp_evaluar_riesgo_cliente//
 CREATE PROCEDURE sp_evaluar_riesgo_cliente(
 IN p_codigo_cliente INT,
@@ -964,7 +391,7 @@ END IF;
 END//
 DELIMITER ;
 CALL sp_evaluar_riesgo_cliente(101, @riesgo);
-SELECT @riesgo AS estado_riesgo_financiero;</code></pre></div>4.2 Estructuras
+SELECT @riesgo AS estado_riesgo_financiero;</code></pre></div></div>4.2 Estructuras
 Iterativas (LOOP, REPEAT y WHILE)</h2>
 <p>MySQL proporciona estructuras nativas para realizar bucles lógicos
 [11.2]. En entornos de producción de administración de sistemas, es
@@ -976,7 +403,7 @@ complejos mediante sentencias de escape como LEAVE (equivalente a
 secuencias mediante bucles procedurales aplicados a un escenario
 administrativo para poblar una tabla de auditoría con rangos
 numéricos.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Creamos una tabla auxiliar para almacenar históricos o rangos
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Creamos una tabla auxiliar para almacenar históricos o rangos
 CREATE TABLE IF NOT EXISTS auxiliar_rangos (
 iteracion INT UNSIGNED PRIMARY KEY,
 mensaje_logs VARCHAR(100)
@@ -1032,7 +459,7 @@ END LOOP mi_bucle;
 END//
 DELIMITER ;
 CALL sp_llenar_loop(5);
-SELECT * FROM auxiliar_rangos;</code></pre></div>5. MANEJO DE
+SELECT * FROM auxiliar_rangos;</code></pre></div></div>5. MANEJO DE
 EXCEPCIONES Y ERRORES EN MYSQL</h1>
 <p>El código procedimental que ejecuta cambios DML puede fallar debido a
 violaciones de integridad referencial, registros duplicados en claves
@@ -1043,7 +470,7 @@ error declarativos [1.9].</p>
 HANDLER <a class="headerlink" href="#el-uso-de-declare...-handler" title="Enlace permanente">¶</a></h2>
 <p>La sintaxis general para registrar un manejador de eventos
 excepcionales es la siguiente:</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DECLARE {CONTINUE | EXIT} HANDLER FOR condicion_error sentencia;</code></pre></div>Donde:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DECLARE {CONTINUE | EXIT} HANDLER FOR condicion_error sentencia;</code></pre></div></div>Donde:</p>
 <ul>
 <li><blockquote>
 <p><strong>CONTINUE:</strong> Ejecuta la sentencia correctora asociada y
@@ -1064,7 +491,7 @@ palabras clave genéricas como SQLEXCEPTION, SQLWARNING o NOT FOUND
 </ul>
 <p>Ejemplo de registro de pago de cliente seguro ante claves
 duplicadas:</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
 DROP PROCEDURE IF EXISTS sp_registrar_pago_seguro//
 CREATE PROCEDURE sp_registrar_pago_seguro(
 IN p_codigo_cliente INT,
@@ -1105,7 +532,7 @@ SELECT @estado;
 provocar la excepción de duplicidad controlada
 CALL sp_registrar_pago_seguro(1, 'Transferencia', 'TR-REG-001',
 '2026-06-19', 450.50, @estado);
-SELECT @estado;</code></pre></div>6. CURSORES</h1>
+SELECT @estado;</code></pre></div></div>6. CURSORES</h1>
 <p>Un cursor es una estructura procedimental en memoria que permite
 iterar y procesar, registro por registro, el conjunto de filas devuelto
 por una consulta SELECT.</p>
@@ -1141,7 +568,7 @@ actividad real del cliente):</p>
 cliente ha acumulado en pagos efectivos más del 80% de su límite de
 crédito actual, el SGBD ampliará proactivamente su límite crediticio un
 25%.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
 DROP PROCEDURE IF EXISTS sp_optimizar_credito_clientes_activos//
 CREATE PROCEDURE sp_optimizar_credito_clientes_activos()
 BEGIN
@@ -1186,7 +613,7 @@ END//
 DELIMITER ;
 -- Ejecutamos la reevaluación de límites del sistema completo de
 Jardinería
-CALL sp_optimizar_credito_clientes_activos();</code></pre></div>7. DISPARADORES (TRIGGERS)</h1>
+CALL sp_optimizar_credito_clientes_activos();</code></pre></div></div>7. DISPARADORES (TRIGGERS)</h1>
 <p>Un disparador o <em>trigger</em> es un objeto de base de datos
 asociado a una tabla que se activa de manera automática e implícita
 cuando se ejecuta un evento DML de modificación de datos (INSERT, UPDATE
@@ -1215,16 +642,16 @@ Pseudotablas OLD y NEW y su aplicación en la integridad de datos <a class="head
 trigger tiene acceso a los valores mediante las variables
 contextuales:</p>
 <ul>
-<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>NEW: Objeto temporal que contiene los valores de las
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>NEW: Objeto temporal que contiene los valores de las
 columnas que se están insertando o modificando. (Disponible en INSERT y
-UPDATE) [1.8.8].</code></pre></div></li>
+UPDATE) [1.8.8].</code></pre></div></div></li>
 <li><blockquote>
 <p><strong>OLD:</strong> Objeto temporal que contiene los valores de las
 columnas previos a la actualización o eliminación. (Disponible en UPDATE
 y DELETE) [1.8.8].</p>
 </blockquote></li>
 </ul>
-<div class="table-wrapper"><table>
+<div class="table-wrapper"><div class="table-wrapper"><table>
 <thead>
 <tr class="header">
 <th><strong>Operación</strong></th>
@@ -1249,13 +676,13 @@ y DELETE) [1.8.8].</p>
 <td>Sí (Solo Lectura)</td>
 </tr>
 </tbody>
-</table></div>
+</table></div></div>
 <p>Ejemplo de Trigger BEFORE INSERT (Validación de stock e integridad
 referencial):</p>
 <p>Un SysAdmin debe impedir que se registre un pedido de productos de
 jardinería si no existe stock real suficiente en el inventario,
 previniendo incoherencias comerciales.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
 DROP TRIGGER IF EXISTS trigger_validar_stock_before_insert//
 CREATE TRIGGER trigger_validar_stock_before_insert
 BEFORE INSERT ON detalle_pedido
@@ -1275,12 +702,12 @@ SET MESSAGE_TEXT = 'OPERACIÓN RECHAZADA: Stock insuficiente para
 procesar la línea del producto.';
 END IF;
 END//
-DELIMITER ;</code></pre></div>Ejemplo de Trigger AFTER INSERT (Auditoría e Históricos
+DELIMITER ;</code></pre></div></div>Ejemplo de Trigger AFTER INSERT (Auditoría e Históricos
 automáticos):</p>
 <p>Implementaremos un disparador que nos permita registrar en tiempo
 real un log de pagos que van realizando los clientes. Primero creamos
 una tabla dedicada a centralizar las notificaciones de pagos [1.10].</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>eroría-- Creamos la tabla de soporte técnico de notificaciones
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>eroría-- Creamos la tabla de soporte técnico de notificaciones
 CREATE TABLE IF NOT EXISTS notificaciones (
 id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 fecha_hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -1298,7 +725,7 @@ de notificaciones
 INSERT INTO notificaciones (total, codigo_cliente)
 VALUES (NEW.total, NEW.codigo_cliente);
 END//
-DELIMITER ;</code></pre></div>8. ENLACES DE
+DELIMITER ;</code></pre></div></div>8. ENLACES DE
 REFERENCIA Y DOCUMENTACIÓN OFICIAL</h1>
 <p>Para profundizar en la sintaxis procedimental avanzada, gestión de
 pilas de llamadas y optimización de ejecución del motor de rutinas
@@ -1332,6 +759,9 @@ href="https://dev.mysql.com/doc/refman/8.0/en/declare-handler.html"><u>MySQL
 8.0 Reference Manual: Condition Handling and SIGNAL SQLSTATE</u></a></p>
 </blockquote></li>
 </ul>
+
+        </main>
+    </div>
 
         </main>
     </div>

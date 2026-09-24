@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.dropdown').forEach(dd => {
         const btn = dd.querySelector('.dropbtn');
@@ -21,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
     });
 
-    // Controlador universal de clics en enlaces ancla (#...)
     document.querySelectorAll('a[href*="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const rawHref = this.getAttribute('href') || '';
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (hashIdx === -1) return;
             const hash = rawHref.substring(hashIdx + 1);
             if (!hash) return;
-            
+
             let targetId = hash;
             try { targetId = decodeURIComponent(hash); } catch(err) {}
 
@@ -48,12 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const headerOffset = 75;
                 const elementPosition = targetEl.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                
+
                 window.scrollTo({
                     top: offsetPosition,
                     behavior: 'smooth'
                 });
-                
+
                 if (history.pushState) {
                     history.pushState(null, null, '#' + targetId);
                 }

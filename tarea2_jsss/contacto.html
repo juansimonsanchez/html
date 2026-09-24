@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto e Incidencias - Departamento de Informática</title>
-
-    <!-- 1. Hoja externa consolidada -->
-    <link rel="stylesheet" href="css/estilos.css">
-
-    <!-- 2. Reto de Precedencia: Estilo interno en <head> -->
-    <style>
-        .destacado {
-            color: #6f42c1; /* Púrpura definido en estilo interno */
-        }
-    </style>
+    <title>TAREA2_JSSS - Contacto</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 <body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>TAREA2_JSSS &ndash; Contacto</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="contacto.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
 
     <!--
     ============================================================================
@@ -63,40 +67,38 @@
 
         <section>
             <h2>Armario Rack del Aula</h2>
-            <table>
-                <thead>
-                    <tr>
+            <div class="table-wrapper"><table>
+<thead>
+<tr>
                         <th>Unidad (U)</th>
                         <th>Dispositivo</th>
                         <th>IP</th>
                         <th>Función</th>
                     </tr>
-                </thead>
-                <tbody>
-                    <tr>
+</thead>
+<tbody>
+<tr>
                         <td>U3</td>
                         <td>Switch Cisco</td>
                         <td>192.168.1.2</td>
                         <td>Distribución de red</td>
                     </tr>
-                    <tr>
+<tr>
                         <td rowspan="2">U1 - U2</td>
                         <td>Servidor BD Master</td>
                         <td>172.16.0.10</td>
                         <td>Base de datos principal</td>
                     </tr>
-                    <tr>
+<tr>
                         <td>Servidor BD Replica</td>
                         <td>172.16.0.11</td>
                         <td>Base de datos réplica</td>
                     </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
+<tr>
                         <td colspan="4">Advertencia: Conectado a línea de SAI de 3000VA.</td>
                     </tr>
-                </tfoot>
-            </table>
+</tbody>
+</table></div>
         </section>
 
         <hr>
@@ -198,5 +200,8 @@
         <p><small>&copy; 2026 Todos los derechos reservados.</small></p>
     </footer>
 
+
+        </main>
+    </div>
 </body>
 </html>

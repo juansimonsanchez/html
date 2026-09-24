@@ -3,11 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Documentación de despliegues y servicios de red">
-    <meta name="author" content="Departamento de Informática">
-    <title>Servicios y Despliegues - Departamento de Informática</title>
+    <title>TAREA1_JSSS - Servicios</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 <body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>TAREA1_JSSS &ndash; Servicios</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="servicios.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
 
     <!-- Cabecera principal -->
     <header>
@@ -91,47 +103,45 @@
         <!-- Sección 4: Tabla Intermedia de Subredes -->
         <section>
             <h2>Direccionamiento IP de las Subredes del Centro</h2>
-            <table border="1">
-                <thead>
-                    <tr>
+            <div class="table-wrapper"><table>
+<thead>
+<tr>
                         <th>Nombre de Subred</th>
                         <th>Dirección de Red</th>
                         <th>Puerta de Enlace (Gateway)</th>
                         <th>DNS Principal</th>
                     </tr>
-                </thead>
-                <tbody>
-                    <tr>
+</thead>
+<tbody>
+<tr>
                         <td>Aula de Informática 1</td>
                         <td>192.168.10.0/24</td>
                         <td>192.168.10.1</td>
                         <td>192.168.1.254</td>
                     </tr>
-                    <tr>
+<tr>
                         <td>Aula de Informática 2</td>
                         <td>192.168.20.0/24</td>
                         <td>192.168.20.1</td>
                         <td>192.168.1.254</td>
                     </tr>
-                    <tr>
+<tr>
                         <td>Servidores y DMZ</td>
                         <td>172.16.0.0/24</td>
                         <td>172.16.0.1</td>
                         <td>8.8.8.8</td>
                     </tr>
-                    <tr>
+<tr>
                         <td>Administración / Gestión</td>
                         <td>192.168.1.0/24</td>
                         <td>192.168.1.1</td>
                         <td>192.168.1.254</td>
                     </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
+<tr>
                         <td colspan="4">Total de subredes activas: 4 subredes enrutadas por firewall perimetral.</td>
                     </tr>
-                </tfoot>
-            </table>
+</tbody>
+</table></div>
         </section>
     </main>
 
@@ -154,5 +164,8 @@
         <p><small>&copy; 2026 Todos los derechos reservados.</small></p>
     </footer>
 
+
+        </main>
+    </div>
 </body>
 </html>

@@ -4,500 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GBD - Ut7 Teoria Dml</title>
-    <style>
-    
-:root {
-    --primary: #2563eb;
-    --primary-dark: #1d4ed8;
-    --bg-header: #1e3a8a;
-    --text-header: #ffffff;
-    --bg-body: #f8fafc;
-    --text-body: #1e293b;
-    --border-color: #cbd5e1;
-}
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 80px;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background: var(--bg-body);
-    color: var(--text-body);
-    min-height: 100vh;
-}
-
-h1, h2, h3, h4, h5, h6, [id], a[name] {
-    scroll-margin-top: 80px !important;
-}
-
-.headerlink {
-    display: inline-block;
-    margin-left: 0.4rem;
-    color: #94a3b8;
-    text-decoration: none;
-    font-size: 0.8em;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.2s, color 0.2s;
-}
-
-h1:hover .headerlink, h2:hover .headerlink, h3:hover .headerlink, 
-h4:hover .headerlink, h5:hover .headerlink, h6:hover .headerlink {
-    visibility: visible;
-    opacity: 1;
-}
-
-.headerlink:hover {
-    color: var(--primary);
-}
-
-#site-header {
-    position: sticky;
-    top: 0;
-    z-index: 10000;
-    background: var(--bg-header);
-    color: var(--text-header);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-}
-
-.header-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1.5rem;
-    height: 62px;
-}
-
-.site-title {
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: #ffffff;
-    letter-spacing: -0.01em;
-}
-
-.top-nav {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.top-nav .nav-btn {
-    color: #cbd5e1;
-    text-decoration: none;
-    font-weight: 600;
-    padding: 8px 14px;
-    border-radius: 6px;
-    font-size: 0.95rem;
-    transition: background 0.2s, color 0.2s;
-}
-
-.top-nav .nav-btn:hover, .top-nav .nav-btn.active {
-    background: #1e293b;
-    color: #ffffff;
-}
-
-.top-nav .nav-btn.disabled {
-    opacity: 0.4;
-    pointer-events: none;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropbtn {
-    background: #1e293b;
-    color: #ffffff;
-    padding: 9px 16px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    border: 1px solid #334155;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.dropdown:hover .dropbtn, .dropbtn.active {
-    background: var(--primary);
-    border-color: var(--primary);
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #ffffff;
-    min-width: 320px;
-    max-width: 480px;
-    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
-    border-radius: 8px;
-    overflow: hidden;
-    z-index: 10001;
-    border: 1px solid #e2e8f0;
-    margin-top: 6px;
-}
-
-.dropdown-content a {
-    color: var(--text-body);
-    padding: 12px 18px;
-    text-decoration: none;
-    display: block;
-    font-size: 0.92rem;
-    border-bottom: 1px solid #f1f5f9;
-    line-height: 1.4;
-    transition: background 0.15s, color 0.15s;
-    word-break: break-word;
-}
-
-.dropdown-content a:last-child {
-    border-bottom: none;
-}
-
-.dropdown-content a:hover {
-    background-color: #eff6ff;
-    color: var(--primary);
-    font-weight: 600;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block !important;
-}
-
-#page-layout {
-    display: flex;
-    min-height: calc(100vh - 62px);
-}
-
-#left-panel {
-    width: 320px;
-    min-width: 320px;
-    background: #ffffff;
-    border-right: 1px solid #e2e8f0;
-    padding: 1.5rem 1.25rem;
-    box-sizing: border-box;
-    overflow-y: auto;
-    position: sticky;
-    top: 62px;
-    height: calc(100vh - 62px);
-}
-
-#left-panel h3 {
-    font-size: 1rem;
-    margin-top: 0;
-    color: #334155;
-    border-bottom: 2px solid #e2e8f0;
-    padding-bottom: 0.5rem;
-}
-
-#left-panel nav#TOC, #left-panel #TOC {
-    background: transparent !important;
-    border: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    box-shadow: none !important;
-}
-
-#left-panel ul {
-    list-style-type: none;
-    padding-left: 0.75rem;
-    margin: 0.5rem 0;
-}
-
-#left-panel li {
-    margin: 6px 0;
-}
-
-#left-panel a {
-    color: #475569;
-    text-decoration: none;
-    font-size: 0.9rem;
-    line-height: 1.4;
-    display: block;
-    transition: color 0.15s;
-}
-
-#left-panel a:hover {
-    color: var(--primary);
-    font-weight: 600;
-}
-
-#main-content {
-    flex: 1;
-    padding: 2.5rem 4rem;
-    box-sizing: border-box;
-    max-width: 100% !important;
-    width: calc(100% - 320px);
-    min-width: 0;
-}
-
-/* TABLAS ELEGANTES Y RESPONSIVE */
-.table-wrapper {
-    overflow-x: auto;
-    margin: 1.75rem 0;
-    border-radius: 8px;
-    border: 1px solid #cbd5e1;
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-}
-
-table {
-    width: 100% !important;
-    border-collapse: collapse !important;
-    margin: 0 !important;
-    font-size: 0.93rem;
-    background: #ffffff;
-    table-layout: auto !important;
-}
-
-th, td {
-    padding: 10px 14px !important;
-    border: 1px solid #cbd5e1 !important;
-    text-align: left;
-    vertical-align: top;
-    line-height: 1.5;
-    word-break: normal;
-    overflow-wrap: break-word;
-}
-
-td p, th p {
-    margin: 0 !important;
-    padding: 2px 0 !important;
-}
-
-th {
-    background-color: #0f172a !important;
-    color: #ffffff !important;
-    font-weight: 600;
-    font-size: 0.95rem;
-    border-bottom: 2px solid #0f172a !important;
-}
-
-tr:nth-child(even) td {
-    background-color: #f8fafc !important;
-}
-
-tr:hover td {
-    background-color: #f1f5f9 !important;
-}
-
-/* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
-.code-wrapper {
-    position: relative;
-    margin: 1.5rem 0;
-    border-radius: 8px;
-    overflow: hidden;
-    background: #0f172a;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.copy-btn {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    background: #334155;
-    color: #f8fafc;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 5px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
-    z-index: 10;
-}
-
-.copy-btn:hover {
-    background: #2563eb;
-}
-
-pre {
-    margin: 0 !important;
-    padding: 1.25rem 1.25rem !important;
-    background: #0f172a !important;
-    color: #f8fafc !important;
-    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
-    font-size: 0.92rem !important;
-    line-height: 1.6 !important;
-    overflow-x: auto !important;
-    white-space: pre-wrap !important;
-    word-break: break-all !important;
-}
-
-code {
-    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace !important;
-}
-
-p code, li code {
-    background: #e2e8f0;
-    color: #0f172a;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 0.9em;
-}
-
-img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; }
-
-/* RESPONSIVE DESIGN PARA MÓVILES Y TABLETS */
-@media (max-width: 768px) {
-    .header-container {
-        height: auto;
-        flex-direction: column;
-        padding: 0.75rem 1rem;
-        gap: 0.6rem;
-    }
-    
-    .site-title {
-        font-size: 1.05rem;
-        text-align: center;
-        justify-content: center;
-    }
-
-    .site-title img {
-        height: 28px !important;
-    }
-
-    .top-nav {
-        flex-wrap: wrap;
-        justify-content: center;
-        width: 100%;
-        gap: 0.35rem;
-    }
-
-    .top-nav .nav-btn, .dropbtn {
-        padding: 6px 10px;
-        font-size: 0.85rem;
-    }
-
-    .dropdown-content {
-        min-width: 240px;
-        max-width: 90vw;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    #page-layout {
-        flex-direction: column;
-    }
-
-    #left-panel {
-        width: 100% !important;
-        min-width: 0 !important;
-        height: auto !important;
-        position: static !important;
-        border-right: none !important;
-        border-bottom: 2px solid #e2e8f0;
-        padding: 1rem !important;
-    }
-
-    #main-content {
-        width: 100% !important;
-        padding: 1.25rem 1rem !important;
-    }
-
-    iframe {
-        height: 60vh !important;
-    }
-
-    th, td {
-        padding: 8px 10px !important;
-        font-size: 0.85rem !important;
-    }
-
-    pre {
-        padding: 0.85rem !important;
-        font-size: 0.82rem !important;
-    }
-}
-
-    </style>
-    <script>
-    
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.dropdown').forEach(dd => {
-        const btn = dd.querySelector('.dropbtn');
-        const content = dd.querySelector('.dropdown-content');
-        if (btn && content) {
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const isOpen = content.style.display === 'block';
-                document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
-                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
-                if (!isOpen) {
-                    content.style.display = 'block';
-                    btn.classList.add('active');
-                }
-            });
-        }
-    });
-
-    document.addEventListener('click', () => {
-        document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
-        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
-    });
-
-    // Controlador universal de clics en enlaces ancla (#...)
-    document.querySelectorAll('a[href*="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const rawHref = this.getAttribute('href') || '';
-            const hashIdx = rawHref.indexOf('#');
-            if (hashIdx === -1) return;
-            const hash = rawHref.substring(hashIdx + 1);
-            if (!hash) return;
-            
-            let targetId = hash;
-            try { targetId = decodeURIComponent(hash); } catch(err) {}
-
-            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
-            if (!targetEl) {
-                for (let el of document.querySelectorAll('[id]')) {
-                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
-                        targetEl = el;
-                        break;
-                    }
-                }
-            }
-
-            if (targetEl) {
-                e.preventDefault();
-                const headerOffset = 75;
-                const elementPosition = targetEl.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-                
-                if (history.pushState) {
-                    history.pushState(null, null, '#' + targetId);
-                }
-            }
-        });
-    });
-});
-
-function copyCode(btn) {
-    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
-    navigator.clipboard.writeText(code).then(() => {
-        const orig = btn.innerText;
-        btn.innerText = '✅ ¡Copiado!';
-        btn.style.background = '#16a34a';
-        setTimeout(() => {
-            btn.innerText = orig;
-            btn.style.background = '#334155';
-        }, 2000);
-    });
-}
-
-    </script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 <body>
     <header id="site-header">
@@ -505,96 +13,16 @@ function copyCode(btn) {
     <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>GBD &ndash; Ut7 Teoria Dml</span></div>
     <nav class="top-nav">
       <a href="index.html" class="nav-btn">Inicio</a>
-      <a href="GBD_UT8_Teoria_Programacion.html" class="nav-btn">Programación</a>
-      <div class="dropdown">
-        <button class="dropbtn" type="button">Teoría ▾</button>
-        <div class="dropdown-content">
-          <a href="GBD_UT1_Teoria_Almacenamiento.html">GBD UT1 Teoria Almacenamiento</a>
-          <a href="GBD_UT2_Teoria_Diagramas.html">GBD UT2 Teoria Diagramas</a>
-          <a href="GBD_UT3_Teoria_Modelo.html">GBD UT3 Teoria Modelo</a>
-          <a href="GBD_UT4_Teoria_DDL.html">GBD UT4 Teoria DDL</a>
-          <a href="GBD_UT5_Teoria_Consultas.html">GBD UT5 Teoria Consultas</a>
-          <a href="GBD_UT6_Teoria_Vistas.html">GBD UT6 Teoria Vistas</a>
-          <a href="GBD_UT7_Teoria_DML.html">GBD UT7 Teoria DML</a>
-          <a href="GBD_UT9_Teoria_Seguridad.html">GBD UT9 Teoria Seguridad</a>
-        </div>
-      </div>
     </nav>
   </div>
 </header>
     <div id="page-layout">
-        <aside id="left-panel">
-            <h3>Índice del Tema</h3>
-            <nav id="TOC" role="doc-toc">
-<ul>
-<li><a href="#ficha-técnica-de-la-unidad-didáctica"
-id="toc-ficha-técnica-de-la-unidad-didáctica">FICHA TÉCNICA DE LA UNIDAD
-DIDÁCTICA</a></li>
-<li><a href="#índice-de-contenidos" id="toc-índice-de-contenidos">ÍNDICE
-DE CONTENIDOS</a></li>
-<li><a href="#introducción-y-contextualización"
-id="toc-introducción-y-contextualización">1. INTRODUCCIÓN Y
-CONTEXTUALIZACIÓN</a></li>
-<li><a href="#lenguaje-de-manipulación-de-datos-dml"
-id="toc-lenguaje-de-manipulación-de-datos-dml">2. LENGUAJE DE
-MANIPULACIÓN DE DATOS (DML)</a>
-<ul>
-<li><a href="#section" id="toc-section"></a></li>
-<li><a href="#inserción-de-datos-sentencia-insert"
-id="toc-inserción-de-datos-sentencia-insert">2.1 Inserción de Datos:
-Sentencia INSERT</a></li>
-<li><a href="#section-1" id="toc-section-1"></a></li>
-<li><a href="#modificación-de-datos-sentencia-update"
-id="toc-modificación-de-datos-sentencia-update">2.2 Modificación de
-Datos: Sentencia UPDATE</a></li>
-<li><a href="#eliminación-de-datos-delete-y-truncate"
-id="toc-eliminación-de-datos-delete-y-truncate">2.3 Eliminación de
-Datos: DELETE y TRUNCATE</a></li>
-<li><a href="#section-3" id="toc-section-3"></a></li>
-<li><a href="#operaciones-de-manipulación-e-integridad-referencial"
-id="toc-operaciones-de-manipulación-e-integridad-referencial">2.4
-Operaciones de Manipulación e Integridad Referencial</a></li>
-</ul></li>
-<li><a href="#transacciones" id="toc-transacciones">3. TRANSACCIONES
-</a>
-<ul>
-<li><a href="#concepto-de-transacción-y-propiedades-acid"
-id="toc-concepto-de-transacción-y-propiedades-acid">3.1 Concepto de
-Transacción y Propiedades ACID</a></li>
-<li><a href="#control-del-autocommit-en-mysql"
-id="toc-control-del-autocommit-en-mysql">3.2 Control del AUTOCOMMIT en
-MySQL</a></li>
-<li><a href="#comandos-tcl-start-transaction-commit-y-rollback"
-id="toc-comandos-tcl-start-transaction-commit-y-rollback">3.3 Comandos
-TCL: START TRANSACTION, COMMIT y ROLLBACK</a></li>
-<li><a href="#section-4" id="toc-section-4"></a></li>
-<li><a href="#control-fino-con-puntos-de-retorno-savepoint"
-id="toc-control-fino-con-puntos-de-retorno-savepoint">3.4 Control Fino
-con Puntos de Retorno (SAVEPOINT)</a></li>
-</ul></li>
-<li><a href="#section-5" id="toc-section-5"></a></li>
-<li><a href="#acceso-concurrente-y-niveles-de-aislamiento-en-innodb"
-id="toc-acceso-concurrente-y-niveles-de-aislamiento-en-innodb">4. ACCESO
-CONCURRENTE Y NIVELES DE AISLAMIENTO EN INNODB</a>
-<ul>
-<li><a href="#fenómenos-de-lectura-concurrente"
-id="toc-fenómenos-de-lectura-concurrente">4.1 Fenómenos de Lectura
-Concurrente</a></li>
-<li><a href="#niveles-de-aislamiento"
-id="toc-niveles-de-aislamiento">4.2 Niveles de Aislamiento</a></li>
-</ul></li>
-<li><a href="#section-6" id="toc-section-6"></a></li>
-<li><a href="#transacciones-en-procedimientos-almacenados"
-id="toc-transacciones-en-procedimientos-almacenados">5. TRANSACCIONES EN
-PROCEDIMIENTOS ALMACENADOS</a>
-<ul>
-<li><a href="#gestión-de-excepciones-y-reversión-automática"
-id="toc-gestión-de-excepciones-y-reversión-automática">5.1 Gestión de
-Excepciones y Reversión Automática</a></li>
-</ul></li>
-</ul>
-</nav>
-        </aside>
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="GBD_UT7_Teoria_DML.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+    
+    
+        
         <main id="main-content">
             <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="GBD_UT7_Teoria_DML.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
             
@@ -608,7 +36,7 @@ TRANSACCIONALIDAD<br />
 
 <h3 id="ficha-técnica-de-la-unidad-didáctica">FICHA TÉCNICA DE LA UNIDAD
 DIDÁCTICA <a class="headerlink" href="#ficha-técnica-de-la-unidad-didáctica" title="Enlace permanente">¶</a></h3>
-<div class="table-wrapper"><table>
+<div class="table-wrapper"><div class="table-wrapper"><table>
 <tbody>
 <tr class="header">
 <td><strong>Unidad Didáctica</strong></td>
@@ -645,20 +73,20 @@ motor InnoDB.</p></td>
 prácticas)</td>
 </tr>
 </tbody>
-</table></div>
+</table></div></div>
 <h3 id="índice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#índice-de-contenidos" title="Enlace permanente">¶</a></h3>
 <p><a href="#introducción-y-contextualización"><u>1. INTRODUCCIÓN Y
 CONTEXTUALIZACIÓN</u></a></p>
 <p><a href="#lenguaje-de-manipulación-de-datos-dml"><u>2. LENGUAJE DE
 MANIPULACIÓN DE DATOS (DML)</u></a></p>
-<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>2.1 Inserción de
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>2.1 Inserción de
 Datos: Sentencia INSERT
 2.2 Modificación
 de Datos: Sentencia UPDATE
 2.3 Eliminación
 de Datos: DELETE y TRUNCATE
 2.4
-Operaciones de Manipulación e Integridad Referencial</code></pre></div>
+Operaciones de Manipulación e Integridad Referencial</code></pre></div></div>
 <p><a href="#transacciones"><u>3. TRANSACCIONES</u></a></p>
 <blockquote>
 <p><a href="#concepto-de-transacción-y-propiedades-acid"><u>3.1 Concepto
@@ -709,7 +137,7 @@ MANIPULACIÓN DE DATOS (DML) <a class="headerlink" href="#lenguaje-de-manipulaci
 <p>Para realizar los ejemplos de esta unidad de trabajo, utilizaremos el
 esquema relacional de la base de datos de <strong>Jardinería /
 Pedidos</strong> definido a continuación:</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Creación de la base de datos con codificación utf8mb4 recomendada
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Creación de la base de datos con codificación utf8mb4 recomendada
 para SysAdmins
 CREATE DATABASE IF NOT EXISTS jardineria_pedidos
 CHARACTER SET utf8mb4
@@ -759,7 +187,7 @@ fecha_pago DATE NOT NULL,
 total DECIMAL(15, 2) NOT NULL,
 CONSTRAINT fk_pago_cliente FOREIGN KEY (codigo_cliente)
 REFERENCES cliente (codigo_cliente)
-) ENGINE=InnoDB;</code></pre></div></h2>
+) ENGINE=InnoDB;</code></pre></div></div></h2>
 <h2 id="inserción-de-datos-sentencia-insert">2.1 Inserción de Datos:
 Sentencia INSERT <a class="headerlink" href="#inserción-de-datos-sentencia-insert" title="Enlace permanente">¶</a></h2>
 <p>La sentencia INSERT permite añadir nuevos registros (filas) a una
@@ -774,7 +202,7 @@ Explícita</strong></p>
 <p>La buena práctica en administración exige siempre detallar la lista
 de columnas destino para evitar que cambios futuros en el esquema de la
 tabla rompan los scripts de automatización:</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Práctica Recomendada: Inserción explícita especificando
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Práctica Recomendada: Inserción explícita especificando
 columnas
 INSERT INTO cliente (nombre_cliente, limite_credito)
 VALUES ('Jardines Celia S.L.', 5000.00);
@@ -784,13 +212,13 @@ precio_venta)
 VALUES
 ('PROD-P01', 'Pala de Acero Reforzada', 150, 19.95),
 ('PROD-M02', 'Manguera Autoenrollable 20m', 80, 24.50),
-('PROD-T03', 'Tijeras de Podar Premium', 45, 12.99);</code></pre></div></p>
+('PROD-T03', 'Tijeras de Podar Premium', 45, 12.99);</code></pre></div></div></p>
 <p><strong>Sentencia INSERT ... SELECT</strong></p>
 <p>Permite poblar una tabla de forma masiva utilizando el conjunto de
 resultados devuelto por una consulta SELECT. Es un recurso de
 rendimiento clave para migraciones de datos o generación de tablas de
 agregación histórica:</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Supongamos una tabla para almacenar un histórico de clientes
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Supongamos una tabla para almacenar un histórico de clientes
 premium
 CREATE TABLE clientes_vip (
 id_vip INT UNSIGNED PRIMARY KEY,
@@ -801,7 +229,7 @@ credito DECIMAL(15, 2) NOT NULL
 INSERT INTO clientes_vip (id_vip, nombre, credito)
 SELECT codigo_cliente, nombre_cliente, limite_credito
 FROM cliente
-WHERE limite_credito &gt;= 5000.00;</code></pre></div></h2>
+WHERE limite_credito &gt;= 5000.00;</code></pre></div></div></h2>
 <h2 id="modificación-de-datos-sentencia-update">2.2 Modificación de
 Datos: Sentencia UPDATE <a class="headerlink" href="#modificación-de-datos-sentencia-update" title="Enlace permanente">¶</a></h2>
 <p>La sentencia UPDATE permite modificar los valores de una o más
@@ -815,7 +243,7 @@ Oficial de MySQL sobre la Sentencia</u></a> UPDATE <a class="headerlink" href="#
 <p>La cláusula WHERE es obligatoria para acotar el impacto del cambio.
 Su omisión modificará todos los registros de la tabla de forma
 irreversible:</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Actualización selectiva de un producto específico
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Actualización selectiva de un producto específico
 UPDATE producto
 SET cantidad_en_stock = cantidad_en_stock - 5,
 precio_venta = 22.50
@@ -825,7 +253,7 @@ fecha
 UPDATE pedido
 SET estado = 'Retrasado'
 WHERE fecha_entrega IS NULL
-AND fecha_esperada &lt; CURDATE();</code></pre></div></p>
+AND fecha_esperada &lt; CURDATE();</code></pre></div></div></p>
 </blockquote>
 <h6
 id="advertencia-de-administrador-en-entornos-de-producción-es-recomendable-habilitar-la-variable-de-entorno-sql_safe_updates-set-sql_safe_updates-1.-esto-previene-la-ejecución-de-sentencias-update-o-delete-que-no-utilicen-un-índice-o-clave-primaria-en-la-cláusula-where.">⚠️
@@ -852,9 +280,9 @@ Oficial de MySQL sobre la Sentencia TRUNCATE TABLE</u></a> <a class="headerlink"
 <p>Borra los registros que cumplen las condiciones del filtro WHERE uno
 a uno, disparando disparadores (triggers) y registrando la operación en
 el registro binario (binary log):</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Borrado selectivo de un pago específico
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Borrado selectivo de un pago específico
 DELETE FROM pago
-WHERE id_transaccion = 'TXN-2026-001';</code></pre></div></h5>
+WHERE id_transaccion = 'TXN-2026-001';</code></pre></div></div></h5>
 <p><strong>Sentencia TRUNCATE (Borrado de Alta Eficiencia)</strong></p>
 <p>Es una sentencia DDL que, en lugar de eliminar fila por fila,
 destruye la tabla físicamente y la recrea vacía desde cero.</p>
@@ -881,26 +309,26 @@ TRIGGERS).</p>
 referenciadas por otras tablas.</p>
 </blockquote></li>
 </ul>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Vaciar por completo los datos históricos para preparar una nueva
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Vaciar por completo los datos históricos para preparar una nueva
 carga de datos
-TRUNCATE TABLE clientes_vip;</code></pre></div></h2>
+TRUNCATE TABLE clientes_vip;</code></pre></div></div></h2>
 <h2 id="operaciones-de-manipulación-e-integridad-referencial">2.4
 Operaciones de Manipulación e Integridad Referencial <a class="headerlink" href="#operaciones-de-manipulación-e-integridad-referencial" title="Enlace permanente">¶</a></h2>
 <p>Cuando modificamos o eliminamos registros que están asociados con
 otras tablas a través de relaciones de clave ajena (FOREIGN KEY), el
 SGBD actúa según la regla referencial definida:</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Intento de borrado de un producto referenciado
-DELETE FROM producto WHERE codigo_producto = 'PROD-M02';</code></pre></div><strong>ON DELETE RESTRICT / NO ACTION (Por defecto):</strong> El
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Intento de borrado de un producto referenciado
+DELETE FROM producto WHERE codigo_producto = 'PROD-M02';</code></pre></div></div><strong>ON DELETE RESTRICT / NO ACTION (Por defecto):</strong> El
 motor InnoDB de MySQL detiene la sentencia y lanza un error si el código
 del producto existe en alguna fila de la tabla detalle_pedido.</p>
 </blockquote></li>
-<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>ON DELETE CASCADE: Si se borrara un registro en la
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>ON DELETE CASCADE: Si se borrara un registro en la
 tabla pedido, InnoDB eliminará automáticamente todas las líneas
 asociadas en detalle_pedido para mantener la base de datos libre de
-registros huérfanos.</code></pre></div></li>
-<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>ON DELETE SET NULL: Si el registro principal se
+registros huérfanos.</code></pre></div></div></li>
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>ON DELETE SET NULL: Si el registro principal se
 elimina, los registros secundarios asociados cambian el valor de su
-clave ajena a NULL (requiere que el campo acepte nulos).</code></pre></div></li>
+clave ajena a NULL (requiere que el campo acepte nulos).</code></pre></div></div></li>
 </ul>
 <h1 id="transacciones">3. TRANSACCIONES  <a class="headerlink" href="#transacciones" title="Enlace permanente">¶</a></h1>
 <h2 id="concepto-de-transacción-y-propiedades-acid">3.1 Concepto de
@@ -917,10 +345,10 @@ las propiedades <strong>ACID</strong>:</p>
 falla, todo el bloque se descarta y los datos regresan a su estado
 original.</p>
 </blockquote></li>
-<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Consistencia (Consistency): La transacción debe
+<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Consistencia (Consistency): La transacción debe
 llevar a la base de datos de un estado válido a otro, respetando
 estrictamente todas las restricciones declaradas en el esquema (claves
-primarias, de unicidad, nulos y checks).</code></pre></div></li>
+primarias, de unicidad, nulos y checks).</code></pre></div></div></li>
 <li><blockquote>
 <p><strong>Aislamiento (Isolation):</strong> Asegura que las operaciones
 que ocurren dentro de una transacción en curso no sean visibles ni
@@ -948,13 +376,13 @@ Oficial de MySQL sobre Autocommit</u></a> <a class="headerlink" href="#documenta
 <p>Para trabajar de manera profesional con transacciones complejas,
 debemos configurar y monitorizar el estado de este parámetro en el
 servidor:</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Consultar el estado del autocommit de la sesión actual
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Consultar el estado del autocommit de la sesión actual
 SELECT @@SESSION.autocommit;
 -- Desactivar el autocommit (Recomendado para scripts interactivos de
 SysAdmin)
 SET autocommit = 0;
 -- Volver a activar el autocommit automático
-SET autocommit = 1;</code></pre></div>3.3 Comandos
+SET autocommit = 1;</code></pre></div></div>3.3 Comandos
 TCL: START TRANSACTION, COMMIT y ROLLBACK</h2>
 <p>Los comandos del Lenguaje de Control de Transacciones (TCL) permiten
 delimitar el alcance del bloque lógico de trabajo.</p>
@@ -994,7 +422,7 @@ pedido de un producto. Esta operación requiere:</p>
 </ol>
 <p>Si falla la inserción de las líneas de detalle, se debe abortar la
 operación para no descontar existencias de forma errónea:</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Iniciamos explícitamente el bloque transaccional
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Iniciamos explícitamente el bloque transaccional
 START TRANSACTION;
 -- Paso 1: Insertar la cabecera del pedido para el cliente 1
 INSERT INTO pedido (fecha_pedido, fecha_esperada, estado,
@@ -1013,11 +441,11 @@ INSERT INTO detalle_pedido (codigo_pedido, codigo_producto, cantidad,
 precio_unidad)
 VALUES (@nuevo_pedido, 'PROD-P01', 2, 19.95);
 -- Confirmar cambios
-COMMIT;</code></pre></div>Si durante el script se detecta que no se cumple la restricción
+COMMIT;</code></pre></div></div>Si durante el script se detecta que no se cumple la restricción
 referencial o el stock es insuficiente, se puede invocar en cualquier
 punto antes del COMMIT:</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- En caso de error, abortar todas las operaciones del bloque
-ROLLBACK;</code></pre></div></h2>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- En caso de error, abortar todas las operaciones del bloque
+ROLLBACK;</code></pre></div></div></h2>
 <h2 id="control-fino-con-puntos-de-retorno-savepoint">3.4 Control Fino
 con Puntos de Retorno (SAVEPOINT) <a class="headerlink" href="#control-fino-con-puntos-de-retorno-savepoint" title="Enlace permanente">¶</a></h2>
 <p>Los puntos de retorno (SAVEPOINT) permiten dividir una transacción
@@ -1029,7 +457,7 @@ id="documentación-oficial-más-información-en-documentación-oficial-de-mysql-
 Documentación Oficial: Más Información en <a
 href="https://dev.mysql.com/doc/refman/8.0/en/savepoint.html"><u>Documentación
 Oficial de MySQL sobre SAVEPOINT</u></a> <a class="headerlink" href="#documentación-oficial-más-información-en-documentación-oficial-de-mysql-sobre-savepoint" title="Enlace permanente">¶</a></h5>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>START TRANSACTION;
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>START TRANSACTION;
 -- Registro de la cabecera del pedido
 INSERT INTO pedido (fecha_pedido, fecha_esperada, estado,
 codigo_cliente)
@@ -1052,7 +480,7 @@ VALUES (@pedido_id, 'PROD-X99', 5, 49.99);
 ROLLBACK TO SAVEPOINT sp_primer_producto;
 -- Liberar punto de retorno y confirmar
 RELEASE SAVEPOINT sp_cabecera_pedido;
-COMMIT;</code></pre></div></h1>
+COMMIT;</code></pre></div></div></h1>
 <h1 id="acceso-concurrente-y-niveles-de-aislamiento-en-innodb">4. ACCESO
 CONCURRENTE Y NIVELES DE AISLAMIENTO EN INNODB <a class="headerlink" href="#acceso-concurrente-y-niveles-de-aislamiento-en-innodb" title="Enlace permanente">¶</a></h1>
 <p>En servidores multiusuario modernos, cientos de conexiones de red
@@ -1121,7 +549,7 @@ id="documentación-oficial-más-información-en-documentación-de-niveles-de-ais
 Documentación Oficial: Más Información en <a
 href="https://dev.mysql.com/doc/refman/8.0/en/innodb-transaction-isolation-levels.html"><u>Documentación
 de Niveles de Aislamiento de Transacciones en InnoDB</u></a> <a class="headerlink" href="#documentación-oficial-más-información-en-documentación-de-niveles-de-aislamiento-de-transacciones-en-innodb" title="Enlace permanente">¶</a></h5>
-<div class="table-wrapper"><table>
+<div class="table-wrapper"><div class="table-wrapper"><table>
 <thead>
 <tr class="header">
 <th><strong>Nivel de Aislamiento</strong></th>
@@ -1156,7 +584,7 @@ de Niveles de Aislamiento de Transacciones en InnoDB</u></a> <a class="headerlin
 <td>Evitado</td>
 </tr>
 </tbody>
-</table></div>
+</table></div></div>
 <p><em>*Nota técnica de administración: En la mayoría de sistemas SQL
 estándar, el nivel REPEATABLE READ permite lecturas fantasma. Sin
 embargo, el motor InnoDB de MySQL previene de forma nativa la inserción
@@ -1166,7 +594,7 @@ Locking</strong>.</em></p>
 <p>Como administradores, podemos consultar y parametrizar los niveles de
 aislamiento a nivel de servidor (GLOBAL) o a nivel de conexión activa
 (SESSION):</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Consultar el aislamiento a nivel de servidor global
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Consultar el aislamiento a nivel de servidor global
 SELECT @@GLOBAL.transaction_isolation;
 -- Consultar el aislamiento de la sesión activa
 SELECT @@SESSION.transaction_isolation;
@@ -1174,7 +602,7 @@ SELECT @@SESSION.transaction_isolation;
 SELECT @@transaction_isolation;
 -- Modificar el nivel de aislamiento de la sesión
 SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED;
-SET SESSION TRANSACTION ISOLATION LEVEL SERIALIZABLE;</code></pre></div></h1>
+SET SESSION TRANSACTION ISOLATION LEVEL SERIALIZABLE;</code></pre></div></div></h1>
 <h1 id="transacciones-en-procedimientos-almacenados">5. TRANSACCIONES EN
 PROCEDIMIENTOS ALMACENADOS <a class="headerlink" href="#transacciones-en-procedimientos-almacenados" title="Enlace permanente">¶</a></h1>
 <p>En la arquitectura de sistemas real, no es aconsejable delegar el
@@ -1195,7 +623,7 @@ HANDLER). En caso de que ocurra una violación de restricción física
 (error de clave externa, de tipo o nulo), el manejador ejecutará una
 sección de código encargada de hacer el rollback automático de forma
 controlada y segura para la sesión:</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER $$
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER $$
 CREATE PROCEDURE procesar_pago_pedido (
 IN p_cliente_id INT UNSIGNED,
 IN p_transaccion VARCHAR(26),
@@ -1222,7 +650,10 @@ ELSE
 SELECT 'Error crítico. Transacción abortada.' AS Estado;
 END IF;
 END$$
-DELIMITER ;</code></pre></div></p>
+DELIMITER ;</code></pre></div></div></p>
+
+        </main>
+    </div>
 
         </main>
     </div>
