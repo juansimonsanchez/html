@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RECURSO - Instalacion Docker Ubuntu</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RECURSO - Instalacion Docker Ubuntu</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
 </head>
+
 <body>
-    <header id="site-header">
-  <div class="header-container">
-    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>RECURSO &ndash; Instalacion Docker Ubuntu</span></div>
-    <nav class="top-nav">
-      <a href="index.html" class="nav-btn">Inicio</a>
-    </nav>
-  </div>
-</header>
-    <div id="page-layout">
-        <main id="main-content">
-            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="Recurso_Instalacion_docker_ubuntu.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
-            
-  
-  
+  <header id="site-header">
+    <div class="header-container">
+      <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo"
+          style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>RECURSO
+          &ndash; Instalacion Docker Ubuntu</span></div>
+      <nav class="top-nav">
+        <a href="index.html" class="nav-btn">Inicio</a>
+      </nav>
+    </div>
+  </header>
+  <div id="page-layout">
+
+
+
     <main id="main-content">
       <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a
           href="Recurso_Instalación_docker_ubuntu.pdf" download
@@ -47,40 +49,50 @@
         Ubuntu <a class="headerlink" href="#instalación-de-docker-en-ubuntu" title="Enlace permanente">¶</a></h2>
       <p>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Añade la clave GPG oficial de Docker:
+        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+          <pre><code># Añade la clave GPG oficial de Docker:
 sudo apt update
 sudo apt install -y ca-certificates curl
 sudo install -m 0755 -d /etc/apt/keyrings
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc</code></pre></div>
+sudo chmod a+r /etc/apt/keyrings/docker.asc</code></pre>
+        </div>
       </div>
       </p>
       <p>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Añadir el repositorio a las fuentes de APT:
+        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+          <pre><code># Añadir el repositorio a las fuentes de APT:
 echo \
 "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
 $(. /etc/os-release &amp;&amp; echo "$VERSION_CODENAME") stable" | \
 sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
-sudo apt update</code></pre></div>
+sudo apt update</code></pre>
+        </div>
       </div>
       </p>
       <p>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Instalar los paquetes necesarios:
-sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</code></pre></div>
+        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+          <pre><code># Instalar los paquetes necesarios:
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</code></pre>
+        </div>
       </div>
       </p>
       <p>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Verificar que el servicio esté activo:
-sudo systemctl status docker</code></pre></div>
+        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+          <pre><code># Verificar que el servicio esté activo:
+sudo systemctl status docker</code></pre>
+        </div>
       </div>Deberías ver el estado resaltado en verde como active (running).</p>
       <p>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Ejecutar Docker sin 'sudo' (opcional):
+        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+          <pre><code># Ejecutar Docker sin 'sudo' (opcional):
 sudo usermod -aG docker $USER
-newgrp docker</code></pre></div>
+newgrp docker</code></pre>
+        </div>
       </div>Ejecuta docker run hello-world sin anteceder sudo. Deberías ver un
       mensaje de bienvenida confirmando la instalación.</p>
       <h2 id="gestión-de-contenedores-docker-run-docker-exec">2. Gestión de
@@ -295,7 +307,8 @@ newgrp docker</code></pre></div>
     </main>
   </div>
 
-        </main>
-    </div>
+  </main>
+  </div>
 </body>
+
 </html>
