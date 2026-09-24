@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,176 +8,217 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
+
 <body>
     <header id="site-header">
-  <div class="header-container">
-    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD &ndash; Ut4 Practica Automatizacion Mantenimiento</span></div>
-    <nav class="top-nav">
-      <a href="index.html" class="nav-btn">Inicio</a>
-    </nav>
-  </div>
-</header>
+        <div class="header-container">
+            <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo"
+                    style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD
+                    &ndash; Ut4 Practica Automatizacion Mantenimiento</span></div>
+            <nav class="top-nav">
+                <a href="index.html" class="nav-btn">Inicio</a>
+            </nav>
+        </div>
+    </header>
     <div id="page-layout">
         <main id="main-content">
-            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT4_Practica_Automatizacion_Mantenimiento.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
-            
-    
-    
-        
-        <main id="main-content">
-            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT4_Practica_Automatizacion_Mantenimiento.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
-            
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a
+                    href="ASGBD_UT4_Practica_Automatizacion_Mantenimiento.pdf" download
+                    style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥
+                    Descargar PDF</a></div>
 
-<h1
-id="práctica-integradora-unidad-4-sistema-de-auditoría-monitorización-y-mantenimiento-de-bases-de-datos-en-producción">Práctica
-Integradora Unidad 4: Sistema de Auditoría, Monitorización y
-Mantenimiento de Bases de Datos en Producción <a class="headerlink" href="#práctica-integradora-unidad-4-sistema-de-auditoría-monitorización-y-mantenimiento-de-bases-de-datos-en-producción" title="Enlace permanente">¶</a></h1>
-<h2 id="descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
-OBJETIVOS <a class="headerlink" href="#descripción-general.-objetivos" title="Enlace permanente">¶</a></h2>
-<p>Trabajas como Administrador de Bases de Datos (DBA) y SysAdmin en
-<strong>"Almería E-Market"</strong>, un portal de comercio electrónico
-en plena expansión. Tras el último periodo de rebajas, el servidor MySQL
-sufrió severas degradaciones de rendimiento y se detectaron
-modificaciones no autorizadas en tablas sensibles de configuración y
-privilegios.</p>
-<p>El Director de Tecnología (CTO) te ha encargado diseñar e implementar
-un <strong>entorno automatizado de mantenimiento preventivo, auditoría
-de seguridad y análisis de salud de base de datos</strong> utilizando
-programación nativa del servidor (SQL) combinada con scripts de
-automatización del sistema operativo (Bash).</p>
-<h2 id="consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink" href="#consideraciones-previas" title="Enlace permanente">¶</a></h2>
-<p>Antes de comenzar, debes simular el ecosistema de la base de datos
-empresarial ejecutando la siguiente estructura:</p>
-<p>CREATE DATABASE IF NOT EXISTS almeria_emarket;<br />
-USE almeria_emarket;<br />
-<br />
--- Tabla 1: Tabla transaccional crítica que sufre gran
-fragmentación<br />
-CREATE TABLE pedidos (<br />
-id_pedido INT AUTO_INCREMENT PRIMARY KEY,<br />
-fecha_pedido TIMESTAMP DEFAULT CURRENT_TIMESTAMP,<br />
-cliente_email VARCHAR(100),<br />
-total DECIMAL(10,2)<br />
-);<br />
-<br />
--- Tabla 2: Tabla de configuración de sistema (objetivo de
-seguridad)<br />
-CREATE TABLE configuracion_tienda (<br />
-parametro VARCHAR(50) PRIMARY KEY,<br />
-valor VARCHAR(100),<br />
-ultima_modificacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE
-CURRENT_TIMESTAMP,<br />
-modificado_por VARCHAR(100)<br />
-);<br />
-<br />
--- Insertar configuración por defecto<br />
-INSERT INTO configuracion_tienda (parametro, valor, modificado_por)
-VALUES<br />
-('MANTENIMIENTO_MODE', 'FALSE', 'root@localhost'),<br />
-('DESCUENTO_GLOBAL', '10%', 'root@localhost');</p>
-<h2 id="actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink" href="#actividades-a-realizar" title="Enlace permanente">¶</a></h2>
-<p>La práctica se divide en <strong>cuatro retos técnicos
-integrados</strong>. Debes aportar tanto el código fuente como las
-explicaciones teóricas de su funcionamiento.</p>
-<h3 id="reto-a-el-script-de-salud-de-sistemas-bash">Reto A: El Script de
-Salud de Sistemas (Bash) <a class="headerlink" href="#reto-a-el-script-de-salud-de-sistemas-bash" title="Enlace permanente">¶</a></h3>
-<p>Crea un script de Bash llamado monitor_emarket.sh que realice las
-siguientes acciones de forma secuencial y desasistida:</p>
-<ol type="1">
-<li><blockquote>
-<p>Compruebe si el servicio de MySQL está activo. Si no lo está, intente
-levantarlo e informe del estado.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Compruebe el almacenamiento del servidor. Si el tamaño físico de la
-base de datos almeria_emarket supera un límite ficticio (ej. 1 MB para
-pruebas), invoque de manera automática a un procedimiento almacenado
-dentro de MySQL que limpie los logs.</p>
-</blockquote></li>
-<li><blockquote>
-<p>El script de Bash debe registrar todas sus acciones añadiendo líneas
-a un archivo de registro del sistema ubicado en
-/var/log/emarket_mantenimiento.log (puedes simularlo en tu home de
-usuario si no tienes permisos de superusuario).</p>
-</blockquote></li>
-</ol>
-<h3 id="reto-b-auditoría-de-cambios-de-configuración-triggers">Reto B:
-Auditoría de Cambios de Configuración (Triggers) <a class="headerlink" href="#reto-b-auditoría-de-cambios-de-configuración-triggers" title="Enlace permanente">¶</a></h3>
-<p>Necesitamos bloquear y auditar cualquier intento de modificar la
-tabla configuracion_tienda.</p>
-<ol type="1">
-<li><blockquote>
-<p>Crea una tabla de logs denominada auditoria_config. Debe registrar:
-id_log (PK), usuario_sistema, parametro_afectado, valor_antiguo,
-valor_nuevo, fecha_operacion.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Diseña un disparador tg_auditar_config que actúe de manera automática
-guardando los detalles anteriores cada vez que se realice un cambio de
-valores (UPDATE).</p>
-</blockquote></li>
-<li><blockquote>
-<p>Diseña un disparador tg_prohibir_delete_config que <strong>impida
-físicamente</strong> que cualquier usuario (incluido root) elimine
-registros de esta tabla de configuración de tienda, lanzando una señal
-de error específica (SIGNAL SQLSTATE).</p>
-</blockquote></li>
-</ol>
-<h3
-id="reto-c-diagnóstico-automatizado-de-tablas-metadatos-e-information-schema">Reto
-C: Diagnóstico Automatizado de Tablas (Metadatos e Information
-Schema) <a class="headerlink" href="#reto-c-diagnóstico-automatizado-de-tablas-metadatos-e-information-schema" title="Enlace permanente">¶</a></h3>
-<p>El SGBD pierde rendimiento si existen tablas sin índice primario o
-con excesivo espacio asignado sin usar.</p>
-<ol type="1">
-<li><blockquote>
-<p>Crea un procedimiento almacenado sp_diagnostico_tablas que realice
-una consulta analítica contra information_schema.tables y
-information_schema.table_constraints.</p>
-</blockquote></li>
-<li><blockquote>
-<p>El procedimiento debe devolver un informe listando todas las tablas
-del esquema actual (almeria_emarket) que:</p>
-</blockquote>
-<ul>
-<li><blockquote>
-<p>No tengan clave primaria (PRIMARY KEY) definida.</p>
-</blockquote></li>
-<li><blockquote>
-<p>O tengan un índice de fragmentación (espacio libre o data_free)
-superior al 10% del total de la tabla.</p>
-</blockquote></li>
-</ul></li>
-</ol>
-<h3 id="reto-d-archivado-de-datos-mediante-cursores-sql">Reto D:
-Archivado de Datos mediante Cursores (SQL) <a class="headerlink" href="#reto-d-archivado-de-datos-mediante-cursores-sql" title="Enlace permanente">¶</a></h3>
-<p>Para evitar que la tabla pedidos crezca indefinidamente y ralentice
-los índices de búsqueda, debemos archivar los pedidos que tengan más de
-un año de antigüedad.</p>
-<ol type="1">
-<li><blockquote>
-<p>Crea una tabla idéntica en estructura llamada historico_pedidos.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Diseña un procedimiento almacenado sp_archivar_pedidos_antiguos que
-use un <strong>CURSOR</strong> para recorrer los pedidos anteriores a
-una fecha dada.</p>
-</blockquote></li>
-<li><blockquote>
-<p>El cursor debe leer fila por fila, insertar cada pedido antiguo en
-historico_pedidos y, una vez confirmado el volcado, eliminarlo de la
-tabla original pedidos garantizando la integridad de los datos.</p>
-</blockquote></li>
-</ol>
-<h2 id="calificación">4. CALIFICACIÓN <a class="headerlink" href="#calificación" title="Enlace permanente">¶</a></h2>
-<blockquote>
-<p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
-través de la plataforma, la entrega del documento en formatos editables
-no permitidos (como .docx), capturas con identificación del alumno/a o
-la omisión de los enlaces de las fuentes documentales utilizadas
-penalizará gravemente la nota o invalidará la práctica.</p>
-</blockquote>
-<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Criterio
+            <h1
+                id="práctica-integradora-unidad-4-sistema-de-auditoría-monitorización-y-mantenimiento-de-bases-de-datos-en-producción">
+                Práctica
+                Integradora Unidad 4: Sistema de Auditoría, Monitorización y
+                Mantenimiento de Bases de Datos en Producción <a class="headerlink"
+                    href="#práctica-integradora-unidad-4-sistema-de-auditoría-monitorización-y-mantenimiento-de-bases-de-datos-en-producción"
+                    title="Enlace permanente">¶</a></h1>
+            <h2 id="descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
+                OBJETIVOS <a class="headerlink" href="#descripción-general.-objetivos" title="Enlace permanente">¶</a>
+            </h2>
+            <p>Trabajas como Administrador de Bases de Datos (DBA) y SysAdmin en
+                <strong>"Almería E-Market"</strong>, un portal de comercio electrónico
+                en plena expansión. Tras el último periodo de rebajas, el servidor MySQL
+                sufrió severas degradaciones de rendimiento y se detectaron
+                modificaciones no autorizadas en tablas sensibles de configuración y
+                privilegios.
+            </p>
+            <p>El Director de Tecnología (CTO) te ha encargado diseñar e implementar
+                un <strong>entorno automatizado de mantenimiento preventivo, auditoría
+                    de seguridad y análisis de salud de base de datos</strong> utilizando
+                programación nativa del servidor (SQL) combinada con scripts de
+                automatización del sistema operativo (Bash).</p>
+            <h2 id="consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink"
+                    href="#consideraciones-previas" title="Enlace permanente">¶</a></h2>
+            <p>Antes de comenzar, debes simular el ecosistema de la base de datos
+                empresarial ejecutando la siguiente estructura:</p>
+            <p>CREATE DATABASE IF NOT EXISTS almeria_emarket;<br />
+                USE almeria_emarket;<br />
+                <br />
+                -- Tabla 1: Tabla transaccional crítica que sufre gran
+                fragmentación<br />
+                CREATE TABLE pedidos (<br />
+                id_pedido INT AUTO_INCREMENT PRIMARY KEY,<br />
+                fecha_pedido TIMESTAMP DEFAULT CURRENT_TIMESTAMP,<br />
+                cliente_email VARCHAR(100),<br />
+                total DECIMAL(10,2)<br />
+                );<br />
+                <br />
+                -- Tabla 2: Tabla de configuración de sistema (objetivo de
+                seguridad)<br />
+                CREATE TABLE configuracion_tienda (<br />
+                parametro VARCHAR(50) PRIMARY KEY,<br />
+                valor VARCHAR(100),<br />
+                ultima_modificacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE
+                CURRENT_TIMESTAMP,<br />
+                modificado_por VARCHAR(100)<br />
+                );<br />
+                <br />
+                -- Insertar configuración por defecto<br />
+                INSERT INTO configuracion_tienda (parametro, valor, modificado_por)
+                VALUES<br />
+                ('MANTENIMIENTO_MODE', 'FALSE', 'root@localhost'),<br />
+                ('DESCUENTO_GLOBAL', '10%', 'root@localhost');
+            </p>
+            <h2 id="actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink"
+                    href="#actividades-a-realizar" title="Enlace permanente">¶</a></h2>
+            <p>La práctica se divide en <strong>cuatro retos técnicos
+                    integrados</strong>. Debes aportar tanto el código fuente como las
+                explicaciones teóricas de su funcionamiento.</p>
+            <h3 id="reto-a-el-script-de-salud-de-sistemas-bash">Reto A: El Script de
+                Salud de Sistemas (Bash) <a class="headerlink" href="#reto-a-el-script-de-salud-de-sistemas-bash"
+                    title="Enlace permanente">¶</a></h3>
+            <p>Crea un script de Bash llamado monitor_emarket.sh que realice las
+                siguientes acciones de forma secuencial y desasistida:</p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p>Compruebe si el servicio de MySQL está activo. Si no lo está, intente
+                            levantarlo e informe del estado.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Compruebe el almacenamiento del servidor. Si el tamaño físico de la
+                            base de datos almeria_emarket supera un límite ficticio (ej. 1 MB para
+                            pruebas), invoque de manera automática a un procedimiento almacenado
+                            dentro de MySQL que limpie los logs.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>El script de Bash debe registrar todas sus acciones añadiendo líneas
+                            a un archivo de registro del sistema ubicado en
+                            /var/log/emarket_mantenimiento.log (puedes simularlo en tu home de
+                            usuario si no tienes permisos de superusuario).</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <h3 id="reto-b-auditoría-de-cambios-de-configuración-triggers">Reto B:
+                Auditoría de Cambios de Configuración (Triggers) <a class="headerlink"
+                    href="#reto-b-auditoría-de-cambios-de-configuración-triggers" title="Enlace permanente">¶</a></h3>
+            <p>Necesitamos bloquear y auditar cualquier intento de modificar la
+                tabla configuracion_tienda.</p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p>Crea una tabla de logs denominada auditoria_config. Debe registrar:
+                            id_log (PK), usuario_sistema, parametro_afectado, valor_antiguo,
+                            valor_nuevo, fecha_operacion.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Diseña un disparador tg_auditar_config que actúe de manera automática
+                            guardando los detalles anteriores cada vez que se realice un cambio de
+                            valores (UPDATE).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Diseña un disparador tg_prohibir_delete_config que <strong>impida
+                                físicamente</strong> que cualquier usuario (incluido root) elimine
+                            registros de esta tabla de configuración de tienda, lanzando una señal
+                            de error específica (SIGNAL SQLSTATE).</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <h3 id="reto-c-diagnóstico-automatizado-de-tablas-metadatos-e-information-schema">Reto
+                C: Diagnóstico Automatizado de Tablas (Metadatos e Information
+                Schema) <a class="headerlink"
+                    href="#reto-c-diagnóstico-automatizado-de-tablas-metadatos-e-information-schema"
+                    title="Enlace permanente">¶</a></h3>
+            <p>El SGBD pierde rendimiento si existen tablas sin índice primario o
+                con excesivo espacio asignado sin usar.</p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p>Crea un procedimiento almacenado sp_diagnostico_tablas que realice
+                            una consulta analítica contra information_schema.tables y
+                            information_schema.table_constraints.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>El procedimiento debe devolver un informe listando todas las tablas
+                            del esquema actual (almeria_emarket) que:</p>
+                    </blockquote>
+                    <ul>
+                        <li>
+                            <blockquote>
+                                <p>No tengan clave primaria (PRIMARY KEY) definida.</p>
+                            </blockquote>
+                        </li>
+                        <li>
+                            <blockquote>
+                                <p>O tengan un índice de fragmentación (espacio libre o data_free)
+                                    superior al 10% del total de la tabla.</p>
+                            </blockquote>
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+            <h3 id="reto-d-archivado-de-datos-mediante-cursores-sql">Reto D:
+                Archivado de Datos mediante Cursores (SQL) <a class="headerlink"
+                    href="#reto-d-archivado-de-datos-mediante-cursores-sql" title="Enlace permanente">¶</a></h3>
+            <p>Para evitar que la tabla pedidos crezca indefinidamente y ralentice
+                los índices de búsqueda, debemos archivar los pedidos que tengan más de
+                un año de antigüedad.</p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p>Crea una tabla idéntica en estructura llamada historico_pedidos.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Diseña un procedimiento almacenado sp_archivar_pedidos_antiguos que
+                            use un <strong>CURSOR</strong> para recorrer los pedidos anteriores a
+                            una fecha dada.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>El cursor debe leer fila por fila, insertar cada pedido antiguo en
+                            historico_pedidos y, una vez confirmado el volcado, eliminarlo de la
+                            tabla original pedidos garantizando la integridad de los datos.</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <h2 id="calificación">4. CALIFICACIÓN <a class="headerlink" href="#calificación"
+                    title="Enlace permanente">¶</a></h2>
+            <blockquote>
+                <p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
+                    través de la plataforma, la entrega del documento en formatos editables
+                    no permitidos (como .docx), capturas con identificación del alumno/a o
+                    la omisión de los enlaces de las fuentes documentales utilizadas
+                    penalizará gravemente la nota o invalidará la práctica.</p>
+            </blockquote>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                        <pre><code>Criterio
 Excelente (9-10)
 Aceptable (5-8)
 Insuficiente (0-4)
@@ -220,12 +262,16 @@ El cursor realiza la inserción pero no controla correctamente el
 borrado o carece del manejador de salida seguro del bucle.
 No implementa cursor, utiliza un query simple delete/insert (no se
 adecúa al requisito técnico del examen).
-2.5 pts</code></pre></div></div></div>
+2.5 pts</code></pre>
+                    </div>
+                </div>
+            </div>
 
         </main>
     </div>
 
-        </main>
+    </main>
     </div>
 </body>
+
 </html>

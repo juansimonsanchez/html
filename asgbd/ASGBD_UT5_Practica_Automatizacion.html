@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,323 +8,398 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
+
 <body>
     <header id="site-header">
-  <div class="header-container">
-    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD &ndash; Ut5 Practica Automatizacion</span></div>
-    <nav class="top-nav">
-      <a href="index.html" class="nav-btn">Inicio</a>
-    </nav>
-  </div>
-</header>
+        <div class="header-container">
+            <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo"
+                    style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD
+                    &ndash; Ut5 Practica Automatizacion</span></div>
+            <nav class="top-nav">
+                <a href="index.html" class="nav-btn">Inicio</a>
+            </nav>
+        </div>
+    </header>
     <div id="page-layout">
-        <main id="main-content">
-            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT5_Practica_Automatizacion.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
-            
-    
-    
-        
-        <main id="main-content">
-            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT5_Practica_Automatizacion.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
-            
-<header id="title-block-header">
-<h1 class="title"><span id="_mlhg1kf30wlj"
-class="anchor"></span>PRÁCTICA AVANZADA 5.2: SISTEMA INTEGRADO DE
-CONSOLIDACIÓN Y COPIAS DE SEGURIDAD</h1>
-</header>
 
-<h3 id="ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
-ACTIVIDAD <a class="headerlink" href="#ficha-técnica-de-la-actividad" title="Enlace permanente">¶</a></h3>
-<div class="table-wrapper"><div class="table-wrapper"><table>
-<tbody>
-<tr class="header">
-<td><strong>Unidad Didáctica</strong></td>
-<td>Unidad 5: Planificación de Tareas y Seguridad en Bases de Datos</td>
-</tr>
-<tr class="odd">
-<td><strong>Nombre de la Actividad</strong></td>
-<td>Práctica 5.2: Automatización, Consolidación y Backup Robusto en
-Producción</td>
-</tr>
-<tr class="header">
-<td><strong>Resultados de Aprendizaje</strong></td>
-<td><p><strong>RA3:</strong> Automatiza tareas de administración del
-sistema gestor, realizando guiones y programando tareas.</p>
-<p><strong>RA6:</strong> Asegura la disponibilidad y recuperación de la
-información aplicando políticas de copias de seguridad y
-replicación.</p></td>
-</tr>
-<tr class="odd">
-<td><strong>Criterios de Evaluación</strong></td>
-<td><p><strong>CE 3.b:</strong> Se ha configurado el programador de
-tareas del SGBD para programar la ejecución periódica de tareas.</p>
-<p><strong>CE 6.a:</strong> Se han planificado y ejecutado copias de
-seguridad lógicas (exportación de esquemas) y físicas.</p>
-<p><strong>CE 6.b:</strong> Se han diseñado estrategias de recuperación
-de desastres ante fallos lógicos o físicos.</p>
-<p><strong>CE 6.c:</strong> Se ha configurado el modo de recuperación
-del SGBD (logs de transacciones activos, archivado).</p>
-<p><strong>CE 6.e:</strong> Se ha verificado la integridad de las copias
-de seguridad mediante restauraciones automatizadas.</p></td>
-</tr>
-<tr class="header">
-<td><strong>Tiempo de Realización</strong></td>
-<td>4 horas (Taller práctico individual)</td>
-</tr>
-</tbody>
-</table></div></div>
-<h4 id="método-de-entrega-y-formato">MÉTODO DE ENTREGA Y FORMATO <a class="headerlink" href="#método-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
-<ul>
-<li><blockquote>
-<p><strong>[x] Memoria Técnica (PDF):</strong>
-Practica5_2_Nombre_Alumno.pdf. Debe incluir la explicación del diseño
-del flujo, justificación de los comandos y scripts utilizados, y
-capturas del funcionamiento (logs del planificador de MySQL, ejecución
-del script Bash y verificación de restauración). Es obligatorio que en
-el prompt del sistema se visualice la IP de la instancia y tu usuario
-para certificar la autoría.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>[x] Entregables de Código:</strong> Un archivo comprimido
-.tar.gz que contenga:</p>
-</blockquote>
-<ol type="1">
-<li><blockquote>
-<p>infraestructura.sql (esquema, tablas y evento de consolidación de
-MySQL).</p>
-</blockquote></li>
-<li><blockquote>
-<p>backup_sistema.sh (script de automatización Bash y rotación).</p>
-</blockquote></li>
-<li><blockquote>
-<p>crontab_config.txt (línea de planificación de Cron).</p>
-</blockquote></li>
-</ol></li>
-</ul>
-<h2 id="descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
-OBJETIVOS <a class="headerlink" href="#descripción-general.-objetivos" title="Enlace permanente">¶</a></h2>
-<p>Trabajas como Administrador de Sistemas y Bases de Datos en una
-plataforma de comercio electrónico. La base de datos transaccional,
-llamada ecommerce, almacena un alto volumen de ventas en la tabla
-ventas_temporales. Para evitar que esta tabla ralentice el sistema de
-producción, la dirección técnica ha establecido las siguientes
-directrices:</p>
-<ol type="1">
-<li><blockquote>
-<p><strong>Consolidación Interna (MySQL):</strong> Cada noche a las
-03:00 AM, un evento interno del SGBD debe mover todas las ventas
-completadas del día anterior a una tabla histórica consolidada llamada
-historico_ventas. Los registros consolidados deben ser eliminados de la
-tabla activa de producción de forma transaccional. Toda ejecución del
-evento debe quedar auditada en una tabla de log interna
-(registro_logs).</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Copia de Seguridad Externa y Rotación (Bash + Cron):</strong>
-Cada madrugada a las 04:00 AM, un script de sistema en Bash debe
-realizar una copia de seguridad lógica, consistente e InnoDB-safe de la
-base de datos ecommerce. El script debe comprimir el volcado, añadirle
-una marca de tiempo y almacenarlo en /backup/ecommerce/. Además, para
-optimizar el almacenamiento del servidor, el script debe purgar
-automáticamente cualquier copia de seguridad con más de <strong>7
-días</strong> de antigüedad.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Plan de Recuperación (DRP):</strong> Se debe simular un fallo
-total del esquema y verificar el proceso de restauración lógica
-garantizando la integridad de los datos.</p>
-</blockquote></li>
-</ol>
-<h2 id="actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink" href="#actividades-a-realizar" title="Enlace permanente">¶</a></h2>
-<h4 id="fase-1-creación-de-la-infraestructura-en-mysql">Fase 1: Creación
-de la Infraestructura en MySQL <a class="headerlink" href="#fase-1-creación-de-la-infraestructura-en-mysql" title="Enlace permanente">¶</a></h4>
-<p>Crea la base de datos ecommerce y define las siguientes tablas con el
-motor <strong>InnoDB</strong>:</p>
-<ul>
-<li><blockquote>
-<p>ventas_temporales: Contiene id_venta (Autonumérico), cliente
-(VARCHAR), monto (DECIMAL 10,2), fecha_venta (DATETIME) y estado
-(VARCHAR: 'Pendiente', 'Completado').</p>
-</blockquote></li>
-<li><blockquote>
-<p>historico_ventas: Estructura idéntica a la anterior más un campo
-fecha_consolidacion (TIMESTAMP).</p>
-</blockquote></li>
-<li><blockquote>
-<p>registro_logs: Tabla de auditoría interna con id_log (Autonumérico),
-nombre_evento (VARCHAR), mensaje (TEXT) y fecha_registro
-(TIMESTAMP).</p>
-</blockquote></li>
-</ul>
-<p>Puebla la tabla ventas_temporales con al menos 5 registros de prueba,
-asegurando que algunos tengan estado 'Completado' y otros
-'Pendiente'.</p>
-<h4
-id="fase-2-programación-del-evento-de-mantenimiento-ev_consolidar_ventas">Fase
-2: Programación del Evento de Mantenimiento (ev_consolidar_ventas) <a class="headerlink" href="#fase-2-programación-del-evento-de-mantenimiento-ev_consolidar_ventas" title="Enlace permanente">¶</a></h4>
-<ol type="1">
-<li><blockquote>
-<p>Verifica que el planificador de eventos de MySQL está configurado de
-forma persistente y activo.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Crea el evento ev_consolidar_ventas para ejecutarse diariamente a las
-03:00 AM (puedes ajustar el tiempo a EVERY 1 MINUTE de forma temporal
-para las capturas de demostración).</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Requisito de Robustez:</strong> La consolidación debe
-realizarse bajo transacciones seguras (START TRANSACTION, COMMIT,
-ROLLBACK). Si el traspaso de registros a historico_ventas tiene éxito,
-se eliminan de ventas_temporales y se guarda un registro en
-registro_logs. Si falla, se hace rollback y se audita el error.</p>
-</blockquote></li>
-</ol>
-<h4
-id="fase-3-script-de-automatización-de-backups-en-bash-backup_sistema.sh">Fase
-3: Script de Automatización de Backups en Bash (backup_sistema.sh) <a class="headerlink" href="#fase-3-script-de-automatización-de-backups-en-bash-backup_sistema.sh" title="Enlace permanente">¶</a></h4>
-<p>Desarrolla un script en /usr/local/bin/backup_sistema.sh que cumpla
-con los siguientes estándares profesionales de administración de
-sistemas:</p>
-<ol type="1">
-<li><blockquote>
-<p>Crear el directorio /backup/ecommerce/ si no existe.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Definir variables para credenciales de MySQL (usando un archivo de
-configuración de accesos seguro o variables cifradas de entorno de forma
-recomendada).</p>
-</blockquote></li>
-<li><blockquote>
-<p>Utilizar mysqldump con el parámetro --single-transaction para no
-bloquear lecturas/escrituras.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Redirigir el archivo .sql resultante, comprimirlo al vuelo usando
-gzip para ahorrar espacio, y nombrarlo con el patrón:
-backup_ecommerce_YYYYMMDD_HHMMSS.sql.gz.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Mecanismo de Rotación Práctica:</strong> Buscar y eliminar de
-manera automática todos los ficheros .gz del directorio
-/backup/ecommerce/ que tengan una fecha de modificación superior a 7
-días.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Guardar la salida y posibles errores del script en un fichero de log
-del sistema /var/log/backup_ecommerce.log.</p>
-</blockquote></li>
-</ol>
-<h4
-id="fase-4-integración-en-el-planificador-de-tareas-de-linux-cron">Fase
-4: Integración en el Planificador de Tareas de Linux (Cron) <a class="headerlink" href="#fase-4-integración-en-el-planificador-de-tareas-de-linux-cron" title="Enlace permanente">¶</a></h4>
-<p>Configura el planificador de Linux (crontab de root) para programar
-la ejecución del script anterior cada madrugada de forma automática a
-las 04:00 AM.</p>
-<h4
-id="fase-5-simulación-de-desastre-y-verificación-de-la-integridad">Fase
-5: Simulación de Desastre y Verificación de la Integridad <a class="headerlink" href="#fase-5-simulación-de-desastre-y-verificación-de-la-integridad" title="Enlace permanente">¶</a></h4>
-<ol type="1">
-<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Simula una catástrofe de datos haciendo un DROP DATABASE
-ecommerce;.</code></pre></div></div></li>
-<li><blockquote>
-<p>Procede a restaurar la base de datos a partir del último archivo
-comprimido .gz disponible.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Verifica la consistencia: comprueba que las tablas se han recuperado
-de forma íntegra, con sus restricciones de clave y que el log de eventos
-contiene el historial de consolidación.</p>
-</blockquote></li>
-</ol>
-<h1 id="calificación">4. CALIFICACIÓN <a class="headerlink" href="#calificación" title="Enlace permanente">¶</a></h1>
-<blockquote>
-<p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
-través de la plataforma, la entrega del documento en formatos editables
-no permitidos (como .docx), capturas con identificación del alumno/a o
-la omisión de los enlaces de las fuentes documentales utilizadas
-penalizará gravemente la nota o invalidará la práctica.</p>
-</blockquote>
-<p>La práctica avanzada se calificará sobre un total de <strong>10
-puntos</strong> de acuerdo con la siguiente distribución:</p>
-<div class="table-wrapper"><div class="table-wrapper"><table>
-<thead>
-<tr class="header">
-<th><strong>Criterio / Bloque</strong></th>
-<th><strong>Excelente (100%)</strong></th>
-<th><strong>Aceptable (50%)</strong></th>
-<th><strong>Insuficiente (0%)</strong></th>
-<th><strong>Peso</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Estructuras SQL y Transacciones</strong></td>
-<td>Infraestructura de tablas InnoDB configurada con precisión y manejo
-transaccional robusto en el evento.</td>
-<td>Tablas creadas, pero el evento carece de control de transacciones o
-de log de auditoría.</td>
-<td>Esquema incorrecto o evento con fallos de sintaxis que no
-compila.</td>
-<td><strong>25%</strong></td>
-</tr>
-<tr class="header">
-<td><strong>Programación de Eventos</strong></td>
-<td>Evento creado, planificado periódicamente de forma correcta y
-verificación del Scheduler activa.</td>
-<td>Evento funcional pero con planificación incorrecta o sin
-configuración persistente en el my.cnf.</td>
-<td>El planificador de eventos está desactivado o el evento no se
-ejecuta.</td>
-<td><strong>15%</strong></td>
-</tr>
-<tr class="odd">
-<td><strong>Scripting Bash (mysqldump y compresión)</strong></td>
-<td>Script Bash impecable, modularizado con variables, con volcado
-transaccional consistente y compresión de datos.</td>
-<td>Script funcional pero con rutas a fuego (hardcoded), credenciales
-desprotegidas o sin compresión gzip.</td>
-<td>Script con errores lógicos de ejecución que no completa el volcado
-de datos.</td>
-<td><strong>20%</strong></td>
-</tr>
-<tr class="header">
-<td><strong>Rotación Automática de Backups</strong></td>
-<td>Implementación óptima del comando de purga de archivos antiguos
-(&gt;7 días) en Bash con control de excepciones.</td>
-<td>Intento de rotación que borra archivos de forma insegura o carece de
-validación temporal exacta.</td>
-<td>No se implementa rotación física en disco, saturando el
-almacenamiento del host.</td>
-<td><strong>15%</strong></td>
-</tr>
-<tr class="odd">
-<td><strong>Planificación Cron y Simulacro DRP</strong></td>
-<td>Automatización en crontab de Linux impecable. Restauración de
-desastre verificada y documentada con éxito en la memoria.</td>
-<td>Script añadido a crontab pero con errores de path absoluto.
-Restauración manual y con pérdida de permisos.</td>
-<td>No se planifica en Cron o no se demuestra la integridad de la base
-de datos restaurada.</td>
-<td><strong>15%</strong></td>
-</tr>
-<tr class="header">
-<td><strong>Calidad de Documentación y Autoría</strong></td>
-<td>Memoria técnica impecable, legible, justificada teóricamente y
-autoría verificada por el prompt visible.</td>
-<td>Documentación correcta pero desordenada, o faltan capturas de los
-logs del sistema para validar autoría.</td>
-<td>No se entrega memoria técnica, o es un plagio evidente sin
-identificación de host/IP.</td>
-<td><strong>10%</strong></td>
-</tr>
-</tbody>
-</table></div></div>
+
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a
+                    href="ASGBD_UT5_Practica_Automatizacion.pdf" download
+                    style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥
+                    Descargar PDF</a></div>
+
+            <header id="title-block-header">
+                <h1 class="title"><span id="_mlhg1kf30wlj" class="anchor"></span>PRÁCTICA AVANZADA 5.2: SISTEMA
+                    INTEGRADO DE
+                    CONSOLIDACIÓN Y COPIAS DE SEGURIDAD</h1>
+            </header>
+
+            <h3 id="ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
+                ACTIVIDAD <a class="headerlink" href="#ficha-técnica-de-la-actividad" title="Enlace permanente">¶</a>
+            </h3>
+            <div class="table-wrapper">
+                <div class="table-wrapper">
+                    <table>
+                        <tbody>
+                            <tr class="header">
+                                <td><strong>Unidad Didáctica</strong></td>
+                                <td>Unidad 5: Planificación de Tareas y Seguridad en Bases de Datos</td>
+                            </tr>
+                            <tr class="odd">
+                                <td><strong>Nombre de la Actividad</strong></td>
+                                <td>Práctica 5.2: Automatización, Consolidación y Backup Robusto en
+                                    Producción</td>
+                            </tr>
+                            <tr class="header">
+                                <td><strong>Resultados de Aprendizaje</strong></td>
+                                <td>
+                                    <p><strong>RA3:</strong> Automatiza tareas de administración del
+                                        sistema gestor, realizando guiones y programando tareas.</p>
+                                    <p><strong>RA6:</strong> Asegura la disponibilidad y recuperación de la
+                                        información aplicando políticas de copias de seguridad y
+                                        replicación.</p>
+                                </td>
+                            </tr>
+                            <tr class="odd">
+                                <td><strong>Criterios de Evaluación</strong></td>
+                                <td>
+                                    <p><strong>CE 3.b:</strong> Se ha configurado el programador de
+                                        tareas del SGBD para programar la ejecución periódica de tareas.</p>
+                                    <p><strong>CE 6.a:</strong> Se han planificado y ejecutado copias de
+                                        seguridad lógicas (exportación de esquemas) y físicas.</p>
+                                    <p><strong>CE 6.b:</strong> Se han diseñado estrategias de recuperación
+                                        de desastres ante fallos lógicos o físicos.</p>
+                                    <p><strong>CE 6.c:</strong> Se ha configurado el modo de recuperación
+                                        del SGBD (logs de transacciones activos, archivado).</p>
+                                    <p><strong>CE 6.e:</strong> Se ha verificado la integridad de las copias
+                                        de seguridad mediante restauraciones automatizadas.</p>
+                                </td>
+                            </tr>
+                            <tr class="header">
+                                <td><strong>Tiempo de Realización</strong></td>
+                                <td>4 horas (Taller práctico individual)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <h4 id="método-de-entrega-y-formato">MÉTODO DE ENTREGA Y FORMATO <a class="headerlink"
+                    href="#método-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p><strong>[x] Memoria Técnica (PDF):</strong>
+                            Practica5_2_Nombre_Alumno.pdf. Debe incluir la explicación del diseño
+                            del flujo, justificación de los comandos y scripts utilizados, y
+                            capturas del funcionamiento (logs del planificador de MySQL, ejecución
+                            del script Bash y verificación de restauración). Es obligatorio que en
+                            el prompt del sistema se visualice la IP de la instancia y tu usuario
+                            para certificar la autoría.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>[x] Entregables de Código:</strong> Un archivo comprimido
+                            .tar.gz que contenga:</p>
+                    </blockquote>
+                    <ol type="1">
+                        <li>
+                            <blockquote>
+                                <p>infraestructura.sql (esquema, tablas y evento de consolidación de
+                                    MySQL).</p>
+                            </blockquote>
+                        </li>
+                        <li>
+                            <blockquote>
+                                <p>backup_sistema.sh (script de automatización Bash y rotación).</p>
+                            </blockquote>
+                        </li>
+                        <li>
+                            <blockquote>
+                                <p>crontab_config.txt (línea de planificación de Cron).</p>
+                            </blockquote>
+                        </li>
+                    </ol>
+                </li>
+            </ul>
+            <h2 id="descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
+                OBJETIVOS <a class="headerlink" href="#descripción-general.-objetivos" title="Enlace permanente">¶</a>
+            </h2>
+            <p>Trabajas como Administrador de Sistemas y Bases de Datos en una
+                plataforma de comercio electrónico. La base de datos transaccional,
+                llamada ecommerce, almacena un alto volumen de ventas en la tabla
+                ventas_temporales. Para evitar que esta tabla ralentice el sistema de
+                producción, la dirección técnica ha establecido las siguientes
+                directrices:</p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p><strong>Consolidación Interna (MySQL):</strong> Cada noche a las
+                            03:00 AM, un evento interno del SGBD debe mover todas las ventas
+                            completadas del día anterior a una tabla histórica consolidada llamada
+                            historico_ventas. Los registros consolidados deben ser eliminados de la
+                            tabla activa de producción de forma transaccional. Toda ejecución del
+                            evento debe quedar auditada en una tabla de log interna
+                            (registro_logs).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Copia de Seguridad Externa y Rotación (Bash + Cron):</strong>
+                            Cada madrugada a las 04:00 AM, un script de sistema en Bash debe
+                            realizar una copia de seguridad lógica, consistente e InnoDB-safe de la
+                            base de datos ecommerce. El script debe comprimir el volcado, añadirle
+                            una marca de tiempo y almacenarlo en /backup/ecommerce/. Además, para
+                            optimizar el almacenamiento del servidor, el script debe purgar
+                            automáticamente cualquier copia de seguridad con más de <strong>7
+                                días</strong> de antigüedad.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Plan de Recuperación (DRP):</strong> Se debe simular un fallo
+                            total del esquema y verificar el proceso de restauración lógica
+                            garantizando la integridad de los datos.</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <h2 id="actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink"
+                    href="#actividades-a-realizar" title="Enlace permanente">¶</a></h2>
+            <h4 id="fase-1-creación-de-la-infraestructura-en-mysql">Fase 1: Creación
+                de la Infraestructura en MySQL <a class="headerlink"
+                    href="#fase-1-creación-de-la-infraestructura-en-mysql" title="Enlace permanente">¶</a></h4>
+            <p>Crea la base de datos ecommerce y define las siguientes tablas con el
+                motor <strong>InnoDB</strong>:</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p>ventas_temporales: Contiene id_venta (Autonumérico), cliente
+                            (VARCHAR), monto (DECIMAL 10,2), fecha_venta (DATETIME) y estado
+                            (VARCHAR: 'Pendiente', 'Completado').</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>historico_ventas: Estructura idéntica a la anterior más un campo
+                            fecha_consolidacion (TIMESTAMP).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>registro_logs: Tabla de auditoría interna con id_log (Autonumérico),
+                            nombre_evento (VARCHAR), mensaje (TEXT) y fecha_registro
+                            (TIMESTAMP).</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <p>Puebla la tabla ventas_temporales con al menos 5 registros de prueba,
+                asegurando que algunos tengan estado 'Completado' y otros
+                'Pendiente'.</p>
+            <h4 id="fase-2-programación-del-evento-de-mantenimiento-ev_consolidar_ventas">Fase
+                2: Programación del Evento de Mantenimiento (ev_consolidar_ventas) <a class="headerlink"
+                    href="#fase-2-programación-del-evento-de-mantenimiento-ev_consolidar_ventas"
+                    title="Enlace permanente">¶</a></h4>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p>Verifica que el planificador de eventos de MySQL está configurado de
+                            forma persistente y activo.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Crea el evento ev_consolidar_ventas para ejecutarse diariamente a las
+                            03:00 AM (puedes ajustar el tiempo a EVERY 1 MINUTE de forma temporal
+                            para las capturas de demostración).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Requisito de Robustez:</strong> La consolidación debe
+                            realizarse bajo transacciones seguras (START TRANSACTION, COMMIT,
+                            ROLLBACK). Si el traspaso de registros a historico_ventas tiene éxito,
+                            se eliminan de ventas_temporales y se guarda un registro en
+                            registro_logs. Si falla, se hace rollback y se audita el error.</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <h4 id="fase-3-script-de-automatización-de-backups-en-bash-backup_sistema.sh">Fase
+                3: Script de Automatización de Backups en Bash (backup_sistema.sh) <a class="headerlink"
+                    href="#fase-3-script-de-automatización-de-backups-en-bash-backup_sistema.sh"
+                    title="Enlace permanente">¶</a></h4>
+            <p>Desarrolla un script en /usr/local/bin/backup_sistema.sh que cumpla
+                con los siguientes estándares profesionales de administración de
+                sistemas:</p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p>Crear el directorio /backup/ecommerce/ si no existe.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Definir variables para credenciales de MySQL (usando un archivo de
+                            configuración de accesos seguro o variables cifradas de entorno de forma
+                            recomendada).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Utilizar mysqldump con el parámetro --single-transaction para no
+                            bloquear lecturas/escrituras.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Redirigir el archivo .sql resultante, comprimirlo al vuelo usando
+                            gzip para ahorrar espacio, y nombrarlo con el patrón:
+                            backup_ecommerce_YYYYMMDD_HHMMSS.sql.gz.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Mecanismo de Rotación Práctica:</strong> Buscar y eliminar de
+                            manera automática todos los ficheros .gz del directorio
+                            /backup/ecommerce/ que tengan una fecha de modificación superior a 7
+                            días.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Guardar la salida y posibles errores del script en un fichero de log
+                            del sistema /var/log/backup_ecommerce.log.</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <h4 id="fase-4-integración-en-el-planificador-de-tareas-de-linux-cron">Fase
+                4: Integración en el Planificador de Tareas de Linux (Cron) <a class="headerlink"
+                    href="#fase-4-integración-en-el-planificador-de-tareas-de-linux-cron"
+                    title="Enlace permanente">¶</a></h4>
+            <p>Configura el planificador de Linux (crontab de root) para programar
+                la ejecución del script anterior cada madrugada de forma automática a
+                las 04:00 AM.</p>
+            <h4 id="fase-5-simulación-de-desastre-y-verificación-de-la-integridad">Fase
+                5: Simulación de Desastre y Verificación de la Integridad <a class="headerlink"
+                    href="#fase-5-simulación-de-desastre-y-verificación-de-la-integridad"
+                    title="Enlace permanente">¶</a></h4>
+            <ol type="1">
+                <li>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                            <pre><code>Simula una catástrofe de datos haciendo un DROP DATABASE
+ecommerce;.</code></pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Procede a restaurar la base de datos a partir del último archivo
+                            comprimido .gz disponible.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Verifica la consistencia: comprueba que las tablas se han recuperado
+                            de forma íntegra, con sus restricciones de clave y que el log de eventos
+                            contiene el historial de consolidación.</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <h1 id="calificación">4. CALIFICACIÓN <a class="headerlink" href="#calificación"
+                    title="Enlace permanente">¶</a></h1>
+            <blockquote>
+                <p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
+                    través de la plataforma, la entrega del documento en formatos editables
+                    no permitidos (como .docx), capturas con identificación del alumno/a o
+                    la omisión de los enlaces de las fuentes documentales utilizadas
+                    penalizará gravemente la nota o invalidará la práctica.</p>
+            </blockquote>
+            <p>La práctica avanzada se calificará sobre un total de <strong>10
+                    puntos</strong> de acuerdo con la siguiente distribución:</p>
+            <div class="table-wrapper">
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr class="header">
+                                <th><strong>Criterio / Bloque</strong></th>
+                                <th><strong>Excelente (100%)</strong></th>
+                                <th><strong>Aceptable (50%)</strong></th>
+                                <th><strong>Insuficiente (0%)</strong></th>
+                                <th><strong>Peso</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="odd">
+                                <td><strong>Estructuras SQL y Transacciones</strong></td>
+                                <td>Infraestructura de tablas InnoDB configurada con precisión y manejo
+                                    transaccional robusto en el evento.</td>
+                                <td>Tablas creadas, pero el evento carece de control de transacciones o
+                                    de log de auditoría.</td>
+                                <td>Esquema incorrecto o evento con fallos de sintaxis que no
+                                    compila.</td>
+                                <td><strong>25%</strong></td>
+                            </tr>
+                            <tr class="header">
+                                <td><strong>Programación de Eventos</strong></td>
+                                <td>Evento creado, planificado periódicamente de forma correcta y
+                                    verificación del Scheduler activa.</td>
+                                <td>Evento funcional pero con planificación incorrecta o sin
+                                    configuración persistente en el my.cnf.</td>
+                                <td>El planificador de eventos está desactivado o el evento no se
+                                    ejecuta.</td>
+                                <td><strong>15%</strong></td>
+                            </tr>
+                            <tr class="odd">
+                                <td><strong>Scripting Bash (mysqldump y compresión)</strong></td>
+                                <td>Script Bash impecable, modularizado con variables, con volcado
+                                    transaccional consistente y compresión de datos.</td>
+                                <td>Script funcional pero con rutas a fuego (hardcoded), credenciales
+                                    desprotegidas o sin compresión gzip.</td>
+                                <td>Script con errores lógicos de ejecución que no completa el volcado
+                                    de datos.</td>
+                                <td><strong>20%</strong></td>
+                            </tr>
+                            <tr class="header">
+                                <td><strong>Rotación Automática de Backups</strong></td>
+                                <td>Implementación óptima del comando de purga de archivos antiguos
+                                    (&gt;7 días) en Bash con control de excepciones.</td>
+                                <td>Intento de rotación que borra archivos de forma insegura o carece de
+                                    validación temporal exacta.</td>
+                                <td>No se implementa rotación física en disco, saturando el
+                                    almacenamiento del host.</td>
+                                <td><strong>15%</strong></td>
+                            </tr>
+                            <tr class="odd">
+                                <td><strong>Planificación Cron y Simulacro DRP</strong></td>
+                                <td>Automatización en crontab de Linux impecable. Restauración de
+                                    desastre verificada y documentada con éxito en la memoria.</td>
+                                <td>Script añadido a crontab pero con errores de path absoluto.
+                                    Restauración manual y con pérdida de permisos.</td>
+                                <td>No se planifica en Cron o no se demuestra la integridad de la base
+                                    de datos restaurada.</td>
+                                <td><strong>15%</strong></td>
+                            </tr>
+                            <tr class="header">
+                                <td><strong>Calidad de Documentación y Autoría</strong></td>
+                                <td>Memoria técnica impecable, legible, justificada teóricamente y
+                                    autoría verificada por el prompt visible.</td>
+                                <td>Documentación correcta pero desordenada, o faltan capturas de los
+                                    logs del sistema para validar autoría.</td>
+                                <td>No se entrega memoria técnica, o es un plagio evidente sin
+                                    identificación de host/IP.</td>
+                                <td><strong>10%</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
         </main>
     </div>
 
-        </main>
+    </main>
     </div>
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,166 +8,220 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
+
 <body>
     <header id="site-header">
-  <div class="header-container">
-    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD &ndash; Ut3 Tarea Enunciado</span></div>
-    <nav class="top-nav">
-      <a href="index.html" class="nav-btn">Inicio</a>
-    </nav>
-  </div>
-</header>
+        <div class="header-container">
+            <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo"
+                    style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD
+                    &ndash; Ut3 Tarea Enunciado</span></div>
+            <nav class="top-nav">
+                <a href="index.html" class="nav-btn">Inicio</a>
+            </nav>
+        </div>
+    </header>
     <div id="page-layout">
-        <main id="main-content">
-            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT3_Tarea_Enunciado.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
-            
-    
-    
-        
-        <main id="main-content">
-            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT3_Tarea_Enunciado.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
-            
 
-<h1
-id="ut3---tarea-1-control-de-acceso-vistas-y-gestión-de-privilegios-en-la-bd-liga">UT3
-- Tarea 1: Control de Acceso, Vistas y Gestión de Privilegios en la BD
-Liga <a class="headerlink" href="#ut3---tarea-1-control-de-acceso-vistas-y-gestión-de-privilegios-en-la-bd-liga" title="Enlace permanente">¶</a></h1>
-<h2 id="descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
-OBJETIVOS <a class="headerlink" href="#descripción-general.-objetivos" title="Enlace permanente">¶</a></h2>
-<p>Como Administradores de Sistemas (SysAdmin), una de nuestras
-funciones principales es garantizar la confidencialidad de la
-información y aplicar el <strong>Principio del Menor Privilegio
-(PoLP)</strong>. En esta práctica, trabajaremos sobre la base de datos
-<strong>Liga</strong>, la cual simula el control de una competición
-deportiva con tablas de jugadores, equipos y partidos.</p>
-<p>El objetivo es doble:</p>
-<ol type="1">
-<li><blockquote>
-<p>Diseñar <strong>capas de abstracción (Vistas)</strong> para
-simplificar las consultas complejas y ocultar información sensible.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Crear un <strong>esquema estricto de control de accesos</strong>
-mediante usuarios, roles y privilegios adaptados a diferentes perfiles
-operativos.</p>
-</blockquote></li>
-</ol>
-<h2 id="actividades-a-realizar">2. ACTIVIDADES A REALIZAR <a class="headerlink" href="#actividades-a-realizar" title="Enlace permanente">¶</a></h2>
-<h3 id="bloque-a-diseño-e-implementación-de-vistas">Bloque A: Diseño e
-Implementación de Vistas <a class="headerlink" href="#bloque-a-diseño-e-implementación-de-vistas" title="Enlace permanente">¶</a></h3>
-<p>Teniendo en cuenta que la base de datos Liga contiene (al menos) las
-entidades equipos, jugadores y partidos, debes implementar en SQL las
-siguientes vistas de consulta:</p>
-<ul>
-<li><blockquote>
-<p><strong>Vista 1 (v_jugadores_equipos):</strong> Muestra información
-de los jugadores (nombre, posición) junto con el nombre de su equipo
-(solo para aquellos jugadores que tengan equipo asignado).</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Vista 2 (v_partidos_equipos):</strong> Muestra el listado de
-partidos disputados con la fecha, el nombre del equipo local, el nombre
-del equipo visitante y el resultado (goles de cada uno).</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Vista 3 (v_clasificacion):</strong> Muestra la tabla de
-posiciones de los equipos del campeonato, visualizando el nombre del
-equipo y sus puntos, ordenada de mayor a menor puntuación.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Vista 4 (v_partidos_ciudades):</strong> Muestra información
-detallada de los encuentros, incluyendo nombres de los equipos rivales y
-la ciudad donde se disputa el partido.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Vista 5 (v_capitanes):</strong> Muestra de forma unívoca la
-lista de capitanes de cada equipo, indicando el nombre del equipo y el
-nombre de su respectivo capitán.</p>
-</blockquote></li>
-</ul>
-<h3 id="bloque-b-creación-y-gestión-de-usuarios-y-roles">Bloque B:
-Creación y Gestión de Usuarios y Roles <a class="headerlink" href="#bloque-b-creación-y-gestión-de-usuarios-y-roles" title="Enlace permanente">¶</a></h3>
-<p>Aplica políticas de acceso basadas en perfiles de seguridad
-implementando las siguientes cuentas en el motor MySQL:</p>
-<ol type="1">
-<li><blockquote>
-<p><strong>Usuario de Consulta (user_consulta_liga):</strong> Debe poder
-conectarse localmente y realizar exclusivamente consultas de lectura
-(SELECT) en todas las tablas de la base de datos Liga.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Usuario de Gestión de Plantillas
-(user_datos_jugadores):</strong> Debe conectarse localmente y tener
-permisos para consultar, insertar o modificar registros únicamente sobre
-la tabla jugadores. No debe poder realizar ninguna acción en equipos ni
-partidos.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Usuario de Informes (user_vistas_liga):</strong> Debe
-conectarse localmente y tener acceso total de lectura exclusivamente a
-las 5 vistas creadas en el Bloque A. No debe tener visibilidad ni acceso
-a las tablas físicas subyacentes.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Gestión de Delegación mediante Roles:</strong></p>
-</blockquote>
-<ul>
-<li><blockquote>
-<p>Crea un rol llamado rol_equipos_admin con privilegios completos (ALL
-PRIVILEGES) sobre la tabla equipos.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Crea un usuario llamado user_equipos_manager y asígnale el rol
-anterior, garantizando que el rol se active de forma automática al
-iniciar sesión.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Revocación:</strong> Ejecuta las sentencias necesarias para
-retirar de forma definitiva los permisos concedidos al usuario
-user_equipos_manager.</p>
-</blockquote></li>
-</ul></li>
-</ol>
-<h2 id="calificación">4. CALIFICACIÓN <a class="headerlink" href="#calificación" title="Enlace permanente">¶</a></h2>
-<blockquote>
-<p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
-través de la plataforma, la entrega del documento en formatos editables
-no permitidos (como .docx), capturas con identificación del alumno/a o
-la omisión de los enlaces de las fuentes documentales utilizadas
-penalizará gravemente la nota o invalidará la práctica.</p>
-</blockquote>
-<p>Se entregará un único paquete comprimido que contenga:</p>
-<ol type="1">
-<li><blockquote>
-<p><strong>script_liga_seguridad.sql:</strong> Script SQL limpio y
-completamente comentado con todas las sentencias de creación de vistas,
-usuarios, asignación de privilegios y revocación.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Documento de Verificación (PDF):</strong> Informe técnico de
-capturas de pantalla que demuestren de forma inequívoca el correcto
-funcionamiento de la práctica:</p>
-</blockquote>
-<ul>
-<li><blockquote>
-<p>Prueba de las 5 vistas mostrando resultados de consulta con
-éxito.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Pruebas de Privilegios Activos:</strong> Capturas del comando
-SHOW GRANTS para cada usuario.</p>
-</blockquote></li>
-<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Pruebas de Privilegios Bloqueados (Crítico):
+
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a
+                    href="ASGBD_UT3_Tarea_Enunciado.pdf" download
+                    style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥
+                    Descargar PDF</a></div>
+
+
+            <h1 id="ut3---tarea-1-control-de-acceso-vistas-y-gestión-de-privilegios-en-la-bd-liga">UT3
+                - Tarea 1: Control de Acceso, Vistas y Gestión de Privilegios en la BD
+                Liga <a class="headerlink"
+                    href="#ut3---tarea-1-control-de-acceso-vistas-y-gestión-de-privilegios-en-la-bd-liga"
+                    title="Enlace permanente">¶</a></h1>
+            <h2 id="descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
+                OBJETIVOS <a class="headerlink" href="#descripción-general.-objetivos" title="Enlace permanente">¶</a>
+            </h2>
+            <p>Como Administradores de Sistemas (SysAdmin), una de nuestras
+                funciones principales es garantizar la confidencialidad de la
+                información y aplicar el <strong>Principio del Menor Privilegio
+                    (PoLP)</strong>. En esta práctica, trabajaremos sobre la base de datos
+                <strong>Liga</strong>, la cual simula el control de una competición
+                deportiva con tablas de jugadores, equipos y partidos.
+            </p>
+            <p>El objetivo es doble:</p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p>Diseñar <strong>capas de abstracción (Vistas)</strong> para
+                            simplificar las consultas complejas y ocultar información sensible.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Crear un <strong>esquema estricto de control de accesos</strong>
+                            mediante usuarios, roles y privilegios adaptados a diferentes perfiles
+                            operativos.</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <h2 id="actividades-a-realizar">2. ACTIVIDADES A REALIZAR <a class="headerlink"
+                    href="#actividades-a-realizar" title="Enlace permanente">¶</a></h2>
+            <h3 id="bloque-a-diseño-e-implementación-de-vistas">Bloque A: Diseño e
+                Implementación de Vistas <a class="headerlink" href="#bloque-a-diseño-e-implementación-de-vistas"
+                    title="Enlace permanente">¶</a></h3>
+            <p>Teniendo en cuenta que la base de datos Liga contiene (al menos) las
+                entidades equipos, jugadores y partidos, debes implementar en SQL las
+                siguientes vistas de consulta:</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p><strong>Vista 1 (v_jugadores_equipos):</strong> Muestra información
+                            de los jugadores (nombre, posición) junto con el nombre de su equipo
+                            (solo para aquellos jugadores que tengan equipo asignado).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Vista 2 (v_partidos_equipos):</strong> Muestra el listado de
+                            partidos disputados con la fecha, el nombre del equipo local, el nombre
+                            del equipo visitante y el resultado (goles de cada uno).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Vista 3 (v_clasificacion):</strong> Muestra la tabla de
+                            posiciones de los equipos del campeonato, visualizando el nombre del
+                            equipo y sus puntos, ordenada de mayor a menor puntuación.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Vista 4 (v_partidos_ciudades):</strong> Muestra información
+                            detallada de los encuentros, incluyendo nombres de los equipos rivales y
+                            la ciudad donde se disputa el partido.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Vista 5 (v_capitanes):</strong> Muestra de forma unívoca la
+                            lista de capitanes de cada equipo, indicando el nombre del equipo y el
+                            nombre de su respectivo capitán.</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <h3 id="bloque-b-creación-y-gestión-de-usuarios-y-roles">Bloque B:
+                Creación y Gestión de Usuarios y Roles <a class="headerlink"
+                    href="#bloque-b-creación-y-gestión-de-usuarios-y-roles" title="Enlace permanente">¶</a></h3>
+            <p>Aplica políticas de acceso basadas en perfiles de seguridad
+                implementando las siguientes cuentas en el motor MySQL:</p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p><strong>Usuario de Consulta (user_consulta_liga):</strong> Debe poder
+                            conectarse localmente y realizar exclusivamente consultas de lectura
+                            (SELECT) en todas las tablas de la base de datos Liga.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Usuario de Gestión de Plantillas
+                                (user_datos_jugadores):</strong> Debe conectarse localmente y tener
+                            permisos para consultar, insertar o modificar registros únicamente sobre
+                            la tabla jugadores. No debe poder realizar ninguna acción en equipos ni
+                            partidos.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Usuario de Informes (user_vistas_liga):</strong> Debe
+                            conectarse localmente y tener acceso total de lectura exclusivamente a
+                            las 5 vistas creadas en el Bloque A. No debe tener visibilidad ni acceso
+                            a las tablas físicas subyacentes.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Gestión de Delegación mediante Roles:</strong></p>
+                    </blockquote>
+                    <ul>
+                        <li>
+                            <blockquote>
+                                <p>Crea un rol llamado rol_equipos_admin con privilegios completos (ALL
+                                    PRIVILEGES) sobre la tabla equipos.</p>
+                            </blockquote>
+                        </li>
+                        <li>
+                            <blockquote>
+                                <p>Crea un usuario llamado user_equipos_manager y asígnale el rol
+                                    anterior, garantizando que el rol se active de forma automática al
+                                    iniciar sesión.</p>
+                            </blockquote>
+                        </li>
+                        <li>
+                            <blockquote>
+                                <p><strong>Revocación:</strong> Ejecuta las sentencias necesarias para
+                                    retirar de forma definitiva los permisos concedidos al usuario
+                                    user_equipos_manager.</p>
+                            </blockquote>
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+            <h2 id="calificación">4. CALIFICACIÓN <a class="headerlink" href="#calificación"
+                    title="Enlace permanente">¶</a></h2>
+            <blockquote>
+                <p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
+                    través de la plataforma, la entrega del documento en formatos editables
+                    no permitidos (como .docx), capturas con identificación del alumno/a o
+                    la omisión de los enlaces de las fuentes documentales utilizadas
+                    penalizará gravemente la nota o invalidará la práctica.</p>
+            </blockquote>
+            <p>Se entregará un único paquete comprimido que contenga:</p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p><strong>script_liga_seguridad.sql:</strong> Script SQL limpio y
+                            completamente comentado con todas las sentencias de creación de vistas,
+                            usuarios, asignación de privilegios y revocación.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Documento de Verificación (PDF):</strong> Informe técnico de
+                            capturas de pantalla que demuestren de forma inequívoca el correcto
+                            funcionamiento de la práctica:</p>
+                    </blockquote>
+                    <ul>
+                        <li>
+                            <blockquote>
+                                <p>Prueba de las 5 vistas mostrando resultados de consulta con
+                                    éxito.</p>
+                            </blockquote>
+                        </li>
+                        <li>
+                            <blockquote>
+                                <p><strong>Pruebas de Privilegios Activos:</strong> Capturas del comando
+                                    SHOW GRANTS para cada usuario.</p>
+                            </blockquote>
+                        </li>
+                        <li>
+                            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋
+                                    Copiar</button>
+                                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋
+                                        Copiar</button>
+                                    <pre><code>Pruebas de Privilegios Bloqueados (Crítico):
 Capturas que muestren cómo el sistema bloquea operaciones no autorizadas
 (por ejemplo, intentar hacer un INSERT con el usuario user_consulta_liga
-o consultar una tabla física con user_vistas_liga).</code></pre></div></div></li>
-</ul></li>
-</ol>
+o consultar una tabla física con user_vistas_liga).</code></pre>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ol>
 
         </main>
     </div>
 
-        </main>
+    </main>
     </div>
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,482 +8,600 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
+
 <body>
     <header id="site-header">
-  <div class="header-container">
-    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD &ndash; Ut5 Tarea Auditoría Rendimiento Indexacion</span></div>
-    <nav class="top-nav">
-      <a href="index.html" class="nav-btn">Inicio</a>
-    </nav>
-  </div>
-</header>
+        <div class="header-container">
+            <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo"
+                    style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD
+                    &ndash; Ut5 Tarea Auditoría Rendimiento Indexacion</span></div>
+            <nav class="top-nav">
+                <a href="index.html" class="nav-btn">Inicio</a>
+            </nav>
+        </div>
+    </header>
     <div id="page-layout">
-        <main id="main-content">
-            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT5_Tarea_Auditoría_Rendimiento_Indexacion.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
-            
-    
-    
-        
-        <main id="main-content">
-            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT5_Tarea_Auditoría_Rendimiento_Indexacion.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
-            
 
-<h1 id="tarea-5.1-auditoría-de-rendimiento-e-indexación-en-mysql">TAREA
-5.1: AUDITORÍA DE RENDIMIENTO E INDEXACIÓN EN MYSQL <a class="headerlink" href="#tarea-5.1-auditoría-de-rendimiento-e-indexación-en-mysql" title="Enlace permanente">¶</a></h1>
-<h3 id="ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
-ACTIVIDAD <a class="headerlink" href="#ficha-técnica-de-la-actividad" title="Enlace permanente">¶</a></h3>
-<div class="table-wrapper"><div class="table-wrapper"><table>
-<tbody>
-<tr class="header">
-<td><strong>Unidad Didáctica</strong></td>
-<td>Unidad 5: Optimización de consultas e índices en MySQL /
-MariaDB</td>
-</tr>
-<tr class="odd">
-<td><strong>Nombre de la Tarea</strong></td>
-<td>Tarea 5.1: Auditoría de Rendimiento e Indexación en Servidores de
-Producción</td>
-</tr>
-<tr class="header">
-<td><strong>Resultado de Aprendizaje (RA)</strong></td>
-<td><strong>RA4:</strong> Optimiza el rendimiento del sistema gestor
-monitorizando los accesos y ajustando los parámetros del motor.</td>
-</tr>
-<tr class="odd">
-<td><strong>Criterios de Evaluación (CE)</strong></td>
-<td><p><strong>CE 4.b:</strong> Se han identificado los factores que
-afectan al rendimiento del sistema.</p>
-<p><strong>CE 4.c:</strong> Se han analizado las trazas de ejecución de
-las consultas.</p>
-<p><strong>CE 4.d:</strong> Se han creado índices y otras estructuras de
-optimización.</p>
-<p><strong>CE 4.f:</strong> Se han reestructurado los datos para mejorar
-la velocidad de acceso.</p></td>
-</tr>
-<tr class="header">
-<td><strong>Tiempo Estimado</strong></td>
-<td>6 horas lectivas (equivalente a 3 sesiones de clase en taller de
-sistemas)</td>
-</tr>
-</tbody>
-</table></div></div>
-<h4 id="método-de-entrega-y-formato">MÉTODO DE ENTREGA Y FORMATO <a class="headerlink" href="#método-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
-<ul>
-<li><blockquote>
-<p><strong>[ ] Documento de Memoria:</strong> Documento técnico en
-formato <strong>PDF</strong> (Tarea5_1_NombreAlumno.pdf) con la
-explicación justificada de cada paso y capturas de pantalla de la
-terminal de comandos. El formato debe ser impecable: texto justificado,
-enunciados destacados en negrita y comentarios descriptivos debajo de
-cada captura.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>[ ] Archivo de Código:</strong> Archivo de script SQL
-(tarea5_1_nombrealumno.sql) que contenga todas las sentencias de
-creación de índices, consultas y comandos de análisis, perfectamente
-comentados.</p>
-</blockquote></li>
-<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>[ ] Verificación de Autoría: Para que las capturas
+
+
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a
+                    href="ASGBD_UT5_Tarea_Auditoría_Rendimiento_Indexacion.pdf" download
+                    style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥
+                    Descargar PDF</a></div>
+
+
+            <h1 id="tarea-5.1-auditoría-de-rendimiento-e-indexación-en-mysql">TAREA
+                5.1: AUDITORÍA DE RENDIMIENTO E INDEXACIÓN EN MYSQL <a class="headerlink"
+                    href="#tarea-5.1-auditoría-de-rendimiento-e-indexación-en-mysql" title="Enlace permanente">¶</a>
+            </h1>
+            <h3 id="ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
+                ACTIVIDAD <a class="headerlink" href="#ficha-técnica-de-la-actividad" title="Enlace permanente">¶</a>
+            </h3>
+            <div class="table-wrapper">
+                <div class="table-wrapper">
+                    <table>
+                        <tbody>
+                            <tr class="header">
+                                <td><strong>Unidad Didáctica</strong></td>
+                                <td>Unidad 5: Optimización de consultas e índices en MySQL /
+                                    MariaDB</td>
+                            </tr>
+                            <tr class="odd">
+                                <td><strong>Nombre de la Tarea</strong></td>
+                                <td>Tarea 5.1: Auditoría de Rendimiento e Indexación en Servidores de
+                                    Producción</td>
+                            </tr>
+                            <tr class="header">
+                                <td><strong>Resultado de Aprendizaje (RA)</strong></td>
+                                <td><strong>RA4:</strong> Optimiza el rendimiento del sistema gestor
+                                    monitorizando los accesos y ajustando los parámetros del motor.</td>
+                            </tr>
+                            <tr class="odd">
+                                <td><strong>Criterios de Evaluación (CE)</strong></td>
+                                <td>
+                                    <p><strong>CE 4.b:</strong> Se han identificado los factores que
+                                        afectan al rendimiento del sistema.</p>
+                                    <p><strong>CE 4.c:</strong> Se han analizado las trazas de ejecución de
+                                        las consultas.</p>
+                                    <p><strong>CE 4.d:</strong> Se han creado índices y otras estructuras de
+                                        optimización.</p>
+                                    <p><strong>CE 4.f:</strong> Se han reestructurado los datos para mejorar
+                                        la velocidad de acceso.</p>
+                                </td>
+                            </tr>
+                            <tr class="header">
+                                <td><strong>Tiempo Estimado</strong></td>
+                                <td>6 horas lectivas (equivalente a 3 sesiones de clase en taller de
+                                    sistemas)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <h4 id="método-de-entrega-y-formato">MÉTODO DE ENTREGA Y FORMATO <a class="headerlink"
+                    href="#método-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p><strong>[ ] Documento de Memoria:</strong> Documento técnico en
+                            formato <strong>PDF</strong> (Tarea5_1_NombreAlumno.pdf) con la
+                            explicación justificada de cada paso y capturas de pantalla de la
+                            terminal de comandos. El formato debe ser impecable: texto justificado,
+                            enunciados destacados en negrita y comentarios descriptivos debajo de
+                            cada captura.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>[ ] Archivo de Código:</strong> Archivo de script SQL
+                            (tarea5_1_nombrealumno.sql) que contenga todas las sentencias de
+                            creación de índices, consultas y comandos de análisis, perfectamente
+                            comentados.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                            <pre><code>[ ] Verificación de Autoría: Para que las capturas
 de pantalla sean válidas, debe ser visible en todo momento el
 prompt de tu sistema operativo con tu usuario de Linux
 (usuario@instancia-openstack:~$) o se debe incluir al inicio de cada
 bloque de consultas SQL un comentario identificativo de la forma:
 SELECT 'Autor: Nombre Completo del Alumno - Tarea 5.1' AS
-identificador;</code></pre></div></div></li>
-</ul>
-<h2 id="descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
-OBJETIVOS <a class="headerlink" href="#descripción-general.-objetivos" title="Enlace permanente">¶</a></h2>
-<p>El objetivo fundamental de esta tarea es que el alumno actúe como un
-Administrador de Bases de Datos (DBA) junior que asume la
-responsabilidad de auditar y optimizar el rendimiento de un servidor
-MySQL de desarrollo. Utilizando la base de datos empresarial
-<strong>jardineria</strong>, se deberán detectar ineficiencias críticas
-de acceso a disco (barridos secuenciales completos de tablas o <em>Full
-Table Scans</em>), resolver problemas de pérdida de sargabilidad por
-malas prácticas de desarrollo, evaluar e implementar indexaciones
-compuestas aplicando de manera estricta la regla del prefijo izquierdo,
-y estructurar búsquedas semánticas eficientes mediante índices de texto
-completo (FULLTEXT).</p>
-<h2 id="consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink" href="#consideraciones-previas" title="Enlace permanente">¶</a></h2>
-<ul>
-<li><blockquote>
-<p>Se requiere tener acceso a una instancia de MySQL Server (v8.0+ o
-MariaDB v10.5+) en funcionamiento sobre Ubuntu Server.</p>
-</blockquote></li>
-<li><blockquote>
-<p>La base de datos de producción <strong>jardineria</strong> debe estar
-completamente importada, con datos de pruebas consistentes.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Todas las operaciones de consulta y monitorización se realizarán
-directamente desde la interfaz de línea de comandos de MySQL (<em>MySQL
-Client</em>) en la terminal SSH, evitando interfaces gráficas para
-emular el flujo de trabajo de administración de sistemas sobre
-servidores remotos desatendidos.</p>
-</blockquote></li>
-</ul>
-<h2 id="actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink" href="#actividades-a-realizar" title="Enlace permanente">¶</a></h2>
-<h4
-id="ejercicio-1-inspección-inicial-de-estructuras-de-indexación-1-punto"><strong>Ejercicio
-1: Inspección Inicial de Estructuras de Indexación (1
-Punto)</strong> <a class="headerlink" href="#ejercicio-1-inspección-inicial-de-estructuras-de-indexación-1-punto" title="Enlace permanente">¶</a></h4>
-<p>Consulte de manera exhaustiva cuáles son los índices físicos activos
-en la tabla producto utilizando las instrucciones nativas del
-diccionario de datos de MySQL. Documente la salida y explique
-detalladamente:</p>
-<ol type="1">
-<li><blockquote>
-<p>Qué claves e índices ha identificado.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Qué significa técnicamente el valor devuelto en la columna Non_unique
-para cada uno de ellos.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Qué tipo de estructura física de datos (Index_type) utiliza el motor
-InnoDB para gestionarlos de forma predeterminada.</p>
-</blockquote></li>
-</ol>
-<h4
-id="ejercicio-2-auditoría-comparativa-de-planes-de-ejecución-básicos-1-punto"><strong>Ejercicio
-2: Auditoría Comparativa de Planes de Ejecución Básicos (1
-Punto)</strong> <a class="headerlink" href="#ejercicio-2-auditoría-comparativa-de-planes-de-ejecución-básicos-1-punto" title="Enlace permanente">¶</a></h4>
-<p>Haga uso de la sentencia de diagnóstico EXPLAIN para obtener y
-analizar el plan de ejecución de las dos consultas siguientes:</p>
-<p>-- Consulta A<br />
-SELECT * FROM producto WHERE codigo_producto = 'OR-114';<br />
-<br />
--- Consulta B<br />
-SELECT * FROM producto WHERE nombre = 'Evonimus Pulchellus';</p>
-<p>Responda razonadamente a las siguientes cuestiones analizando la
-salida del optimizador:</p>
-<ol type="1">
-<li><blockquote>
-<p>¿Cuál de las dos consultas realizará un menor número de comparaciones
-de registros y accesos a disco físico para hallar el resultado?</p>
-</blockquote></li>
-<li><blockquote>
-<p>Indique de manera numérica cuántas comparaciones de filas estima el
-optimizador (rows) para cada caso.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Justifique la causa técnica de esta diferencia analizando los valores
-devueltos en las columnas type y key del EXPLAIN.</p>
-</blockquote></li>
-</ol>
-<h4
-id="ejercicio-3-pérdida-de-sargabilidad-por-funciones-de-fecha-1-punto"><strong>Ejercicio
-3: Pérdida de Sargabilidad por Funciones de Fecha (1
-Punto)</strong> <a class="headerlink" href="#ejercicio-3-pérdida-de-sargabilidad-por-funciones-de-fecha-1-punto" title="Enlace permanente">¶</a></h4>
-<p>Suponga que su equipo de desarrollo web ha propuesto las siguientes
-alternativas para calcular el promedio de facturación total del año 2008
-en la tabla pago:</p>
-<p>-- Alternativa A (Inhabilitando el árbol B-Tree)<br />
-SELECT AVG(total) FROM pago WHERE YEAR(fecha_pago) = 2008;<br />
-<br />
--- Alternativa B (Sargable en rango puro)<br />
-SELECT AVG(total) FROM pago WHERE fecha_pago &gt;= '2008-01-01' AND
-fecha_pago &lt;= '2008-12-31';</p>
-<p>Asumiendo que existe un índice activo sobre la columna fecha_pago,
-ejecute un análisis EXPLAIN sobre ambas alternativas y responda de forma
-técnica:</p>
-<ol type="1">
-<li><blockquote>
-<p>¿Por qué el optimizador de costes de MySQL descarta el uso del índice
-en la Alternativa A devolviendo un acceso de tipo ALL? Explique qué
-ocurre en la CPU del servidor.</p>
-</blockquote></li>
-<li><blockquote>
-<p>¿Cómo cambia el método de acceso de la columna type en la Alternativa
-B y por qué se considera una práctica de "diseño sargable"?</p>
-</blockquote></li>
-</ol>
-<h4
-id="ejercicio-4-optimización-de-consultas-multitabla-con-relación-inner-join-1-punto"><strong>Ejercicio
-4: Optimización de Consultas Multitabla con Relación INNER JOIN (1
-Punto)</strong> <a class="headerlink" href="#ejercicio-4-optimización-de-consultas-multitabla-con-relación-inner-join-1-punto" title="Enlace permanente">¶</a></h4>
-<p>Se desea optimizar la velocidad de respuesta de la siguiente consulta
-de facturación e histórico de pedidos:</p>
-<p>SELECT * FROM cliente INNER JOIN pedido<br />
-ON cliente.codigo_cliente = pedido.codigo_cliente<br />
-WHERE cliente.nombre_cliente LIKE 'A%';</p>
-<ol type="1">
-<li><blockquote>
-<p>Ejecute un EXPLAIN previo a la optimización para comprobar el número
-de filas estimadas (rows) y el tipo de acceso (type) en ambas
-tablas.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Diseñe e implemente el índice físico más adecuado para acelerar la
-restricción del bloque WHERE.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Vuelva a analizar la traza de la consulta con EXPLAIN y argumente el
-impacto en el rendimiento contrastando las filas analizadas antes y
-después.</p>
-</blockquote></li>
-</ol>
-<h4
-id="ejercicio-5-el-límite-de-los-índices-estándar-ante-comodines-iniciales-1-punto"><strong>Ejercicio
-5: El Límite de los Índices Estándar ante Comodines Iniciales (1
-Punto)</strong> <a class="headerlink" href="#ejercicio-5-el-límite-de-los-índices-estándar-ante-comodines-iniciales-1-punto" title="Enlace permanente">¶</a></h4>
-<p>Analice las siguientes consultas multitabla requeridas por el
-software de administración:</p>
-<p>-- Consulta de Patronaje Intermedio<br />
-SELECT * FROM cliente INNER JOIN pedido<br />
-ON cliente.codigo_cliente = pedido.codigo_cliente<br />
-WHERE cliente.nombre_cliente LIKE '%A%';<br />
-<br />
--- Consulta de Patronaje Final<br />
-SELECT * FROM cliente INNER JOIN pedido<br />
-ON cliente.codigo_cliente = pedido.codigo_cliente<br />
-WHERE cliente.nombre_cliente LIKE '%A';</p>
-<ol type="1">
-<li><blockquote>
-<p>Justifique detalladamente por qué no es posible optimizar el tiempo
-de ejecución ni el número de lecturas en disco de estas sentencias,
-incluso si existe un índice B-Tree creado sobre la columna
-nombre_cliente.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Explique de qué manera navega el optimizador por la estructura física
-del árbol en estos escenarios específicos y por qué acaba determinando
-realizar un Full Table Scan.</p>
-</blockquote></li>
-</ol>
-<h4
-id="ejercicio-6-implementación-de-índices-invertidos-para-búsquedas-semánticas-1-punto"><strong>Ejercicio
-6: Implementación de Índices Invertidos para Búsquedas Semánticas (1
-Punto)</strong> <a class="headerlink" href="#ejercicio-6-implementación-de-índices-invertidos-para-búsquedas-semánticas-1-punto" title="Enlace permanente">¶</a></h4>
-<p>Cree un índice de tipo FULLTEXT compuesto de forma síncrona sobre las
-columnas nombre y descripcion de la tabla producto de la base de datos
-jardineria.</p>
-<ol type="1">
-<li><blockquote>
-<p>Proporcione la sentencia DDL exacta de alteración estructural (ALTER
-TABLE).</p>
-</blockquote></li>
-<li><blockquote>
-<p>Escriba la sintaxis de consulta SQL optimizada utilizando las
-funciones nativas MATCH() y AGAINST() para buscar el token 'acero'.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Verifique con EXPLAIN que el método de acceso cambia a fulltext y
-argumente la ganancia en el uso de I/O de disco frente a una búsqueda
-basada en operador LIKE convencional.</p>
-</blockquote></li>
-</ol>
-<h4
-id="ejercicio-7-modos-de-explotación-de-índices-fulltext-1-punto"><strong>Ejercicio
-7: Modos de Explotación de Índices FULLTEXT (1 Punto)</strong> <a class="headerlink" href="#ejercicio-7-modos-de-explotación-de-índices-fulltext-1-punto" title="Enlace permanente">¶</a></h4>
-<p>Haciendo uso del índice de texto completo creado en el Ejercicio 6,
-realice las siguientes consultas utilizando la sintaxis formal de MySQL
-y documente la diferencia en los conjuntos de datos obtenidos:</p>
-<ol type="1">
-<li><blockquote>
-<p><strong>Modo Lenguaje Natural:</strong> Busque los productos que
-contengan la palabra 'planta' en modo por defecto (IN NATURAL LANGUAGE
-MODE).</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Modo Booleano Restrictivo:</strong> Busque los registros que
-contengan obligatoriamente la palabra 'tronco' pero que no incluyan la
-palabra 'árbol' bajo ningún concepto.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Modo Truncamiento / Comodín de Derecha:</strong> Busque todas
-las variantes léxicas que comiencen por el prefijo 'planta' (por
-ejemplo: "planta", "plantas", "plantón", etc.).</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Búsqueda de Frase Literal:</strong> Busque los registros que
-contengan la secuencia secuencial exacta de caracteres "proviene de las
-costas".</p>
-</blockquote></li>
-</ol>
-<h4
-id="ejercicio-8-creación-de-índices-de-columnas-múltiples-compuestos-1-punto"><strong>Ejercicio
-8: Creación de Índices de Columnas Múltiples (Compuestos) (1
-Punto)</strong> <a class="headerlink" href="#ejercicio-8-creación-de-índices-de-columnas-múltiples-compuestos-1-punto" title="Enlace permanente">¶</a></h4>
-<p>Escriba la sentencia DDL para crear un índice secundario no único
-compuesto por las columnas apellido_contacto y nombre_contacto
-pertenecientes a la tabla cliente. El índice físico resultante debe
-llamarse estrictamente idx_apellido_nombre.</p>
-<h4
-id="ejercicio-9-auditoría-analítica-de-la-regla-del-prefijo-izquierdo-1-punto"><strong>Ejercicio
-9: Auditoría Analítica de la Regla del Prefijo Izquierdo (1
-Punto)</strong> <a class="headerlink" href="#ejercicio-9-auditoría-analítica-de-la-regla-del-prefijo-izquierdo-1-punto" title="Enlace permanente">¶</a></h4>
-<p>Ejecute la sentencia diagnóstica EXPLAIN para auditar la eficiencia
-del índice compuesto idx_apellido_nombre creado en el ejercicio anterior
-sobre los siguientes tres escenarios de búsqueda requeridos por el
-servicio técnico:</p>
-<ul>
-<li><blockquote>
-<p><strong>Escenario A (Par Completo):</strong> Buscar el cliente con
-apellido 'Villar' y nombre 'Javier'.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Escenario B (Prefijo Izquierdo Activo):</strong> Buscar el
-cliente utilizando únicamente el apellido 'Villar'.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Escenario C (Prefijo Izquierdo Ausente):</strong> Buscar el
-cliente utilizando únicamente el nombre 'Javier'.</p>
-</blockquote></li>
-</ul>
-<p>Analice de forma crítica el plan de ejecución de cada uno de los tres
-escenarios. Responda:</p>
-<ol type="1">
-<li><blockquote>
-<p>¿Cuántas filas físicas estima examinar el motor en cada caso?</p>
-</blockquote></li>
-<li><blockquote>
-<p>¿En qué escenario se descarta por completo el uso del índice
-compuesto, forzando un barrido completo de la tabla? Justifique el
-motivo técnico basándose en la física de almacenamiento del árbol
-B+.</p>
-</blockquote></li>
-</ol>
-<h4
-id="ejercicio-10-metodología-práctica-de-análisis-de-prefijos-de-columna-1-punto"><strong>Ejercicio
-10: Metodología Práctica de Análisis de Prefijos de Columna (1
-Punto)</strong> <a class="headerlink" href="#ejercicio-10-metodología-práctica-de-análisis-de-prefijos-de-columna-1-punto" title="Enlace permanente">¶</a></h4>
-<p>Como administrador de bases de datos, debe optimizar la columna
-nombre_cliente de la tabla cliente (definida originalmente como un campo
-de texto VARCHAR de tamaño considerable). Para ahorrar consumo de
-memoria RAM en el buffer de índices del SGBD, desea crear un
-<strong>Índice de Prefijo de Columna</strong> óptimo.</p>
-<p>Realice los siguientes pasos analíticos en su servidor de
-pruebas:</p>
-<ol type="1">
-<li><blockquote>
-<p><strong>Cálculo de la Cardinalidad de Base:</strong> Obtenga el
-número exacto de valores únicos globales contenidos en esa columna
-utilizando la combinación de funciones de agrupación COUNT(DISTINCT
-...).</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Análisis de Ganancia por Longitud de Prefijo:</strong>
-Ejecute una única consulta SQL que calcule la cardinalidad de valores
-únicos simulando prefijos con longitudes de <img
-src="media_ASGBD_UT5_Tarea_Auditoría_Rendimiento_Indexacion/media/image2.png"
-style="width:1.30192in;height:0.2708in" /> y <img
-src="media_ASGBD_UT5_Tarea_Auditoría_Rendimiento_Indexacion/media/image3.png"
-style="width:0.21419in;height:0.25499in" /> caracteres utilizando la
-función LEFT().</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Selección Técnica del Prefijo:</strong> Identifique
-numéricamente el menor tamaño de prefijo que proporcione un ratio de
-discriminación extremadamente cercano al valor de la cardinalidad global
-de la columna sin prefijo.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Aplicación DDL:</strong> Cree de forma definitiva el índice
-de prefijo en caliente utilizando la longitud <img
-src="media_ASGBD_UT5_Tarea_Auditoría_Rendimiento_Indexacion/media/image4.png"
-style="width:0.19531in;height:0.26727in" /> seleccionada
-justificadamente en el paso anterior.</p>
-</blockquote></li>
-</ol>
-<h2 id="calificación">4. CALIFICACIÓN <a class="headerlink" href="#calificación" title="Enlace permanente">¶</a></h2>
-<blockquote>
-<p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
-través de la plataforma, la entrega del documento en formatos editables
-no permitidos (como .docx), capturas con identificación del alumno/a o
-la omisión de los enlaces de las fuentes documentales utilizadas
-penalizará gravemente la nota o invalidará la práctica.</p>
-</blockquote>
-<h4 id="rúbrica-de-evaluación-técnica">RÚBRICA DE EVALUACIÓN TÉCNICA
- <a class="headerlink" href="#rúbrica-de-evaluación-técnica" title="Enlace permanente">¶</a></h4>
-<div class="table-wrapper"><div class="table-wrapper"><table>
-<thead>
-<tr class="header">
-<th><strong>Criterio de Evaluación</strong></th>
-<th><strong>Excelente (100%)</strong></th>
-<th><strong>Notable (75%)</strong></th>
-<th><strong>Suficiente (50%)</strong></th>
-<th><strong>Insuficiente (0%)</strong></th>
-<th><strong>Peso</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Contenido Técnico y Funcionalidad</strong></td>
-<td>Todos los comandos SQL se ejecutan de manera impecable y las
-explicaciones justifican con absoluta precisión el comportamiento físico
-de los árboles de datos y del optimizador de MySQL.</td>
-<td>Se ejecutan todos los comandos SQL con errores mínimos de sintaxis.
-Se comprenden los conceptos de optimización, aunque falta profundidad en
-el análisis de costes.</td>
-<td>Faltan comandos o algunos índices no se han creado correctamente.
-Las explicaciones técnicas de los planes de ejecución son débiles.</td>
-<td>No se resuelven las consultas ni se crean las estructuras de
-optimización solicitadas.</td>
-<td><strong>50%</strong></td>
-</tr>
-<tr class="header">
-<td><strong>Análisis de Procedimientos e I/O</strong></td>
-<td>Documenta cada cambio con trazas de EXPLAIN contrastando
-minuciosamente las diferencias de coste (rows, type, key). Propone
-mejoras sargables justificadas.</td>
-<td>Muestra el uso de EXPLAIN pero el contraste de rendimiento se limita
-a listar valores sin relacionarlos directamente con el consumo de
-recursos de hardware.</td>
-<td>Sigue los pasos de manera mecánica sin comprender por qué mejora o
-empeora la ejecución de las consultas.</td>
-<td>No incluye trazas de análisis de planes de ejecución o estas no
-corresponden a sus bases de datos.</td>
-<td><strong>40%</strong></td>
-</tr>
-<tr class="odd">
-<td><strong>Calidad de Documentación y Capturas</strong></td>
-<td><strong>Documento impecable (PDF).</strong> Las capturas son
-perfectamente legibles, se identifica de manera inequívoca la autoría
-del alumno mediante el prompt y la IP del servidor. Texto justificado y
-estructurado con comentarios debajo de cada captura.</td>
-<td>Documento bien estructurado en PDF. Las capturas son legibles pero
-falta de forma básica la identificación de autoría en alguna de
-ellas.</td>
-<td>Desorganizado o sin formato adecuado. Dificultad para asociar los
-ejercicios con el script entregado. El formato no es PDF.</td>
-<td>Entrega ilegible, sin capturas, o no se puede verificar de ningún
-modo que el alumno haya ejecutado las prácticas en su servidor.</td>
-<td><strong>10%</strong></td>
-</tr>
-</tbody>
-</table></div></div>
-<h4
-id="criterio-específico-de-documentación-y-capturas-1.5-puntos">CRITERIO
-ESPECÍFICO DE DOCUMENTACIÓN Y CAPTURAS (1.5 Puntos) <a class="headerlink" href="#criterio-específico-de-documentación-y-capturas-1.5-puntos" title="Enlace permanente">¶</a></h4>
-<div class="table-wrapper"><div class="table-wrapper"><table>
-<thead>
-<tr class="header">
-<th><strong>Criterio</strong></th>
-<th><strong>Realizado correctamente (100% - 1.5 Ptos)</strong></th>
-<th><strong>Realizado con algún error (50% - 0.75 Ptos)</strong></th>
-<th><strong>No realizado (0% - 0 Ptos)</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Legibilidad e Identificación del Autor</strong></td>
-<td>Todas las capturas de terminal muestran claramente la IP de la
-instancia remota y el nombre de usuario del alumno en el shell, o bien
-el identificador mediante consulta comentada de manera consistente.</td>
-<td>Las capturas carecen de la IP del servidor en algunas fases o la
-identificación no se incluye en todas las ventanas de consulta,
-comprometiendo la trazabilidad completa.</td>
-<td>Capturas genéricas sin ningún elemento que identifique la
-procedencia del entorno de ejecución o el autor.</td>
-</tr>
-</tbody>
-</table></div></div>
+identificador;</code></pre>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <h2 id="descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
+                OBJETIVOS <a class="headerlink" href="#descripción-general.-objetivos" title="Enlace permanente">¶</a>
+            </h2>
+            <p>El objetivo fundamental de esta tarea es que el alumno actúe como un
+                Administrador de Bases de Datos (DBA) junior que asume la
+                responsabilidad de auditar y optimizar el rendimiento de un servidor
+                MySQL de desarrollo. Utilizando la base de datos empresarial
+                <strong>jardineria</strong>, se deberán detectar ineficiencias críticas
+                de acceso a disco (barridos secuenciales completos de tablas o <em>Full
+                    Table Scans</em>), resolver problemas de pérdida de sargabilidad por
+                malas prácticas de desarrollo, evaluar e implementar indexaciones
+                compuestas aplicando de manera estricta la regla del prefijo izquierdo,
+                y estructurar búsquedas semánticas eficientes mediante índices de texto
+                completo (FULLTEXT).
+            </p>
+            <h2 id="consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink"
+                    href="#consideraciones-previas" title="Enlace permanente">¶</a></h2>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p>Se requiere tener acceso a una instancia de MySQL Server (v8.0+ o
+                            MariaDB v10.5+) en funcionamiento sobre Ubuntu Server.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>La base de datos de producción <strong>jardineria</strong> debe estar
+                            completamente importada, con datos de pruebas consistentes.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Todas las operaciones de consulta y monitorización se realizarán
+                            directamente desde la interfaz de línea de comandos de MySQL (<em>MySQL
+                                Client</em>) en la terminal SSH, evitando interfaces gráficas para
+                            emular el flujo de trabajo de administración de sistemas sobre
+                            servidores remotos desatendidos.</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <h2 id="actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink"
+                    href="#actividades-a-realizar" title="Enlace permanente">¶</a></h2>
+            <h4 id="ejercicio-1-inspección-inicial-de-estructuras-de-indexación-1-punto"><strong>Ejercicio
+                    1: Inspección Inicial de Estructuras de Indexación (1
+                    Punto)</strong> <a class="headerlink"
+                    href="#ejercicio-1-inspección-inicial-de-estructuras-de-indexación-1-punto"
+                    title="Enlace permanente">¶</a></h4>
+            <p>Consulte de manera exhaustiva cuáles son los índices físicos activos
+                en la tabla producto utilizando las instrucciones nativas del
+                diccionario de datos de MySQL. Documente la salida y explique
+                detalladamente:</p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p>Qué claves e índices ha identificado.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Qué significa técnicamente el valor devuelto en la columna Non_unique
+                            para cada uno de ellos.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Qué tipo de estructura física de datos (Index_type) utiliza el motor
+                            InnoDB para gestionarlos de forma predeterminada.</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <h4 id="ejercicio-2-auditoría-comparativa-de-planes-de-ejecución-básicos-1-punto"><strong>Ejercicio
+                    2: Auditoría Comparativa de Planes de Ejecución Básicos (1
+                    Punto)</strong> <a class="headerlink"
+                    href="#ejercicio-2-auditoría-comparativa-de-planes-de-ejecución-básicos-1-punto"
+                    title="Enlace permanente">¶</a></h4>
+            <p>Haga uso de la sentencia de diagnóstico EXPLAIN para obtener y
+                analizar el plan de ejecución de las dos consultas siguientes:</p>
+            <p>-- Consulta A<br />
+                SELECT * FROM producto WHERE codigo_producto = 'OR-114';<br />
+                <br />
+                -- Consulta B<br />
+                SELECT * FROM producto WHERE nombre = 'Evonimus Pulchellus';
+            </p>
+            <p>Responda razonadamente a las siguientes cuestiones analizando la
+                salida del optimizador:</p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p>¿Cuál de las dos consultas realizará un menor número de comparaciones
+                            de registros y accesos a disco físico para hallar el resultado?</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Indique de manera numérica cuántas comparaciones de filas estima el
+                            optimizador (rows) para cada caso.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Justifique la causa técnica de esta diferencia analizando los valores
+                            devueltos en las columnas type y key del EXPLAIN.</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <h4 id="ejercicio-3-pérdida-de-sargabilidad-por-funciones-de-fecha-1-punto"><strong>Ejercicio
+                    3: Pérdida de Sargabilidad por Funciones de Fecha (1
+                    Punto)</strong> <a class="headerlink"
+                    href="#ejercicio-3-pérdida-de-sargabilidad-por-funciones-de-fecha-1-punto"
+                    title="Enlace permanente">¶</a></h4>
+            <p>Suponga que su equipo de desarrollo web ha propuesto las siguientes
+                alternativas para calcular el promedio de facturación total del año 2008
+                en la tabla pago:</p>
+            <p>-- Alternativa A (Inhabilitando el árbol B-Tree)<br />
+                SELECT AVG(total) FROM pago WHERE YEAR(fecha_pago) = 2008;<br />
+                <br />
+                -- Alternativa B (Sargable en rango puro)<br />
+                SELECT AVG(total) FROM pago WHERE fecha_pago &gt;= '2008-01-01' AND
+                fecha_pago &lt;= '2008-12-31';
+            </p>
+            <p>Asumiendo que existe un índice activo sobre la columna fecha_pago,
+                ejecute un análisis EXPLAIN sobre ambas alternativas y responda de forma
+                técnica:</p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p>¿Por qué el optimizador de costes de MySQL descarta el uso del índice
+                            en la Alternativa A devolviendo un acceso de tipo ALL? Explique qué
+                            ocurre en la CPU del servidor.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>¿Cómo cambia el método de acceso de la columna type en la Alternativa
+                            B y por qué se considera una práctica de "diseño sargable"?</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <h4 id="ejercicio-4-optimización-de-consultas-multitabla-con-relación-inner-join-1-punto"><strong>Ejercicio
+                    4: Optimización de Consultas Multitabla con Relación INNER JOIN (1
+                    Punto)</strong> <a class="headerlink"
+                    href="#ejercicio-4-optimización-de-consultas-multitabla-con-relación-inner-join-1-punto"
+                    title="Enlace permanente">¶</a></h4>
+            <p>Se desea optimizar la velocidad de respuesta de la siguiente consulta
+                de facturación e histórico de pedidos:</p>
+            <p>SELECT * FROM cliente INNER JOIN pedido<br />
+                ON cliente.codigo_cliente = pedido.codigo_cliente<br />
+                WHERE cliente.nombre_cliente LIKE 'A%';</p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p>Ejecute un EXPLAIN previo a la optimización para comprobar el número
+                            de filas estimadas (rows) y el tipo de acceso (type) en ambas
+                            tablas.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Diseñe e implemente el índice físico más adecuado para acelerar la
+                            restricción del bloque WHERE.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Vuelva a analizar la traza de la consulta con EXPLAIN y argumente el
+                            impacto en el rendimiento contrastando las filas analizadas antes y
+                            después.</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <h4 id="ejercicio-5-el-límite-de-los-índices-estándar-ante-comodines-iniciales-1-punto"><strong>Ejercicio
+                    5: El Límite de los Índices Estándar ante Comodines Iniciales (1
+                    Punto)</strong> <a class="headerlink"
+                    href="#ejercicio-5-el-límite-de-los-índices-estándar-ante-comodines-iniciales-1-punto"
+                    title="Enlace permanente">¶</a></h4>
+            <p>Analice las siguientes consultas multitabla requeridas por el
+                software de administración:</p>
+            <p>-- Consulta de Patronaje Intermedio<br />
+                SELECT * FROM cliente INNER JOIN pedido<br />
+                ON cliente.codigo_cliente = pedido.codigo_cliente<br />
+                WHERE cliente.nombre_cliente LIKE '%A%';<br />
+                <br />
+                -- Consulta de Patronaje Final<br />
+                SELECT * FROM cliente INNER JOIN pedido<br />
+                ON cliente.codigo_cliente = pedido.codigo_cliente<br />
+                WHERE cliente.nombre_cliente LIKE '%A';
+            </p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p>Justifique detalladamente por qué no es posible optimizar el tiempo
+                            de ejecución ni el número de lecturas en disco de estas sentencias,
+                            incluso si existe un índice B-Tree creado sobre la columna
+                            nombre_cliente.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Explique de qué manera navega el optimizador por la estructura física
+                            del árbol en estos escenarios específicos y por qué acaba determinando
+                            realizar un Full Table Scan.</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <h4 id="ejercicio-6-implementación-de-índices-invertidos-para-búsquedas-semánticas-1-punto">
+                <strong>Ejercicio
+                    6: Implementación de Índices Invertidos para Búsquedas Semánticas (1
+                    Punto)</strong> <a class="headerlink"
+                    href="#ejercicio-6-implementación-de-índices-invertidos-para-búsquedas-semánticas-1-punto"
+                    title="Enlace permanente">¶</a></h4>
+            <p>Cree un índice de tipo FULLTEXT compuesto de forma síncrona sobre las
+                columnas nombre y descripcion de la tabla producto de la base de datos
+                jardineria.</p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p>Proporcione la sentencia DDL exacta de alteración estructural (ALTER
+                            TABLE).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Escriba la sintaxis de consulta SQL optimizada utilizando las
+                            funciones nativas MATCH() y AGAINST() para buscar el token 'acero'.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Verifique con EXPLAIN que el método de acceso cambia a fulltext y
+                            argumente la ganancia en el uso de I/O de disco frente a una búsqueda
+                            basada en operador LIKE convencional.</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <h4 id="ejercicio-7-modos-de-explotación-de-índices-fulltext-1-punto"><strong>Ejercicio
+                    7: Modos de Explotación de Índices FULLTEXT (1 Punto)</strong> <a class="headerlink"
+                    href="#ejercicio-7-modos-de-explotación-de-índices-fulltext-1-punto" title="Enlace permanente">¶</a>
+            </h4>
+            <p>Haciendo uso del índice de texto completo creado en el Ejercicio 6,
+                realice las siguientes consultas utilizando la sintaxis formal de MySQL
+                y documente la diferencia en los conjuntos de datos obtenidos:</p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p><strong>Modo Lenguaje Natural:</strong> Busque los productos que
+                            contengan la palabra 'planta' en modo por defecto (IN NATURAL LANGUAGE
+                            MODE).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Modo Booleano Restrictivo:</strong> Busque los registros que
+                            contengan obligatoriamente la palabra 'tronco' pero que no incluyan la
+                            palabra 'árbol' bajo ningún concepto.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Modo Truncamiento / Comodín de Derecha:</strong> Busque todas
+                            las variantes léxicas que comiencen por el prefijo 'planta' (por
+                            ejemplo: "planta", "plantas", "plantón", etc.).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Búsqueda de Frase Literal:</strong> Busque los registros que
+                            contengan la secuencia secuencial exacta de caracteres "proviene de las
+                            costas".</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <h4 id="ejercicio-8-creación-de-índices-de-columnas-múltiples-compuestos-1-punto"><strong>Ejercicio
+                    8: Creación de Índices de Columnas Múltiples (Compuestos) (1
+                    Punto)</strong> <a class="headerlink"
+                    href="#ejercicio-8-creación-de-índices-de-columnas-múltiples-compuestos-1-punto"
+                    title="Enlace permanente">¶</a></h4>
+            <p>Escriba la sentencia DDL para crear un índice secundario no único
+                compuesto por las columnas apellido_contacto y nombre_contacto
+                pertenecientes a la tabla cliente. El índice físico resultante debe
+                llamarse estrictamente idx_apellido_nombre.</p>
+            <h4 id="ejercicio-9-auditoría-analítica-de-la-regla-del-prefijo-izquierdo-1-punto"><strong>Ejercicio
+                    9: Auditoría Analítica de la Regla del Prefijo Izquierdo (1
+                    Punto)</strong> <a class="headerlink"
+                    href="#ejercicio-9-auditoría-analítica-de-la-regla-del-prefijo-izquierdo-1-punto"
+                    title="Enlace permanente">¶</a></h4>
+            <p>Ejecute la sentencia diagnóstica EXPLAIN para auditar la eficiencia
+                del índice compuesto idx_apellido_nombre creado en el ejercicio anterior
+                sobre los siguientes tres escenarios de búsqueda requeridos por el
+                servicio técnico:</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p><strong>Escenario A (Par Completo):</strong> Buscar el cliente con
+                            apellido 'Villar' y nombre 'Javier'.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Escenario B (Prefijo Izquierdo Activo):</strong> Buscar el
+                            cliente utilizando únicamente el apellido 'Villar'.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Escenario C (Prefijo Izquierdo Ausente):</strong> Buscar el
+                            cliente utilizando únicamente el nombre 'Javier'.</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <p>Analice de forma crítica el plan de ejecución de cada uno de los tres
+                escenarios. Responda:</p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p>¿Cuántas filas físicas estima examinar el motor en cada caso?</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>¿En qué escenario se descarta por completo el uso del índice
+                            compuesto, forzando un barrido completo de la tabla? Justifique el
+                            motivo técnico basándose en la física de almacenamiento del árbol
+                            B+.</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <h4 id="ejercicio-10-metodología-práctica-de-análisis-de-prefijos-de-columna-1-punto"><strong>Ejercicio
+                    10: Metodología Práctica de Análisis de Prefijos de Columna (1
+                    Punto)</strong> <a class="headerlink"
+                    href="#ejercicio-10-metodología-práctica-de-análisis-de-prefijos-de-columna-1-punto"
+                    title="Enlace permanente">¶</a></h4>
+            <p>Como administrador de bases de datos, debe optimizar la columna
+                nombre_cliente de la tabla cliente (definida originalmente como un campo
+                de texto VARCHAR de tamaño considerable). Para ahorrar consumo de
+                memoria RAM en el buffer de índices del SGBD, desea crear un
+                <strong>Índice de Prefijo de Columna</strong> óptimo.
+            </p>
+            <p>Realice los siguientes pasos analíticos en su servidor de
+                pruebas:</p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p><strong>Cálculo de la Cardinalidad de Base:</strong> Obtenga el
+                            número exacto de valores únicos globales contenidos en esa columna
+                            utilizando la combinación de funciones de agrupación COUNT(DISTINCT
+                            ...).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Análisis de Ganancia por Longitud de Prefijo:</strong>
+                            Ejecute una única consulta SQL que calcule la cardinalidad de valores
+                            únicos simulando prefijos con longitudes de <img
+                                src="media_ASGBD_UT5_Tarea_Auditoría_Rendimiento_Indexacion/media/image2.png"
+                                style="width:1.30192in;height:0.2708in" /> y <img
+                                src="media_ASGBD_UT5_Tarea_Auditoría_Rendimiento_Indexacion/media/image3.png"
+                                style="width:0.21419in;height:0.25499in" /> caracteres utilizando la
+                            función LEFT().</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Selección Técnica del Prefijo:</strong> Identifique
+                            numéricamente el menor tamaño de prefijo que proporcione un ratio de
+                            discriminación extremadamente cercano al valor de la cardinalidad global
+                            de la columna sin prefijo.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Aplicación DDL:</strong> Cree de forma definitiva el índice
+                            de prefijo en caliente utilizando la longitud <img
+                                src="media_ASGBD_UT5_Tarea_Auditoría_Rendimiento_Indexacion/media/image4.png"
+                                style="width:0.19531in;height:0.26727in" /> seleccionada
+                            justificadamente en el paso anterior.</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <h2 id="calificación">4. CALIFICACIÓN <a class="headerlink" href="#calificación"
+                    title="Enlace permanente">¶</a></h2>
+            <blockquote>
+                <p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
+                    través de la plataforma, la entrega del documento en formatos editables
+                    no permitidos (como .docx), capturas con identificación del alumno/a o
+                    la omisión de los enlaces de las fuentes documentales utilizadas
+                    penalizará gravemente la nota o invalidará la práctica.</p>
+            </blockquote>
+            <h4 id="rúbrica-de-evaluación-técnica">RÚBRICA DE EVALUACIÓN TÉCNICA
+                <a class="headerlink" href="#rúbrica-de-evaluación-técnica" title="Enlace permanente">¶</a>
+            </h4>
+            <div class="table-wrapper">
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr class="header">
+                                <th><strong>Criterio de Evaluación</strong></th>
+                                <th><strong>Excelente (100%)</strong></th>
+                                <th><strong>Notable (75%)</strong></th>
+                                <th><strong>Suficiente (50%)</strong></th>
+                                <th><strong>Insuficiente (0%)</strong></th>
+                                <th><strong>Peso</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="odd">
+                                <td><strong>Contenido Técnico y Funcionalidad</strong></td>
+                                <td>Todos los comandos SQL se ejecutan de manera impecable y las
+                                    explicaciones justifican con absoluta precisión el comportamiento físico
+                                    de los árboles de datos y del optimizador de MySQL.</td>
+                                <td>Se ejecutan todos los comandos SQL con errores mínimos de sintaxis.
+                                    Se comprenden los conceptos de optimización, aunque falta profundidad en
+                                    el análisis de costes.</td>
+                                <td>Faltan comandos o algunos índices no se han creado correctamente.
+                                    Las explicaciones técnicas de los planes de ejecución son débiles.</td>
+                                <td>No se resuelven las consultas ni se crean las estructuras de
+                                    optimización solicitadas.</td>
+                                <td><strong>50%</strong></td>
+                            </tr>
+                            <tr class="header">
+                                <td><strong>Análisis de Procedimientos e I/O</strong></td>
+                                <td>Documenta cada cambio con trazas de EXPLAIN contrastando
+                                    minuciosamente las diferencias de coste (rows, type, key). Propone
+                                    mejoras sargables justificadas.</td>
+                                <td>Muestra el uso de EXPLAIN pero el contraste de rendimiento se limita
+                                    a listar valores sin relacionarlos directamente con el consumo de
+                                    recursos de hardware.</td>
+                                <td>Sigue los pasos de manera mecánica sin comprender por qué mejora o
+                                    empeora la ejecución de las consultas.</td>
+                                <td>No incluye trazas de análisis de planes de ejecución o estas no
+                                    corresponden a sus bases de datos.</td>
+                                <td><strong>40%</strong></td>
+                            </tr>
+                            <tr class="odd">
+                                <td><strong>Calidad de Documentación y Capturas</strong></td>
+                                <td><strong>Documento impecable (PDF).</strong> Las capturas son
+                                    perfectamente legibles, se identifica de manera inequívoca la autoría
+                                    del alumno mediante el prompt y la IP del servidor. Texto justificado y
+                                    estructurado con comentarios debajo de cada captura.</td>
+                                <td>Documento bien estructurado en PDF. Las capturas son legibles pero
+                                    falta de forma básica la identificación de autoría en alguna de
+                                    ellas.</td>
+                                <td>Desorganizado o sin formato adecuado. Dificultad para asociar los
+                                    ejercicios con el script entregado. El formato no es PDF.</td>
+                                <td>Entrega ilegible, sin capturas, o no se puede verificar de ningún
+                                    modo que el alumno haya ejecutado las prácticas en su servidor.</td>
+                                <td><strong>10%</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <h4 id="criterio-específico-de-documentación-y-capturas-1.5-puntos">CRITERIO
+                ESPECÍFICO DE DOCUMENTACIÓN Y CAPTURAS (1.5 Puntos) <a class="headerlink"
+                    href="#criterio-específico-de-documentación-y-capturas-1.5-puntos" title="Enlace permanente">¶</a>
+            </h4>
+            <div class="table-wrapper">
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr class="header">
+                                <th><strong>Criterio</strong></th>
+                                <th><strong>Realizado correctamente (100% - 1.5 Ptos)</strong></th>
+                                <th><strong>Realizado con algún error (50% - 0.75 Ptos)</strong></th>
+                                <th><strong>No realizado (0% - 0 Ptos)</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="odd">
+                                <td><strong>Legibilidad e Identificación del Autor</strong></td>
+                                <td>Todas las capturas de terminal muestran claramente la IP de la
+                                    instancia remota y el nombre de usuario del alumno en el shell, o bien
+                                    el identificador mediante consulta comentada de manera consistente.</td>
+                                <td>Las capturas carecen de la IP del servidor en algunas fases o la
+                                    identificación no se incluye en todas las ventanas de consulta,
+                                    comprometiendo la trazabilidad completa.</td>
+                                <td>Capturas genéricas sin ningún elemento que identifique la
+                                    procedencia del entorno de ejecución o el autor.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
         </main>
     </div>
 
-        </main>
+    </main>
     </div>
 </body>
+
 </html>

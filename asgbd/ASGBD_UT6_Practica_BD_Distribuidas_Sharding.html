@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,207 +8,274 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
+
 <body>
     <header id="site-header">
-  <div class="header-container">
-    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD &ndash; Ut6 Practica Bd Distribuidas Sharding</span></div>
-    <nav class="top-nav">
-      <a href="index.html" class="nav-btn">Inicio</a>
-    </nav>
-  </div>
-</header>
+        <div class="header-container">
+            <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo"
+                    style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD
+                    &ndash; Ut6 Practica Bd Distribuidas Sharding</span></div>
+            <nav class="top-nav">
+                <a href="index.html" class="nav-btn">Inicio</a>
+            </nav>
+        </div>
+    </header>
     <div id="page-layout">
-        <main id="main-content">
-            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT6_Practica_BD_Distribuidas_Sharding.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
-            
-    
-    
-        
-        <main id="main-content">
-            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT6_Practica_BD_Distribuidas_Sharding.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
-            
 
-<h2
-id="ud-6---práctica.-bases-de-datos-distribuidas-y-alta-disponibilidad">UD
-6 - Práctica. Bases de Datos Distribuidas y Alta Disponibilidad <a class="headerlink" href="#ud-6---práctica.-bases-de-datos-distribuidas-y-alta-disponibilidad" title="Enlace permanente">¶</a></h2>
-<h4 id="ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
-ACTIVIDAD <a class="headerlink" href="#ficha-técnica-de-la-actividad" title="Enlace permanente">¶</a></h4>
-<div class="table-wrapper"><div class="table-wrapper"><table>
-<tbody>
-<tr class="header">
-<td><strong>Unidad Didáctica</strong></td>
-<td>UD 6: Bases de Datos Distribuidas</td>
-</tr>
-<tr class="odd">
-<td><strong>Resultado de Aprendizaje (RA)</strong></td>
-<td><strong>RA6:</strong> Aplica criterios de integridad, disponibilidad
-y rendimiento en la administración de bases de datos distribuidas,
-analizando y configurando mecanismos de replicación y
-fragmentación.</td>
-</tr>
-<tr class="header">
-<td><strong>Criterios de Evaluación (CE)</strong></td>
-<td><p><strong>CE 6.a:</strong> Se han identificado las ventajas e
-inconvenientes de las bases de datos distribuidas.</p>
-<p><strong>CE 6.d:</strong> Se han configurado y verificado escenarios
-de fragmentación de datos.</p>
-<p><strong>CE 6.f:</strong> Se han utilizado herramientas de balanceo de
-carga.</p></td>
-</tr>
-<tr class="odd">
-<td><strong>Método de entrega</strong></td>
-<td><strong>Documento PDF</strong> con explicaciones y capturas. Para
-validar la autoría, debe aparecer el nombre del alumno en el prompt del
-terminal o como comentario SQL. Posibilidad de defensa oral.</td>
-</tr>
-</tbody>
-</table></div></div>
-<h2 id="section"> <a class="headerlink" href="#section" title="Enlace permanente">¶</a></h2>
-<h2 id="descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
-OBJETIVOS <a class="headerlink" href="#descripción-general.-objetivos" title="Enlace permanente">¶</a></h2>
-<p><strong>Objetivo:</strong> Implementar un sistema de fragmentación
-horizontal (<em>sharding</em>) utilizando dos nodos MySQL y un
-orquestador ProxySQL basado en la arquitectura de contenedores
-proporcionada.</p>
-<h2 id="actividades-a-realizar">2. ACTIVIDADES A REALIZAR <a class="headerlink" href="#actividades-a-realizar" title="Enlace permanente">¶</a></h2>
-<h4 id="fase-1-preparación-entorno">Fase 1: Preparación (Entorno) <a class="headerlink" href="#fase-1-preparación-entorno" title="Enlace permanente">¶</a></h4>
-<ol type="1">
-<li><blockquote>
-<p>Disponer de <strong>Docker y Docker Compose</strong>.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Utilizar el archivo docker-compose.yml y los scripts de
-inicialización de la carpeta init/.</p>
-</blockquote></li>
-<li><blockquote>
-<p>El escenario consta de: mysql-shard-1 (puerto 3310), mysql-shard-2
-(puerto 3308) y proxysql (puertos 6032/6033).</p>
-</blockquote></li>
-</ol>
-<h4 id="fase-2-desarrollo">Fase 2: Desarrollo <a class="headerlink" href="#fase-2-desarrollo" title="Enlace permanente">¶</a></h4>
-<p><strong>Ejercicio 1: Despliegue de la Infraestructura (1.5
-puntos)</strong></p>
-<ul>
-<li><blockquote>
-<p>Levantar el escenario: docker-compose up -d.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Verificar el estado con docker ps y comprobar conectividad a los
-puertos expuestos.</p>
-</blockquote></li>
-</ul>
-<p><strong>Ejercicio 2: Verificación de la Fragmentación Manual (2.5
-puntos)</strong></p>
-<ul>
-<li><blockquote>
-<p>Consultar la tabla users en ambos shards directamente.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Analizar el criterio de distribución (IDs pares/impares o
-rangos).</p>
-</blockquote></li>
-<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Entrega: Capturas de SELECT * FROM users; en ambos
-contenedores.</code></pre></div></div></li>
-</ul>
-<p><strong>Ejercicio 3: Configuración Técnica de ProxySQL (3
-puntos)</strong> El alumno debe configurar el enrutamiento para que sea
-transparente al cliente. Pasos obligatorios:</p>
-<ol type="1">
-<li><blockquote>
-<p><strong>Acceso a Administración (Puerto 6032):</strong> docker exec
--it proxysql mysql -u admin -padmin -h 127.0.0.1 -P 6032</p>
-</blockquote></li>
-<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Configurar Backends (Hostgroups):
+
+
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a
+                    href="ASGBD_UT6_Practica_BD_Distribuidas_Sharding.pdf" download
+                    style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥
+                    Descargar PDF</a></div>
+
+
+            <h2 id="ud-6---práctica.-bases-de-datos-distribuidas-y-alta-disponibilidad">UD
+                6 - Práctica. Bases de Datos Distribuidas y Alta Disponibilidad <a class="headerlink"
+                    href="#ud-6---práctica.-bases-de-datos-distribuidas-y-alta-disponibilidad"
+                    title="Enlace permanente">¶</a></h2>
+            <h4 id="ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
+                ACTIVIDAD <a class="headerlink" href="#ficha-técnica-de-la-actividad" title="Enlace permanente">¶</a>
+            </h4>
+            <div class="table-wrapper">
+                <div class="table-wrapper">
+                    <table>
+                        <tbody>
+                            <tr class="header">
+                                <td><strong>Unidad Didáctica</strong></td>
+                                <td>UD 6: Bases de Datos Distribuidas</td>
+                            </tr>
+                            <tr class="odd">
+                                <td><strong>Resultado de Aprendizaje (RA)</strong></td>
+                                <td><strong>RA6:</strong> Aplica criterios de integridad, disponibilidad
+                                    y rendimiento en la administración de bases de datos distribuidas,
+                                    analizando y configurando mecanismos de replicación y
+                                    fragmentación.</td>
+                            </tr>
+                            <tr class="header">
+                                <td><strong>Criterios de Evaluación (CE)</strong></td>
+                                <td>
+                                    <p><strong>CE 6.a:</strong> Se han identificado las ventajas e
+                                        inconvenientes de las bases de datos distribuidas.</p>
+                                    <p><strong>CE 6.d:</strong> Se han configurado y verificado escenarios
+                                        de fragmentación de datos.</p>
+                                    <p><strong>CE 6.f:</strong> Se han utilizado herramientas de balanceo de
+                                        carga.</p>
+                                </td>
+                            </tr>
+                            <tr class="odd">
+                                <td><strong>Método de entrega</strong></td>
+                                <td><strong>Documento PDF</strong> con explicaciones y capturas. Para
+                                    validar la autoría, debe aparecer el nombre del alumno en el prompt del
+                                    terminal o como comentario SQL. Posibilidad de defensa oral.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <h2 id="section"> <a class="headerlink" href="#section" title="Enlace permanente">¶</a></h2>
+            <h2 id="descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
+                OBJETIVOS <a class="headerlink" href="#descripción-general.-objetivos" title="Enlace permanente">¶</a>
+            </h2>
+            <p><strong>Objetivo:</strong> Implementar un sistema de fragmentación
+                horizontal (<em>sharding</em>) utilizando dos nodos MySQL y un
+                orquestador ProxySQL basado en la arquitectura de contenedores
+                proporcionada.</p>
+            <h2 id="actividades-a-realizar">2. ACTIVIDADES A REALIZAR <a class="headerlink"
+                    href="#actividades-a-realizar" title="Enlace permanente">¶</a></h2>
+            <h4 id="fase-1-preparación-entorno">Fase 1: Preparación (Entorno) <a class="headerlink"
+                    href="#fase-1-preparación-entorno" title="Enlace permanente">¶</a></h4>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p>Disponer de <strong>Docker y Docker Compose</strong>.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Utilizar el archivo docker-compose.yml y los scripts de
+                            inicialización de la carpeta init/.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>El escenario consta de: mysql-shard-1 (puerto 3310), mysql-shard-2
+                            (puerto 3308) y proxysql (puertos 6032/6033).</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <h4 id="fase-2-desarrollo">Fase 2: Desarrollo <a class="headerlink" href="#fase-2-desarrollo"
+                    title="Enlace permanente">¶</a></h4>
+            <p><strong>Ejercicio 1: Despliegue de la Infraestructura (1.5
+                    puntos)</strong></p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p>Levantar el escenario: docker-compose up -d.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Verificar el estado con docker ps y comprobar conectividad a los
+                            puertos expuestos.</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <p><strong>Ejercicio 2: Verificación de la Fragmentación Manual (2.5
+                    puntos)</strong></p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p>Consultar la tabla users en ambos shards directamente.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Analizar el criterio de distribución (IDs pares/impares o
+                            rangos).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                            <pre><code>Entrega: Capturas de SELECT * FROM users; en ambos
+contenedores.</code></pre>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <p><strong>Ejercicio 3: Configuración Técnica de ProxySQL (3
+                    puntos)</strong> El alumno debe configurar el enrutamiento para que sea
+                transparente al cliente. Pasos obligatorios:</p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p><strong>Acceso a Administración (Puerto 6032):</strong> docker exec
+                            -it proxysql mysql -u admin -padmin -h 127.0.0.1 -P 6032</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                            <pre><code>Configurar Backends (Hostgroups):
 -- Shard 1 (ID 1-50) -&gt; HG 1 | Shard 2 (ID &gt; 50) -&gt; HG 2
 INSERT INTO mysql_servers(hostgroup_id, hostname, port) VALUES (1,
 'mysql-shard-1', 3306), (2, 'mysql-shard-2', 3306);
-LOAD MYSQL SERVERS TO RUNTIME; SAVE MYSQL SERVERS TO DISK;</code></pre></div></div></li>
-<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Configurar Usuario de Tráfico:
+LOAD MYSQL SERVERS TO RUNTIME; SAVE MYSQL SERVERS TO DISK;</code></pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                            <pre><code>Configurar Usuario de Tráfico:
 INSERT INTO mysql_users(username, password, default_hostgroup) VALUES
 ('root', 'root_password', 1);
-LOAD MYSQL USERS TO RUNTIME; SAVE MYSQL USERS TO DISK;</code></pre></div></div></li>
-<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Reglas de Enrutamiento (Sharding Logic):
+LOAD MYSQL USERS TO RUNTIME; SAVE MYSQL USERS TO DISK;</code></pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                            <pre><code>Reglas de Enrutamiento (Sharding Logic):
 -- Redirigir según el ID en la consulta (Regex)
 INSERT INTO mysql_query_rules (rule_id, active, match_digest,
 destination_hostgroup, apply)
 VALUES (1, 1, 'id\s*=\s*([1-9]|[1-4][0-9]|50)', 1, 1),
 (2, 1, 'id\s*=\s*([5-9][0-9]|[1-9][0-9]{2,})', 2, 1);
-LOAD MYSQL QUERY RULES TO RUNTIME; SAVE MYSQL QUERY RULES TO DISK;</code></pre></div></div></li>
-</ol>
-<p><strong>Ejercicio 4: Pruebas de Transparencia (2 puntos)</strong></p>
-<ul>
-<li><blockquote>
-<p>Realizar consultas al puerto <strong>6033</strong> buscando un ID de
-cada rango.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Verificar en stats.stats_mysql_query_digest que las consultas han ido
-a hostgroups distintos.</p>
-</blockquote></li>
-</ul>
-<p><strong>Ejercicio 5: Gestión de Fallos (1 punto)</strong></p>
-<ul>
-<li><blockquote>
-<p>Detener un shard y documentar el comportamiento del sistema
-distribuido ante la pérdida de un fragmento.</p>
-</blockquote></li>
-</ul>
-<h2 id="calificación">3. CALIFICACIÓN <a class="headerlink" href="#calificación" title="Enlace permanente">¶</a></h2>
-<blockquote>
-<p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
-través de la plataforma, la entrega del documento en formatos editables
-no permitidos (como .docx), capturas con identificación del alumno/a o
-la omisión de los enlaces de las fuentes documentales utilizadas
-penalizará gravemente la nota o invalidará la práctica.</p>
-</blockquote>
-<h3 id="section-1"> <a class="headerlink" href="#section-1" title="Enlace permanente">¶</a></h3>
-<div class="table-wrapper"><div class="table-wrapper"><table>
-<thead>
-<tr class="header">
-<th><strong>Apartado</strong></th>
-<th><strong>Realizado correctamente (100%)</strong></th>
-<th><strong>Realizado con errores (40%)</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Ej. 1: Despliegue</strong></td>
-<td>Escenario funcional y verificado.</td>
-<td>Error en puertos o redes.</td>
-</tr>
-<tr class="header">
-<td><strong>Ej. 2: Sharding</strong></td>
-<td>Identifica correctamente la fragmentación.</td>
-<td>No diferencia los shards.</td>
-</tr>
-<tr class="odd">
-<td><strong>Ej. 3: ProxySQL</strong></td>
-<td><strong>Reglas aplicadas y persistidas.</strong></td>
-<td>Error en Regex o Hostgroups.</td>
-</tr>
-<tr class="header">
-<td><strong>Ej. 4: Pruebas</strong></td>
-<td>Demuestra el enrutamiento transparente.</td>
-<td>Acceso fallido o manual.</td>
-</tr>
-<tr class="odd">
-<td><strong>Ej. 5: Fallos</strong></td>
-<td>Análisis técnico coherente del error.</td>
-<td>Solo captura sin texto.</td>
-</tr>
-<tr class="header">
-<td><strong>Presentación</strong></td>
-<td>Documentación limpia, autoría clara.</td>
-<td>Falta identificación o mala calidad.</td>
-</tr>
-</tbody>
-</table></div></div>
-<p><strong>Total: 10 Puntos</strong></p>
+LOAD MYSQL QUERY RULES TO RUNTIME; SAVE MYSQL QUERY RULES TO DISK;</code></pre>
+                        </div>
+                    </div>
+                </li>
+            </ol>
+            <p><strong>Ejercicio 4: Pruebas de Transparencia (2 puntos)</strong></p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p>Realizar consultas al puerto <strong>6033</strong> buscando un ID de
+                            cada rango.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Verificar en stats.stats_mysql_query_digest que las consultas han ido
+                            a hostgroups distintos.</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <p><strong>Ejercicio 5: Gestión de Fallos (1 punto)</strong></p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p>Detener un shard y documentar el comportamiento del sistema
+                            distribuido ante la pérdida de un fragmento.</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <h2 id="calificación">3. CALIFICACIÓN <a class="headerlink" href="#calificación"
+                    title="Enlace permanente">¶</a></h2>
+            <blockquote>
+                <p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
+                    través de la plataforma, la entrega del documento en formatos editables
+                    no permitidos (como .docx), capturas con identificación del alumno/a o
+                    la omisión de los enlaces de las fuentes documentales utilizadas
+                    penalizará gravemente la nota o invalidará la práctica.</p>
+            </blockquote>
+            <h3 id="section-1"> <a class="headerlink" href="#section-1" title="Enlace permanente">¶</a></h3>
+            <div class="table-wrapper">
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr class="header">
+                                <th><strong>Apartado</strong></th>
+                                <th><strong>Realizado correctamente (100%)</strong></th>
+                                <th><strong>Realizado con errores (40%)</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="odd">
+                                <td><strong>Ej. 1: Despliegue</strong></td>
+                                <td>Escenario funcional y verificado.</td>
+                                <td>Error en puertos o redes.</td>
+                            </tr>
+                            <tr class="header">
+                                <td><strong>Ej. 2: Sharding</strong></td>
+                                <td>Identifica correctamente la fragmentación.</td>
+                                <td>No diferencia los shards.</td>
+                            </tr>
+                            <tr class="odd">
+                                <td><strong>Ej. 3: ProxySQL</strong></td>
+                                <td><strong>Reglas aplicadas y persistidas.</strong></td>
+                                <td>Error en Regex o Hostgroups.</td>
+                            </tr>
+                            <tr class="header">
+                                <td><strong>Ej. 4: Pruebas</strong></td>
+                                <td>Demuestra el enrutamiento transparente.</td>
+                                <td>Acceso fallido o manual.</td>
+                            </tr>
+                            <tr class="odd">
+                                <td><strong>Ej. 5: Fallos</strong></td>
+                                <td>Análisis técnico coherente del error.</td>
+                                <td>Solo captura sin texto.</td>
+                            </tr>
+                            <tr class="header">
+                                <td><strong>Presentación</strong></td>
+                                <td>Documentación limpia, autoría clara.</td>
+                                <td>Falta identificación o mala calidad.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <p><strong>Total: 10 Puntos</strong></p>
 
         </main>
     </div>
 
-        </main>
+    </main>
     </div>
 </body>
+
 </html>

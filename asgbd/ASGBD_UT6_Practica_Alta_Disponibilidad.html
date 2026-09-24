@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,31 +8,38 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
+
 <body>
     <header id="site-header">
-  <div class="header-container">
-    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD &ndash; Ut6 Practica Alta Disponibilidad</span></div>
-    <nav class="top-nav">
-      <a href="index.html" class="nav-btn">Inicio</a>
-    </nav>
-  </div>
-</header>
+        <div class="header-container">
+            <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo"
+                    style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD
+                    &ndash; Ut6 Practica Alta Disponibilidad</span></div>
+            <nav class="top-nav">
+                <a href="index.html" class="nav-btn">Inicio</a>
+            </nav>
+        </div>
+    </header>
     <div id="page-layout">
-        <main id="main-content">
-            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT6_Practica_Alta_Disponibilidad.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
-            
-    
-    
-        
-        <main id="main-content">
-            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT6_Practica_Alta_Disponibilidad.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
-            
 
-<h2 id="ud-6---práctica.-de-datos-distribuidas-y-alta-disponibilidad">UD
-6 - Práctica. de Datos Distribuidas y Alta Disponibilidad <a class="headerlink" href="#ud-6---práctica.-de-datos-distribuidas-y-alta-disponibilidad" title="Enlace permanente">¶</a></h2>
-<h3 id="ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
-ACTIVIDAD <a class="headerlink" href="#ficha-técnica-de-la-actividad" title="Enlace permanente">¶</a></h3>
-<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Unidad Didáctica
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a
+                    href="ASGBD_UT6_Practica_Alta_Disponibilidad.pdf" download
+                    style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥
+                    Descargar PDF</a></div>
+
+
+            <h2 id="ud-6---práctica.-de-datos-distribuidas-y-alta-disponibilidad">UD
+                6 - Práctica. de Datos Distribuidas y Alta Disponibilidad <a class="headerlink"
+                    href="#ud-6---práctica.-de-datos-distribuidas-y-alta-disponibilidad" title="Enlace permanente">¶</a>
+            </h2>
+            <h3 id="ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
+                ACTIVIDAD <a class="headerlink" href="#ficha-técnica-de-la-actividad" title="Enlace permanente">¶</a>
+            </h3>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                        <pre><code>Unidad Didáctica
 UD 6: Bases de Datos Distribuidas
 
 
@@ -52,178 +60,241 @@ fallos.
 Método de entrega
 Documento PDF con capturas. Cada captura debe ir
 precedida de un comentario SQL: SELECT 'Nombre Alumno - Actividad X';.
-Se debe visualizar la IP o el nombre del contenedor en el prompt.</code></pre></div></div></div>
-<h2 id="descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
-OBJETIVOS <a class="headerlink" href="#descripción-general.-objetivos" title="Enlace permanente">¶</a></h2>
-<p><strong>Objetivo:</strong> Configurar y gestionar un clúster de alta
-disponibilidad basado en <strong>MySQL Group Replication</strong> en
-modo <em>Single-Primary</em>.</p>
-<h2 id="actividades-a-realizar">2. ACTIVIDADES A REALIZAR <a class="headerlink" href="#actividades-a-realizar" title="Enlace permanente">¶</a></h2>
-<h4 id="fase-1-preparación-entorno">Fase 1: Preparación (Entorno) <a class="headerlink" href="#fase-1-preparación-entorno" title="Enlace permanente">¶</a></h4>
-<ul>
-<li><blockquote>
-<p>Utiliza el entorno de 3 nodos (mysql1, mysql2, mysql3) definido en el
-docker-compose.yml.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Asegúrate de que los volúmenes están limpios antes de empezar:
-docker-compose down -v.</p>
-</blockquote></li>
-</ul>
-<h4 id="fase-2-desarrollo-paso-a-paso"><strong>Fase 2: Desarrollo Paso a
-Paso</strong> <a class="headerlink" href="#fase-2-desarrollo-paso-a-paso" title="Enlace permanente">¶</a></h4>
-<p><strong>Ejercicio 1: Puesta en marcha y Bootstrap del Clúster (2
-puntos)</strong></p>
-<ol type="1">
-<li><blockquote>
-<p>Levanta los servicios: docker-compose up -d.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Accede al <strong>nodo 1</strong> (el que iniciará el grupo): docker
-exec -it mysql1 mysql -uroot -prootpassword</p>
-</blockquote></li>
-<li><blockquote>
-<p>Ejecuta los comandos de inicialización:<br />
--- Configura el canal de recuperación<br />
-CHANGE MASTER TO MASTER_USER='repl', MASTER_PASSWORD='replpassword' FOR
-CHANNEL 'group_replication_recovery';<br />
--- Activa el bootstrap para crear el grupo<br />
-SET GLOBAL group_replication_bootstrap_group=ON;<br />
-START GROUP_REPLICATION;<br />
-SET GLOBAL group_replication_bootstrap_group=OFF;</p>
-</blockquote></li>
-<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Entrega: Captura del comando SELECT * FROM
+Se debe visualizar la IP o el nombre del contenedor en el prompt.</code></pre>
+                    </div>
+                </div>
+            </div>
+            <h2 id="descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
+                OBJETIVOS <a class="headerlink" href="#descripción-general.-objetivos" title="Enlace permanente">¶</a>
+            </h2>
+            <p><strong>Objetivo:</strong> Configurar y gestionar un clúster de alta
+                disponibilidad basado en <strong>MySQL Group Replication</strong> en
+                modo <em>Single-Primary</em>.</p>
+            <h2 id="actividades-a-realizar">2. ACTIVIDADES A REALIZAR <a class="headerlink"
+                    href="#actividades-a-realizar" title="Enlace permanente">¶</a></h2>
+            <h4 id="fase-1-preparación-entorno">Fase 1: Preparación (Entorno) <a class="headerlink"
+                    href="#fase-1-preparación-entorno" title="Enlace permanente">¶</a></h4>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p>Utiliza el entorno de 3 nodos (mysql1, mysql2, mysql3) definido en el
+                            docker-compose.yml.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Asegúrate de que los volúmenes están limpios antes de empezar:
+                            docker-compose down -v.</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <h4 id="fase-2-desarrollo-paso-a-paso"><strong>Fase 2: Desarrollo Paso a
+                    Paso</strong> <a class="headerlink" href="#fase-2-desarrollo-paso-a-paso"
+                    title="Enlace permanente">¶</a></h4>
+            <p><strong>Ejercicio 1: Puesta en marcha y Bootstrap del Clúster (2
+                    puntos)</strong></p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p>Levanta los servicios: docker-compose up -d.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Accede al <strong>nodo 1</strong> (el que iniciará el grupo): docker
+                            exec -it mysql1 mysql -uroot -prootpassword</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Ejecuta los comandos de inicialización:<br />
+                            -- Configura el canal de recuperación<br />
+                            CHANGE MASTER TO MASTER_USER='repl', MASTER_PASSWORD='replpassword' FOR
+                            CHANNEL 'group_replication_recovery';<br />
+                            -- Activa el bootstrap para crear el grupo<br />
+                            SET GLOBAL group_replication_bootstrap_group=ON;<br />
+                            START GROUP_REPLICATION;<br />
+                            SET GLOBAL group_replication_bootstrap_group=OFF;</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                            <pre><code>Entrega: Captura del comando SELECT * FROM
 performance_schema.replication_group_members; mostrando el nodo 1 como
-ONLINE.</code></pre></div></div></li>
-</ol>
-<p><strong>Ejercicio 2: Unión de Nodos Secundarios (2
-puntos)</strong></p>
-<ol type="1">
-<li><blockquote>
-<p>Accede a <strong>mysql2</strong> y <strong>mysql3</strong> de forma
-secuencial.</p>
-</blockquote></li>
-<li><blockquote>
-<p>En cada uno, ejecuta:<br />
-CHANGE MASTER TO MASTER_USER='repl', MASTER_PASSWORD='replpassword' FOR
-CHANNEL 'group_replication_recovery';<br />
-START GROUP_REPLICATION;</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Entrega:</strong> Captura desde el nodo 3 donde se visualicen
-los 3 miembros en estado ONLINE. Identifica cuál es el MEMBER_ROLE de
-cada uno.</p>
-</blockquote></li>
-</ol>
-<p><strong>Ejercicio 3: Verificación de Replicación Síncrona (2
-puntos)</strong></p>
-<ol type="1">
-<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>En el Primario (normalmente mysql1), crea
+ONLINE.</code></pre>
+                        </div>
+                    </div>
+                </li>
+            </ol>
+            <p><strong>Ejercicio 2: Unión de Nodos Secundarios (2
+                    puntos)</strong></p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p>Accede a <strong>mysql2</strong> y <strong>mysql3</strong> de forma
+                            secuencial.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>En cada uno, ejecuta:<br />
+                            CHANGE MASTER TO MASTER_USER='repl', MASTER_PASSWORD='replpassword' FOR
+                            CHANNEL 'group_replication_recovery';<br />
+                            START GROUP_REPLICATION;</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Entrega:</strong> Captura desde el nodo 3 donde se visualicen
+                            los 3 miembros en estado ONLINE. Identifica cuál es el MEMBER_ROLE de
+                            cada uno.</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <p><strong>Ejercicio 3: Verificación de Replicación Síncrona (2
+                    puntos)</strong></p>
+            <ol type="1">
+                <li>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                            <pre><code>En el Primario (normalmente mysql1), crea
 datos:
 CREATE DATABASE alta_disponibilidad;
 USE alta_disponibilidad;
 CREATE TABLE nodos (id INT PRIMARY KEY, nombre VARCHAR(50));
-INSERT INTO nodos VALUES (1, 'Nodo Primario Inicial');</code></pre></div></div></li>
-<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Accede a mysql3 (Secundario) y verifica la recepción
+INSERT INTO nodos VALUES (1, 'Nodo Primario Inicial');</code></pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                            <pre><code>Accede a mysql3 (Secundario) y verifica la recepción
 inmediata:
-SELECT * FROM alta_disponibilidad.nodos;</code></pre></div></div></li>
-<li><blockquote>
-<p><strong>Entrega:</strong> Captura de la consulta en el nodo 3 y
-explicación de por qué no ha sido necesario crear la base de datos
-manualmente en este nodo.</p>
-</blockquote></li>
-</ol>
-<p><strong>Ejercicio 4: Simulación de Fallo y Failover (2.5
-puntos)</strong></p>
-<ol type="1">
-<li><blockquote>
-<p>Identifica el UUID del primario actual.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Desde el terminal del host, "mata" el contenedor primario: docker
-stop mysql1.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Ve a <strong>mysql2</strong> y consulta de nuevo la tabla de
-miembros.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Entrega:</strong> Captura donde se vea que mysql1 ha
-desaparecido o está UNREACHABLE y que un nuevo nodo ha pasado de
-SECONDARY a PRIMARY.</p>
-</blockquote></li>
-</ol>
-<p><strong>Ejercicio 5: Reincorporación de un Nodo (1.5
-puntos)</strong></p>
-<ol type="1">
-<li><blockquote>
-<p>Inicia el contenedor: docker start mysql1.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Entra al MySQL de ese nodo e intenta unirlo al grupo: START
-GROUP_REPLICATION;.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Entrega:</strong> Captura final con los 3 nodos de nuevo en
-ONLINE. Explica qué es el estado RECOVERING que aparece brevemente.</p>
-</blockquote></li>
-</ol>
-<h2 id="calificación">4. CALIFICACIÓN <a class="headerlink" href="#calificación" title="Enlace permanente">¶</a></h2>
-<blockquote>
-<p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
-través de la plataforma, la entrega del documento en formatos editables
-no permitidos (como .docx), capturas con identificación del alumno/a o
-la omisión de los enlaces de las fuentes documentales utilizadas
-penalizará gravemente la nota o invalidará la práctica.</p>
-</blockquote>
-<div class="table-wrapper"><div class="table-wrapper"><table>
-<thead>
-<tr class="header">
-<th><strong>Apartado</strong></th>
-<th><strong>Realizado correctamente (100%)</strong></th>
-<th><strong>Realizado con algún error (70%)</strong></th>
-<th><strong>Realizado con errores (40%)</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Ej. 1 y 2</strong></td>
-<td>Clúster completo con 3 nodos ONLINE.</td>
-<td>Errores en el Bootstrap o falta un nodo.</td>
-<td>No hay conectividad entre nodos.</td>
-</tr>
-<tr class="header">
-<td><strong>Ej. 3</strong></td>
-<td>Demuestra replicación correcta.</td>
-<td>Datos incompletos.</td>
-<td>No hay replicación.</td>
-</tr>
-<tr class="odd">
-<td><strong>Ej. 4</strong></td>
-<td>Explica el cambio de rol tras el fallo.</td>
-<td>El clúster queda bloqueado.</td>
-<td>No sabe identificar al nuevo primario.</td>
-</tr>
-<tr class="header">
-<td><strong>Ej. 5</strong></td>
-<td>Reincorporación total exitosa.</td>
-<td>El nodo no sale de RECOVERING.</td>
-<td>El nodo no se reincorpora.</td>
-</tr>
-<tr class="odd">
-<td><strong>Documento</strong></td>
-<td>Capturas claras con identificación.</td>
-<td>Faltan identificadores en capturas.</td>
-<td>Entrega desordenada.</td>
-</tr>
-</tbody>
-</table></div></div>
-<p><strong>Total: 10 Puntos</strong></p>
+SELECT * FROM alta_disponibilidad.nodos;</code></pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Entrega:</strong> Captura de la consulta en el nodo 3 y
+                            explicación de por qué no ha sido necesario crear la base de datos
+                            manualmente en este nodo.</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <p><strong>Ejercicio 4: Simulación de Fallo y Failover (2.5
+                    puntos)</strong></p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p>Identifica el UUID del primario actual.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Desde el terminal del host, "mata" el contenedor primario: docker
+                            stop mysql1.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Ve a <strong>mysql2</strong> y consulta de nuevo la tabla de
+                            miembros.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Entrega:</strong> Captura donde se vea que mysql1 ha
+                            desaparecido o está UNREACHABLE y que un nuevo nodo ha pasado de
+                            SECONDARY a PRIMARY.</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <p><strong>Ejercicio 5: Reincorporación de un Nodo (1.5
+                    puntos)</strong></p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p>Inicia el contenedor: docker start mysql1.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Entra al MySQL de ese nodo e intenta unirlo al grupo: START
+                            GROUP_REPLICATION;.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Entrega:</strong> Captura final con los 3 nodos de nuevo en
+                            ONLINE. Explica qué es el estado RECOVERING que aparece brevemente.</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <h2 id="calificación">4. CALIFICACIÓN <a class="headerlink" href="#calificación"
+                    title="Enlace permanente">¶</a></h2>
+            <blockquote>
+                <p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
+                    través de la plataforma, la entrega del documento en formatos editables
+                    no permitidos (como .docx), capturas con identificación del alumno/a o
+                    la omisión de los enlaces de las fuentes documentales utilizadas
+                    penalizará gravemente la nota o invalidará la práctica.</p>
+            </blockquote>
+            <div class="table-wrapper">
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr class="header">
+                                <th><strong>Apartado</strong></th>
+                                <th><strong>Realizado correctamente (100%)</strong></th>
+                                <th><strong>Realizado con algún error (70%)</strong></th>
+                                <th><strong>Realizado con errores (40%)</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="odd">
+                                <td><strong>Ej. 1 y 2</strong></td>
+                                <td>Clúster completo con 3 nodos ONLINE.</td>
+                                <td>Errores en el Bootstrap o falta un nodo.</td>
+                                <td>No hay conectividad entre nodos.</td>
+                            </tr>
+                            <tr class="header">
+                                <td><strong>Ej. 3</strong></td>
+                                <td>Demuestra replicación correcta.</td>
+                                <td>Datos incompletos.</td>
+                                <td>No hay replicación.</td>
+                            </tr>
+                            <tr class="odd">
+                                <td><strong>Ej. 4</strong></td>
+                                <td>Explica el cambio de rol tras el fallo.</td>
+                                <td>El clúster queda bloqueado.</td>
+                                <td>No sabe identificar al nuevo primario.</td>
+                            </tr>
+                            <tr class="header">
+                                <td><strong>Ej. 5</strong></td>
+                                <td>Reincorporación total exitosa.</td>
+                                <td>El nodo no sale de RECOVERING.</td>
+                                <td>El nodo no se reincorpora.</td>
+                            </tr>
+                            <tr class="odd">
+                                <td><strong>Documento</strong></td>
+                                <td>Capturas claras con identificación.</td>
+                                <td>Faltan identificadores en capturas.</td>
+                                <td>Entrega desordenada.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <p><strong>Total: 10 Puntos</strong></p>
 
         </main>
     </div>
 
-        </main>
+    </main>
     </div>
 </body>
+
 </html>

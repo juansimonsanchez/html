@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,552 +8,690 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
+
 <body>
     <header id="site-header">
-  <div class="header-container">
-    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD &ndash; Ut6 Teoría Bd Distribuidas Alta Disponibilidad</span></div>
-    <nav class="top-nav">
-      <a href="index.html" class="nav-btn">Inicio</a>
-    </nav>
-  </div>
-</header>
+        <div class="header-container">
+            <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo"
+                    style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD
+                    &ndash; Ut6 Teoría Bd Distribuidas Alta Disponibilidad</span></div>
+            <nav class="top-nav">
+                <a href="index.html" class="nav-btn">Inicio</a>
+            </nav>
+        </div>
+    </header>
     <div id="page-layout">
-        <main id="main-content">
-            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT6_Teoría_BD_Distribuidas_alta_disponibilidad.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
-            
-    
-    
-        
-        <main id="main-content">
-            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="ASGBD_UT6_Teoría_BD_Distribuidas_alta_disponibilidad.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
-            
-<header id="title-block-header">
-<h1 class="title"><p><span id="_7ii15gvc6mh"
-class="anchor"></span>Unidad 6:</p>
-<p><span id="_1m7p0ddefrsh" class="anchor"></span>BASES DE DATOS
-DISTRIBUIDAS Y ALTA DISPONIBILIDAD</p></h1>
-</header>
 
-<h3 id="ficha-técnica-de-la-unidad">FICHA TÉCNICA DE LA UNIDAD  <a class="headerlink" href="#ficha-técnica-de-la-unidad" title="Enlace permanente">¶</a></h3>
-<div class="table-wrapper"><div class="table-wrapper"><table>
-<tbody>
-<tr class="header">
-<td><strong>Unidad Didáctica</strong></td>
-<td>UD 6: Bases de Datos Distribuidas y Alta Disponibilidad</td>
-</tr>
-<tr class="odd">
-<td><strong>Resultados de Aprendizaje</strong></td>
-<td><strong>RA6:</strong> Aplica criterios de integridad, disponibilidad
-y rendimiento en la administración de bases de datos distribuidas,
-analizando y configurando mecanismos de replicación y
-fragmentación.</td>
-</tr>
-<tr class="header">
-<td><strong>Criterios de Evaluación</strong></td>
-<td><strong>CE 6.a:</strong> Se han identificado las ventajas e
-inconvenientes de las bases de datos distribuidas. <strong>CE
-6.b:</strong> Se han configurado y verificado escenarios de replicación.
-<strong>CE 6.c:</strong> Se han resuelto problemas de replicación.
-<strong>CE 6.d:</strong> Se han configurado y verificado escenarios de
-fragmentación de datos (sharding). <strong>CE 6.e:</strong> Se han
-analizado las características de los clústeres de bases de datos.
-<strong>CE 6.f:</strong> Se han utilizado herramientas de balanceo de
-carga. <strong>CE 6.g:</strong> Se han realizado pruebas de recuperación
-ante fallos.</td>
-</tr>
-<tr class="odd">
-<td><strong>Tiempo</strong></td>
-<td>9 horas lectivas (equivalente a unas 4 semanas de clase en el módulo
-ASGBD)</td>
-</tr>
-</tbody>
-</table></div></div>
-<h3 id="índice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#índice-de-contenidos" title="Enlace permanente">¶</a></h3>
-<p><a href="#introducción-y-contextualización"><u>1. INTRODUCCIÓN Y
-CONTEXTUALIZACIÓN</u></a></p>
-<p><a href="#fundamentos-de-las-bases-de-datos-distribuidas-bdd"><u>2.
-FUNDAMENTOS DE LAS BASES DE DATOS DISTRIBUIDAS (BDD)</u></a></p>
-<blockquote>
-<p><a href="#definición-y-conceptos-clave"><u>2.1. Definición y
-Conceptos Clave</u></a></p>
-<p><a href="#arquitecturas-homogéneas-vs.-heterogéneas"><u>2.2.
-Arquitecturas Homogéneas vs. Heterogéneas</u></a></p>
-<p><a
-href="#ventajas-y-desventajas-desde-la-perspectiva-del-sysadmin"><u>2.3.
-Ventajas y Desventajas desde la Perspectiva del SysAdmin</u></a></p>
-</blockquote>
-<p><a href="#mecanismos-de-replicación-en-mysqlmariadb"><u>3. MECANISMOS
-DE REPLICACIÓN EN MYSQL/MARIADB</u></a></p>
-<blockquote>
-<p><a href="#replicación-asíncrona-tradicional-source-replica"><u>3.1.
-Replicación Asíncrona Tradicional (Source-Replica)</u></a></p>
-<p><a href="#replicación-semi-síncrona"><u>3.2. Replicación
-Semi-síncrona</u></a></p>
-<p><a
-href="#replicación-síncrona-virtual-mysql-group-replication"><u>3.3.
-Replicación Síncrona Virtual: MySQL Group Replication</u></a></p>
-<p><a
-href="#el-binlog-relay-log-y-el-rol-crítico-de-los-gtid-global-transaction-identifiers"><u>3.4.
-El Binlog, Relay Log y el Rol Crítico de los GTID (Global Transaction
-Identifiers)</u></a></p>
-</blockquote>
-<p><a href="#alta-disponibilidad-y-clústeres-de-bases-de-datos"><u>4.
-ALTA DISPONIBILIDAD Y CLÚSTERES DE BASES DE DATOS</u></a></p>
-<blockquote>
-<p><a href="#arquitectura-mysql-innodb-cluster"><u>4.1. Arquitectura
-MySQL InnoDB Cluster</u></a></p>
-<p><a href="#arquitectura-mysql-ndb-cluster"><u>4.2. Arquitectura MySQL
-NDB Cluster</u></a></p>
-</blockquote>
-<p><a href="#fragmentación-y-sharding-particionado-de-datos"><u>5.
-FRAGMENTACIÓN Y SHARDING (PARTICIONADO DE DATOS)</u></a></p>
-<blockquote>
-<p><a
-href="#fragmentación-horizontal-sharding-y-fragmentación-vertical"><u>5.1.
-Fragmentación Horizontal (Sharding) y Fragmentación Vertical</u></a></p>
-<p><a href="#orquestación-y-balanceo-con-proxysql"><u>5.2. Orquestación
-y Balanceo con ProxySQL</u></a></p>
-</blockquote>
-<p><a
-href="#casos-prácticos-de-configuración-y-scripts-de-administración-sysadmin"><u>6.
-CASOS PRÁCTICOS DE CONFIGURACIÓN Y SCRIPTS DE ADMINISTRACIÓN
-(SYSADMIN)</u></a></p>
-<blockquote>
-<p><a
-href="#script-bash-para-monitorización-automática-del-estado-de-la-réplica"><u>6.1.
-Script Bash para Monitorización Automática del Estado de la
-Réplica</u></a></p>
-<p><a
-href="#configuración-gtid-en-mysqld.cnf-para-alta-disponibilidad"><u>6.2.
-Configuración GTID en mysqld.cnf para Alta Disponibilidad</u></a></p>
-</blockquote>
-<h1 id="introducción-y-contextualización">1. INTRODUCCIÓN Y
-CONTEXTUALIZACIÓN <a class="headerlink" href="#introducción-y-contextualización" title="Enlace permanente">¶</a></h1>
-<p>En el entorno tecnológico actual, la disponibilidad de la información
-de forma ininterrumpida (24x7x365) es un pilar fundamental para
-cualquier organización. Un administrador de sistemas no puede permitir
-que un fallo de hardware aislado, un corte de red o la saturación de un
-servidor central detengan el acceso a los datos de la empresa.</p>
-<p>La presente unidad aborda las técnicas y herramientas de diseño que
-permiten romper el modelo tradicional de almacenamiento centralizado (un
-único servidor base de datos) para dar paso a sistemas distribuidos,
-replicados y tolerantes a fallos.</p>
-<p>Este contenido se conecta de manera directa y estratégica con otros
-módulos clave del ciclo formativo de grado superior de ASIR:</p>
-<ul>
-<li><blockquote>
-<p><strong>Implantación de Sistemas Operativos (ISO) / Administración de
-Sistemas Operativos (ASO):</strong> Para comprender y gestionar los
-servicios del sistema, las rutas de logs de Linux, los niveles de
-permisos y el uso del planificador de tareas (cron).</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Planificación y Administración de Redes (PAR) / Servicios de
-Red e Internet (SRI):</strong> Dado que la comunicación entre nodos
-requiere un sólido conocimiento de direccionamiento IP, enrutamiento,
-puertos TCP, subredes, configuración de cortafuegos (iptables/ufw) y
-balanceadores de carga TCP/HTTP.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Seguridad y Alta Disponibilidad (SAD):</strong> Donde se
-profundiza en las políticas de continuidad de negocio, métricas de
-tolerancia a fallos (RTO/RPO), sistemas RAID y el diseño de
-arquitecturas con redundancia activa.</p>
-</blockquote></li>
-</ul>
-<h1 id="fundamentos-de-las-bases-de-datos-distribuidas-bdd">2.
-FUNDAMENTOS DE LAS BASES DE DATOS DISTRIBUIDAS (BDD) <a class="headerlink" href="#fundamentos-de-las-bases-de-datos-distribuidas-bdd" title="Enlace permanente">¶</a></h1>
-<h2 id="definición-y-conceptos-clave">2.1. Definición y Conceptos
-Clave <a class="headerlink" href="#definición-y-conceptos-clave" title="Enlace permanente">¶</a></h2>
-<p>Una <strong>Base de Datos Distribuida (BDD)</strong> es una colección
-de múltiples bases de datos que están interconectadas lógicamente y
-distribuidas físicamente a lo largo de una red de comunicaciones. Para
-el usuario o la aplicación cliente, el sistema debe comportarse como si
-fuera una base de datos centralizada única. Esta ilusión se conoce como
-<strong>transparencia de distribución</strong>.</p>
-<p>A nivel de arquitectura de red, un sistema de base de datos
-distribuido se compone de un conjunto de ordenadores independientes
-(llamados <strong>sitios</strong> o <strong>nodos</strong>). Cada nodo
-tiene capacidad de procesamiento local y ejecuta su propio Sistema
-Gestor de Bases de Datos (SGBD).</p>
-<h2 id="arquitecturas-homogéneas-vs.-heterogéneas">2.2. Arquitecturas
-Homogéneas vs. Heterogéneas <a class="headerlink" href="#arquitecturas-homogéneas-vs.-heterogéneas" title="Enlace permanente">¶</a></h2>
-<p>Atendiendo al software que compone los nodos, las BDD se clasifican
-en:</p>
-<ul>
-<li><blockquote>
-<p><strong>Bases de Datos Distribuidas Homogéneas:</strong></p>
-</blockquote>
-<ul>
-<li><blockquote>
-<p>Todos los nodos utilizan el mismo SGBD (por ejemplo, todas las
-instancias son MySQL 8.0).</p>
-</blockquote></li>
-<li><blockquote>
-<p>Son conscientes de la existencia de los demás sitios y colaboran
-activamente para procesar las peticiones globales de forma
-transparente.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Son mucho más fáciles de diseñar, administrar y mantener. Es el
-estándar de oro en arquitecturas corporativas controladas por el mismo
-equipo de infraestructura.</p>
-</blockquote></li>
-</ul></li>
-<li><blockquote>
-<p><strong>Bases de Datos Distribuidas Heterogéneas:</strong></p>
-</blockquote>
-<ul>
-<li><blockquote>
-<p>Diferentes nodos pueden usar SGBDs distintos (por ejemplo, algunos
-nodos con Oracle, otros con PostgreSQL y otros con MySQL).</p>
-</blockquote></li>
-<li><blockquote>
-<p>El gran reto técnico aquí es la traducción de esquemas, dialectos SQL
-e interconectividad. Requieren capas intermedias de traducción de
-software (<em>middleware</em>) y no garantizan siempre la semántica
-transaccional estricta.</p>
-</blockquote></li>
-</ul></li>
-</ul>
-<h2 id="ventajas-y-desventajas-desde-la-perspectiva-del-sysadmin">2.3.
-Ventajas y Desventajas desde la Perspectiva del SysAdmin <a class="headerlink" href="#ventajas-y-desventajas-desde-la-perspectiva-del-sysadmin" title="Enlace permanente">¶</a></h2>
-<p>Como futuros administradores de sistemas (SysAdmins), toda decisión
-de diseño arquitectónico tiene asociadas ventajas técnicas y peajes
-operativos:</p>
-<p><strong>Ventajas</strong></p>
-<ul>
-<li><blockquote>
-<p><strong>Rendimiento y Escalabilidad:</strong> Al distribuir la carga
-de trabajo entre múltiples servidores, se reduce el cuello de botella en
-CPU e I/O de disco. Los datos de acceso frecuente se pueden ubicar
-físicamente en el nodo más cercano a los usuarios finales (localización
-de datos).</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Alta Disponibilidad y Tolerancia a Fallos:</strong> Si un
-nodo hardware falla, el sistema continúa funcionando a través de los
-nodos restantes que mantienen copias de los datos, evitando el punto
-único de fallo (<em>Single Point of Failure</em> o <em>SPOF</em>).</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Eficiencia Económica:</strong> En la actualidad, es
-económicamente mucho más viable y flexible escalar horizontalmente
-(desplegar múltiples servidores medianos/baratos virtualizados o en
-contenedores Docker) que escalar verticalmente (comprar una única
-máquina extremadamente potente y costosa).</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Crecimiento Modular:</strong> Facilita la adición de nuevos
-nodos para asumir mayor carga sin detener el servicio actual.</p>
-</blockquote></li>
-</ul>
-<p><strong>Desventajas</strong></p>
-<ul>
-<li><blockquote>
-<p><strong>Gran Complejidad de Administración:</strong> La configuración
-de red, la monitorización, la gestión de la consistencia global y la
-resolución de problemas de sincronización de datos son exponencialmente
-más complejas.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Problemas de Integridad de Datos (Teorema CAP):</strong>
-Mantener la integridad referencial y las propiedades ACID globales
-(Atomicidad, Consistencia, Aislamiento y Durabilidad) en entornos
-distribuidos es muy costoso a nivel de latencia de red.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Seguridad Elevada:</strong> Al transmitir información crítica
-a través de la red corporativa o internet entre nodos, se deben
-implementar obligatoriamente canales cifrados (TLS/SSL), VPNs internas y
-políticas estrictas de cortafuegos en cada nodo.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Sobrecarga de Red:</strong> La cantidad de datos adicionales
-de control que se transmiten para mantener la consistencia e integridad
-referencial incrementa el consumo de ancho de banda.</p>
-</blockquote></li>
-</ul>
-<h1 id="mecanismos-de-replicación-en-mysqlmariadb">3. MECANISMOS DE
-REPLICACIÓN EN MYSQL/MARIADB <a class="headerlink" href="#mecanismos-de-replicación-en-mysqlmariadb" title="Enlace permanente">¶</a></h1>
-<p>La replicación es la técnica más común y efectiva para implementar
-alta disponibilidad a nivel de base de datos. Consiste en la copia
-automática y continua de las transacciones ejecutadas en un servidor de
-bases de datos de origen (denominado <em>Source</em> o <em>Maestro</em>)
-hacia uno o más servidores de destino (denominados <em>Replicas</em> o
-<em>Esclavos</em>).</p>
-<p>+------------------+ +------------------+</p>
-<p>| NODO SOURCE | --(Binlog Sync)--&gt; | NODO REPLICA |</p>
-<p>| (Lectura/Escrit) | | (Solo Lectura) |</p>
-<p>+------------------+ +------------------+</p>
-<h2 id="replicación-asíncrona-tradicional-source-replica">3.1.
-Replicación Asíncrona Tradicional (Source-Replica) <a class="headerlink" href="#replicación-asíncrona-tradicional-source-replica" title="Enlace permanente">¶</a></h2>
-<p>Es el modelo de replicación por defecto en MySQL desde hace décadas.
-Su funcionamiento secuencial es el siguiente:</p>
-<ol type="1">
-<li><blockquote>
-<p>El cliente realiza una escritura (INSERT, UPDATE, DELETE) en el
-servidor <em>Source</em>.</p>
-</blockquote></li>
-<li><blockquote>
-<p>El <em>Source</em> ejecuta localmente la consulta, la escribe en su
-registro binario (<strong>Binary Log</strong>) y confirma inmediatamente
-el éxito de la transacción al cliente.</p>
-</blockquote></li>
-<li><blockquote>
-<p>De forma independiente (asíncrona), un hilo de red en la máquina
-<em>Replica</em> solicita los nuevos registros del log del
-<em>Source</em>, los descarga a su propio disco en un archivo llamado
-<strong>Relay Log</strong> e inicia la replicación en su base de datos
-local.</p>
-</blockquote></li>
-</ol>
-<ul>
-<li><blockquote>
-<p><strong>Ventaja:</strong> Máximo rendimiento de escritura. El nodo
-<em>Source</em> no espera a que los cambios se transmitan por la red
-para confirmar la transacción al cliente.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Inconveniente:</strong> Riesgo inherente de pérdida de datos
-en caso de desastre. Si el <em>Source</em> sufre un corte de energía
-letal antes de que el log se transmita al nodo <em>Replica</em>, al
-promocionar el nodo <em>Replica</em> a nuevo <em>Source</em> se perderán
-aquellas transacciones aún no transmitidas.</p>
-</blockquote></li>
-</ul>
-<h2 id="replicación-semi-síncrona">3.2. Replicación Semi-síncrona <a class="headerlink" href="#replicación-semi-síncrona" title="Enlace permanente">¶</a></h2>
-<p>Introduce un mecanismo de control de seguridad intermedio:</p>
-<ol type="1">
-<li><blockquote>
-<p>El cliente envía la escritura al <em>Source</em>.</p>
-</blockquote></li>
-<li><blockquote>
-<p>El <em>Source</em> registra la transacción en su <em>Binary Log</em>
-local y la envía a la red para las <em>Replicas</em>.</p>
-</blockquote></li>
-<li><blockquote>
-<p>El <em>Source</em> <strong>bloquea la respuesta</strong> al cliente
-hasta recibir la confirmación (ACK) de que al menos <strong>un</strong>
-nodo de réplica ha recibido los eventos de transacción y los ha guardado
-en su <em>Relay Log</em>.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Una vez recibido el ACK de red, el <em>Source</em> responde con éxito
-al cliente.</p>
-</blockquote></li>
-</ol>
-<ul>
-<li><blockquote>
-<p><strong>Ventaja:</strong> Garantiza que no habrá pérdida de
-transacciones confirmadas si el <em>Source</em> falla, ya que al menos
-una réplica tendrá una copia de los registros de log en su disco.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Inconveniente:</strong> Mayor latencia en las escrituras
-debido a los tiempos de ida y vuelta de red (<em>RTT</em>) necesarios
-para recibir los ACKs.</p>
-</blockquote></li>
-</ul>
-<h2 id="replicación-síncrona-virtual-mysql-group-replication">3.3.
-Replicación Síncrona Virtual: MySQL Group Replication <a class="headerlink" href="#replicación-síncrona-virtual-mysql-group-replication" title="Enlace permanente">¶</a></h2>
-<p>Se basa en un modelo de compartición total del estado (<em>state
-machine replication</em>):</p>
-<ul>
-<li><blockquote>
-<p>El clúster está compuesto por un grupo de servidores (habitualmente
-un mínimo de 3 para garantizar quórum).</p>
-</blockquote></li>
-<li><blockquote>
-<p>Se utiliza un protocolo de consenso mutuo de red basado en el
-algoritmo <strong>Paxos</strong> (o la implementación interna de MySQL
-llamada <em>Group Communication System</em>).</p>
-</blockquote></li>
-<li><blockquote>
-<p>Cuando una transacción se procesa en cualquier nodo, este emite una
-propuesta al grupo de red. La transacción no se confirma localmente en
-ningún nodo hasta que la <strong>mayoría absoluta del grupo</strong>
-(quórum) vote favorablemente que no existen conflictos de integridad y
-se acuerde el orden exacto de aplicación.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Ofrece dos modos de operación:</p>
-</blockquote>
-<ul>
-<li><blockquote>
-<p><strong>Single-Primary:</strong> Solo un nodo acepta lecturas y
-escrituras; los demás son de solo lectura de manera automática. Si el
-primario falla, el clúster elige automáticamente un nuevo primario
-mediante votación de consenso.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Multi-Primary:</strong> Todos los nodos aceptan escrituras
-concurrentes. Extremadamente útil pero requiere una cuidada gestión de
-la lógica de negocio para evitar colisiones de claves primarias.</p>
-</blockquote></li>
-</ul></li>
-</ul>
-<h2
-id="el-binlog-relay-log-y-el-rol-crítico-de-los-gtid-global-transaction-identifiers">3.4.
-El Binlog, Relay Log y el Rol Crítico de los GTID (Global Transaction
-Identifiers) <a class="headerlink" href="#el-binlog-relay-log-y-el-rol-crítico-de-los-gtid-global-transaction-identifiers" title="Enlace permanente">¶</a></h2>
-<p>Para auditar y depurar problemas en escenarios de replicación, un
-SysAdmin debe dominar los componentes internos que la hacen posible:</p>
-<ul>
-<li><blockquote>
-<p><strong>Binary Log (binlog):</strong> Fichero donde el servidor
-<em>Source</em> anota todas las modificaciones realizadas a nivel de
-base de datos (tanto DDL como DML). Es la fuente de la verdad para el
-clúster.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Relay Log:</strong> Fichero local en el servidor
-<em>Replica</em> donde se guardan temporalmente las transacciones
-descargadas del <em>Source</em>, antes de que el hilo de ejecución SQL
-las procese en la base de datos de la réplica.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>GTID (Global Transaction Identifier):</strong> Identificador
-global único que se asocia a cada transacción que se confirma en el
-servidor de origen. Se compone de un UUID identificativo del nodo emisor
-y un número de secuencia secuencial (ej:
-3E11FA47-71EF-11E1-9E3C-C80AA9429562:1045).</p>
-</blockquote>
-<ul>
-<li><blockquote>
-<p><strong>¿Por qué son una revolución frente a la replicación
-tradicional por posición de log binario (binlog_file y
-binlog_pos)?</strong> * En la replicación tradicional, si el maestro
-fallaba, para apuntar las réplicas a un nuevo maestro el SysAdmin debía
-buscar manualmente el archivo y la posición exacta de bytes donde se
-detuvo cada réplica.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Con <strong>GTID</strong>, el seguimiento es automático: las réplicas
-le preguntan al nuevo maestro qué transacciones con GTID les faltan y el
-maestro simplemente les envía el diferencial, evitando errores humanos
-catastróficos en el proceso de failover.</p>
-</blockquote></li>
-</ul></li>
-</ul>
-<h1 id="alta-disponibilidad-y-clústeres-de-bases-de-datos">4. ALTA
-DISPONIBILIDAD Y CLÚSTERES DE BASES DE DATOS <a class="headerlink" href="#alta-disponibilidad-y-clústeres-de-bases-de-datos" title="Enlace permanente">¶</a></h1>
-<h2 id="arquitectura-mysql-innodb-cluster">4.1. Arquitectura MySQL
-InnoDB Cluster <a class="headerlink" href="#arquitectura-mysql-innodb-cluster" title="Enlace permanente">¶</a></h2>
-<p>Es la solución de alta disponibilidad llave en mano proporcionada por
-Oracle para aplicaciones tradicionales. Integra de forma nativa tres
-tecnologías:</p>
-<ol type="1">
-<li><blockquote>
-<p><strong>MySQL Group Replication:</strong> El motor encargado de
-replicar síncronamente los datos entre los servidores y gestionar la
-resiliencia y el quórum del clúster de base de datos.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>MySQL Shell:</strong> El cliente avanzado y entorno de
-administración que expone la API AdminAPI. Permite configurar, validar y
-arrancar un clúster de alta disponibilidad completo con un par de
-comandos JS/Python.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>MySQL Router:</strong> Un middleware ligero que actúa como
-proxy de red o balanceador de carga entre las aplicaciones cliente y los
-servidores de base de datos. Expone puertos separados de lectura y
-escritura (por ejemplo, el puerto 6446 para escrituras redirigido al
-Primary, y el puerto 6447 para lecturas balanceadas en Round-Robin entre
-las Replicas).</p>
-</blockquote></li>
-</ol>
-<h2 id="arquitectura-mysql-ndb-cluster">4.2. Arquitectura MySQL NDB
-Cluster <a class="headerlink" href="#arquitectura-mysql-ndb-cluster" title="Enlace permanente">¶</a></h2>
-<p>Es una arquitectura de clúster distribuido nativo sin almacenamiento
-compartido (arquitectura <em>shared-nothing</em>). Se diseñó
-originalmente para el sector de las telecomunicaciones debido a su
-bajísima latencia de respuesta y disponibilidad extrema.</p>
-<p>La arquitectura física divide las tareas en tres tipos de roles o
-nodos independientes:</p>
-<ul>
-<li><blockquote>
-<p><strong>Nodos de Administración (Management Nodes -
-ndb_mgmd):</strong> Encargados de almacenar los datos de configuración
-del clúster, coordinar los arranques iniciales de los nodos, controlar
-el quórum y gestionar las copias de seguridad globales.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Nodos de Datos (Data Nodes - ndbd o ndbmtd):</strong> Alojan
-la base de datos en memoria RAM o disco. El motor de almacenamiento
-utilizado es obligatoriamente <strong>NDBCLUSTER</strong>. Los datos se
-fragmentan automáticamente y se replican entre grupos de nodos de
-datos.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Nodos SQL / Servidores MySQL (SQL Nodes - mysqld):</strong>
-Actúan como la interfaz de acceso de cara a las aplicaciones externas.
-Reciben las sentencias SQL estándar de los clientes, las traducen al
-protocolo interno de red NDB y las envían a los Data Nodes para su
-procesamiento.</p>
-</blockquote></li>
-</ul>
-<h1 id="fragmentación-y-sharding-particionado-de-datos">5. FRAGMENTACIÓN
-Y SHARDING (PARTICIONADO DE DATOS) <a class="headerlink" href="#fragmentación-y-sharding-particionado-de-datos" title="Enlace permanente">¶</a></h1>
-<p>Cuando el volumen de escrituras de nuestra aplicación de producción
-supera la capacidad máxima de procesamiento de un único servidor, la
-replicación clásica de alta disponibilidad ya no es suficiente, pues
-todas las escrituras se siguen embotellando en el único nodo primario.
-Aquí es donde entra en juego el particionado distribuido.</p>
-<h2 id="fragmentación-horizontal-sharding-y-fragmentación-vertical">5.1.
-Fragmentación Horizontal (Sharding) y Fragmentación Vertical <a class="headerlink" href="#fragmentación-horizontal-sharding-y-fragmentación-vertical" title="Enlace permanente">¶</a></h2>
-<ul>
-<li><blockquote>
-<p><strong>Fragmentación Vertical:</strong> Consiste en separar columnas
-de una tabla en bases de datos o nodos distintos. Por ejemplo, almacenar
-columnas de uso frecuente (como ID_Usuario y Login) en un nodo rápido de
-disco de estado sólido, y las columnas pesadas (como Foto_Perfil_Blob o
-Descripcion_Historial) en un nodo de almacenamiento secundario
-lento.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Fragmentación Horizontal o Sharding:</strong> Consiste en
-dividir las filas de una tabla y repartirlas entre diferentes nodos
-físicos independientes (llamados <strong>Shards</strong>). Por ejemplo,
-un rango de ID de clientes del 1 al 1.000.000 se almacena en el Shard-A
-y el rango del 1.000.01 al 2.000.000 en el Shard-B.</p>
-</blockquote></li>
-</ul>
-<h2 id="orquestación-y-balanceo-con-proxysql">5.2. Orquestación y
-Balanceo con ProxySQL <a class="headerlink" href="#orquestación-y-balanceo-con-proxysql" title="Enlace permanente">¶</a></h2>
-<p>La gran desventaja teórica del Sharding es que la aplicación cliente
-no sabe de forma nativa en qué nodo está cada registro, por lo que
-tendría que gestionar complejas conexiones simultáneas.</p>
-<p>Para resolver este desafío de manera transparente se utiliza
-<strong>ProxySQL</strong>, un proxy de bases de datos de alto
-rendimiento y bajo consumo de CPU:</p>
-<ul>
-<li><blockquote>
-<p>ProxySQL actúa como intermediario entre la aplicación y los
-Shards.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Almacena reglas de enrutamiento basadas en expresiones regulares
-(<em>regex</em>).</p>
-</blockquote></li>
-<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Cuando recibe una consulta (ej: SELECT * FROM clientes WHERE id =
+
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a
+                    href="ASGBD_UT6_Teoría_BD_Distribuidas_alta_disponibilidad.pdf" download
+                    style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥
+                    Descargar PDF</a></div>
+
+            <header id="title-block-header">
+                <h1 class="title">
+                    <p><span id="_7ii15gvc6mh" class="anchor"></span>Unidad 6:</p>
+                    <p><span id="_1m7p0ddefrsh" class="anchor"></span>BASES DE DATOS
+                        DISTRIBUIDAS Y ALTA DISPONIBILIDAD</p>
+                </h1>
+            </header>
+
+            <h3 id="ficha-técnica-de-la-unidad">FICHA TÉCNICA DE LA UNIDAD <a class="headerlink"
+                    href="#ficha-técnica-de-la-unidad" title="Enlace permanente">¶</a></h3>
+            <div class="table-wrapper">
+                <div class="table-wrapper">
+                    <table>
+                        <tbody>
+                            <tr class="header">
+                                <td><strong>Unidad Didáctica</strong></td>
+                                <td>UD 6: Bases de Datos Distribuidas y Alta Disponibilidad</td>
+                            </tr>
+                            <tr class="odd">
+                                <td><strong>Resultados de Aprendizaje</strong></td>
+                                <td><strong>RA6:</strong> Aplica criterios de integridad, disponibilidad
+                                    y rendimiento en la administración de bases de datos distribuidas,
+                                    analizando y configurando mecanismos de replicación y
+                                    fragmentación.</td>
+                            </tr>
+                            <tr class="header">
+                                <td><strong>Criterios de Evaluación</strong></td>
+                                <td><strong>CE 6.a:</strong> Se han identificado las ventajas e
+                                    inconvenientes de las bases de datos distribuidas. <strong>CE
+                                        6.b:</strong> Se han configurado y verificado escenarios de replicación.
+                                    <strong>CE 6.c:</strong> Se han resuelto problemas de replicación.
+                                    <strong>CE 6.d:</strong> Se han configurado y verificado escenarios de
+                                    fragmentación de datos (sharding). <strong>CE 6.e:</strong> Se han
+                                    analizado las características de los clústeres de bases de datos.
+                                    <strong>CE 6.f:</strong> Se han utilizado herramientas de balanceo de
+                                    carga. <strong>CE 6.g:</strong> Se han realizado pruebas de recuperación
+                                    ante fallos.
+                                </td>
+                            </tr>
+                            <tr class="odd">
+                                <td><strong>Tiempo</strong></td>
+                                <td>9 horas lectivas (equivalente a unas 4 semanas de clase en el módulo
+                                    ASGBD)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <h3 id="índice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#índice-de-contenidos"
+                    title="Enlace permanente">¶</a></h3>
+            <p><a href="#introducción-y-contextualización"><u>1. INTRODUCCIÓN Y
+                        CONTEXTUALIZACIÓN</u></a></p>
+            <p><a href="#fundamentos-de-las-bases-de-datos-distribuidas-bdd"><u>2.
+                        FUNDAMENTOS DE LAS BASES DE DATOS DISTRIBUIDAS (BDD)</u></a></p>
+            <blockquote>
+                <p><a href="#definición-y-conceptos-clave"><u>2.1. Definición y
+                            Conceptos Clave</u></a></p>
+                <p><a href="#arquitecturas-homogéneas-vs.-heterogéneas"><u>2.2.
+                            Arquitecturas Homogéneas vs. Heterogéneas</u></a></p>
+                <p><a href="#ventajas-y-desventajas-desde-la-perspectiva-del-sysadmin"><u>2.3.
+                            Ventajas y Desventajas desde la Perspectiva del SysAdmin</u></a></p>
+            </blockquote>
+            <p><a href="#mecanismos-de-replicación-en-mysqlmariadb"><u>3. MECANISMOS
+                        DE REPLICACIÓN EN MYSQL/MARIADB</u></a></p>
+            <blockquote>
+                <p><a href="#replicación-asíncrona-tradicional-source-replica"><u>3.1.
+                            Replicación Asíncrona Tradicional (Source-Replica)</u></a></p>
+                <p><a href="#replicación-semi-síncrona"><u>3.2. Replicación
+                            Semi-síncrona</u></a></p>
+                <p><a href="#replicación-síncrona-virtual-mysql-group-replication"><u>3.3.
+                            Replicación Síncrona Virtual: MySQL Group Replication</u></a></p>
+                <p><a href="#el-binlog-relay-log-y-el-rol-crítico-de-los-gtid-global-transaction-identifiers"><u>3.4.
+                            El Binlog, Relay Log y el Rol Crítico de los GTID (Global Transaction
+                            Identifiers)</u></a></p>
+            </blockquote>
+            <p><a href="#alta-disponibilidad-y-clústeres-de-bases-de-datos"><u>4.
+                        ALTA DISPONIBILIDAD Y CLÚSTERES DE BASES DE DATOS</u></a></p>
+            <blockquote>
+                <p><a href="#arquitectura-mysql-innodb-cluster"><u>4.1. Arquitectura
+                            MySQL InnoDB Cluster</u></a></p>
+                <p><a href="#arquitectura-mysql-ndb-cluster"><u>4.2. Arquitectura MySQL
+                            NDB Cluster</u></a></p>
+            </blockquote>
+            <p><a href="#fragmentación-y-sharding-particionado-de-datos"><u>5.
+                        FRAGMENTACIÓN Y SHARDING (PARTICIONADO DE DATOS)</u></a></p>
+            <blockquote>
+                <p><a href="#fragmentación-horizontal-sharding-y-fragmentación-vertical"><u>5.1.
+                            Fragmentación Horizontal (Sharding) y Fragmentación Vertical</u></a></p>
+                <p><a href="#orquestación-y-balanceo-con-proxysql"><u>5.2. Orquestación
+                            y Balanceo con ProxySQL</u></a></p>
+            </blockquote>
+            <p><a href="#casos-prácticos-de-configuración-y-scripts-de-administración-sysadmin"><u>6.
+                        CASOS PRÁCTICOS DE CONFIGURACIÓN Y SCRIPTS DE ADMINISTRACIÓN
+                        (SYSADMIN)</u></a></p>
+            <blockquote>
+                <p><a href="#script-bash-para-monitorización-automática-del-estado-de-la-réplica"><u>6.1.
+                            Script Bash para Monitorización Automática del Estado de la
+                            Réplica</u></a></p>
+                <p><a href="#configuración-gtid-en-mysqld.cnf-para-alta-disponibilidad"><u>6.2.
+                            Configuración GTID en mysqld.cnf para Alta Disponibilidad</u></a></p>
+            </blockquote>
+            <h1 id="introducción-y-contextualización">1. INTRODUCCIÓN Y
+                CONTEXTUALIZACIÓN <a class="headerlink" href="#introducción-y-contextualización"
+                    title="Enlace permanente">¶</a></h1>
+            <p>En el entorno tecnológico actual, la disponibilidad de la información
+                de forma ininterrumpida (24x7x365) es un pilar fundamental para
+                cualquier organización. Un administrador de sistemas no puede permitir
+                que un fallo de hardware aislado, un corte de red o la saturación de un
+                servidor central detengan el acceso a los datos de la empresa.</p>
+            <p>La presente unidad aborda las técnicas y herramientas de diseño que
+                permiten romper el modelo tradicional de almacenamiento centralizado (un
+                único servidor base de datos) para dar paso a sistemas distribuidos,
+                replicados y tolerantes a fallos.</p>
+            <p>Este contenido se conecta de manera directa y estratégica con otros
+                módulos clave del ciclo formativo de grado superior de ASIR:</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p><strong>Implantación de Sistemas Operativos (ISO) / Administración de
+                                Sistemas Operativos (ASO):</strong> Para comprender y gestionar los
+                            servicios del sistema, las rutas de logs de Linux, los niveles de
+                            permisos y el uso del planificador de tareas (cron).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Planificación y Administración de Redes (PAR) / Servicios de
+                                Red e Internet (SRI):</strong> Dado que la comunicación entre nodos
+                            requiere un sólido conocimiento de direccionamiento IP, enrutamiento,
+                            puertos TCP, subredes, configuración de cortafuegos (iptables/ufw) y
+                            balanceadores de carga TCP/HTTP.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Seguridad y Alta Disponibilidad (SAD):</strong> Donde se
+                            profundiza en las políticas de continuidad de negocio, métricas de
+                            tolerancia a fallos (RTO/RPO), sistemas RAID y el diseño de
+                            arquitecturas con redundancia activa.</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <h1 id="fundamentos-de-las-bases-de-datos-distribuidas-bdd">2.
+                FUNDAMENTOS DE LAS BASES DE DATOS DISTRIBUIDAS (BDD) <a class="headerlink"
+                    href="#fundamentos-de-las-bases-de-datos-distribuidas-bdd" title="Enlace permanente">¶</a></h1>
+            <h2 id="definición-y-conceptos-clave">2.1. Definición y Conceptos
+                Clave <a class="headerlink" href="#definición-y-conceptos-clave" title="Enlace permanente">¶</a></h2>
+            <p>Una <strong>Base de Datos Distribuida (BDD)</strong> es una colección
+                de múltiples bases de datos que están interconectadas lógicamente y
+                distribuidas físicamente a lo largo de una red de comunicaciones. Para
+                el usuario o la aplicación cliente, el sistema debe comportarse como si
+                fuera una base de datos centralizada única. Esta ilusión se conoce como
+                <strong>transparencia de distribución</strong>.
+            </p>
+            <p>A nivel de arquitectura de red, un sistema de base de datos
+                distribuido se compone de un conjunto de ordenadores independientes
+                (llamados <strong>sitios</strong> o <strong>nodos</strong>). Cada nodo
+                tiene capacidad de procesamiento local y ejecuta su propio Sistema
+                Gestor de Bases de Datos (SGBD).</p>
+            <h2 id="arquitecturas-homogéneas-vs.-heterogéneas">2.2. Arquitecturas
+                Homogéneas vs. Heterogéneas <a class="headerlink" href="#arquitecturas-homogéneas-vs.-heterogéneas"
+                    title="Enlace permanente">¶</a></h2>
+            <p>Atendiendo al software que compone los nodos, las BDD se clasifican
+                en:</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p><strong>Bases de Datos Distribuidas Homogéneas:</strong></p>
+                    </blockquote>
+                    <ul>
+                        <li>
+                            <blockquote>
+                                <p>Todos los nodos utilizan el mismo SGBD (por ejemplo, todas las
+                                    instancias son MySQL 8.0).</p>
+                            </blockquote>
+                        </li>
+                        <li>
+                            <blockquote>
+                                <p>Son conscientes de la existencia de los demás sitios y colaboran
+                                    activamente para procesar las peticiones globales de forma
+                                    transparente.</p>
+                            </blockquote>
+                        </li>
+                        <li>
+                            <blockquote>
+                                <p>Son mucho más fáciles de diseñar, administrar y mantener. Es el
+                                    estándar de oro en arquitecturas corporativas controladas por el mismo
+                                    equipo de infraestructura.</p>
+                            </blockquote>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Bases de Datos Distribuidas Heterogéneas:</strong></p>
+                    </blockquote>
+                    <ul>
+                        <li>
+                            <blockquote>
+                                <p>Diferentes nodos pueden usar SGBDs distintos (por ejemplo, algunos
+                                    nodos con Oracle, otros con PostgreSQL y otros con MySQL).</p>
+                            </blockquote>
+                        </li>
+                        <li>
+                            <blockquote>
+                                <p>El gran reto técnico aquí es la traducción de esquemas, dialectos SQL
+                                    e interconectividad. Requieren capas intermedias de traducción de
+                                    software (<em>middleware</em>) y no garantizan siempre la semántica
+                                    transaccional estricta.</p>
+                            </blockquote>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <h2 id="ventajas-y-desventajas-desde-la-perspectiva-del-sysadmin">2.3.
+                Ventajas y Desventajas desde la Perspectiva del SysAdmin <a class="headerlink"
+                    href="#ventajas-y-desventajas-desde-la-perspectiva-del-sysadmin" title="Enlace permanente">¶</a>
+            </h2>
+            <p>Como futuros administradores de sistemas (SysAdmins), toda decisión
+                de diseño arquitectónico tiene asociadas ventajas técnicas y peajes
+                operativos:</p>
+            <p><strong>Ventajas</strong></p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p><strong>Rendimiento y Escalabilidad:</strong> Al distribuir la carga
+                            de trabajo entre múltiples servidores, se reduce el cuello de botella en
+                            CPU e I/O de disco. Los datos de acceso frecuente se pueden ubicar
+                            físicamente en el nodo más cercano a los usuarios finales (localización
+                            de datos).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Alta Disponibilidad y Tolerancia a Fallos:</strong> Si un
+                            nodo hardware falla, el sistema continúa funcionando a través de los
+                            nodos restantes que mantienen copias de los datos, evitando el punto
+                            único de fallo (<em>Single Point of Failure</em> o <em>SPOF</em>).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Eficiencia Económica:</strong> En la actualidad, es
+                            económicamente mucho más viable y flexible escalar horizontalmente
+                            (desplegar múltiples servidores medianos/baratos virtualizados o en
+                            contenedores Docker) que escalar verticalmente (comprar una única
+                            máquina extremadamente potente y costosa).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Crecimiento Modular:</strong> Facilita la adición de nuevos
+                            nodos para asumir mayor carga sin detener el servicio actual.</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <p><strong>Desventajas</strong></p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p><strong>Gran Complejidad de Administración:</strong> La configuración
+                            de red, la monitorización, la gestión de la consistencia global y la
+                            resolución de problemas de sincronización de datos son exponencialmente
+                            más complejas.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Problemas de Integridad de Datos (Teorema CAP):</strong>
+                            Mantener la integridad referencial y las propiedades ACID globales
+                            (Atomicidad, Consistencia, Aislamiento y Durabilidad) en entornos
+                            distribuidos es muy costoso a nivel de latencia de red.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Seguridad Elevada:</strong> Al transmitir información crítica
+                            a través de la red corporativa o internet entre nodos, se deben
+                            implementar obligatoriamente canales cifrados (TLS/SSL), VPNs internas y
+                            políticas estrictas de cortafuegos en cada nodo.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Sobrecarga de Red:</strong> La cantidad de datos adicionales
+                            de control que se transmiten para mantener la consistencia e integridad
+                            referencial incrementa el consumo de ancho de banda.</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <h1 id="mecanismos-de-replicación-en-mysqlmariadb">3. MECANISMOS DE
+                REPLICACIÓN EN MYSQL/MARIADB <a class="headerlink" href="#mecanismos-de-replicación-en-mysqlmariadb"
+                    title="Enlace permanente">¶</a></h1>
+            <p>La replicación es la técnica más común y efectiva para implementar
+                alta disponibilidad a nivel de base de datos. Consiste en la copia
+                automática y continua de las transacciones ejecutadas en un servidor de
+                bases de datos de origen (denominado <em>Source</em> o <em>Maestro</em>)
+                hacia uno o más servidores de destino (denominados <em>Replicas</em> o
+                <em>Esclavos</em>).
+            </p>
+            <p>+------------------+ +------------------+</p>
+            <p>| NODO SOURCE | --(Binlog Sync)--&gt; | NODO REPLICA |</p>
+            <p>| (Lectura/Escrit) | | (Solo Lectura) |</p>
+            <p>+------------------+ +------------------+</p>
+            <h2 id="replicación-asíncrona-tradicional-source-replica">3.1.
+                Replicación Asíncrona Tradicional (Source-Replica) <a class="headerlink"
+                    href="#replicación-asíncrona-tradicional-source-replica" title="Enlace permanente">¶</a></h2>
+            <p>Es el modelo de replicación por defecto en MySQL desde hace décadas.
+                Su funcionamiento secuencial es el siguiente:</p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p>El cliente realiza una escritura (INSERT, UPDATE, DELETE) en el
+                            servidor <em>Source</em>.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>El <em>Source</em> ejecuta localmente la consulta, la escribe en su
+                            registro binario (<strong>Binary Log</strong>) y confirma inmediatamente
+                            el éxito de la transacción al cliente.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>De forma independiente (asíncrona), un hilo de red en la máquina
+                            <em>Replica</em> solicita los nuevos registros del log del
+                            <em>Source</em>, los descarga a su propio disco en un archivo llamado
+                            <strong>Relay Log</strong> e inicia la replicación en su base de datos
+                            local.
+                        </p>
+                    </blockquote>
+                </li>
+            </ol>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p><strong>Ventaja:</strong> Máximo rendimiento de escritura. El nodo
+                            <em>Source</em> no espera a que los cambios se transmitan por la red
+                            para confirmar la transacción al cliente.
+                        </p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Inconveniente:</strong> Riesgo inherente de pérdida de datos
+                            en caso de desastre. Si el <em>Source</em> sufre un corte de energía
+                            letal antes de que el log se transmita al nodo <em>Replica</em>, al
+                            promocionar el nodo <em>Replica</em> a nuevo <em>Source</em> se perderán
+                            aquellas transacciones aún no transmitidas.</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <h2 id="replicación-semi-síncrona">3.2. Replicación Semi-síncrona <a class="headerlink"
+                    href="#replicación-semi-síncrona" title="Enlace permanente">¶</a></h2>
+            <p>Introduce un mecanismo de control de seguridad intermedio:</p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p>El cliente envía la escritura al <em>Source</em>.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>El <em>Source</em> registra la transacción en su <em>Binary Log</em>
+                            local y la envía a la red para las <em>Replicas</em>.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>El <em>Source</em> <strong>bloquea la respuesta</strong> al cliente
+                            hasta recibir la confirmación (ACK) de que al menos <strong>un</strong>
+                            nodo de réplica ha recibido los eventos de transacción y los ha guardado
+                            en su <em>Relay Log</em>.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Una vez recibido el ACK de red, el <em>Source</em> responde con éxito
+                            al cliente.</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p><strong>Ventaja:</strong> Garantiza que no habrá pérdida de
+                            transacciones confirmadas si el <em>Source</em> falla, ya que al menos
+                            una réplica tendrá una copia de los registros de log en su disco.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Inconveniente:</strong> Mayor latencia en las escrituras
+                            debido a los tiempos de ida y vuelta de red (<em>RTT</em>) necesarios
+                            para recibir los ACKs.</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <h2 id="replicación-síncrona-virtual-mysql-group-replication">3.3.
+                Replicación Síncrona Virtual: MySQL Group Replication <a class="headerlink"
+                    href="#replicación-síncrona-virtual-mysql-group-replication" title="Enlace permanente">¶</a></h2>
+            <p>Se basa en un modelo de compartición total del estado (<em>state
+                    machine replication</em>):</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p>El clúster está compuesto por un grupo de servidores (habitualmente
+                            un mínimo de 3 para garantizar quórum).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Se utiliza un protocolo de consenso mutuo de red basado en el
+                            algoritmo <strong>Paxos</strong> (o la implementación interna de MySQL
+                            llamada <em>Group Communication System</em>).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Cuando una transacción se procesa en cualquier nodo, este emite una
+                            propuesta al grupo de red. La transacción no se confirma localmente en
+                            ningún nodo hasta que la <strong>mayoría absoluta del grupo</strong>
+                            (quórum) vote favorablemente que no existen conflictos de integridad y
+                            se acuerde el orden exacto de aplicación.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Ofrece dos modos de operación:</p>
+                    </blockquote>
+                    <ul>
+                        <li>
+                            <blockquote>
+                                <p><strong>Single-Primary:</strong> Solo un nodo acepta lecturas y
+                                    escrituras; los demás son de solo lectura de manera automática. Si el
+                                    primario falla, el clúster elige automáticamente un nuevo primario
+                                    mediante votación de consenso.</p>
+                            </blockquote>
+                        </li>
+                        <li>
+                            <blockquote>
+                                <p><strong>Multi-Primary:</strong> Todos los nodos aceptan escrituras
+                                    concurrentes. Extremadamente útil pero requiere una cuidada gestión de
+                                    la lógica de negocio para evitar colisiones de claves primarias.</p>
+                            </blockquote>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <h2 id="el-binlog-relay-log-y-el-rol-crítico-de-los-gtid-global-transaction-identifiers">3.4.
+                El Binlog, Relay Log y el Rol Crítico de los GTID (Global Transaction
+                Identifiers) <a class="headerlink"
+                    href="#el-binlog-relay-log-y-el-rol-crítico-de-los-gtid-global-transaction-identifiers"
+                    title="Enlace permanente">¶</a></h2>
+            <p>Para auditar y depurar problemas en escenarios de replicación, un
+                SysAdmin debe dominar los componentes internos que la hacen posible:</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p><strong>Binary Log (binlog):</strong> Fichero donde el servidor
+                            <em>Source</em> anota todas las modificaciones realizadas a nivel de
+                            base de datos (tanto DDL como DML). Es la fuente de la verdad para el
+                            clúster.
+                        </p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Relay Log:</strong> Fichero local en el servidor
+                            <em>Replica</em> donde se guardan temporalmente las transacciones
+                            descargadas del <em>Source</em>, antes de que el hilo de ejecución SQL
+                            las procese en la base de datos de la réplica.
+                        </p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>GTID (Global Transaction Identifier):</strong> Identificador
+                            global único que se asocia a cada transacción que se confirma en el
+                            servidor de origen. Se compone de un UUID identificativo del nodo emisor
+                            y un número de secuencia secuencial (ej:
+                            3E11FA47-71EF-11E1-9E3C-C80AA9429562:1045).</p>
+                    </blockquote>
+                    <ul>
+                        <li>
+                            <blockquote>
+                                <p><strong>¿Por qué son una revolución frente a la replicación
+                                        tradicional por posición de log binario (binlog_file y
+                                        binlog_pos)?</strong> * En la replicación tradicional, si el maestro
+                                    fallaba, para apuntar las réplicas a un nuevo maestro el SysAdmin debía
+                                    buscar manualmente el archivo y la posición exacta de bytes donde se
+                                    detuvo cada réplica.</p>
+                            </blockquote>
+                        </li>
+                        <li>
+                            <blockquote>
+                                <p>Con <strong>GTID</strong>, el seguimiento es automático: las réplicas
+                                    le preguntan al nuevo maestro qué transacciones con GTID les faltan y el
+                                    maestro simplemente les envía el diferencial, evitando errores humanos
+                                    catastróficos en el proceso de failover.</p>
+                            </blockquote>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <h1 id="alta-disponibilidad-y-clústeres-de-bases-de-datos">4. ALTA
+                DISPONIBILIDAD Y CLÚSTERES DE BASES DE DATOS <a class="headerlink"
+                    href="#alta-disponibilidad-y-clústeres-de-bases-de-datos" title="Enlace permanente">¶</a></h1>
+            <h2 id="arquitectura-mysql-innodb-cluster">4.1. Arquitectura MySQL
+                InnoDB Cluster <a class="headerlink" href="#arquitectura-mysql-innodb-cluster"
+                    title="Enlace permanente">¶</a></h2>
+            <p>Es la solución de alta disponibilidad llave en mano proporcionada por
+                Oracle para aplicaciones tradicionales. Integra de forma nativa tres
+                tecnologías:</p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p><strong>MySQL Group Replication:</strong> El motor encargado de
+                            replicar síncronamente los datos entre los servidores y gestionar la
+                            resiliencia y el quórum del clúster de base de datos.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>MySQL Shell:</strong> El cliente avanzado y entorno de
+                            administración que expone la API AdminAPI. Permite configurar, validar y
+                            arrancar un clúster de alta disponibilidad completo con un par de
+                            comandos JS/Python.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>MySQL Router:</strong> Un middleware ligero que actúa como
+                            proxy de red o balanceador de carga entre las aplicaciones cliente y los
+                            servidores de base de datos. Expone puertos separados de lectura y
+                            escritura (por ejemplo, el puerto 6446 para escrituras redirigido al
+                            Primary, y el puerto 6447 para lecturas balanceadas en Round-Robin entre
+                            las Replicas).</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <h2 id="arquitectura-mysql-ndb-cluster">4.2. Arquitectura MySQL NDB
+                Cluster <a class="headerlink" href="#arquitectura-mysql-ndb-cluster" title="Enlace permanente">¶</a>
+            </h2>
+            <p>Es una arquitectura de clúster distribuido nativo sin almacenamiento
+                compartido (arquitectura <em>shared-nothing</em>). Se diseñó
+                originalmente para el sector de las telecomunicaciones debido a su
+                bajísima latencia de respuesta y disponibilidad extrema.</p>
+            <p>La arquitectura física divide las tareas en tres tipos de roles o
+                nodos independientes:</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p><strong>Nodos de Administración (Management Nodes -
+                                ndb_mgmd):</strong> Encargados de almacenar los datos de configuración
+                            del clúster, coordinar los arranques iniciales de los nodos, controlar
+                            el quórum y gestionar las copias de seguridad globales.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Nodos de Datos (Data Nodes - ndbd o ndbmtd):</strong> Alojan
+                            la base de datos en memoria RAM o disco. El motor de almacenamiento
+                            utilizado es obligatoriamente <strong>NDBCLUSTER</strong>. Los datos se
+                            fragmentan automáticamente y se replican entre grupos de nodos de
+                            datos.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Nodos SQL / Servidores MySQL (SQL Nodes - mysqld):</strong>
+                            Actúan como la interfaz de acceso de cara a las aplicaciones externas.
+                            Reciben las sentencias SQL estándar de los clientes, las traducen al
+                            protocolo interno de red NDB y las envían a los Data Nodes para su
+                            procesamiento.</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <h1 id="fragmentación-y-sharding-particionado-de-datos">5. FRAGMENTACIÓN
+                Y SHARDING (PARTICIONADO DE DATOS) <a class="headerlink"
+                    href="#fragmentación-y-sharding-particionado-de-datos" title="Enlace permanente">¶</a></h1>
+            <p>Cuando el volumen de escrituras de nuestra aplicación de producción
+                supera la capacidad máxima de procesamiento de un único servidor, la
+                replicación clásica de alta disponibilidad ya no es suficiente, pues
+                todas las escrituras se siguen embotellando en el único nodo primario.
+                Aquí es donde entra en juego el particionado distribuido.</p>
+            <h2 id="fragmentación-horizontal-sharding-y-fragmentación-vertical">5.1.
+                Fragmentación Horizontal (Sharding) y Fragmentación Vertical <a class="headerlink"
+                    href="#fragmentación-horizontal-sharding-y-fragmentación-vertical" title="Enlace permanente">¶</a>
+            </h2>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p><strong>Fragmentación Vertical:</strong> Consiste en separar columnas
+                            de una tabla en bases de datos o nodos distintos. Por ejemplo, almacenar
+                            columnas de uso frecuente (como ID_Usuario y Login) en un nodo rápido de
+                            disco de estado sólido, y las columnas pesadas (como Foto_Perfil_Blob o
+                            Descripcion_Historial) en un nodo de almacenamiento secundario
+                            lento.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Fragmentación Horizontal o Sharding:</strong> Consiste en
+                            dividir las filas de una tabla y repartirlas entre diferentes nodos
+                            físicos independientes (llamados <strong>Shards</strong>). Por ejemplo,
+                            un rango de ID de clientes del 1 al 1.000.000 se almacena en el Shard-A
+                            y el rango del 1.000.01 al 2.000.000 en el Shard-B.</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <h2 id="orquestación-y-balanceo-con-proxysql">5.2. Orquestación y
+                Balanceo con ProxySQL <a class="headerlink" href="#orquestación-y-balanceo-con-proxysql"
+                    title="Enlace permanente">¶</a></h2>
+            <p>La gran desventaja teórica del Sharding es que la aplicación cliente
+                no sabe de forma nativa en qué nodo está cada registro, por lo que
+                tendría que gestionar complejas conexiones simultáneas.</p>
+            <p>Para resolver este desafío de manera transparente se utiliza
+                <strong>ProxySQL</strong>, un proxy de bases de datos de alto
+                rendimiento y bajo consumo de CPU:
+            </p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p>ProxySQL actúa como intermediario entre la aplicación y los
+                            Shards.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Almacena reglas de enrutamiento basadas en expresiones regulares
+                            (<em>regex</em>).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                            <pre><code>Cuando recibe una consulta (ej: SELECT * FROM clientes WHERE id =
 45;), analiza el texto de la consulta, detecta el ID utilizando patrones
 regex, comprueba su tabla de reglas de enrutamiento y redirige
 silenciosamente la consulta al Shard correspondiente, devolviendo el
-resultado de forma transparente al usuario.</code></pre></div></div></li>
-</ul>
-<h1
-id="casos-prácticos-de-configuración-y-scripts-de-administración-sysadmin">6.
-CASOS PRÁCTICOS DE CONFIGURACIÓN Y SCRIPTS DE ADMINISTRACIÓN
-(SYSADMIN) <a class="headerlink" href="#casos-prácticos-de-configuración-y-scripts-de-administración-sysadmin" title="Enlace permanente">¶</a></h1>
-<h2
-id="script-bash-para-monitorización-automática-del-estado-de-la-réplica">6.1.
-Script Bash para Monitorización Automática del Estado de la Réplica <a class="headerlink" href="#script-bash-para-monitorización-automática-del-estado-de-la-réplica" title="Enlace permanente">¶</a></h2>
-<p>Como administradores de sistemas, no podemos vigilar manualmente las
-consolas de base de datos a diario. Debemos automatizar alarmas que nos
-alerten inmediatamente de desincronizaciones en la réplica de MySQL.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>#!/bin/bash
+resultado de forma transparente al usuario.</code></pre>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <h1 id="casos-prácticos-de-configuración-y-scripts-de-administración-sysadmin">6.
+                CASOS PRÁCTICOS DE CONFIGURACIÓN Y SCRIPTS DE ADMINISTRACIÓN
+                (SYSADMIN) <a class="headerlink"
+                    href="#casos-prácticos-de-configuración-y-scripts-de-administración-sysadmin"
+                    title="Enlace permanente">¶</a></h1>
+            <h2 id="script-bash-para-monitorización-automática-del-estado-de-la-réplica">6.1.
+                Script Bash para Monitorización Automática del Estado de la Réplica <a class="headerlink"
+                    href="#script-bash-para-monitorización-automática-del-estado-de-la-réplica"
+                    title="Enlace permanente">¶</a></h2>
+            <p>Como administradores de sistemas, no podemos vigilar manualmente las
+                consolas de base de datos a diario. Debemos automatizar alarmas que nos
+                alerten inmediatamente de desincronizaciones en la réplica de MySQL.</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>#!/bin/bash
 #
 ==============================================================================
 # SCRIPT DE MONITORIZACIÓN PARA MYSQL REPLICA - ASGBD (UD 6)
@@ -609,20 +748,27 @@ else
 echo "$(date '+%Y-%m-%d %H:%M:%S') [OK] Réplica funcionando
 correctamente sin retrasos." &amp;gt;&amp;gt; "$LOG_FILE"
 fi
-fi</code></pre></div></div>Este script analiza la salida del comando SHOW REPLICA STATUS (o
-SHOW SLAVE STATUS en entornos compatibles) para validar el estado de los
-dos hilos principales: <strong>Replica_IO_Running</strong> (hilo de red
-que descarga los logs del maestro) y
-<strong>Replica_SQL_Running</strong> (hilo que aplica las consultas en
-local).</p>
-<h2 id="configuración-gtid-en-mysqld.cnf-para-alta-disponibilidad">6.2.
-Configuración GTID en mysqld.cnf para Alta Disponibilidad <a class="headerlink" href="#configuración-gtid-en-mysqld.cnf-para-alta-disponibilidad" title="Enlace permanente">¶</a></h2>
-<p>Para habilitar de manera segura la replicación basada en GTID en
-nuestros servidores de base de datos MySQL, debemos configurar los
-parámetros adecuados en el fichero de configuración de MySQL
-(normalmente ubicado en /etc/mysql/mysql.conf.d/mysqld.cnf en sistemas
-basados en Debian/Ubuntu).</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>[mysqld]
+fi</code></pre>
+                </div>
+            </div>Este script analiza la salida del comando SHOW REPLICA STATUS (o
+            SHOW SLAVE STATUS en entornos compatibles) para validar el estado de los
+            dos hilos principales: <strong>Replica_IO_Running</strong> (hilo de red
+            que descarga los logs del maestro) y
+            <strong>Replica_SQL_Running</strong> (hilo que aplica las consultas en
+            local).</p>
+            <h2 id="configuración-gtid-en-mysqld.cnf-para-alta-disponibilidad">6.2.
+                Configuración GTID en mysqld.cnf para Alta Disponibilidad <a class="headerlink"
+                    href="#configuración-gtid-en-mysqld.cnf-para-alta-disponibilidad" title="Enlace permanente">¶</a>
+            </h2>
+            <p>Para habilitar de manera segura la replicación basada en GTID en
+                nuestros servidores de base de datos MySQL, debemos configurar los
+                parámetros adecuados en el fichero de configuración de MySQL
+                (normalmente ubicado en /etc/mysql/mysql.conf.d/mysqld.cnf en sistemas
+                basados en Debian/Ubuntu).</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>[mysqld]
 # Identificador único de nodo (Entero entre 1 y 4294967295)
 # Debe ser diferente en cada uno de los servidores del clúster
 server-id = 101
@@ -648,14 +794,17 @@ log_replica_updates = ON
 # Forzar consistencia de escrituras en disco ante caídas de energía
 eléctrica (batería RAID)
 sync_binlog = 1
-innodb_flush_log_at_trx_commit = 1</code></pre></div></div>La siguiente plantilla de configuración es apta para producción e
-indispensable para que funcione la tecnología GTID de manera limpia y
-sin corrupciones de datos:</p>
+innodb_flush_log_at_trx_commit = 1</code></pre>
+                </div>
+            </div>La siguiente plantilla de configuración es apta para producción e
+            indispensable para que funcione la tecnología GTID de manera limpia y
+            sin corrupciones de datos:</p>
 
         </main>
     </div>
 
-        </main>
+    </main>
     </div>
 </body>
+
 </html>
