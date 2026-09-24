@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Convierte archivos HTML generados a PDF.
+# Convierte archivos HTML generados a PDF.   
 # Revisa solo los HTML que no tengan su PDF todavía.
 # Usa Chromium/Chrome si está disponible, y wkhtmltopdf como alternativa.
 
