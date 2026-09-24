@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,465 +8,677 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
+
 <body>
     <header id="site-header">
-  <div class="header-container">
-    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>GBD &ndash; Ut9 Teoria Seguridad</span></div>
-    <nav class="top-nav">
-      <a href="index.html" class="nav-btn">Inicio</a>
-    </nav>
-  </div>
-</header>
+        <div class="header-container">
+            <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo"
+                    style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>GBD
+                    &ndash; Ut9 Teoria Seguridad</span></div>
+            <nav class="top-nav">
+                <a href="index.html" class="nav-btn">Inicio</a>
+            </nav>
+        </div>
+    </header>
     <div id="page-layout">
         <main id="main-content">
-            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="GBD_UT9_Teoria_Seguridad.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
-            
-    
-    
-        
-        <main id="main-content">
-            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="GBD_UT9_Teoria_Seguridad.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
-            
-<header id="title-block-header">
-<h1 class="title"><p><span id="_ri248uj539j0"
-class="anchor"></span>UNIDAD 9</p>
-<p><span id="_okwqo4s4c6g1" class="anchor"></span>GESTIÓN DE LA
-SEGURIDAD DE LOS DATOS<br />
-</p></h1>
-</header>
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a
+                    href="GBD_UT9_Teoria_Seguridad.pdf" download
+                    style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥
+                    Descargar PDF</a></div>
 
-<h3 id="ficha-técnica-de-la-unidad-didáctica">FICHA TÉCNICA DE LA UNIDAD
-DIDÁCTICA <a class="headerlink" href="#ficha-técnica-de-la-unidad-didáctica" title="Enlace permanente">¶</a></h3>
-<div class="table-wrapper"><div class="table-wrapper"><table>
-<tbody>
-<tr class="header">
-<td><strong>Unidad Didáctica</strong></td>
-<td>Unidad Didáctica 12: Gestión de la Seguridad de los Datos</td>
-</tr>
-<tr class="odd">
-<td><strong>Resultados de Aprendizaje</strong></td>
-<td><strong>RA6:</strong> Ejecuta tareas de aseguramiento de la
-información, analizándolas y aplicando mecanismos de salvaguarda y
-transferencia.</td>
-</tr>
-<tr class="header">
-<td><strong>Criterios de Evaluación</strong></td>
-<td>CE6.a, CE6.b, CE6.c, CE6.d, CE6.e, CE6.f, CE6.g, CE6.h</td>
-</tr>
-<tr class="odd">
-<td><strong>Tiempo Estimado</strong></td>
-<td>6 Horas (Distribuidas en sesiones teórico-prácticas orientadas a la
-administración de sistemas)</td>
-</tr>
-</tbody>
-</table></div></div>
-<h3 id="índice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#índice-de-contenidos" title="Enlace permanente">¶</a></h3>
-<h1 id="introducción">1. INTRODUCCIÓN  <a class="headerlink" href="#introducción" title="Enlace permanente">¶</a></h1>
-<p>La información corporativa constituye el activo más valioso de
-cualquier organización moderna. En el rol de un Administrador de
-Sistemas (SysAdmin), no basta con diseñar esquemas de datos relacionales
-eficientes y optimizar consultas complejas (competencias adquiridas en
-las Unidades 2, 3 y 5); es mandatorio garantizar de forma ininterrumpida
-la <strong>disponibilidad</strong>, <strong>integridad</strong> y
-<strong>confidencialidad</strong> de los datos frente a catástrofes
-físicas, fallos de software o accesos no autorizados.</p>
-<p>Esta unidad didáctica se conecta de forma directa con los siguientes
-módulos del ciclo ASIR:</p>
-<ul>
-<li><blockquote>
-<p><strong>Seguridad y Alta Disponibilidad (SAD):</strong> Donde se
-estudian políticas de seguridad perimetral, criptografía y redundancia a
-nivel de almacenamiento físico (RAID).</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Administración de Sistemas Gestores de Bases de Datos (ASGBD
-- 2º curso):</strong> En el cual se profundizará en la replicación
-maestro-esclavo, clustering y balanceo de carga.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Implantación de Sistemas Operativos (ISO):</strong>
-Específicamente en la monitorización de servicios (daemons) del sistema
-y gestión de almacenamiento en volúmenes lógicos (LVM).</p>
-</blockquote></li>
-</ul>
-<h1 id="diagnóstico-y-origen-de-fallos-en-un-sgbd">2. DIAGNÓSTICO Y
-ORIGEN DE FALLOS EN UN SGBD <a class="headerlink" href="#diagnóstico-y-origen-de-fallos-en-un-sgbd" title="Enlace permanente">¶</a></h1>
-<h2 id="tipologías-de-fallo-comunes">2.1 Tipologías de Fallo
-Comunes <a class="headerlink" href="#tipologías-de-fallo-comunes" title="Enlace permanente">¶</a></h2>
-<p>Un SGBD puede sufrir interrupciones del servicio con pérdida
-potencial de consistencia o datos debido a múltiples factores que un
-SysAdmin debe prever de manera proactiva:</p>
-<ol type="1">
-<li><blockquote>
-<p><strong>Fallo de Suministro Eléctrico:</strong> Cortes repentinos de
-energía que impiden la escritura de páginas de datos desde la caché en
-memoria (Buffer Pool) al disco duro físico.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Fallos de Hardware:</strong> Sectores defectuosos en unidades
-de disco duro, corrupción en los módulos de memoria RAM del servidor o
-fallos en la CPU.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Fallos de Software:</strong> Errores del sistema operativo
-(Kernel Panics), bloqueos del servicio mysqld o bugs en los
-controladores lógicos del sistema de archivos (e.g., ext4, XFS).</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Problemas del Sistema de Ficheros:</strong> Agotamiento del
-espacio en disco o de la tabla de inodos, o corrupción interna en la
-estructura lógica de directorios de almacenamiento.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Factores Externos o Catástrofes:</strong> Incendios,
-inundaciones, robos o sabotajes físicos de la infraestructura del centro
-de datos.</p>
-</blockquote></li>
-</ol>
-<p>La pérdida de datos en un SGBD puede categorizarse de dos formas:</p>
-<ul>
-<li><blockquote>
-<p><strong>Pérdida Parcial:</strong> El sistema de archivos se mantiene
-intacto, pero se corrompen algunas páginas de datos correspondientes a
-tablas concretas, o se pierde la integridad referencial debido a
-transacciones incompletas.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Pérdida Total:</strong> Destrucción total de los dispositivos
-de almacenamiento físico que contienen el directorio de datos o pérdida
-generalizada de la integridad semántica de todos los esquemas del
-servidor.</p>
-</blockquote></li>
-</ul>
-<h2 id="elementos-en-un-plan-de-recuperación-de-desastres-drp">2.2
-Elementos en un Plan de Recuperación de Desastres (DRP) <a class="headerlink" href="#elementos-en-un-plan-de-recuperación-de-desastres-drp" title="Enlace permanente">¶</a></h2>
-<p>Para minimizar el impacto de estas caídas del sistema, se debe
-establecer una estrategia sistemática de mantenimiento preventivo y de
-recuperación:</p>
-<ul>
-<li><blockquote>
-<p><strong>Establecer un Plan de Respaldos Periódicos:</strong>
-Automatizar copias de seguridad completas combinadas con copias
-incrementales o diferenciales, optimizando el espacio mediante técnicas
-de compresión y cifrado fuerte.</p>
-</blockquote></li>
-<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Almacenamiento de Respaldos Offsite / Remotos:
+
+            <header id="title-block-header">
+                <h1 class="title">
+                    <p><span id="_ri248uj539j0" class="anchor"></span>UNIDAD 9</p>
+                    <p><span id="_okwqo4s4c6g1" class="anchor"></span>GESTIÓN DE LA
+                        SEGURIDAD DE LOS DATOS<br />
+                    </p>
+                </h1>
+            </header>
+
+            <h3 id="ficha-técnica-de-la-unidad-didáctica">FICHA TÉCNICA DE LA UNIDAD
+                DIDÁCTICA <a class="headerlink" href="#ficha-técnica-de-la-unidad-didáctica"
+                    title="Enlace permanente">¶</a></h3>
+            <div class="table-wrapper">
+                <div class="table-wrapper">
+                    <table>
+                        <tbody>
+                            <tr class="header">
+                                <td><strong>Unidad Didáctica</strong></td>
+                                <td>Unidad Didáctica 12: Gestión de la Seguridad de los Datos</td>
+                            </tr>
+                            <tr class="odd">
+                                <td><strong>Resultados de Aprendizaje</strong></td>
+                                <td><strong>RA6:</strong> Ejecuta tareas de aseguramiento de la
+                                    información, analizándolas y aplicando mecanismos de salvaguarda y
+                                    transferencia.</td>
+                            </tr>
+                            <tr class="header">
+                                <td><strong>Criterios de Evaluación</strong></td>
+                                <td>CE6.a, CE6.b, CE6.c, CE6.d, CE6.e, CE6.f, CE6.g, CE6.h</td>
+                            </tr>
+                            <tr class="odd">
+                                <td><strong>Tiempo Estimado</strong></td>
+                                <td>6 Horas (Distribuidas en sesiones teórico-prácticas orientadas a la
+                                    administración de sistemas)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <h3 id="índice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#índice-de-contenidos"
+                    title="Enlace permanente">¶</a></h3>
+            <h1 id="introducción">1. INTRODUCCIÓN <a class="headerlink" href="#introducción"
+                    title="Enlace permanente">¶</a></h1>
+            <p>La información corporativa constituye el activo más valioso de
+                cualquier organización moderna. En el rol de un Administrador de
+                Sistemas (SysAdmin), no basta con diseñar esquemas de datos relacionales
+                eficientes y optimizar consultas complejas (competencias adquiridas en
+                las Unidades 2, 3 y 5); es mandatorio garantizar de forma ininterrumpida
+                la <strong>disponibilidad</strong>, <strong>integridad</strong> y
+                <strong>confidencialidad</strong> de los datos frente a catástrofes
+                físicas, fallos de software o accesos no autorizados.
+            </p>
+            <p>Esta unidad didáctica se conecta de forma directa con los siguientes
+                módulos del ciclo ASIR:</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p><strong>Seguridad y Alta Disponibilidad (SAD):</strong> Donde se
+                            estudian políticas de seguridad perimetral, criptografía y redundancia a
+                            nivel de almacenamiento físico (RAID).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Administración de Sistemas Gestores de Bases de Datos (ASGBD
+                                - 2º curso):</strong> En el cual se profundizará en la replicación
+                            maestro-esclavo, clustering y balanceo de carga.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Implantación de Sistemas Operativos (ISO):</strong>
+                            Específicamente en la monitorización de servicios (daemons) del sistema
+                            y gestión de almacenamiento en volúmenes lógicos (LVM).</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <h1 id="diagnóstico-y-origen-de-fallos-en-un-sgbd">2. DIAGNÓSTICO Y
+                ORIGEN DE FALLOS EN UN SGBD <a class="headerlink" href="#diagnóstico-y-origen-de-fallos-en-un-sgbd"
+                    title="Enlace permanente">¶</a></h1>
+            <h2 id="tipologías-de-fallo-comunes">2.1 Tipologías de Fallo
+                Comunes <a class="headerlink" href="#tipologías-de-fallo-comunes" title="Enlace permanente">¶</a></h2>
+            <p>Un SGBD puede sufrir interrupciones del servicio con pérdida
+                potencial de consistencia o datos debido a múltiples factores que un
+                SysAdmin debe prever de manera proactiva:</p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p><strong>Fallo de Suministro Eléctrico:</strong> Cortes repentinos de
+                            energía que impiden la escritura de páginas de datos desde la caché en
+                            memoria (Buffer Pool) al disco duro físico.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Fallos de Hardware:</strong> Sectores defectuosos en unidades
+                            de disco duro, corrupción en los módulos de memoria RAM del servidor o
+                            fallos en la CPU.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Fallos de Software:</strong> Errores del sistema operativo
+                            (Kernel Panics), bloqueos del servicio mysqld o bugs en los
+                            controladores lógicos del sistema de archivos (e.g., ext4, XFS).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Problemas del Sistema de Ficheros:</strong> Agotamiento del
+                            espacio en disco o de la tabla de inodos, o corrupción interna en la
+                            estructura lógica de directorios de almacenamiento.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Factores Externos o Catástrofes:</strong> Incendios,
+                            inundaciones, robos o sabotajes físicos de la infraestructura del centro
+                            de datos.</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <p>La pérdida de datos en un SGBD puede categorizarse de dos formas:</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p><strong>Pérdida Parcial:</strong> El sistema de archivos se mantiene
+                            intacto, pero se corrompen algunas páginas de datos correspondientes a
+                            tablas concretas, o se pierde la integridad referencial debido a
+                            transacciones incompletas.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Pérdida Total:</strong> Destrucción total de los dispositivos
+                            de almacenamiento físico que contienen el directorio de datos o pérdida
+                            generalizada de la integridad semántica de todos los esquemas del
+                            servidor.</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <h2 id="elementos-en-un-plan-de-recuperación-de-desastres-drp">2.2
+                Elementos en un Plan de Recuperación de Desastres (DRP) <a class="headerlink"
+                    href="#elementos-en-un-plan-de-recuperación-de-desastres-drp" title="Enlace permanente">¶</a></h2>
+            <p>Para minimizar el impacto de estas caídas del sistema, se debe
+                establecer una estrategia sistemática de mantenimiento preventivo y de
+                recuperación:</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p><strong>Establecer un Plan de Respaldos Periódicos:</strong>
+                            Automatizar copias de seguridad completas combinadas con copias
+                            incrementales o diferenciales, optimizando el espacio mediante técnicas
+                            de compresión y cifrado fuerte.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                            <pre><code>Almacenamiento de Respaldos Offsite / Remotos:
 Conservar las copias en una ubicación geográfica distinta a la del
 servidor principal (e.g., almacenamiento en la nube o en servidores de
-respaldo remotos protegidos contra catástrofes).</code></pre></div></div></li>
-<li><blockquote>
-<p><strong>Control del Acceso Físico y Lógico:</strong> Protección de la
-sala de servidores frente a intrusiones físicas y despliegue de un
-sistema de privilegios de acceso lógico basado en el principio de mínimo
-privilegio (según el estándar DCL).</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Planes de Contingencia Documentados y Testeados:</strong>
-Realización de simulacros periódicos de recuperación de fallos para
-evaluar la viabilidad real de los planes de contingencia y medir los
-tiempos de recuperación (RTO - Recovery Time Objective) y los puntos de
-recuperación (RPO - Recovery Point Objective).</p>
-</blockquote></li>
-</ul>
-<h1 id="ficheros-de-registro-log-de-mysql">3. FICHEROS DE REGISTRO LOG
-DE MYSQL  <a class="headerlink" href="#ficheros-de-registro-log-de-mysql" title="Enlace permanente">¶</a></h1>
-<h2 id="arquitectura-de-almacenamiento-físico-en-disco">3.1 Arquitectura
-de Almacenamiento Físico en Disco <a class="headerlink" href="#arquitectura-de-almacenamiento-físico-en-disco" title="Enlace permanente">¶</a></h2>
-<p>En sistemas operativos Linux, el directorio por defecto donde MySQL
-almacena físicamente las bases de datos está configurado en la variable
-del sistema datadir:</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Comprobación de la ruta física desde la terminal del sistema
+respaldo remotos protegidos contra catástrofes).</code></pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Control del Acceso Físico y Lógico:</strong> Protección de la
+                            sala de servidores frente a intrusiones físicas y despliegue de un
+                            sistema de privilegios de acceso lógico basado en el principio de mínimo
+                            privilegio (según el estándar DCL).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Planes de Contingencia Documentados y Testeados:</strong>
+                            Realización de simulacros periódicos de recuperación de fallos para
+                            evaluar la viabilidad real de los planes de contingencia y medir los
+                            tiempos de recuperación (RTO - Recovery Time Objective) y los puntos de
+                            recuperación (RPO - Recovery Point Objective).</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <h1 id="ficheros-de-registro-log-de-mysql">3. FICHEROS DE REGISTRO LOG
+                DE MYSQL <a class="headerlink" href="#ficheros-de-registro-log-de-mysql" title="Enlace permanente">¶</a>
+            </h1>
+            <h2 id="arquitectura-de-almacenamiento-físico-en-disco">3.1 Arquitectura
+                de Almacenamiento Físico en Disco <a class="headerlink"
+                    href="#arquitectura-de-almacenamiento-físico-en-disco" title="Enlace permanente">¶</a></h2>
+            <p>En sistemas operativos Linux, el directorio por defecto donde MySQL
+                almacena físicamente las bases de datos está configurado en la variable
+                del sistema datadir:</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code># Comprobación de la ruta física desde la terminal del sistema
 operativo
-mysql -u root -p -e "SHOW VARIABLES LIKE 'datadir';"</code></pre></div></div></p>
-<p>Por defecto, la ruta es /var/lib/mysql. Dentro de este directorio,
-cada base de datos tiene asignado su propio subdirectorio con el nombre
-de la base de datos (por ejemplo, /var/lib/mysql/practica_dml).</p>
-<p>Físicamente, los archivos se distribuyen de la siguiente manera según
-el motor de almacenamiento utilizado:</p>
-<ul>
-<li><blockquote>
-<p><strong>Archivos .frm:</strong> Almacenan de manera exclusiva los
-metadatos de estructura de las tablas (válido para MyISAM e InnoDB en
-versiones previas a MySQL 8.0; en MySQL 8.0, esta información se
-consolida en el Diccionario de Datos del sistema).</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Archivos .ibd:</strong> Corresponden al motor por defecto
-<strong>InnoDB</strong>. Almacenan de forma agrupada los datos físicos y
-los índices asociados a cada tabla en modo file-per-table.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Archivos .myd:</strong> Almacenan los datos en bruto de las
-tablas de tipo <strong>MyISAM</strong> (datos propiamente dichos).</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Archivos .myi:</strong> Almacenan los índices de las tablas
-creadas con el motor <strong>MyISAM</strong>.</p>
-</blockquote></li>
-</ul>
-<h2 id="anatomía-y-configuración-de-los-logs-del-motor">3.2 Anatomía y
-Configuración de los Logs del Motor <a class="headerlink" href="#anatomía-y-configuración-de-los-logs-del-motor" title="Enlace permanente">¶</a></h2>
-<p>MySQL proporciona cuatro logs esenciales para diagnosticar el estado
-del servidor y garantizar la recuperabilidad point-in-time:</p>
-<ol type="1">
-<li><blockquote>
-<p><strong>Log de Errores (log-error):</strong> Registra eventos de
-arranque, parada y cualquier fallo crítico del servidor. Por defecto se
-nombra como host_name.err.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Log de Consultas Lentas (slow_query_log):</strong> Registra
-las sentencias cuya ejecución supera el umbral definido por
-long_query_time (en segundos). Es crucial para optimizar el
-rendimiento.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Log General (general_log):</strong> Registra de manera
-secuencial cada conexión abierta por un cliente y cada sentencia SQL
-recibida por el servidor. Consume una gran cantidad de I/O de disco y no
-se recomienda mantener activo de forma continua en producción.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Log Binario (log_bin):</strong> Contiene un registro
-cronológico de todas las sentencias que actualizan datos o alteran el
-esquema (DDL y DML de escritura). <strong>Es indispensable para la
-replicación y para realizar restauraciones incrementales</strong>.
-Almacenado en formato binario para optimizar la velocidad de
-escritura.</p>
-</blockquote></li>
-</ol>
-<p>Para cerrar los archivos de log abiertos y forzar la inicialización
-de logs nuevos (muy útil para procesos de rotación y antes de copias de
-seguridad), se ejecuta la instrucción:</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Forzar el volcado de buffers a disco y la rotación de logs
-FLUSH LOGS;</code></pre></div></div></p>
-<p>🔗 <strong>Documentación Oficial:</strong> Para conocer más
-parámetros de los ficheros de log, lee <a
-href="https://dev.mysql.com/doc/refman/8.0/en/server-logs.html"><u>MySQL
-Reference Manual - Server Logs</u></a>.</p>
-<h2 id="section"> <a class="headerlink" href="#section" title="Enlace permanente">¶</a></h2>
-<h2 id="la-utilidad-mysqlbinlog">3.3 La Utilidad mysqlbinlog <a class="headerlink" href="#la-utilidad-mysqlbinlog" title="Enlace permanente">¶</a></h2>
-<p>Dado que el registro binario se escribe en formato binario no
-legible, los SysAdmins deben utilizar la herramienta de terminal nativa
-<strong>mysqlbinlog</strong> para auditar o aplicar los cambios
-almacenados.</p>
-<p>La sintaxis básica de ejecución desde el shell de Linux es:</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>mysqlbinlog [opciones] nombre_log_binario</code></pre></div></div></p>
-<p>Opciones Principales de mysqlbinlog</p>
-<ul>
-<li><blockquote>
-<p>--database=nombre_bd (-d): Filtra los eventos del log binario
-aplicando las sentencias que afecten de forma exclusiva al esquema
-indicado.</p>
-</blockquote></li>
-<li><blockquote>
-<p>--start-datetime="YYYY-MM-DD HH:MM:SS": Inicia la lectura de eventos
-desde la marca de tiempo absoluta especificada.</p>
-</blockquote></li>
-<li><blockquote>
-<p>--stop-datetime="YYYY-MM-DD HH:MM:SS": Detiene la lectura en la marca
-temporal provista (esencial para recuperar la base de datos hasta un
-instante inmediatamente anterior al desastre).</p>
-</blockquote></li>
-<li><blockquote>
-<p>--short-form (-s): Omite información de metadatos del binlog,
-imprimiendo únicamente las sentencias SQL puras.</p>
-</blockquote></li>
-</ul>
-<p>Ejemplos Prácticos de mysqlbinlog sobre nuestra base de datos</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Ejemplo 1: Convertir un binlog a fichero de texto plano legible
+mysql -u root -p -e "SHOW VARIABLES LIKE 'datadir';"</code></pre>
+                </div>
+            </div>
+            </p>
+            <p>Por defecto, la ruta es /var/lib/mysql. Dentro de este directorio,
+                cada base de datos tiene asignado su propio subdirectorio con el nombre
+                de la base de datos (por ejemplo, /var/lib/mysql/practica_dml).</p>
+            <p>Físicamente, los archivos se distribuyen de la siguiente manera según
+                el motor de almacenamiento utilizado:</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p><strong>Archivos .frm:</strong> Almacenan de manera exclusiva los
+                            metadatos de estructura de las tablas (válido para MyISAM e InnoDB en
+                            versiones previas a MySQL 8.0; en MySQL 8.0, esta información se
+                            consolida en el Diccionario de Datos del sistema).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Archivos .ibd:</strong> Corresponden al motor por defecto
+                            <strong>InnoDB</strong>. Almacenan de forma agrupada los datos físicos y
+                            los índices asociados a cada tabla en modo file-per-table.
+                        </p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Archivos .myd:</strong> Almacenan los datos en bruto de las
+                            tablas de tipo <strong>MyISAM</strong> (datos propiamente dichos).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Archivos .myi:</strong> Almacenan los índices de las tablas
+                            creadas con el motor <strong>MyISAM</strong>.</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <h2 id="anatomía-y-configuración-de-los-logs-del-motor">3.2 Anatomía y
+                Configuración de los Logs del Motor <a class="headerlink"
+                    href="#anatomía-y-configuración-de-los-logs-del-motor" title="Enlace permanente">¶</a></h2>
+            <p>MySQL proporciona cuatro logs esenciales para diagnosticar el estado
+                del servidor y garantizar la recuperabilidad point-in-time:</p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p><strong>Log de Errores (log-error):</strong> Registra eventos de
+                            arranque, parada y cualquier fallo crítico del servidor. Por defecto se
+                            nombra como host_name.err.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Log de Consultas Lentas (slow_query_log):</strong> Registra
+                            las sentencias cuya ejecución supera el umbral definido por
+                            long_query_time (en segundos). Es crucial para optimizar el
+                            rendimiento.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Log General (general_log):</strong> Registra de manera
+                            secuencial cada conexión abierta por un cliente y cada sentencia SQL
+                            recibida por el servidor. Consume una gran cantidad de I/O de disco y no
+                            se recomienda mantener activo de forma continua en producción.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Log Binario (log_bin):</strong> Contiene un registro
+                            cronológico de todas las sentencias que actualizan datos o alteran el
+                            esquema (DDL y DML de escritura). <strong>Es indispensable para la
+                                replicación y para realizar restauraciones incrementales</strong>.
+                            Almacenado en formato binario para optimizar la velocidad de
+                            escritura.</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <p>Para cerrar los archivos de log abiertos y forzar la inicialización
+                de logs nuevos (muy útil para procesos de rotación y antes de copias de
+                seguridad), se ejecuta la instrucción:</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>-- Forzar el volcado de buffers a disco y la rotación de logs
+FLUSH LOGS;</code></pre>
+                </div>
+            </div>
+            </p>
+            <p>🔗 <strong>Documentación Oficial:</strong> Para conocer más
+                parámetros de los ficheros de log, lee <a
+                    href="https://dev.mysql.com/doc/refman/8.0/en/server-logs.html"><u>MySQL
+                        Reference Manual - Server Logs</u></a>.</p>
+            <h2 id="section"> <a class="headerlink" href="#section" title="Enlace permanente">¶</a></h2>
+            <h2 id="la-utilidad-mysqlbinlog">3.3 La Utilidad mysqlbinlog <a class="headerlink"
+                    href="#la-utilidad-mysqlbinlog" title="Enlace permanente">¶</a></h2>
+            <p>Dado que el registro binario se escribe en formato binario no
+                legible, los SysAdmins deben utilizar la herramienta de terminal nativa
+                <strong>mysqlbinlog</strong> para auditar o aplicar los cambios
+                almacenados.
+            </p>
+            <p>La sintaxis básica de ejecución desde el shell de Linux es:</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>mysqlbinlog [opciones] nombre_log_binario</code></pre>
+                </div>
+            </div>
+            </p>
+            <p>Opciones Principales de mysqlbinlog</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p>--database=nombre_bd (-d): Filtra los eventos del log binario
+                            aplicando las sentencias que afecten de forma exclusiva al esquema
+                            indicado.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>--start-datetime="YYYY-MM-DD HH:MM:SS": Inicia la lectura de eventos
+                            desde la marca de tiempo absoluta especificada.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>--stop-datetime="YYYY-MM-DD HH:MM:SS": Detiene la lectura en la marca
+                            temporal provista (esencial para recuperar la base de datos hasta un
+                            instante inmediatamente anterior al desastre).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>--short-form (-s): Omite información de metadatos del binlog,
+                            imprimiendo únicamente las sentencias SQL puras.</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <p>Ejemplos Prácticos de mysqlbinlog sobre nuestra base de datos</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code># Ejemplo 1: Convertir un binlog a fichero de texto plano legible
 para auditoría
 mysqlbinlog --database=practica_dml /var/lib/mysql/binlog.000001 &gt;
 /tmp/auditoria_dml.sql
 # Ejemplo 2: Aplicar de forma directa las instrucciones del binlog
 para recuperar datos
 mysqlbinlog --database=practica_dml /var/lib/mysql/binlog.000001 |
-mysql -u root -p</code></pre></div></div></p>
-<h5
-id="documentación-oficial-más-información-en-mysql-manual---mysqlbinlog-utility">🔗
-Documentación Oficial: Más Información en <a
-href="https://dev.mysql.com/doc/refman/8.0/en/mysqlbinlog.html"><u>MySQL
-Manual - mysqlbinlog Utility</u></a> <a class="headerlink" href="#documentación-oficial-más-información-en-mysql-manual---mysqlbinlog-utility" title="Enlace permanente">¶</a></h5>
-<h1 id="mantenimiento-y-reparación-de-tablas">4. MANTENIMIENTO Y
-REPARACIÓN DE TABLAS <a class="headerlink" href="#mantenimiento-y-reparación-de-tablas" title="Enlace permanente">¶</a></h1>
-<p>Ante la sospecha de corrupción lógica de una tabla (por ejemplo,
-índices que no coinciden con los datos reales tras un apagón eléctrico),
-disponemos de utilidades de línea de comandos y sentencias SQL
-específicas.</p>
-<h2 id="herramientas-externas-myisamchk-y-mysqlcheck">4.1 Herramientas
-Externas: myisamchk y mysqlcheck <a class="headerlink" href="#herramientas-externas-myisamchk-y-mysqlcheck" title="Enlace permanente">¶</a></h2>
-<p><strong>myisamchk (Exclusivo para tablas MyISAM)</strong></p>
-<p>Opera directamente a nivel de archivos físicos en disco (.MYD y
-.MYI). <strong>Exige que el servidor MySQL esté completamente apagado o
-que las tablas implicadas estén bloqueadas contra escritura</strong>
-para evitar la corrupción de datos.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Comprobar estado de consistencia de la tabla fabricante (tipo
+mysql -u root -p</code></pre>
+                </div>
+            </div>
+            </p>
+            <h5 id="documentación-oficial-más-información-en-mysql-manual---mysqlbinlog-utility">🔗
+                Documentación Oficial: Más Información en <a
+                    href="https://dev.mysql.com/doc/refman/8.0/en/mysqlbinlog.html"><u>MySQL
+                        Manual - mysqlbinlog Utility</u></a> <a class="headerlink"
+                    href="#documentación-oficial-más-información-en-mysql-manual---mysqlbinlog-utility"
+                    title="Enlace permanente">¶</a></h5>
+            <h1 id="mantenimiento-y-reparación-de-tablas">4. MANTENIMIENTO Y
+                REPARACIÓN DE TABLAS <a class="headerlink" href="#mantenimiento-y-reparación-de-tablas"
+                    title="Enlace permanente">¶</a></h1>
+            <p>Ante la sospecha de corrupción lógica de una tabla (por ejemplo,
+                índices que no coinciden con los datos reales tras un apagón eléctrico),
+                disponemos de utilidades de línea de comandos y sentencias SQL
+                específicas.</p>
+            <h2 id="herramientas-externas-myisamchk-y-mysqlcheck">4.1 Herramientas
+                Externas: myisamchk y mysqlcheck <a class="headerlink"
+                    href="#herramientas-externas-myisamchk-y-mysqlcheck" title="Enlace permanente">¶</a></h2>
+            <p><strong>myisamchk (Exclusivo para tablas MyISAM)</strong></p>
+            <p>Opera directamente a nivel de archivos físicos en disco (.MYD y
+                .MYI). <strong>Exige que el servidor MySQL esté completamente apagado o
+                    que las tablas implicadas estén bloqueadas contra escritura</strong>
+                para evitar la corrupción de datos.</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code># Comprobar estado de consistencia de la tabla fabricante (tipo
 MyISAM si se requiere)
 myisamchk --check /var/lib/mysql/practica_dml/fabricante.MYI
 # Reparación estándar rápida reconstruyendo índices
 myisamchk --recover --quick
-/var/lib/mysql/practica_dml/fabricante.MYI</code></pre></div></div>Opciones representativas: --silent (-s), --extended-check (-e),
---force (-f), --backup (-B).</p>
-<p><strong>mysqlcheck (Motor genérico en caliente)</strong></p>
-<p>A diferencia de myisamchk, esta utilidad se comunica con el servidor
-MySQL en caliente (en ejecución) mediante comandos SQL nativos. Puede
-utilizarse para tablas InnoDB y MyISAM.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Analizar y reparar automáticamente todas las tablas del esquema
+/var/lib/mysql/practica_dml/fabricante.MYI</code></pre>
+                </div>
+            </div>Opciones representativas: --silent (-s), --extended-check (-e),
+            --force (-f), --backup (-B).</p>
+            <p><strong>mysqlcheck (Motor genérico en caliente)</strong></p>
+            <p>A diferencia de myisamchk, esta utilidad se comunica con el servidor
+                MySQL en caliente (en ejecución) mediante comandos SQL nativos. Puede
+                utilizarse para tablas InnoDB y MyISAM.</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code># Analizar y reparar automáticamente todas las tablas del esquema
 'practica_dml'
-mysqlcheck -u root -p --auto-repair --check practica_dml</code></pre></div></div></p>
-<h5
-id="documentación-oficial-más-información-en-mysql-manual---mysqlcheck-tool">🔗
-Documentación Oficial: Más Información en <a
-href="https://dev.mysql.com/doc/refman/8.0/en/mysqlcheck.html"><u>MySQL
-Manual - mysqlcheck Tool</u></a> <a class="headerlink" href="#documentación-oficial-más-información-en-mysql-manual---mysqlcheck-tool" title="Enlace permanente">¶</a></h5>
-<h2 id="sentencias-sql-de-optimización-e-integridad">4.2 Sentencias SQL
-de Optimización e Integridad <a class="headerlink" href="#sentencias-sql-de-optimización-e-integridad" title="Enlace permanente">¶</a></h2>
-<p>Estas instrucciones se ejecutan directamente en un cliente
-interactivo o script SQL:</p>
-<h5 id="check-table">CHECK TABLE <a class="headerlink" href="#check-table" title="Enlace permanente">¶</a></h5>
-<p>Chequea la estructura de la tabla y valida sus índices asociados.
-Devolverá una tabla con el estado.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>USE practica_dml;
-CHECK TABLE empleado, producto;</code></pre></div></div></h5>
-<h5 id="analyze-table">ANALYZE TABLE <a class="headerlink" href="#analyze-table" title="Enlace permanente">¶</a></h5>
-<p>Analiza y recalcula las estadísticas de distribución de claves de los
-índices. Esto permite que el Optimizador de Consultas de MySQL elija
-planes de ejecución óptimos (uso de índices secundarios adecuados).
-Bloquea la tabla para lectura durante el procesamiento.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Analizar el estado de los índices en la tabla de empleados
-ANALYZE TABLE empleado;</code></pre></div></div></h5>
-<h5 id="optimize-table">OPTIMIZE TABLE <a class="headerlink" href="#optimize-table" title="Enlace permanente">¶</a></h5>
-<p>Se utiliza para recuperar el espacio físico que ocupaban los
-registros previamente eliminados (mediante DELETE) en tablas con
-columnas de longitud variable (como VARCHAR o TEXT en la tabla
-fabricante de nuestro esquema practica_dml). Desfragmenta el archivo y
-reduce su tamaño en disco.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Desfragmentar la tabla fabricante tras realizar eliminaciones
+mysqlcheck -u root -p --auto-repair --check practica_dml</code></pre>
+                </div>
+            </div>
+            </p>
+            <h5 id="documentación-oficial-más-información-en-mysql-manual---mysqlcheck-tool">🔗
+                Documentación Oficial: Más Información en <a
+                    href="https://dev.mysql.com/doc/refman/8.0/en/mysqlcheck.html"><u>MySQL
+                        Manual - mysqlcheck Tool</u></a> <a class="headerlink"
+                    href="#documentación-oficial-más-información-en-mysql-manual---mysqlcheck-tool"
+                    title="Enlace permanente">¶</a></h5>
+            <h2 id="sentencias-sql-de-optimización-e-integridad">4.2 Sentencias SQL
+                de Optimización e Integridad <a class="headerlink" href="#sentencias-sql-de-optimización-e-integridad"
+                    title="Enlace permanente">¶</a></h2>
+            <p>Estas instrucciones se ejecutan directamente en un cliente
+                interactivo o script SQL:</p>
+            <h5 id="check-table">CHECK TABLE <a class="headerlink" href="#check-table" title="Enlace permanente">¶</a>
+            </h5>
+            <p>Chequea la estructura de la tabla y valida sus índices asociados.
+                Devolverá una tabla con el estado.</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>USE practica_dml;
+CHECK TABLE empleado, producto;</code></pre>
+                </div>
+            </div>
+            </h5>
+            <h5 id="analyze-table">ANALYZE TABLE <a class="headerlink" href="#analyze-table"
+                    title="Enlace permanente">¶</a></h5>
+            <p>Analiza y recalcula las estadísticas de distribución de claves de los
+                índices. Esto permite que el Optimizador de Consultas de MySQL elija
+                planes de ejecución óptimos (uso de índices secundarios adecuados).
+                Bloquea la tabla para lectura durante el procesamiento.</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>-- Analizar el estado de los índices en la tabla de empleados
+ANALYZE TABLE empleado;</code></pre>
+                </div>
+            </div>
+            </h5>
+            <h5 id="optimize-table">OPTIMIZE TABLE <a class="headerlink" href="#optimize-table"
+                    title="Enlace permanente">¶</a></h5>
+            <p>Se utiliza para recuperar el espacio físico que ocupaban los
+                registros previamente eliminados (mediante DELETE) en tablas con
+                columnas de longitud variable (como VARCHAR o TEXT en la tabla
+                fabricante de nuestro esquema practica_dml). Desfragmenta el archivo y
+                reduce su tamaño en disco.</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>-- Desfragmentar la tabla fabricante tras realizar eliminaciones
 masivas
-OPTIMIZE TABLE fabricante;</code></pre></div></div></h5>
-<h5 id="repair-table">REPAIR TABLE <a class="headerlink" href="#repair-table" title="Enlace permanente">¶</a></h5>
-<p>Sintaxis SQL para intentar la reparación inmediata de tablas
-corruptas de tipo MyISAM (no compatible con InnoDB).</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>REPAIR TABLE fabricante QUICK;</code></pre></div></div></p>
-<h5
-id="documentación-oficial-más-información-en-mysql-manual---table-maintenance-statements.">🔗
-Documentación Oficial: Más Información en <a
-href="https://dev.mysql.com/doc/refman/8.0/en/table-maintenance-statements.html"><u>MySQL
-Manual - Table Maintenance Statements</u></a>. <a class="headerlink" href="#documentación-oficial-más-información-en-mysql-manual---table-maintenance-statements." title="Enlace permanente">¶</a></h5>
-<h1 id="políticas-de-copias-de-seguridad">5. POLÍTICAS DE COPIAS DE
-SEGURIDAD <a class="headerlink" href="#políticas-de-copias-de-seguridad" title="Enlace permanente">¶</a></h1>
-<h2 id="clasificación-técnica-de-los-backups">5.1 Clasificación Técnica
-de los Backups <a class="headerlink" href="#clasificación-técnica-de-los-backups" title="Enlace permanente">¶</a></h2>
-<p>Podemos realizar diferentes clasificaciones de las estrategias de
-respaldo:</p>
-<ul>
-<li><blockquote>
-<p><strong>En Frío (Cold Backup):</strong> Requiere detener por completo
-el daemon mysqld. Es la forma más consistente de copiar archivos
-binarios directos, pero invalida la disponibilidad del servicio.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>En Caliente (Hot Backup):</strong> El servidor se mantiene
-activo sirviendo peticiones a aplicaciones cliente sin interrupción
-mientras se realiza el volcado de datos.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Físicas / Binarias:</strong> Copia directa a nivel de bytes
-de los archivos contenidos en el datadir. Es un proceso extremadamente
-veloz tanto en el copiado como en la restauración.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Lógicas / Textuales:</strong> Consiste en generar archivos
-con instrucciones de creación DDL y comandos de inserción DML (INSERT
-INTO). Son más lentas de procesar, pero altamente portables a otros SGBD
-o versiones de MySQL distintas.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Completas (Full Backup):</strong> Copia íntegra de toda la
-estructura y datos del servidor.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Incrementales:</strong> Copia de seguridad que almacena de
-forma única los cambios realizados en las tablas desde la última copia
-de seguridad realizada (completa o incremental). En MySQL se implementa
-copiando los logs binarios.</p>
-</blockquote></li>
-</ul>
-<h2 id="copias-físicas-o-binarias-innodb-myisam">5.2 Copias Físicas o
-Binarias (InnoDB &amp; MyISAM) <a class="headerlink" href="#copias-físicas-o-binarias-innodb-myisam" title="Enlace permanente">¶</a></h2>
-<p>Para el motor por defecto de producción <strong>InnoDB</strong>,
-realizar una copia binaria en caliente requiere el uso de comandos
-avanzados para aislar los espacios de tablas.</p>
-<h5
-id="algoritmo-de-respaldo-físico-transporte-de-tablespaces-con-practica_dml.producto">Algoritmo
-de Respaldo Físico (Transporte de Tablespaces con
-practica_dml.producto) <a class="headerlink" href="#algoritmo-de-respaldo-físico-transporte-de-tablespaces-con-practica_dml.producto" title="Enlace permanente">¶</a></h5>
-<p>Para clonar físicamente el archivo .ibd de una tabla InnoDB de forma
-consistente y restaurarlo en otra ubicación, el SysAdmin debe ejecutar
-de forma interactiva:</p>
-<p><strong>Paso 1:</strong> Solicitar un bloqueo de lectura en el
-servidor origen para garantizar que las páginas de datos en el Buffer
-Pool de la tabla producto se vuelquen de forma consistente a disco,
-cerrando la tabla temporalmente:</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>USE practica_dml;
-FLUSH TABLES producto FOR EXPORT;</code></pre></div></div><em>(Mantener la sesión abierta para preservar el bloqueo de lectura
-global).</em></p>
-<p><strong>Paso 2:</strong> Desde otra terminal de Linux, copiar
-físicamente los metadatos .cfg y el archivo de datos producto.ibd
-generados hacia la ruta de almacenamiento de backups segura:</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>cp /var/lib/mysql/practica_dml/producto.{ibd,cfg}
-/backups/fisico_practica/</code></pre></div></div></p>
-<p><strong>Paso 3:</strong> Una vez finalizada la copia física de los
-ficheros, liberar el bloqueo en la terminal origen:</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>UNLOCK TABLES;</code></pre></div></div></h5>
-<h5
-id="algoritmo-de-restauración-física-en-el-servidor-de-destino">Algoritmo
-de Restauración Física en el Servidor de Destino <a class="headerlink" href="#algoritmo-de-restauración-física-en-el-servidor-de-destino" title="Enlace permanente">¶</a></h5>
-<p><strong>Paso 4:</strong> En el servidor de destino (donde existe la
-tabla creada vacía), se debe descartar el espacio de tablas lógico
-existente para desvincular el archivo .ibd actual:</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>ALTER TABLE practica_dml.producto DISCARD TABLESPACE;</code></pre></div></div></p>
-<p><strong>Paso 5:</strong> Copiar el archivo producto.ibd respaldado en
-el paso 2 dentro del directorio de la base de datos de destino
-/var/lib/mysql/practica_dml/ y asegurar que el propietario y grupo de
-permisos correspondan exactamente al daemon de MySQL:</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>cp /backups/fisico_practica/producto.ibd
+OPTIMIZE TABLE fabricante;</code></pre>
+                </div>
+            </div>
+            </h5>
+            <h5 id="repair-table">REPAIR TABLE <a class="headerlink" href="#repair-table"
+                    title="Enlace permanente">¶</a></h5>
+            <p>Sintaxis SQL para intentar la reparación inmediata de tablas
+                corruptas de tipo MyISAM (no compatible con InnoDB).</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>REPAIR TABLE fabricante QUICK;</code></pre>
+                </div>
+            </div>
+            </p>
+            <h5 id="documentación-oficial-más-información-en-mysql-manual---table-maintenance-statements.">🔗
+                Documentación Oficial: Más Información en <a
+                    href="https://dev.mysql.com/doc/refman/8.0/en/table-maintenance-statements.html"><u>MySQL
+                        Manual - Table Maintenance Statements</u></a>. <a class="headerlink"
+                    href="#documentación-oficial-más-información-en-mysql-manual---table-maintenance-statements."
+                    title="Enlace permanente">¶</a></h5>
+            <h1 id="políticas-de-copias-de-seguridad">5. POLÍTICAS DE COPIAS DE
+                SEGURIDAD <a class="headerlink" href="#políticas-de-copias-de-seguridad" title="Enlace permanente">¶</a>
+            </h1>
+            <h2 id="clasificación-técnica-de-los-backups">5.1 Clasificación Técnica
+                de los Backups <a class="headerlink" href="#clasificación-técnica-de-los-backups"
+                    title="Enlace permanente">¶</a></h2>
+            <p>Podemos realizar diferentes clasificaciones de las estrategias de
+                respaldo:</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p><strong>En Frío (Cold Backup):</strong> Requiere detener por completo
+                            el daemon mysqld. Es la forma más consistente de copiar archivos
+                            binarios directos, pero invalida la disponibilidad del servicio.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>En Caliente (Hot Backup):</strong> El servidor se mantiene
+                            activo sirviendo peticiones a aplicaciones cliente sin interrupción
+                            mientras se realiza el volcado de datos.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Físicas / Binarias:</strong> Copia directa a nivel de bytes
+                            de los archivos contenidos en el datadir. Es un proceso extremadamente
+                            veloz tanto en el copiado como en la restauración.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Lógicas / Textuales:</strong> Consiste en generar archivos
+                            con instrucciones de creación DDL y comandos de inserción DML (INSERT
+                            INTO). Son más lentas de procesar, pero altamente portables a otros SGBD
+                            o versiones de MySQL distintas.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Completas (Full Backup):</strong> Copia íntegra de toda la
+                            estructura y datos del servidor.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Incrementales:</strong> Copia de seguridad que almacena de
+                            forma única los cambios realizados en las tablas desde la última copia
+                            de seguridad realizada (completa o incremental). En MySQL se implementa
+                            copiando los logs binarios.</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <h2 id="copias-físicas-o-binarias-innodb-myisam">5.2 Copias Físicas o
+                Binarias (InnoDB &amp; MyISAM) <a class="headerlink" href="#copias-físicas-o-binarias-innodb-myisam"
+                    title="Enlace permanente">¶</a></h2>
+            <p>Para el motor por defecto de producción <strong>InnoDB</strong>,
+                realizar una copia binaria en caliente requiere el uso de comandos
+                avanzados para aislar los espacios de tablas.</p>
+            <h5 id="algoritmo-de-respaldo-físico-transporte-de-tablespaces-con-practica_dml.producto">Algoritmo
+                de Respaldo Físico (Transporte de Tablespaces con
+                practica_dml.producto) <a class="headerlink"
+                    href="#algoritmo-de-respaldo-físico-transporte-de-tablespaces-con-practica_dml.producto"
+                    title="Enlace permanente">¶</a></h5>
+            <p>Para clonar físicamente el archivo .ibd de una tabla InnoDB de forma
+                consistente y restaurarlo en otra ubicación, el SysAdmin debe ejecutar
+                de forma interactiva:</p>
+            <p><strong>Paso 1:</strong> Solicitar un bloqueo de lectura en el
+                servidor origen para garantizar que las páginas de datos en el Buffer
+                Pool de la tabla producto se vuelquen de forma consistente a disco,
+                cerrando la tabla temporalmente:</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>USE practica_dml;
+FLUSH TABLES producto FOR EXPORT;</code></pre>
+                </div>
+            </div><em>(Mantener la sesión abierta para preservar el bloqueo de lectura
+                global).</em></p>
+            <p><strong>Paso 2:</strong> Desde otra terminal de Linux, copiar
+                físicamente los metadatos .cfg y el archivo de datos producto.ibd
+                generados hacia la ruta de almacenamiento de backups segura:</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>cp /var/lib/mysql/practica_dml/producto.{ibd,cfg}
+/backups/fisico_practica/</code></pre>
+                </div>
+            </div>
+            </p>
+            <p><strong>Paso 3:</strong> Una vez finalizada la copia física de los
+                ficheros, liberar el bloqueo en la terminal origen:</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>UNLOCK TABLES;</code></pre>
+                </div>
+            </div>
+            </h5>
+            <h5 id="algoritmo-de-restauración-física-en-el-servidor-de-destino">Algoritmo
+                de Restauración Física en el Servidor de Destino <a class="headerlink"
+                    href="#algoritmo-de-restauración-física-en-el-servidor-de-destino" title="Enlace permanente">¶</a>
+            </h5>
+            <p><strong>Paso 4:</strong> En el servidor de destino (donde existe la
+                tabla creada vacía), se debe descartar el espacio de tablas lógico
+                existente para desvincular el archivo .ibd actual:</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>ALTER TABLE practica_dml.producto DISCARD TABLESPACE;</code></pre>
+                </div>
+            </div>
+            </p>
+            <p><strong>Paso 5:</strong> Copiar el archivo producto.ibd respaldado en
+                el paso 2 dentro del directorio de la base de datos de destino
+                /var/lib/mysql/practica_dml/ y asegurar que el propietario y grupo de
+                permisos correspondan exactamente al daemon de MySQL:</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>cp /backups/fisico_practica/producto.ibd
 /var/lib/mysql/practica_dml/
 chown mysql:mysql /var/lib/mysql/practica_dml/producto.ibd
-chmod 660 /var/lib/mysql/practica_dml/producto.ibd</code></pre></div></div></p>
-<p><strong>Paso 6:</strong> Importar y vincular el nuevo archivo .ibd de
-datos en la estructura del diccionario del SGBD:</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>ALTER TABLE practica_dml.producto IMPORT TABLESPACE;</code></pre></div></div></h4>
-<h2 id="copias-lógicas-o-textuales-dumping">5.3 Copias Lógicas o
-Textuales (Dumping) <a class="headerlink" href="#copias-lógicas-o-textuales-dumping" title="Enlace permanente">¶</a></h2>
-<p><strong>1. Sentencia SELECT ... INTO OUTFILE y LOAD DATA
-INFILE</strong></p>
-<p>Este método permite exportar rápidamente el contenido en bruto de una
-tabla a un fichero de texto plano formateado (por ejemplo, .csv), útil
-para migraciones rápidas de datos o análisis con herramientas como
-Excel.</p>
-<p>Por motivos de seguridad contra ataques de inyección, MySQL restringe
-la exportación e importación de archivos mediante la variable del
-sistema <strong>secure_file_priv</strong>. Cualquier intento de
-exportación fuera del directorio definido en dicha variable lanzará el
-<strong>Error 1290</strong>.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Comprobar el directorio permitido para exportación
+chmod 660 /var/lib/mysql/practica_dml/producto.ibd</code></pre>
+                </div>
+            </div>
+            </p>
+            <p><strong>Paso 6:</strong> Importar y vincular el nuevo archivo .ibd de
+                datos en la estructura del diccionario del SGBD:</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>ALTER TABLE practica_dml.producto IMPORT TABLESPACE;</code></pre>
+                </div>
+            </div>
+            </h4>
+            <h2 id="copias-lógicas-o-textuales-dumping">5.3 Copias Lógicas o
+                Textuales (Dumping) <a class="headerlink" href="#copias-lógicas-o-textuales-dumping"
+                    title="Enlace permanente">¶</a></h2>
+            <p><strong>1. Sentencia SELECT ... INTO OUTFILE y LOAD DATA
+                    INFILE</strong></p>
+            <p>Este método permite exportar rápidamente el contenido en bruto de una
+                tabla a un fichero de texto plano formateado (por ejemplo, .csv), útil
+                para migraciones rápidas de datos o análisis con herramientas como
+                Excel.</p>
+            <p>Por motivos de seguridad contra ataques de inyección, MySQL restringe
+                la exportación e importación de archivos mediante la variable del
+                sistema <strong>secure_file_priv</strong>. Cualquier intento de
+                exportación fuera del directorio definido en dicha variable lanzará el
+                <strong>Error 1290</strong>.
+            </p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>-- Comprobar el directorio permitido para exportación
 SHOW VARIABLES LIKE 'secure_file_priv';
 -- En sistemas estándar, el directorio por defecto suele ser
-'/var/lib/mysql-files/'</code></pre></div></div></p>
-<p><strong>Exportación consistente de la tabla de empleados</strong></p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT codigo_empleado, nombre, apellido1, email, salario,
+'/var/lib/mysql-files/'</code></pre>
+                </div>
+            </div>
+            </p>
+            <p><strong>Exportación consistente de la tabla de empleados</strong></p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>SELECT codigo_empleado, nombre, apellido1, email, salario,
 comision
 INTO OUTFILE '/var/lib/mysql-files/empleados_export.txt'
 FIELDS TERMINATED BY ','
 OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
-FROM practica_dml.empleado;</code></pre></div></div></h6>
-<p><strong>Restauración de los datos mediante LOAD DATA
-INFILE</strong></p>
-<p>Para importar los datos en una tabla de backup previamente
-estructurada:</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>USE practica_dml;
+FROM practica_dml.empleado;</code></pre>
+                </div>
+            </div>
+            </h6>
+            <p><strong>Restauración de los datos mediante LOAD DATA
+                    INFILE</strong></p>
+            <p>Para importar los datos en una tabla de backup previamente
+                estructurada:</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>USE practica_dml;
 -- Crear tabla vacía de copia de seguridad (estructura clonada de
 empleados)
 CREATE TABLE empleado_backup LIKE empleado;
@@ -474,221 +687,336 @@ LOAD DATA INFILE '/var/lib/mysql-files/empleados_export.txt'
 INTO TABLE empleado_backup
 FIELDS TERMINATED BY ','
 OPTIONALLY ENCLOSED BY '"'
-LINES TERMINATED BY '\n';</code></pre></div></div></h5>
-<p><strong>2. La Utilidad mysqldump</strong></p>
-<p>Herramienta clásica y versátil que vuelca una base de datos o tablas
-en un archivo SQL con instrucciones DDL/DML.</p>
-<p><strong>A. Sintaxis para exportar tablas específicas de una base de
-datos:</strong></p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>mysqldump -u root -p practica_dml producto fabricante &gt;
-/backups/productos_fabricantes.sql</code></pre></div></div></h6>
-<p><strong>B. Sintaxis para exportar una o varias bases de datos
-completas:</strong></p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Exportar las bases de datos practica_dml y tienda de forma
+LINES TERMINATED BY '\n';</code></pre>
+                </div>
+            </div>
+            </h5>
+            <p><strong>2. La Utilidad mysqldump</strong></p>
+            <p>Herramienta clásica y versátil que vuelca una base de datos o tablas
+                en un archivo SQL con instrucciones DDL/DML.</p>
+            <p><strong>A. Sintaxis para exportar tablas específicas de una base de
+                    datos:</strong></p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>mysqldump -u root -p practica_dml producto fabricante &gt;
+/backups/productos_fabricantes.sql</code></pre>
+                </div>
+            </div>
+            </h6>
+            <p><strong>B. Sintaxis para exportar una o varias bases de datos
+                    completas:</strong></p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code># Exportar las bases de datos practica_dml y tienda de forma
 estructurada
 mysqldump -u root -p --databases practica_dml &gt;
-/backups/respaldo_practica.sql</code></pre></div></div><em>(Nota: Al usar --databases, se insertan automáticamente las
-directivas CREATE DATABASE y USE en el fichero SQL de salida).</em></p>
-<p><strong>C. Sintaxis para exportar todas las bases de datos de la
-instancia de MySQL:</strong></p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>mysqldump -u root -p --all-databases &gt;
-/backups/instancia_completa.sql</code></pre></div></div></h5>
-<p><strong>Opciones Críticas de Producción para mysqldump</strong></p>
-<ul>
-<li><blockquote>
-<p>--single-transaction: Esencial para tablas transaccionales
-<strong>InnoDB</strong>. Inicia una transacción antes de realizar la
-copia de seguridad, obteniendo un volcado consistente de los datos sin
-necesidad de bloquear los accesos de escritura a las aplicaciones
-cliente.</p>
-</blockquote></li>
-<li><blockquote>
-<p>--flush-logs (-F): Fuerza al servidor a inicializar un log binario
-nuevo justo al empezar el backup. Indispensable para organizar respaldos
-incrementales limpios.</p>
-</blockquote></li>
-<li><blockquote>
-<p>--no-data (-d): Exporta de forma exclusiva la estructura DDL de la
-base de datos (tablas, restricciones, tipos de datos), omitiendo los
-registros lógicos.</p>
-</blockquote></li>
-<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>--no-create-info (-t): Exporta únicamente los comandos INSERT INTO
+/backups/respaldo_practica.sql</code></pre>
+                </div>
+            </div><em>(Nota: Al usar --databases, se insertan automáticamente las
+                directivas CREATE DATABASE y USE en el fichero SQL de salida).</em></p>
+            <p><strong>C. Sintaxis para exportar todas las bases de datos de la
+                    instancia de MySQL:</strong></p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>mysqldump -u root -p --all-databases &gt;
+/backups/instancia_completa.sql</code></pre>
+                </div>
+            </div>
+            </h5>
+            <p><strong>Opciones Críticas de Producción para mysqldump</strong></p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p>--single-transaction: Esencial para tablas transaccionales
+                            <strong>InnoDB</strong>. Inicia una transacción antes de realizar la
+                            copia de seguridad, obteniendo un volcado consistente de los datos sin
+                            necesidad de bloquear los accesos de escritura a las aplicaciones
+                            cliente.
+                        </p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>--flush-logs (-F): Fuerza al servidor a inicializar un log binario
+                            nuevo justo al empezar el backup. Indispensable para organizar respaldos
+                            incrementales limpios.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>--no-data (-d): Exporta de forma exclusiva la estructura DDL de la
+                            base de datos (tablas, restricciones, tipos de datos), omitiendo los
+                            registros lógicos.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                            <pre><code>--no-create-info (-t): Exporta únicamente los comandos INSERT INTO
 con los datos, omitiendo las instrucciones DDL de creación de
-tablas.</code></pre></div></div></li>
-<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>--add-drop-table: Agrega la sentencia DROP TABLE IF EXISTS antes de
+tablas.</code></pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                            <pre><code>--add-drop-table: Agrega la sentencia DROP TABLE IF EXISTS antes de
 cada definición de tabla. Evita errores de duplicados al restaurar bases
-de datos ya existentes.</code></pre></div></div></li>
-</ul>
-<h5
-id="documentación-oficial-más-información-en-mysql-manual---mysqldump-utility">🔗
-Documentación Oficial: Más Información en <a
-href="https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html"><u>MySQL
-Manual - mysqldump Utility</u></a> <a class="headerlink" href="#documentación-oficial-más-información-en-mysql-manual---mysqldump-utility" title="Enlace permanente">¶</a></h5>
-<p><strong>3. La Utilidad mysqlimport</strong></p>
-<p>Alternativa de línea de comandos de alto rendimiento al uso de LOAD
-DATA INFILE. Lee ficheros de texto formateados en csv y los inserta en
-la tabla correspondiente, la cual debe llamarse exactamente igual que el
-nombre base del archivo físico a importar.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Importar el fichero 'empleado.txt' en la tabla 'empleado' del
+de datos ya existentes.</code></pre>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <h5 id="documentación-oficial-más-información-en-mysql-manual---mysqldump-utility">🔗
+                Documentación Oficial: Más Información en <a
+                    href="https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html"><u>MySQL
+                        Manual - mysqldump Utility</u></a> <a class="headerlink"
+                    href="#documentación-oficial-más-información-en-mysql-manual---mysqldump-utility"
+                    title="Enlace permanente">¶</a></h5>
+            <p><strong>3. La Utilidad mysqlimport</strong></p>
+            <p>Alternativa de línea de comandos de alto rendimiento al uso de LOAD
+                DATA INFILE. Lee ficheros de texto formateados en csv y los inserta en
+                la tabla correspondiente, la cual debe llamarse exactamente igual que el
+                nombre base del archivo físico a importar.</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code># Importar el fichero 'empleado.txt' en la tabla 'empleado' del
 esquema 'practica_dml'
 mysqlimport -u root -p --fields-terminated-by=',' practica_dml
-/var/lib/mysql-files/empleado.txt</code></pre></div></div></h3>
-<h1
-id="escenario-de-producción-plan-de-respaldo-incremental-y-recuperación-point-in-time">6.
-ESCENARIO DE PRODUCCIÓN: PLAN DE RESPALDO INCREMENTAL Y RECUPERACIÓN
-POINT-IN-TIME <a class="headerlink" href="#escenario-de-producción-plan-de-respaldo-incremental-y-recuperación-point-in-time" title="Enlace permanente">¶</a></h1>
-<h4
-id="caso-práctico-respaldo-incremental-de-practica_dml-en-un-entorno-corporativo">Caso
-Práctico: Respaldo Incremental de practica_dml en un Entorno
-Corporativo <a class="headerlink" href="#caso-práctico-respaldo-incremental-de-practica_dml-en-un-entorno-corporativo" title="Enlace permanente">¶</a></h4>
-<p><strong>Fase 1: Creación del Respaldo Base el Domingo a las 02:00
-h</strong></p>
-<p>Como SysAdmin, ejecutamos un backup lógico consistente forzando la
-rotación de los logs binarios. El servidor comenzará a registrar
-cualquier cambio posterior en un nuevo binlog secuencial (por ejemplo,
-binlog.000002).</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>mysqldump -u root -p --single-transaction --flush-logs --databases
-practica_dml &gt; /backups/practica_dml_domingo.sql</code></pre></div></div><strong>Fase 2: Actividad Normal e Incidencia el Lunes a las 10:00
-h</strong></p>
-<p>Un desarrollador comete un fallo crítico de sintaxis en producción y
-ejecuta un DELETE accidental sin cláusula WHERE sobre la tabla de
-clientes en practica_dml, vaciando la tabla. El desastre se registra a
-las 10:00:15 en el log binario activo binlog.000002.</p>
-<p><strong>Fase 3: Proceso de Recuperación Point-in-Time (Lunes 10:15
-h)</strong></p>
-<p><strong>Paso 1:</strong> Forzar de manera inmediata un bloqueo de
-escritura para evitar que nuevos registros interfieran o cerrar las
-conexiones clientes y rotar los logs binarios para aislar la actividad
-actual:</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>mysqladmin -u root -p flush-logs</code></pre></div></div><em>(Esto creará binlog.000003, cerrando binlog.000002 que contiene
-la sentencia destructiva).</em></p>
-<p><strong>Paso 2:</strong> Importar la copia de seguridad completa
-realizada el domingo, devolviendo la base de datos al estado consistente
-del domingo a las 02:00 h:</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>mysql -u root -p &lt; /backups/practica_dml_domingo.sql</code></pre></div></div></p>
-<p><strong>Paso 3:</strong> Analizar el log binario binlog.000002 de
-manera visual para encontrar la posición física o la fecha y hora
-exactas de la transacción dañina:</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>mysqlbinlog --database=practica_dml /var/lib/mysql/binlog.000002 |
-grep -i -C 5 "delete"</code></pre></div></div><em>Supongamos que encontramos que la transacción destructiva
-ocurrió a las "2026-06-22 10:00:15".</em></p>
-<p><strong>Paso 4:</strong> Aplicar de forma secuencial todas las
-transacciones realizadas desde el domingo hasta el instante previo a la
-eliminación accidental (10:00:14 h):</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>mysqlbinlog --database=practica_dml --stop-datetime="2026-06-22
-10:00:14" /var/lib/mysql/binlog.000002 | mysql -u root -p</code></pre></div></div></p>
-<p>¡La base de datos se ha recuperado con total consistencia y sin
-pérdida de datos válidos!</p>
-<h1 id="herramientas-gráficas-y-migración-entre-sgbd">7. HERRAMIENTAS
-GRÁFICAS Y MIGRACIÓN ENTRE SGBD <a class="headerlink" href="#herramientas-gráficas-y-migración-entre-sgbd" title="Enlace permanente">¶</a></h1>
-<p><strong>Realizar Copias de Seguridad con MySQL Workbench</strong></p>
-<ol type="1">
-<li><blockquote>
-<p>En la barra lateral de administración, seleccionar <strong>Data
-Export</strong>.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Elegir las bases de datos y tablas que deseamos exportar.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Seleccionar entre exportar a un directorio de archivos individuales
-(para restauraciones selectivas más rápidas) o a un archivo consolidado
-continuo (Self-Contained File).</p>
-</blockquote></li>
-<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Activar las casillas Dump Stored Procedures and
+/var/lib/mysql-files/empleado.txt</code></pre>
+                </div>
+            </div>
+            </h3>
+            <h1 id="escenario-de-producción-plan-de-respaldo-incremental-y-recuperación-point-in-time">6.
+                ESCENARIO DE PRODUCCIÓN: PLAN DE RESPALDO INCREMENTAL Y RECUPERACIÓN
+                POINT-IN-TIME <a class="headerlink"
+                    href="#escenario-de-producción-plan-de-respaldo-incremental-y-recuperación-point-in-time"
+                    title="Enlace permanente">¶</a></h1>
+            <h4 id="caso-práctico-respaldo-incremental-de-practica_dml-en-un-entorno-corporativo">Caso
+                Práctico: Respaldo Incremental de practica_dml en un Entorno
+                Corporativo <a class="headerlink"
+                    href="#caso-práctico-respaldo-incremental-de-practica_dml-en-un-entorno-corporativo"
+                    title="Enlace permanente">¶</a></h4>
+            <p><strong>Fase 1: Creación del Respaldo Base el Domingo a las 02:00
+                    h</strong></p>
+            <p>Como SysAdmin, ejecutamos un backup lógico consistente forzando la
+                rotación de los logs binarios. El servidor comenzará a registrar
+                cualquier cambio posterior en un nuevo binlog secuencial (por ejemplo,
+                binlog.000002).</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>mysqldump -u root -p --single-transaction --flush-logs --databases
+practica_dml &gt; /backups/practica_dml_domingo.sql</code></pre>
+                </div>
+            </div><strong>Fase 2: Actividad Normal e Incidencia el Lunes a las 10:00
+                h</strong></p>
+            <p>Un desarrollador comete un fallo crítico de sintaxis en producción y
+                ejecuta un DELETE accidental sin cláusula WHERE sobre la tabla de
+                clientes en practica_dml, vaciando la tabla. El desastre se registra a
+                las 10:00:15 en el log binario activo binlog.000002.</p>
+            <p><strong>Fase 3: Proceso de Recuperación Point-in-Time (Lunes 10:15
+                    h)</strong></p>
+            <p><strong>Paso 1:</strong> Forzar de manera inmediata un bloqueo de
+                escritura para evitar que nuevos registros interfieran o cerrar las
+                conexiones clientes y rotar los logs binarios para aislar la actividad
+                actual:</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>mysqladmin -u root -p flush-logs</code></pre>
+                </div>
+            </div><em>(Esto creará binlog.000003, cerrando binlog.000002 que contiene
+                la sentencia destructiva).</em></p>
+            <p><strong>Paso 2:</strong> Importar la copia de seguridad completa
+                realizada el domingo, devolviendo la base de datos al estado consistente
+                del domingo a las 02:00 h:</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>mysql -u root -p &lt; /backups/practica_dml_domingo.sql</code></pre>
+                </div>
+            </div>
+            </p>
+            <p><strong>Paso 3:</strong> Analizar el log binario binlog.000002 de
+                manera visual para encontrar la posición física o la fecha y hora
+                exactas de la transacción dañina:</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>mysqlbinlog --database=practica_dml /var/lib/mysql/binlog.000002 |
+grep -i -C 5 "delete"</code></pre>
+                </div>
+            </div><em>Supongamos que encontramos que la transacción destructiva
+                ocurrió a las "2026-06-22 10:00:15".</em></p>
+            <p><strong>Paso 4:</strong> Aplicar de forma secuencial todas las
+                transacciones realizadas desde el domingo hasta el instante previo a la
+                eliminación accidental (10:00:14 h):</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>mysqlbinlog --database=practica_dml --stop-datetime="2026-06-22
+10:00:14" /var/lib/mysql/binlog.000002 | mysql -u root -p</code></pre>
+                </div>
+            </div>
+            </p>
+            <p>¡La base de datos se ha recuperado con total consistencia y sin
+                pérdida de datos válidos!</p>
+            <h1 id="herramientas-gráficas-y-migración-entre-sgbd">7. HERRAMIENTAS
+                GRÁFICAS Y MIGRACIÓN ENTRE SGBD <a class="headerlink"
+                    href="#herramientas-gráficas-y-migración-entre-sgbd" title="Enlace permanente">¶</a></h1>
+            <p><strong>Realizar Copias de Seguridad con MySQL Workbench</strong></p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p>En la barra lateral de administración, seleccionar <strong>Data
+                                Export</strong>.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Elegir las bases de datos y tablas que deseamos exportar.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Seleccionar entre exportar a un directorio de archivos individuales
+                            (para restauraciones selectivas más rápidas) o a un archivo consolidado
+                            continuo (Self-Contained File).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                            <pre><code>Activar las casillas Dump Stored Procedures and
 Functions, Dump Events y Dump
 Triggers según sea necesario para conservar la lógica de
-negocio de la unidad 11.</code></pre></div></div></li>
-<li><blockquote>
-<p>Pulsar <strong>Start Export</strong>.</p>
-</blockquote></li>
-</ol>
-<p><strong>Restauración mediante phpMyAdmin</strong></p>
-<ol type="1">
-<li><blockquote>
-<p>Acceder al menú de navegación superior y pulsar sobre el botón
-<strong>Importar</strong> (Import).</p>
-</blockquote></li>
-<li><blockquote>
-<p>Utilizar el explorador de archivos para seleccionar nuestro respaldo
-.sql o .sql.gz.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Definir el formato de lectura (estándar SQL).</p>
-</blockquote></li>
-<li><blockquote>
-<p>Pulsar sobre el botón <strong>Continuar</strong> (Go).</p>
-</blockquote></li>
-</ol>
-<p><strong>Migración de Esquemas mediante MySQL Workbench Database
-Migration</strong></p>
-<p>MySQL Workbench incorpora un asistente integral para migrar datos
-desde orígenes heterogéneos (Microsoft SQL Server, Microsoft Access,
-PostgreSQL, Oracle o SQLite) hacia bases de datos compatibles con
-MySQL.</p>
-<p>El proceso sigue esta jerarquía lógica de transformación de tipos y
-estructuras:</p>
-<p>El asistente realiza la transformación lógica de la estructura de la
-base de datos de manera automatizada en los siguientes pasos:</p>
-<ol type="1">
-<li><blockquote>
-<p><strong>Establecimiento del Punto de Acceso (Connection
-Parameters):</strong> Configura los controladores nativos (generalmente
-controladores ODBC o JDBC) para comunicarse con el servidor origen.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Mapeo de Tipos de Datos (Reverse Engineering):</strong>
-Analiza y adapta los tipos de datos incompatibles (por ejemplo, los
-campos de tipo IMAGE en SQL Server se traducen a campos de tipo LONGBLOB
-en MySQL, y los tipos de datos DATETIME2 se homologan al formato
-estándar DATETIME de precisión estándar).</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Alineación Física y Creación de Esquemas (Target Schema
-Creation):</strong> Genera la base de datos de destino y crea las tablas
-aplicando las condiciones físicas óptimas.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Carga Eficiente de Datos (Data Copy):</strong> Ejecuta un
-volcado masivo de datos registro a registro de forma óptima
-deshabilitando temporalmente el control de claves ajenas
-(FOREIGN_KEY_CHECKS = 0) para acelerar el procesamiento.</p>
-</blockquote></li>
-</ol>
-<h1
-id="documentación-de-políticas-de-seguridad-y-cumplimiento-normativo-rgpd">8.
-DOCUMENTACIÓN DE POLÍTICAS DE SEGURIDAD Y CUMPLIMIENTO NORMATIVO
-(RGPD) <a class="headerlink" href="#documentación-de-políticas-de-seguridad-y-cumplimiento-normativo-rgpd" title="Enlace permanente">¶</a></h1>
-<p>Un Administrador de Sistemas no puede limitarse a la ejecución de
-tareas técnicas; debe documentar de forma clara las normativas, roles y
-directivas que rigen la seguridad lógica y física de la información, de
-conformidad con el <strong>Reglamento General de Protección de Datos
-(RGPD / LOPDGDD)</strong>.</p>
-<p>La política de seguridad física e informática de la empresa debe
-detallar explícitamente las siguientes pautas organizativas:</p>
-<ul>
-<li><blockquote>
-<p><strong>Identificación y Rotulación Estricta de Copias de
-Seguridad:</strong> Cada dispositivo físico que almacene respaldos debe
-estar claramente catalogado con su descripción, fecha de ejecución y
-clasificación de la información.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Establecimiento de Roles de Acceso (Mínimo
-Privilegio):</strong> Despliegue de esquemas de seguridad basados en
-roles utilizando comandos DCL (GRANT/REVOKE). El personal no cualificado
-o externo no debe poseer privilegios globales de edición sobre esquemas
-sensibles.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Gestión del Ciclo de Vida de los Respaldos (Conservación y Dest</p>
-</blockquote></li>
-</ul>
+negocio de la unidad 11.</code></pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Pulsar <strong>Start Export</strong>.</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <p><strong>Restauración mediante phpMyAdmin</strong></p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p>Acceder al menú de navegación superior y pulsar sobre el botón
+                            <strong>Importar</strong> (Import).
+                        </p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Utilizar el explorador de archivos para seleccionar nuestro respaldo
+                            .sql o .sql.gz.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Definir el formato de lectura (estándar SQL).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Pulsar sobre el botón <strong>Continuar</strong> (Go).</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <p><strong>Migración de Esquemas mediante MySQL Workbench Database
+                    Migration</strong></p>
+            <p>MySQL Workbench incorpora un asistente integral para migrar datos
+                desde orígenes heterogéneos (Microsoft SQL Server, Microsoft Access,
+                PostgreSQL, Oracle o SQLite) hacia bases de datos compatibles con
+                MySQL.</p>
+            <p>El proceso sigue esta jerarquía lógica de transformación de tipos y
+                estructuras:</p>
+            <p>El asistente realiza la transformación lógica de la estructura de la
+                base de datos de manera automatizada en los siguientes pasos:</p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p><strong>Establecimiento del Punto de Acceso (Connection
+                                Parameters):</strong> Configura los controladores nativos (generalmente
+                            controladores ODBC o JDBC) para comunicarse con el servidor origen.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Mapeo de Tipos de Datos (Reverse Engineering):</strong>
+                            Analiza y adapta los tipos de datos incompatibles (por ejemplo, los
+                            campos de tipo IMAGE en SQL Server se traducen a campos de tipo LONGBLOB
+                            en MySQL, y los tipos de datos DATETIME2 se homologan al formato
+                            estándar DATETIME de precisión estándar).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Alineación Física y Creación de Esquemas (Target Schema
+                                Creation):</strong> Genera la base de datos de destino y crea las tablas
+                            aplicando las condiciones físicas óptimas.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Carga Eficiente de Datos (Data Copy):</strong> Ejecuta un
+                            volcado masivo de datos registro a registro de forma óptima
+                            deshabilitando temporalmente el control de claves ajenas
+                            (FOREIGN_KEY_CHECKS = 0) para acelerar el procesamiento.</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <h1 id="documentación-de-políticas-de-seguridad-y-cumplimiento-normativo-rgpd">8.
+                DOCUMENTACIÓN DE POLÍTICAS DE SEGURIDAD Y CUMPLIMIENTO NORMATIVO
+                (RGPD) <a class="headerlink"
+                    href="#documentación-de-políticas-de-seguridad-y-cumplimiento-normativo-rgpd"
+                    title="Enlace permanente">¶</a></h1>
+            <p>Un Administrador de Sistemas no puede limitarse a la ejecución de
+                tareas técnicas; debe documentar de forma clara las normativas, roles y
+                directivas que rigen la seguridad lógica y física de la información, de
+                conformidad con el <strong>Reglamento General de Protección de Datos
+                    (RGPD / LOPDGDD)</strong>.</p>
+            <p>La política de seguridad física e informática de la empresa debe
+                detallar explícitamente las siguientes pautas organizativas:</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p><strong>Identificación y Rotulación Estricta de Copias de
+                                Seguridad:</strong> Cada dispositivo físico que almacene respaldos debe
+                            estar claramente catalogado con su descripción, fecha de ejecución y
+                            clasificación de la información.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Establecimiento de Roles de Acceso (Mínimo
+                                Privilegio):</strong> Despliegue de esquemas de seguridad basados en
+                            roles utilizando comandos DCL (GRANT/REVOKE). El personal no cualificado
+                            o externo no debe poseer privilegios globales de edición sobre esquemas
+                            sensibles.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Gestión del Ciclo de Vida de los Respaldos (Conservación y Dest</p>
+                    </blockquote>
+                </li>
+            </ul>
 
         </main>
     </div>
 
-        </main>
+    </main>
     </div>
 </body>
+
 </html>

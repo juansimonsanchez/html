@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,158 +8,179 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
+
 <body>
     <header id="site-header">
-  <div class="header-container">
-    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>GBD &ndash; Ut8 Teoria Programacion</span></div>
-    <nav class="top-nav">
-      <a href="index.html" class="nav-btn">Inicio</a>
-    </nav>
-  </div>
-</header>
+        <div class="header-container">
+            <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo"
+                    style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>GBD
+                    &ndash; Ut8 Teoria Programacion</span></div>
+            <nav class="top-nav">
+                <a href="index.html" class="nav-btn">Inicio</a>
+            </nav>
+        </div>
+    </header>
     <div id="page-layout">
-        <main id="main-content">
-            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="GBD_UT8_Teoria_Programacion.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
-            
-    
-    
-        
-        <main id="main-content">
-            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="GBD_UT8_Teoria_Programacion.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
-            
-<header id="title-block-header">
-<h1 class="title"><p><span id="_fwhgxg5kxgvz"
-class="anchor"></span>UNIDAD 8</p>
-<p><span id="_msdbmn2xan7j" class="anchor"></span>PROGRAMACIÓN DE BASES
-DE DATOS EN MYSQL<br />
-</p></h1>
-</header>
 
-<p><strong>FICHA TÉCNICA DE LA UNIDAD DIDÁCTICA</strong></p>
-<div class="table-wrapper"><div class="table-wrapper"><table>
-<tbody>
-<tr class="header">
-<td><strong>Unidad Didáctica</strong></td>
-<td>Unidad Didáctica 8: Programación de bases de datos: Procedimientos,
-funciones y triggers en MySQL</td>
-</tr>
-<tr class="odd">
-<td><strong>Resultados de Aprendizaje</strong></td>
-<td><strong>RA6:</strong> Programa procedimientos almacenados, funciones
-y disparadores (triggers) analizando su funcionamiento e integrando
-lógica procedimental en el SGBD para garantizar la automatización,
-integridad y rendimiento de los datos.</td>
-</tr>
-<tr class="header">
-<td><strong>Criterios de Evaluación</strong></td>
-<td><p><strong>CE6.a</strong> (Se han identificado los lenguajes de
-programación disponibles),</p>
-<p><strong>CE6.b</strong> (Se han definido procedimientos con paso de
-parámetros),</p>
-<p><strong>CE6.c</strong> (Se han creado funciones),</p>
-<p><strong>CE6.d</strong> (Se han utilizado estructuras de control de
-flujo),</p>
-<p><strong>CE6.e</strong> (Se han utilizado cursores),</p>
-<p><strong>CE6.f</strong> (Se ha realizado el control de
-excepciones),</p>
-<p><strong>CE6.g</strong> (Se han creado disparadores),</p>
-<p><strong>CE6.h</strong> (Se han depurado y probado los subprogramas
-creados).</p></td>
-</tr>
-<tr class="odd">
-<td><strong>Tiempo Estimado</strong></td>
-<td>24 Horas (Distribuidas en 4 semanas de sesiones teórico-prácticas
-orientadas a la optimización de la lógica del servidor).</td>
-</tr>
-</tbody>
-</table></div></div>
-<p><strong>ÍNDICE DE CONTENIDOS</strong></p>
-<p><a href="#"><u>1. INTRODUCCIÓN Y CONTEXTUALIZACIÓN</u></a></p>
-<p><a href="#"><u>2. PROCEDIMIENTOS ALMACENADOS</u></a></p>
-<blockquote>
-<p><a href="#"><u>2.1 Sintaxis general y uso de DELIMITER</u></a></p>
-<p><a href="#"><u>2.2 Gestión de Parámetros: IN, OUT y INOUT</u></a></p>
-<p><a href="#"><u>2.3 Ámbito de Variables Locales y Asignaciones
-(DECLARE, SET)</u></a></p>
-</blockquote>
-<p><a href="#"><u>3. FUNCIONES ALMACENADAS</u></a></p>
-<blockquote>
-<p><a href="#"><u>3.1 Diferencias con procedimientos y restricciones de
-retorno</u></a></p>
-<p><a href="#"><u>3.2 Modificadores de comportamiento de funciones en
-MySQL</u></a></p>
-</blockquote>
-<p><a href="#"><u>4. ESTRUCTURAS DE CONTROL DE FLUJO</u></a></p>
-<blockquote>
-<p><a href="#"><u>4.1 Condicionales (IF-THEN-ELSE y CASE)</u></a></p>
-<p><a href="#"><u>4.2 Estructuras Iterativas (LOOP, REPEAT y
-WHILE)</u></a></p>
-</blockquote>
-<p><a href="#"><u>5. MANEJO DE EXCEPCIONES Y ERRORES EN
-MYSQL</u></a></p>
-<blockquote>
-<p><a href="#"><u>5.1 El uso de DECLARE... HANDLER</u></a></p>
-</blockquote>
-<p><a href="#"><u>6. CURSORES</u></a></p>
-<blockquote>
-<p><a href="#"><u>6.1 Ciclo de vida de un cursor</u></a></p>
-</blockquote>
-<p><a href="#"><u>7. DISPARADORES (TRIGGERS)</u></a></p>
-<blockquote>
-<p><a href="#"><u>7.1 Lógica de ejecución: BEFORE/AFTER e
-INSERT/UPDATE/DELETE</u></a></p>
-<p><a href="#"><u>7.2 Pseudotablas OLD y NEW y su aplicación en la
-integridad de datos</u></a></p>
-</blockquote>
-<p><a href="#"><u>8. ENLACES DE REFERENCIA Y DOCUMENTACIÓN
-OFICIAL</u></a></p>
-<h1 id="introducción-y-contextualización">1. INTRODUCCIÓN Y
-CONTEXTUALIZACIÓN <a class="headerlink" href="#introducción-y-contextualización" title="Enlace permanente">¶</a></h1>
-<p>La administración moderna de bases de datos a nivel de
-infraestructura no se limita a ejecutar consultas DML de manera
-interactiva. Para garantizar la eficiencia de los sistemas de red, la
-seguridad de la información y la automatización de procesos, los
-administradores de sistemas deben ser capaces de almacenar lógica
-programada directamente en el servidor SGBD.</p>
-<p>Esta unidad se conecta directamente con:</p>
-<ul>
-<li><blockquote>
-<p><strong>GBD (Unidad 5 y 6):</strong> Emplea de manera avanzada
-comandos DML de consultas simples, agrupaciones y composiciones de
-tablas (JOIN) dentro de la lógica del servidor.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>ISO (Implantación de Sistemas Operativos):</strong> Se
-relaciona con la automatización mediante scripting. Un <em>SysAdmin</em>
-puede encapsular flujos complejos dentro de procedimientos en el
-servidor de base de datos y activarlos desde tareas programadas del
-sistema operativo (<em>cron jobs</em> o <em>Windows Task
-Scheduler</em>).</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>SAD (Seguridad y Alta Disponibilidad) / GBD
-(Seguridad):</strong> El uso de rutinas almacenadas permite retirar
-permisos directos de lectura/escritura (SELECT, INSERT, UPDATE) sobre
-las tablas de producción de la base de datos
-<strong>Jardinería</strong>, otorgando únicamente privilegios de
-ejecución (EXECUTE) sobre procedimientos. Esto mitiga de forma casi
-absoluta los ataques de <strong>inyección SQL</strong> (<em>SQL
-Injection</em>).</p>
-</blockquote></li>
-</ul>
-<h1 id="procedimientos-almacenados">2. PROCEDIMIENTOS ALMACENADOS  <a class="headerlink" href="#procedimientos-almacenados" title="Enlace permanente">¶</a></h1>
-<p>Un procedimiento almacenado es un conjunto de sentencias SQL
-preparadas y guardadas en el SGBD para poder ser reutilizadas
-repetidamente de forma eficiente [7].</p>
-<h2 id="sintaxis-general-y-uso-de-delimiter">2.1 Sintaxis general y uso
-de DELIMITER <a class="headerlink" href="#sintaxis-general-y-uso-de-delimiter" title="Enlace permanente">¶</a></h2>
-<p>Por defecto, el SGBD interpreta el carácter punto y coma (;) como el
-terminador de una sentencia SQL. Al definir un bloque de código
-procedimental que contiene múltiples sentencias finalizadas con ;,
-necesitamos indicarle al motor de MySQL que cambie temporalmente este
-símbolo para que compile todo el bloque como una sola instrucción. Esto
-se logra con la directiva DELIMITER [7].</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Cambiamos el terminador por defecto a doble barra inclinada
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a
+                    href="GBD_UT8_Teoria_Programacion.pdf" download
+                    style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥
+                    Descargar PDF</a></div>
+
+            <header id="title-block-header">
+                <h1 class="title">
+                    <p><span id="_fwhgxg5kxgvz" class="anchor"></span>UNIDAD 8</p>
+                    <p><span id="_msdbmn2xan7j" class="anchor"></span>PROGRAMACIÓN DE BASES
+                        DE DATOS EN MYSQL<br />
+                    </p>
+                </h1>
+            </header>
+
+            <p><strong>FICHA TÉCNICA DE LA UNIDAD DIDÁCTICA</strong></p>
+            <div class="table-wrapper">
+                <div class="table-wrapper">
+                    <table>
+                        <tbody>
+                            <tr class="header">
+                                <td><strong>Unidad Didáctica</strong></td>
+                                <td>Unidad Didáctica 8: Programación de bases de datos: Procedimientos,
+                                    funciones y triggers en MySQL</td>
+                            </tr>
+                            <tr class="odd">
+                                <td><strong>Resultados de Aprendizaje</strong></td>
+                                <td><strong>RA6:</strong> Programa procedimientos almacenados, funciones
+                                    y disparadores (triggers) analizando su funcionamiento e integrando
+                                    lógica procedimental en el SGBD para garantizar la automatización,
+                                    integridad y rendimiento de los datos.</td>
+                            </tr>
+                            <tr class="header">
+                                <td><strong>Criterios de Evaluación</strong></td>
+                                <td>
+                                    <p><strong>CE6.a</strong> (Se han identificado los lenguajes de
+                                        programación disponibles),</p>
+                                    <p><strong>CE6.b</strong> (Se han definido procedimientos con paso de
+                                        parámetros),</p>
+                                    <p><strong>CE6.c</strong> (Se han creado funciones),</p>
+                                    <p><strong>CE6.d</strong> (Se han utilizado estructuras de control de
+                                        flujo),</p>
+                                    <p><strong>CE6.e</strong> (Se han utilizado cursores),</p>
+                                    <p><strong>CE6.f</strong> (Se ha realizado el control de
+                                        excepciones),</p>
+                                    <p><strong>CE6.g</strong> (Se han creado disparadores),</p>
+                                    <p><strong>CE6.h</strong> (Se han depurado y probado los subprogramas
+                                        creados).</p>
+                                </td>
+                            </tr>
+                            <tr class="odd">
+                                <td><strong>Tiempo Estimado</strong></td>
+                                <td>24 Horas (Distribuidas en 4 semanas de sesiones teórico-prácticas
+                                    orientadas a la optimización de la lógica del servidor).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <p><strong>ÍNDICE DE CONTENIDOS</strong></p>
+            <p><a href="#"><u>1. INTRODUCCIÓN Y CONTEXTUALIZACIÓN</u></a></p>
+            <p><a href="#"><u>2. PROCEDIMIENTOS ALMACENADOS</u></a></p>
+            <blockquote>
+                <p><a href="#"><u>2.1 Sintaxis general y uso de DELIMITER</u></a></p>
+                <p><a href="#"><u>2.2 Gestión de Parámetros: IN, OUT y INOUT</u></a></p>
+                <p><a href="#"><u>2.3 Ámbito de Variables Locales y Asignaciones
+                            (DECLARE, SET)</u></a></p>
+            </blockquote>
+            <p><a href="#"><u>3. FUNCIONES ALMACENADAS</u></a></p>
+            <blockquote>
+                <p><a href="#"><u>3.1 Diferencias con procedimientos y restricciones de
+                            retorno</u></a></p>
+                <p><a href="#"><u>3.2 Modificadores de comportamiento de funciones en
+                            MySQL</u></a></p>
+            </blockquote>
+            <p><a href="#"><u>4. ESTRUCTURAS DE CONTROL DE FLUJO</u></a></p>
+            <blockquote>
+                <p><a href="#"><u>4.1 Condicionales (IF-THEN-ELSE y CASE)</u></a></p>
+                <p><a href="#"><u>4.2 Estructuras Iterativas (LOOP, REPEAT y
+                            WHILE)</u></a></p>
+            </blockquote>
+            <p><a href="#"><u>5. MANEJO DE EXCEPCIONES Y ERRORES EN
+                        MYSQL</u></a></p>
+            <blockquote>
+                <p><a href="#"><u>5.1 El uso de DECLARE... HANDLER</u></a></p>
+            </blockquote>
+            <p><a href="#"><u>6. CURSORES</u></a></p>
+            <blockquote>
+                <p><a href="#"><u>6.1 Ciclo de vida de un cursor</u></a></p>
+            </blockquote>
+            <p><a href="#"><u>7. DISPARADORES (TRIGGERS)</u></a></p>
+            <blockquote>
+                <p><a href="#"><u>7.1 Lógica de ejecución: BEFORE/AFTER e
+                            INSERT/UPDATE/DELETE</u></a></p>
+                <p><a href="#"><u>7.2 Pseudotablas OLD y NEW y su aplicación en la
+                            integridad de datos</u></a></p>
+            </blockquote>
+            <p><a href="#"><u>8. ENLACES DE REFERENCIA Y DOCUMENTACIÓN
+                        OFICIAL</u></a></p>
+            <h1 id="introducción-y-contextualización">1. INTRODUCCIÓN Y
+                CONTEXTUALIZACIÓN <a class="headerlink" href="#introducción-y-contextualización"
+                    title="Enlace permanente">¶</a></h1>
+            <p>La administración moderna de bases de datos a nivel de
+                infraestructura no se limita a ejecutar consultas DML de manera
+                interactiva. Para garantizar la eficiencia de los sistemas de red, la
+                seguridad de la información y la automatización de procesos, los
+                administradores de sistemas deben ser capaces de almacenar lógica
+                programada directamente en el servidor SGBD.</p>
+            <p>Esta unidad se conecta directamente con:</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p><strong>GBD (Unidad 5 y 6):</strong> Emplea de manera avanzada
+                            comandos DML de consultas simples, agrupaciones y composiciones de
+                            tablas (JOIN) dentro de la lógica del servidor.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>ISO (Implantación de Sistemas Operativos):</strong> Se
+                            relaciona con la automatización mediante scripting. Un <em>SysAdmin</em>
+                            puede encapsular flujos complejos dentro de procedimientos en el
+                            servidor de base de datos y activarlos desde tareas programadas del
+                            sistema operativo (<em>cron jobs</em> o <em>Windows Task
+                                Scheduler</em>).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>SAD (Seguridad y Alta Disponibilidad) / GBD
+                                (Seguridad):</strong> El uso de rutinas almacenadas permite retirar
+                            permisos directos de lectura/escritura (SELECT, INSERT, UPDATE) sobre
+                            las tablas de producción de la base de datos
+                            <strong>Jardinería</strong>, otorgando únicamente privilegios de
+                            ejecución (EXECUTE) sobre procedimientos. Esto mitiga de forma casi
+                            absoluta los ataques de <strong>inyección SQL</strong> (<em>SQL
+                                Injection</em>).
+                        </p>
+                    </blockquote>
+                </li>
+            </ul>
+            <h1 id="procedimientos-almacenados">2. PROCEDIMIENTOS ALMACENADOS <a class="headerlink"
+                    href="#procedimientos-almacenados" title="Enlace permanente">¶</a></h1>
+            <p>Un procedimiento almacenado es un conjunto de sentencias SQL
+                preparadas y guardadas en el SGBD para poder ser reutilizadas
+                repetidamente de forma eficiente [7].</p>
+            <h2 id="sintaxis-general-y-uso-de-delimiter">2.1 Sintaxis general y uso
+                de DELIMITER <a class="headerlink" href="#sintaxis-general-y-uso-de-delimiter"
+                    title="Enlace permanente">¶</a></h2>
+            <p>Por defecto, el SGBD interpreta el carácter punto y coma (;) como el
+                terminador de una sentencia SQL. Al definir un bloque de código
+                procedimental que contiene múltiples sentencias finalizadas con ;,
+                necesitamos indicarle al motor de MySQL que cambie temporalmente este
+                símbolo para que compile todo el bloque como una sola instrucción. Esto
+                se logra con la directiva DELIMITER [7].</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>-- Cambiamos el terminador por defecto a doble barra inclinada
 DELIMITER //
 DROP PROCEDURE IF EXISTS ejemplo_basico//
 CREATE PROCEDURE ejemplo_basico()
@@ -171,35 +193,47 @@ END//
 -- Restauramos el delimitador estándar
 DELIMITER ;
 -- Invocación del procedimiento
-CALL ejemplo_basico();</code></pre></div></div>2.2 Gestión de
-Parámetros: IN, OUT y INOUT</h2>
-<p>MySQL permite especificar tres tipos de dirección para los parámetros
-de entrada y salida de un procedimiento almacenado [7, 11.2]:</p>
-<ul>
-<li><blockquote>
-<p><strong>IN (Entrada):</strong> Es el valor que se pasa al
-procedimiento al llamarlo. Se trata de un parámetro de solo lectura
-dentro de la rutina (es el comportamiento por defecto si se omite la
-palabra clave) [7].</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>OUT (Salida):</strong> Almacena el valor calculado por el
-procedimiento y lo devuelve al entorno de llamada, generalmente
-asignándole a una variable de usuario (con prefijo @) [7, 11.2].</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>INOUT (Entrada/Salida):</strong> Se inicia al llamar al
-procedimiento, puede ser modificado por la rutina y devuelve el nuevo
-valor de vuelta al llamante [11.2].</p>
-</blockquote></li>
-</ul>
-<p>A continuación se muestra la implementación de un procedimiento para
-actualizar el límite de crédito de un cliente de la base de datos
-<strong>Jardinería</strong> utilizando un parámetro IN, y otro
-procedimiento procedimental para calcular estadísticas de un cliente con
-parámetros OUT.</p>
-<p>Ejemplo de parámetro IN (Actualización de Límite de Crédito):</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
+CALL ejemplo_basico();</code></pre>
+                </div>
+            </div>2.2 Gestión de
+            Parámetros: IN, OUT y INOUT</h2>
+            <p>MySQL permite especificar tres tipos de dirección para los parámetros
+                de entrada y salida de un procedimiento almacenado [7, 11.2]:</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p><strong>IN (Entrada):</strong> Es el valor que se pasa al
+                            procedimiento al llamarlo. Se trata de un parámetro de solo lectura
+                            dentro de la rutina (es el comportamiento por defecto si se omite la
+                            palabra clave) [7].</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>OUT (Salida):</strong> Almacena el valor calculado por el
+                            procedimiento y lo devuelve al entorno de llamada, generalmente
+                            asignándole a una variable de usuario (con prefijo @) [7, 11.2].</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>INOUT (Entrada/Salida):</strong> Se inicia al llamar al
+                            procedimiento, puede ser modificado por la rutina y devuelve el nuevo
+                            valor de vuelta al llamante [11.2].</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <p>A continuación se muestra la implementación de un procedimiento para
+                actualizar el límite de crédito de un cliente de la base de datos
+                <strong>Jardinería</strong> utilizando un parámetro IN, y otro
+                procedimiento procedimental para calcular estadísticas de un cliente con
+                parámetros OUT.
+            </p>
+            <p>Ejemplo de parámetro IN (Actualización de Límite de Crédito):</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>DELIMITER //
 DROP PROCEDURE IF EXISTS sp_actualizar_limite_credito//
 CREATE PROCEDURE sp_actualizar_limite_credito(
 IN p_codigo_cliente INT,
@@ -216,9 +250,14 @@ END//
 DELIMITER ;
 -- Probamos el procedimiento con el cliente 101 incrementando un
 15.5% su crédito
-CALL sp_actualizar_limite_credito(101, 15.50);</code></pre></div></div>Ejemplo de parámetros OUT (Extracción de estadísticas de
-ventas):</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
+CALL sp_actualizar_limite_credito(101, 15.50);</code></pre>
+                </div>
+            </div>Ejemplo de parámetros OUT (Extracción de estadísticas de
+            ventas):</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>DELIMITER //
 DROP PROCEDURE IF EXISTS sp_obtener_estadisticas_cliente//
 CREATE PROCEDURE sp_obtener_estadisticas_cliente(
 IN p_codigo_cliente INT,
@@ -242,14 +281,19 @@ las salidas
 CALL sp_obtener_estadisticas_cliente(101, @pedidos, @pagado);
 -- Visualizamos los resultados
 SELECT @pedidos AS pedidos_realizados, @pagado AS
-total_euros_pagados;</code></pre></div></div>2.3
-Ámbito de Variables Locales y Asignaciones (DECLARE, SET)</h2>
-<p>Las variables internas deben declararse obligatoriamente al principio
-de un bloque BEGIN ... END utilizando la instrucción DECLARE [11.2].
-Tras su declaración, se les puede dar un valor inicial con la cláusula
-DEFAULT o modificarse utilizando SET u obteniendo datos mediante la
-cláusula INTO dentro de un SELECT.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
+total_euros_pagados;</code></pre>
+                </div>
+            </div>2.3
+            Ámbito de Variables Locales y Asignaciones (DECLARE, SET)</h2>
+            <p>Las variables internas deben declararse obligatoriamente al principio
+                de un bloque BEGIN ... END utilizando la instrucción DECLARE [11.2].
+                Tras su declaración, se les puede dar un valor inicial con la cláusula
+                DEFAULT o modificarse utilizando SET u obteniendo datos mediante la
+                cláusula INTO dentro de un SELECT.</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>DELIMITER //
 DROP PROCEDURE IF EXISTS sp_demo_variables_jardineria//
 CREATE PROCEDURE sp_demo_variables_jardineria(
 IN p_codigo_oficina VARCHAR(10)
@@ -271,54 +315,84 @@ SELECT v_ciudad_oficina AS ciudad, v_cantidad_empleados AS
 num_empleados_activos;
 END//
 DELIMITER ;
-CALL sp_demo_variables_jardineria('BCN-ES');</code></pre></div></div>3. FUNCIONES ALMACENADAS</h1>
-<p>Una función almacenada es una rutina que toma parámetros de entrada,
-ejecuta lógica procedural y <strong>devuelve un único valor
-escalar</strong> al entorno de llamada.</p>
-<h2 id="diferencias-con-procedimientos-y-restricciones-de-retorno">3.1
-Diferencias con procedimientos y restricciones de retorno <a class="headerlink" href="#diferencias-con-procedimientos-y-restricciones-de-retorno" title="Enlace permanente">¶</a></h2>
-<p>A diferencia de los procedimientos almacenados, las funciones:</p>
-<ol type="1">
-<li><blockquote>
-<p>Deben especificar la cláusula RETURNS en su cabecera para definir el
-tipo de datos del resultado.</p>
-</blockquote></li>
-<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>Contienen obligatoriamente al menos una sentencia RETURN que finaliza
-la ejecución de la función.</code></pre></div></div></li>
-<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>No se invocan con la sentencia CALL, sino que se pueden utilizar
+CALL sp_demo_variables_jardineria('BCN-ES');</code></pre>
+                </div>
+            </div>3. FUNCIONES ALMACENADAS</h1>
+            <p>Una función almacenada es una rutina que toma parámetros de entrada,
+                ejecuta lógica procedural y <strong>devuelve un único valor
+                    escalar</strong> al entorno de llamada.</p>
+            <h2 id="diferencias-con-procedimientos-y-restricciones-de-retorno">3.1
+                Diferencias con procedimientos y restricciones de retorno <a class="headerlink"
+                    href="#diferencias-con-procedimientos-y-restricciones-de-retorno" title="Enlace permanente">¶</a>
+            </h2>
+            <p>A diferencia de los procedimientos almacenados, las funciones:</p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p>Deben especificar la cláusula RETURNS en su cabecera para definir el
+                            tipo de datos del resultado.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                            <pre><code>Contienen obligatoriamente al menos una sentencia RETURN que finaliza
+la ejecución de la función.</code></pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                            <pre><code>No se invocan con la sentencia CALL, sino que se pueden utilizar
 directamente dentro de sentencias DML (como parte de un SELECT, WHERE u
-ORDER BY), optimizando la legibilidad de las consultas complejas.</code></pre></div></div></li>
-</ol>
-<h2 id="modificadores-de-comportamiento-de-funciones-en-mysql">3.2
-Modificadores de comportamiento de funciones en MySQL <a class="headerlink" href="#modificadores-de-comportamiento-de-funciones-en-mysql" title="Enlace permanente">¶</a></h2>
-<p>Al compilar funciones en MySQL con el motor InnoDB activo, es
-obligatorio declarar sus características de acceso a datos para que el
-planificador y el motor de replicación trabajen con seguridad lógica
-[1.9.3]:</p>
-<ul>
-<li><blockquote>
-<p>DETERMINISTIC: El resultado devuelto será idéntico siempre que se
-proporcionen los mismos parámetros de entrada.</p>
-</blockquote></li>
-<li><blockquote>
-<p>NOT DETERMINISTIC: El resultado puede cambiar aun pasando los mismos
-parámetros (por ejemplo, funciones que consulten la fecha actual o
-generen números aleatorios).</p>
-</blockquote></li>
-<li><blockquote>
-<p>READS SQL DATA: Indica que la rutina realizará consultas de lectura
-(SELECT) sobre tablas de la base de datos [1.9.3].</p>
-</blockquote></li>
-<li><blockquote>
-<p>MODIFIES SQL DATA: Indica que la rutina ejecutará modificaciones
-(INSERT, UPDATE, DELETE).</p>
-</blockquote></li>
-</ul>
-<p>Ejemplo (Calcular deuda de un cliente de Jardinería):</p>
-<p>Implementación de una función procedimental que calcula la diferencia
-acumulada entre el total facturado en pedidos al cliente y los pagos que
-este ha liquidado.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
+ORDER BY), optimizando la legibilidad de las consultas complejas.</code></pre>
+                        </div>
+                    </div>
+                </li>
+            </ol>
+            <h2 id="modificadores-de-comportamiento-de-funciones-en-mysql">3.2
+                Modificadores de comportamiento de funciones en MySQL <a class="headerlink"
+                    href="#modificadores-de-comportamiento-de-funciones-en-mysql" title="Enlace permanente">¶</a></h2>
+            <p>Al compilar funciones en MySQL con el motor InnoDB activo, es
+                obligatorio declarar sus características de acceso a datos para que el
+                planificador y el motor de replicación trabajen con seguridad lógica
+                [1.9.3]:</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p>DETERMINISTIC: El resultado devuelto será idéntico siempre que se
+                            proporcionen los mismos parámetros de entrada.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>NOT DETERMINISTIC: El resultado puede cambiar aun pasando los mismos
+                            parámetros (por ejemplo, funciones que consulten la fecha actual o
+                            generen números aleatorios).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>READS SQL DATA: Indica que la rutina realizará consultas de lectura
+                            (SELECT) sobre tablas de la base de datos [1.9.3].</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>MODIFIES SQL DATA: Indica que la rutina ejecutará modificaciones
+                            (INSERT, UPDATE, DELETE).</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <p>Ejemplo (Calcular deuda de un cliente de Jardinería):</p>
+            <p>Implementación de una función procedimental que calcula la diferencia
+                acumulada entre el total facturado en pedidos al cliente y los pagos que
+                este ha liquidado.</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>DELIMITER //
 DROP FUNCTION IF EXISTS fn_calcular_deuda_cliente//
 CREATE FUNCTION fn_calcular_deuda_cliente(
 p_codigo_cliente INT
@@ -354,16 +428,22 @@ nombre_cliente,
 limite_credito,
 fn_calcular_deuda_cliente(codigo_cliente) AS saldo_deudor_activo
 FROM cliente
-WHERE ciudad = 'Madrid';</code></pre></div></div>4. ESTRUCTURAS DE CONTROL DE
-FLUJO</h1>
-<p>La programación procedural de bases de datos permite redirigir el
-orden de procesamiento de las sentencias utilizando estructuras lógicas
-avanzadas de decisión y repetición.</p>
-<h2 id="condicionales-if-then-else-y-case">4.1 Condicionales
-(IF-THEN-ELSE y CASE) <a class="headerlink" href="#condicionales-if-then-else-y-case" title="Enlace permanente">¶</a></h2>
-<p>Permiten ejecutar diferentes fragmentos de código basándose en la
-evaluación de una condición booleana.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
+WHERE ciudad = 'Madrid';</code></pre>
+                </div>
+            </div>4. ESTRUCTURAS DE CONTROL DE
+            FLUJO</h1>
+            <p>La programación procedural de bases de datos permite redirigir el
+                orden de procesamiento de las sentencias utilizando estructuras lógicas
+                avanzadas de decisión y repetición.</p>
+            <h2 id="condicionales-if-then-else-y-case">4.1 Condicionales
+                (IF-THEN-ELSE y CASE) <a class="headerlink" href="#condicionales-if-then-else-y-case"
+                    title="Enlace permanente">¶</a></h2>
+            <p>Permiten ejecutar diferentes fragmentos de código basándose en la
+                evaluación de una condición booleana.</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>DELIMITER //
 DROP PROCEDURE IF EXISTS sp_evaluar_riesgo_cliente//
 CREATE PROCEDURE sp_evaluar_riesgo_cliente(
 IN p_codigo_cliente INT,
@@ -391,19 +471,25 @@ END IF;
 END//
 DELIMITER ;
 CALL sp_evaluar_riesgo_cliente(101, @riesgo);
-SELECT @riesgo AS estado_riesgo_financiero;</code></pre></div></div>4.2 Estructuras
-Iterativas (LOOP, REPEAT y WHILE)</h2>
-<p>MySQL proporciona estructuras nativas para realizar bucles lógicos
-[11.2]. En entornos de producción de administración de sistemas, es
-indispensable etiquetar estos bucles para gestionar flujos de control
-complejos mediante sentencias de escape como LEAVE (equivalente a
-<em>break</em>) o ITERATE (equivalente a <em>continue</em>)
-[12.1.8.2].</p>
-<p>A continuación se muestra un ejemplo comparativo de implementación de
-secuencias mediante bucles procedurales aplicados a un escenario
-administrativo para poblar una tabla de auditoría con rangos
-numéricos.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>-- Creamos una tabla auxiliar para almacenar históricos o rangos
+SELECT @riesgo AS estado_riesgo_financiero;</code></pre>
+                </div>
+            </div>4.2 Estructuras
+            Iterativas (LOOP, REPEAT y WHILE)</h2>
+            <p>MySQL proporciona estructuras nativas para realizar bucles lógicos
+                [11.2]. En entornos de producción de administración de sistemas, es
+                indispensable etiquetar estos bucles para gestionar flujos de control
+                complejos mediante sentencias de escape como LEAVE (equivalente a
+                <em>break</em>) o ITERATE (equivalente a <em>continue</em>)
+                [12.1.8.2].
+            </p>
+            <p>A continuación se muestra un ejemplo comparativo de implementación de
+                secuencias mediante bucles procedurales aplicados a un escenario
+                administrativo para poblar una tabla de auditoría con rangos
+                numéricos.</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>-- Creamos una tabla auxiliar para almacenar históricos o rangos
 CREATE TABLE IF NOT EXISTS auxiliar_rangos (
 iteracion INT UNSIGNED PRIMARY KEY,
 mensaje_logs VARCHAR(100)
@@ -459,39 +545,55 @@ END LOOP mi_bucle;
 END//
 DELIMITER ;
 CALL sp_llenar_loop(5);
-SELECT * FROM auxiliar_rangos;</code></pre></div></div>5. MANEJO DE
-EXCEPCIONES Y ERRORES EN MYSQL</h1>
-<p>El código procedimental que ejecuta cambios DML puede fallar debido a
-violaciones de integridad referencial, registros duplicados en claves
-primarias o caídas del sistema. Para evitar que la transacción completa
-aborte de forma incontrolada, MySQL ofrece el uso de manejadores de
-error declarativos [1.9].</p>
-<h2 id="el-uso-de-declare...-handler">5.1 El uso de DECLARE...
-HANDLER <a class="headerlink" href="#el-uso-de-declare...-handler" title="Enlace permanente">¶</a></h2>
-<p>La sintaxis general para registrar un manejador de eventos
-excepcionales es la siguiente:</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DECLARE {CONTINUE | EXIT} HANDLER FOR condicion_error sentencia;</code></pre></div></div>Donde:</p>
-<ul>
-<li><blockquote>
-<p><strong>CONTINUE:</strong> Ejecuta la sentencia correctora asociada y
-continúa con el flujo lógico del bloque procedimental tras la
-instrucción que generó la alerta [1.9].</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>EXIT:</strong> Detiene la ejecución del bloque actual (BEGIN
-... END) de manera inmediata tras realizar las acciones de resolución de
-errores establecidas [1.9].</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>condicion_error:</strong> Puede ser un código de error
-numérico interno del SGBD, un estándar SQLSTATE de la industria o
-palabras clave genéricas como SQLEXCEPTION, SQLWARNING o NOT FOUND
-[1.9].</p>
-</blockquote></li>
-</ul>
-<p>Ejemplo de registro de pago de cliente seguro ante claves
-duplicadas:</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
+SELECT * FROM auxiliar_rangos;</code></pre>
+                </div>
+            </div>5. MANEJO DE
+            EXCEPCIONES Y ERRORES EN MYSQL</h1>
+            <p>El código procedimental que ejecuta cambios DML puede fallar debido a
+                violaciones de integridad referencial, registros duplicados en claves
+                primarias o caídas del sistema. Para evitar que la transacción completa
+                aborte de forma incontrolada, MySQL ofrece el uso de manejadores de
+                error declarativos [1.9].</p>
+            <h2 id="el-uso-de-declare...-handler">5.1 El uso de DECLARE...
+                HANDLER <a class="headerlink" href="#el-uso-de-declare...-handler" title="Enlace permanente">¶</a></h2>
+            <p>La sintaxis general para registrar un manejador de eventos
+                excepcionales es la siguiente:</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>DECLARE {CONTINUE | EXIT} HANDLER FOR condicion_error sentencia;</code></pre>
+                </div>
+            </div>Donde:</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p><strong>CONTINUE:</strong> Ejecuta la sentencia correctora asociada y
+                            continúa con el flujo lógico del bloque procedimental tras la
+                            instrucción que generó la alerta [1.9].</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>EXIT:</strong> Detiene la ejecución del bloque actual (BEGIN
+                            ... END) de manera inmediata tras realizar las acciones de resolución de
+                            errores establecidas [1.9].</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>condicion_error:</strong> Puede ser un código de error
+                            numérico interno del SGBD, un estándar SQLSTATE de la industria o
+                            palabras clave genéricas como SQLEXCEPTION, SQLWARNING o NOT FOUND
+                            [1.9].</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <p>Ejemplo de registro de pago de cliente seguro ante claves
+                duplicadas:</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>DELIMITER //
 DROP PROCEDURE IF EXISTS sp_registrar_pago_seguro//
 CREATE PROCEDURE sp_registrar_pago_seguro(
 IN p_codigo_cliente INT,
@@ -532,43 +634,58 @@ SELECT @estado;
 provocar la excepción de duplicidad controlada
 CALL sp_registrar_pago_seguro(1, 'Transferencia', 'TR-REG-001',
 '2026-06-19', 450.50, @estado);
-SELECT @estado;</code></pre></div></div>6. CURSORES</h1>
-<p>Un cursor es una estructura procedimental en memoria que permite
-iterar y procesar, registro por registro, el conjunto de filas devuelto
-por una consulta SELECT.</p>
-<h2 id="ciclo-de-vida-de-un-cursor">6.1 Ciclo de vida de un cursor <a class="headerlink" href="#ciclo-de-vida-de-un-cursor" title="Enlace permanente">¶</a></h2>
-<p>El uso de un cursor sigue estrictamente un proceso secuencial de 4
-pasos [1.8.7]:</p>
-<ol type="1">
-<li><blockquote>
-<p><strong>DECLARE:</strong> Define el cursor vinculándolo a una
-consulta SQL selectiva. Esta instrucción debe colocarse después de
-declarar todas las variables locales pero antes de los manejadores de
-excepciones.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>OPEN:</strong> Ejecuta la consulta SQL e inicializa el
-puntero en memoria, dejándolo preparado para la extracción.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>FETCH:</strong> Extrae secuencialmente los valores de la fila
-actual donde apunta el puntero, asignando dichos valores a variables
-locales locales previamente declaradas.</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>CLOSE:</strong> Libera la memoria consumida por el cursor. Si
-se omite, MySQL cerrará el cursor automáticamente al finalizar la
-rutina.</p>
-</blockquote></li>
-</ol>
-<p>Ejemplo (Actualización masiva de Límite de Crédito basado en la
-actividad real del cliente):</p>
-<p>Implementaremos un procedimiento que audite a todos los clientes de
-<strong>Jardinería</strong> mediante un cursor procedimental. Si un
-cliente ha acumulado en pagos efectivos más del 80% de su límite de
-crédito actual, el SGBD ampliará proactivamente su límite crediticio un
-25%.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
+SELECT @estado;</code></pre>
+                </div>
+            </div>6. CURSORES</h1>
+            <p>Un cursor es una estructura procedimental en memoria que permite
+                iterar y procesar, registro por registro, el conjunto de filas devuelto
+                por una consulta SELECT.</p>
+            <h2 id="ciclo-de-vida-de-un-cursor">6.1 Ciclo de vida de un cursor <a class="headerlink"
+                    href="#ciclo-de-vida-de-un-cursor" title="Enlace permanente">¶</a></h2>
+            <p>El uso de un cursor sigue estrictamente un proceso secuencial de 4
+                pasos [1.8.7]:</p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p><strong>DECLARE:</strong> Define el cursor vinculándolo a una
+                            consulta SQL selectiva. Esta instrucción debe colocarse después de
+                            declarar todas las variables locales pero antes de los manejadores de
+                            excepciones.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>OPEN:</strong> Ejecuta la consulta SQL e inicializa el
+                            puntero en memoria, dejándolo preparado para la extracción.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>FETCH:</strong> Extrae secuencialmente los valores de la fila
+                            actual donde apunta el puntero, asignando dichos valores a variables
+                            locales locales previamente declaradas.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>CLOSE:</strong> Libera la memoria consumida por el cursor. Si
+                            se omite, MySQL cerrará el cursor automáticamente al finalizar la
+                            rutina.</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <p>Ejemplo (Actualización masiva de Límite de Crédito basado en la
+                actividad real del cliente):</p>
+            <p>Implementaremos un procedimiento que audite a todos los clientes de
+                <strong>Jardinería</strong> mediante un cursor procedimental. Si un
+                cliente ha acumulado en pagos efectivos más del 80% de su límite de
+                crédito actual, el SGBD ampliará proactivamente su límite crediticio un
+                25%.
+            </p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>DELIMITER //
 DROP PROCEDURE IF EXISTS sp_optimizar_credito_clientes_activos//
 CREATE PROCEDURE sp_optimizar_credito_clientes_activos()
 BEGIN
@@ -613,76 +730,99 @@ END//
 DELIMITER ;
 -- Ejecutamos la reevaluación de límites del sistema completo de
 Jardinería
-CALL sp_optimizar_credito_clientes_activos();</code></pre></div></div>7. DISPARADORES (TRIGGERS)</h1>
-<p>Un disparador o <em>trigger</em> es un objeto de base de datos
-asociado a una tabla que se activa de manera automática e implícita
-cuando se ejecuta un evento DML de modificación de datos (INSERT, UPDATE
-o DELETE) sobre dicha tabla [1.8.8].</p>
-<h2 id="lógica-de-ejecución-beforeafter-e-insertupdatedelete">7.1 Lógica
-de ejecución: BEFORE/AFTER e INSERT/UPDATE/DELETE <a class="headerlink" href="#lógica-de-ejecución-beforeafter-e-insertupdatedelete" title="Enlace permanente">¶</a></h2>
-<p>Un disparador puede configurarse para activarse en dos instantes
-temporales distintos:</p>
-<ul>
-<li><blockquote>
-<p><strong>BEFORE:</strong> Se ejecuta antes de que los cambios se
-validen e intenten almacenar en el disco del servidor. Es la opción
-idónea para realizar operaciones de validación, saneamiento de datos de
-entrada o cálculo de campos calculados [1.8.8].</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>AFTER:</strong> Se ejecuta una vez que los cambios han sido
-aplicados con éxito en la tabla de datos. Es ideal para mantener
-registros de auditoría o históricos en tablas paralelas [1.8.8].</p>
-</blockquote></li>
-</ul>
-<h2
-id="pseudotablas-old-y-new-y-su-aplicación-en-la-integridad-de-datos">7.2
-Pseudotablas OLD y NEW y su aplicación en la integridad de datos <a class="headerlink" href="#pseudotablas-old-y-new-y-su-aplicación-en-la-integridad-de-datos" title="Enlace permanente">¶</a></h2>
-<p>Dependiendo del tipo de instrucción DML ejecutada, el cuerpo del
-trigger tiene acceso a los valores mediante las variables
-contextuales:</p>
-<ul>
-<li><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>NEW: Objeto temporal que contiene los valores de las
+CALL sp_optimizar_credito_clientes_activos();</code></pre>
+                </div>
+            </div>7. DISPARADORES (TRIGGERS)</h1>
+            <p>Un disparador o <em>trigger</em> es un objeto de base de datos
+                asociado a una tabla que se activa de manera automática e implícita
+                cuando se ejecuta un evento DML de modificación de datos (INSERT, UPDATE
+                o DELETE) sobre dicha tabla [1.8.8].</p>
+            <h2 id="lógica-de-ejecución-beforeafter-e-insertupdatedelete">7.1 Lógica
+                de ejecución: BEFORE/AFTER e INSERT/UPDATE/DELETE <a class="headerlink"
+                    href="#lógica-de-ejecución-beforeafter-e-insertupdatedelete" title="Enlace permanente">¶</a></h2>
+            <p>Un disparador puede configurarse para activarse en dos instantes
+                temporales distintos:</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p><strong>BEFORE:</strong> Se ejecuta antes de que los cambios se
+                            validen e intenten almacenar en el disco del servidor. Es la opción
+                            idónea para realizar operaciones de validación, saneamiento de datos de
+                            entrada o cálculo de campos calculados [1.8.8].</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>AFTER:</strong> Se ejecuta una vez que los cambios han sido
+                            aplicados con éxito en la tabla de datos. Es ideal para mantener
+                            registros de auditoría o históricos en tablas paralelas [1.8.8].</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <h2 id="pseudotablas-old-y-new-y-su-aplicación-en-la-integridad-de-datos">7.2
+                Pseudotablas OLD y NEW y su aplicación en la integridad de datos <a class="headerlink"
+                    href="#pseudotablas-old-y-new-y-su-aplicación-en-la-integridad-de-datos"
+                    title="Enlace permanente">¶</a></h2>
+            <p>Dependiendo del tipo de instrucción DML ejecutada, el cuerpo del
+                trigger tiene acceso a los valores mediante las variables
+                contextuales:</p>
+            <ul>
+                <li>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                            <pre><code>NEW: Objeto temporal que contiene los valores de las
 columnas que se están insertando o modificando. (Disponible en INSERT y
-UPDATE) [1.8.8].</code></pre></div></div></li>
-<li><blockquote>
-<p><strong>OLD:</strong> Objeto temporal que contiene los valores de las
-columnas previos a la actualización o eliminación. (Disponible en UPDATE
-y DELETE) [1.8.8].</p>
-</blockquote></li>
-</ul>
-<div class="table-wrapper"><div class="table-wrapper"><table>
-<thead>
-<tr class="header">
-<th><strong>Operación</strong></th>
-<th><strong>Acceso a NEW</strong></th>
-<th><strong>Acceso a OLD</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>INSERT</strong></td>
-<td>Sí (Lectura / Modificación en BEFORE)</td>
-<td>No</td>
-</tr>
-<tr class="header">
-<td><strong>UPDATE</strong></td>
-<td>Sí (Lectura / Modificación en BEFORE)</td>
-<td>Sí (Solo Lectura)</td>
-</tr>
-<tr class="odd">
-<td><strong>DELETE</strong></td>
-<td>No</td>
-<td>Sí (Solo Lectura)</td>
-</tr>
-</tbody>
-</table></div></div>
-<p>Ejemplo de Trigger BEFORE INSERT (Validación de stock e integridad
-referencial):</p>
-<p>Un SysAdmin debe impedir que se registre un pedido de productos de
-jardinería si no existe stock real suficiente en el inventario,
-previniendo incoherencias comerciales.</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>DELIMITER //
+UPDATE) [1.8.8].</code></pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>OLD:</strong> Objeto temporal que contiene los valores de las
+                            columnas previos a la actualización o eliminación. (Disponible en UPDATE
+                            y DELETE) [1.8.8].</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <div class="table-wrapper">
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr class="header">
+                                <th><strong>Operación</strong></th>
+                                <th><strong>Acceso a NEW</strong></th>
+                                <th><strong>Acceso a OLD</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="odd">
+                                <td><strong>INSERT</strong></td>
+                                <td>Sí (Lectura / Modificación en BEFORE)</td>
+                                <td>No</td>
+                            </tr>
+                            <tr class="header">
+                                <td><strong>UPDATE</strong></td>
+                                <td>Sí (Lectura / Modificación en BEFORE)</td>
+                                <td>Sí (Solo Lectura)</td>
+                            </tr>
+                            <tr class="odd">
+                                <td><strong>DELETE</strong></td>
+                                <td>No</td>
+                                <td>Sí (Solo Lectura)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <p>Ejemplo de Trigger BEFORE INSERT (Validación de stock e integridad
+                referencial):</p>
+            <p>Un SysAdmin debe impedir que se registre un pedido de productos de
+                jardinería si no existe stock real suficiente en el inventario,
+                previniendo incoherencias comerciales.</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>DELIMITER //
 DROP TRIGGER IF EXISTS trigger_validar_stock_before_insert//
 CREATE TRIGGER trigger_validar_stock_before_insert
 BEFORE INSERT ON detalle_pedido
@@ -702,12 +842,17 @@ SET MESSAGE_TEXT = 'OPERACIÓN RECHAZADA: Stock insuficiente para
 procesar la línea del producto.';
 END IF;
 END//
-DELIMITER ;</code></pre></div></div>Ejemplo de Trigger AFTER INSERT (Auditoría e Históricos
-automáticos):</p>
-<p>Implementaremos un disparador que nos permita registrar en tiempo
-real un log de pagos que van realizando los clientes. Primero creamos
-una tabla dedicada a centralizar las notificaciones de pagos [1.10].</p>
-<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>eroría-- Creamos la tabla de soporte técnico de notificaciones
+DELIMITER ;</code></pre>
+                </div>
+            </div>Ejemplo de Trigger AFTER INSERT (Auditoría e Históricos
+            automáticos):</p>
+            <p>Implementaremos un disparador que nos permita registrar en tiempo
+                real un log de pagos que van realizando los clientes. Primero creamos
+                una tabla dedicada a centralizar las notificaciones de pagos [1.10].</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code>eroría-- Creamos la tabla de soporte técnico de notificaciones
 CREATE TABLE IF NOT EXISTS notificaciones (
 id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 fecha_hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -725,45 +870,53 @@ de notificaciones
 INSERT INTO notificaciones (total, codigo_cliente)
 VALUES (NEW.total, NEW.codigo_cliente);
 END//
-DELIMITER ;</code></pre></div></div>8. ENLACES DE
-REFERENCIA Y DOCUMENTACIÓN OFICIAL</h1>
-<p>Para profundizar en la sintaxis procedimental avanzada, gestión de
-pilas de llamadas y optimización de ejecución del motor de rutinas
-almacenadas en MySQL 8.0, consulta los siguientes recursos del manual
-técnico oficial:</p>
-<ul>
-<li><blockquote>
-<p><a
-href="https://dev.mysql.com/doc/refman/8.0/en/stored-objects.html"><u>MySQL
-8.0 Reference Manual: Stored Objects (Procedures &amp;
-Functions)</u></a></p>
-</blockquote></li>
-<li><blockquote>
-<p><a
-href="https://dev.mysql.com/doc/refman/8.0/en/triggers.html"><u>MySQL
-8.0 Reference Manual: Trigger Syntax and Examples</u></a></p>
-</blockquote></li>
-<li><blockquote>
-<p><a
-href="https://dev.mysql.com/doc/refman/8.0/en/flow-control-statements.html"><u>MySQL
-8.0 Reference Manual: Flow Control Statements</u></a></p>
-</blockquote></li>
-<li><blockquote>
-<p><a
-href="https://dev.mysql.com/doc/refman/8.0/en/cursors.html"><u>MySQL 8.0
-Reference Manual: Cursors implementation</u></a></p>
-</blockquote></li>
-<li><blockquote>
-<p><a
-href="https://dev.mysql.com/doc/refman/8.0/en/declare-handler.html"><u>MySQL
-8.0 Reference Manual: Condition Handling and SIGNAL SQLSTATE</u></a></p>
-</blockquote></li>
-</ul>
+DELIMITER ;</code></pre>
+                </div>
+            </div>8. ENLACES DE
+            REFERENCIA Y DOCUMENTACIÓN OFICIAL</h1>
+            <p>Para profundizar en la sintaxis procedimental avanzada, gestión de
+                pilas de llamadas y optimización de ejecución del motor de rutinas
+                almacenadas en MySQL 8.0, consulta los siguientes recursos del manual
+                técnico oficial:</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p><a href="https://dev.mysql.com/doc/refman/8.0/en/stored-objects.html"><u>MySQL
+                                    8.0 Reference Manual: Stored Objects (Procedures &amp;
+                                    Functions)</u></a></p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><a href="https://dev.mysql.com/doc/refman/8.0/en/triggers.html"><u>MySQL
+                                    8.0 Reference Manual: Trigger Syntax and Examples</u></a></p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><a href="https://dev.mysql.com/doc/refman/8.0/en/flow-control-statements.html"><u>MySQL
+                                    8.0 Reference Manual: Flow Control Statements</u></a></p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><a href="https://dev.mysql.com/doc/refman/8.0/en/cursors.html"><u>MySQL 8.0
+                                    Reference Manual: Cursors implementation</u></a></p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><a href="https://dev.mysql.com/doc/refman/8.0/en/declare-handler.html"><u>MySQL
+                                    8.0 Reference Manual: Condition Handling and SIGNAL SQLSTATE</u></a></p>
+                    </blockquote>
+                </li>
+            </ul>
 
         </main>
     </div>
 
-        </main>
+    </main>
     </div>
 </body>
+
 </html>

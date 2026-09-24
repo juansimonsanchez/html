@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,903 +8,966 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
+
 <body>
     <header id="site-header">
-  <div class="header-container">
-    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>GBD &ndash; Ut3 Teoria Modelo</span></div>
-    <nav class="top-nav">
-      <a href="index.html" class="nav-btn">Inicio</a>
-    </nav>
-  </div>
-</header>
+        <div class="header-container">
+            <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo"
+                    style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>GBD
+                    &ndash; Ut3 Teoria Modelo</span></div>
+            <nav class="top-nav">
+                <a href="index.html" class="nav-btn">Inicio</a>
+            </nav>
+        </div>
+    </header>
     <div id="page-layout">
-        <main id="main-content">
-            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="GBD_UT3_Teoria_Modelo.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
-            
-    
-    
-        
-        <main id="main-content">
-            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="GBD_UT3_Teoria_Modelo.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
-            
-<header id="title-block-header">
-<h1 class="title"><p><span id="_xeobdduzzusy"
-class="anchor"></span>UNIDAD 3: </p>
-<p><span id="_c2vp4vb3qjwx" class="anchor"></span>DEL MODELO CONCEPTUAL
-AL MODELO RELACIONAL Y NORMALIZACIÓN</p></h1>
-</header>
 
-<h4 id="ficha-técnica-de-la-unidad-didáctica">FICHA TÉCNICA DE LA UNIDAD
-DIDÁCTICA <a class="headerlink" href="#ficha-técnica-de-la-unidad-didáctica" title="Enlace permanente">¶</a></h4>
-<div class="table-wrapper"><div class="table-wrapper"><table>
-<tbody>
-<tr class="header">
-<td><strong>Parámetro</strong></td>
-<td><strong>Detalle</strong></td>
-</tr>
-<tr class="odd">
-<td><strong>Unidad Didáctica</strong></td>
-<td>Unidad 3: Del Modelo Conceptual al Modelo Relacional.
-Normalización</td>
-</tr>
-<tr class="header">
-<td><strong>Resultados de Aprendizaje</strong></td>
-<td><strong>RA2</strong>: Diseña modelos lógicos normalizados
-interpretando diagramas entidad/relación.</td>
-</tr>
-<tr class="odd">
-<td><strong>Criterios de Evaluación</strong></td>
-<td>CE 2.3, CE 2.4, CE 2.5, CE 2.6, CE 2.7, CE 2.8, CE 2.9</td>
-</tr>
-<tr class="header">
-<td><strong>Tiempo Estimado</strong></td>
-<td>24 horas (distribuidas en sesiones de teoría, codificación y
-talleres de diseño)</td>
-</tr>
-</tbody>
-</table></div></div>
-<h4 id="section"> <a class="headerlink" href="#section" title="Enlace permanente">¶</a></h4>
-<h4 id="índice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#índice-de-contenidos" title="Enlace permanente">¶</a></h4>
-<p><a href="#introducción-y-contextualización"><u>1. INTRODUCCIÓN Y
-CONTEXTUALIZACIÓN</u></a></p>
-<p><a href="#el-modelo-relacional-de-edgar-f.-codd"><u>2. EL MODELO
-RELACIONAL DE EDGAR F. CODD</u></a></p>
-<blockquote>
-<p><a href="#conceptos-fundamentales"><u>2.1. Conceptos
-Fundamentales</u></a></p>
-<p><a href="#reglas-de-integridad"><u>2.2. Reglas de
-Integridad</u></a></p>
-</blockquote>
-<p><a href="#del-diagrama-er-al-modelo-relacional"><u>3. DEL DIAGRAMA
-E/R AL MODELO RELACIONAL</u></a></p>
-<blockquote>
-<p><a href="#regla-de-entidades-fuertes-y-débiles"><u>3.1. Regla de
-Entidades (Fuertes y Débiles)</u></a></p>
-<p><a href="#regla-de-relaciones-1n-uno-a-varios"><u>3.2. Regla de
-Relaciones 1:N (Uno a Varios)</u></a></p>
-<p><a href="#regla-de-relaciones-nm-varios-a-varios"><u>3.3. Regla de
-Relaciones N:M (Varios a Varios)</u></a></p>
-<p><a href="#regla-de-relaciones-11-uno-a-uno"><u>3.4. Regla de
-Relaciones 1:1 (Uno a Uno)</u></a></p>
-<p><a
-href="#relaciones-de-dependencia-existencia-e-identificación"><u>3.5.
-Relaciones de Dependencia (Existencia e Identificación)</u></a></p>
-<p><a
-href="#relaciones-de-grado-superior-relaciones-ternarias-o-grado-3"><u>3.6.
-Relaciones de Grado Superior (Relaciones Ternarias o Grado
-3)</u></a></p>
-<p><a
-href="#transformación-de-jerarquías-o-relaciones-de-herencia-isa"><u>3.7.
-Transformación de Jerarquías o Relaciones de Herencia (ISA)</u></a></p>
-<p><a href="#transformación-de-agregaciones"><u>3.8. Transformación de
-Agregaciones</u></a></p>
-</blockquote>
-<p><a href="#teoría-de-la-normalización"><u>4. TEORÍA DE LA
-NORMALIZACIÓN</u></a></p>
-<blockquote>
-<p><a href="#concepto-y-objetivos"><u>4.1. Concepto y
-Objetivos</u></a></p>
-<p><a href="#tipos-de-dependencias-funcionales"><u>4.2. Tipos de
-Dependencias Funcionales</u></a></p>
-<p><a href="#primera-forma-normal-1fn"><u>4.3. Primera Forma Normal
-(1FN)</u></a></p>
-<p><a href="#segunda-forma-normal-2fn"><u>4.4. Segunda Forma Normal
-(2FN)</u></a></p>
-<p><a href="#tercera-forma-normal-3fn"><u>4.5. Tercera Forma Normal
-(3FN)</u></a></p>
-<p><a href="#introducción-a-boyce-codd-fnbc-y-formas-superiores"><u>4.6.
-Introducción a Boyce-Codd (FNBC) y Formas Superiores</u></a></p>
-</blockquote>
-<p><a href="#casos-prácticos-de-normalización"><u>5. CASOS PRÁCTICOS DE
-NORMALIZACIÓN</u></a></p>
-<blockquote>
-<p><a href="#ejemplo-alumnado-de-un-centro"><u>5.1. Ejemplo alumnado de
-un centro</u></a></p>
-<p><a href="#órdenes-de-pedido"><u>5.2. Órdenes de pedido</u></a></p>
-<p><a href="#juguetes-infantiles"><u>5.3. Juguetes
-infantiles</u></a></p>
-</blockquote>
-<h1 id="introducción-y-contextualización">1. INTRODUCCIÓN Y
-CONTEXTUALIZACIÓN <a class="headerlink" href="#introducción-y-contextualización" title="Enlace permanente">¶</a></h1>
-<p>El diseño de bases de datos es un proceso iterativo de abstracción
-que traduce los requisitos del mundo real de una organización a
-estructuras lógicas eficientes y robustas. Esta unidad didáctica cubre
-el puente crítico entre el Modelo Conceptual (Entidad-Relación)
-—orientado al negocio y validado por el cliente— y el Modelo Lógico
-(Relacional) —orientado al sistema y matemáticamente riguroso—.</p>
-<p>Como futuros Administradores de Sistemas Informáticos en Red
-(SysAdmins), el dominio del paso de esquemas conceptuales a esquemas
-relacionales normalizados es clave. Un diseño lógico incorrecto se
-traducirá directamente en pérdida de rendimiento físico de la
-infraestructura de base de datos, problemas de concurrencia de
-transacciones y corrupción de datos (anomalías de borrado o
-actualización). Esta unidad conecta de forma directa con la Unidad 4
-(Lenguaje de Definición de Datos, DDL) y con módulos posteriores del
-ciclo como Administración de Sistemas Gestores de Bases de Datos (ASGBD)
-en segundo curso, donde la optimización de servidores MySQL/MariaDB
-dependerá del esquema lógico que hayamos construido en esta fase.</p>
-<h1 id="el-modelo-relacional-de-edgar-f.-codd">2. EL MODELO RELACIONAL
-DE EDGAR F. CODD <a class="headerlink" href="#el-modelo-relacional-de-edgar-f.-codd" title="Enlace permanente">¶</a></h1>
-<p>Creado por Edgar F. Codd en 1970 en los laboratorios de IBM, el
-modelo relacional tiene una sólida base matemática fundamentada en la
-teoría de conjuntos y el álgebra relacional.</p>
-<h2 id="conceptos-fundamentales">2.1. Conceptos Fundamentales <a class="headerlink" href="#conceptos-fundamentales" title="Enlace permanente">¶</a></h2>
-<p><strong>Relación</strong>: Conceptualmente equivale a lo que
-denominamos una tabla. Es una estructura bidimensional.</p>
-<p><strong>Tupla</strong>: Equivale a una fila o registro. Representa
-una ocurrencia o instancia concreta de la relación.</p>
-<p><strong>Atributo</strong>: Equivale a una columna o campo. Representa
-una propiedad o característica de la relación.</p>
-<p><strong>Dominio</strong>: El conjunto de valores válidos y atómicos
-que puede tomar un atributo determinado (ej. el dominio del atributo
-Edad es el conjunto de enteros positivos menores que 120).</p>
-<p><strong>Clave Candidata</strong>: Cualquier atributo o conjunto
-mínimo de atributos que permite identificar de forma unívoca cada tupla
-de la relación.</p>
-<p><strong>Clave Primaria (Primary Key - PK)</strong>: La clave
-candidata que el diseñador de la base de datos elige para identificar de
-forma unívoca las tuplas. No puede contener valores duplicados ni
-nulos.</p>
-<p><strong>Clave Ajena o Foránea (Foreign Key - FK):</strong> Atributo o
-conjunto de atributos de una tabla cuyos valores deben coincidir
-exactamente con los valores de la clave primaria de otra tabla (o de la
-misma, en caso de reflexividad). Es el mecanismo relacional para
-establecer uniones.</p>
-<h2 id="reglas-de-integridad">2.2. Reglas de Integridad <a class="headerlink" href="#reglas-de-integridad" title="Enlace permanente">¶</a></h2>
-<p>Para garantizar la consistencia de los datos, el Modelo Relacional
-impone dos reglas de integridad inviolables:</p>
-<p><strong>Integridad de la Entidad</strong>: Ningún atributo que forme
-parte de la clave primaria de una relación puede tomar un valor nulo
-(NULL). Cada tupla debe poder identificarse de forma única.</p>
-<p><strong>Integridad Referencial</strong>: Si una relación contiene una
-clave ajena, cada valor de esta clave ajena debe coincidir con un valor
-de clave primaria existente en la tabla referenciada, o bien ser
-completamente nulo (NULL) si la relación de negocio lo permite.</p>
-<h1 id="del-diagrama-er-al-modelo-relacional">3. DEL DIAGRAMA E/R AL
-MODELO RELACIONAL <a class="headerlink" href="#del-diagrama-er-al-modelo-relacional" title="Enlace permanente">¶</a></h1>
-<p>Para traducir un esquema conceptual Entidad-Relación (E-R) al modelo
-lógico relacional, se aplica un conjunto de reglas algorítmicas
-estandarizadas.</p>
-<p>Modelo Conceptual E-R</p>
-<p>▼ (Reglas de Transformación Lógica)</p>
-<p>Modelo Lógico Relacional</p>
-<p>▼ (Refinamiento de Calidad)</p>
-<p>Normalización (1FN, 2FN, 3FN)</p>
-<h2 id="regla-de-entidades-fuertes-y-débiles">3.1. Regla de Entidades
-(Fuertes y Débiles) <a class="headerlink" href="#regla-de-entidades-fuertes-y-débiles" title="Enlace permanente">¶</a></h2>
-<p><strong>Entidades Fuertes</strong>: Cada entidad fuerte genera una
-única tabla (relación). Los atributos de la entidad pasan a ser las
-columnas de la tabla. El identificador principal de la entidad se
-convierte en la Clave Primaria (PK), que se representa subrayada.</p>
-<p><img src="media_GBD_UT3_Teoria_Modelo/media/image16.png"
-style="width:3.87656in;height:1.21081in" /></p>
-<p>Ejemplo:</p>
-<blockquote>
-<p>ALUMNO(<strong><u>id</u></strong>, nombre, apellido1, apellido2, nif,
-grupo)</p>
-<p>EXAMEN_TEÓRICO(<strong><u>id</u></strong>, título, número_preguntas,
-fecha)</p>
-</blockquote>
-<p><strong>Entidades Débiles</strong>: Generan una tabla propia. Sin
-embargo, si es una entidad débil en identificación, necesita heredar la
-clave primaria de la entidad fuerte de la que depende. Esta clave
-heredada actuará en la tabla de la entidad débil como clave ajena (FK)
-y, a su vez, formará parte de la clave primaria (PK) compuesta de la
-propia entidad débil junto con su discriminador.</p>
-<h2 id="regla-de-relaciones-1n-uno-a-varios">3.2. Regla de Relaciones
-1:N (Uno a Varios) <a class="headerlink" href="#regla-de-relaciones-1n-uno-a-varios" title="Enlace permanente">¶</a></h2>
-<p>Las relaciones con cardinalidad no generan una nueva tabla por sí
-mismas. En su lugar, se realiza una propagación de clave:</p>
-<p>La clave primaria de la entidad que aporta la cardinalidad mínima se
-añade como una columna adicional en la tabla de la entidad que está en
-el lado de cardinalidad máxima. Esta columna se convierte en una Clave
-Ajena (FK) en la tabla destino.</p>
-<p>Si la relación posee atributos propios, estos atributos también se
-propagan a la tabla del lado de la cardinalidad máxima.</p>
-<p><img src="media_GBD_UT3_Teoria_Modelo/media/image15.png"
-style="width:4.62292in;height:1.628in" /></p>
-<blockquote>
-<p>USUSARIO(<strong><u>id</u></strong>, email, password, nombre,
-apellido1, apellido2)</p>
-<p>VÍDEO(<strong><u>id</u></strong>, nombre, descripción, duración,
-id_usuario) id_usuario FK de USUARIO(id)</p>
-</blockquote>
-<p><strong>Relaciones Reflexivas 1:N</strong>: El mismo principio se
-aplica cuando una entidad se relaciona consigo misma con cardinalidad .
-La clave primaria de la tabla se duplica dentro de la misma tabla con un
-rol diferente (Clave Ajena que apunta a la propia tabla).</p>
-<p><strong>Ejemplo</strong> (Jefes y Empleados):</p>
-<p><img src="media_GBD_UT3_Teoria_Modelo/media/image21.png"
-style="width:2.54323in;height:1.13364in" /></p>
-<blockquote>
-<p>EMPLEADO(<strong><u>id</u></strong>, nombre, apellido1, apellido2,
-id_jefe)</p>
-</blockquote>
-<p>Donde id_Jefe es una FK que referencia internamente a
-EMPLEADO(id).</p>
-<h2 id="regla-de-relaciones-nm-varios-a-varios">3.3. Regla de Relaciones
-N:M (Varios a Varios) <a class="headerlink" href="#regla-de-relaciones-nm-varios-a-varios" title="Enlace permanente">¶</a></h2>
-<p>Toda relación con cardinalidad (muchos a muchos) genera
-obligatoriamente una nueva tabla en el modelo relacional.</p>
-<p>La clave primaria de esta nueva tabla estará compuesta por la
-concatenación de las claves primarias de las entidades asociadas. Cada
-una de ellas actúa individualmente como clave ajena (FK).</p>
-<p>Si la relación contiene atributos propios (como fechas, cantidades,
-etc.), se añaden como columnas a esta nueva tabla.</p>
-<p>Ejemplo:</p>
-<p><img src="media_GBD_UT3_Teoria_Modelo/media/image17.png"
-style="width:4.30206in;height:1.36632in" /></p>
-<blockquote>
-<p>ALUMNO(<strong><u>id</u></strong>, nombre, apellido1, apellido2, nif,
-grupo)</p>
-<p>EXAMEN_TEÓRICO(<strong><u>id</u></strong>, título, número_preguntas,
-fecha)</p>
-<p>ALUMNO_HACE_EXAMEN_TEÓRICO(<strong><u>id_alumno,
-id_examen</u></strong>, nota) donde</p>
-<p>id_alumno FK de ALUMNO(id)</p>
-<p>id_examen FK de EXAMEN_TEÓRICO(id)</p>
-</blockquote>
-<p>Habrá casos donde los atributos de la relación también formarán parte
-de la clave primaria de la nueva tabla. Estos casos aparecerán cuando en
-la relación existan atributos de tipo fecha y sea necesario almacenar un
-histórico de las relaciones entre las dos entidades en función de las
-fechas. Estos casos también pueden resolverse añadiendo un nuevo
-identificador de tipo entero con autoincremento en lugar de utilizar una
-clave primaria compuesta por varias columnas.</p>
-<p><img src="media_GBD_UT3_Teoria_Modelo/media/image19.png"
-style="width:3.07448in;height:1.19913in" /></p>
-<blockquote>
-<p>PROVEEDOR(<strong><u>id</u></strong>, dirección, ciudad,
-provincia)</p>
-<p>PIEZA(<strong><u>id</u></strong>, nombre, color, precio)</p>
-<p>PROVEEDOR_SUMINISTRA_PIEZA(<strong><u>id_proveedor,
-id_pieza,</u></strong> fecha, cantidad)</p>
-</blockquote>
-<p>Con esta solución podemos tener un problema en el caso de que un
-proveedor nos suministre piezas con el mismo id en fechas diferentes.
-Para solucionarlo podemos incluir el atributo fecha como parte de la
-clave primaria de la tabla, de modo que la clave primaria estará
-compuesta por id_proveedor, id_pieza y fecha.</p>
-<p>PROVEEDOR_SUMINISTRA_PIEZA(i<strong><u>d_proveedor, id_pieza,
-fecha</u></strong>, cantidad)</p>
-<p>Otra forma de resolver este problema puede ser creando un nuevo
-atributo id que sea un valor numérico con autoincremento y que éste sea
-la única clave primara de la tabla. La solución sería la siguiente:</p>
-<p>PROVEEDOR_SUMINISTRA_PIEZA(<strong><u>id</u></strong>, id_proveedor,
-id_pieza, fecha_hora, cantidad)</p>
-<p><strong>Relaciones Reflexivas N:M</strong>: También generan una nueva
-tabla. Dado que las dos claves foráneas que componen la clave primaria
-apuntan a la misma tabla origen, deben renombrarse para evitar
-conflictos de nombres.</p>
-<p>Ejemplo (Vídeos relacionados entre sí):</p>
-<p><img src="media_GBD_UT3_Teoria_Modelo/media/image8.png"
-style="width:2.9651in;height:1.11842in" /></p>
-<blockquote>
-<p>VÍDEO(<strong><u>id</u></strong>, título, descripción,
-reproducciones)</p>
-<p>VÍDEOS_RELACIONADOS(<strong><u>id_video</u></strong>,
-id_video_relacionado) donde</p>
-<p>id_video, id_video_relacionado FK de VIDEO(id)</p>
-</blockquote>
-<h2 id="regla-de-relaciones-11-uno-a-uno">3.4. Regla de Relaciones 1:1
-(Uno a Uno) <a class="headerlink" href="#regla-de-relaciones-11-uno-a-uno" title="Enlace permanente">¶</a></h2>
-<p>El paso a tablas de las relaciones con cardinalidad depende de las
-cardinalidades mínimas (participación) de las entidades:</p>
-<p><strong>Participación (1,1)..(0,1)</strong>: La clave primaria de la
-entidad con participación obligatoria se propaga a la tabla de la
-entidad con participación opcional como clave ajena. De esta forma, se
-minimiza la cantidad de valores nulos (NULL) en la base de datos.</p>
-<p>Ejemplo: Un usuario tiene o no un canal de YouTube.</p>
-<p><img src="media_GBD_UT3_Teoria_Modelo/media/image12.png"
-style="width:4.72629in;height:1.3559in" /></p>
-<p>USUARIO(<strong>id</strong>, email, password, nombre, apellido1,
-apellido2)</p>
-<p>CANAL_YOUTUBE(<strong>id</strong>, nombre, descripción,
-fecha_creación, id_usuario)</p>
-<p><strong>Participación (1,1)..(1,1)</strong>: Al ser ambas
-obligatorias, podemos propagar la clave en cualquiera de los dos
-sentidos, o incluso unificar ambas entidades en una única tabla si
-comparten un ciclo de vida idéntico.</p>
-<p><img src="media_GBD_UT3_Teoria_Modelo/media/image6.png"
-style="width:3.37656in;height:1.16914in" /></p>
-<p>Opción A: Propagar clave de Presidente a País.</p>
-<blockquote>
-<p>PRESIDENTE(<strong><u>id</u></strong>, nombre, apellido1,
-apellido2)</p>
-<p>PAÍS(<strong><u>id</u></strong>, nombre, id_presidente)</p>
-</blockquote>
-<p>Opción B: Propagar clave de País a Presidente.</p>
-<blockquote>
-<p>PAÍS(<strong><u>id</u></strong>, nombre)</p>
-<p>PRESIDENTE(<strong><u>id</u></strong>, nombre, apellido1, apellido2,
-id_país)</p>
-</blockquote>
-<p>Opción C: Propagar cada clave a la otra tabla</p>
-<blockquote>
-<p>PRESIDENTE(<strong><u>id</u></strong>, nombre, apellido1, apellido2,
-id_país)</p>
-<p>PAÍS(<strong><u>id</u></strong>, nombre, id_presidente)</p>
-</blockquote>
-<p><strong>Participación (0,1)..(0,1):</strong> En este caso de alta
-opcionalidad por ambas partes, se recomienda crear una nueva tabla para
-la relación para evitar tener un volumen masivo de registros con campos
-a valor NULL. La clave primaria de esta tabla será una de las dos claves
-importadas.</p>
-<p><img src="media_GBD_UT3_Teoria_Modelo/media/image7.png"
-style="width:3.32968in;height:1.40296in" /></p>
-<blockquote>
-<p>ALQUILER(<strong><u>id</u></strong>, fecha_inicio, fecha_fin,
-importe, fianza)</p>
-<p>ALQUILER_RENUEVA_ALQUILER(<strong><u>id_alquiler</u></strong>,
-id_alquiler_anterior)</p>
-</blockquote>
-<h2 id="relaciones-de-dependencia-existencia-e-identificación">3.5.
-Relaciones de Dependencia (Existencia e Identificación) <a class="headerlink" href="#relaciones-de-dependencia-existencia-e-identificación" title="Enlace permanente">¶</a></h2>
-<p><strong>Dependencia en Existencia</strong>: Se comporta como una
-relación normal. Sin embargo, se debe configurar una restricción física
-de borrado en cascada (ON DELETE CASCADE) en el motor de la base de
-datos para que al suprimir el registro padre se elimine el registro
-dependiente de forma automática.</p>
-<p><strong>Dependencia en Identificación:</strong> Ocurre con entidades
-débiles cuyos registros no pueden identificarse sin la clave del padre.
-La clave de la entidad fuerte pasa a la tabla de la entidad débil como
-foránea y, simultáneamente, forma parte de la clave primaria de
-esta.</p>
-<p>Ejemplo (Cursos y Grupos):<img
-src="media_GBD_UT3_Teoria_Modelo/media/image1.png"
-style="width:1.91991in;height:1.96354in" /></p>
-<p>CURSO (<strong><u>Cod_Curso</u></strong>, Num_Curso,
-Nivel_Educativo)</p>
-<p>GRUPO (<strong><u>Letra, Cod_Curso)</u></strong></p>
-<h2
-id="relaciones-de-grado-superior-relaciones-ternarias-o-grado-3">3.6.
-Relaciones de Grado Superior (Relaciones Ternarias o Grado 3) <a class="headerlink" href="#relaciones-de-grado-superior-relaciones-ternarias-o-grado-3" title="Enlace permanente">¶</a></h2>
-<p>Siempre que sea posible en el análisis, es recomendable
-descomponerlas en relaciones binarias. Si es estrictamente necesario
-mantener la relación de grado 3, su transformación depende de sus
-cardinalidades máximas:</p>
-<p><strong>Cardinalidad N:N:N</strong>: Genera una nueva tabla. Su clave
-primaria es compuesta, formada por la concatenación de las claves
-primarias de las tres entidades involucradas.</p>
-<p><img src="media_GBD_UT3_Teoria_Modelo/media/image13.png"
-style="width:4.42188in;height:1.86279in" /></p>
-<p><strong>Cardinalidad 1:N:N</strong>: En este caso creamos una tabla.
-La clave primaria de la nueva tabla estará formada por las dos claves de
-las entidades que participan como N en la relación.</p>
-<p><strong>Cardinalidad 1:1:N:</strong> En este caso no es necesario
-crear una tabla. La entidad que participa como N recibe las claves de
-las dos entidades que participan como 1.</p>
-<h2 id="transformación-de-jerarquías-o-relaciones-de-herencia-isa">3.7.
-Transformación de Jerarquías o Relaciones de Herencia (ISA) <a class="headerlink" href="#transformación-de-jerarquías-o-relaciones-de-herencia-isa" title="Enlace permanente">¶</a></h2>
-<p>Existen varias soluciones para realizar el paso a tablas de una
-especialización. La solución que se elija en cada caso dependerá del
-tipo de especialización que estemos resolviendo: total, parcial,
-inclusiva o exclusiva.</p>
-<p>Las 3 soluciones posibles que podemos aplicar son las siguientes:</p>
-<ol type="1">
-<li><blockquote>
-<p>Crear una única tabla para la superclase. En este caso todos los
-atributos de las subclases se guardarán en la superclase.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Crear una tabla sólo para las subclases. En este caso los atributos
-de la superclase habría que guardarlos en cada una de las subclases.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Crear una tabla para cada una de las entidades, tanto para la
-superclase como las subclases.</p>
-</blockquote></li>
-</ol>
-<p>En este caso las subclases tendrían que guardar la clave de la
-primaria de la superclase.</p>
-<p><strong>Ejemplo de especialización exclusiva/total</strong></p>
-<p><img src="media_GBD_UT3_Teoria_Modelo/media/image18.png"
-style="width:2.28384in;height:2.06424in" /></p>
-<p>En este caso sería adecuado utilizar la solución 2 o 3. También sería
-posible utilizar la <strong>solución 1</strong>, pero al tratarse de una
-especialización exlusiva, tendríamos muchas columnas con valores NULL
-.</p>
-<p><strong>Solución 2:</strong> Crear una tabla sólo para las
-subclases.</p>
-<p>EPISODIO(<strong><u>id</u></strong>, título, sinopsis, imagen,
-archivo_vídeo, duración temporada, número)</p>
-<p>PELÍCULA(<strong><u>id</u></strong>, título, sinopsis, imagen,
-archivo_vídeo, duración puntuación_imdb, director)</p>
-<p><strong>Solución 3</strong>: Crear una tabla para cada una de las
-entidades.</p>
-<p>VÍDEO(<strong><u>id</u></strong>, título, sinopsis, imagen,
-archivo_vídeo, duración, tipo)</p>
-<p>EPISODIO(<strong><u>id</u></strong>, temporada, número)</p>
-<p>PELÍCULA(<strong><u>id</u></strong>, puntuación_imdb, director)</p>
-<p><strong>Ejemplo de especialización inclusiva/total</strong></p>
-<p><img src="media_GBD_UT3_Teoria_Modelo/media/image27.png"
-style="width:3.22429in;height:2.58507in" /></p>
-<p>En este caso podríamos utilizar cualquiera de las tres soluciones,
-dependerá del contexto del ejercicio y de cómo se relacionan estas
-entidades con el resto de entidades del diagrama.</p>
-<p><strong>Solución 1</strong>. Crear una única tabla para la
-superclase.</p>
-<p>LIBRO(<strong><u>id</u></strong>, título, isbn, año_publicación,
-descripción, tipo, lugar_impresión, fecha_impresión,</p>
-<p>precio_papel, tamaño_archivo, precio_ebook)</p>
-<p><strong>Solución 2</strong>: Crear una tabla sólo para las
-subclases.</p>
-<p>LIBRO_PAPEL(<strong><u>id</u></strong>, título, isbn,
-año_publicación, descripción, lugar_impresión,</p>
-<p>fecha_impresión, precio)</p>
-<p>LIBRO_EBOOK(<strong><u>id</u></strong>, título, isbn,
-año_publicación, descripción, tamaño_archivo, precio)</p>
-<p><strong>Solución 3</strong>: Crear una tabla para cada una de las
-entidades.</p>
-<p>LIBRO(<strong><u>id</u></strong>, título, isbn, año_publicación,
-descripción, tipo)</p>
-<p>LIBRO_PAPEL(<strong><u>id</u></strong>, fecha_impresión, precio) id:
-FK de LIBRO(id)</p>
-<p>LIBRO_EBOOK(<strong><u>id</u></strong>, tamaño_archivo, precio) id:
-FK de LIBRO(id)</p>
-<p>Existen cuatro alternativas de diseño físico para implementar la
-especialización en bases de datos relacionales. La elección dependerá de
-si la herencia es total o parcial, y exclusiva o solapada:</p>
-<p><strong>Caso 1 (Tres tablas independientes vinculadas)</strong>: Se
-crea una tabla para la superclase y otra para cada subclase. Las tablas
-de las subclases heredan la PK de la superclase como su propia PK y
-clave ajena a la vez. Es ideal para jerarquías solapadas y con gran
-cantidad de atributos específicos.</p>
-<p><strong>Caso 2 (Tablas de subclase únicamente):</strong> Desaparece
-la superclase. Se crea una tabla para cada subclase que contiene tanto
-los atributos propios de la subclase como todos los atributos de la
-superclase. Solo es aplicable si la especialización es total (cobertura
-completa).</p>
-<p><strong>Caso 3 (Tabla única con discriminante de tipo):</strong> Se
-unifica todo en una única tabla que incluye los atributos de la
-superclase y de todas las subclases. Se añade un campo "Tipo" que actúa
-como discriminante. Genera campos NULL en los registros para los
-atributos que no pertenecen a su tipo, pero es la opción más rápida para
-consultas. Muy recomendable para especializaciones exclusivas.</p>
-<p><strong>Caso 4 (Tabla única con flags booleanos)</strong>: Similar al
-caso anterior, pero sustituyendo el campo "Tipo" por campos de
-verificación booleanos (EsDirectivo, EsTecnico, etc.). Es la forma
-óptima de aplanar jerarquías de tipo solapado (donde una tupla puede
-pertenecer a más de una subclase a la vez).</p>
-<h2 id="transformación-de-agregaciones">3.8. Transformación de
-Agregaciones <a class="headerlink" href="#transformación-de-agregaciones" title="Enlace permanente">¶</a></h2>
-<p>Una agregación se genera cuando una relación no puede vincularse
-directamente a otra entidad, sino que debe hacerlo contra una relación
-ya establecida. Se resuelve creando la tabla de la relación base y,
-posteriormente, la tabla de la segunda relación importará la clave
-primaria compuesta de la primera.</p>
-<h1 id="teoría-de-la-normalización">4. TEORÍA DE LA NORMALIZACIÓN  <a class="headerlink" href="#teoría-de-la-normalización" title="Enlace permanente">¶</a></h1>
-<h2 id="concepto-y-objetivos">4.1. Concepto y Objetivos <a class="headerlink" href="#concepto-y-objetivos" title="Enlace permanente">¶</a></h2>
-<p>La normalización es un proceso formal de refinamiento que se aplica a
-las tablas obtenidas en el diseño relacional para asegurar su calidad y
-robustez. Su objetivo prioritario es optimizar el almacenamiento
-eliminando redundancias y previniendo anomalías lógicas durante las
-operaciones de base de datos.</p>
-<p>Anomalías Comunes en Diseños No Normalizados:</p>
-<ul>
-<li><blockquote>
-<p><strong>Anomalía de Inserción</strong>: Imposibilidad de añadir datos
-debido a la ausencia de otros datos relacionados (ej. no poder registrar
-los datos de un nuevo proveedor en la base de datos hasta que este no
-nos suministre el primer producto).</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Anomalía de Borrado</strong>: Pérdida accidental de
-información crítica al eliminar un registro (ej. al borrar la última
-compra de un artículo, perder por completo la dirección física y el
-teléfono del proveedor que lo suministró).</p>
-</blockquote></li>
-<li><blockquote>
-<p><strong>Anomalía de Actualización</strong>: Inconsistencia de datos
-provocada por la redundancia. Si un dato duplicado cambia, debe
-actualizarse en múltiples tuplas; de lo contrario, la base de datos
-queda en un estado inconsistente y contradictorio.</p>
-</blockquote></li>
-</ul>
-<p>En la práctica, si la BD se ha diseñado haciendo uso de modelos
-semánticos como el modelo E-R no suele ser necesaria la normalización.
-Por otro lado si nos proporcionan una base de datos creada sin realizar
-un diseño previo, es muy probable que necesitemos normalizar.</p>
-<p>En la teoría de bases de datos relacionales, las formas normales (FN)
-proporcionan los criterios para determinar el grado de vulnerabilidad de
-una tabla a inconsistencias y anomalías lógicas. Cuanto más alta sea la
-forma normal aplicable a una tabla, menos vulnerable será a
-inconsistencias y anomalías. <img
-src="media_GBD_UT3_Teoria_Modelo/media/image25.png"
-style="width:1.87292in;height:1.87292in" /></p>
-<p>Edgar F. Codd originalmente definió las tres primeras formas normales
-(1FN, 2FN, y 3FN) en 1970. Estas formas normales se han resumido de
-forma que todos los atributos sean atómicos, dependan de la clave
-completa y en forma directa (no transitiva).</p>
-<p>La forma normal de Boyce-Codd (FNBC) fue introducida en 1974 por los
-dos autores que aparecen en su denominación. Las cuarta y quinta formas
-normales (4FN y 5FN) se ocupan específicamente de la representación de
-las relaciones muchos a muchos y uno a muchos entre los atributos y
-fueron introducidas por Fagin en 1977 y 1979 respectivamente.</p>
-<h2 id="tipos-de-dependencias-funcionales">4.2. Tipos de Dependencias
-Funcionales <a class="headerlink" href="#tipos-de-dependencias-funcionales" title="Enlace permanente">¶</a></h2>
-<p>El análisis de normalización se basa en el comportamiento de los
-atributos de una tabla.</p>
-<p>Dependencia Funcional (DF): Se representa como A -&gt; B . Significa
-que el atributo (o conjunto de atributos) depende funcionalmente de A si
-para cada valor de A existe un único valor posible de B.</p>
-<p>Ejemplo: PRODUCTOS (<strong><u>CódigoProducto</u></strong>, Nombre,
-Precio, Descripción)</p>
-<p>CódigoProducto —&gt; Nombre, puesto que un código de producto solo
-puede tener asociado un único nombre, dicho de otro modo, a través del
-código de producto se localiza un único nombre.</p>
-<p>Dependencia Funcional Completa (DFC): Se denota como A ⇒ B . Ocurre
-cuando el atributo depende funcionalmente de un atributo compuesto
-(formado por varios campos, como una clave compuesta) y no depende de
-ningún subconjunto propio de A.</p>
-<p>Ejemplo: En la tabla de compras (Cod_Producto, Cod_Proveedor) -&gt;
-Cantidad es completa, pero (Cod_Producto, Cod_Proveedor) -&gt;
-Descripcion_Producto no lo es, ya que Descripcion_Producto depende
-únicamente de Cod_Producto.</p>
-<p>Dependencia Funcional Transitiva (DFT): Si tenemos tres atributos de
-una tabla tales que se cumple que A -&gt; B y B -&gt; C (con B no
-implicando a A), entonces se dice que A tiene una dependencia transitiva
-respecto a C, A - -&gt; C a través de B ( de forma indirecta).</p>
-<p>Ejemplo:</p>
-<p>PRODUCTOS (<strong><u>CódigoProducto</u></strong>, Nombre,
-Fabricante, País)</p>
-<p>CódigoProducto -&gt; Fabricante</p>
-<p>Fabricante -&gt; País</p>
-<p>CódigoProduct - -&gt; País, es decir, CódigoProducto depende
-transitivamente de País.</p>
-<h2 id="primera-forma-normal-1fn">4.3. Primera Forma Normal (1FN) <a class="headerlink" href="#primera-forma-normal-1fn" title="Enlace permanente">¶</a></h2>
-<p>Una relación se encuentra en 1FN si y solo si todos los valores de
-los dominios de sus atributos son atómicos (elementales, indivisibles y
-únicos). Se prohíbe terminantemente la existencia de atributos
-multivaluados o colecciones repetidas de datos en una sola celda.</p>
-<p><img src="media_GBD_UT3_Teoria_Modelo/media/image26.png"
-style="width:6.26772in;height:2.19444in" /></p>
-<p>Algoritmo de Transformación a 1FN:</p>
-<ul>
-<li><blockquote>
-<p>Eliminar el grupo repetitivo o campo multivaluado de la tabla
-principal.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Crear una nueva relación independiente que contenga el atributo
-multivaluado atomizado (un único número o elemento por fila).</p>
-</blockquote></li>
-<li><blockquote>
-<p>Vincular ambas relaciones propagando la clave primaria de la tabla
-base como clave ajena en la nueva tabla. La nueva clave primaria será la
-concatenación de la clave del padre y el propio atributo atómico.</p>
-</blockquote></li>
-</ul>
-<h2 id="segunda-forma-normal-2fn">4.4. Segunda Forma Normal (2FN) <a class="headerlink" href="#segunda-forma-normal-2fn" title="Enlace permanente">¶</a></h2>
-<p>Una relación se encuentra en 2FN si cumple la 1FN y, además, todos
-los atributos que no forman parte de la clave primaria tienen
-dependencia funcional completa de la clave primaria. No se permiten
-dependencias parciales de un subconjunto de una clave primaria
-compuesta.</p>
-<p>Si una tabla en 1FN tiene una clave primaria simple (formada por un
-único campo), automáticamente se encuentra en 2FN. El análisis de 2FN
-solo tiene sentido técnico ante claves primarias compuestas.</p>
-<p>Algoritmo de Transformación a 2FN:</p>
-<ul>
-<li><blockquote>
-<p>Identificar los atributos que tienen dependencia parcial de una
-sección de la clave compuesta.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Extraer esos campos de la tabla base y llevarlos a una nueva tabla
-independiente.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Establecer como clave de la nueva tabla la sección de la clave
-compuesta de la cual dependían. Mantener el campo en la tabla original
-únicamente si es clave ajena de relación.</p>
-</blockquote></li>
-</ul>
-<h2 id="tercera-forma-normal-3fn">4.5. Tercera Forma Normal (3FN) <a class="headerlink" href="#tercera-forma-normal-3fn" title="Enlace permanente">¶</a></h2>
-<p>Una relación se encuentra en 3FN si cumple la 2FN y, además, ningún
-atributo que no sea clave depende de forma transitiva de la clave
-primaria. Todos los campos que no son clave deben depender única,
-directa y exclusivamente de la clave primaria.</p>
-<p>Algoritmo de Transformación a 3FN:</p>
-<ul>
-<li><blockquote>
-<p>Identificar el atributo intermedio () que actúa como determinante del
-campo dependiente transitivo ().</p>
-</blockquote></li>
-<li><blockquote>
-<p>Extraer los atributos y de la tabla base.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Crear una nueva tabla donde sea la Clave Primaria y sea el atributo
-dependiente.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Mantener el atributo en la tabla original actuando como Clave Ajena
-(FK) para poder recomponer la relación mediante consultas de composición
-(JOIN).</p>
-</blockquote></li>
-</ul>
-<h2 id="introducción-a-boyce-codd-fnbc-y-formas-superiores">4.6.
-Introducción a Boyce-Codd (FNBC) y Formas Superiores <a class="headerlink" href="#introducción-a-boyce-codd-fnbc-y-formas-superiores" title="Enlace permanente">¶</a></h2>
-<p><strong>Forma Normal de Boyce-Codd (FNBC)</strong>: Es una versión
-más rigurosa de la 3FN. Exige que el modelo esté en 3FN y que, además,
-cualquier determinante funcional de la tabla sea una clave candidata.
-Solo se analiza en tablas con claves compuestas solapadas.</p>
-<p><strong>Cuarta Forma Normal (4FN):</strong> Se ocupa de eliminar
-redundancias causadas por dependencias multivaluadas independientes (ej.
-si un alumno estudia asignaturas y practica deportes, y no hay relación
-entre las asignaturas y los deportes, se deben separar en dos tablas
-distintas: Alumno_Asignaturas y Alumno_Deportes).</p>
-<p><strong>Quinta Forma Normal (5FN)</strong>: Trata sobre dependencias
-de unión y descomposiciones cíclicas complejas que no se pueden
-reconstruir sin pérdida a menos que se dividan en tres o más tablas
-relacionadas en bucle.</p>
-<h1 id="casos-prácticos-de-normalización">5. CASOS PRÁCTICOS DE
-NORMALIZACIÓN  <a class="headerlink" href="#casos-prácticos-de-normalización" title="Enlace permanente">¶</a></h1>
-<h2 id="ejemplo-alumnado-de-un-centro">5.1. Ejemplo alumnado de un
-centro  <a class="headerlink" href="#ejemplo-alumnado-de-un-centro" title="Enlace permanente">¶</a></h2>
-<p>Supongamos que tenemos la siguiente tabla con datos de alumnado de un
-centro de enseñanza secundaria.</p>
-<p><img src="media_GBD_UT3_Teoria_Modelo/media/image5.png"
-style="width:6.14105in;height:1.30482in" /></p>
-<p><strong>IMPORTANTE</strong>: En algunos casos nos darán una tabla con
-la información y en otros casos, nos darán las relaciones o tablas
-(nombre, clave y atributos). En cualquier caso tendremos que analizar
-los datos para identificar qué datos dependen de qué datos.</p>
-<p>Como se puede observar, esta tabla no está en 1FN puesto que el campo
-Teléfonos contiene varios datos dentro de una misma celda y por tanto no
-es un campo cuyos valores sean atómicos. La solución sería la
-siguiente:</p>
-<p><img src="media_GBD_UT3_Teoria_Modelo/media/image14.png"
-style="width:6.27843in;height:1.32292in" /></p>
-<p><img src="media_GBD_UT3_Teoria_Modelo/media/image11.png"
-style="width:1.30092in;height:1.41767in" /></p>
-<p>Una Relación está en 2FN si y sólo si está en 1FN y todos los
-atributos que no forman parte de la Clave Principal tienen dependencia
-funcional completa de ella. Seguimos con esta tabla</p>
-<p><img src="media_GBD_UT3_Teoria_Modelo/media/image4.png"
-style="width:6.15104in;height:1.22612in" /></p>
-<p>Vamos a examinar las dependencias funcionales. El gráfico que las
-representa es el siguiente:</p>
-<p><img src="media_GBD_UT3_Teoria_Modelo/media/image24.png"
-style="width:4.58505in;height:1.94983in" /></p>
-<ul>
-<li><blockquote>
-<p>Siempre que aparece un DNI aparecerá el Nombre correspondiente y la
-LocalidadAlumno correspondiente. Por tanto DNI→Nombre y
-DNI→LocalidadAlumno. Por otro lado siempre que aparece un Curso
-aparecerá el Tutor correspondiente. Por tanto Curso→Tutor. Los atributos
-Nombre y LocalidadAlumno no dependen funcionalmente de Curso, y el
-atributo Tutor no depende funcionalmente de DNI.</p>
-</blockquote></li>
-</ul>
-<blockquote>
-<p>El único atributo que sí depende de forma completa de la clave
-compuesta DNI y Curso es FechaMatrícula: (DNI,Curso)→FechaMatrícula.</p>
-</blockquote>
-<ul>
-<li><blockquote>
-<p>A la hora de establecer la Clave Primaria de una tabla debemos
-escoger un atributo o conjunto de ellos de los que dependan
-funcionalmente el resto de atributos. Además debe ser una dependencia
-funcional completa. Si escogemos DNI como clave primaria, tenemos un
-atributo (Tutor) que no depende funcionalmente de él. Si escogemos Curso
-como clave primaria, tenemos otros atributos que no dependen de él.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Si escogemos la combinación (DNI, Curso) como clave primaria,
-entonces sí tenemos todo el resto de atributos con dependencia funcional
-respecto a esta clave. Pero es una dependencia parcial, no total (salvo
-FechaMatrícula, donde sí existe dependencia completa). Por tanto esta
-tabla no está en 2FN. La solución sería la siguiente:</p>
-</blockquote></li>
-</ul>
-<p><img src="media_GBD_UT3_Teoria_Modelo/media/image3.png"
-style="width:6.26772in;height:1.44444in" /></p>
-<p>Una Relación está en 3FN si y sólo si está en 2FN y no existen
-dependencias transitivas. Todas las dependencias funcionales deben ser
-respecto a la clave principal.</p>
-<p>Seguimos con el ejemplo anterior.Trabajaremos con la siguiente
-tabla:</p>
-<p><img src="media_GBD_UT3_Teoria_Modelo/media/image2.png"
-style="width:2.47062in;height:1.23958in" /></p>
-<p>Las dependencias funcionales existentes son las siguientes. Como
-podemos observar existe una dependencia funcional transitiva:
-DNI→Localidad→Provincia</p>
-<p><img src="media_GBD_UT3_Teoria_Modelo/media/image23.png"
-style="width:3.03906in;height:0.8906in" /></p>
-<p>Para que la tabla esté en 3FN, no pueden existir dependencias
-funcionales transitivas. Para solucionar el problema deberemos crear una
-nueva tabla. El resultado es:</p>
-<p><img src="media_GBD_UT3_Teoria_Modelo/media/image9.png"
-style="width:3.83537in;height:1.06875in" /></p>
-<p>¿Te atreverías a obtener el diagrama E/R que daría lugar a este paso
-a tablas?</p>
-<h2 id="órdenes-de-pedido">5.2. Órdenes de pedido <a class="headerlink" href="#órdenes-de-pedido" title="Enlace permanente">¶</a></h2>
-<p>Para explicar con un ejemplo en qué consiste cada una de las reglas,
-vamos a considerar los datos de la siguiente tabla.</p>
-<p>ORDENES (<strong>id_orden</strong>, fecha, id_cliente, nom_cliente,
-estado, num_art, nom_art, cant, precio)</p>
-<p><img src="media_GBD_UT3_Teoria_Modelo/media/image20.png"
-style="width:6.26772in;height:1.33333in" /></p>
-<p>(1FN) Al examinar estos registros, podemos darnos cuenta que
-contienen un grupo repetido para NUM_ART, NOM_ART, CANT y PRECIO. La 1FN
-prohíbe los grupos repetidos, por lo tanto tenemos que convertir a la 1ª
-FN.</p>
-<p><strong>IMPORTANTE</strong>: En este caso no vemos atributos
-multivaluados, pero lo que sí se puede observar es que existen grupos de
-datos repetidos, es decir, que para una clave id_orden tenemos varios
-registros con NUM_ART, NOM_ART, CANT y PRECIO distintos, un grupo de
-valores. Lo tenemos considerar como los multivaluados.</p>
-<p>En este caso podemos pensar que la clave no ha sido escogida de forma
-correcta y por tanto tenemos que seguir los siguientes pasos:</p>
-<ul>
-<li><blockquote>
-<p>Eliminar los grupos repetidos.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Tenemos que crear una nueva tabla con la PK de la tabla base y el
-grupo repetido.</p>
-</blockquote></li>
-</ul>
-<p>Los registros quedan ahora conformados en dos tablas que llamaremos
-ORDENES y ARTICULOS_ORDENES.</p>
-<blockquote>
-<p>ORDENES (<strong>id_orden</strong>, fecha, id_cliente, nom_cliente,
-estado)</p>
-<p>ARTICULOS_ORDENES (i<strong>d_orden (FK)</strong>,
-<strong>num_art,</strong> nom_art, cant, precio)</p>
-</blockquote>
-<p>(2FN) Ahora procederemos a aplicar la 2ª FN, es decir, tenemos que
-eliminar cualquier columna no clave que no dependa de la clave primaria
-de la tabla. Los pasos a seguir son:</p>
-<ul>
-<li><blockquote>
-<p>Determinar cuáles columnas que no son clave no dependen de la clave
-primaria de la tabla.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Eliminar esas columnas de la tabla base.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Crear una segunda tabla con esas columnas y la(s) columna(s) de la PK
-de la cual dependen.</p>
-</blockquote></li>
-</ul>
-<p>La tabla ORDENES está en 2FN. Cualquier valor único de ID_ORDEN
-determina un sólo valor para cada columna. Por lo tanto, todas las
-columnas son dependientes de la llave primaria ID_ORDEN.</p>
-<p>Por su parte, la tabla ARTICULOS_ORDENES no se encuentra en 2FN ya
-que las columnas PRECIO y NOM_ART son dependientes de NUM_ART, pero no
-son dependientes de ID_ORDEN. Lo que haremos a continuación es eliminar
-estas columnas de la tabla ARTICULOS_ORDENES y crear una tabla ARTICULOS
-con dichas columnas y la llave primaria de la que dependen.</p>
-<blockquote>
-<p>ARTICULOS_ORDENES (<strong>id_orden, num_art</strong>, cant)</p>
-<p>ARTICULOS (<strong>num_art</strong>, nom_art, precio)</p>
-</blockquote>
-<p>(3FN) La 3ª FN nos dice que tenemos que eliminar cualquier columna no
-llave que sea dependiente de otra columna no llave. Los pasos a seguir
-son:</p>
-<ul>
-<li><blockquote>
-<p>Determinar las columnas que son dependientes de otra columna no
-llave.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Eliminar esas columnas de la tabla base.</p>
-</blockquote></li>
-<li><blockquote>
-<p>Crear una segunda tabla con esas columnas y con la columna no llave
-de la cual son dependientes.</p>
-</blockquote></li>
-</ul>
-<blockquote>
-<p>ORDENES (<strong>id_orden</strong>, fecha, id_cliente, nom_cliente,
-estado) OJO!!!</p>
-<p>ARTICULOS_ORDENES (<strong>id_orden, num_art</strong>, cant) Si
-está</p>
-<p>ARTICULOS (<strong>num_art</strong>, nom_art, precio) Si está</p>
-</blockquote>
-<p>Al observar las tablas que hemos creado, nos damos cuenta que tanto
-la tabla ARTICULOS, como la tabla ARTICULOS_ORDENES se encuentran en
-3FN.</p>
-<p>Sin embargo la tabla ORDENES no lo está, ya que NOM_CLIENTE y ESTADO
-son dependientes de ID_CLIENTE, y esta columna no es la llave
-primaria.</p>
-<p>Para normalizar esta tabla, moveremos las columnas no llave y la
-columna llave de la cual dependen dentro de una nueva tabla
-CLIENTES.</p>
-<p>Las nuevas tablas CLIENTES y ORDENES se muestran a continuación.</p>
-<blockquote>
-<p>ORDENES (<strong>id_orden</strong>, fecha, id_cliente (fk))</p>
-<p>CLIENTES (<strong>id_cliente</strong>, nom_cliente, estado)</p>
-</blockquote>
-<p>Finalmente, de la tabla inicial:</p>
-<p>ORDENES (<strong>id_orden</strong>, fecha, id_cliente, nom_cliente,
-estado, num_art, nom_art, cant, precio)</p>
-<p>Hemos obtenido lo siguiente:</p>
-<blockquote>
-<p><img src="media_GBD_UT3_Teoria_Modelo/media/image22.png"
-style="width:3.34167in;height:1.33667in" /></p>
-</blockquote>
-<p>¿Te atreverías a obtener el diagrama E/R que daría lugar a este paso
-a tablas?</p>
-<h2 id="juguetes-infantiles">5.3. Juguetes infantiles <a class="headerlink" href="#juguetes-infantiles" title="Enlace permanente">¶</a></h2>
-<p>La empresa Laberinto S.L. dedicada a los juguetes infantiles tiene
-una hoja de cálculo de Excel con una tabla en la que recoge los pedidos
-que efectúa a los proveedores. En una misma fila de la hoja de cálculo
-incluye todos los productos que se hayan solicitado en ese pedido.</p>
-<p><strong>Supuesto</strong>: Recuerda que el enunciado te indica que en
-un mismo pedido puede haber más de un producto y por tanto más de un
-precio y más de una cantidad (un valor por cada producto incluido en el
-pedido).</p>
-<p><strong>Consejo</strong>: si en algún momento no tienes claro algún
-apartado de la tabla o alguna indicación que te de el enunciado pon un
-ejemplo con datos inventados, normalmente el ver una tabla rellena con
-los valores de los atributos aclara mucho al buscar las
-dependencias.</p>
-<p>Realiza los pasos necesarios para normalizar la tabla anterior hasta
-·3FN.</p>
-<p><strong>PEDIDO</strong> (Número_Pedido, Fecha_Pedido, Cod_Proveedor,
-Nombre_proveedor, Dirección_Proveedor, Referencia_Producto,
-Nombre_Producto, Precio_Producto, PEDIDOCantidad_Producto)</p>
-<p>No está en 1FN ya que existen grupos repetitivos.</p>
-<p><strong>Pedido</strong> (<strong>Número_Pedido</strong>,
-Fecha_Pedido, Cod_Proveedor, Nombre_proveedor, Dirección_Proveedor)
-estaría en 1FN ya que no hay grupo de valores repetidos.</p>
-<p><strong>Producto_pedido</strong> (<strong>Número pedido(FK),
-Referencia_Producto</strong>, cantidad_producto, precio_producto,
-Nombre_Producto) estaría en 1FN ya que no hay grupo de valores
-repetidos.</p>
-<p>La primera tabla está en 2FN ya que no tiene clave compuesta</p>
-<p>La segunda no está en 2FN ya que tiene clave compuesta y hay
-atributos que depende de parte de la clave.</p>
-<p>Obtenemos las siguientes tablas:</p>
-<p><em><strong>Pedido</strong></em> (<strong>Número_Pedido</strong>,
-Fecha_Pedido, Cod_Proveedor, Nombre_proveedor,
-Dirección_Proveedor)<br />
-<em><strong>Producto_pedido</strong></em> (<strong>Número pedido(FK),
-Referencia_Producto (FK),</strong> cantidad_producto)<br />
-<em><strong>Producto</strong></em> (<strong>Referencia
-producto</strong>, nombre_producto, precio_producto)</p>
-<p>Analizamos si están en 3FN y solo la tabla pedido no está en 3FN
-porque los datos del proveedor no dependen del numero_pedido sino de
-cod_proveedor (existe dependencia transitiva). Por tanto obtenemos,
-sacando los datos que dependen de cod_proveedor:</p>
-<p><strong>Pedido</strong> (<strong>Número_Pedido</strong>,
-Fecha_Pedido, codigo_proveedor (FK))<br />
-<strong>Proveedor</strong> (<strong>Codigo_proveedor</strong>,
-nombre_proveedor, dirección_proveedor)<br />
-<strong>Producto_pedido</strong> (<strong>Número pedido(FK),
-Referencia_Producto (FK)</strong>, cantidad_producto)<br />
-<strong>Producto</strong> (<strong>Referencia producto</strong>,
-nombre_producto, precio_producto)</p>
+
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a
+                    href="GBD_UT3_Teoria_Modelo.pdf" download
+                    style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥
+                    Descargar PDF</a></div>
+
+            <header id="title-block-header">
+                <h1 class="title">
+                    <p><span id="_xeobdduzzusy" class="anchor"></span>UNIDAD 3: </p>
+                    <p><span id="_c2vp4vb3qjwx" class="anchor"></span>DEL MODELO CONCEPTUAL
+                        AL MODELO RELACIONAL Y NORMALIZACIÓN</p>
+                </h1>
+            </header>
+
+            <h4 id="ficha-técnica-de-la-unidad-didáctica">FICHA TÉCNICA DE LA UNIDAD
+                DIDÁCTICA <a class="headerlink" href="#ficha-técnica-de-la-unidad-didáctica"
+                    title="Enlace permanente">¶</a></h4>
+            <div class="table-wrapper">
+                <div class="table-wrapper">
+                    <table>
+                        <tbody>
+                            <tr class="header">
+                                <td><strong>Parámetro</strong></td>
+                                <td><strong>Detalle</strong></td>
+                            </tr>
+                            <tr class="odd">
+                                <td><strong>Unidad Didáctica</strong></td>
+                                <td>Unidad 3: Del Modelo Conceptual al Modelo Relacional.
+                                    Normalización</td>
+                            </tr>
+                            <tr class="header">
+                                <td><strong>Resultados de Aprendizaje</strong></td>
+                                <td><strong>RA2</strong>: Diseña modelos lógicos normalizados
+                                    interpretando diagramas entidad/relación.</td>
+                            </tr>
+                            <tr class="odd">
+                                <td><strong>Criterios de Evaluación</strong></td>
+                                <td>CE 2.3, CE 2.4, CE 2.5, CE 2.6, CE 2.7, CE 2.8, CE 2.9</td>
+                            </tr>
+                            <tr class="header">
+                                <td><strong>Tiempo Estimado</strong></td>
+                                <td>24 horas (distribuidas en sesiones de teoría, codificación y
+                                    talleres de diseño)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <h4 id="section"> <a class="headerlink" href="#section" title="Enlace permanente">¶</a></h4>
+            <h4 id="índice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#índice-de-contenidos"
+                    title="Enlace permanente">¶</a></h4>
+            <p><a href="#introducción-y-contextualización"><u>1. INTRODUCCIÓN Y
+                        CONTEXTUALIZACIÓN</u></a></p>
+            <p><a href="#el-modelo-relacional-de-edgar-f.-codd"><u>2. EL MODELO
+                        RELACIONAL DE EDGAR F. CODD</u></a></p>
+            <blockquote>
+                <p><a href="#conceptos-fundamentales"><u>2.1. Conceptos
+                            Fundamentales</u></a></p>
+                <p><a href="#reglas-de-integridad"><u>2.2. Reglas de
+                            Integridad</u></a></p>
+            </blockquote>
+            <p><a href="#del-diagrama-er-al-modelo-relacional"><u>3. DEL DIAGRAMA
+                        E/R AL MODELO RELACIONAL</u></a></p>
+            <blockquote>
+                <p><a href="#regla-de-entidades-fuertes-y-débiles"><u>3.1. Regla de
+                            Entidades (Fuertes y Débiles)</u></a></p>
+                <p><a href="#regla-de-relaciones-1n-uno-a-varios"><u>3.2. Regla de
+                            Relaciones 1:N (Uno a Varios)</u></a></p>
+                <p><a href="#regla-de-relaciones-nm-varios-a-varios"><u>3.3. Regla de
+                            Relaciones N:M (Varios a Varios)</u></a></p>
+                <p><a href="#regla-de-relaciones-11-uno-a-uno"><u>3.4. Regla de
+                            Relaciones 1:1 (Uno a Uno)</u></a></p>
+                <p><a href="#relaciones-de-dependencia-existencia-e-identificación"><u>3.5.
+                            Relaciones de Dependencia (Existencia e Identificación)</u></a></p>
+                <p><a href="#relaciones-de-grado-superior-relaciones-ternarias-o-grado-3"><u>3.6.
+                            Relaciones de Grado Superior (Relaciones Ternarias o Grado
+                            3)</u></a></p>
+                <p><a href="#transformación-de-jerarquías-o-relaciones-de-herencia-isa"><u>3.7.
+                            Transformación de Jerarquías o Relaciones de Herencia (ISA)</u></a></p>
+                <p><a href="#transformación-de-agregaciones"><u>3.8. Transformación de
+                            Agregaciones</u></a></p>
+            </blockquote>
+            <p><a href="#teoría-de-la-normalización"><u>4. TEORÍA DE LA
+                        NORMALIZACIÓN</u></a></p>
+            <blockquote>
+                <p><a href="#concepto-y-objetivos"><u>4.1. Concepto y
+                            Objetivos</u></a></p>
+                <p><a href="#tipos-de-dependencias-funcionales"><u>4.2. Tipos de
+                            Dependencias Funcionales</u></a></p>
+                <p><a href="#primera-forma-normal-1fn"><u>4.3. Primera Forma Normal
+                            (1FN)</u></a></p>
+                <p><a href="#segunda-forma-normal-2fn"><u>4.4. Segunda Forma Normal
+                            (2FN)</u></a></p>
+                <p><a href="#tercera-forma-normal-3fn"><u>4.5. Tercera Forma Normal
+                            (3FN)</u></a></p>
+                <p><a href="#introducción-a-boyce-codd-fnbc-y-formas-superiores"><u>4.6.
+                            Introducción a Boyce-Codd (FNBC) y Formas Superiores</u></a></p>
+            </blockquote>
+            <p><a href="#casos-prácticos-de-normalización"><u>5. CASOS PRÁCTICOS DE
+                        NORMALIZACIÓN</u></a></p>
+            <blockquote>
+                <p><a href="#ejemplo-alumnado-de-un-centro"><u>5.1. Ejemplo alumnado de
+                            un centro</u></a></p>
+                <p><a href="#órdenes-de-pedido"><u>5.2. Órdenes de pedido</u></a></p>
+                <p><a href="#juguetes-infantiles"><u>5.3. Juguetes
+                            infantiles</u></a></p>
+            </blockquote>
+            <h1 id="introducción-y-contextualización">1. INTRODUCCIÓN Y
+                CONTEXTUALIZACIÓN <a class="headerlink" href="#introducción-y-contextualización"
+                    title="Enlace permanente">¶</a></h1>
+            <p>El diseño de bases de datos es un proceso iterativo de abstracción
+                que traduce los requisitos del mundo real de una organización a
+                estructuras lógicas eficientes y robustas. Esta unidad didáctica cubre
+                el puente crítico entre el Modelo Conceptual (Entidad-Relación)
+                —orientado al negocio y validado por el cliente— y el Modelo Lógico
+                (Relacional) —orientado al sistema y matemáticamente riguroso—.</p>
+            <p>Como futuros Administradores de Sistemas Informáticos en Red
+                (SysAdmins), el dominio del paso de esquemas conceptuales a esquemas
+                relacionales normalizados es clave. Un diseño lógico incorrecto se
+                traducirá directamente en pérdida de rendimiento físico de la
+                infraestructura de base de datos, problemas de concurrencia de
+                transacciones y corrupción de datos (anomalías de borrado o
+                actualización). Esta unidad conecta de forma directa con la Unidad 4
+                (Lenguaje de Definición de Datos, DDL) y con módulos posteriores del
+                ciclo como Administración de Sistemas Gestores de Bases de Datos (ASGBD)
+                en segundo curso, donde la optimización de servidores MySQL/MariaDB
+                dependerá del esquema lógico que hayamos construido en esta fase.</p>
+            <h1 id="el-modelo-relacional-de-edgar-f.-codd">2. EL MODELO RELACIONAL
+                DE EDGAR F. CODD <a class="headerlink" href="#el-modelo-relacional-de-edgar-f.-codd"
+                    title="Enlace permanente">¶</a></h1>
+            <p>Creado por Edgar F. Codd en 1970 en los laboratorios de IBM, el
+                modelo relacional tiene una sólida base matemática fundamentada en la
+                teoría de conjuntos y el álgebra relacional.</p>
+            <h2 id="conceptos-fundamentales">2.1. Conceptos Fundamentales <a class="headerlink"
+                    href="#conceptos-fundamentales" title="Enlace permanente">¶</a></h2>
+            <p><strong>Relación</strong>: Conceptualmente equivale a lo que
+                denominamos una tabla. Es una estructura bidimensional.</p>
+            <p><strong>Tupla</strong>: Equivale a una fila o registro. Representa
+                una ocurrencia o instancia concreta de la relación.</p>
+            <p><strong>Atributo</strong>: Equivale a una columna o campo. Representa
+                una propiedad o característica de la relación.</p>
+            <p><strong>Dominio</strong>: El conjunto de valores válidos y atómicos
+                que puede tomar un atributo determinado (ej. el dominio del atributo
+                Edad es el conjunto de enteros positivos menores que 120).</p>
+            <p><strong>Clave Candidata</strong>: Cualquier atributo o conjunto
+                mínimo de atributos que permite identificar de forma unívoca cada tupla
+                de la relación.</p>
+            <p><strong>Clave Primaria (Primary Key - PK)</strong>: La clave
+                candidata que el diseñador de la base de datos elige para identificar de
+                forma unívoca las tuplas. No puede contener valores duplicados ni
+                nulos.</p>
+            <p><strong>Clave Ajena o Foránea (Foreign Key - FK):</strong> Atributo o
+                conjunto de atributos de una tabla cuyos valores deben coincidir
+                exactamente con los valores de la clave primaria de otra tabla (o de la
+                misma, en caso de reflexividad). Es el mecanismo relacional para
+                establecer uniones.</p>
+            <h2 id="reglas-de-integridad">2.2. Reglas de Integridad <a class="headerlink" href="#reglas-de-integridad"
+                    title="Enlace permanente">¶</a></h2>
+            <p>Para garantizar la consistencia de los datos, el Modelo Relacional
+                impone dos reglas de integridad inviolables:</p>
+            <p><strong>Integridad de la Entidad</strong>: Ningún atributo que forme
+                parte de la clave primaria de una relación puede tomar un valor nulo
+                (NULL). Cada tupla debe poder identificarse de forma única.</p>
+            <p><strong>Integridad Referencial</strong>: Si una relación contiene una
+                clave ajena, cada valor de esta clave ajena debe coincidir con un valor
+                de clave primaria existente en la tabla referenciada, o bien ser
+                completamente nulo (NULL) si la relación de negocio lo permite.</p>
+            <h1 id="del-diagrama-er-al-modelo-relacional">3. DEL DIAGRAMA E/R AL
+                MODELO RELACIONAL <a class="headerlink" href="#del-diagrama-er-al-modelo-relacional"
+                    title="Enlace permanente">¶</a></h1>
+            <p>Para traducir un esquema conceptual Entidad-Relación (E-R) al modelo
+                lógico relacional, se aplica un conjunto de reglas algorítmicas
+                estandarizadas.</p>
+            <p>Modelo Conceptual E-R</p>
+            <p>▼ (Reglas de Transformación Lógica)</p>
+            <p>Modelo Lógico Relacional</p>
+            <p>▼ (Refinamiento de Calidad)</p>
+            <p>Normalización (1FN, 2FN, 3FN)</p>
+            <h2 id="regla-de-entidades-fuertes-y-débiles">3.1. Regla de Entidades
+                (Fuertes y Débiles) <a class="headerlink" href="#regla-de-entidades-fuertes-y-débiles"
+                    title="Enlace permanente">¶</a></h2>
+            <p><strong>Entidades Fuertes</strong>: Cada entidad fuerte genera una
+                única tabla (relación). Los atributos de la entidad pasan a ser las
+                columnas de la tabla. El identificador principal de la entidad se
+                convierte en la Clave Primaria (PK), que se representa subrayada.</p>
+            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image16.png" style="width:3.87656in;height:1.21081in" /></p>
+            <p>Ejemplo:</p>
+            <blockquote>
+                <p>ALUMNO(<strong><u>id</u></strong>, nombre, apellido1, apellido2, nif,
+                    grupo)</p>
+                <p>EXAMEN_TEÓRICO(<strong><u>id</u></strong>, título, número_preguntas,
+                    fecha)</p>
+            </blockquote>
+            <p><strong>Entidades Débiles</strong>: Generan una tabla propia. Sin
+                embargo, si es una entidad débil en identificación, necesita heredar la
+                clave primaria de la entidad fuerte de la que depende. Esta clave
+                heredada actuará en la tabla de la entidad débil como clave ajena (FK)
+                y, a su vez, formará parte de la clave primaria (PK) compuesta de la
+                propia entidad débil junto con su discriminador.</p>
+            <h2 id="regla-de-relaciones-1n-uno-a-varios">3.2. Regla de Relaciones
+                1:N (Uno a Varios) <a class="headerlink" href="#regla-de-relaciones-1n-uno-a-varios"
+                    title="Enlace permanente">¶</a></h2>
+            <p>Las relaciones con cardinalidad no generan una nueva tabla por sí
+                mismas. En su lugar, se realiza una propagación de clave:</p>
+            <p>La clave primaria de la entidad que aporta la cardinalidad mínima se
+                añade como una columna adicional en la tabla de la entidad que está en
+                el lado de cardinalidad máxima. Esta columna se convierte en una Clave
+                Ajena (FK) en la tabla destino.</p>
+            <p>Si la relación posee atributos propios, estos atributos también se
+                propagan a la tabla del lado de la cardinalidad máxima.</p>
+            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image15.png" style="width:4.62292in;height:1.628in" /></p>
+            <blockquote>
+                <p>USUSARIO(<strong><u>id</u></strong>, email, password, nombre,
+                    apellido1, apellido2)</p>
+                <p>VÍDEO(<strong><u>id</u></strong>, nombre, descripción, duración,
+                    id_usuario) id_usuario FK de USUARIO(id)</p>
+            </blockquote>
+            <p><strong>Relaciones Reflexivas 1:N</strong>: El mismo principio se
+                aplica cuando una entidad se relaciona consigo misma con cardinalidad .
+                La clave primaria de la tabla se duplica dentro de la misma tabla con un
+                rol diferente (Clave Ajena que apunta a la propia tabla).</p>
+            <p><strong>Ejemplo</strong> (Jefes y Empleados):</p>
+            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image21.png" style="width:2.54323in;height:1.13364in" /></p>
+            <blockquote>
+                <p>EMPLEADO(<strong><u>id</u></strong>, nombre, apellido1, apellido2,
+                    id_jefe)</p>
+            </blockquote>
+            <p>Donde id_Jefe es una FK que referencia internamente a
+                EMPLEADO(id).</p>
+            <h2 id="regla-de-relaciones-nm-varios-a-varios">3.3. Regla de Relaciones
+                N:M (Varios a Varios) <a class="headerlink" href="#regla-de-relaciones-nm-varios-a-varios"
+                    title="Enlace permanente">¶</a></h2>
+            <p>Toda relación con cardinalidad (muchos a muchos) genera
+                obligatoriamente una nueva tabla en el modelo relacional.</p>
+            <p>La clave primaria de esta nueva tabla estará compuesta por la
+                concatenación de las claves primarias de las entidades asociadas. Cada
+                una de ellas actúa individualmente como clave ajena (FK).</p>
+            <p>Si la relación contiene atributos propios (como fechas, cantidades,
+                etc.), se añaden como columnas a esta nueva tabla.</p>
+            <p>Ejemplo:</p>
+            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image17.png" style="width:4.30206in;height:1.36632in" /></p>
+            <blockquote>
+                <p>ALUMNO(<strong><u>id</u></strong>, nombre, apellido1, apellido2, nif,
+                    grupo)</p>
+                <p>EXAMEN_TEÓRICO(<strong><u>id</u></strong>, título, número_preguntas,
+                    fecha)</p>
+                <p>ALUMNO_HACE_EXAMEN_TEÓRICO(<strong><u>id_alumno,
+                            id_examen</u></strong>, nota) donde</p>
+                <p>id_alumno FK de ALUMNO(id)</p>
+                <p>id_examen FK de EXAMEN_TEÓRICO(id)</p>
+            </blockquote>
+            <p>Habrá casos donde los atributos de la relación también formarán parte
+                de la clave primaria de la nueva tabla. Estos casos aparecerán cuando en
+                la relación existan atributos de tipo fecha y sea necesario almacenar un
+                histórico de las relaciones entre las dos entidades en función de las
+                fechas. Estos casos también pueden resolverse añadiendo un nuevo
+                identificador de tipo entero con autoincremento en lugar de utilizar una
+                clave primaria compuesta por varias columnas.</p>
+            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image19.png" style="width:3.07448in;height:1.19913in" /></p>
+            <blockquote>
+                <p>PROVEEDOR(<strong><u>id</u></strong>, dirección, ciudad,
+                    provincia)</p>
+                <p>PIEZA(<strong><u>id</u></strong>, nombre, color, precio)</p>
+                <p>PROVEEDOR_SUMINISTRA_PIEZA(<strong><u>id_proveedor,
+                            id_pieza,</u></strong> fecha, cantidad)</p>
+            </blockquote>
+            <p>Con esta solución podemos tener un problema en el caso de que un
+                proveedor nos suministre piezas con el mismo id en fechas diferentes.
+                Para solucionarlo podemos incluir el atributo fecha como parte de la
+                clave primaria de la tabla, de modo que la clave primaria estará
+                compuesta por id_proveedor, id_pieza y fecha.</p>
+            <p>PROVEEDOR_SUMINISTRA_PIEZA(i<strong><u>d_proveedor, id_pieza,
+                        fecha</u></strong>, cantidad)</p>
+            <p>Otra forma de resolver este problema puede ser creando un nuevo
+                atributo id que sea un valor numérico con autoincremento y que éste sea
+                la única clave primara de la tabla. La solución sería la siguiente:</p>
+            <p>PROVEEDOR_SUMINISTRA_PIEZA(<strong><u>id</u></strong>, id_proveedor,
+                id_pieza, fecha_hora, cantidad)</p>
+            <p><strong>Relaciones Reflexivas N:M</strong>: También generan una nueva
+                tabla. Dado que las dos claves foráneas que componen la clave primaria
+                apuntan a la misma tabla origen, deben renombrarse para evitar
+                conflictos de nombres.</p>
+            <p>Ejemplo (Vídeos relacionados entre sí):</p>
+            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image8.png" style="width:2.9651in;height:1.11842in" /></p>
+            <blockquote>
+                <p>VÍDEO(<strong><u>id</u></strong>, título, descripción,
+                    reproducciones)</p>
+                <p>VÍDEOS_RELACIONADOS(<strong><u>id_video</u></strong>,
+                    id_video_relacionado) donde</p>
+                <p>id_video, id_video_relacionado FK de VIDEO(id)</p>
+            </blockquote>
+            <h2 id="regla-de-relaciones-11-uno-a-uno">3.4. Regla de Relaciones 1:1
+                (Uno a Uno) <a class="headerlink" href="#regla-de-relaciones-11-uno-a-uno"
+                    title="Enlace permanente">¶</a></h2>
+            <p>El paso a tablas de las relaciones con cardinalidad depende de las
+                cardinalidades mínimas (participación) de las entidades:</p>
+            <p><strong>Participación (1,1)..(0,1)</strong>: La clave primaria de la
+                entidad con participación obligatoria se propaga a la tabla de la
+                entidad con participación opcional como clave ajena. De esta forma, se
+                minimiza la cantidad de valores nulos (NULL) en la base de datos.</p>
+            <p>Ejemplo: Un usuario tiene o no un canal de YouTube.</p>
+            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image12.png" style="width:4.72629in;height:1.3559in" /></p>
+            <p>USUARIO(<strong>id</strong>, email, password, nombre, apellido1,
+                apellido2)</p>
+            <p>CANAL_YOUTUBE(<strong>id</strong>, nombre, descripción,
+                fecha_creación, id_usuario)</p>
+            <p><strong>Participación (1,1)..(1,1)</strong>: Al ser ambas
+                obligatorias, podemos propagar la clave en cualquiera de los dos
+                sentidos, o incluso unificar ambas entidades en una única tabla si
+                comparten un ciclo de vida idéntico.</p>
+            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image6.png" style="width:3.37656in;height:1.16914in" /></p>
+            <p>Opción A: Propagar clave de Presidente a País.</p>
+            <blockquote>
+                <p>PRESIDENTE(<strong><u>id</u></strong>, nombre, apellido1,
+                    apellido2)</p>
+                <p>PAÍS(<strong><u>id</u></strong>, nombre, id_presidente)</p>
+            </blockquote>
+            <p>Opción B: Propagar clave de País a Presidente.</p>
+            <blockquote>
+                <p>PAÍS(<strong><u>id</u></strong>, nombre)</p>
+                <p>PRESIDENTE(<strong><u>id</u></strong>, nombre, apellido1, apellido2,
+                    id_país)</p>
+            </blockquote>
+            <p>Opción C: Propagar cada clave a la otra tabla</p>
+            <blockquote>
+                <p>PRESIDENTE(<strong><u>id</u></strong>, nombre, apellido1, apellido2,
+                    id_país)</p>
+                <p>PAÍS(<strong><u>id</u></strong>, nombre, id_presidente)</p>
+            </blockquote>
+            <p><strong>Participación (0,1)..(0,1):</strong> En este caso de alta
+                opcionalidad por ambas partes, se recomienda crear una nueva tabla para
+                la relación para evitar tener un volumen masivo de registros con campos
+                a valor NULL. La clave primaria de esta tabla será una de las dos claves
+                importadas.</p>
+            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image7.png" style="width:3.32968in;height:1.40296in" /></p>
+            <blockquote>
+                <p>ALQUILER(<strong><u>id</u></strong>, fecha_inicio, fecha_fin,
+                    importe, fianza)</p>
+                <p>ALQUILER_RENUEVA_ALQUILER(<strong><u>id_alquiler</u></strong>,
+                    id_alquiler_anterior)</p>
+            </blockquote>
+            <h2 id="relaciones-de-dependencia-existencia-e-identificación">3.5.
+                Relaciones de Dependencia (Existencia e Identificación) <a class="headerlink"
+                    href="#relaciones-de-dependencia-existencia-e-identificación" title="Enlace permanente">¶</a></h2>
+            <p><strong>Dependencia en Existencia</strong>: Se comporta como una
+                relación normal. Sin embargo, se debe configurar una restricción física
+                de borrado en cascada (ON DELETE CASCADE) en el motor de la base de
+                datos para que al suprimir el registro padre se elimine el registro
+                dependiente de forma automática.</p>
+            <p><strong>Dependencia en Identificación:</strong> Ocurre con entidades
+                débiles cuyos registros no pueden identificarse sin la clave del padre.
+                La clave de la entidad fuerte pasa a la tabla de la entidad débil como
+                foránea y, simultáneamente, forma parte de la clave primaria de
+                esta.</p>
+            <p>Ejemplo (Cursos y Grupos):<img src="media_GBD_UT3_Teoria_Modelo/media/image1.png"
+                    style="width:1.91991in;height:1.96354in" /></p>
+            <p>CURSO (<strong><u>Cod_Curso</u></strong>, Num_Curso,
+                Nivel_Educativo)</p>
+            <p>GRUPO (<strong><u>Letra, Cod_Curso)</u></strong></p>
+            <h2 id="relaciones-de-grado-superior-relaciones-ternarias-o-grado-3">3.6.
+                Relaciones de Grado Superior (Relaciones Ternarias o Grado 3) <a class="headerlink"
+                    href="#relaciones-de-grado-superior-relaciones-ternarias-o-grado-3" title="Enlace permanente">¶</a>
+            </h2>
+            <p>Siempre que sea posible en el análisis, es recomendable
+                descomponerlas en relaciones binarias. Si es estrictamente necesario
+                mantener la relación de grado 3, su transformación depende de sus
+                cardinalidades máximas:</p>
+            <p><strong>Cardinalidad N:N:N</strong>: Genera una nueva tabla. Su clave
+                primaria es compuesta, formada por la concatenación de las claves
+                primarias de las tres entidades involucradas.</p>
+            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image13.png" style="width:4.42188in;height:1.86279in" /></p>
+            <p><strong>Cardinalidad 1:N:N</strong>: En este caso creamos una tabla.
+                La clave primaria de la nueva tabla estará formada por las dos claves de
+                las entidades que participan como N en la relación.</p>
+            <p><strong>Cardinalidad 1:1:N:</strong> En este caso no es necesario
+                crear una tabla. La entidad que participa como N recibe las claves de
+                las dos entidades que participan como 1.</p>
+            <h2 id="transformación-de-jerarquías-o-relaciones-de-herencia-isa">3.7.
+                Transformación de Jerarquías o Relaciones de Herencia (ISA) <a class="headerlink"
+                    href="#transformación-de-jerarquías-o-relaciones-de-herencia-isa" title="Enlace permanente">¶</a>
+            </h2>
+            <p>Existen varias soluciones para realizar el paso a tablas de una
+                especialización. La solución que se elija en cada caso dependerá del
+                tipo de especialización que estemos resolviendo: total, parcial,
+                inclusiva o exclusiva.</p>
+            <p>Las 3 soluciones posibles que podemos aplicar son las siguientes:</p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p>Crear una única tabla para la superclase. En este caso todos los
+                            atributos de las subclases se guardarán en la superclase.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Crear una tabla sólo para las subclases. En este caso los atributos
+                            de la superclase habría que guardarlos en cada una de las subclases.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Crear una tabla para cada una de las entidades, tanto para la
+                            superclase como las subclases.</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <p>En este caso las subclases tendrían que guardar la clave de la
+                primaria de la superclase.</p>
+            <p><strong>Ejemplo de especialización exclusiva/total</strong></p>
+            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image18.png" style="width:2.28384in;height:2.06424in" /></p>
+            <p>En este caso sería adecuado utilizar la solución 2 o 3. También sería
+                posible utilizar la <strong>solución 1</strong>, pero al tratarse de una
+                especialización exlusiva, tendríamos muchas columnas con valores NULL
+                .</p>
+            <p><strong>Solución 2:</strong> Crear una tabla sólo para las
+                subclases.</p>
+            <p>EPISODIO(<strong><u>id</u></strong>, título, sinopsis, imagen,
+                archivo_vídeo, duración temporada, número)</p>
+            <p>PELÍCULA(<strong><u>id</u></strong>, título, sinopsis, imagen,
+                archivo_vídeo, duración puntuación_imdb, director)</p>
+            <p><strong>Solución 3</strong>: Crear una tabla para cada una de las
+                entidades.</p>
+            <p>VÍDEO(<strong><u>id</u></strong>, título, sinopsis, imagen,
+                archivo_vídeo, duración, tipo)</p>
+            <p>EPISODIO(<strong><u>id</u></strong>, temporada, número)</p>
+            <p>PELÍCULA(<strong><u>id</u></strong>, puntuación_imdb, director)</p>
+            <p><strong>Ejemplo de especialización inclusiva/total</strong></p>
+            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image27.png" style="width:3.22429in;height:2.58507in" /></p>
+            <p>En este caso podríamos utilizar cualquiera de las tres soluciones,
+                dependerá del contexto del ejercicio y de cómo se relacionan estas
+                entidades con el resto de entidades del diagrama.</p>
+            <p><strong>Solución 1</strong>. Crear una única tabla para la
+                superclase.</p>
+            <p>LIBRO(<strong><u>id</u></strong>, título, isbn, año_publicación,
+                descripción, tipo, lugar_impresión, fecha_impresión,</p>
+            <p>precio_papel, tamaño_archivo, precio_ebook)</p>
+            <p><strong>Solución 2</strong>: Crear una tabla sólo para las
+                subclases.</p>
+            <p>LIBRO_PAPEL(<strong><u>id</u></strong>, título, isbn,
+                año_publicación, descripción, lugar_impresión,</p>
+            <p>fecha_impresión, precio)</p>
+            <p>LIBRO_EBOOK(<strong><u>id</u></strong>, título, isbn,
+                año_publicación, descripción, tamaño_archivo, precio)</p>
+            <p><strong>Solución 3</strong>: Crear una tabla para cada una de las
+                entidades.</p>
+            <p>LIBRO(<strong><u>id</u></strong>, título, isbn, año_publicación,
+                descripción, tipo)</p>
+            <p>LIBRO_PAPEL(<strong><u>id</u></strong>, fecha_impresión, precio) id:
+                FK de LIBRO(id)</p>
+            <p>LIBRO_EBOOK(<strong><u>id</u></strong>, tamaño_archivo, precio) id:
+                FK de LIBRO(id)</p>
+            <p>Existen cuatro alternativas de diseño físico para implementar la
+                especialización en bases de datos relacionales. La elección dependerá de
+                si la herencia es total o parcial, y exclusiva o solapada:</p>
+            <p><strong>Caso 1 (Tres tablas independientes vinculadas)</strong>: Se
+                crea una tabla para la superclase y otra para cada subclase. Las tablas
+                de las subclases heredan la PK de la superclase como su propia PK y
+                clave ajena a la vez. Es ideal para jerarquías solapadas y con gran
+                cantidad de atributos específicos.</p>
+            <p><strong>Caso 2 (Tablas de subclase únicamente):</strong> Desaparece
+                la superclase. Se crea una tabla para cada subclase que contiene tanto
+                los atributos propios de la subclase como todos los atributos de la
+                superclase. Solo es aplicable si la especialización es total (cobertura
+                completa).</p>
+            <p><strong>Caso 3 (Tabla única con discriminante de tipo):</strong> Se
+                unifica todo en una única tabla que incluye los atributos de la
+                superclase y de todas las subclases. Se añade un campo "Tipo" que actúa
+                como discriminante. Genera campos NULL en los registros para los
+                atributos que no pertenecen a su tipo, pero es la opción más rápida para
+                consultas. Muy recomendable para especializaciones exclusivas.</p>
+            <p><strong>Caso 4 (Tabla única con flags booleanos)</strong>: Similar al
+                caso anterior, pero sustituyendo el campo "Tipo" por campos de
+                verificación booleanos (EsDirectivo, EsTecnico, etc.). Es la forma
+                óptima de aplanar jerarquías de tipo solapado (donde una tupla puede
+                pertenecer a más de una subclase a la vez).</p>
+            <h2 id="transformación-de-agregaciones">3.8. Transformación de
+                Agregaciones <a class="headerlink" href="#transformación-de-agregaciones"
+                    title="Enlace permanente">¶</a></h2>
+            <p>Una agregación se genera cuando una relación no puede vincularse
+                directamente a otra entidad, sino que debe hacerlo contra una relación
+                ya establecida. Se resuelve creando la tabla de la relación base y,
+                posteriormente, la tabla de la segunda relación importará la clave
+                primaria compuesta de la primera.</p>
+            <h1 id="teoría-de-la-normalización">4. TEORÍA DE LA NORMALIZACIÓN <a class="headerlink"
+                    href="#teoría-de-la-normalización" title="Enlace permanente">¶</a></h1>
+            <h2 id="concepto-y-objetivos">4.1. Concepto y Objetivos <a class="headerlink" href="#concepto-y-objetivos"
+                    title="Enlace permanente">¶</a></h2>
+            <p>La normalización es un proceso formal de refinamiento que se aplica a
+                las tablas obtenidas en el diseño relacional para asegurar su calidad y
+                robustez. Su objetivo prioritario es optimizar el almacenamiento
+                eliminando redundancias y previniendo anomalías lógicas durante las
+                operaciones de base de datos.</p>
+            <p>Anomalías Comunes en Diseños No Normalizados:</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p><strong>Anomalía de Inserción</strong>: Imposibilidad de añadir datos
+                            debido a la ausencia de otros datos relacionados (ej. no poder registrar
+                            los datos de un nuevo proveedor en la base de datos hasta que este no
+                            nos suministre el primer producto).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Anomalía de Borrado</strong>: Pérdida accidental de
+                            información crítica al eliminar un registro (ej. al borrar la última
+                            compra de un artículo, perder por completo la dirección física y el
+                            teléfono del proveedor que lo suministró).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Anomalía de Actualización</strong>: Inconsistencia de datos
+                            provocada por la redundancia. Si un dato duplicado cambia, debe
+                            actualizarse en múltiples tuplas; de lo contrario, la base de datos
+                            queda en un estado inconsistente y contradictorio.</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <p>En la práctica, si la BD se ha diseñado haciendo uso de modelos
+                semánticos como el modelo E-R no suele ser necesaria la normalización.
+                Por otro lado si nos proporcionan una base de datos creada sin realizar
+                un diseño previo, es muy probable que necesitemos normalizar.</p>
+            <p>En la teoría de bases de datos relacionales, las formas normales (FN)
+                proporcionan los criterios para determinar el grado de vulnerabilidad de
+                una tabla a inconsistencias y anomalías lógicas. Cuanto más alta sea la
+                forma normal aplicable a una tabla, menos vulnerable será a
+                inconsistencias y anomalías. <img src="media_GBD_UT3_Teoria_Modelo/media/image25.png"
+                    style="width:1.87292in;height:1.87292in" /></p>
+            <p>Edgar F. Codd originalmente definió las tres primeras formas normales
+                (1FN, 2FN, y 3FN) en 1970. Estas formas normales se han resumido de
+                forma que todos los atributos sean atómicos, dependan de la clave
+                completa y en forma directa (no transitiva).</p>
+            <p>La forma normal de Boyce-Codd (FNBC) fue introducida en 1974 por los
+                dos autores que aparecen en su denominación. Las cuarta y quinta formas
+                normales (4FN y 5FN) se ocupan específicamente de la representación de
+                las relaciones muchos a muchos y uno a muchos entre los atributos y
+                fueron introducidas por Fagin en 1977 y 1979 respectivamente.</p>
+            <h2 id="tipos-de-dependencias-funcionales">4.2. Tipos de Dependencias
+                Funcionales <a class="headerlink" href="#tipos-de-dependencias-funcionales"
+                    title="Enlace permanente">¶</a></h2>
+            <p>El análisis de normalización se basa en el comportamiento de los
+                atributos de una tabla.</p>
+            <p>Dependencia Funcional (DF): Se representa como A -&gt; B . Significa
+                que el atributo (o conjunto de atributos) depende funcionalmente de A si
+                para cada valor de A existe un único valor posible de B.</p>
+            <p>Ejemplo: PRODUCTOS (<strong><u>CódigoProducto</u></strong>, Nombre,
+                Precio, Descripción)</p>
+            <p>CódigoProducto —&gt; Nombre, puesto que un código de producto solo
+                puede tener asociado un único nombre, dicho de otro modo, a través del
+                código de producto se localiza un único nombre.</p>
+            <p>Dependencia Funcional Completa (DFC): Se denota como A ⇒ B . Ocurre
+                cuando el atributo depende funcionalmente de un atributo compuesto
+                (formado por varios campos, como una clave compuesta) y no depende de
+                ningún subconjunto propio de A.</p>
+            <p>Ejemplo: En la tabla de compras (Cod_Producto, Cod_Proveedor) -&gt;
+                Cantidad es completa, pero (Cod_Producto, Cod_Proveedor) -&gt;
+                Descripcion_Producto no lo es, ya que Descripcion_Producto depende
+                únicamente de Cod_Producto.</p>
+            <p>Dependencia Funcional Transitiva (DFT): Si tenemos tres atributos de
+                una tabla tales que se cumple que A -&gt; B y B -&gt; C (con B no
+                implicando a A), entonces se dice que A tiene una dependencia transitiva
+                respecto a C, A - -&gt; C a través de B ( de forma indirecta).</p>
+            <p>Ejemplo:</p>
+            <p>PRODUCTOS (<strong><u>CódigoProducto</u></strong>, Nombre,
+                Fabricante, País)</p>
+            <p>CódigoProducto -&gt; Fabricante</p>
+            <p>Fabricante -&gt; País</p>
+            <p>CódigoProduct - -&gt; País, es decir, CódigoProducto depende
+                transitivamente de País.</p>
+            <h2 id="primera-forma-normal-1fn">4.3. Primera Forma Normal (1FN) <a class="headerlink"
+                    href="#primera-forma-normal-1fn" title="Enlace permanente">¶</a></h2>
+            <p>Una relación se encuentra en 1FN si y solo si todos los valores de
+                los dominios de sus atributos son atómicos (elementales, indivisibles y
+                únicos). Se prohíbe terminantemente la existencia de atributos
+                multivaluados o colecciones repetidas de datos en una sola celda.</p>
+            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image26.png" style="width:6.26772in;height:2.19444in" /></p>
+            <p>Algoritmo de Transformación a 1FN:</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p>Eliminar el grupo repetitivo o campo multivaluado de la tabla
+                            principal.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Crear una nueva relación independiente que contenga el atributo
+                            multivaluado atomizado (un único número o elemento por fila).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Vincular ambas relaciones propagando la clave primaria de la tabla
+                            base como clave ajena en la nueva tabla. La nueva clave primaria será la
+                            concatenación de la clave del padre y el propio atributo atómico.</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <h2 id="segunda-forma-normal-2fn">4.4. Segunda Forma Normal (2FN) <a class="headerlink"
+                    href="#segunda-forma-normal-2fn" title="Enlace permanente">¶</a></h2>
+            <p>Una relación se encuentra en 2FN si cumple la 1FN y, además, todos
+                los atributos que no forman parte de la clave primaria tienen
+                dependencia funcional completa de la clave primaria. No se permiten
+                dependencias parciales de un subconjunto de una clave primaria
+                compuesta.</p>
+            <p>Si una tabla en 1FN tiene una clave primaria simple (formada por un
+                único campo), automáticamente se encuentra en 2FN. El análisis de 2FN
+                solo tiene sentido técnico ante claves primarias compuestas.</p>
+            <p>Algoritmo de Transformación a 2FN:</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p>Identificar los atributos que tienen dependencia parcial de una
+                            sección de la clave compuesta.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Extraer esos campos de la tabla base y llevarlos a una nueva tabla
+                            independiente.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Establecer como clave de la nueva tabla la sección de la clave
+                            compuesta de la cual dependían. Mantener el campo en la tabla original
+                            únicamente si es clave ajena de relación.</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <h2 id="tercera-forma-normal-3fn">4.5. Tercera Forma Normal (3FN) <a class="headerlink"
+                    href="#tercera-forma-normal-3fn" title="Enlace permanente">¶</a></h2>
+            <p>Una relación se encuentra en 3FN si cumple la 2FN y, además, ningún
+                atributo que no sea clave depende de forma transitiva de la clave
+                primaria. Todos los campos que no son clave deben depender única,
+                directa y exclusivamente de la clave primaria.</p>
+            <p>Algoritmo de Transformación a 3FN:</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p>Identificar el atributo intermedio () que actúa como determinante del
+                            campo dependiente transitivo ().</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Extraer los atributos y de la tabla base.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Crear una nueva tabla donde sea la Clave Primaria y sea el atributo
+                            dependiente.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Mantener el atributo en la tabla original actuando como Clave Ajena
+                            (FK) para poder recomponer la relación mediante consultas de composición
+                            (JOIN).</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <h2 id="introducción-a-boyce-codd-fnbc-y-formas-superiores">4.6.
+                Introducción a Boyce-Codd (FNBC) y Formas Superiores <a class="headerlink"
+                    href="#introducción-a-boyce-codd-fnbc-y-formas-superiores" title="Enlace permanente">¶</a></h2>
+            <p><strong>Forma Normal de Boyce-Codd (FNBC)</strong>: Es una versión
+                más rigurosa de la 3FN. Exige que el modelo esté en 3FN y que, además,
+                cualquier determinante funcional de la tabla sea una clave candidata.
+                Solo se analiza en tablas con claves compuestas solapadas.</p>
+            <p><strong>Cuarta Forma Normal (4FN):</strong> Se ocupa de eliminar
+                redundancias causadas por dependencias multivaluadas independientes (ej.
+                si un alumno estudia asignaturas y practica deportes, y no hay relación
+                entre las asignaturas y los deportes, se deben separar en dos tablas
+                distintas: Alumno_Asignaturas y Alumno_Deportes).</p>
+            <p><strong>Quinta Forma Normal (5FN)</strong>: Trata sobre dependencias
+                de unión y descomposiciones cíclicas complejas que no se pueden
+                reconstruir sin pérdida a menos que se dividan en tres o más tablas
+                relacionadas en bucle.</p>
+            <h1 id="casos-prácticos-de-normalización">5. CASOS PRÁCTICOS DE
+                NORMALIZACIÓN <a class="headerlink" href="#casos-prácticos-de-normalización"
+                    title="Enlace permanente">¶</a></h1>
+            <h2 id="ejemplo-alumnado-de-un-centro">5.1. Ejemplo alumnado de un
+                centro <a class="headerlink" href="#ejemplo-alumnado-de-un-centro" title="Enlace permanente">¶</a></h2>
+            <p>Supongamos que tenemos la siguiente tabla con datos de alumnado de un
+                centro de enseñanza secundaria.</p>
+            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image5.png" style="width:6.14105in;height:1.30482in" /></p>
+            <p><strong>IMPORTANTE</strong>: En algunos casos nos darán una tabla con
+                la información y en otros casos, nos darán las relaciones o tablas
+                (nombre, clave y atributos). En cualquier caso tendremos que analizar
+                los datos para identificar qué datos dependen de qué datos.</p>
+            <p>Como se puede observar, esta tabla no está en 1FN puesto que el campo
+                Teléfonos contiene varios datos dentro de una misma celda y por tanto no
+                es un campo cuyos valores sean atómicos. La solución sería la
+                siguiente:</p>
+            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image14.png" style="width:6.27843in;height:1.32292in" /></p>
+            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image11.png" style="width:1.30092in;height:1.41767in" /></p>
+            <p>Una Relación está en 2FN si y sólo si está en 1FN y todos los
+                atributos que no forman parte de la Clave Principal tienen dependencia
+                funcional completa de ella. Seguimos con esta tabla</p>
+            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image4.png" style="width:6.15104in;height:1.22612in" /></p>
+            <p>Vamos a examinar las dependencias funcionales. El gráfico que las
+                representa es el siguiente:</p>
+            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image24.png" style="width:4.58505in;height:1.94983in" /></p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p>Siempre que aparece un DNI aparecerá el Nombre correspondiente y la
+                            LocalidadAlumno correspondiente. Por tanto DNI→Nombre y
+                            DNI→LocalidadAlumno. Por otro lado siempre que aparece un Curso
+                            aparecerá el Tutor correspondiente. Por tanto Curso→Tutor. Los atributos
+                            Nombre y LocalidadAlumno no dependen funcionalmente de Curso, y el
+                            atributo Tutor no depende funcionalmente de DNI.</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <blockquote>
+                <p>El único atributo que sí depende de forma completa de la clave
+                    compuesta DNI y Curso es FechaMatrícula: (DNI,Curso)→FechaMatrícula.</p>
+            </blockquote>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p>A la hora de establecer la Clave Primaria de una tabla debemos
+                            escoger un atributo o conjunto de ellos de los que dependan
+                            funcionalmente el resto de atributos. Además debe ser una dependencia
+                            funcional completa. Si escogemos DNI como clave primaria, tenemos un
+                            atributo (Tutor) que no depende funcionalmente de él. Si escogemos Curso
+                            como clave primaria, tenemos otros atributos que no dependen de él.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Si escogemos la combinación (DNI, Curso) como clave primaria,
+                            entonces sí tenemos todo el resto de atributos con dependencia funcional
+                            respecto a esta clave. Pero es una dependencia parcial, no total (salvo
+                            FechaMatrícula, donde sí existe dependencia completa). Por tanto esta
+                            tabla no está en 2FN. La solución sería la siguiente:</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image3.png" style="width:6.26772in;height:1.44444in" /></p>
+            <p>Una Relación está en 3FN si y sólo si está en 2FN y no existen
+                dependencias transitivas. Todas las dependencias funcionales deben ser
+                respecto a la clave principal.</p>
+            <p>Seguimos con el ejemplo anterior.Trabajaremos con la siguiente
+                tabla:</p>
+            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image2.png" style="width:2.47062in;height:1.23958in" /></p>
+            <p>Las dependencias funcionales existentes son las siguientes. Como
+                podemos observar existe una dependencia funcional transitiva:
+                DNI→Localidad→Provincia</p>
+            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image23.png" style="width:3.03906in;height:0.8906in" /></p>
+            <p>Para que la tabla esté en 3FN, no pueden existir dependencias
+                funcionales transitivas. Para solucionar el problema deberemos crear una
+                nueva tabla. El resultado es:</p>
+            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image9.png" style="width:3.83537in;height:1.06875in" /></p>
+            <p>¿Te atreverías a obtener el diagrama E/R que daría lugar a este paso
+                a tablas?</p>
+            <h2 id="órdenes-de-pedido">5.2. Órdenes de pedido <a class="headerlink" href="#órdenes-de-pedido"
+                    title="Enlace permanente">¶</a></h2>
+            <p>Para explicar con un ejemplo en qué consiste cada una de las reglas,
+                vamos a considerar los datos de la siguiente tabla.</p>
+            <p>ORDENES (<strong>id_orden</strong>, fecha, id_cliente, nom_cliente,
+                estado, num_art, nom_art, cant, precio)</p>
+            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image20.png" style="width:6.26772in;height:1.33333in" /></p>
+            <p>(1FN) Al examinar estos registros, podemos darnos cuenta que
+                contienen un grupo repetido para NUM_ART, NOM_ART, CANT y PRECIO. La 1FN
+                prohíbe los grupos repetidos, por lo tanto tenemos que convertir a la 1ª
+                FN.</p>
+            <p><strong>IMPORTANTE</strong>: En este caso no vemos atributos
+                multivaluados, pero lo que sí se puede observar es que existen grupos de
+                datos repetidos, es decir, que para una clave id_orden tenemos varios
+                registros con NUM_ART, NOM_ART, CANT y PRECIO distintos, un grupo de
+                valores. Lo tenemos considerar como los multivaluados.</p>
+            <p>En este caso podemos pensar que la clave no ha sido escogida de forma
+                correcta y por tanto tenemos que seguir los siguientes pasos:</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p>Eliminar los grupos repetidos.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Tenemos que crear una nueva tabla con la PK de la tabla base y el
+                            grupo repetido.</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <p>Los registros quedan ahora conformados en dos tablas que llamaremos
+                ORDENES y ARTICULOS_ORDENES.</p>
+            <blockquote>
+                <p>ORDENES (<strong>id_orden</strong>, fecha, id_cliente, nom_cliente,
+                    estado)</p>
+                <p>ARTICULOS_ORDENES (i<strong>d_orden (FK)</strong>,
+                    <strong>num_art,</strong> nom_art, cant, precio)
+                </p>
+            </blockquote>
+            <p>(2FN) Ahora procederemos a aplicar la 2ª FN, es decir, tenemos que
+                eliminar cualquier columna no clave que no dependa de la clave primaria
+                de la tabla. Los pasos a seguir son:</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p>Determinar cuáles columnas que no son clave no dependen de la clave
+                            primaria de la tabla.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Eliminar esas columnas de la tabla base.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Crear una segunda tabla con esas columnas y la(s) columna(s) de la PK
+                            de la cual dependen.</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <p>La tabla ORDENES está en 2FN. Cualquier valor único de ID_ORDEN
+                determina un sólo valor para cada columna. Por lo tanto, todas las
+                columnas son dependientes de la llave primaria ID_ORDEN.</p>
+            <p>Por su parte, la tabla ARTICULOS_ORDENES no se encuentra en 2FN ya
+                que las columnas PRECIO y NOM_ART son dependientes de NUM_ART, pero no
+                son dependientes de ID_ORDEN. Lo que haremos a continuación es eliminar
+                estas columnas de la tabla ARTICULOS_ORDENES y crear una tabla ARTICULOS
+                con dichas columnas y la llave primaria de la que dependen.</p>
+            <blockquote>
+                <p>ARTICULOS_ORDENES (<strong>id_orden, num_art</strong>, cant)</p>
+                <p>ARTICULOS (<strong>num_art</strong>, nom_art, precio)</p>
+            </blockquote>
+            <p>(3FN) La 3ª FN nos dice que tenemos que eliminar cualquier columna no
+                llave que sea dependiente de otra columna no llave. Los pasos a seguir
+                son:</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p>Determinar las columnas que son dependientes de otra columna no
+                            llave.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Eliminar esas columnas de la tabla base.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>Crear una segunda tabla con esas columnas y con la columna no llave
+                            de la cual son dependientes.</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <blockquote>
+                <p>ORDENES (<strong>id_orden</strong>, fecha, id_cliente, nom_cliente,
+                    estado) OJO!!!</p>
+                <p>ARTICULOS_ORDENES (<strong>id_orden, num_art</strong>, cant) Si
+                    está</p>
+                <p>ARTICULOS (<strong>num_art</strong>, nom_art, precio) Si está</p>
+            </blockquote>
+            <p>Al observar las tablas que hemos creado, nos damos cuenta que tanto
+                la tabla ARTICULOS, como la tabla ARTICULOS_ORDENES se encuentran en
+                3FN.</p>
+            <p>Sin embargo la tabla ORDENES no lo está, ya que NOM_CLIENTE y ESTADO
+                son dependientes de ID_CLIENTE, y esta columna no es la llave
+                primaria.</p>
+            <p>Para normalizar esta tabla, moveremos las columnas no llave y la
+                columna llave de la cual dependen dentro de una nueva tabla
+                CLIENTES.</p>
+            <p>Las nuevas tablas CLIENTES y ORDENES se muestran a continuación.</p>
+            <blockquote>
+                <p>ORDENES (<strong>id_orden</strong>, fecha, id_cliente (fk))</p>
+                <p>CLIENTES (<strong>id_cliente</strong>, nom_cliente, estado)</p>
+            </blockquote>
+            <p>Finalmente, de la tabla inicial:</p>
+            <p>ORDENES (<strong>id_orden</strong>, fecha, id_cliente, nom_cliente,
+                estado, num_art, nom_art, cant, precio)</p>
+            <p>Hemos obtenido lo siguiente:</p>
+            <blockquote>
+                <p><img src="media_GBD_UT3_Teoria_Modelo/media/image22.png" style="width:3.34167in;height:1.33667in" />
+                </p>
+            </blockquote>
+            <p>¿Te atreverías a obtener el diagrama E/R que daría lugar a este paso
+                a tablas?</p>
+            <h2 id="juguetes-infantiles">5.3. Juguetes infantiles <a class="headerlink" href="#juguetes-infantiles"
+                    title="Enlace permanente">¶</a></h2>
+            <p>La empresa Laberinto S.L. dedicada a los juguetes infantiles tiene
+                una hoja de cálculo de Excel con una tabla en la que recoge los pedidos
+                que efectúa a los proveedores. En una misma fila de la hoja de cálculo
+                incluye todos los productos que se hayan solicitado en ese pedido.</p>
+            <p><strong>Supuesto</strong>: Recuerda que el enunciado te indica que en
+                un mismo pedido puede haber más de un producto y por tanto más de un
+                precio y más de una cantidad (un valor por cada producto incluido en el
+                pedido).</p>
+            <p><strong>Consejo</strong>: si en algún momento no tienes claro algún
+                apartado de la tabla o alguna indicación que te de el enunciado pon un
+                ejemplo con datos inventados, normalmente el ver una tabla rellena con
+                los valores de los atributos aclara mucho al buscar las
+                dependencias.</p>
+            <p>Realiza los pasos necesarios para normalizar la tabla anterior hasta
+                ·3FN.</p>
+            <p><strong>PEDIDO</strong> (Número_Pedido, Fecha_Pedido, Cod_Proveedor,
+                Nombre_proveedor, Dirección_Proveedor, Referencia_Producto,
+                Nombre_Producto, Precio_Producto, PEDIDOCantidad_Producto)</p>
+            <p>No está en 1FN ya que existen grupos repetitivos.</p>
+            <p><strong>Pedido</strong> (<strong>Número_Pedido</strong>,
+                Fecha_Pedido, Cod_Proveedor, Nombre_proveedor, Dirección_Proveedor)
+                estaría en 1FN ya que no hay grupo de valores repetidos.</p>
+            <p><strong>Producto_pedido</strong> (<strong>Número pedido(FK),
+                    Referencia_Producto</strong>, cantidad_producto, precio_producto,
+                Nombre_Producto) estaría en 1FN ya que no hay grupo de valores
+                repetidos.</p>
+            <p>La primera tabla está en 2FN ya que no tiene clave compuesta</p>
+            <p>La segunda no está en 2FN ya que tiene clave compuesta y hay
+                atributos que depende de parte de la clave.</p>
+            <p>Obtenemos las siguientes tablas:</p>
+            <p><em><strong>Pedido</strong></em> (<strong>Número_Pedido</strong>,
+                Fecha_Pedido, Cod_Proveedor, Nombre_proveedor,
+                Dirección_Proveedor)<br />
+                <em><strong>Producto_pedido</strong></em> (<strong>Número pedido(FK),
+                    Referencia_Producto (FK),</strong> cantidad_producto)<br />
+                <em><strong>Producto</strong></em> (<strong>Referencia
+                    producto</strong>, nombre_producto, precio_producto)
+            </p>
+            <p>Analizamos si están en 3FN y solo la tabla pedido no está en 3FN
+                porque los datos del proveedor no dependen del numero_pedido sino de
+                cod_proveedor (existe dependencia transitiva). Por tanto obtenemos,
+                sacando los datos que dependen de cod_proveedor:</p>
+            <p><strong>Pedido</strong> (<strong>Número_Pedido</strong>,
+                Fecha_Pedido, codigo_proveedor (FK))<br />
+                <strong>Proveedor</strong> (<strong>Codigo_proveedor</strong>,
+                nombre_proveedor, dirección_proveedor)<br />
+                <strong>Producto_pedido</strong> (<strong>Número pedido(FK),
+                    Referencia_Producto (FK)</strong>, cantidad_producto)<br />
+                <strong>Producto</strong> (<strong>Referencia producto</strong>,
+                nombre_producto, precio_producto)
+            </p>
 
         </main>
     </div>
 
-        </main>
+    </main>
     </div>
 </body>
+
 </html>
