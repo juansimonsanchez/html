@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEW - Ut5 Teoria Entornos Versiones</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>NEW &ndash; Ut5 Teoria Entornos Versiones</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="OGS_UT5_Teoria_Entornos_versiones.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+<header id="title-block-header">
+<h1 class="title"><span id="_n002t3ikhc3j"
+class="anchor"></span>Entornos de Desarrollo </h1>
+</header>
+
+<h3 id="section"> <a class="headerlink" href="#section" title="Enlace permanente">¶</a></h3>
+<h3 id="ficha-técnica-de-la-unidad">FICHA TÉCNICA DE LA UNIDAD <a class="headerlink" href="#ficha-técnica-de-la-unidad" title="Enlace permanente">¶</a></h3>
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 82%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Unidad trabajo</strong></td>
+<td style="text-align: left;">UT5. Entornos de desarrollo</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Resultados de
+Aprendizaje</strong></td>
+<td style="text-align: left;">RA5. Utiliza entornos de desarrollo
+integrados y sistemas de control de versiones para depurar, probar e
+integrar código de forma colaborativa.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Criterios de
+Evaluación</strong></td>
+<td style="text-align: left;"><p>CE5.a: Utilizar herramientas integradas
+de depuración (debuggers) para inspeccionar variables.</p>
+<p>CE5.b: Automatizar pruebas unitarias.</p>
+<p>CE5.c: Resolver proyectos colaborativos empleando Git y repositorios
+remotos. CE5.d: Aplicar metodologías ágiles.</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Tiempo</strong></td>
+<td style="text-align: left;">6 horas</td>
+</tr>
+</tbody>
+</table>
+<h3 id="section-1"> <a class="headerlink" href="#section-1" title="Enlace permanente">¶</a></h3>
+<p><strong>ÍNDICE DE CONTENIDOS</strong></p>
+<p><a href="#introducción"><u>1. Introducción</u></a></p>
+<p><a href="#qué-es-visual-studio-code"><u>2. ¿Qué es Visual Studio
+Code?</u></a></p>
+<p><a href="#el-ide-configuración-básica-de-vs-code"><u>3. El IDE:
+Configuración Básica de VS Code</u></a></p>
+<p><a href="#gestión-de-entornos-virtuales"><u>4. Gestión de Entornos
+Virtuales</u></a></p>
+<p><a href="#depuración-visual-debugging-sin-prints"><u>5. Depuración
+Visual (Debugging) sin "Prints"</u></a></p>
+<p><a href="#control-de-versiones-con-git"><u>6. Control de Versiones
+con Git</u></a></p>
+<p><a href="#colaboración-remota-con-github"><u>7. Colaboración Remota
+con GitHub</u></a></p>
+<h1 id="introducción">Introducción <a class="headerlink" href="#introducción" title="Enlace permanente">¶</a></h1>
+<p>Hoy en día, un administrador de sistemas moderno no trabaja a ciegas.
+Aunque es vital conocer la terminal, herramientas avanzadas como
+<strong>Visual Studio Code (VS Code)</strong> nos permiten desarrollar,
+depurar y versionar nuestros scripts de automatización de forma visual,
+reduciendo errores humanos y aumentando la velocidad de despliegue.</p>
+<p>Para esta unidad, nos centraremos en realizar todas las operaciones
+utilizando la <strong>interfaz gráfica (GUI)</strong> de VS Code. Esto
+nos facilitará entender la lógica del control de versiones y el
+aislamiento de código sin pelearnos con comandos complejos en la
+terminal de manera inicial.</p>
+<h1 id="qué-es-visual-studio-code">2. ¿Qué es Visual Studio Code? <a class="headerlink" href="#qué-es-visual-studio-code" title="Enlace permanente">¶</a></h1>
+<p>Visual Studio Code (VS Code) es un editor de código fuente ligero y
+potente desarrollado por Microsoft, diseñado para ser rápido,
+multiplataforma y altamente personalizable.</p>
+<h3 id="características-importantes">Características importantes <a class="headerlink" href="#características-importantes" title="Enlace permanente">¶</a></h3>
+<ul>
+<li><p><strong>IntelliSense</strong>: Ofrece autocompletado inteligente
+de código basado en tipos de variables, definiciones de funciones y
+módulos importados. Proporciona sugerencias de sintaxis y documentación
+rápida al pasar el cursor sobre los elementos.</p></li>
+<li><p><strong>Depuración integrada</strong>: Incluye herramientas
+nativas que permiten establecer puntos de interrupción, inspeccionar
+variables y analizar la pila de llamadas sin abandonar el editor, lo que
+optimiza la corrección de errores.</p></li>
+<li><p><strong>Integración con Git</strong>: Permite la gestión visual
+de repositorios, facilitando operaciones como commits, staging y
+sincronización (push/pull) directamente desde la interfaz.</p></li>
+<li><p><strong>Ecosistema de extensiones</strong>: Acceso a miles de
+complementos para añadir soporte a lenguajes, temas personalizados y
+herramientas adicionales que transforman el editor en un entorno de
+desarrollo completo.</p></li>
+</ul>
+<h3 id="descripción-de-la-interfaz">Descripción de la interfaz <a class="headerlink" href="#descripción-de-la-interfaz" title="Enlace permanente">¶</a></h3>
+<ul>
+<li><p><strong>Barra de actividad (izquierda)</strong>: Punto de acceso
+principal para navegar entre el explorador de archivos, la búsqueda
+global, el control de código fuente y el gestor de extensiones.</p></li>
+<li><p><strong>Explorador (sidebar)</strong>: Proporciona una vista
+jerárquica de los archivos y carpetas del proyecto actual, permitiendo
+una organización eficiente.</p></li>
+<li><p><strong>Área de edición</strong>: El espacio central donde se
+desarrolla la actividad principal de escritura y edición de
+código.</p></li>
+<li><p><strong>Panel inferior</strong>: Contiene pestañas esenciales
+como la Terminal integrada, la consola de depuración y el panel de
+salida de errores.</p></li>
+<li><p><strong>Barra de estado (inferior)</strong>: Muestra información
+relevante sobre el entorno activo, el lenguaje de programación
+detectado, la codificación y el estado del repositorio Git.</p></li>
+</ul>
+<h1 id="el-ide-configuración-básica-de-vs-code">3. El IDE: Configuración
+Básica de VS Code <a class="headerlink" href="#el-ide-configuración-básica-de-vs-code" title="Enlace permanente">¶</a></h1>
+<h3 id="asistentes-visuales-de-programación">Asistentes Visuales de
+Programación <a class="headerlink" href="#asistentes-visuales-de-programación" title="Enlace permanente">¶</a></h3>
+<p>Al abrir un script de Python en VS Code, el editor utiliza sus
+extensiones instaladas para ofrecernos ayuda visual instantánea:</p>
+<ul>
+<li><p><strong>Pylance (Autocompletado)</strong>: Al escribir código,
+nos sugiere comandos, nombres de variables y funciones. Si pasamos el
+cursor sobre una función, nos muestra una ventana flotante explicando
+qué hace y qué parámetros necesita.</p></li>
+<li><p><strong>Análisis Dinámico (Errores en vivo)</strong>: Si
+cometemos un error de sintaxis (como olvidar un paréntesis), la pestaña
+<strong>Problemas</strong> (<em>Problems</em>) en la parte inferior nos
+mostrará el error exacto y la línea afectada con un subrayado ondulado
+rojo.</p></li>
+</ul>
+<h3 id="formateo-automático-con-un-clic">Formateo Automático con un
+Clic <a class="headerlink" href="#formateo-automático-con-un-clic" title="Enlace permanente">¶</a></h3>
+<p>Para que nuestro código cumpla las reglas profesionales de estilo
+(PEP 8) sin que tengamos que contar espacios manualmente, configuramos
+el formateador visual de VS Code:</p>
+<ol type="1">
+<li><p>Abrimos las <strong>Settings (Configuración)</strong> usando el
+icono de engranaje (abajo a la izquierda) o con Ctrl + ,.</p></li>
+<li><p>Buscamos Format On Save y marcamos la casilla.</p></li>
+<li><p>Ahora, cada vez que guardemos el archivo (Ctrl + S), VS Code
+reordenará la indentación, añadirá los espacios correctos y dejará el
+script perfectamente formateado de manera automática.</p></li>
+</ol>
+<h1 id="gestión-de-entornos-virtuales">4. Gestión de Entornos
+Virtuales <a class="headerlink" href="#gestión-de-entornos-virtuales" title="Enlace permanente">¶</a></h1>
+<p>Como administradores, debemos garantizar que las librerías
+adicionales que instalemos para un script (por ejemplo, para conectarnos
+a una base de datos) no interfieran con las herramientas del sistema
+operativo. Un <strong>entorno virtual</strong> es simplemente una
+carpeta local (normalmente llamada .venv) donde se guardan estas
+librerías de forma aislada.</p>
+<h3 id="creación-y-selección-visual-del-entorno">Creación y Selección
+Visual del Entorno <a class="headerlink" href="#creación-y-selección-visual-del-entorno" title="Enlace permanente">¶</a></h3>
+<h4 id="paso-1-crear-la-carpeta-local-.venv">Paso 1: Crear la carpeta
+local .venv <a class="headerlink" href="#paso-1-crear-la-carpeta-local-.venv" title="Enlace permanente">¶</a></h4>
+<p>Aunque la creación requiere un comando inicial sencillo en la
+terminal del proyecto:</p>
+<p>python -m venv .venv</p>
+<p>Una vez creado, <strong>no necesitaremos usar más la consola</strong>
+para su configuración.</p>
+<h4 id="paso-2-el-aviso-inteligente-de-vs-code">Paso 2: El aviso
+inteligente de VS Code <a class="headerlink" href="#paso-2-el-aviso-inteligente-de-vs-code" title="Enlace permanente">¶</a></h4>
+<p>Nada más crear la carpeta, VS Code detectará el entorno virtual y nos
+mostrará un aviso flotante abajo a la derecha:</p>
+<blockquote>
+<p><em>"Hemos detectado que se ha creado un nuevo entorno virtual.
+¿Desea seleccionarlo para la carpeta de trabajo?"</em></p>
+</blockquote>
+<p>Hacemos clic en <strong>Sí (Yes)</strong>.</p>
+<h4 id="paso-3-selección-manual-del-intérprete-si-no-sale-el-aviso">Paso
+3: Selección manual del intérprete (Si no sale el aviso) <a class="headerlink" href="#paso-3-selección-manual-del-intérprete-si-no-sale-el-aviso" title="Enlace permanente">¶</a></h4>
+<p>Si no aparece el aviso o queremos cambiarlo manualmente:</p>
+<ol type="1">
+<li><p>Hacemos clic en la versión de Python que aparece en la
+<strong>barra de estado inferior derecha</strong> (ej. <em>3.10.x</em> o
+<em>Select Interpreter</em>).</p></li>
+<li><p>O bien, abrimos la paleta de comandos con Ctrl + Shift + P,
+escribimos Python: Select Interpreter y pulsamos Enter.</p></li>
+<li><p>En la lista desplegable, seleccionamos la opción que lleva la
+etiqueta <strong>('.venv': venv)</strong>.</p></li>
+</ol>
+<h4 id="paso-4-activación-automática-en-la-terminal-integrada">Paso 4:
+Activación automática en la terminal integrada <a class="headerlink" href="#paso-4-activación-automática-en-la-terminal-integrada" title="Enlace permanente">¶</a></h4>
+<p>Al abrir una nueva terminal en VS Code (Ctrl + Shift + \``), el
+editor detectará nuestra configuración visual y activará el entorno
+automáticamente, mostrando el prefijo (.venv)` al inicio de la línea de
+comandos sin tener que escribir instrucciones de activación.</p>
+<h1 id="depuración-visual-debugging-sin-prints">5. Depuración Visual
+(Debugging) sin "Prints" <a class="headerlink" href="#depuración-visual-debugging-sin-prints" title="Enlace permanente">¶</a></h1>
+<p>La depuración visual nos permite pausar el script en pleno
+funcionamiento y examinar la memoria del ordenador sin necesidad de
+llenar el código de sentencias print() que luego tendríamos que
+borrar.</p>
+<h3 id="configuración-del-depurador">Configuración del Depurador <a class="headerlink" href="#configuración-del-depurador" title="Enlace permanente">¶</a></h3>
+<ol type="1">
+<li><p>Hacemos clic en el icono de <strong>Run and Debug (Ejecutar y
+depurar)</strong> en la barra lateral izquierda (el icono de un
+escarabajo con un botón de "Play").</p></li>
+<li><p>Hacemos clic en el botón de <strong>Run and Debug</strong> y
+seleccionamos <strong>Python File</strong>.</p></li>
+</ol>
+<h3 id="el-punto-de-ruptura-breakpoint">El Punto de Ruptura
+(Breakpoint) <a class="headerlink" href="#el-punto-de-ruptura-breakpoint" title="Enlace permanente">¶</a></h3>
+<ul>
+<li><p><strong>¿Qué es?</strong>: Una señal que le indica al ordenador:
+<em>"Detente aquí antes de ejecutar esta línea para que pueda examinar
+qué está pasando"</em>.</p></li>
+<li><p><strong>Cómo colocarlo</strong>: Movemos el cursor justo a la
+izquierda del número de la línea de código donde queremos pausar.
+Veremos un <strong>punto rojo translúcido</strong>. Hacemos clic y el
+punto se volverá de color rojo brillante y fijo.</p></li>
+</ul>
+<h3 id="panel-de-control-de-depuración-barra-flotante">Panel de Control
+de Depuración (Barra Flotante) <a class="headerlink" href="#panel-de-control-de-depuración-barra-flotante" title="Enlace permanente">¶</a></h3>
+<p>Al iniciarse la depuración y alcanzar el punto de ruptura, el script
+se pausará y aparecerá una barra de herramientas flotante en la parte
+superior:</p>
+<ol type="1">
+<li><p><strong>Continue (F5)</strong>: Reanuda la ejecución del programa
+de forma normal hasta el siguiente punto de ruptura o hasta el final del
+script.</p></li>
+<li><p><strong>Step Over (F10)</strong>: Pasa a la siguiente línea de
+código de este archivo. Ideal para ir avanzando línea a línea observando
+los cambios.</p></li>
+<li><p><strong>Step Into (F11)</strong>: Si la línea actual llama a una
+función que hemos programado nosotros, el depurador "entra" dentro de
+ella para ver qué pasa en su interior.</p></li>
+<li><p><strong>Step Out (Shift + F11)</strong>: Si estamos dentro de una
+función, ejecuta el resto de la misma de golpe y vuelve al flujo
+principal.</p></li>
+<li><p><strong>Restart (Ctrl + Shift + F5)</strong>: Detiene el script y
+lo vuelve a arrancar desde el principio con la memoria limpia.</p></li>
+<li><p><strong>Stop (Shift + F5)</strong>: Detiene por completo la
+ejecución y el análisis.</p></li>
+</ol>
+<h3 id="inspección-visual-de-datos">Inspección Visual de Datos <a class="headerlink" href="#inspección-visual-de-datos" title="Enlace permanente">¶</a></h3>
+<p>Mientras el script está pausado (en amarillo), podemos utilizar los
+paneles de la izquierda de la pantalla:</p>
+<ul>
+<li><p><strong>Panel de Variables</strong>: Muestra de forma
+estructurada todas las variables creadas hasta el momento y su valor
+actual. Podemos hacer clic sobre ellas y cambiar su valor en directo
+para probar diferentes casos de prueba.</p></li>
+<li><p><strong>Panel Watch (Inspección)</strong>: Hacemos clic en el
+botón + y escribimos una condición lógica (ej. precio &gt; 100). El
+sistema nos dirá en directo si esa condición es Verdadera o Falsa a
+medida que avanzamos línea a línea.</p></li>
+</ul>
+<h1 id="control-de-versiones-con-git">6. Control de Versiones con Git
+ <a class="headerlink" href="#control-de-versiones-con-git" title="Enlace permanente">¶</a></h1>
+<p>VS Code cuenta con una pestaña dedicada en la barra lateral izquierda
+llamada <strong>Control de Código Fuente (Source Control)</strong>.
+Desde aquí realizaremos todo el ciclo de Git de forma 100% visual.</p>
+<h3 id="ciclo-de-trabajo-en-git-mediante-la-interfaz">Ciclo de Trabajo
+en Git mediante la Interfaz <a class="headerlink" href="#ciclo-de-trabajo-en-git-mediante-la-interfaz" title="Enlace permanente">¶</a></h3>
+<h4 id="inicializar-el-repositorio">1. Inicializar el Repositorio <a class="headerlink" href="#inicializar-el-repositorio" title="Enlace permanente">¶</a></h4>
+<p>En lugar de escribir git init en consola:</p>
+<ol type="1">
+<li><p>Entramos en la pestaña de <strong>Control de Código
+Fuente</strong> (icono con tres nodos conectados).</p></li>
+<li><p>Hacemos clic en el gran botón azul que dice <strong>Initialize
+Repository (Inicializar repositorio)</strong>.</p></li>
+</ol>
+<h4 id="el-staging-area-preparar-cambios">2. El Staging Area (Preparar
+cambios) <a class="headerlink" href="#el-staging-area-preparar-cambios" title="Enlace permanente">¶</a></h4>
+<ul>
+<li><p>En nuestro panel de control de código fuente veremos el listado
+de archivos modificados bajo el título <strong>Changes
+(Cambios)</strong>.</p></li>
+<li><p>Para preparar un archivo (el equivalente a git add), simplemente
+pasamos el cursor sobre el archivo en la lista y hacemos clic en el
+icono <strong>+</strong> (<em>Stage Changes</em>) que aparece a su
+derecha. El archivo subirá a una sección llamada <strong>Staged Changes
+(Cambios preparados)</strong>.</p></li>
+</ul>
+<h4 id="el-commit-registrar-versión">3. El Commit (Registrar
+versión) <a class="headerlink" href="#el-commit-registrar-versión" title="Enlace permanente">¶</a></h4>
+<ul>
+<li><p>En la caja de texto superior que dice <em>Message (Mensaje)</em>,
+escribimos de forma descriptiva qué cambio hace nuestro script.</p></li>
+<li><p>Hacemos clic en el botón azul superior <strong>Commit</strong> (o
+en el icono de la marca de verificación ✓). ¡Listo! Se ha creado el
+punto de control local.</p></li>
+</ul>
+<h3 id="el-archivo-.gitignore">El Archivo .gitignore <a class="headerlink" href="#el-archivo-.gitignore" title="Enlace permanente">¶</a></h3>
+<p>Para evitar que Git rastree archivos innecesarios (como la carpeta
+.venv o temporales de VS Code), hacemos lo siguiente de forma
+visual:</p>
+<ol type="1">
+<li><p>Creamos un nuevo archivo llamado exactamente .gitignore en el
+explorador de archivos.</p></li>
+<li><p>Añadimos las carpetas que queremos descartar:</p></li>
+</ol>
+<p>.venv/<br />
+__pycache__/<br />
+*.pyc</p>
+<ol start="3" type="1">
+<li><p>Guardamos. Veremos que la carpeta .venv cambia de color en
+nuestro explorador (se vuelve grisácea), indicando que Git ya la
+ignora.</p></li>
+</ol>
+<h1 id="colaboración-remota-con-github">7. Colaboración Remota con
+GitHub <a class="headerlink" href="#colaboración-remota-con-github" title="Enlace permanente">¶</a></h1>
+<p>Una de las mayores ventajas de VS Code es su integración nativa con
+GitHub, que elimina por completo el uso de terminales y la gestión
+manual de claves criptográficas SSH para principiantes.</p>
+<h3 id="publicar-en-github-con-un-clic">Publicar en GitHub con un
+Clic <a class="headerlink" href="#publicar-en-github-con-un-clic" title="Enlace permanente">¶</a></h3>
+<p>Una vez que hemos hecho nuestro primer Commit de forma local:</p>
+<ol type="1">
+<li><p>En la pestaña de <strong>Control de Código Fuente</strong>,
+aparecerá un botón azul llamado <strong>Publish Branch (Publicar
+rama)</strong>.</p></li>
+<li><p>Al pulsarlo, VS Code nos preguntará si deseamos iniciar sesión en
+GitHub. Hacemos clic en <strong>Permitir (Allow)</strong>.</p></li>
+<li><p>Se abrirá el navegador web para iniciar sesión de forma segura y
+autorizar la conexión.</p></li>
+<li><p>Tras autorizar, volvemos a VS Code y elegimos una opción en la
+parte superior:</p>
+<ul>
+<li><p><em>Publish to GitHub private repository</em> (Repositorio
+privado).</p></li>
+<li><p><em>Publish to GitHub public repository</em> (Repositorio
+público).</p></li>
+</ul></li>
+<li><p>VS Code creará el repositorio automáticamente en nuestra cuenta
+de GitHub y subirá todo nuestro código.</p></li>
+</ol>
+<h3 id="sincronización-diaria-push-pull">Sincronización Diaria (Push /
+Pull) <a class="headerlink" href="#sincronización-diaria-push-pull" title="Enlace permanente">¶</a></h3>
+<p>A partir de ese momento, el botón azul cambiará su nombre a
+<strong>Sync Changes (Sincronizar cambios)</strong>.</p>
+<ul>
+<li><p>Al pulsarlo, VS Code realizará de manera síncrona la descarga de
+cambios del servidor remoto (<em>Pull</em>) y la subida de nuestros
+nuevos commits locales (<em>Push</em>) con total comodidad y
+seguridad.</p></li>
+</ul>
+
+        </main>
+    </div>
+</body>
+</html>

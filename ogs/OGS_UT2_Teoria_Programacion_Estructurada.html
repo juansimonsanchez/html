@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEW - Ut2 Teoria Programacion Estructurada</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>NEW &ndash; Ut2 Teoria Programacion Estructurada</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="OGS_UT2_Teoria_Programacion_Estructurada.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+<header id="title-block-header">
+<h1 class="title"><span id="_yku3umx1qg4v"
+class="anchor"></span>PROGRAMACIÓN ESTRUCTURADA </h1>
+</header>
+
+<h1 id="section"> <a class="headerlink" href="#section" title="Enlace permanente">¶</a></h1>
+<h3 id="ficha-técnica-de-la-unidad">FICHA TÉCNICA DE LA UNIDAD  <a class="headerlink" href="#ficha-técnica-de-la-unidad" title="Enlace permanente">¶</a></h3>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 83%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Unidad Trabajo</strong></td>
+<td style="text-align: left;">UT2. Programación estructurada</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Resultados de
+Aprendizaje</strong></td>
+<td style="text-align: left;">RA2. Maneja los elementos necesarios en un
+lenguaje de programación, identificando los bloques fundamentales de
+construcción de un programa.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Criterios de
+Evaluación</strong></td>
+<td><p>CE2.a: Manejar los tipos de datos básicos (numéricos, booleanos,
+cadenas) y sus operaciones.</p>
+<p>CE2.b: Utilizar estructuras de control de flujo (condicionales y
+bucles) para resolver problemas algorítmicos.</p>
+<p>CE2.c: Implementar la entrada y salida de datos estándar de forma
+eficiente y legible.</p>
+<p>CE2.d: Documentar el código mediante comentarios adecuados para
+facilitar su mantenimiento.</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Tiempo</strong></td>
+<td style="text-align: left;">15 horas</td>
+</tr>
+</tbody>
+</table>
+<h3 id="índice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#índice-de-contenidos" title="Enlace permanente">¶</a></h3>
+<p><a href="#introducción-y-contextualización"><u>1. INTRODUCCIÓN Y
+CONTEXTUALIZACIÓN</u></a></p>
+<p><a href="#fundamentos-de-python"><u>2. FUNDAMENTOS DE
+PYTHON</u></a></p>
+<blockquote>
+<p><a href="#el-concepto-de-script-frente-a-programa-ejecutable"><u>2.1.
+El Concepto de Script frente a Programa Ejecutable</u></a></p>
+<p><a href="#variables-ámbitos-y-asignación-dinámica"><u>2.2. Variables,
+Ámbitos y Asignación Dinámica</u></a></p>
+<p><a href="#literales-y-comentarios-al-código"><u>2.3. Literales y
+Comentarios al Código</u></a></p>
+</blockquote>
+<p><a href="#tipos-de-datos-primitivos-e-identificación"><u>3. TIPOS DE
+DATOS PRIMITIVOS E IDENTIFICACIÓN</u></a></p>
+<blockquote>
+<p><a href="#datos-numéricos-enteros-int-y-reales-float"><u>3.1. Datos
+Numéricos: Enteros (int) y Reales (float)</u></a></p>
+<p><a href="#operadores-aritméticos-de-sistemas"><u>3.2. Operadores
+Aritméticos de Sistemas</u></a></p>
+<p><a href="#funciones-numéricas-predefinidas"><u>3.3. Funciones
+Numéricas Predefinidas</u></a></p>
+<p><a href="#datos-booleanos-y-operaciones-lógicasrelacionales"><u>3.4.
+Datos Booleanos y Operaciones Lógicas/Relacionales</u></a></p>
+<p><a href="#datos-de-texto-cadenas-de-caracteres-strings"><u>3.5. Datos
+de Texto: Cadenas de Caracteres (strings)</u></a></p>
+</blockquote>
+<p><a href="#entrada-y-salida-estándar"><u>4. ENTRADA Y SALIDA
+ESTÁNDAR</u></a></p>
+<blockquote>
+<p><a
+href="#captura-de-datos-con-input-y-conversión-de-tipos-casteo"><u>4.1.
+Captura de Datos con input() y Conversión de Tipos (Casteo)</u></a></p>
+<p><a href="#visualización-con-print-y-formateo-básico"><u>4.2.
+Visualización con print() y Formateo Básico</u></a></p>
+</blockquote>
+<p><a href="#estructuras-de-control-de-flujo-lógico"><u>5. ESTRUCTURAS
+DE CONTROL DE FLUJO LÓGICO</u></a></p>
+<blockquote>
+<p><a href="#la-regla-sintáctica-de-la-indentación"><u>5.1. La Regla
+Sintáctica de la Indentación</u></a></p>
+<p><a href="#alternativa-condicional-if---elif---else"><u>5.2.
+Alternativa Condicional (if - elif - else)</u></a></p>
+<p><a
+href="#bucle-iterativo-condicional-while-y-controladores-break"><u>5.3.
+Bucle Iterativo Condicional (while) y Controladores (break)</u></a></p>
+</blockquote>
+<h1 id="introducción-y-contextualización">1. INTRODUCCIÓN Y
+CONTEXTUALIZACIÓN <a class="headerlink" href="#introducción-y-contextualización" title="Enlace permanente">¶</a></h1>
+<p>El aprendizaje de la programación estructurada constituye el primer
+paso metodológico real para la cualificación de un Administrador de
+Sistemas hacia el ámbito de la automatización (<em>scripting</em>) y la
+filosofía DevOps. Esta metodología se basa en un principio fundamental:
+<strong>las instrucciones de un script se ejecutan de manera lineal y
+secuencial</strong>, una detrás de otra, salvo cuando alteramos
+deliberadamente este orden natural mediante el uso de decisiones
+condicionales o repeticiones de código (bucles).</p>
+<p><strong>Relación Curricular:</strong></p>
+<p>Esta unidad didáctica se fundamenta de forma directa sobre la lógica
+algorítmica y el pensamiento computacional adquiridos en la unidad
+anterior utilizando pseudocódigo en PSeInt (UT1). A nivel
+interdisciplinar, se conecta con:</p>
+<ul>
+<li><p><strong>Administración de Sistemas Operativos (2º ASIR):</strong>
+Al sentar las bases sintácticas necesarias para sustituir los antiguos
+scripts en Bash por scripts avanzados de Python capaces de realizar
+comprobaciones básicas de uso de hardware y control de credenciales de
+usuario.</p></li>
+<li><p><strong>Gestión de Bases de Datos (1º ASIR):</strong> Al
+capacitar al alumno en la comprensión del uso de operadores lógicos y
+relacionales, fundamentales para comprender el filtrado y estructuración
+de información en sistemas de bases de datos.</p></li>
+</ul>
+<h1 id="fundamentos-de-python">2. FUNDAMENTOS DE PYTHON  <a class="headerlink" href="#fundamentos-de-python" title="Enlace permanente">¶</a></h1>
+<h2 id="el-concepto-de-script-frente-a-programa-ejecutable">2.1. El
+Concepto de Script frente a Programa Ejecutable <a class="headerlink" href="#el-concepto-de-script-frente-a-programa-ejecutable" title="Enlace permanente">¶</a></h2>
+<p>A diferencia de los lenguajes compilados de bajo o alto nivel (como C
+o C++), que traducen todo su código a un archivo binario ejecutable
+antes de correr en la máquina, <strong>Python es un lenguaje de alto
+nivel interpretado</strong>.</p>
+<p>Esto significa que las instrucciones se guardan en un archivo de
+texto plano con la extensión .py. Al ejecutarlo, un programa intermedio
+denominado <strong>intérprete</strong> lee y procesa el código línea a
+línea en tiempo de ejecución.</p>
+<ul>
+<li><p><strong>Ventaja para el SysAdmin:</strong> No hay fase previa de
+compilación. Puedes escribir tu código e implementarlo de manera
+inmediata en servidores con distintos sistemas operativos (Linux,
+Windows o macOS) siempre que tengan instalado el intérprete de
+Python.</p></li>
+</ul>
+<h2 id="variables-ámbitos-y-asignación-dinámica">2.2. Variables, Ámbitos
+y Asignación Dinámica <a class="headerlink" href="#variables-ámbitos-y-asignación-dinámica" title="Enlace permanente">¶</a></h2>
+<p>Una <strong>variable</strong> es una referencia lógica o un nombre
+que apunta a un espacio en la memoria RAM del servidor para guardar un
+dato que puede cambiar durante la ejecución del script.</p>
+<p>Para guardar un dato dentro de una variable, utilizamos el operador
+de asignación =. Python utiliza un mecanismo denominado <strong>tipado
+dinámico</strong>: no requiere que declares de qué tipo es la variable
+antes de usarla, sino que el propio intérprete detecta el tipo de dato
+de forma automática en el momento en que le asignas un valor.</p>
+<ul>
+<li><p><strong>Ámbito de una variable (Scope):</strong> Hace referencia
+a las partes del programa donde una variable existe y se puede leer o
+escribir.</p>
+<ul>
+<li><p><strong>Variables Globales:</strong> Se definen en el flujo
+principal de nuestro script y son accesibles desde cualquier parte de
+nuestro código actual.</p></li>
+<li><p><strong>Variables Locales:</strong> Se definen dentro de una
+estructura específica (como una función o bloque de control) y solo
+existen mientras dure la ejecución de ese bloque.</p></li>
+</ul></li>
+</ul>
+<h2 id="literales-y-comentarios-al-código">2.3. Literales y Comentarios
+al Código <a class="headerlink" href="#literales-y-comentarios-al-código" title="Enlace permanente">¶</a></h2>
+<ul>
+<li><p><strong>Literales:</strong> Son valores fijos que se escriben
+directamente en el código del programa. Por ejemplo, en la expresión
+umbral = 90, el número 90 es un literal numérico entero.</p></li>
+<li><p><strong>Comentarios:</strong> Son anotaciones en el código que el
+intérprete de Python ignora por completo durante la ejecución. En
+administración de sistemas, es obligatorio documentar qué hace cada
+script o línea compleja. Los comentarios de una sola línea se inician
+siempre con el carácter almohadilla #.</p></li>
+</ul>
+<h1 id="tipos-de-datos-primitivos-e-identificación">3. TIPOS DE DATOS
+PRIMITIVOS E IDENTIFICACIÓN <a class="headerlink" href="#tipos-de-datos-primitivos-e-identificación" title="Enlace permanente">¶</a></h1>
+<h2 id="datos-numéricos-enteros-int-y-reales-float">3.1. Datos
+Numéricos: Enteros (int) y Reales (float) <a class="headerlink" href="#datos-numéricos-enteros-int-y-reales-float" title="Enlace permanente">¶</a></h2>
+<p>Python trabaja de manera nativa con dos tipos de datos numéricos
+principales:</p>
+<ul>
+<li><p><strong>Enteros (int):</strong> Representan números sin parte
+decimal, ya sean positivos, negativos o el cero.</p></li>
+<li><p><strong>Reales o de punto flotante (float):</strong> Representan
+números con coma o decimales (se escribe con punto .).</p></li>
+</ul>
+<p>Podemos utilizar la función integrada type() para averiguar en
+cualquier momento la clase de dato que almacena una variable.</p>
+<p><strong>A) Ejemplo Básico:</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Definición de dos tipos de números simples
+edad_usuario = 25
+altura_metros = 1.78
+print(type(edad_usuario)) # Imprime: &lt;class 'int'&gt;
+print(type(altura_metros)) # Imprime: &lt;class 'float'&gt;</code></pre></div></p>
+<p><strong>B) Ejemplo Práctico (Perfil ASIR):</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Script: inventario_servidor.py
+# Guardamos valores para monitorizar el estado físico de un nodo
+servidores_en_rack = 14 # Tipo 'int': Unidades enteras
+indivisibles
+consumo_electrico_amperios = 4.85 # Tipo 'float': Medición precisa
+con decimales
+print("Tipo de la variable servidores_en_rack:")
+print(type(servidores_en_rack))
+print("Tipo de la variable consumo_electrico_amperios:")
+print(type(consumo_electrico_amperios))</code></pre></div>3.2. Operadores Aritméticos
+de Sistemas</h2>
+<p>Símbolos matemáticos utilizados para manipular los valores
+numéricos:</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Operador</strong></td>
+<td style="text-align: left;"><strong>Operación</strong></td>
+<td style="text-align: left;"><strong>Ejemplo</strong></td>
+<td style="text-align: left;"><strong>Resultado</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>+</strong></td>
+<td style="text-align: left;">Suma</td>
+<td style="text-align: left;">5 + 2</td>
+<td style="text-align: left;">7</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>-</strong></td>
+<td style="text-align: left;">Resta</td>
+<td style="text-align: left;">5 - 2</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>*</strong></td>
+<td style="text-align: left;">Multiplicación</td>
+<td style="text-align: left;">5 * 2</td>
+<td style="text-align: left;">10</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>/</strong></td>
+<td style="text-align: left;">División (siempre devuelve decimal)</td>
+<td style="text-align: left;">5 / 2</td>
+<td style="text-align: left;">2.5</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>//</strong></td>
+<td style="text-align: left;">División entera (elimina los
+decimales)</td>
+<td style="text-align: left;">5 // 2</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>%</strong></td>
+<td style="text-align: left;">Módulo (devuelve el resto de la
+división)</td>
+<td style="text-align: left;">5 % 2</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>**</strong></td>
+<td style="text-align: left;">Potencia</td>
+<td style="text-align: left;">5 ** 2</td>
+<td style="text-align: left;">25</td>
+</tr>
+</tbody>
+</table>
+<p><em>(Nota: Los operadores unarios + y - actúan para representar la
+polaridad positiva o negativa de un valor numérico).</em></p>
+<p><strong>A) Ejemplo Básico:</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Operaciones matemáticas directas con variables
+dividendo = 13
+divisor = 4
+resultado_division_entera = dividendo // divisor
+resto_sobrante = dividendo % divisor
+print(resultado_division_entera) # Muestra: 3
+print(resto_sobrante) # Muestra: 1</code></pre></div></p>
+<p><strong>B) Ejemplo Práctico (Perfil ASIR):</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Script: particionamiento_disco.py
+# Propósito: Evaluar el espacio libre sobrante de una cabina tras
+realizar backups
+capacidad_total_bloques = 175
+bloques_usados_por_backup = 30
+# Calcular cuántos backups exactos caben y cuánto espacio de bloques
+sobra
+backups_posibles = capacidad_total_bloques //
+bloques_usados_por_backup
+bloques_sobrantes = capacidad_total_bloques %
+bloques_usados_por_backup
+print("backups que se pueden almacenar en la cabina:")
+print(backups_posibles) # Muestra: 5
+print("Bloques de almacenamiento que quedan vacíos al final:")
+print(bloques_sobrantes) # Muestra: 25 (el resto de la división)</code></pre></div></h2>
+<h2 id="funciones-numéricas-predefinidas">3.3. Funciones Numéricas
+Predefinidas <a class="headerlink" href="#funciones-numéricas-predefinidas" title="Enlace permanente">¶</a></h2>
+<p>Python tiene funciones cargadas en su núcleo para manipular datos
+numéricos directamente:</p>
+<ul>
+<li><p>abs(x): Devuelve el valor absoluto de un número (su magnitud sin
+signo).</p></li>
+<li><p>pow(x, y): Eleva el número base x al exponente y.</p></li>
+<li><p>round(x, [y]): Redondea un número real x al número de decimales
+indicado en y.</p></li>
+<li><p>bin(x): Convierte un número entero a su representación
+binaria.</p></li>
+<li><p>hex(x): Convierte un número entero a su representación
+hexadecimal.</p></li>
+<li><p>divmod(x, y): Devuelve la división entera y el módulo de manera
+conjunta.</p></li>
+</ul>
+<p><strong>A) Ejemplo Básico:</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Redondeo simple y valor absoluto
+numero_negativo = -15.678
+print(abs(numero_negativo)) # Muestra: 15.678
+print(round(numero_negativo, 2)) # Muestra: -15.68</code></pre></div></p>
+<p><strong>B) Ejemplo Práctico (Perfil ASIR):</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Script: analisis_red.py
+# Propósito: Convertir parámetros de red decimales a binario/hex para
+análisis manual
+primer_octeto_ip = 192
+latencia_ping_ms = 45.728
+print("Octeto IP convertido a Binario:")
+print(bin(primer_octeto_ip)) # Muestra: '0b11000000'
+print("Octeto IP convertido a Hexadecimal:")
+print(hex(primer_octeto_ip)) # Muestra: '0xc0'
+print("Latencia media de la red redondeada a un único decimal:")
+print(round(latencia_ping_ms, 1)) # Muestra: 45.7</code></pre></div></h2>
+<h2 id="datos-booleanos-y-operaciones-lógicasrelacionales">3.4. Datos
+Booleanos y Operaciones Lógicas/Relacionales <a class="headerlink" href="#datos-booleanos-y-operaciones-lógicasrelacionales" title="Enlace permanente">¶</a></h2>
+<p>Un <strong>booleano</strong> (bool) es un tipo de dato que solo puede
+tomar uno de dos estados posibles: True (Verdadero) o False (Falsos).
+Son fundamentales para definir condiciones de seguridad y saltos de
+flujo lógico.</p>
+<ul>
+<li><p><strong>Operadores Relacionales:</strong> == (Igual a), !=
+(Distinto de), &lt;, &gt;, &lt;=, &gt;=.</p></li>
+<li><p><strong>Operadores Lógicos:</strong> and (Y lógico), or (O
+lógico), not (Negación).</p></li>
+</ul>
+<p><strong>A) Ejemplo Básico:</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Comparación lógica de variables numéricas
+limite_edad = 18
+edad_usuario = 16
+puede_entrar = edad_usuario &gt;= limite_edad
+print(puede_entrar) # Muestra: False</code></pre></div></p>
+<p><strong>B) Ejemplo Práctico (Perfil ASIR):</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Script: auditoria_firewall.py
+# Comprobamos si un puerto solicitado por una aplicación es
+seguro
+puerto_solicitado = 80
+puerto_ssh = 22
+puerto_https = 443</code></pre></div></h2>
+<h2 id="datos-de-texto-cadenas-de-caracteres-strings">3.5. Datos de
+Texto: Cadenas de Caracteres (strings) <a class="headerlink" href="#datos-de-texto-cadenas-de-caracteres-strings" title="Enlace permanente">¶</a></h2>
+<p>Las cadenas de texto se identifican por ir encerradas entre comillas
+simples (') o dobles (").</p>
+<ul>
+<li><p><strong>Operador + (Concatenación):</strong> Permite unir dos o
+más cadenas de texto para formar una sola.</p></li>
+<li><p><strong>Operador * (Repetición):</strong> Permite repetir una
+cadena un número determinado de veces.</p></li>
+</ul>
+<p><strong>A) Ejemplo Básico:</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Concatenación simple de palabras
+saludo = "Hola"
+destino = "Mundo"
+mensaje_completo = saludo + " " + destino
+print(mensaje_completo) # Muestra: Hola Mundo</code></pre></div></p>
+<p><strong>B) Ejemplo Práctico (Perfil ASIR):</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Script: constructor_rutas.py
+# Propósito: Generar automáticamente la ruta de volcado de logs para
+una máquina virtual
+directorio_base_linux = "/var/log/nginx"
+nombre_archivo_log = "error.log"
+# Generación automática de la ruta completa usando concatenación
+ruta_completa_sistema = directorio_base_linux + "/" +
+nombre_archivo_log
+print("El archivo de registro se guardará en:")
+print(ruta_completa_sistema) # Muestra: /var/log/nginx/error.log</code></pre></div>4. ENTRADA Y SALIDA ESTÁNDAR</h1>
+<h2 id="captura-de-datos-con-input-y-conversión-de-tipos-casteo">4.1.
+Captura de Datos con input() y Conversión de Tipos (Casteo) <a class="headerlink" href="#captura-de-datos-con-input-y-conversión-de-tipos-casteo" title="Enlace permanente">¶</a></h2>
+<p>La función input(mensaje) detiene la ejecución del programa y espera
+a que el operador escriba una entrada por teclado y pulse Intro.</p>
+<p><strong>REGLA DE ORO DE INPUT:</strong> La función input() siempre
+devuelve la información capturada en forma de texto (tipo str).</p>
+<p>Si necesitas realizar operaciones numéricas, debes transformarlo
+explícitamente utilizando funciones de conversión de tipos (también
+conocidas como funciones de casteo):</p>
+<ul>
+<li><p>int(variable): Convierte un texto numérico compatible a entero
+(ej. "22" a 22).</p></li>
+<li><p>float(variable): Convierte un texto numérico compatible a decimal
+(ej. "12.5" a 12.5).</p></li>
+<li><p>str(variable): Convierte un valor numérico a texto.</p></li>
+</ul>
+<p><strong>A) Ejemplo Básico:</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Lectura de un número y cálculo de su cuadrado
+numero_texto = input("Introduce un número entero: ")
+numero_entero = int(numero_texto) # Casteo a entero obligatorio
+resultado_cuadrado = numero_entero ** 2
+print(resultado_cuadrado)</code></pre></div></p>
+<p><strong>B) Ejemplo Práctico (Perfil ASIR):</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Script: aprovisionamiento_cuotas.py
+# Propósito: Calcular el espacio total en disco requerido para dar de
+alta varios usuarios
+cuota_por_usuario_gb = 15
+usuarios_nuevos_texto = input("Introduce la cantidad de usuarios que
+se darán de alta en el sistema: ")
+usuarios_nuevos = int(usuarios_nuevos_texto) # Casteo a entero para
+poder multiplicar
+espacio_total_necesario_gb = usuarios_nuevos *
+cuota_por_usuario_gb
+print("Espacio total aproximado que se debe reservar en la partición
+(GB):")
+print(espacio_total_necesario_gb)</code></pre></div>4.2. Visualización
+con print() y Formateo Básico</h2>
+<p>La función print() envía información al canal de salida estándar (la
+terminal). Podemos formatear o estructurar la salida mediante comas (,)
+o concatenando con el signo + (lo que requiere usar str() en las partes
+numéricas).</p>
+<p><strong>A) Ejemplo Básico:</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Diferentes formas de mostrar variables juntas
+anio = 2026
+print("El año actual es", anio)
+print("El año actual es " + str(anio))</code></pre></div></p>
+<p><strong>B) Ejemplo Práctico (Perfil ASIR):</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Script: telemetria_servidores.py
+temperatura_cpd_grados = 21.5
+cantidad_servidores_activos = 8
+# Formateo de salida combinando cadenas y valores de
+monitorización
+print("Estado del CPD: Servidores encendidos:",
+cantidad_servidores_activos, "| Temperatura del CPD:",
+temperatura_cpd_grados, "grados Celsius.")</code></pre></div>5. ESTRUCTURAS DE
+CONTROL DE FLUJO LÓGICO</h1>
+<h2 id="la-regla-sintáctica-de-la-indentación">5.1. La Regla Sintáctica
+de la Indentación <a class="headerlink" href="#la-regla-sintáctica-de-la-indentación" title="Enlace permanente">¶</a></h2>
+<p>A diferencia de otros lenguajes de programación como C, Java o PHP
+(que delimitan los bloques internos de control mediante el uso de llaves
+{ }), <strong>Python utiliza la indentación (el sangrado o espacios en
+blanco)</strong> como un requisito de sintaxis obligatorio.</p>
+<p>Todas las instrucciones de un bloque de código común deben estar
+perfectamente alineadas a la derecha con el mismo número de espacios (la
+norma internacional de estilo fija de forma preferente <strong>4
+espacios en blanco</strong>).</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>if condicion_analizada:
+instruccion_dentro_del_bloque_1
+instruccion_dentro_del_bloque_2
+instruccion_fuera_del_bloque # Al volver al margen inicial, termina
+el bloque anterior</code></pre></div>5.2. Alternativa
+Condicional (if - elif - else)</h2>
+<p>Permite desviar la ejecución secuencial del script. Evalúa
+condiciones booleanas de forma jerárquica y secuencial. En el momento en
+que una condición es verdadera, ejecuta el bloque de instrucciones
+indentado correspondiente y salta al final de la estructura de control
+condicional.</p>
+<p><strong>A) Ejemplo Básico:</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Determinación simple de rangos numéricos
+nota = int(input("Introduce tu nota del examen (1-10): "))
+if nota &gt;= 5:
+print("Has aprobado el examen.")
+else:
+print("Has suspendido el examen.")</code></pre></div></p>
+<p><strong>B) Ejemplo Práctico (Perfil ASIR):</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Script: analizador_http.py
+# Propósito: Evaluar el comportamiento de un servidor web según el
+código de respuesta devuelto
+codigo_estado_http = int(input("Introduce el código de estado HTTP
+recibido del servidor web: "))
+if codigo_estado_http == 200:
+print("Diagnóstico: El servidor web responde correctamente
+(OK).")
+elif codigo_estado_http == 301 or codigo_estado_http == 302:
+print("Diagnóstico: El recurso solicitado está configurado como una
+Redirección.")
+elif codigo_estado_http == 404:
+print("Diagnóstico: Error del cliente. Recurso no encontrado en el
+servidor.")
+elif codigo_estado_http == 500:
+print("Diagnóstico: Error crítico interno del servidor web.")
+else:
+print("Diagnóstico: Código de respuesta HTTP no reconocido o
+alternativo.")</code></pre></div>5.3.
+Bucle Iterativo Condicional (while) y Controladores (break)</h2>
+<p>El bucle while evalúa una condición booleana y, <strong>mientras esta
+condición se mantenga verdadera (True)</strong>, repite indefinidamente
+la ejecución del bloque de código indentado a su derecha.</p>
+<ul>
+<li><p><strong>Instrucción break:</strong> Permite interrumpir de forma
+abrupta e inmediata la ejecución del bucle, saltando directamente a la
+primera línea de código que se encuentre fuera del bloque
+repetitivo.</p></li>
+</ul>
+<p><strong>A) Ejemplo Básico:</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Un bucle que cuenta de forma progresiva del 1 al 5
+contador = 1
+while contador &lt;= 5:
+print(contador)
+contador = contador + 1 # Incremento básico de la variable de
+control</code></pre></div></p>
+<p><strong>B) Ejemplo Práctico (Perfil ASIR):</strong></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Script: shell_segura.py
+# Propósito: Simular la solicitud persistente de una credencial para
+acceder a la terminal de red
+contrasena_correcta = "smr2023"
+intentos_restantes = 3
+print("--- PANEL DE SEGURIDAD DE ACCESO SSH ---")
+while intentos_restantes &gt; 0:
+clave_usuario = input("Introduce la contraseña de administración del
+switch: ")
+if clave_usuario == contrasena_correcta:
+print("Acceso concedido. Cargando sesión shell...")
+break # Interrumpe y sale del bucle 'while' inmediatamente al tener
+éxito
+else:
+intentos_restantes = intentos_restantes - 1
+print("Contraseña incorrecta.")
+print("Intentos de acceso restantes:", intentos_restantes)
+if intentos_restantes == 0:
+print("SISTEMA BLOQUEADO: Se ha superado el número máximo de intentos
+permitidos.")</code></pre></div></p>
+
+        </main>
+    </div>
+</body>
+</html>

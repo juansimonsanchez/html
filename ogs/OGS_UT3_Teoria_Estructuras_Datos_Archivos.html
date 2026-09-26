@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEW - Ut3 Teoria Estructuras Datos Archivos</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>NEW &ndash; Ut3 Teoria Estructuras Datos Archivos</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="OGS_UT3_Teoria_Estructuras_Datos_Archivos.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+<header id="title-block-header">
+<h1 class="title"><span id="_40j4rrumsu6a"
+class="anchor"></span>Estructuras de Datos</h1>
+</header>
+
+<h3 id="section"> <a class="headerlink" href="#section" title="Enlace permanente">¶</a></h3>
+<h3 id="ficha-técnica-de-la-unidad">FICHA TÉCNICA DE LA UNIDAD  <a class="headerlink" href="#ficha-técnica-de-la-unidad" title="Enlace permanente">¶</a></h3>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 83%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Unidad trabajo</strong></td>
+<td style="text-align: left;">UT3. Estructuras de datos</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Resultados de
+Aprendizaje</strong></td>
+<td style="text-align: left;">RA4. Implementa estructuras de datos
+lineales y no lineales, evaluando su eficiencia y aplicando algoritmos
+de búsqueda y ordenación.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Criterios de
+Evaluación</strong></td>
+<td style="text-align: left;"><p>CE4.a: Gestionar arrays
+unidimensionales y multidimensionales de forma estática y dinámica.</p>
+<p>CE4.b: Modelar e implementar estructuras lineales complejas (listas
+enlazadas, pilas y colas).</p>
+<p>CE4.c: Conceptualizar y programar recorridos de estructuras
+jerárquicas no lineales (árboles y grafos).</p>
+<p>CE4.d: Aplicar algoritmos de ordenación y búsqueda optimizada.</p>
+<p>CE4.e: Evaluar la complejidad y eficiencia temporal.</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Tiempo</strong></td>
+<td style="text-align: left;">15 horas</td>
+</tr>
+</tbody>
+</table>
+<h3 id="section-1"> <a class="headerlink" href="#section-1" title="Enlace permanente">¶</a></h3>
+<h1 id="introducción">3.1. Introducción <a class="headerlink" href="#introducción" title="Enlace permanente">¶</a></h1>
+<p>En muchos lenguajes de programación tradicionales se implementan los
+arrays (o arreglos), los cuales son estructuras de datos que almacenan
+elementos homogéneos (del mismo tipo, ya sea numérico o alfanumérico)
+reconocidos bajo un nombre común. Sin embargo, los arrays tradicionales
+presentan dos grandes limitaciones:</p>
+<hr />
+<ol type="1">
+<li><p>Homogéneos: Solo permiten guardar datos del mismo tipo.</p></li>
+<li><p>Estáticos: Al declararse se debe indicar su tamaño, y la longitud
+del array no se puede modificar durante la ejecución del
+programa.</p></li>
+</ol>
+<p>En Python no existen los arrays tradicionales. En su lugar, el
+lenguaje proporciona varios tipos de datos nativos dinámicos y flexibles
+que permiten almacenar colecciones de información de forma eficiente,
+como las listas.</p>
+<h1 id="el-tipo-de-dato-lista-list">3.2. El Tipo de Dato LISTA
+(list) <a class="headerlink" href="#el-tipo-de-dato-lista-list" title="Enlace permanente">¶</a></h1>
+<p>Las listas son uno de los tipos de datos más utilizados en
+programación. Permiten almacenar un conjunto de datos que pueden
+repetirse y que pueden ser de distintos tipos (heterogéneas). Además, es
+una estructura dinámica, lo que significa que se pueden añadir o
+eliminar elementos modificando su tamaño en cualquier momento de la
+ejecución.</p>
+<h2 id="construcción-y-declaración-de-listas">3.2.1. Construcción y
+Declaración de Listas <a class="headerlink" href="#construcción-y-declaración-de-listas" title="Enlace permanente">¶</a></h2>
+<p>Para crear una lista en Python se utilizan los caracteres de
+corchetes [ y ].</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Sintaxis general
+lista = [valor1, valor2, ...]
+# Ejemplos de declaración
+lista_vacia = [] # Crea una lista vacía
+enteros = [1, 4, 56, 78, 100] # Lista de números enteros
+decimales = [1.4, 4, 56.5, 78, 100.3] # Lista de números
+decimales
+cadenas = ['hola', 'adios', 'buena suerte'] # Lista de cadenas de
+caracteres
+mixta = ["a", 1, True] # Lista con distintos tipos de datos
+inicializada = [0, 0, 0, 0, 0, 0] # Lista de 6 elementos
+inicializados a 0</code></pre></div>3.2.2. Indexación y Acceso</h2>
+<p>Cada uno de los elementos de una lista está indexado por una
+posición. Las posiciones comienzan en 0 y terminan en el número de
+elementos menos 1.</p>
+<p>También se pueden utilizar índices negativos para acceder desde el
+final de la lista hacia atrás (donde -1 es el último elemento).</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>loteria = [3, 32, 12, 21, 16, 33]
+print(loteria[0]) # Muestra 3
+print(loteria[5]) # Muestra 33
+print(loteria[-1]) # Muestra 33 (índice negativo)
+# ERROR DE ÍNDICE
+print(loteria[6]) # Produce un error IndexError: list index out of
+range</code></pre></div>Si intentamos asignar directamente un valor a una posición que no
+existe para expandir la lista, Python lanzará un error:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>valores = [1, 2, 3, 4, 5]
+valores[5] = 6 # ERROR: La posición 5 no existe en una lista de
+longitud 5</code></pre></div>3.2.3. Operaciones Básicas con
+Listas</h2>
+<p>Las listas son secuencias y permiten realizar operaciones directas
+con operadores integrados:</p>
+<ul>
+<li><p>Recorrido simple (for):</p></li>
+<li></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>lista = [1, 2, 3, 4, 5, 6]
+for num in lista:
+print(num, end="") # Resultado: 123456</code></pre></div>Recorrido múltiple (zip): Permite recorrer más de una lista
+simultáneamente en el mismo ciclo.</p></li>
+</ul>
+<ul>
+<li></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>lista = [1, 2, 3, 4, 5, 6]
+lista2 = ["a", "b", "c", "d", "e"]
+for num, letra in zip(lista, lista2):
+print(num, letra)
+# Resultado: 1 a / 2 b / 3 c / 4 d / 5 e</code></pre></div>Operadores de pertenencia (in y not in): Comprueban si un
+elemento pertenece o no a la lista.</p></li>
+</ul>
+<ul>
+<li></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>2 in lista # Devuelve True
+8 not in lista # Devuelve True</code></pre></div>Concatenación (+): Permite unir dos listas en una
+nueva.</p></li>
+</ul>
+<ul>
+<li></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>lista + [7, 8, 9] # Resultado: [1, 2, 3, 4, 5, 6, 7, 8, 9]</code></pre></div>Repetición (*): Repite los elementos de la lista un número de
+veces.</p></li>
+</ul>
+<ul>
+<li></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>lista * 2 # Resultado: [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6]</code></pre></div>Slicing / Rebanadas ([inicio:fin:paso]): Obtiene una
+subsecuencia de la lista.</p></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>lista = [1, 2, 3, 4, 5, 6]
+print(lista[2:4]) # [3, 4] (desde posición 2 hasta 4 sin incluir)
+print(lista[1:4:2]) # [2, 4] (desde 1 hasta 4, de 2 en 2)
+print(lista[:5]) # [1, 2, 3, 4, 5] (desde el inicio hasta la posición
+5)
+print(lista[5:]) # [6] (desde la posición 5 hasta el final)
+print(lista[::-1]) # [6, 5, 4, 3, 2, 1] (invierte la lista usando
+paso negativo)</code></pre></div>3.2.4. Funciones Globales
+Predefinidas</h2>
+<p>Funciones nativas de Python que aceptan una lista como argumento:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>lista1 = [20, 40, 10, 40, 50]
+len(lista1) # 5 -&gt; Devuelve la longitud/número de elementos
+max(lista1) # 50 -&gt; Devuelve el valor máximo
+min(lista1) # 10 -&gt; Devuelve el valor mínimo
+sum(lista1) # 160 -&gt; Devuelve la suma de todos los elementos
+sorted(lista1) # [10, 20, 40, 40, 50] -&gt; Devuelve una NUEVA lista
+ordenada sin modificar la original
+sorted(lista1, reverse=True) # [50, 40, 40, 20, 10] -&gt; Nueva lista
+ordenada de mayor a menor</code></pre></div>3.2.5. Concepto de
+Mutabilidad y Copia de Listas</h2>
+<p>Las listas son objetos pertenecientes a una clase y son mutables, lo
+que significa que sus elementos pueden modificarse directamente en
+memoria.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>lista1 = [1, 2, 3]
+lista1[2] = 4 # Modifica el elemento en la posición 2
+print(lista1) # [1, 2, 4]
+del lista1[2] # Borra el elemento en la posición 2 usando la
+instrucción 'del'
+print(lista1) # [1, 2]</code></pre></div>¿Cómo se copian las listas correctamente?</p>
+<p>No se puede utilizar el operador de asignación (=) para copiar una
+lista. Este operador no crea una lista nueva, sino que crea una
+referencia adicional (un alias) apuntando al mismo objeto en
+memoria.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Intento incorrecto de copia (Asignación de referencia)
+lista1 = [1, 2, 3]
+lista2 = lista1
+lista1[1] = 10
+print(lista2) # [1, 10, 3] -&gt; ¡La lista 2 también cambió!
+# Forma correcta de clonar/copiar una lista (Slicing completo)
+lista1 = [1, 2, 3]
+lista2 = lista1[:] # Se extrae una rebanada completa generando un
+nuevo objeto
+lista1[1] = 10
+print(lista2) # [1, 2, 3] -&gt; La lista original cambia, pero la
+copia se mantiene intacta</code></pre></div>3.2.6. Métodos Propios del
+Objeto Lista</h2>
+<p>Los métodos se invocan usando la nomenclatura lista.metodo() y
+modifican directamente el contenido de la lista (in-place).</p>
+<p><strong>Métodos de Inserción / Adición</strong></p>
+<ul>
+<li><p>append(valor): Añade un único elemento al final de la
+lista.</p></li>
+</ul>
+<ul>
+<li></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>valores = [1, 2, 3, 4, 5]
+valores.append(6)
+print(valores) # [1, 2, 3, 4, 5, 6]</code></pre></div>extend(lista_a_unir): Une una lista al final de otra
+(concatenación in-place).</p></li>
+</ul>
+<ul>
+<li></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>lista = [1, 2, 3, 4]
+lista.extend([5, 6])
+print(lista) # [1, 2, 3, 4, 5, 6]</code></pre></div>insert(posicion, valor): Inserta un elemento en una posición
+concreta, desplazando los siguientes.</p></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>valores = [1, 2, 3, 4, 5]
+valores.insert(1, 12) # Inserta el 12 en la posición 1
+print(valores) # [1, 12, 2, 3, 4, 5]</code></pre></div><strong>Métodos de Eliminación</strong></p>
+<ul>
+<li><p>pop([indice]): Elimina un elemento de la lista y lo devuelve. Si
+no se indica parámetro, saca el último elemento.</p></li>
+</ul>
+<ul>
+<li></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>valores = [1, 2, 3, 4, 5]
+valores.pop() # Devuelve 5, la lista queda [1, 2, 3, 4]
+valores.pop(0) # Devuelve 1 (saca la posición 0), la lista queda [2,
+3, 4]</code></pre></div>remove(valor): Busca y elimina el primer elemento cuyo valor
+coincida con el argumento dado.</p></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>valores = [1, 2, 3, 5]
+valores.remove(3) # Quita el número 3
+print(valores) # [1, 2, 5]</code></pre></div><strong>Métodos de Ordenación</strong></p>
+<ul>
+<li><p>reverse(): Invierte el orden de los elementos de la lista en el
+lugar.</p></li>
+</ul>
+<ul>
+<li></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>lista = [1, 2, 4, 5]
+lista.reverse()
+print(lista) # [5, 4, 2, 1]</code></pre></div>sort([reverse=True]): Ordena los elementos de la lista de forma
+definitiva.</p></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>lista = [5, 4, 2, 1]
+lista.sort() # Ordena de menor a mayor
+print(lista) # [1, 2, 4, 5]
+lista.sort(reverse=True) # Ordena de mayor a menor
+print(lista) # [5, 4, 2, 1]
+# Ordenación de cadenas de texto (Orden alfabético/ASCII: Mayúsculas
+primero)
+texto = ["hola", "que", "tal", "Hola", "Que", "Tal"]
+texto.sort()
+print(texto) # ['Hola', 'Que', 'Tal', 'hola', 'que', 'tal']</code></pre></div><strong>Métodos de Búsqueda</strong></p>
+<ul>
+<li><p>count(valor): Devuelve el número de veces que aparece un valor en
+la lista.</p></li>
+<li></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>valores = [5, 4, 2, 1, 5]
+print(valores.count(5)) # Devuelve 2</code></pre></div>index(valor[, inicio, fin]): Devuelve la posición de la primera
+aparición de un valor. Se puede acotar el rango de búsqueda con los
+parámetros opcionales inicio y fin. Si el elemento no existe, lanza un
+error/excepción.</p></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>valores = [5, 4, 2, 1, 5]
+valores.index(5) # Devuelve 0 (primera aparición)
+valores.index(5, 1) # Devuelve 4 (busca a partir del índice 1)
+valores.index(5, 1, 4) # ERROR ValueError: 5 is not in list</code></pre></div>3.2.7. Listas
+Multidimensionales</h2>
+<p>Dado que las listas aceptan cualquier tipo de datos, es perfectamente
+posible anidar listas dentro de listas, creando matrices o tablas
+bidimensionales.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Definición de una matriz de 3x3
+tabla = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+# Acceso (Fila, Columna)
+print(tabla[1][1]) # Accede a la fila 1, columna 1 -&gt; Devuelve
+5
+# Recorrido anidado
+for fila in tabla:
+for elem in fila:
+print(elem, end="")
+print() # Salto de línea por cada fila
+# Resultado visual:
+# 123
+# 456
+# 789</code></pre></div>3.3. El Tipo de Dato TUPLA
+(tuple)</h1>
+<p>Las tuplas sirven exactamente para el mismo propósito conceptual que
+las listas (guardar colecciones ordenadas de datos repetibles y
+heterogéneos), con la diferencia crucial de que son inmutables. Una vez
+creada una tupla, no se puede modificar su tamaño ni cambiar sus
+valores.</p>
+<h2 id="construcción-de-tuplas">3.3.1. Construcción de Tuplas <a class="headerlink" href="#construcción-de-tuplas" title="Enlace permanente">¶</a></h2>
+<p>Para crear una tupla se utilizan los caracteres de paréntesis ( y
+).</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>tupla1 = () # Tupla vacía
+tupla2 = ("a", 1, True) # Tupla con tres elementos heterogéneos</code></pre></div>3.3.2. Operaciones
+Permitidas e Inmutabilidad</h2>
+<p>Se pueden realizar operaciones de lectura idénticas a las listas:</p>
+<ul>
+<li><p>Recorrido con bucles for.</p></li>
+<li><p>Operadores de pertenencia: in y not in.</p></li>
+<li><p>Concatenación (+) y Repetición (*) generando una nueva tupla
+resultante.</p></li>
+<li><p>Indexación y Slicing.</p></li>
+<li><p>Funciones globales: len(), max(), min(), sum(),
+sorted().</p></li>
+</ul>
+<p>Demostración de Inmutabilidad:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>tupla = (1, 2, 3)
+tupla[1] = 5 # ERROR: TypeError: 'tuple' object does not support item
+assignment</code></pre></div>3.3.3. Métodos de Búsqueda
+de las Tuplas</h2>
+<p>Al no ser modificables, solo poseen los métodos de búsqueda:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>tupla = (1, 2, 3, 4, 1, 2, 3)
+print(tupla.count(1)) # Devuelve 2
+print(tupla.index(2)) # Devuelve 1 (primera aparición)
+print(tupla.index(2, 2)) # Devuelve 5 (busca a partir de la posición
+2)</code></pre></div>3.4. El Tipo de Dato
+MAPA / DICCIONARIO (dict)</h1>
+<p>Los diccionarios son estructuras de datos que permiten almacenar
+parejas de clave-valor. A los valores se accede directamente por medio
+de su clave (usualmente cadenas de texto) en lugar de un índice
+numérico. Son estructuras mutables y sus campos no tienen un orden
+asignado internamente.</p>
+<h2 id="definición-y-construcción-de-diccionarios">3.4.1. Definición y
+Construcción de Diccionarios <a class="headerlink" href="#definición-y-construcción-de-diccionarios" title="Enlace permanente">¶</a></h2>
+<p>Se definen utilizando llaves {} y declarando pares clave: valor.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Creación directa con elementos
+diccionario = {'one': 1, 'two': 2, 'three': 3}
+# Construcción progresiva a partir de un diccionario vacío
+dict1 = {}
+dict1["one"] = 1
+dict1["two"] = 2
+dict1["three"] = 3</code></pre></div>3.4.2. Operaciones Básicas</h2>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>a = {'one': 1, 'two': 2, 'three': 3}
+# len(): Devuelve el número de elementos (pares clave-valor)
+print(len(a)) # Devuelve 3
+# Indexación para lectura o modificación
+print(a["one"]) # Devuelve 1
+a["one"] += 1 # Modifica el valor asociado a la clave
+# Si se intenta acceder a una clave que no existe, lanza un error
+KeyError
+# del: Elimina un elemento por su clave
+del a["one"] # Elimina la clave "one" y su valor
+# Operadores de pertenencia: Comprueban si una CLAVE existe en el
+diccionario
+"two" in a # Devuelve True</code></pre></div>3.4.3. Mutabilidad y Copia
+de Diccionarios</h2>
+<p>Al igual que las listas, si asignamos un diccionario a otra variable
+usando =, ambas apuntarán al mismo objeto. Para duplicar un diccionario
+de forma independiente se debe utilizar el método .copy().</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Copia incorrecta por referencia
+a = {'one': 1, 'two': 2}
+b = a
+del a["one"]
+print(b) # {'two': 2} -&gt; b también se ve afectado
+# Copia correcta usando .copy()
+a = {'one': 1, 'two': 2, 'three': 3}
+b = a.copy()
+a["one"] = 1000
+print(b) # {'three': 3, 'one': 1, 'two': 2} -&gt; El diccionario 'b'
+se mantiene intacto</code></pre></div>3.4.4. Métodos
+Principales de los Diccionarios</h2>
+<ul>
+<li><p>Eliminación:</p>
+<ul>
+<li><p>clear(): Vacía por completo todos los elementos del
+diccionario.</p></li>
+</ul></li>
+<li></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>dict1 = {'one': 1, 'two': 2}
+dict1.clear() # La variable queda como {}</code></pre></div>Agregado y Actualización:</p>
+<ul>
+<li><p>update(otro_dict): Agrega elementos o actualiza los valores
+existentes a partir de otro diccionario.</p></li>
+</ul></li>
+</ul>
+<ul>
+<li></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>dict1 = {'one': 1, 'two': 2}
+dict2 = {'three': 3, 'four': 4}
+dict1.update(dict2) # dict1 ahora contiene las claves de ambos</code></pre></div>Retorno Seguro y Extracción:</p>
+<ul>
+<li><p>get(clave[, valor_por_defecto]): Devuelve el valor de una clave.
+Si la clave no existe, no lanza un error, sino que devuelve None o el
+valor por defecto indicado.</p></li>
+</ul></li>
+</ul>
+<ul>
+<li></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>dict1 = {'one': 1, 'two': 2}
+dict1.get("one") # Devuelve 1
+dict1.get("four") # Devuelve None
+dict1.get("four", "no existe") # Devuelve la cadena 'no existe'</code></pre></div>pop(clave[, valor_por_defecto]): Devuelve el valor asociado a la
+clave y elimina el elemento. Si no existe la clave, lanza KeyError a
+menos que se indique un valor por defecto.</p></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>dict1.pop("one") # Devuelve 1 y lo borra del diccionario
+dict1.pop("four", "no existe") # Devuelve 'no existe' de manera
+segura</code></pre></div>3.4.5. Recorrido de
+Diccionarios</h2>
+<p>Existen tres métodos fundamentales para iterar sobre un
+diccionario:</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>dict1 = {'one': 1, 'two': 2, 'three': 3}
+# 1. .keys(): Recorrer solo las claves
+for clave in dict1.keys():
+print(clave) # Imprime: one, two, three
+# 2. .values(): Recorrer solo los valores
+for valor in dict1.values():
+print(valor) # Imprime: 1, 2, 3
+# 3. .items(): Recorrer clave y valor simultáneamente
+for clave, valor in dict1.items():
+print(clave, "-&gt;", valor)</code></pre></div>3.5. Cadenas de
+Caracteres (str) y sus Operaciones</h1>
+<p>Las cadenas de caracteres son sucesiones de caracteres alfanuméricos
+encerrados entre comillas. En Python se comportan en gran medida como
+secuencias inmutables (similares a tuplas de caracteres).</p>
+<p>Al igual que las listas, la primera posición de una cadena es la 0 y
+la última es su longitud menos 1.</p>
+<h2 id="funciones-y-operaciones-básicas">3.5.1. Funciones y Operaciones
+Básicas <a class="headerlink" href="#funciones-y-operaciones-básicas" title="Enlace permanente">¶</a></h2>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Longitud (len): Retorna el conteo total de caracteres.
+cadena = "Hola mundo"
+print(len(cadena)) # Resultado: 10 (incluye el espacio)</code></pre></div></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Acceso por Posición:
+print(cadena[2]) # Resultado: 'l'</code></pre></div></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Concatenación (+ y +=): Une cadenas de caracteres de forma
+secuencial.
+cadena = "Hola" + " " + "mundo" # Resultado: 'Hola mundo'</code></pre></div></p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Conversión a cadena (str()): Es obligatorio convertir datos
+numéricos a texto si se desea concatenarlos con strings.
+precio = 34
+cadena = "El precio del producto serían " + str(precio) + " euros" #
+Correcto</code></pre></div>3.5.2. Métodos Principales de
+Cadenas</h2>
+<ul>
+<li><p>Modificación de mayúsculas/minúsculas:</p>
+<ul>
+<li><p>upper(): Convierte todo a mayúsculas.</p></li>
+<li><p>lower(): Convierte todo a minúsculas.</p></li>
+<li><p>capitalize(): Pone la primera letra en mayúscula y el resto en
+minúsculas.</p></li>
+</ul></li>
+<li><p>Búsqueda:</p>
+<ul>
+<li><p>find(subcadena): Busca la posición de inicio de una subcadena. Si
+la encuentra, devuelve el índice; si no, devuelve -1.</p></li>
+</ul></li>
+</ul>
+<ul>
+<li></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>cadena = "Hola mundo"
+print(cadena.find("mundo")) # 5
+print(cadena.find("mondo")) # -1
+print(cadena.find("o")) # 1 (posición de la primera 'o')</code></pre></div>Reemplazo:</p>
+<ul>
+<li><p>replace(antiguo, nuevo): Reemplaza las apariciones de una
+subcadena por otra.</p></li>
+</ul></li>
+</ul>
+<ul>
+<li></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>cadena = "Hola mundo"
+cadena2 = cadena.replace("Hola", "Ostras") # "Ostras mundo"</code></pre></div>Troceado y Segmentación:</p>
+<ul>
+<li><p>Por Slicing ([inicio:fin]): Corta seleccionando una parte basada
+en posiciones.</p></li>
+</ul>
+<ul>
+<li></li>
+</ul></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>cadena = "Hola mundo"
+cadena2 = cadena[1:7]
+print(cadena2) # "ola mu" (desde índice 1 al 6)</code></pre></div>Por método split(): Parte la cadena en trozos basándose en un
+delimitador (por defecto, espacios) y los devuelve en una
+lista.</p></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>cadena = "Hola mundo"
+print(cadena.split()) # ['Hola', 'mundo']</code></pre></div>3.6. Manejo de Errores y
+Excepciones</h1>
+<h2 id="errores-sintácticos-vs.-excepciones">3.6.1. Errores Sintácticos
+vs. Excepciones <a class="headerlink" href="#errores-sintácticos-vs.-excepciones" title="Enlace permanente">¶</a></h2>
+<ul>
+<li><p>Errores Sintácticos (SyntaxError): Se producen cuando el código
+está mal escrito formalmente y el intérprete no puede iniciar el
+programa.</p></li>
+<li></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>while True print('Hello world') # ERROR: SyntaxError: invalid syntax
+(faltan los ':')</code></pre></div>Excepciones / Errores de ejecución: Errores que ocurren mientras
+el programa ya se está ejecutando. Si no se manejan, detienen el
+programa de inmediato.</p></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>4 / 0 # ZeroDivisionError: division by zero
+a + 4 # NameError: name 'a' is not defined
+"2" + 2 # TypeError: Can't convert 'int' object to str implicitly</code></pre></div>3.6.2. El Bloque try -
+except - else - finally</h2>
+<p>Para capturar y manejar estas situaciones de forma controlada se
+utiliza la estructura estructurada de bloques:</p>
+<ol type="1">
+<li><p>try: Aloja el bloque de código que se quiere intentar ejecutar y
+que podría fallar.</p></li>
+<li><p>except: Captura la excepción específica. Si ocurre el error
+dentro del try, se interrumpe y salta a este bloque.</p></li>
+<li><p>else: Bloque opcional. Se ejecuta únicamente si el bloque try se
+completó con éxito.</p></li>
+<li><p>finally: Bloque opcional. Se ejecuta siempre, independientemente
+de si ocurrió un error o no.</p></li>
+</ol>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>while True:
+try:
+x = int(input("Introduce un número:"))
+break
+except ValueError:
+print("Debes introducir un número")
+# Control de múltiples excepciones
+try:
+print(10 / int(cad))
+except ValueError:
+print("No se puede convertir a entero")
+except ZeroDivisionError:
+print("No se puede dividir por cero")
+except:
+print("Otro error no especificado")</code></pre></div>3.7. Gestión de Archivos
+/ Ficheros Nativos</h1>
+<h2 id="la-función-open-y-modos-de-acceso">3.7.1. La Función open() y
+Modos de Acceso <a class="headerlink" href="#la-función-open-y-modos-de-acceso" title="Enlace permanente">¶</a></h2>
+<p>La función open() se utiliza para abrir un archivo, requiriendo
+normalmente la ruta del archivo y el modo de acceso. Todo archivo
+abierto manualmente debe cerrarse explícitamente con .close().</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>f = open("ejemplo.txt", "w") # Abre un fichero en modo escritura
+print(type(f)) # Muestra &lt;class '_io.TextIOWrapper'&gt;
+f.close() # Cierra el archivo</code></pre></div><strong>Tabla Resumen de Modos de Acceso:</strong></p>
+<table>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 21%" />
+<col style="width: 29%" />
+<col style="width: 12%" />
+<col style="width: 15%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Modo</th>
+<th style="text-align: left;">Nombre</th>
+<th style="text-align: left;">Descripción / Comportamiento</th>
+<th style="text-align: left;">¿Crea si no existe?</th>
+<th style="text-align: left;">¿Borra previo contenido?</th>
+<th style="text-align: left;">Posición Puntero</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">r</td>
+<td style="text-align: left;">Leer</td>
+<td style="text-align: left;">Solo lectura. Lanza error si el archivo no
+existe.</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Al inicio</td>
+</tr>
+<tr>
+<td style="text-align: left;">rb</td>
+<td style="text-align: left;">Lectura Binaria</td>
+<td style="text-align: left;">Solo lectura de archivos en formato
+binario.</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Al inicio</td>
+</tr>
+<tr>
+<td style="text-align: left;">w</td>
+<td style="text-align: left;">Escribir</td>
+<td style="text-align: left;">Solo escritura. Sobrescribe por completo
+si existe, lo crea si no.</td>
+<td style="text-align: left;">Sí</td>
+<td style="text-align: left;">Sí</td>
+<td style="text-align: left;">Al inicio</td>
+</tr>
+<tr>
+<td style="text-align: left;">wb</td>
+<td style="text-align: left;">Escritura Binaria</td>
+<td style="text-align: left;">Solo escritura en formato binario.
+Sobrescribe.</td>
+<td style="text-align: left;">Sí</td>
+<td style="text-align: left;">Sí</td>
+<td style="text-align: left;">Al inicio</td>
+</tr>
+<tr>
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">Anexar / Apéndice</td>
+<td style="text-align: left;">Modo añadir contenido. Escribe al final
+del texto sin borrar.</td>
+<td style="text-align: left;">Sí</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Al final</td>
+</tr>
+<tr>
+<td style="text-align: left;">r+</td>
+<td style="text-align: left;">Mixto estándar</td>
+<td style="text-align: left;">Lectura y escritura combinadas.</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Al inicio</td>
+</tr>
+<tr>
+<td style="text-align: left;">w+</td>
+<td style="text-align: left;">Mixto Escritura</td>
+<td style="text-align: left;">Escritura y lectura. Sobrescribe el
+contenido previo.</td>
+<td style="text-align: left;">Sí</td>
+<td style="text-align: left;">Sí</td>
+<td style="text-align: left;">Al inicio</td>
+</tr>
+<tr>
+<td style="text-align: left;">a+</td>
+<td style="text-align: left;">Mixto Anexar</td>
+<td style="text-align: left;">Añadido y lectura. Crea el archivo si no
+existe.</td>
+<td style="text-align: left;">Sí</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Al final</td>
+</tr>
+</tbody>
+</table>
+<h2 id="codificación-encoding-y-propiedades-del-objeto-fichero">3.7.2.
+Codificación (encoding) y Propiedades del Objeto Fichero <a class="headerlink" href="#codificación-encoding-y-propiedades-del-objeto-fichero" title="Enlace permanente">¶</a></h2>
+<p>Al abrir archivos de texto, es recomendable usar el parámetro
+encoding="utf-8" para garantizar la correcta interpretación de
+caracteres especiales.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>import locale
+print(locale.getpreferredencoding()) # Retorna la codificación por
+defecto del sistema</code></pre></div>Propiedades de inspección básicas:</p>
+<ul>
+<li><p>.closed: Retorna True si el archivo ha sido cerrado con
+éxito.</p></li>
+<li><p>.mode: Retorna la cadena del modo de apertura (ej: "r").</p></li>
+<li><p>.name: Retorna la ruta/nombre del archivo.</p></li>
+<li><p>.encoding: Retorna la codificación utilizada.</p></li>
+</ul>
+<h2 id="métodos-de-lectura-y-control-del-cursor">3.7.3. Métodos de
+Lectura y Control del Cursor <a class="headerlink" href="#métodos-de-lectura-y-control-del-cursor" title="Enlace permanente">¶</a></h2>
+<ul>
+<li><p>read([n]): Lee el contenido completo o los siguientes n
+caracteres si se especifica.</p></li>
+<li><p>readline(): Lee una única línea completa de texto (hasta
+encontrar \n).</p></li>
+<li><p>readlines(): Lee todas las líneas del archivo y las devuelve en
+una lista de cadenas.</p></li>
+<li><p>tell(): Informa la posición numérica exacta en bytes en la que se
+encuentra el cursor.</p></li>
+<li><p>seek(posicion): Desplaza el cursor de forma manual a la posición
+especificada (ej: seek(0) vuelve al inicio).</p></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>f = open("ejemplo.txt", "r")
+print(f.read(4)) # Imprime los primeros 4 caracteres
+print(f.tell()) # Muestra la posición del cursor
+f.seek(0) # Reubica el puntero al inicio absoluto
+lineas = f.readlines()
+f.close()</code></pre></div>3.7.4. Métodos de Escritura</h2>
+<ul>
+<li><p>write(cadena): Escribe una cadena de texto plana. No introduce
+saltos de línea automáticos; requiere añadir \n.</p></li>
+<li><p>writelines(lista_de_cadenas): Toma una lista de textos e inyecta
+todos los elementos seguidos en el archivo.</p></li>
+<li><p>Redirección de print(): Es posible usar print(...,
+file=objeto_fichero).</p></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>f = open("ejemplo3.txt", "w")
+f.write("Prueba 1\n")
+print("Prueba 2\n", file=f)
+f.writelines(["Prueba 3", "Prueba 4"])
+f.close()</code></pre></div>3.7.5. Buenas
+Prácticas: La Sentencia with open</h2>
+<p>La forma estándar y recomendada para manipular archivos en Python es
+utilizar el gestor de contexto mediante la cláusula with open(...) as
+alias:.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>try:
+with open("archivo_datos.txt", "r", encoding="utf-8") as f:
+for linea in f: # Recorrido directo y eficiente línea a línea sin
+saturar la RAM
+print(linea)
+except FileNotFoundError:
+print("Error: El archivo no se encontró.")
+except Exception as e:
+print(f"Ocurrió un error inesperado: {e}")</code></pre></div>3.8. Archivos
+Estructurados: Formato CSV</h1>
+<p>El formato CSV (Comma-Separated Values) representa datos tabulares
+sencillos en texto plano. Para gestionarlos correctamente, Python
+incluye de manera nativa el módulo csv.</p>
+<h2 id="lectura-de-archivos-csv">3.8.1. Lectura de Archivos CSV <a class="headerlink" href="#lectura-de-archivos-csv" title="Enlace permanente">¶</a></h2>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>import csv
+with open("ejemplo1.csv", "r", encoding="utf-8") as fichero:
+contenido = csv.reader(fichero) # Genera un objeto iterador
+# Opción A: Convertir todo directamente a una lista de listas
+datos = list(contenido)
+print(datos[0][0]) # Acceso directo a Fila 0, Columna 0</code></pre></div>Lectura avanzada con parámetros adicionales (quotechar):</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>with open("ejemplo2.csv", "r") as fichero:
+contenido = csv.reader(fichero, quotechar='"')
+for row in contenido:
+print(f"Fila {contenido.line_num}: {row}")</code></pre></div>3.8.2. Escritura de Archivos
+CSV</h2>
+<ul>
+<li><p>writerow(lista): Escribe una única fila a partir de una lista de
+elementos.</p></li>
+<li><p>writerows(lista_de_listas): Recibe una colección de filas y las
+escribe todas consecutivamente.</p></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>import csv
+with open("ejemplo3.csv", "w", newline="", encoding="utf-8") as
+fichero:
+contenido = csv.writer(fichero)
+contenido.writerow(['4/5/2015 13:34', 'Apples', '73'])
+contenido.writerows([
+['4/5/2015 3:41', 'Cherries', '85'],
+['4/6/2015 12:46', 'Pears', '14']
+])</code></pre></div>3.9. Archivos
+Estructurados: Formato JSON</h1>
+<p>El formato JSON (JavaScript Object Notation) es un estándar abierto
+muy extendido para el intercambio de datos estructurados. En Python se
+gestiona importando el módulo json.</p>
+<p>Mapea de forma directa sus tipos nativos: los objetos JSON se
+transforman en diccionarios (dict) y los arreglos JSON en listas
+(list).</p>
+<h2 id="lectura-de-estructuras-json">3.9.1. Lectura de Estructuras
+JSON <a class="headerlink" href="#lectura-de-estructuras-json" title="Enlace permanente">¶</a></h2>
+<ul>
+<li><p>json.loads(cadena_texto): Decodifica e interpreta una estructura
+JSON contenida dentro de una variable de texto (String).</p></li>
+<li><p>json.load(objeto_fichero): Decodifica e interpreta los datos
+directamente leyendo desde un archivo físico en disco.</p></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>import json
+# Caso 1: Desde una cadena de texto (String)
+datos_json = '{"nombre":"carlos", "edad":23}'
+datos = json.loads(datos_json)
+print(type(datos)) # Muestra &lt;class 'dict'&gt;
+print(datos["nombre"]) # Acceso por clave -&gt; 'carlos'
+# Caso 2: Desde un archivo físico .json en disco
+with open("ejemplo1.json", "r", encoding="utf-8") as fichero:
+datos_archivo = json.load(fichero)
+print(type(datos_archivo)) # &lt;class 'dict'&gt;</code></pre></div>3.9.2. Escritura de Estructuras
+JSON</h2>
+<p>Para exportar un diccionario o estructura de Python a un archivo en
+formato JSON se utiliza la función json.dump(estructura,
+objeto_fichero).</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>import json
+datos_gato = {
+'isCat': True,
+'miceCaught': 0,
+'name': 'Zophie',
+'felineIQ': None
+}
+with open("ejemplo2.json", "w", encoding="utf-8") as fichero:
+json.dump(datos_gato, fichero)</code></pre></div>Nota de Traducción de Tipos: Al realizarse la exportación, Python
+traduce automáticamente sus palabras clave a los equivalentes
+universales de JSON (por ejemplo, el booleano True pasa a ser true, y el
+objeto de ausencia de valor None se traduce a null).</p>
+
+        </main>
+    </div>
+</body>
+</html>

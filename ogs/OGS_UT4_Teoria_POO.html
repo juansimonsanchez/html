@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEW - Ut4 Teoria Poo</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <header id="site-header">
+  <div class="header-container">
+    <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo" style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>NEW &ndash; Ut4 Teoria Poo</span></div>
+    <nav class="top-nav">
+      <a href="index.html" class="nav-btn">Inicio</a>
+    </nav>
+  </div>
+</header>
+    <div id="page-layout">
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a href="OGS_UT4_Teoria_POO.pdf" download style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥 Descargar PDF</a></div>
+            
+<header id="title-block-header">
+<h1 class="title"><span id="_y9qkjbpigp07" class="anchor"></span>Unidad
+4: Programación Orientada a Objetos, Interfaces Gráficas y Bases de
+Datos</h1>
+</header>
+
+<h3 id="section"> <a class="headerlink" href="#section" title="Enlace permanente">¶</a></h3>
+<h3 id="ficha-técnica-de-la-unidad">FICHA TÉCNICA DE LA UNIDAD  <a class="headerlink" href="#ficha-técnica-de-la-unidad" title="Enlace permanente">¶</a></h3>
+<table>
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 83%" />
+</colgroup>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Unidad trabajo</strong></td>
+<td style="text-align: left;">UT4. Programación Orientada a Objetos,
+Interfaces Gráficas y Bases de Datos</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Resultados de
+Aprendizaje</strong></td>
+<td style="text-align: left;">RA3. Diseña y programa componentes lógicos
+utilizando el paradigma de orientación a objetos (POO) y gestionando
+excepciones.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Criterios de
+Evaluación</strong></td>
+<td style="text-align: left;"><p>CE3.a: Asimilar los conceptos básicos
+de clase, instancia, objeto, atributos y constructores.</p>
+<p>CE3.b: Implementar mecanismos de encapsulamiento para proteger el
+acceso interno a las propiedades del objeto.</p>
+<p>CE3.c: Programar estructuras complejas utilizando herencia y
+polimorfismo.</p>
+<p>CE3.d: Diseñar y gestionar bloques de control de excepciones.</p>
+<p>CE3.e: Identificar y aplicar patrones de diseño de software
+básicos.</p></td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Tiempo</strong></td>
+<td style="text-align: left;">12 horas</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ÍNDICE DE CONTENIDOS</strong></p>
+<p><a href="#introducción-a-la-poo"><u>1. Introducción a la
+POO</u></a></p>
+<blockquote>
+<p><a href="#conceptos-fundamentales-y-analogías"><u>1.1. Conceptos
+Fundamentales y Analogías</u></a></p>
+<p><a href="#declaración-de-clases-e-instanciación-en-python"><u>1.2.
+Declaración de Clases e Instanciación en Python</u></a></p>
+</blockquote>
+<p><a href="#ciclo-de-vida-del-objeto-y-métodos-avanzados"><u>2. Ciclo
+de Vida del Objeto y Métodos Avanzados</u></a></p>
+<blockquote>
+<p><a href="#el-método-constructor-__init__"><u>2.1. El Método
+Constructor __init__</u></a></p>
+<p><a href="#colecciones-de-objetos-listas-de-instancias"><u>2.2.
+Colecciones de Objetos (Listas de Instancias)</u></a></p>
+<p><a
+href="#encapsulamiento-y-control-de-acceso-getters-y-setters"><u>2.3.
+Encapsulamiento y Control de Acceso (Getters y Setters)</u></a></p>
+</blockquote>
+<p><a href="#relaciones-entre-clases"><u>3. Relaciones entre
+Clases</u></a></p>
+<blockquote>
+<p><a href="#herencia-simple-y-la-función-super"><u>3.1. Herencia Simple
+y la Función super()</u></a></p>
+<p><a href="#delegación-composición"><u>3.2. Delegación /
+Composición</u></a></p>
+<p><a href="#herencia-múltiple"><u>3.3. Herencia Múltiple</u></a></p>
+<p><a href="#atributos-y-métodos-estáticos-de-clase"><u>3.4. Atributos y
+Métodos Estáticos (de Clase)</u></a></p>
+<p><a href="#métodos-especiales-mágicos-dunder"><u>3.5. Métodos
+Especiales (Mágicos / Dunder)</u></a></p>
+<p><a href="#polimorfismo-e-inspección-de-tipos"><u>3.6. Polimorfismo e
+Inspección de Tipos</u></a></p>
+</blockquote>
+<p><a href="#interfaces-gráficas-de-usuario-gui-con-tkinter"><u>4.
+Interfaces Gráficas de Usuario (GUI) con Tkinter</u></a></p>
+<blockquote>
+<p><a href="#el-ciclo-de-eventos-y-conceptos-base"><u>4.1. El Ciclo de
+Eventos y Conceptos Base</u></a></p>
+<p><a href="#métodos-de-disposición-layout-managers"><u>4.2. Métodos de
+Disposición / Layout Managers</u></a></p>
+<p><a
+href="#ejemplo-práctico-integrador-interfaz-de-entrada-de-datos"><u>4.3.
+Ejemplo Práctico Integrador: Interfaz de Entrada de Datos</u></a></p>
+</blockquote>
+<p><a href="#conexión-con-sistemas-de-base-de-datos-mysql"><u>5.
+Conexión con Sistemas de Base de Datos (MySQL)</u></a></p>
+<blockquote>
+<p><a href="#componentes-del-entorno-de-conexión"><u>5.1. Componentes
+del Entorno de Conexión</u></a></p>
+<p><a href="#gestión-segura-de-conexiones-y-operaciones-crud"><u>5.2.
+Gestión Segura de Conexiones y Operaciones CRUD</u></a></p>
+</blockquote>
+<h1 id="introducción-a-la-poo">1. Introducción a la POO <a class="headerlink" href="#introducción-a-la-poo" title="Enlace permanente">¶</a></h1>
+<p>Hasta ahora se ha trabajado utilizando la programación estructurada
+tradicional, fundamentada en variables simples o complejas (como listas
+o cadenas de caracteres) de un tipo concreto y estructuras de control
+secuenciales, condicionales o iterativas. Sin embargo, para modelar de
+manera óptima elementos del mundo real que contienen datos de diferente
+naturaleza, los lenguajes de programación modernos implementan la
+Programación Orientada a Objetos (POO).</p>
+<p>En el ecosistema de Python, casi todo es un objeto. Cada vez que
+declaramos una variable, no solo almacenamos un dato aislado, sino que
+instanciamos una clase que hereda métodos y herramientas predefinidas de
+forma interna. Por ejemplo, al transformar un texto a mayúsculas
+mediante nombre.upper(), invocamos un método nativo de la clase str; al
+emplear frutas.append(), alteramos el estado interno de un objeto de la
+clase list.</p>
+<h2 id="conceptos-fundamentales-y-analogías">1.1. Conceptos
+Fundamentales y Analogías <a class="headerlink" href="#conceptos-fundamentales-y-analogías" title="Enlace permanente">¶</a></h2>
+<p>Para asimilar la transición conceptual, se establece la siguiente
+correspondencia entre la programación tradicional y el paradigma
+orientado a objetos:</p>
+<table>
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 38%" />
+<col style="width: 37%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;"><strong>Concepto POO</strong></th>
+<th style="text-align: left;"><strong>Definición Técnica</strong></th>
+<th style="text-align: left;"><strong>Analogía / Ejemplo
+Tradicional</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Clase</strong></td>
+<td style="text-align: left;">Representación abstracta, molde o modelo
+de un concepto que define sus características y comportamientos
+compartidos.</td>
+<td style="text-align: left;">Tipo de dato (ej. str, list, int, o
+conceptos personalizados como "Servidor Web").</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Objeto / Instancia</strong></td>
+<td style="text-align: left;">Manifestación concreta y real construida a
+partir del molde de una clase, con existencia propia en memoria.</td>
+<td style="text-align: left;">Variable real (ej. "Hola", [1, 2, 3], o un
+servidor físico determinado).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Atributo / Propiedad</strong></td>
+<td style="text-align: left;">Variables internas asociadas a la clase o
+al objeto que definen sus rasgos, características o estado.</td>
+<td style="text-align: left;">Datos del elemento (ej. el tamaño de una
+lista, el DNI de un usuario, la IP de un router).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Método</strong></td>
+<td style="text-align: left;">Bloques de código o funciones internas de
+una clase diseñadas para definir el comportamiento y operar sobre sus
+atributos.</td>
+<td style="text-align: left;">Funciones vinculadas al objeto invoca bles
+mediante el operador punto (ej. .upper(), .append()).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="declaración-de-clases-e-instanciación-en-python">1.2.
+Declaración de Clases e Instanciación en Python <a class="headerlink" href="#declaración-de-clases-e-instanciación-en-python" title="Enlace permanente">¶</a></h2>
+<p>En lugar de mantener variables independientes desvinculadas para
+representar un mismo elemento (por ejemplo, variables sueltas como
+nombreAna, edadAna, dniAna), la POO unifica los datos bajo una
+estructura común de tipo objeto. El parámetro fundamental en los métodos
+de Python es self, una palabra reservada que por convención hace
+referencia directa a la propia instancia sobre la cual se está
+ejecutando el bloque de código, permitiendo manipular sus atributos
+internos.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code># Ejemplo de declaración de clase base e instanciación básica
+class Persona:
+nombre = ""
+apellidos = ""
+dni = ""
+edad = 0
+peso = 0
+altura = 0
+def cambiaPeso(self, nuevoPeso):
+# self permite acceder y modificar los atributos de la instancia
+actual
+self.weight = nuevoPeso
+# Instanciación (creación de un objeto concreto a partir de la
+clase)
+pedro = Persona()
+pedro.nombre = "Pedro"
+pedro.apellidos = "Ruiz Serrano"
+pedro.cambiaPeso(87)
+if pedro.edad &lt; 18:
+print("Es menor de edad")</code></pre></div>2. Ciclo de Vida
+del Objeto y Métodos Avanzados</h1>
+<h2 id="el-método-constructor-__init__">2.1. El Método Constructor
+__init__ <a class="headerlink" href="#el-método-constructor-__init__" title="Enlace permanente">¶</a></h2>
+<p>Los atributos de un objeto no se reservan formalmente en memoria con
+un estado personalizado hasta que no se inicializan de forma explícita.
+Para automatizar este proceso y garantizar que toda instancia cuente con
+valores de arranque válidos desde su nacimiento, se utiliza el método
+especial constructor __init__.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>class Persona:
+def __init__(self, nombre, apellidos, dni, edad, peso, altura):
+# Inicialización de los atributos de instancia mediante el parámetro
+self
+self.nombre = nombre
+self.apellidos = apellidos
+self.dni = dni
+self.edad = edad
+self.peso = peso
+self.altura = altura
+# Creación de la instancia pasando los argumentos requeridos por el
+constructor
+pedro = Persona('Pedro', 'Ruiz Serrano', '87654321G', 21, 78,
+1.67)</code></pre></div>2.2. Colecciones
+de Objetos (Listas de Instancias)</h2>
+<p>Las instancias de clases personalizadas pueden almacenarse y
+manipularse dentro de estructuras de datos estándar como las listas,
+simulando el comportamiento organizativo de los registros de una base de
+datos relacional y permitiendo aplicar métodos nativos como append(),
+pop() o insert().</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>personas = []
+personas.append(Persona('Pedro', 'Ruiz Serrano', '87654321G', 21, 78,
+1.67))
+personas.append(Persona('Ana', 'Cobo Sánchez', '12345678T', 26, 65,
+1.77))
+personas.append(Persona('Juan Luis', 'Rodríguez Pérez', '87453433O',
+45, 67, 1.87))
+# Acceso al atributo de un objeto específico dentro de la lista
+# Imprime: "Juan Luis"
+print(personas[2].nombre)</code></pre></div>2.3.
+Encapsulamiento y Control de Acceso (Getters y Setters)</h2>
+<p>El principio de encapsulación busca restringir el acceso directo a
+los datos internos de un objeto para preservar su integridad y validar
+las modificaciones que se realicen sobre ellos. En Python, los atributos
+privados se definen anteponiendo un doble guion bajo (__), impidiendo
+que el exterior los lea o modifique de forma directa (provocando un
+error de tipo AttributeError). Para gestionarlos con elegancia sin
+perder la sintaxis limpia de atributos, se emplean los decoradores
+@property (Getters) y @&lt;atributo&gt;.setter (Setters).</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>class Circulo:
+def __init__(self, radio):
+self.radio = radio # Invoca automáticamente al setter para su
+validación
+@property
+def radio(self):
+""" Método Getter: Expone el atributo protegido como una propiedad de
+lectura """
+print("Accediendo al valor del radio")
+return self.__radio
+@radio.setter
+def radio(self, valor):
+""" Método Setter: Intercepta la asignación para validar el dato de
+entrada """
+if valor &gt;= 0:
+self.__radio = valor
+else:
+print("Error: El radio debe ser un valor positivo.")
+self.__radio = 0
+# Prueba de ejecución en consola interactiva
+c1 = Circulo(3) # Inicializa
+print(c1.radio) # Llama al getter. Imprime 3
+c1.radio = -1 # Llama al setter. Muestra el mensaje de error y lo
+fija en 0</code></pre></div>3. Relaciones entre Clases</h1>
+<h2 id="herencia-simple-y-la-función-super">3.1. Herencia Simple y la
+Función super() <a class="headerlink" href="#herencia-simple-y-la-función-super" title="Enlace permanente">¶</a></h2>
+<p>La herencia es un pilar de la POO que permite construir una clase
+nueva (clase derivada o clase hija) a partir de una existente (clase
+base o clase padre), heredando íntegramente sus atributos y métodos. La
+función integrada super() proporciona una referencia directa a la clase
+base, posibilitando la reutilización o extensión de sus métodos mediante
+la técnica de sobreescritura.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>import math
+class Punto:
+def __init__(self, x=0, y=0):
+self.x = x
+self.y = y
+def mostrar(self):
+return f"{self.x}:{self.y}"
+def distancia(self, otro):
+dx = self.x - otro.x
+dy = self.y - otro.y
+return math.sqrt(dx*dx + dy*dy)
+class Punto3D(Punto):
+""" Clase derivada que extiende a la clase Punto añadiendo una
+coordenada Z """
+def __init__(self, x=0, y=0, z=0):
+super().__init__(x, y) # Invoca al constructor de la clase padre
+(Punto)
+self.z = z
+def mostrar(self):
+# Reutiliza el método de la clase base y añade la dimensión Z
+return f"{super().mostrar()}:{self.z}"</code></pre></div>3.2. Delegación / Composición</h2>
+<p>Ocurre cuando una clase no hereda de otra, sino que incorpora una o
+más instancias de otras clases como atributos internos, delegando en
+ellas parte de su comportamiento lógico o responsabilidades de
+cálculo.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>class CirculoCentro:
+def __init__(self, centro, radio):
+# 'centro' se espera que sea una instancia previamente creada de la
+clase Punto
+self.centro = centro
+self.radio = radio
+def mostrar(self):
+# Delega en el método mostrar de la instancia de Punto almacenada en
+self.centro
+return f"Centro: {self.centro.mostrar()} - Radio: {self.radio}"</code></pre></div>3.3. Herencia Múltiple</h2>
+<p>Python permite de forma nativa que una clase derivada provenga de
+múltiples clases superiores. En este escenario, es crítico estructurar y
+nombrar los métodos con claridad para evitar colisiones de nombres o
+ambigüedades en la resolución.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>class Telefono:
+def __init__(self, numero):
+self.numero = numero
+def telefonear(self): print("Llamando...")
+class Camara:
+def __init__(self, mpx):
+self.mpx = mpx
+def fotografiar(self): print("Fotografiando...")
+class Reproductor:
+def __init__(self, capacidad):
+self.capacidad = capacidad
+class Movil(Telefono, Camara, Reproductor):
+""" Clase que hereda simultáneamente de tres superclases """
+def __init__(self, numero, mpx, capacidad):
+Telefono.__init__(self, numero)
+Camara.__init__(self, mpx)
+Reproductor.__init__(self, capacidad)</code></pre></div>3.4. Atributos y
+Métodos Estáticos (de Clase)</h2>
+<p>Existen elementos que no pertenecen de forma individual a un objeto
+concreto, sino que son comunes a toda la clase:</p>
+<ul>
+<li><p><strong>Atributos de Clase:</strong> Variables definidas
+directamente dentro de la clase pero fuera de sus métodos. Son estáticas
+y compartidas por todas las instancias.</p></li>
+<li><p><strong>Métodos Estáticos (@staticmethod):</strong> Funciones
+englobadas en la clase por coherencia semántica u organización
+conceptual, pero que no requieren leer ni modificar datos específicos
+del objeto (no reciben self).</p></li>
+</ul>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>class Calculadora:
+def __init__(self, modelo):
+self.modelo = modelo
+@staticmethod
+def sumar(x, y):
+""" Operación puramente lógica que no depende de atributos de
+instancia """
+return x + y</code></pre></div>3.5. Métodos Especiales
+(Mágicos / Dunder)</h2>
+<p>Permiten sobreescribir comportamientos estándar de los operadores
+internos de Python (print, comparaciones, operaciones aritméticas):</p>
+<table>
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Método Mágico</th>
+<th style="text-align: left;">Acción que intercepta / Propósito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">__str__(self)</td>
+<td style="text-align: left;">Devuelve una representación de texto
+"informal" del objeto. Es el bloque que ejecuta print().</td>
+</tr>
+<tr>
+<td style="text-align: left;">__repr__(self)</td>
+<td style="text-align: left;">Devuelve una representación "formal" y
+unívoca del objeto (idealmente válida para ser procesada por
+eval()).</td>
+</tr>
+<tr>
+<td style="text-align: left;">__eq__(self, otro)</td>
+<td style="text-align: left;">Sobreescribe el operador de igualdad (==).
+Si no se define, Python compara las direcciones de memoria.</td>
+</tr>
+<tr>
+<td style="text-align: left;">__add__(self, otro) / __sub__</td>
+<td style="text-align: left;">Permiten definir el comportamiento lógico
+al aplicar los operadores matemáticos de suma (+) y resta (-).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="polimorfismo-e-inspección-de-tipos">3.6. Polimorfismo e
+Inspección de Tipos <a class="headerlink" href="#polimorfismo-e-inspección-de-tipos" title="Enlace permanente">¶</a></h2>
+<p>El polimorfismo es la propiedad por la cual una misma llamada a un
+método puede producir efectos o respuestas diferentes según la
+naturaleza de la clase del objeto que lo invoque en tiempo de ejecución
+(aprovechando el tipado dinámico de Python). Para la comprobación de
+tipos y jerarquías en caliente, el lenguaje cuenta con herramientas
+integradas:</p>
+<ul>
+<li><p>isinstance(objeto, Clase): Determina si una instancia concreta
+pertenece a una clase específica o a su árbol jerárquico.</p></li>
+<li><p>issubclass(Subclase, Superclase): Verifica si una clase deriva
+directamente de otra de mayor jerarquía.</p></li>
+</ul>
+<h1 id="interfaces-gráficas-de-usuario-gui-con-tkinter">4. Interfaces
+Gráficas de Usuario (GUI) con Tkinter <a class="headerlink" href="#interfaces-gráficas-de-usuario-gui-con-tkinter" title="Enlace permanente">¶</a></h1>
+<p>Una Interfaz Gráfica de Usuario (GUI) es un entorno visual que
+abstrae al usuario de la interacción exclusiva por consola o línea de
+comandos, incorporando ventanas, menús, campos de texto y botones
+interactivos. En Python, la biblioteca estándar y nativa para este
+propósito es <strong>Tkinter</strong>, basada en el motor gráfico
+clásico Tk.</p>
+<h2 id="el-ciclo-de-eventos-y-conceptos-base">4.1. El Ciclo de Eventos y
+Conceptos Base <a class="headerlink" href="#el-ciclo-de-eventos-y-conceptos-base" title="Enlace permanente">¶</a></h2>
+<p>A diferencia de los scripts secuenciales, una aplicación de
+escritorio trabaja bajo un enfoque de <strong>Gestión de
+Eventos</strong>. El framework dibuja los componentes y cede el control
+a un bucle infinito de escucha activa:</p>
+<ul>
+<li><p><strong>Ventana Principal (Tk()):</strong> El contenedor primario
+o marco estructural que sostiene el entorno de la aplicación.</p></li>
+<li><p><strong>Widgets:</strong> Componentes visuales interactivos. Los
+fundamentales son: Label (etiquetas de texto/imágenes), Button
+(ejecutores de acciones), Entry (cajas de entrada de una sola línea) y
+Text (áreas de texto multilínea).</p></li>
+<li><p><strong>Bucle Principal (mainloop()):</strong> El motor síncrono
+que bloquea la finalización del script, manteniendo la ventana abierta
+en espera de que el usuario haga clic, escriba o interactúe.</p></li>
+</ul>
+<p><strong>Regla de Oro en el Desarrollo:</strong> Nunca se debe guardar
+o nombrar un script propio bajo el nombre exacto de tkinter.py. De
+hacerlo, el sistema entrará en un fallo de importación circular
+(<em>Circular Import</em>) al intentar invocarse a sí mismo.</p>
+<h2 id="métodos-de-disposición-layout-managers">4.2. Métodos de
+Disposición / Layout Managers <a class="headerlink" href="#métodos-de-disposición-layout-managers" title="Enlace permanente">¶</a></h2>
+<p>Tkinter cuenta con tres mecanismos para organizar y distribuir los
+elementos espaciales dentro del lienzo de la ventana:</p>
+<ol type="1">
+<li><p>.pack(): Organiza y apila los elementos en bloques verticales u
+horizontales de forma automática. Es ágil y directo, pero poco flexible
+para composiciones complejas.</p></li>
+<li><p>.grid(): Distribuye los componentes utilizando una estructura
+matricial invisible de filas (row) y columnas (column), similar a una
+hoja de cálculo. Es el estándar profesional para formularios
+limpios.</p></li>
+<li><p>.place(): Posiciona los widgets asignando coordenadas de píxeles
+absolutas exactas (X e Y). Ofrece control total pero penaliza la
+adaptabilidad y el redimensionamiento de las ventanas.</p></li>
+</ol>
+<h2 id="ejemplo-práctico-integrador-interfaz-de-entrada-de-datos">4.3.
+Ejemplo Práctico Integrador: Interfaz de Entrada de Datos <a class="headerlink" href="#ejemplo-práctico-integrador-interfaz-de-entrada-de-datos" title="Enlace permanente">¶</a></h2>
+<p>El siguiente bloque muestra la forma idónea de programar una ventana
+interactiva, utilizando el método .grid() para asegurar un diseño limpio
+y enlazando eventos a funciones (callbacks) utilizando el parámetro
+command.</p>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>import tkinter as tk
+def procesarSuma():
+# .get() extrae la cadena del Entry; se castea a int para operar
+aritméticamente
+resultado = int(entrada_n1.get()) + int(entrada_n2.get())
+# .config() permite actualizar en caliente cualquier propiedad del
+widget visual
+etiqueta_resultado.config(text=f"Resultado: {resultado}")
+# Inicialización del contenedor principal
+app = tk.Tk()
+app.title("Calculadora Escolar ASIR")
+app.geometry("280x160")
+# Fila 0: Configuración de primer elemento
+tk.Label(app, text="Número 1:").grid(row=0, column=0, padx=5,
+pady=5)
+entrada_n1 = tk.Entry(app)
+entrada_n1.grid(row=0, column=1, padx=5, pady=5)
+# Fila 1: Configuración de segundo elemento
+tk.Label(app, text="Número 2:").grid(row=1, column=0, padx=5,
+pady=5)
+entrada_n2 = tk.Entry(app)
+entrada_n2.grid(row=1, column=1, padx=5, pady=5)
+# Fila 2: Botón de acción con Command (Ojo: se pasa la función sin
+paréntesis)
+boton_operar = tk.Button(app, text="Calcular Suma",
+command=procesarSuma)
+boton_operar.grid(row=2, column=0, columnspan=2, pady=10)
+# Fila 3: Área destinada a proyectar la salida
+etiqueta_resultado = tk.Label(app, text="Resultado: 0",
+font=("Arial", 10, "bold"))
+etiqueta_resultado.grid(row=3, column=0, columnspan=2, pady=5)
+# Lanzamiento del bucle de escucha activa
+app.mainloop()</code></pre></div>5. Conexión con
+Sistemas de Base de Datos (MySQL)</h1>
+<p>Para dotar a los objetos de persistencia real en entornos de
+producción, es imperativo interconectarlos con Sistemas de Gestión de
+Bases de Datos Relacionales (RDBMS) remotos, como MySQL o MariaDB. Para
+este fin, se requiere el conector oficial de la API de base de datos de
+Python.</p>
+<h2 id="componentes-del-entorno-de-conexión">5.1. Componentes del
+Entorno de Conexión <a class="headerlink" href="#componentes-del-entorno-de-conexión" title="Enlace permanente">¶</a></h2>
+<ul>
+<li><p><strong>Driver (Conector):</strong> Componente de software
+encargado de traducir las llamadas y tipos de datos de Python al
+protocolo de red nativo del servidor de BD. Instalación: pip install
+mysql-connector-python.</p></li>
+<li><p><strong>Conexión (Connection Link):</strong> Sesión lógica de
+comunicación activa establecida de forma segura entre el script cliente
+y la instancia del motor de base de datos.</p></li>
+<li><p><strong>Cursor:</strong> Objeto operativo intermedio que actúa
+como puntero del sistema para despachar consultas SQL hacia el servidor,
+procesar sentencias y recuperar de forma ordenada las filas resultantes
+en memoria.</p></li>
+</ul>
+<h2 id="gestión-segura-de-conexiones-y-operaciones-crud">5.2. Gestión
+Segura de Conexiones y Operaciones CRUD <a class="headerlink" href="#gestión-segura-de-conexiones-y-operaciones-crud" title="Enlace permanente">¶</a></h2>
+<p>Es un principio crítico de administración e infraestructura de
+software asegurar que las conexiones se abran únicamente cuando sea
+necesario y se cierren siempre (incluso si ocurren fallos inesperados en
+el proceso de consulta), utilizando bloques estructurados de control de
+excepciones try-except-finally.</p>
+<table>
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;"><strong>Excepción del
+Conector</strong></th>
+<th style="text-align: left;"><strong>Causa de Origen / Cuándo
+Capturarla</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">ProgrammingError</td>
+<td style="text-align: left;">Errores críticos de sintaxis en la
+sentencia SQL escrita, llamadas a tablas que no existen o credenciales
+con privilegios insuficientes en el motor.</td>
+</tr>
+<tr>
+<td style="text-align: left;">IntegrityError</td>
+<td style="text-align: left;">Violaciones de las reglas de consistencia
+de datos de la BD (ej. duplicar una clave primaria, insertar nulos o
+violar restricciones de clave foránea).</td>
+</tr>
+<tr>
+<td style="text-align: left;">InterfaceError</td>
+<td style="text-align: left;">Fallos de enlace o comunicación física
+entre el script ejecutor de Python y el componente interno del Driver
+(ej. intentar usar una conexión ya cerrada).</td>
+</tr>
+</tbody>
+</table>
+<p><div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>import mysql.connector
+from mysql.connector import Error, errorcode
+try:
+# Intento de establecimiento del canal de comunicación relacional
+conexion = mysql.connector.connect(
+host='IP_SERVIDOR_REMOTO',
+user='USUARIO_ASIR',
+password='PASSWORD_SEGURO',
+database='EMPRESA_BD'
+)
+if conexion.is_connected():
+print("Conexión establecida con éxito.")
+cursor = conexion.cursor()
+#
+=========================================================================
+# 1. OPERACIÓN DE LECTURA SEGURA (Prevención estricta de Inyección
+SQL)
+#
+=========================================================================
+# Regla de Oro: NUNCA concatenar variables o usar f-strings en
+cadenas SQL.
+# Se debe utilizar obligatoriamente marcadores de posición '%s' y
+pasar tuplas.
+query = "SELECT id, nombre, email FROM usuarios WHERE nombre =
+%s"
+parametro_busqueda = ("Alex",) # Las tuplas unitarias llevan coma
+obligatoria
+cursor.execute(query, parametro_busqueda)
+resultados = cursor.fetchall() # fetchall() extrae todas las filas en
+formato lista de tuplas
+for fila in resultados:
+print(f"ID: {fila[0]} | Nombre: {fila[1]} | Email: {fila[2]}")
+#
+=========================================================================
+# 2. OPERACIÓN DE ESCRITURA CON TRANSACCIONALIDAD
+(INSERT/UPDATE/DELETE)
+#
+=========================================================================
+insert_sql = "INSERT INTO usuarios (nombre, email) VALUES (%s,
+%s)"
+datos_registro = ("Carla", "carla@empresa.com")
+cursor.execute(insert_sql, datos_registro)
+# Confirmación física y persistente de los cambios en el disco duro
+del servidor
+conexion.commit()
+print(f"Registro asentado correctamente. ID asignado:
+{cursor.lastrowid}")
+except mysql.connector.Error as err:
+# Manejo granular de códigos de error nativos del motor MySQL
+if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+print("Error: Credenciales de acceso (usuario/password)
+denegadas.")
+elif err.errno == errorcode.ER_BAD_DB_ERROR:
+print("Error: La base de datos especificada no existe en el
+servidor.")
+else:
+print(f"Error operativo detectado: {err}")
+# En caso de cualquier fallo en la escritura, revertimos los cambios
+pendientes en la transacción
+if 'conexion' in locals() and conexion.is_connected():
+conexion.rollback()
+finally:
+# El bloque 'finally' garantiza la liberación del recurso de red pase
+lo que pase
+if 'conexion' in locals() and conexion.is_connected():
+cursor.close()
+conexion.close()
+print("Recursos liberados. Conexión cerrada de forma limpia.")</code></pre></div></h4>
+
+        </main>
+    </div>
+</body>
+</html>
