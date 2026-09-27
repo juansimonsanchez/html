@@ -1,0 +1,1938 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APL - UT1 Teoria Introduccion</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <header id="site-header">
+        <div class="header-container">
+            <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo"
+                    style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>APL
+                    &ndash; UT1 Teoria Introduccion</span></div>
+            <nav class="top-nav">
+                <a href="index.html" class="nav-btn">Inicio</a>
+            </nav>
+        </div>
+    </header>
+    <div id="page-layout">
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;"><a
+                    href="APL_UT1_Teoria_Introduccion_26_27.pdf" download
+                    style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">📥
+                    Descargar PDF</a></div>
+
+
+            <h1 id="ut1-internet-evolución-y-fundamentos-web">UT1: INTERNET,
+                EVOLUCIÓN Y FUNDAMENTOS WEB <a class="headerlink" href="#ut1-internet-evolución-y-fundamentos-web"
+                    title="Enlace permanente">¶</a></h1>
+            <h3 id="ficha-técnica-de-la-unidad">FICHA TÉCNICA DE LA UNIDAD <a class="headerlink"
+                    href="#ficha-técnica-de-la-unidad" title="Enlace permanente">¶</a></h3>
+            <div class="table-wrapper">
+                <div class="table-wrapper">
+                    <table>
+                        <tbody>
+                            <tr class="header">
+                                <td><strong>Resultados de Aprendizaje (RA)</strong></td>
+                                <td><strong>RA1:</strong> Instala gestores de contenidos, identificando
+                                    sus aplicaciones y configurándolos según requerimientos.</td>
+                            </tr>
+                            <tr class="odd">
+                                <td><strong>Criterios de Evaluación (CE)</strong></td>
+                                <td><strong>RA1:</strong> a, b, d, g</td>
+                            </tr>
+                            <tr class="header">
+                                <td><strong>Tiempo</strong></td>
+                                <td>Total: 20 horas (Teoría: 3 h / Práctica: 17 h)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 id="section"> <a class="headerlink" href="#section" title="Enlace permanente">¶</a></h3>
+                <h3 id="índice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#índice-de-contenidos"
+                        title="Enlace permanente">¶</a></h3>
+                <blockquote>
+                    <p><a href="#introducción-y-contextualización"><u>1. INTRODUCCIÓN Y
+                                CONTEXTUALIZACIÓN 📖</u></a></p>
+                    <p><a href="#conceptos-fundamentales"><u>2. CONCEPTOS
+                                FUNDAMENTALES</u></a></p>
+                    <p><a href="#definición-de-internet-e-infraestructura-física"><u>2.1.
+                                Definición de Internet e Infraestructura Física</u></a></p>
+                    <p><a href="#el-lenguaje-de-la-red-la-pila-de-protocolos-tcpip"><u>2.2.
+                                El Lenguaje de la Red: La Pila de Protocolos TCP/IP</u></a></p>
+                    <p><a href="#clasificación-de-la-web-por-su-accesibilidad"><u>2.3.
+                                Clasificación de la Web por su Accesibilidad 📖</u></a></p>
+                    <p><a href="#servicios-primordiales-de-internet"><u>2.4. Servicios
+                                Primordiales de Internet</u></a></p>
+                    <p><a href="#fundamentos-arquitectura-y-servicios"><u>3. FUNDAMENTOS,
+                                ARQUITECTURA Y SERVICIOS</u></a></p>
+                    <p><a href="#identificación-en-la-red-direcciones-ip-y-nombres-de-dominio"><u>3.1.
+                                Identificación en la Red: Direcciones IP y Nombres de
+                                Dominio</u></a></p>
+                    <p><a href="#proveedores-de-internet-isp-y-resolución-dns"><u>3.2.
+                                Proveedores de Internet (ISP) y Resolución DNS</u></a></p>
+                    <p><a href="#el-servidor-web-httphttps-urls-virtual-hosts-y-puertos"><u>3.3.
+                                El Servidor Web: HTTP/HTTPS, URLs, Virtual Hosts y Puertos</u></a></p>
+                    <p><a href="#el-cliente-web-navegador"><u>3.4. El Cliente Web:
+                                Navegador</u></a></p>
+                    <p><a href="#directrices-de-calidad"><u>3.5. Directrices de Calidad
+                                📖</u></a></p>
+                    <p><a href="#evolución-de-las-etapas-de-la-web"><u>4. EVOLUCIÓN DE LAS
+                                ETAPAS DE LA WEB 📖</u></a></p>
+                    <p><a href="#integración-web-y-bases-de-datos"><u>5. INTEGRACIÓN WEB Y
+                                BASES DE DATOS</u></a></p>
+                    <p><a href="#arquitectura-de-3-capas-cliente-servidor-dinámico"><u>5.1.
+                                Arquitectura de 3 Capas (Cliente-Servidor Dinámico)</u></a></p>
+                    <p><a href="#ciclo-de-vida-de-una-petición-dinámica"><u>5.2. Ciclo de
+                                Vida de una petición dinámica</u></a></p>
+                    <p><a href="#lenguaje-de-marcas-html5"><u>6. LENGUAJE DE MARCAS:
+                                HTML5</u></a></p>
+                    <p><a href="#qué-es-html"><u>6.1. ¿Qué es HTML?</u></a></p>
+                    <p><a href="#estructura-semántica-estricta-y-cabecera-de-página"><u>6.2.
+                                Estructura Semántica Estricta y Cabecera de Página</u></a></p>
+                    <p><a href="#elementos-del-bloque-de-texto"><u>6.3. Elementos del Bloque
+                                de Texto</u></a></p>
+                    <p><a href="#estructuración-mediante-listas"><u>6.4. Estructuración
+                                mediante Listas</u></a></p>
+                    <p><a href="#tablas"><u>6.5. Tablas</u></a></p>
+                    <p><a href="#gestión-de-imágenes"><u>6.6. Gestión de Imágenes</u></a></p>
+                    <p><a href="#hipervínculos"><u>6.7. Hipervínculos</u></a></p>
+                    <p><a href="#formularios"><u>6.8. Formularios</u></a></p>
+                    <p><a href="#comentarios-dentro-de-código"><u>6.9. Comentarios dentro de
+                                Código</u></a></p>
+                    <p><a href="#capa-de-diseño-y-maquetación-css3"><u>7. CAPA DE DISEÑO Y
+                                MAQUETACIÓN: CSS3</u></a></p>
+                    <p><a href="#introducción-a-css3-y-modos-de-aplicación"><u>7.1.
+                                Introducción a CSS3 y Modos de Aplicación</u></a></p>
+                    <p><a href="#prioridad-y-herencia-de-estilos"><u>7.2.
+                                Prioridad y Herencia de los Estilos</u></a></p>
+                    <p><a href="#códigos-de-colores"><u>7.3. Códigos de Colores</u></a></p>
+                    <p><a href="#sintaxis-css-y-lineas-horizontales"><u>7.4. Sintaxis y
+                                Trazado de Líneas (&lt;hr&gt;)</u></a></p>
+                    <p><a href="#reglas-selectores-de-elemento-clases-e-identificadores"><u>7.5.
+                                Reglas, Selectores de Elemento, Clases e Identificadores</u></a></p>
+                    <p><a href="#propiedades-tipografía-texto-fondos"><u>7.6.
+                                Propiedades de Fuente, Texto y Fondos</u></a></p>
+                    <p><a href="#capas-y-posicionamiento"><u>7.7. Capas y
+                                Posicionamiento (Absolute, Relative, Z-Index)</u></a></p>
+                    <p><a href="#el-modelo-de-caja-box-model"><u>7.8. El Modelo de Caja (Box
+                                Model) en Profundidad</u></a></p>
+                    <p><a href="#propiedades-shorthand"><u>7.9. Propiedades Shorthand
+                                (Abreviadas)</u></a></p>
+                    <p><a href="#frameworks-css-concepto-layouts-y-rejillas"><u>7.10.
+                                Frameworks CSS (Concepto, Layouts, Ventajas y Tipos) 📖</u></a></p>
+                </blockquote>
+                <p><strong>Importante</strong>: los apartados marcados con 📖, son de
+                    lectura obligatoria aunque no se expliquen durante las clases
+                    teóricas.</p>
+                <h2 id="introducción-y-contextualización">1. INTRODUCCIÓN Y
+                    CONTEXTUALIZACIÓN 📖 <a class="headerlink" href="#introducción-y-contextualización"
+                        title="Enlace permanente">¶</a></h2>
+                <p>En el entorno informático actual, un <strong>Técnico en Sistemas
+                        Microinformáticos y Redes (SMR)</strong> no limita su actividad a
+                    reparar equipos en local o tirar cableado de red. Gran parte de los
+                    servicios corporativos críticos (ERPs, bases de datos de clientes,
+                    intranets, tiendas online) se han trasladado a infraestructuras web
+                    locales o a la nube.</p>
+                <p>Esta unidad proporciona al alumnado las bases teóricas de redes y el
+                    dominio inicial del código del lado del cliente (HTML5 y CSS3). Estas
+                    destrezas son fundamentales para comprender cómo viaja la información
+                    por la red, facilitando que el técnico diagnostique con éxito caídas de
+                    servicio, configure servidores web o despliegue aplicaciones de
+                    escritorio virtual y gestores de contenido (CMS).</p>
+                <h2 id="conceptos-fundamentales">2. CONCEPTOS FUNDAMENTALES <a class="headerlink"
+                        href="#conceptos-fundamentales" title="Enlace permanente">¶</a></h2>
+                <h3 id="definición-de-internet-e-infraestructura-física">2.1. Definición
+                    de Internet e Infraestructura Física <a class="headerlink"
+                        href="#definición-de-internet-e-infraestructura-física" title="Enlace permanente">¶</a></h3>
+                <p><strong>Internet</strong> se define como una infraestructura global
+                    de redes y equipos informáticos enlazados entre sí, con el objetivo
+                    primordial de transferir datos y compartir recursos de forma
+                    descentralizada.<img src="media_APL_UT1_Teoria_Introduccion_26_27/media/image10.png"
+                        style="width:500px;" /></p>
+                <p>📖 La interconexión física de estos millones de equipos distribuidos
+                    por el planeta se realiza mediante múltiples tecnologías de
+                    transmisión:</p>
+                <ul>
+                    <li>
+                        <blockquote>
+                            <p><strong>Enlaces inalámbricos/inalámbricos de larga
+                                    distancia:</strong> Conexiones satelitales, ondas de radio y
+                                microondas.</p>
+                        </blockquote>
+                    </li>
+                    <li>
+                        <blockquote>
+                            <p><strong>Cableado estructurado y terrestre:</strong> Par trenzado de
+                                cobre en redes locales y el despliegue masivo de redes de <strong>Fibra
+                                    Óptica</strong> terrestre.</p>
+                        </blockquote>
+                    </li>
+                    <li>
+                        <blockquote>
+                            <p><strong>Infraestructura submarina:</strong> Cables de fibra de alta
+                                capacidad que cruzan océanos para conectar continentes enteros.</p>
+                        </blockquote>
+                    </li>
+                    <li>
+                        <blockquote>
+                            <p><strong>Infraestructura telefónica convencional:</strong> Sistemas
+                                xDSL que aprovechan el antiguo bucle de abonado.</p>
+                        </blockquote>
+                    </li>
+                </ul>
+                <h3 id="el-lenguaje-de-la-red-la-pila-de-protocolos-tcpip">2.2. El
+                    Lenguaje de la Red: La Pila de Protocolos TCP/IP <a class="headerlink"
+                        href="#el-lenguaje-de-la-red-la-pila-de-protocolos-tcpip" title="Enlace permanente">¶</a></h3>
+                <p>Para que ordenadores con distintos componentes de hardware y sistemas
+                    operativos (Windows, GNU/Linux, macOS, Android) puedan entenderse entre
+                    sí, es indispensable utilizar un "lenguaje estándar" común: la pila de
+                    protocolos <strong>TCP/IP</strong> (<em>Transmission Control Protocol /
+                        Internet Protocol</em>).</p>
+                <ul>
+                    <li>
+                        <blockquote>
+                            <p><strong>Protocolo IP (Internet Protocol):</strong> Se encarga del
+                                direccionamiento y del envío de paquetes de datos a través de la red,
+                                asegurando que cada paquete llegue a su destino pero sin garantizar el
+                                orden de llegada ni la pérdida de información en el trayecto.</p>
+                        </blockquote>
+                    </li>
+                    <li>
+                        <blockquote>
+                            <p><strong>Protocolo TCP (Transmission Control Protocol):</strong>
+                                Trabaja en una capa superior y se encarga de trocear los datos en
+                                paquetes, numerarlos en el origen, comprobar que no se pierdan en el
+                                camino y reordenarlos correctamente al llegar al destino. Si falta un
+                                paquete, solicita automáticamente su retransmisión.</p>
+                        </blockquote>
+                    </li>
+                    <li>
+                        <blockquote>
+                            <p><strong>Origen histórico</strong> 📖<strong>:</strong> Los inicios de
+                                esta tecnología se remontan a 1972, cuando fue implementado por primera
+                                vez en la red <strong>ARPANET</strong> bajo el auspicio del Departamento
+                                de Defensa de los Estados Unidos. Posteriormente, se convirtió en el
+                                cimiento del Internet comercial que conocemos hoy.</p>
+                        </blockquote>
+                    </li>
+                </ul>
+                <h3 id="clasificación-de-la-web-por-su-accesibilidad">2.3. Clasificación
+                    de la Web por su Accesibilidad 📖 <a class="headerlink"
+                        href="#clasificación-de-la-web-por-su-accesibilidad" title="Enlace permanente">¶</a></h3>
+                <p>No todo el contenido de Internet es accesible de la misma manera.
+                    Podemos clasificar la información en tres grandes áreas de
+                    almacenamiento:</p>
+                <p><img src="media_APL_UT1_Teoria_Introduccion_26_27/media/image3.png"
+                        style="width: 500px; height: auto;" /></p>
+                <ol type="1">
+                    <li>
+                        <blockquote>
+                            <p><strong>Surface Web (Web Superficial):</strong> Representa el
+                                contenido público que todos conocemos y visitamos a diario. Es indexado
+                                automáticamente por los motores de búsqueda convencionales (como Google
+                                o Bing).</p>
+                        </blockquote>
+                    </li>
+                    <li>
+                        <blockquote>
+                            <p><strong>Deep Web (Web Profunda):</strong> Almacena contenidos que
+                                <strong>no están indexados</strong> por los buscadores tradicionales. No
+                                contiene necesariamente material ilícito; de hecho, representa más del
+                                90% de los datos en Internet. Incluye bases de datos privadas,
+                                historiales médicos protegidos, cuentas de correo personal,
+                                transacciones bancarias o repositorios académicos y científicos
+                                restringidos por contraseña.
+                            </p>
+                        </blockquote>
+                    </li>
+                    <li>
+                        <blockquote>
+                            <p><strong>Dark Web (Web Oscura):</strong> Es una porción pequeña de la
+                                Deep Web que ha sido ocultada intencionadamente. Sus páginas no son
+                                legibles por navegadores normales, requiriendo software específico de
+                                cifrado (como TOR) para acceder. Garantiza el anonimato absoluto de
+                                servidores y usuarios.</p>
+                        </blockquote>
+                    </li>
+                </ol>
+                <h3 id="servicios-primordiales-de-internet">2.4. Servicios Primordiales
+                    de Internet <a class="headerlink" href="#servicios-primordiales-de-internet"
+                        title="Enlace permanente">¶</a></h3>
+                <p>Internet es la autopista de comunicación, pero sobre ella circulan
+                    diversos servicios especializados regulados por sus propios
+                    protocolos:</p>
+                <ol type="1">
+                    <li>
+                        <blockquote>
+                            <p><strong>WWW (World Wide Web):</strong> Servicio que permite
+                                visualizar páginas y documentos hipertexto alojados en servidores web en
+                                todo el mundo, utilizando el protocolo <strong>HTTP/HTTPS</strong> y un
+                                software navegador.</p>
+                        </blockquote>
+                    </li>
+                    <li>
+                        <blockquote>
+                            <p><strong>Correo Electrónico (E-mail):</strong> Intercambio ágil de
+                                correspondencia digital y adjuntos. Utiliza protocolos como
+                                <strong>SMTP</strong> (envío de correos) y <strong>POP3</strong> /
+                                <strong>IMAP</strong> (recepción y sincronización de mensajes).
+                            </p>
+                        </blockquote>
+                    </li>
+                    <li>
+                        <blockquote>
+                            <p><strong>Transferencia de Archivos (FTP):</strong> Servicio orientado
+                                al envío seguro y rápido de archivos grandes entre máquinas cliente y
+                                servidor mediante el protocolo <strong>FTP</strong> o su variante segura
+                                <strong>SFTP</strong>.
+                            </p>
+                        </blockquote>
+                    </li>
+                    <li>
+                        <blockquote>
+                            <p><strong>Terminal Remoto (Telnet / SSH):</strong> Permite el control,
+                                administración y mantenimiento de sistemas operativos de servidores
+                                remotos. <strong>Telnet</strong> envía la información en texto plano
+                                (inseguro); hoy en día ha sido sustituido por <strong>SSH</strong>
+                                (<em>Secure Shell</em>), que cifra toda la comunicación y comandos de
+                                consola.</p>
+                        </blockquote>
+                    </li>
+                    <li>
+                        <blockquote>
+                            <p><strong>Mensajería Instantánea e IRC (Internet Relay Chat):</strong>
+                                Canales de comunicación síncrona en tiempo real para texto plano, hoy
+                                integrados de forma transparente dentro de la interfaz del
+                                navegador.</p>
+                        </blockquote>
+                    </li>
+                    <li>
+                        <blockquote>
+                            <p><strong>Telefonía IP (VoIP):</strong> Servicio que transforma señales
+                                de voz analógicas en paquetes de datos digitales para realizar llamadas
+                                telefónicas por Internet (ej: Skype, Teams).</p>
+                        </blockquote>
+                    </li>
+                </ol>
+                <h2 id="fundamentos-arquitectura-y-servicios">3. FUNDAMENTOS,
+                    ARQUITECTURA Y SERVICIOS <a class="headerlink" href="#fundamentos-arquitectura-y-servicios"
+                        title="Enlace permanente">¶</a></h2>
+                <h3 id="identificación-en-la-red-direcciones-ip-y-nombres-de-dominio">3.1.
+                    Identificación en la Red: Direcciones IP y Nombres de Dominio <a class="headerlink"
+                        href="#identificación-en-la-red-direcciones-ip-y-nombres-de-dominio"
+                        title="Enlace permanente">¶</a>
+                </h3>
+                <ul>
+                    <li>
+                        <blockquote>
+                            <p><strong>Dirección IP:</strong> Es un código numérico exclusivo
+                                asignado a cada dispositivo (servidor, ordenador, impresora) conectado a
+                                una red, permitiendo identificarlo de forma unívoca.</p>
+                        </blockquote>
+                        <ul>
+                            <li>
+                                <blockquote>
+                                    <p><em>Ejemplo IPv4:</em> 192.168.1.45 (consta de 4 bytes o números de 0
+                                        a 255).</p>
+                                </blockquote>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <blockquote>
+                            <p><strong>Nombres de Dominio:</strong> Puesto que recordar secuencias
+                                numéricas IP para cada servidor es difícil para los usuarios humanos, se
+                                diseñaron los nombres de dominio como equivalencias de texto fáciles de
+                                memorizar (ej: iescelia.org). Se clasifican según su terminación o
+                                <strong>TLD</strong> (<em>Top-Level Domain</em>):
+                            </p>
+                        </blockquote>
+                        <ul>
+                            <li>
+                                <blockquote>
+                                    <p><strong>Genéricos o internacionales (gTLD)</strong>
+                                        📖<strong>:</strong> Indican la naturaleza o finalidad del sitio.</p>
+                                </blockquote>
+                                <ul>
+                                    <li>
+                                        <blockquote>
+                                            <p>.com (Comercial)</p>
+                                        </blockquote>
+                                    </li>
+                                    <li>
+                                        <blockquote>
+                                            <p>.org (Organizaciones sin ánimo de lucro)</p>
+                                        </blockquote>
+                                    </li>
+                                    <li>
+                                        <blockquote>
+                                            <p>.net (Proveedores de servicios de Internet e infraestructuras)</p>
+                                        </blockquote>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <blockquote>
+                                    <p><strong>Geográficos o de país (ccTLD)</strong> 📖<strong>:</strong>
+                                        Vinculados a territorios específicos gestionados por delegaciones
+                                        nacionales.</p>
+                                </blockquote>
+                                <ul>
+                                    <li>
+                                        <blockquote>
+                                            <p>.es (España)</p>
+                                        </blockquote>
+                                    </li>
+                                    <li>
+                                        <blockquote>
+                                            <p>.fr (Francia)</p>
+                                        </blockquote>
+                                    </li>
+                                    <li>
+                                        <blockquote>
+                                            <p>.uk (Reino Unido)</p>
+                                        </blockquote>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <h3 id="proveedores-de-internet-isp-y-resolución-dns">3.2. Proveedores
+                    de Internet (ISP) y Resolución DNS <a class="headerlink"
+                        href="#proveedores-de-internet-isp-y-resolución-dns" title="Enlace permanente">¶</a></h3>
+                <img src="media_APL_UT1_Teoria_Introduccion_26_27/media/image20.png" style="width:5.20313in" /><br>
+                <ul>
+                    <li>
+                        <blockquote>
+                            <p><strong>ISP (Internet Service Provider):</strong> Son las empresas
+                                (como Movistar, Orange o Vodafone) encargadas de suministrar el acceso
+                                físico a Internet del cliente y proporcionar direccionamiento lógico y
+                                conectividad.</p>
+                        </blockquote>
+                    </li>
+                    <li>
+                        <blockquote>
+                            <p><strong>Servidores DNS (Domain Name System):</strong> Sistema
+                                jerárquico que actúa como la "agenda de contactos" de Internet. Su
+                                misión es traducir nombres de dominio legibles por humanos (ej:
+                                google.com) a su correspondiente dirección IP lógica (ej:
+                                142.250.200.78).</p>
+                        </blockquote>
+                        <ul>
+                            <li>
+                                <blockquote>
+                                    <p><strong>DNS Primario:</strong> Es el primer servidor al que el
+                                        cliente realiza la consulta para resolver una URL.</p>
+                                </blockquote>
+                            </li>
+                            <li>
+                                <blockquote>
+                                    <p><strong>DNS Secundario:</strong> Servidor de respaldo que entra en
+                                        funcionamiento automáticamente si el primario no responde, garantizando
+                                        la continuidad del servicio.</p>
+                                </blockquote>
+                            </li>
+                            <li>
+                                <blockquote>
+                                    <p>En entornos de redes locales e intranets, la configuración manual de
+                                        estos servidores es una tarea clave para el <strong>técnico de
+                                            sistemas</strong>.</p>
+                                </blockquote>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <h3 id="el-servidor-web-httphttps-urls-virtual-hosts-y-puertos">3.3. El
+                    Servidor Web: HTTP/HTTPS, URLs, Virtual Hosts y Puertos <a class="headerlink"
+                        href="#el-servidor-web-httphttps-urls-virtual-hosts-y-puertos" title="Enlace permanente">¶</a>
+                </h3>
+                <ul>
+                    <li>
+                        <blockquote>
+                            <p><strong>Servidor Web:</strong> Es una aplicación que se ejecuta en
+                                una máquina servidor, escuchando peticiones en puertos específicos y
+                                sirviendo archivos web a los clientes mediante los protocolos:</p>
+                        </blockquote>
+                        <ul>
+                            <li>
+                                <blockquote>
+                                    <p><strong>HTTP (puerto estándar TCP 80):</strong> Envía la información
+                                        en texto plano sin cifrar.</p>
+                                </blockquote>
+                            </li>
+                            <li>
+                                <blockquote>
+                                    <p><strong>HTTPS (puerto estándar TCP 443):</strong> Variante cifrada
+                                        mediante certificados SSL/TLS, garantizando que nadie pueda interceptar
+                                        los datos entre cliente y servidor.</p>
+                                </blockquote>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <blockquote>
+                            <p><strong>URL (Uniform Resource Locator):</strong> Ruta exclusiva que
+                                identifica a cada recurso en la red.</p>
+                        </blockquote>
+                    </li>
+                </ul>
+                <p><img src="media_APL_UT1_Teoria_Introduccion_26_27/media/image6.png" style="width:4.03472in" /></p>
+                <p><strong>Concepto de Virtual Host</strong> 📖: Como técnicos de
+                    sistemas, debemos saber que un mismo servidor físico con una sola IP
+                    puede alojar múltiples sitios web distintos (ej: iescelia.org y
+                    departamento.local) mediante la configuración de <strong>Virtual
+                        Hosts</strong> en servidores como Apache o Nginx:</p>
+                <p>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <pre><code># Configuración básica en Apache
+(/etc/apache2/sites-available/iescelia.conf)
+&lt;VirtualHost *:80&gt;
+ServerName www.iesceliavinas.local
+DocumentRoot /var/www/iescelia
+ErrorLog ${APACHE_LOG_DIR}/iescelia_error.log
+CustomLog ${APACHE_LOG_DIR}/iescelia_access.log combined
+&lt;/VirtualHost&gt;</code></pre>
+                </div>
+            </div>
+            </h3>
+            <h3 id="el-cliente-web-navegador">3.4. El Cliente Web: Navegador <a class="headerlink"
+                    href="#el-cliente-web-navegador" title="Enlace permanente">¶</a></h3>
+            <p>El <strong>Navegador Web</strong> (Chrome, Firefox, Safari, Edge) es
+                una aplicación cliente que solicita el código fuente (HTML, CSS, JS) de
+                un recurso al servidor web, lo interpreta y lo dibuja en pantalla para
+                el usuario de forma gráfica.</p>
+            <p><img src="media_APL_UT1_Teoria_Introduccion_26_27/media/image11.png"
+                    style="width: 400px;;height:1auto" /></p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p><strong>Motores de Renderizado</strong> 📖<strong>:</strong> El
+                            núcleo técnico del navegador que se encarga de procesar el código.
+                            Ejemplos de uso común: <em>Blink</em> (Chrome, Edge, Opera),
+                            <em>Gecko</em> (Firefox), <em>WebKit</em> (Safari)
+                        </p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Herramientas de Desarrollador (F12):</strong> Utilidad
+                            imprescindible para un técnico de SMR que permite auditar recursos de
+                            red, depurar fallos en la carga de scripts, modificar hojas de estilo
+                            CSS en tiempo real o analizar el código estructural procesado por el
+                            motor (DOM o <em>Document Object Model</em>).</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <h3 id="directrices-de-calidad">3.5. Directrices de Calidad 📖 <a class="headerlink"
+                    href="#directrices-de-calidad" title="Enlace permanente">¶</a></h3>
+            <p>El técnico responsable de desplegar una aplicación web o un CMS debe
+                velar por la calidad técnica del portal mediante las siguientes
+                directrices básicas:</p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p><strong>Dominio recordable:</strong> Seleccionar nombres de dominio
+                            cortos y sencillos.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Hosting Robusto:</strong> Alojar el sitio en servidores con
+                            baja latencia de red, evitando tiempos de inactividad que perjudiquen el
+                            negocio.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Arquitectura jerárquica:</strong> Organizar los archivos en
+                            el servidor siguiendo un árbol de directorios ordenado.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Compatibilidad y Adaptabilidad:</strong> Comprobar la
+                            visualización en diversos navegadores y asegurar que el diseño sea
+                            adaptable a dispositivos móviles (diseño <em>Responsive</em>).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Velocidad de Carga:</strong> Optimizar los pesos de las
+                            imágenes y la eficiencia del código para reducir el tráfico de
+                            datos.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Semántica y SEO:</strong> Usar de manera estructurada
+                            etiquetas semánticas (&lt;h1&gt;, &lt;h2&gt;) y etiquetas &lt;meta&gt;
+                            en la cabecera del documento para facilitar que los buscadores
+                            cataloguen el sitio.</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <h2 id="evolución-de-las-etapas-de-la-web">4. EVOLUCIÓN DE LAS ETAPAS DE
+                LA WEB 📖 <a class="headerlink" href="#evolución-de-las-etapas-de-la-web"
+                    title="Enlace permanente">¶</a></h2>
+            <p>La World Wide Web ha evolucionado rápidamente desde su creación a
+                principios de la década de los 90.</p>
+            <p><img src="media_APL_UT1_Teoria_Introduccion_26_27/media/image14.jpg"
+                    style="width:5.74502in;height:4.76736in" />
+            </p>
+            <h2 id="integración-web-y-bases-de-datos">5. INTEGRACIÓN WEB Y BASES DE
+                DATOS <a class="headerlink" href="#integración-web-y-bases-de-datos" title="Enlace permanente">¶</a>
+            </h2>
+            <h3 id="arquitectura-de-3-capas-cliente-servidor-dinámico">5.1.
+                Arquitectura de 3 Capas (Cliente-Servidor Dinámico) <a class="headerlink"
+                    href="#arquitectura-de-3-capas-cliente-servidor-dinámico" title="Enlace permanente">¶</a></h3>
+            <p>A diferencia de la Web 1.0 (estática), la práctica totalidad de las
+                aplicaciones corporativas modernas funcionan bajo un modelo de
+                arquitectura distribuida en 3 capas:</p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p><strong>Capa de Presentación (Frontend):</strong> Se ejecuta en el
+                            cliente (Navegador) a través de HTML5, CSS3 y JavaScript.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Capa de Negocio (Backend):</strong> Procesada en el Servidor
+                            Web (Apache, Nginx, IIS) mediante lenguajes interpretados como PHP,
+                            Python o C#.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Capa de Datos (Persistencia):</strong> Administrada por un
+                            Sistema Gestor de Bases de Datos (SGBD) como MariaDB, MySQL u
+                            Oracle.</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <h3 id="ciclo-de-vida-de-una-petición-dinámica">5.2. Ciclo de Vida de
+                una petición dinámica <a class="headerlink" href="#ciclo-de-vida-de-una-petición-dinámica"
+                    title="Enlace permanente">¶</a></h3>
+            <p>Cuando un usuario visita un gestor de contenidos o realiza una
+                consulta, se inicia la siguiente secuencia técnica automatizada:</p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p><strong>Petición:</strong> El navegador web envía una petición HTTP o
+                            HTTPS solicitando una página dinámica (ej: ver_usuarios.php).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Recepción:</strong> El servidor web (Apache) recibe la
+                            solicitud, detecta la extensión .php y pasa el control al motor o
+                            intérprete del lenguaje (Engine PHP).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Consulta de Datos:</strong> El código PHP procesa la lógica
+                            del script y abre una conexión al puerto del servidor de base de datos
+                            (MySQL), remitiendo una consulta SQL estructurada.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Procesamiento SQL:</strong> El SGBD (MySQL) ejecuta la
+                            consulta, recupera los datos de las tablas físicas del disco duro y
+                            devuelve los registros en bruto al motor PHP.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Renderizado HTML:</strong> El motor PHP recibe los datos, los
+                            inserta de forma transparente dentro de una estructura semántica HTML,
+                            dando por finalizada la ejecución del script.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Respuesta:</strong> El servidor web Apache envía el archivo
+                            HTML plano resultante de vuelta al navegador del usuario, que dibuja
+                            visualmente la información.</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <p><img src="media_APL_UT1_Teoria_Introduccion_26_27/media/image10.png"
+                    style="width:4.57096in;height:3.40613in" />
+            </p>
+            <h2 id="lenguaje-de-marcas-html5">6. LENGUAJE DE MARCAS: HTML5 <a class="headerlink"
+                    href="#lenguaje-de-marcas-html5" title="Enlace permanente">¶</a></h2>
+            <h3 id="qué-es-html">6.1. ¿Qué es HTML?<img src="media_APL_UT1_Teoria_Introduccion_26_27/media/image8.png"
+                    style="width:200 px;height:auto" /> <a class="headerlink" href="#qué-es-html"
+                    title="Enlace permanente">¶</a></h3>
+            <p><strong>HTML</strong> (<em>HyperText Markup Language</em>) es un
+                lenguaje de marcado utilizado para estructurar y organizar
+                jerárquicamente el contenido de un documento web mediante
+                <strong>etiquetas</strong> o marcas encerradas entre caracteres menor y
+                mayor que (&lt; y &gt;).
+            </p>
+            <p>No es un lenguaje de programación, ya que carece de lógica
+                condicional, bucles o funciones aritméticas; su única misión es indicar
+                al navegador la función semántica de cada elemento del documento (un
+                párrafo, un título, una celda, etc.).</p>
+            <h3 id="estructura-semántica-estricta-y-cabecera-de-página">6.2.
+                Estructura Semántica Estricta y Cabecera de Página <a class="headerlink"
+                    href="#estructura-semántica-estricta-y-cabecera-de-página" title="Enlace permanente">¶</a></h3>
+            <p>Las instrucciones en HTML se componen habitualmente de etiquetas de
+                apertura (ej: &lt;p&gt;) y etiquetas de cierre (ej: &lt;/p&gt;).</p>
+            <p>También existen etiquetas vacías, como &lt;br&gt;, &lt;hr&gt;,
+                &lt;img&gt; o &lt;meta&gt;, que no encierran contenido.</p>
+            <p>Los atributos añaden información a la etiqueta. Se escriben en la
+                etiqueta de apertura: nombre="valor".</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;img src="foto.jpg" alt="Paisaje" width="300" height="200"&gt;</code></pre>
+            </div>
+
+            </p>
+            <p>Para asegurar la compatibilidad con dispositivos móviles modernos, un
+                documento HTML5 correcto debe tener la siguiente estructura semántica y
+                de cabecera:</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+    &lt;head&gt;
+    &lt;!-- Declaración del juego de caracteres --&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;!-- Configuración para la adaptabilidad móvil --&gt;
+    &lt;meta name="viewport" content="width=device-width,initial-scale=1.0"&gt;
+    &lt;!-- Metadatos de SEO para optimización en buscadores --&gt;
+    &lt;meta name="description" content="Apuntes de la asignatura Aplicaciones Web para 2º de SMR"&gt;
+    &lt;meta name="keywords" content="smr, aplicaciones web, informatica, html, css"&gt;
+    &lt;meta name="author" content="Departamento de Informatica IES Celia Viñas"&gt;
+    &lt;title&gt;Fundamentos Web - SMR&lt;/title&gt;
+    &lt;/head&gt;
+
+    &lt;body&gt;
+    &lt;!-- Estructura del cuerpo de la página --&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+
+            </p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p><strong>&lt;!DOCTYPE html&gt;:</strong> Indica al navegador moderno
+                            que procese el archivo bajo la última especificación estándar de
+                            HTML5.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>&lt;head&gt; (Cabecera):</strong> Contiene información
+                            técnica de control que no es visible de forma directa en el monitor para
+                            los usuarios, pero resulta vital para el navegador y los motores de
+                            búsqueda.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>&lt;body&gt; (Cuerpo):</strong> Alberga todo el contenido
+                            (texto, imágenes, tablas) que sí será renderizado visualmente por el
+                            cliente web.</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <p>HTML5 introdujo etiquetas específicas para identificar las diferentes
+                regiones de una página, permitiendo que navegadores y buscadores
+                comprendan la arquitectura de la información de forma precisa:</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p><strong>&lt;header&gt;:</strong> Define la cabecera de una página o
+                            de una sección, conteniendo habitualmente logotipos o
+                            introducciones.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>&lt;nav&gt;:</strong> Contenedor destinado exclusivamente a
+                            bloques de enlaces de navegación principal.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>&lt;main&gt;:</strong> Encapsula el contenido central y único
+                            del documento, excluyendo elementos repetitivos como barras
+                            laterales.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>&lt;section&gt;:</strong> Representa una agrupación temática
+                            genérica de contenido, normalmente con su propio encabezado.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>&lt;article&gt;:</strong> Define una unidad de contenido
+                            independiente y autocontenida (ej. una entrada de blog o noticia).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>&lt;aside&gt;:</strong> Contenido tangencial o relacionado de
+                            forma indirecta con el texto principal, como barras laterales o
+                            publicidad.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>&lt;footer&gt;:</strong> Pie de página o de sección que suele
+                            albergar información de autoría, contacto o avisos legales.</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <p><img src="media_APL_UT1_Teoria_Introduccion_26_27/media/image17.png"
+                    style="width:5.47031in;height:auto" /></p>
+            <h3 id="elementos-del-bloque-de-texto">6.3. Elementos del Bloque de
+                Texto <a class="headerlink" href="#elementos-del-bloque-de-texto" title="Enlace permanente">¶</a></h3>
+            <p><strong>A) Saltos de línea y Párrafos</strong></p>
+            <p>En HTML, el navegador no tiene en cuenta la tecla <em>Enter</em> ni
+                los espacios en blanco múltiples. Todo el texto corrido se dibuja en la
+                misma línea.</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p><strong>Párrafo (&lt;p&gt; ... &lt;/p&gt;):</strong> Agrupa un bloque
+                            de texto semántico y añade de forma automática un espacio vertical de
+                            separación con el siguiente bloque.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Salto de línea (&lt;br&gt;):</strong> Fuerza al texto a
+                            continuar de manera inmediata en la línea siguiente. No requiere
+                            etiqueta de cierre.</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;p&gt;SQL es el lenguaje estándar de bases de datos.&lt;br&gt;
+MySQL es un servidor de base de datos muy popular.&lt;/p&gt;</code></pre>
+
+            </div>Para mostrar el texto tal y como ha sido escrito, conservando
+            espacios y saltos, se usa &lt;pre&gt;.</p>
+            <p><strong>B) Títulos y Encabezados</strong></p>
+            <p>HTML5 proporciona seis niveles jerárquicos de títulos para organizar
+                la información de mayor a menor importancia:</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;h1&gt;Este es un Título de Nivel 1 (Mayor importancia)&lt;/h1&gt;
+&lt;h2&gt;Este es un Título de Nivel 2 (Secciones principales)&lt;/h2&gt;
+&lt;h3&gt;Este es un Título de Nivel 3 (Subsecciones)&lt;/h3&gt;
+&lt;h4&gt;Título de Nivel 4&lt;/h4&gt;
+&lt;h5&gt;Título de Nivel 5&lt;/h5&gt;
+&lt;h6&gt;Título de Nivel 6 (Menor importancia)&lt;/h6&gt;</code></pre>
+            </div>
+
+            </p>
+            <p><strong>C) Bloques de Sangría (&lt;blockquote&gt;) y Direcciones
+                    (&lt;address&gt;)</strong></p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p><strong>&lt;blockquote&gt;:</strong> Añade una sangría simétrica a la
+                            izquierda y derecha del párrafo, útil para citas textuales.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>&lt;address&gt;:</strong> Etiqueta semántica que se suele
+                            situar al pie de página para indicar información de contacto de los
+                            autores o empresas.</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;blockquote&gt;
+&lt;p&gt;La web es una herramienta fundamental para el acceso a la información global.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;address&gt;
+Escrito por: Juan Simón Sánchez&lt;br&gt;
+Email: &lt;a href="mailto:juansimonsanchez@gmail.com"&gt;juansimonsanchez@gmail.com&lt;/a&gt;&lt;br&gt; IES Celia Viñas
+&lt;/address&gt;</code></pre>
+            </div>
+
+            </p>
+            <p><strong>D) Énfasis de texto</strong></p>
+            <p>Para destacar palabras o frases clave sin forzar un salto de
+                línea:</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p><strong>&lt;strong&gt;:</strong> Indica máxima importancia semántica.
+                            Tradicionalmente los navegadores la renderizan en
+                            <strong>negrita</strong>.
+                        </p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>&lt;em&gt;:</strong> Indica énfasis moderado.
+                            Tradicionalmente los navegadores la renderizan en <em>cursiva</em>.</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;p&gt;El protocolo &lt;strong&gt;HTTPS&lt;/strong&gt; es la variante segura de HTTP y viaja de forma
+&lt;em&gt;cifrada&lt;/em&gt;.&lt;/p&gt;</code></pre>
+            </div>
+            HTML ofrece etiquetas de formato como &lt;b&gt;, &lt;i&gt;,
+            &lt;u&gt;, &lt;sub&gt;, &lt;sup&gt;, &lt;big&gt; y &lt;small&gt;.</p>
+            <p>También conviene diferenciar entre formato visual y significado
+                semántico: &lt;strong&gt; indica importancia y &lt;em&gt; énfasis.</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;p&gt;&lt;b&gt;Negrita&lt;/b&gt;, &lt;i&gt;cursiva&lt;/i&gt; y
+&lt;u&gt;subrayado&lt;/u&gt;.&lt;/p&gt;</code></pre>
+            </div>
+
+            </p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;p&gt;H&lt;sub&gt;2&lt;/sub&gt;O y 2&lt;sup&gt;3&lt;/sup&gt; =
+8.&lt;/p&gt;</code></pre>
+            </div>
+
+            </h4>
+            <div>
+                <p><strong>Actividades de clase</strong>. Incluir <strong>SIEMPRE </strong>una etiqueta meta con vuestro
+                    nombre como autor </p>
+                <blockquote>
+                    <p><strong>Ejercicio 0. Primeros ejemplos. </strong>
+                        Crea una página llamada ejercicio0.html con un título de pestaña 'Ejemplos de la teoría' y un
+                        encabezado h1 que diga 'Ejemplos incluidos en la teoría'. Incluir todos los ejemplos del
+                        apartado 6.3. </p>
+                    <p><strong>Ejercicio 1. Primera página </strong> Crea una página llamada ejercicio1.html con un
+                        título de pestaña 'Mi primera web' y un encabezado h1 que diga 'Bienvenido'.</p>
+                    <p><strong>Ejercicio 2. Párrafos y saltos </strong> Incluir en el archivo html anterior dos
+                        párrafos. En el segundo, fuerza dos saltos de línea con la etiqueta br.</p>
+                    <p><strong>Ejercicio 3. Formato. </strong>Incluir en el archivo html anterior un párrafo donde
+                        aparezcan una palabra en negrita, otra en cursiva y una fórmula con subíndice o superíndice.</p>
+                </blockquote>
+            </div>
+
+            <h3 id="estructuración-mediante-listas">6.4. Estructuración mediante
+                Listas <a class="headerlink" href="#estructuración-mediante-listas" title="Enlace permanente">¶</a></h3>
+            <p>HTML5 proporciona tres métodos nativos de organización en listas:</p>
+            <p><strong>A) Listas No Ordenadas (&lt;ul&gt;)</strong></p>
+            <p>Colección de elementos donde no importa el orden secuencial. Los
+                elementos van precedidos de viñetas (puntos):</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;ul&gt;
+&lt;li&gt;Inicio&lt;/li&gt;
+&lt;li&gt;Servicios&lt;/li&gt;
+&lt;li&gt;Contacto&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+            </div>
+            <strong>B) Listas Ordenadas (&lt;ol&gt;)</strong></p>
+            <p>Especialmente útiles para tutoriales o instrucciones de instalación
+                técnica paso a paso:</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;ol&gt;
+&lt;li&gt;Instalar el servidor web Apache.&lt;/li&gt;
+&lt;li&gt;Configurar el Virtual Host.&lt;/li&gt;
+&lt;li&gt;Reiniciar el servicio web.&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+            </div>
+            <strong>C) Listas de Definición (&lt;dl&gt;, &lt;dt&gt;,
+                &lt;dd&gt;)</strong></p>
+            <p>Muy recomendadas para la elaboración de glosarios técnicos:</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p>&lt;dl&gt;: Contenedor general de la lista (<em>Definition
+                                List</em>).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>&lt;dt&gt;: El concepto o término a definir (<em>Definition
+                                Term</em>).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>&lt;dd&gt;: La explicación o descripción de dicho término
+                            (<em>Definition Description</em>).</p>
+                    </blockquote>
+                </li>
+            </ul>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;dl&gt;
+&lt;dt&gt;Hosting&lt;/dt&gt;
+&lt;dd&gt;Servicio de alojamiento para páginas web y aplicaciones en
+un servidor conectado a Internet.&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+            </div>
+
+            </p>
+            <p><strong>D) Anidamiento de Listas</strong></p>
+            <p>Podemos insertar una lista completa dentro de un elemento de otra
+                lista para crear jerarquías multinivel:</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;ol&gt;
+&lt;li&gt;Sistemas Operativos:
+&lt;ul&gt;
+&lt;li&gt;GNU/Linux&lt;/li&gt;
+&lt;li&gt;Windows Server&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Servicios de Red&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+            </div>
+
+            </h4>
+            <h3 id="tablas">6.5. Tablas <a class="headerlink" href="#tablas" title="Enlace permanente">¶</a></h3>
+            <p>Las tablas sirven para mostrar datos relacionales organizados de
+                forma clara en filas y columnas. Se estructuran mediante las siguientes
+                marcas:</p>
+            <ul>
+                <li>
+                    <blockquote>
+                        <p>&lt;table&gt;: Contenedor principal de la tabla.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>&lt;tr&gt;: Delimita el inicio de una fila (<em>Table Row</em>).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>&lt;th&gt;: Define una celda de encabezado, centrada y en negrita
+                            (<em>Table Header</em>).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p>&lt;td&gt;: Define una celda de contenido estándar (<em>Table
+                                Data</em>).</p>
+                    </blockquote>
+                </li>
+            </ul>
+
+
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;!-- Ejemplo de tabla sencilla --&gt;
+&lt;table border="1" &gt;
+&lt;thead&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Servicio&lt;/th&gt;
+        &lt;th&gt;Puerto TCP&lt;/th&gt;
+        &lt;th&gt;Función Principal&lt;/th&gt;
+    &lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+    &lt;tr&gt;
+        &lt;td&gt;HTTP&lt;/td&gt;
+        &lt;td&gt;80&lt;/td&gt;
+        &lt;td&gt;Transferencia de páginas web sin cifrar&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;HTTPS&lt;/td&gt;
+        &lt;td&gt;443&lt;/td&gt;
+        &lt;td&gt;Navegación segura con cifrado SSL/TLS&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+                </code></pre>
+            </div>
+
+            </p>
+
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;!-- Ejemplo de tabla con colspan y rowspan --&gt;
+&lt;table border="1" &gt;
+&lt;thead&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Servicio&lt;/th&gt;
+        &lt;th&gt;Puerto TCP&lt;/th&gt;
+        &lt;th&gt;Función Principal&lt;/th&gt;
+    &lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+        &lt;td rowspan="2"&gt;ssh&lt;/td&gt;
+        &lt;td&gt;22&lt;/td&gt;
+        &lt;td&gt;Acceso remoto seguro&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;80&lt;/td&gt;
+        &lt;td&gt;Transferencia de páginas web sin cifrar&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;HTTPS&lt;/td&gt;
+        &lt;td colspan="2"&gt;Navegación segura con cifrado SSL/TLS&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+                </code></pre>
+            </div>
+
+            </p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;!-- Ejemplo de tabla semántica con estilos CSS básicos integrados --&gt;
+&lt;table border="1" style="border-collapse: collapse; width: 100%; text-align: center;"&gt;
+&lt;thead&gt;
+    &lt;tr style="background-color: #f2f2f2;"&gt;
+        &lt;th&gt;Servicio&lt;/th&gt;
+        &lt;th&gt;Puerto TCP&lt;/th&gt;
+        &lt;th&gt;Función Principal&lt;/th&gt;
+    &lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+    &lt;tr&gt;
+        &lt;td&gt;HTTP&lt;/td&gt;
+        &lt;td&gt;80&lt;/td&gt;
+        &lt;td&gt;Transferencia de páginas web sin cifrar&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;HTTPS&lt;/td&gt;
+        &lt;td&gt;443&lt;/td&gt;
+        &lt;td&gt;Navegación segura con cifrado SSL/TLS&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+            </div>
+
+            </h4>
+            <h3 id="gestión-de-imágenes">6.6. Gestión de Imágenes <a class="headerlink" href="#gestión-de-imágenes"
+                    title="Enlace permanente">¶</a></h3>
+            <p>Para realizar la inserción de recursos gráficos dentro de un portal
+                web, el estándar HTML5 proporciona la etiqueta
+                <strong>&lt;img&gt;</strong>.
+            </p>
+            <p>Dicha marca debe vincularse obligatoriamente al atributo
+                <strong>src</strong>, el cual define la ruta o URL donde se localiza el
+                archivo binario de la imagen.
+            </p>
+            <p>Asimismo, el atributo <strong>alt</strong> resulta indispensable para
+                la accesibilidad, permitiendo mostrar una breve descripción textual en
+                caso de que el motor de renderizado no logre cargar el recurso.</p>
+            <p>Técnicamente, se trata de una etiqueta vacía, por lo que carece de
+                marca de cierre.</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;img src="nombrefoto.jpg" alt="Descripción de la fotografía"&gt;</code></pre>
+            </div>
+
+            </p>
+            <p>El control de las dimensiones espaciales se realiza mediante los
+                atributos <strong>width</strong> (anchura) y <strong>height</strong>
+                (altura), expresados habitualmente en píxeles.</p>
+            <p>Es posible añadir una delimitación visual utilizando el atributo
+                <strong>border</strong>, que define el grosor de la línea perimetral del
+                elemento.
+            </p>
+            <p>La propiedad <em>align</em> permite gestionar la distribución
+                horizontal del recurso, facilitando su alineación lateral o central
+                respecto al flujo del documento.</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;img src="nombrefoto.jpg" width="25" height="25" align="center" border="2"&gt;</code></pre>
+            </div>
+
+            </p>
+            <p>Para regular la separación física entre la imagen y otros elementos
+                circundantes, se emplean dos atributos específicos:</p>
+            <blockquote>
+                <p><strong>vspace:</strong> Establece el margen de separación vertical
+                    en píxeles.</p>
+                <p><strong>hspace:</strong> Establece el margen de separación horizontal
+                    en píxeles.</p>
+            </blockquote>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;img src="imagen.gif" align="left" vspace="35" hspace="35"&gt;</code></pre>
+            </div>
+
+            </p>
+            <p>La versatilidad de HTML permite combinar la inserción de recursos
+                gráficos con la creación de enlaces de hipertexto.</p>
+            <p>Al anidar una etiqueta de imagen dentro de un contenedor de enlace,
+                convertimos el recurso visual en un elemento clicable.</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;a href="index.htm"&gt;&lt;img src="img/izda.gif"&gt;&lt;/a&gt;</code></pre>
+            </div>
+
+            </h4>
+            <p>El lenguaje permite personalizar el contorno de las imágenes mediante
+                un grosor variable.</p>
+            <p>A través del atributo <em>border</em> se definen diferentes niveles
+                de intensidad:</p>
+            <blockquote>
+                <p>border="0" (Sin borde visible)</p>
+                <p>border="1" (Borde estándar)</p>
+                <p>border="10" (Borde de gran grosor)</p>
+            </blockquote>
+            <h3 id="hipervínculos">6.7. Hipervínculos <a class="headerlink" href="#hipervínculos"
+                    title="Enlace permanente">¶</a></h3>
+            <p>El componente fundamental de la Web es el hipervínculo, mecanismo que
+                permite la navegación interconectada entre diferentes recursos y
+                páginas.</p>
+            <p>Por defecto, el cliente web renderiza este elemento como texto
+                subrayado; al interactuar con él, el navegador procesa la carga del
+                destino especificado.</p>
+            <p>La sintaxis estructural para establecer enlaces externos o internos
+                es la siguiente:</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;a href="https://www.20minutos.es"&gt;Acceso a Noticias&lt;/a&gt;</code></pre>
+            </div>
+
+            </h3>
+            <p>En este elemento introducimos la noción de <strong>atributo</strong>,
+                el cual se integra en la marca de apertura mediante un par
+                nombre-valor.</p>
+            <p>Es imperativo que el valor asignado al atributo se encuentre
+                delimitado por comillas dobles para su correcta interpretación.</p>
+            <p>El atributo <strong>href</strong> del elemento "a" define la
+                referencia del recurso que el navegador debe renderizar tras la
+                activación del vínculo.</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;body&gt;
+&lt;a href="https://www.google.es/"&gt;Buscador Google&lt;/a&gt;&lt;br&gt;
+&lt;a href="https://www.marca.com/"&gt;Diario Deportivo&lt;/a&gt;&lt;br&gt;
+&lt;a href="https://www.zara.com/es/"&gt;Tienda Online&lt;/a&gt;&lt;br&gt;
+&lt;a href="https://www.decathlon.es/es/"&gt;Artículos de Deporte&lt;/a&gt;&lt;br&gt;
+&lt;/body&gt;</code></pre>
+            </div>
+
+            </h3>
+            <p>Además de la navegación externa, es posible vincular diversos
+                documentos HTML propios para construir una arquitectura de sitio
+                coherente.</p>
+            <p>A modo de ejemplo técnico, consideremos la interconexión entre dos
+                archivos denominados <em>pagina1.html</em> y <em>pagina2.html</em>.</p>
+            <p>Contenido estructural del archivo principal:</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Estructura de Navegación – Página 1&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Índice Principal.&lt;/h1&gt;
+&lt;a href="pagina2.html"&gt;Sección de Noticias&lt;/a&gt; 
+&lt;/body&gt; 
+&lt;/html&gt;</code></pre>
+            </div>
+
+            </p>
+            <p>El valor de referencia se establece inmediatamente después del
+                operador de asignación.</p>
+            <p>En el escenario planteado, el destino apunta a un fichero local que
+                debe coexistir en el mismo directorio del servidor para asegurar la
+                resolución de la ruta.</p>
+            <p>En el documento secundario, se implementa el retorno mediante la
+                instrucción: <em>&lt;a href="pagina1.html"&gt;Salir&lt;/a&gt;</em>.</p>
+            <p>El técnico puede configurar interfaces donde las imágenes actúen como
+                activadores de navegación al ser seleccionadas por el usuario.</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;h2&gt;Interactúe con los logotipos para acceder a los motores de
+búsqueda principales.&lt;/h2&gt; 
+&lt;a href="https://www.google.es/"&gt;&lt;img src="../foto1.jpg"
+alt="Enlace a Google"&gt; &lt;/a&gt;
+&lt;br&gt;
+&lt;a href="https://www.amazon.es/"&gt;&lt;img src="../foto2.jpg"
+alt="Enlace a Amazon"&gt; &lt;/a&gt;</code></pre>
+            </div>
+
+            </p>
+            <p>Para gestionar la apertura de recursos en nuevas instancias del
+                navegador, el elemento "a" dispone de la propiedad especializada
+                <em>target</em>.
+            </p>
+            <p>Asignando el valor <strong>"_blank"</strong>, forzamos al sistema a
+                desplegar el contenido en una pestaña independiente, preservando la
+                sesión actual.</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;a href="http://www.youtube.com" target="_blank"&gt;Plataforma de Video&lt;/a&gt;</code></pre>
+            </div>
+            Los enlaces internos método facilita la creación de saltos de
+            navegación dentro de la estructura de un mismo documento HTML.</p>
+            <p>El proceso se basa en la inserción de marcadores técnicos en puntos
+                estratégicos que servirán de destino para futuras peticiones.</p>
+            <p><strong>A) Definición del Marcador</strong></p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;a name="identificador"&gt;Texto de referencia&lt;/a&gt;</code></pre>
+            </div>
+            <strong>B) Implementación del Vínculo Interno</strong></p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;a href="#identificador"&gt;Desplazamiento al marcador&lt;/a&gt;</code></pre>
+            </div>
+            <strong>C) Acceso Remoto a Marcadores</strong></p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;a href="historia.html#identificador"&gt;Enlace a sección externa&lt;/a&gt;</code></pre>
+            </div>
+            Por ejemplo</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;a href="#geografia"&gt;Ir a Sección Geográfica&lt;/a&gt; 
+
+&lt;!-- Contenido de la página -- &gt;
+&lt;h2&gt;&lt;a name="geografia"&gt;Sección:Geografía&lt;/a&gt;&lt;/h2&gt;</code></pre>
+            </div>
+
+            </p>
+            <p>En este contexto, la marca de encabezado se utiliza exclusivamente
+                para dotar de jerarquía visual al contenido definido.</p>
+            <p><strong>Actividades de clase</strong>. Incluir <strong>SIEMPRE </strong>una etiqueta meta con vuestro
+                nombre como autor. Modificar el título de la pestaña e incluir un encabezado h1 con el mismo texto
+                descriptivo del contenido de la página </p>
+            <blockquote>
+                <p><strong>Ejercicio 4. Imagen. </strong>
+                    Crea una página llamada ejercicio2.html (con un título de pestaña y h1 p.e. 'Ejemplos de imágenes').
+                    Busca y descarga una imagen de Almería. Inserta la imagen 5 veces con un texto alternativo. Cada
+                    imagen aparecerá con un tamaño distinto. Debajo, añade un enlace a la web externa donde aparece la
+                    imagen.</p>
+                <p><strong>Ejercicio 5. Enlaces entre páginas </strong> Crea dos páginas html, llamadas ejercicio3.html
+                    y ejercicio4.html. Desde la primera se debe poder ir a la segunda, y desde la segunda volver a la
+                    principal.</p>
+                <p><strong>Ejercicio 6. Listas </strong> En la página llamada ejercicio3.html, crea una lista
+                    desordenada con 5 aficiones (deportes, música, cine, lectura, viajes) y una lista ordenada con los
+                    pasos para abrir el navegador y visitar una web.</p>
+                <p><strong>Ejercicio 7. Tabla básica. </strong> En la página llamada ejercicio4.html, diseña una tabla
+                    con tres columnas: Nombre, Asignatura y Nota. Añade tres filas de datos.</p>
+                <p><strong>Ejercicio 8. Tabla con combinación. </strong>En el mismo archivo ejercicio4.html, crea una
+                    tabla de horario en la que una asignatura ocupe dos horas consecutivas usando rowspan o colspan.</p>
+            </blockquote>
+
+
+            <h3 id="formularios">6.8. Formularios <a class="headerlink" href="#formularios"
+                    title="Enlace permanente">¶</a></h3>
+            <p>Un formulario web (&lt;form&gt;) es el mecanismo básico que permite
+                recopilar información introducida por el usuario y enviarla a un
+                servidor web o motor dinámico para su procesamiento.</p>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;!-- Ejemplo de formulario básico de contacto --&gt;
+&lt;form action="procesar_contacto.php" method="POST"&gt;
+&lt;fieldset&gt;
+    &lt;legend&gt;Formulario de Soporte Técnico&lt;/legend&gt;
+    &lt;div&gt;
+        &lt;!-- Label explícita conectada con el id del input --&gt;
+        &lt;label for="txtUsuario"&gt;Nombre de Usuario:&lt;/label&gt;
+        &lt;input type="text" id="txtUsuario" name="usuario" placeholder="Ej:Juan" required&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+        &lt;label for="txtPass"&gt;Contraseña de Acceso:&lt;/label&gt;
+        &lt;input type="password" id="txtPass" name="contrasena" required&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;label for="txtComentarios"&gt;Descripción de la incidencia:&lt;/label&gt;&lt;br&gt;
+        &lt;textarea id="txtComentarios" name="comentarios" rows="4" cols="50"&gt;&lt;/textarea&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;input type="checkbox" id="chkAviso" name="privacidad" required&gt;
+        &lt;label for="chkAviso"&gt;Acepto los términos del servicio&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;input type="submit" value="Enviar Reporte"&gt;
+        &lt;input type="reset" value="Limpiar Campos"&gt;
+    &lt;/div&gt;
+&lt;/fieldset&gt;
+&lt;/form&gt;</code></pre>
+            </div>
+            </p>
+            <p>Tipos de Control comunes en un formulario:</p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p><strong>Cuadro de texto (type="text"):</strong> Entrada estándar para
+                            una sola línea.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Cuadro de contraseña (type="password"):</strong> Oculta los
+                            caracteres introducidos utilizando puntos o asteriscos.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Cuadro multilínea (&lt;textarea&gt;):</strong> Permite
+                            entradas de texto de varias líneas.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Casilla de verificación (type="checkbox"):</strong> Opciones
+                            independientes y no excluyentes.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Botón de radio (type="radio"):</strong> Opciones mutuamente
+                            excluyentes (se debe asociar el mismo atributo name para definir el
+                            grupo).</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Lista Desplegable (&lt;select&gt;):</strong> Permite
+                            seleccionar una de varias opciones de una lista:</p>
+                    </blockquote>
+                </li>
+            </ol>
+            <p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;select id="selSO" name="sistema_operativo"&gt;
+    &lt;option value="win"&gt;Windows Server&lt;/option&gt;
+    &lt;option value="linux" selected&gt;GNU/Linux Debian&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+            </div>
+
+            <h3 id="comentarios-dentro-de-código">6.9. Comentarios dentro de Código <a class="headerlink"
+                    href="#comentarios-dentro-de-código" title="Enlace permanente">¶</a></h3>
+            <p>La etiqueta &lt;!-- ... --&gt; permite insertar notas explicativas
+                dentro del código que serán totalmente ignoradas por el navegador web en
+                pantalla, ayudando al técnico y programadores a organizar el código
+                fuente.</p>
+
+            <!-- ======================================================== -->
+            <!-- 7. CAPA DE DISEÑO Y MAQUETACIÓN: CSS3                   -->
+            <!-- ======================================================== -->
+            <h2 id="capa-de-diseño-y-maquetación-css3">7. CAPA DE DISEÑO Y
+                MAQUETACIÓN: CSS3 <a class="headerlink" href="#capa-de-diseño-y-maquetación-css3"
+                    title="Enlace permanente">¶</a></h2>
+            <h3 id="introducción-a-css3-y-modos-de-aplicación">7.1. Introducción a
+                CSS3 y Modos de Aplicación <a class="headerlink" href="#introducción-a-css3-y-modos-de-aplicación"
+                    title="Enlace permanente">¶</a></h3>
+            <p><strong>CSS3</strong> (<em>Cascading Style Sheets</em>) es el
+                lenguaje que controla la presentación visual y estética de las páginas escritas en HTML (colores,
+                fuentes,
+                márgenes, diseño y disposición espacial de los elementos).</p>
+            <p>Podemos aplicar código CSS de <strong>cinco formas diferentes y complementarias</strong>:</p>
+            <ol type="1">
+                <li>
+                    <blockquote>
+                        <p><strong>En pequeñas partes de una página (&lt;span&gt;):</strong> Se declara el estilo
+                            directamente
+                            dentro de la etiqueta mediante el atributo style para modificar fragmentos específicos de
+                            texto sin
+                            romper la línea.</p>
+                        <img src="media_APL_UT1_Teoria_Introduccion_26_27/images/image8.png" width="600px"
+                            alt="Distintas propiedades CSS">
+                        <h5>(Captura 1)</h5>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Estilo definido para una etiqueta específica:</strong> Se declara el estilo dentro de
+                            la
+                            propia etiqueta de apertura (estilo en línea o inline).</p>
+                        <img src="media_APL_UT1_Teoria_Introduccion_26_27/images/image10.png" width="600 px"
+                            alt="Distintas propiedades CSS">
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Estilo definido en una sección de la página (&lt;div&gt;):</strong> Se define el
+                            estilo
+                            dentro de la etiqueta contenedora. Todo el código HTML comprendido entre
+                            &lt;div&gt;...&lt;/div&gt;
+                            asumirá el estilo definido.</p>
+                        <img src="media_APL_UT1_Teoria_Introduccion_26_27/images/image13.png" width="600 px"
+                            alt="Distintas propiedades CSS">
+                        <h5>(Captura 2)</h5>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Estilo definido para toda la página (&lt;style&gt; en el &lt;head&gt;):</strong> Se
+                            escriben
+                            las reglas de estilo en la cabecera del documento entre las etiquetas &lt;style
+                            type="text/css"&gt;
+                            ... &lt;/style&gt;. Los estilos definidos para body serán heredados por el resto de
+                            etiquetas que no
+                            tengan un estilo más específico.</p>
+                        <img src="media_APL_UT1_Teoria_Introduccion_26_27/images/image23.png" width="800px"
+                            alt="Distintas propiedades CSS">
+                        <h5>(Captura 3)</h5>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        <p><strong>Estilo definido para toda la web (Hojas de estilo externas):</strong> Permite
+                            unificar el
+                            estilo de todo el sitio enlazando las páginas a un único archivo con extensión
+                            <code>.css</code>.
+                            Presenta dos grandes ventajas: facilita el mantenimiento/modificación del sitio web y reduce
+                            sustancialmente las líneas de código HTML.</p>
+                    </blockquote>
+                    <img src="media_APL_UT1_Teoria_Introduccion_26_27/images/image20.png" width="600 px"
+                        alt="Distintas propiedades CSS">
+                    <h5>(Captura 4)</h5>
+                </li>
+            </ol>
+
+            <p><strong>Ejemplos de aplicación:</strong></p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;!-- 1. Pequeñas partes con span --&gt;
+&lt;p&gt;Texto normal y &lt;span style="color: red; font-weight: bold;"&gt;texto destacado en rojo&lt;/span&gt;.&lt;/p&gt;
+
+&lt;!-- 2. Estilo en línea sobre una etiqueta --&gt;
+&lt;p style="color: blue; font-size: 14px;"&gt;Párrafo con estilos inline aplicados directamente.&lt;/p&gt;
+
+&lt;!-- 3. Sección con contenedor div --&gt;
+&lt;div style="background-color: #e5e7eb; padding: 15px; border-left: 4px solid #2563eb;"&gt;
+    &lt;h3&gt;Sección de aviso&lt;/h3&gt;
+    &lt;p&gt;Todo este bloque asume los estilos declarados en el div.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- 4. Estilos internos en cabecera --&gt;
+&lt;head&gt;
+    &lt;style type="text/css"&gt;
+        body { font-family: Arial, sans-serif; }
+        p { color: darkblue; font-size: 16px; }
+    &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;!-- 5. Enlace a archivo externo .css --&gt;
+&lt;head&gt;
+    &lt;link rel="stylesheet" type="text/css" href="estilos.css"&gt;
+&lt;/head&gt;</code></pre>
+            </div>
+
+
+            <p>También se puede <strong>importar una hoja de estilos externa</strong> desde dentro de otra declaración
+                CSS
+                mediante la directiva <code>@import url("archivo_a_importar.css");</code> situada en la primera línea de
+                la
+                declaración de estilos.</p>
+
+            <img src="media_APL_UT1_Teoria_Introduccion_26_27/images/image6.png" width="800px"
+                alt="Distintas propiedades CSS">
+
+            <h3 id="prioridad-y-herencia-de-estilos">7.2. Prioridad y Herencia de los Estilos <a class="headerlink"
+                    href="#prioridad-y-herencia-de-estilos" title="Enlace permanente">¶</a></h3>
+            <p>Los estilos se heredan de unas etiquetas a otras (por ejemplo, los definidos en &lt;body&gt; se
+                transmiten a sus
+                elementos hijos). Cuando más de una declaración afecta a la misma parte de la página, la regla general
+                es:
+                <strong>"tener en cuenta la declaración más particular"</strong>.
+            </p>
+            <p>Jerarquía de importancia y resolución de conflictos (de mayor a menor prioridad):</p>
+            <ol type="1">
+                <li>Declaración de estilos para una pequeña porción con <code>&lt;span&gt;</code>.</li>
+                <li>Estilos definidos en una etiqueta en concreto (atributo <code>style</code>).</li>
+                <li>Definición de estilos en una sección con <code>&lt;div&gt;</code>.</li>
+                <li>Declaración de estilos para toda la página mediante la etiqueta <code>&lt;style&gt;</code> en el
+                    head.</li>
+                <li>Declaración de estilos mediante ficheros externos vinculados (<code>estilos.css</code>).</li>
+            </ol>
+
+            <h3 id="códigos-de-colores">7.3. Códigos de Colores <a class="headerlink" href="#códigos-de-colores"
+                    title="Enlace permanente">¶</a></h3>
+            <p>Los colores en CSS se pueden especificar de tres maneras principales:</p>
+            <ul>
+                <li><strong>Palabras clave:</strong> El estándar define 17 palabras clave básicas para colores
+                    universales (como
+                    <em>black, white, red, green, blue, yellow, pink, gray</em>, etc.).
+                </li>
+                <li><strong>RGB numérico:</strong> Define la mezcla aditiva indicando la intensidad de rojo, verde y
+                    azul con
+                    valores enteros de 0 a 255. Si todas las componentes son 0 se produce el color negro
+                    (<code>rgb(0, 0, 0)</code>) y si todas toman 255 se obtiene el blanco
+                    (<code>rgb(255, 255, 255)</code>).
+                    Ejemplo: <code>rgb(245, 67, 24)</code>.</li>
+                <li><strong>RGB hexadecimal:</strong> Es el método más utilizado con diferencia en desarrollo web real.
+                    Utiliza
+                    el sistema hexadecimal (del 0 al 9 y de la 'a' a la 'f' para representar los valores 10 al 15)
+                    precedido por
+                    una almohadilla. Ejemplo: <code>#C7A680</code>.</li>
+            </ul>
+
+            <h3 id="sintaxis-css-y-lineas-horizontales">7.4. Sintaxis CSS y Trazado de Líneas (&lt;hr&gt;) <a
+                    class="headerlink" href="#sintaxis-css-y-lineas-horizontales" title="Enlace permanente">¶</a></h3>
+            <p>Una sentencia CSS básica posee la estructura sintáctica formal: <em><strong>selector { propiedad: valor;
+                        ...
+                        }</strong></em></p>
+            <ul>
+                <li><strong>Selector:</strong> Indica sobre qué elemento o conjunto de elementos se aplicará el estilo
+                    (ej:
+                    <code>p</code>, <code>h1</code>, <code>table</code>).
+                </li>
+                <li><strong>Propiedad (atributo):</strong> Característica visual que deseamos modificar (ej:
+                    <code>font-size</code>, <code>color</code>, <code>text-align</code>).
+                </li>
+                <li><strong>Valor:</strong> Parámetro concreto que adopta la propiedad (ej: <code>12pt</code>,
+                    <code>center</code>, <code>bold</code>).
+                </li>
+            </ul>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>p { font-size: 10pt; text-decoration: underline; color: black; }
+h1 { text-align: center; color: black; }</code></pre>
+            </div>
+
+            <p><strong>Líneas horizontales de separación (&lt;hr&gt;):</strong> La etiqueta <code>&lt;hr&gt;</code> no
+                tiene
+                cierre y traza una división física en el documento. Aunque tradicionalmente admitía atributos como
+                <code>size</code>, <code>color</code> o <code>width</code>, las buenas prácticas actuales exigen aplicar
+                estas
+                propiedades directamente mediante CSS:
+            </p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;!-- Tradicional (obsoleto) --&gt;
+&lt;hr size="3" color="pink" width="50%"&gt;
+
+&lt;!-- Recomendado mediante CSS --&gt;
+&lt;hr style="height: 3px; background-color: pink; width: 50%; border: none;"&gt;</code></pre>
+            </div>
+
+            <h3 id="reglas-selectores-de-elemento-clases-e-identificadores">7.5. Reglas, Selectores de Elemento, Clases
+                e
+                Identificadores <a class="headerlink" href="#reglas-selectores-de-elemento-clases-e-identificadores"
+                    title="Enlace permanente">¶</a></h3>
+            <ul>
+                <li><strong>Selector de Elemento o Etiqueta:</strong> Aplica las directrices de forma global a todas las
+                    etiquetas de dicho tipo presentes en la página web (ej: <code>h1</code>, <code>p</code>,
+                    <code>table</code>).
+                </li>
+                <li><strong>Clases (.nombre_clase):</strong> Mecanismo flexible y reutilizable para aplicar el mismo
+                    estilo a
+                    múltiples elementos del documento.
+                    <ul>
+                        <li><em>Clases asociadas:</em> Vinculadas a una etiqueta HTML en particular (ej:
+                            <code>p.aviso { color: red; }</code>). Sólo pueden aplicarse en dicha etiqueta.
+                        </li>
+                        <li><em>Clases no asociadas (genéricas):</em> Definidas únicamente con un punto delante (ej:
+                            <code>.destacado { font-weight: bold; }</code>). Se pueden aplicar a cualquier elemento HTML
+                            mediante el atributo <code>class="destacado"</code>.
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>Identificadores (#nombre_id):</strong> Estilos aplicados de manera unívoca a un solo
+                    elemento
+                    concreto de toda la página mediante el atributo <code>id="nombre_id"</code>. No pueden existir dos
+                    elementos
+                    con el mismo ID dentro de un mismo documento HTML.</li>
+            </ul>
+
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>/* Regla de clase en hoja de estilo */
+.texto-alerta {
+    color: red;
+    font-weight: bold;
+}
+
+/* Regla de identificador único */
+#menu-principal {
+    background-color: #333333;
+    padding: 10px;
+}</code></pre>
+            </div>
+
+
+            <h3 id="propiedades-tipografía-texto-fondos">7.6. Propiedades de Fuente, Texto y Fondos <a
+                    class="headerlink" href="#propiedades-tipografía-texto-fondos" title="Enlace permanente">¶</a></h3>
+            <p>CSS dispone de familias de propiedades especializadas para controlar el diseño:</p>
+            <ul>
+                <li><strong>Fuentes (font):</strong>
+                    <ul>
+                        <li><code>font-family</code>: Familia tipográfica (ej: <em>Arial, Helvetica, sans-serif</em>).
+                        </li>
+                        <li><code>font-size</code>: Tamaño de la letra (en px, pt, em o rem).</li>
+                        <li><code>font-style</code>: Modificador de estilo (<em>normal, italic, oblique</em>).</li>
+                        <li><code>font-weight</code>: Grosor del trazo (<em>normal, bold, bolder, lighter</em> o valores
+                            numéricos 100-900).</li>
+                        <li><code>font-variant</code>: Variantes tipográficas (<em>normal, small-caps</em>).</li>
+                    </ul>
+                    <img src="media_APL_UT1_Teoria_Introduccion_26_27/images/image15.png" width="800px"
+                        alt="Distintas propiedades CSS">
+                </li>
+                <li><strong>Párrafos y Alineación (text):</strong>
+                    <ul>
+                        <li><code>text-align</code>: Alineación horizontal del texto (<em>left, right, center,
+                                justify</em>).
+                        </li>
+                        <li><code>text-decoration</code>: Decoración de línea (<em>none, underline, overline,
+                                line-through</em>).</li>
+                        <li><code>text-indent</code>: Sangría de la primera línea del párrafo.</li>
+                        <li><code>line-height</code>: Interlineado vertical entre líneas de texto.</li>
+                        <li><code>text-transform</code>: Transformación de mayúsculas/minúsculas (<em>capitalize,
+                                uppercase,
+                                lowercase, none</em>).</li>
+                        <li><code>letter-spacing</code> / <code>word-spacing</code>: Espaciado entre letras o entre
+                            palabras.
+                        </li>
+                    </ul>
+                    <img src="media_APL_UT1_Teoria_Introduccion_26_27/images/image17.png" width="800px"
+                        alt="Distintas propiedades CSS">
+                </li>
+                <li><strong>Fondos (background):</strong>
+                    <ul>
+                        <li><code>background-color</code>: Color sólido de fondo (por nombre, RGB o hexadecimal).</li>
+                        <li><code>background-image</code>: Carga una imagen de fondo (<code>url('ruta.png')</code>).
+                        </li>
+                        <li><code>background-repeat</code>: Comportamiento de repetición (<em>repeat, repeat-x,
+                                repeat-y,
+                                no-repeat</em>).</li>
+                        <li><code>background-attachment</code>: Fijación del fondo durante el scroll (<em>scroll,
+                                fixed</em>).
+                        </li>
+                        <li><code>background-position</code>: Posicionamiento inicial de la imagen de fondo (<em>top,
+                                center,
+                                bottom, left, right</em> o coordenadas).</li>
+                    </ul>
+                    <img src="media_APL_UT1_Teoria_Introduccion_26_27/images/image2.png" width="800px"
+                        alt="Distintas propiedades CSS">
+                </li>
+            </ul>
+
+            <h3 id="capas-y-posicionamiento">7.7. Capas y Posicionamiento (Absolute, Relative, Z-Index) <a
+                    class="headerlink" href="#capas-y-posicionamiento" title="Enlace permanente">¶</a></h3>
+            <p>Las <strong>capas</strong> son contenedores en bloque creados al asociar estilos CSS a etiquetas
+                contenedoras
+                (habitualmente <code>&lt;div&gt;</code> para secciones completas o <code>&lt;span&gt;</code> para
+                elementos en
+                línea). Cada capa equivale a una caja independiente cuyo comportamiento, tamaño y ubicación exacta en
+                pantalla
+                podemos controlar con precisión mediante las propiedades de posicionamiento:</p>
+            <ul>
+                <li><strong>position</strong>: Define el tipo de esquema de posicionamiento:
+                    <ul>
+                        <li><code>static</code>: Posicionamiento por defecto en el flujo normal del documento.</li>
+                        <li><code>relative</code>: El elemento se desplaza tomando como referencia su ubicación original
+                            en el
+                            flujo sin alterar a las demás cajas.</li>
+                        <li><code>absolute</code>: La caja se extrae del flujo de la página y se ubica con precisión
+                            milimétrica
+                            tomando como referencia el borde de su contenedor posicionado más cercano o la propia
+                            ventana del
+                            navegador.</li>
+                        <li><code>fixed</code>: Permanece anclada en una coordenada fija de la pantalla, sin moverse
+                            incluso al
+                            hacer scroll.</li>
+                    </ul>
+                </li>
+                <li><strong>Coordenadas espaciales</strong>: <code>top</code>, <code>bottom</code>, <code>left</code>,
+                    <code>right</code> regulan las distancias exactas a los bordes de referencia.
+                </li>
+                <li><strong>Dimensiones</strong>: <code>width</code> (ancho) y <code>height</code> (alto), expresados en
+                    px,
+                    porcentajes (%) o unidades relativas.</li>
+                <li><strong>visibility</strong>: Controla si la capa se dibuja o no en el monitor (<em>visible, hidden,
+                        inherit</em>). A diferencia de <code>display: none</code>, una capa con
+                    <code>visibility: hidden</code>
+                    continúa ocupando su espacio físico en el flujo.</li>
+                <li><strong>z-index</strong>: Establece el orden de superposición vertical de capas apiladas en el eje Z
+                    (a
+                    mayor valor numérico, la caja se dibuja por encima de las capas con menor índice).</li>
+                <li><strong>clip</strong>: Permite recortar y ocultar partes concretas de una capa posicionada
+                    absolutamente
+                    mediante rectángulos (<code>rect(top, right, bottom, left)</code>).</li>
+            </ul>
+
+            <h3 id="el-modelo-de-caja-box-model">7.8. El Modelo de Caja (Box Model) en Profundidad <a class="headerlink"
+                    href="#el-modelo-de-caja-box-model" title="Enlace permanente">¶</a></h3>
+            <p>Cada elemento HTML renderizado en pantalla se estructura conceptualmente como una caja rectangular
+                compuesta por
+                cuatro áreas concéntricas:</p>
+            <ul>
+                <li><strong>Content (Área de Contenido):</strong> Espacio central donde se ubica el texto, imágenes o
+                    elementos
+                    anidados (delimitado por <code>width</code> y <code>height</code>). Muestra el fondo establecido en
+                    <code>background</code>.
+                </li>
+                <li><strong>Padding (Área de Relleno):</strong> Margen interior transparente que separa el contenido del
+                    borde
+                    de la caja. Adopta el color o imagen de fondo del elemento.
+                    <ul>
+                        <li>Propiedades: <code>padding-top</code>, <code>padding-right</code>,
+                            <code>padding-bottom</code>,
+                            <code>padding-left</code> y la propiedad unificada <code>padding</code>.
+                        </li>
+                    </ul>
+                    <img src="media_APL_UT1_Teoria_Introduccion_26_27/images/image25.png" width="800px"
+                        alt="Distintas propiedades CSS">
+                </li>
+                <li><strong>Border (Área del Borde):</strong> Línea perimetral que envuelve el relleno y el contenido:
+                    <ul>
+                        <li><strong>Grosor (width):</strong> <code>border-width</code> (o desglosado por lados) con
+                            valores como
+                            <em>thin, medium, thick</em> o medidas exactas en píxeles.
+                        </li>
+                        <li><strong>Estilo (style):</strong> <code>border-style</code> con valores: <em>none, hidden,
+                                dotted,
+                                dashed, solid, double, groove, ridge, inset, outset</em>.</li>
+                        <li><strong>Color (color):</strong> <code>border-color</code> configurando el tono cromático
+                            deseado.
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>Margin (Área de Margen):</strong> Espacio exterior que separa la caja de los elementos
+                    colindantes.
+                    <strong>El margen es siempre completamente transparente</strong>.
+                    <ul>
+                        <li>Propiedades: <code>margin-top</code>, <code>margin-right</code>, <code>margin-bottom</code>,
+                            <code>margin-left</code> y <code>margin</code>.
+                        </li>
+                    </ul>
+                    <img src="media_APL_UT1_Teoria_Introduccion_26_27/images/image1.png" width="800px"
+                        alt="Distintas propiedades CSS">
+                </li>
+            </ul>
+            <p><img src="media_APL_UT1_Teoria_Introduccion_26_27/media/image4.png"
+                    style="width:2.66062in;height:2.08854in" />
+            </p>
+
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>/* Ejemplo de caja con box-sizing configurado */
+.caja-noticia {
+    width: 300px;
+    padding: 15px;
+    border: 2px solid #1a4f8a;
+    margin: 20px;
+    box-sizing: border-box; /* Asegura que el padding y borde no incrementen el ancho total de 300px */
+}</code></pre>
+            </div>
+
+
+            <h3 id="propiedades-shorthand">7.9. Propiedades Shorthand (Abreviadas) <a class="headerlink"
+                    href="#propiedades-shorthand" title="Enlace permanente">¶</a></h3>
+            <p>La sintaxis abreviada o <em>shorthand</em> permite condensar múltiples propiedades relacionadas en una
+                única
+                línea de declaración:</p>
+            <ul>
+                <li><strong>font:</strong> Permite agrupar estilo, variante, grosor, tamaño/interlineado y familia.
+                    <br><code>p { font: italic normal bold 12px/14pt verdana, tahoma, arial; }</code>
+                </li>
+                <li><strong>background:</strong> Agrupa color, imagen, repetición, fijación y posición.
+                    <br><code>body { background: #fff url(../images/ejemplo.gif) no-repeat fixed center; }</code>
+                </li>
+                <li><strong>margin y padding:</strong>
+                    <ul>
+                        <li><em>1 valor:</em> Se aplica a los cuatro lados por igual. Ejemplo:
+                            <code>margin: 10px;</code></li>
+                        <li><em>2 valores:</em> El primero fija superior e inferior; el segundo fija izquierdo y
+                            derecho.
+                            Ejemplo: <code>margin: 10px 20px;</code></li>
+                        <li><em>3 valores:</em> Superior, laterales (izq/der) e inferior. Ejemplo:
+                            <code>padding: 2em 3em 4em;</code>
+                        </li>
+                        <li><em>4 valores:</em> Sentido de las agujas del reloj (arriba, derecha, abajo, izquierda).
+                            Ejemplo:
+                            <code>margin: 10px 15px 20px 25px;</code>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>border:</strong> Agrupa grosor, estilo y color.
+                    <br><code>h3 { border: thick dotted blue; }</code>
+                </li>
+            </ul>
+
+            <div>
+                <p><strong>Actividades prácticas de CSS</strong></p>
+                <blockquote>
+                    <p><strong>Ejercicio CSS 1.</strong> Realiza un archivo HTML (ejercicio_css_1.html) con estructura
+                        HTML5
+                        estricta (lang="es"). Aplica estilos a partes concretas usando etiquetas span con colores
+                        personalizados, añade estilos a párrafos concretos y define estilos en la cabecera mediante la
+                        etiqueta
+                        style.</p>
+                    <p><strong>Ejercicio CSS 2. Fuentes y Párrafos.</strong> Crear un archivo HTML que incluya 3
+                        párrafos. A
+                        cada párrafo se le aplicará un mínimo de 3 estilos diferentes que afecten a la fuente con
+                        distintos
+                        valores (font-family, font-size, font-weight). Añade además propiedades que afecten a la
+                        alineación e
+                        interlineado del texto.</p>
+                    <p><strong>Ejercicio CSS 3. Clases e Identificadores.</strong> En un archivo CSS externo, define al
+                        menos
+                        dos clases genéricas y un identificador (#) de estilo. Enlaza dicho archivo en tu documento HTML
+                        y
+                        aplícalos a distintos párrafos y elementos span.</p>
+                    <p><strong>Ejercicio CSS 4. Maquetación con Capas.</strong> Realiza una maquetación utilizando
+                        contenedores
+                        div posicionados con margin, padding y border, verificando que los márgenes exteriores se
+                        mantengan
+                        transparentes y el fondo afecte al área de contenido y relleno.</p>
+                </blockquote>
+            </div>
+
+            <h3 id="frameworks-css-concepto-layouts-y-rejillas">7.10. Frameworks CSS (Concepto, Layouts y Rejillas) 📖
+                <a class="headerlink" href="#frameworks-css-concepto-layouts-y-rejillas" title="Enlace permanente">¶</a>
+            </h3>
+            <p>Un <strong>Framework CSS</strong> es un conjunto de archivos, clases y estilos predefinidos y
+                distribuidos
+                habitualmente bajo licencias libres (GPL o MIT) que aceleran el desarrollo de interfaces web.</p>
+            <p><strong>Componentes habituales de un framework:</strong></p>
+            <ul>
+                <li><strong>Layouts (Rejillas / Grids):</strong> Dividen el lienzo visual en un sistema de columnas
+                    (habitualmente de 12 o 16 columnas) para posicionar y alinear los elementos con orden y rapidez.
+                </li>
+                <li><strong>Tipografía preestablecida:</strong> Reglas tipográficas normalizadas para títulos, párrafos
+                    y
+                    enlaces sin necesidad de definirlos manualmente desde cero.</li>
+                <li><strong>css-reset:</strong> Bloque de estilos que homogeniza los valores por defecto de todos los
+                    navegadores, garantizando compatibilidad <em>cross-browser</em>.</li>
+                <li><strong>Componentes de interfaz listos para usar:</strong> Clases prediseñadas para botones, barras
+                    de
+                    navegación (navbar), menús desplegables, formularios y tablas.</li>
+            </ul>
+            <p><strong>Balance técnico:</strong></p>
+            <ul>
+                <li><strong>Ventajas:</strong> Maquetación acelerada, compatibilidad garantizada en todos los
+                    navegadores
+                    habituales, código más limpio bajo patrones estándares y facilidad de integración en proyectos
+                    colaborativos
+                    de equipo.</li>
+                <li><strong>Desventajas:</strong> Curva de aprendizaje inicial para dominar la nomenclatura de clases,
+                    código
+                    HTML sobrecargado de clases prefabricadas y carga inicial de hojas de estilo con reglas no
+                    utilizadas que
+                    pueden incrementar el tiempo de descarga.</li>
+            </ul>
+            <p><strong>Frameworks habituales:</strong></p>
+            <p>Además de herramientas modernas como <em>Bootstrap</em> o <em>Tailwind CSS</em>, históricamente se han
+                utilizado
+                marcos de trabajo modulares como <strong>960 Grid System</strong> (basado en un ancho fijo de 960
+                píxeles
+                dividido en columnas), <strong>Blueprint CSS</strong>, <strong>Simple CSS</strong>,
+                <strong>Tripoli</strong> o
+                <strong>Bluetrip</strong>.
+            </p>
+            <img src="media_APL_UT1_Teoria_Introduccion_26_27/images/image16.png" width="600 px"
+                alt="Distintas propiedades CSS">
+        </main>
+    </div>
+</body>
+
+</html>
