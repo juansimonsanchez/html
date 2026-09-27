@@ -104,6 +104,125 @@
         </table>
       </div>
 
+      <h2 id="bloque-css">Parte 2: Estilos con CSS3</h2>
+
+      <p><strong>Ejercicio 14. Formas de aplicar CSS y colores.</strong> Crea un archivo llamado
+        <code>ejercicio_css_1.html</code>.
+        Aplica estilos de las siguientes formas distintas para comprobar su jerarquía:
+      </p>
+      <ul>
+        <li>En una pequeña porción de texto mediante <code>&lt;span style="..."&gt;</code> definiendo el color con una
+          palabra clave (ej. <code>tomato</code>).</li>
+        <li>En un párrafo completo usando el atributo <code>style="..."</code> de la etiqueta <code>&lt;p&gt;</code>,
+          aplicando un color con notación hexadecimal (ej. <code>#2563eb</code>).</li>
+        <li>En una sección completa usando un contenedor <code>&lt;div style="..."&gt;</code> con un color de fondo
+          mediante <code>rgb(...)</code> numérico.</li>
+        <li>En la cabecera del documento mediante <code>&lt;style type="text/css"&gt;</code> para cambiar la fuente y
+          color del <code>body</code>.</li>
+      </ul>
+
+      <p><strong>Ejercicio 15. Hoja de estilos externa.</strong> Crea un archivo <code>estilos.css</code> y un documento
+        <code>ejercicio_css_2.html</code>.
+        Vincula ambos documentos mediante la etiqueta
+        <code>&lt;link rel="stylesheet" type="text/css" href="estilos.css"&gt;</code> colocada dentro del
+        <code>&lt;head&gt;</code>.
+        En la hoja de estilos externa define:
+      </p>
+      <ul>
+        <li>Un color de fondo general para el <code>body</code>.</li>
+        <li>Un estilo para todos los encabezados <code>h1</code> con texto centrado (<code>text-align: center</code>) y
+          color propio.</li>
+        <li>Comprueba en el navegador qué estilo prevalece si añades a uno de los párrafos un estilo en línea que entre
+          en conflicto con la hoja externa.</li>
+      </ul>
+
+      <p><strong>Ejercicio 16. Fuentes (font).</strong> Crea un archivo llamado <code>ejercicio_css_3.html</code> con
+        tres párrafos.
+        Aplica a cada uno de ellos al menos tres propiedades diferentes de tipografía combinando distintos valores:
+      </p>
+      <ul>
+        <li><code>font-family</code>: prueba familias genéricas distintas (<code>serif</code>, <code>sans-serif</code>,
+          <code>monospace</code>).</li>
+        <li><code>font-size</code>: utiliza distintas unidades (<code>14px</code>, <code>1.2em</code>,
+          <code>12pt</code>).</li>
+        <li><code>font-style</code>: compara <code>normal</code> e <code>italic</code>.</li>
+        <li><code>font-weight</code>: compara <code>normal</code>, <code>bold</code> o valores numéricos como
+          <code>700</code>.</li>
+      </ul>
+
+      <p><strong>Ejercicio 17. Formato de texto (text) y líneas.</strong> En el archivo
+        <code>ejercicio_css_3.html</code>, añade reglas de estilo que afecten a la disposición del texto:</p>
+      <ul>
+        <li>Alineaciones diferentes para cada párrafo: <code>left</code>, <code>center</code> y
+          <code>justify</code>.</li>
+        <li>Decoraciones de texto distintas: <code>underline</code>, <code>line-through</code> y <code>none</code>.</li>
+        <li>Añade una sangría a la primera línea con <code>text-indent: 30px</code> y modifica el interlineado con
+          <code>line-height: 1.8</code>.</li>
+        <li>Inserta una etiqueta <code>&lt;hr&gt;</code> entre los párrafos y dale estilo mediante CSS definiendo una
+          anchura del 60%, un grosor de 3px y un color de fondo personalizado.</li>
+      </ul>
+
+      <p><strong>Ejercicio 18. Clases e Identificadores.</strong> Crea una página llamada
+        <code>ejercicio_css_4.html</code>.
+        En su bloque de estilos (o en un archivo externo vinculado):
+      </p>
+      <ul>
+        <li>Crea una clase genérica llamada <code>.destacado</code> con fondo amarillo suave y borde punteado
+          (<code>dotted</code>). Aplica esta clase tanto a un párrafo como a un elemento de una lista.
+        </li>
+        <li>Crea una clase asociada a etiqueta llamada <code>p.aviso</code> con texto en negrita y color rojo.
+          Comprueba que no surte efecto si se aplica a otra etiqueta que no sea <code>&lt;p&gt;</code>.</li>
+        <li>Crea un identificador único <code>#pie-pagina</code> con un color de fondo oscuro y texto claro.
+          Aplícalo a un único elemento mediante <code>id="pie-pagina"</code>.</li>
+      </ul>
+
+      <p><strong>Ejercicio 19. Modelo de caja (Box Model).</strong> Crea una página llamada
+        <code>ejercicio_css_5.html</code> con tres cajas <code>&lt;div&gt;</code> que contengan un título y un texto
+        breve:</p>
+      <ul>
+        <li>A la primera caja aplícale un <code>margin</code> de 20px, un <code>padding</code> de 15px y un
+          <code>border: 2px solid #2563eb</code>.</li>
+        <li>A la segunda caja asígnale bordes con diferentes estilos y grosores: superior sólido (<code>solid</code>),
+          lateral derecho punteado (<code>dotted</code>) e inferior discontinuo (<code>dashed</code>).</li>
+        <li>A la tercera caja añádele la propiedad <code>box-sizing: border-box</code>. Compara en el inspector
+          de elementos (F12) cómo afecta al cálculo de la anchura total respecto a las cajas anteriores.
+        </li>
+      </ul>
+
+      <p><strong>Ejercicio 20. Propiedades abreviadas (shorthand).</strong> En una nueva página
+        <code>ejercicio_css_6.html</code>, simplifica declaraciones extensas utilizando sintaxis shorthand:</p>
+      <ul>
+        <li>Aplica a un encabezado <code>h2</code> la propiedad abreviada <code>font</code> (estilo, variante, grosor,
+          tamaño/interlineado y familia en una sola línea).</li>
+        <li>Aplica a un contenedor <code>margin</code> y <code>padding</code> indicando cuatro valores (sentido horario:
+          arriba, derecha, abajo, izquierda) y a otro indicando solo dos valores (vertical y horizontal).</li>
+        <li>Define el borde completo de una tarjeta en una sola declaración con
+          <code>border: 3px double #16a34a</code>.</li>
+      </ul>
+
+      <p><strong>Ejercicio 21. Posicionamiento de capas.</strong> Crea una página llamada
+        <code>ejercicio_css_7.html</code> para probar esquemas de posicionamiento:</p>
+      <ul>
+        <li>Crea una caja con <code>position: relative</code> y desplázala 20px hacia abajo (<code>top: 20px</code>) y
+          30px a la derecha (<code>left: 30px</code>) respecto a su posición natural.</li>
+        <li>Crea un contenedor principal con <code>position: relative</code> y coloca dentro de él una pequeña caja con
+          <code>position: absolute</code> fijada en la esquina superior derecha (<code>top: 0; right: 0;</code>).</li>
+        <li>Superpón dos cajas y utiliza la propiedad <code>z-index</code> para cambiar cuál de ellas queda visible por
+          encima.</li>
+      </ul>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th><strong>Nota:</strong> Guarda cada ejercicio con su nombre correspondiente. Recuerda verificar que no existan errores en la sintaxis.</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+
     </main>
   </div>
 </body>
