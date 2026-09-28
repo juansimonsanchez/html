@@ -68,7 +68,7 @@
         </ul>
       </li>
       <li><strong>Selección del gestor:</strong> Justifica por qué para una plataforma web corporativa con alta concurrencia transaccional se elige un motor cliente-servidor relacional como <strong>MySQL/MariaDB</strong> frente a un gestor monolítico embebido como SQLite.</li>
-      <li><strong>Software base y dependencias:</strong> Enumera 3 librerías o utilidades base del sistema operativo necesarias para instalar y compilar/desplegar el servicio de base de datos (ej. <code>libaio1</code>, paquetes de certificados CA o utilidades de resolución de red).</li>
+      <li><strong>Software base y dependencias:</strong> Investiga y enumera 3 librerías o utilidades base del sistema operativo necesarias para instalar y compilar/desplegar el servicio de base de datos (ej. <code>libaio1</code>, paquetes de certificados CA o utilidades de resolución de red).</li>
       <li><strong>Comparativa de motores de almacenamiento:</strong> Completa la siguiente tabla en tu informe:</li>
     </ol>
     <table>
@@ -119,22 +119,20 @@ sudo systemctl status mysql --no-pager</code></pre>
     <h3>Actividad 4: Análisis de Ficheros de Registro y Diagnóstico <span class="tag">CE 1.h</span></h3>
     <p>Examina los mensajes generados durante el arranque inicial del servidor inspeccionando el fichero de error:</p>
     <pre><code>sudo tail -n 25 /var/log/mysql/error.log</code></pre>
-    <ol>
-      <li>Indica qué línea del registro certifica la versión exacta con la que ha levantado el motor.</li>
-      <li>Localiza el mensaje que confirma que el socket UNIX está listo para recibir conexiones.</li>
-      <li>Identifica si aparece algún aviso de severidad <code>[Warning]</code> y explica su significado técnico.</li>
-    </ol>
-
+    <p>Si no te ha devuelto nada, verifica si existe. ¿Qué puede estar pasando? En caso contrario prueba:</p>
+     <pre><code>sudo journalctl -u mysql.service -n 50 --no-pager</code></pre>
+     <p>Incluye una captura del resultado obtenido. Localiza el mensaje que confirma que el servicio está listo para recibir conexiones.</p>
+    
     <h3>Actividad 5: Resolución de Incidencias en la Instalación <span class="tag">CE 1.i</span></h3>
     <p>Simula y corrige un fallo típico de bloqueo de puerto de escucha:</p>
     <ol>
-      <li>Detén el servicio (<code>sudo systemctl stop mysql</code>) y ocupa el puerto estándar:
+      <li><p></p>Detén el servicio (<code>sudo systemctl stop mysql</code>) y ejecuta el siguiente comando:</p>
         <pre><code>sudo nc -l -p 3306 &</code></pre>
       </li>
-      <li>Intenta arrancar MySQL (<code>sudo systemctl start mysql</code>), constata que entra en estado fallido e inspecciona el motivo con:
-        <pre><code>journalctl -xeu mysql.service --no-pager -n 20</code></pre>
+      <li><p>Intenta arrancar MySQL (<code>sudo systemctl start mysql</code>), constata que entra en estado fallido e inspecciona el motivo con:</p>
+        <pre><code>journalctl -xeu mysql.service --no-pager -n 20</code></pre><p>Realiza una captura de la salida y localiza el mensaje de error que indica cual es el motivo.</p>
       </li>
-      <li>Finaliza el proceso en conflicto (<code>sudo killall nc</code>), levanta el servicio y redacta en la memoria la explicación técnica de la causa y la corrección.</li>
+      <li><p>Finaliza el proceso en conflicto (<code>sudo killall nc</code>), levanta el servicio y redacta en la memoria la explicación técnica de la causa y la corrección.</p></li>
     </ol>
 
     <h3>Actividad 6: Verificación Funcional del SGBD <span class="tag">CE 1.j</span></h3>
@@ -203,7 +201,7 @@ long_query_time           = 2.000000</code></pre>
 );</code></pre>
       </li>
     </ol>
-    <p><em>Aporta captura del fichero editado y de la comprobación SQL.</em></p>
+    <p><em>Aporta captura del fichero editado y de la comprobación SQL.</em>. Has notado algo raro? Ejecuta <code>grep -rn "bind-address" /etc/mysql/</code>.</p>
 
     <h3>Actividad 10: Aseguramiento de Cuentas de Administración <span class="tag">CE 2.c</span></h3>
     <ol>
@@ -214,7 +212,7 @@ long_query_time           = 2.000000</code></pre>
         <pre><code>ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'AdminSecure_2026!';
 FLUSH PRIVILEGES;</code></pre>
       </li>
-      <li>Sal de la consola y demuestra mediante captura que intentar acceder sin clave (<code>mysql -u root</code>) devuelve el error <code>Error 1045 (28000): Access denied</code>.</li>
+      <li>Sal de la consola y demuestra mediante captura que intentar acceder sin clave (<code>mysql -u root</code>) devuelve el error <code>Error 1045 (28000): Access denied</code>. Esto ya lo hicimos el primer día, solo verificarlo con una captura</li>
     </ol>
 
     <h3>Actividad 11: Configuración de Herramientas Cliente en <code>conf.d/</code> <span class="tag">CE 2.d</span></h3>
