@@ -32,15 +32,14 @@
                 </h1>
             </header>
             <p>Ejecutar</p>
+
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                    <pre><code>sudo apt update</code></pre>
-                </div>
+                <pre><code>sudo apt update</code></pre>
             </div>
+
             <p>y después ejecutar lo siguiente</p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                    <pre><code>sudo apt install apache2 \
+                <pre><code>sudo apt install apache2 \
             ghostscript \
             libapache2-mod-php \
             mysql-server \
@@ -54,7 +53,7 @@
             php-mysql \  
             php-xml \
             php-zip</code></pre>
-                </div>
+
             </div>
             <p>Cuidado al copiar y pegar, se tiene que ejecutar todo el proceso de
                 instalación sin ningún error.</p>
@@ -65,40 +64,32 @@
                 ubuntu@ip_flotante:/ruta</p>
             <p>Previamente tendremos que asegurándonos de que <em>/var/www/html</em>
                 pertenezca al grupo www-data en nuestra instancia:</p>
+
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                        <pre><code>sudo chgrp www-data /var/www/html</code></pre>
-                    </div>
-                </div>
+                <pre><code>sudo chgrp www-data /var/www/html</code></pre>
             </div>
+
             <p>Nos aseguramos también que nuestro usuario pertenezca al mismo
                 grupo:</p>
+
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                        <pre><code>sudo usermod -a -G www-data ubuntu</code></pre>
-                    </div>
-                </div>
+                <pre><code>sudo usermod -a -G www-data ubuntu</code></pre>
             </div>
+
             <p>Asignamos los permisos adecuados:</p>
+
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                        <pre><code>sudo chmod -R 775 /var/www/html
+                <pre><code>sudo chmod -R 775 /var/www/html
 sudo chmod -R g+s /var/www/html</code></pre>
-                    </div>
-                </div>
             </div>
+
             <p>Y por último nos aseguramos de ser los propietarios del
                 directorio:</p>
+
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                        <pre><code>sudo chown -R ubuntu /var/www/html</code></pre>
-                    </div>
-                </div>
+                <pre><code>sudo chown -R ubuntu /var/www/html</code></pre>
             </div>
+
             <p>En este punto ya tenemos los permisos de usuario correctamente
                 configurados</p>
             <p>Ejemplos para copiar archivos/carpetas desde nuestro ordenador:</p>
@@ -106,31 +97,29 @@ sudo chmod -R g+s /var/www/html</code></pre>
                 <li>
                     <blockquote>
                         <p>Para copiar un archivo de la carpeta actual a la carpeta en nuestra
-                            instancia:</p>
+                            instancia: <code>scp ejercicio1.html ubuntu@172.16.11.152:/var/www/html</code></p>
                     </blockquote>
                 </li>
             </ul>
-            <p>scp ejercicio1.html ubuntu@172.16.11.152:/var/www/html</p>
+
             <ul>
                 <li>
                     <blockquote>
                         <p>Para copiar un conjunto de archivos de la carpeta actual a una
-                            carpeta en nuestra instancia:</p>
+                            carpeta en nuestra instancia:<code>scp *.* ubuntu@172.16.11.152:/var/www/html</code></p>
                     </blockquote>
                 </li>
             </ul>
-            <p>scp *.* ubuntu@172.16.11.152:/var/www/html</p>
             <ul>
                 <li>
                     <blockquote>
                         <p>Para copiar una carpeta con todas los archivos y subcarpetas a una
-                            carpeta determinada en nuestra instancia</p>
+                            carpeta determinada en nuestra instancia:
+                            <code>scp -r Carpeta ubuntu@172.16.11.152:/var/www/html</code></p>
                     </blockquote>
                 </li>
             </ul>
-            <p>scp -r Carpeta ubuntu@172.16.11.152:/var/www/html</p>
 
-        </main>
     </div>
 
     </main>
