@@ -845,17 +845,17 @@ SET ROLE NONE; -- Desactiva todos los roles, devolviendo la sesión a mínimos p
 
             <h2 id="concepto-y-ventajas-de-las-vistas">5.1. ¿Qué es una Vista y Ventajas Principales? <a class="headerlink"
                     href="#concepto-y-ventajas-de-las-vistas" title="Enlace permanente">¶</a></h2>
-            <p>Una vista es una tabla virtual creada a partir del resultado de una consulta SQL que se almacena en el diccionario de datos del gestor[cite: 2]. A diferencia de una tabla física, la vista no duplica los datos en disco, sino que los obtiene dinámicamente de las tablas subyacentes en el momento en que es consultada[cite: 2].</p>
+            <p>Una vista es una tabla virtual creada a partir del resultado de una consulta SQL que se almacena en el diccionario de datos del gestor. A diferencia de una tabla física, la vista no duplica los datos en disco, sino que los obtiene dinámicamente de las tablas subyacentes en el momento en que es consultada.</p>
             <p>Desde la perspectiva de la administración de sistemas y seguridad (CE3.a), las principales ventajas que aporta su utilización son:</p>
             <ul>
                 <li>
                     <blockquote>
-                        <p><strong>Seguridad y control de acceso (Confidencialidad):</strong> Permiten ocultar columnas sensibles (por ejemplo, salarios, contraseñas, datos personales) o filtrar filas específicas para usuarios o aplicaciones que no deban acceder a la tabla base completa[cite: 2].</p>
+                        <p><strong>Seguridad y control de acceso (Confidencialidad):</strong> Permiten ocultar columnas sensibles (por ejemplo, salarios, contraseñas, datos personales) o filtrar filas específicas para usuarios o aplicaciones que no deban acceder a la tabla base completa.</p>
                     </blockquote>
                 </li>
                 <li>
                     <blockquote>
-                        <p><strong>Simplificación operativa:</strong> Encapsulan consultas complejas que involucran múltiples combinaciones (JOINs), funciones de agregación o condiciones elaboradas en un objeto virtual reutilizable y fácil de consultar[cite: 2].</p>
+                        <p><strong>Simplificación operativa:</strong> Encapsulan consultas complejas que involucran múltiples combinaciones (JOINs), funciones de agregación o condiciones elaboradas en un objeto virtual reutilizable y fácil de consultar.</p>
                     </blockquote>
                 </li>
                 <li>
@@ -867,7 +867,7 @@ SET ROLE NONE; -- Desactiva todos los roles, devolviendo la sesión a mínimos p
 
             <h2 id="crear-o-modificar-una-vista">5.2. Crear o Modificar una Vista (CREATE VIEW) <a class="headerlink"
                     href="#crear-o-modificar-una-vista" title="Enlace permanente">¶</a></h2>
-            <p>En MySQL, la instrucción <code>CREATE VIEW</code> permite registrar la especificación de una vista virtual[cite: 2]. Para actualizar una vista preexistente sin necesidad de eliminarla previamente se emplea la cláusula complementaria <code>OR REPLACE</code>[cite: 2].</p>
+            <p>En MySQL, la instrucción <code>CREATE VIEW</code> permite registrar la especificación de una vista virtual. Para actualizar una vista preexistente sin necesidad de eliminarla previamente se emplea la cláusula complementaria <code>OR REPLACE</code>.</p>
 
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                 <pre><code>-- Sintaxis formal general en MySQL
@@ -926,7 +926,7 @@ GROUP BY p.codigo_pedido;</code></pre>
 
             <h2 id="eliminar-una-vista">5.3. Eliminar una Vista (DROP VIEW) <a class="headerlink"
                     href="#eliminar-una-vista" title="Enlace permanente">¶</a></h2>
-            <p>Para suprimir una o varias vistas del catálogo del sistema sin alterar los datos persistidos en las tablas base, se utiliza la sentencia <code>DROP VIEW</code>[cite: 3]. Se recomienda incluir la cláusula preventiva <code>IF EXISTS</code>[cite: 3]:</p>
+            <p>Para suprimir una o varias vistas del catálogo del sistema sin alterar los datos persistidos en las tablas base, se utiliza la sentencia <code>DROP VIEW</code>. Se recomienda incluir la cláusula preventiva <code>IF EXISTS</code>:</p>
 
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                 <pre><code>-- Eliminación segura de una o más vistas
@@ -935,7 +935,7 @@ DROP VIEW IF EXISTS nombre_vista [, otra_vista] [RESTRICT | CASCADE];</code></pr
 
             <h2 id="renombrar-una-vista">5.4. Renombrar una Vista (RENAME TABLE) <a class="headerlink"
                     href="#renombrar-una-vista" title="Enlace permanente">¶</a></h2>
-            <p>Dado que en el diccionario de datos de MySQL las vistas comparten espacio de nombres con las tablas, la modificación de su identificador se realiza mediante el comando <code>RENAME TABLE</code>[cite: 4]:</p>
+            <p>Dado que en el diccionario de datos de MySQL las vistas comparten espacio de nombres con las tablas, la modificación de su identificador se realiza mediante el comando <code>RENAME TABLE</code>:</p>
 
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                 <pre><code>-- Renombrar una vista en el catálogo
@@ -944,7 +944,7 @@ RENAME TABLE nombre_antiguo_vista TO nuevo_nombre_vista;</code></pre>
 
             <h2 id="consultar-vistas-y-su-definición">5.5. Consultar Vistas y su Definición (SHOW) <a class="headerlink"
                     href="#consultar-vistas-y-su-definición" title="Enlace permanente">¶</a></h2>
-            <p>Para auditar qué vistas están desplegadas y examinar la sentencia SQL con la que fueron creadas, MySQL proporciona sentencias de introspección directas[cite: 4]:</p>
+            <p>Para auditar qué vistas están desplegadas y examinar la sentencia SQL con la que fueron creadas, MySQL proporciona sentencias de introspección directas:</p>
 
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                 <pre><code>-- 1. Listar todas las tablas y vistas indicando su tipo (BASE TABLE o VIEW)
@@ -959,8 +959,8 @@ SHOW CREATE VIEW nombre_vista;</code></pre>
 
             <h2 id="vistas-actualizables">5.6. Vistas con Contenido Actualizable (INSERT, UPDATE, DELETE) <a class="headerlink"
                     href="#vistas-actualizables" title="Enlace permanente">¶</a></h2>
-            <p>En determinados casos y bajo condiciones estrictas, el SGBD permite ejecutar sentencias de manipulación de datos (<code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>) a través de una vista para modificar directamente los datos de la tabla base subyacente[cite: 5].</p>
-            <p>Para que una vista sea <strong>actualizable</strong> (<em>updatable view</em>), debe existir una relación uno a uno entre las filas de la vista y las de la tabla original[cite: 5]. La vista <strong>no</strong> puede contener[cite: 5]:</p>
+            <p>En determinados casos y bajo condiciones estrictas, el SGBD permite ejecutar sentencias de manipulación de datos (<code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>) a través de una vista para modificar directamente los datos de la tabla base subyacente.</p>
+            <p>Para que una vista sea <strong>actualizable</strong> (<em>updatable view</em>), debe existir una relación uno a uno entre las filas de la vista y las de la tabla original. La vista <strong>no</strong> puede contener:</p>
             <ul>
                 <li>
                     <blockquote>
@@ -988,7 +988,7 @@ SHOW CREATE VIEW nombre_vista;</code></pre>
                     </blockquote>
                 </li>
             </ul>
-            <p><em>Condición obligatoria para inserciones:</em> Para poder realizar un <code>INSERT</code> a través de una vista, todas las columnas de la tabla base que no admitan nulos y no tengan un valor por defecto (o clave primaria sin auto-incremento) deben formar parte obligatoriamente de la definición de la vista[cite: 5].</p>
+            <p><em>Condición obligatoria para inserciones:</em> Para poder realizar un <code>INSERT</code> a través de una vista, todas las columnas de la tabla base que no admitan nulos y no tengan un valor por defecto (o clave primaria sin auto-incremento) deben formar parte obligatoriamente de la definición de la vista.</p>
 
         </main>
     </div>
