@@ -76,24 +76,21 @@
                         CONTEXTUALIZACIÓN</u></a></p>
             <p><a href="#administración-de-cuentas-de-usuario"><u>2. ADMINISTRACIÓN
                         DE CUENTAS DE USUARIO</u></a></p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                    <pre><code>2.1.
-Sentencia de Creación de Cuentas (CREATE USER)
-2.2.
-Sintaxis y Plugins de Autenticación en MySQL 8.0
-2.3.
-Persistencia en el Diccionario de Datos (mysql.user)
-2.4. Eliminación de
-Cuentas (DROP USER)</code></pre>
-                </div>
-            </div>
+          <blockquote>
+                    <p><a href="#administración-de-cuentas-de-usuario"><u></u>2.1.
+Sentencia de Creación de Cuentas (CREATE USER)</u></a></p>
+ <p><a href="#administración-de-cuentas-de-usuario"><u></u>2.2.
+Sintaxis y Plugins de Autenticación en MySQL 8.0</u></a></p>
+ <p><a href="#administración-de-cuentas-de-usuario"><u></u>2.3.
+Persistencia en el Diccionario de Datos (mysql.user)</u></a></p>
+ <p><a href="#administración-de-cuentas-de-usuario"><u></u>2.4. Eliminación de
+Cuentas (DROP USER)</u></a></p></blockquote>
             <p><a href="#el-sistema-de-privilegios-de-mysql"><u>3. EL SISTEMA DE
                         PRIVILEGIOS DE MYSQL</u></a></p>
             <blockquote>
                 <p><a href="#niveles-de-granularidad-de-permisos"><u>3.1. Niveles de
                             Granularidad de Permisos</u></a></p>
-                <p><a href="#privilegios-a-nivel-de-base-de-datos"><u>3.1.1. Privilegios
+                <blockquote><p><a href="#privilegios-a-nivel-de-base-de-datos"><u>3.1.1. Privilegios
                             a Nivel de Base de Datos</u></a></p>
                 <p><a href="#privilegios-a-nivel-de-tabla-mysql.tables_priv"><u>3.1.2.
                             Privilegios a Nivel de Tabla (mysql.tables_priv)</u></a></p>
@@ -101,7 +98,7 @@ Cuentas (DROP USER)</code></pre>
                             Privilegios a Nivel de Columna (mysql.columns_priv)</u></a></p>
                 <p><a href="#privilegios-sobre-rutinas-y-procedimientos-mysql.procs_priv"><u>3.1.4.
                             Privilegios sobre Rutinas y Procedimientos
-                            (mysql.procs_priv)</u></a></p>
+                            (mysql.procs_priv)</u></a></p></blockquote>
                 <p><a href="#delegación-de-capacidades-with-grant-option"><u>3.2.
                             Delegación de Capacidades (WITH GRANT OPTION)</u></a></p>
                 <p><a href="#revocación-de-permisos-revoke"><u>3.3. Revocación de
@@ -193,13 +190,13 @@ Cuentas (DROP USER)</code></pre>
                 dos partes rompe el esquema de validación de accesos del motor de base
                 de datos.</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+    
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Sintaxis general base para la provisión de cuentas de usuario
 CREATE USER 'nombre_usuario'@'host' IDENTIFIED WITH
 mysql_native_password BY 'contraseña';</code></pre>
                 </div>
-            </div><strong>nombre_usuario:</strong> Identificador alfanumérico que
+            <strong>nombre_usuario:</strong> Identificador alfanumérico que
             representa la cuenta dentro de la instancia.</p>
             </blockquote>
             </li>
@@ -292,19 +289,16 @@ mysql_native_password BY 'contraseña';</code></pre>
                 </div>
             </div>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+           
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                    <pre><code>-- EJEMPLO PRÁCTICO SYSADMIN: Creación de cuentas con diferentes
-directivas de autenticación
--- 1. Cuenta para una aplicación interna que requiere compatibilidad
-con el formato clásico de hashes
+                    <pre><code>-- EJEMPLO PRÁCTICO: Creación de cuentas con diferentes directivas de autenticación
+-- 1. Cuenta para una aplicación interna que requiere compatibilidad con el formato clásico de hashes
 CREATE USER 'app_legacy'@'172.16.11.10'
 IDENTIFIED WITH mysql_native_password BY 'ClaveSegura2026!';
--- 2. Cuenta de administración temporal con contraseña autogenerada
-por el motor
+-- 2. Cuenta de administración temporal con contraseña autogenerada por el motor
 CREATE USER 'admin_temp'@'%'
 IDENTIFIED BY RANDOM PASSWORD;</code></pre>
-                </div>
+            
             </div><em>Nota de administración histórica:</em> En versiones antiguas de
             MySQL se utilizaba la sentencia SET PASSWORD = PASSWORD('new_secret')
             para cambiar claves; sin embargo, en MySQL 8.0 esta sintaxis está
@@ -326,11 +320,11 @@ IDENTIFIED BY RANDOM PASSWORD;</code></pre>
             <p>Para revocar el acceso permanente e de un usuario en el servidor, se
                 debe purgar su registro del diccionario mediante la sentencia:</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Eliminación explícita de una cuenta de usuario
 DROP USER 'nombre_usuario'@'host';</code></pre>
-                </div>
+            
             </div>
             </p>
             <h1 id="el-sistema-de-privilegios-de-mysql">3. EL SISTEMA DE PRIVILEGIOS
@@ -344,9 +338,9 @@ DROP USER 'nombre_usuario'@'host';</code></pre>
                 granularidad bien definidos. A medida que descendemos de nivel, el
                 control se vuelve más específico y restrictivo:</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                    <pre><code>[Nivel Global] --&gt; Afecta a todas las bases de datos (*.*)
+          
+             
+                    <pre>[Nivel Global] --&gt; Afecta a todas las bases de datos (*.*)
 |
 [Nivel de Esquema] --&gt; Afecta a una Base de Datos específica
 (mydb.*)
@@ -354,20 +348,19 @@ DROP USER 'nombre_usuario'@'host';</code></pre>
 [Nivel de Tabla] --&gt; Afecta a una Tabla concreta (mydb.mytbl)
 |
 [Nivel de Columna] --&gt; Restringe la acción a campos específicos
-(col1)</code></pre>
-                </div>
-            </div>3.1.1. Privilegios a
+</pre>
+
+</p>3.1.1. Privilegios a
             Nivel de Base de Datos</h3>
             <p>Estos privilegios impactan sobre la totalidad de los objetos
                 residentes dentro de un esquema (base de datos) determinado utilizando
                 la nomenclatura base_de_datos.*.</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+           
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Estructura base para la concesión a nivel de esquema
-GRANT tipo_de_permiso ON base_de_datos.* TO
-'nombre_usuario'@'host';</code></pre>
-                </div>
+GRANT tipo_de_permiso ON base_de_datos.* TO 'nombre_usuario'@'host';</code></pre>
+            
             </div>Los privilegios que se pueden acotar a nivel de esquema son:</p>
             <ul>
                 <li>
@@ -404,15 +397,13 @@ GRANT tipo_de_permiso ON base_de_datos.* TO
                     </blockquote>
                 </li>
                 <li>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                            <pre><code>LOCK TABLES: Permite congelar o bloquear
+                    <blockquote>
+                        <p><strong>LOCK TABLES: </strong> Permite congelar o bloquear
 explícitamente el acceso concurrente a una tabla para realizar lecturas
 o volcados consistentes. Requisito: La cuenta requiere poseer
 explícitamente el permiso SELECT sobre dicha tabla para poder
-bloquearla.</code></pre>
-                        </div>
-                    </div>
+bloquearla.</p>
+                    </blockquote>
                 </li>
                 <li>
                     <blockquote>
@@ -432,33 +423,25 @@ bloquearla.</code></pre>
                 de forma directa sobre esa entidad.
             </p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Concesión de control absoluto sobre una tabla concreta
 GRANT ALL ON mydb.mytbl TO 'someuser'@'somehost';
 -- Concesión de accesos de manipulación acotados
 GRANT SELECT, INSERT ON mydb.mytbl TO 'someuser'@'somehost';</code></pre>
-                </div>
+             
             </div>Los privilegios aplicables a este nivel funcional se desglosan
             en:</p>
             <ul>
-                <li>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                            <pre><code>Gestión Estructural: CREATE (crear una tabla
+                <li><blockquote>
+                    Gestión Estructural: CREATE (crear una tabla
 específica, permitiendo incluso conceder el permiso antes de que la
-tabla exista en disco), ALTER (modificarla) y DROP (eliminarla).</code></pre>
-                        </div>
-                    </div>
+tabla exista en disco), ALTER (modificarla) y DROP (eliminarla).</blockquote>
                 </li>
-                <li>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                            <pre><code>Manipulación de Datos DML: SELECT, INSERT, UPDATE y
+                <li><blockquote>
+                    Manipulación de Datos DML: SELECT, INSERT, UPDATE y
 DELETE. Al declararse a nivel de tabla, estas directivas afectan de
-forma automática a la totalidad de las columnas de dicha entidad.</code></pre>
-                        </div>
-                    </div>
+forma automática a la totalidad de las columnas de dicha entidad.</blockquote>
                 </li>
                 <li>
                     <blockquote>
@@ -486,12 +469,12 @@ forma automática a la totalidad de las columnas de dicha entidad.</code></pre>
                 sistema <strong>mysql.columns_priv</strong> y, de forma concurrente,
                 actualizan los descriptores en mysql.tables_priv.</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Concesión DML restringida por columnas específicas de datos
 GRANT SELECT (col1), INSERT (col1, col2) ON mydb.mytbl TO
 'someuser'@'somehost';</code></pre>
-                </div>
+             
             </div>Los únicos cuatro privilegios aceptados por la sintaxis a este nivel
             atómico son de forma estricta: SELECT, INSERT, UPDATE y REFERENCES.</p>
             <h3 id="privilegios-sobre-rutinas-y-procedimientos-mysql.procs_priv">3.1.4.
@@ -504,15 +487,13 @@ GRANT SELECT (col1), INSERT (col1, col2) ON mydb.mytbl TO
                 elemento determinado), mysql.db (esquema completo) o mysql.user
                 (global).</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                    <pre><code>-- Otorgar derechos globales de creación sobre el esquema de
-datos
+                    <pre><code>-- Otorgar derechos globales de creación sobre el esquema de datos
 GRANT CREATE ROUTINE ON mydb.* TO 'someuser'@'somehost';
--- Otorgar derechos de ejecución individuales para una rutina
-crítica
+-- Otorgar derechos de ejecución individuales para una rutina crítica
 GRANT EXECUTE ON PROCEDURE mydb.myproc TO 'someuser'@'somehost';</code></pre>
-                </div>
+                
             </div>Clasificación de privilegios de rutinas:</p>
             <ul>
                 <li>
@@ -539,28 +520,27 @@ GRANT EXECUTE ON PROCEDURE mydb.myproc TO 'someuser'@'somehost';</code></pre>
                 terceros los mismos permisos exactos que él ha recibido, delegando de
                 esta manera la cadena de control.</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+          
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                    <pre><code>-- Concesión de privilegios administrativos de rutinas con capacidad
-de delegación
+                    <pre><code>-- Concesión de privilegios administrativos de rutinas con capacidad de delegación
 GRANT CREATE ROUTINE, ALTER ROUTINE ON mydb.* TO
 'someuser'@'somehost' WITH GRANT OPTION;</code></pre>
-                </div>
-            </div>3.3. Revocación de Permisos
+               
+            </div><h2>3.3. Revocación de Permisos
             (REVOKE)</h2>
             <p>Para retirar accesos operativos de forma parcial o total a una cuenta
                 sin necesidad de destruir su identidad en el servidor, se utiliza el
                 comando REVOKE. La declaración del espacio de nombres y los objetos debe
                 guardar una correspondencia exacta con el GRANT inicial:</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+          
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Sintaxis general base para revocar accesos
 REVOKE tipo_de_permiso ON base_de_datos.tabla FROM
 'nombre_usuario'@'host';
 -- EJEMPLO PRÁCTICO SYSADMIN: Revocar privilegios DML globales
 REVOKE INSERT ON *.* FROM 'usuario'@'localhost';</code></pre>
-                </div>
+            
             </div><strong>Reglas de Control para la Revocación:</strong></p>
             <ol type="1">
                 <li>
@@ -579,24 +559,22 @@ REVOKE INSERT ON *.* FROM 'usuario'@'localhost';</code></pre>
                 </li>
             </ol>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                    <pre><code>-- Purga absoluta de privilegios y facultades de delegación de una
-cuenta
+                    <pre><code>-- Purga absoluta de privilegios y facultades de delegación de una cuenta
 REVOKE ALL PRIVILEGES, GRANT OPTION FROM 'user'@'localhost';</code></pre>
-                </div>
-            </div>3.4. Auditoría de
+
+            </div></p><h2>3.4. Auditoría de
             Concesiones (SHOW GRANTS)</h2>
             <p>Todo SysAdmin debe auditar con regularidad el estado consolidado de
                 los accesos del servidor. Para inspeccionar los permisos efectivos de
                 una cuenta o de un rol determinado se ejecuta:</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Inspección de permisos de una cuenta de usuario
-SHOW GRANTS FOR 'nombre_usuario'@'host';</code></pre>
-                </div>
-            </div>3.5.
+SHOW GRANTS FOR 'nombre_usuario'@'host';</code></pre></div></p>
+              
+            </div><h2>3.5.
             Sincronización de Tablas de Concesión (FLUSH PRIVILEGES)</h2>
             <p>Cuando los privilegios se asignan mediante los comandos estándar de
                 control (GRANT, REVOKE, CREATE USER), el motor de MySQL actualiza el
@@ -607,11 +585,11 @@ SHOW GRANTS FOR 'nombre_usuario'@'host';</code></pre>
                 inmediato. En tales escenarios, es de obligado cumplimiento
                 ejecutar:</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+           
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Forzar la recarga en memoria de las tablas de privilegios
 FLUSH PRIVILEGES;</code></pre>
-                </div>
+          
             </div>Este comando sincroniza la memoria interna del servidor con los
             registros físicos del diccionario de datos de forma instantánea,
             aplicando los nuevos controles de seguridad sin interrumpir las
@@ -714,21 +692,15 @@ FLUSH PRIVILEGES;</code></pre>
                 completar de manera ordenada un flujo operativo de cuatro fases
                 secuenciales:</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                    <pre><code>[1. CREATE ROLE] ---&gt; [2. GRANT TO ROLE] ---&gt; [3. GRANT ROLE
-TO USER] ---&gt; [4. ACTIVATE ROLE]</code></pre>
-                </div>
-            </div><strong>Paso 1: Creación del Rol en el Servidor</strong></p>
+                    <pre><code>[1. CREATE ROLE]        ---&gt; [2. GRANT TO ROLE] ---&gt; 
+[3. GRANT ROLE TO USER] ---&gt; [4. ACTIVATE ROLE]</code></pre>
+            <strong>Paso 1: Creación del Rol en el Servidor</strong></p>
             <p>Se utiliza el comando CREATE ROLE, pudiendo opcionalmente verificar
                 su existencia previa.</p>
-            <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Provisión de nuevos contenedores de privilegios (Roles)
 CREATE ROLE IF NOT EXISTS mantenimiento_basico, mantenimiento_total,
 consulta_basica;</code></pre>
-                </div>
             </div><em>Regla de nomenclatura y comportamiento interno:</em> Es posible
             definir un rol siguiendo el patrón 'nombre_rol'@'host'. Sin embargo, a
             diferencia de las cuentas de usuario, el uso del carácter % se
@@ -743,39 +715,34 @@ consulta_basica;</code></pre>
                 anulando cualquier posibilidad de inicio de sesión directo con la
                 identidad de dicho rol.</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+           
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Creación de un rol con host de conexión de red explícito
 CREATE ROLE IF NOT EXISTS 'rol_dev'@'%';</code></pre>
-                </div>
+          
             </div><strong>Paso 2: Dotación de Privilegios al Rol</strong></p>
             <p>Se asocian los permisos necesarios al rol utilizando la sintaxis
                 estándar de GRANT, pero situando el rol como el elemento destino del
                 comando.</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Ejemplos de asignación a diferentes niveles de granularidad
-GRANT EXECUTE ON *.* TO mantenimiento_total; -- Ámbito Global de
-Sistema
-GRANT SELECT ON employees.* TO mantenimiento_basico; -- Ámbito de
-Base de Datos
-GRANT SELECT ON employees.departments TO consulta_basica; -- Ámbito
-de Tabla</code></pre>
-                </div>
+GRANT EXECUTE ON *.* TO mantenimiento_total; -- Ámbito Global de Sistema
+GRANT SELECT ON employees.* TO mantenimiento_basico; -- Ámbito de Base de Datos
+GRANT SELECT ON employees.departments TO consulta_basica; -- Ámbito de Tabla</code></pre>
+    
             </div><strong>Paso 3: Vinculación del Rol a las Cuentas de
                 Usuario</strong></p>
             <p>Una vez configurado el rol con sus respectivos permisos, se procede a
                 conceder dicho rol a los técnicos u operarios de datos que lo
                 requieran.</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                    <pre><code>-- Vincular los roles a cuentas de usuario preexistentes en el
-sistema
+                    <pre><code>-- Vincular los roles a cuentas de usuario preexistentes en el sistema
 GRANT mantenimiento_basico, consulta_basica TO 'user1'@'%';
 GRANT mantenimiento_total TO 'user2'@'%';</code></pre>
-                </div>
             </div><em>Concepto Avanzado (Mandatory Roles):</em> El administrador del
             sistema puede definir directivas de roles obligatorios
             (mandatory_roles), forzando al motor a asignar de forma automática
@@ -787,11 +754,11 @@ GRANT mantenimiento_total TO 'user2'@'%';</code></pre>
                 inmediatamente al abrir una conexión. Si el usuario inicia sesión y
                 ejecuta la función de diagnóstico de contexto:</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+    
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Comprobación de roles activos en el hilo de conexión actual
 SELECT CURRENT_ROLE();</code></pre>
-                </div>
+
             </div>
             </p>
             <p>El motor del sistema devolverá inicialmente el valor NONE. Por lo
@@ -813,13 +780,10 @@ SELECT CURRENT_ROLE();</code></pre>
                 sistema que posea el privilegio CREATE USER (o derechos de modificación
                 directa sobre la tabla del sistema mysql.default_roles):</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                    <pre><code>-- 1. Forzar la activación automática de TODOS los roles asignados
-al iniciar sesión
+                    <pre><code>-- 1. Forzar la activación automática de TODOS los roles asignados al iniciar sesión
 SET DEFAULT ROLE ALL TO 'user1'@'%', 'user2'@'%';
--- 2. Configurar la activación automática por defecto de un único rol
-determinado
+-- 2. Configurar la activación automática por defecto de un único rol determinado
 SET DEFAULT ROLE mantenimiento_total TO 'user2'@'%';</code></pre>
                 </div>
             </div><strong>B. Estrategia de Activación Manual (Por Sesión en Tiempo de
@@ -831,16 +795,12 @@ SET DEFAULT ROLE mantenimiento_total TO 'user2'@'%';</code></pre>
                 tiempo de ejecución, el propio usuario conectado utiliza la instrucción
                 SET ROLE:</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+           
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                    <pre><code>-- Cambiar el contexto de la sesión actual de forma manual
-(Ejecutado por el usuario)
-SET ROLE 'mantenimiento_total'; -- Activa el rol indicado y suspende
-el resto
-SET ROLE ALL; -- Activa de forma simultánea todos los roles
-asignados
-SET ROLE NONE; -- Desactiva todos los roles, devolviendo la sesión a
-mínimos privilegios</code></pre>
+                    <pre><code>-- Cambiar el contexto de la sesión actual de forma manual (Ejecutado por el usuario)
+SET ROLE 'mantenimiento_total'; -- Activa el rol indicado y suspende el resto
+SET ROLE ALL; -- Activa de forma simultánea todos los roles asignados
+SET ROLE NONE; -- Desactiva todos los roles, devolviendo la sesión a mínimos privilegios</code></pre>
                 </div>
             </div>Existen variantes avanzadas aplicables a entornos complejos que
             permiten activar de forma masiva todos los perfiles de la cuenta a
