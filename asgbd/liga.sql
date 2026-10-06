@@ -70,7 +70,7 @@ CREATE TABLE `partidos` (
   KEY `idx_partidos_local` (`elocal`),
   KEY `idx_partidos_visitante` (`evisitante`),
   KEY `idx_partidos_arbitro` (`id_arbitro`),
-  CONSTRAINT `chk_equipos_distintos` CHECK (`elocal` <> `evisitante`),
+
   CONSTRAINT `fk_partidos_local` FOREIGN KEY (`elocal`) 
     REFERENCES `equipos` (`id_equipo`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `fk_partidos_visitante` FOREIGN KEY (`evisitante`) 
@@ -135,6 +135,7 @@ INSERT INTO `arbitros` (`id_arbitro`, `nombre`) VALUES
 -- Nota: id_capitan se inserta directamente respetando que el capitán
 -- exista o sea el propio jugador (como en el caso de Navarro, Reyes, etc.)
 -- -----------------------------------------------------
+SET FOREIGN_KEY_CHECKS = 0;
 INSERT INTO `jugadores` (`id_jugador`, `nombre`, `apellido`, `puesto`, `id_capitan`, `fecha_alta`, `salario`, `id_equipo`, `altura`) VALUES
 -- Plantilla original depurada
 (1, 'Juan Carlos', 'Navarro', 'Escolta', 1, '2010-01-10', 130000, 1, 1.96),
@@ -170,6 +171,7 @@ INSERT INTO `jugadores` (`id_jugador`, `nombre`, `apellido`, `puesto`, `id_capit
 (30, 'Sam', 'Van Rossom', 'Base', 13, '2010-07-05', 61000, 6, 1.88),
 (31, 'Chad', 'Toppert', 'Alero', 13, '2010-08-22', 48000, 6, 2.01),
 (32, 'Robert', 'Archibald', 'Pívot', 13, '2011-07-09', 59000, 6, 2.12);
+SET FOREIGN_KEY_CHECKS = 1;
 
 -- -----------------------------------------------------
 -- DML: Partidos
