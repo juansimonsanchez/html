@@ -1417,6 +1417,34 @@ alt="Enlace a Amazon"&gt; &lt;/a&gt;</code></pre>
     &lt;option value="linux" selected&gt;GNU/Linux Debian&lt;/option&gt;
 &lt;/select&gt;</code></pre>
             </div>
+            <p><strong>Ejemplos de casilla de verificación y botón de radio:</strong></p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <pre><code>&lt;!-- Casillas de verificación: se pueden marcar varias opciones --&gt;
+&lt;label&gt;
+    &lt;input type="checkbox" name="aficiones" value="deporte"&gt; Me gusta el deporte
+&lt;/label&gt;&lt;br&gt;
+&lt;label&gt;
+    &lt;input type="checkbox" name="aficiones" value="musica"&gt; Me gusta la música
+&lt;/label&gt;&lt;br&gt;
+&lt;label&gt;
+    &lt;input type="checkbox" name="aficiones" value="lectura"&gt; Me gusta leer
+&lt;/label&gt;
+
+&lt;!-- Botones de radio: solo puede marcarse una opción del mismo grupo --&gt;
+&lt;fieldset&gt;
+    &lt;legend&gt;¿Qué sistema operativo utilizas?&lt;/legend&gt;
+    &lt;label&gt;
+        &lt;input type="radio" name="so" value="windows"&gt; Windows
+    &lt;/label&gt;&lt;br&gt;
+    &lt;label&gt;
+        &lt;input type="radio" name="so" value="linux"&gt; Linux
+    &lt;/label&gt;&lt;br&gt;
+    &lt;label&gt;
+        &lt;input type="radio" name="so" value="macos"&gt; macOS
+    &lt;/label&gt;
+&lt;/fieldset&gt;</code></pre>
+            </div>
+            <p>En resumen, la <strong>casilla de verificación</strong> permite elegir varias opciones a la vez, mientras que el <strong>botón radio</strong> solo permite seleccionar una opción dentro del mismo grupo, porque comparten el mismo atributo <strong>name</strong>.</p>
 
             <h3 id="comentarios-dentro-de-código">6.9. Comentarios dentro de Código <a class="headerlink"
                     href="#comentarios-dentro-de-código" title="Enlace permanente">¶</a></h3>

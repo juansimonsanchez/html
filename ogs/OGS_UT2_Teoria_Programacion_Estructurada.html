@@ -90,6 +90,7 @@
         <p><a href="#la-regla-sintáctica-de-la-indentación"><u>5.1. La Regla Sintáctica de la Indentación</u></a></p>
         <p><a href="#alternativa-condicional-if---elif---else"><u>5.2. Alternativa Condicional (if - elif - else)</u></a></p>
         <p><a href="#bucle-iterativo-condicional-while-y-controladores-break"><u>5.3. Bucle Iterativo Condicional (while) y Controladores (break)</u></a></p>
+        <p><a href="#bucle-iterativo-para-y-controladores-break-continue"><u>5.4. Bucle Iterativo (for) y Controladores (break/continue)</u></a></p>
       </blockquote>
       <p><a href="#funciones-recursividad"><u>6. FUNCIONES. RECURSIVIDAD</u></a></p>
       <blockquote>
@@ -526,6 +527,46 @@ while True:
         break
 print("Bienvenido!!!")
 print("Programa terminado")</code></pre>
+      </div>
+
+      <h2 id="bucle-iterativo-para-y-controladores-break-continue">5.4. Bucle Iterativo (for) y Controladores (break/continue) <a class="headerlink" href="#bucle-iterativo-para-y-controladores-break-continue" title="Enlace permanente">¶</a></h2>
+      <p>El bucle <code>for</code> se emplea cuando sabemos de antemano cuántas veces queremos repetir una acción o cuando queremos recorrer elementos de una secuencia, como una cadena, una lista o un rango numérico.</p>
+      <ul>
+        <li><p><strong>Instrucción break:</strong> Interrumpe la ejecución del bucle y sale inmediatamente del bloque repetitivo.</p></li>
+        <li><p><strong>Instrucción continue:</strong> Aborta la iteración actual y pasa directamente a la siguiente.</p></li>
+      </ul>
+
+      <p><strong>A) Ejemplo Básico:</strong></p>
+      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+        <pre><code># Un bucle que recorre los valores del 1 al 5
+for contador in range(1, 6):
+    print(contador)</code></pre>
+      </div>
+
+      <p><strong>B) Ejemplo Práctico (Perfil ASIR):</strong></p>
+      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+        <pre><code># Script: auditoria_servicios.py
+# Propósito: Revisar el estado de varios servicios de red y marcar los problemas
+servicios = ["ssh", "apache2", "mysql", "docker"]
+for servicio in servicios:
+    print("Comprobando servicio:", servicio)
+    if servicio == "mysql":
+        print("Advertencia: el servicio mysql requiere revisión manual.")
+        continue
+    print("Estado OK: servicio disponible.")</code></pre>
+      </div>
+
+      <p>La función <code>range()</code> es la forma más habitual de generar secuencias numéricas para un bucle <code>for</code>. Por ejemplo, <code>range(1, 6)</code> genera los valores 1, 2, 3, 4 y 5. Esto resulta especialmente útil para recorrer listas, ejecutar acciones repetidas un número concreto de veces o automatizar tareas de monitorización en sistemas.</p>
+
+      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+        <pre><code># Ejemplo de recorrido con números y pausa de control
+for numero in range(1, 11):
+    if numero % 2 == 0:
+        continue
+    print("Número impar detectado:", numero)
+    if numero == 7:
+        print("Se ha alcanzado el límite de revisión.")
+        break</code></pre>
       </div>
 
       <!-- ================= SECCIÓN 6: FUNCIONES ================= -->
