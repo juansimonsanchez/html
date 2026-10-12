@@ -289,7 +289,7 @@ SELECT NOW();</code></pre>
       </li>
       <li>Consulta los errores registrados en el catálogo para el usuario <code>root</code>:
         <pre><code>SELECT * FROM performance_schema.events_errors_summary_by_user_by_error 
-WHERE USER = 'root' AND COUNT_STAR > 0;</code></pre>
+WHERE USER = 'root' AND sum_error_raised > 0;</code></pre>
         <em>Aporta captura donde se aprecie el error reflejado en <code>COUNT_STAR</code>.</em>
       </li>
       <li>Consulta el total de operaciones de lectura realizadas por el usuario activo:
