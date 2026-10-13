@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASGBD - UT3 Tarea Control de Acceso y Vistas</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <header id="site-header">
+        <div class="header-container">
+            <div class="site-title" style="display:flex; align-items:center;">
+                <img src="logo.png" alt="Logo"
+                    style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;">
+                <span>ASGBD &ndash; UT3 Tarea Control de Acceso y Vistas</span>
+            </div>
+            <nav class="top-nav">
+                <a href="index.html" class="nav-btn">Inicio</a>
+            </nav>
+        </div>
+    </header>
+    <div id="page-layout">
+        <main id="main-content">
+            <div style="display:flex; justify-content:flex-end; margin-bottom:1.2rem;">
+                <a href="ASGBD_UT3_Tarea_Control_Acceso.pdf" download
+                    style="background-color:#2563eb; color:white; padding:8px 16px; border-radius:6px; text-decoration:none; font-weight:600; font-size:0.9rem; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 4px rgba(37,99,235,0.2);">
+                    📥 Descargar PDF
+                </a>
+            </div>
+
+            <section>
+                <h2>Ficha Técnica de la Actividad</h2>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th style="width: 25%;">Unidad de Trabajo</th>
+                            <td><strong>UT3:</strong> Acceso a la información y control de privilegios</td>
+                        </tr>
+                        <tr>
+                            <th>Resultado de Aprendizaje</th>
+                            <td>
+                                <strong>RA3:</strong> Implanta métodos de control de acceso utilizando asistentes, herramientas gráficas y comandos del lenguaje del sistema gestor. <em>(Ponderación del módulo: 15%)</em>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Criterios Evaluados</th>
+                            <td>
+                                <strong>RA3:</strong> CE 3.a, CE 3.b, CE 3.c, CE 3.d, CE 3.e, CE 3.f, CE 3.g, CE 3.h.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Temporalización y Entrega</th>
+                            <td>
+                                6 horas lectivas &bull; Entrega de un único archivo comprimido (<code>Tarea3_UT3_ASGBD_NombreAlumno.zip</code>) mediante Moodle Centros que contendrá la memoria técnica en PDF (<code>Tarea3_UT3_ASGBD_NombreAlumno.pdf</code>) y el script DDL/DCL autoejecutable y documentado (<code>seguridad_liga.sql</code>).
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="nota-importante" style="background-color:#eff6ff; border-left:4px solid #2563eb; padding:12px; margin:16px 0; border-radius:4px;">
+                    <strong>Requisito obligatorio de autoría y evidencias:</strong> Para dar por válida cualquier captura de pantalla, debe apreciarse claramente en la terminal interactiva de MySQL el prompt configurado en la UT1 (ej. <code>[alumno@localhost (liga)]></code>) o la salida explícita de <code>SELECT CURRENT_USER(), CURRENT_ROLE();</code>. Las capturas anónimas, incompletas o recortadas invalidarán la actividad.
+                </div>
+            </section>
+
+            <section>
+                <h2>Bloque I: Fundamentos Teóricos y Principio del Menor Privilegio (RA3)</h2>
+
+                <h3>Actividad 1: Arquitectura del Catálogo y Niveles de Concesión <span class="tag" style="background:#e0f2fe; color:#0369a1; padding:2px 8px; border-radius:4px; font-size:0.8rem; font-weight:600;">CE 3.d, 3.h</span></h3>
+                <p>Responde de manera sintética, rigurosa y justificada a las siguientes cuestiones técnicas en tu memoria:</p>
+                <ol>
+                    <li><strong>Principio del Menor Privilegio (PoLP):</strong> Justifica técnicamente por qué una aplicación web que interactúa con la base de datos de la liga nunca debe conectarse al servicio utilizando la cuenta <code>root</code> ni disponer de privilegios globales (<code>*.*</code>).</li>
+                    <li><strong>Mapeo en el Diccionario de Datos:</strong> Indica qué tabla interna del catálogo <code>mysql</code> (<code>mysql.user</code>, <code>mysql.db</code>, <code>mysql.tables_priv</code>, <code>mysql.columns_priv</code> o <code>mysql.procs_priv</code>) se consulta y actualiza en cada una de las siguientes situaciones:
+                        <ul>
+                            <li>Un usuario ejecuta un <code>UPDATE</code> restringido exclusivamente sobre la columna <code>salario</code> de la tabla <code>jugadores</code>.</li>
+                            <li>Un usuario recibe privilegios para crear vistas sobre cualquier tabla de la base de datos <code>liga</code>.</li>
+                            <li>Un administrador ejecuta una sentencia de gestión global o altera variables del sistema.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Ciclo RBAC en MySQL 8.0:</strong> Explica por qué, tras conceder un rol a un usuario, la función <code>CURRENT_ROLE()</code> devuelve inicialmente el valor <code>NONE</code> al abrir una nueva sesión y qué instrucción administrativa permite automatizar su activación por defecto.</li>
+                    <li><strong>Sincronización en memoria:</strong> ¿En qué situación concreta es obligatorio ejecutar el comando <code>FLUSH PRIVILEGES</code> y por qué no es necesario lanzarlo tras sentencias DCL habituales como <code>GRANT</code> o <code>REVOKE</code>?</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>Bloque II: Provisión de Cuentas y Granularidad Escalar de Privilegios (RA3)</h2>
+
+                <h3>Actividad 2: Creación de Usuarios y Control de Acceso de Red <span class="tag" style="background:#e0f2fe; color:#0369a1; padding:2px 8px; border-radius:4px; font-size:0.8rem; font-weight:600;">CE 3.c, 3.h</span></h3>
+                <p>Crea las siguientes cuentas de usuario delimitando con exactitud el host de conexión y las credenciales mediante el plugin de autenticación compatible:</p>
+                <ol>
+                    <li><code>'usr_prensa'@'localhost'</code>: Conectado vía socket local con autenticación <code>mysql_native_password</code> y contraseña <code>PrensaPass_2026!</code>.</li>
+                    <li><code>'usr_delegado'@'localhost'</code>: Conectado localmente con autenticación <code>mysql_native_password</code> y contraseña <code>DelegadoPass_2026!</code>.</li>
+                    <li><code>'usr_rrhh'@'127.0.0.1'</code>: Conectado a través del loopback TCP/IP con autenticación <code>mysql_native_password</code> y contraseña <code>RrhhSecure_2026!</code>.</li>
+                </ol>
+                <p><em>Adjunta captura consultando la tabla <code>mysql.user</code> donde se verifiquen los campos <code>user</code>, <code>host</code> y <code>plugin</code> para estas tres identidades.</em></p>
+
+                <h3>Actividad 3: Concesión de Privilegios a Nivel de Tabla y Columna <span class="tag" style="background:#e0f2fe; color:#0369a1; padding:2px 8px; border-radius:4px; font-size:0.8rem; font-weight:600;">CE 3.d, 3.f</span></h3>
+                <ol>
+                    <li><strong>Nivel de Tabla (Mesa de Control - <code>usr_delegado</code>):</strong>  
+                        Concede permisos para consultar (<code>SELECT</code>), insertar actas de partido (<code>INSERT</code>) y actualizar incidencias (<code>UPDATE</code>) exclusivamente sobre la tabla <code>estadisticas_jugador</code>. No debe disponer de permisos de borrado (<code>DELETE</code>) ni privilegios sobre el resto de tablas.
+                    </li>
+                    <li><strong>Nivel de Columna (Recursos Humanos - <code>usr_rrhh</code>):</strong>  
+                        Aplica granularidad atómica de columna sobre la tabla física <code>jugadores</code>:
+                        <ul>
+                            <li>Permiso <code>SELECT</code> únicamente en los campos: <code>id_jugador</code>, <code>nombre</code>, <code>apellido</code> y <code>salario</code>.</li>
+                            <li>Permiso <code>UPDATE</code> restringido estrictamente al campo: <code>salario</code>.</li>
+                        </ul>
+                    </li>
+                    <li><em>(Nota técnica):</em> El usuario <code>usr_prensa</code> recibirá sus privilegios en el Bloque IV una vez desplegadas las vistas públicas.</li>
+                </ol>
+                <p><em>Ejecuta e incluye la captura del comando <code>SHOW GRANTS FOR ...</code> para las cuentas <code>usr_delegado</code> y <code>usr_rrhh</code>.</em></p>
+            </section>
+
+            <section>
+                <h2>Bloque III: Gestión Avanzada Mediante Roles (RBAC) y Ciclo de Vida (RA3)</h2>
+
+                <h3>Actividad 4: Despliegue de Roles y Activación Automática <span class="tag" style="background:#e0f2fe; color:#0369a1; padding:2px 8px; border-radius:4px; font-size:0.8rem; font-weight:600;">CE 3.e, 3.g, 3.h</span></h3>
+                <ol>
+                    <li><strong>Creación del Rol:</strong> Crea un rol administrativo denominado <code>rol_competicion_admin</code>:
+                        <pre><code>CREATE ROLE IF NOT EXISTS 'rol_competicion_admin';</code></pre>
+                    </li>
+                    <li><strong>Dotación de Privilegios al Rol:</strong> Concede al rol permisos completos de manipulación (<code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>) sobre las tablas <code>equipos</code> y <code>partidos</code> de la base de datos <code>liga</code>.</li>
+                    <li><strong>Provisión y Enlace:</strong> Crea la cuenta <code>'gestor_liga'@'localhost'</code> identificada con <code>mysql_native_password</code> y vincúlale el rol:
+                        <pre><code>GRANT 'rol_competicion_admin' TO 'gestor_liga'@'localhost';</code></pre>
+                    </li>
+                    <li><strong>Activación por Defecto:</strong> Configura la cuenta para que el rol se active de manera automática en cada inicio de sesión:
+                        <pre><code>SET DEFAULT ROLE 'rol_competicion_admin' TO 'gestor_liga'@'localhost';</code></pre>
+                    </li>
+                    <li><strong>Verificación de Sesión:</strong> Inicia sesión interactiva con el usuario <code>gestor_liga</code> y aporta una captura donde se visualice:
+                        <pre><code>SELECT CURRENT_USER(), CURRENT_ROLE();</code></pre>
+                        <em>Debe apreciarse de forma inequívoca el rol <code>`rol_competicion_admin`@`%`</code> en estado activo.</em>
+                    </li>
+                </ol>
+
+                <h3>Actividad 5: Delegación y Revocación Estricta de Accesos <span class="tag" style="background:#e0f2fe; color:#0369a1; padding:2px 8px; border-radius:4px; font-size:0.8rem; font-weight:600;">CE 3.d, 3.f, 3.g</span></h3>
+                <ol>
+                    <li>Permite que el usuario <code>gestor_liga</code> pueda delegar privilegios de lectura sobre la tabla <code>equipos</code> a terceros utilizando la cláusula <code>WITH GRANT OPTION</code>.</li>
+                    <li><strong>Revocación Total:</strong> Ejecuta las sentencias necesarias para revocar el rol asignado a <code>gestor_liga</code> y retirar cualquier privilegio residual otorgado.</li>
+                    <li>Demuestra con <code>SHOW GRANTS FOR 'gestor_liga'@'localhost';</code> que la cuenta ha quedado despojada de sus derechos operativos.</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>Bloque IV: Capa de Abstracción con Vistas y Sinónimos (RA3)</h2>
+
+                <h3>Actividad 6: Diseño de Vistas de Consulta y Ofuscación de Datos <span class="tag" style="background:#e0f2fe; color:#0369a1; padding:2px 8px; border-radius:4px; font-size:0.8rem; font-weight:600;">CE 3.a, 3.h</span></h3>
+                <p>Implementa sobre la base de datos <code>liga</code> las siguientes vistas para ocultar información sensible y simplificar consultas analíticas:</p>
+                <ol>
+                    <li>
+                        <strong><code>v_jugadores_plantilla</code>:</strong> Muestra el identificador del jugador, su nombre completo en un único campo (<code>nombre</code> y <code>apellido</code>), su puesto, altura, fecha de alta y el nombre del equipo al que pertenece.
+                        <br><em>Requisito de confidencialidad:</em> La columna <code>salario</code> debe quedar estrictamente excluida de la vista. Se deben omitir aquellos jugadores que no tengan equipo asignado.
+                    </li>
+                    <li>
+                        <strong><code>v_partidos_completos</code>:</strong> Lista los encuentros disputados mostrando la fecha, el nombre del equipo local, el resultado formateado como cadena de texto (ej. <code>"82 - 73"</code>), el nombre del equipo visitante y el nombre del árbitro que dirigió el partido.
+                    </li>
+                    <li>
+                        <strong><code>v_estadisticas_anotadores</code>:</strong> A partir de las tablas <code>estadisticas_jugador</code>, <code>jugadores</code> y <code>equipos</code>, muestra para cada jugador su nombre completo, el nombre de su equipo, el total de minutos disputados acumulados, la media de puntos por partido (redondeada a dos decimales) y el total de faltas cometidas.
+                    </li>
+                    <li>
+                        <strong><code>v_capitanes_equipos</code>:</strong> Relaciona de forma unívoca el nombre de cada equipo con el nombre completo de su capitán correspondiente, resolviendo la relación recursiva de la tabla <code>jugadores</code> mediante la clave <code>id_capitan</code>.
+                    </li>
+                </ol>
+                <p><em>Adjunta capturas de la creación de las vistas y de la comprobación ejecutando un <code>SELECT * FROM vista LIMIT 5;</code> sobre cada una de ellas.</em></p>
+
+                <h3>Actividad 7: Vistas Actualizables y Cláusula <code>WITH CHECK OPTION</code> <span class="tag" style="background:#e0f2fe; color:#0369a1; padding:2px 8px; border-radius:4px; font-size:0.8rem; font-weight:600;">CE 3.a, 3.h</span></h3>
+                <ol>
+                    <li>Crea la vista actualizable <code>v_pivots_candidatos</code>:
+                        <pre><code>CREATE OR REPLACE VIEW v_pivots_candidatos AS
+SELECT id_jugador, nombre, apellido, puesto, altura, id_equipo
+FROM jugadores
+WHERE puesto = 'Pívot' AND altura >= 2.00
+WITH CHECK OPTION;</code></pre>
+                    </li>
+                    <li>Inserta un jugador válido a través de la vista:
+                        <pre><code>INSERT INTO v_pivots_candidatos (nombre, apellido, puesto, altura, id_equipo)
+VALUES ('Pau', 'Gasol', 'Pívot', 2.15, 1);</code></pre>
+                        <em>Aporta captura comprobando que el registro se ha persistido correctamente en la tabla física <code>jugadores</code>.</em>
+                    </li>
+                    <li>Intenta insertar un registro que incumpla las condiciones de la vista (por ejemplo, con puesto <code>'Base'</code> o altura <code>1.92</code>):
+                        <pre><code>INSERT INTO v_pivots_candidatos (nombre, apellido, puesto, altura, id_equipo)
+VALUES ('Ricky', 'Rubio', 'Base', 1.92, 1);</code></pre>
+                    </li>
+                    <li>Documenta mediante captura el error de bloqueo (<strong>Error 1369</strong>) y explica el papel de <code>WITH CHECK OPTION</code> para garantizar la coherencia lógica de los datos.</li>
+                </ol>
+
+                <h3>Actividad 8: Asignación de Permisos sobre Vistas y Emulación de Sinónimos <span class="tag" style="background:#e0f2fe; color:#0369a1; padding:2px 8px; border-radius:4px; font-size:0.8rem; font-weight:600;">CE 3.a, 3.b</span></h3>
+                <ol>
+                    <li><strong>Emulación de Sinónimos:</strong> En MySQL 8.0, donde no existe <code>CREATE SYNONYM</code>, crea la vista <code>arbitros_liga</code> que emule un sinónimo exacto 1:1 de la tabla física <code>arbitros</code>. Verifica su registro con <code>SHOW FULL TABLES WHERE Table_type = 'VIEW';</code>.</li>
+                    <li><strong>Asignación al usuario de prensa:</strong> Otorga a <code>'usr_prensa'@'localhost'</code> permiso de lectura exclusiva (<code>SELECT</code>) sobre las vistas públicas creadas: <code>v_jugadores_plantilla</code>, <code>v_partidos_completos</code> y <code>v_estadisticas_anotadores</code>.</li>
+                    <li>Demuestra con <code>SHOW GRANTS FOR 'usr_prensa'@'localhost';</code> que la cuenta tiene acceso únicamente a estas vistas y no a las tablas base.</li>
+                </ol>
+            </section>
+
+            <section>
+                <h2>Bloque V: Matriz de Evidencias y Auditoría de Seguridad (RA3)</h2>
+
+                <h3>Actividad 9: Verificación Cruzada (Operaciones Autorizadas vs. Denegadas) <span class="tag" style="background:#e0f2fe; color:#0369a1; padding:2px 8px; border-radius:4px; font-size:0.8rem; font-weight:600;">CE 3.c, 3.d, 3.f, 3.h</span></h3>
+                <p>Para comprobar que el Principio del Menor Privilegio se cumple rigurosamente y no existen vías de escalada de privilegios, aporta en tu memoria técnica las capturas emparejadas de las siguientes pruebas:</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">Usuario Conectado</th>
+                            <th style="width: 40%;">Prueba Positiva (Acceso Autorizado)</th>
+                            <th style="width: 40%;">Prueba Negativa (Bloqueo / Access Denied)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong><code>usr_prensa</code></strong></td>
+                            <td>Consulta satisfactoria sobre <code>v_jugadores_plantilla</code>.</td>
+                            <td>Intento de consultar la tabla base (<code>SELECT * FROM liga.jugadores;</code>) que arroje el <strong>Error 1142</strong>.</td>
+                        </tr>
+                        <tr>
+                            <td><strong><code>usr_delegado</code></strong></td>
+                            <td>Inserción satisfactoria de un registro estadístico en <code>estadisticas_jugador</code>.</td>
+                            <td>Intento de borrado de registros (<code>DELETE FROM liga.estadisticas_jugador;</code>) que arroje el <strong>Error 1142</strong>.</td>
+                        </tr>
+                        <tr>
+                            <td><strong><code>usr_rrhh</code></strong></td>
+                            <td>Actualización satisfactoria del salario de un jugador.</td>
+                            <td>Intento de consulta sobre columnas restringidas (<code>SELECT puesto, altura FROM liga.jugadores;</code>) con denegación a nivel de campo.</td>
+                        </tr>
+                        <tr>
+                            <td><strong><code>gestor_liga</code></strong></td>
+                            <td>Consulta exitosa de tablas <code>equipos</code> y <code>partidos</code> con el rol activo.</td>
+                            <td>Intento de inserción en <code>partidos</code> tras revocar el rol que demuestre la pérdida del permiso.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h2>Rúbrica de Calificación</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Bloque Evaluado</th>
+                            <th>Criterios</th>
+                            <th>Excelente (100%)</th>
+                            <th>Aceptable (60%)</th>
+                            <th>Insuficiente (0%)</th>
+                            <th>Peso</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Bloque I: Fundamentos y Diccionario de Datos</strong></td>
+                            <td>RA3: CE 3.d, 3.h</td>
+                            <td>Justifica con precisión el PoLP, identifica con exactitud las tablas del catálogo <code>mysql.*</code> y describe en detalle el mecanismo RBAC y sincronización.</td>
+                            <td>Responde a las cuestiones pero comete imprecisiones en el catálogo interno o en la activación de roles.</td>
+                            <td>Respuestas ausentes, erróneas o sin base técnica.</td>
+                            <td><strong>15%</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bloque II: Provisión de Usuarios y Granularidad</strong></td>
+                            <td>RA3: CE 3.c, 3.d, 3.f, 3.h</td>
+                            <td>Configura usuarios con plugins adecuados y aplica granularidad milimétrica a nivel de tabla y columna salarial.</td>
+                            <td>Crea los usuarios pero incurre en exceso de privilegios o falla al acotar permisos a nivel de columna.</td>
+                            <td>No define cuentas o recurre a asignaciones masivas tipo <code>ALL PRIVILEGES</code>.</td>
+                            <td><strong>25%</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bloque III: Gestión de Roles (RBAC) y Ciclo de Vida</strong></td>
+                            <td>RA3: CE 3.e, 3.g, 3.h</td>
+                            <td>Ciclo RBAC impecable: crea rol, asigna permisos, vincula usuario, automatiza activación por defecto y revoca accesos limpiamente.</td>
+                            <td>Configura el rol pero no define la activación automática o presenta dudas en el proceso de revocación.</td>
+                            <td>No implementa roles o no demuestra el cambio de contexto en la sesión interactiva.</td>
+                            <td><strong>15%</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bloque IV: Abstracción, Vistas y Sinónimos</strong></td>
+                            <td>RA3: CE 3.a, 3.b, 3.h</td>
+                            <td>Vistas perfectamente implementadas sin exponer datos sensibles, demuestra el bloqueo de <code>WITH CHECK OPTION</code> y emula el sinónimo con éxito.</td>
+                            <td>Crea las vistas pero descuida la cláusula <code>CHECK OPTION</code> o presenta errores leves en las uniones relacionales.</td>
+                            <td>Vistas no funcionales, sintaxis errónea o exposición indebida de salarios.</td>
+                            <td><strong>25%</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bloque V: Auditoría, Evidencias y Memoria Técnica</strong></td>
+                            <td>RA3: CE 3.c al 3.h</td>
+                            <td>Documento PDF impecable con prompt identificativo visible en todas las capturas; pruebas de denegación exhaustivas y script SQL limpio adjunto.</td>
+                            <td>Memoria completa pero omite alguna prueba de bloqueo denegado o el prompt resulta ilegible en capturas puntuales.</td>
+                            <td>Capturas anónimas o sin prompt, ausencia del script SQL o falta de evidencias de bloqueo por permisos.</td>
+                            <td><strong>20%</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>
