@@ -1,106 +1,127 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASGBD - UT1 Tarea Configuracion</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASGBD - UT1 Tarea Configuracion</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
 </head>
+
 <body>
-    <header id="site-header">
-        <div class="header-container">
-            <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo"
-                    style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD
-                    &ndash; UT1 Tarea Configuracion</span></div>
-            <nav class="top-nav">
-                <a href="index.html" class="nav-btn">Inicio</a>
-            </nav>
-        </div>
-    </header>
-    <div id="page-layout">
-        <main id="main-content">
-  <section>
-    <h2>Ficha Técnica de la Actividad</h2>
-    <table>
-      <tbody>
-        <tr>
-          <th style="width: 25%;">Unidad de Trabajo</th>
-          <td><strong>UT1:</strong> Instalación y configuración de un sistema gestor de base de datos</td>
-        </tr>
-        <tr>
-          <th>Resultados de Aprendizaje</th>
-          <td>
-            <strong>RA1:</strong> Implanta sistemas gestores de bases de datos analizando sus características y ajustándose a los requerimientos del sistema.<br>
-            <strong>RA2:</strong> Configura el sistema gestor de bases de datos interpretando las especificaciones técnicas y los requisitos de explotación.
-          </td>
-        </tr>
-        <tr>
-          <th>Criterios Evaluados</th>
-          <td>
-            <strong>RA1:</strong> CE 1.a, CE 1.b, CE 1.c, CE 1.d, CE 1.e, CE 1.f, CE 1.g, CE 1.h, CE 1.i, CE 1.j.<br>
-            <strong>RA2:</strong> CE 2.a, CE 2.b, CE 2.c, CE 2.d, CE 2.e, CE 2.f, CE 2.g, CE 2.h.
-          </td>
-        </tr>
-        <tr>
-          <th>Temporalización y Entrega</th>
-          <td>4 horas lectivas &bull; Entrega de documento único en formato <strong>PDF</strong> (<code>Tarea1_UT1_ASGBD_NombreAlumno.pdf</code>) mediante Moodle Centros.</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="nota-importante">
-      <strong>Requisito obligatorio de autoría y evidencias:</strong> Para dar por válida cualquier captura de pantalla, debe apreciarse claramente en la terminal el prompt con el usuario asignado al alumno (ej. <code>alumno@servidor:~$</code>) o la dirección IP de la instancia. Las acciones requieren privilegios de administración (<code>sudo</code> o <code>root</code>).
+  <header id="site-header">
+    <div class="header-container">
+      <div class="site-title" style="display:flex; align-items:center;"><img src="logo.png" alt="Logo"
+          style="height:36px; width:auto; margin-right:10px; vertical-align:middle; border-radius:3px;"><span>ASGBD
+          &ndash; UT1 Tarea Configuracion</span></div>
+      <nav class="top-nav">
+        <a href="index.html" class="nav-btn">Inicio</a>
+      </nav>
     </div>
-  </section>
+  </header>
+  <div id="page-layout">
+    <main id="main-content">
+      <section>
+        <h2>Ficha Técnica de la Actividad</h2>
+        <table>
+          <tbody>
+            <tr>
+              <th style="width: 25%;">Unidad de Trabajo</th>
+              <td><strong>UT1:</strong> Instalación y configuración de un sistema gestor de base de datos</td>
+            </tr>
+            <tr>
+              <th>Resultados de Aprendizaje</th>
+              <td>
+                <strong>RA1:</strong> Implanta sistemas gestores de bases de datos analizando sus características y
+                ajustándose a los requerimientos del sistema.<br>
+                <strong>RA2:</strong> Configura el sistema gestor de bases de datos interpretando las especificaciones
+                técnicas y los requisitos de explotación.
+              </td>
+            </tr>
+            <tr>
+              <th>Criterios Evaluados</th>
+              <td>
+                <strong>RA1:</strong> CE 1.a, CE 1.b, CE 1.c, CE 1.d, CE 1.e, CE 1.f, CE 1.g, CE 1.h, CE 1.i, CE
+                1.j.<br>
+                <strong>RA2:</strong> CE 2.a, CE 2.b, CE 2.c, CE 2.d, CE 2.e, CE 2.f, CE 2.g, CE 2.h.
+              </td>
+            </tr>
+            <tr>
+              <th>Temporalización y Entrega</th>
+              <td>4 horas lectivas &bull; Entrega de documento único en formato <strong>PDF</strong>
+                (<code>Tarea1_UT1_ASGBD_NombreAlumno.pdf</code>) mediante Moodle Centros.</td>
+            </tr>
+          </tbody>
+        </table>
 
-  <section>
-    <h2>Bloque I: Implantación y Verificación del Motor (RA1)</h2>
+        <div class="nota-importante">
+          <strong>Requisito obligatorio de autoría y evidencias:</strong> Para dar por válida cualquier captura de
+          pantalla, debe apreciarse claramente en la terminal el prompt con el usuario asignado al alumno (ej.
+          <code>alumno@servidor:~$</code>) o la dirección IP de la instancia. Las acciones requieren privilegios de
+          administración (<code>sudo</code> o <code>root</code>).
+        </div>
+      </section>
 
-    <h3>Actividad 1: Investigación – Selección y Componentes del SGBD <span class="tag">CE 1.a, 1.b, 1.c, 1.d</span></h3>
-    <p>Responde de manera sintética y justificada a las siguientes cuestiones en tu memoria:</p>
-    <ol>
-      <li><strong>Diferenciación técnica:</strong> Explica en 3 o 4 líneas la diferencia operativa entre el proceso demonio en segundo plano (<code>mysqld</code>) y las herramientas clientes de línea de comandos (<code>mysql</code> y <code>mysqldump</code>).</li>
-      <li><strong>Jerarquía modular de configuración:</strong> Inspecciona el fichero <code>/etc/mysql/my.cnf</code>. Describe cuál es el propósito de separar las directivas de inclusión mediante:
-        <ul>
-          <li><code>/etc/mysql/conf.d/</code></li>
-          <li><code>/etc/mysql/mysql.conf.d/</code></li>
-        </ul>
-      </li>
-      <li><strong>Selección del gestor:</strong> Justifica por qué para una plataforma web corporativa con alta concurrencia transaccional se elige un motor cliente-servidor relacional como <strong>MySQL/MariaDB</strong> frente a un gestor monolítico embebido como SQLite.</li>
-      <li><strong>Software base y dependencias:</strong> Investiga y enumera 3 librerías o utilidades base del sistema operativo necesarias para instalar y compilar/desplegar el servicio de base de datos (ej. <code>libaio1</code>, paquetes de certificados CA o utilidades de resolución de red).</li>
-      <li><strong>Comparativa de motores de almacenamiento:</strong> Completa la siguiente tabla en tu informe:</li>
-    </ol>
-    <table>
-      <thead>
-        <tr>
-          <th>Característica Técnica</th>
-          <th>Motor InnoDB</th>
-          <th>Motor MyISAM</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Soporte de Transacciones (ACID)</strong></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><strong>Granularidad de Bloqueo (Fila vs. Tabla)</strong></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><strong>Integridad Referencial (Foreign Keys)</strong></td>
-          <td></td>
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
+      <section>
+        <h2>Bloque I: Implantación y Verificación del Motor (RA1)</h2>
 
-    <h3>Actividad 2: Auditoría Previa de Requisitos Hardware <span class="tag">CE 1.e</span></h3>
-    <p>Comprueba si el equipo o máquina virtual de prácticas cumple con los requisitos mínimos de explotación antes de proceder con el despliegue del servicio:</p>
-    <pre><code># Comprobar núcleos y arquitectura de la CPU
+        <h3>Actividad 1: Investigación – Selección y Componentes del SGBD <span class="tag">CE 1.a, 1.b, 1.c, 1.d</span>
+        </h3>
+        <p>Responde de manera sintética y justificada a las siguientes cuestiones en tu memoria:</p>
+        <ol>
+          <li><strong>Diferenciación técnica:</strong> Explica en 3 o 4 líneas la diferencia operativa entre el proceso
+            demonio en segundo plano (<code>mysqld</code>) y las herramientas clientes de línea de comandos
+            (<code>mysql</code> y <code>mysqldump</code>).</li>
+          <li><strong>Jerarquía modular de configuración:</strong> Inspecciona el fichero
+            <code>/etc/mysql/my.cnf</code>. Describe cuál es el propósito de separar las directivas de inclusión
+            mediante:
+            <ul>
+              <li><code>/etc/mysql/conf.d/</code></li>
+              <li><code>/etc/mysql/mysql.conf.d/</code></li>
+            </ul>
+          </li>
+          <li><strong>Selección del gestor:</strong> Justifica por qué para una plataforma web corporativa con alta
+            concurrencia transaccional se elige un motor cliente-servidor relacional como <strong>MySQL/MariaDB</strong>
+            frente a un gestor monolítico embebido como SQLite.</li>
+          <li><strong>Software base y dependencias:</strong> Investiga y enumera 3 librerías o utilidades base del
+            sistema operativo necesarias para instalar y compilar/desplegar el servicio de base de datos (ej.
+            <code>libaio1</code>, paquetes de certificados CA o utilidades de resolución de red).
+          </li>
+          <li><strong>Comparativa de motores de almacenamiento:</strong> Completa la siguiente tabla en tu informe:</li>
+        </ol>
+        <table>
+          <thead>
+            <tr>
+              <th>Característica Técnica</th>
+              <th>Motor InnoDB</th>
+              <th>Motor MyISAM</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Soporte de Transacciones (ACID)</strong></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><strong>Granularidad de Bloqueo (Fila vs. Tabla)</strong></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><strong>Integridad Referencial (Foreign Keys)</strong></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Actividad 2: Auditoría Previa de Requisitos Hardware <span class="tag">CE 1.e</span></h3>
+        <p>Comprueba si el equipo o máquina virtual de prácticas cumple con los requisitos mínimos de explotación antes
+          de proceder con el despliegue del servicio:</p>
+        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+          <pre><code># Comprobar núcleos y arquitectura de la CPU
 lscpu | grep -E "Model name|CPU\(s\):|Architecture"
 
 # Comprobar memoria RAM total y disponible
@@ -108,36 +129,55 @@ free -h
 
 # Comprobar espacio libre en disco en la partición raíz
 df -h /</code></pre>
-    <p><em>Entrega una captura con los resultados obtenidos y argumenta si son suficientes para soportar una instancia de desarrollo (recomendado: 1-2 núcleos, 2 GB RAM y 10 GB de disco).</em></p>
+        </div>
+        <p><em>Entrega una captura con los resultados obtenidos y argumenta si son suficientes para soportar una
+            instancia de desarrollo (recomendado: 1-2 núcleos, 2 GB RAM y 10 GB de disco).</em></p>
 
-    <h3>Actividad 3: Instalación y Documentación del Proceso <span class="tag">CE 1.f, 1.g</span></h3>
-    <p>Despliega el motor MySQL Server mediante el gestor de paquetes de tu distribución Linux:</p>
-    <pre><code>sudo apt update && sudo apt install -y mysql-server # Ya se realizó
+        <h3>Actividad 3: Instalación y Documentación del Proceso <span class="tag">CE 1.f, 1.g</span></h3>
+        <p>Despliega el motor MySQL Server mediante el gestor de paquetes de tu distribución Linux:</p>
+        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+          <pre><code>sudo apt update && sudo apt install -y mysql-server # Ya se realizó
 sudo systemctl status mysql --no-pager</code></pre>
-    <p><em>Adjunta una captura de la consola donde se visualice el estado <code>active (running)</code> junto al prompt de tu terminal.</em></p>
+        </div>
+        <p><em>Adjunta una captura de la consola donde se visualice el estado <code>active (running)</code> junto al
+            prompt de tu terminal.</em></p>
 
-    <h3>Actividad 4: Análisis de Ficheros de Registro y Diagnóstico <span class="tag">CE 1.h</span></h3>
-    <p>Examina los mensajes generados durante el arranque inicial del servidor inspeccionando el fichero de error:</p>
-    <pre><code>sudo tail -n 25 /var/log/mysql/error.log</code></pre>
-    <p>Si no te ha devuelto nada, verifica si existe. ¿Qué puede estar pasando? En caso contrario prueba:</p>
-     <pre><code>sudo journalctl -u mysql.service -n 50 --no-pager</code></pre>
-     <p>Incluye una captura del resultado obtenido. Localiza el mensaje que confirma que el servicio está listo para recibir conexiones.</p>
-    
-    <h3>Actividad 5: Resolución de Incidencias en la Instalación <span class="tag">CE 1.i</span></h3>
-    <p>Simula y corrige un fallo típico de bloqueo de puerto de escucha:</p>
-    <ol>
-      <li><p></p>Detén el servicio (<code>sudo systemctl stop mysql</code>) y ejecuta el siguiente comando:</p>
-        <pre><code>sudo nc -l -p 3306 &</code></pre>
-      </li>
-      <li><p>Intenta arrancar MySQL (<code>sudo systemctl start mysql</code>), constata que entra en estado fallido e inspecciona el motivo con:</p>
-        <pre><code>journalctl -xeu mysql.service --no-pager -n 20</code></pre><p>Realiza una captura de la salida y localiza el mensaje de error que indica cual es el motivo.</p>
-      </li>
-      <li><p>Finaliza el proceso en conflicto (<code>sudo killall nc</code>), levanta el servicio y redacta en la memoria la explicación técnica de la causa y la corrección.</p></li>
-    </ol>
+        <h3>Actividad 4: Análisis de Ficheros de Registro y Diagnóstico <span class="tag">CE 1.h</span></h3>
+        <p>Examina los mensajes generados durante el arranque inicial del servidor inspeccionando el fichero de error:
+        </p>
+        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+          <pre><code>sudo tail -n 25 /var/log/mysql/error.log</code></pre>
+        </div>
+        <p>Si no te ha devuelto nada, verifica si existe. ¿Qué puede estar pasando? En caso contrario prueba:</p>
+        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+          <pre><code>sudo journalctl -u mysql.service -n 50 --no-pager</code></pre>
+        </div>
+        <p>Incluye una captura del resultado obtenido. Localiza el mensaje que confirma que el servicio está listo para
+          recibir conexiones.</p>
+        <h3>Actividad 5: Resolución de Incidencias en la Instalación <span class="tag">CE 1.i</span></h3>
+        <p>Simula y corrige un fallo típico de bloqueo de puerto de escucha:</p>
 
-    <h3>Actividad 6: Verificación Funcional del SGBD <span class="tag">CE 1.j</span></h3>
-    <p>Conéctate a la consola interactiva (<code>sudo mysql</code>) y valida el procesamiento de comandos DDL y DML:</p>
-    <pre><code>STATUS;
+        <p>Detén el servicio (<code>sudo systemctl stop mysql</code>) y ejecuta el siguiente comando:</p>
+        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+          <pre><code>sudo nc -l -p 3306 &</code></pre>
+        </div>
+
+        <p>Intenta arrancar MySQL (<code>sudo systemctl start mysql</code>), constata que entra en estado fallido e
+          inspecciona el motivo con:</p>
+        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+          <pre><code>journalctl -xeu mysql.service --no-pager -n 20</code></pre>
+        </div>
+        <p>Realiza una captura de la salida y localiza el mensaje de error que indica cual es el motivo.</p>
+
+        <p>Finaliza el proceso en conflicto (<code>sudo killall nc</code>), levanta el servicio y redacta en la
+          memoria la explicación técnica de la causa y la corrección.</p>
+
+
+        <h3>Actividad 6: Verificación Funcional del SGBD <span class="tag">CE 1.j</span></h3>
+        <p>Conéctate a la consola interactiva (<code>sudo mysql</code>) y valida el procesamiento de comandos DDL y
+          DML:</p>
+        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+          <pre><code>STATUS;
 CREATE DATABASE test_instalacion;
 USE test_instalacion;
 CREATE TABLE comprobacion (
@@ -148,33 +188,40 @@ CREATE TABLE comprobacion (
 INSERT INTO comprobacion (mensaje) VALUES ('Verificación inicial satisfactoria');
 SELECT * FROM comprobacion;
 DROP DATABASE test_instalacion;</code></pre>
-    <p><em>Adjunta la captura de pantalla del resultado de la consulta <code>SELECT</code>.</em></p>
-  </section>
+        </div>
+        <p><em>Adjunta la captura de pantalla del resultado de la consulta <code>SELECT</code>.</em></p>
+      </section>
 
-  <section>
-    <h2>Bloque II: Configuración Modular del Motor y Clientes (RA2)</h2>
+      <section>
+        <h2>Bloque II: Configuración Modular del Motor y Clientes (RA2)</h2>
 
-    <h3>Actividad 7: Control del Servicio e Inicio/Parada <span class="tag">CE 2.a</span></h3>
-    <ol>
-      <li>Comprueba si el demonio arrancará de forma persistente tras el encendido del sistema:
-        <pre><code>systemctl is-enabled mysql</code></pre>
-      </li>
-      <li>Reinicia el servicio y aporta una captura donde se evidencie la renovación del tiempo de actividad (<em>uptime</em>):
-        <pre><code>sudo systemctl restart mysql
+        <h3>Actividad 7: Control del Servicio e Inicio/Parada <span class="tag">CE 2.a</span></h3>
+        Comprueba si el demonio arrancará de forma persistente tras el encendido del sistema:
+        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+          <pre><code>systemctl is-enabled mysql</code></pre>
+        </div>
+        Reinicia el servicio y aporta una captura donde se evidencie la renovación del tiempo de actividad
+        (<em>uptime</em>):
+        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+          <pre><code>sudo systemctl restart mysql
 systemctl status mysql --no-pager</code></pre>
-      </li>
-    </ol>
+        </div>
 
-    <h3>Actividad 8: Estado Inicial de Logs y Variables de Entorno <span class="tag">CE 2.e, 2.f, 2.g</span></h3>
-    <p>Conéctate al gestor y comprueba las directivas asignadas por defecto en la memoria del motor:</p>
-    <pre><code>SHOW GLOBAL VARIABLES LIKE 'general_log%';
+
+        <h3>Actividad 8: Estado Inicial de Logs y Variables de Entorno <span class="tag">CE 2.e, 2.f, 2.g</span></h3>
+        <p>Conéctate al gestor y comprueba las directivas asignadas por defecto en la memoria del motor:</p>
+        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+          <pre><code>SHOW GLOBAL VARIABLES LIKE 'general_log%';
 SHOW GLOBAL VARIABLES LIKE 'log_bin%';
 SELECT @@GLOBAL.autocommit, @@GLOBAL.default_password_lifetime, @@GLOBAL.max_connections, @@GLOBAL.wait_timeout;</code></pre>
-    <p><em>Aporta captura comentando los valores por defecto devueltos.</em></p>
+        </div>
+        <p><em>Aporta captura comentando los valores por defecto devueltos.</em></p>
 
-    <h3>Actividad 9: Configuración Física del Demonio en <code>mysql.conf.d/</code> <span class="tag">CE 2.b, 2.e, 2.f, 2.g</span></h3>
-    <p>Crea el archivo modular <code>/etc/mysql/mysql.conf.d/99-server-custom.cnf</code> para aplicar directivas al demonio servidor:</p>
-    <pre><code>[mysqld]
+        <h3>Actividad 9: Configuración Física del Demonio en <code>mysql.conf.d/</code> <span class="tag">CE 2.b, 2.e,
+            2.f, 2.g</span></h3>
+        <p>Crea el archivo modular <code>/etc/mysql/mysql.conf.d/99-server-custom.cnf</code> para aplicar directivas al
+          demonio servidor:</p>
+        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>[mysqld]
 # Red y Conexiones (CE 2.e, CE 2.g)
 bind-address              = 0.0.0.0
 max_connections           = 80
@@ -190,34 +237,32 @@ default_password_lifetime = 270
 # Auditoría y Sistema de Logs
 slow_query_log            = ON
 slow_query_log_file       = /var/log/mysql/slow_querys.log
-long_query_time           = 2.000000</code></pre>
-    <ol>
-      <li>Reinicia el servicio: <code>sudo systemctl restart mysql</code>.</li>
-      <li>Comprueba en la consola SQL que las variables se cargaron correctamente:
-        <pre><code>SHOW GLOBAL VARIABLES WHERE Variable_name IN (
+long_query_time           = 2.000000</code></pre></div>
+Reinicia el servicio: <code>sudo systemctl restart mysql</code>.
+         Comprueba en la consola SQL que las variables se cargaron correctamente:
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SHOW GLOBAL VARIABLES WHERE Variable_name IN (
     'bind_address', 'max_connections', 'wait_timeout',
     'default_storage_engine', 'character_set_server',
     'autocommit', 'default_password_lifetime', 'slow_query_log'
-);</code></pre>
-      </li>
-    </ol>
-    <p><em>Aporta captura del fichero editado y de la comprobación SQL.</em>. Has notado algo raro? Ejecuta <code>grep -rn "bind-address" /etc/mysql/</code>.</p>
+);</code></pre></div>
+        <p><em>Aporta captura del fichero editado y de la comprobación SQL.</em>. Has notado algo raro? Ejecuta
+          <code>grep -rn "bind-address" /etc/mysql/</code>.
+        </p>
 
-    <h3>Actividad 10: Aseguramiento de Cuentas de Administración <span class="tag">CE 2.c</span></h3>
-    <ol>
-      <li>Comprueba el plugin de autenticación del usuario administrador:
-        <pre><code>SELECT user, host, plugin FROM mysql.user WHERE user = 'root';</code></pre>
-      </li>
-      <li>Establece una contraseña robusta para la cuenta administrativa:
-        <pre><code>ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'AdminSecure_2026!';
-FLUSH PRIVILEGES;</code></pre>
-      </li>
-      <li>Sal de la consola y demuestra mediante captura que intentar acceder sin clave (<code>mysql -u root</code>) devuelve el error <code>Error 1045 (28000): Access denied</code>. Esto ya lo hicimos el primer día, solo verificarlo con una captura</li>
-    </ol>
+        <h3>Actividad 10: Aseguramiento de Cuentas de Administración <span class="tag">CE 2.c</span></h3>
+        Comprueba el plugin de autenticación del usuario administrador:
+           <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button> <pre><code>SELECT user, host, plugin FROM mysql.user WHERE user = 'root';</code></pre></div>
+          Establece una contraseña robusta para la cuenta administrativa:
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'AdminSecure_2026!';
+FLUSH PRIVILEGES;</code></pre></div>
+         Sal de la consola y demuestra mediante captura que intentar acceder sin clave (<code>mysql -u root</code>)
+            devuelve el error <code>Error 1045 (28000): Access denied</code>. Esto ya lo hicimos el primer día, solo
+            verificarlo con una captura
 
-    <h3>Actividad 11: Configuración de Herramientas Cliente en <code>conf.d/</code> <span class="tag">CE 2.d</span></h3>
-    <p>Crea el fichero de opciones cliente globales <code>/etc/mysql/conf.d/99-client-custom.cnf</code>:</p>
-    <pre><code>[client]
+        <h3>Actividad 11: Configuración de Herramientas Cliente en <code>conf.d/</code> <span class="tag">CE 2.d</span>
+        </h3>
+        <p>Crea el fichero de opciones cliente globales <code>/etc/mysql/conf.d/99-client-custom.cnf</code>:</p>
+        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>[client]
 default-character-set = utf8mb4
 
 [mysql]
@@ -226,136 +271,137 @@ safe-updates
 
 [mysqldump]
 quick
-max_allowed_packet = 32M</code></pre>
-    <ol>
-      <li>Inicia sesión con <code>mysql -u root -p</code> y comprueba cómo el prompt interactivo refleja dinámicamente la base de datos seleccionada (ej. tras ejecutar <code>USE mysql;</code>).</li>
-      <li>Intenta lanzar <code>DELETE FROM mysql.user;</code> y documenta la captura donde <code>safe-updates</code> bloquea la sentencia arrojando el <strong>Error 1175</strong>.</li>
-    </ol>
+max_allowed_packet = 32M</code></pre></div>
+        <ol>
+          <li>Inicia sesión con <code>mysql -u root -p</code> y comprueba cómo el prompt interactivo refleja
+            dinámicamente la base de datos seleccionada (ej. tras ejecutar <code>USE mysql;</code>).</li>
+          <li>Intenta lanzar <code>DELETE FROM mysql.user;</code> y documenta la captura donde <code>safe-updates</code>
+            bloquea la sentencia arrojando el <strong>Error 1175</strong>.</li>
+        </ol>
 
-    <h3>Actividad 12: Configuración de Cliente a Nivel de Usuario del SO (<code>~/.my.cnf</code>) <span class="tag">CE 2.d, 2.h</span></h3>
-    <ol>
-      <li>En la carpeta personal del alumno (<code>~</code>), crea el archivo <code>~/.my.cnf</code>:
-        <pre><code>[client]
+        <h3>Actividad 12: Configuración de Cliente a Nivel de Usuario del SO (<code>~/.my.cnf</code>) <span
+            class="tag">CE 2.d, 2.h</span></h3>
+      En la carpeta personal del alumno (<code>~</code>), crea el archivo <code>~/.my.cnf</code>:
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>[client]
 user = root
 password = AdminSecure_2026!
 
 [mysql]
-pager = less -SFX</code></pre>
-      </li>
-      <li>Aplica los permisos obligatorios de seguridad:
-        <pre><code>chmod 600 ~/.my.cnf</code></pre>
-      </li>
-      <li>Demuestra que ahora puedes escribir <code>mysql</code> en la terminal y acceder directamente sin tener que teclear usuario ni clave.</li>
-      <li><strong>Pregunta:</strong> ¿Por qué MySQL muestra una advertencia o ignora el archivo si se le asignan permisos <code>644</code>?</li>
-    </ol>
+pager = less -SFX</code></pre></div>
+          Aplica los permisos obligatorios de seguridad:
+           <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button> <pre><code>chmod 600 ~/.my.cnf</code></pre></div>
+          Demuestra que ahora puedes escribir <code>mysql</code> en la terminal y acceder directamente sin tener que
+            teclear usuario ni clave.<strong>Pregunta:</strong> ¿Por qué MySQL muestra una advertencia o ignora el archivo si se le asignan
+            permisos <code>644</code>?
 
-    <h3>Actividad 13: Latencia y Análisis del Slow Log <span class="tag">CE 2.e, 2.h</span></h3>
-    <ol>
-      <li>Ejecuta secuencialmente desde el cliente MySQL:
-        <pre><code>SELECT NOW(), SLEEP(3);
-SELECT NOW();</code></pre>
-      </li>
-      <li>Abre el fichero <code>/var/log/mysql/slow_querys.log</code> con <code>sudo tail -n 15</code>.</li>
-      <li>Aporta una captura del bloque de la consulta registrada y explica técnicamente el significado de:
-        <ul>
-          <li><code>Query_time</code></li>
-          <li><code>Lock_time</code></li>
-          <li><code>Rows_sent</code></li>
-          <li><code>Rows_examined</code></li>
-        </ul>
-      </li>
-      <li>¿Por qué la segunda consulta (<code>SELECT NOW();</code>) no se ha registrado en el archivo?</li>
-    </ol>
+        <h3>Actividad 13: Latencia y Análisis del Slow Log <span class="tag">CE 2.e, 2.h</span></h3>
+        Ejecuta secuencialmente desde el cliente MySQL:
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT NOW(), SLEEP(3);
+SELECT NOW();</code></pre></div>
+          <p>Abre el fichero <code>/var/log/mysql/slow_querys.log</code> con <code>sudo tail -n 15</code>.</p>
+        Aporta una captura del bloque de la consulta registrada y explica técnicamente el significado de:
+            <ul>
+              <li><code>Query_time</code></li>
+              <li><code>Lock_time</code></li>
+              <li><code>Rows_sent</code></li>
+              <li><code>Rows_examined</code></li>
+            </ul>
+          ¿Por qué la segunda consulta (<code>SELECT NOW();</code>) no se ha registrado en el archivo?</li>
+        
 
-    <h3>Actividad 14: Persistencia Dinámica en Caliente (<code>mysqld-auto.cnf</code>) <span class="tag">CE 2.g, 2.h</span></h3>
-    <ol>
-      <li>Ajusta en caliente y persiste el límite de conexiones concurrentes sin reiniciar:
-        <pre><code>SET PERSIST max_connections = 250;</code></pre>
-      </li>
-      <li>Inspecciona el fichero físico generado en Linux:
-        <pre><code>sudo cat /var/lib/mysql/mysqld-auto.cnf</code></pre>
-        <em>Aporta captura del archivo JSON generado internamente por MySQL 8.x.</em>
-      </li>
-      <li>Devuelve la variable a su estado original:
-        <pre><code>RESET PERSIST max_connections;</code></pre>
-      </li>
-    </ol>
+        <h3>Actividad 14: Persistencia Dinámica en Caliente (<code>mysqld-auto.cnf</code>) <span class="tag">CE 2.g,
+            2.h</span></h3>
+        Ajusta en caliente y persiste el límite de conexiones concurrentes sin reiniciar:
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SET PERSIST max_connections = 250;</code></pre></div>
+          Inspecciona el fichero físico generado en Linux:
+           <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button> <pre><code>sudo cat /var/lib/mysql/mysqld-auto.cnf</code></pre></div>
+            <em>Aporta captura del archivo JSON generado internamente por MySQL 8.x.</em>
+          Devuelve la variable a su estado original:
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>RESET PERSIST max_connections;</code></pre></div>
+          
 
-    <h3>Actividad 15: Auditoría y Diagnóstico con <code>performance_schema</code> <span class="tag">CE 2.h</span></h3>
-    <ol>
-      <li>Provoca deliberadamente un error de sintaxis o de objeto inexistente:
-        <pre><code>SELECT * FROM base_inexistente.tabla_falsa;</code></pre>
-        Apunta el código numérico producido (ej. <code>Error 1146</code>).
-      </li>
-      <li>Consulta los errores registrados en el catálogo para el usuario <code>root</code>:
-        <pre><code>SELECT * FROM performance_schema.events_errors_summary_by_user_by_error 
-WHERE USER = 'root' AND sum_error_raised > 0;</code></pre>
-        <em>Aporta captura donde se aprecie el error reflejado en <code>COUNT_STAR</code>.</em>
-      </li>
-      <li>Consulta el total de operaciones de lectura realizadas por el usuario activo:
-        <pre><code>SELECT * FROM performance_schema.status_by_user 
-WHERE USER = 'root' AND VARIABLE_NAME LIKE 'Handler_read%';</code></pre>
-      </li>
-    </ol>
-  </section>
+        <h3>Actividad 15: Auditoría y Diagnóstico con <code>performance_schema</code> <span class="tag">CE 2.h</span>
+        </h3>
+        Provoca deliberadamente un error de sintaxis o de objeto inexistente:
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT * FROM base_inexistente.tabla_falsa;</code></pre></div>
+            Apunta el código numérico producido (ej. <code>Error 1146</code>).
+          Consulta los errores registrados en el catálogo para el usuario <code>root</code>:
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button><pre><code>SELECT * FROM performance_schema.events_errors_summary_by_user_by_error 
+WHERE USER = 'root' AND sum_error_raised > 0;</code></pre></div>
+            <em>Aporta captura donde se aprecie el error reflejado en <code>COUNT_STAR</code>.</em>
+          
+          Consulta el total de operaciones de lectura realizadas por el usuario activo:
+           <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button> <pre><code>SELECT * FROM performance_schema.status_by_user 
+WHERE USER = 'root' AND VARIABLE_NAME LIKE 'Handler_read%';</code></pre></div>
+          
+      </section>
 
-  <section>
-    <h2>Rúbrica de Calificación</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Bloque Evaluado</th>
-          <th>Criterios</th>
-          <th>Excelente (100%)</th>
-          <th>Aceptable (60%)</th>
-          <th>Insuficiente (0%)</th>
-          <th>Peso</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Bloque I: Implantación, Hardware, Diagnóstico y Verificación</strong></td>
-          <td>RA1: CE 1.a al 1.j</td>
-          <td>Audita hardware, instala el SGBD, interpreta logs de error, subsana fallos de puerto y verifica con DDL/DML de forma impecable.</td>
-          <td>Instala el gestor pero presenta imprecisiones teóricas o dudas en el análisis de <code>journalctl</code>.</td>
-          <td>No instala el gestor ni es capaz de resolver la incidencia de arranque simulada.</td>
-          <td><strong>40%</strong></td>
-        </tr>
-        <tr>
-          <td><strong>Bloque II: Configuración del Demonio en <code>mysql.conf.d/</code></strong></td>
-          <td>RA2: CE 2.a, 2.b, 2.e, 2.f, 2.g</td>
-          <td>Controla el servicio, edita <code>99-server-custom.cnf</code> (red, motor, codificación y límites) y comprueba con <code>SHOW VARIABLES</code>.</td>
-          <td>Modifica parámetros pero omite directivas o comete errores menores en la comprobación SQL.</td>
-          <td>No ubica las opciones en <code>mysql.conf.d/</code> o el servicio no arranca.</td>
-          <td><strong>25%</strong></td>
-        </tr>
-        <tr>
-          <td><strong>Bloque III: Clientes en <code>conf.d/</code>, <code>~/.my.cnf</code> y Cuentas</strong></td>
-          <td>RA2: CE 2.c, CE 2.d</td>
-          <td>Asegura <code>root</code> con clave robusta, aplica prompt y <code>safe-updates</code> en <code>conf.d/</code> y protege <code>~/.my.cnf</code> con permisos 600.</td>
-          <td>Configura clientes pero descuida la seguridad de la cuenta o los permisos del archivo local.</td>
-          <td>No configura clientes locales ni asegura la cuenta administrativa.</td>
-          <td><strong>15%</strong></td>
-        </tr>
-        <tr>
-          <td><strong>Bloque IV: Slow Log, Persistencia y Diagnóstico</strong></td>
-          <td>RA2: CE 2.g, CE 2.h</td>
-          <td>Interpreta métricas del Slow Log, aplica <code>SET PERSIST</code> documentando el JSON e interroga a <code>performance_schema</code>.</td>
-          <td>Aplica la persistencia pero no justifica con precisión técnica las métricas de latencia.</td>
-          <td>No activa el Slow Log ni documenta la persistencia en disco.</td>
-          <td><strong>10%</strong></td>
-        </tr>
-        <tr>
-          <td><strong>Memoria Técnica y Verificación de Autoría</strong></td>
-          <td>RA1: CE 1.g / RA2: CE 2.h</td>
-          <td>Documento PDF impecable con prompt/IP del alumno claramente visible en el 100% de las capturas.</td>
-          <td>Memoria ordenada pero con descuidos puntuales en la visualización del prompt.</td>
-          <td>Capturas anónimas, entrega incompleta o memoria descuidada.</td>
-          <td><strong>10%</strong></td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+      <section>
+        <h2>Rúbrica de Calificación</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Bloque Evaluado</th>
+              <th>Criterios</th>
+              <th>Excelente (100%)</th>
+              <th>Aceptable (60%)</th>
+              <th>Insuficiente (0%)</th>
+              <th>Peso</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Bloque I: Implantación, Hardware, Diagnóstico y Verificación</strong></td>
+              <td>RA1: CE 1.a al 1.j</td>
+              <td>Audita hardware, instala el SGBD, interpreta logs de error, subsana fallos de puerto y verifica con
+                DDL/DML de forma impecable.</td>
+              <td>Instala el gestor pero presenta imprecisiones teóricas o dudas en el análisis de
+                <code>journalctl</code>.
+              </td>
+              <td>No instala el gestor ni es capaz de resolver la incidencia de arranque simulada.</td>
+              <td><strong>40%</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Bloque II: Configuración del Demonio en <code>mysql.conf.d/</code></strong></td>
+              <td>RA2: CE 2.a, 2.b, 2.e, 2.f, 2.g</td>
+              <td>Controla el servicio, edita <code>99-server-custom.cnf</code> (red, motor, codificación y límites) y
+                comprueba con <code>SHOW VARIABLES</code>.</td>
+              <td>Modifica parámetros pero omite directivas o comete errores menores en la comprobación SQL.</td>
+              <td>No ubica las opciones en <code>mysql.conf.d/</code> o el servicio no arranca.</td>
+              <td><strong>25%</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Bloque III: Clientes en <code>conf.d/</code>, <code>~/.my.cnf</code> y Cuentas</strong></td>
+              <td>RA2: CE 2.c, CE 2.d</td>
+              <td>Asegura <code>root</code> con clave robusta, aplica prompt y <code>safe-updates</code> en
+                <code>conf.d/</code> y protege <code>~/.my.cnf</code> con permisos 600.
+              </td>
+              <td>Configura clientes pero descuida la seguridad de la cuenta o los permisos del archivo local.</td>
+              <td>No configura clientes locales ni asegura la cuenta administrativa.</td>
+              <td><strong>15%</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Bloque IV: Slow Log, Persistencia y Diagnóstico</strong></td>
+              <td>RA2: CE 2.g, CE 2.h</td>
+              <td>Interpreta métricas del Slow Log, aplica <code>SET PERSIST</code> documentando el JSON e interroga a
+                <code>performance_schema</code>.
+              </td>
+              <td>Aplica la persistencia pero no justifica con precisión técnica las métricas de latencia.</td>
+              <td>No activa el Slow Log ni documenta la persistencia en disco.</td>
+              <td><strong>10%</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Memoria Técnica y Verificación de Autoría</strong></td>
+              <td>RA1: CE 1.g / RA2: CE 2.h</td>
+              <td>Documento PDF impecable con prompt/IP del alumno claramente visible en el 100% de las capturas.</td>
+              <td>Memoria ordenada pero con descuidos puntuales en la visualización del prompt.</td>
+              <td>Capturas anónimas, entrega incompleta o memoria descuidada.</td>
+              <td><strong>10%</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
 
 </body>
+
 </html>
