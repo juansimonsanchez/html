@@ -440,7 +440,7 @@ AND t.table_schema NOT IN ('information_schema', 'mysql',
 AND t.table_type = 'BASE TABLE';</code></pre>
                 </div>
             
-            <h2>3.2.
+            <h2 id="base-de-datos-mysql-el-repositorio-de-seguridad-y-privilegios">3.2.
                 Base de Datos mysql (El Repositorio de Seguridad y Privilegios)</h2>
             <p>A diferencia de information_schema, la base de datos mysql contiene
                 tablas físicas persistentes en el disco. Es el cerebro de la seguridad
@@ -483,7 +483,7 @@ WHERE ssl_type != '' OR password_expired = 'Y' OR user !=
 'mysql.infoschema';</code></pre>
 
             </div>
-            <h2>3.3. Base de Datos
+            <h2 id="base-de-datos-performance_schema">3.3. Base de Datos
                 performance_schema </h2>
             <p>Se enfoca de forma estricta en el rendimiento físico del servidor.
                 Cuenta con una arquitectura basada en <strong>Instrumentos</strong>
@@ -528,7 +528,7 @@ WHERE sum_error_raised &gt; 0
 ORDER BY sum_error_raised DESC;</code></pre>
 
             </div>
-            <h2>3.4. Base de
+            <h2 id="base-de-datos-sys-la-abstracción-simplificada">3.4. Base de
                 Datos sys (La Abstracción Simplificada)</h2>
             <p>La complejidad de performance_schema dificulta su uso rutinario en el
                 día a día del SysAdmin. Para solucionar esto, MySQL incluye la base de
