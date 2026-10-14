@@ -36,8 +36,8 @@
             <h3 id="ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
                 ACTIVIDAD <a class="headerlink" href="#ficha-técnica-de-la-actividad" title="Enlace permanente">¶</a>
             </h3>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
+                
                     <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                         <pre><code>Unidad Didáctica
 UD 6: Bases de Datos Distribuidas
@@ -62,8 +62,8 @@ Documento PDF con capturas. Cada captura debe ir
 precedida de un comentario SQL: SELECT 'Nombre Alumno - Actividad X';.
 Se debe visualizar la IP o el nombre del contenedor en el prompt.</code></pre>
                     </div>
-                </div>
-            </div>
+                
+            
             <h2 id="descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
                 OBJETIVOS <a class="headerlink" href="#descripción-general.-objetivos" title="Enlace permanente">¶</a>
             </h2>
@@ -118,13 +118,13 @@ Se debe visualizar la IP o el nombre del contenedor en el prompt.</code></pre>
                     </blockquote>
                 </li>
                 <li>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    
                         <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                             <pre><code>Entrega: Captura del comando SELECT * FROM
 performance_schema.replication_group_members; mostrando el nodo 1 como
 ONLINE.</code></pre>
                         </div>
-                    </div>
+                    
                 </li>
             </ol>
             <p><strong>Ejercicio 2: Unión de Nodos Secundarios (2
@@ -156,7 +156,7 @@ ONLINE.</code></pre>
                     puntos)</strong></p>
             <ol type="1">
                 <li>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    
                         <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                             <pre><code>En el Primario (normalmente mysql1), crea
 datos:
@@ -165,16 +165,16 @@ USE alta_disponibilidad;
 CREATE TABLE nodos (id INT PRIMARY KEY, nombre VARCHAR(50));
 INSERT INTO nodos VALUES (1, 'Nodo Primario Inicial');</code></pre>
                         </div>
-                    </div>
+                    
                 </li>
                 <li>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    
                         <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                             <pre><code>Accede a mysql3 (Secundario) y verifica la recepción
 inmediata:
 SELECT * FROM alta_disponibilidad.nodos;</code></pre>
                         </div>
-                    </div>
+                    
                 </li>
                 <li>
                     <blockquote>

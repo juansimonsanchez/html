@@ -185,14 +185,14 @@
                     </blockquote>
                 </li>
                 <li>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    
                         <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                             <pre><code>Almacenamiento de Respaldos Offsite / Remotos:
 Conservar las copias en una ubicación geográfica distinta a la del
 servidor principal (e.g., almacenamiento en la nube o en servidores de
 respaldo remotos protegidos contra catástrofes).</code></pre>
                         </div>
-                    </div>
+                    
                 </li>
                 <li>
                     <blockquote>
@@ -222,13 +222,13 @@ respaldo remotos protegidos contra catástrofes).</code></pre>
                 almacena físicamente las bases de datos está configurado en la variable
                 del sistema datadir:</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code># Comprobación de la ruta física desde la terminal del sistema
 operativo
 mysql -u root -p -e "SHOW VARIABLES LIKE 'datadir';"</code></pre>
                 </div>
-            </div>
+            
             </p>
             <p>Por defecto, la ruta es /var/lib/mysql. Dentro de este directorio,
                 cada base de datos tiene asignado su propio subdirectorio con el nombre
@@ -309,12 +309,12 @@ mysql -u root -p -e "SHOW VARIABLES LIKE 'datadir';"</code></pre>
                 de logs nuevos (muy útil para procesos de rotación y antes de copias de
                 seguridad), se ejecuta la instrucción:</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Forzar el volcado de buffers a disco y la rotación de logs
 FLUSH LOGS;</code></pre>
                 </div>
-            </div>
+            
             </p>
             <p>🔗 <strong>Documentación Oficial:</strong> Para conocer más
                 parámetros de los ficheros de log, lee <a
@@ -330,11 +330,11 @@ FLUSH LOGS;</code></pre>
             </p>
             <p>La sintaxis básica de ejecución desde el shell de Linux es:</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>mysqlbinlog [opciones] nombre_log_binario</code></pre>
                 </div>
-            </div>
+            
             </p>
             <p>Opciones Principales de mysqlbinlog</p>
             <ul>
@@ -367,7 +367,7 @@ FLUSH LOGS;</code></pre>
             </ul>
             <p>Ejemplos Prácticos de mysqlbinlog sobre nuestra base de datos</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code># Ejemplo 1: Convertir un binlog a fichero de texto plano legible
 para auditoría
@@ -378,7 +378,7 @@ para recuperar datos
 mysqlbinlog --database=practica_dml /var/lib/mysql/binlog.000001 |
 mysql -u root -p</code></pre>
                 </div>
-            </div>
+            
             </p>
             <h5 id="documentación-oficial-más-información-en-mysql-manual---mysqlbinlog-utility">🔗
                 Documentación Oficial: Más Información en <a
@@ -402,7 +402,7 @@ mysql -u root -p</code></pre>
                     que las tablas implicadas estén bloqueadas contra escritura</strong>
                 para evitar la corrupción de datos.</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code># Comprobar estado de consistencia de la tabla fabricante (tipo
 MyISAM si se requiere)
@@ -411,20 +411,20 @@ myisamchk --check /var/lib/mysql/practica_dml/fabricante.MYI
 myisamchk --recover --quick
 /var/lib/mysql/practica_dml/fabricante.MYI</code></pre>
                 </div>
-            </div>Opciones representativas: --silent (-s), --extended-check (-e),
+            Opciones representativas: --silent (-s), --extended-check (-e),
             --force (-f), --backup (-B).</p>
             <p><strong>mysqlcheck (Motor genérico en caliente)</strong></p>
             <p>A diferencia de myisamchk, esta utilidad se comunica con el servidor
                 MySQL en caliente (en ejecución) mediante comandos SQL nativos. Puede
                 utilizarse para tablas InnoDB y MyISAM.</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code># Analizar y reparar automáticamente todas las tablas del esquema
 'practica_dml'
 mysqlcheck -u root -p --auto-repair --check practica_dml</code></pre>
                 </div>
-            </div>
+            
             </p>
             <h5 id="documentación-oficial-más-información-en-mysql-manual---mysqlcheck-tool">🔗
                 Documentación Oficial: Más Información en <a
@@ -442,12 +442,12 @@ mysqlcheck -u root -p --auto-repair --check practica_dml</code></pre>
             <p>Chequea la estructura de la tabla y valida sus índices asociados.
                 Devolverá una tabla con el estado.</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>USE practica_dml;
 CHECK TABLE empleado, producto;</code></pre>
                 </div>
-            </div>
+            
             </h5>
             <h5 id="analyze-table">ANALYZE TABLE <a class="headerlink" href="#analyze-table"
                     title="Enlace permanente">¶</a></h5>
@@ -456,12 +456,12 @@ CHECK TABLE empleado, producto;</code></pre>
                 planes de ejecución óptimos (uso de índices secundarios adecuados).
                 Bloquea la tabla para lectura durante el procesamiento.</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Analizar el estado de los índices en la tabla de empleados
 ANALYZE TABLE empleado;</code></pre>
                 </div>
-            </div>
+            
             </h5>
             <h5 id="optimize-table">OPTIMIZE TABLE <a class="headerlink" href="#optimize-table"
                     title="Enlace permanente">¶</a></h5>
@@ -471,24 +471,24 @@ ANALYZE TABLE empleado;</code></pre>
                 fabricante de nuestro esquema practica_dml). Desfragmenta el archivo y
                 reduce su tamaño en disco.</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Desfragmentar la tabla fabricante tras realizar eliminaciones
 masivas
 OPTIMIZE TABLE fabricante;</code></pre>
                 </div>
-            </div>
+            
             </h5>
             <h5 id="repair-table">REPAIR TABLE <a class="headerlink" href="#repair-table"
                     title="Enlace permanente">¶</a></h5>
             <p>Sintaxis SQL para intentar la reparación inmediata de tablas
                 corruptas de tipo MyISAM (no compatible con InnoDB).</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>REPAIR TABLE fabricante QUICK;</code></pre>
                 </div>
-            </div>
+            
             </p>
             <h5 id="documentación-oficial-más-información-en-mysql-manual---table-maintenance-statements.">🔗
                 Documentación Oficial: Más Información en <a
@@ -568,32 +568,32 @@ OPTIMIZE TABLE fabricante;</code></pre>
                 Pool de la tabla producto se vuelquen de forma consistente a disco,
                 cerrando la tabla temporalmente:</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>USE practica_dml;
 FLUSH TABLES producto FOR EXPORT;</code></pre>
                 </div>
-            </div><em>(Mantener la sesión abierta para preservar el bloqueo de lectura
+            <em>(Mantener la sesión abierta para preservar el bloqueo de lectura
                 global).</em></p>
             <p><strong>Paso 2:</strong> Desde otra terminal de Linux, copiar
                 físicamente los metadatos .cfg y el archivo de datos producto.ibd
                 generados hacia la ruta de almacenamiento de backups segura:</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>cp /var/lib/mysql/practica_dml/producto.{ibd,cfg}
 /backups/fisico_practica/</code></pre>
                 </div>
-            </div>
+            
             </p>
             <p><strong>Paso 3:</strong> Una vez finalizada la copia física de los
                 ficheros, liberar el bloqueo en la terminal origen:</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>UNLOCK TABLES;</code></pre>
                 </div>
-            </div>
+            
             </h5>
             <h5 id="algoritmo-de-restauración-física-en-el-servidor-de-destino">Algoritmo
                 de Restauración Física en el Servidor de Destino <a class="headerlink"
@@ -603,34 +603,34 @@ FLUSH TABLES producto FOR EXPORT;</code></pre>
                 tabla creada vacía), se debe descartar el espacio de tablas lógico
                 existente para desvincular el archivo .ibd actual:</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>ALTER TABLE practica_dml.producto DISCARD TABLESPACE;</code></pre>
                 </div>
-            </div>
+            
             </p>
             <p><strong>Paso 5:</strong> Copiar el archivo producto.ibd respaldado en
                 el paso 2 dentro del directorio de la base de datos de destino
                 /var/lib/mysql/practica_dml/ y asegurar que el propietario y grupo de
                 permisos correspondan exactamente al daemon de MySQL:</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>cp /backups/fisico_practica/producto.ibd
 /var/lib/mysql/practica_dml/
 chown mysql:mysql /var/lib/mysql/practica_dml/producto.ibd
 chmod 660 /var/lib/mysql/practica_dml/producto.ibd</code></pre>
                 </div>
-            </div>
+            
             </p>
             <p><strong>Paso 6:</strong> Importar y vincular el nuevo archivo .ibd de
                 datos en la estructura del diccionario del SGBD:</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>ALTER TABLE practica_dml.producto IMPORT TABLESPACE;</code></pre>
                 </div>
-            </div>
+            
             </h4>
             <h2 id="copias-lógicas-o-textuales-dumping">5.3 Copias Lógicas o
                 Textuales (Dumping) <a class="headerlink" href="#copias-lógicas-o-textuales-dumping"
@@ -648,18 +648,18 @@ chmod 660 /var/lib/mysql/practica_dml/producto.ibd</code></pre>
                 <strong>Error 1290</strong>.
             </p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Comprobar el directorio permitido para exportación
 SHOW VARIABLES LIKE 'secure_file_priv';
 -- En sistemas estándar, el directorio por defecto suele ser
 '/var/lib/mysql-files/'</code></pre>
                 </div>
-            </div>
+            
             </p>
             <p><strong>Exportación consistente de la tabla de empleados</strong></p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>SELECT codigo_empleado, nombre, apellido1, email, salario,
 comision
@@ -669,14 +669,14 @@ OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 FROM practica_dml.empleado;</code></pre>
                 </div>
-            </div>
+            
             </h6>
             <p><strong>Restauración de los datos mediante LOAD DATA
                     INFILE</strong></p>
             <p>Para importar los datos en una tabla de backup previamente
                 estructurada:</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>USE practica_dml;
 -- Crear tabla vacía de copia de seguridad (estructura clonada de
@@ -689,7 +689,7 @@ FIELDS TERMINATED BY ','
 OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\n';</code></pre>
                 </div>
-            </div>
+            
             </h5>
             <p><strong>2. La Utilidad mysqldump</strong></p>
             <p>Herramienta clásica y versátil que vuelca una base de datos o tablas
@@ -697,34 +697,34 @@ LINES TERMINATED BY '\n';</code></pre>
             <p><strong>A. Sintaxis para exportar tablas específicas de una base de
                     datos:</strong></p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>mysqldump -u root -p practica_dml producto fabricante &gt;
 /backups/productos_fabricantes.sql</code></pre>
                 </div>
-            </div>
+            
             </h6>
             <p><strong>B. Sintaxis para exportar una o varias bases de datos
                     completas:</strong></p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code># Exportar las bases de datos practica_dml y tienda de forma
 estructurada
 mysqldump -u root -p --databases practica_dml &gt;
 /backups/respaldo_practica.sql</code></pre>
                 </div>
-            </div><em>(Nota: Al usar --databases, se insertan automáticamente las
+            <em>(Nota: Al usar --databases, se insertan automáticamente las
                 directivas CREATE DATABASE y USE en el fichero SQL de salida).</em></p>
             <p><strong>C. Sintaxis para exportar todas las bases de datos de la
                     instancia de MySQL:</strong></p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>mysqldump -u root -p --all-databases &gt;
 /backups/instancia_completa.sql</code></pre>
                 </div>
-            </div>
+            
             </h5>
             <p><strong>Opciones Críticas de Producción para mysqldump</strong></p>
             <ul>
@@ -753,22 +753,22 @@ mysqldump -u root -p --databases practica_dml &gt;
                     </blockquote>
                 </li>
                 <li>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    
                         <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                             <pre><code>--no-create-info (-t): Exporta únicamente los comandos INSERT INTO
 con los datos, omitiendo las instrucciones DDL de creación de
 tablas.</code></pre>
                         </div>
-                    </div>
+                    
                 </li>
                 <li>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    
                         <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                             <pre><code>--add-drop-table: Agrega la sentencia DROP TABLE IF EXISTS antes de
 cada definición de tabla. Evita errores de duplicados al restaurar bases
 de datos ya existentes.</code></pre>
                         </div>
-                    </div>
+                    
                 </li>
             </ul>
             <h5 id="documentación-oficial-más-información-en-mysql-manual---mysqldump-utility">🔗
@@ -783,14 +783,14 @@ de datos ya existentes.</code></pre>
                 la tabla correspondiente, la cual debe llamarse exactamente igual que el
                 nombre base del archivo físico a importar.</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code># Importar el fichero 'empleado.txt' en la tabla 'empleado' del
 esquema 'practica_dml'
 mysqlimport -u root -p --fields-terminated-by=',' practica_dml
 /var/lib/mysql-files/empleado.txt</code></pre>
                 </div>
-            </div>
+            
             </h3>
             <h1 id="escenario-de-producción-plan-de-respaldo-incremental-y-recuperación-point-in-time">6.
                 ESCENARIO DE PRODUCCIÓN: PLAN DE RESPALDO INCREMENTAL Y RECUPERACIÓN
@@ -809,12 +809,12 @@ mysqlimport -u root -p --fields-terminated-by=',' practica_dml
                 cualquier cambio posterior en un nuevo binlog secuencial (por ejemplo,
                 binlog.000002).</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>mysqldump -u root -p --single-transaction --flush-logs --databases
 practica_dml &gt; /backups/practica_dml_domingo.sql</code></pre>
                 </div>
-            </div><strong>Fase 2: Actividad Normal e Incidencia el Lunes a las 10:00
+            <strong>Fase 2: Actividad Normal e Incidencia el Lunes a las 10:00
                 h</strong></p>
             <p>Un desarrollador comete un fallo crítico de sintaxis en producción y
                 ejecuta un DELETE accidental sin cláusula WHERE sobre la tabla de
@@ -827,43 +827,43 @@ practica_dml &gt; /backups/practica_dml_domingo.sql</code></pre>
                 conexiones clientes y rotar los logs binarios para aislar la actividad
                 actual:</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>mysqladmin -u root -p flush-logs</code></pre>
                 </div>
-            </div><em>(Esto creará binlog.000003, cerrando binlog.000002 que contiene
+            <em>(Esto creará binlog.000003, cerrando binlog.000002 que contiene
                 la sentencia destructiva).</em></p>
             <p><strong>Paso 2:</strong> Importar la copia de seguridad completa
                 realizada el domingo, devolviendo la base de datos al estado consistente
                 del domingo a las 02:00 h:</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>mysql -u root -p &lt; /backups/practica_dml_domingo.sql</code></pre>
                 </div>
-            </div>
+            
             </p>
             <p><strong>Paso 3:</strong> Analizar el log binario binlog.000002 de
                 manera visual para encontrar la posición física o la fecha y hora
                 exactas de la transacción dañina:</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>mysqlbinlog --database=practica_dml /var/lib/mysql/binlog.000002 |
 grep -i -C 5 "delete"</code></pre>
                 </div>
-            </div><em>Supongamos que encontramos que la transacción destructiva
+            <em>Supongamos que encontramos que la transacción destructiva
                 ocurrió a las "2026-06-22 10:00:15".</em></p>
             <p><strong>Paso 4:</strong> Aplicar de forma secuencial todas las
                 transacciones realizadas desde el domingo hasta el instante previo a la
                 eliminación accidental (10:00:14 h):</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>mysqlbinlog --database=practica_dml --stop-datetime="2026-06-22
 10:00:14" /var/lib/mysql/binlog.000002 | mysql -u root -p</code></pre>
                 </div>
-            </div>
+            
             </p>
             <p>¡La base de datos se ha recuperado con total consistencia y sin
                 pérdida de datos válidos!</p>
@@ -891,14 +891,11 @@ grep -i -C 5 "delete"</code></pre>
                     </blockquote>
                 </li>
                 <li>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                            <pre><code>Activar las casillas Dump Stored Procedures and
-Functions, Dump Events y Dump
-Triggers según sea necesario para conservar la lógica de
-negocio de la unidad 11.</code></pre>
-                        </div>
-                    </div>
+                    
+                        <blockquote>
+                            <p>Activar las casillas <code>Dump Stored Procedures and Functions</code>, <code>Dump Events</code> y <code>Dump Triggers</code>, según sea necesario, para conservar la lógica de negocio de la unidad 11.</p>
+                        </blockquote>
+                    
                 </li>
                 <li>
                     <blockquote>

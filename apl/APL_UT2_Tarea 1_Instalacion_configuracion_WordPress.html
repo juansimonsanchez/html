@@ -76,7 +76,7 @@
           href="#método-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
       <ul>
         <li>
-          <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+          
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
               <pre><code>[X] Documento: Documento en formato
 [PDF] (UT2_Tarea1_NombreAlumno.pdf) que incluya la
@@ -86,7 +86,7 @@ completamente justificado, con los apartados destacados
 en negrita. Cada captura debe llevar un comentario
 explicativo inferior sobre la acción de ingeniería realizada.</code></pre>
             </div>
-          </div>
+          
         </li>
         <li>
           <blockquote>
@@ -185,14 +185,14 @@ explicativo inferior sobre la acción de ingeniería realizada.</code></pre>
           contenidos</strong></p>
       <p>Vamos a ejecutar los siguientes comandos</p>
       <p>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+      
         <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
           <pre><code>sudo mkdir -p /srv/www
 sudo chown -R www-data: /srv/www
 curl https://wordpress.org/latest.tar.gz | sudo -u www-data tar zx -C
 /srv/www</code></pre>
         </div>
-      </div>Hacer una captura de pantalla de la ejecución de esos comandos,
+      Hacer una captura de pantalla de la ejecución de esos comandos,
       indicando para qué sirve cada comando.</p>
       <p>Con el último comando saldrá algo así:</p>
       <p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/media/image1.png"
@@ -202,11 +202,11 @@ curl https://wordpress.org/latest.tar.gz | sudo -u www-data tar zx -C
         MySQL. Vamos a crearla. Entramos en la consola de MySQL y ejecutamos
         unas sentencias SQL.</p>
       <p>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+      
         <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
           <pre><code>sudo mysql -u root</code></pre>
         </div>
-      </div>
+      
       </p>
       <p>Está marcado en negrita lo que se tiene que introducir, así como los
         mensajes que salen al introducirlos. <strong>IMPORTANTE</strong>: Donde
@@ -215,7 +215,7 @@ curl https://wordpress.org/latest.tar.gz | sudo -u www-data tar zx -C
         contraseña entre comillas simples. No copies. Los “;” son importantes al
         final de cada sentencia.</p>
       <p>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+      
         <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
           <pre><code>CREATE DATABASE wordpress;
 CREATE USER wordpress@localhost IDENTIFIED BY
@@ -226,36 +226,36 @@ TO wordpress@localhost;
 FLUSH PRIVILEGES;
 QUIT;</code></pre>
         </div>
-      </div>
+      
       </p>
       <p>Hacer capturas de la ejecución de esos comandos.</p>
       <p>Reiniciamos MySQL con:</p>
       <p>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+      
         <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
           <pre><code>sudo systemctl restart mysql</code></pre>
         </div>
-      </div>
+      
       </p>
       <p><strong>Paso 4. Creamos un archivo con la configuración para
           Wordpress.</strong></p>
       <p>Hacemos una copia del archivo wp-config-sample.php con el nombre
         wp-config.php.</p>
       <p>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+      
         <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
           <pre><code>sudo cp /srv/www/wordpress/wp-config-sample.php
 /srv/www/wordpress/wp-config.php</code></pre>
         </div>
-      </div>
+      
       </p>
       <p>Vamos a modificar este archivo teniendo en cuenta lo siguiente:</p>
       <p>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+      
         <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
           <pre><code>sudo nano /srv/www/wordpress/wp-config.php</code></pre>
         </div>
-      </div>
+      
       </p>
       <p>Buscamos</p>
       <p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/media/image6.png"
@@ -296,11 +296,11 @@ QUIT;</code></pre>
         </li>
       </ol>
       <p>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+      
         <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
           <pre><code>sudo mv /srv/www/wordpress /var/www/html/iescelia</code></pre>
         </div>
-      </div>
+      
       </p>
       <p><strong>Paso 5: Primer acceso a Wordpress</strong></p>
       <p>Ya podemos acceder a nuestro Wordpress desde el navegador con la

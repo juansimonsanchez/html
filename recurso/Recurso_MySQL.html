@@ -47,31 +47,31 @@
       <p>Ejecuta el gestor de paquetes apt para instalar la versión oficial
         incluida en los repositorios de Ubuntu:</p>
       <p>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+      
         <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
           <pre><code>sudo apt update
 sudo apt install -y mysql-server</code></pre>
         </div>
-      </div><strong>Paso 2: Verificar que el servicio esté activo</strong></p>
+      <strong>Paso 2: Verificar que el servicio esté activo</strong></p>
       <p>Una vez finalizada la instalación, verifica que el motor de la base
         de datos esté ejecutándose correctamente:</p>
       <p>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+      
         <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
           <pre><code>sudo systemctl status mysql</code></pre>
         </div>
-      </div><em>Deberías ver el estado en verde como active (running).</em></p>
+      <em>Deberías ver el estado en verde como active (running).</em></p>
       <p><strong>Paso 3: Configurar la seguridad inicial
           (mysql_secure_installation)</strong></p>
       <p>Ejecuta el script de seguridad integrado para establecer reglas
         básicas (como cambiar la política de contraseñas y eliminar usuarios
         anónimos):</p>
       <p>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+      
         <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
           <pre><code>sudo mysql_secure_installation</code></pre>
         </div>
-      </div>El asistente te hará las siguientes preguntas:</p>
+      El asistente te hará las siguientes preguntas:</p>
       <ol type="1">
         <li>
           <blockquote>
@@ -126,44 +126,44 @@ sudo apt install -y mysql-server</code></pre>
         </li>
       </ol>
       <p>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+      
         <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
           <pre><code>sudo mysql</code></pre>
         </div>
-      </div>Cambia el método de autenticación y asigna una contraseña ejecutando
+      Cambia el método de autenticación y asigna una contraseña ejecutando
       la siguiente consulta SQL (reemplaza TuPasswordSegura123! por tu
       clave):</p>
       </blockquote>
       </li>
       </ol>
       <p>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+      
         <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
           <pre><code>ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password
 BY 'TuPasswordSegura123!';
 FLUSH PRIVILEGES;
 EXIT;</code></pre>
         </div>
-      </div>Cuidado para no tener problema y poder acceder desde cualquier
+      Cuidado para no tener problema y poder acceder desde cualquier
       equipo establecer como método de autenticación mysql_native_password</p>
       <p>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+      
         <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
           <pre><code>ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password
 BY 'TuPasswordSegura123!';
 FLUSH PRIVILEGES;
 EXIT;</code></pre>
         </div>
-      </div>Paso 5: Comprobar el acceso
+      Paso 5: Comprobar el acceso
       local</h3>
       <p>Ahora puedes iniciar sesión en MySQL con tu usuario y contraseña
         mediante el cliente local:</p>
       <p>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+      
         <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
           <pre><code>mysql -u root -p</code></pre>
         </div>
-      </div>
+      
       </p>
       <h2 id="instalación-de-mysql-en-opensuse">Instalación de MySQL en
         OpenSuse <a class="headerlink" href="#instalación-de-mysql-en-opensuse" title="Enlace permanente">¶</a></h2>
@@ -178,7 +178,7 @@ EXIT;</code></pre>
         logs sobre el volumen físico local para permitir un análisis interactivo
         sin perder persistencia.</p>
       <p>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+      
         <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
           <pre><code>version: '3.8'
 services:
@@ -214,10 +214,10 @@ networks:
 asir-net:
 driver: bridge</code></pre>
         </div>
-      </div>
+      
       </p>
       <p>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+      
         <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
           <pre><code># Iniciar contenedor
 docker compose up -d
@@ -232,16 +232,16 @@ docker exec -it mysql-sysadmin-ut1 bash
 # Ejecutar MySQL
 mysql -u root -p -P 3306</code></pre>
         </div>
-      </div>Si no tenemos instalado MySQL en el servidor necesitaremos un
+      Si no tenemos instalado MySQL en el servidor necesitaremos un
       cliente:</p>
       <p>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+      
         <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
           <pre><code>sudo apt install mysql-client-core-8.0
 # El acceso en este caso será con:
 mysql -u root -p -h 127.0.0.1 -P 3306</code></pre>
         </div>
-      </div>
+      
       </p>
 
     </main>

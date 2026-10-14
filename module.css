@@ -1,0 +1,117 @@
+@import url("style.css");
+
+:root {
+    --module-content-width: 1100px;
+    --module-surface: #ffffff;
+    --module-border: #d8e0e8;
+    --module-muted: #526173;
+}
+
+body {
+    line-height: 1.65;
+}
+
+#page-layout {
+    display: block;
+    min-height: calc(100vh - 62px);
+}
+
+#main-content {
+    width: 100% !important;
+    max-width: var(--module-content-width) !important;
+    margin: 0 auto;
+    padding: 2.25rem 2rem;
+    box-sizing: border-box;
+}
+
+#main-content h1 {
+    line-height: 1.2;
+    margin: 0 0 1rem;
+}
+
+#main-content h2,
+#main-content h3 {
+    line-height: 1.3;
+}
+
+.module-index .module-intro {
+    max-width: 72ch;
+    margin: 0 0 2rem;
+    color: var(--module-muted);
+    font-size: 1.05rem;
+}
+
+.module-index .module-sections {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+    align-items: start;
+}
+
+.module-index .module-section {
+    min-width: 0;
+    padding: 1.25rem 1.4rem;
+    background: var(--module-surface);
+    border: 1px solid var(--module-border);
+    border-top: 3px solid var(--primary);
+    border-radius: 6px;
+}
+
+.module-index .module-section h2 {
+    margin: 0 0 0.75rem;
+    padding: 0 0 0.65rem;
+    border-bottom: 1px solid var(--module-border);
+    color: var(--text-body);
+    font-size: 1.15rem;
+}
+
+.module-index .module-section ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.module-index .module-section li + li {
+    border-top: 1px solid #edf1f5;
+}
+
+.module-index .module-section a {
+    display: block;
+    padding: 0.62rem 0.15rem;
+    color: var(--primary-dark);
+    font-weight: 600;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+    overflow-wrap: anywhere;
+}
+
+.module-index .module-section a:hover {
+    color: #0f172a;
+}
+
+.table-wrapper .table-wrapper {
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.code-wrapper pre {
+    white-space: pre;
+    word-break: normal;
+}
+
+@media (max-width: 700px) {
+    #main-content {
+        padding: 1.4rem 1rem;
+    }
+
+    .module-index .module-sections {
+        grid-template-columns: 1fr;
+        gap: 0.9rem;
+    }
+
+    .module-index .module-section {
+        padding: 1rem;
+    }
+}

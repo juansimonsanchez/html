@@ -78,7 +78,7 @@
                         SQL</u></a></p>
             <p><a href="#manipulación-de-bases-de-datos-en-mysql"><u>3. MANIPULACIÓN
                         DE BASES DE DATOS EN MYSQL</u></a></p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>3.1
 Creación de Bases de Datos: Parámetros del Sistema
@@ -96,10 +96,10 @@ Modificación de Bases de Datos (ALTER DATABASE)
 3.3 Eliminación Segura
 (DROP DATABASE)</code></pre>
                 </div>
-            </div>
+            
             <p><a href="#manipulación-de-tablas"><u>4. MANIPULACIÓN DE
                         TABLAS</u></a></p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>4.1 Sentencia de
 Creación (CREATE TABLE)
@@ -123,7 +123,7 @@ Adición y Eliminación de Atributos (ADD / DROP COLUMN)
 4.3 Eliminación de
 Tablas (DROP TABLE)</code></pre>
                 </div>
-            </div>
+            
             <p><a href="#tipos-de-datos-en-mysql"><u>5. TIPOS DE DATOS EN
                         MYSQL</u></a></p>
             <blockquote>
@@ -252,7 +252,7 @@ Tablas (DROP TABLE)</code></pre>
                 ejecución de scripts automatizados de despliegue (como Ansible o scripts
                 de Shell) si el esquema ya se encuentra en el servidor.</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Creación básica (Aplica el juego de caracteres del servidor por
 defecto)
@@ -262,7 +262,7 @@ CREATE DATABASE IF NOT EXISTS sysadmin_prod
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;</code></pre>
                 </div>
-            </div>
+            
             </h5>
             <h4 id="conceptos-de-codificación-de-caracteres-estándar-unicode">3.1.1
                 Conceptos de Codificación de Caracteres: Estándar Unicode <a class="headerlink"
@@ -367,7 +367,7 @@ COLLATE utf8mb4_unicode_ci;</code></pre>
                 </div>
             </div>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Inspección del juego de caracteres y colaciones disponibles en el
 motor
@@ -378,7 +378,7 @@ base de datos actual
 USE sysadmin_prod;
 SELECT @@character_set_database, @@collation_database;</code></pre>
                 </div>
-            </div>
+            
             </h5>
             <h3 id="impacto-del-cotejamiento-en-la-ordenación-física-de-tablas">3.1.4
                 Impacto del Cotejamiento en la Ordenación Física de Tablas <a class="headerlink"
@@ -389,7 +389,7 @@ SELECT @@character_set_database, @@collation_database;</code></pre>
                 diccionario de datos en base al cotejamiento asignado a la columna o
                 tabla:</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Creación de tabla de prueba con codificación clásica latina
 CREATE TABLE tabla_cotejo (
@@ -413,7 +413,7 @@ tienen códigos menores que minúsculas)
 SELECT cadena FROM tabla_cotejo ORDER BY cadena COLLATE
 latin1_bin;</code></pre>
                 </div>
-            </div>
+            
             </h2>
             <h2 id="modificación-de-bases-de-datos-alter-database">3.2 Modificación
                 de Bases de Datos (ALTER DATABASE) <a class="headerlink"
@@ -421,14 +421,14 @@ latin1_bin;</code></pre>
             <p>Permite alterar los parámetros estructurales por defecto del esquema
                 sin necesidad de recrear los objetos internos.</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Cambio de codificación en caliente para dar soporte a Unicode
 completo
 ALTER DATABASE sysadmin_prod CHARACTER SET utf8mb4 COLLATE
 utf8mb4_unicode_ci;</code></pre>
                 </div>
-            </div>
+            
             </h2>
             <h2 id="eliminación-segura-drop-database">3.3 Eliminación Segura (DROP
                 DATABASE) <a class="headerlink" href="#eliminación-segura-drop-database" title="Enlace permanente">¶</a>
@@ -437,12 +437,12 @@ utf8mb4_unicode_ci;</code></pre>
                 base de datos y todas sus tablas. Debe usarse con extrema precaución en
                 scripts de automatización.</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Eliminación controlada de un esquema de datos
 DROP DATABASE IF EXISTS sysadmin_prod;</code></pre>
                 </div>
-            </div>
+            
             </p>
             <h1 id="manipulación-de-tablas">4. MANIPULACIÓN DE TABLAS <a class="headerlink"
                     href="#manipulación-de-tablas" title="Enlace permanente">¶</a></h1>
@@ -462,7 +462,7 @@ DROP DATABASE IF EXISTS sysadmin_prod;</code></pre>
                     title="Enlace permanente">¶</a>
             </h6>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Creación de la base de datos para el despliegue del esquema
 CREATE DATABASE IF NOT EXISTS logistica_empresa CHARSET utf8mb4;
@@ -492,7 +492,7 @@ CONSTRAINT fk_pieza_categoria FOREIGN KEY (id_categoria)
 REFERENCES categoria(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;</code></pre>
                 </div>
-            </div>
+            
             </h3>
             <h3 id="restricciones-de-integridad-y-atributos-de-columna">4.1.1
                 Restricciones de Integridad y Atributos de Columna <a class="headerlink"
@@ -574,7 +574,7 @@ REFERENCES categoria(id)
                     title="Enlace permanente">¶</a>
             </h6>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Ejemplo de configuración relacional con Cascade para gestión
 automatizada
@@ -588,7 +588,7 @@ ON DELETE CASCADE
 ON UPDATE CASCADE
 ) ENGINE=InnoDB;</code></pre>
                 </div>
-            </div>
+            
             </h3>
             <h3 id="configuración-de-opciones-de-tabla">4.1.3 Configuración de
                 Opciones de Tabla <a class="headerlink" href="#configuración-de-opciones-de-tabla"
@@ -610,7 +610,7 @@ ON UPDATE CASCADE
                 </li>
             </ul>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Configuración avanzada de almacenamiento
 CREATE TABLE usuarios_logs (
@@ -618,7 +618,7 @@ id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 accion VARCHAR(255) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8mb4;</code></pre>
                 </div>
-            </div>4.2 Modificación
+            4.2 Modificación
             Estructural (ALTER TABLE)</h2>
             <p>Esencial para aplicar parches de migración de datos en entornos de
                 producción sin pérdida de registros existentes.</p>
@@ -638,13 +638,13 @@ accion VARCHAR(255) NOT NULL
             <p>Modifica el tipo de dato o las restricciones asociadas a una columna
                 existente, manteniendo el nombre de esta.</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Cambiar la columna "nombre" para aceptar más caracteres y hacerla
 obligatoria
 ALTER TABLE categoria MODIFY nombre VARCHAR(150) NOT NULL;</code></pre>
                 </div>
-            </div>
+            
             </h3>
             <h3 id="renombrado-y-cambio-estructurado-change">4.2.2 Renombrado y
                 Cambio Estructurado (CHANGE) <a class="headerlink" href="#renombrado-y-cambio-estructurado-change"
@@ -652,14 +652,14 @@ ALTER TABLE categoria MODIFY nombre VARCHAR(150) NOT NULL;</code></pre>
             <p>Permite renombrar una columna física además de redefinir su tipo de
                 dato de forma simultánea.</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Modifica el nombre de la columna "nombre" a
 "nombre_categoria"
 ALTER TABLE categoria CHANGE nombre nombre_categoria VARCHAR(100) NOT
 NULL;</code></pre>
                 </div>
-            </div>
+            
             </p>
             <h3 id="gestión-de-valores-por-defecto-alter-...-setdrop-default">4.2.3
                 Gestión de Valores por Defecto (ALTER ... SET/DROP DEFAULT) <a class="headerlink"
@@ -668,7 +668,7 @@ NULL;</code></pre>
             <p>Permite la modificación del metadato por defecto sin modificar el
                 tipo de columna.</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Añadir rol por defecto al registrar un usuario nuevo
 ALTER TABLE usuarios_logs ADD COLUMN rol ENUM("SysAdmin", "Operador")
@@ -677,12 +677,12 @@ ALTER TABLE usuarios_logs ALTER rol SET DEFAULT "Operador";
 -- Eliminar valor por defecto
 ALTER TABLE usuarios_logs ALTER rol DROP DEFAULT;</code></pre>
                 </div>
-            </div>4.2.4
+            4.2.4
             Adición y Eliminación de Atributos (ADD / DROP COLUMN)</h3>
             <p>Define las reglas físicas de ubicación de nuevas columnas dentro de
                 la estructura de la tupla física en disco.</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Añade una columna al final de la tabla
 ALTER TABLE usuarios_logs ADD COLUMN timestamp_registro TIMESTAMP NOT
@@ -694,7 +694,7 @@ ALTER TABLE usuarios_logs ADD COLUMN id_interno INT FIRST;
 -- Eliminar columna física y sus datos asociados permanentemente
 ALTER TABLE usuarios_logs DROP COLUMN id_interno;</code></pre>
                 </div>
-            </div>
+            
             </p>
             <h2 id="eliminación-de-tablas-drop-table">4.3 Eliminación de Tablas
                 (DROP TABLE) <a class="headerlink" href="#eliminación-de-tablas-drop-table"
@@ -702,13 +702,13 @@ ALTER TABLE usuarios_logs DROP COLUMN id_interno;</code></pre>
             <p>Elimina la estructura de metadatos, los índices físicos y los datos
                 contenidos de la tabla del disco.</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Borrado unitario y múltiple controlado
 DROP TABLE IF EXISTS pieza;
 DROP TABLE IF EXISTS pieza_cascade, usuarios_logs;</code></pre>
                 </div>
-            </div>
+            
             </p>
             <h1 id="tipos-de-datos-en-mysql">5. TIPOS DE DATOS EN MYSQL <a class="headerlink"
                     href="#tipos-de-datos-en-mysql" title="Enlace permanente">¶</a></h1>
@@ -784,7 +784,7 @@ DROP TABLE IF EXISTS pieza_cascade, usuarios_logs;</code></pre>
                 ceros a la izquierda de forma visual en las terminales que soporten este
                 atributo hasta alcanzar el tamaño especificado.</p>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Ejemplo práctico de visualización
 CREATE TABLE demo_zerofill (
@@ -793,7 +793,7 @@ numero INT(4) ZEROFILL
 INSERT INTO demo_zerofill VALUES (5);
 -- Al hacer SELECT, la salida mostrada será: "0005"</code></pre>
                 </div>
-            </div>
+            
             </p>
             <h3 id="tipos-especiales-bit-bool-serial">5.1.2 Tipos Especiales (BIT,
                 BOOL, SERIAL) <a class="headerlink" href="#tipos-especiales-bit-bool-serial"
@@ -859,7 +859,7 @@ INSERT INTO demo_zerofill VALUES (5);
                 </li>
             </ul>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Definición idónea para transacciones bancarias o e-commerce
 CREATE TABLE transaccion (
@@ -868,7 +868,7 @@ importe DECIMAL(10,2) NOT NULL -- Permite hasta 8 dígitos enteros y 2
 decimales
 );</code></pre>
                 </div>
-            </div>5.4 Fechas y Tiempo </h2>
+            5.4 Fechas y Tiempo </h2>
             <div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>
@@ -1024,7 +1024,7 @@ decimales
                     title="Enlace permanente">¶</a>
             </h6>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Creación de tabla para almacenamiento no relacional
 estructurado
@@ -1042,7 +1042,7 @@ SELECT metadatos-&gt;"$.servidor" AS servidor,
 metadatos-&gt;"$.servicios[0]" AS puerto_principal
 FROM auditoria_config;</code></pre>
                 </div>
-            </div>
+            
             </h2>
             <h2 id="configuración-y-gestión-de-sql_mode">5.9 Configuración y Gestión
                 de sql_mode <a class="headerlink" href="#configuración-y-gestión-de-sql_mode"
@@ -1062,7 +1062,7 @@ FROM auditoria_config;</code></pre>
                     title="Enlace permanente">¶</a>
             </h6>
             <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Consulta del valor actual de sql_mode del servidor
 SELECT @@GLOBAL.sql_mode;
@@ -1084,7 +1084,7 @@ impide la inserción
 (255) y muestra un WARNING
 INSERT INTO test_overflow VALUES (300);</code></pre>
                 </div>
-            </div>
+            
             </p>
 
         </main>

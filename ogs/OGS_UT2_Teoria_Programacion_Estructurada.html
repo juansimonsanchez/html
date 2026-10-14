@@ -665,15 +665,7 @@ NameError: name 'resta' is not defined</code></pre>
       </div>
 
       <h2 id="funciones-recursivas">6.3. Funciones Recursivas <a class="headerlink" href="#funciones-recursivas" title="Enlace permanente">¶</a></h2>
-      <p>Ejemplo previo iterativo para calcular el factorial de un número:</p>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-        <pre><code>def factorial(n):
-    """Calcula el factorial de un número"""
-    resultado = 1
-    for i in range(1, n + 1):
-        resultado *= i
-    return resultado</code></pre>
-      </div>
+      <p>La versión iterativa de esta función se ha mostrado en el apartado 6.1; a continuación se implementa de forma recursiva.</p>
 
       <p>El factorial de un número también puede ser calculado de forma recursiva: el factorial de 0 o de 1 es 1, y el factorial de cualquier otro número es igual a dicho número multiplicado por el factorial del número anterior (<code>n - 1</code>).</p>
       <p>Una <strong>función recursiva</strong> es aquella que durante su ejecución realiza llamadas a sí misma. Por ello, siempre es imprescindible definir un <strong>caso base</strong> que detenga la cadena de llamadas sucesivas:</p>
@@ -687,8 +679,8 @@ NameError: name 'resta' is not defined</code></pre>
 
       <p>Invocación de la función:</p>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-        <pre><code>&gt;&gt;&gt; factorial(5)
-120</code></pre>
+        <pre><code>&gt;&gt;&gt; factorial(6)
+      720</code></pre>
       </div>
 
       <!-- ================= SECCIÓN 7: MÓDULOS ================= -->
