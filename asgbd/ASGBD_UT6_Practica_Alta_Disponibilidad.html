@@ -10,32 +10,32 @@
 </head>
 
 <body>
-    <header id="site-header">
+    <header id="a1">
         <div class="header-container">
-            <div class="site-title site-title-row"><img src="logo.png" alt="Logo" class="site-logo"><span>ASGBD
+            <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>ASGBD
                     &ndash; Ut6 Practica Alta Disponibilidad</span></div>
             <nav class="top-nav">
                 <a href="index.html" class="nav-btn">Inicio</a>
             </nav>
         </div>
     </header>
-    <div id="page-layout">
+    <div id="a2">
 
-        <main id="main-content">
+        <main id="a3">
             <div class="page-actions"><a
                     href="ASGBD_UT6_Practica_Alta_Disponibilidad.pdf" download
                     class="pdf-download-btn">📥
                     Descargar PDF</a></div>
 
 
-            <h2 id="ud-6---práctica.-de-datos-distribuidas-y-alta-disponibilidad">UD
+            <h2 id="ud-6-practica-de-datos-distribuidas-y-alta-disponibilidad">UD
                 6 - Práctica. de Datos Distribuidas y Alta Disponibilidad <a class="headerlink"
-                    href="#ud-6---práctica.-de-datos-distribuidas-y-alta-disponibilidad" title="Enlace permanente">¶</a>
+                    href="#ud-6-practica-de-datos-distribuidas-y-alta-disponibilidad" title="Enlace permanente">¶</a>
             </h2>
-            <h3 id="ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
-                ACTIVIDAD <a class="headerlink" href="#ficha-técnica-de-la-actividad" title="Enlace permanente">¶</a>
+            <h3 id="ficha-tecnica-de-la-actividad">FICHA TÉCNICA DE LA
+                ACTIVIDAD <a class="headerlink" href="#ficha-tecnica-de-la-actividad" title="Enlace permanente">¶</a>
             </h3>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                         <pre><code>Unidad Didáctica
 UD 6: Bases de Datos Distribuidas
 
@@ -58,19 +58,19 @@ Método de entrega
 Documento PDF con capturas. Cada captura debe ir
 precedida de un comentario SQL: SELECT 'Nombre Alumno - Actividad X';.
 Se debe visualizar la IP o el nombre del contenedor en el prompt.</code></pre>
-                    
+
 
 </div>
-            <h2 id="descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
-                OBJETIVOS <a class="headerlink" href="#descripción-general.-objetivos" title="Enlace permanente">¶</a>
+            <h2 id="a1-descripcion-general-objetivos">1. DESCRIPCIÓN GENERAL.
+                OBJETIVOS <a class="headerlink" href="#a1-descripcion-general-objetivos" title="Enlace permanente">¶</a>
             </h2>
             <p><strong>Objetivo:</strong> Configurar y gestionar un clúster de alta
                 disponibilidad basado en <strong>MySQL Group Replication</strong> en
                 modo <em>Single-Primary</em>.</p>
-            <h2 id="actividades-a-realizar">2. ACTIVIDADES A REALIZAR <a class="headerlink"
-                    href="#actividades-a-realizar" title="Enlace permanente">¶</a></h2>
-            <h4 id="fase-1-preparación-entorno">Fase 1: Preparación (Entorno) <a class="headerlink"
-                    href="#fase-1-preparación-entorno" title="Enlace permanente">¶</a></h4>
+            <h2 id="a2-actividades-a-realizar">2. ACTIVIDADES A REALIZAR <a class="headerlink"
+                    href="#a2-actividades-a-realizar" title="Enlace permanente">¶</a></h2>
+            <h4 id="fase-1-preparacion-entorno">Fase 1: Preparación (Entorno) <a class="headerlink"
+                    href="#fase-1-preparacion-entorno" title="Enlace permanente">¶</a></h4>
             <ul>
                 <li>
                     <blockquote>
@@ -104,22 +104,22 @@ Se debe visualizar la IP o el nombre del contenedor en el prompt.</code></pre>
                 </li>
                 <li>
                     <blockquote>
-                        <p>Ejecuta los comandos de inicialización:<br />
-                            -- Configura el canal de recuperación<br />
+                        <p>Ejecuta los comandos de inicialización:<br>
+                            -- Configura el canal de recuperación<br>
                             CHANGE MASTER TO MASTER_USER='repl', MASTER_PASSWORD='replpassword' FOR
-                            CHANNEL 'group_replication_recovery';<br />
-                            -- Activa el bootstrap para crear el grupo<br />
-                            SET GLOBAL group_replication_bootstrap_group=ON;<br />
-                            START GROUP_REPLICATION;<br />
+                            CHANNEL 'group_replication_recovery';<br>
+                            -- Activa el bootstrap para crear el grupo<br>
+                            SET GLOBAL group_replication_bootstrap_group=ON;<br>
+                            START GROUP_REPLICATION;<br>
                             SET GLOBAL group_replication_bootstrap_group=OFF;</p>
                     </blockquote>
                 </li>
                 <li>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Entrega: Captura del comando SELECT * FROM
 performance_schema.replication_group_members; mostrando el nodo 1 como
 ONLINE.</code></pre>
-                        
+
 </div>
                 </li>
             </ol>
@@ -134,9 +134,9 @@ ONLINE.</code></pre>
                 </li>
                 <li>
                     <blockquote>
-                        <p>En cada uno, ejecuta:<br />
+                        <p>En cada uno, ejecuta:<br>
                             CHANGE MASTER TO MASTER_USER='repl', MASTER_PASSWORD='replpassword' FOR
-                            CHANNEL 'group_replication_recovery';<br />
+                            CHANNEL 'group_replication_recovery';<br>
                             START GROUP_REPLICATION;</p>
                     </blockquote>
                 </li>
@@ -152,22 +152,22 @@ ONLINE.</code></pre>
                     puntos)</strong></p>
             <ol type="1">
                 <li>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>En el Primario (normalmente mysql1), crea
 datos:
 CREATE DATABASE alta_disponibilidad;
 USE alta_disponibilidad;
 CREATE TABLE nodos (id INT PRIMARY KEY, nombre VARCHAR(50));
 INSERT INTO nodos VALUES (1, 'Nodo Primario Inicial');</code></pre>
-                        
+
 </div>
                 </li>
                 <li>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Accede a mysql3 (Secundario) y verifica la recepción
 inmediata:
 SELECT * FROM alta_disponibilidad.nodos;</code></pre>
-                        
+
 </div>
                 </li>
                 <li>
@@ -227,7 +227,7 @@ SELECT * FROM alta_disponibilidad.nodos;</code></pre>
                     </blockquote>
                 </li>
             </ol>
-            <h2 id="calificación">4. CALIFICACIÓN <a class="headerlink" href="#calificación"
+            <h2 id="a4-calificacion">4. CALIFICACIÓN <a class="headerlink" href="#a4-calificacion"
                     title="Enlace permanente">¶</a></h2>
             <blockquote>
                 <p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
@@ -241,10 +241,10 @@ SELECT * FROM alta_disponibilidad.nodos;</code></pre>
                     <table>
                         <thead>
                             <tr class="header">
-                                <th><strong>Apartado</strong></th>
-                                <th><strong>Realizado correctamente (100%)</strong></th>
-                                <th><strong>Realizado con algún error (70%)</strong></th>
-                                <th><strong>Realizado con errores (40%)</strong></th>
+                                <th scope="col"><strong>Apartado</strong></th>
+                                <th scope="col"><strong>Realizado correctamente (100%)</strong></th>
+                                <th scope="col"><strong>Realizado con algún error (70%)</strong></th>
+                                <th scope="col"><strong>Realizado con errores (40%)</strong></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -287,8 +287,8 @@ SELECT * FROM alta_disponibilidad.nodos;</code></pre>
         </main>
     </div>
 
-    </main>
-    </div>
+
+
 </body>
 
 </html>

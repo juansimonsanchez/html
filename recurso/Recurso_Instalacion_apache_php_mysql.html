@@ -10,34 +10,34 @@
 </head>
 
 <body>
-    <header id="site-header">
+    <header id="a1">
         <div class="header-container">
-            <div class="site-title site-title-row"><img src="logo.png" alt="Logo" class="site-logo"><span>RECURSO
+            <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>RECURSO
                     &ndash; Instalacion Apache Php Mysql</span></div>
             <nav class="top-nav">
                 <a href="index.html" class="nav-btn">Inicio</a>
             </nav>
         </div>
     </header>
-    <div id="page-layout">
-        <main id="main-content">
+    <div id="a2">
+        <main id="a3">
             <div class="page-actions"><a
                     href="Recurso_Instalacion_apache_php_mysql.pdf" download
                     class="pdf-download-btn">📥
                     Descargar PDF</a></div>
 
-            <header id="title-block-header">
-                <h1 class="title"><span id="_fob6gqcy17na" class="anchor"></span>Instalación de apache junto php y MySQL
+            <header id="a4">
+                <h1 class="title" id="instalacion-de-apache-junto-php-y-mysql"><span id="a5" class="anchor"></span>Instalación de apache junto php y MySQL
                 </h1>
             </header>
             <p>Ejecutar</p>
 
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>sudo apt update</code></pre>
             </div>
 
             <p>y después ejecutar lo siguiente</p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>sudo apt install apache2 \
             ghostscript \
             libapache2-mod-php \
@@ -64,20 +64,20 @@
             <p>Previamente tendremos que asegurándonos de que <em>/var/www/html</em>
                 pertenezca al grupo www-data en nuestra instancia:</p>
 
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>sudo chgrp www-data /var/www/html</code></pre>
             </div>
 
             <p>Nos aseguramos también que nuestro usuario pertenezca al mismo
                 grupo:</p>
 
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>sudo usermod -a -G www-data ubuntu</code></pre>
             </div>
 
             <p>Asignamos los permisos adecuados:</p>
 
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>sudo chmod -R 775 /var/www/html
 sudo chmod -R g+s /var/www/html</code></pre>
             </div>
@@ -85,7 +85,7 @@ sudo chmod -R g+s /var/www/html</code></pre>
             <p>Y por último nos aseguramos de ser los propietarios del
                 directorio:</p>
 
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>sudo chown -R ubuntu /var/www/html</code></pre>
             </div>
 

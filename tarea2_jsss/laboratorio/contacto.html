@@ -11,7 +11,7 @@
 
     <header>
         <!-- Fase 1.2: .destacado en contacto.html -->
-        <h1 class="destacado">Soporte Técnico y Reporte de Incidencias</h1>
+        <h1 class="destacado" id="soporte-tecnico-y-reporte-de-incidencias">Soporte Técnico y Reporte de Incidencias</h1>
         <!-- Fase 4.1: Menú con fondo transparente -->
         <nav>
             <ul>
@@ -27,14 +27,14 @@
     <main>
         <!-- Fase 2.1: margin de 30px en contacto.html -->
         <section>
-            <h2>Centro de Asistencia a Puestos</h2>
+            <h2 id="centro-de-asistencia-a-puestos">Centro de Asistencia a Puestos</h2>
             <!-- Fase 3.1: .contenedor-flex con alineación space-around -->
             <div class="contenedor-flex">
-                <img src="soporte.png" alt="Banner de Soporte Técnico" width="450" height="180">
+                <img src="soporte.png" alt="imagen" width="450" height="180">
             </div>
-            
+
             <article>
-                <h3>Pasos de Control Obligatorios Previos</h3>
+                <h3 id="pasos-de-control-obligatorios-previos">Pasos de Control Obligatorios Previos</h3>
                 <ol>
                     <li>Verificar la conexión del cable de red Ethernet.</li>
                     <li>Comprobar la obtención de IP correcta.</li>
@@ -46,20 +46,20 @@
         <hr>
 
         <section>
-            <h2>Demostración de Distribución de Columnas (space-around)</h2>
+            <h2 id="demostracion-de-distribucion-de-columnas-space-around">Demostración de Distribución de Columnas (space-around)</h2>
             <!-- Fase 3.2: 3 divs en horizontal con alineación space-around -->
             <div class="layout-horizontal">
                 <!-- Fase 2.2: .tarjeta-servicios con padding de 40px -->
                 <div class="tarjeta-servicios">
-                    <h3>Canal Telefónico</h3>
+                    <h3 id="canal-telefonico">Canal Telefónico</h3>
                     <p>Extensión 204.</p>
                 </div>
                 <div class="tarjeta-servicios">
-                    <h3>Canal Email</h3>
+                    <h3 id="canal-email">Canal Email</h3>
                     <p>soporte@iesceliavinas.local</p>
                 </div>
                 <div class="tarjeta-servicios">
-                    <h3>Canal Presencial</h3>
+                    <h3 id="canal-presencial">Canal Presencial</h3>
                     <p>Taller de Informática.</p>
                 </div>
             </div>
@@ -68,14 +68,14 @@
         <hr>
 
         <section>
-            <h2>Estructura del Armario Rack</h2>
+            <h2 id="estructura-del-armario-rack">Estructura del Armario Rack</h2>
             <table border="1">
                 <thead>
                     <tr>
-                        <th>Unidad (U)</th>
-                        <th>Dispositivo</th>
-                        <th>IP</th>
-                        <th>Función</th>
+                        <th scope="col">Unidad (U)</th>
+                        <th scope="col">Dispositivo</th>
+                        <th scope="col">IP</th>
+                        <th scope="col">Función</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -108,39 +108,39 @@
         <hr>
 
         <section>
-            <h2>Formulario de Registro de Incidencias</h2>
+            <h2 id="formulario-de-registro-de-incidencias">Formulario de Registro de Incidencias</h2>
             <form action="contacto.html" method="POST">
                 <fieldset>
                     <legend>Datos del Usuario</legend>
 
                     <div>
                         <label for="txtNombre">Nombre Completo:</label>
-                        <input type="text" id="txtNombre" name="nombre" required>
+                        <input type="text" id="a1" name="nombre" required>
                     </div>
 
                     <div>
                         <label for="txtEmail">Correo Electrónico:</label>
-                        <input type="email" id="txtEmail" name="email" required>
+                        <input type="email" id="a2" name="email" required>
                     </div>
 
                     <div>
                         <label for="txtPass">Contraseña de Soporte:</label>
-                        <input type="password" id="txtPass" name="password" required>
+                        <input type="password" id="a3" name="password" required>
                     </div>
 
                     <div>
                         <label for="txtTel">Teléfono:</label>
-                        <input type="tel" id="txtTel" name="telefono">
+                        <input type="tel" id="a4" name="telefono">
                     </div>
 
                     <div>
                         <label for="txtFecha">Fecha:</label>
-                        <input type="date" id="txtFecha" name="fecha" required>
+                        <input type="date" id="a5" name="fecha" required>
                     </div>
 
                     <div>
                         <label for="numPuesto">Número de Puesto:</label>
-                        <input type="number" id="numPuesto" name="puesto" min="1" max="30" required>
+                        <input type="number" id="a6" name="puesto" min="1" max="30" required>
                     </div>
                 </fieldset>
 
@@ -149,7 +149,7 @@
 
                     <div>
                         <label for="selSO">Sistema Operativo:</label>
-                        <select id="selSO" name="so">
+                        <select id="a7" name="so">
                             <option value="debian">Debian GNU/Linux</option>
                             <option value="win11">Windows 11</option>
                         </select>
@@ -157,25 +157,25 @@
 
                     <div>
                         <p>Prioridad:</p>
-                        <input type="radio" id="radBaja" name="prioridad" value="baja" checked>
+                        <input type="radio" id="a8" name="prioridad" value="baja" checked>
                         <label for="radBaja">Baja</label>
-                        <input type="radio" id="radMedia" name="prioridad" value="media">
+                        <input type="radio" id="a9" name="prioridad" value="media">
                         <label for="radMedia">Media</label>
-                        <input type="radio" id="radAlta" name="prioridad" value="alta">
+                        <input type="radio" id="a10" name="prioridad" value="alta">
                         <label for="radAlta">Alta</label>
                     </div>
 
                     <div>
                         <p>Componentes Afectados:</p>
-                        <input type="checkbox" id="chkRed" name="componentes[]" value="red">
+                        <input type="checkbox" id="a11" name="componentes[]" value="red">
                         <label for="chkRed">Tarjeta de Red</label>
-                        <input type="checkbox" id="chkMonitor" name="componentes[]" value="monitor">
+                        <input type="checkbox" id="a12" name="componentes[]" value="monitor">
                         <label for="chkMonitor">Monitor</label>
                     </div>
 
                     <div>
                         <label for="txtDesc">Descripción:</label><br>
-                        <textarea id="txtDesc" name="descripcion" rows="4" cols="50" required></textarea>
+                        <textarea id="a13" name="descripcion" rows="4" cols="50" required></textarea>
                     </div>
                 </fieldset>
 
@@ -190,7 +190,7 @@
     <hr>
 
     <aside>
-        <h3>Horario de Atención</h3>
+        <h3 id="horario-de-atencion">Horario de Atención</h3>
         <p>Lunes a viernes de 8:15 a 14:45.</p>
     </aside>
 

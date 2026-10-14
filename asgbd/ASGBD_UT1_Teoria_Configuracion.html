@@ -10,34 +10,33 @@
 </head>
 
 <body>
-    <header id="site-header">
+    <header id="a1">
         <div class="header-container">
-            <div class="site-title site-title-row"><img src="logo.png" alt="Logo" class="site-logo"><span>ASGBD
+            <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>ASGBD
                     &ndash; UT1 Teoria Configuracion</span></div>
             <nav class="top-nav">
                 <a href="index.html" class="nav-btn">Inicio</a>
             </nav>
         </div>
     </header>
-    <div id="page-layout">
+    <div id="a2">
 
 
-        <main id="main-content">
+        <main id="a3">
             <div class="page-actions"><a
                     href="ASGBD_UT1_Teoria_Configuracion.pdf" download
                     class="pdf-download-btn">📥
                     Descargar PDF</a></div>
 
-            <header id="title-block-header">
-                <h1 class="title">
-                    <p><span id="_p258qvpregav" class="anchor"></span>Unidad 1: </p>
-                    <p><span id="_6b275d9wwqca" class="anchor"></span>INSTALACIÓN,
-                        CONFIGURACIÓN Y GESTIÓN DE LOGS EN MYSQL </p>
+            <header id="a4">
+                <h1 class="title" id="unidad-1-instalacion-configuracion-y-gestion-de-logs-en-mysql">
+                    <span id="a5" class="anchor"></span>Unidad 1:<br>
+                    <span id="a6" class="anchor"></span>INSTALACIÓN, CONFIGURACIÓN Y GESTIÓN DE LOGS EN MYSQL
                 </h1>
             </header>
 
-            <h3 id="ficha-técnica-de-la-unidad">FICHA TÉCNICA DE LA UNIDAD <a class="headerlink"
-                    href="#ficha-técnica-de-la-unidad" title="Enlace permanente">¶</a></h3>
+            <h3 id="ficha-tecnica-de-la-unidad">FICHA TÉCNICA DE LA UNIDAD <a class="headerlink"
+                    href="#ficha-tecnica-de-la-unidad" title="Enlace permanente">¶</a></h3>
             <div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>
@@ -88,46 +87,46 @@
                     </table>
                 </div>
             </div>
-            <h3 id="índice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#índice-de-contenidos"
+            <h3 id="indice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#indice-de-contenidos"
                     title="Enlace permanente">¶</a></h3>
-            <p><a href="#introducción-y-contextualización"><u>1. INTRODUCCIÓN Y
+            <p><a href="#a5-gestion-avanzada-de-variables"><u>1. INTRODUCCIÓN Y
                         CONTEXTUALIZACIÓN</u></a></p>
-            <p><a href="#aspectos-críticos-en-la-configuración"><u>2. ASPECTOS
+            <p><a href="#a51-ambitos-de-variables-global-vs-sesion"><u>2. ASPECTOS
                         CRÍTICOS EN LA CONFIGURACIÓN</u></a></p>
-            <p><a href="#arquitectura-de-almacenamiento-y-archivos-del-motor"><u>3.
+            <p><a href="#a52-variantes-sintacticas-de-asignacion-en-mysql"><u>3.
                         ARQUITECTURA DE ALMACENAMIENTO Y ARCHIVOS DEL MOTOR</u></a></p>
-            <p><a href="#ficheros-de-configuración"><u>4. FICHEROS DE
+            <p><a href="#sintaxis-de-variables-globales-global"><u>4. FICHEROS DE
                         CONFIGURACIÓN</u></a></p>
-            <p><a href="#gestión-avanzada-de-variables"><u>5. GESTIÓN AVANZADA DE
+            <p><a href="#a53-set-persist-y-set-persistonly"><u>5. GESTIÓN AVANZADA DE
                         VARIABLES</u></a></p>
             <blockquote>
-                <p><a href="#ámbitos-de-variables-global-vs-sesión"><u>5.1 Ámbitos de
+                <p><a href="#el-comando-restrictivo-set-persistonly"><u>5.1 Ámbitos de
                             Variables: Global vs Sesión</u></a></p>
-                <p><a href="#variantes-sintácticas-de-asignación-en-mysql"><u>5.2
+                <p><a href="#a21"><u>5.2
                             Variantes Sintácticas de Asignación en MySQL</u></a></p>
-                <p><a href="#set-persist-y-set-persist_only"><u>5.3 SET PERSIST y SET
+                <p><a href="#a62-registro-de-errores-error-log-y-filtros-json"><u>5.3 SET PERSIST y SET
                             PERSIST_ONLY</u></a></p>
             </blockquote>
-            <p><a href="#fundamentos-teóricos-de-los-ficheros-de-registro-logs"><u>6.
+            <p><a href="#generacion-de-prueba-y-simulacion-de-latencia"><u>6.
                         FUNDAMENTOS TEÓRICOS DE LOS FICHEROS DE REGISTRO (LOGS)</u></a></p>
             <blockquote>
-                <p><a href="#clasificación-general-de-las-anotaciones-de-bitácora"><u>6.1
+                <p><a href="#parseo-tecnico-del-registro"><u>6.1
                             Clasificación General de las Anotaciones de Bitácora</u></a></p>
-                <p><a href="#registro-de-errores-error-log-y-filtros-json"><u>6.2
+                <p><a href="#a65-el-registro-binario-binary-log"><u>6.2
                             Registro de Errores (Error Log) y Filtros JSON</u></a></p>
-                <p><a href="#registro-general-de-consultas-general-query-log"><u>6.3
+                <p><a href="#propositos-fundamentales"><u>6.3
                             Registro General de Consultas (General Query Log)</u></a></p>
-                <p><a href="#registro-de-consultas-lentas-slow-query-log"><u>6.4
+                <p><a href="#a7-diagnostico-de-bajo-nivel-y-auditoria-con-performanceschema"><u>6.4
                             Registro de Consultas Lentas (Slow Query Log)</u></a></p>
-                <p><a href="#el-registro-binario-binary-log"><u>6.5 El Registro Binario
+                <p><a href="#a65-el-registro-binario-binary-log"><u>6.5 El Registro Binario
                             (Binary Log)</u></a></p>
             </blockquote>
             <p><a href="#"><u>7. DIAGNÓSTICO DE BAJO NIVEL Y AUDITORÍA CON
                         performance_schema</u></a></p>
-            <p><a href="#buenas-prácticas-con-los-logs"><u>8. BUENAS PRÁCTICAS CON
+            <p><a href="#a8-buenas-practicas-con-los-logs"><u>8. BUENAS PRÁCTICAS CON
                         LOS LOGS</u></a></p>
-            <h1 id="introducción-y-contextualización">1. INTRODUCCIÓN Y
-                CONTEXTUALIZACIÓN <a class="headerlink" href="#introducción-y-contextualización"
+            <h1 id="a1-introduccion-y-contextualizacion">1. INTRODUCCIÓN Y
+                CONTEXTUALIZACIÓN <a class="headerlink" href="#a1-introduccion-y-contextualizacion"
                     title="Enlace permanente">¶</a></h1>
             <p>Para un Administrador de Sistemas Informáticos en Red, una
                 base de datos no es simplemente un repositorio de datos
@@ -168,8 +167,8 @@
                     </blockquote>
                 </li>
             </ul>
-            <h1 id="aspectos-críticos-en-la-configuración">2. ASPECTOS CRÍTICOS EN
-                LA CONFIGURACIÓN <a class="headerlink" href="#aspectos-críticos-en-la-configuración"
+            <h1 id="a2-aspectos-criticos-en-la-configuracion">2. ASPECTOS CRÍTICOS EN
+                LA CONFIGURACIÓN <a class="headerlink" href="#a2-aspectos-criticos-en-la-configuracion"
                     title="Enlace permanente">¶</a></h1>
             <p>La configuración de un motor de bases de datos empresarial es un
                 proceso metodológico que impacta directamente en tres dimensiones:
@@ -298,7 +297,7 @@
                 entender bien tus requisitos y las características de tu aplicación para realizar una configuración
                 óptima. También es recomendable mantener un registro de la configuración y realizar un seguimiento de
                 los cambios para facilitar la administración y el mantenimiento a lo largo del tiempo.</p>
-            <h1 id="arquitectura-de-almacenamiento-y-archivos-del-motor">3. ARQUITECTURA DE ALMACENAMIENTO Y ARCHIVOS DEL MOTOR</h1>
+            <h1 id="a3-arquitectura-de-almacenamiento-y-archivos-del-motor">3. ARQUITECTURA DE ALMACENAMIENTO Y ARCHIVOS DEL MOTOR</h1>
             <p>En los entornos UNIX, MySQL representa todo recurso como un archivo.
                 Comprender dónde y cómo escribe el SGBD es indispensable para gestionar
                 operaciones de almacenamiento.</p>
@@ -371,13 +370,13 @@
             <p>El tamaño recomendado para optimizar el almacenamiento de InnoDB en
                 servidores dedicados sigue la regla de dimensionamiento de su memoria
                 caché interna (<em>Buffer Pool</em>):</p>
-            <p><img src="media_ASGBD_UT1_Teoria_Configuracion/media/image4.png"
-                    style="width:300 px;height:auto" /><br>Para un servidor de base de
+                <p><img src="media_ASGBD_UT1_Teoria_Configuracion/media/image4.png"
+                    class="image-small-300" alt="imagen"><br>Para un servidor de base de
                 datos con 16 GB de memoria RAM dedicada, la asignación de caché
                 sería:</p>
-            <img src="media_ASGBD_UT1_Teoria_Configuracion/media/image3.png" style="width:200 px;height:auto" /><br>
-            <h1 id="ficheros-de-configuración">4. FICHEROS DE CONFIGURACIÓN
-                <a class="headerlink" href="#ficheros-de-configuración" title="Enlace permanente">¶</a>
+            <img src="media_ASGBD_UT1_Teoria_Configuracion/media/image3.png" class="image-small-200" alt="imagen"><br>
+            <h1 id="a4-ficheros-de-configuracion">4. FICHEROS DE CONFIGURACIÓN
+                <a class="headerlink" href="#a4-ficheros-de-configuracion" title="Enlace permanente">¶</a>
             </h1>
             <p>En una distribución estándar de Linux (como Debian o Ubuntu), la
                 configuración de MySQL está estructurada bajo un modelo de herencia
@@ -385,16 +384,13 @@
                 /etc/mysql/my.cnf. Sin embargo, para mantener el orden, este archivo
                 incluye de forma recursiva todos los subficheros con extensión .cnf
                 alojados en directorios específicos:</p>
-            <p>
-
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code># Directorio para configuraciones del cliente local (mysql,mysqldump)
 /etc/mysql/conf.d/
 # Directorio de configuración específico para el servicio demonio del servidor (mysqld)
 /etc/mysql/mysql.conf.d/</code></pre>
             </div>
 
-            </h4>
             <h3 id="regla-de-precedencia-y-sobrescritura">Regla de Precedencia y
                 Sobrescritura: <a class="headerlink" href="#regla-de-precedencia-y-sobrescritura"
                     title="Enlace permanente">¶</a></h3>
@@ -431,9 +427,7 @@
             <p>A continuación, se define un archivo de configuración de producción
                 optimizado para el servidor que los alumnos montarán dentro de la
                 carpeta local ./config/custom_mysqld.cnf asociada a su contenedor:</p>
-            <p>
-
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>[mysqld]
 # Red y Puertos
 bind-address = 0.0.0.0
@@ -457,93 +451,94 @@ long_query_time = 2.000000
 log_queries_not_using_indexes = ON</code></pre>
             </div>
 
-            </h4>
-            <h1 id="gestión-avanzada-de-variables">5. GESTIÓN AVANZADA DE VARIABLES
-                <a class="headerlink" href="#gestión-avanzada-de-variables" title="Enlace permanente">¶</a>
+            <h1 id="a5-gestion-avanzada-de-variables">5. GESTIÓN AVANZADA DE VARIABLES
+                <a class="headerlink" href="#a5-gestion-avanzada-de-variables" title="Enlace permanente">¶</a>
             </h1>
             <p>MySQL contiene cientos de variables dinámicas e inmóviles que dictan
                 su comportamiento. Para consultarlas desde la línea de comandos de
                 manera rápida, un SysAdmin utiliza sentencias SQL basadas en patrones de
                 filtrado:</p>
-            <p>
-
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>-- Obtener el valor de las conexiones máximas configuradas
 SHOW VARIABLES LIKE 'max_connections';
 -- Alternativa directa consultando las variables del sistema
 SELECT @@global.max_connections;</code></pre>
             </div>
 
-            </h4>
             <p>El archivo de configuración de MySQL puede contener una amplia variedad de parámetros que permiten
                 ajustar y personalizar el comportamiento del servidor MySQL. Estos parámetros se dividen en varias
                 categorías, y algunos de los parámetros más comunes incluyen:</p>
+            <p>Los parámetros más habituales se agrupan en estas categorías:</p>
             <ul>
-                <li>Parámetros de configuración general</li>
-                <ul>
-                    <li>port: El puerto en el que el servidor MySQL escucha las conexiones.</li>
-                    <li>bind-address: La dirección IP en la que el servidor MySQL acepta conexiones. Puedes configurarlo
-                        para escuchar en todas las interfaces (0.0.0.0) o una dirección IP específica.</li>
-                    <li>socket: La ubicación del archivo de socket Unix para las conexiones locales.</li>
-                    <li>basedir: La ubicación base del directorio de instalación de MySQL.</li>
-                    <li>datadir: La ubicación del directorio de datos de MySQL.</li>
-                    <li>pid-file: La ubicación del archivo que almacena el PID del servidor MySQL.</li>
-                </ul>
-                <li>Parámetros de seguridad</li>
-                <ul>
-                    <li>user: El usuario del sistema operativo bajo el cual se ejecutará el servidor MySQL.</li>
-                    <li>password: La contraseña de root para el acceso al servidor MySQL. Este parámetro es importante
-                        para establecer la contraseña de administrador en la instalación inicial.</li>
-                    <li>skip-networking: Deshabilita la comunicación de red, lo que puede aumentar la seguridad en
-                        sistemas locales.</li>
-                </ul>
-                <li>Parámetros de almacenamiento y memoria</li>
-                <ul>
-                    <li>innodb_buffer_pool_size: Tamaño del búfer del sistema de almacenamiento en caché InnoDB.</li>
-                    <li>key_buffer_size: Tamaño del búfer de índices (en motores MyISAM).</li>
-                    <li>tmp_table_size y max_heap_table_size: Tamaño de las tablas temporales en memoria.</li>
-                    <li>innodb_log_file_size: Tamaño de los archivos de registro de transacciones InnoDB.</li>
-                </ul>
-                <li>Parámetros de rendimiento</li>
-                <ul>
-                    <li>query_cache_size: Tamaño del búfer de consulta (Query Cache) que almacena consultas en caché.
-                    </li>
-                    <li>max_connections: Número máximo de conexiones simultáneas permitidas.</li>
-                    <li>thread_cache_size: Número de hilos que se mantienen en caché para conexiones nuevas.</li>
-                    <li>innodb_flush_log_at_trx_commit: Controla cuándo se escriben los registros de transacciones en
-                        los archivos de registro.</li>
-                </ul>
-                <li>Parámetros de replicación y alta disponibilidad</li>
-                <ul>
-                    <li>server-id: Identificador único del servidor en un entorno de replicación.</li>
-                    <li>log-bin: Habilita el registro binario para la replicación.</li>
-                    <li>binlog_format: Formato del registro binario (por ejemplo, ROW, STATEMENT, MIXED).</li>
-                    <li>gtid_mode y enforce_gtid_consistency: Configuración para el uso de Identificadores Globales
-                        Únicos (GTID) en la replicación.</li>
-                </ul>
-                <li>Parámetros de seguridad de autenticación</li>
-                <ul>
-                    <li>skip-grant-tables: Inicia MySQL sin la autenticación, útil para restablecer contraseñas.</li>
-                    <li>validate_password_policy: Política de seguridad de contraseñas (por ejemplo, MEDIUM o STRONG).
-                    </li>
-                    <li>skip-name-resolve: Evita la resolución inversa de nombres de host para acelerar la
-                        autenticación.</li>
-                </ul>
-                <li>Otros parámetros</li>
-                <ul>
-                    <li>log-error: Ubicación del archivo de registro de errores.</li>
-                    <li>slow_query_log: Habilita el registro de consultas lentas.</li>
-                    <li>log_queries_not_using_indexes: Registra consultas que no utilizan índices.</li>
-                    <li>character-set-server: Juego de caracteres predeterminado del servidor.</li>
-                </ul>
-                Es importante tener en cuenta que la configuración exacta puede variar según la versión de MySQL y las
-                necesidades específicas de tu aplicación. Los parámetros se pueden agregar, modificar o eliminar según
-                tus requisitos. Además, se recomienda consultar la documentación oficial de MySQL y la referencia de
-                configuración para obtener detalles específicos sobre cada parámetro y sus valores posibles.
+                <li>Parámetros de configuración general
+                    <ul>
+                        <li>port: El puerto en el que el servidor MySQL escucha las conexiones.</li>
+                        <li>bind-address: La dirección IP en la que el servidor MySQL acepta conexiones. Puedes configurarlo
+                            para escuchar en todas las interfaces (0.0.0.0) o una dirección IP específica.</li>
+                        <li>socket: La ubicación del archivo de socket Unix para las conexiones locales.</li>
+                        <li>basedir: La ubicación base del directorio de instalación de MySQL.</li>
+                        <li>datadir: La ubicación del directorio de datos de MySQL.</li>
+                        <li>pid-file: La ubicación del archivo que almacena el PID del servidor MySQL.</li>
+                    </ul>
+                </li>
+                <li>Parámetros de seguridad
+                    <ul>
+                        <li>user: El usuario del sistema operativo bajo el cual se ejecutará el servidor MySQL.</li>
+                        <li>password: La contraseña de root para el acceso al servidor MySQL. Este parámetro es importante
+                            para establecer la contraseña de administrador en la instalación inicial.</li>
+                        <li>skip-networking: Deshabilita la comunicación de red, lo que puede aumentar la seguridad en
+                            sistemas locales.</li>
+                    </ul>
+                </li>
+                <li>Parámetros de almacenamiento y memoria
+                    <ul>
+                        <li>innodb_buffer_pool_size: Tamaño del búfer del sistema de almacenamiento en caché InnoDB.</li>
+                        <li>key_buffer_size: Tamaño del búfer de índices (en motores MyISAM).</li>
+                        <li>tmp_table_size y max_heap_table_size: Tamaño de las tablas temporales en memoria.</li>
+                        <li>innodb_log_file_size: Tamaño de los archivos de registro de transacciones InnoDB.</li>
+                    </ul>
+                </li>
+                <li>Parámetros de rendimiento
+                    <ul>
+                        <li>query_cache_size: Tamaño del búfer de consulta (Query Cache) que almacena consultas en caché.</li>
+                        <li>max_connections: Número máximo de conexiones simultáneas permitidas.</li>
+                        <li>thread_cache_size: Número de hilos que se mantienen en caché para conexiones nuevas.</li>
+                        <li>innodb_flush_log_at_trx_commit: Controla cuándo se escriben los registros de transacciones en
+                            los archivos de registro.</li>
+                    </ul>
+                </li>
+                <li>Parámetros de replicación y alta disponibilidad
+                    <ul>
+                        <li>server-id: Identificador único del servidor en un entorno de replicación.</li>
+                        <li>log-bin: Habilita el registro binario para la replicación.</li>
+                        <li>binlog_format: Formato del registro binario (por ejemplo, ROW, STATEMENT, MIXED).</li>
+                        <li>gtid_mode y enforce_gtid_consistency: Configuración para el uso de Identificadores Globales
+                            Únicos (GTID) en la replicación.</li>
+                    </ul>
+                </li>
+                <li>Parámetros de seguridad de autenticación
+                    <ul>
+                        <li>skip-grant-tables: Inicia MySQL sin la autenticación, útil para restablecer contraseñas.</li>
+                        <li>validate_password_policy: Política de seguridad de contraseñas (por ejemplo, MEDIUM o STRONG).</li>
+                        <li>skip-name-resolve: Evita la resolución inversa de nombres de host para acelerar la autenticación.</li>
+                    </ul>
+                </li>
+                <li>Otros parámetros
+                    <ul>
+                        <li>log-error: Ubicación del archivo de registro de errores.</li>
+                        <li>slow_query_log: Habilita el registro de consultas lentas.</li>
+                        <li>log_queries_not_using_indexes: Registra consultas que no utilizan índices.</li>
+                        <li>character-set-server: Juego de caracteres predeterminado del servidor.</li>
+                    </ul>
+                </li>
+            </ul>
+            <p>La configuración exacta puede variar según la versión de MySQL y las necesidades específicas de tu
+                aplicación. Consulta la documentación oficial de MySQL para conocer los parámetros disponibles y sus
+                valores posibles.</p>
 
-                <h2 id="ámbitos-de-variables-global-vs-sesión"><strong>5.1</strong>
+                <h2 id="a51-ambitos-de-variables-global-vs-sesion"><strong>5.1</strong>
                     Ámbitos de Variables: Global vs Sesión <a class="headerlink"
-                        href="#ámbitos-de-variables-global-vs-sesión" title="Enlace permanente">¶</a></h2>
+                        href="#a51-ambitos-de-variables-global-vs-sesion" title="Enlace permanente">¶</a></h2>
                 <p>Es fundamental que el SysAdmin diferencie entre los dos entornos
                     lógicos en los que actúa una variable dentro de la memoria RAM de la
                     instancia activa:</p>
@@ -569,9 +564,9 @@ SELECT @@global.max_connections;</code></pre>
                     imprevisto, o el host experimenta un apagado físico, todos estos cambios
                     dinámicos se perderán, volviendo a leer los parámetros estáticos de los
                     ficheros físicos del disco (/etc/mysql/my.cnf).</p>
-                <h2 id="variantes-sintácticas-de-asignación-en-mysql">5.2 Variantes
+                <h2 id="a52-variantes-sintacticas-de-asignacion-en-mysql">5.2 Variantes
                     Sintácticas de Asignación en MySQL <a class="headerlink"
-                        href="#variantes-sintácticas-de-asignación-en-mysql" title="Enlace permanente">¶</a></h2>
+                        href="#a52-variantes-sintacticas-de-asignacion-en-mysql" title="Enlace permanente">¶</a></h2>
                 <p>El lenguaje SQL de MySQL permite asignar variables de sistema
                     dinámicas a través de diferentes construcciones sintácticas
                     equivalentes. El SysAdmin debe conocerlas para interpretar y depurar
@@ -579,23 +574,17 @@ SELECT @@global.max_connections;</code></pre>
                 <h3 id="sintaxis-de-variables-globales-global">Sintaxis de Variables
                     Globales (GLOBAL): <a class="headerlink" href="#sintaxis-de-variables-globales-global"
                         title="Enlace permanente">¶</a></h3>
-                <p>
-
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Forma 1: Directa mediante modificador de palabra clave
 SET GLOBAL max_connections = 1000;
 
 -- Forma 2: Uso del calificador de ámbito con doble arroba (@@)
 SET @@GLOBAL.max_connections = 1000;</code></pre>
                 </div>
-
-                </p>
-                <h3 id="sintaxis-de-variables-de-sesión-session-o-local">Sintaxis de
+                <h3 id="sintaxis-de-variables-de-sesion-session-o-local">Sintaxis de
                     Variables de Sesión (SESSION o LOCAL): <a class="headerlink"
-                        href="#sintaxis-de-variables-de-sesión-session-o-local" title="Enlace permanente">¶</a></h3>
-                <p>
-
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                        href="#sintaxis-de-variables-de-sesion-session-o-local" title="Enlace permanente">¶</a></h3>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Forma 1: Asignación explícita mediante SESSION
 SET SESSION sql_mode = 'TRADITIONAL';
 
@@ -617,10 +606,8 @@ SET @@sql_mode = 'TRADITIONAL';
 -- Forma 6: Asignación implícita de sesión
 SET sql_mode = 'TRADITIONAL';</code></pre>
                 </div>
-
-                </p>
-                <h2 id="set-persist-y-set-persist_only"><strong>5.3</strong> SET PERSIST
-                    y SET PERSIST_ONLY <a class="headerlink" href="#set-persist-y-set-persist_only"
+                <h2 id="a53-set-persist-y-set-persistonly"><strong>5.3</strong> SET PERSIST
+                    y SET PERSIST_ONLY <a class="headerlink" href="#a53-set-persist-y-set-persistonly"
                         title="Enlace permanente">¶</a></h2>
                 <p>Tradicionalmente, para fijar un cambio de forma definitiva, el
                     SysAdmin debía conectarse al servidor por SSH, editar manualmente el
@@ -630,16 +617,12 @@ SET sql_mode = 'TRADITIONAL';</code></pre>
                     <strong>persistencia SQL nativa sin necesidad de acceder al Shell del
                         sistema operativo</strong>.
                 </p>
-                <p>
-
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Persistir un cambio en caliente en la memoria del gestor y escribirlo en disco de forma concurrente
 SET PERSIST max_connections = 250;
 -- Sintaxis alternativa equivalente
 SET @@PERSIST.max_connections = 250;</code></pre>
                 </div>
-
-                </p>
                 <p><strong>¿Cómo funciona internamente?</strong></p>
                 <p>Al ejecutar la instrucción SET PERSIST, MySQL realiza dos acciones
                     automáticas en un solo paso:</p>
@@ -658,9 +641,7 @@ SET @@PERSIST.max_connections = 250;</code></pre>
                         </blockquote>
                     </li>
                 </ol>
-                <p>
-
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>{
 "Version": 2,
 "mysql_server": {
@@ -675,14 +656,12 @@ SET @@PERSIST.max_connections = 250;</code></pre>
 }
 }</code></pre>
                 </div>
-
-                </p>
                 <p>Al arrancar, MySQL carga primero el archivo /etc/mysql/my.cnf
                     tradicional y, como última aetpa del proceso de inicialización, lee el
                     archivo JSON /var/lib/mysql/mysqld-auto.cnf para <strong>sobrescribir
                         todos los parámetros estáticos</strong>.</p>
-                <h5 id="el-comando-restrictivo-set-persist_only">El comando restrictivo
-                    SET PERSIST_ONLY: <a class="headerlink" href="#el-comando-restrictivo-set-persist_only"
+                <h5 id="el-comando-restrictivo-set-persistonly">El comando restrictivo
+                    SET PERSIST_ONLY: <a class="headerlink" href="#el-comando-restrictivo-set-persistonly"
                         title="Enlace permanente">¶</a></h5>
                 <p>Existen parámetros que son inalterables en RAM con el motor activo y
                     requieren obligatoriamente un reinicio físico del servidor de bases de
@@ -690,30 +669,24 @@ SET @@PERSIST.max_connections = 250;</code></pre>
                     asignación de memoria estática innodb_buffer_pool_size). Intentar usar
                     SET GLOBAL sobre ellos lanzará un error crítico de ejecución.</p>
                 <p>Para estos casos, utilizamos:</p>
-                <p>
-
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Escribe la variable en el archivo de autoconfiguración persistente de disco pero NO intenta aplicarla en caliente en RAM
 SET PERSIST_ONLY innodb_buffer_pool_size = 1073741824;
 -- Escribe la variable en el archivo de autoconfiguración persistente de disco pero NO intenta aplicarla en caliente en RAM
 SET PERSIST_ONLY innodb_buffer_pool_size = 1073741824;</code></pre>
                 </div>
-
-                </p>
-                <h4 id="section-3"> <a class="headerlink" href="#section-3" title="Enlace permanente">¶</a></h4>
+                <h4 id="a21"> <a class="headerlink" href="#a21" title="Enlace permanente">¶</a></h4>
                 <p>El cambio tomará efectos reales en el siguiente reinicio del
                     servicio.</p>
                 <p>Comando para limpiar y revocar la persistencia:</p>
-                <p>
-
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Eliminar la persistencia de una variable concreta (volverá a heredar el valor del fichero my.cnf en el próximo reinicio)
 RESET PERSIST max_connections;
 -- Limpiar completamente todas las variables añadidas dinámicamente al fichero mysqld-auto.cnf
 RESET PERSIST;</code></pre>
                 </div>
 
-                <h1 id="fundamentos-teóricos-de-los-ficheros-de-registro-logs">6. FUNDAMENTOS TEÓRICOS DE LOS FICHEROS DE REGISTRO (LOGS)</h1>
+                <h1 id="a6-fundamentos-teoricos-de-los-ficheros-de-registro-logs">6. FUNDAMENTOS TEÓRICOS DE LOS FICHEROS DE REGISTRO (LOGS)</h1>
                 <p>Un fichero de registro, LOG o bitácora, almacena información
                     cronológica sobre los numerosos eventos producidos en un SGBD, tanto en
                     su instalación, como en su explotación diaria y administración avanzada.
@@ -721,9 +694,9 @@ RESET PERSIST;</code></pre>
                         real del SGBD</strong>, ya que ayudan al administrador a averiguar las
                     causas de un mal funcionamiento y a auditar todas las operaciones que
                     los clientes realizan en el gestor.</p>
-                <h2 id="clasificación-general-de-las-anotaciones-de-bitácora">6.1
+                <h2 id="a61-clasificacion-general-de-las-anotaciones-de-bitacora">6.1
                     Clasificación General de las Anotaciones de Bitácora <a class="headerlink"
-                        href="#clasificación-general-de-las-anotaciones-de-bitácora" title="Enlace permanente">¶</a>
+                        href="#a61-clasificacion-general-de-las-anotaciones-de-bitacora" title="Enlace permanente">¶</a>
                 </h2>
                 <p>Cualquier flujo de información dirigido a un fichero de logs supone
                     un apunte de información por parte del programa o proceso que se está
@@ -752,13 +725,13 @@ RESET PERSIST;</code></pre>
                             Registro físico de las sentencias ejecutadas por los usuarios que
                             afecten de forma directa a la estructura física de la base de datos
                             (sentencias DDL como CREATE o ALTER) o a la información contenida en
-                            ella (sentencias DML como INSERT, UPDATE o DELETE).</code></pre>
-                       
+                            ella (sentencias DML como INSERT, UPDATE o DELETE).</p>
+                        </blockquote>
                     </li>
                 </ol>
-                <h2 id="registro-de-errores-error-log-y-filtros-json"><strong>6.2</strong>
+                <h2 id="a62-registro-de-errores-error-log-y-filtros-json"><strong>6.2</strong>
                     Registro de Errores (Error Log) y Filtros JSON <a class="headerlink"
-                        href="#registro-de-errores-error-log-y-filtros-json" title="Enlace permanente">¶</a></h2>
+                        href="#a62-registro-de-errores-error-log-y-filtros-json" title="Enlace permanente">¶</a></h2>
                 <p>Este registro almacena información esencial sobre fallos del motor de
                     almacenamiento, violaciones de acceso de red, interrupciones de
                     concurrencia y advertencias en el arranque de la instancia.</p>
@@ -768,9 +741,7 @@ RESET PERSIST;</code></pre>
                     visualización en paneles externos.</p>
                 <p>Para activarlo en caliente, debemos cargar el componente filter
                     correspondiente del motor:</p>
-                <p>
-
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Instalar el cargador de logs JSON
 INSTALL COMPONENT 'file://component_log_sink_json';
 -- Configurar los logs de errores para que escriban tanto en texto tradicional como en formato estructurado JSON
@@ -778,23 +749,19 @@ SET PERSIST log_error_services = 'log_filter_internal;
 log_sink_internal; log_sink_json';</code></pre>
                 </div>
                 Esto creará un archivo con formato estructurado denominado
-                error.json dentro del directorio asignado de datos.</p>
-                <h2 id="registro-general-de-consultas-general-query-log"><strong>6.3</strong>
+                error.json dentro del directorio asignado de datos.
+                <h2 id="a63-registro-general-de-consultas-general-query-log"><strong>6.3</strong>
                     Registro General de Consultas (General Query Log) <a class="headerlink"
-                        href="#registro-general-de-consultas-general-query-log" title="Enlace permanente">¶</a></h2>
+                        href="#a63-registro-general-de-consultas-general-query-log" title="Enlace permanente">¶</a></h2>
                 <p>Es una bitácora exhaustiva que registra el momento exacto en el que
                     cualquier cliente se conecta o desconecta del servidor de bases de
                     datos, junto con <strong>todas las sentencias SQL</strong> enviadas al
                     motor por el cliente.</p>
-                <p>
-
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code># Configuración física requerida en /etc/mysql/mysql.conf.d/mysqld.cnf
 general_log = ON
 general_log_file = /var/log/mysql/query.log</code></pre>
                 </div>
-
-                </p>
                 <p>Advertencia Crítica de Seguridad y Rendimiento en Producción:</p>
                 <ul>
                     <li>
@@ -817,7 +784,7 @@ general_log_file = /var/log/mysql/query.log</code></pre>
                                 'SuperSecPass123')), las claves de usuario se escribirán en texto plano
                                 dentro de /var/log/mysql/query.log. Si un intruso consiguiera acceso de
                             lectura al servidor de ficheros del sistema operativo, toda la seguridad
-                            del sistema se vería comprometida.</code></pre>
+                            del sistema se vería comprometida.</p>
                         </blockquote>
                     </li>
                     <li>
@@ -833,48 +800,39 @@ general_log_file = /var/log/mysql/query.log</code></pre>
                     controladas de depuración de software en entornos locales de desarrollo,
                     o bajo estrictas auditorías de seguridad a nivel de red aislada.
                     Desactivar inmediatamente al finalizar las pruebas.</p>
-                <h2 id="registro-de-consultas-lentas-slow-query-log">6.4
+                <h2 id="a64-registro-de-consultas-lentas-slow-query-log">6.4
                     Registro de Consultas Lentas (Slow Query Log) <a class="headerlink"
-                        href="#registro-de-consultas-lentas-slow-query-log" title="Enlace permanente">¶</a></h2>
+                        href="#a64-registro-de-consultas-lentas-slow-query-log" title="Enlace permanente">¶</a></h2>
                 <p>La herramienta primordial de optimización que tiene un SysAdmin.
                     Registra aquellas sentencias SQL cuya ejecución interna en CPU supera el
                     umbral de tiempo especificado en milisegundos en la variable de sistema
                     long_query_time.</p>
                 <p><strong>Configuración e Implementación:</strong></p>
-                <p>
-
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Activar el motor de registro de consultas lentas a nivel global y persistente
 SET PERSIST slow_query_log = ON;
 SET PERSIST slow_query_log_file = '/var/log/mysql/slow.log';
--- Fijar el umbral de tiempo máximo a 2 segundos exactos 
+-- Fijar el umbral de tiempo máximo a 2 segundos exactos
 SET PERSIST long_query_time = 2.000000;
 -- Capturar también todas aquellas consultas ineficientes que no utilizan índices para su ejecución
 SET PERSIST log_queries_not_using_indexes = ON;</code></pre>
                 </div>
-
-                </p>
-                <h5 id="generación-de-prueba-y-simulación-de-latencia">Generación de
+                <h5 id="generacion-de-prueba-y-simulacion-de-latencia">Generación de
                     Prueba y Simulación de Latencia: <a class="headerlink"
-                        href="#generación-de-prueba-y-simulación-de-latencia" title="Enlace permanente">¶</a></h5>
+                        href="#generacion-de-prueba-y-simulacion-de-latencia" title="Enlace permanente">¶</a></h5>
                 <p>Para comprobar que el registro de consultas lentas funciona
                     correctamente, el administrador simula una parada del hilo de ejecución
                     mediante la función de pausa de MySQL:</p>
-                <p>
-
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Provocar de forma artificial una ejecución lenta controlada de 3 segundos
 SELECT NOW(), SLEEP(3);</code></pre>
                 </div>
 
-                </h5>
-                <h5 id="parseo-técnico-del-registro">Parseo Técnico del Registro: <a class="headerlink"
-                        href="#parseo-técnico-del-registro" title="Enlace permanente">¶</a></h5>
+                <h5 id="parseo-tecnico-del-registro">Parseo Técnico del Registro: <a class="headerlink"
+                        href="#parseo-tecnico-del-registro" title="Enlace permanente">¶</a></h5>
                 <p>Al abrir el fichero /var/log/mysql/slow.log en el host o contenedor,
                     el administrador observará la siguiente estructura detallada:</p>
-                <p>
-
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code># Time: 2026-06-07T11:42:01.354210Z
 # User@Host: root[root] @ localhost [] Id: 12
 # Query_time: 3.001240 Lock_time: 0.000000 Rows_sent: 1
@@ -887,8 +845,6 @@ SELECT NOW(), SLEEP(3);
 SET timestamp=1778235721;
 SELECT NOW(), SLEEP(3);</code></pre>
                 </div>
-
-                </p>
                 <p><strong>Métricas Clave de Análisis:</strong></p>
                 <ul>
                     <li>
@@ -918,16 +874,16 @@ SELECT NOW(), SLEEP(3);</code></pre>
                         </blockquote>
                     </li>
                 </ul>
-                <h2 id="el-registro-binario-binary-log">6.5 El Registro Binario (Binary
-                    Log) <a class="headerlink" href="#el-registro-binario-binary-log" title="Enlace permanente">¶</a>
+                <h2 id="a65-el-registro-binario-binary-log">6.5 El Registro Binario (Binary
+                    Log) <a class="headerlink" href="#a65-el-registro-binario-binary-log" title="Enlace permanente">¶</a>
                 </h2>
                 <p>El log binario (binlog) es un registro estructurado que contiene
                     todos los eventos que describen cambios en la base de datos, como
                     modificaciones de tablas (DDL) o modificaciones en los datos de las
                     tablas (DML). Se almacena en formato binario para garantizar la
                     velocidad de escritura.</p>
-                <h5 id="propósitos-fundamentales"><strong>Propósitos
-                        Fundamentales:</strong> <a class="headerlink" href="#propósitos-fundamentales"
+                <h5 id="propositos-fundamentales"><strong>Propósitos
+                        Fundamentales:</strong> <a class="headerlink" href="#propositos-fundamentales"
                         title="Enlace permanente">¶</a></h5>
                 <ol type="1">
                     <li>
@@ -950,9 +906,9 @@ SELECT NOW(), SLEEP(3);</code></pre>
                         </blockquote>
                     </li>
                 </ol>
-                <h1 id="diagnóstico-de-bajo-nivel-y-auditoría-con-performance_schema"><strong>7.</strong>
+                <h1 id="a7-diagnostico-de-bajo-nivel-y-auditoria-con-performanceschema"><strong>7.</strong>
                     DIAGNÓSTICO DE BAJO NIVEL Y AUDITORÍA CON performance_schema <a class="headerlink"
-                        href="#diagnóstico-de-bajo-nivel-y-auditoría-con-performance_schema"
+                        href="#a7-diagnostico-de-bajo-nivel-y-auditoria-con-performanceschema"
                         title="Enlace permanente">¶</a>
                 </h1>
                 <p>El performance_schema es una potente base de datos interna de bajo
@@ -970,9 +926,7 @@ SELECT NOW(), SLEEP(3);</code></pre>
                     perfiles de usuario. La siguiente consulta devuelve un desglose de los
                     últimos 20 errores registrados para detectar posibles ataques de fuerza
                     bruta o desajustes de conexión:</p>
-                <p>
-
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>SELECT USER,ERROR_NUMBER, ERROR_NAME, COUNT_STAR AS TOTAL_OCURRENCIAS, FIRST_SEEN AS PRIMERA_VEZ, LAST_SEEN AS ULTIMA_VEZ
 FROM performance_schema.events_errors_summary_by_user_by_error
 WHERE USER IS NOT NULL AND COUNT_STAR &gt; 0
@@ -980,24 +934,20 @@ ORDER BY LAST_SEEN DESC
 LIMIT 20;</code></pre>
                 </div>
 
-                </h4>
                 <p>Comprobación de Actividad SQL y Contador de consultas realizadas:</p>
                 <p>La tabla status_by_user muestra las variables de estado acumuladas
                     por hilos de conexión individuales. Para obtener una visión cuantitativa
                     de cuántas lecturas de datos (SELECT) ha realizado el usuario root para
                     evaluar la carga de trabajo en el servidor:</p>
-                <p>
-
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                    <pre><code>SELECT USER, VARIABLE_NAME, VARIABLE_VALUE 
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <pre><code>SELECT USER, VARIABLE_NAME, VARIABLE_VALUE
 FROM performance_schema.status_by_user
 WHERE USER = 'root' AND VARIABLE_NAME LIKE 'Handler_read%'
 ORDER BY CAST(VARIABLE_VALUE AS UNSIGNED) DESC;</code></pre>
                 </div>
 
-                </h1>
-                <h1 id="buenas-prácticas-con-los-logs">8. BUENAS PRÁCTICAS CON LOS
-                    LOGS <a class="headerlink" href="#buenas-prácticas-con-los-logs" title="Enlace permanente">¶</a>
+                <h1 id="a8-buenas-practicas-con-los-logs">8. BUENAS PRÁCTICAS CON LOS
+                    LOGS <a class="headerlink" href="#a8-buenas-practicas-con-los-logs" title="Enlace permanente">¶</a>
                 </h1>
                 <p>Un servidor de bases de datos de nivel profesional debe garantizar la
                     protección, el aislamiento y la autolimpiabilidad de sus archivos
@@ -1006,17 +956,13 @@ ORDER BY CAST(VARIABLE_VALUE AS UNSIGNED) DESC;</code></pre>
                 <p>Los archivos de logs contienen metadatos y en ocasiones credenciales
                     que nunca deben ser expuestos a usuarios locales del sistema operativo
                     que no pertenezcan al grupo de administración de la base de datos.</p>
-                <p>
-
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code># Asignar la propiedad al usuario y grupo del demonio mysqld
 sudo chown -R mysql:mysql /var/log/mysql
 # Restringir permisos de lectura/escritura únicamente al propietario
 sudo chmod 750 /var/log/mysql
 sudo chmod 640 /var/log/mysql/*.log</code></pre>
                 </div>
-
-                </p>
                 <p>2. Rotación de Logs para Evitar que el Disco se Llene:</p>
                 <p>Un query.log mal gestionado en producción puede acumular cientos de
                     gigabytes en cuestión de días y provocar un fallo total del sistema de
@@ -1024,9 +970,7 @@ sudo chmod 640 /var/log/mysql/*.log</code></pre>
                     del servidor físico.</p>
                 <p>Para evitarlo, se configura el servicio logrotate en Linux agregando
                     un archivo de configuración específico:</p>
-                <p>
-
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code># Archivo de Configuración del Rotador de Logs del Sistema Linux: /etc/logrotate.d/mysql-server
 /var/log/mysql/*.log {
     weekly
@@ -1044,13 +988,11 @@ sudo chmod 640 /var/log/mysql/*.log</code></pre>
 }</code></pre>
                 </div>
 
-                </p>
-
         </main>
     </div>
 
-    </main>
-    </div>
+
+
 </body>
 
 </html>

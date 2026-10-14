@@ -10,32 +10,32 @@
 </head>
 
 <body>
-    <header id="site-header">
+    <header id="a1">
         <div class="header-container">
-            <div class="site-title site-title-row"><img src="logo.png" alt="Logo" class="site-logo"><span>ASGBD
+            <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>ASGBD
                     &ndash; Ut6 Practica Bd Distribuidas Sharding</span></div>
             <nav class="top-nav">
                 <a href="index.html" class="nav-btn">Inicio</a>
             </nav>
         </div>
     </header>
-    <div id="page-layout">
+    <div id="a2">
 
 
 
-        <main id="main-content">
+        <main id="a3">
             <div class="page-actions"><a
                     href="ASGBD_UT6_Practica_BD_Distribuidas_Sharding.pdf" download
                     class="pdf-download-btn">📥
                     Descargar PDF</a></div>
 
 
-            <h2 id="ud-6---práctica.-bases-de-datos-distribuidas-y-alta-disponibilidad">UD
+            <h2 id="ud-6-practica-bases-de-datos-distribuidas-y-alta-disponibilidad">UD
                 6 - Práctica. Bases de Datos Distribuidas y Alta Disponibilidad <a class="headerlink"
-                    href="#ud-6---práctica.-bases-de-datos-distribuidas-y-alta-disponibilidad"
+                    href="#ud-6-practica-bases-de-datos-distribuidas-y-alta-disponibilidad"
                     title="Enlace permanente">¶</a></h2>
-            <h4 id="ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
-                ACTIVIDAD <a class="headerlink" href="#ficha-técnica-de-la-actividad" title="Enlace permanente">¶</a>
+            <h4 id="ficha-tecnica-de-la-actividad">FICHA TÉCNICA DE LA
+                ACTIVIDAD <a class="headerlink" href="#ficha-tecnica-de-la-actividad" title="Enlace permanente">¶</a>
             </h4>
             <div class="table-wrapper">
                 <div class="table-wrapper">
@@ -73,18 +73,18 @@
                     </table>
                 </div>
             </div>
-            <h2 id="section"> <a class="headerlink" href="#section" title="Enlace permanente">¶</a></h2>
-            <h2 id="descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
-                OBJETIVOS <a class="headerlink" href="#descripción-general.-objetivos" title="Enlace permanente">¶</a>
+            <h2 id="a6"> <a class="headerlink" href="#a6" title="Enlace permanente">¶</a></h2>
+            <h2 id="a1-descripcion-general-objetivos">1. DESCRIPCIÓN GENERAL.
+                OBJETIVOS <a class="headerlink" href="#a1-descripcion-general-objetivos" title="Enlace permanente">¶</a>
             </h2>
             <p><strong>Objetivo:</strong> Implementar un sistema de fragmentación
                 horizontal (<em>sharding</em>) utilizando dos nodos MySQL y un
                 orquestador ProxySQL basado en la arquitectura de contenedores
                 proporcionada.</p>
-            <h2 id="actividades-a-realizar">2. ACTIVIDADES A REALIZAR <a class="headerlink"
-                    href="#actividades-a-realizar" title="Enlace permanente">¶</a></h2>
-            <h4 id="fase-1-preparación-entorno">Fase 1: Preparación (Entorno) <a class="headerlink"
-                    href="#fase-1-preparación-entorno" title="Enlace permanente">¶</a></h4>
+            <h2 id="a2-actividades-a-realizar">2. ACTIVIDADES A REALIZAR <a class="headerlink"
+                    href="#a2-actividades-a-realizar" title="Enlace permanente">¶</a></h2>
+            <h4 id="fase-1-preparacion-entorno">Fase 1: Preparación (Entorno) <a class="headerlink"
+                    href="#fase-1-preparacion-entorno" title="Enlace permanente">¶</a></h4>
             <ol type="1">
                 <li>
                     <blockquote>
@@ -136,10 +136,10 @@
                     </blockquote>
                 </li>
                 <li>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Entrega: Capturas de SELECT * FROM users; en ambos
 contenedores.</code></pre>
-                        
+
 </div>
                 </li>
             </ul>
@@ -154,26 +154,26 @@ contenedores.</code></pre>
                     </blockquote>
                 </li>
                 <li>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Configurar Backends (Hostgroups):
 -- Shard 1 (ID 1-50) -&gt; HG 1 | Shard 2 (ID &gt; 50) -&gt; HG 2
 INSERT INTO mysql_servers(hostgroup_id, hostname, port) VALUES (1,
 'mysql-shard-1', 3306), (2, 'mysql-shard-2', 3306);
 LOAD MYSQL SERVERS TO RUNTIME; SAVE MYSQL SERVERS TO DISK;</code></pre>
-                        
+
 </div>
                 </li>
                 <li>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Configurar Usuario de Tráfico:
 INSERT INTO mysql_users(username, password, default_hostgroup) VALUES
 ('root', 'root_password', 1);
 LOAD MYSQL USERS TO RUNTIME; SAVE MYSQL USERS TO DISK;</code></pre>
-                        
+
 </div>
                 </li>
                 <li>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Reglas de Enrutamiento (Sharding Logic):
 -- Redirigir según el ID en la consulta (Regex)
 INSERT INTO mysql_query_rules (rule_id, active, match_digest,
@@ -181,7 +181,7 @@ destination_hostgroup, apply)
 VALUES (1, 1, 'id\s*=\s*([1-9]|[1-4][0-9]|50)', 1, 1),
 (2, 1, 'id\s*=\s*([5-9][0-9]|[1-9][0-9]{2,})', 2, 1);
 LOAD MYSQL QUERY RULES TO RUNTIME; SAVE MYSQL QUERY RULES TO DISK;</code></pre>
-                        
+
 </div>
                 </li>
             </ol>
@@ -209,7 +209,7 @@ LOAD MYSQL QUERY RULES TO RUNTIME; SAVE MYSQL QUERY RULES TO DISK;</code></pre>
                     </blockquote>
                 </li>
             </ul>
-            <h2 id="calificación">3. CALIFICACIÓN <a class="headerlink" href="#calificación"
+            <h2 id="a3-calificacion">3. CALIFICACIÓN <a class="headerlink" href="#a3-calificacion"
                     title="Enlace permanente">¶</a></h2>
             <blockquote>
                 <p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
@@ -218,15 +218,15 @@ LOAD MYSQL QUERY RULES TO RUNTIME; SAVE MYSQL QUERY RULES TO DISK;</code></pre>
                     la omisión de los enlaces de las fuentes documentales utilizadas
                     penalizará gravemente la nota o invalidará la práctica.</p>
             </blockquote>
-            <h3 id="section-1"> <a class="headerlink" href="#section-1" title="Enlace permanente">¶</a></h3>
+            <h3 id="a12"> <a class="headerlink" href="#a12" title="Enlace permanente">¶</a></h3>
             <div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>
                         <thead>
                             <tr class="header">
-                                <th><strong>Apartado</strong></th>
-                                <th><strong>Realizado correctamente (100%)</strong></th>
-                                <th><strong>Realizado con errores (40%)</strong></th>
+                                <th scope="col"><strong>Apartado</strong></th>
+                                <th scope="col"><strong>Realizado correctamente (100%)</strong></th>
+                                <th scope="col"><strong>Realizado con errores (40%)</strong></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -269,8 +269,8 @@ LOAD MYSQL QUERY RULES TO RUNTIME; SAVE MYSQL QUERY RULES TO DISK;</code></pre>
         </main>
     </div>
 
-    </main>
-    </div>
+
+
 </body>
 
 </html>

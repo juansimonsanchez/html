@@ -10,30 +10,30 @@
 </head>
 
 <body>
-    <header id="site-header">
+    <header id="a1">
         <div class="header-container">
-            <div class="site-title site-title-row"><img src="logo.png" alt="Logo" class="site-logo"><span>ASGBD
+            <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>ASGBD
                     &ndash; Ut5 Práctica Tunning Servidores Explain Avanzado</span></div>
             <nav class="top-nav">
                 <a href="index.html" class="nav-btn">Inicio</a>
             </nav>
         </div>
     </header>
-    <div id="page-layout">
+    <div id="a2">
 
 
-        <main id="main-content">
+        <main id="a3">
             <div class="page-actions"><a
                     href="ASGBD_UT5_Práctica_Tunning_Servidores_EXPLAIN_Avanzado.pdf" download
                     class="pdf-download-btn">📥
                     Descargar PDF</a></div>
 
 
-            <h1 id="práctica-5-diagnóstico-de-rendimiento-y-tuning">PRÁCTICA 5:
+            <h1 id="practica-5-diagnostico-de-rendimiento-y-tuning">PRÁCTICA 5:
                 DIAGNÓSTICO DE RENDIMIENTO Y TUNING <a class="headerlink"
-                    href="#práctica-5-diagnóstico-de-rendimiento-y-tuning" title="Enlace permanente">¶</a></h1>
-            <h3 id="ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
-                ACTIVIDAD <a class="headerlink" href="#ficha-técnica-de-la-actividad" title="Enlace permanente">¶</a>
+                    href="#practica-5-diagnostico-de-rendimiento-y-tuning" title="Enlace permanente">¶</a></h1>
+            <h3 id="ficha-tecnica-de-la-actividad">FICHA TÉCNICA DE LA
+                ACTIVIDAD <a class="headerlink" href="#ficha-tecnica-de-la-actividad" title="Enlace permanente">¶</a>
             </h3>
             <div class="table-wrapper">
                 <div class="table-wrapper">
@@ -76,8 +76,8 @@
                     </table>
                 </div>
             </div>
-            <h4 id="método-de-entrega-y-formato">MÉTODO DE ENTREGA Y FORMATO <a class="headerlink"
-                    href="#método-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
+            <h4 id="metodo-de-entrega-y-formato">MÉTODO DE ENTREGA Y FORMATO <a class="headerlink"
+                    href="#metodo-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
             <ul>
                 <li>
                     <blockquote>
@@ -126,8 +126,8 @@
                     </blockquote>
                 </li>
             </ul>
-            <h2 id="descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
-                OBJETIVOS <a class="headerlink" href="#descripción-general.-objetivos" title="Enlace permanente">¶</a>
+            <h2 id="a1-descripcion-general-objetivos">1. DESCRIPCIÓN GENERAL.
+                OBJETIVOS <a class="headerlink" href="#a1-descripcion-general-objetivos" title="Enlace permanente">¶</a>
             </h2>
             <p>En un entorno de producción real, el rendimiento de las bases de
                 datos no se limita de forma única al diseño de índices individuales. A
@@ -162,8 +162,8 @@
                     </blockquote>
                 </li>
             </ol>
-            <h2 id="consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink"
-                    href="#consideraciones-previas" title="Enlace permanente">¶</a></h2>
+            <h2 id="a2-consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink"
+                    href="#a2-consideraciones-previas" title="Enlace permanente">¶</a></h2>
             <ul>
                 <li>
                     <blockquote>
@@ -185,12 +185,12 @@
                     </blockquote>
                 </li>
             </ul>
-            <h2 id="actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink"
-                    href="#actividades-a-realizar" title="Enlace permanente">¶</a></h2>
-            <h4 id="fase-1-tunning-de-variables-del-motor-innodb-y-configuración-del-servidor"><strong>Fase
+            <h2 id="a3-actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink"
+                    href="#a3-actividades-a-realizar" title="Enlace permanente">¶</a></h2>
+            <h4 id="fase-1-tunning-de-variables-del-motor-innodb-y-configuracion-del-servidor"><strong>Fase
                     1: Tunning de Variables del Motor InnoDB y Configuración del
                     Servidor</strong> <a class="headerlink"
-                    href="#fase-1-tunning-de-variables-del-motor-innodb-y-configuración-del-servidor"
+                    href="#fase-1-tunning-de-variables-del-motor-innodb-y-configuracion-del-servidor"
                     title="Enlace permanente">¶</a></h4>
             <p>El alumno debe auditar el estado de los recursos físicos del host que
                 están asignados al SGBD.</p>
@@ -227,16 +227,16 @@
                             configuración general del servicio (habitualmente
                             /etc/mysql/mysql.conf.d/mysqld.cnf) utilizando privilegios de
                             administrador de sistemas para establecer los siguientes valores
-                            orientados a un host de producción de 4 GB de RAM:<br />
-                            [mysqld]<br />
-                            max_connections = 150<br />
-                            innodb_buffer_pool_size = 1536M<br />
-                            innodb_log_file_size = 256M<br />
+                            orientados a un host de producción de 4 GB de RAM:<br>
+                            [mysqld]<br>
+                            max_connections = 150<br>
+                            innodb_buffer_pool_size = 1536M<br>
+                            innodb_log_file_size = 256M<br>
                             innodb_flush_log_at_trx_commit = 2</p>
                     </blockquote>
                 </li>
                 <li>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Reinicio y Verificación: Reinicie el servicio de
 forma limpia utilizando el gestor del sistema (systemctl restart mysql).
 Verifique en los ficheros de log de errores del sistema
@@ -244,14 +244,14 @@ Verifique en los ficheros de log de errores del sistema
 ha inicializado correctamente. Capture la salida y verifique de forma
 interactiva en la consola con SHOW VARIABLES que los nuevos valores
 están cargados en caliente.</code></pre>
-                        
+
 </div>
                 </li>
             </ol>
-            <h4 id="fase-2-diagnóstico-de-sentencias-lentas-y-consultas-más-ejecutadas"><strong>Fase
+            <h4 id="fase-2-diagnostico-de-sentencias-lentas-y-consultas-mas-ejecutadas"><strong>Fase
                     2: Diagnóstico de Sentencias Lentas y Consultas más
                     Ejecutadas</strong> <a class="headerlink"
-                    href="#fase-2-diagnóstico-de-sentencias-lentas-y-consultas-más-ejecutadas"
+                    href="#fase-2-diagnostico-de-sentencias-lentas-y-consultas-mas-ejecutadas"
                     title="Enlace permanente">¶</a></h4>
             <p>Antes de tocar el esquema, el DBA debe saber exactamente qué
                 consultas están lastrando el rendimiento del host.</p>
@@ -287,28 +287,28 @@ están cargados en caliente.</code></pre>
                     </blockquote>
                 </li>
             </ol>
-            <h4 id="fase-3-optimización-estructural-de-consultas-multitabla-complejas"><strong>Fase
+            <h4 id="fase-3-optimizacion-estructural-de-consultas-multitabla-complejas"><strong>Fase
                     3: Optimización Estructural de Consultas Multitabla
                     Complejas</strong> <a class="headerlink"
-                    href="#fase-3-optimización-estructural-de-consultas-multitabla-complejas"
+                    href="#fase-3-optimizacion-estructural-de-consultas-multitabla-complejas"
                     title="Enlace permanente">¶</a></h4>
             <p>Se ha reportado una caída de rendimiento masiva en la plataforma web
                 al consultar el siguiente reporte histórico de facturación de agentes de
                 ventas:</p>
-            <p>SELECT<br />
-                e.nombre AS agente,<br />
-                e.puesto,<br />
-                c.nombre_cliente AS cliente,<br />
-                p.codigo_pedido,<br />
-                p.fecha_pedido,<br />
-                SUM(dp.cantidad * dp.precio_unidad) AS subtotal_pedido<br />
-                FROM empleado e<br />
+            <p>SELECT<br>
+                e.nombre AS agente,<br>
+                e.puesto,<br>
+                c.nombre_cliente AS cliente,<br>
+                p.codigo_pedido,<br>
+                p.fecha_pedido,<br>
+                SUM(dp.cantidad * dp.precio_unidad) AS subtotal_pedido<br>
+                FROM empleado e<br>
                 LEFT JOIN cliente c ON e.codigo_empleado =
-                c.codigo_empleado_rep_ventas<br />
-                LEFT JOIN pedido p ON c.codigo_cliente = p.codigo_cliente<br />
-                LEFT JOIN detalle_pedido dp ON p.codigo_pedido = dp.codigo_pedido<br />
-                WHERE c.pais = 'USA' AND dp.cantidad &gt; 20<br />
-                GROUP BY e.codigo_empleado, c.codigo_cliente, p.codigo_pedido<br />
+                c.codigo_empleado_rep_ventas<br>
+                LEFT JOIN pedido p ON c.codigo_cliente = p.codigo_cliente<br>
+                LEFT JOIN detalle_pedido dp ON p.codigo_pedido = dp.codigo_pedido<br>
+                WHERE c.pais = 'USA' AND dp.cantidad &gt; 20<br>
+                GROUP BY e.codigo_empleado, c.codigo_cliente, p.codigo_pedido<br>
                 ORDER BY subtotal_pedido DESC;</p>
             <ol type="1">
                 <li>
@@ -339,11 +339,11 @@ están cargados en caliente.</code></pre>
                     </ul>
                 </li>
                 <li>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Identificación de Cuellos de Botella: Identifique
 razonadamente qué relaciones JOIN o filtrados WHERE están obligando al
 motor a procesar de forma secuencial completa las tablas.</code></pre>
-                        
+
 </div>
                 </li>
                 <li>
@@ -395,7 +395,7 @@ motor a procesar de forma secuencial completa las tablas.</code></pre>
                     </ul>
                 </li>
             </ol>
-            <h2 id="calificación">4. CALIFICACIÓN <a class="headerlink" href="#calificación"
+            <h2 id="a4-calificacion">4. CALIFICACIÓN <a class="headerlink" href="#a4-calificacion"
                     title="Enlace permanente">¶</a></h2>
             <blockquote>
                 <p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
@@ -404,19 +404,19 @@ motor a procesar de forma secuencial completa las tablas.</code></pre>
                     la omisión de los enlaces de las fuentes documentales utilizadas
                     penalizará gravemente la nota o invalidará la práctica.</p>
             </blockquote>
-            <h4 id="criterios-de-calificación">CRITERIOS DE CALIFICACIÓN <a class="headerlink"
-                    href="#criterios-de-calificación" title="Enlace permanente">¶</a></h4>
+            <h4 id="criterios-de-calificacion">CRITERIOS DE CALIFICACIÓN <a class="headerlink"
+                    href="#criterios-de-calificacion" title="Enlace permanente">¶</a></h4>
             <div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>
                         <thead>
                             <tr class="header">
-                                <th><strong>Apartado / Criterio</strong></th>
-                                <th><strong>Excelente (100% - 10 Puntos)</strong></th>
-                                <th><strong>Notable (75% - 7.5 Puntos)</strong></th>
-                                <th><strong>Suficiente (50% - 5 Puntos)</strong></th>
-                                <th><strong>Insuficiente (0% - 0 Puntos)</strong></th>
-                                <th><strong>Peso</strong></th>
+                                <th scope="col"><strong>Apartado / Criterio</strong></th>
+                                <th scope="col"><strong>Excelente (100% - 10 Puntos)</strong></th>
+                                <th scope="col"><strong>Notable (75% - 7.5 Puntos)</strong></th>
+                                <th scope="col"><strong>Suficiente (50% - 5 Puntos)</strong></th>
+                                <th scope="col"><strong>Insuficiente (0% - 0 Puntos)</strong></th>
+                                <th scope="col"><strong>Peso</strong></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -502,8 +502,8 @@ motor a procesar de forma secuencial completa las tablas.</code></pre>
         </main>
     </div>
 
-    </main>
-    </div>
+
+
 </body>
 
 </html>

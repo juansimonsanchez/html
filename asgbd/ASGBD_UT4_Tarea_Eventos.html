@@ -10,32 +10,32 @@
 </head>
 
 <body>
-    <header id="site-header">
+    <header id="a1">
         <div class="header-container">
-            <div class="site-title site-title-row"><img src="logo.png" alt="Logo" class="site-logo"><span>ASGBD
+            <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>ASGBD
                     &ndash; Ut4 Tarea Eventos</span></div>
             <nav class="top-nav">
                 <a href="index.html" class="nav-btn">Inicio</a>
             </nav>
         </div>
     </header>
-    <div id="page-layout">
+    <div id="a2">
 
 
-        <main id="main-content">
+        <main id="a3">
             <div class="page-actions"><a
                     href="ASGBD_UT4_Tarea_Eventos.pdf" download
                     class="pdf-download-btn">📥
                     Descargar PDF</a></div>
 
-            <header id="title-block-header">
-                <h1 class="title"><span id="_utg6yqtpjn47" class="anchor"></span>PRÁCTICA 5.1: BATERÍA DE ACTIVIDADES DE
+            <header id="a4">
+                <h1 class="title" id="practica-51-bateria-de-actividades-de-seguridad-y-eventos-de-base"><span id="a5" class="anchor"></span>PRÁCTICA 5.1: BATERÍA DE ACTIVIDADES DE
                     SEGURIDAD
                     Y EVENTOS DE BASE</h1>
             </header>
 
-            <h3 id="ficha-técnica-de-la-actividad">FICHA TÉCNICA DE LA
-                ACTIVIDAD <a class="headerlink" href="#ficha-técnica-de-la-actividad" title="Enlace permanente">¶</a>
+            <h3 id="ficha-tecnica-de-la-actividad">FICHA TÉCNICA DE LA
+                ACTIVIDAD <a class="headerlink" href="#ficha-tecnica-de-la-actividad" title="Enlace permanente">¶</a>
             </h3>
             <div class="table-wrapper">
                 <div class="table-wrapper">
@@ -81,8 +81,8 @@
                     </table>
                 </div>
             </div>
-            <h4 id="método-de-entrega-y-formato">MÉTODO DE ENTREGA Y FORMATO <a class="headerlink"
-                    href="#método-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
+            <h4 id="metodo-de-entrega-y-formato">MÉTODO DE ENTREGA Y FORMATO <a class="headerlink"
+                    href="#metodo-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
             <ul>
                 <li>
                     <blockquote>
@@ -105,8 +105,8 @@
                     </blockquote>
                 </li>
             </ul>
-            <h2 id="descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
-                OBJETIVOS <a class="headerlink" href="#descripción-general.-objetivos" title="Enlace permanente">¶</a>
+            <h2 id="a1-descripcion-general-objetivos">1. DESCRIPCIÓN GENERAL.
+                OBJETIVOS <a class="headerlink" href="#a1-descripcion-general-objetivos" title="Enlace permanente">¶</a>
             </h2>
             <p>Como administradores de sistemas (SysAdmins) o administradores de
                 bases de datos (DBAs), es crítico dominar las bases lógicas y físicas de
@@ -118,8 +118,8 @@
                 SELECT INTO OUTFILE / LOAD DATA) y aprender a activar, programar y
                 monitorizar el planificador de eventos interno de la base de datos de
                 manera profesional.</p>
-            <h2 id="consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink"
-                    href="#consideraciones-previas" title="Enlace permanente">¶</a></h2>
+            <h2 id="a2-consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink"
+                    href="#a2-consideraciones-previas" title="Enlace permanente">¶</a></h2>
             <ul>
                 <li>
                     <blockquote>
@@ -133,11 +133,11 @@
                     </blockquote>
                 </li>
                 <li>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Permisos del sistema: Es necesario poseer
 privilegios de sudo en el sistema operativo Linux anfitrión y acceso
 como root al servidor de base de datos MySQL.</code></pre>
-                        
+
 </div>
                 </li>
                 <li>
@@ -149,11 +149,11 @@ como root al servidor de base de datos MySQL.</code></pre>
                     </blockquote>
                 </li>
             </ul>
-            <h2 id="actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink"
-                    href="#actividades-a-realizar" title="Enlace permanente">¶</a></h2>
-            <h4 id="bloque-i-arquitectura-física-motores-y-copias-en-frío">BLOQUE I:
+            <h2 id="a3-actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink"
+                    href="#a3-actividades-a-realizar" title="Enlace permanente">¶</a></h2>
+            <h4 id="bloque-i-arquitectura-fisica-motores-y-copias-en-frio">BLOQUE I:
                 ARQUITECTURA FÍSICA, MOTORES Y COPIAS EN FRÍO <a class="headerlink"
-                    href="#bloque-i-arquitectura-física-motores-y-copias-en-frío" title="Enlace permanente">¶</a></h4>
+                    href="#bloque-i-arquitectura-fisica-motores-y-copias-en-frio" title="Enlace permanente">¶</a></h4>
             <p><strong>Ejercicio 1: Arquitectura física de almacenamiento y Motores
                     (MyISAM / InnoDB)</strong></p>
             <ul>
@@ -206,11 +206,11 @@ como root al servidor de base de datos MySQL.</code></pre>
                     INTO OUTFILE / LOAD DATA)</strong></p>
             <ul>
                 <li>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Exporta los datos de una tabla utilizando la instrucción SELECT INTO
 OUTFILE en formato de texto plano delimitado por comas (.csv o .txt)
 dentro del directorio permitido por el sistema.</code></pre>
-                        
+
 </div>
                 </li>
                 <li>
@@ -228,9 +228,9 @@ dentro del directorio permitido por el sistema.</code></pre>
                     </blockquote>
                 </li>
             </ul>
-            <h4 id="bloque-ii-copias-de-seguridad-lógicas-y-restauración">BLOQUE II:
+            <h4 id="bloque-ii-copias-de-seguridad-logicas-y-restauracion">BLOQUE II:
                 COPIAS DE SEGURIDAD LÓGICAS Y RESTAURACIÓN <a class="headerlink"
-                    href="#bloque-ii-copias-de-seguridad-lógicas-y-restauración" title="Enlace permanente">¶</a></h4>
+                    href="#bloque-ii-copias-de-seguridad-logicas-y-restauracion" title="Enlace permanente">¶</a></h4>
             <p><strong>Ejercicio 4: Uso avanzado de la Consola con
                     mysqldump</strong></p>
             <ul>
@@ -318,9 +318,9 @@ dentro del directorio permitido por el sistema.</code></pre>
                     </ul>
                 </li>
             </ul>
-            <h4 id="bloque-iii-planificación-de-tareas-mediante-eventos-mysql-events">BLOQUE
+            <h4 id="bloque-iii-planificacion-de-tareas-mediante-eventos-mysql-events">BLOQUE
                 III: PLANIFICACIÓN DE TAREAS MEDIANTE EVENTOS (MYSQL EVENTS) <a class="headerlink"
-                    href="#bloque-iii-planificación-de-tareas-mediante-eventos-mysql-events"
+                    href="#bloque-iii-planificacion-de-tareas-mediante-eventos-mysql-events"
                     title="Enlace permanente">¶</a></h4>
             <p><strong>Ejercicio 6: Verificación y Activación del
                     Planificador</strong></p>
@@ -344,11 +344,11 @@ dentro del directorio permitido por el sistema.</code></pre>
             <p><strong>Ejercicio 7: Evento de Ejecución Única (AT)</strong></p>
             <ul>
                 <li>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Crea una tabla de log para pruebas:
 CREATE TABLE log_eventos (id INT AUTO_INCREMENT PRIMARY KEY, mensaje
 VARCHAR(100), fecha TIMESTAMP);</code></pre>
-                        
+
 </div>
                 </li>
                 <li>
@@ -425,12 +425,12 @@ VARCHAR(100), fecha TIMESTAMP);</code></pre>
                     Logs</strong></p>
             <ul>
                 <li>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Realiza una consulta SELECT * directa sobre la tabla de catálogo
 INFORMATION_SCHEMA.EVENTS y compárala críticamente con los datos que
 expone SHOW EVENTS. ¿Qué columnas adicionales de alto valor
 administrativo localizas?</code></pre>
-                        
+
 </div>
                 </li>
                 <li>
@@ -507,7 +507,7 @@ administrativo localizas?</code></pre>
                     </blockquote>
                 </li>
             </ul>
-            <h2 id="calificación">4. CALIFICACIÓN <a class="headerlink" href="#calificación"
+            <h2 id="a4-calificacion">4. CALIFICACIÓN <a class="headerlink" href="#a4-calificacion"
                     title="Enlace permanente">¶</a></h2>
             <blockquote>
                 <p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
@@ -523,11 +523,11 @@ administrativo localizas?</code></pre>
                     <table>
                         <thead>
                             <tr class="header">
-                                <th><strong>Bloque / Criterio</strong></th>
-                                <th><strong>Excelente (100%)</strong></th>
-                                <th><strong>Aceptable (50%)</strong></th>
-                                <th><strong>Insuficiente (0%)</strong></th>
-                                <th><strong>Peso</strong></th>
+                                <th scope="col"><strong>Bloque / Criterio</strong></th>
+                                <th scope="col"><strong>Excelente (100%)</strong></th>
+                                <th scope="col"><strong>Aceptable (50%)</strong></th>
+                                <th scope="col"><strong>Insuficiente (0%)</strong></th>
+                                <th scope="col"><strong>Peso</strong></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -604,8 +604,8 @@ administrativo localizas?</code></pre>
         </main>
     </div>
 
-    </main>
-    </div>
+
+
 </body>
 
 </html>

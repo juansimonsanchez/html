@@ -10,31 +10,30 @@
 </head>
 
 <body>
-    <header id="site-header">
+    <header id="a1">
         <div class="header-container">
-            <div class="site-title site-title-row"><img src="logo.png" alt="Logo" class="site-logo"><span>ASGBD
+            <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>ASGBD
                     &ndash; Ut4 Practica Automatizacion Mantenimiento</span></div>
             <nav class="top-nav">
                 <a href="index.html" class="nav-btn">Inicio</a>
             </nav>
         </div>
     </header>
-    <div id="page-layout">
-        <main id="main-content">
+    <div id="a2">
+        <main id="a3">
             <div class="page-actions"><a
                     href="ASGBD_UT4_Practica_Automatizacion_Mantenimiento.pdf" download
                     class="pdf-download-btn">📥
                     Descargar PDF</a></div>
 
-            <h1
-                id="práctica-integradora-unidad-4-sistema-de-auditoría-monitorización-y-mantenimiento-de-bases-de-datos-en-producción">
+            <h1 id="practica-integradora-unidad-4-sistema-de-auditoria-monitorizacion-y-mantenimiento-de-bases-de-datos-en-produccion">
                 Práctica
                 Integradora Unidad 4: Sistema de Auditoría, Monitorización y
                 Mantenimiento de Bases de Datos en Producción <a class="headerlink"
-                    href="#práctica-integradora-unidad-4-sistema-de-auditoría-monitorización-y-mantenimiento-de-bases-de-datos-en-producción"
+                    href="#practica-integradora-unidad-4-sistema-de-auditoria-monitorizacion-y-mantenimiento-de-bases-de-datos-en-produccion"
                     title="Enlace permanente">¶</a></h1>
-            <h2 id="descripción-general.-objetivos">1. DESCRIPCIÓN GENERAL.
-                OBJETIVOS <a class="headerlink" href="#descripción-general.-objetivos" title="Enlace permanente">¶</a>
+            <h2 id="a1-descripcion-general-objetivos">1. DESCRIPCIÓN GENERAL.
+                OBJETIVOS <a class="headerlink" href="#a1-descripcion-general-objetivos" title="Enlace permanente">¶</a>
             </h2>
             <p>Trabajas como Administrador de Bases de Datos (DBA) y SysAdmin en
                 <strong>"Almería E-Market"</strong>, un portal de comercio electrónico
@@ -48,40 +47,40 @@
                     de seguridad y análisis de salud de base de datos</strong> utilizando
                 programación nativa del servidor (SQL) combinada con scripts de
                 automatización del sistema operativo (Bash).</p>
-            <h2 id="consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink"
-                    href="#consideraciones-previas" title="Enlace permanente">¶</a></h2>
+            <h2 id="a2-consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink"
+                    href="#a2-consideraciones-previas" title="Enlace permanente">¶</a></h2>
             <p>Antes de comenzar, debes simular el ecosistema de la base de datos
                 empresarial ejecutando la siguiente estructura:</p>
-            <p>CREATE DATABASE IF NOT EXISTS almeria_emarket;<br />
-                USE almeria_emarket;<br />
-                <br />
+            <p>CREATE DATABASE IF NOT EXISTS almeria_emarket;<br>
+                USE almeria_emarket;<br>
+                <br>
                 -- Tabla 1: Tabla transaccional crítica que sufre gran
-                fragmentación<br />
-                CREATE TABLE pedidos (<br />
-                id_pedido INT AUTO_INCREMENT PRIMARY KEY,<br />
-                fecha_pedido TIMESTAMP DEFAULT CURRENT_TIMESTAMP,<br />
-                cliente_email VARCHAR(100),<br />
-                total DECIMAL(10,2)<br />
-                );<br />
-                <br />
+                fragmentación<br>
+                CREATE TABLE pedidos (<br>
+                id_pedido INT AUTO_INCREMENT PRIMARY KEY,<br>
+                fecha_pedido TIMESTAMP DEFAULT CURRENT_TIMESTAMP,<br>
+                cliente_email VARCHAR(100),<br>
+                total DECIMAL(10,2)<br>
+                );<br>
+                <br>
                 -- Tabla 2: Tabla de configuración de sistema (objetivo de
-                seguridad)<br />
-                CREATE TABLE configuracion_tienda (<br />
-                parametro VARCHAR(50) PRIMARY KEY,<br />
-                valor VARCHAR(100),<br />
+                seguridad)<br>
+                CREATE TABLE configuracion_tienda (<br>
+                parametro VARCHAR(50) PRIMARY KEY,<br>
+                valor VARCHAR(100),<br>
                 ultima_modificacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE
-                CURRENT_TIMESTAMP,<br />
-                modificado_por VARCHAR(100)<br />
-                );<br />
-                <br />
-                -- Insertar configuración por defecto<br />
+                CURRENT_TIMESTAMP,<br>
+                modificado_por VARCHAR(100)<br>
+                );<br>
+                <br>
+                -- Insertar configuración por defecto<br>
                 INSERT INTO configuracion_tienda (parametro, valor, modificado_por)
-                VALUES<br />
-                ('MANTENIMIENTO_MODE', 'FALSE', 'root@localhost'),<br />
+                VALUES<br>
+                ('MANTENIMIENTO_MODE', 'FALSE', 'root@localhost'),<br>
                 ('DESCUENTO_GLOBAL', '10%', 'root@localhost');
             </p>
-            <h2 id="actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink"
-                    href="#actividades-a-realizar" title="Enlace permanente">¶</a></h2>
+            <h2 id="a3-actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink"
+                    href="#a3-actividades-a-realizar" title="Enlace permanente">¶</a></h2>
             <p>La práctica se divide en <strong>cuatro retos técnicos
                     integrados</strong>. Debes aportar tanto el código fuente como las
                 explicaciones teóricas de su funcionamiento.</p>
@@ -114,9 +113,9 @@
                     </blockquote>
                 </li>
             </ol>
-            <h3 id="reto-b-auditoría-de-cambios-de-configuración-triggers">Reto B:
+            <h3 id="reto-b-auditoria-de-cambios-de-configuracion-triggers">Reto B:
                 Auditoría de Cambios de Configuración (Triggers) <a class="headerlink"
-                    href="#reto-b-auditoría-de-cambios-de-configuración-triggers" title="Enlace permanente">¶</a></h3>
+                    href="#reto-b-auditoria-de-cambios-de-configuracion-triggers" title="Enlace permanente">¶</a></h3>
             <p>Necesitamos bloquear y auditar cualquier intento de modificar la
                 tabla configuracion_tienda.</p>
             <ol type="1">
@@ -143,10 +142,10 @@
                     </blockquote>
                 </li>
             </ol>
-            <h3 id="reto-c-diagnóstico-automatizado-de-tablas-metadatos-e-information-schema">Reto
+            <h3 id="reto-c-diagnostico-automatizado-de-tablas-metadatos-e-information-schema">Reto
                 C: Diagnóstico Automatizado de Tablas (Metadatos e Information
                 Schema) <a class="headerlink"
-                    href="#reto-c-diagnóstico-automatizado-de-tablas-metadatos-e-information-schema"
+                    href="#reto-c-diagnostico-automatizado-de-tablas-metadatos-e-information-schema"
                     title="Enlace permanente">¶</a></h3>
             <p>El SGBD pierde rendimiento si existen tablas sin índice primario o
                 con excesivo espacio asignado sin usar.</p>
@@ -205,7 +204,7 @@
                     </blockquote>
                 </li>
             </ol>
-            <h2 id="calificación">4. CALIFICACIÓN <a class="headerlink" href="#calificación"
+            <h2 id="a4-calificacion">4. CALIFICACIÓN <a class="headerlink" href="#a4-calificacion"
                     title="Enlace permanente">¶</a></h2>
             <blockquote>
                 <p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
@@ -214,7 +213,7 @@
                     la omisión de los enlaces de las fuentes documentales utilizadas
                     penalizará gravemente la nota o invalidará la práctica.</p>
             </blockquote>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                         <pre><code>Criterio
 Excelente (9-10)
 Aceptable (5-8)
@@ -260,15 +259,15 @@ borrado o carece del manejador de salida seguro del bucle.
 No implementa cursor, utiliza un query simple delete/insert (no se
 adecúa al requisito técnico del examen).
 2.5 pts</code></pre>
-                    
+
 
 </div>
 
         </main>
     </div>
 
-    </main>
-    </div>
+
+
 </body>
 
 </html>

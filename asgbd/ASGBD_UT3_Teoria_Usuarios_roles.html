@@ -10,32 +10,31 @@
 </head>
 
 <body>
-    <header id="site-header">
+    <header id="a1">
         <div class="header-container">
-            <div class="site-title site-title-row"><img src="logo.png" alt="Logo" class="site-logo"><span>ASGBD
+            <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>ASGBD
                     &ndash; U2 Teoria Acceso a la información</span></div>
             <nav class="top-nav">
                 <a href="index.html" class="nav-btn">Inicio</a>
             </nav>
         </div>
     </header>
-    <div id="page-layout">
+    <div id="a2">
 
-        <main id="main-content">
+        <main id="a3">
             <div class="page-actions"><a
                     href="ASGBD_UT3_Teoria_Usuarios_roles.pdf" download
                     class="pdf-download-btn">📥
                     Descargar PDF</a></div>
 
-            <header id="title-block-header">
-                <h1 class="title">
-                    <p><span id="_3ksw69uri6sj" class="anchor"></span>Unidad 2: </p>
-                    <p><span id="_pietf73g5qpy" class="anchor"></span>Acceso a la información</p>
+            <header id="a4">
+                <h1 class="title" id="unidad-2-acceso-a-la-informacion">
+                    <span id="a5" class="anchor"></span>Unidad 2: <br><span id="a6" class="anchor"></span>Acceso a la información
                 </h1>
             </header>
 
-            <h3 id="ficha-técnica-de-la-unidad">FICHA TÉCNICA DE LA UNIDAD <a class="headerlink"
-                    href="#ficha-técnica-de-la-unidad" title="Enlace permanente">¶</a></h3>
+            <h3 id="ficha-tecnica-de-la-unidad">FICHA TÉCNICA DE LA UNIDAD <a class="headerlink"
+                    href="#ficha-tecnica-de-la-unidad" title="Enlace permanente">¶</a></h3>
             <div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>
@@ -82,71 +81,71 @@
                     </table>
                 </div>
             </div>
-            <h3 id="índice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#índice-de-contenidos"
+            <h3 id="indice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#indice-de-contenidos"
                     title="Enlace permanente">¶</a></h3>
-            <p><a href="#introducción-y-contextualización"><u>1. INTRODUCCIÓN Y
+            <p><a href="#a24-eliminacion-de-cuentas-drop-user"><u>1. INTRODUCCIÓN Y
                         CONTEXTUALIZACIÓN</u></a></p>
-            <p><a href="#administración-de-cuentas-de-usuario"><u>2. ADMINISTRACIÓN
+            <p><a href="#a3-el-sistema-de-privilegios-de-mysql"><u>2. ADMINISTRACIÓN
                         DE CUENTAS DE USUARIO</u></a></p>
             <blockquote>
-                <p><a href="#sentencia-de-creación-de-cuentas-create-user"><u>2.1.
+                <p><a href="#a31-niveles-de-granularidad-de-permisos"><u>2.1.
                         Sentencia de Creación de Cuentas (CREATE USER)</u></a></p>
-                <p><a href="#sintaxis-y-plugins-de-autenticación-en-mysql-8.0"><u>2.2.
+                <p><a href="#a311-privilegios-a-nivel-de-base-de-datos"><u>2.2.
                         Sintaxis y Plugins de Autenticación en MySQL 8.0</u></a></p>
-                <p><a href="#persistencia-en-el-diccionario-de-datos-mysql.user"><u>2.3.
+                <p><a href="#a312-privilegios-a-nivel-de-tabla-mysqltablespriv"><u>2.3.
                         Persistencia en el Diccionario de Datos (mysql.user)</u></a></p>
-                <p><a href="#eliminación-de-cuentas-drop-user"><u>2.4. Eliminación de
+                <p><a href="#a313-privilegios-a-nivel-de-columna-mysqlcolumnspriv"><u>2.4. Eliminación de
                         Cuentas (DROP USER)</u></a></p>
             </blockquote>
-            <p><a href="#el-sistema-de-privilegios-de-mysql"><u>3. EL SISTEMA DE
+            <p><a href="#a314-privilegios-sobre-rutinas-y-procedimientos-mysqlprocspriv"><u>3. EL SISTEMA DE
                         PRIVILEGIOS DE MYSQL</u></a></p>
             <blockquote>
-                <p><a href="#niveles-de-granularidad-de-permisos"><u>3.1. Niveles de
+                <p><a href="#a32-delegacion-de-capacidades-with-grant-option"><u>3.1. Niveles de
                             Granularidad de Permisos</u></a></p>
                 <blockquote>
-                    <p><a href="#privilegios-a-nivel-de-base-de-datos"><u>3.1.1. Privilegios
+                    <p><a href="#a33-revocacion-de-permisos-revoke"><u>3.1.1. Privilegios
                                 a Nivel de Base de Datos</u></a></p>
-                    <p><a href="#privilegios-a-nivel-de-tabla-mysql.tables_priv"><u>3.1.2.
+                    <p><a href="#a34-auditoria-de-concesiones-show-grants"><u>3.1.2.
                                 Privilegios a Nivel de Tabla (mysql.tables_priv)</u></a></p>
-                    <p><a href="#privilegios-a-nivel-de-columna-mysql.columns_priv"><u>3.1.3.
+                    <p><a href="#a35-sincronizacion-de-tablas-de-concesion-flush-privileges"><u>3.1.3.
                                 Privilegios a Nivel de Columna (mysql.columns_priv)</u></a></p>
-                    <p><a href="#privilegios-sobre-rutinas-y-procedimientos-mysql.procs_priv"><u>3.1.4.
+                    <p><a href="#a4-gestion-avanzada-mediante-roles"><u>3.1.4.
                                 Privilegios sobre Rutinas y Procedimientos
                                 (mysql.procs_priv)</u></a></p>
                 </blockquote>
-                <p><a href="#delegación-de-capacidades-with-grant-option"><u>3.2.
+                <p><a href="#a41-concepto-de-rol-en-mysql-80"><u>3.2.
                             Delegación de Capacidades (WITH GRANT OPTION)</u></a></p>
-                <p><a href="#revocación-de-permisos-revoke"><u>3.3. Revocación de
+                <p><a href="#a42-roles-administrativos-de-factoria-en-entornos-de-gestion"><u>3.3. Revocación de
                             Permisos (REVOKE)</u></a></p>
-                <p><a href="#auditoría-de-concesiones-show-grants"><u>3.4. Auditoría de
+                <p><a href="#a43-ciclo-operativo-de-trabajo-con-roles-rbac-lifecycle"><u>3.4. Auditoría de
                             Concesiones (SHOW GRANTS)</u></a></p>
-                <p><a href="#sincronización-de-tablas-de-concesión-flush-privileges"><u>3.5.
+                <p><a href="#a44-estrategias-de-activacion-automatizacion-vs-manual"><u>3.5.
                             Sincronización de Tablas de Concesión (FLUSH PRIVILEGES)</u></a></p>
             </blockquote>
-            <p><a href="#gestión-avanzada-mediante-roles"><u>4. GESTIÓN AVANZADA
+            <p><a href="#a5-vistas-en-bases-de-datos"><u>4. GESTIÓN AVANZADA
                         MEDIANTE ROLES</u></a></p>
             <blockquote>
-                <p><a href="#concepto-de-rol-en-mysql-8.0"><u>4.1. Concepto de Rol en
+                <p><a href="#a51-que-es-una-vista-y-ventajas-principales"><u>4.1. Concepto de Rol en
                             MySQL 8.0</u></a></p>
-                <p><a href="#roles-administrativos-de-factoría-en-entornos-de-gestión"><u>4.2.
+                <p><a href="#a52-crear-o-modificar-una-vista-create-view"><u>4.2.
                             Roles Administrativos de Factoría en Entornos de Gestión</u></a></p>
-                <p><a href="#ciclo-operativo-de-trabajo-con-roles-rbac-lifecycle"><u>4.3.
+                <p><a href="#a53-eliminar-una-vista-drop-view"><u>4.3.
                             Ciclo Operativo de Trabajo con Roles (RBAC Lifecycle)</u></a></p>
-                <p><a href="#estrategias-de-activación-automatización-vs-manual"><u>4.4.
+                <p><a href="#a54-renombrar-una-vista-rename-table"><u>4.4.
                             Estrategias de Activación: Automatización vs Manual</u></a></p>
             </blockquote>
-            <p><a href="#vistas-en-bases-de-datos"><u>5. VISTAS EN BASES DE DATOS</u></a></p>
+            <p><a href="#a55-consultar-vistas-y-su-definicion-show"><u>5. VISTAS EN BASES DE DATOS</u></a></p>
             <blockquote>
-                <p><a href="#concepto-y-ventajas-de-las-vistas"><u>5.1. ¿Qué es una Vista y Ventajas Principales?</u></a></p>
-                <p><a href="#crear-o-modificar-una-vista"><u>5.2. Crear o Modificar una Vista (CREATE VIEW)</u></a></p>
-                <p><a href="#eliminar-una-vista"><u>5.3. Eliminar una Vista (DROP VIEW)</u></a></p>
-                <p><a href="#renombrar-una-vista"><u>5.4. Renombrar una Vista (RENAME TABLE)</u></a></p>
-                <p><a href="#consultar-vistas-y-su-definición"><u>5.5. Consultar Vistas y su Definición (SHOW)</u></a></p>
-                <p><a href="#vistas-actualizables"><u>5.6. Vistas con Contenido Actualizable (INSERT, UPDATE, DELETE)</u></a></p>
+                <p><a href="#a56-vistas-con-contenido-actualizable-insert-update-delete"><u>5.1. ¿Qué es una Vista y Ventajas Principales?</u></a></p>
+                <p><a href="#a52-crear-o-modificar-una-vista-create-view"><u>5.2. Crear o Modificar una Vista (CREATE VIEW)</u></a></p>
+                <p><a href="#a53-eliminar-una-vista-drop-view"><u>5.3. Eliminar una Vista (DROP VIEW)</u></a></p>
+                <p><a href="#a54-renombrar-una-vista-rename-table"><u>5.4. Renombrar una Vista (RENAME TABLE)</u></a></p>
+                <p><a href="#a55-consultar-vistas-y-su-definicion-show"><u>5.5. Consultar Vistas y su Definición (SHOW)</u></a></p>
+                <p><a href="#a56-vistas-con-contenido-actualizable-insert-update-delete"><u>5.6. Vistas con Contenido Actualizable (INSERT, UPDATE, DELETE)</u></a></p>
             </blockquote>
 
-            <h1 id="introducción-y-contextualización">1. INTRODUCCIÓN Y
-                CONTEXTUALIZACIÓN <a class="headerlink" href="#introducción-y-contextualización"
+            <h1 id="a1-introduccion-y-contextualizacion">1. INTRODUCCIÓN Y
+                CONTEXTUALIZACIÓN <a class="headerlink" href="#a1-introduccion-y-contextualizacion"
                     title="Enlace permanente">¶</a></h1>
             <p>En el ámbito de la administración de sistemas informáticos, los
                 Servidores de Gestión de Bases de Datos (SGBD) custodian el activo más
@@ -203,19 +202,19 @@
                     </blockquote>
                 </li>
             </ul>
-            <h1 id="administración-de-cuentas-de-usuario">2. ADMINISTRACIÓN DE
-                CUENTAS DE USUARIO <a class="headerlink" href="#administración-de-cuentas-de-usuario"
+            <h1 id="a2-administracion-de-cuentas-de-usuario">2. ADMINISTRACIÓN DE
+                CUENTAS DE USUARIO <a class="headerlink" href="#a2-administracion-de-cuentas-de-usuario"
                     title="Enlace permanente">¶</a></h1>
-            <h2 id="sentencia-de-creación-de-cuentas-create-user">2.1. Sentencia de
+            <h2 id="a21-sentencia-de-creacion-de-cuentas-create-user">2.1. Sentencia de
                 Creación de Cuentas (CREATE USER) <a class="headerlink"
-                    href="#sentencia-de-creación-de-cuentas-create-user" title="Enlace permanente">¶</a></h2>
+                    href="#a21-sentencia-de-creacion-de-cuentas-create-user" title="Enlace permanente">¶</a></h2>
             <p>En MySQL, una cuenta de usuario se define mediante una estructura
                 compuesta por dos partes diferenciadas e indisolubles:
                 'nombre_usuario'@'host'. La omisión o alteración de cualquiera de estas
                 dos partes rompe el esquema de validación de accesos del motor de base
                 de datos.</p>
 
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>-- Sintaxis general base para la provisión de cuentas de usuario
 CREATE USER 'nombre_usuario'@'host' IDENTIFIED WITH
 mysql_native_password BY 'contraseña';</code></pre>
@@ -260,9 +259,9 @@ mysql_native_password BY 'contraseña';</code></pre>
                 </li>
             </ul>
 
-            <h2 id="sintaxis-y-plugins-de-autenticación-en-mysql-8.0">2.2. Sintaxis
+            <h2 id="a22-sintaxis-y-plugins-de-autenticacion-en-mysql-80">2.2. Sintaxis
                 y Plugins de Autenticación en MySQL 8.0 <a class="headerlink"
-                    href="#sintaxis-y-plugins-de-autenticación-en-mysql-8.0" title="Enlace permanente">¶</a></h2>
+                    href="#a22-sintaxis-y-plugins-de-autenticacion-en-mysql-80" title="Enlace permanente">¶</a></h2>
             <p>MySQL 8.0 expande los mecanismos de control de acceso permitiendo
                 diversificar los plugins que procesan la validación de las credenciales,
                 ofreciendo algoritmos criptográficos más avanzados (como
@@ -317,7 +316,7 @@ mysql_native_password BY 'contraseña';</code></pre>
                 </div>
             </div>
 
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>-- EJEMPLO PRÁCTICO: Creación de cuentas con diferentes directivas de autenticación
 -- 1. Cuenta para una aplicación interna que requiere compatibilidad con el formato clásico de hashes
 CREATE USER 'app_legacy'@'172.16.11.10'
@@ -332,9 +331,9 @@ IDENTIFIED BY RANDOM PASSWORD;</code></pre>
                 obsoleta y se prioriza la sentencia ALTER USER 'user'@'host' IDENTIFIED
                 BY 'new_password';.</p>
 
-            <h2 id="persistencia-en-el-diccionario-de-datos-mysql.user">2.3.
+            <h2 id="a23-persistencia-en-el-diccionario-de-datos-mysqluser">2.3.
                 Persistencia en el Diccionario de Datos (mysql.user) <a class="headerlink"
-                    href="#persistencia-en-el-diccionario-de-datos-mysql.user" title="Enlace permanente">¶</a></h2>
+                    href="#a23-persistencia-en-el-diccionario-de-datos-mysqluser" title="Enlace permanente">¶</a></h2>
             <p>Cada vez que se ejecuta un comando CREATE USER, el SGBD valida la
                 sintaxis y escribe de forma permanente un nuevo registro en el
                 diccionario de datos del motor, específicamente en la tabla del sistema
@@ -343,23 +342,23 @@ IDENTIFIED BY RANDOM PASSWORD;</code></pre>
                 asignados y los privilegios globales (superusuario).
             </p>
 
-            <h2 id="eliminación-de-cuentas-drop-user">2.4. Eliminación de Cuentas
-                (DROP USER) <a class="headerlink" href="#eliminación-de-cuentas-drop-user"
+            <h2 id="a24-eliminacion-de-cuentas-drop-user">2.4. Eliminación de Cuentas
+                (DROP USER) <a class="headerlink" href="#a24-eliminacion-de-cuentas-drop-user"
                     title="Enlace permanente">¶</a></h2>
             <p>Para revocar el acceso permanente de un usuario en el servidor, se
                 debe purgar su registro del diccionario mediante la sentencia:</p>
 
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>-- Eliminación explícita de una cuenta de usuario
 DROP USER 'nombre_usuario'@'host';</code></pre>
             </div>
 
-            <h1 id="el-sistema-de-privilegios-de-mysql">3. EL SISTEMA DE PRIVILEGIOS
-                DE MYSQL <a class="headerlink" href="#el-sistema-de-privilegios-de-mysql"
+            <h1 id="a3-el-sistema-de-privilegios-de-mysql">3. EL SISTEMA DE PRIVILEGIOS
+                DE MYSQL <a class="headerlink" href="#a3-el-sistema-de-privilegios-de-mysql"
                     title="Enlace permanente">¶</a></h1>
 
-            <h2 id="niveles-de-granularidad-de-permisos">3.1. Niveles de
-                Granularidad de Permisos <a class="headerlink" href="#niveles-de-granularidad-de-permisos"
+            <h2 id="a31-niveles-de-granularidad-de-permisos">3.1. Niveles de
+                Granularidad de Permisos <a class="headerlink" href="#a31-niveles-de-granularidad-de-permisos"
                     title="Enlace permanente">¶</a></h2>
             <p>Para cumplir con el <em>Principio del Menor Privilegio</em>, MySQL
                 implementa una arquitectura jerárquica con cuatro niveles de
@@ -375,14 +374,14 @@ DROP USER 'nombre_usuario'@'host';</code></pre>
 [Nivel de Columna] --&gt; Restringe la acción a campos específicos
 </pre>
 
-            <h3 id="privilegios-a-nivel-de-base-de-datos">3.1.1. Privilegios a
-                Nivel de Base de Datos <a class="headerlink" href="#privilegios-a-nivel-de-base-de-datos"
+            <h3 id="a311-privilegios-a-nivel-de-base-de-datos">3.1.1. Privilegios a
+                Nivel de Base de Datos <a class="headerlink" href="#a311-privilegios-a-nivel-de-base-de-datos"
                     title="Enlace permanente">¶</a></h3>
             <p>Estos privilegios impactan sobre la totalidad de los objetos
                 residentes dentro de un esquema (base de datos) determinado utilizando
                 la nomenclatura base_de_datos.*.</p>
 
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>-- Estructura base para la concesión a nivel de esquema
 GRANT tipo_de_permiso ON base_de_datos.* TO 'nombre_usuario'@'host';</code></pre>
             </div>
@@ -439,9 +438,9 @@ GRANT tipo_de_permiso ON base_de_datos.* TO 'nombre_usuario'@'host';</code></pre
                 </li>
             </ul>
 
-            <h3 id="privilegios-a-nivel-de-tabla-mysql.tables_priv">3.1.2.
+            <h3 id="a312-privilegios-a-nivel-de-tabla-mysqltablespriv">3.1.2.
                 Privilegios a Nivel de Tabla (mysql.tables_priv) <a class="headerlink"
-                    href="#privilegios-a-nivel-de-tabla-mysql.tables_priv" title="Enlace permanente">¶</a></h3>
+                    href="#a312-privilegios-a-nivel-de-tabla-mysqltablespriv" title="Enlace permanente">¶</a></h3>
             <p>Cuando el acceso debe restringirse a un objeto de datos específico,
                 los permisos se declaran apuntando de forma unívoca a la tabla en
                 cuestión. Internamente, el motor añade registros en la tabla del sistema
@@ -449,7 +448,7 @@ GRANT tipo_de_permiso ON base_de_datos.* TO 'nombre_usuario'@'host';</code></pre
                 de forma directa sobre esa entidad.
             </p>
 
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>-- Concesión de control absoluto sobre una tabla concreta
 GRANT ALL ON mydb.mytbl TO 'someuser'@'somehost';
 -- Concesión de accesos de manipulación acotados
@@ -489,16 +488,16 @@ GRANT SELECT, INSERT ON mydb.mytbl TO 'someuser'@'somehost';</code></pre>
                 </li>
             </ul>
 
-            <h3 id="privilegios-a-nivel-de-columna-mysql.columns_priv">3.1.3.
+            <h3 id="a313-privilegios-a-nivel-de-columna-mysqlcolumnspriv">3.1.3.
                 Privilegios a Nivel de Columna (mysql.columns_priv) <a class="headerlink"
-                    href="#privilegios-a-nivel-de-columna-mysql.columns_priv" title="Enlace permanente">¶</a></h3>
+                    href="#a313-privilegios-a-nivel-de-columna-mysqlcolumnspriv" title="Enlace permanente">¶</a></h3>
             <p>Representa el máximo nivel de aislamiento de datos en MySQL. Permite
                 restringir las operaciones básicas de datos a un subconjunto cerrado de
                 columnas de una tabla. Estos permisos generan apuntes en la tabla del
                 sistema <strong>mysql.columns_priv</strong> y, de forma concurrente,
                 actualizan los descriptores en mysql.tables_priv.</p>
 
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>-- Concesión DML restringida por columnas específicas de datos
 GRANT SELECT (col1), INSERT (col1, col2) ON mydb.mytbl TO
 'someuser'@'somehost';</code></pre>
@@ -506,9 +505,9 @@ GRANT SELECT (col1), INSERT (col1, col2) ON mydb.mytbl TO
             <p>Los únicos cuatro privilegios aceptados por la sintaxis a este nivel
                 atómico son de forma estricta: SELECT, INSERT, UPDATE y REFERENCES.</p>
 
-            <h3 id="privilegios-sobre-rutinas-y-procedimientos-mysql.procs_priv">3.1.4.
+            <h3 id="a314-privilegios-sobre-rutinas-y-procedimientos-mysqlprocspriv">3.1.4.
                 Privilegios sobre Rutinas y Procedimientos (mysql.procs_priv) <a class="headerlink"
-                    href="#privilegios-sobre-rutinas-y-procedimientos-mysql.procs_priv" title="Enlace permanente">¶</a>
+                    href="#a314-privilegios-sobre-rutinas-y-procedimientos-mysqlprocspriv" title="Enlace permanente">¶</a>
             </h3>
             <p>Regulan la creación y ejecución de código procedural alojado en la
                 base de datos (bloques de lógica de negocio). Dependiendo del alcance
@@ -516,7 +515,7 @@ GRANT SELECT (col1), INSERT (col1, col2) ON mydb.mytbl TO
                 elemento determinado), mysql.db (esquema completo) o mysql.user
                 (global).</p>
 
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>-- Otorgar derechos globales de creación sobre el esquema de datos
 GRANT CREATE ROUTINE ON mydb.* TO 'someuser'@'somehost';
 -- Otorgar derechos de ejecución individuales para una rutina crítica
@@ -541,29 +540,29 @@ GRANT EXECUTE ON PROCEDURE mydb.myproc TO 'someuser'@'somehost';</code></pre>
                 </li>
             </ul>
 
-            <h2 id="delegación-de-capacidades-with-grant-option">3.2. Delegación de
+            <h2 id="a32-delegacion-de-capacidades-with-grant-option">3.2. Delegación de
                 Capacidades (WITH GRANT OPTION) <a class="headerlink"
-                    href="#delegación-de-capacidades-with-grant-option" title="Enlace permanente">¶</a></h2>
+                    href="#a32-delegacion-de-capacidades-with-grant-option" title="Enlace permanente">¶</a></h2>
             <p>La inclusión de la cláusula WITH GRANT OPTION al término de una
                 sentencia de privilegios faculta al usuario receptor para transferir a
                 terceros los mismos permisos exactos que él ha recibido, delegando de
                 esta manera la cadena de control.</p>
 
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>-- Concesión de privilegios administrativos de rutinas con capacidad de delegación
 GRANT CREATE ROUTINE, ALTER ROUTINE ON mydb.* TO
 'someuser'@'somehost' WITH GRANT OPTION;</code></pre>
             </div>
 
-            <h2 id="revocación-de-permisos-revoke">3.3. Revocación de Permisos
-                (REVOKE) <a class="headerlink" href="#revocación-de-permisos-revoke"
+            <h2 id="a33-revocacion-de-permisos-revoke">3.3. Revocación de Permisos
+                (REVOKE) <a class="headerlink" href="#a33-revocacion-de-permisos-revoke"
                     title="Enlace permanente">¶</a></h2>
             <p>Para retirar accesos operativos de forma parcial o total a una cuenta
                 sin necesidad de destruir su identidad en el servidor, se utiliza el
                 comando REVOKE. La declaración del espacio de nombres y los objetos debe
                 guardar una correspondencia exacta con el GRANT inicial:</p>
 
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>-- Sintaxis general base para revocar accesos
 REVOKE tipo_de_permiso ON base_de_datos.tabla FROM
 'nombre_usuario'@'host';
@@ -588,26 +587,26 @@ REVOKE INSERT ON *.* FROM 'usuario'@'localhost';</code></pre>
                 </li>
             </ol>
 
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>-- Purga absoluta de privilegios y facultades de delegación de una cuenta
 REVOKE ALL PRIVILEGES, GRANT OPTION FROM 'user'@'localhost';</code></pre>
             </div>
 
-            <h2 id="auditoría-de-concesiones-show-grants">3.4. Auditoría de
-                Concesiones (SHOW GRANTS) <a class="headerlink" href="#auditoría-de-concesiones-show-grants"
+            <h2 id="a34-auditoria-de-concesiones-show-grants">3.4. Auditoría de
+                Concesiones (SHOW GRANTS) <a class="headerlink" href="#a34-auditoria-de-concesiones-show-grants"
                     title="Enlace permanente">¶</a></h2>
             <p>Todo SysAdmin debe auditar con regularidad el estado consolidado de
                 los accesos del servidor. Para inspeccionar los permisos efectivos de
                 una cuenta o de un rol determinado se ejecuta:</p>
 
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>-- Inspección de permisos de una cuenta de usuario
 SHOW GRANTS FOR 'nombre_usuario'@'host';</code></pre>
             </div>
 
-            <h2 id="sincronización-de-tablas-de-concesión-flush-privileges">3.5.
+            <h2 id="a35-sincronizacion-de-tablas-de-concesion-flush-privileges">3.5.
                 Sincronización de Tablas de Concesión (FLUSH PRIVILEGES) <a class="headerlink"
-                    href="#sincronización-de-tablas-de-concesión-flush-privileges" title="Enlace permanente">¶</a></h2>
+                    href="#a35-sincronizacion-de-tablas-de-concesion-flush-privileges" title="Enlace permanente">¶</a></h2>
             <p>Cuando los privilegios se asignan mediante los comandos estándar de
                 control (GRANT, REVOKE, CREATE USER), el motor de MySQL actualiza el
                 diccionario y recarga de forma inmediata las estructuras en memoria.</p>
@@ -617,7 +616,7 @@ SHOW GRANTS FOR 'nombre_usuario'@'host';</code></pre>
                 inmediato. En tales escenarios, es de obligado cumplimiento
                 ejecutar:</p>
 
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>-- Forzar la recarga en memoria de las tablas de privilegios
 FLUSH PRIVILEGES;</code></pre>
             </div>
@@ -626,11 +625,11 @@ FLUSH PRIVILEGES;</code></pre>
                 aplicando los nuevos controles de seguridad sin interrumpir las
                 conexiones ni requerir un reinicio del servicio de MySQL.</p>
 
-            <h1 id="gestión-avanzada-mediante-roles">4. GESTIÓN AVANZADA MEDIANTE
-                ROLES <a class="headerlink" href="#gestión-avanzada-mediante-roles" title="Enlace permanente">¶</a></h1>
+            <h1 id="a4-gestion-avanzada-mediante-roles">4. GESTIÓN AVANZADA MEDIANTE
+                ROLES <a class="headerlink" href="#a4-gestion-avanzada-mediante-roles" title="Enlace permanente">¶</a></h1>
 
-            <h2 id="concepto-de-rol-en-mysql-8.0">4.1. Concepto de Rol en MySQL
-                8.0 <a class="headerlink" href="#concepto-de-rol-en-mysql-8.0" title="Enlace permanente">¶</a></h2>
+            <h2 id="a41-concepto-de-rol-en-mysql-80">4.1. Concepto de Rol en MySQL
+                8.0 <a class="headerlink" href="#a41-concepto-de-rol-en-mysql-80" title="Enlace permanente">¶</a></h2>
             <p>A partir de la versión 8.0, MySQL implementa el control de acceso
                 basado en roles (<strong>RBAC - Role-Based Access Control</strong>). Un
                 rol se define técnicamente como una abstracción de identidad o
@@ -643,9 +642,9 @@ FLUSH PRIVILEGES;</code></pre>
                 "Auditor") y posteriormente los usuarios simplemente heredan estos
                 contenedores de permisos.</p>
 
-            <h2 id="roles-administrativos-de-factoría-en-entornos-de-gestión">4.2.
+            <h2 id="a42-roles-administrativos-de-factoria-en-entornos-de-gestion">4.2.
                 Roles Administrativos de Factoría en Entornos de Gestión <a class="headerlink"
-                    href="#roles-administrativos-de-factoría-en-entornos-de-gestión" title="Enlace permanente">¶</a>
+                    href="#a42-roles-administrativos-de-factoria-en-entornos-de-gestion" title="Enlace permanente">¶</a>
             </h2>
             <p>Las herramientas avanzadas de administración de sistemas de bases de
                 datos (como <em>MySQL Workbench</em>) exponen de forma nativa una serie
@@ -720,19 +719,19 @@ FLUSH PRIVILEGES;</code></pre>
                 </div>
             </div>
 
-            <h2 id="ciclo-operativo-de-trabajo-con-roles-rbac-lifecycle">4.3. Ciclo
+            <h2 id="a43-ciclo-operativo-de-trabajo-con-roles-rbac-lifecycle">4.3. Ciclo
                 Operativo de Trabajo con Roles (RBAC Lifecycle) <a class="headerlink"
-                    href="#ciclo-operativo-de-trabajo-con-roles-rbac-lifecycle" title="Enlace permanente">¶</a></h2>
+                    href="#a43-ciclo-operativo-de-trabajo-con-roles-rbac-lifecycle" title="Enlace permanente">¶</a></h2>
             <p>Para desplegar un sistema seguro de control basado en roles, se debe
                 completar de manera ordenada un flujo operativo de cuatro fases
                 secuenciales:</p>
 
-            <pre><code>[1. CREATE ROLE]        ---&gt; [2. GRANT TO ROLE] ---&gt; 
+            <pre><code>[1. CREATE ROLE]        ---&gt; [2. GRANT TO ROLE] ---&gt;
 [3. GRANT ROLE TO USER] ---&gt; [4. ACTIVATE ROLE]</code></pre>
             <p><strong>Paso 1: Creación del Rol en el Servidor</strong></p>
             <p>Se utiliza el comando CREATE ROLE, pudiendo opcionalmente verificar
                 su existencia previa.</p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>-- Provisión de nuevos contenedores de privilegios (Roles)
 CREATE ROLE IF NOT EXISTS mantenimiento_basico, mantenimiento_total,
 consulta_basica;</code></pre>
@@ -751,7 +750,7 @@ consulta_basica;</code></pre>
                 anulando cualquier posibilidad de inicio de sesión directo con la
                 identidad de dicho rol.</p>
 
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>-- Creación de un rol con host de conexión de red explícito
 CREATE ROLE IF NOT EXISTS 'rol_dev'@'%';</code></pre>
             </div>
@@ -760,7 +759,7 @@ CREATE ROLE IF NOT EXISTS 'rol_dev'@'%';</code></pre>
                 estándar de GRANT, pero situando el rol como el elemento destino del
                 comando.</p>
 
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>-- Ejemplos de asignación a diferentes niveles de granularidad
 GRANT EXECUTE ON *.* TO mantenimiento_total; -- Ámbito Global de Sistema
 GRANT SELECT ON employees.* TO mantenimiento_basico; -- Ámbito de Base de Datos
@@ -772,7 +771,7 @@ GRANT SELECT ON employees.departments TO consulta_basica; -- Ámbito de Tabla</c
                 conceder dicho rol a los técnicos u operarios de datos que lo
                 requieran.</p>
 
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>-- Vincular los roles a cuentas de usuario preexistentes en el sistema
 GRANT mantenimiento_basico, consulta_basica TO 'user1'@'%';
 GRANT mantenimiento_total TO 'user2'@'%';</code></pre>
@@ -788,7 +787,7 @@ GRANT mantenimiento_total TO 'user2'@'%';</code></pre>
                 inmediatamente al abrir una conexión. Si el usuario inicia sesión y
                 ejecuta la función de diagnóstico de contexto:</p>
 
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>-- Comprobación de roles activos en el hilo de conexión actual
 SELECT CURRENT_ROLE();</code></pre>
             </div>
@@ -796,9 +795,9 @@ SELECT CURRENT_ROLE();</code></pre>
                 tanto, para poder hacer uso de las capacidades heredadas del rol, es
                 imperativo proceder con su <strong>activación</strong>.</p>
 
-            <h2 id="estrategias-de-activación-automatización-vs-manual">4.4.
+            <h2 id="a44-estrategias-de-activacion-automatizacion-vs-manual">4.4.
                 Estrategias de Activación: Automatización vs Manual <a class="headerlink"
-                    href="#estrategias-de-activación-automatización-vs-manual" title="Enlace permanente">¶</a></h2>
+                    href="#a44-estrategias-de-activacion-automatizacion-vs-manual" title="Enlace permanente">¶</a></h2>
             <p>La activación de los roles asignados se puede gestionar implementando
                 dos aproximaciones distintas según las necesidades operativas de la
                 infraestructura:</p>
@@ -812,7 +811,7 @@ SELECT CURRENT_ROLE();</code></pre>
                 sistema que posea el privilegio CREATE USER (o derechos de modificación
                 directa sobre la tabla del sistema mysql.default_roles):</p>
 
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>-- 1. Forzar la activación automática de TODOS los roles asignados al iniciar sesión
 SET DEFAULT ROLE ALL TO 'user1'@'%', 'user2'@'%';
 -- 2. Configurar la activación automática por defecto de un único rol determinado
@@ -827,7 +826,7 @@ SET DEFAULT ROLE mantenimiento_total TO 'user2'@'%';</code></pre>
                 tiempo de ejecución, el propio usuario conectado utiliza la instrucción
                 SET ROLE:</p>
 
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>-- Cambiar el contexto de la sesión actual de forma manual (Ejecutado por el usuario)
 SET ROLE 'mantenimiento_total'; -- Activa el rol indicado y suspende el resto
 SET ROLE ALL; -- Activa de forma simultánea todos los roles asignados
@@ -839,11 +838,11 @@ SET ROLE NONE; -- Desactiva todos los roles, devolviendo la sesión a mínimos p
                 rol_name), dotando al SysAdmin de una gran versatilidad para orquestar
                 entornos de bases de datos altamente seguros y compartimentados.</p>
 
-            <h1 id="vistas-en-bases-de-datos">5. VISTAS EN BASES DE DATOS <a class="headerlink"
-                    href="#vistas-en-bases-de-datos" title="Enlace permanente">¶</a></h1>
+            <h1 id="a5-vistas-en-bases-de-datos">5. VISTAS EN BASES DE DATOS <a class="headerlink"
+                    href="#a5-vistas-en-bases-de-datos" title="Enlace permanente">¶</a></h1>
 
-            <h2 id="concepto-y-ventajas-de-las-vistas">5.1. ¿Qué es una Vista y Ventajas Principales? <a class="headerlink"
-                    href="#concepto-y-ventajas-de-las-vistas" title="Enlace permanente">¶</a></h2>
+            <h2 id="a51-que-es-una-vista-y-ventajas-principales">5.1. ¿Qué es una Vista y Ventajas Principales? <a class="headerlink"
+                    href="#a51-que-es-una-vista-y-ventajas-principales" title="Enlace permanente">¶</a></h2>
             <p>Una vista es una tabla virtual creada a partir del resultado de una consulta SQL que se almacena en el diccionario de datos del gestor. A diferencia de una tabla física, la vista no duplica los datos en disco, sino que los obtiene dinámicamente de las tablas subyacentes en el momento en que es consultada.</p>
             <p>Desde la perspectiva de la administración de sistemas y seguridad (CE3.a), las principales ventajas que aporta su utilización son:</p>
             <ul>
@@ -864,11 +863,11 @@ SET ROLE NONE; -- Desactiva todos los roles, devolviendo la sesión a mínimos p
                 </li>
             </ul>
 
-            <h2 id="crear-o-modificar-una-vista">5.2. Crear o Modificar una Vista (CREATE VIEW) <a class="headerlink"
-                    href="#crear-o-modificar-una-vista" title="Enlace permanente">¶</a></h2>
+            <h2 id="a52-crear-o-modificar-una-vista-create-view">5.2. Crear o Modificar una Vista (CREATE VIEW) <a class="headerlink"
+                    href="#a52-crear-o-modificar-una-vista-create-view" title="Enlace permanente">¶</a></h2>
             <p>En MySQL, la instrucción <code>CREATE VIEW</code> permite registrar la especificación de una vista virtual. Para actualizar una vista preexistente sin necesidad de eliminarla previamente se emplea la cláusula complementaria <code>OR REPLACE</code>.</p>
 
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>-- Sintaxis formal general en MySQL
 CREATE
     [OR REPLACE]
@@ -909,13 +908,13 @@ CREATE
                 </div>
             </div>
 
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>-- Ejemplo de definición con renombrado explícito de columnas:
 CREATE OR REPLACE VIEW vista_pedidos_totales (id_pedido, fecha, cliente, importe_total) AS
-SELECT 
-    p.codigo_pedido, 
-    p.fecha_pedido, 
-    c.nombre_cliente, 
+SELECT
+    p.codigo_pedido,
+    p.fecha_pedido,
+    c.nombre_cliente,
     SUM(dp.cantidad * dp.precio_unidad)
 FROM cliente c
 INNER JOIN pedido p ON c.codigo_cliente = p.codigo_cliente
@@ -923,29 +922,29 @@ INNER JOIN detalle_pedido dp ON p.codigo_pedido = dp.codigo_pedido
 GROUP BY p.codigo_pedido;</code></pre>
             </div>
 
-            <h2 id="eliminar-una-vista">5.3. Eliminar una Vista (DROP VIEW) <a class="headerlink"
-                    href="#eliminar-una-vista" title="Enlace permanente">¶</a></h2>
+            <h2 id="a53-eliminar-una-vista-drop-view">5.3. Eliminar una Vista (DROP VIEW) <a class="headerlink"
+                    href="#a53-eliminar-una-vista-drop-view" title="Enlace permanente">¶</a></h2>
             <p>Para suprimir una o varias vistas del catálogo del sistema sin alterar los datos persistidos en las tablas base, se utiliza la sentencia <code>DROP VIEW</code>. Se recomienda incluir la cláusula preventiva <code>IF EXISTS</code>:</p>
 
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>-- Eliminación segura de una o más vistas
 DROP VIEW IF EXISTS nombre_vista [, otra_vista] [RESTRICT | CASCADE];</code></pre>
             </div>
 
-            <h2 id="renombrar-una-vista">5.4. Renombrar una Vista (RENAME TABLE) <a class="headerlink"
-                    href="#renombrar-una-vista" title="Enlace permanente">¶</a></h2>
+            <h2 id="a54-renombrar-una-vista-rename-table">5.4. Renombrar una Vista (RENAME TABLE) <a class="headerlink"
+                    href="#a54-renombrar-una-vista-rename-table" title="Enlace permanente">¶</a></h2>
             <p>Dado que en el diccionario de datos de MySQL las vistas comparten espacio de nombres con las tablas, la modificación de su identificador se realiza mediante el comando <code>RENAME TABLE</code>:</p>
 
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>-- Renombrar una vista en el catálogo
 RENAME TABLE nombre_antiguo_vista TO nuevo_nombre_vista;</code></pre>
             </div>
 
-            <h2 id="consultar-vistas-y-su-definición">5.5. Consultar Vistas y su Definición (SHOW) <a class="headerlink"
-                    href="#consultar-vistas-y-su-definición" title="Enlace permanente">¶</a></h2>
+            <h2 id="a55-consultar-vistas-y-su-definicion-show">5.5. Consultar Vistas y su Definición (SHOW) <a class="headerlink"
+                    href="#a55-consultar-vistas-y-su-definicion-show" title="Enlace permanente">¶</a></h2>
             <p>Para auditar qué vistas están desplegadas y examinar la sentencia SQL con la que fueron creadas, MySQL proporciona sentencias de introspección directas:</p>
 
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>-- 1. Listar todas las tablas y vistas indicando su tipo (BASE TABLE o VIEW)
 SHOW FULL TABLES;
 
@@ -956,8 +955,8 @@ SHOW FULL TABLES WHERE Table_type = 'VIEW';
 SHOW CREATE VIEW nombre_vista;</code></pre>
             </div>
 
-            <h2 id="vistas-actualizables">5.6. Vistas con Contenido Actualizable (INSERT, UPDATE, DELETE) <a class="headerlink"
-                    href="#vistas-actualizables" title="Enlace permanente">¶</a></h2>
+            <h2 id="a56-vistas-con-contenido-actualizable-insert-update-delete">5.6. Vistas con Contenido Actualizable (INSERT, UPDATE, DELETE) <a class="headerlink"
+                    href="#a56-vistas-con-contenido-actualizable-insert-update-delete" title="Enlace permanente">¶</a></h2>
             <p>En determinados casos y bajo condiciones estrictas, el SGBD permite ejecutar sentencias de manipulación de datos (<code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>) a través de una vista para modificar directamente los datos de la tabla base subyacente.</p>
             <p>Para que una vista sea <strong>actualizable</strong> (<em>updatable view</em>), debe existir una relación uno a uno entre las filas de la vista y las de la tabla original. La vista <strong>no</strong> puede contener:</p>
             <ul>

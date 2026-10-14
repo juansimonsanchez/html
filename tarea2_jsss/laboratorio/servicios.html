@@ -11,7 +11,7 @@
 
     <header>
         <!-- Fase 1.2: .aviso en servicios.html -->
-        <h1 class="aviso">Servicios y Despliegues de Red</h1>
+        <h1 class="aviso" id="servicios-y-despliegues-de-red">Servicios y Despliegues de Red</h1>
         <!-- Fase 4.1: Menú con fondo claro -->
         <nav>
             <ul>
@@ -27,30 +27,30 @@
     <main>
         <!-- Fase 2.1: margin de 20px en servicios.html -->
         <section>
-            <h2>Estado de los Servicios Desplegados</h2>
+            <h2 id="estado-de-los-servicios-desplegados">Estado de los Servicios Desplegados</h2>
             <!-- Fase 3.1: .contenedor-flex con alineación space-between -->
             <div class="contenedor-flex">
-                <img src="estado_servicios.png" alt="Estado de los Servicios" width="450" height="250">
+                <img src="estado_servicios.png" alt="imagen" width="450" height="250">
             </div>
         </section>
 
         <hr>
 
         <section>
-            <h2>Demostración de Distribución de Columnas (space-between)</h2>
+            <h2 id="demostracion-de-distribucion-de-columnas-space-between">Demostración de Distribución de Columnas (space-between)</h2>
             <!-- Fase 3.2: 3 divs en horizontal con alineación space-between -->
             <div class="layout-horizontal">
                 <!-- Fase 2.2: .tarjeta-servicios con padding de 25px -->
                 <div class="tarjeta-servicios">
-                    <h3>Módulo Web</h3>
+                    <h3 id="modulo-web">Módulo Web</h3>
                     <p>Servicio Apache2 activo.</p>
                 </div>
                 <div class="tarjeta-servicios">
-                    <h3>Módulo BBDD</h3>
+                    <h3 id="modulo-bbdd">Módulo BBDD</h3>
                     <p>Servicio MySQL activo.</p>
                 </div>
                 <div class="tarjeta-servicios">
-                    <h3>Módulo Red</h3>
+                    <h3 id="modulo-red">Módulo Red</h3>
                     <p>Enrutamiento configurado.</p>
                 </div>
             </div>
@@ -59,7 +59,7 @@
         <hr>
 
         <section>
-            <h2>Guía de Instalación del Servidor Apache en Linux</h2>
+            <h2 id="guia-de-instalacion-del-servidor-apache-en-linux">Guía de Instalación del Servidor Apache en Linux</h2>
             <ol>
                 <li>
                     Actualización de los repositorios:
@@ -85,12 +85,12 @@
         <hr>
 
         <section>
-            <h2>Buscador Rápido de Servicios</h2>
+            <h2 id="buscador-rapido-de-servicios">Buscador Rápido de Servicios</h2>
             <form action="servicios.html" method="GET">
                 <fieldset>
                     <legend>Búsqueda en Inventario</legend>
                     <label for="txtBuscar">Servicio o IP:</label>
-                    <input type="text" id="txtBuscar" name="query" placeholder="Ej: Apache o 192.168.1.1">
+                    <input type="text" id="a1" name="query" placeholder="Ej: Apache o 192.168.1.1">
                     <input type="submit" value="Buscar Servicio">
                 </fieldset>
             </form>
@@ -99,14 +99,14 @@
         <hr>
 
         <section>
-            <h2>Direccionamiento IP de las Subredes</h2>
+            <h2 id="direccionamiento-ip-de-las-subredes">Direccionamiento IP de las Subredes</h2>
             <table border="1">
                 <thead>
                     <tr>
-                        <th>Nombre de Subred</th>
-                        <th>Dirección de Red</th>
-                        <th>Puerta de Enlace (Gateway)</th>
-                        <th>DNS Principal</th>
+                        <th scope="col">Nombre de Subred</th>
+                        <th scope="col">Dirección de Red</th>
+                        <th scope="col">Puerta de Enlace (Gateway)</th>
+                        <th scope="col">DNS Principal</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -135,7 +135,7 @@
     <hr>
 
     <aside>
-        <h3>Documentación Adicional</h3>
+        <h3 id="documentacion-adicional">Documentación Adicional</h3>
         <p>Consulte las wikis internas para configuraciones de DMZ.</p>
     </aside>
 

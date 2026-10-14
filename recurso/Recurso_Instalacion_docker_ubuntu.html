@@ -10,43 +10,43 @@
 </head>
 
 <body>
-  <header id="site-header">
+  <header id="a1">
     <div class="header-container">
-      <div class="site-title site-title-row"><img src="logo.png" alt="Logo" class="site-logo"><span>RECURSO
+      <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>RECURSO
           &ndash; Instalacion Docker Ubuntu</span></div>
       <nav class="top-nav">
         <a href="index.html" class="nav-btn">Inicio</a>
       </nav>
     </div>
   </header>
-  <div id="page-layout">
+  <div id="a2">
 
 
 
-    <main id="main-content">
+    <main id="a3">
       <div class="page-actions"><a
           href="Recurso_Instalación_docker_ubuntu.pdf" download
           class="pdf-download-btn">📥
           Descargar PDF</a></div>
-      <header id="title-block-header">
-        <h1 class="title"><span id="xmr9i2flg2y0" class="anchor"></span>Instalación de Docker</h1>
+      <header id="a4">
+        <h1 class="title" id="instalacion-de-docker"><span id="a5" class="anchor"></span>Instalación de Docker</h1>
       </header>
 
-      <p><a href="#instalación-de-docker-en-ubuntu"><u>1.Instalación de Docker
+      <p><a href="#a4-mantenimiento-y-limpieza-del-sistema"><u>1.Instalación de Docker
             en Ubuntu</u></a></p>
-      <p><a href="#gestión-de-contenedores-docker-run-docker-exec"><u>2.
+      <p><a href="#a5-gestion-con-docker-compose-docker-compose"><u>2.
             Gestión de Contenedores (docker run / docker exec)</u></a></p>
-      <p><a href="#administración-y-control-de-contenedores"><u>3.
+      <p><a href="#a3-administracion-y-control-de-contenedores"><u>3.
             Administración y control de Contenedores</u></a></p>
-      <p><a href="#gestión-de-imágenes-docker-image"><u>4. Gestión de Imágenes
+      <p><a href="#a4-gestion-de-imagenes-docker-image"><u>4. Gestión de Imágenes
             (docker image)</u></a></p>
-      <p><a href="#mantenimiento-y-limpieza-del-sistema"><u>4. Mantenimiento y
+      <p><a href="#a4-mantenimiento-y-limpieza-del-sistema"><u>4. Mantenimiento y
             Limpieza del Sistema</u></a></p>
-      <p><a href="#gestión-con-docker-compose-docker-compose"><u>5. Gestión
+      <p><a href="#a5-gestion-con-docker-compose-docker-compose"><u>5. Gestión
             con Docker Compose (docker compose)</u></a></p>
-      <h2 id="instalación-de-docker-en-ubuntu">1.Instalación de Docker en
-        Ubuntu <a class="headerlink" href="#instalación-de-docker-en-ubuntu" title="Enlace permanente">¶</a></h2>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+      <h2 id="a1instalacion-de-docker-en-ubuntu">1.Instalación de Docker en
+        Ubuntu <a class="headerlink" href="#a1instalacion-de-docker-en-ubuntu" title="Enlace permanente">¶</a></h2>
+      <div class="code-wrapper"><button class="copy-btn"  type="button"  onclick="copyCode(this)">📋 Copiar</button>
           <pre><code># Añade la clave GPG oficial de Docker:
 sudo apt update
 sudo apt install -y ca-certificates curl
@@ -55,7 +55,7 @@ sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyring
 sudo chmod a+r /etc/apt/keyrings/docker.asc</code></pre>
 </div>
 
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+      <div class="code-wrapper"><button class="copy-btn"  type="button" onclick="copyCode(this)">📋 Copiar</button>
           <pre><code># Añadir el repositorio a las fuentes de APT:
 echo \
 "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
@@ -64,25 +64,25 @@ sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
 sudo apt update</code></pre>
 
 </div>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+      <div class="code-wrapper"><button class="copy-btn"  type="button" onclick="copyCode(this)">📋 Copiar</button>
           <pre><code># Instalar los paquetes necesarios:
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</code></pre>
 </div>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+      <div class="code-wrapper"><button class="copy-btn"  type="button" onclick="copyCode(this)">📋 Copiar</button>
           <pre><code># Verificar que el servicio esté activo:
 sudo systemctl status docker</code></pre>
 
 </div>Deberías ver el estado resaltado en verde como active (running).
 
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+      <div class="code-wrapper"><button class="copy-btn"  type="button" onclick="copyCode(this)">📋 Copiar</button>
           <pre><code># Ejecutar Docker sin 'sudo' (opcional):
 sudo usermod -aG docker $USER
 newgrp docker</code></pre>
 </div><p>Ejecuta docker run hello-world sin anteceder sudo. Deberías ver un
       mensaje de bienvenida confirmando la instalación.</p>
-      <h2 id="gestión-de-contenedores-docker-run-docker-exec">2. Gestión de
+      <h2 id="a2-gestion-de-contenedores-docker-run-docker-exec">2. Gestión de
         Contenedores (docker run / docker exec) <a class="headerlink"
-          href="#gestión-de-contenedores-docker-run-docker-exec" title="Enlace permanente">¶</a></h2>
+          href="#a2-gestion-de-contenedores-docker-run-docker-exec" title="Enlace permanente">¶</a></h2>
       <p>El comando docker run crea e inicia un contenedor. Sus opciones más
         comunes son:</p>
       <ul>
@@ -137,8 +137,8 @@ newgrp docker</code></pre>
       <p><strong># Entrar a la terminal de un contenedor en
           ejecución</strong></p>
       <p>docker exec -it mi-mysql bash</p>
-      <h2 id="administración-y-control-de-contenedores">3. Administración y
-        control de Contenedores <a class="headerlink" href="#administración-y-control-de-contenedores"
+      <h2 id="a3-administracion-y-control-de-contenedores">3. Administración y
+        control de Contenedores <a class="headerlink" href="#a3-administracion-y-control-de-contenedores"
           title="Enlace permanente">¶</a></h2>
       <p>Comandos esenciales para inspeccionar y controlar el estado de los
         contenedores:</p>
@@ -203,8 +203,8 @@ newgrp docker</code></pre>
           </ul>
         </li>
       </ul>
-      <h3 id="gestión-de-imágenes-docker-image">4. Gestión de Imágenes (docker
-        image) <a class="headerlink" href="#gestión-de-imágenes-docker-image" title="Enlace permanente">¶</a></h3>
+      <h3 id="a4-gestion-de-imagenes-docker-image">4. Gestión de Imágenes (docker
+        image) <a class="headerlink" href="#a4-gestion-de-imagenes-docker-image" title="Enlace permanente">¶</a></h3>
       <p>Opciones para descargar, listar y limpiar imágenes del sistema:</p>
       <ul>
         <li>
@@ -231,8 +231,8 @@ newgrp docker</code></pre>
           </blockquote>
         </li>
       </ul>
-      <h2 id="mantenimiento-y-limpieza-del-sistema">4. Mantenimiento y
-        Limpieza del Sistema <a class="headerlink" href="#mantenimiento-y-limpieza-del-sistema"
+      <h2 id="a4-mantenimiento-y-limpieza-del-sistema">4. Mantenimiento y
+        Limpieza del Sistema <a class="headerlink" href="#a4-mantenimiento-y-limpieza-del-sistema"
           title="Enlace permanente">¶</a></h2>
       <p>Para liberar espacio en disco eliminado recursos obsoletos o en
         desuso:</p>
@@ -257,8 +257,8 @@ newgrp docker</code></pre>
           </blockquote>
         </li>
       </ul>
-      <h2 id="gestión-con-docker-compose-docker-compose">5. Gestión con Docker
-        Compose (docker compose) <a class="headerlink" href="#gestión-con-docker-compose-docker-compose"
+      <h2 id="a5-gestion-con-docker-compose-docker-compose">5. Gestión con Docker
+        Compose (docker compose) <a class="headerlink" href="#a5-gestion-con-docker-compose-docker-compose"
           title="Enlace permanente">¶</a></h2>
       <p>Cuando se definen múltiples servicios en un archivo
         docker-compose.yml:</p>

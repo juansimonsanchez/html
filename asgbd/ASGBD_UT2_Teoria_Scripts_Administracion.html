@@ -10,28 +10,27 @@
 </head>
 
 <body>
-    <header id="site-header">
+    <header id="a1">
         <div class="header-container">
-            <div class="site-title site-title-row"><img src="logo.png" alt="Logo" class="site-logo"><span>ASGBD
+            <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>ASGBD
                     &ndash; Ut2 Teoria Scripts Administracion</span></div>
             <nav class="top-nav">
                 <a href="index.html" class="nav-btn">Inicio</a>
             </nav>
         </div>
     </header>
-    <div id="page-layout">
+    <div id="a2">
 
-        <main id="main-content">
+        <main id="a3">
             <div class="page-actions"><a
                     href="ASGBD_UT2_Teoria_Scripts_Administracion.pdf" download
                     class="pdf-download-btn">📥
                     Descargar PDF</a></div>
 
-            <header id="title-block-header">
-                <h1 class="title">
-                    <p><span id="_ruzpc7qwqt9g" class="anchor"></span>Unidad 2:</p>
-                    <p><span id="_ajt4s0x9q7xf" class="anchor"></span>Scripts de
-                        Administración y Automatización en el SGBD</p>
+            <header id="a4">
+                <h1 class="title" id="unidad-2-scripts-de-administracion-y-automatizacion-en-el-sgbd">
+                    <span id="a5" class="anchor"></span>Unidad 2:<br><span id="a6" class="anchor"></span>Scripts de
+                        Administración y Automatización en el SGBD
                 </h1>
             </header>
 
@@ -62,38 +61,38 @@
                     </table>
                 </div>
             </div>
-            <h2 id="section"> <a class="headerlink" href="#section" title="Enlace permanente">¶</a></h2>
+            <h2 id="a7"> <a class="headerlink" href="#a7" title="Enlace permanente">¶</a></h2>
             <p><strong>ÍNDICE DE CONTENIDOS</strong></p>
-            <p><a href="#repaso-teórico"><u>1. Repaso Teórico</u></a></p>
+            <p><a href="#a31-informationschema-el-diccionario-de-datos"><u>1. Repaso Teórico</u></a></p>
             <blockquote>
-                <p><a href="#procedimientos-almacenados-stored-procedures"><u>1.1.
+                <p><a href="#a32-base-de-datos-mysql-el-repositorio-de-seguridad-y-privilegios"><u>1.1.
                             Procedimientos Almacenados (Stored Procedures)</u></a></p>
-                <p><a href="#funciones-almacenadas-stored-functions"><u>1.2. Funciones
+                <p><a href="#a33-base-de-datos-performanceschema"><u>1.2. Funciones
                             Almacenadas (Stored Functions)</u></a></p>
-                <p><a href="#disparadores-triggers"><u>1.3. Disparadores
+                <p><a href="#a34-base-de-datos-sys-la-abstraccion-simplificada"><u>1.3. Disparadores
                             (Triggers)</u></a></p>
             </blockquote>
-            <p><a href="#ventajas-de-la-programación-en-la-administración"><u>2.
+            <p><a href="#a8"><u>2.
                         Ventajas de la programación en la administración</u></a></p>
-            <p><a href="#catálogo-del-sistema-metadatos"><u>3. Catálogo del Sistema
+            <p><a href="#a5-ejemplos-practicos-de-scripts-de-administracion-sencillos-y-documentados"><u>3. Catálogo del Sistema
                         (Metadatos)</u></a></p>
             <blockquote>
-                <p><a href="#information_schema-el-diccionario-de-datos"><u>3.1.
+                <p><a href="#a31-informationschema-el-diccionario-de-datos"><u>3.1.
                             information_schema (El Diccionario de Datos)</u></a></p>
-                <p><a href="#base-de-datos-mysql-el-repositorio-de-seguridad-y-privilegios"><u>3.2.
+                <p><a href="#a32-base-de-datos-mysql-el-repositorio-de-seguridad-y-privilegios"><u>3.2.
                             Base de Datos mysql (El Repositorio de Seguridad y
                             Privilegios)</u></a></p>
-                <p><a href="#base-de-datos-performance_schema"><u>3.3. Base de Datos
+                <p><a href="#a33-base-de-datos-performanceschema"><u>3.3. Base de Datos
                             performance_schema</u></a></p>
-                <p><a href="#base-de-datos-sys-la-abstracción-simplificada"><u>3.4. Base
+                <p><a href="#a34-base-de-datos-sys-la-abstraccion-simplificada"><u>3.4. Base
                             de Datos sys (La Abstracción Simplificada)</u></a></p>
             </blockquote>
-            <p><a href="#automatización-mediante-scripts-externos-bash"><u>4.
+            <p><a href="#a9"><u>4.
                         Automatización Mediante Scripts Externos (Bash)</u></a></p>
-            <p><a href="#ejemplos-prácticos-de-scripts-de-administración-sencillos-y-documentados"><u>5.
+            <p><a href="#a5-ejemplos-practicos-de-scripts-de-administracion-sencillos-y-documentados"><u>5.
                         Ejemplos Prácticos de Scripts de Administración (Sencillos y
                         Documentados)</u></a></p>
-            <h1 id="repaso-teórico">1. Repaso Teórico <a class="headerlink" href="#repaso-teórico"
+            <h1 id="a1-repaso-teorico">1. Repaso Teórico <a class="headerlink" href="#a1-repaso-teorico"
                     title="Enlace permanente">¶</a></h1>
             <p>La administración moderna de bases de datos no se limita a ejecutar
                 consultas interactivas. Para garantizar la eficiencia, seguridad y
@@ -104,9 +103,9 @@
                 <strong>Funciones</strong> y <strong>Disparadores
                     (Triggers)</strong>.
             </p>
-            <h2 id="procedimientos-almacenados-stored-procedures">1.1.
+            <h2 id="a11-procedimientos-almacenados-stored-procedures">1.1.
                 Procedimientos Almacenados (Stored Procedures) <a class="headerlink"
-                    href="#procedimientos-almacenados-stored-procedures" title="Enlace permanente">¶</a></h2>
+                    href="#a11-procedimientos-almacenados-stored-procedures" title="Enlace permanente">¶</a></h2>
             <p>Son subprogramas que se compilan y almacenan en el SGBD. Pueden
                 realizar operaciones complejas, alterar datos en múltiples tablas y
                 ejecutar sentencias DDL (Data Definition Language).</p>
@@ -152,9 +151,7 @@
                 </li>
             </ul>
             <p><strong>Ejemplo de Sintaxis Básica (MySQL)</strong></p>
-            <p>
-
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>DELIMITER //
 CREATE PROCEDURE sp_crear_usuario_lectura(
 IN p_username VARCHAR(50),
@@ -176,9 +173,9 @@ END //
 DELIMITER ;</code></pre>
 
             </div>
-            </h2>
-            <h2 id="funciones-almacenadas-stored-functions">1.2. Funciones
-                Almacenadas (Stored Functions) <a class="headerlink" href="#funciones-almacenadas-stored-functions"
+
+            <h2 id="a12-funciones-almacenadas-stored-functions">1.2. Funciones
+                Almacenadas (Stored Functions) <a class="headerlink" href="#a12-funciones-almacenadas-stored-functions"
                     title="Enlace permanente">¶</a></h2>
             <p>A diferencia de los procedimientos, las funciones están diseñadas
                 específicamente para <strong>calcular y devolver un único valor
@@ -218,8 +215,7 @@ DELIMITER ;</code></pre>
                 </li>
             </ul>
             <p><strong>Ejemplo de Sintaxis Básica (MySQL)</strong></p>
-            <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>DELIMITER //
 CREATE FUNCTION fn_obtener_tamano_megas(p_bytes BIGINT)
 RETURNS DECIMAL(10,2)
@@ -235,9 +231,9 @@ FROM information_schema.tables
 WHERE table_schema = 'mi_base_datos';</code></pre>
             </div>
 
-            </h2>
-            <h2 id="disparadores-triggers">1.3. Disparadores (Triggers) <a class="headerlink"
-                    href="#disparadores-triggers" title="Enlace permanente">¶</a></h2>
+
+            <h2 id="a13-disparadores-triggers">1.3. Disparadores (Triggers) <a class="headerlink"
+                    href="#a13-disparadores-triggers" title="Enlace permanente">¶</a></h2>
             <p>Un disparador es un bloque de código que se ejecuta <strong>de manera
                     automática</strong> en respuesta a un evento DML (INSERT, UPDATE o
                 DELETE) sobre una tabla específica.</p>
@@ -289,9 +285,7 @@ WHERE table_schema = 'mi_base_datos';</code></pre>
                 </li>
             </ul>
             <p><strong>Ejemplo de Sintaxis de Auditoría (MySQL)</strong></p>
-            <p>
-
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>CREATE TABLE log_cambios_privilegios (
 id INT AUTO_INCREMENT PRIMARY KEY,
 usuario_afectado VARCHAR(100),
@@ -309,7 +303,7 @@ VALUES (OLD.user, 'MODIFICACION_PERMISOS', USER());
 END //
 DELIMITER ;</code></pre>
 
-            </div>2. Ventajas
+            </div><h1 id="a8">2. Ventajas
             de la programación en la administración</h1>
             <p>El uso de estos elementos dentro del SGBD ofrece tres ventajas
                 operativas críticas para un Administrador de Sistemas de Bases de Datos
@@ -319,9 +313,9 @@ DELIMITER ;</code></pre>
                     <table>
                         <thead>
                             <tr class="header">
-                                <th><strong>Ventaja</strong></th>
-                                <th><strong>Descripción Técnica</strong></th>
-                                <th><strong>Impacto en la Administración</strong></th>
+                                <th scope="col"><strong>Ventaja</strong></th>
+                                <th scope="col"><strong>Descripción Técnica</strong></th>
+                                <th scope="col"><strong>Impacto en la Administración</strong></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -349,17 +343,17 @@ DELIMITER ;</code></pre>
                     </table>
                 </div>
             </div>
-            <h1 id="catálogo-del-sistema-metadatos">3. Catálogo del Sistema
-                (Metadatos) <a class="headerlink" href="#catálogo-del-sistema-metadatos" title="Enlace permanente">¶</a>
+            <h1 id="a3-catalogo-del-sistema-metadatos">3. Catálogo del Sistema
+                (Metadatos) <a class="headerlink" href="#a3-catalogo-del-sistema-metadatos" title="Enlace permanente">¶</a>
             </h1>
             <p>MySQL almacena la información sobre su propia estructura (metadatos)
                 en esquemas específicos. Dominar estos catálogos es la herramienta más
                 potente de un Administrador de Sistemas (SysAdmin), ya que permite
                 auditar el servidor, monitorizar el almacenamiento y diagnosticar la
                 degradación de rendimiento directamente mediante sentencias SQL.</p>
-            <h2 id="information_schema-el-diccionario-de-datos">3.1.
+            <h2 id="a31-informationschema-el-diccionario-de-datos">3.1.
                 information_schema (El Diccionario de Datos) <a class="headerlink"
-                    href="#information_schema-el-diccionario-de-datos" title="Enlace permanente">¶</a></h2>
+                    href="#a31-informationschema-el-diccionario-de-datos" title="Enlace permanente">¶</a></h2>
             <p>Es una base de datos virtual de solo lectura definida por el estándar
                 ANSI SQL. Actúa como el diccionario de datos del SGBD. No contiene
                 archivos de datos físicos; en su lugar, MySQL genera sus tablas
@@ -402,9 +396,7 @@ DELIMITER ;</code></pre>
                     datos</strong></p>
             <p>Esta consulta calcula el espacio real en disco de cada base de datos
                 (Datos + Índices) expresado en Megabytes:</p>
-            <p>
-
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>SELECT
 table_schema AS 'Base de Datos',
 ROUND(SUM(data_length + index_length) / 1024 / 1024, 2) AS 'Tamaño
@@ -416,14 +408,13 @@ GROUP BY table_schema
 ORDER BY (SUM(data_length + index_length)) DESC;</code></pre>
 
             </div>
-            </p>
+
             <p><strong>Caso Práctico 2: Detectar tablas sin Clave Primaria (Primary
                     Key)</strong></p>
             <p>La falta de claves primarias degrada catastróficamente el
                 rendimiento, especialmente en entornos con replicación activa
                 (Master-Slave) o clústeres.</p>
-            <p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>SELECT
 t.table_schema AS 'Base de Datos',
 t.table_name AS 'Tabla sin PK'
@@ -436,9 +427,9 @@ WHERE tc.constraint_name IS NULL
 AND t.table_schema NOT IN ('information_schema', 'mysql',
 'performance_schema', 'sys')
 AND t.table_type = 'BASE TABLE';</code></pre>
-                
+
 </div>
-            <h2>3.2.
+            <h2 id="a32-base-de-datos-mysql-el-repositorio-de-seguridad-y-privilegios">3.2.
                 Base de Datos mysql (El Repositorio de Seguridad y Privilegios)</h2>
             <p>A diferencia de information_schema, la base de datos mysql contiene
                 tablas físicas persistentes en el disco. Es el cerebro de la seguridad
@@ -467,9 +458,7 @@ AND t.table_type = 'BASE TABLE';</code></pre>
                     contraseñas de usuarios</strong></p>
             <p>Para cumplir con normativas de seguridad (como el RGPD), un SysAdmin
                 debe controlar la antigüedad y vigencia de las cuentas del sistema:</p>
-            <p>
-
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>SELECT
 user AS 'Usuario',
 host AS 'Host de Origen',
@@ -481,7 +470,7 @@ WHERE ssl_type != '' OR password_expired = 'Y' OR user !=
 'mysql.infoschema';</code></pre>
 
             </div>
-            <h2>3.3. Base de Datos
+            <h2 id="a33-base-de-datos-performanceschema">3.3. Base de Datos
                 performance_schema </h2>
             <p>Se enfoca de forma estricta en el rendimiento físico del servidor.
                 Cuenta con una arquitectura basada en <strong>Instrumentos</strong>
@@ -511,9 +500,7 @@ WHERE ssl_type != '' OR password_expired = 'Y' OR user !=
             </ul>
             <p><strong>Caso Práctico 4: Listar los errores más comunes provocados
                     por los usuarios</strong></p>
-            <p>
-
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>SELECT
 user AS 'Usuario',
 error_number AS 'Código de Error',
@@ -526,7 +513,7 @@ WHERE sum_error_raised &gt; 0
 ORDER BY sum_error_raised DESC;</code></pre>
 
             </div>
-            <h2>3.4. Base de
+            <h2 id="a34-base-de-datos-sys-la-abstraccion-simplificada">3.4. Base de
                 Datos sys (La Abstracción Simplificada)</h2>
             <p>La complejidad de performance_schema dificulta su uso rutinario en el
                 día a día del SysAdmin. Para solucionar esto, MySQL incluye la base de
@@ -534,9 +521,7 @@ ORDER BY sum_error_raised DESC;</code></pre>
                 y procedimientos predefinidos.</p>
             <p><strong>Caso Práctico 5: Identificar las consultas SQL que provocan
                     mayor latencia</strong></p>
-            <p>
-
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>SELECT
 query AS 'Sentencia SQL',
 db AS 'Base de Datos',
@@ -548,15 +533,13 @@ ORDER BY total_latency DESC
 LIMIT 5;</code></pre>
             </div>
 
-            </h3>
+
             <p><strong>Caso Práctico 6: Encontrar tablas con lecturas
                     completas</strong></p>
             <p>La monitorización sistemática de consultas que no aprovechan los
                 índices evita problemas de degradación del disco físico y ahorra energía
                 en el centro de datos.</p>
-            <p>
-
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>SELECT
 schemaname AS 'Base de Datos',
 tablename AS 'Tabla',
@@ -565,7 +548,7 @@ rows_sel AS 'Filas devueltas'
 FROM sys.schema_tables_with_full_table_scans
 ORDER BY scans DESC;</code></pre>
 
-            </div>4.
+            </div><h1 id="a9">4.
             Automatización Mediante Scripts Externos (Bash)</h1>
             <p>La verdadera automatización de la administración ocurre cuando
                 conectamos el SGBD con el Sistema Operativo utilizando scripts de
@@ -581,10 +564,10 @@ ORDER BY scans DESC;</code></pre>
             <p><strong>Recomendación:</strong> Utilizar archivos de configuración
                 seguros limitados por permisos de lectura para el usuario de sistema
                 (ej. archivo .my.cnf con permisos 600).</p>
-            <h1 id="ejemplos-prácticos-de-scripts-de-administración-sencillos-y-documentados">5.
+            <h1 id="a5-ejemplos-practicos-de-scripts-de-administracion-sencillos-y-documentados">5.
                 Ejemplos Prácticos de Scripts de Administración (Sencillos y
                 Documentados) <a class="headerlink"
-                    href="#ejemplos-prácticos-de-scripts-de-administración-sencillos-y-documentados"
+                    href="#a5-ejemplos-practicos-de-scripts-de-administracion-sencillos-y-documentados"
                     title="Enlace permanente">¶</a></h1>
             <p>Para asentar estos conceptos, a continuación se presentan tres
                 scripts sencillos para administración de sistemas Linux/MySQL. Están
@@ -595,9 +578,7 @@ ORDER BY scans DESC;</code></pre>
             <p>Este script verifica si el servicio MySQL está activo en el sistema
                 operativo y si responde a consultas básicas. Si falla, genera una alerta
                 visual y un registro en el log del sistema.</p>
-            <p>
-
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>#!/bin/bash
 #
 ======================================================================
@@ -630,13 +611,11 @@ echo "=== CONTROL DE SALUD FINALIZADO ==="
 exit 0</code></pre>
 
             </div><strong>Script 2: Copia de Seguridad Sencilla (Backup
-                Automatizado)</strong></p>
+                Automatizado)</strong>
             <p>Genera un respaldo (.sql) de una base de datos específica, le asigna
                 una marca de tiempo para no sobreescribir copias anteriores y comprime
                 el archivo para ahorrar espacio en disco.</p>
-            <p>
-
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>#!/bin/bash
 #
 =======================================================================
@@ -676,14 +655,12 @@ fi
 exit 0</code></pre>
 
             </div><strong>Script 3: Comprobación de Consumo y Limpieza de
-                Logs</strong></p>
+                Logs</strong>
             <p>Un administrador debe controlar el tamaño de la base de datos. Este
                 script consulta el catálogo information_schema para verificar si el
                 tamaño supera un límite seguro y limpia una tabla histórica si es
                 necesario para liberar espacio.</p>
-            <p>
-
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>#!/bin/bash
 #
 =======================================================================
@@ -719,7 +696,7 @@ echo "[INFORMACIÓN] El espacio ocupado está dentro de los rangos óptimos de o
 fi
 exit 0</code></pre>
             </div>
-            </p>
+
 
         </main>
     </div>

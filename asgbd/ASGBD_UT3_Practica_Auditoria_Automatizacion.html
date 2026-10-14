@@ -10,36 +10,36 @@
 </head>
 
 <body>
-    <header id="site-header">
+    <header id="a1">
         <div class="header-container">
-            <div class="site-title site-title-row"><img src="logo.png" alt="Logo" class="site-logo"><span>ASGBD
+            <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>ASGBD
                     &ndash; Ut3 Practica Auditoria Automatizacion</span></div>
             <nav class="top-nav">
                 <a href="index.html" class="nav-btn">Inicio</a>
             </nav>
         </div>
     </header>
-    <div id="page-layout">
+    <div id="a2">
 
 
-        <main id="main-content">
+        <main id="a3">
             <div class="page-actions"><a
                     href="ASGBD_UT3_Practica_Auditoria_Automatizacion.pdf" download
                     class="pdf-download-btn">📥
                     Descargar PDF</a></div>
 
 
-            <h1 id="ut3---tarea-2-práctica-avanzada-de-gestión-de-identidades-auditoría-y-automatización-en-mysql-8.0">
+            <h1 id="ut3-tarea-2-practica-avanzada-de-gestion-de-identidades-auditoria-y-automatizacion-en-mysql-80">
                 UT3
                 - Tarea 2: Práctica Avanzada de Gestión de Identidades, Auditoría y
                 Automatización en MySQL 8.0 <a class="headerlink"
-                    href="#ut3---tarea-2-práctica-avanzada-de-gestión-de-identidades-auditoría-y-automatización-en-mysql-8.0"
+                    href="#ut3-tarea-2-practica-avanzada-de-gestion-de-identidades-auditoria-y-automatizacion-en-mysql-80"
                     title="Enlace permanente">¶</a></h1>
-            <h2 id="consideraciones-previas">1. CONSIDERACIONES PREVIAS <a class="headerlink"
-                    href="#consideraciones-previas" title="Enlace permanente">¶</a></h2>
-            <h2 id="escenario-profesional-contexto-real-de-producción">Escenario
+            <h2 id="a1-consideraciones-previas">1. CONSIDERACIONES PREVIAS <a class="headerlink"
+                    href="#a1-consideraciones-previas" title="Enlace permanente">¶</a></h2>
+            <h2 id="escenario-profesional-contexto-real-de-produccion">Escenario
                 Profesional (Contexto Real de Producción) <a class="headerlink"
-                    href="#escenario-profesional-contexto-real-de-producción" title="Enlace permanente">¶</a></h2>
+                    href="#escenario-profesional-contexto-real-de-produccion" title="Enlace permanente">¶</a></h2>
             <p>Trabajas como Administrador de Sistemas y Bases de Datos
                 (SysAdmin/DBA) en <strong>SanaSalud S.A.</strong>, una empresa
                 proveedora de servicios médicos de alta disponibilidad. El SGBD
@@ -79,17 +79,17 @@
                     </blockquote>
                 </li>
             </ol>
-            <h2 id="actividades-a-realizar">2. ACTIVIDADES A REALIZAR <a class="headerlink"
-                    href="#actividades-a-realizar" title="Enlace permanente">¶</a></h2>
-            <h2 id="fase-1-políticas-de-contraseñas-y-bloqueos-hardening">Fase 1:
+            <h2 id="a2-actividades-a-realizar">2. ACTIVIDADES A REALIZAR <a class="headerlink"
+                    href="#a2-actividades-a-realizar" title="Enlace permanente">¶</a></h2>
+            <h2 id="fase-1-politicas-de-contrasenas-y-bloqueos-hardening">Fase 1:
                 Políticas de Contraseñas y Bloqueos (Hardening) <a class="headerlink"
-                    href="#fase-1-políticas-de-contraseñas-y-bloqueos-hardening" title="Enlace permanente">¶</a></h2>
+                    href="#fase-1-politicas-de-contrasenas-y-bloqueos-hardening" title="Enlace permanente">¶</a></h2>
             <p>Como primera medida de mitigación de riesgos, debes activar e
                 implementar políticas estrictas sobre el ciclo de vida de las
                 credenciales de los usuarios utilizando los componentes nativos de MySQL
                 8.0.</p>
-            <h3 id="requisitos-técnicos"><strong>Requisitos Técnicos:</strong> <a class="headerlink"
-                    href="#requisitos-técnicos" title="Enlace permanente">¶</a></h3>
+            <h3 id="requisitos-tecnicos"><strong>Requisitos Técnicos:</strong> <a class="headerlink"
+                    href="#requisitos-tecnicos" title="Enlace permanente">¶</a></h3>
             <p>Escribe un script SQL que configure una cuenta de usuario
                 administrativa llamada sec_auditor@localhost que cumpla obligatoriamente
                 con las siguientes reglas de hardening:</p>
@@ -121,31 +121,31 @@
                     (Fase 1):</strong> <a class="headerlink" href="#script-sql-de-hardening-fase-1"
                     title="Enlace permanente">¶</a></h3>
             <p>-- Creación y configuración de la cuenta con políticas de Hardening
-                integradas<br />
-                CREATE USER IF NOT EXISTS 'sec_auditor'@'localhost'<br />
-                IDENTIFIED BY 'SanaSecure#2026'<br />
-                PASSWORD EXPIRE INTERVAL 90 DAY<br />
-                FAILED_LOGIN_ATTEMPTS 3 PASSWORD_LOCK_TIME 5<br />
-                PASSWORD REUSE INTERVAL 365 DAY<br />
-                PASSWORD REUSE HISTORY 3;<br />
-                <br />
+                integradas<br>
+                CREATE USER IF NOT EXISTS 'sec_auditor'@'localhost'<br>
+                IDENTIFIED BY 'SanaSecure#2026'<br>
+                PASSWORD EXPIRE INTERVAL 90 DAY<br>
+                FAILED_LOGIN_ATTEMPTS 3 PASSWORD_LOCK_TIME 5<br>
+                PASSWORD REUSE INTERVAL 365 DAY<br>
+                PASSWORD REUSE HISTORY 3;<br>
+                <br>
                 -- Modificación de parámetros globales del servidor para hacer estas
-                políticas obligatorias<br />
+                políticas obligatorias<br>
                 -- (Opcional, requiere privilegios de SYSTEM_VARIABLES_ADMIN o
-                SUPER)<br />
-                SET GLOBAL default_password_lifetime = 90;<br />
+                SUPER)<br>
+                SET GLOBAL default_password_lifetime = 90;<br>
                 SET GLOBAL disconnect_on_expired_password = ON;
             </p>
-            <h2 id="fase-2-implementación-de-seguridad-basada-en-roles-rbac"><strong>Fase
+            <h2 id="fase-2-implementacion-de-seguridad-basada-en-roles-rbac"><strong>Fase
                     2: Implementación de Seguridad Basada en Roles (RBAC)</strong> <a class="headerlink"
-                    href="#fase-2-implementación-de-seguridad-basada-en-roles-rbac" title="Enlace permanente">¶</a></h2>
+                    href="#fase-2-implementacion-de-seguridad-basada-en-roles-rbac" title="Enlace permanente">¶</a></h2>
             <p>Para evitar la asignación caótica de permisos individuales,
                 estructurarás el acceso del personal de la clínica mediante el control
                 de accesos basado en roles (RBAC) sobre la base de datos corporativa
                 sanasalud_db (la cual consta de las tablas pacientes,
                 historiales_clinicos, personal_medico y citas_medicas).</p>
-            <h3 id="definición-de-roles-y-permisos"><strong>Definición de Roles y
-                    Permisos:</strong> <a class="headerlink" href="#definición-de-roles-y-permisos"
+            <h3 id="definicion-de-roles-y-permisos"><strong>Definición de Roles y
+                    Permisos:</strong> <a class="headerlink" href="#definicion-de-roles-y-permisos"
                     title="Enlace permanente">¶</a></h3>
             <ol type="1">
                 <li>
@@ -199,86 +199,86 @@
                     </blockquote>
                 </li>
             </ul>
-            <h3 id="solucionario-de-la-configuración-rbac-fase-2"><strong>Solucionario
+            <h3 id="solucionario-de-la-configuracion-rbac-fase-2"><strong>Solucionario
                     de la Configuración RBAC (Fase 2):</strong> <a class="headerlink"
-                    href="#solucionario-de-la-configuración-rbac-fase-2" title="Enlace permanente">¶</a></h3>
-            <p>-- 1. Creación de la base de datos de pruebas para el escenario<br />
-                CREATE DATABASE IF NOT EXISTS sanasalud_db;<br />
-                USE sanasalud_db;<br />
-                <br />
-                -- Creación física de las tablas del escenario<br />
-                CREATE TABLE IF NOT EXISTS pacientes (<br />
-                id_paciente INT AUTO_INCREMENT PRIMARY KEY,<br />
-                nombre VARCHAR(100),<br />
-                nif VARCHAR(9) UNIQUE,<br />
-                telefono VARCHAR(15)<br />
-                );<br />
-                <br />
-                CREATE TABLE IF NOT EXISTS citas_medicas (<br />
-                id_cita INT AUTO_INCREMENT PRIMARY KEY,<br />
-                id_paciente INT,<br />
-                fecha_hora DATETIME,<br />
-                box VARCHAR(10),<br />
-                FOREIGN KEY (id_paciente) REFERENCES pacientes(id_paciente)<br />
-                );<br />
-                <br />
-                CREATE TABLE IF NOT EXISTS historiales_clinicos (<br />
-                id_historial INT AUTO_INCREMENT PRIMARY KEY,<br />
-                id_paciente INT,<br />
-                diagnostico TEXT,<br />
-                tratamiento TEXT,<br />
-                fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,<br />
-                FOREIGN KEY (id_paciente) REFERENCES pacientes(id_paciente)<br />
-                );<br />
-                <br />
-                -- 2. Creación de los Roles<br />
+                    href="#solucionario-de-la-configuracion-rbac-fase-2" title="Enlace permanente">¶</a></h3>
+            <p>-- 1. Creación de la base de datos de pruebas para el escenario<br>
+                CREATE DATABASE IF NOT EXISTS sanasalud_db;<br>
+                USE sanasalud_db;<br>
+                <br>
+                -- Creación física de las tablas del escenario<br>
+                CREATE TABLE IF NOT EXISTS pacientes (<br>
+                id_paciente INT AUTO_INCREMENT PRIMARY KEY,<br>
+                nombre VARCHAR(100),<br>
+                nif VARCHAR(9) UNIQUE,<br>
+                telefono VARCHAR(15)<br>
+                );<br>
+                <br>
+                CREATE TABLE IF NOT EXISTS citas_medicas (<br>
+                id_cita INT AUTO_INCREMENT PRIMARY KEY,<br>
+                id_paciente INT,<br>
+                fecha_hora DATETIME,<br>
+                box VARCHAR(10),<br>
+                FOREIGN KEY (id_paciente) REFERENCES pacientes(id_paciente)<br>
+                );<br>
+                <br>
+                CREATE TABLE IF NOT EXISTS historiales_clinicos (<br>
+                id_historial INT AUTO_INCREMENT PRIMARY KEY,<br>
+                id_paciente INT,<br>
+                diagnostico TEXT,<br>
+                tratamiento TEXT,<br>
+                fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,<br>
+                FOREIGN KEY (id_paciente) REFERENCES pacientes(id_paciente)<br>
+                );<br>
+                <br>
+                -- 2. Creación de los Roles<br>
                 CREATE ROLE IF NOT EXISTS 'rol_sanitario', 'rol_administrativo',
-                'rol_auditor_seguridad';<br />
-                <br />
-                -- 3. Dotación de privilegios a los Roles<br />
-                -- Rol Sanitario<br />
-                GRANT SELECT ON sanasalud_db.pacientes TO 'rol_sanitario';<br />
-                GRANT SELECT ON sanasalud_db.citas_medicas TO 'rol_sanitario';<br />
+                'rol_auditor_seguridad';<br>
+                <br>
+                -- 3. Dotación de privilegios a los Roles<br>
+                -- Rol Sanitario<br>
+                GRANT SELECT ON sanasalud_db.pacientes TO 'rol_sanitario';<br>
+                GRANT SELECT ON sanasalud_db.citas_medicas TO 'rol_sanitario';<br>
                 GRANT SELECT, INSERT, UPDATE ON sanasalud_db.historiales_clinicos TO
-                'rol_sanitario';<br />
-                <br />
-                -- Rol Administrativo<br />
+                'rol_sanitario';<br>
+                <br>
+                -- Rol Administrativo<br>
                 GRANT SELECT, INSERT, UPDATE, DELETE ON sanasalud_db.pacientes TO
-                'rol_administrativo';<br />
+                'rol_administrativo';<br>
                 GRANT SELECT, INSERT, UPDATE, DELETE ON sanasalud_db.citas_medicas TO
-                'rol_administrativo';<br />
-                <br />
-                -- Rol Auditor de Seguridad<br />
-                GRANT SELECT ON sanasalud_db.* TO 'rol_auditor_seguridad';<br />
-                <br />
-                -- 4. Creación de usuarios reales<br />
+                'rol_administrativo';<br>
+                <br>
+                -- Rol Auditor de Seguridad<br>
+                GRANT SELECT ON sanasalud_db.* TO 'rol_auditor_seguridad';<br>
+                <br>
+                -- 4. Creación de usuarios reales<br>
                 CREATE USER 'doctor_gomez'@'localhost' IDENTIFIED BY
-                'DocGomezPass#2026';<br />
+                'DocGomezPass#2026';<br>
                 CREATE USER 'recepcionista_perez'@'localhost' IDENTIFIED BY
-                'RecepPerezPass#2026';<br />
+                'RecepPerezPass#2026';<br>
                 CREATE USER 'agente_auditor'@'localhost' IDENTIFIED BY
-                'AgentAuditPass#2026';<br />
-                <br />
-                -- 5. Asignación de Roles a los usuarios<br />
-                GRANT 'rol_sanitario' TO 'doctor_gomez'@'localhost';<br />
-                GRANT 'rol_administrativo' TO 'recepcionista_perez'@'localhost';<br />
-                GRANT 'rol_auditor_seguridad' TO 'agente_auditor'@'localhost';<br />
-                <br />
+                'AgentAuditPass#2026';<br>
+                <br>
+                -- 5. Asignación de Roles a los usuarios<br>
+                GRANT 'rol_sanitario' TO 'doctor_gomez'@'localhost';<br>
+                GRANT 'rol_administrativo' TO 'recepcionista_perez'@'localhost';<br>
+                GRANT 'rol_auditor_seguridad' TO 'agente_auditor'@'localhost';<br>
+                <br>
                 -- 6. Configuración de Activación Automática por Defecto (Muy
-                importante)<br />
-                SET DEFAULT ROLE 'rol_sanitario' TO 'doctor_gomez'@'localhost';<br />
+                importante)<br>
+                SET DEFAULT ROLE 'rol_sanitario' TO 'doctor_gomez'@'localhost';<br>
                 SET DEFAULT ROLE 'rol_administrativo' TO
-                'recepcionista_perez'@'localhost';<br />
+                'recepcionista_perez'@'localhost';<br>
                 SET DEFAULT ROLE 'rol_auditor_seguridad' TO
-                'agente_auditor'@'localhost';<br />
-                <br />
-                -- Sincronizar diccionario<br />
+                'agente_auditor'@'localhost';<br>
+                <br>
+                -- Sincronizar diccionario<br>
                 FLUSH PRIVILEGES;
             </p>
-            <h2 id="fase-3-integración-y-automatización-segura-con-python-pariaw-interdisciplinar"><strong>Fase
+            <h2 id="fase-3-integracion-y-automatizacion-segura-con-python-pariaw-interdisciplinar"><strong>Fase
                     3: Integración y Automatización Segura con Python (PAR/IAW
                     Interdisciplinar)</strong> <a class="headerlink"
-                    href="#fase-3-integración-y-automatización-segura-con-python-pariaw-interdisciplinar"
+                    href="#fase-3-integracion-y-automatizacion-segura-con-python-pariaw-interdisciplinar"
                     title="Enlace permanente">¶</a></h2>
             <p>Uno de los errores más graves en entornos de producción es programar
                 scripts en Bash, Python o PHP que contienen la contraseña del usuario
@@ -301,174 +301,174 @@
                     </blockquote>
                 </li>
             </ol>
-            <h3 id="configuración-del-usuario-de-servicio-sql"><strong>Configuración
+            <h3 id="configuracion-del-usuario-de-servicio-sql"><strong>Configuración
                     del Usuario de Servicio (SQL):</strong> <a class="headerlink"
-                    href="#configuración-del-usuario-de-servicio-sql" title="Enlace permanente">¶</a></h3>
-            <p>-- Usuario exclusivo para el microservicio de monitorización<br />
+                    href="#configuracion-del-usuario-de-servicio-sql" title="Enlace permanente">¶</a></h3>
+            <p>-- Usuario exclusivo para el microservicio de monitorización<br>
                 CREATE USER 'monitor_agent'@'localhost' IDENTIFIED BY
-                'SanaMonitorAgentPass2026#';<br />
-                <br />
+                'SanaMonitorAgentPass2026#';<br>
+                <br>
                 -- Conceder accesos de sólo lectura a las tablas de metadatos del
-                motor<br />
+                motor<br>
                 GRANT SELECT ON information_schema.* TO
-                'monitor_agent'@'localhost';<br />
+                'monitor_agent'@'localhost';<br>
                 GRANT SELECT ON sanasalud_db.* TO 'monitor_agent'@'localhost';
             </p>
-            <h3 id="script-de-python-para-monitorización-de-almacenamiento-monitor_space.py"><strong>Script
+            <h3 id="script-de-python-para-monitorizacion-de-almacenamiento-monitorspacepy"><strong>Script
                     de Python para Monitorización de Almacenamiento
                     (monitor_space.py):</strong> <a class="headerlink"
-                    href="#script-de-python-para-monitorización-de-almacenamiento-monitor_space.py"
+                    href="#script-de-python-para-monitorizacion-de-almacenamiento-monitorspacepy"
                     title="Enlace permanente">¶</a></h3>
-            <p>#!/usr/bin/env python3<br />
-                # -*- coding: utf-8 -*-<br />
-                """<br />
-                SanaSalud S.A. - Script de Monitorización de Almacenamiento Seguro<br />
-                Módulo: ASGBD / IAW (ASIR)<br />
-                Este script demuestra las mejores prácticas de SysAdmin:<br />
+            <p>#!/usr/bin/env python3<br>
+                # -*- coding: utf-8 -*-<br>
+                """<br>
+                SanaSalud S.A. - Script de Monitorización de Almacenamiento Seguro<br>
+                Módulo: ASGBD / IAW (ASIR)<br>
+                Este script demuestra las mejores prácticas de SysAdmin:<br>
                 - Recupera las credenciales de conexión desde variables de entorno del
-                S.O.<br />
+                S.O.<br>
                 - Conecta usando un usuario de mínimos privilegios
-                ('monitor_agent').<br />
+                ('monitor_agent').<br>
                 - Previene fugas de contraseñas por exposición de archivos de código
-                fuente.<br />
-                """<br />
-                <br />
-                import os<br />
-                import sys<br />
-                import mysql.connector<br />
-                from mysql.connector import Error<br />
-                <br />
-                def obtener_credenciales():<br />
+                fuente.<br>
+                """<br>
+                <br>
+                import os<br>
+                import sys<br>
+                import mysql.connector<br>
+                from mysql.connector import Error<br>
+                <br>
+                def obtener_credenciales():<br>
                 """Recupera los parámetros de conexión y credenciales desde el entorno
-                del S.O."""<br />
-                db_host = os.getenv('DB_SANA_HOST', 'localhost')<br />
-                db_user = os.getenv('DB_SANA_USER', 'monitor_agent')<br />
+                del S.O."""<br>
+                db_host = os.getenv('DB_SANA_HOST', 'localhost')<br>
+                db_user = os.getenv('DB_SANA_USER', 'monitor_agent')<br>
                 db_pass = os.getenv('DB_SANA_PASS') # Contraseña almacenada de forma
-                segura en el entorno<br />
-                db_name = os.getenv('DB_SANA_NAME', 'sanasalud_db')<br />
-                <br />
-                if not db_pass:<br />
+                segura en el entorno<br>
+                db_name = os.getenv('DB_SANA_NAME', 'sanasalud_db')<br>
+                <br>
+                if not db_pass:<br>
                 print("[!] ERROR CRÍTICO: La variable de entorno 'DB_SANA_PASS' no está
-                definida.", file=sys.stderr)<br />
+                definida.", file=sys.stderr)<br>
                 print("[i] Para definirla en Linux/macOS, ejecuta de antemano en tu
-                terminal:\n", file=sys.stderr)<br />
+                terminal:\n", file=sys.stderr)<br>
                 print(" export DB_SANA_PASS='SanaMonitorAgentPass2026#'\n",
-                file=sys.stderr)<br />
+                file=sys.stderr)<br>
                 print("[i] Para definirla en Windows (Command Prompt), ejecuta:\n",
-                file=sys.stderr)<br />
+                file=sys.stderr)<br>
                 print(" set DB_SANA_PASS=SanaMonitorAgentPass2026#\n",
-                file=sys.stderr)<br />
-                sys.exit(1)<br />
-                <br />
-                return db_host, db_user, db_pass, db_name<br />
-                <br />
-                def monitorizar_almacenamiento():<br />
-                host, user, password, database = obtener_credenciales()<br />
-                connection = None<br />
-                try:<br />
-                connection = mysql.connector.connect(<br />
-                host=host,<br />
-                user=user,<br />
-                password=password,<br />
-                database=database<br />
-                )<br />
-                <br />
-                if connection.is_connected():<br />
-                cursor = connection.cursor(dictionary=True)<br />
-                <br />
+                file=sys.stderr)<br>
+                sys.exit(1)<br>
+                <br>
+                return db_host, db_user, db_pass, db_name<br>
+                <br>
+                def monitorizar_almacenamiento():<br>
+                host, user, password, database = obtener_credenciales()<br>
+                connection = None<br>
+                try:<br>
+                connection = mysql.connector.connect(<br>
+                host=host,<br>
+                user=user,<br>
+                password=password,<br>
+                database=database<br>
+                )<br>
+                <br>
+                if connection.is_connected():<br>
+                cursor = connection.cursor(dictionary=True)<br>
+                <br>
                 # Consulta avanzada al diccionario de datos para medir el peso de cada
-                tabla de la clínica<br />
-                query = """<br />
-                SELECT<br />
-                table_name AS 'Tabla',<br />
+                tabla de la clínica<br>
+                query = """<br>
+                SELECT<br>
+                table_name AS 'Tabla',<br>
                 ROUND(((data_length + index_length) / 1024 / 1024), 4) AS
-                'Tamano_MB',<br />
-                table_rows AS 'Filas'<br />
-                FROM information_schema.TABLES<br />
-                WHERE table_schema = %s<br />
-                ORDER BY (data_length + index_length) DESC;<br />
-                """<br />
-                <br />
-                cursor.execute(query, (database,))<br />
-                tablas = cursor.fetchall()<br />
-                <br />
-                print("================================================================")<br />
-                print(f" REPORTE DE USO DE ESPACIO EN DISCO: {database.upper()}")<br />
-                print("================================================================")<br />
-                for tabla in tablas:<br />
+                'Tamano_MB',<br>
+                table_rows AS 'Filas'<br>
+                FROM information_schema.TABLES<br>
+                WHERE table_schema = %s<br>
+                ORDER BY (data_length + index_length) DESC;<br>
+                """<br>
+                <br>
+                cursor.execute(query, (database,))<br>
+                tablas = cursor.fetchall()<br>
+                <br>
+                print("================================================================")<br>
+                print(f" REPORTE DE USO DE ESPACIO EN DISCO: {database.upper()}")<br>
+                print("================================================================")<br>
+                for tabla in tablas:<br>
                 print(f" -&gt; Tabla: {tabla['Tabla']:&lt;25} | Filas:
-                {tabla['Filas']:&lt;8} | Tamaño: {tabla['Tamano_MB']:&gt;8} MB")<br />
-                print("================================================================")<br />
-                <br />
-                cursor.close()<br />
-                <br />
-                except Error as e:<br />
+                {tabla['Filas']:&lt;8} | Tamaño: {tabla['Tamano_MB']:&gt;8} MB")<br>
+                print("================================================================")<br>
+                <br>
+                cursor.close()<br>
+                <br>
+                except Error as e:<br>
                 print(f"[!] Error de conexión a la base de datos: {e}",
-                file=sys.stderr)<br />
-                finally:<br />
-                if connection and connection.is_connected():<br />
-                connection.close()<br />
+                file=sys.stderr)<br>
+                finally:<br>
+                if connection and connection.is_connected():<br>
+                connection.close()<br>
                 print("[i] Conexión cerrada de forma segura por el agente de
-                monitorización.")<br />
-                <br />
-                if __name__ == "__main__":<br />
+                monitorización.")<br>
+                <br>
+                if __name__ == "__main__":<br>
                 monitorizar_almacenamiento()
             </p>
-            <h2 id="fase-4-auditoría-avanzada-de-cuentas-mediante-catálogos-del-sistema"><strong>Fase
+            <h2 id="fase-4-auditoria-avanzada-de-cuentas-mediante-catalogos-del-sistema"><strong>Fase
                     4: Auditoría Avanzada de Cuentas mediante Catálogos del
                     Sistema</strong> <a class="headerlink"
-                    href="#fase-4-auditoría-avanzada-de-cuentas-mediante-catálogos-del-sistema"
+                    href="#fase-4-auditoria-avanzada-de-cuentas-mediante-catalogos-del-sistema"
                     title="Enlace permanente">¶</a></h2>
             <p>Como Auditor de Seguridad / DBA, tu tarea no es sólo configurar los
                 accesos, sino también programar consultas de supervisión de forma
                 periódica contra el catálogo interno de MySQL para detectar posibles
                 agujeros de seguridad.</p>
-            <h3 id="consultas-de-auditoría-requeridas"><strong>Consultas de
-                    Auditoría requeridas:</strong> <a class="headerlink" href="#consultas-de-auditoría-requeridas"
+            <h3 id="consultas-de-auditoria-requeridas"><strong>Consultas de
+                    Auditoría requeridas:</strong> <a class="headerlink" href="#consultas-de-auditoria-requeridas"
                     title="Enlace permanente">¶</a></h3>
-            <h4 id="detección-de-comodines-inseguros-de-red"><strong>1. Detección de
+            <h4 id="a1-deteccion-de-comodines-inseguros-de-red"><strong>1. Detección de
                     comodines inseguros de red</strong> <a class="headerlink"
-                    href="#detección-de-comodines-inseguros-de-red" title="Enlace permanente">¶</a></h4>
+                    href="#a1-deteccion-de-comodines-inseguros-de-red" title="Enlace permanente">¶</a></h4>
             <p>Muestra todos los usuarios y roles configurados que permiten el
                 acceso desde cualquier ubicación remota (%), omitiendo las cuentas
                 legítimas autorizadas:</p>
-            <p>SELECT user, host, plugin<br />
-                FROM mysql.user<br />
+            <p>SELECT user, host, plugin<br>
+                FROM mysql.user<br>
                 WHERE host = '%' AND user NOT IN ('root', 'mysql.sys');</p>
-            <h4 id="localización-de-algoritmos-obsoletos-o-débiles"><strong>2.
+            <h4 id="a2-localizacion-de-algoritmos-obsoletos-o-debiles"><strong>2.
                     Localización de algoritmos obsoletos o débiles</strong> <a class="headerlink"
-                    href="#localización-de-algoritmos-obsoletos-o-débiles" title="Enlace permanente">¶</a></h4>
+                    href="#a2-localizacion-de-algoritmos-obsoletos-o-debiles" title="Enlace permanente">¶</a></h4>
             <p>Localiza cuentas que sigan utilizando el algoritmo heredado de hash
                 mysql_native_password en lugar de la encriptación moderna SHA-256
                 (caching_sha2_password):</p>
-            <p>SELECT user, host, plugin, password_last_changed<br />
-                FROM mysql.user<br />
+            <p>SELECT user, host, plugin, password_last_changed<br>
+                FROM mysql.user<br>
                 WHERE plugin = 'mysql_native_password';</p>
-            <h4 id="auditoría-de-asignación-y-herencia-de-roles-mapeo-de-privilegios"><strong>3.
+            <h4 id="a3-auditoria-de-asignacion-y-herencia-de-roles-mapeo-de-privilegios"><strong>3.
                     Auditoría de asignación y herencia de Roles (Mapeo de
                     privilegios)</strong> <a class="headerlink"
-                    href="#auditoría-de-asignación-y-herencia-de-roles-mapeo-de-privilegios"
+                    href="#a3-auditoria-de-asignacion-y-herencia-de-roles-mapeo-de-privilegios"
                     title="Enlace permanente">¶</a></h4>
             <p>Muestra un reporte claro que relacione los usuarios de la base de
                 datos con los roles que tienen asociados y el estado de activación por
                 defecto:</p>
-            <p>SELECT<br />
-                FROM_USER AS 'Rol_Origen',<br />
-                TO_USER AS 'Usuario_Destino',<br />
-                WITH_ADMIN_OPTION AS 'Puede_Delegar'<br />
+            <p>SELECT<br>
+                FROM_USER AS 'Rol_Origen',<br>
+                TO_USER AS 'Usuario_Destino',<br>
+                WITH_ADMIN_OPTION AS 'Puede_Delegar'<br>
                 FROM mysql.role_edges;</p>
-            <h4 id="identificación-de-cuentas-bloqueadas-o-con-claves-expiradas"><strong>4.
+            <h4 id="a4-identificacion-de-cuentas-bloqueadas-o-con-claves-expiradas"><strong>4.
                     Identificación de cuentas bloqueadas o con claves
                     expiradas</strong> <a class="headerlink"
-                    href="#identificación-de-cuentas-bloqueadas-o-con-claves-expiradas" title="Enlace permanente">¶</a>
+                    href="#a4-identificacion-de-cuentas-bloqueadas-o-con-claves-expiradas" title="Enlace permanente">¶</a>
             </h4>
             <p>Lista los usuarios que tienen suspendido el acceso temporal o
                 permanentemente por motivos de seguridad:</p>
             <p>SELECT user, host, account_locked, password_expired,
-                password_lifetime<br />
-                FROM mysql.user<br />
+                password_lifetime<br>
+                FROM mysql.user<br>
                 WHERE account_locked = 'Y' OR password_expired = 'Y';</p>
-            <h2 id="calificación">4. CALIFICACIÓN <a class="headerlink" href="#calificación"
+            <h2 id="a4-calificacion">4. CALIFICACIÓN <a class="headerlink" href="#a4-calificacion"
                     title="Enlace permanente">¶</a></h2>
             <blockquote>
                 <p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
@@ -477,15 +477,15 @@
                     la omisión de los enlaces de las fuentes documentales utilizadas
                     penalizará gravemente la nota o invalidará la práctica.</p>
             </blockquote>
-            <h2 id="section"> <a class="headerlink" href="#section" title="Enlace permanente">¶</a></h2>
+            <h2 id="a25"> <a class="headerlink" href="#a25" title="Enlace permanente">¶</a></h2>
             <div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>
                         <thead>
                             <tr class="header">
-                                <th><strong>Sección Evaluada</strong></th>
-                                <th><strong>Descripción Técnica Exigida al Alumno</strong></th>
-                                <th><strong>Puntuación</strong></th>
+                                <th scope="col"><strong>Sección Evaluada</strong></th>
+                                <th scope="col"><strong>Descripción Técnica Exigida al Alumno</strong></th>
+                                <th scope="col"><strong>Puntuación</strong></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -523,8 +523,8 @@
         </main>
     </div>
 
-    </main>
-    </div>
+
+
 </body>
 
 </html>

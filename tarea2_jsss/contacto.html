@@ -8,18 +8,18 @@
     <script src="script.js"></script>
 </head>
 <body>
-    <header id="site-header">
+    <header id="a1">
   <div class="header-container">
-    <div class="site-title site-title-row"><img src="logo.png" alt="Logo" class="site-logo"><span>TAREA2_JSSS &ndash; Contacto</span></div>
+    <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>TAREA2_JSSS &ndash; Contacto</span></div>
     <nav class="top-nav">
       <a href="index.html" class="nav-btn">Inicio</a>
     </nav>
   </div>
 </header>
-    <div id="page-layout">
-        <main id="main-content">
+    <div id="a2">
+        <main id="a3">
             <div class="page-actions"><a href="contacto.pdf" download class="pdf-download-btn">📥 Descargar PDF</a></div>
-            
+
 
     <!--
     ============================================================================
@@ -34,7 +34,7 @@
 
     <header>
         <!-- 3. Reto de Precedencia: Estilo inline que sobrescribe a los anteriores -->
-        <h1 class="destacado" style="color: red;">Soporte Técnico y Reporte de Incidencias</h1>
+        <h1 class="destacado u-43fe289185" id="soporte-tecnico-y-reporte-de-incidencias">Soporte Técnico y Reporte de Incidencias</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Inicio</a></li>
@@ -48,13 +48,13 @@
 
     <main>
         <section>
-            <h2>Centro de Asistencia a Puestos</h2>
+            <h2 id="centro-de-asistencia-a-puestos">Centro de Asistencia a Puestos</h2>
             <div class="contenedor-flex">
-                <img src="imagenes/soporte.png" alt="Banner del departamento de soporte técnico" width="500" height="200">
+                <img src="imagenes/soporte.png" alt="imagen" width="500" height="200">
             </div>
-            
+
             <article>
-                <h3>Pasos de Control Obligatorios Previos</h3>
+                <h3 id="pasos-de-control-obligatorios-previos">Pasos de Control Obligatorios Previos</h3>
                 <ol>
                     <li>Verificar la conexión del cable de red Ethernet.</li>
                     <li>Comprobar la asignación de dirección IP.</li>
@@ -66,14 +66,14 @@
         <hr>
 
         <section>
-            <h2>Armario Rack del Aula</h2>
+            <h2 id="armario-rack-del-aula">Armario Rack del Aula</h2>
             <div class="table-wrapper"><table>
 <thead>
 <tr>
-                        <th>Unidad (U)</th>
-                        <th>Dispositivo</th>
-                        <th>IP</th>
-                        <th>Función</th>
+                        <th scope="col">Unidad (U)</th>
+                        <th scope="col">Dispositivo</th>
+                        <th scope="col">IP</th>
+                        <th scope="col">Función</th>
                     </tr>
 </thead>
 <tbody>
@@ -104,39 +104,39 @@
         <hr>
 
         <section>
-            <h2>Formulario de Reporte de Incidencias</h2>
+            <h2 id="formulario-de-reporte-de-incidencias">Formulario de Reporte de Incidencias</h2>
             <form action="contacto.html" method="POST">
                 <fieldset>
                     <legend>Datos de Contacto</legend>
 
                     <div>
                         <label for="txtNombre">Nombre Completo:</label>
-                        <input type="text" id="txtNombre" name="nombre" required>
+                        <input type="text" id="a4" name="nombre" required>
                     </div>
 
                     <div>
                         <label for="txtEmail">Correo Electrónico:</label>
-                        <input type="email" id="txtEmail" name="email" required>
+                        <input type="email" id="a5" name="email" required>
                     </div>
 
                     <div>
                         <label for="txtPassword">Contraseña de Soporte:</label>
-                        <input type="password" id="txtPassword" name="password" required>
+                        <input type="password" id="a6" name="password" required>
                     </div>
 
                     <div>
                         <label for="txtTel">Teléfono Corporativo:</label>
-                        <input type="tel" id="txtTel" name="telefono">
+                        <input type="tel" id="a7" name="telefono">
                     </div>
 
                     <div>
                         <label for="txtFecha">Fecha del Suceso:</label>
-                        <input type="date" id="txtFecha" name="fecha" required>
+                        <input type="date" id="a8" name="fecha" required>
                     </div>
 
                     <div>
                         <label for="numPuesto">Número de Puesto Afectado:</label>
-                        <input type="number" id="numPuesto" name="puesto" min="1" max="30" required>
+                        <input type="number" id="a9" name="puesto" min="1" max="30" required>
                     </div>
                 </fieldset>
 
@@ -145,7 +145,7 @@
 
                     <div>
                         <label for="selSO">Sistema Operativo Afectado:</label>
-                        <select id="selSO" name="so">
+                        <select id="a10" name="so">
                             <option value="linux">Debian GNU/Linux</option>
                             <option value="win11">Windows 11</option>
                         </select>
@@ -153,25 +153,25 @@
 
                     <div>
                         <p>Prioridad:</p>
-                        <input type="radio" id="radBaja" name="prioridad" value="baja" checked>
+                        <input type="radio" id="a11" name="prioridad" value="baja" checked>
                         <label for="radBaja">Baja</label>
-                        <input type="radio" id="radMedia" name="prioridad" value="media">
+                        <input type="radio" id="a12" name="prioridad" value="media">
                         <label for="radMedia">Media</label>
-                        <input type="radio" id="radAlta" name="prioridad" value="alta">
+                        <input type="radio" id="a13" name="prioridad" value="alta">
                         <label for="radAlta">Alta</label>
                     </div>
 
                     <div>
                         <p>Componentes Comprometidos:</p>
-                        <input type="checkbox" id="chkRed" name="componentes[]" value="red">
+                        <input type="checkbox" id="a14" name="componentes[]" value="red">
                         <label for="chkRed">Tarjeta de Red</label>
-                        <input type="checkbox" id="chkMonitor" name="componentes[]" value="monitor">
+                        <input type="checkbox" id="a15" name="componentes[]" value="monitor">
                         <label for="chkMonitor">Monitor</label>
                     </div>
 
                     <div>
                         <label for="txtComentarios">Descripción de la Incidencia:</label>
-                        <textarea id="txtComentarios" name="descripcion" rows="4" cols="50" required></textarea>
+                        <textarea id="a16" name="descripcion" rows="4" cols="50" required></textarea>
                     </div>
                 </fieldset>
 
@@ -186,7 +186,7 @@
     <hr>
 
     <aside>
-        <h3>Horario de Atención</h3>
+        <h3 id="horario-de-atencion">Horario de Atención</h3>
         <p>Lunes a viernes de 8:15 a 14:45.</p>
     </aside>
 
