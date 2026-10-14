@@ -179,7 +179,6 @@
                 se logra con la directiva DELIMITER [7].</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Cambiamos el terminador por defecto a doble barra inclinada
 DELIMITER //
 DROP PROCEDURE IF EXISTS ejemplo_basico//
@@ -194,8 +193,8 @@ END//
 DELIMITER ;
 -- Invocación del procedimiento
 CALL ejemplo_basico();</code></pre>
-                </div>
-            </div>2.2 Gestión de
+                
+</div>2.2 Gestión de
             Parámetros: IN, OUT y INOUT</h2>
             <p>MySQL permite especificar tres tipos de dirección para los parámetros
                 de entrada y salida de un procedimiento almacenado [7, 11.2]:</p>
@@ -232,7 +231,6 @@ CALL ejemplo_basico();</code></pre>
             <p>Ejemplo de parámetro IN (Actualización de Límite de Crédito):</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>DELIMITER //
 DROP PROCEDURE IF EXISTS sp_actualizar_limite_credito//
 CREATE PROCEDURE sp_actualizar_limite_credito(
@@ -251,12 +249,11 @@ DELIMITER ;
 -- Probamos el procedimiento con el cliente 101 incrementando un
 15.5% su crédito
 CALL sp_actualizar_limite_credito(101, 15.50);</code></pre>
-                </div>
-            </div>Ejemplo de parámetros OUT (Extracción de estadísticas de
+                
+</div>Ejemplo de parámetros OUT (Extracción de estadísticas de
             ventas):</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>DELIMITER //
 DROP PROCEDURE IF EXISTS sp_obtener_estadisticas_cliente//
 CREATE PROCEDURE sp_obtener_estadisticas_cliente(
@@ -282,8 +279,8 @@ CALL sp_obtener_estadisticas_cliente(101, @pedidos, @pagado);
 -- Visualizamos los resultados
 SELECT @pedidos AS pedidos_realizados, @pagado AS
 total_euros_pagados;</code></pre>
-                </div>
-            </div>2.3
+                
+</div>2.3
             Ámbito de Variables Locales y Asignaciones (DECLARE, SET)</h2>
             <p>Las variables internas deben declararse obligatoriamente al principio
                 de un bloque BEGIN ... END utilizando la instrucción DECLARE [11.2].
@@ -292,7 +289,6 @@ total_euros_pagados;</code></pre>
                 cláusula INTO dentro de un SELECT.</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>DELIMITER //
 DROP PROCEDURE IF EXISTS sp_demo_variables_jardineria//
 CREATE PROCEDURE sp_demo_variables_jardineria(
@@ -316,8 +312,8 @@ num_empleados_activos;
 END//
 DELIMITER ;
 CALL sp_demo_variables_jardineria('BCN-ES');</code></pre>
-                </div>
-            </div>3. FUNCIONES ALMACENADAS</h1>
+                
+</div>3. FUNCIONES ALMACENADAS</h1>
             <p>Una función almacenada es una rutina que toma parámetros de entrada,
                 ejecuta lógica procedural y <strong>devuelve un único valor
                     escalar</strong> al entorno de llamada.</p>
@@ -335,20 +331,18 @@ CALL sp_demo_variables_jardineria('BCN-ES');</code></pre>
                 </li>
                 <li>
                     <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                             <pre><code>Contienen obligatoriamente al menos una sentencia RETURN que finaliza
 la ejecución de la función.</code></pre>
-                        </div>
-                    </div>
+                        
+</div>
                 </li>
                 <li>
                     <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                             <pre><code>No se invocan con la sentencia CALL, sino que se pueden utilizar
 directamente dentro de sentencias DML (como parte de un SELECT, WHERE u
 ORDER BY), optimizando la legibilidad de las consultas complejas.</code></pre>
-                        </div>
-                    </div>
+                        
+</div>
                 </li>
             </ol>
             <h2 id="modificadores-de-comportamiento-de-funciones-en-mysql">3.2
@@ -391,7 +385,6 @@ ORDER BY), optimizando la legibilidad de las consultas complejas.</code></pre>
                 este ha liquidado.</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>DELIMITER //
 DROP FUNCTION IF EXISTS fn_calcular_deuda_cliente//
 CREATE FUNCTION fn_calcular_deuda_cliente(
@@ -429,8 +422,8 @@ limite_credito,
 fn_calcular_deuda_cliente(codigo_cliente) AS saldo_deudor_activo
 FROM cliente
 WHERE ciudad = 'Madrid';</code></pre>
-                </div>
-            </div>4. ESTRUCTURAS DE CONTROL DE
+                
+</div>4. ESTRUCTURAS DE CONTROL DE
             FLUJO</h1>
             <p>La programación procedural de bases de datos permite redirigir el
                 orden de procesamiento de las sentencias utilizando estructuras lógicas
@@ -442,7 +435,6 @@ WHERE ciudad = 'Madrid';</code></pre>
                 evaluación de una condición booleana.</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>DELIMITER //
 DROP PROCEDURE IF EXISTS sp_evaluar_riesgo_cliente//
 CREATE PROCEDURE sp_evaluar_riesgo_cliente(
@@ -472,8 +464,8 @@ END//
 DELIMITER ;
 CALL sp_evaluar_riesgo_cliente(101, @riesgo);
 SELECT @riesgo AS estado_riesgo_financiero;</code></pre>
-                </div>
-            </div>4.2 Estructuras
+                
+</div>4.2 Estructuras
             Iterativas (LOOP, REPEAT y WHILE)</h2>
             <p>MySQL proporciona estructuras nativas para realizar bucles lógicos
                 [11.2]. En entornos de producción de administración de sistemas, es
@@ -488,7 +480,6 @@ SELECT @riesgo AS estado_riesgo_financiero;</code></pre>
                 numéricos.</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Creamos una tabla auxiliar para almacenar históricos o rangos
 CREATE TABLE IF NOT EXISTS auxiliar_rangos (
 iteracion INT UNSIGNED PRIMARY KEY,
@@ -546,8 +537,8 @@ END//
 DELIMITER ;
 CALL sp_llenar_loop(5);
 SELECT * FROM auxiliar_rangos;</code></pre>
-                </div>
-            </div>5. MANEJO DE
+                
+</div>5. MANEJO DE
             EXCEPCIONES Y ERRORES EN MYSQL</h1>
             <p>El código procedimental que ejecuta cambios DML puede fallar debido a
                 violaciones de integridad referencial, registros duplicados en claves
@@ -560,10 +551,9 @@ SELECT * FROM auxiliar_rangos;</code></pre>
                 excepcionales es la siguiente:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>DECLARE {CONTINUE | EXIT} HANDLER FOR condicion_error sentencia;</code></pre>
-                </div>
-            </div>Donde:</p>
+                
+</div>Donde:</p>
             <ul>
                 <li>
                     <blockquote>
@@ -592,7 +582,6 @@ SELECT * FROM auxiliar_rangos;</code></pre>
                 duplicadas:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>DELIMITER //
 DROP PROCEDURE IF EXISTS sp_registrar_pago_seguro//
 CREATE PROCEDURE sp_registrar_pago_seguro(
@@ -635,8 +624,8 @@ provocar la excepción de duplicidad controlada
 CALL sp_registrar_pago_seguro(1, 'Transferencia', 'TR-REG-001',
 '2026-06-19', 450.50, @estado);
 SELECT @estado;</code></pre>
-                </div>
-            </div>6. CURSORES</h1>
+                
+</div>6. CURSORES</h1>
             <p>Un cursor es una estructura procedimental en memoria que permite
                 iterar y procesar, registro por registro, el conjunto de filas devuelto
                 por una consulta SELECT.</p>
@@ -684,7 +673,6 @@ SELECT @estado;</code></pre>
             </p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>DELIMITER //
 DROP PROCEDURE IF EXISTS sp_optimizar_credito_clientes_activos//
 CREATE PROCEDURE sp_optimizar_credito_clientes_activos()
@@ -731,8 +719,8 @@ DELIMITER ;
 -- Ejecutamos la reevaluación de límites del sistema completo de
 Jardinería
 CALL sp_optimizar_credito_clientes_activos();</code></pre>
-                </div>
-            </div>7. DISPARADORES (TRIGGERS)</h1>
+                
+</div>7. DISPARADORES (TRIGGERS)</h1>
             <p>Un disparador o <em>trigger</em> es un objeto de base de datos
                 asociado a una tabla que se activa de manera automática e implícita
                 cuando se ejecuta un evento DML de modificación de datos (INSERT, UPDATE
@@ -769,12 +757,11 @@ CALL sp_optimizar_credito_clientes_activos();</code></pre>
             <ul>
                 <li>
                     <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                             <pre><code>NEW: Objeto temporal que contiene los valores de las
 columnas que se están insertando o modificando. (Disponible en INSERT y
 UPDATE) [1.8.8].</code></pre>
-                        </div>
-                    </div>
+                        
+</div>
                 </li>
                 <li>
                     <blockquote>
@@ -821,7 +808,6 @@ UPDATE) [1.8.8].</code></pre>
                 previniendo incoherencias comerciales.</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>DELIMITER //
 DROP TRIGGER IF EXISTS trigger_validar_stock_before_insert//
 CREATE TRIGGER trigger_validar_stock_before_insert
@@ -843,15 +829,14 @@ procesar la línea del producto.';
 END IF;
 END//
 DELIMITER ;</code></pre>
-                </div>
-            </div>Ejemplo de Trigger AFTER INSERT (Auditoría e Históricos
+                
+</div>Ejemplo de Trigger AFTER INSERT (Auditoría e Históricos
             automáticos):</p>
             <p>Implementaremos un disparador que nos permita registrar en tiempo
                 real un log de pagos que van realizando los clientes. Primero creamos
                 una tabla dedicada a centralizar las notificaciones de pagos [1.10].</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>eroría-- Creamos la tabla de soporte técnico de notificaciones
 CREATE TABLE IF NOT EXISTS notificaciones (
 id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -871,8 +856,8 @@ INSERT INTO notificaciones (total, codigo_cliente)
 VALUES (NEW.total, NEW.codigo_cliente);
 END//
 DELIMITER ;</code></pre>
-                </div>
-            </div>8. ENLACES DE
+                
+</div>8. ENLACES DE
             REFERENCIA Y DOCUMENTACIÓN OFICIAL</h1>
             <p>Para profundizar en la sintaxis procedimental avanzada, gestión de
                 pilas de llamadas y optimización de ejecución del motor de rutinas

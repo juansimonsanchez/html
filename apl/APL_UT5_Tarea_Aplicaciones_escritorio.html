@@ -191,7 +191,6 @@
                 segura la estructura relacional:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code># 1. Instalación del entorno base y sus dependencias
 sudo apt update &amp;&amp; sudo apt install -y apache2 mariadb-server
 php php-mysql php-imap php-mbstring php-xml wget unzip
@@ -204,8 +203,8 @@ sudo mysql -e "CREATE USER 'roundcube_user'@'localhost' IDENTIFIED BY
 sudo mysql -e "GRANT ALL PRIVILEGES ON roundcube_db.* TO
 'roundcube_user'@'localhost';"
 sudo mysql -e "FLUSH PRIVILEGES;"</code></pre>
-                </div>
-            </div>
+                
+</div>
             </p>
             <p>Realizar una captura del terminal donde se evidencie la ejecución
                 correcta de las sentencias SQL de base de datos.</p>
@@ -218,7 +217,6 @@ sudo mysql -e "FLUSH PRIVILEGES;"</code></pre>
                 estructurado de tablas inicial sobre la base de datos de producción:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>cd /tmp
 wget
 https://github.com/roundcube/roundcubemail/releases/download/1.6.6/roundcubemail-1.6.6-complete.tar.gz
@@ -233,8 +231,8 @@ sudo chown -R www-data:www-data /var/www/html/webmail/temp
 /var/www/html/webmail/logs
 sudo chmod -R 750 /var/www/html/webmail/temp
 /var/www/html/webmail/logs</code></pre>
-                </div>
-            </div>
+                
+</div>
             </p>
             <p>A continuación, el alumno configurará el archivo de enlace de la
                 aplicación copiando la plantilla base en
@@ -243,7 +241,6 @@ sudo chmod -R 750 /var/www/html/webmail/temp
                 forma explícita los sockets de comunicación de correo IMAP/SMTP:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>&lt;?php
 $config['db_dsnw'] =
 'mysql://roundcube_user:PasswordCorporativa2026_!@localhost/roundcube_db';
@@ -256,8 +253,8 @@ $config['smtp_pass'] = '%p';
 $config['product_name'] = 'Portal Webmail - Empresa SMR';
 $config['skin'] = 'elastic';
 ?&gt;</code></pre>
-                </div>
-            </div>
+                
+</div>
             </p>
             <p>Adjuntar captura del contenido editado del archivo config.inc.php
                 prestando atención a los parámetros de red.</p>
@@ -284,7 +281,6 @@ $config['skin'] = 'elastic';
                 instalará el servidor ligero Baïkal en el directorio raíz web:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>cd /var/www/html
 sudo wget
 https://github.com/sabre-io/Baikal/releases/download/0.9.5/baikal-0.9.5.zip
@@ -292,8 +288,8 @@ sudo unzip baikal-0.9.5.zip
 sudo mv baikal calendario
 sudo chown -R www-data:www-data /var/www/html/calendario
 sudo chmod -R 755 /var/www/html/calendario/Specific</code></pre>
-                </div>
-            </div>El alumno accederá a
+                
+</div>El alumno accederá a
             http://&lt;IP_DE_TU_SERVIDOR&gt;/calendario/html/ desde el navegador
             cliente para completar el asistente técnico. Tras definir el usuario
             administrador del portal de agendas, accederá al panel de control para
@@ -313,14 +309,13 @@ sudo chmod -R 755 /var/www/html/calendario/Specific</code></pre>
                 configuración:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code># Eliminación irreversible de la interfaz del instalador web
 sudo rm -rf /var/www/html/webmail/installer
 # Restricción de permisos sobre el archivo de credenciales de
 configuración de base de datos
 sudo chmod 640 /var/www/html/webmail/config/config.inc.php</code></pre>
-                </div>
-            </div>
+                
+</div>
             </p>
             <p>Captura del terminal donde se verifique mediante un comando ls -l que
                 la carpeta installer ha desaparecido y que los permisos del archivo

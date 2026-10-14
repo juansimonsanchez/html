@@ -138,11 +138,10 @@
                 </li>
                 <li>
                     <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                             <pre><code>Entrega: Capturas de SELECT * FROM users; en ambos
 contenedores.</code></pre>
-                        </div>
-                    </div>
+                        
+</div>
                 </li>
             </ul>
             <p><strong>Ejercicio 3: Configuración Técnica de ProxySQL (3
@@ -157,28 +156,25 @@ contenedores.</code></pre>
                 </li>
                 <li>
                     <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                             <pre><code>Configurar Backends (Hostgroups):
 -- Shard 1 (ID 1-50) -&gt; HG 1 | Shard 2 (ID &gt; 50) -&gt; HG 2
 INSERT INTO mysql_servers(hostgroup_id, hostname, port) VALUES (1,
 'mysql-shard-1', 3306), (2, 'mysql-shard-2', 3306);
 LOAD MYSQL SERVERS TO RUNTIME; SAVE MYSQL SERVERS TO DISK;</code></pre>
-                        </div>
-                    </div>
+                        
+</div>
                 </li>
                 <li>
                     <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                             <pre><code>Configurar Usuario de Tráfico:
 INSERT INTO mysql_users(username, password, default_hostgroup) VALUES
 ('root', 'root_password', 1);
 LOAD MYSQL USERS TO RUNTIME; SAVE MYSQL USERS TO DISK;</code></pre>
-                        </div>
-                    </div>
+                        
+</div>
                 </li>
                 <li>
                     <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                             <pre><code>Reglas de Enrutamiento (Sharding Logic):
 -- Redirigir según el ID en la consulta (Regex)
 INSERT INTO mysql_query_rules (rule_id, active, match_digest,
@@ -186,8 +182,8 @@ destination_hostgroup, apply)
 VALUES (1, 1, 'id\s*=\s*([1-9]|[1-4][0-9]|50)', 1, 1),
 (2, 1, 'id\s*=\s*([5-9][0-9]|[1-9][0-9]{2,})', 2, 1);
 LOAD MYSQL QUERY RULES TO RUNTIME; SAVE MYSQL QUERY RULES TO DISK;</code></pre>
-                        </div>
-                    </div>
+                        
+</div>
                 </li>
             </ol>
             <p><strong>Ejercicio 4: Pruebas de Transparencia (2 puntos)</strong></p>

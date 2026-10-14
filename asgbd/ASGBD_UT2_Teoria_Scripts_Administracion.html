@@ -425,7 +425,6 @@ ORDER BY (SUM(data_length + index_length)) DESC;</code></pre>
                 (Master-Slave) o clústeres.</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>SELECT
 t.table_schema AS 'Base de Datos',
 t.table_name AS 'Tabla sin PK'
@@ -438,8 +437,8 @@ WHERE tc.constraint_name IS NULL
 AND t.table_schema NOT IN ('information_schema', 'mysql',
 'performance_schema', 'sys')
 AND t.table_type = 'BASE TABLE';</code></pre>
-                </div>
-            </div>
+                
+</div>
             <h2>3.2.
                 Base de Datos mysql (El Repositorio de Seguridad y Privilegios)</h2>
             <p>A diferencia de information_schema, la base de datos mysql contiene

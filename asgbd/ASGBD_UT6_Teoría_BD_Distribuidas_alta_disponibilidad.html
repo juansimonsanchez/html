@@ -666,14 +666,13 @@
                 </li>
                 <li>
                     <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                             <pre><code>Cuando recibe una consulta (ej: SELECT * FROM clientes WHERE id =
 45;), analiza el texto de la consulta, detecta el ID utilizando patrones
 regex, comprueba su tabla de reglas de enrutamiento y redirige
 silenciosamente la consulta al Shard correspondiente, devolviendo el
 resultado de forma transparente al usuario.</code></pre>
-                        </div>
-                    </div>
+                        
+</div>
                 </li>
             </ul>
             <h1 id="casos-prácticos-de-configuración-y-scripts-de-administración-sysadmin">6.
@@ -690,7 +689,6 @@ resultado de forma transparente al usuario.</code></pre>
                 alerten inmediatamente de desincronizaciones en la réplica de MySQL.</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>#!/bin/bash
 #
 ==============================================================================
@@ -749,8 +747,8 @@ echo "$(date '+%Y-%m-%d %H:%M:%S') [OK] Réplica funcionando
 correctamente sin retrasos." &amp;gt;&amp;gt; "$LOG_FILE"
 fi
 fi</code></pre>
-                </div>
-            </div>Este script analiza la salida del comando SHOW REPLICA STATUS (o
+                
+</div>Este script analiza la salida del comando SHOW REPLICA STATUS (o
             SHOW SLAVE STATUS en entornos compatibles) para validar el estado de los
             dos hilos principales: <strong>Replica_IO_Running</strong> (hilo de red
             que descarga los logs del maestro) y
@@ -767,7 +765,6 @@ fi</code></pre>
                 basados en Debian/Ubuntu).</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>[mysqld]
 # Identificador único de nodo (Entero entre 1 y 4294967295)
 # Debe ser diferente en cada uno de los servidores del clúster
@@ -795,8 +792,8 @@ log_replica_updates = ON
 eléctrica (batería RAID)
 sync_binlog = 1
 innodb_flush_log_at_trx_commit = 1</code></pre>
-                </div>
-            </div>La siguiente plantilla de configuración es apta para producción e
+                
+</div>La siguiente plantilla de configuración es apta para producción e
             indispensable para que funcione la tecnología GTID de manera limpia y
             sin corrupciones de datos:</p>
 

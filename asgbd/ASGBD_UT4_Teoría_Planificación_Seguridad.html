@@ -181,45 +181,40 @@
                 </li>
                 <li>
                     <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                             <pre><code>DISABLED: El hilo está deshabilitado físicamente y
 no se puede activar dinámicamente en caliente.</code></pre>
-                        </div>
-                    </div>
+                        
+</div>
                 </li>
             </ul>
             <p><strong>Verificación:</strong></p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>SHOW VARIABLES LIKE 'event_scheduler';
 -- O alternativamente mediante consulta directa:
 SELECT @@global.event_scheduler;</code></pre>
-                </div>
-            </div><strong>Activación Dinámica (en caliente):</strong></p>
+                
+</div><strong>Activación Dinámica (en caliente):</strong></p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>SET GLOBAL event_scheduler = ON;</code></pre>
-                </div>
-            </div><strong>Configuración Permanente:</strong></p>
+                
+</div><strong>Configuración Permanente:</strong></p>
             <p>Para evitar que se desactive tras un reinicio del servicio, se añade
                 al fichero de configuración (/etc/mysql/mysql.conf.d/mysqld.cnf o
                 my.ini):</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>[mysqld]
 event_scheduler=ON</code></pre>
-                </div>
-            </div>
+                
+</div>
             </h2>
             <h2 id="sintaxis-de-creación-de-eventos-create-event">2.3. Sintaxis de
                 Creación de Eventos (CREATE EVENT) <a class="headerlink"
                     href="#sintaxis-de-creación-de-eventos-create-event" title="Enlace permanente">¶</a></h2>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>CREATE
 [DEFINER = { user | CURRENT_USER }]
 EVENT
@@ -235,8 +230,8 @@ AT timestamp [+ INTERVAL interval] ...
 [STARTS timestamp [+ INTERVAL interval] ...]
 [ENDS timestamp [+ INTERVAL interval] ...]
 }</code></pre>
-                </div>
-            </div>
+                
+</div>
             </p>
             <p>Cláusulas Clave:</p>
             <ul>
@@ -278,7 +273,6 @@ AT timestamp [+ INTERVAL interval] ...
                 registrado en el sistema tras concluir.</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>CREATE EVENT IF NOT EXISTS ev_depurar_huerfanos_unico
 ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 5 MINUTE
 ON COMPLETION PRESERVE
@@ -288,8 +282,8 @@ DO
 DELETE FROM tienda.pedidos_temporales
 WHERE completado = 0 AND fecha_creacion &lt; NOW() - INTERVAL 1
 HOUR;</code></pre>
-                </div>
-            </div>
+                
+</div>
             </h5>
             <p><strong>Ejemplo 2: Evento Periódico (EVERY) con Bloque de Sentencias
                     y delimitador</strong></p>
@@ -298,7 +292,6 @@ HOUR;</code></pre>
                 redefinir el delimitador temporal de fin de instrucción:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>DELIMITER $$
 CREATE EVENT IF NOT EXISTS ev_mantenimiento_mensual_ventas
 ON SCHEDULE EVERY 1 MONTH
@@ -316,8 +309,8 @@ DELETE FROM tienda.facturas
 WHERE fecha_emision &lt; DATE_SUB(NOW(), INTERVAL 1 MONTH);
 END$$
 DELIMITER ;</code></pre>
-                </div>
-            </div>
+                
+</div>
             </p>
             <h2 id="gestión-de-eventos-modificación-activación-desactivación-y-eliminación">2.5.
                 Gestión de Eventos: Modificación, Activación, Desactivación y
@@ -330,7 +323,6 @@ DELIMITER ;</code></pre>
                 diccionario de datos:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Desactivar temporalmente el evento de mantenimiento
 ALTER EVENT ev_mantenimiento_mensual_ventas DISABLE;
 -- Modificar su planificación para que se ejecute a partir de hoy en
@@ -338,17 +330,16 @@ tiempo real
 ALTER EVENT ev_mantenimiento_mensual_ventas
 ON SCHEDULE EVERY 1 MONTH STARTS NOW()
 ENABLE;</code></pre>
-                </div>
-            </div>
+                
+</div>
             </p>
             <p><strong>Borrado de Eventos (DROP EVENT)</strong></p>
             <p>Elimina definitivamente un evento del servidor de bases de datos:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>DROP EVENT IF EXISTS ev_depurar_huerfanos_unico;</code></pre>
-                </div>
-            </div>
+                
+</div>
             </p>
             <h2 id="visualización-y-monitorización-de-eventos-en-el-sistema">2.6.
                 Visualización y Monitorización de Eventos en el Sistema <a class="headerlink"
@@ -356,10 +347,9 @@ ENABLE;</code></pre>
             <p><strong>Listado de Eventos Activos en el Esquema actual</strong></p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>SHOW EVENTS;</code></pre>
-                </div>
-            </div>
+                
+</div>
             </h5>
             <p><strong>Consulta del Diccionario de Datos del Sistema:</strong></p>
             <p>La vista de catálogo INFORMATION_SCHEMA.EVENTS almacena metadatos
@@ -367,11 +357,10 @@ ENABLE;</code></pre>
                 cuándo fue la última ejecución real):</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>SELECT EVENT_SCHEMA, EVENT_NAME, STATUS, LAST_EXECUTED FROM
 INFORMATION_SCHEMA.EVENTS WHERE EVENT_SCHEMA = 'tienda';</code></pre>
-                </div>
-            </div>
+                
+</div>
             </h5>
             <p><strong>Logs de errores y estado del planificador:</strong></p>
             <p>El inicio, parada o fallos en tiempo de ejecución del cuerpo de un
@@ -379,10 +368,9 @@ INFORMATION_SCHEMA.EVENTS WHERE EVENT_SCHEMA = 'tienda';</code></pre>
                 Linux, se puede auditar con:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>sudo cat /var/log/mysql/error.log | grep -i "Event"</code></pre>
-                </div>
-            </div>
+                
+</div>
             </p>
             <h1 id="gestión-de-la-seguridad-de-los-datos">3. GESTIÓN DE LA SEGURIDAD
                 DE LOS DATOS <a class="headerlink" href="#gestión-de-la-seguridad-de-los-datos"
@@ -501,42 +489,38 @@ INFORMATION_SCHEMA.EVENTS WHERE EVENT_SCHEMA = 'tienda';</code></pre>
                     MyISAM:</strong></p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- 1. Cerrar tablas e impedir escrituras externas bloqueando para
 lectura
 FLUSH TABLES producto FOR EXPORT;</code></pre>
-                </div>
-            </div><em>(En este punto, el SysAdmin copia de forma segura los archivos
+                
+</div><em>(En este punto, el SysAdmin copia de forma segura los archivos
                 .MYD y .myi de la ruta física /var/lib/mysql/tienda/ a un directorio
                 externo de almacenamiento).</em></p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- 2. Liberar el bloqueo para restaurar la operatividad en caliente
 del servidor
 UNLOCK TABLES;</code></pre>
-                </div>
-            </div><strong>Operación de restauración física de tablas InnoDB (DISCARD /
+                
+</div><strong>Operación de restauración física de tablas InnoDB (DISCARD /
                 IMPORT):</strong></p>
             <p>Dado que InnoDB gestiona su propio espacio de tablas
                 (<em>tablespace</em>), la restauración física de un archivo .ibd de
                 forma individual requiere el siguiente procedimiento:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- 1. Desasociar el espacio de tablas lógico actual en MySQL
 ALTER TABLE tienda.producto DISCARD TABLESPACE;</code></pre>
-                </div>
-            </div><em>(El SysAdmin copia de forma manual el archivo físico
+                
+</div><em>(El SysAdmin copia de forma manual el archivo físico
                 producto.ibd de respaldo al directorio /var/lib/mysql/tienda/ y le
                 asigna la propiedad de usuario necesaria: chown mysql:mysql)</em>.</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- 2. Importar el nuevo espacio de tablas restaurado
 ALTER TABLE tienda.producto IMPORT TABLESPACE;</code></pre>
-                </div>
-            </div>3.4. Copias de
+                
+</div>3.4. Copias de
             Seguridad Lógicas o Textuales</h2>
             <h3 id="sentencias-sql-de-importaciónexportación">3.4.1. Sentencias SQL
                 de Importación/Exportación <a class="headerlink" href="#sentencias-sql-de-importaciónexportación"
@@ -547,22 +531,20 @@ ALTER TABLE tienda.producto IMPORT TABLESPACE;</code></pre>
                 mediante la variable global secure_file_priv):</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>SELECT codigo, nombre, cantidad_en_stock INTO OUTFILE
 '/var/lib/mysql-files/fabricante_backup.txt' FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n' FROM tienda.fabricante;</code></pre>
-                </div>
-            </div><strong>Importación de Datos (LOAD DATA)</strong></p>
+                
+</div><strong>Importación de Datos (LOAD DATA)</strong></p>
             <p>Carga un archivo de texto estructurado de forma inmediata en una
                 tabla previamente definida:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>LOAD DATA INFILE '/var/lib/mysql-files/fabricante_backup.txt' INTO
 TABLE tienda.fabricante_copia FIELDS TERMINATED BY ',' LINES TERMINATED
 BY '\n';</code></pre>
-                </div>
-            </div>3.4.2. Uso Avanzado de
+                
+</div>3.4.2. Uso Avanzado de
             mysqldump</h3>
             <p>La herramienta principal de administración de copias lógicas en
                 consola es mysqldump. Su sintaxis y modos de uso principales son:</p>
@@ -570,27 +552,24 @@ BY '\n';</code></pre>
                     específica:</strong></p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>mysqldump -u root -p tienda producto &gt;
 backup_producto_tienda.sql</code></pre>
-                </div>
-            </div><strong>B. Exportar una o varias bases de datos completas (incluye
+                
+</div><strong>B. Exportar una o varias bases de datos completas (incluye
                 sentencias CREATE DATABASE):</strong></p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>mysqldump -u root -p --databases tienda biblioteca &gt;
 backup_sistemas.sql</code></pre>
-                </div>
-            </div><strong>C. Exportar toda la instancia de MySQL (todas las bases de
+                
+</div><strong>C. Exportar toda la instancia de MySQL (todas las bases de
                 datos de usuario y sistema):</strong></p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>mysqldump -u root -p --all-databases &gt;
 backup_completo_servidor.sql</code></pre>
-                </div>
-            </div><strong>Parámetros Útiles de Optimización de mysqldump:</strong></p>
+                
+</div><strong>Parámetros Útiles de Optimización de mysqldump:</strong></p>
             <ul>
                 <li>
                     <blockquote>
@@ -622,34 +601,31 @@ backup_completo_servidor.sql</code></pre>
                     (Redirección externa &lt;)</strong></p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Si el backup tiene sentencias 'CREATE DATABASE' integradas:
 mysql -u root -p &lt; backup_sistemas.sql
 -- Si el backup no las tiene, se especifica la base de datos de
 destino:
 mysql -u root -p tienda &lt; backup_producto_tienda.sql</code></pre>
-                </div>
-            </div><strong>Opción B: Desde el intérprete de comandos interno de MySQL
+                
+</div><strong>Opción B: Desde el intérprete de comandos interno de MySQL
                 (source)</strong></p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>mysql&gt; USE tienda;
 mysql&gt; SOURCE /var/lib/mysql-files/backup_producto_tienda.sql;</code></pre>
-                </div>
-            </div>3.6. Gestión
+                
+</div>3.6. Gestión
             de Backups mediante Interfaces Gráficas</h2>
             <ul>
                 <li>
                     <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                             <pre><code>MySQL Workbench: Ofrece el módulo Data
 Export y Data Import que encapsulan el
 funcionamiento de la utilidad de consola mysqldump bajo una interfaz
 gráfica de pestañas para exportar e importar cómodamente esquemas o
 carpetas autocontenidas de proyectos.</code></pre>
-                        </div>
-                    </div>
+                        
+</div>
                 </li>
                 <li>
                     <blockquote>

@@ -78,7 +78,6 @@
             <p><a href="#operaciones-ddl-sobre-vistas"><u>2. OPERACIONES DDL SOBRE
                         VISTAS</u></a></p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>2.1 Creación
 de Vistas (CREATE OR REPLACE VIEW)
 2.1.1 Sintaxis
@@ -93,8 +92,8 @@ Vistas (DROP VIEW)
 Vistas (RENAME TABLE)
 2.4 Metadatos e
 Inspección de Vistas</code></pre>
-                </div>
-            </div>
+                
+</div>
             <p><a href="#vistas-actualizables"><u>3. VISTAS
                         ACTUALIZABLES</u></a></p>
             <blockquote>
@@ -189,7 +188,6 @@ Inspección de Vistas</code></pre>
                 ejecución del motor.</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>CREATE
 [OR REPLACE]
 [ALGORITHM = {UNDEFINED | MERGE | TEMPTABLE}]
@@ -198,8 +196,8 @@ Inspección de Vistas</code></pre>
 VIEW view_name [(column_list)]
 AS select_statement
 [WITH [CASCADED | LOCAL] CHECK OPTION];</code></pre>
-                </div>
-            </div>
+                
+</div>
             </h5>
             <h5
                 id="documentación-oficial-consulta-la-sintaxis-gramatical-formal-y-todos-los-modificadores-disponibles-para-este-comando-create-view-en-mysql-reference-manual---create-view-syntax">
@@ -255,7 +253,6 @@ AS select_statement
                 del SELECT:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>USE practica_dml;
 CREATE OR REPLACE VIEW v_personal_madrid (ID, Empleado, Correo,
 Ciudad) AS
@@ -266,8 +263,8 @@ email,
 'Madrid'
 FROM empleado
 WHERE codigo_oficina = 'OFI-MAD';</code></pre>
-                </div>
-            </div>
+                
+</div>
             </h2>
             <h2 id="eliminación-de-vistas-drop-view">2.2 Eliminación de Vistas (DROP
                 VIEW) <a class="headerlink" href="#eliminación-de-vistas-drop-view" title="Enlace permanente">¶</a></h2>
@@ -276,20 +273,18 @@ WHERE codigo_oficina = 'OFI-MAD';</code></pre>
                 permanecen inalterados.</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>DROP VIEW [IF EXISTS]
 view_name [, view_name] ...
 [RESTRICT | CASCADE];</code></pre>
-                </div>
-            </div>
+                
+</div>
             </p>
             <p><strong>Ejemplo de uso práctico:</strong></p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>DROP VIEW IF EXISTS v_personal_madrid;</code></pre>
-                </div>
-            </div>
+                
+</div>
             </h2>
             <h2 id="renombrado-de-vistas-rename-table">2.3 Renombrado de Vistas
                 (RENAME TABLE) <a class="headerlink" href="#renombrado-de-vistas-rename-table"
@@ -300,16 +295,14 @@ view_name [, view_name] ...
                 esquema.</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>RENAME TABLE old_view_name TO new_view_name;</code></pre>
-                </div>
-            </div><strong>Ejemplo de uso práctico:</strong></p>
+                
+</div><strong>Ejemplo de uso práctico:</strong></p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>RENAME TABLE v_personal_madrid TO v_empleados_capital;</code></pre>
-                </div>
-            </div>
+                
+</div>
             </h2>
             <h2 id="metadatos-e-inspección-de-vistas">2.4 Metadatos e Inspección de
                 Vistas <a class="headerlink" href="#metadatos-e-inspección-de-vistas" title="Enlace permanente">¶</a>
@@ -320,7 +313,6 @@ view_name [, view_name] ...
                 de creación.</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Listar todos los objetos indicando si son tablas base o
 vistas
 SHOW FULL TABLES;
@@ -328,8 +320,8 @@ SHOW FULL TABLES;
 SHOW FULL TABLES WHERE Table_type = 'VIEW';
 -- Consultar la sentencia exacta de creación (auditoría lógica)
 SHOW CREATE VIEW v_empleados_capital;</code></pre>
-                </div>
-            </div>
+                
+</div>
             </h1>
             <h1 id="vistas-actualizables">3. VISTAS ACTUALIZABLES <a class="headerlink" href="#vistas-actualizables"
                     title="Enlace permanente">¶</a></h1>
@@ -438,7 +430,6 @@ SHOW CREATE VIEW v_empleados_capital;</code></pre>
                 nómina (salario y comision).</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Creación de la vista segura
 CREATE OR REPLACE VIEW v_empleados_publico AS
 SELECT
@@ -453,8 +444,8 @@ WHERE activo = TRUE;
 -- Consulta plana realizada por el usuario de soporte técnico
 SELECT * FROM v_empleados_publico WHERE codigo_oficina =
 'OFI-BAR';</code></pre>
-                </div>
-            </div>
+                
+</div>
             </p>
             <p><em>Análisis técnico:</em> Al conceder privilegios únicamente sobre
                 v_empleados_publico y no sobre la tabla física empleado, se impide que
@@ -469,7 +460,6 @@ SELECT * FROM v_empleados_publico WHERE codigo_oficina =
                 JOIN repetidamente en el código de la aplicación.</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Creación de la vista integradora de inventario
 CREATE OR REPLACE VIEW v_inventario_fabricantes AS
 SELECT
@@ -481,16 +471,15 @@ f.nombre AS Fabricante,
 f.pais AS Pais_Origen
 FROM producto p
 INNER JOIN fabricante f ON p.codigo_fabricante = f.codigo;</code></pre>
-                </div>
-            </div>
+                
+</div>
             </p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Consulta unificada directa desde la aplicación cliente
 SELECT * FROM v_inventario_fabricantes WHERE PVP &lt; 50.00;</code></pre>
-                </div>
-            </div><em>Análisis técnico:</em> Esta vista es un ejemplo de composición
+                
+</div><em>Análisis técnico:</em> Esta vista es un ejemplo de composición
             interna (INNER JOIN). <strong>No es actualizable con INSERT</strong> de
             forma directa ya que afecta a múltiples tablas (producto y fabricante)
             de manera simultánea en su proyección de origen.</p>
@@ -505,7 +494,6 @@ SELECT * FROM v_inventario_fabricantes WHERE PVP &lt; 50.00;</code></pre>
                 'Frutales').</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>-- Creación de la vista restrictiva de gama
 CREATE OR REPLACE VIEW v_gestion_herramientas AS
 SELECT
@@ -532,8 +520,8 @@ VALUES ('PROD-O99', 'Ficus Benjamina Gigante', 45.00, 'Ornamentales',
 -- Error esperado en el motor de base de datos:
 -- ERROR 1369 (HY000): CHECK OPTION failed
 'practica_dml.v_gestion_herramientas'</code></pre>
-                </div>
-            </div>4.4
+                
+</div>4.4
             Ejemplo 4: Análisis de una Vista de Terceros No Actualizable</h2>
             <p>La base de datos Sakila de MySQL utiliza de forma extensa vistas para
                 simplificar estructuras lógicas orientadas a la facturación y generación
@@ -542,7 +530,6 @@ VALUES ('PROD-O99', 'Ficus Benjamina Gigante', 45.00, 'Ornamentales',
                 customer_list:</p>
             <p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
                     <pre><code>CREATE VIEW customer_list AS
 SELECT
 cu.customer_id AS ID,
@@ -558,8 +545,8 @@ FROM customer AS cu
 JOIN address AS a ON cu.address_id = a.address_id
 JOIN city ON a.city_id = city.city_id
 JOIN country ON city.country_id = country.country_id;</code></pre>
-                </div>
-            </div>
+                
+</div>
             </p>
             <p><em>Análisis técnico para debate y auditoría:</em></p>
             <ul>
