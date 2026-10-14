@@ -46,7 +46,6 @@
             con Docker Compose (docker compose)</u></a></p>
       <h2 id="instalación-de-docker-en-ubuntu">1.Instalación de Docker en
         Ubuntu <a class="headerlink" href="#instalación-de-docker-en-ubuntu" title="Enlace permanente">¶</a></h2>
-      <p>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
           <pre><code># Añade la clave GPG oficial de Docker:
 sudo apt update
@@ -54,10 +53,8 @@ sudo apt install -y ca-certificates curl
 sudo install -m 0755 -d /etc/apt/keyrings
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
 sudo chmod a+r /etc/apt/keyrings/docker.asc</code></pre>
-        
 </div>
-      </p>
-      <p>
+
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
           <pre><code># Añadir el repositorio a las fuentes de APT:
 echo \
@@ -65,29 +62,23 @@ echo \
 $(. /etc/os-release &amp;&amp; echo "$VERSION_CODENAME") stable" | \
 sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
 sudo apt update</code></pre>
-        
+
 </div>
-      </p>
-      <p>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
           <pre><code># Instalar los paquetes necesarios:
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</code></pre>
-        
 </div>
-      </p>
-      <p>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
           <pre><code># Verificar que el servicio esté activo:
 sudo systemctl status docker</code></pre>
-        
-</div>Deberías ver el estado resaltado en verde como active (running).</p>
-      <p>
+
+</div>Deberías ver el estado resaltado en verde como active (running).
+
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)">📋 Copiar</button>
           <pre><code># Ejecutar Docker sin 'sudo' (opcional):
 sudo usermod -aG docker $USER
 newgrp docker</code></pre>
-        
-</div>Ejecuta docker run hello-world sin anteceder sudo. Deberías ver un
+</div><p>Ejecuta docker run hello-world sin anteceder sudo. Deberías ver un
       mensaje de bienvenida confirmando la instalación.</p>
       <h2 id="gestión-de-contenedores-docker-run-docker-exec">2. Gestión de
         Contenedores (docker run / docker exec) <a class="headerlink"
@@ -299,9 +290,6 @@ newgrp docker</code></pre>
       </ul>
 
     </main>
-  </div>
-
-  </main>
   </div>
 </body>
 
