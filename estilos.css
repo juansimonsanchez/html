@@ -1,0 +1,244 @@
+/* 
+   Archivo de estilos unificados.
+   Centraliza todos los estilos del proyecto (document-utilities, style y module).
+*/
+
+:root {
+    /* Colores base (unificados) */
+    --primary-color: #2563eb;
+    --primary-dark: #1d4ed8;
+    --bg-header: #2563eb;
+    --text-header: #ffffff;
+    --bg-body: #f8fafc;
+    --bg-gray: #f2f2f2;
+    --bg-panel: #e5e7eb;
+    --border-color: #cbd5e1;
+    --text-body: #1e293b;
+    --text-muted: #475569;
+    
+    /* Variables de Módulo */
+    --module-content-width: 1100px;
+    --module-surface: #ffffff;
+    --module-border: #d8e0e8;
+    --module-muted: #526173;
+
+    /* Info y otros */
+    --info-bg: #e0f2fe;
+    --info-text: #0369a1;
+
+    /* Espaciado y bordes */
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+}
+
+/* --- Base y Estructura Global --- */
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-body);
+    line-height: 1.65;
+    margin: 0;
+}
+
+/* --- Cabecera (Header) --- */
+
+body > header {
+    width: 100%;
+    background: var(--bg-header);
+    color: var(--text-header);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Mantiene logo/título a un lado y nav al otro */
+    gap: 0.75rem;
+    height: 62px;
+    padding: 0 1.5rem;
+    background: var(--bg-header);
+}
+
+.site-title {
+    display: flex;
+    align-items: center;
+    flex: 1 1 auto;
+    min-width: 0;
+    margin: 0;
+    color: var(--text-header);
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.site-title > span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.site-logo {
+    display: block;
+    flex: 0 0 auto;
+    width: auto;
+    height: 48px;
+    max-height: 48px;
+    margin-right: 0.625rem;
+    border-radius: 3px;
+    object-fit: contain;
+}
+
+.top-nav {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.top-nav .nav-btn {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 6px;
+    color: var(--text-header);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.top-nav .nav-btn:hover,
+.top-nav .nav-btn.active {
+    background: #1e3a8a;
+}
+
+/* --- Utilidades de Bloques y Avisos --- */
+
+.box-notice {
+    background-color: var(--bg-panel);
+    padding: 15px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.box-gray {
+    background-color: var(--bg-gray);
+}
+
+.box-card {
+    background-color: var(--module-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.label-info {
+    background: var(--info-bg);
+    color: var(--info-text);
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* --- Recursos y Componentes de Módulo --- */
+
+.resource-panel {
+    margin-top: 2rem;
+    background: var(--module-surface);
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--module-border);
+}
+
+.resource-panel h2 {
+    margin-top: 0;
+    color: #0f172a;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+}
+
+.resource-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05rem;
+}
+
+.page-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1.2rem;
+}
+
+.btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+}
+
+.btn-download:hover {
+    filter: brightness(0.96);
+}
+
+.pdf-embed-container {
+    width: 100%;
+    height: 82vh;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+/* --- Elementos Generales --- */
+
+/* Tablas */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1.5rem 0;
+    border: 1px solid var(--border-color);
+}
+
+th, td {
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    text-align: left;
+}
+
+th {
+    background-color: var(--bg-gray);
+    font-weight: 600;
+}
+
+.table-standard {
+    text-align: center;
+}
+
+/* Listas */
+ul, ol {
+    margin: 1rem 0;
+    padding-left: 2rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+.h1-tight { margin-top: 0; }
+
+.image-small-200 { width: 200px; height: auto; max-width: 100%; }
+.image-small-300 { width: 300px; height: auto; max-width: 100%; }
+
+.link-primary { color: var(--primary-color); text-decoration: none; font-weight: 600; }
+.text-small-blue { color: blue; font-size: 14px; }
