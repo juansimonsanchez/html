@@ -9,17 +9,18 @@
 </head>
 <body>
 
-    <header>
-        <!-- Fase 1.2: .aviso en servicios.html -->
-        <h1 class="aviso" id="servicios-y-despliegues-de-red">Servicios y Despliegues de Red</h1>
-        <!-- Fase 4.1: Menú con fondo claro -->
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="servicios.html">Servicios y Despliegues</a></li>
-                <li><a href="contacto.html">Soporte e Incidencias</a></li>
-            </ul>
-        </nav>
+    <header id="a1">
+        <div class="header-container">
+            <div class="site-title site-title-row" id="servicios-y-despliegues-de-red">
+                <img src="../logo.png" alt="imagen" class="site-logo">
+                <span>Servicios y Despliegues de Red</span>
+            </div>
+            <nav class="top-nav">
+                <a class="nav-btn" href="index.html">Inicio</a>
+                <a class="nav-btn" href="servicios.html">Servicios y Despliegues</a>
+                <a class="nav-btn" href="contacto.html">Soporte e Incidencias</a>
+            </nav>
+        </div>
     </header>
 
     <hr>
@@ -90,7 +91,7 @@
                 <fieldset>
                     <legend>Búsqueda en Inventario</legend>
                     <label for="txtBuscar">Servicio o IP:</label>
-                    <input type="text" id="a1" name="query" placeholder="Ej: Apache o 192.168.1.1">
+                    <input type="text" id="busqueda-servicio" name="query" placeholder="Ej: Apache o 192.168.1.1">
                     <input type="submit" value="Buscar Servicio">
                 </fieldset>
             </form>
