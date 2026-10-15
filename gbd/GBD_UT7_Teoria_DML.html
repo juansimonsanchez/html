@@ -389,9 +389,6 @@ DELETE FROM producto WHERE codigo_producto = 'PROD-M02';</code></pre>
 </div><strong>ON DELETE RESTRICT / NO ACTION (Por defecto):</strong> El
             motor InnoDB de MySQL detiene la sentencia y lanza un error si el código
             del producto existe en alguna fila de la tabla detalle_pedido.
-
-            </li>
-            <li>
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                         <pre><code>ON DELETE CASCADE: Si se borrara un registro en la
 tabla pedido, InnoDB eliminará automáticamente todas las líneas
@@ -399,16 +396,12 @@ asociadas en detalle_pedido para mantener la base de datos libre de
 registros huérfanos.</code></pre>
 
 </div>
-            </li>
-            <li>
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                         <pre><code>ON DELETE SET NULL: Si el registro principal se
 elimina, los registros secundarios asociados cambian el valor de su
 clave ajena a NULL (requiere que el campo acepte nulos).</code></pre>
 
 </div>
-            </li>
-            </ul>
             <h1 id="a3-transacciones">3. TRANSACCIONES <a class="headerlink" href="#a3-transacciones"
                     title="Enlace permanente">¶</a></h1>
             <h2 id="a31-concepto-de-transaccion-y-propiedades-acid">3.1 Concepto de
