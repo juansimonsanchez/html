@@ -55,28 +55,20 @@
                 premisas:</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p><strong>Políticas de endurecimiento (Hardening) de
                                 credenciales.</strong></p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Seguridad basada en Roles (RBAC) para el personal de la
                                 clínica.</strong></p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Integración segura de un Script de Monitorización
                                 automatizado en Python sin credenciales expuestas.</strong></p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Auditoría periódica de las tablas de diccionario del
                                 sistema.</strong></p>
-                    </blockquote>
                 </li>
             </ol>
             <h2 id="a2-actividades-a-realizar">2. ACTIVIDADES A REALIZAR <a class="headerlink"
@@ -95,26 +87,20 @@
                 con las siguientes reglas de hardening:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>Debe expirar de forma forzosa cada <strong>90 días</strong> para
                             obligar a su rotación.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Si se introduce de forma errónea la contraseña <strong>3 veces
                                 consecutivas</strong>, la cuenta debe bloquearse de forma automática y
                             temporal durante <strong>5 días</strong> para evitar ataques de fuerza
                             bruta.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>No se debe permitir la reutilización de ninguna de las últimas
                             <strong>3 contraseñas</strong> históricas del usuario, ni claves que
                             tengan menos de <strong>365 días</strong> de antigüedad.
                         </p>
-                    </blockquote>
                 </li>
             </ul>
             <h3 id="script-sql-de-hardening-fase-1"><strong>Script SQL de Hardening
@@ -149,54 +135,40 @@
                     title="Enlace permanente">¶</a></h3>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p><strong>rol_sanitario:</strong> Acceso de lectura (SELECT) a la
                             información general de pacientes y citas para coordinar consultas, y
                             permisos completos de manipulación (SELECT, INSERT, UPDATE) sobre
                             historiales_clinicos para la práctica asistencial. No debe tener
                             permisos de borrado (DELETE).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>rol_administrativo:</strong> Permisos completos (SELECT,
                             INSERT, UPDATE, DELETE) en las tablas pacientes y citas_medicas para la
                             gestión administrativa de admisiones. No debe tener visibilidad ni
                             acceso de lectura a la tabla historiales_clinicos.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>rol_auditor_seguridad:</strong> Permiso de lectura exclusiva
                             (SELECT) en todas las tablas del esquema sanasalud_db y acceso a las
                             vistas de monitorización del rendimiento.</p>
-                    </blockquote>
                 </li>
             </ol>
             <h3 id="tarea-del-alumno"><strong>Tarea del Alumno:</strong> <a class="headerlink" href="#tarea-del-alumno"
                     title="Enlace permanente">¶</a></h3>
             <ul>
                 <li>
-                    <blockquote>
                         <p>Crear los roles indicados.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Crear tres cuentas de usuario reales: doctor_gomez@localhost,
                             recepcionista_perez@localhost y agente_auditor@localhost.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Vincular cada cuenta a su respectivo rol de seguridad.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Garantizar la activación automática de dichos roles al iniciar la
                             sesión del usuario (SET DEFAULT ROLE).</p>
-                    </blockquote>
                 </li>
             </ul>
             <h3 id="solucionario-de-la-configuracion-rbac-fase-2"><strong>Solucionario
@@ -287,18 +259,14 @@
                 profesional:</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p>Crearás una cuenta de servicio de mínimos privilegios en MySQL
                             llamada monitor_agent@localhost.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Implementarás un script en Python que recupera la credencial de
                             conexión de forma dinámica a través de una <strong>variable de entorno
                                 del sistema operativo</strong>, evitando escribir claves en los archivos
                             de código fuente.</p>
-                    </blockquote>
                 </li>
             </ol>
             <h3 id="configuracion-del-usuario-de-servicio-sql"><strong>Configuración
@@ -470,13 +438,11 @@
                 WHERE account_locked = 'Y' OR password_expired = 'Y';</p>
             <h2 id="a4-calificacion">4. CALIFICACIÓN <a class="headerlink" href="#a4-calificacion"
                     title="Enlace permanente">¶</a></h2>
-            <blockquote>
                 <p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
                     través de la plataforma, la entrega del documento en formatos editables
                     no permitidos (como .docx), capturas con identificación del alumno/a o
                     la omisión de los enlaces de las fuentes documentales utilizadas
                     penalizará gravemente la nota o invalidará la práctica.</p>
-            </blockquote>
             <h2 id="a25"> <a class="headerlink" href="#a25" title="Enlace permanente">¶</a></h2>
             <div class="table-wrapper">
                 <div class="table-wrapper">

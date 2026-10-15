@@ -72,7 +72,6 @@
                         LENGUAJE DML</u></a></p>
             <p><a href="#a222-proyeccion-parcial-de-columnas"><u>2. CONSULTAS BÁSICAS
                         SOBRE UNA TABLA</u></a></p>
-            <blockquote>
                 <p><a href="#a223-comentarios-en-sentencias-sql"><u>2.1 Estructura General</u></a></p>
                 <p><a href="#a225-renombrado-de-columnas-as"><u>2.2 La Cláusula SELECT</u></a></p>
                 <p><a href="#a226-funciones-escalares-cadenas-matematicas-y-fechas"><u>2.2.1 Proyección Total (SELECT
@@ -110,10 +109,8 @@
                             Múltiples Atributos</u></a></p>
                 <p><a href="#a322-uniones-equivalentes-y-no-equivalentes"><u>2.5
                             Cláusula LIMIT: Paginación y Control del Tránsito de Red</u></a></p>
-            </blockquote>
             <p><a href="#a324-composicion-de-tres-o-mas-tablas-y-rutas-de-interseccion"><u>3. CONSULTAS SOBRE VARIAS
                         TABLAS</u></a></p>
-            <blockquote>
                 <p><a href="#a33-composicion-externa-outer-join"><u>3.1
                             Concepto de Producto Cartesiano (Composición Cruzada o CROSS
                             JOIN)</u></a></p>
@@ -140,7 +137,6 @@
                 <p><a href="#a413-interaccion-de-las-funciones-de-agregacion-con-valores-nulos"><u>3.4
                             Gestión de Tablas de Distintas Bases de Datos en el Mismo
                             Servidor</u></a></p>
-            </blockquote>
             <p><a href="#a42-clausula-group-by-agrupamiento-de-registros"><u>4. CONSULTAS DE
                         AGREGACIÓN Y RESUMEN</u></a></p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -196,7 +192,6 @@ Errores Comunes de Execution en Subconsultas</code></pre>
                         COMUNES Y GUÍA DE BUENAS PRÁCTICAS</u></a></p>
             <p><a href="#a8-anexo-ii-script-sql"><u>7. ANEXO I:
                         FUNCIONES DE MYSQL MÁS UTILIZADAS</u></a></p>
-            <blockquote>
                 <p><a href="#a71-funciones-de-cadenas-de-texto"><u>7.1 Funciones de Cadenas
                             de Texto</u></a></p>
                 <p><a href="#a72-funciones-matematicas"><u>7.2 Funciones
@@ -205,7 +200,6 @@ Errores Comunes de Execution en Subconsultas</code></pre>
                             Hora</u></a></p>
                 <p><a href="#a74-funciones-de-control-de-flujo-y-logica"><u>7.4 Funciones de
                             Control de Flujo y Lógica</u></a></p>
-            </blockquote>
             <p><a href="#a8-anexo-ii-script-sql"><u>8. ANEXO II: SCRIPT SQL DE CREACIÓN
                         Y CARGA PRÁCTICA (practica_dml)</u></a></p>
             <h1 id="a1-introduccion-al-lenguaje-dml">1. INTRODUCCIÓN AL LENGUAJE DML
@@ -229,27 +223,21 @@ Errores Comunes de Execution en Subconsultas</code></pre>
                 [Optimizador de Consultas]</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p><strong>Parser &amp; Preprocesador:</strong> Valida la sintaxis SQL
                             de la consulta y verifica que las tablas y columnas existan en el
                             diccionario de datos.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Optimizador:</strong> Evalúa múltiples planes de acceso
                             alternativos (uso de índices primarios, secundarios, escaneo de tablas
                             completas) y calcula el coste estimado de I/O de CPU y disco para elegir
                             el plan óptimo.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Motor de Ejecución (Storage Engine):</strong> Solicita las
                             páginas de datos requeridas al motor físico (generadamente InnoDB),
                             aprovechando el Buffer Pool en memoria RAM para minimizar el acceso
                             físico a disco.</p>
-                    </blockquote>
                 </li>
             </ol>
             <p>Uno de los errores conceptuales más frecuentes en estudiantes de
@@ -340,21 +328,17 @@ emplear en ORDER BY (paso ) y LIMIT (paso ).</code></pre>
                     en entornos de producción</strong> debido a:</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p><strong>Saturación del Tránsito de Red:</strong> Recuperar columnas
                             innecesarias (especialmente campos TEXT o BLOB) desperdicia ancho de
                             banda entre el servidor de base de datos y el servidor de
                             aplicaciones.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Invalidación de Índices de Cubrimiento (Covering
                                 Indexes):</strong> Si una consulta requiere solo dos columnas indexadas,
                             y se utiliza *, MySQL se verá obligado a leer los bloques de datos de la
                             clave primaria del disco (o el índice agrupado) en lugar de servir la
                             petición utilizando únicamente el índice secundario en memoria RAM.</p>
-                    </blockquote>
                 </li>
             </ol>
             <h3 id="a222-proyeccion-parcial-de-columnas">2.2.2 Proyección Parcial de
@@ -440,15 +424,11 @@ FROM producto;</code></pre>
                     title="Enlace permanente">¶</a></h3>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Comparadores:</strong> =, &lt;&gt;, !=, &lt;, &lt;=, &gt;,
                             &gt;=.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Conectores lógicos:</strong> AND, OR, NOT.</p>
-                    </blockquote>
                 </li>
             </ul>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -481,14 +461,10 @@ WHERE gama IN ('Herramientas', 'Frutales', 'Ornamentales');</code></pre>
                 comodín:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>% representa cualquier secuencia de cero o más caracteres.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>_ representa exactamente un único carácter físico.</p>
-                    </blockquote>
                 </li>
             </ul>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -688,18 +664,14 @@ WHERE producto.codigo_fabricante = fabricante.codigo;</code></pre>
                     title="Enlace permanente">¶</a></h3>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Equi-Join:</strong> La condición de enlace utiliza
                             estrictamente el operador de igualdad (=). Es la más común para enlazar
                             Claves Ajenas con Claves Primarias.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Non-Equi-Join:</strong> La condición de enlace utiliza
                             operadores relacionales diferentes al de igualdad (&lt;, &gt;, BETWEEN,
                             etc.).</p>
-                    </blockquote>
                 </li>
             </ul>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -857,18 +829,14 @@ ON F.codigo_articulo = I.id_articulo;</code></pre>
                     href="#a411-comportamiento-y-diferencias-entre-count-y-countcolumna" title="Enlace permanente">¶</a></h3>
             <ul>
                 <li>
-                    <blockquote>
                         <p>COUNT(*): Cuenta el número absoluto de filas físicas que componen el
                             conjunto de resultados, <strong>incluyendo tuplas con valores nulos o
                                 duplicados</strong>.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>COUNT(columna): Evalúa la columna especificada y devuelve el número
                             de registros en los que dicha columna posee un valor <strong>distinto de
                                 NULL</strong>.</p>
-                    </blockquote>
                 </li>
             </ul>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -946,19 +914,15 @@ GROUP BY gama, codigo_fabricante;</code></pre>
                     href="#a431-diferencias-criticas-de-procesamiento-where-vs-having" title="Enlace permanente">¶</a></h3>
             <ul>
                 <li>
-                    <blockquote>
                         <p>WHERE: Se procesa <strong>antes</strong> de agrupar los datos (GROUP
                             BY). Filtra registros individuales de la tabla. <strong>Nunca</strong>
                             puede contener una función de agregación (por ejemplo, WHERE
                             SUM(precio_venta) &gt; 100 lanzará un error de sintaxis).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>HAVING: Se procesa <strong>después</strong> de agrupar los datos.
                             Filtra los resultados consolidados de las funciones de agregación
                             basándose en el grupo completo.</p>
-                    </blockquote>
                 </li>
             </ul>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -1035,36 +999,26 @@ GROUP BY codigo_fabricante;</code></pre>
                 en:</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p><strong>Escalar:</strong> Devuelve una única fila con una única
                             columna (un solo valor).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>De Fila:</strong> Devuelve una única fila con múltiples
                             columnas asociadas.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>De Lista / Columna:</strong> Devuelve una columna con
                             múltiples registros lógicos.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>De Tabla:</strong> Devuelve un conjunto bidimensional
                             completo de filas y columnas (Derived Table).</p>
-                    </blockquote>
                 </li>
             </ol>
-            <blockquote>
                 <p>🔗 <strong>Documentación Oficial:</strong> Consulta las reglas de
                     análisis semántico del anidamiento de sentencias DML en <a
                         href="https://dev.mysql.com/doc/refman/8.0/en/subqueries.html"><u>MySQL
                             Manual - Subquery Syntax</u></a>.</p>
-            </blockquote>
             <h2 id="a52-subconsultas-de-valor-escalar">5.2 Subconsultas de Valor
                 Escalar <a class="headerlink" href="#a52-subconsultas-de-valor-escalar" title="Enlace permanente">¶</a></h2>
             <p>Suelen acoplarse con operadores de comparación relacionales clásicos
@@ -1089,16 +1043,12 @@ WHERE precio_venta = (SELECT MAX(precio_venta) FROM producto);</code></pre>
                     href="#a531-operadores-de-comparacion-con-conjuntos-in-y-not-in" title="Enlace permanente">¶</a></h4>
             <ul>
                 <li>
-                    <blockquote>
                         <p>IN: Evalúa si el atributo de la consulta externa coincide con alguno
                             de los elementos del conjunto devuelto por la subconsulta.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>NOT IN: Evalúa que el atributo de la consulta externa no coincida con
                             ningún elemento del conjunto devuelto por la subconsulta.</p>
-                    </blockquote>
                 </li>
             </ul>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -1118,20 +1068,16 @@ WHERE codigo_fabricante IN (SELECT codigo FROM fabricante WHERE pais
             de Cuantificación: ANY / SOME y ALL</h4>
             <ul>
                 <li>
-                    <blockquote>
                         <p>ANY o SOME: El criterio de comparación se cumple si la evaluación
                             lógica resulta en TRUE para <strong>al menos uno</strong> de los valores
                             del conjunto de la subconsulta (Equivale semánticamente a un conector
                             relacional OR masivo).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>ALL: El criterio de comparación se cumple si la evaluación lógica
                             resulta en TRUE para <strong>absolutamente todos</strong> los elementos
                             del conjunto devuelto por la subconsulta (Equivale a un conector
                             relacional AND masivo).</p>
-                    </blockquote>
                 </li>
             </ul>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -1153,12 +1099,10 @@ gama = 'Herramientas');</code></pre>
 
 </div><h4 id="a5-3-3-el-peligro-critico-de-not-in-con-valores-nulos-en-la-subconsulta">5.3.3
             El Peligro Crítico de NOT IN con Valores Nulos en la Subconsulta</h4>
-            <blockquote>
                 <p><strong>Advertencia:</strong> Si la subconsulta interna invocada
                     mediante un operador NOT IN devuelve, en su conjunto de datos, al menos
                     un solo registro con valor NULL, <strong>la consulta externa completa no
                         devolverá ninguna fila</strong>.</p>
-            </blockquote>
             <p>Esto se debe a que SQL evalúa la condición de exclusión como:</p>
             <p><img src="media_GBD_UT5_Teoria_Consultas/media/image2.png" alt="imagen" class="u-fb79c24878">
             </p>
@@ -1217,14 +1161,11 @@ GROUP BY codigo_fabricante
             Subconsultas Correlacionadas vs. No Correlacionadas</h2>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Subconsulta No Correlacionada:</strong> Se ejecuta una única
                             vez. El motor ejecuta la consulta interna de forma autónoma y
                             proporciona el resultado final a la consulta externa.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Subconsulta Correlacionada:</strong> El filtro de la consulta
                             interna <strong>hace referencia explícita a una columna de la tabla
                                 declarada en la consulta externa</strong>. En consecuencia, el
@@ -1233,7 +1174,6 @@ GROUP BY codigo_fabricante
                             externa, lo cual puede degradar gravemente el rendimiento en tablas con
                             millones de registros si no existen índices optimizados.
                         </p>
-                    </blockquote>
                 </li>
             </ul>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -1334,12 +1274,10 @@ FROM producto ORDER BY precio_venta DESC LIMIT 2);</code></pre>
                 comportamiento del DML:</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p><strong>Evitar las composiciones cruzadas accidentales (CROSS JOIN
                                 implícitos):</strong> Validar siempre que cada INNER JOIN o LEFT JOIN
                             cuente con su correspondiente cláusula restrictiva de coincidencia
                             física (ON o USING).</p>
-                    </blockquote>
                 </li>
                 <li>
                     <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -1363,13 +1301,11 @@ AND '2026-12-31'.</code></pre>
 </div>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Validar las consultas analíticas en producción:</strong>
                             Herramientas como EXPLAIN (analizadas a fondo en la Unidad 10) deben ser
                             ejecutadas de forma sistemática ante cualquier consulta que devuelva
                             latencias de respuesta superiores a los 100 ms en los logs de consultas
                             lentas (slow_query_log).</p>
-                    </blockquote>
                 </li>
             </ol>
             <h1 id="a7-anexo-i-funciones-de-mysql-mas-utilizadas">7. ANEXO I: FUNCIONES
@@ -1378,12 +1314,10 @@ AND '2026-12-31'.</code></pre>
             <p>Este catálogo técnico detalla el comportamiento de las funciones
                 nativas indispensables para la transformación de datos directamente en
                 el motor de bases de datos.</p>
-            <blockquote>
                 <p>🔗 <strong>Documentación Oficial:</strong> Tienes a tu disposición la
                     guía de referencia alfabética y funcional de operadores y funciones
                     nativas de MySQL en <a href="https://dev.mysql.com/doc/refman/8.0/en/functions.html"><u>MySQL
                             Manual - Functions and Operators</u></a>.</p>
-            </blockquote>
             <h2 id="a71-funciones-de-cadenas-de-texto">7.1 Funciones de Cadenas de
                 Texto <a class="headerlink" href="#a71-funciones-de-cadenas-de-texto" title="Enlace permanente">¶</a></h2>
             <ul>
@@ -1465,14 +1399,12 @@ rango_precio FROM producto;</code></pre>
             <p>Este script DDL y DML autoejecutable genera de forma íntegra el
                 esquema físico para que puedan probar la totalidad de consultas y
                 funciones explicadas en el tema.</p>
-            <blockquote>
                 <p>🔗 <strong>Documentación Oficial:</strong> Para comprender el
                     comportamiento transaccional del motor utilizado en este script, la
                     gestión del almacenamiento en espacio de tablas (<em>tablespaces</em>) y
                     las políticas de bloqueo físico, puedes visitar <a
                         href="https://dev.mysql.com/doc/refman/8.0/en/innodb-storage-engine.html"><u>MySQL
                             Manual - InnoDB Storage Engine</u></a>.</p>
-            </blockquote>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>--
 =============================================================================

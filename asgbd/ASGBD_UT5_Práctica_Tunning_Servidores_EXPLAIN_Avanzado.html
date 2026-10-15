@@ -80,50 +80,36 @@
                     href="#metodo-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>[ ] Informe de Diagnóstico y Tuning:</strong> Documento
                             formal en formato <strong>PDF</strong> (Practica5_DBA_NombreAlumno.pdf)
                             que contenga:</p>
-                    </blockquote>
                     <ul>
                         <li>
-                            <blockquote>
                                 <p>Portada formal.</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>Secciones destacadas en negrita con texto justificado.</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>Capturas de terminal legibles en formato limpio sobre fondo
                                     oscuro.</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>Cuadros comparativos que resuman el rendimiento antes y después del
                                     proceso de tuning.</p>
-                            </blockquote>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>[ ] Script de Entrega SQL:</strong> Archivo .sql con las DDL
                             de optimización implementadas y las DML de prueba, comentadas de forma
                             exhaustiva para justificar la ingeniería del servidor.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>[ ] Verificación de Trazabilidad:</strong> Cada imagen de
                             consola debe capturar el indicador completo de terminal del alumno,
                             mostrando la dirección IP pública o interna de su instancia en la nube
                             de pruebas para asegurar la autoría.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h2 id="a1-descripcion-general-objetivos">1. DESCRIPCIÓN GENERAL.
@@ -142,47 +128,35 @@
             </p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p><strong>Analizar y ajustar parámetros críticos del motor en caliente
                                 y frío</strong> a través del archivo de configuración general
                             (mysqld.cnf).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Monitorizar accesos e identificar cuellos de botella
                                 reales</strong> mediante la base de datos de rendimiento sys.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Auditar, refactorizar y reestructurar consultas multitabla
                                 complejas</strong> con alto coste de CPU/RAM utilizando la traza
                             avanzada del planificador EXPLAIN.</p>
-                    </blockquote>
                 </li>
             </ol>
             <h2 id="a2-consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink"
                     href="#a2-consideraciones-previas" title="Enlace permanente">¶</a></h2>
             <ul>
                 <li>
-                    <blockquote>
                         <p>Se utilizará la instancia virtual Linux del alumno sobre
                             infraestructura OpenStack (o similar).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Se trabajará con la base de datos de pruebas corporativa jardineria
                             ampliada con un generador masivo de registros para asegurar un volumen
                             de almacenamiento realista en tablas medianas.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>La interacción con la instancia de MySQL se realizará exclusivamente
                             a través de sesión SSH interactiva utilizando clientes nativos.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h2 id="a3-actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink"
@@ -196,33 +170,24 @@
                 están asignados al SGBD.</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p><strong>Consulta de Estado Inicial:</strong> Ejecute los comandos de
                             inspección en consola de MySQL para consultar los valores establecidos
                             de forma predeterminada para las variables del motor:</p>
-                    </blockquote>
                     <ul>
                         <li>
-                            <blockquote>
                                 <p>max_connections (Límite máximo de sesiones concurrentes de red).</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>innodb_buffer_pool_size (La asignación de memoria RAM para caché de
                                     páginas de datos e índices InnoDB).</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>innodb_log_file_size (Tamaño máximo reservado para el archivo del
                                     Redo Log de transacciones en disco).</p>
-                            </blockquote>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Ajuste Físico en Frío:</strong> Modifique el archivo de
                             configuración general del servicio (habitualmente
                             /etc/mysql/mysql.conf.d/mysqld.cnf) utilizando privilegios de
@@ -233,7 +198,6 @@
                             innodb_buffer_pool_size = 1536M<br>
                             innodb_log_file_size = 256M<br>
                             innodb_flush_log_at_trx_commit = 2</p>
-                    </blockquote>
                 </li>
                 <li>
                     <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -257,34 +221,26 @@ están cargados en caliente.</code></pre>
                 consultas están lastrando el rendimiento del host.</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p><strong>Activación de los Trazados de Rendimiento:</strong> Asegúrese
                             de que el esquema performance_schema está habilitado.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Uso de la Base de Datos SYS:</strong> Acceda a la base de
                             datos de administración simplificada sys de MySQL.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Identificación de Sentencias Ineficientes:</strong> Ejecute
                             una consulta de auditoría técnica sobre la vista
                             statements_with_temp_tables u statements_with_sorting para listar las
                             consultas que están provocando la creación de tablas temporales en
                             memoria o disco o que tienen altos costes de ordenación secuencial.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Consulta de Mayor Ejecución:</strong> Extraiga las 5
                             estructuras de sentencias agrupadas que consumen un mayor porcentaje de
                             tiempo acumulado de CPU en el SGBD utilizando la tabla
                             events_statements_summary_by_digest de performance_schema, visualizando
                             las columnas DIGEST_TEXT y COUNT_STAR.</p>
-                    </blockquote>
                 </li>
             </ol>
             <h4 id="fase-3-optimizacion-estructural-de-consultas-multitabla-complejas"><strong>Fase
@@ -312,29 +268,21 @@ están cargados en caliente.</code></pre>
                 ORDER BY subtotal_pedido DESC;</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p><strong>Auditoría con EXPLAIN (Antes de Optimizar):</strong> Ejecute
                             el diagnóstico del plan de ejecución sobre la consulta multitabla
                             anterior. Documente de forma técnica y exhaustiva los valores de:</p>
-                    </blockquote>
                     <ul>
                         <li>
-                            <blockquote>
                                 <p>La columna type en cada uno de los pasos de las tablas unidas
                                     (JOIN).</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>El número estimado de filas procesadas (rows) y su producto
                                     cartesiano resultante.</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>Los avisos de la columna Extra (por ejemplo, busque la existencia de
                                     Using temporary o Using filesort).</p>
-                            </blockquote>
                         </li>
                     </ul>
                 </li>
@@ -347,63 +295,47 @@ motor a procesar de forma secuencial completa las tablas.</code></pre>
 </div>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Estrategia de Optimización (DDL):</strong> Diseñe e
                             implemente las estructuras físicas de optimización necesarias:</p>
-                    </blockquote>
                     <ul>
                         <li>
-                            <blockquote>
                                 <p>Considere la implementación de índices compuestos estratégicos para
                                     las claves foráneas que unifican las relaciones multitabla, ordenándolas
                                     adecuadamente según el prefijo izquierdo.</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>Establezca un índice compuesto que permita cubrir tanto la
                                     restricción de país como el enlazado del código del cliente.</p>
-                            </blockquote>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Auditoría con EXPLAIN (Después de Optimizar):</strong> Vuelva
                             a ejecutar el diagnóstico de la traza sobre la consulta original.
                             Compare en un cuadro estructurado:</p>
-                    </blockquote>
                     <ul>
                         <li>
-                            <blockquote>
                                 <p>La reducción en el número total de estimaciones de accesos físicos
                                     (rows).</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>Los cambios en el método de acceso de cada paso (ALL a ref o
                                     range).</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>La remoción o permanencia de costosas tablas temporales internas en
                                     el servidor.</p>
-                            </blockquote>
                         </li>
                     </ul>
                 </li>
             </ol>
             <h2 id="a4-calificacion">4. CALIFICACIÓN <a class="headerlink" href="#a4-calificacion"
                     title="Enlace permanente">¶</a></h2>
-            <blockquote>
                 <p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
                     través de la plataforma, la entrega del documento en formatos editables
                     no permitidos (como .docx), capturas con identificación del alumno/a o
                     la omisión de los enlaces de las fuentes documentales utilizadas
                     penalizará gravemente la nota o invalidará la práctica.</p>
-            </blockquote>
             <h4 id="criterios-de-calificacion">CRITERIOS DE CALIFICACIÓN <a class="headerlink"
                     href="#criterios-de-calificacion" title="Enlace permanente">¶</a></h4>
             <div class="table-wrapper">

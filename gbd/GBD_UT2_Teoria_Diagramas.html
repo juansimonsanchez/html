@@ -85,16 +85,12 @@
             <h3 id="indice">ÍNDICE <a class="headerlink" href="#indice" title="Enlace permanente">¶</a></h3>
             <p><a href="#a2-modelo-entidad-relacion-er-componentes-conceptuales"><u>1.
                         INTRODUCCIÓN Y CLASIFICACIÓN DE LOS MODELOS DE DATOS</u></a></p>
-            <blockquote>
                 <p><a href="#a21-entidades-fuertes-y-debiles"><u>1.1.
                             Clasificación de los Modelos de Datos</u></a></p>
-            </blockquote>
             <p><a href="#a231-grado-de-la-relacion"><u>2.
                         MODELO ENTIDAD-RELACIÓN (E/R): COMPONENTES CONCEPTUALES</u></a></p>
-            <blockquote>
                 <p><a href="#a232-cardinalidad-y-participacion"><u>2.1. Entidades: Fuertes y
                             Débiles</u></a></p>
-            </blockquote>
             <p><a href="#"><u>2.2. Atributos y su Clasificación</u></a></p>
             <p><a href="#"><u>2.3. Relaciones (Interrelaciones)</u></a></p>
             <p><a href="#a4-modelo-entidad-relacion-extendido-ere"><u>3. RELACIONES
@@ -109,7 +105,6 @@
                         Exclusividad o inclusividad entre relaciones</u></a></p>
             <p><a href="#a64-estilo-notacion-de-barker"><u>6. NOTACIONES DEL DIAGRAMA
                         E/R</u></a></p>
-            <blockquote>
                 <p><a href="#a65-tabla-resumen-de-equivalencias-graficas"><u>6.1. Estilo Notación de
                             Chen</u></a></p>
                 <p><a href="#a7-construccion-de-un-diagrama-er"><u>6.2.
@@ -118,7 +113,6 @@
                             Bachman</u></a></p>
                 <p><a href="#a64-estilo-notacion-de-barker"><u>6.4. Estilo Notación de
                             Barker</u></a></p>
-            </blockquote>
             <p><a href="#"><u>6.5. Tabla Resumen de Equivalencias
                         Gráficas</u></a></p>
             <p><a href="#a7-construccion-de-un-diagrama-er"><u>7 Construcción de un
@@ -187,20 +181,16 @@
                 especificar restricciones de integridad.</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Modelo Entidad-Relación (E/R):</strong> Es el estándar de
                             facto para el diseño conceptual de bases de datos. Concibe la realidad
                             como un conjunto de objetos etiquetados (<strong>entidades</strong>)
                             interconectados entre sí (<strong>relaciones</strong>), ambos
                             caracterizados por propiedades (<strong>atributos</strong>).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Modelo Orientado a Objetos:</strong> Integra las capacidades
                             de las bases de datos con los paradigmas de la programación orientada a
                             objetos (clases, herencia, encapsulación y métodos).</p>
-                    </blockquote>
                 </li>
             </ul>
             <h4 id="b-modelos-logicos-basados-en-registros">B. Modelos Lógicos
@@ -211,27 +201,21 @@
                 registros en estructuras fijas de datos de tamaño homogéneo.</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Modelo Relacional:</strong> Organiza los datos en colecciones
                             de tablas bidimensionales (relaciones) compuestas por filas (tuplas) y
                             columnas (atributos). Es la base del software SGBD moderno (MySQL,
                             PostgreSQL, MariaDB, Oracle).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Modelo de Red:</strong> Los datos se representan mediante
                             colecciones de registros y las relaciones se modelan como enlaces
                             (punteros). Permite estructuras de grafos dirigidos donde un registro
                             "hijo" puede tener múltiples "padres".</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Modelo Jerárquico:</strong> Similar al modelo de red, pero
                             restringido a estructuras de árboles estrictos. Un nodo o registro
                             "hijo" solo puede tener un único nodo "padre".</p>
-                    </blockquote>
                 </li>
             </ul>
             <h4 id="c-modelos-de-datos-fisicos">C. Modelos de Datos Físicos <a class="headerlink"
@@ -254,18 +238,14 @@
                 desea almacenar información en la base de datos.</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Ocurrencia de Entidad:</strong> Es la instancia o caso
                             concreto de una entidad (ej. el empleado con DNI 12345678A es una
                             ocurrencia de la entidad EMPLEADO).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Entidad:</strong> Es la definición genérica de la estructura
                             y características comunes de dichas ocurrencias (ej. la entidad
                             EMPLEADO).</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image6.png" class="img-figure" alt="imagen"></p>
@@ -274,22 +254,18 @@
                     href="#clasificacion-segun-su-autonomia-de-existencia" title="Enlace permanente">¶</a></h4>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p><strong>Entidades Fuertes (Regulares):</strong> Tienen existencia por
                             sí mismas en el dominio del problema. Poseen atributos identificadores
                             propios (claves primarias) que garantizan la distinción unívoca de cada
                             ocurrencia. Se representan con un <strong>rectángulo de línea
                                 simple</strong>.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Entidades Débiles:</strong> Su existencia o identificación
                             depende directamente de otra entidad (denominada <em>entidad fuerte</em>
                             o <em>propietaria</em>). Se representan gráficamente con un
                             <strong>rectángulo de línea doble</strong>.
                         </p>
-                    </blockquote>
                 </li>
             </ol>
             <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image23.png" class="img-figure" alt="imagen">
@@ -300,56 +276,42 @@
                 dependencia:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Dependencia en Existencia (E):</strong> La eliminación de la
                             ocurrencia de la entidad fuerte implica necesariamente la eliminación
                             automática de las ocurrencias de la entidad débil asociadas, ya que
                             estas carecen de sentido de manera independiente.</p>
-                    </blockquote>
                     <ul>
                         <li>
-                            <blockquote>
                                 <p><em>Símbolo:</em> Se representa con una barra atravesando el rombo de
                                     relación y una letra <strong>E</strong> en su interior.</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p><em>Ejemplo:</em> Un EMPLEADO tiene HIJO. Si el empleado se da de
                                     baja en la empresa, el registro de sus hijos asociados ya no tiene
                                     sentido en el sistema.</p>
-                            </blockquote>
                         </li>
                     </ul>
                 </li>
             </ul>
-            <blockquote>
                 <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image26.png" alt="imagen" class="u-3d1ee2e04b"></p>
-            </blockquote>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Dependencia en Identificación (ID):</strong> Además de
                             depender de la existencia de la fuerte, la entidad débil carece de
                             atributos propios suficientes para formar una clave primaria. Necesita
                             combinar sus propios atributos parciales (discriminante) con la clave
                             primaria de la entidad fuerte para identificarse unívocamente.</p>
-                    </blockquote>
                     <ul>
                         <li>
-                            <blockquote>
                                 <p><em>Símbolo:</em> Se representa con una barra atravesando el rombo de
                                     relación y las letras <strong>ID</strong> en su interior (o bien con
                                     doble rombo sin texto).</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p><em>Ejemplo:</em> Una PROVINCIA (clave: CodProv) y un MUNICIPIO
                                     (clave parcial: CodMun). El municipio "001" no se identifica solo;
                                     necesita concatenarse con la provincia para ser único (CodProv +
                                     CodMun).</p>
-                            </blockquote>
                         </li>
                     </ul>
                 </li>
@@ -365,83 +327,63 @@
             </p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Atributo Clave (Identificador Principal):</strong> Es el
                             atributo (o conjunto de ellos) que identifica de forma unívoca a cada
                             ocurrencia de una entidad. No admite valores duplicados ni nulos. Se
                             representa con el <strong>nombre del atributo subrayado</strong>.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Superclave:</strong> Conjunto de uno o más atributos que,
                             tomados colectivamente, permiten identificar de forma única una
                             ocurrencia.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Clave Candidata:</strong> Superclave mínima. Es decir, una
                             superclave que no contiene ningún subconjunto que sea también
                             superclave. Una entidad puede tener varias claves candidatas (ej. DNI,
                             Número de la Seguridad Social, Email), de las cuales se elige una como
                             <strong>Clave Primaria</strong>.
                         </p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Atributo Compuesto:</strong> Atributo que se puede
                             descomponer en subcomponentes más simples con significado propio.</p>
-                    </blockquote>
                     <ul>
                         <li>
-                            <blockquote>
                                 <p><em>Ejemplo:</em> El atributo Dirección se descompone en Calle,
                                     Número, Piso y Código Postal.</p>
-                            </blockquote>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Atributo Multivalorado:</strong> Atributo que puede almacenar
                             múltiples valores simultáneamente para una única ocurrencia de la
                             entidad. Se representa gráficamente con una <strong>elipse de doble
                                 línea</strong>.</p>
-                    </blockquote>
                     <ul>
                         <li>
-                            <blockquote>
                                 <p><em>Ejemplo:</em> El atributo Teléfono de una entidad CLIENTE (puede
                                     tener un móvil, un fijo de casa y un teléfono de trabajo).</p>
-                            </blockquote>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Atributo Derivado:</strong> Es aquel cuyo valor no se
                             almacena físicamente, sino que se calcula dinámicamente a partir de
                             otros atributos existentes (almacenados) mediante una función o fórmula.
                             Se representa con una <strong>elipse de trazo discontinuo</strong>.</p>
-                    </blockquote>
                     <ul>
                         <li>
-                            <blockquote>
                                 <p><em>Ejemplo:</em> El atributo Edad calculado dinámicamente a partir
                                     de la Fecha de Nacimiento y la fecha actual del sistema.</p>
-                            </blockquote>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Valor Nulo (NULL):</strong> Concepto utilizado cuando un
                             atributo no tiene un valor aplicable para una ocurrencia en concreto
                             (ej. un empleado que no tiene segundo apellido) o cuando el valor se
                             desconoce temporalmente.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image3.png" alt="imagen" class="u-7386600057"></p>
@@ -459,39 +401,31 @@
                 relación.</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Grado 1 (Reflexivas o Recursivas):</strong> Relación donde
                             una entidad se asocia consigo misma bajo diferentes roles.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image1.png" alt="imagen" class="u-f9269f30b4">
             </p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><em>Ejemplo:</em> En la entidad EMPLEADO, una relación supervisa
                             asocia a un empleado en calidad de "supervisor" con otros empleados en
                             calidad de "supervisados".</p>
-                    </blockquote>
                 </li>
             </ul>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Grado 2 (Binarias):</strong> Relaciona a dos entidades
                             distintas (es el caso más común).</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image31.png" alt="imagen" class="u-a273434ab0">
             </p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Grado 3 (Ternarias):</strong> Relaciona a tres entidades de
                             forma simultánea.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image15.png" alt="imagen" class="u-674c4d33ce">
@@ -504,31 +438,25 @@
                 otra entidad participante. Las conectividades binarias estándar son:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Uno a Uno (1:1):</strong> Cada ocurrencia de la entidad A se
                             asocia con un máximo de una ocurrencia de B, y viceversa.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image28.png" alt="imagen" class="u-f639d4ca7e">
             </p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Uno a Muchos (1:N):</strong> Una ocurrencia de A puede
                             asociarse con múltiples ocurrencias de B, pero una ocurrencia de B solo
                             puede asociarse con un único registro de A.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image2.png" alt="imagen" class="u-18eb375881"></p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Muchos a Muchos (N:M):</strong> Cualquier ocurrencia de A
                             puede asociarse con múltiples de B, e inversamente, cualquier ocurrencia
                             de B con múltiples de A.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image33.png" alt="imagen" class="u-3a82b041ae">
@@ -538,17 +466,13 @@
                 conexión como un intervalo (min, max):</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Cardinalidad Mínima:</strong> El número mínimo de veces que
                             una ocurrencia puede participar en la relación (usualmente 0 si es
                             opcional, o 1 si es obligatoria).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Cardinalidad Máxima:</strong> El número máximo de veces que
                             una ocurrencia puede participar en la relación (1 o n).</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image22.png" alt="imagen" class="u-de6a874706">
@@ -576,46 +500,34 @@
                 asocian con múltiples ocurrencias de la tercera.</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Dominio de ejemplo:</strong> Control académico de alumnos
                             matriculados. Participan las entidades ESTUDIANTE, ASIGNATURA y SEMESTRE
                             a través de la relación CURSA.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Análisis formal:</strong></p>
-                    </blockquote>
                     <ol type="1">
                         <li>
-                            <blockquote>
                                 <p>Fijamos un <em>Estudiante</em> y una <em>Asignatura</em> concreta:
                                     ¿En cuántos semestres puede estar cursando esa asignatura?
                                     <strong>Varios (N)</strong> (ej. si la suspende y repite).
                                 </p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>Fijamos un <em>Estudiante</em> y un <em>Semestre</em>: ¿Cuántas
                                     asignaturas diferentes puede cursar simultáneamente? <strong>Varias
                                         (M)</strong>.</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>Fijamos una <em>Asignatura</em> y un <em>Semestre</em>: ¿Cuántos
                                     estudiantes diferentes pueden estar matriculados en ella? <strong>Varios
                                         (P)</strong>.</p>
-                            </blockquote>
                         </li>
                     </ol>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Resultado conceptual:</strong> La relación es de conectividad
                             N:M:P.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h3 id="escenario-2-cardinalidad-muchos-a-muchos-a-uno-mn1">Escenario 2:
@@ -626,44 +538,32 @@
                 las otras combinaciones admiten multiplicidad.</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Dominio de ejemplo:</strong> Control de la actividad laboral
                             de profesores. Participan MAESTRO, ESCUELA y CURSO en la relación
                             IMPARTE.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Análisis formal:</strong></p>
-                    </blockquote>
                     <ol type="1">
                         <li>
-                            <blockquote>
                                 <p>Fijamos un <em>Maestro</em> y una <em>Escuela</em> donde trabaja: ¿En
                                     cuántos cursos diferentes puede estar dando clase? <strong>Varios
                                         (N)</strong>.</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>Fijamos un <em>Curso</em> y una <em>Escuela</em>: ¿Cuántos maestros
                                     diferentes pueden dar clase en ella? <strong>Varios (M)</strong>.</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>Fijamos un <em>Maestro</em> específico que imparte un <em>Curso</em>
                                     determinado: ¿En cuántas escuelas diferentes puede estar haciendo esa
                                     actividad en el mismo momento? <strong>Solo en una (1)</strong>.</p>
-                            </blockquote>
                         </li>
                     </ol>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Resultado conceptual:</strong> La relación es de conectividad
                             M:N:1 (el "1" se ubica en el extremo de ESCUELA).</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image32.png" alt="imagen" class="u-99c1d1ab87">
@@ -678,46 +578,34 @@
                 multiplicidad.</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Dominio de ejemplo:</strong> Planificación espacial de
                             docencia. Participan AULA, HORA y ASIGNATURA en la relación OCUPA.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Análisis formal:</strong></p>
-                    </blockquote>
                     <ol type="1">
                         <li>
-                            <blockquote>
                                 <p>Fijamos un <em>Aula</em> concreta y una <em>Hora</em> determinada:
                                     ¿Cuántas asignaturas se pueden impartir de forma simultánea?
                                     <strong>Máximo 1 (1)</strong> (para evitar colisiones de espacio).
                                 </p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>Fijamos una <em>Hora</em> y una <em>Asignatura</em> concreta: ¿En
                                     cuántas aulas diferentes se puede estar impartiendo simultáneamente
                                     dicha asignatura? <strong>Máximo 1 (1)</strong> (asumiendo que es un
                                     único grupo).</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>Fijamos un <em>Aula</em> y una <em>Asignatura</em> determinada: ¿En
                                     cuántas horas diferentes a lo largo de la semana se puede impartir esa
                                     asignatura en esa clase? <strong>Varias (N)</strong>.</p>
-                            </blockquote>
                         </li>
                     </ol>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Resultado conceptual:</strong> La relación es de conectividad
                             1:1:N.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image7.png" alt="imagen" class="u-99c1d1ab87">
@@ -730,47 +618,35 @@
                 sola ocurrencia de la tercera.</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Dominio de ejemplo:</strong> Defensa de proyectos de fin de
                             ciclo. Participan TRIBUNAL, ESTUDIANTE y PROYECTO en la relación
                             DEFENSA.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Análisis formal:</strong></p>
-                    </blockquote>
                     <ol type="1">
                         <li>
-                            <blockquote>
                                 <p>Fijamos un <em>Tribunal</em> y un <em>Estudiante</em>: ¿Cuántos
                                     proyectos pueden estar evaluando conjuntamente en esa sesión?
                                     <strong>Solo 1 (1)</strong>.
                                 </p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>Fijamos un <em>Estudiante</em> y un <em>Proyecto</em> concreto:
                                     ¿Cuántos tribunales distintos pueden evaluar ese proyecto de ese
                                     estudiante? <strong>Solo 1 (1)</strong> (siempre el mismo tribunal
                                     asignado).</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>Fijamos un <em>Tribunal</em> y un <em>Proyecto</em>: ¿De cuántos
                                     alumnos se evaluará la defensa de ese proyecto en concreto? <strong>Solo
                                         de 1 (1)</strong> (suponiendo proyectos individuales).</p>
-                            </blockquote>
                         </li>
                     </ol>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Resultado conceptual:</strong> La relación es de conectividad
                             1:1:1.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h1 id="a4-modelo-entidad-relacion-extendido-ere">4. MODELO
@@ -794,20 +670,16 @@
                 atributos.</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Superentidad (Clase Padre):</strong> Es la entidad genérica
                             que almacena los atributos comunes a todas las subdivisiones (ej.
                             EMPLEADO con atributos DNI, Nombre, Salario).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Subentidades (Clases Hijas):</strong> Son las entidades
                             especializadas que heredan automáticamente todos los atributos de la
                             superentidad y, además, añaden atributos particulares y exclusivos
                             propios (ej. INGENIERO añade Especialidad; SECRETARIO añade
                             PulsacionesPorMinuto).</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image13.png" alt="imagen" class="u-1339391ab7">
@@ -839,57 +711,43 @@
             <p><strong>1. Jerarquía Solapada y Parcial</strong></p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Semántica:</strong> Un empleado puede pertenecer
                             simultáneamente a varias subentidades a la vez (solapada). Además,
                             existe la posibilidad de que un empleado de la empresa no pertenezca a
                             ninguna de ellas y se quede registrado únicamente en la superentidad
                             (parcial).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Símbolo:</strong> Se representa con la palabra
                             <strong>Solapada</strong> (o <strong>S</strong>) e
                             <strong>Incompleta/Parcial</strong> en el nodo de especialización.
                         </p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Ejemplo:</strong> Un empleado en una base de datos científica
                             puede desempeñar simultáneamente los cargos de TÉCNICO, CIENTÍFICO y
                             ASTRONAUTA (o técnico y astronauta a la vez). Asimismo, puede haber
                             administrativos contratados que se registren en EMPLEADO pero que no
                             entren en ninguna de esas categorías de especialización (parcial).</p>
-                    </blockquote>
                 </li>
             </ul>
-            <blockquote>
                 <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image17.png" alt="imagen" class="u-072ac184cf"></p>
-            </blockquote>
             <p><strong>2. Jerarquía Solapada y Total</strong></p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Semántica:</strong> Un empleado puede pertenecer de manera
                             simultánea a varias categorías hijas (solapada), pero obligatoriamente
                             debe pertenecer al menos a una de ellas. No se admiten registros que
                             vivan exclusivamente en la superentidad.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Símbolo:</strong> Representado con <strong>Solapada /
                                 Total</strong>.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Ejemplo:</strong> Un empleado espacial que debe estar
                             asignado por lo menos a un rol técnico, científico o de astronauta de
                             forma obligatoria, pudiendo compaginar varios roles a la vez.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image14.png" alt="imagen" class="u-8371179ca3">
@@ -897,28 +755,22 @@
             <p><strong>3. Jerarquía Exclusiva y Parcial</strong></p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Semántica:</strong> Un empleado solo puede pertenecer como
                             máximo a una única subentidad (exclusiva/disjunta). No obstante, es
                             parcial porque no todos los empleados tienen por qué estar clasificados
                             en las subentidades hijas propuestas.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Símbolo:</strong> Representado con <strong>Exclusiva</strong>
                             (o <strong>E</strong> / <strong>D</strong> de disjunta) e
                             <strong>Incompleta/Parcial</strong>.
                         </p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Ejemplo:</strong> Un empleado de un centro médico puede estar
                             especializado en MÉDICO o ENFERMERO, pero nunca en ambos a la vez. Sin
                             embargo, hay personal de limpieza que no pertenece a ninguna de esas
                             subentidades (parcial).</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image12.png" alt="imagen" class="u-00db7c3a67">
@@ -926,27 +778,21 @@
             <p><strong>4. Jerarquía Exclusiva y Total</strong></p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Semántica:</strong> Un empleado pertenece de manera única y
                             excluyente a una sola de las subentidades propuestas. Además, es
                             obligatorio que pertenezca a alguna; no se permite la existencia de
                             ocurrencias genéricas en la superentidad sin estar clasificadas.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Símbolo:</strong> Representado con <strong>Exclusiva /
                                 Total</strong>.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Ejemplo:</strong> Subdividimos la entidad EMPLEADO en las
                             subentidades INGENIERO, SECRETARIO y TÉCNICO. En las reglas de la
                             empresa, un empleado realiza únicamente una de estas funciones de forma
                             excluyente y no se contrata a nadie que no encaje en alguna de
                             ellas.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image11.png" alt="imagen" class="u-5403f87709">
@@ -988,26 +834,18 @@
                     href="#a61-estilo-notacion-de-chen" title="Enlace permanente">¶</a></h2>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Entidades:</strong> Rectángulos de línea simple.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Relaciones:</strong> Rombos de línea simple.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Cardinalidades:</strong> Intervalos numéricos expresados
                             explícitamente a los lados del rombo: (0,1), (1,1), (0,n), (1,n).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Atributos:</strong> Elipses individuales conectadas mediante
                             líneas directas a la entidad o relación.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h2 id="a62-estilo-patas-de-gallo-crows-foot-notacion-de-martin">6.2. Estilo
@@ -1022,28 +860,20 @@
                     title="Enlace permanente">¶</a></h4>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Cero o Muchos (0:N):</strong> Un círculo (opcionalidad)
                             seguido de una bifurcación de tres líneas (pata de gallo).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Uno o Muchos (1:N):</strong> Una barra perpendicular
                             (obligatoriedad) seguida de una bifurcación de tres líneas.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Uno y Solo Uno (1:1):</strong> Dos barras perpendiculares
                             consecutivas cruzando la línea de conexión.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Cero o Uno (0:1):</strong> Un círculo seguido de una barra
                             perpendicular.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><strong>Notación E/R más utilizadas (Notación de Chen y Notación
@@ -1130,7 +960,6 @@
                 atributos. Se realiza siguiendo los siguientes consejos:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Identificar las entidades</strong>. Suelen ser aquellos
                             nombres comunes que son importantes para el desarrollo del problema. Por
                             ejemplo, empleado, vehículo, agencia, etc. En principio, todos los
@@ -1143,18 +972,14 @@
                             modelos de vehículos pertenecientes a determinadas personas, pero que
                             nunca hace referencia a los vehículos Diesel que serán fundamentales
                             identificar para el correcto diseño de la base de datos.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>No hay que obsesionarse en los primeros pasos por distinguir las
                             entidades fuertes de las débiles. Si es trivial, se toma nota de
                             aquellas que parezcan claramente entidades débiles. De lo contrario, se
                             apuntan como entidades sin especificar si son fuertes o débiles.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Extraer los atributos de cada entidad</strong>, identificando
                             aquellos que pueden ser clave. Se suelen distinguir por ser adjetivos
                             asociados a un nombre común seleccionadas como entidades. Por ejemplo,
@@ -1164,28 +989,22 @@
                             compuesto se indica su composición, y si es derivado, cómo se calcula.
                             Es bastante útil apuntar sinónimos utilizados para el atributo para
                             eliminar redundancias.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Es fácil identificar las <strong>generalizaciones</strong> si se
                             obtiene un atributo que es aplicable a más de una entidad. En ese caso,
                             se puede intentar aplicar una generalización/especialización, indicando
                             cuál es la superclase y cuál las subclases. Además, se deben especificar
                             los tipos de especialización (inclusiva, exclusiva, parcial, total).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Identificar los <strong>atributos de cada relación</strong>. Se
                             suelen distinguir, al igual que los de entidad, por ser adjetivos,
                             teniendo en cuenta que para que sean de relación, solo deben ser
                             aplicables a la relación y no a ninguna de las de las entidades
                             relacionadas.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>También es posible que los nombres comunes contengan muy poca
                             información y no sea posible incluirlas como entidades. En este caso, se
                             pueden seleccionar como atributos de otra entidad, por ejemplo, el autor
@@ -1193,30 +1012,24 @@
                             del autor, no tiene sentido incluirlo como una entidad con un único
                             atributo. En este caso, se puede incluir como atributo de la entidad
                             Libro.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Extraer los <strong>dominios</strong> de los atributos. Siempre es
                             buena práctica, ir apuntando, aunque en el diagrama entidad relación no
                             se exprese explícitamente, a qué dominio pertenece cada atributo. Por
                             ejemplo, el Salario pertenece a los números reales (Salario: Reales), o
                             el color de un objeto puede ser verde, amarillo o rojo (Color; Verde,
                             Amarillo, Rojo).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Identificar las <strong>relaciones</strong>. Se pueden ver extrayendo
                             los verbos del texto del problema. Las entidades relacionadas serán el
                             sujeto y el predicado unidos por el verbo que hace de relación. Por
                             ejemplo, un agente inmobiliario vende edificios. En este caso el agente
                             inmobiliario representaría una entidad el edificio la otra entidad y
                             'vende' sería la relación.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Una vez identificada las relaciones, hay que afinar cómo afecta la
                             relación a las entidades implicadas. Este es el momento de
                             <strong>distinguir las fuertes de las débiles</strong> haciendo
@@ -1228,7 +1041,6 @@
                             existencia, si es negativa, alguna de las dos depende en identificación
                             de la otra.
                         </p>
-                    </blockquote>
                 </li>
             </ul>
             <p>3. Averiguar las <strong>participaciones</strong> y

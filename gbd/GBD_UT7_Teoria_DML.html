@@ -101,7 +101,6 @@ Operaciones de Manipulación e Integridad Referencial</code></pre>
 
 </div>
             <p><a href="#a34-control-fino-con-puntos-de-retorno-savepoint"><u>3. TRANSACCIONES</u></a></p>
-            <blockquote>
                 <p><a href="#documentacion-oficial-mas-informacion-en-documentacion-oficial-de-mysql-sobre-savepoint"><u>3.1 Concepto
                             de Transacción y Propiedades ACID</u></a></p>
                 <p><a href="#a4-acceso-concurrente-y-niveles-de-aislamiento-en-innodb"><u>3.2 Control del
@@ -110,21 +109,16 @@ Operaciones de Manipulación e Integridad Referencial</code></pre>
                             Comandos TCL: START TRANSACTION, COMMIT y ROLLBACK</u></a></p>
                 <p><a href="#documentacion-oficial-mas-informacion-en-documentacion-de-niveles-de-aislamiento-de-transacciones-en-innodb"><u>3.4
                             Control Fino con Puntos de Retorno (SAVEPOINT)</u></a></p>
-            </blockquote>
             <p><a href="#documentacion-oficial-mas-informacion-en-documentacion-de-mysql-sobre-el-control-de-flujo-y-excepciones-en-stored-procedures"><u>4.
                         ACCESO CONCURRENTE Y NIVELES DE AISLAMIENTO EN INNODB</u></a></p>
-            <blockquote>
                 <p><a href="#a51-gestion-de-excepciones-y-reversion-automatica"><u>4.1 Fenómenos de
                             Lectura Concurrente</u></a></p>
                 <p><a href="#a42-niveles-de-aislamiento"><u>4.2 Niveles de
                             Aislamiento</u></a></p>
-            </blockquote>
             <p><a href="#a5-transacciones-en-procedimientos-almacenados"><u>5.
                         TRANSACCIONES EN PROCEDIMIENTOS ALMACENADOS</u></a></p>
-            <blockquote>
                 <p><a href="#a51-gestion-de-excepciones-y-reversion-automatica"><u>5.1
                             Gestión de Excepciones y Reversión Automática</u></a></p>
-            </blockquote>
             <h1 id="a1-introduccion-y-contextualizacion">1. INTRODUCCIÓN Y
                 CONTEXTUALIZACIÓN <a class="headerlink" href="#a1-introduccion-y-contextualizacion"
                     title="Enlace permanente">¶</a></h1>
@@ -336,37 +330,25 @@ WHERE id_transaccion = 'TXN-2026-001';</code></pre>
                 destruye la tabla físicamente y la recrea vacía desde cero.</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>Es extremadamente rápida en tablas con millones de registros.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>No admite cláusula WHERE.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Libera de forma inmediata el espacio en disco asignado a la
                             tabla.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>No</strong> activa los desencadenadores de borrado (ON DELETE
                             TRIGGERS).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Reinicia los contadores auto-incrementales (AUTO_INCREMENT = 1).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>No puede ejecutarse en tablas con claves externas activas
                             referenciadas por otras tablas.</p>
-                    </blockquote>
                 </li>
             </ul>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -414,12 +396,10 @@ clave ajena a NULL (requiere que el campo acepte nulos).</code></pre>
                 las propiedades <strong>ACID</strong>:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Atomicidad (Atomicity):</strong> Garantiza el principio del
                             "todo o nada". Si una sola de las sentencias del bloque transaccional
                             falla, todo el bloque se descarta y los datos regresan a su estado
                             original.</p>
-                    </blockquote>
                 </li>
                 <li>
                     <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -431,20 +411,16 @@ primarias, de unicidad, nulos y checks).</code></pre>
 </div>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Aislamiento (Isolation):</strong> Asegura que las operaciones
                             que ocurren dentro de una transacción en curso no sean visibles ni
                             interfieran con otras transacciones concurrentes del sistema hasta que
                             se consoliden.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Durabilidad (Durability):</strong> Una vez que la transacción
                             ha sido confirmada, sus modificaciones se vuelven persistentes en el
                             almacenamiento físico, soportando fallos de alimentación del servidor,
                             caídas del sistema operativo o pérdidas de red de los clientes.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h2 id="a32-control-del-autocommit-en-mysql">3.2 Control del AUTOCOMMIT en
@@ -499,24 +475,16 @@ SET autocommit = 1;</code></pre>
                 pedido de un producto. Esta operación requiere:</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p>Validar que hay stock.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Crear el pedido.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Descontar el stock de la tabla producto.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Generar la línea de detalle.</p>
-                    </blockquote>
                 </li>
             </ol>
             <p>Si falla la inserción de las líneas de detalle, se debe abortar la

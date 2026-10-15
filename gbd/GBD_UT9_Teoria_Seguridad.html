@@ -82,25 +82,19 @@
                 módulos del ciclo ASIR:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Seguridad y Alta Disponibilidad (SAD):</strong> Donde se
                             estudian políticas de seguridad perimetral, criptografía y redundancia a
                             nivel de almacenamiento físico (RAID).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Administración de Sistemas Gestores de Bases de Datos (ASGBD
                                 - 2º curso):</strong> En el cual se profundizará en la replicación
                             maestro-esclavo, clustering y balanceo de carga.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Implantación de Sistemas Operativos (ISO):</strong>
                             Específicamente en la monitorización de servicios (daemons) del sistema
                             y gestión de almacenamiento en volúmenes lógicos (LVM).</p>
-                    </blockquote>
                 </li>
             </ul>
             <h1 id="a2-diagnostico-y-origen-de-fallos-en-un-sgbd">2. DIAGNÓSTICO Y
@@ -113,58 +107,44 @@
                 SysAdmin debe prever de manera proactiva:</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p><strong>Fallo de Suministro Eléctrico:</strong> Cortes repentinos de
                             energía que impiden la escritura de páginas de datos desde la caché en
                             memoria (Buffer Pool) al disco duro físico.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Fallos de Hardware:</strong> Sectores defectuosos en unidades
                             de disco duro, corrupción en los módulos de memoria RAM del servidor o
                             fallos en la CPU.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Fallos de Software:</strong> Errores del sistema operativo
                             (Kernel Panics), bloqueos del servicio mysqld o bugs en los
                             controladores lógicos del sistema de archivos (e.g., ext4, XFS).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Problemas del Sistema de Ficheros:</strong> Agotamiento del
                             espacio en disco o de la tabla de inodos, o corrupción interna en la
                             estructura lógica de directorios de almacenamiento.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Factores Externos o Catástrofes:</strong> Incendios,
                             inundaciones, robos o sabotajes físicos de la infraestructura del centro
                             de datos.</p>
-                    </blockquote>
                 </li>
             </ol>
             <p>La pérdida de datos en un SGBD puede categorizarse de dos formas:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Pérdida Parcial:</strong> El sistema de archivos se mantiene
                             intacto, pero se corrompen algunas páginas de datos correspondientes a
                             tablas concretas, o se pierde la integridad referencial debido a
                             transacciones incompletas.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Pérdida Total:</strong> Destrucción total de los dispositivos
                             de almacenamiento físico que contienen el directorio de datos o pérdida
                             generalizada de la integridad semántica de todos los esquemas del
                             servidor.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h2 id="a22-elementos-en-un-plan-de-recuperacion-de-desastres-drp">2.2
@@ -175,12 +155,10 @@
                 recuperación:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Establecer un Plan de Respaldos Periódicos:</strong>
                             Automatizar copias de seguridad completas combinadas con copias
                             incrementales o diferenciales, optimizando el espacio mediante técnicas
                             de compresión y cifrado fuerte.</p>
-                    </blockquote>
                 </li>
                 <li>
                     <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -192,21 +170,17 @@ respaldo remotos protegidos contra catástrofes).</code></pre>
 </div>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Control del Acceso Físico y Lógico:</strong> Protección de la
                             sala de servidores frente a intrusiones físicas y despliegue de un
                             sistema de privilegios de acceso lógico basado en el principio de mínimo
                             privilegio (según el estándar DCL).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Planes de Contingencia Documentados y Testeados:</strong>
                             Realización de simulacros periódicos de recuperación de fallos para
                             evaluar la viabilidad real de los planes de contingencia y medir los
                             tiempos de recuperación (RTO - Recovery Time Objective) y los puntos de
                             recuperación (RPO - Recovery Point Objective).</p>
-                    </blockquote>
                 </li>
             </ul>
             <h1 id="a3-ficheros-de-registro-log-de-mysql">3. FICHEROS DE REGISTRO LOG
@@ -232,32 +206,24 @@ mysql -u root -p -e "SHOW VARIABLES LIKE 'datadir';"</code></pre>
                 el motor de almacenamiento utilizado:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Archivos .frm:</strong> Almacenan de manera exclusiva los
                             metadatos de estructura de las tablas (válido para MyISAM e InnoDB en
                             versiones previas a MySQL 8.0; en MySQL 8.0, esta información se
                             consolida en el Diccionario de Datos del sistema).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Archivos .ibd:</strong> Corresponden al motor por defecto
                             <strong>InnoDB</strong>. Almacenan de forma agrupada los datos físicos y
                             los índices asociados a cada tabla en modo file-per-table.
                         </p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Archivos .myd:</strong> Almacenan los datos en bruto de las
                             tablas de tipo <strong>MyISAM</strong> (datos propiamente dichos).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Archivos .myi:</strong> Almacenan los índices de las tablas
                             creadas con el motor <strong>MyISAM</strong>.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h2 id="a32-anatomia-y-configuracion-de-los-logs-del-motor">3.2 Anatomía y
@@ -267,37 +233,29 @@ mysql -u root -p -e "SHOW VARIABLES LIKE 'datadir';"</code></pre>
                 del servidor y garantizar la recuperabilidad point-in-time:</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p><strong>Log de Errores (log-error):</strong> Registra eventos de
                             arranque, parada y cualquier fallo crítico del servidor. Por defecto se
                             nombra como host_name.err.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Log de Consultas Lentas (slow_query_log):</strong> Registra
                             las sentencias cuya ejecución supera el umbral definido por
                             long_query_time (en segundos). Es crucial para optimizar el
                             rendimiento.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Log General (general_log):</strong> Registra de manera
                             secuencial cada conexión abierta por un cliente y cada sentencia SQL
                             recibida por el servidor. Consume una gran cantidad de I/O de disco y no
                             se recomienda mantener activo de forma continua en producción.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Log Binario (log_bin):</strong> Contiene un registro
                             cronológico de todas las sentencias que actualizan datos o alteran el
                             esquema (DDL y DML de escritura). <strong>Es indispensable para la
                                 replicación y para realizar restauraciones incrementales</strong>.
                             Almacenado en formato binario para optimizar la velocidad de
                             escritura.</p>
-                    </blockquote>
                 </li>
             </ol>
             <p>Para cerrar los archivos de log abiertos y forzar la inicialización
@@ -330,30 +288,22 @@ FLUSH LOGS;</code></pre>
             <p>Opciones Principales de mysqlbinlog</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>--database=nombre_bd (-d): Filtra los eventos del log binario
                             aplicando las sentencias que afecten de forma exclusiva al esquema
                             indicado.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>--start-datetime="YYYY-MM-DD HH:MM:SS": Inicia la lectura de eventos
                             desde la marca de tiempo absoluta especificada.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>--stop-datetime="YYYY-MM-DD HH:MM:SS": Detiene la lectura en la marca
                             temporal provista (esencial para recuperar la base de datos hasta un
                             instante inmediatamente anterior al desastre).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>--short-form (-s): Omite información de metadatos del binlog,
                             imprimiendo únicamente las sentencias SQL puras.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p>Ejemplos Prácticos de mysqlbinlog sobre nuestra base de datos</p>
@@ -483,47 +433,35 @@ OPTIMIZE TABLE fabricante;</code></pre>
                 respaldo:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>En Frío (Cold Backup):</strong> Requiere detener por completo
                             el daemon mysqld. Es la forma más consistente de copiar archivos
                             binarios directos, pero invalida la disponibilidad del servicio.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>En Caliente (Hot Backup):</strong> El servidor se mantiene
                             activo sirviendo peticiones a aplicaciones cliente sin interrupción
                             mientras se realiza el volcado de datos.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Físicas / Binarias:</strong> Copia directa a nivel de bytes
                             de los archivos contenidos en el datadir. Es un proceso extremadamente
                             veloz tanto en el copiado como en la restauración.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Lógicas / Textuales:</strong> Consiste en generar archivos
                             con instrucciones de creación DDL y comandos de inserción DML (INSERT
                             INTO). Son más lentas de procesar, pero altamente portables a otros SGBD
                             o versiones de MySQL distintas.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Completas (Full Backup):</strong> Copia íntegra de toda la
                             estructura y datos del servidor.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Incrementales:</strong> Copia de seguridad que almacena de
                             forma única los cambios realizados en las tablas desde la última copia
                             de seguridad realizada (completa o incremental). En MySQL se implementa
                             copiando los logs binarios.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h2 id="a52-copias-fisicas-o-binarias-innodb-amp-myisam">5.2 Copias Físicas o
@@ -682,28 +620,22 @@ mysqldump -u root -p --databases practica_dml &gt;
             <p><strong>Opciones Críticas de Producción para mysqldump</strong></p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>--single-transaction: Esencial para tablas transaccionales
                             <strong>InnoDB</strong>. Inicia una transacción antes de realizar la
                             copia de seguridad, obteniendo un volcado consistente de los datos sin
                             necesidad de bloquear los accesos de escritura a las aplicaciones
                             cliente.
                         </p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>--flush-logs (-F): Fuerza al servidor a inicializar un log binario
                             nuevo justo al empezar el backup. Indispensable para organizar respaldos
                             incrementales limpios.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>--no-data (-d): Exporta de forma exclusiva la estructura DDL de la
                             base de datos (tablas, restricciones, tipos de datos), omitiendo los
                             registros lógicos.</p>
-                    </blockquote>
                 </li>
                 <li>
                     <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -812,22 +744,16 @@ grep -i -C 5 "delete"</code></pre>
             <p><strong>Realizar Copias de Seguridad con MySQL Workbench</strong></p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p>En la barra lateral de administración, seleccionar <strong>Data
                                 Export</strong>.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Elegir las bases de datos y tablas que deseamos exportar.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Seleccionar entre exportar a un directorio de archivos individuales
                             (para restauraciones selectivas más rápidas) o a un archivo consolidado
                             continuo (Self-Contained File).</p>
-                    </blockquote>
                 </li>
                 <li>
                     <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -839,35 +765,25 @@ negocio de la unidad 11.</code></pre>
 </div>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Pulsar <strong>Start Export</strong>.</p>
-                    </blockquote>
                 </li>
             </ol>
             <p><strong>Restauración mediante phpMyAdmin</strong></p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p>Acceder al menú de navegación superior y pulsar sobre el botón
                             <strong>Importar</strong> (Import).
                         </p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Utilizar el explorador de archivos para seleccionar nuestro respaldo
                             .sql o .sql.gz.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Definir el formato de lectura (estándar SQL).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Pulsar sobre el botón <strong>Continuar</strong> (Go).</p>
-                    </blockquote>
                 </li>
             </ol>
             <p><strong>Migración de Esquemas mediante MySQL Workbench Database
@@ -882,35 +798,27 @@ negocio de la unidad 11.</code></pre>
                 base de datos de manera automatizada en los siguientes pasos:</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p><strong>Establecimiento del Punto de Acceso (Connection
                                 Parameters):</strong> Configura los controladores nativos (generalmente
                             controladores ODBC o JDBC) para comunicarse con el servidor origen.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Mapeo de Tipos de Datos (Reverse Engineering):</strong>
                             Analiza y adapta los tipos de datos incompatibles (por ejemplo, los
                             campos de tipo IMAGE en SQL Server se traducen a campos de tipo LONGBLOB
                             en MySQL, y los tipos de datos DATETIME2 se homologan al formato
                             estándar DATETIME de precisión estándar).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Alineación Física y Creación de Esquemas (Target Schema
                                 Creation):</strong> Genera la base de datos de destino y crea las tablas
                             aplicando las condiciones físicas óptimas.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Carga Eficiente de Datos (Data Copy):</strong> Ejecuta un
                             volcado masivo de datos registro a registro de forma óptima
                             deshabilitando temporalmente el control de claves ajenas
                             (FOREIGN_KEY_CHECKS = 0) para acelerar el procesamiento.</p>
-                    </blockquote>
                 </li>
             </ol>
             <h1 id="a8-documentacion-de-politicas-de-seguridad-y-cumplimiento-normativo-rgpd">8.
@@ -927,26 +835,20 @@ negocio de la unidad 11.</code></pre>
                 detallar explícitamente las siguientes pautas organizativas:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Identificación y Rotulación Estricta de Copias de
                                 Seguridad:</strong> Cada dispositivo físico que almacene respaldos debe
                             estar claramente catalogado con su descripción, fecha de ejecución y
                             clasificación de la información.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Establecimiento de Roles de Acceso (Mínimo
                                 Privilegio):</strong> Despliegue de esquemas de seguridad basados en
                             roles utilizando comandos DCL (GRANT/REVOKE). El personal no cualificado
                             o externo no debe poseer privilegios globales de edición sobre esquemas
                             sensibles.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Gestión del Ciclo de Vida de los Respaldos (Conservación y Dest</p>
-                    </blockquote>
                 </li>
             </ul>
 

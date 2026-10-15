@@ -122,7 +122,6 @@ Tablas (DROP TABLE)</code></pre>
 </div>
             <p><a href="#a52-datos-en-punto-flotante-valores-aproximados-y-precision-computacional"><u>5. TIPOS DE DATOS EN
                         MYSQL</u></a></p>
-            <blockquote>
                 <p><a href="#documentacion-oficial-para-conocer-las-ventajas-y-diferencias-operativas-entre-datetime-y-timestamp-lee-mysql-manual-date-and-time-types"><u>5.1
                             Clasificación y Representación en Memoria de Enteros</u></a></p>
                 <p><a href="#a55-cadenas-de-caracteres"><u>5.1.1 Atributo
@@ -144,7 +143,6 @@ Tablas (DROP TABLE)</code></pre>
                             Tipos No Relacionales: Almacenamiento y Operaciones JSON</u></a></p>
                 <p><a href="#a59-configuracion-y-gestion-de-sqlmode"><u>5.9 Configuración y
                             Gestión de sql_mode</u></a></p>
-            </blockquote>
             <h1 id="a1-introduccion-y-contextualizacion">1. INTRODUCCIÓN Y
                 CONTEXTUALIZACIÓN <a class="headerlink" href="#a1-introduccion-y-contextualizacion"
                     title="Enlace permanente">¶</a></h1>
@@ -198,42 +196,30 @@ Tablas (DROP TABLE)</code></pre>
             <p>Estructura jerárquica de comandos SQL de definición</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>CREATE: Instancia nuevas estructuras (DATABASE, TABLE, INDEX, VIEW,
                             USER)</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>ALTER: Modifica metadatos y estructuras físicas existentes</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>DROP: Elimina permanentemente estructuras físicas y sus
                             contenidos</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>SHOW: Consulta el estado del diccionario de datos y variables de
                             sesión/global</p>
-                    </blockquote>
                 </li>
             </ul>
             <p>Sentencias de utilidad</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>USE &lt;nombre_bd&gt; Selecciona el esquema activo en el hilo de
                             conexión actual.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>DESCRIBE &lt;nombre_tabla&gt;; o DESC &lt;nombre_tabla&gt;;: Recupera
                             los metadatos de las columnas de una tabla para validar el esquema.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h1 id="a3-manipulacion-de-bases-de-datos-en-mysql">3. MANIPULACIÓN DE
@@ -266,25 +252,17 @@ COLLATE utf8mb4_unicode_ci;</code></pre>
                 bloques dinámicos de bytes:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>Caracteres ASCII clásicos: 1 byte.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Bloques alfabéticos adicionales: 2 bytes.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Resto del BMP (Basic Multilingual Plane): 3 bytes.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Caracteres complementarios (Emojis, caracteres ideográficos): 4
                             bytes.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h4 id="a312-gestion-de-utf8-alias-utf8mb3-vs-utf8mb4-en-entornos-de-produccion">3.1.2
@@ -304,34 +282,24 @@ COLLATE utf8mb4_unicode_ci;</code></pre>
                     href="#a313-definicion-de-character-set-y-colaciones-collate" title="Enlace permanente">¶</a></h3>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>CHARACTER SET:</strong> Indica qué codificación binaria se
                             usa para mapear caracteres a bytes en disco.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>COLLATE:</strong> Determina las reglas lógicas para la
                             ordenación física y las comparaciones de igualdad entre strings.</p>
-                    </blockquote>
                     <ul>
                         <li>
-                            <blockquote>
                                 <p>_cs (Case Sensitive): Diferencia entre mayúsculas y minúsculas (Ej: a
                                     distinto de A).</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>_ci (Case Insensitive): No diferencia mayúsculas de minúsculas (Ej: a
                                     igua A).</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>_bin (Binary): Las comparaciones se ejecutan directamente sobre el
                                     valor de la representación numérica binaria en memoria del carácter.</p>
-                            </blockquote>
                         </li>
                     </ul>
                 </li>
@@ -480,33 +448,23 @@ REFERENCES categoria(id)
                     href="#a411-restricciones-de-integridad-y-atributos-de-columna" title="Enlace permanente">¶</a></h3>
             <ul>
                 <li>
-                    <blockquote>
                         <p>NOT NULL / NULL: Indica obligatoriedad de valor.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>DEFAULT &lt;valor&gt;: Asigna un valor por defecto si se omite en la
                             sentencia INSERT.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>AUTO_INCREMENT: Autonumérico incremental de enteros. Requiere que la
                             columna sea clave primaria o índice único.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>UNIQUE: Impide la duplicidad de valores en la columna.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>PRIMARY KEY: Restringe el campo como identificador único de la tupla
                             (implica indexación física por árbol B+ B-tree y restricción NOT
                             NULL).</p>
-                    </blockquote>
                 </li>
             </ul>
             <h3 id="a412-integridad-referencial-opciones-en-claves-ajenas-foreign-key">4.1.2
@@ -517,30 +475,22 @@ REFERENCES categoria(id)
                 sistema ante la manipulación de datos maestros en cascada:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>RESTRICT: Deniega el borrado o actualización en la tabla padre si
                             existen registros huérfanos asociados en la tabla hija. Es la opción por
                             defecto.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>CASCADE: Sincroniza de forma recursiva los cambios. Si se borra la
                             categoría con id = 1, se eliminarán de forma automatizada todas las
                             piezas pertenecientes a dicha categoría.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>SET NULL: Si se modifica o elimina el registro padre, actualiza las
                             claves foráneas de la tabla hija a valor NULL (requiere que la columna
                             no tenga restricción NOT NULL).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>NO ACTION: Equivale semánticamente a RESTRICT en motores MySQL.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h6 id="documentacion-oficial-para-comprender-a-fondo-el-funcionamiento-restricciones-e-impacto-de-rendimiento-de-las-restricciones-de-clave-ajena-visita-mysql-manual-foreign-key-constraints">
@@ -575,16 +525,12 @@ ON UPDATE CASCADE
                 almacenamiento:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>ENGINE=InnoDB: Motor transaccional ACID nativo de MySQL con bloqueo a
                             nivel de fila e integridad referencial real.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>AUTO_INCREMENT = &lt;valor_inicial&gt;: Configura el puntero de
                             inserción autonumérico.</p>
-                    </blockquote>
                 </li>
             </ul>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -762,21 +708,15 @@ INSERT INTO demo_zerofill VALUES (5);
                     title="Enlace permanente">¶</a></h3>
             <ul>
                 <li>
-                    <blockquote>
                         <p>BIT(M): Almacena valores a nivel de bits, donde 1 a 2⁶ (64).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>BOOL / BOOLEAN: Alias del motor para TINYINT(1). El valor 0 equivale
                             a FALSE y cualquier entero se asume como TRUE.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>SERIAL: Alias que equivale de forma explícita a: BIGINT UNSIGNED NOT
                             NULL AUTO_INCREMENT UNIQUE.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h2 id="a52-datos-en-punto-flotante-valores-aproximados-y-precision-computacional">5.2
@@ -791,16 +731,12 @@ INSERT INTO demo_zerofill VALUES (5);
                 internas de la CPU.</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>FLOAT(M, D): Simple precisión (4 bytes), con precisión de rango de
                             aprox. ±1.1x10³⁸ a aprox. ±3.7540x10³⁸.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>DOUBLE(M, D): Doble precisión (8 Bytes), con rango de aprox.
                             ±2,23x10<sup>-</sup>³⁰⁸ a aprox. ±1.79x10³⁰⁸.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h2 id="a53-datos-en-punto-fijo-valores-exactos-para-datos-financieros">5.3
@@ -813,11 +749,9 @@ INSERT INTO demo_zerofill VALUES (5);
                 operaciones.</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>DECIMAL(M, D): M representa la precisión total de dígitos de la que
                             se compone el número entero (rango de 1 a 65), D representa el número de
                             cifras decimales (rango de 0 a 30).</p>
-                    </blockquote>
                 </li>
             </ul>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -896,42 +830,30 @@ decimales
                     title="Enlace permanente">¶</a></h2>
             <ul>
                 <li>
-                    <blockquote>
                         <p>CHAR(M): Cadena de longitud fija, donde 0 a 255. Si el string
                             introducido es de longitud inferior a M, el motor rellena físicamente el
                             espacio sobrante con espacios en disco. Es ideal para hashes (MD5,
                             SHA-256) o identificadores uniformes.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>VARCHAR(M): Cadena de longitud variable, donde 0 a 65535. Utiliza 1 o
                             2 Bytes adicionales como prefijo para almacenar la longitud lógica en
                             bytes de la cadena ingresada. Ideal para nombres, correos y
                             descripciones.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>TEXT: Para almacenamiento de texto plano a gran escala. No almacena
                             los datos directamente en la página del índice clustered si exceden
                             ciertos límites, sino en páginas externas de desbordamiento.</p>
-                    </blockquote>
                     <ul>
                         <li>
-                            <blockquote>
                                 <p>TEXT (Soporta hasta 2¹⁶Bytes = 64 KB.</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>MEDIUMTEXT (Soporta hasta 2²⁴ Bytes = 16 MB.</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>LONGTEXT (Soporta hasta 2³²Bytes = 4 GB</p>
-                            </blockquote>
                         </li>
                     </ul>
                 </li>
@@ -951,19 +873,15 @@ decimales
                     title="Enlace permanente">¶</a></h2>
             <ul>
                 <li>
-                    <blockquote>
                         <p>ENUM('val1', 'val2', ...): Permite almacenar únicamente un único
                             valor de una lista restringida predefinida de strings (almacenado de
                             forma interna de forma eficiente como un entero). Máximo de 65535
                             valores posibles.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>SET('val1', 'val2', ...): Permite almacenar de cero a múltiples
                             valores simultáneos de la lista de strings permitidos. Máximo de 64
                             valores permitidos en la lista.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h2 id="a58-tipos-no-relacionales-almacenamiento-y-operaciones-json">5.8

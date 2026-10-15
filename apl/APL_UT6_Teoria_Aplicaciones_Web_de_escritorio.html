@@ -63,32 +63,26 @@
                         CONTEXTUALIZACIÓN</u></a></p>
             <p><a href="#a31-rol-del-webmail-en-la-infraestructura-corporativa"><u>2. LAS APLICACIONES
                         WEB DE ESCRITORIO</u></a></p>
-            <blockquote>
                 <p><a href="#a32-mecanismos-de-intermediacion-protocolos-imap-y-smtp"><u>2.1.
                             Definición y Evolución del Entorno de Trabajo</u></a></p>
                 <p><a href="#a33-autenticacion-y-gestion-de-cuentas-delegada"><u>2.2.
                             Arquitectura Cliente-Servidor en Aplicaciones de Escritorio
                             Web</u></a></p>
-            </blockquote>
             <p><a href="#a4-protocolos-y-aplicaciones-de-calendario-y-productividad-web"><u>3. SISTEMAS DE CORREO
                         WEB (WEBMAIL)</u></a></p>
-            <blockquote>
                 <p><a href="#a41-introduccion-a-los-estandares-abiertos-caldav-y-carddav"><u>3.1.
                             Rol del Webmail en la Infraestructura Corporativa</u></a></p>
                 <p><a href="#a42-estructura-de-datos-de-productividad-citas-eventos-y-tareas"><u>3.2.
                             Mecanismos de Intermediación: Protocolos IMAP y SMTP</u></a></p>
                 <p><a href="#a5-seguridad-aislamiento-y-politicas-de-acceso-en-clientes-web-de-infraestructura"><u>3.3.
                             Autenticación y Gestión de Cuentas Delegada</u></a></p>
-            </blockquote>
             <p><a href="#a4-protocolos-y-aplicaciones-de-calendario-y-productividad-web"><u>4.
                         PROTOCOLOS Y APLICACIONES DE CALENDARIO Y PRODUCTIVIDAD WEB</u></a></p>
-            <blockquote>
                 <p><a href="#a41-introduccion-a-los-estandares-abiertos-caldav-y-carddav"><u>4.1.
                             Introducción a los Estándares Abiertos: CalDAV y CardDAV</u></a></p>
                 <p><a href="#a42-estructura-de-datos-de-productividad-citas-eventos-y-tareas"><u>4.2.
                             Estructura de Datos de Productividad: Citas, Eventos y
                             Tareas</u></a></p>
-            </blockquote>
             <p><a href="#a5-seguridad-aislamiento-y-politicas-de-acceso-en-clientes-web-de-infraestructura"><u>5.
                         SEGURIDAD, AISLAMIENTO Y POLÍTICAS DE ACCESO EN CLIENTES WEB DE
                         INFRAESTRUCTURA</u></a></p>
@@ -144,29 +138,23 @@
                 de tres capas bien definidas:</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p><strong>Capa de Presentación (Cliente Web):</strong> El navegador web
                             del usuario procesa el código de marcado e interfaces de usuario,
                             manejando la lógica visual y capturando las interacciones del operador
                             de manera local.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Capa de Aplicación (Servidor Web e Intérprete):</strong> Un
                             motor web (como Apache o Nginx) junto a un intérprete de scripts de
                             servidor procesa las peticiones lógicas recibidas, valida las reglas de
                             negocio y genera las respuestas pertinentes.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Capa de Datos (Motor de Base de Datos y Servicios de
                                 Infraestructura):</strong> Almacena las preferencias del usuario,
                             configuraciones globales del portal de escritorio, índices de búsqueda y
                             metadatos operativos en motores relacionales o relacionales
                             estructurados.</p>
-                    </blockquote>
                 </li>
             </ol>
             <h1 id="a3-sistemas-de-correo-web-webmail">3. SISTEMAS DE CORREO WEB
@@ -192,7 +180,6 @@
                 red:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Intermediación IMAP (Internet Message Access
                                 Protocol):</strong> Cuando el usuario accede a su interfaz webmail, la
                             aplicación se conecta al puerto del servidor de almacenamiento de correo
@@ -202,17 +189,14 @@
                             de forma centralizada en el servidor de correo, descargándose en el
                             navegador del cliente solo los elementos requeridos para la
                             visualización en tiempo real.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Intermediación SMTP (Simple Mail Transfer Protocol):</strong>
                             Cuando el usuario redacta un mensaje y presiona el comando de envío, la
                             aplicación webmail recopila el texto y los archivos adjuntos, los
                             empaqueta y se conecta al servidor de salida de correo (puerto estándar
                             25 o seguro de sumisión 587) utilizando el protocolo SMTP para enrutar
                             el mensaje hacia su destino final.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h2 id="a33-autenticacion-y-gestion-de-cuentas-delegada">3.3. Autenticación
@@ -225,25 +209,19 @@
             <p>El proceso sigue un flujo estrictamente lineal:</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p>El usuario introduce su dirección y contraseña en el portal web de
                             escritorio.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>El Webmail intercepta estas credenciales y realiza un intento de
                             inicio de sesión (<em>bind</em>) en tiempo real contra el servidor IMAP
                             o el directorio activo de la empresa.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Si el servidor de infraestructura valida la contraseña, el Webmail
                             autoriza la sesión, crea un perfil temporal en su base de datos para
                             almacenar las preferencias de aspecto del usuario y renderiza el buzón
                             de correo correspondientemente.</p>
-                    </blockquote>
                 </li>
             </ol>
             <h1 id="a4-protocolos-y-aplicaciones-de-calendario-y-productividad-web">4.
@@ -261,7 +239,6 @@
                 (<em>WebDAV</em>):</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>CalDAV (Calendaring Extensions to WebDAV):</strong> Protocolo
                             estándar abierto que permite a las aplicaciones web de escritorio
                             almacenar, gestionar y compartir datos de calendarios en un servidor
@@ -269,16 +246,13 @@
                             <strong>iCalendar</strong> (.ics) para definir los componentes de la
                             agenda.
                         </p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>CardDAV (vCard Extensions to WebDAV):</strong> Protocolo
                             estándar para la gestión de libretas de direcciones y contactos en un
                             entorno de red. Permite el acceso centralizado a directorios telefónicos
                             y correos electrónicos corporativos organizados bajo la estructura
                             estandarizada de archivos <strong>vCard</strong> (.vcf).</p>
-                    </blockquote>
                 </li>
             </ul>
             <h2 id="a42-estructura-de-datos-de-productividad-citas-eventos-y-tareas">4.2.
@@ -290,23 +264,19 @@
                 tiempo:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Citas y Eventos:</strong> Registros definidos por una marca
                             de tiempo de inicio, una marca de tiempo de finalización, zona horaria,
                             descripción del evento y estado de ocupación. Adicionalmente, incorporan
                             propiedades lógicas para la gestión de alarmas (recordatorios temporales
                             automatizados) y reglas de recurrencia (eventos repetitivos).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Tareas (<em>Todos</em>):</strong> Objetos de datos diseñados
                             para el seguimiento de actividades de proyectos. A diferencia de las
                             citas, no requieren obligatoriamente un bloque de tiempo reservado en la
                             agenda, sino que están determinados por una fecha límite de entrega, un
                             índice de prioridad (Alta, Media, Baja) y un porcentaje de progreso o
                             estado de finalización binario.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h1 id="a5-seguridad-aislamiento-y-politicas-de-acceso-en-clientes-web-de-infraestructura">5.
@@ -320,7 +290,6 @@
                 vectores de ataque y mecanismos de mitigación específicos:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Cifrado del Canal de Comunicación (HTTPS):</strong> La
                             transmisión de credenciales de acceso e información de correos a través
                             de conexiones HTTP en texto plano permite la interceptación de datos
@@ -328,27 +297,22 @@
                             mandatorio el uso de protocolos de capa de transporte seguros (TLS/SSL)
                             para cifrar de extremo a extremo todo el tráfico entre el navegador y la
                             aplicación.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Aislamiento y Hardening del Sistema:</strong> Las
                             aplicaciones de escritorio web almacenan las credenciales de conexión a
                             sus propias bases de datos locales en archivos de configuración de texto
                             estructurado dentro del servidor. Estos ficheros deben estar aislados
                             mediante sistemas de permisos del sistema operativo para que solo el
                             proceso del servidor web pueda leerlos.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Eliminación de Interfaces de Instalación:</strong> Los
                             asistentes de instalación basados en entornos web son útiles durante el
                             despliegue inicial, pero representan una vulnerabilidad crítica si se
                             dejan activos en producción, ya que podrían permitir a un atacante
                             reinicializar las variables del entorno informático o reconfigurar las
                             bases de datos de la organización.</p>
-                    </blockquote>
                 </li>
             </ul>
 

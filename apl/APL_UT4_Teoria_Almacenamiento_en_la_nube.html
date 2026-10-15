@@ -63,17 +63,14 @@
                         CONTEXTUALIZACIÓN</u></a></p>
             <p><a href="#a3-sistemas-de-almacenamiento-web-y-gestores-de-archivos"><u>2.
                         EL PARADIGMA CLOUD COMPUTING Y MODELOS DE SERVICIO</u></a></p>
-            <blockquote>
                 <p><a href="#a31-tipos-de-almacenamiento-en-la-nube-bloques-archivos-y-objetos"><u>2.1 Definición y
                             evolución tecnológica</u></a></p>
                 <p><a href="#a32-protocolos-y-apis-de-acceso-restful-webdav"><u>2.2 Modelos de
                             Servicio: IaaS, PaaS, SaaS</u></a></p>
                 <p><a href="#a33-seguridad-perimetral-control-de-accesos-basado-en-roles-rbac-y-acls"><u>2.3
                             Arquitecturas Multitenancy frente a Single-Tenant</u></a></p>
-            </blockquote>
             <p><a href="#ejemplo-practico-automatizacion-de-copias-de-seguridad-con-scripting"><u>3.
                         SISTEMAS DE ALMACENAMIENTO WEB Y GESTORES DE ARCHIVOS</u></a></p>
-            <blockquote>
                 <p><a href="#a41-analisis-comparativo-de-infraestructura-google-workspace-vs-microsoft-365"><u>3.1
                             Tipos de almacenamiento en la nube: Bloques, Archivos y
                             Objetos</u></a></p>
@@ -84,10 +81,8 @@
                             ACLs</u></a></p>
                 <p><a href="#"><u>Ejemplo Práctico: Automatización de Copias de
                             Seguridad con Scripting</u></a></p>
-            </blockquote>
             <p><a href="#a8"><u>4.
                         SUITES DE OFIMÁTICA WEB Y TRABAJO COLABORATIVO</u></a></p>
-            <blockquote>
                 <p><a href="#a52-infraestructuras-de-entrega-de-contenidos-cdn"><u>4.1
                             Análisis comparativo de infraestructura (Google Workspace vs. Microsoft
                             365)</u></a></p>
@@ -96,15 +91,12 @@
                             concurrencia</u></a></p>
                 <p><a href="#a43-auditoria-de-accesos-y-parsing-de-logs-de-operaciones"><u>4.3
                             Auditoría de accesos y parsing de logs de operaciones</u></a></p>
-            </blockquote>
             <p><a href="#a9"><u>5.
                         SERVICIOS WEB MULTIMEDIA Y STREAMING DE DATOS</u></a></p>
-            <blockquote>
                 <p><a href="#a51-protocolos-de-streaming-hls-dash-y-codecs"><u>5.1
                             Protocolos de streaming (HLS, DASH) y Codecs</u></a></p>
                 <p><a href="#a52-infraestructuras-de-entrega-de-contenidos-cdn"><u>5.2
                             Infraestructuras de Entrega de Contenidos (CDN)</u></a></p>
-            </blockquote>
             <h1 id="a1-introduccion-y-contextualizacion">1. INTRODUCCIÓN Y
                 CONTEXTUALIZACIÓN <a class="headerlink" href="#a1-introduccion-y-contextualizacion"
                     title="Enlace permanente">¶</a></h1>
@@ -145,33 +137,27 @@
                 y responsabilidad técnica que asume el administrador del sistema:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>IaaS (Infrastructure as a Service):</strong> El proveedor
                             ofrece abstracciones de hardware (máquinas virtuales, almacenamiento en
                             bloque, direccionamiento de red virtualizado). El técnico instala,
                             configura y mantiene el sistema operativo, los servicios middleware y
                             las aplicaciones finales. <em>Ejemplos industriales: AWS EC2, Google
                                 Cloud Compute Engine.</em></p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>PaaS (Platform as a Service):</strong> Se abstrae el sistema
                             operativo y la pila de ejecución informática. El desarrollador o técnico
                             interactúa únicamente con entornos de ejecución o contenedores de bases
                             de datos. El proveedor gestiona el parcheado del núcleo de red y el
                             escalado de hardware. <em>Ejemplos industriales: Heroku, AWS Elastic
                                 Beanstalk.</em></p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>SaaS (Software as a Service):</strong> Abstracción completa
                             de la infraestructura. El usuario o técnico interactúa con una
                             aplicación web funcional consumible directamente desde el navegador web
                             mediante protocolos HTTP/HTTPS. <em>Ejemplos industriales: Google Docs,
                                 Microsoft 365, Nextcloud en modo gestionado.</em></p>
-                    </blockquote>
                 </li>
             </ul>
             <h2 id="a23-arquitecturas-multitenancy-frente-a-single-tenant">2.3
@@ -182,15 +168,12 @@
                 rendimiento:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Single-Tenant (Inquilino Único):</strong> Cada cliente cuenta
                             con una instancia de software dedicada independiente, un servidor web
                             aislado y una base de datos propia. Ofrece máximo aislamiento de
                             seguridad pero incrementa el coste operativo de mantenimiento.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Multitenant (Multi-inquilino):</strong> Una única instancia
                             lógica de la aplicación y un único motor de base de datos da servicio a
                             múltiples clientes (inquilinos). Los datos de cada cliente se aíslan
@@ -198,7 +181,6 @@
                             tablas relacionales o esquemas lógicos segregados de la base de datos.
                             Reduce los costes de infraestructura drásticamente y centraliza los
                             backups globales.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h1 id="a3-sistemas-de-almacenamiento-web-y-gestores-de-archivos">3.
@@ -212,24 +194,19 @@
                 según su acceso y optimización:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Almacenamiento en Bloque:</strong> Los datos se dividen en
                             bloques del mismo tamaño sin metadatos adjuntos y se gestionan como si
                             fuesen discos físicos locales independientes expuestos a través de redes
                             de área de almacenamiento (SAN). Ideal para sistemas operativos y
                             motores de bases de datos de alto rendimiento.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Almacenamiento de Archivos (File Storage):</strong>
                             Organizado bajo una estructura jerárquica de directorios y
                             subdirectorios tradicional utilizando protocolos de red locales
                             compartidos como NFS (Network File System) o SMB/CIFS.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Almacenamiento de Objetos (Object Storage):</strong>
                             Estructura plana donde cada archivo se convierte en un objeto que
                             contiene el flujo binario del archivo, un identificador único global
@@ -237,7 +214,6 @@
                             directorios tradicionales; el acceso se realiza mediante llamadas
                             directas HTTP y APIs RESTful (verbos GET, POST, PUT, DELETE). Es la base
                             operativa de los buckets modernos.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h2 id="a32-protocolos-y-apis-de-acceso-restful-webdav">3.2 Protocolos y
@@ -248,13 +224,11 @@
                 mapeen las carpetas remotas:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>WebDAV (Web-based Distributed Authoring and
                                 Versioning):</strong> Extensión del protocolo HTTP que permite a los
                             clientes realizar operaciones de edición, movimiento, creación y bloqueo
                             de archivos en un servidor web remoto, actuando como un sistema de
                             archivos compartido tradicional sobre el puerto estándar 80/443.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h2 id="a33-seguridad-perimetral-control-de-accesos-basado-en-roles-rbac-y-acls">3.3
@@ -265,22 +239,18 @@
                 implementación rigurosa de:</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p><strong>RBAC (Role-Based Access Control):</strong> Asignación de
                             permisos (Lectura, Escritura, Eliminación) basados explícitamente en el
                             perfil laboral del usuario (Administrador, Editor, Invitado) y no de
                             forma individualizada.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Cifrado de datos:</strong> Implementación obligatoria de
                             algoritmos simétricos TLS 1.3 para mitigar ataques
                             <em>Man-in-the-Middle</em> en el tránsito de los ficheros de datos, y
                             cifrado AES-256 en reposo sobre los discos duros de almacenamiento
                             físicos.
                         </p>
-                    </blockquote>
                 </li>
             </ol>
             <h5 id="ejemplo-practico-automatizacion-de-copias-de-seguridad-con-scripting">Ejemplo
@@ -478,7 +448,6 @@ print("-" * 70)</code></pre>
                 se utilizan arquitecturas de streaming basado en HTTP:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>HLS (HTTP Live Streaming) &amp; MPEG-DASH:</strong>
                             Tecnologías que funcionan fragmentando el archivo de vídeo original en
                             pequeños bloques segmentados (típicamente archivos de 2 a 10 segundos de
@@ -487,7 +456,6 @@ print("-" * 70)</code></pre>
                             del navegador descarga secuencialmente los fragmentos indexados de
                             manera dinámica basándose en el ancho de banda disponible en tiempo real
                             en la red del cliente (Streaming de Tasa de Bits Adaptativa).</p>
-                    </blockquote>
                 </li>
             </ul>
             <h2 id="a52-infraestructuras-de-entrega-de-contenidos-cdn">5.2

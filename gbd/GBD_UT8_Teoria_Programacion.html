@@ -82,41 +82,29 @@
             <p><strong>ÍNDICE DE CONTENIDOS</strong></p>
             <p><a href="#"><u>1. INTRODUCCIÓN Y CONTEXTUALIZACIÓN</u></a></p>
             <p><a href="#"><u>2. PROCEDIMIENTOS ALMACENADOS</u></a></p>
-            <blockquote>
                 <p><a href="#"><u>2.1 Sintaxis general y uso de DELIMITER</u></a></p>
                 <p><a href="#"><u>2.2 Gestión de Parámetros: IN, OUT y INOUT</u></a></p>
                 <p><a href="#"><u>2.3 Ámbito de Variables Locales y Asignaciones
                             (DECLARE, SET)</u></a></p>
-            </blockquote>
             <p><a href="#"><u>3. FUNCIONES ALMACENADAS</u></a></p>
-            <blockquote>
                 <p><a href="#"><u>3.1 Diferencias con procedimientos y restricciones de
                             retorno</u></a></p>
                 <p><a href="#"><u>3.2 Modificadores de comportamiento de funciones en
                             MySQL</u></a></p>
-            </blockquote>
             <p><a href="#"><u>4. ESTRUCTURAS DE CONTROL DE FLUJO</u></a></p>
-            <blockquote>
                 <p><a href="#"><u>4.1 Condicionales (IF-THEN-ELSE y CASE)</u></a></p>
                 <p><a href="#"><u>4.2 Estructuras Iterativas (LOOP, REPEAT y
                             WHILE)</u></a></p>
-            </blockquote>
             <p><a href="#"><u>5. MANEJO DE EXCEPCIONES Y ERRORES EN
                         MYSQL</u></a></p>
-            <blockquote>
                 <p><a href="#"><u>5.1 El uso de DECLARE... HANDLER</u></a></p>
-            </blockquote>
             <p><a href="#"><u>6. CURSORES</u></a></p>
-            <blockquote>
                 <p><a href="#"><u>6.1 Ciclo de vida de un cursor</u></a></p>
-            </blockquote>
             <p><a href="#"><u>7. DISPARADORES (TRIGGERS)</u></a></p>
-            <blockquote>
                 <p><a href="#"><u>7.1 Lógica de ejecución: BEFORE/AFTER e
                             INSERT/UPDATE/DELETE</u></a></p>
                 <p><a href="#"><u>7.2 Pseudotablas OLD y NEW y su aplicación en la
                             integridad de datos</u></a></p>
-            </blockquote>
             <p><a href="#"><u>8. ENLACES DE REFERENCIA Y DOCUMENTACIÓN
                         OFICIAL</u></a></p>
             <h1 id="a1-introduccion-y-contextualizacion">1. INTRODUCCIÓN Y
@@ -131,24 +119,19 @@
             <p>Esta unidad se conecta directamente con:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>GBD (Unidad 5 y 6):</strong> Emplea de manera avanzada
                             comandos DML de consultas simples, agrupaciones y composiciones de
                             tablas (JOIN) dentro de la lógica del servidor.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>ISO (Implantación de Sistemas Operativos):</strong> Se
                             relaciona con la automatización mediante scripting. Un <em>SysAdmin</em>
                             puede encapsular flujos complejos dentro de procedimientos en el
                             servidor de base de datos y activarlos desde tareas programadas del
                             sistema operativo (<em>cron jobs</em> o <em>Windows Task
                                 Scheduler</em>).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>SAD (Seguridad y Alta Disponibilidad) / GBD
                                 (Seguridad):</strong> El uso de rutinas almacenadas permite retirar
                             permisos directos de lectura/escritura (SELECT, INSERT, UPDATE) sobre
@@ -158,7 +141,6 @@
                             absoluta los ataques de <strong>inyección SQL</strong> (<em>SQL
                                 Injection</em>).
                         </p>
-                    </blockquote>
                 </li>
             </ul>
             <h1 id="a2-procedimientos-almacenados">2. PROCEDIMIENTOS ALMACENADOS <a class="headerlink"
@@ -197,26 +179,20 @@ CALL ejemplo_basico();</code></pre>
                 de entrada y salida de un procedimiento almacenado [7, 11.2]:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>IN (Entrada):</strong> Es el valor que se pasa al
                             procedimiento al llamarlo. Se trata de un parámetro de solo lectura
                             dentro de la rutina (es el comportamiento por defecto si se omite la
                             palabra clave) [7].</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>OUT (Salida):</strong> Almacena el valor calculado por el
                             procedimiento y lo devuelve al entorno de llamada, generalmente
                             asignándole a una variable de usuario (con prefijo @) [7, 11.2].</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>INOUT (Entrada/Salida):</strong> Se inicia al llamar al
                             procedimiento, puede ser modificado por la rutina y devuelve el nuevo
                             valor de vuelta al llamante [11.2].</p>
-                    </blockquote>
                 </li>
             </ul>
             <p>A continuación se muestra la implementación de un procedimiento para
@@ -318,10 +294,8 @@ CALL sp_demo_variables_jardineria('BCN-ES');</code></pre>
             <p>A diferencia de los procedimientos almacenados, las funciones:</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p>Deben especificar la cláusula RETURNS en su cabecera para definir el
                             tipo de datos del resultado.</p>
-                    </blockquote>
                 </li>
                 <li>
                     <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -348,29 +322,21 @@ ORDER BY), optimizando la legibilidad de las consultas complejas.</code></pre>
                 [1.9.3]:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>DETERMINISTIC: El resultado devuelto será idéntico siempre que se
                             proporcionen los mismos parámetros de entrada.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>NOT DETERMINISTIC: El resultado puede cambiar aun pasando los mismos
                             parámetros (por ejemplo, funciones que consulten la fecha actual o
                             generen números aleatorios).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>READS SQL DATA: Indica que la rutina realizará consultas de lectura
                             (SELECT) sobre tablas de la base de datos [1.9.3].</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>MODIFIES SQL DATA: Indica que la rutina ejecutará modificaciones
                             (INSERT, UPDATE, DELETE).</p>
-                    </blockquote>
                 </li>
             </ul>
             <p>Ejemplo (Calcular deuda de un cliente de Jardinería):</p>
@@ -546,26 +512,20 @@ SELECT * FROM auxiliar_rangos;</code></pre>
 </div>Donde:
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>CONTINUE:</strong> Ejecuta la sentencia correctora asociada y
                             continúa con el flujo lógico del bloque procedimental tras la
                             instrucción que generó la alerta [1.9].</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>EXIT:</strong> Detiene la ejecución del bloque actual (BEGIN
                             ... END) de manera inmediata tras realizar las acciones de resolución de
                             errores establecidas [1.9].</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>condicion_error:</strong> Puede ser un código de error
                             numérico interno del SGBD, un estándar SQLSTATE de la industria o
                             palabras clave genéricas como SQLEXCEPTION, SQLWARNING o NOT FOUND
                             [1.9].</p>
-                    </blockquote>
                 </li>
             </ul>
             <p>Ejemplo de registro de pago de cliente seguro ante claves
@@ -624,32 +584,24 @@ SELECT @estado;</code></pre>
                 pasos [1.8.7]:</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p><strong>DECLARE:</strong> Define el cursor vinculándolo a una
                             consulta SQL selectiva. Esta instrucción debe colocarse después de
                             declarar todas las variables locales pero antes de los manejadores de
                             excepciones.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>OPEN:</strong> Ejecuta la consulta SQL e inicializa el
                             puntero en memoria, dejándolo preparado para la extracción.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>FETCH:</strong> Extrae secuencialmente los valores de la fila
                             actual donde apunta el puntero, asignando dichos valores a variables
                             locales locales previamente declaradas.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>CLOSE:</strong> Libera la memoria consumida por el cursor. Si
                             se omite, MySQL cerrará el cursor automáticamente al finalizar la
                             rutina.</p>
-                    </blockquote>
                 </li>
             </ol>
             <p>Ejemplo (Actualización masiva de Límite de Crédito basado en la
@@ -720,19 +672,15 @@ CALL sp_optimizar_credito_clientes_activos();</code></pre>
                 temporales distintos:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>BEFORE:</strong> Se ejecuta antes de que los cambios se
                             validen e intenten almacenar en el disco del servidor. Es la opción
                             idónea para realizar operaciones de validación, saneamiento de datos de
                             entrada o cálculo de campos calculados [1.8.8].</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>AFTER:</strong> Se ejecuta una vez que los cambios han sido
                             aplicados con éxito en la tabla de datos. Es ideal para mantener
                             registros de auditoría o históricos en tablas paralelas [1.8.8].</p>
-                    </blockquote>
                 </li>
             </ul>
             <h2 id="a72-pseudotablas-old-y-new-y-su-aplicacion-en-la-integridad-de-datos">7.2
@@ -752,11 +700,9 @@ UPDATE) [1.8.8].</code></pre>
 </div>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>OLD:</strong> Objeto temporal que contiene los valores de las
                             columnas previos a la actualización o eliminación. (Disponible en UPDATE
                             y DELETE) [1.8.8].</p>
-                    </blockquote>
                 </li>
             </ul>
             <div class="table-wrapper">
@@ -851,35 +797,25 @@ DELIMITER ;</code></pre>
                 técnico oficial:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><a href="https://dev.mysql.com/doc/refman/8.0/en/stored-objects.html"><u>MySQL
                                     8.0 Reference Manual: Stored Objects (Procedures &amp;
                                     Functions)</u></a></p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><a href="https://dev.mysql.com/doc/refman/8.0/en/triggers.html"><u>MySQL
                                     8.0 Reference Manual: Trigger Syntax and Examples</u></a></p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><a href="https://dev.mysql.com/doc/refman/8.0/en/flow-control-statements.html"><u>MySQL
                                     8.0 Reference Manual: Flow Control Statements</u></a></p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><a href="https://dev.mysql.com/doc/refman/8.0/en/cursors.html"><u>MySQL 8.0
                                     Reference Manual: Cursors implementation</u></a></p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><a href="https://dev.mysql.com/doc/refman/8.0/en/declare-handler.html"><u>MySQL
                                     8.0 Reference Manual: Condition Handling and SIGNAL SQLSTATE</u></a></p>
-                    </blockquote>
                 </li>
             </ul>
 

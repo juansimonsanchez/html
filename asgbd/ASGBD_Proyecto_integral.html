@@ -121,52 +121,40 @@
                     title="Enlace permanente">¶</a></h3>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p><strong>Despliegue de Contenedores:</strong> Diseña un archivo
                             docker-compose.yml que levante un servicio MySQL 8.x mapeando el puerto
                             <img src="media_ASGBD_Proyecto_integral/media/image1.png" alt="imagen" class="u-45f466a827"> del host, configurando
                             almacenamiento persistente para /var/lib/mysql y un montaje de tipo bind
                             para un archivo custom.cnf.
                         </p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Hardening de Configuración (custom.cnf):</strong> Configura
                             los parámetros bajo el bloque [mysqld] para asegurar el comportamiento
                             del servidor:</p>
-                    </blockquote>
                     <ul>
                         <li>
-                            <blockquote>
                                 <p>Limita las conexiones simultáneas fijando un umbral razonable
                                     (max_connections).</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>Deshabilita la importación de archivos locales arbitrarios mediante
                                     la directiva local_infile = OFF.</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>Habilita el Log General de Consultas y el Log de Consultas Lentas
                                     (slow_query_log), estableciendo un umbral de detección de consultas
                                     lentas de <img src="media_ASGBD_Proyecto_integral/media/image8.png" alt="imagen" class="u-ee767ac841"> segundos (long_query_time =
                                     2.0).</p>
-                            </blockquote>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Persistencia Dinámica:</strong> Entra al terminal de la base
                             de datos y demuestra cómo leer y modificar una variable global (ej:
                             autocommit) en caliente usando persistencia de configuración del motor
                             (SET PERSIST), documentando el impacto en el archivo de
                             autoconfiguración persistente de MySQL (mysqld-auto.cnf).</p>
-                    </blockquote>
                 </li>
             </ol>
             <h3 id="a4-preguntas-teoricas-y-de-investigacion"><strong>4. PREGUNTAS
@@ -174,17 +162,13 @@
                     href="#a4-preguntas-teoricas-y-de-investigacion" title="Enlace permanente">¶</a></h3>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p>¿Cuál es el impacto en términos de rendimiento de E/S y
                             almacenamiento físico si decidimos mantener activo el general_log = ON
                             permanentemente en un entorno de Big Data en producción?</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Explica brevemente la diferencia práctica entre una variable con
                             alcance GLOBAL, SESSION y PERSIST dentro del ciclo de vida del SGBD.</p>
-                    </blockquote>
                 </li>
             </ol>
             <h3 id="a5-rubrica-de-evaluacion-de-la-fase-1"><strong>5. RÚBRICA DE
@@ -286,25 +270,19 @@
                     title="Enlace permanente">¶</a></h3>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p><strong>Configuración de Políticas de Hardening de Claves:</strong>
                             Modifica tu archivo custom.cnf para exigir que las contraseñas globales
                             tengan un tiempo de caducidad máximo de 90 días, requieran un histórico
                             que impida reutilizar las últimas 3 contraseñas y bloquee cuentas
                             automáticamente tras 3 intentos fallidos de autenticación.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Creación de Roles Corporativos:</strong> Implementa en código
                             SQL puro los siguientes perfiles de acceso:</p>
-                    </blockquote>
                     <ul>
                         <li>
-                            <blockquote>
                                 <p><strong>Rol aerodata_analyst:</strong> Acceso exclusivo de lectura
                                     (SELECT) sobre el esquema analítico global.</p>
-                            </blockquote>
                         </li>
                         <li>
 
@@ -317,22 +295,18 @@ borrado (DELETE denegado).</code></pre>
 </div>
                         </li>
                         <li>
-                            <blockquote>
                                 <p><strong>Rol aerodata_admin:</strong> Administrador secundario del
                                     esquema de vuelos, con capacidad para gestionar usuarios y roles
                                     locales, pero restringido para alterar datos internos del motor.</p>
-                            </blockquote>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Mapeo de Usuarios:</strong> Crea un usuario para cada
                             departamento asignado, configúrale sus credenciales, asígnale el rol
                             correspondiente y activa la funcionalidad SET DEFAULT ROLE para que las
                             credenciales hereden el alcance de permisos inmediatamente al iniciar
                             sesión.</p>
-                    </blockquote>
                 </li>
             </ol>
             <h3 id="a4-preguntas-teoricas-y-de-investigacion-2"><strong>4. PREGUNTAS
@@ -340,19 +314,15 @@ borrado (DELETE denegado).</code></pre>
                     href="#a4-preguntas-teoricas-y-de-investigacion-2" title="Enlace permanente">¶</a></h3>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p>Investiga el principio de seguridad informática del "Menor
                             Privilegio" (<em>Least Privilege</em>). ¿Cómo contribuye el uso de roles
                             (RBAC) a la mitigación de ataques de inyección SQL o robo de
                             credenciales en comparación con otorgar accesos individuales?</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Explica cómo maneja MySQL la herencia de permisos y de qué manera la
                             vista mysql.role_edges documenta las dependencias del diccionario de
                             datos.</p>
-                    </blockquote>
                 </li>
             </ol>
             <h3 id="a5-rubrica-de-evaluacion-de-la-fase-2"><strong>5. RÚBRICA DE
@@ -460,34 +430,25 @@ borrado (DELETE denegado).</code></pre>
                     title="Enlace permanente">¶</a></h3>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p><strong>Trigger de Integridad Espacial
                                 (tr_validar_ruta_vuelo):</strong> Desarrolla un disparador BEFORE INSERT
                             en la tabla de vuelos (flight) que verifique dos condiciones:</p>
-                    </blockquote>
                     <ul>
                         <li>
-                            <blockquote>
                                 <p>El aeropuerto de salida (from_airport) y el de llegada (to_airport)
                                     no pueden coincidir.</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>La fecha programada de salida (scheduled_departure) debe ser
                                     estrictamente posterior al instante actual (NOW()).</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>Si alguna condición falla, detén la operación mediante el lanzamiento
                                     de un error estructurado (SIGNAL SQLSTATE '45000').</p>
-                            </blockquote>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Función de Formateo Analítico
                                 (listado_pasajeros_vuelo):</strong> Crea una función que reciba el
                             identificador de un vuelo y, mediante el uso de un
@@ -495,35 +456,26 @@ borrado (DELETE denegado).</code></pre>
                             mismo, devolviendo un único string concatenado con los nombres separados
                             por un guion medio (-).
                         </p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Procedimiento Almacenado con Control de Errores y
                                 Transacciones (archivar_vuelos_antiguos):</strong> Desarrolla un
                             procedimiento transaccional seguro que busque todos los registros de
                             vuelos completados cuya fecha sea anterior a un parámetro temporal dado.
                             El procedimiento debe:</p>
-                    </blockquote>
                     <ul>
                         <li>
-                            <blockquote>
                                 <p>Declarar un cursor para iterar de manera ordenada las filas
                                     afectadas.</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>Mover cada vuelo a una tabla histórica de auditoría (flight_history)
                                     y eliminarlo de la tabla operativa principal.</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>Garantizar el aislamiento utilizando bloques transaccionales seguros
                                     (START TRANSACTION, COMMIT y ROLLBACK en caso de excepciones
                                     imprevistas).</p>
-                            </blockquote>
                         </li>
                     </ul>
                 </li>
@@ -533,19 +485,15 @@ borrado (DELETE denegado).</code></pre>
                     href="#a4-preguntas-teoricas-y-de-investigacion-3" title="Enlace permanente">¶</a></h3>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p>¿Por qué se considera que las rutinas almacenadas (procedimientos y
                             funciones) mejoran el rendimiento de la red corporativa al ejecutar
                             consultas analíticas complejas en comparación con consultas SQL crudas
                             enviadas de forma individual desde aplicaciones cliente remotas?</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Explica qué es un SQLSTATE y por qué es importante mapear los códigos
                             de error estándar en aplicaciones críticas de administración de bases de
                             datos.</p>
-                    </blockquote>
                 </li>
             </ol>
             <h3 id="a5-rubrica-de-evaluacion-de-la-fase-3"><strong>5. RÚBRICA DE
@@ -660,33 +608,27 @@ borrado (DELETE denegado).</code></pre>
                     title="Enlace permanente">¶</a></h3>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p><strong>Activación de Tareas Automáticas:</strong> Realiza la
                             consulta SQL de variables de estado para comprobar la situación del
                             programador de eventos. Actívalo tanto de manera global y dinámica en
                             memoria de acceso rápido como de forma persistente dentro de tu archivo
                             custom.cnf de configuración.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Creación del Evento de Mantenimiento Físico
                                 (ev_purgar_vuelos_cancelados):</strong> Diseña un evento programado
                             recurrente que se ejecute diariamente de forma indefinida para eliminar
                             permanentemente de la base de datos operativa aquellos vuelos marcados
                             con el estado 'Cancelled' que cuenten con más de 30 días de
                             antigüedad.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Creación del Evento de Inteligencia de Negocio
                                 (ev_actualizar_estadisticas_diarias):</strong> Diseña un evento que se
                             ejecute a intervalos regulares de una hora para agrupar e insertar
                             estadísticas de ingresos totales por billetes vendidos en una tabla de
                             auditoría analítica (daily_analytics), guardando marcas temporales de
                             auditoría de ejecución del sistema.</p>
-                    </blockquote>
                 </li>
             </ol>
             <h3 id="a4-preguntas-teoricas-y-de-investigacion-4"><strong>4. PREGUNTAS
@@ -694,19 +636,15 @@ borrado (DELETE denegado).</code></pre>
                     href="#a4-preguntas-teoricas-y-de-investigacion-4" title="Enlace permanente">¶</a></h3>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p>¿Qué ventajas e inconvenientes tiene planificar tareas de base de
                             datos directamente con el Event Scheduler interno de MySQL frente a
                             utilizar el programador de tareas del sistema operativo Linux (Cron o
                             systemd-timers)?</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>¿Cómo se audita la ejecución o los fallos de un evento en MySQL?
                             Describe la tabla de sistema correspondiente y dónde se registran sus
                             trazas de error.</p>
-                    </blockquote>
                 </li>
             </ol>
             <h3 id="a5-rubrica-de-evaluacion-de-la-fase-4"><strong>5. RÚBRICA DE
@@ -812,13 +750,11 @@ borrado (DELETE denegado).</code></pre>
                     title="Enlace permanente">¶</a></h3>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p><strong>Carga y Medición de Datos Masivos:</strong> Importa la base
                             de datos airportdb. Realiza una consulta SQL interrogando a la base de
                             datos de metadatos information_schema.tables para documentar con
                             exactitud el tamaño físico ocupado en megabytes por el esquema en
                             disco.</p>
-                    </blockquote>
                 </li>
                 <li>
                     <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -834,42 +770,32 @@ booking);</code></pre>
 </div>
                     <ul>
                         <li>
-                            <blockquote>
                                 <p>Ejecuta la consulta usando el prefijo EXPLAIN ANALYZE o EXPLAIN
                                     FORMAT=JSON. Documenta el tipo de acceso (ALL, index, range), costo
                                     total estimado del producto cartesiano de accesos de la consulta y la
                                     presencia de ordenamientos temporales pesados (Using filesort).</p>
-                            </blockquote>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Estrategia de Optimización y Left-Prefix Rule:</strong></p>
-                    </blockquote>
                     <ul>
                         <li>
-                            <blockquote>
                                 <p>Diseña un índice compuesto óptimo aplicando la regla del prefijo
                                     izquierdo para acelerar la consulta del paso anterior.</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p><strong>Análisis de Prefijos Óptimos:</strong> Para optimizar las
                                     búsquedas sobre el campo de texto name de la tabla de pasajeros sin
                                     malgastar espacio en disco, determina la longitud de prefijo óptima
                                     ejecutando comparativas de cardinalidad incremental con consultas del
                                     tipo:<img src="media_ASGBD_Proyecto_integral/media/image7.png" alt="imagen" class="u-0af4b15720"><br>
                                     Crea el índice con el límite de caracteres óptimo calculado.</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>Aplica un índice de tipo FULLTEXT en el campo descriptivo y demuestra
                                     la diferencia de coste del plan de ejecución usando la sintaxis nativa
                                     MATCH...AGAINST.</p>
-                            </blockquote>
                         </li>
                     </ul>
                 </li>
@@ -879,19 +805,15 @@ booking);</code></pre>
                     href="#a4-preguntas-teoricas-y-de-investigacion-5" title="Enlace permanente">¶</a></h3>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p>Explica técnicamente por qué un exceso de índices no estructurados en
                             una base de datos con alto tráfico de operaciones de escritura (alto
                             rendimiento transaccional OLTP) degrada severamente el rendimiento
                             general del sistema.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Compara el uso de índices de estructura interna de árbol binario
                             estructurado B-Tree con los índices Hash. ¿En qué escenario técnico
                             exacto es preferible cada uno?</p>
-                    </blockquote>
                 </li>
             </ol>
             <h3 id="a5-rubrica-de-evaluacion-de-la-fase-5"><strong>5. RÚBRICA DE
@@ -1010,75 +932,56 @@ booking);</code></pre>
                     title="Enlace permanente">¶</a></h3>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p><strong>Despliegue del Escenario Distribuido:</strong> Diseña una
                             arquitectura en un archivo docker-compose-distributed.yml que
                             configure:</p>
-                    </blockquote>
                     <ul>
                         <li>
-                            <blockquote>
                                 <p><strong>mysql-shard-1</strong> (Almacena el fragmento del rango
                                     inferior de IDs).</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p><strong>mysql-shard-2</strong> (Almacena el fragmento del rango
                                     superior de IDs).</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p><strong>proxysql</strong> (Nodo proxy de control encargado del
                                     balanceo y enrutamiento inteligente).</p>
-                            </blockquote>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Configuración de la Lógica de Sharding en ProxySQL:</strong>
                             Accede a la interfaz de administración lúdica de ProxySQL (mysql en el
                             puerto administrativo <img src="media_ASGBD_Proyecto_integral/media/image5.png" alt="imagen" class="u-45f466a827">) y realiza las siguientes
                             configuraciones lógicas:</p>
-                    </blockquote>
                     <ul>
                         <li>
-                            <blockquote>
                                 <p>Registra los dos Shards de MySQL en grupos de hosts diferenciados:
                                     hostgroup 1 (Shard 1) y hostgroup 2 (Shard 2).</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>Crea las <strong>Reglas de Enrutamiento Inteligente</strong>
                                     (mysql_query_rules) utilizando expresiones regulares (Regex) de forma
                                     que:</p>
-                            </blockquote>
                             <ul>
                                 <li>
-                                    <blockquote>
                                         <p>Consultas filtradas por identificador de reserva menor o igual a <img
                                                 src="media_ASGBD_Proyecto_integral/media/image2.png" alt="imagen" class="u-66ed13c909"> (<img
                                                 src="media_ASGBD_Proyecto_integral/media/image6.png" alt="imagen" class="u-04a310c632">) se enruten de forma
                                             transparente al Shard 1.</p>
-                                    </blockquote>
                                 </li>
                                 <li>
-                                    <blockquote>
                                         <p>Consultas filtradas por identificador superior a <img
                                                 src="media_ASGBD_Proyecto_integral/media/image2.png" alt="imagen" class="u-66ed13c909"> (<img
                                                 src="media_ASGBD_Proyecto_integral/media/image3.png" alt="imagen" class="u-04a310c632">) se enruten de forma
                                             transparente al Shard 2.</p>
-                                    </blockquote>
                                 </li>
                             </ul>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Simulación de Caídas y Resiliencia:</strong> Comprueba la
                             transparencia del enrutador ejecutando consultas desde el puerto público
                             de ProxySQL (<img src="media_ASGBD_Proyecto_integral/media/image4.png" alt="imagen" class="u-45f466a827">) verificando mediante
@@ -1087,7 +990,6 @@ booking);</code></pre>
                             físicamente uno de los contenedores (docker stop) y documenta
                             técnicamente el comportamiento del sistema distribuido ante la pérdida
                             temporal de un nodo de datos.</p>
-                    </blockquote>
                 </li>
             </ol>
             <h3 id="a4-preguntas-teoricas-y-de-investigacion-6"><strong>4. PREGUNTAS
@@ -1095,20 +997,16 @@ booking);</code></pre>
                     href="#a4-preguntas-teoricas-y-de-investigacion-6" title="Enlace permanente">¶</a></h3>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p>Explica las implicaciones lógicas y de consistencia del Teorema de
                             CAP en entornos distribuidos complejos de bases de datos. ¿Cómo se
                             posiciona MySQL Group Replication o un escenario de Sharding clásico
                             frente a dicho teorema?</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>¿Qué ventaja técnica crítica aporta un balanceador intermedio como
                             ProxySQL en la gestión de colas de conexión de cliente frente a conectar
                             las aplicaciones web directamente a las IPs de las réplicas o
                             shards?</p>
-                    </blockquote>
                 </li>
             </ol>
             <h3 id="a5-rubrica-de-evaluacion-de-la-fase-6"><strong>5. RÚBRICA DE

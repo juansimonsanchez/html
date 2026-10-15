@@ -87,7 +87,6 @@
                         CONTEXTUALIZACIÓN</u></a></p>
             <p><a href="#a3-el-sistema-de-privilegios-de-mysql"><u>2. ADMINISTRACIÓN
                         DE CUENTAS DE USUARIO</u></a></p>
-            <blockquote>
                 <p><a href="#a31-niveles-de-granularidad-de-permisos"><u>2.1.
                         Sentencia de Creación de Cuentas (CREATE USER)</u></a></p>
                 <p><a href="#a311-privilegios-a-nivel-de-base-de-datos"><u>2.2.
@@ -96,13 +95,10 @@
                         Persistencia en el Diccionario de Datos (mysql.user)</u></a></p>
                 <p><a href="#a313-privilegios-a-nivel-de-columna-mysqlcolumnspriv"><u>2.4. Eliminación de
                         Cuentas (DROP USER)</u></a></p>
-            </blockquote>
             <p><a href="#a314-privilegios-sobre-rutinas-y-procedimientos-mysqlprocspriv"><u>3. EL SISTEMA DE
                         PRIVILEGIOS DE MYSQL</u></a></p>
-            <blockquote>
                 <p><a href="#a32-delegacion-de-capacidades-with-grant-option"><u>3.1. Niveles de
                             Granularidad de Permisos</u></a></p>
-                <blockquote>
                     <p><a href="#a33-revocacion-de-permisos-revoke"><u>3.1.1. Privilegios
                                 a Nivel de Base de Datos</u></a></p>
                     <p><a href="#a34-auditoria-de-concesiones-show-grants"><u>3.1.2.
@@ -112,7 +108,6 @@
                     <p><a href="#a4-gestion-avanzada-mediante-roles"><u>3.1.4.
                                 Privilegios sobre Rutinas y Procedimientos
                                 (mysql.procs_priv)</u></a></p>
-                </blockquote>
                 <p><a href="#a41-concepto-de-rol-en-mysql-80"><u>3.2.
                             Delegación de Capacidades (WITH GRANT OPTION)</u></a></p>
                 <p><a href="#a42-roles-administrativos-de-factoria-en-entornos-de-gestion"><u>3.3. Revocación de
@@ -121,10 +116,8 @@
                             Concesiones (SHOW GRANTS)</u></a></p>
                 <p><a href="#a44-estrategias-de-activacion-automatizacion-vs-manual"><u>3.5.
                             Sincronización de Tablas de Concesión (FLUSH PRIVILEGES)</u></a></p>
-            </blockquote>
             <p><a href="#a5-vistas-en-bases-de-datos"><u>4. GESTIÓN AVANZADA
                         MEDIANTE ROLES</u></a></p>
-            <blockquote>
                 <p><a href="#a51-que-es-una-vista-y-ventajas-principales"><u>4.1. Concepto de Rol en
                             MySQL 8.0</u></a></p>
                 <p><a href="#a52-crear-o-modificar-una-vista-create-view"><u>4.2.
@@ -133,16 +126,13 @@
                             Ciclo Operativo de Trabajo con Roles (RBAC Lifecycle)</u></a></p>
                 <p><a href="#a54-renombrar-una-vista-rename-table"><u>4.4.
                             Estrategias de Activación: Automatización vs Manual</u></a></p>
-            </blockquote>
             <p><a href="#a55-consultar-vistas-y-su-definicion-show"><u>5. VISTAS EN BASES DE DATOS</u></a></p>
-            <blockquote>
                 <p><a href="#a56-vistas-con-contenido-actualizable-insert-update-delete"><u>5.1. ¿Qué es una Vista y Ventajas Principales?</u></a></p>
                 <p><a href="#a52-crear-o-modificar-una-vista-create-view"><u>5.2. Crear o Modificar una Vista (CREATE VIEW)</u></a></p>
                 <p><a href="#a53-eliminar-una-vista-drop-view"><u>5.3. Eliminar una Vista (DROP VIEW)</u></a></p>
                 <p><a href="#a54-renombrar-una-vista-rename-table"><u>5.4. Renombrar una Vista (RENAME TABLE)</u></a></p>
                 <p><a href="#a55-consultar-vistas-y-su-definicion-show"><u>5.5. Consultar Vistas y su Definición (SHOW)</u></a></p>
                 <p><a href="#a56-vistas-con-contenido-actualizable-insert-update-delete"><u>5.6. Vistas con Contenido Actualizable (INSERT, UPDATE, DELETE)</u></a></p>
-            </blockquote>
 
             <h1 id="a1-introduccion-y-contextualizacion">1. INTRODUCCIÓN Y
                 CONTEXTUALIZACIÓN <a class="headerlink" href="#a1-introduccion-y-contextualizacion"
@@ -169,25 +159,20 @@
                 del ciclo de Grado Superior en ASIR:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Implantación de Sistemas Operativos (ISO):</strong> Se
                             asimila de forma directa a la gestión multiusuario de sistemas Linux
                             (análisis de archivos de seguridad /etc/passwd y /etc/shadow) y al
                             control de accesos mediante ACLs (Access Control Lists).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Planificación y Administración de Redes (PAR):</strong>
                             Enlaza con la seguridad de sockets TCP/IP, el aislamiento de puertos de
                             escucha del motor (como el puerto por defecto 3306) sobre interfaces o
                             subredes específicas (interfaces loopback, VLANs de gestión), y la
                             implantación de túneles de comunicación cifrados mediante protocolos
                             criptográficos TLS/SSL.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Servicios de Red e Internet (SRI) e Implantación de
                                 Aplicaciones Web (IAW):</strong> Proporciona el marco de seguridad
                             indispensable para la interconexión con entornos de desarrollo y
@@ -199,7 +184,6 @@
                             selectivo), garantizando que el compromiso lógico del servidor de
                             aplicaciones web o del script de monitorización no otorgue el control
                             del motor de bases de datos.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h1 id="a2-administracion-de-cuentas-de-usuario">2. ADMINISTRACIÓN DE
@@ -221,39 +205,29 @@ mysql_native_password BY 'contraseña';</code></pre>
             </div>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>nombre_usuario:</strong> Identificador alfanumérico que
                             representa la cuenta dentro de la instancia.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>host:</strong> El parámetro de red que determina la ubicación
                             física o lógica desde la cual el usuario tiene autorización explícita
                             para abrir una sesión de red.</p>
-                    </blockquote>
                     <ul>
                         <li>
-                            <blockquote>
                                 <p>'%': Carácter comodín que indica que el usuario puede establecer
                                     conexión desde cualquier host o dirección IP externa (acceso remoto
                                     global).</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>'localhost': Restringe la comunicación de forma absoluta, permitiendo
                                     únicamente conexiones procedentes de la misma máquina mediante sockets
                                     locales del sistema operativo, anulando el acceso por red TCP/IP
                                     externa.</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>'172.16.11.10': Permite acotar el acceso exclusivamente a
                                     direccionamiento de una máquina o pasarela de red específica de
                                     producción o gestión.</p>
-                            </blockquote>
                         </li>
                     </ul>
                 </li>
@@ -388,53 +362,39 @@ GRANT tipo_de_permiso ON base_de_datos.* TO 'nombre_usuario'@'host';</code></pre
             <p>Los privilegios que se pueden acotar a nivel de esquema son:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>SELECT, INSERT, UPDATE:</strong> Operaciones de lectura y
                             manipulación de datos sobre cualquier tabla de la base de datos.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>CREATE:</strong> Concede la facultad de estructurar y crear
                             nuevas tablas en el esquema.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>DROP:</strong> Permite eliminar de forma permanente tablas de
                             la base de datos.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>ALTER:</strong> Habilita la alteración estructural de tablas
                             existentes. <em>Nota técnica:</em> Para ejecutar exitosamente ciertas
                             operaciones de alteración, el motor exige que la cuenta posea también el
                             privilegio CREATE.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>EVENT:</strong> Faculta al usuario para programar, modificar
                             o eliminar tareas temporales automatizadas ejecutadas por el motor
                             interno del SGBD (Event Scheduler).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>LOCK TABLES:</strong> Permite congelar o bloquear
                             explícitamente el acceso concurrente a una tabla para realizar lecturas
                             o volcados consistentes. Requisito: La cuenta requiere poseer
                             explícitamente el permiso SELECT sobre dicha tabla para poder
                             bloquearla.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>REFERENCES:</strong> Otorga la capacidad indispensable para
                             trazar restricciones de clave foránea e integridad referencial entre
                             tablas del esquema.</p>
-                    </blockquote>
                 </li>
             </ul>
 
@@ -457,34 +417,26 @@ GRANT SELECT, INSERT ON mydb.mytbl TO 'someuser'@'somehost';</code></pre>
             <p>Los privilegios aplicables a este nivel funcional se desglosan en:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Gestión Estructural:</strong> CREATE (crear una tabla
                             específica, permitiendo incluso conceder el permiso antes de que la
                             tabla exista en disco), ALTER (modificarla) y DROP (eliminarla).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Manipulación de Datos DML:</strong> SELECT, INSERT, UPDATE y
                             DELETE. Al declararse a nivel de tabla, estas directivas afectan de
                             forma automática a la totalidad de las columnas de dicha entidad.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Gestión de Vistas (Visiones Externas):</strong> CREATE VIEW
                             (crear vistas sobre la tabla) y SHOW VIEW (inspeccionar los metadatos y
                             la sentencia de creación de la vista). <em>Nota:</em> El borrado o
                             modificación de una vista requiere obligatoriamente que la cuenta
                             ostente el permiso de DROP.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Otros Privilegios de Tabla:</strong> INDEX (crear o eliminar
                             índices), REFERENCES (claves foráneas) y TRIGGER (crear, alterar o
                             purgar disparadores de auditoría asociados a la tabla).</p>
-                    </blockquote>
                 </li>
             </ul>
 
@@ -524,19 +476,15 @@ GRANT EXECUTE ON PROCEDURE mydb.myproc TO 'someuser'@'somehost';</code></pre>
             <p>Clasificación de privilegios de rutinas:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Aplicables a cualquier rutina del ámbito:</strong> CREATE
                             ROUTINE (crear), ALTER ROUTINE (modificar o borrar de forma masiva) y
                             EXECUTE (ejecución global).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Aplicables a una rutina concreta determinada:</strong>
                             EXECUTE (ejecutar únicamente esa función o procedimiento) y ALTER
                             ROUTINE (modificar o borrar exclusivamente esa pieza de código de la
                             rutina).</p>
-                    </blockquote>
                 </li>
             </ul>
 
@@ -572,18 +520,14 @@ REVOKE INSERT ON *.* FROM 'usuario'@'localhost';</code></pre>
             <p><strong>Reglas de Control para la Revocación:</strong></p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p>Para quitar un permiso a un usuario, la cuenta que ejecuta el comando
                             debe poseer dicho privilegio y haberlo obtenido originalmente con la
                             opción de delegación (WITH GRANT OPTION).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Si un administrador posee el permiso de sistema <strong>CREATE
                                 USER</strong>, está facultado para limpiar de forma masiva todos los
                             permisos de una cuenta mediante la sentencia:</p>
-                    </blockquote>
                 </li>
             </ol>
 
@@ -847,19 +791,13 @@ SET ROLE NONE; -- Desactiva todos los roles, devolviendo la sesión a mínimos p
             <p>Desde la perspectiva de la administración de sistemas y seguridad (CE3.a), las principales ventajas que aporta su utilización son:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Seguridad y control de acceso (Confidencialidad):</strong> Permiten ocultar columnas sensibles (por ejemplo, salarios, contraseñas, datos personales) o filtrar filas específicas para usuarios o aplicaciones que no deban acceder a la tabla base completa.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Simplificación operativa:</strong> Encapsulan consultas complejas que involucran múltiples combinaciones (JOINs), funciones de agregación o condiciones elaboradas en un objeto virtual reutilizable y fácil de consultar.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Independencia lógica de datos:</strong> Si la estructura física de las tablas subyacentes sufre modificaciones, es posible ajustar la definición de la vista para mantener intacta la interfaz consumida por aplicaciones y usuarios finales.</p>
-                    </blockquote>
                 </li>
             </ul>
 
@@ -961,29 +899,19 @@ SHOW CREATE VIEW nombre_vista;</code></pre>
             <p>Para que una vista sea <strong>actualizable</strong> (<em>updatable view</em>), debe existir una relación uno a uno entre las filas de la vista y las de la tabla original. La vista <strong>no</strong> puede contener:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>Funciones de agregación o resumen (<code>SUM</code>, <code>AVG</code>, <code>MIN</code>, <code>MAX</code>, <code>COUNT</code>, etc.).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Cláusulas <code>GROUP BY</code> o <code>HAVING</code>.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>La cláusula <code>DISTINCT</code>.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Operadores de conjuntos como <code>UNION</code> o <code>UNION ALL</code>.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Subconsultas en la cláusula <code>SELECT</code>.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><em>Condición obligatoria para inserciones:</em> Para poder realizar un <code>INSERT</code> a través de una vista, todas las columnas de la tabla base que no admitan nulos y no tengan un valor por defecto (o clave primaria sin auto-incremento) deben formar parte obligatoriamente de la definición de la vista.</p>

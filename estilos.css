@@ -42,16 +42,22 @@ html {
 body {
     background-color: var(--bg-body);
     color: var(--text-body);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     line-height: 1.65;
     margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 /* --- Cabecera (Header) --- */
 
 body > header {
-    width: 100%;
     background: var(--bg-header);
     color: var(--text-header);
+    border-radius: var(--radius-md);
+    overflow: hidden;
 }
 
 .header-container {
@@ -174,7 +180,9 @@ body > header {
     margin-bottom: 1.2rem;
 }
 
+.pdf-download-btn,
 .btn-download {
+    margin-top: 10px;
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -188,6 +196,7 @@ body > header {
     box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
 }
 
+.pdf-download-btn:hover,
 .btn-download:hover {
     filter: brightness(0.96);
 }
@@ -205,20 +214,37 @@ body > header {
 /* Tablas */
 table {
     border-collapse: collapse;
-    width: 100%;
-    margin: 1.5rem 0;
+    width: 95%;
+    max-width: 100%;
+    margin: 1rem auto;
     border: 1px solid var(--border-color);
+    font-size: 0.9rem;
 }
 
 th, td {
-    padding: 12px 15px;
+    padding: 8px 10px;
     border: 1px solid var(--border-color);
     text-align: left;
 }
 
 th {
-    background-color: var(--bg-gray);
+    background-color: var(--bg-header);
+    color: var(--text-header);
     font-weight: 600;
+}
+
+td:first-child:has(strong) {
+    background-color: var(--bg-header);
+    color: var(--text-header);
+}
+
+tr:hover td {
+    background-color: #f1f5f9;
+}
+
+tr:hover td:first-child:has(strong) {
+    background-color: var(--bg-header);
+    color: var(--text-header);
 }
 
 .table-standard {
@@ -239,6 +265,93 @@ li {
 
 .image-small-200 { width: 200px; height: auto; max-width: 100%; }
 .image-small-300 { width: 300px; height: auto; max-width: 100%; }
-
+.image-small-600 { width: 600px; height: auto; max-width: 100%; }
 .link-primary { color: var(--primary-color); text-decoration: none; font-weight: 600; }
 .text-small-blue { color: blue; font-size: 14px; }
+
+/* --- Bloques de código --- */
+
+.code-wrapper {
+    position: relative;
+    margin: 1.5rem 0;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: #0f172a;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 10;
+    padding: 6px 12px;
+    border: 0;
+    border-radius: 5px;
+    background: #334155;
+    color: #f8fafc;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.copy-btn:hover {
+    background: var(--primary-color);
+}
+
+pre {
+    margin: 0;
+    padding: 1.25rem;
+    overflow-x: auto;
+    background: #0f172a;
+    color: #f8fafc;
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.code-wrapper pre {
+    white-space: pre;
+    word-break: normal;
+}
+
+code {
+    font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace;
+}
+
+p code,
+li code {
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    background: #e2e8f0;
+    color: #0f172a;
+    font-size: 0.9em;
+}
+
+/* --- Imágenes --- */
+
+main img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-sm);
+    margin: 1rem 0;
+}
+
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+        font-size: 0.85rem;
+    }
+
+    th, td {
+        padding: 6px 8px;
+    }
+
+    pre {
+        padding: 0.85rem;
+        font-size: 0.82rem;
+    }
+}

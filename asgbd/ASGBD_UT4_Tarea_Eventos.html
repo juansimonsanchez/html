@@ -85,7 +85,6 @@
                     href="#metodo-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>[x] Documento de Memoria:</strong> Documento
                             <strong>PDF</strong> (Tarea5_1_Nombre_Alumno.pdf) con la explicación
                             técnica de cada apartado, justificación de decisiones y capturas de
@@ -95,14 +94,11 @@
                             justificado, enunciados en negrita y comentarios descriptivos debajo de
                             cada imagen.
                         </p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>[x] Código SQL:</strong> Fichero de comandos planos
                             solucion_actividades_base.sql debidamente comentado indicando a qué
                             ejercicio pertenece cada sentencia.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h2 id="a1-descripcion-general-objetivos">1. DESCRIPCIÓN GENERAL.
@@ -122,15 +118,11 @@
                     href="#a2-consideraciones-previas" title="Enlace permanente">¶</a></h2>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Entorno de Trabajo:</strong> Instancia en la nube de
                             desarrollo o local con <strong>Ubuntu 24.04 LTS</strong>.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Software:</strong> MySQL Server 8.0+ instalado y activo.</p>
-                    </blockquote>
                 </li>
                 <li>
                     <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -141,12 +133,10 @@ como root al servidor de base de datos MySQL.</code></pre>
 </div>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Variable secure_file_priv:</strong> Antes de comenzar,
                             comprueba en qué directorio del sistema de archivos Linux tiene tu MySQL
                             permitido realizar exportaciones directas de archivos
                             (/var/lib/mysql-files/ por defecto).</p>
-                    </blockquote>
                 </li>
             </ul>
             <h2 id="a3-actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink"
@@ -158,48 +148,36 @@ como root al servidor de base de datos MySQL.</code></pre>
                     (MyISAM / InnoDB)</strong></p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>Crea la base de datos liga.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Añade una tabla de tipo MyISAM llamada tabla_myisam con campos
                             básicos. Recuerda declarar de forma explícita ENGINE=MyISAM.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Añade otra tabla estándar de tipo InnoDB llamada tabla_innodb (por
                             defecto).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Accede al shell del sistema operativo Linux host y localiza la ruta
                             física donde MySQL guarda los datos en disco (/var/lib/mysql/).
                             Documenta la diferencia estructural entre el directorio de la base de
                             datos liga y detalla qué archivos físicos corresponden a las dos tablas
                             creadas.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><strong>Ejercicio 2: Copias de Seguridad Físicas en Frío</strong></p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>Diseña un protocolo secuencial en la consola de comandos de Linux
                             para realizar un respaldo completo físico y en frío de la base de datos
                             liga.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Simula una catástrofe de pérdida de datos en la que borres los
                             archivos físicos de la base de datos (con el SGBD apagado) y procede a
                             su restauración binaria en disco. Comprueba y justifica que el servicio
                             arranca de forma íntegra.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><strong>Ejercicio 3: Exportación/Importación de Datos Planos (SELECT
@@ -214,18 +192,14 @@ dentro del directorio permitido por el sistema.</code></pre>
 </div>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Abre el archivo generado en una aplicación de hoja de cálculo (Excel
                             o LibreOffice Calc) e incluye una captura mostrando el formato correcto
                             de las columnas.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Crea una tabla vacía con la misma estructura y procede a poblarla con
                             el archivo plano generado utilizando exclusivamente la sentencia SQL
                             LOAD DATA.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h4 id="bloque-ii-copias-de-seguridad-logicas-y-restauracion">BLOQUE II:
@@ -235,61 +209,43 @@ dentro del directorio permitido por el sistema.</code></pre>
                     mysqldump</strong></p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>Realiza las siguientes copias de seguridad a través de la consola del
                             sistema operativo utilizando la herramienta mysqldump de MySQL
                             (justifica los comandos utilizados):</p>
-                    </blockquote>
                     <ol type="1">
                         <li>
-                            <blockquote>
                                 <p>Exporta la tabla partidos (créala previamente en liga) de la base de
                                     datos liga (estructura y datos).</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>Exporta la estructura y datos de la tabla partidos compactando el
                                     archivo (--compact).</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>Exporta <strong>únicamente la estructura (DDL)</strong> de la tabla
                                     partidos omitiendo sus datos.</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>Exporta <strong>únicamente los datos (DML en formato INSERT)</strong>
                                     omitiendo la creación de tablas.</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>Exporta toda la base de datos liga en un archivo estructurado en
                                     formato <strong>XML</strong>.</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>Exporta todas las tablas de liga a archivos separados en formato
                                     <strong>CSV</strong> utilizando parámetros de delimitación (--tab,
                                     etc.).
                                 </p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>Exporta la base de datos liga completa con sentencias de base de
                                     datos incluidas (--databases).</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>Exporta la totalidad de bases de datos del servidor MySQL
                                     (--all-databases).</p>
-                            </blockquote>
                         </li>
                     </ol>
                 </li>
@@ -298,22 +254,16 @@ dentro del directorio permitido por el sistema.</code></pre>
                     internos</strong></p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>Ejecuta y documenta la restauración del respaldo completo generado de
                             la base de datos utilizando dos vías:</p>
-                    </blockquote>
                     <ul>
                         <li>
-                            <blockquote>
                                 <p><strong>Opción A:</strong> A través de la redirección de entrada de
                                     comandos del sistema operativo (&lt;).</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p><strong>Opción B:</strong> Autenticado en el cliente de MySQL con la
                                     orden interactiva SOURCE o su equivalente \..</p>
-                            </blockquote>
                         </li>
                     </ul>
                 </li>
@@ -326,19 +276,15 @@ dentro del directorio permitido por el sistema.</code></pre>
                     Planificador</strong></p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>Ejecuta el comando SQL para verificar el estado actual de la variable
                             de sistema event_scheduler. ¿Qué valor obtienes y qué significa
                             técnicamente cada estado posible (ON, OFF, DISABLED)?</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Si el planificador está en OFF, utiliza el comando SET GLOBAL para
                             activarlo en caliente. Luego, verifica los procesos utilizando SHOW
                             PROCESSLIST para confirmar la existencia del daemon event_scheduler.
                             Explica qué información proporciona cada columna de este comando.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><strong>Ejercicio 7: Evento de Ejecución Única (AT)</strong></p>
@@ -352,73 +298,57 @@ VARCHAR(100), fecha TIMESTAMP);</code></pre>
 </div>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Crea un evento que se ejecute una única vez dentro de los próximos 5
                             minutos. El cuerpo del evento debe insertar un registro en la tabla
                             log_eventos. Identifica si te has apoyado en una IA y qué prompt has
                             usado.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Verifica su ejecución consultando la tabla de logs e inspecciona con
                             SHOW EVENTS para comprobar que, al no tener configurado PRESERVE, el
                             evento se ha auto-eliminado tras finalizar.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Crea un segundo evento de ejecución única equivalente pero
                             habilitando de forma explícita ON COMPLETION PRESERVE. Comprueba su
                             estado una vez transcurrido el tiempo programado.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><strong>Ejercicio 8: Evento Recurrente Básico (EVERY)</strong></p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>Crea un evento programado para ejecutarse cada 1 minuto, que comience
                             su vigencia pasados 3 minutos desde su creación, e inserte una entrada
                             con el mensaje "Evento recurrente" en la tabla log_eventos.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Transcurridos 5 minutos de su ciclo de vida, ejecuta un SHOW EVENTS
                             para inspeccionar su estado y haz un volcado de la tabla para ver las
                             ejecuciones periódicas.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Ejecuta el comando SHOW CREATE EVENT [nombre_evento] y explica
                             técnicamente qué información detallada te proporciona su estructura.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><strong>Ejercicio 9: Evento Recurrente con Fecha de Finalización
                     (ENDS)</strong></p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>Diseña y ejecuta un evento equivalente al anterior que actúe de forma
                             cíclica cada minuto, pero que declare una fecha límite de finalización
                             (ENDS) a 5 minutos vista desde su puesta en marcha. Verifica la
                             caducidad y detención del evento en el diccionario del sistema.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><strong>Ejercicio 10: Modificación de Eventos (ALTER
                     EVENT)</strong></p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>Realiza las operaciones necesarias para modificar el evento
                             recurrente con solo hora de inicio de forma dinámica, asignándole ahora
                             una fecha de inicio y una fecha de fin específicas en caliente. Verifica
                             que los metadatos se han actualizado de forma persistente.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><strong>Ejercicio 11: Diccionarios de Sistema y Auditoría de
@@ -434,12 +364,10 @@ administrativo localizas?</code></pre>
 </div>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Accede al shell del host Linux y consulta los registros de ejecución
                             del planificador mediante el log de errores de MySQL en el disco
                             (/var/log/mysql/error.log). Filtra la información utilizando grep para
                             buscar los eventos procesados.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><strong>Ejercicio 12: Práctica de Eventos Aplicados al
@@ -448,54 +376,39 @@ administrativo localizas?</code></pre>
                 basadas en eventos:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>A.</strong> Diseña un evento que, en un día y hora
                             específicos, realice una copia de los datos de la tabla equipos (créala
                             en liga previamente) en una tabla llamada equipos_temp. El evento debe
                             limpiar previamente (TRUNCATE) cualquier dato obsoleto en la tabla
                             destino.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>B.</strong> Ejecuta la orden del SGBD para verificar en qué
                             momento temporal exacto está planificada la ejecución de la tarea del
                             apartado anterior.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>C.</strong> Comprueba la consistencia de los datos en la
                             tabla temporal tras dispararse el evento.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>D.</strong> Modifica el evento del apartado A para que, a
                             partir de hoy, actúe de forma recurrente cada mes durante el plazo de un
                             año.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>E.</strong> Vuelve a comprobar los metadatos lógicos para
                             visualizar la actualización del momento de ejecución.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>F.</strong> Realiza una consulta que liste la totalidad de
                             eventos creados bajo la base de datos liga.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>G.</strong> Borra uno de los eventos de prueba del sistema
                             validando el control de excepciones (IF EXISTS).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>H.</strong> Apoyándote en una IA (especifica el prompt y el
                             modelo utilizado), solicita el código para un evento deMySQL que durante
                             <strong>1 hora</strong>, registre cada <strong>5 minutos</strong> los
@@ -504,18 +417,15 @@ administrativo localizas?</code></pre>
                             la funcionalidad de cada línea y demuestra su funcionamiento con al
                             menos 2 sesiones activas simultáneamente en tu taller.
                         </p>
-                    </blockquote>
                 </li>
             </ul>
             <h2 id="a4-calificacion">4. CALIFICACIÓN <a class="headerlink" href="#a4-calificacion"
                     title="Enlace permanente">¶</a></h2>
-            <blockquote>
                 <p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
                     través de la plataforma, la entrega del documento en formatos editables
                     no permitidos (como .docx), capturas con identificación del alumno/a o
                     la omisión de los enlaces de las fuentes documentales utilizadas
                     penalizará gravemente la nota o invalidará la práctica.</p>
-            </blockquote>
             <p>La actividad se calificará sobre un total de <strong>10
                     puntos</strong> distribuidos de la siguiente forma:</p>
             <div class="table-wrapper">

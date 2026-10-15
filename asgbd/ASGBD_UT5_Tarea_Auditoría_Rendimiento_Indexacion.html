@@ -82,22 +82,18 @@
                     href="#metodo-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>[ ] Documento de Memoria:</strong> Documento técnico en
                             formato <strong>PDF</strong> (Tarea5_1_NombreAlumno.pdf) con la
                             explicación justificada de cada paso y capturas de pantalla de la
                             terminal de comandos. El formato debe ser impecable: texto justificado,
                             enunciados destacados en negrita y comentarios descriptivos debajo de
                             cada captura.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>[ ] Archivo de Código:</strong> Archivo de script SQL
                             (tarea5_1_nombrealumno.sql) que contenga todas las sentencias de
                             creación de índices, consultas y comandos de análisis, perfectamente
                             comentados.</p>
-                    </blockquote>
                 </li>
                 <li>
                     <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -131,25 +127,19 @@ identificador;</code></pre>
                     href="#a2-consideraciones-previas" title="Enlace permanente">¶</a></h2>
             <ul>
                 <li>
-                    <blockquote>
                         <p>Se requiere tener acceso a una instancia de MySQL Server (v8.0+ o
                             MariaDB v10.5+) en funcionamiento sobre Ubuntu Server.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>La base de datos de producción <strong>jardineria</strong> debe estar
                             completamente importada, con datos de pruebas consistentes.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Todas las operaciones de consulta y monitorización se realizarán
                             directamente desde la interfaz de línea de comandos de MySQL (<em>MySQL
                                 Client</em>) en la terminal SSH, evitando interfaces gráficas para
                             emular el flujo de trabajo de administración de sistemas sobre
                             servidores remotos desatendidos.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h2 id="a3-actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink"
@@ -165,21 +155,15 @@ identificador;</code></pre>
                 detalladamente:</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p>Qué claves e índices ha identificado.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Qué significa técnicamente el valor devuelto en la columna Non_unique
                             para cada uno de ellos.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Qué tipo de estructura física de datos (Index_type) utiliza el motor
                             InnoDB para gestionarlos de forma predeterminada.</p>
-                    </blockquote>
                 </li>
             </ol>
             <h4 id="ejercicio-2-auditoria-comparativa-de-planes-de-ejecucion-basicos-1-punto"><strong>Ejercicio
@@ -199,22 +183,16 @@ identificador;</code></pre>
                 salida del optimizador:</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p>¿Cuál de las dos consultas realizará un menor número de comparaciones
                             de registros y accesos a disco físico para hallar el resultado?</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Indique de manera numérica cuántas comparaciones de filas estima el
                             optimizador (rows) para cada caso.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Justifique la causa técnica de esta diferencia analizando los valores
                             devueltos en las columnas type y key del EXPLAIN.</p>
-                    </blockquote>
                 </li>
             </ol>
             <h4 id="ejercicio-3-perdida-de-sargabilidad-por-funciones-de-fecha-1-punto"><strong>Ejercicio
@@ -237,17 +215,13 @@ identificador;</code></pre>
                 técnica:</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p>¿Por qué el optimizador de costes de MySQL descarta el uso del índice
                             en la Alternativa A devolviendo un acceso de tipo ALL? Explique qué
                             ocurre en la CPU del servidor.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>¿Cómo cambia el método de acceso de la columna type en la Alternativa
                             B y por qué se considera una práctica de "diseño sargable"?</p>
-                    </blockquote>
                 </li>
             </ol>
             <h4 id="ejercicio-4-optimizacion-de-consultas-multitabla-con-relacion-inner-join-1-punto"><strong>Ejercicio
@@ -262,24 +236,18 @@ identificador;</code></pre>
                 WHERE cliente.nombre_cliente LIKE 'A%';</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p>Ejecute un EXPLAIN previo a la optimización para comprobar el número
                             de filas estimadas (rows) y el tipo de acceso (type) en ambas
                             tablas.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Diseñe e implemente el índice físico más adecuado para acelerar la
                             restricción del bloque WHERE.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Vuelva a analizar la traza de la consulta con EXPLAIN y argumente el
                             impacto en el rendimiento contrastando las filas analizadas antes y
                             después.</p>
-                    </blockquote>
                 </li>
             </ol>
             <h4 id="ejercicio-5-el-limite-de-los-indices-estandar-ante-comodines-iniciales-1-punto"><strong>Ejercicio
@@ -301,19 +269,15 @@ identificador;</code></pre>
             </p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p>Justifique detalladamente por qué no es posible optimizar el tiempo
                             de ejecución ni el número de lecturas en disco de estas sentencias,
                             incluso si existe un índice B-Tree creado sobre la columna
                             nombre_cliente.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Explique de qué manera navega el optimizador por la estructura física
                             del árbol en estos escenarios específicos y por qué acaba determinando
                             realizar un Full Table Scan.</p>
-                    </blockquote>
                 </li>
             </ol>
             <h4 id="ejercicio-6-implementacion-de-indices-invertidos-para-busquedas-semanticas-1-punto">
@@ -327,23 +291,17 @@ identificador;</code></pre>
                 jardineria.</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p>Proporcione la sentencia DDL exacta de alteración estructural (ALTER
                             TABLE).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Escriba la sintaxis de consulta SQL optimizada utilizando las
                             funciones nativas MATCH() y AGAINST() para buscar el token 'acero'.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Verifique con EXPLAIN que el método de acceso cambia a fulltext y
                             argumente la ganancia en el uso de I/O de disco frente a una búsqueda
                             basada en operador LIKE convencional.</p>
-                    </blockquote>
                 </li>
             </ol>
             <h4 id="ejercicio-7-modos-de-explotacion-de-indices-fulltext-1-punto"><strong>Ejercicio
@@ -355,32 +313,24 @@ identificador;</code></pre>
                 y documente la diferencia en los conjuntos de datos obtenidos:</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p><strong>Modo Lenguaje Natural:</strong> Busque los productos que
                             contengan la palabra 'planta' en modo por defecto (IN NATURAL LANGUAGE
                             MODE).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Modo Booleano Restrictivo:</strong> Busque los registros que
                             contengan obligatoriamente la palabra 'tronco' pero que no incluyan la
                             palabra 'árbol' bajo ningún concepto.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Modo Truncamiento / Comodín de Derecha:</strong> Busque todas
                             las variantes léxicas que comiencen por el prefijo 'planta' (por
                             ejemplo: "planta", "plantas", "plantón", etc.).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Búsqueda de Frase Literal:</strong> Busque los registros que
                             contengan la secuencia secuencial exacta de caracteres "proviene de las
                             costas".</p>
-                    </blockquote>
                 </li>
             </ol>
             <h4 id="ejercicio-8-creacion-de-indices-de-columnas-multiples-compuestos-1-punto"><strong>Ejercicio
@@ -403,39 +353,29 @@ identificador;</code></pre>
                 servicio técnico:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Escenario A (Par Completo):</strong> Buscar el cliente con
                             apellido 'Villar' y nombre 'Javier'.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Escenario B (Prefijo Izquierdo Activo):</strong> Buscar el
                             cliente utilizando únicamente el apellido 'Villar'.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Escenario C (Prefijo Izquierdo Ausente):</strong> Buscar el
                             cliente utilizando únicamente el nombre 'Javier'.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p>Analice de forma crítica el plan de ejecución de cada uno de los tres
                 escenarios. Responda:</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p>¿Cuántas filas físicas estima examinar el motor en cada caso?</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>¿En qué escenario se descarta por completo el uso del índice
                             compuesto, forzando un barrido completo de la tabla? Justifique el
                             motivo técnico basándose en la física de almacenamiento del árbol
                             B+.</p>
-                    </blockquote>
                 </li>
             </ol>
             <h4 id="ejercicio-10-metodologia-practica-de-analisis-de-prefijos-de-columna-1-punto"><strong>Ejercicio
@@ -453,49 +393,39 @@ identificador;</code></pre>
                 pruebas:</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p><strong>Cálculo de la Cardinalidad de Base:</strong> Obtenga el
                             número exacto de valores únicos globales contenidos en esa columna
                             utilizando la combinación de funciones de agrupación COUNT(DISTINCT
                             ...).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Análisis de Ganancia por Longitud de Prefijo:</strong>
                             Ejecute una única consulta SQL que calcule la cardinalidad de valores
                             únicos simulando prefijos con longitudes de <img
                                 src="media_ASGBD_UT5_Tarea_Auditoría_Rendimiento_Indexacion/media/image2.png" alt="imagen" class="u-3f66194d3a"> y <img
                                 src="media_ASGBD_UT5_Tarea_Auditoría_Rendimiento_Indexacion/media/image3.png" alt="imagen" class="u-66ed13c909"> caracteres utilizando la
                             función LEFT().</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Selección Técnica del Prefijo:</strong> Identifique
                             numéricamente el menor tamaño de prefijo que proporcione un ratio de
                             discriminación extremadamente cercano al valor de la cardinalidad global
                             de la columna sin prefijo.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Aplicación DDL:</strong> Cree de forma definitiva el índice
                             de prefijo en caliente utilizando la longitud <img
                                 src="media_ASGBD_UT5_Tarea_Auditoría_Rendimiento_Indexacion/media/image4.png" alt="imagen" class="u-b0940df7fd"> seleccionada
                             justificadamente en el paso anterior.</p>
-                    </blockquote>
                 </li>
             </ol>
             <h2 id="a4-calificacion">4. CALIFICACIÓN <a class="headerlink" href="#a4-calificacion"
                     title="Enlace permanente">¶</a></h2>
-            <blockquote>
                 <p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
                     través de la plataforma, la entrega del documento en formatos editables
                     no permitidos (como .docx), capturas con identificación del alumno/a o
                     la omisión de los enlaces de las fuentes documentales utilizadas
                     penalizará gravemente la nota o invalidará la práctica.</p>
-            </blockquote>
             <h4 id="rubrica-de-evaluacion-tecnica">RÚBRICA DE EVALUACIÓN TÉCNICA
                 <a class="headerlink" href="#rubrica-de-evaluacion-tecnica" title="Enlace permanente">¶</a>
             </h4>

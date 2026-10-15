@@ -92,26 +92,20 @@
                 siguientes acciones de forma secuencial y desasistida:</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p>Compruebe si el servicio de MySQL está activo. Si no lo está, intente
                             levantarlo e informe del estado.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Compruebe el almacenamiento del servidor. Si el tamaño físico de la
                             base de datos almeria_emarket supera un límite ficticio (ej. 1 MB para
                             pruebas), invoque de manera automática a un procedimiento almacenado
                             dentro de MySQL que limpie los logs.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>El script de Bash debe registrar todas sus acciones añadiendo líneas
                             a un archivo de registro del sistema ubicado en
                             /var/log/emarket_mantenimiento.log (puedes simularlo en tu home de
                             usuario si no tienes permisos de superusuario).</p>
-                    </blockquote>
                 </li>
             </ol>
             <h3 id="reto-b-auditoria-de-cambios-de-configuracion-triggers">Reto B:
@@ -121,26 +115,20 @@
                 tabla configuracion_tienda.</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p>Crea una tabla de logs denominada auditoria_config. Debe registrar:
                             id_log (PK), usuario_sistema, parametro_afectado, valor_antiguo,
                             valor_nuevo, fecha_operacion.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Diseña un disparador tg_auditar_config que actúe de manera automática
                             guardando los detalles anteriores cada vez que se realice un cambio de
                             valores (UPDATE).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Diseña un disparador tg_prohibir_delete_config que <strong>impida
                                 físicamente</strong> que cualquier usuario (incluido root) elimine
                             registros de esta tabla de configuración de tienda, lanzando una señal
                             de error específica (SIGNAL SQLSTATE).</p>
-                    </blockquote>
                 </li>
             </ol>
             <h3 id="reto-c-diagnostico-automatizado-de-tablas-metadatos-e-information-schema">Reto
@@ -152,28 +140,20 @@
                 con excesivo espacio asignado sin usar.</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p>Crea un procedimiento almacenado sp_diagnostico_tablas que realice
                             una consulta analítica contra information_schema.tables y
                             information_schema.table_constraints.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>El procedimiento debe devolver un informe listando todas las tablas
                             del esquema actual (almeria_emarket) que:</p>
-                    </blockquote>
                     <ul>
                         <li>
-                            <blockquote>
                                 <p>No tengan clave primaria (PRIMARY KEY) definida.</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>O tengan un índice de fragmentación (espacio libre o data_free)
                                     superior al 10% del total de la tabla.</p>
-                            </blockquote>
                         </li>
                     </ul>
                 </li>
@@ -186,34 +166,26 @@
                 un año de antigüedad.</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p>Crea una tabla idéntica en estructura llamada historico_pedidos.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Diseña un procedimiento almacenado sp_archivar_pedidos_antiguos que
                             use un <strong>CURSOR</strong> para recorrer los pedidos anteriores a
                             una fecha dada.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>El cursor debe leer fila por fila, insertar cada pedido antiguo en
                             historico_pedidos y, una vez confirmado el volcado, eliminarlo de la
                             tabla original pedidos garantizando la integridad de los datos.</p>
-                    </blockquote>
                 </li>
             </ol>
             <h2 id="a4-calificacion">4. CALIFICACIÓN <a class="headerlink" href="#a4-calificacion"
                     title="Enlace permanente">¶</a></h2>
-            <blockquote>
                 <p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
                     través de la plataforma, la entrega del documento en formatos editables
                     no permitidos (como .docx), capturas con identificación del alumno/a o
                     la omisión de los enlaces de las fuentes documentales utilizadas
                     penalizará gravemente la nota o invalidará la práctica.</p>
-            </blockquote>
             <h2 id="a13"> <a class="headerlink" href="#a13" title="Enlace permanente">¶</a></h2>
             <p>| <strong>Criterio</strong> | <strong>Excelente (9-10)</strong> |
                 <strong>Aceptable (5-8)</strong> | <strong>Insuficiente (0-4)</strong> |

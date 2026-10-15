@@ -87,18 +87,14 @@ explicativo inferior sobre la acción de ingeniería realizada.</code></pre>
 </div>
         </li>
         <li>
-          <blockquote>
             <p><strong>[ ] Archivos de Código:</strong> No se requiere la entrega de
               archivos fuente para esta tarea.</p>
-          </blockquote>
         </li>
         <li>
-          <blockquote>
             <p><strong>[X] Enlace/Texto:</strong> El portal debe permanecer
               operativo y accesible públicamente a través de la red del centro para su
               auditoría directa por parte del profesor en la URL:
               http://&lt;TU_IP_FLOTANTE&gt;/iescelia.</p>
-          </blockquote>
         </li>
       </ul>
       <h1 id="a8"> <a class="headerlink" href="#a8" title="Enlace permanente">¶</a></h1>
@@ -122,45 +118,33 @@ explicativo inferior sobre la acción de ingeniería realizada.</code></pre>
         infraestructura:</p>
       <ol type="1">
         <li>
-          <blockquote>
             <p><strong>Instancia Cloud Operativa:</strong> Tener acceso SSH activo a
               su máquina virtual Linux desplegada sobre la plataforma OpenStack del
               centro educativo.</p>
-          </blockquote>
         </li>
         <li>
-          <blockquote>
             <p><strong>Direccionamiento e IP Flotante:</strong> Disponer de una
               dirección IP Flotante pública asociada a la instancia y comprobar que
               los grupos de seguridad del firewall de OpenStack permiten el tráfico
               entrante en el puerto <strong>TCP 80 (HTTP)</strong>.</p>
-          </blockquote>
         </li>
         <li>
-          <blockquote>
             <p><strong>Servicio LAMP Activo:</strong> Asegurarse de que el servidor
               web Apache, el motor de bases de datos MySQL/MariaDB y el intérprete de
               PHP (Stack LAMP) se encuentran en ejecución</p>
-          </blockquote>
         </li>
       </ol>
       <p>Debemos preparar el entorno necesario para poder instalar el CMS que
         vamos a utilizar. Necesitamos:</p>
       <ul>
         <li>
-          <blockquote>
             <p>Servidor Web (Apache)</p>
-          </blockquote>
         </li>
         <li>
-          <blockquote>
             <p>Sistema Gestor de Base de datos (MySQL o MariaDB)</p>
-          </blockquote>
         </li>
         <li>
-          <blockquote>
             <p>PHP</p>
-          </blockquote>
         </li>
       </ul>
       <p>Para configurar el hosting en Linux será necesario instalar y
@@ -248,9 +232,7 @@ QUIT;</code></pre>
         nombre del usuario (wordpress) y la contraseña (la que habéis indicado).
         Hacer una captura con las modificaciones.</p>
       <p>Desde otra ventana, accedemos con el navegador a la URL</p>
-      <blockquote>
         <p>https://api.wordpress.org/secret-key/1.1/salt/</p>
-      </blockquote>
       <p>Esto nos generará una clave única. Copiar lo que ha salido en el
         navegador, algo como esto</p>
       <p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/media/image8.png" alt="imagen" class="u-af96842183"></p>
@@ -261,21 +243,17 @@ QUIT;</code></pre>
         servidor web:</p>
       <ol type="1">
         <li>
-          <blockquote>
             <p>Si quieres integrar WordPress en la raíz de tu dominio (ej.
               http://example.com/) mueve o sube los contenidos de la carpeta donde
               WordPress fue extraído a la carpeta raíz de tu servidor web.</p>
-          </blockquote>
         </li>
         <li>
-          <blockquote>
             <p>Si quieres que la instalación tenga su propia subcarpeta en tu sitio
               web (ej. http://example.com/blog/) renombra la carpeta wordpress al
               nombre que desees y muévelo o súbelo a tu servidor web. Como ejemplo, si
               quieres tu instalación en la carpeta llamada "blog" deberás renombrar la
               carpeta "wordpress" a "blog" y subirla a la carpeta raíz de tu servidor
               web. Nosotros vamos a hacer esto, pero con la carpeta “iescelia”.</p>
-          </blockquote>
         </li>
       </ol>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -302,53 +280,39 @@ QUIT;</code></pre>
           href="#fase-5-asistente-grafico-de-instalacion-y-validacion-inicial" title="Enlace permanente">¶</a></h4>
       <ol type="1">
         <li>
-          <blockquote>
             <p>Abre tu navegador web e ingresa a la URL del proyecto:
               http://&lt;TU_IP_FLOTANTE&gt;/iescelia.</p>
-          </blockquote>
         </li>
         <li>
-          <blockquote>
             <p>Selecciona el idioma <strong>Español</strong> y completa los campos
               de enlace a la base de datos con las credenciales exactas parametrizadas
               en la Fase 3 (<em>Nombre de BD: wp_iescelia, Usuario: user_iescelia,
                 Servidor: localhost</em>).</p>
-          </blockquote>
         </li>
         <li>
-          <blockquote>
             <p>Configura los metadatos de acceso de la administración de WordPress
               (<em>Título del sitio, Nombre de usuario administrador y
                 correo</em>).</p>
-          </blockquote>
         </li>
         <li>
-          <blockquote>
             <p><em>Nota de seguridad:</em> Durante el paso de asignación de
               contraseña del administrador en la interfaz, <strong>no la
                 ocultes</strong> para la captura, permitiendo verificar los requisitos
               mínimos de complejidad.</p>
-          </blockquote>
         </li>
         <li>
-          <blockquote>
             <p>Haz clic en <strong>Instalar WordPress</strong> y finaliza el
               proceso.</p>
-          </blockquote>
         </li>
         <li>
-          <blockquote>
             <p><em>Captura obligatoria 4:</em> Formulario web de WordPress con los
               datos de configuración legibles antes de pulsar el botón de
               instalación.</p>
-          </blockquote>
         </li>
         <li>
-          <blockquote>
             <p><em>Captura obligatoria 5:</em> Escritorio de administración
               centralizado (/wp-admin) de WordPress activo y pantalla de vista pública
               del sitio web.</p>
-          </blockquote>
         </li>
       </ol>
       <p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/media/image7.png" alt="imagen" class="u-afffa3c514"></p>

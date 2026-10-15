@@ -84,7 +84,6 @@
                         href="#metodo-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
                 <ul>
                     <li>
-                        <blockquote>
                             <p><strong>[x] Documento de Memoria:</strong> Documento
                                 <strong>PDF</strong> (Tarea5_1_Nombre_Alumno.pdf) con la explicación
                                 técnica de cada apartado, justificación de decisiones y capturas de
@@ -94,14 +93,11 @@
                                 formato debe ser limpio, con texto justificado, enunciados en negrita y
                                 comentarios descriptivos debajo de cada imagen.
                             </p>
-                        </blockquote>
                     </li>
                     <li>
-                        <blockquote>
                             <p><strong>[x] Código SQL:</strong> Fichero de comandos planos
                                 solucion_actividades.sql debidamente comentado indicando a qué ejercicio
                                 pertenece cada sentencia.</p>
-                        </blockquote>
                     </li>
                 </ul>
                 <h3 id="a1-descripcion-general-de-la-tarea-objetivos">1. DESCRIPCIÓN
@@ -121,15 +117,11 @@
                         href="#a2-consideraciones-previas" title="Enlace permanente">¶</a></h3>
                 <ul>
                     <li>
-                        <blockquote>
                             <p><strong>Entorno de Trabajo:</strong> Máquina virtual (instancia en
                                 nube OpenStack o local) con <strong>Ubuntu 24.04 LTS</strong>.</p>
-                        </blockquote>
                     </li>
                     <li>
-                        <blockquote>
                             <p><strong>Software:</strong> MySQL Server 8.0+ instalado y activo.</p>
-                        </blockquote>
                     </li>
                     <li>
                             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
@@ -141,12 +133,10 @@ como root al servidor de base de datos MySQL.</code></pre>
 </div>
                     </li>
                     <li>
-                        <blockquote>
                             <p><strong>Variable secure_file_priv:</strong> Antes de comenzar,
                                 comprueba en qué directorio del sistema de archivos Linux tiene tu MySQL
                                 permitido realizar exportaciones directas de archivos
                                 (/var/lib/mysql-files/ por defecto).</p>
-                        </blockquote>
                     </li>
                 </ul>
                 <h3 id="a3-actividades-a-realizar-ejercicios-individuales">3. ACTIVIDADES A
@@ -159,30 +149,22 @@ como root al servidor de base de datos MySQL.</code></pre>
                         title="Enlace permanente">¶</a></h4>
                 <ul>
                     <li>
-                        <blockquote>
                             <p>Crea la base de datos liga.</p>
-                        </blockquote>
                     </li>
                     <li>
-                        <blockquote>
                             <p>Añade una tabla de tipo MyISAM llamada tabla_myisam con campos
                                 básicos. Recuerda declarar de forma explícita ENGINE=MyISAM.</p>
-                        </blockquote>
                     </li>
                     <li>
-                        <blockquote>
                             <p>Añade otra tabla estándar de tipo InnoDB llamada tabla_innodb (por
                                 defecto).</p>
-                        </blockquote>
                     </li>
                     <li>
-                        <blockquote>
                             <p>Accede al shell del sistema operativo Linux host y localiza la ruta
                                 física donde MySQL guarda los datos en disco (/var/lib/mysql/).
                                 Documenta la diferencia estructural entre el directorio de la base de
                                 datos liga y detalla qué archivos físicos corresponden a las dos tablas
                                 creadas.</p>
-                        </blockquote>
                     </li>
                 </ul>
                 <h4 id="ejercicio-2-copias-de-seguridad-fisicas-en-frio">Ejercicio 2:
@@ -190,19 +172,15 @@ como root al servidor de base de datos MySQL.</code></pre>
                         href="#ejercicio-2-copias-de-seguridad-fisicas-en-frio" title="Enlace permanente">¶</a></h4>
                 <ul>
                     <li>
-                        <blockquote>
                             <p>Diseña un protocolo secuencial en la consola de comandos de Linux
                                 para realizar un respaldo completo físico y en frío de la base de datos
                                 liga.</p>
-                        </blockquote>
                     </li>
                     <li>
-                        <blockquote>
                             <p>Simula una catástrofe de pérdida de datos en la que borres los
                                 archivos físicos de la base de datos (con el SGBD apagado) y procede a
                                 su restauración binaria en disco. Comprueba y justifica que el servicio
                                 arranca de forma íntegra.</p>
-                        </blockquote>
                     </li>
                 </ul>
                 <h4 id="ejercicio-3-exportacionimportacion-de-datos-planos-select-into-outfile-load-data">Ejercicio
@@ -221,18 +199,14 @@ dentro del directorio permitido por el sistema.</code></pre>
 </div>
                     </li>
                     <li>
-                        <blockquote>
                             <p>Abre el archivo generado en una aplicación de hoja de cálculo (Excel
                                 o LibreOffice Calc) e incluye una captura mostrando el formato correcto
                                 de las columnas.</p>
-                        </blockquote>
                     </li>
                     <li>
-                        <blockquote>
                             <p>Crea una tabla vacía con la misma estructura y procede a poblarla con
                                 el archivo plano generado utilizando exclusivamente la sentencia SQL
                                 LOAD DATA.</p>
-                        </blockquote>
                     </li>
                 </ul>
                 <h4 id="ejercicio-4-uso-avanzado-de-la-consola-con-mysqldump">Ejercicio
@@ -241,60 +215,42 @@ dentro del directorio permitido por el sistema.</code></pre>
                 </h4>
                 <ul>
                     <li>
-                        <blockquote>
                             <p>Realiza las siguientes copias de seguridad a través de la consola del
                                 sistema operativo utilizando la herramienta mysqldump de MySQL
                                 (justifica los comandos utilizados):</p>
-                        </blockquote>
                         <ol type="1">
                             <li>
-                                <blockquote>
                                     <p>Exporta la tabla partidos de la base de datos liga (estructura y
                                         datos).</p>
-                                </blockquote>
                             </li>
                             <li>
-                                <blockquote>
                                     <p>Exporta la estructura y datos de la tabla partidos eliminando los
                                         comentarios del archivo para reducir su peso (parámetro --compact).</p>
-                                </blockquote>
                             </li>
                             <li>
-                                <blockquote>
                                     <p>Exporta <strong>únicamente la estructura (DDL)</strong> de la tabla
                                         partidos omitiendo sus datos.</p>
-                                </blockquote>
                             </li>
                             <li>
-                                <blockquote>
                                     <p>Exporta <strong>únicamente los datos (DML en formato INSERT)</strong>
                                         omitiendo la creación de tablas.</p>
-                                </blockquote>
                             </li>
                             <li>
-                                <blockquote>
                                     <p>Exporta toda la base de datos liga en un archivo estructurado en
                                         formato <strong>XML</strong>.</p>
-                                </blockquote>
                             </li>
                             <li>
-                                <blockquote>
                                     <p>Exporta todas las tablas de liga a archivos separados en formato
                                         <strong>CSV</strong>.
                                     </p>
-                                </blockquote>
                             </li>
                             <li>
-                                <blockquote>
                                     <p>Exporta la base de datos liga completa con sentencias de base de
                                         datos incluidas.</p>
-                                </blockquote>
                             </li>
                             <li>
-                                <blockquote>
                                     <p>Exporta la totalidad de bases de datos del servidor MySQL
                                         (--all-databases).</p>
-                                </blockquote>
                             </li>
                         </ol>
                     </li>
@@ -305,22 +261,16 @@ dentro del directorio permitido por el sistema.</code></pre>
                         title="Enlace permanente">¶</a></h4>
                 <ul>
                     <li>
-                        <blockquote>
                             <p>Ejecuta y documenta la restauración del respaldo completo generado de
                                 la base de datos utilizando dos vías:</p>
-                        </blockquote>
                         <ul>
                             <li>
-                                <blockquote>
                                     <p><strong>Opción A:</strong> A través de la redirección de entrada de
                                         comandos del sistema operativo (&lt;).</p>
-                                </blockquote>
                             </li>
                             <li>
-                                <blockquote>
                                     <p><strong>Opción B:</strong> Autenticado en el cliente de MySQL con la
                                         orden interactiva SOURCE o su equivalente \..</p>
-                                </blockquote>
                             </li>
                         </ul>
                     </li>
@@ -459,35 +409,25 @@ dentro del directorio permitido por el sistema.</code></pre>
                 <p>Ejecutando en el host: sudo ls -lh /var/lib/mysql/liga/</p>
                 <ul>
                     <li>
-                        <blockquote>
                             <p><strong>MyISAM (tabla_myisam):</strong> Veremos los archivos:</p>
-                        </blockquote>
                         <ul>
                             <li>
-                                <blockquote>
                                     <p>tabla_myisam.MYD (Almacena de forma plana los datos de los
                                         registros).</p>
-                                </blockquote>
                             </li>
                             <li>
-                                <blockquote>
                                     <p>tabla_myisam.MYI (Almacena los índices estructurados).</p>
-                                </blockquote>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <blockquote>
                             <p><strong>InnoDB (tabla_innodb):</strong> Veremos únicamente el
                                 archivo:</p>
-                        </blockquote>
                         <ul>
                             <li>
-                                <blockquote>
                                     <p>tabla_innodb.ibd (Almacena conjuntamente en el mismo archivo los
                                         datos de filas e índices, aislado gracias a
                                         innodb_file_per_table=ON).</p>
-                                </blockquote>
                             </li>
                         </ul>
                     </li>

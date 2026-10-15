@@ -87,21 +87,15 @@
                     href="#fase-1-preparacion-entorno" title="Enlace permanente">¶</a></h4>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p>Disponer de <strong>Docker y Docker Compose</strong>.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Utilizar el archivo docker-compose.yml y los scripts de
                             inicialización de la carpeta init/.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>El escenario consta de: mysql-shard-1 (puerto 3310), mysql-shard-2
                             (puerto 3308) y proxysql (puertos 6032/6033).</p>
-                    </blockquote>
                 </li>
             </ol>
             <h4 id="fase-2-desarrollo">Fase 2: Desarrollo <a class="headerlink" href="#fase-2-desarrollo"
@@ -110,30 +104,22 @@
                     puntos)</strong></p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>Levantar el escenario: docker-compose up -d.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Verificar el estado con docker ps y comprobar conectividad a los
                             puertos expuestos.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><strong>Ejercicio 2: Verificación de la Fragmentación Manual (2.5
                     puntos)</strong></p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>Consultar la tabla users en ambos shards directamente.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Analizar el criterio de distribución (IDs pares/impares o
                             rangos).</p>
-                    </blockquote>
                 </li>
                 <li>
                     <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -148,10 +134,8 @@ contenedores.</code></pre>
                 transparente al cliente. Pasos obligatorios:</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p><strong>Acceso a Administración (Puerto 6032):</strong> docker exec
                             -it proxysql mysql -u admin -padmin -h 127.0.0.1 -P 6032</p>
-                    </blockquote>
                 </li>
                 <li>
                     <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -188,36 +172,28 @@ LOAD MYSQL QUERY RULES TO RUNTIME; SAVE MYSQL QUERY RULES TO DISK;</code></pre>
             <p><strong>Ejercicio 4: Pruebas de Transparencia (2 puntos)</strong></p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>Realizar consultas al puerto <strong>6033</strong> buscando un ID de
                             cada rango.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Verificar en stats.stats_mysql_query_digest que las consultas han ido
                             a hostgroups distintos.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><strong>Ejercicio 5: Gestión de Fallos (1 punto)</strong></p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>Detener un shard y documentar el comportamiento del sistema
                             distribuido ante la pérdida de un fragmento.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h2 id="a3-calificacion">3. CALIFICACIÓN <a class="headerlink" href="#a3-calificacion"
                     title="Enlace permanente">¶</a></h2>
-            <blockquote>
                 <p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
                     través de la plataforma, la entrega del documento en formatos editables
                     no permitidos (como .docx), capturas con identificación del alumno/a o
                     la omisión de los enlaces de las fuentes documentales utilizadas
                     penalizará gravemente la nota o invalidará la práctica.</p>
-            </blockquote>
             <h3 id="a12"> <a class="headerlink" href="#a12" title="Enlace permanente">¶</a></h3>
             <div class="table-wrapper">
                 <div class="table-wrapper">

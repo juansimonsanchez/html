@@ -70,23 +70,18 @@
             <p><a href="#a31-conceptos"><u>1 ALMACENAMIENTO DE LA
                         INFORMACIÓN</u></a></p>
             <p><a href="#a32-arquitectura-de-sistemas-de-bases-de-datos"><u>2 SISTEMAS DE ARCHIVOS</u></a></p>
-            <blockquote>
                 <p><a href="#a32-modelos-de-datos"><u>2.1 ORGANIZACIÓN
                             PRIMARIA DE ARCHIVOS</u></a></p>
                 <p><a href="#a33-tipos-de-modelos"><u>2.2 MÉTODOS DE ACCESO</u></a></p>
-            </blockquote>
             <p><a href="#a4-sistemas-gestores-de-bases-de-datos"><u>3 SISTEMAS DE BASES DE
                         DATOS</u></a></p>
-            <blockquote>
                 <p><a href="#a41-definicion-y-objetivos"><u>3.1 Conceptos</u></a></p>
                 <p><a href="#a42-funciones-del-sistema-gestor-de-base-de-datos"><u>3.2
                             ARQUITECTURA DE SISTEMAS DE BASES DE DATOS</u></a></p>
                 <p><a href="#a43-componentes-de-un-sgbd"><u>3.2 MODELOS DE DATOS</u></a></p>
                 <p><a href="#a22"><u>3.3 TIPOS DE MODELOS</u></a></p>
-            </blockquote>
             <p><a href="#a44-lenguajes-de-datos"><u>4 SISTEMAS GESTORES
                         DE BASES DE DATOS</u></a></p>
-            <blockquote>
                 <p><a href="#a45-usuarios-de-los-sgbd"><u>4.1 DEFINICIÓN Y
                             OBJETIVOS</u></a></p>
                 <p><a href="#a46-tipos-de-sgbd"><u>4.2
@@ -99,13 +94,10 @@
                 <p><a href="#a46-tipos-de-sgbd"><u>4.6 TIPOS DE SGBD</u></a></p>
                 <p><a href="#a47-sistemas-gestores-de-bd-comerciales-y-libres"><u>4.7
                             SISTEMAS GESTORES DE BD COMERCIALES Y LIBRES</u></a></p>
-            </blockquote>
             <p><a href="#a5-bd-centralizadas-y-distribuidas"><u>5 BD CENTRALIZADAS Y
                         DISTRIBUIDAS</u></a></p>
-            <blockquote>
                 <p><a href="#a51-tecnicas-de-fragmentacion-replicacion-y-distribucion"><u>5.1
                             TÉCNICAS DE FRAGMENTACIÓN, REPLICACIÓN Y DISTRIBUCIÓN</u></a></p>
-            </blockquote>
             <p><strong>Importante</strong>: los apartados marcados con 📖, son de
                 lectura obligatoria aunque no se expliquen durante las clases
                 teóricas.</p>
@@ -285,22 +277,16 @@
             <p>Existen varios tipos según la organización física:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Índices primarios:</strong> sobre el campo clave de
                             ordenación en ficheros ordenados físicamente.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Índice de agrupamiento:</strong> usado cuando el campo de
                             ordenación permite valores repetidos (no es clave).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Índice secundario:</strong> cuando el campo de indización es
                             distinto al de ordenación.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><strong>Índices primarios</strong></p>
@@ -352,15 +338,11 @@
                 otros (hijos), los cuales a su vez tienen apuntadores a otros nodos y,
                 así sucesivamente, con tantos nodos como entradas de índice
                 requeridas.</p>
-            <blockquote>
                 <p><img src="media_GBD_UT1_Teoria_Almacenamiento/media/image24.png" alt="imagen" class="u-a6f1194a80"></p>
-            </blockquote>
             <p>Los nodos hijos no pueden apuntar a nodos padre, de modo que se forma
                 una estructura con un nodo raíz sin padre cuyos nodos hijos son padres
                 de otros hasta llegar a los nodos hoja, o nodos sin hijos.</p>
-            <blockquote>
                 <p><img src="media_GBD_UT1_Teoria_Almacenamiento/media/image6.png" alt="imagen" class="u-8f17f22033"></p>
-            </blockquote>
             <p>Estos nodos almacenan apuntadores a nodos hijo, apuntadores a
                 registros de datos y valores de campos de los registros de datos y la
                 estructura que forman hace muy eficiente la búsqueda de datos.</p>
@@ -374,37 +356,27 @@
             <p><strong>ACTIVIDADES 1.1</strong></p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p>Investigue y explique con sus palabras en qué consiste el método de
                             búsqueda binaria en ficheros.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Realice un ejemplo de búsqueda secuencial y binaria en clase
                             suponiendo que tiene que acceder a un valor dentro de un conjunto
                             ordenado de valores. Compute y compare el número de lecturas en ambos
                             procesos para varios valores de búsqueda.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Investiga las ventajas e inconvenientes respecto a la actualización
                             de datos en ficheros con organización tipo hash.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Investigue la diferencia entre una estructura de índice tipo árbol B
                             y B+.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Buscar diez extensiones que identifiquen formatos de ficheros
                             binarios. Incluir una pequeña explicación del tipo de fichero
                             (aplicación que los utiliza, utilidad,...).</p>
-                    </blockquote>
                 </li>
             </ol>
             <h1 id="a3-sistemas-de-bases-de-datos">3 SISTEMAS DE BASES DE DATOS <a class="headerlink"
@@ -432,26 +404,21 @@
                 sistema de almacenamiento de información fueron los siguientes:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Separación y aislamiento de los datos:</strong> Cuando los
                             datos se separan en distintos ficheros es más complicado acceder a
                             ellos, ya que el programador de aplicaciones debe sincronizar el
                             procesamiento de los distintos ficheros implicados para asegurar que se
                             extraen los datos correctos.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Duplicación de datos.</strong> La redundancia de datos
                             existente en los sistemas de ficheros hace que se desperdicie espacio de
                             almacenamiento y, lo que es más importante, puede llevar a que se pierda
                             la consistencia de los datos. Se produce una inconsistencia cuando
                             copias de los mismos datos no coinciden.</p>
-                    </blockquote>
                 </li>
 
                 <li>
-                    <blockquote>
                         <p><strong>
 
                                 Dependencia de datos.</strong> Ya que la estructura física de
@@ -463,21 +430,17 @@
                             errores. A este problema, tan característico de los sistemas de
                             ficheros, se le denomina también falta de independencia de datos
                             lógica-física.</p>
-                    </blockquote>
                 </li>
 
 
                 <li>
-                    <blockquote>
                         <p><strong>Formatos de ficheros incompatibles.</strong> Ya que la
                             estructura de los ficheros se define en los programas de aplicación, es
                             completamente dependiente del lenguaje de programación. La
                             incompatibilidad entre ficheros generados por distintos lenguajes hace
                             que los ficheros sean difíciles de procesar de modo conjunto.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Consultas fijas y proliferación de programas de
                                 aplicación.</strong> Desde el punto de vista de los usuarios finales,
                             los sistemas de ficheros fueron un gran avance comparados a los sistemas
@@ -489,28 +452,21 @@
                             informes, siendo imposible realizar otro tipo de consultas que no se
                             hubieran tenido en cuenta a la hora de escribir los programas de
                             aplicación.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Control de concurrencia.</strong> El acceso de varios
                             clientes al mismo fichero genera inconsistencias, ya que un cliente
                             puede consultar un fichero mientras otro lo está modificando.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Autorizaciones.</strong> Los errores en los permisos de
                             ficheros pueden hacer que un mismo cliente pueda modificar un dato en un
                             fichero y no en otro en el que esté repetido.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Catálogo.</strong> Resulta complicado saber dónde están los
                             distintos datos. No existe un esquema general que muestre la
                             organización de la información.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p>Para trabajar de un modo más efectivo, surgieron las bases de datos
@@ -541,20 +497,15 @@
                 una base de datos, se definen los siguientes conceptos:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Dato</strong>: El dato es un trozo de información concreta
                             sobre algún concepto o suceso. Por ejemplo, 1996 es un número que
                             representa el año de nacimiento de una persona. Los datos se
                             caracterizan por pertenecer a un tipo.</p>
-                    </blockquote>
                 </li>
             </ul>
-            <blockquote>
                 <p><img src="media_GBD_UT1_Teoria_Almacenamiento/media/image26.png" alt="imagen" class="u-6222ccd465"></p>
-            </blockquote>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Tipo de Dato</strong>: El tipo de dato indica la naturaleza
                             del campo. Así, se puede tener datos numéricos, que son aquellos con los
                             que se pueden realizar cálculos aritméticos (sumas, restas,
@@ -563,42 +514,32 @@
                             alfanuméricos y numéricos se pueden combinar para obtener tipos de datos
                             más elaborados. Por ejemplo, una Fecha contiene tres datos numéricos, el
                             día, el mes y el año.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Campo</strong>: Un campo es un identificador para toda una
                             familia de datos. Cada campo pertenece a un tipo de datos. Por ejemplo,
                             el campo "FechaNacimiento" representa las fechas de nacimiento de las
                             personas que hay en la tabla. Este campo pertenece al tipo de dato
                             Fecha. Al campo también se le llama columna.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Registro</strong>: Es una recolección de datos referentes a
                             un mismo concepto o suceso. Por ejemplo, los datos de una persona pueden
                             ser su NIF, año de nacimiento, su nombre, su dirección, etc. A los
                             registros también se les llama tuplas o filas.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Campo Clave</strong>: Es un campo especial que identifica de
                             forma única a cada registro. Así, el NIF es único para cada persona, por
                             tanto es campo clave.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Tabla</strong>: Es un conjunto de registros bajo un mismo
                             nombre que representa el conjunto de todos ellos. Por ejemplo, todos los
                             clientes de una base de datos se almacenan en una tabla cuyo nombre es
                             Clientes.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Consulta</strong>: Es una instrucción para hacer peticiones a
                             una base de datos. Puede ser una búsqueda simple de un registro
                             específico o una solicitud para seleccionar todos los registros que
@@ -608,47 +549,36 @@
                             de información, hay consultas (peticiones) de eliminación o inserción de
                             registros, de actualización de registros, cuya ejecución altera los
                             valores de los mismos.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Índice</strong>: Es una estructura que almacena los campos
                             clave de una tabla, organizándose para hacer más fácil encontrar y
                             ordenar los registros de esa tabla. El índice tiene un funcionamiento
                             similar al índice de un libro, guardando parejas de elementos: el
                             elemento que se desea indexar y su posición en la base de datos.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Vista</strong>: Es una transformación que se hace a una o más
                             tablas para obtener una nueva tabla. Esta nueva tabla es una tabla
                             virtual, es decir, no está almacenada en los dispositivos de
                             almacenamiento del ordenador, aunque sí se almacena su definición.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Informe</strong>: Es un listado ordenado de los campos y
                             registros seleccionados en un formato fácil de leer. Generalmente se
                             usan como peticiones expresas de un tipo de información por parte de un
                             usuario. Por ejemplo, un informe de las facturas impagadas del mes de
                             enero ordenado por nombre de cliente.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Guiones: o scripts.</strong> Son un conjunto de
                             instrucciones, que ejecutadas de forma ordenada, realizan operaciones
                             avanzadas de mantenimiento de los datos almacenados en la base de
                             datos.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Procedimientos</strong>: Son un tipo especial de script que
                             está almacenado en la base de datos y que forma parte de su esquema.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h2 id="a32-arquitectura-de-sistemas-de-bases-de-datos">3.2 ARQUITECTURA DE
@@ -662,31 +592,24 @@
                 tres formas distintas de ver o representar una misma base de datos.</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Nivel interno.</strong> Se describe la estructura física de
                             la base de datos mediante un esquema interno. Este esquema describe
                             todos los detalles para el almacenamiento de la base de datos, así como
                             los métodos de acceso. Se habla de ficheros, discos, directorios,
                             etc.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Nivel global o conceptual.</strong> Se describe la estructura
                             de toda la base de datos para una comunidad de usuarios (todos los de
                             una empresa u organización) mediante un esquema conceptual. Este esquema
                             oculta los detalles de las estructuras de almacenamiento y se concentra
                             en describir entidades (tablas), atributos/campos, relaciones entre los
                             datos (tablas) y restricciones.</p>
-                    </blockquote>
                 </li>
             </ul>
-            <blockquote>
                 <p><img src="media_GBD_UT1_Teoria_Almacenamiento/media/image18.png" alt="imagen" class="u-c80c3077e7"></p>
-            </blockquote>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Nivel externo.</strong> Se describen varios esquemas externos
                             o vistas de usuario. Cada esquema externo describe la parte de la base
                             de datos que interesa a un grupo de usuarios determinados y oculta a ese
@@ -696,7 +619,6 @@
                             ejemplo, cuando accedo a la página web de la liga de baloncesto estoy
                             consultando una parte de los datos de sus bases de datos. Son lo que
                             denominamos vistas.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p>Conviene recalcar que los tres niveles no son más que descripciones
@@ -712,17 +634,14 @@
             </p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>La independencia lógica.</strong> Es la capacidad de
                             modificar el esquema conceptual sin tener que alterar los esquemas
                             externos ni los programas de aplicación. Se puede modificar el esquema
                             conceptual para ampliar la base de datos o para reducirla. Si, por
                             ejemplo, se reduce la base de datos eliminando una entidad, los esquemas
                             externos que no se refieran a ella no deberán verse afectados.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>La independencia física.</strong> Es la capacidad de
                             modificar el esquema interno sin tener que alterar el esquema conceptual
                             (o los externos). Por ejemplo, puede ser necesario reorganizar ciertos
@@ -731,7 +650,6 @@
                             física se refiere solo a la separación entre las aplicaciones y las
                             estructuras físicas de almacenamiento, es más fácil de conseguir que la
                             independencia lógica.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h2 id="a32-modelos-de-datos">3.2 MODELOS DE DATOS <a class="headerlink" href="#a32-modelos-de-datos"
@@ -762,19 +680,13 @@
             <p>En este sentido distinguimos tres tipos de modelos:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>Modelos conceptuales.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Modelos lógicos tradicionales.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Modelos lógicos avanzados.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><strong>Modelos conceptuales</strong></p>
@@ -809,32 +721,25 @@
                         tupla.</p>
                 </li>
             </ul>
-            <blockquote>
                 <p><img src="media_GBD_UT1_Teoria_Almacenamiento/media/image25.png" alt="imagen" class="u-3e2ee19713"></p>
                 <p>También sirven para representar el nivel externo (vistas) de una base
                     de datos.</p>
-            </blockquote>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Modelo de red</strong> 📖<strong>.</strong> Éste es un modelo
                             ligeramente distinto del jerárquico; su diferencia fundamental es la
                             modificación del concepto de nodo: se permite que un mismo nodo tenga
                             varios padres (posibilidad no permitida en el modelo jerárquico).</p>
-                    </blockquote>
                 </li>
             </ul>
-            <blockquote>
                 <p><img src="media_GBD_UT1_Teoria_Almacenamiento/media/image21.png" alt="imagen" class="u-ecdea73c41"></p>
                 <p>Fue una gran mejora con respecto al modelo jerárquico, ya que ofrecía
                     una solución eficiente al problema de redundancia de datos; pero, aun
                     así, la dificultad que significa administrar la información en una base
                     de datos de red ha significado que sea un modelo utilizado en su mayoría
                     por programadores más que por usuarios finales.</p>
-            </blockquote>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Modelo jerárquico.</strong> 📖 Éstas son modelos de bases de
                             datos que, como su nombre indica, almacenan su información en una
                             estructura jerárquica. En este modelo los datos se organizan en una
@@ -842,10 +747,8 @@
                             información puede tener varios hijos. El nodo que no tiene padres es
                             llamado raíz, y a los nodos que no tienen hijos se les conoce como nodos
                             hoja.</p>
-                    </blockquote>
                 </li>
             </ul>
-            <blockquote>
                 <p>Las bases de datos jerárquicas son especialmente útiles en el caso de
                     aplicaciones que manejan un gran volumen de información y datos muy
                     compartidos, permitiendo crear estructuras estables y de gran
@@ -855,7 +758,6 @@
                     mismos. La diferencia radica en que están organizados por gráficos de
                     tipo árbol en lugar de gráficos arbitrarios.</p>
                 <p><img src="media_GBD_UT1_Teoria_Almacenamiento/media/image1.png" alt="imagen" class="u-46cfe57e89"></p>
-            </blockquote>
             <p><strong>Modelos lógicos avanzados</strong> 📖</p>
             <p>Son modelos de datos relativamente recientes y cada vez más
                 utilizados, sobre todo en aplicaciones específicas que manejan nuevos y
@@ -914,40 +816,28 @@
             <p>Los objetivos de un SGBD se pueden resumir en los siguientes:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>Asegurar los tres niveles de abstracción: físico, lógico y
                             externo.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Permitir la independencia física y lógica de los datos.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Garantizar la consistencia de los datos, ya que puede haber datos
                             duplicados o derivados que deben mantener sus valores de forma
                             coherente.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Ofrecer seguridad de acceso a los datos por parte de usuarios y
                             grupos.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Gestión de transacciones de forma que se garantice la ejecución de un
                             conjunto de operaciones críticas como una sola operación.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Permitir la concurrencia de usuarios sobre los mismos datos mediante
                             bloqueos que mantienen la integridad de los mismos.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h2 id="a42-funciones-del-sistema-gestor-de-base-de-datos">4.2 FUNCIONES DEL
@@ -1011,93 +901,61 @@
             <p><strong>Objetos</strong></p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>Tablas base y vistas (tablas derivadas).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Consultas.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Dominios y tipos definidos de datos.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Restricciones de tabla y dominio y aserciones.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Funciones y procedimientos almacenados.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Disparadores o triggers.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><strong>Herramientas para...</strong></p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>Seguridad: de modo que los usuarios no autorizados no puedan acceder
                             a la base de datos.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Integridad: que mantiene la integridad y la consistencia de los
                             datos.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>El control de concurrencia: que permite el acceso compartido a la
                             base de datos.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>El control de recuperación: que restablece la base de datos después
                             de que se produzca un fallo del hardware o del software.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Gestión del diccionario de datos (o catálogo): accesible por el
                             usuario que contiene la descripción de los datos de la base de
                             datos.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Programación de aplicaciones.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Importación/exportación de datos (migraciones).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Distribución de datos.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Replicación (arquitectura maestro-esclavo).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Sincronización (de equipos replicados).</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><strong>Optimizador de consultas</strong></p>
@@ -1130,32 +988,26 @@
                 mismos. Normalmente se distinguen tres tipos según su funcionalidad.</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Lenguaje de definición de datos (DDL, Data Definition
                                 Language).</strong> Sencillo lenguaje artificial para definir y
                             describir los objetos de la base de datos, su estructura, relaciones y
                             restricciones. Permite, entre otras cosas, la creación, eliminación y
                             modificación de las estructuras de la base de datos, es decir, de la
                             definición de las tablas, así como de índices y restricciones.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Lenguaje de control de datos (DCL, Data Control
                                 Language).</strong> Encargado del control y seguridad de los datos
                             (privilegios y modos de acceso, etc.). Este lenguaje permite especificar
                             los permisos sobre los objetos de las bases de datos (tablas, vistas,
                             procedimientos, etc.) así como la creación y eliminación de usuarios y
                             cuentas.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Lenguaje de manipulación de datos (DML, Data Manipulation
                                 Language)</strong> Es el lenguaje encargado de la manipulación del
                             contenido de las bases de datos. Permite la inserción, actualización,
                             eliminación y consulta de datos en las tablas de las bases de datos.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p>Para todos estos lenguajes se usa principalmente el lenguaje SQL
@@ -1209,113 +1061,79 @@
             <p>Modelo lógico en el que se basan</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>Jerárquico.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>En red.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Relacional.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Objeto-relacional.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Orientado a objetos.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p>Número de usuarios</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>Monousuario: solo permiten un usuario.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Multiusuario: permiten la conexión de varios usuarios.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p>Número de sitios</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>Centralizados: en un solo servidor o equipo.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Distribuidos: en varios equipos que pueden ser homogéneos y
                             heterogéneos.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p>Ámbito de aplicación</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>Propósito General: orientados a toda clase de aplicaciones.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Propósito Específico: centradas en un tipo específico de
                             aplicaciones.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p>Tipos de datos</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>Sistemas relacionales estándar: manejan tipos básicos (int, char,
                             etc.).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>XML: para el caso de bases de datos que trabajan con documentos
                             xml.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Objeto-relacionales: para bases relacionales que incorporan tipos
                             complejos de datos.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>De objetos: para bases de datos que soportan tipos de objeto con
                             datos y métodos asociados.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p>Lenguajes soportados</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>SQL estándar.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>NoSQL o nuevo lenguaje de consulta: menos estructurado y orientado a
                             bases documentales o de tipo clave-valor. Es muy útil para manejar
                             consultas de grandes cantidades de datos distribuidos en clusters de
                             servidores.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p>📖 Dentro de todos ellos los que con gran diferencia se han impuesto
@@ -1425,68 +1243,48 @@
             <p><strong>ACTIVIDADES 1.2</strong></p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p>¿Qué se entiende por diseño físico de una base de datos? ¿Qué
                             usuarios son los responsables del mismo?</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Averigüe en qué consiste y para qué sirve la minería de datos.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>¿Qué lenguaje específico usa SQL Server para implementar el lenguaje
                             SQL?</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Busque al menos 2 sistemas gestores libres (Open Source) y 2
                             comerciales e investigue sus ventajas e inconvenientes.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Haga una investigación sobre las diferencias fundamentales entre los
                             SGBD orientados a modelos relacionales de datos y los basados en NoSQL,
                             como CouchDB, Redis o Cassandra.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Buscar los cinco SGBD más utilizados (unos datos que estén
                             actualizados). Incluir sus características principales.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Crea una tabla como las que aparecen en este documento(de alumnos,
                             clientes, coches, equipos de fútbol, cantantes,...). Debe de tener 4 o 5
                             registros (filas) y 4 o 5 campos (columnas) como mínimo. Indicar cual es
                             la clave, nombre de los campos, tipos de datos (entero, decimal, texto,
                             fecha, hora, booleano, otro).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Busca en Internet las leyes de Codd para el funcionamiento de
                             sistemas gestores de bases de datos relacionales</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Indica las funciones que proporcionan los SGBD actuales.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Con los apuntes proporcionados buscar los siguientes conceptos y
                             completar con la definición correspondiente: Fichero, Base de datos,
                             Sistema gestor de bases de datos, Dato, Campo, registro, tabla,
                             consulta, vista y esquema</p>
-                    </blockquote>
                 </li>
             </ol>
             <h1 id="a5-bd-centralizadas-y-distribuidas">5 BD CENTRALIZADAS Y
@@ -1508,7 +1306,6 @@
                 destacan las siguientes:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Mejora de rendimiento.</strong> Cuando grandes bases de datos
                             se distribuyen en varios sitios las consultas y transacciones que
                             afectan a un solo sitio son más rápidas al ser más pequeña la base de
@@ -1517,24 +1314,19 @@
                             modo, cuando una transacción requiera acceso a más de un sitio, estos
                             pueden hacerse en paralelo, de forma que se reduce el tiempo de
                             respuesta.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Fiabilidad.</strong> Definida como la probabilidad de que un
                             sistema esté activo en un tiempo dado. Al distribuirse los datos es más
                             fácil asegurar la fiabilidad del sistema, ya que si falla algún sitio es
                             poco probable que afecte a la mayoría de transacciones.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Disponibilidad.</strong> Es la probabilidad de que un sistema
                             esté activo de manera continuada durante un tiempo. Se ve mejorada por
                             las mismas razones expuestas anteriormente. Esta característica se ve
                             mejorada especialmente por la replicación de datos en varios
                             sistemas.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><img src="media_GBD_UT1_Teoria_Almacenamiento/media/image17.png" alt="imagen" class="u-63cc16fa8e"></p>
@@ -1550,37 +1342,25 @@
                 centralizado:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>Tener acceso a sitios remotos e intercambiar información con los
                             mismos para la ejecución de consultas y transacciones.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Disponer de un catálogo con información sobre cómo están distribuidos
                             y replicados los datos del sistema distribuido.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Poder optimizar consultas y transacciones sobre datos que estén en
                             más de un sitio.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Mantener la integridad en los permisos sobre datos replicados.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Mantener la consistencia de las copias de un elemento replicado.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Garantizar la recuperación del sistema en una caída.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p>Todo ello eleva enormemente la complejidad de tal SGBDD. Debemos
@@ -1645,68 +1425,52 @@
             <p><strong>ACTIVIDADES 1.3</strong></p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p>Investigue sobre SGBD, comerciales o libres, que soporten replicación
                             y fragmentación de datos.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>¿Cuál es el principal problema que tiene la replicación de datos?</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Analice la conveniencia de replicar y fragmentar datos en los
                             siguientes sistemas: una base de datos de películas on line y una base de datos de un banco.
                         </p>
-                    </blockquote>
                 </li>
             </ol>
             <ol start="4" type="1">
                 <li>
-                    <blockquote>
                         <p>Explica qué son los <strong>metadatos</strong> y qué información
                             específica almacena el <strong>diccionario de datos (o
                                 catálogo)</strong> en un sistema gestor de bases de datos.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Pon tres ejemplos de información administrativa o estructural que
                             guarde el catálogo (por ejemplo: definiciones de tablas,
                             usuarios/permisos, restricciones, etc.) y explica por qué es fundamental
                             para el funcionamiento automático del propio SGBD.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Describe los tres niveles de la arquitectura ANSI/SPARC
                             (<strong>nivel interno o físico</strong>, <strong>nivel conceptual o
                                 global</strong>, y <strong>nivel externo o vistas</strong>). Indica qué
                             representa cada uno y qué tipo de usuario interactúa principalmente en
                             dicho nivel.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Explica la diferencia entre <strong>independencia lógica</strong> e
                             <strong>independencia física</strong> de los datos. Pon un ejemplo
                             práctico de un cambio que afecte al nivel físico sin alterar el
                             conceptual, y un cambio en el conceptual que no afecte a los esquemas
                             externos existentes.
                         </p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Elabora una tabla comparativa donde se analicen las ventajas y
                             desventajas de utilizar un <strong>SGBD frente al almacenamiento
                                 tradicional en sistemas de ficheros</strong>, teniendo en cuenta
                             factores clave como: <em>redundancia de datos, consistencia, control de
                                 concurrencia, seguridad/autorizaciones e independencia de
                                 datos</em>.</p>
-                    </blockquote>
                 </li>
             </ol>
 

@@ -69,9 +69,7 @@
                     title="Enlace permanente">¶</a></h3>
             <p><a href="#a211-sintaxis-completa-y-parametros-del-motor"><u>1. INTRODUCCIÓN Y
                         CONTEXTUALIZACIÓN</u></a></p>
-            <blockquote>
                 <p><a href="#documentacion-oficial-consulta-la-sintaxis-gramatical-formal-y-todos-los-modificadores-disponibles-para-este-comando-create-view-en-mysql-reference-manual-create-view-syntax"><u>1.1 ¿Qué es una vista?</u></a></p>
-            </blockquote>
             <p><a href="#a213-definicion-de-alias-de-columnas"><u>2. OPERACIONES DDL SOBRE
                         VISTAS</u></a></p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -93,7 +91,6 @@ Inspección de Vistas</code></pre>
 </div>
             <p><a href="#a322-diferencias-entre-cascaded-y-local"><u>3. VISTAS
                         ACTUALIZABLES</u></a></p>
-            <blockquote>
                 <p><a href="#a4-casos-de-uso-avanzados"><u>3.1
                             Restricciones de Modificación (INSERT, UPDATE, DELETE)</u></a></p>
                 <p><a href="#a42-ejemplo-2-simplificacion-de-relaciones-complejas"><u>3.2 La Cláusula WITH
@@ -102,10 +99,8 @@ Inspección de Vistas</code></pre>
                             de Inconsistencias Lógicas</u></a></p>
                 <p><a href="#a322-diferencias-entre-cascaded-y-local"><u>3.2.2 Diferencias
                             entre CASCADED y LOCAL</u></a></p>
-            </blockquote>
             <p><a href="#a4-casos-de-uso-avanzados"><u>4. CASOS DE USO
                         AVANZADOS</u></a></p>
-            <blockquote>
                 <p><a href="#a41-ejemplo-1-seguridad-logica-en-la-tabla-empleados"><u>4.1
                             Ejemplo 1: Seguridad Lógica en la Tabla Empleados</u></a></p>
                 <p><a href="#a42-ejemplo-2-simplificacion-de-relaciones-complejas"><u>4.2
@@ -114,7 +109,6 @@ Inspección de Vistas</code></pre>
                             Ejemplo 3: Prevención de Inconsistencias de Tipo</u></a></p>
                 <p><a href="#a7"><u>4.4
                             Ejemplo 4: Análisis de una Vista de Terceros No Actualizable</u></a></p>
-            </blockquote>
             <h1 id="a1-introduccion-y-contextualizacion">1. INTRODUCCIÓN Y
                 CONTEXTUALIZACIÓN <a class="headerlink" href="#a1-introduccion-y-contextualizacion"
                     title="Enlace permanente">¶</a></h1>
@@ -143,17 +137,14 @@ Inspección de Vistas</code></pre>
             </h4>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p><strong>Seguridad Lógica (Control de Accesos):</strong> Permite
                             restringir el acceso a datos altamente confidenciales. En lugar de
                             otorgar privilegios globales sobre la tabla de empleados (que contiene
                             campos como salario o comision), el SysAdmin puede crear una vista que
                             excluya estas columnas y conceder privilegios exclusivamente sobre la
                             vista.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Simplificación de Consultas Complejas:</strong> Centraliza
                             joins complejos entre múltiples tablas, agregaciones matemáticas densas
                             y filtros recurrentes en un solo objeto relacional. Los desarrolladores
@@ -161,14 +152,11 @@ Inspección de Vistas</code></pre>
                             consultas planas:<br>
                             <img src="media_GBD_UT6_Teoria_Vistas/media/image3.png" alt="imagen" class="u-79373617e1">
                         </p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Consistencia de Datos:</strong> Asegura que todos los
                             reportes de la infraestructura empresarial partan exactamente de la
                             misma lógica unificada de cálculo.</p>
-                    </blockquote>
                 </li>
             </ol>
             <h1 id="a2-operaciones-ddl-sobre-vistas">2. OPERACIONES DDL SOBRE
@@ -209,30 +197,24 @@ AS select_statement
                 Optimizador de MySQL para resolver la vista:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>MERGE:</strong> El motor combina el texto de la consulta del
                             usuario con la definición de la vista en una única consulta unificada
                             que se ejecuta sobre las tablas base. Es altamente eficiente porque
                             permite al motor aprovechar de forma directa los índices de las tablas
                             físicas subyacentes.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>TEMPTABLE:</strong> El motor ejecuta primero la consulta que
                             define la vista, almacena temporalmente los resultados en una tabla
                             intermedia en memoria (o disco) y luego ejecuta la consulta externa del
                             usuario sobre dicha tabla intermedia. <strong>Desventaja:</strong> No
                             puede utilizar índices de las tablas físicas y consume más memoria
                             RAM.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>UNDEFINED (Por defecto):</strong> MySQL decide
                             automáticamente qué algoritmo aplicar. Priorizará MERGE siempre que sea
                             posible.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h3 id="a213-definicion-de-alias-de-columnas">2.1.3 Definición de Alias de
@@ -324,41 +306,27 @@ SHOW CREATE VIEW v_empleados_capital;</code></pre>
                 la vista contiene alguno de los siguientes elementos:</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p>Funciones de agregación (SUM, MIN, MAX, AVG, COUNT).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Cláusulas de agrupación (GROUP BY o HAVING).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>El modificador de unicidad DISTINCT.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Operadores de conjunto (UNION o UNION ALL).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Subconsultas en la cláusula de proyección SELECT.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Joins complejos que intenten actualizar más de una tabla de forma
                             simultánea en una única sentencia DML.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Columnas calculadas mediante expresiones aritméticas o funciones
                             escalares (no son actualizables sus valores derivados).</p>
-                    </blockquote>
                 </li>
             </ol>
             <h5 id="documentacion-oficial-consulta-la-documentacion-sobre-las-vistas-actualizables-en-mysql-reference-manual-updatable-views">
@@ -387,19 +355,15 @@ SHOW CREATE VIEW v_empleados_capital;</code></pre>
                     title="Enlace permanente">¶</a></h3>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>CASCADED (Por defecto):</strong> Si la vista se ha construido
                             sobre otras vistas, se evalúan de manera jerárquica y obligatoria los
                             criterios y reglas lógicas de todas las vistas secundarias.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>LOCAL:</strong> Solo valida los criterios definidos de forma
                             específica en la propia vista en cuestión, ignorando los filtros de las
                             vistas base de las que se nutre si estas no cuentan de forma explícita
                             con su propia restricción de chequeo.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h1 id="a4-casos-de-uso-avanzados">4. CASOS DE USO AVANZADOS <a class="headerlink"
@@ -533,14 +497,12 @@ JOIN country ON city.country_id = country.country_id;</code></pre>
             <p><em>Análisis técnico para debate y auditoría:</em></p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>¿Es esta vista actualizable con un comando INSERT?</strong>
                             No, la vista utiliza funciones de manipulación de cadenas en campos
                             lógicos calculados (como CONCAT para el campo name e IF para el campo
                             notes), además de involucrar múltiples tablas relacionales mediante
                             joins encadenados. Al violar las reglas de actualizabilidad, el motor
                             físico impedirá cualquier acción DML de inserción a través de esta.</p>
-                    </blockquote>
                 </li>
             </ul>
 

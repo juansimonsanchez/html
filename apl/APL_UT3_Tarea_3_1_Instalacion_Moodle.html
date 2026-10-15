@@ -82,10 +82,8 @@
                 <td colspan="2">
                   <ul>
                     <li>
-                      <blockquote>
                         <p>Documento [PDF] (Tarea3.1.pdf) con explicaciones y capturas de
                           pantalla. Formato adecuado</p>
-                      </blockquote>
                     </li>
                   </ul>
                 </td>
@@ -116,9 +114,7 @@
       <p>¿Cuáles son los LMS más utilizados? (0,25)</p>
       <ol type="1">
         <li>
-          <blockquote>
             <p><strong>DESCARGA DE MOODLE</strong></p>
-          </blockquote>
         </li>
       </ol>
       <p>Vaya al directorio "opt" y con git vamos a clonar lo que
@@ -199,9 +195,7 @@ sudo chmod -R 0755 /var/www/html/moodle</code></pre>
         el prompt del sistema.(0,5)</p>
       <ol start="2" type="1">
         <li>
-          <blockquote>
             <p><strong>CONFIGURACIÓN DE MYSQL</strong></p>
-          </blockquote>
         </li>
       </ol>
       <p>Para configurar la base de datos, primero tendremos que modificar la
@@ -228,24 +222,18 @@ sudo chmod -R 0755 /var/www/html/moodle</code></pre>
 
 </div>
       <p>Active la compatibilidad con UTF 4 de 8 bytes:</p>
-      <blockquote>
         <p><em><strong>CREATE DATABASE moodle DEFAULT CHARACTER SET utf8mb4
               COLLATE utf8mb4_unicode_ci;</strong></em></p>
-      </blockquote>
       <p>Cree un usuario para la base de datos:</p>
-      <blockquote>
         <p><em><strong>create user moodle@'localhost' IDENTIFIED BY
               'P@ssw0rd';</strong></em></p>
-      </blockquote>
       <p><strong>IMPORTANTE</strong>: establecer una contraseña y anotarla,
         para que no se olvide.</p>
       <p>Otorgar plenos derechos a nuestro usuario</p>
-      <blockquote>
         <p><em><strong>GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,CREATE TEMPORARY
               TABLES,DROP,INDEX,ALTER ON moodle.* TO
               moodle@'localhost';</strong></em></p>
         <p><em><strong>FLUSH PRIVILEGES;</strong></em></p>
-      </blockquote>
       <p>Explicar los pasos que se han realizado (no hace falta indicar los
         comandos utilizados, junto a la captura anterior. (1)</p>
       <p>Hacer otra captura donde se vea el resultado de las siguientes
@@ -253,9 +241,7 @@ sudo chmod -R 0755 /var/www/html/moodle</code></pre>
       <p>SHOW DATABASES;</p>
       <p>SELECT user, host FROM mysql.user;</p>
       <p>Ya nos podemos salir de la consola de MySQL:</p>
-      <blockquote>
         <p><em><strong>quit;</strong></em></p>
-      </blockquote>
       <p>Otorgar derechos de acceso a la carpeta "moodle":</p>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
           <pre><code>sudo chmod -R 777 /var/www/html/moodle</code></pre>
@@ -268,9 +254,7 @@ sudo chmod -R 0755 /var/www/html/moodle</code></pre>
 </div>
       <ol start="3" type="1">
         <li>
-          <blockquote>
             <p><strong>ARCHIVO DE CONFIGURACIÓN DE MOODLE:</strong></p>
-          </blockquote>
         </li>
       </ol>
       <p>En la carpeta, /var/www/html/moodle, hacer una copia del archivo
@@ -284,9 +268,7 @@ sudo chmod -R 0755 /var/www/html/moodle</code></pre>
         /var/www/moodledata</p>
       <ol start="4" type="1">
         <li>
-          <blockquote>
             <p><strong>INSTALACIÓN Y CONFIGURACIÓN DE MOODLE</strong></p>
-          </blockquote>
         </li>
       </ol>
       <p>Si accedemos a Moodle, procederemos a sus instalación</p>
@@ -330,19 +312,13 @@ sudo chmod -R 0755 /var/www/html/moodle</code></pre>
       <p>La práctica será evaluada según los siguientes criterios:</p>
       <ul>
         <li>
-          <blockquote>
             <p><strong>Funcionalidad (40%):</strong> Correcta implementación de las
               tareas/actividades solicitadas.</p>
-          </blockquote>
-          <blockquote>
             <p><strong>Memoria y Documentación (50%):</strong> [Claridad, concisión
               y completitud de la memoria entregada (explicaciones, capturas y
               comentarios)][Realización de manera clara, eficiente y adecuada]</p>
-          </blockquote>
-          <blockquote>
             <p><strong>Presentación (10%</strong>): Se siguen las indicaciones para
               el tipo de documento</p>
-          </blockquote>
         </li>
       </ul>
       <p><strong>IMPORTANTE:</strong> El retraso en la entrega, no cumplir los

@@ -99,17 +99,14 @@
                         CONFIGURACIÓN</u></a></p>
             <p><a href="#a53-set-persist-y-set-persistonly"><u>5. GESTIÓN AVANZADA DE
                         VARIABLES</u></a></p>
-            <blockquote>
                 <p><a href="#el-comando-restrictivo-set-persistonly"><u>5.1 Ámbitos de
                             Variables: Global vs Sesión</u></a></p>
                 <p><a href="#a21"><u>5.2
                             Variantes Sintácticas de Asignación en MySQL</u></a></p>
                 <p><a href="#a62-registro-de-errores-error-log-y-filtros-json"><u>5.3 SET PERSIST y SET
                             PERSIST_ONLY</u></a></p>
-            </blockquote>
             <p><a href="#generacion-de-prueba-y-simulacion-de-latencia"><u>6.
                         FUNDAMENTOS TEÓRICOS DE LOS FICHEROS DE REGISTRO (LOGS)</u></a></p>
-            <blockquote>
                 <p><a href="#parseo-tecnico-del-registro"><u>6.1
                             Clasificación General de las Anotaciones de Bitácora</u></a></p>
                 <p><a href="#a65-el-registro-binario-binary-log"><u>6.2
@@ -120,7 +117,6 @@
                             Registro de Consultas Lentas (Slow Query Log)</u></a></p>
                 <p><a href="#a65-el-registro-binario-binary-log"><u>6.5 El Registro Binario
                             (Binary Log)</u></a></p>
-            </blockquote>
             <p><a href="#"><u>7. DIAGNÓSTICO DE BAJO NIVEL Y AUDITORÍA CON
                         performance_schema</u></a></p>
             <p><a href="#a8-buenas-practicas-con-los-logs"><u>8. BUENAS PRÁCTICAS CON
@@ -146,25 +142,19 @@
                 la siguiente manera:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>ASO (Administración de Sistemas Operativos):</strong> Gestión
                             de servicios (systemd), permisos a nivel de sistema de archivos, gestión de límites de
                             procesos y almacenamiento persistente en sistemas Linux.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>SAD (Seguridad y Alta Disponibilidad):</strong> Hardening de
                             red (seguridad de red), cifrado de transmisiones, monitorización activa y análisis forense
                             mediante el parseo automatizado de registros (<em>logs</em>).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>SRI (Servicios de Red e Internet):</strong> Arquitectura
                             cliente-servidor, sockets TCP/IP de escucha, balanceo de puertos y
                             direccionamiento de sockets Unix de dominio local.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h1 id="a2-aspectos-criticos-en-la-configuracion">2. ASPECTOS CRÍTICOS EN
@@ -179,7 +169,6 @@
             </p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Motor de Base de Datos (Storage Engine):</strong> Elegir el
                             motor de base de datos adecuado es fundamental. La elección depende de
                             las necesidades transaccionales, el volumen de lecturas/escrituras y los
@@ -187,43 +176,33 @@
                             como InnoDB, MyISAM, y más. La elección del motor de almacenamiento depende de tus
                             necesidades específicas. InnoDB es ampliamente utilizado debido a su capacidad de manejar
                             transacciones y su fiabilidad en la recuperación de datos.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Modelado de Datos:</strong> Diseñar la estructura física de
                             la base de datos de manera eficiente. Un diseño normalizado evita
                             redundancias y optimiza las rutas de acceso físicas del
                             almacenamiento.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Índices:</strong> Configurar índices en las columnas
                             utilizadas frecuentemente bajo cláusulas WHERE, JOIN o ORDER BY. Los
                             índices mejoran drásticamente el rendimiento al acelerar la recuperación
                             de datos, evitando barridos secuenciales completos de tablas (<em>Full
                                 Table Scans</em>).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Ajuste de Parámetros:</strong> Ajustar el archivo de
                             configuración del gestor de acuerdo a las capacidades reales de hardware
                             del host (reparto de RAM para estructuras de cachés, asignación de hilos
                             de CPU y límites de conexiones).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Capacidad de Almacenamiento:</strong> Planificar el espacio
                             físico requerido no solo por las tablas del SGBD, sino también por el
                             crecimiento histórico del servicio, archivos temporales, almacenamiento
                             de índices y la acumulación de ficheros de log en disco.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Rendimiento:</strong> Supervisar constantemente las métricas
                             de carga del motor para realizar ajustes proactivos y reactivos ante
                             posibles cuellos de botella de hardware o software. Configura adecuadamente los tamaños de
@@ -231,66 +210,51 @@
                             de consulta (Query Cache), y el búfer de índices (Key Buffer), entre otros, para optimizar
                             el rendimiento.
                         </p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Copias de seguridad y recuperación:</strong> Configura rutinas de copia de seguridad
                             y restauración para proteger tus datos contra la pérdida o daño. Define políticas de
                             retención y realiza pruebas de recuperación regularmente. onfigura rutinas de copia de
                             seguridad regulares para proteger tus datos. MySQL ofrece herramientas como mysqldump y
                             utilidades de replicación para este propósito.
                         </p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Seguridad:</strong> Aplica medidas de seguridad, como autenticación, autorización y
                             cifrado de datos, para proteger la base de datos contra amenazas internas y externas.
                             Configura la autenticación y autorización de usuarios de forma adecuada. Limita el acceso a
                             la base de datos solo a los usuarios necesarios y utiliza contraseñas fuertes. Considera la
                             encriptación de datos en tránsito y en reposo</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Alta disponibilidad:</strong> Configura la base de datos para garantizar la alta
                             disponibilidad. Esto puede incluir la implementación de réplicas, clústeres o grupos de
                             disponibilidad, según el motor de base de datos que estés utilizando.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Monitorización:</strong> Utiliza herramientas de monitorización para supervisar el
                             estado de la base de datos en tiempo real. Esto te permitirá identificar problemas y tomar
                             medidas preventivas. Habilita el registro de MySQL y utiliza herramientas de monitoreo para
                             seguir de cerca el rendimiento y detectar problemas. Puedes utilizar herramientas como MySQL
                             Workbench, phpMyAdmin o soluciones de terceros.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Mantenimiento:</strong> Realiza tareas de mantenimiento regular, como la limpieza de
                             registros obsoletos, la reorganización de tablas y la optimización del rendimiento.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Escalabilidad:</strong> Diseña la base de datos con la escalabilidad en mente, para
                             que puedas manejar un aumento en la carga de trabajo a medida que tu aplicación crezca. Si
                             es necesario, configura la replicación para mejorar la alta disponibilidad y la
                             escalabilidad. MySQL ofrece opciones como la replicación maestro-esclavo o el grupo de alta
                             disponibilidad (MySQL Group Replication).
                         </p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Cumplimiento normativo:</strong> Si estás manejando datos sensibles o personales,
                             asegúrate de configurar MySQL cumpliendo con las regulaciones de privacidad y seguridad de
                             datos aplicables, como el Reglamento General de Protección de Datos (RGPD) en la Unión
                             Europea.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p>La configuración de MySQL puede variar según tus necesidades específicas, por lo que es importante
@@ -303,66 +267,50 @@
                 operaciones de almacenamiento.</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Data Directory (/var/lib/mysql):</strong> El directorio raíz
                             de los datos. Cada base de datos relacional se mapea directamente con un
                             subdirectorio en esta ruta física.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Motores de Almacenamiento (Storage Engines):</strong></p>
-                    </blockquote>
                     <ul>
                         <li>
-                            <blockquote>
                                 <p><strong>InnoDB:</strong> Motor de almacenamiento predeterminado y el
                                     único recomendado para entornos transaccionales de producción. Garantiza
                                     el principio ACID (Atomicidad, Consistencia, Aislamiento y Durabilidad).
                                     Soporta claves foráneas, bloqueos a nivel de registro y recuperación
                                     automática tras fallos de energía.</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p><strong>MyISAM:</strong> Antiguo motor sin soporte transaccional.
                                     Bloquea tablas enteras durante la escritura, lo que genera problemas
                                     graves de concurrencia bajo cargas elevadas. Útil únicamente para
                                     lecturas ultrarrápidas en datos históricos inmutables.</p>
-                            </blockquote>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Archivos Clave en InnoDB:</strong></p>
-                    </blockquote>
                     <ul>
                         <li>
-                            <blockquote>
                                 <p>ibdata1: Espacio de tablas del sistema (<em>system tablespace</em>).
                                     Almacena el diccionario de datos internos de InnoDB y registros de
                                     deshacer (<em>undo logs</em>).</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>Archivos .ibd: Espacio de tablas independiente por tabla
                                     (<em>file-per-table tablespace</em>). Cuando la variable
                                     innodb_file_per_table está en ON (valor por defecto en MySQL 8), cada
                                     tabla de una base de datos almacena sus registros e índices
                                     estructurados de forma física en su propio archivo .ibd.</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>ib_logfile0 e ib_logfile1: El registro de rehacer (<em>Redo
                                         Log</em>). Es una estructura de búfer circular en disco a la que InnoDB
                                     escribe inmediatamente las transacciones modificadas en memoria antes de
                                     pasarlas a los archivos de datos finales. Esto asegura que, en caso de
                                     un corte eléctrico, las transacciones comprometidas se puedan
                                     reconstruir al arrancar el servicio.</p>
-                            </blockquote>
                         </li>
                     </ul>
                 </li>
@@ -400,24 +348,16 @@
                 secuencial de carga en Linux es:</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p>/etc/my.cnf</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>/etc/mysql/my.cnf</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>/usr/etc/my.cnf</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>~/.my.cnf (Configuraciones de perfil de usuario)</p>
-                    </blockquote>
                 </li>
             </ol>
             <p>En sistemas Windows: El archivo de configuración se llama my.ini.
@@ -544,19 +484,15 @@ SELECT @@global.max_connections;</code></pre>
                     instancia activa:</p>
                 <ol type="1">
                     <li>
-                        <blockquote>
                             <p><strong>Global (GLOBAL):</strong> Afecta de manera general al SGBD y
                                 a todas las conexiones entrantes nuevas que se establezcan tras el
                                 cambio.</p>
-                        </blockquote>
                     </li>
                     <li>
-                        <blockquote>
                             <p><strong>Sesión (SESSION o LOCAL):</strong> Afecta única y
                                 exclusivamente a la conexión activa del cliente que realiza la
                                 modificación. No altera a los demás usuarios conectados ni a los nuevos
                                 hilos de comunicación de red.</p>
-                        </blockquote>
                     </li>
                 </ol>
                 <p>Las asignaciones dinámicas en caliente residen únicamente en la
@@ -628,17 +564,13 @@ SET @@PERSIST.max_connections = 250;</code></pre>
                     automáticas en un solo paso:</p>
                 <ol type="1">
                     <li>
-                        <blockquote>
                             <p>Aplica el cambio en tiempo de ejecución en la memoria RAM (SET
                                 GLOBAL).</p>
-                        </blockquote>
                     </li>
                     <li>
-                        <blockquote>
                             <p>Genera o modifica un fichero físico en formato JSON ubicado en el
                                 data directory de la base de datos denominado
                                 /var/lib/mysql/mysqld-auto.cnf.</p>
-                        </blockquote>
                     </li>
                 </ol>
                 <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -704,29 +636,23 @@ RESET PERSIST;</code></pre>
                     pueden distinguir tres tipos de anotaciones:</p>
                 <ol type="1">
                     <li>
-                        <blockquote>
                             <p><strong>Información de Eventos y Alertas:</strong> Acciones de
                                 sistema llevadas a cabo sobre o desde la instancia de base de datos
                                 (arranque del servicio, parada controlada, alertas críticas de
                                 desbordamiento de RAM o hilos bloqueados).</p>
-                        </blockquote>
                     </li>
                     <li>
-                        <blockquote>
                             <p><strong>Estado General de Parámetros de la Instancia:</strong>
                                 Consejos prácticos de actuación proporcionados por el propio gestor en
                                 caso de que alguna variable interna sobrepase o no un determinado umbral
                                     de funcionamiento programado en el software.</p>
-                            </blockquote>
                     </li>
                     <li>
-                        <blockquote>
                             <p><strong>Transacciones y Operaciones (Mutación de Datos):</strong>
                             Registro físico de las sentencias ejecutadas por los usuarios que
                             afecten de forma directa a la estructura física de la base de datos
                             (sentencias DDL como CREATE o ALTER) o a la información contenida en
                             ella (sentencias DML como INSERT, UPDATE o DELETE).</p>
-                        </blockquote>
                     </li>
                 </ol>
                 <h2 id="a62-registro-de-errores-error-log-y-filtros-json"><strong>6.2</strong>
@@ -765,7 +691,6 @@ general_log_file = /var/log/mysql/query.log</code></pre>
                 <p>Advertencia Crítica de Seguridad y Rendimiento en Producción:</p>
                 <ul>
                     <li>
-                        <blockquote>
                             <p><strong>Degradación del subsistema de I/O (Rendimiento):</strong>
                                 Cada comando que ejecuta un cliente debe escribirse en un archivo físico
                                 en disco de manera síncrona antes de responder al usuario. Bajo cargas
@@ -773,10 +698,8 @@ general_log_file = /var/log/mysql/query.log</code></pre>
                                 velocidad de entrada/salida (<em>I/O bottlenecks</em>), reduciendo
                                 drásticamente el rendimiento del sistema de almacenamiento del
                                 servidor.</p>
-                        </blockquote>
                     </li>
                     <li>
-                        <blockquote>
                             <p><strong>Privacidad e Información Sensible (Seguridad):</strong> El
                                 General Log escribe las sentencias en formato plano ASCII. Si un script
                                 o sistema web ejecuta comandos de creación de usuarios o inserción de
@@ -785,15 +708,12 @@ general_log_file = /var/log/mysql/query.log</code></pre>
                                 dentro de /var/log/mysql/query.log. Si un intruso consiguiera acceso de
                             lectura al servidor de ficheros del sistema operativo, toda la seguridad
                             del sistema se vería comprometida.</p>
-                        </blockquote>
                     </li>
                     <li>
-                        <blockquote>
                             <p><strong>Consumo Masivo de Disco (Almacenamiento):</strong> En bases
                                 de datos con millones de operaciones diarias, este log puede agotar en
                                 cuestión de horas el espacio total del disco duro si no se parametriza
                                 una correcta rotación y mantenimiento de espacio físico.</p>
-                        </blockquote>
                     </li>
                 </ul>
                 <p><strong>Uso Recomendado:</strong> Activar únicamente durante ventanas
@@ -848,30 +768,22 @@ SELECT NOW(), SLEEP(3);</code></pre>
                 <p><strong>Métricas Clave de Análisis:</strong></p>
                 <ul>
                     <li>
-                        <blockquote>
                             <p>Query_time: El tiempo que la consulta bloqueó la CPU del gestor de
                                 base de datos (3.001240 segundos).</p>
-                        </blockquote>
                     </li>
                     <li>
-                        <blockquote>
                             <p>Lock_time: El tiempo que la sentencia tuvo que esperar en cola debido
                                 a un bloqueo de tabla o fila por otra transacción concurrente.</p>
-                        </blockquote>
                     </li>
                     <li>
-                        <blockquote>
                             <p>Rows_sent: Cantidad de filas devueltas al cliente.</p>
-                        </blockquote>
                     </li>
                     <li>
-                        <blockquote>
                             <p>Rows_examined: El número real de registros que el motor tuvo que
                                 buscar en el almacenamiento físico en disco antes de poder responder. Si
                                 Rows_examined es muy elevado en comparación con Rows_sent, significa que
                                 la consulta no cuenta con un índice B-Tree óptimo y obliga al motor a
                                 realizar un escaneo completo de la tabla (<em>Full Table Scan</em>).</p>
-                        </blockquote>
                     </li>
                 </ul>
                 <h2 id="a65-el-registro-binario-binary-log">6.5 El Registro Binario (Binary
@@ -887,23 +799,19 @@ SELECT NOW(), SLEEP(3);</code></pre>
                         title="Enlace permanente">¶</a></h5>
                 <ol type="1">
                     <li>
-                        <blockquote>
                             <p><strong>Replicación de Datos:</strong> En un clúster MySQL
                                 (Maestro-Réplica), el servidor principal (<em>Master</em>) envía las
                                 instrucciones escritas en su log binario al servidor secundario
                                 (<em>Replica</em>) para que este ejecute las transacciones locales y
                                 mantenga el estado de los datos sincronizado.</p>
-                        </blockquote>
                     </li>
                     <li>
-                        <blockquote>
                             <p><strong>Operaciones de Recuperación tras Fallos (Recovery):</strong>
                                 Permite recuperar el estado de una base de datos después de restaurar
                                 una copia de seguridad en frío. Al ejecutar el binlog a partir de la
                                 fecha de la copia, el motor re-aplica de forma exacta todas las
                                 operaciones transaccionales comprometidas hasta el instante del desastre
                                 (<em>Point-in-time recovery</em>).</p>
-                        </blockquote>
                     </li>
                 </ol>
                 <h1 id="a7-diagnostico-de-bajo-nivel-y-auditoria-con-performanceschema"><strong>7.</strong>

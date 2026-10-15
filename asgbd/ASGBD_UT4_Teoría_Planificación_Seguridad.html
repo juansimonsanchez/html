@@ -85,7 +85,6 @@
                         CONTEXTUALIZACIÓN</u></a></p>
             <p><a href="#a25-gestion-de-eventos-modificacion-activacion-desactivacion-y-eliminacion"><u>2.
                         PLANIFICACIÓN DE TAREAS AUTOMÁTICAS MEDIANTE EVENTOS</u></a></p>
-            <blockquote>
                 <p><a href="#a26-visualizacion-y-monitorizacion-de-eventos-en-el-sistema"><u>2.1.
                             Introducción al Planificador de Eventos (Event Scheduler)</u></a></p>
                 <p><a href="#a3-gestion-de-la-seguridad-de-los-datos"><u>2.2.
@@ -99,10 +98,8 @@
                             Eliminación</u></a></p>
                 <p><a href="#a341-sentencias-sql-de-importacionexportacion"><u>2.6.
                             Visualización y Monitorización de Eventos en el Sistema</u></a></p>
-            </blockquote>
             <p><a href="#a35-restauracion-de-copias-de-seguridad-logicas"><u>3. GESTIÓN DE LA
                         SEGURIDAD DE LOS DATOS</u></a></p>
-            <blockquote>
                 <p><a href="#a4-buenas-practicas"><u>3.1.
                             Clasificación y Tipos de Copias de Seguridad (Backup)</u></a></p>
                 <p><a href="#a32-directorio-de-datos-de-mysql-y-estructura-de-archivos"><u>3.2.
@@ -119,7 +116,6 @@
                             Restauración de Copias de Seguridad Lógicas</u></a></p>
                 <p><a href="#a9"><u>3.6.
                             Gestión de Backups mediante Interfaces Gráficas</u></a></p>
-            </blockquote>
             <p><a href="#a4-buenas-practicas"><u>4. BUENAS PRÁCTICAS</u></a></p>
             <h1 id="a1-introduccion-y-contextualizacion">1. INTRODUCCIÓN Y
                 CONTEXTUALIZACIÓN <a class="headerlink" href="#a1-introduccion-y-contextualizacion"
@@ -166,16 +162,12 @@
                 sistema global event_scheduler. Sus valores pueden ser:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>OFF (o 0):</strong> El hilo del planificador está parado.
                             (Valor inicial por defecto en muchas distribuciones).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>ON (o 1):</strong> El planificador está activo y procesando
                             la cola de tareas automáticas.</p>
-                    </blockquote>
                 </li>
                 <li>
                     <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -230,32 +222,24 @@ AT timestamp [+ INTERVAL interval] ...
             <p>Cláusulas Clave:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>DEFINER:</strong> Define el nivel de privilegios y el
                             contexto de seguridad con el que se ejecutará el cuerpo del evento.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>ON SCHEDULE:</strong> Define cuándo actúa. AT se emplea para
                             ejecuciones únicas, mientras que EVERY planifica intervalos
                             cíclicos.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>ON COMPLETION PRESERVE:</strong> Al activarlo, el evento no
                             se elimina del diccionario de datos una vez haya concluido su vigencia
                             temporal o su ejecución única (por defecto es NOT PRESERVE y el SGBD lo
                             destruye de forma automática).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>DISABLE ON SLAVE:</strong> Evita que el evento se replique y
                             ejecute de manera concurrente en servidores esclavos de lectura,
                             limitando su ejecución exclusivamente al servidor maestro.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h2 id="a24-ejemplos-practicos-de-creacion-de-eventos">2.4. Ejemplos
@@ -430,41 +414,29 @@ INFORMATION_SCHEMA.EVENTS WHERE EVENT_SCHEMA = 'tienda';</code></pre>
                 motor de almacenamiento:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Archivos MyISAM:</strong></p>
-                    </blockquote>
                     <ul>
                         <li>
-                            <blockquote>
                                 <p>.frm: Definición y metadatos de la estructura de la tabla (en desuso
                                     en MySQL 8.0).</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>.MYD (<em>MyData</em>): Almacena los registros de datos físicos de la
                                     tabla.</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>.myi (<em>MyIndex</em>): Almacena los índices estructurados de
                                     MyISAM.</p>
-                            </blockquote>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Archivos InnoDB:</strong></p>
-                    </blockquote>
                     <ul>
                         <li>
-                            <blockquote>
                                 <p>.ibd: Almacena conjuntamente los datos lógicos y los índices de una
                                     tabla de tipo InnoDB (siempre que la variable global de motor
                                     innodb_file_per_table esté activada).</p>
-                            </blockquote>
                         </li>
                     </ul>
                 </li>
@@ -550,23 +522,17 @@ backup_completo_servidor.sql</code></pre>
 </div><strong>Parámetros Útiles de Optimización de mysqldump:</strong>
             <ul>
                 <li>
-                    <blockquote>
                         <p>--no-data: Copia únicamente la estructura de las tablas (crea el
                             esquema DDL), omitiendo la inserción de datos.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>--no-create-info: Copia exclusivamente los datos en sentencias INSERT
                             (DML), útil para poblar tablas existentes sin alterarlas.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>--single-transaction: Permite realizar copias consistentes en
                             caliente de tablas <strong>InnoDB</strong> sin bloquear las
                             transacciones ni escrituras concurrentes del servidor.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h2 id="a35-restauracion-de-copias-de-seguridad-logicas">3.5. Restauración
@@ -604,13 +570,11 @@ carpetas autocontenidas de proyectos.</code></pre>
 </div>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>phpMyAdmin:</strong> Proporciona un entorno web de
                             administración que permite descargar respaldos comprimidos de bases de
                             datos directamente mediante el navegador, ajustando parámetros de
                             exportación DDL/DML, y subir ficheros .sql para su ejecución mediante el
                             cargador integrado.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h1 id="a4-buenas-practicas">4. BUENAS PRÁCTICAS <a class="headerlink" href="#a4-buenas-practicas"
@@ -620,23 +584,19 @@ carpetas autocontenidas de proyectos.</code></pre>
                 combinando de forma segura ambas partes de la materia:</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p><strong>Purga periódica de Logs transaccionales:</strong> Diseñar un
                             evento diario que vacíe tablas de errores transaccionales volátiles de
                             poco valor histórico antes de que se ejecute la copia lógica de
                             seguridad (mysqldump). De esta forma, reducimos el peso en disco del
                             backup y optimizamos el almacenamiento.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Historial de Operaciones de Backup en Eventos:</strong> Al
                             planificar tareas que copien tablas transaccionales a tablas temporales
                             locales (por ejemplo, equipos a equipos_temp), es recomendable registrar
                             una entrada en un log de eventos propio que documente la hora exacta y
                             el usuario que disparó la operación para que esta información quede
                             recogida y salvaguardada en la auditoría general del sistema.</p>
-                    </blockquote>
                 </li>
             </ol>
 

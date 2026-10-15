@@ -87,7 +87,6 @@
                     href="#metodo-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>[x] Memoria Técnica (PDF):</strong>
                             Practica5_2_Nombre_Alumno.pdf. Debe incluir la explicación del diseño
                             del flujo, justificación de los comandos y scripts utilizados, y
@@ -95,29 +94,20 @@
                             del script Bash y verificación de restauración). Es obligatorio que en
                             el prompt del sistema se visualice la IP de la instancia y tu usuario
                             para certificar la autoría.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>[x] Entregables de Código:</strong> Un archivo comprimido
                             .tar.gz que contenga:</p>
-                    </blockquote>
                     <ol type="1">
                         <li>
-                            <blockquote>
                                 <p>infraestructura.sql (esquema, tablas y evento de consolidación de
                                     MySQL).</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>backup_sistema.sh (script de automatización Bash y rotación).</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>crontab_config.txt (línea de planificación de Cron).</p>
-                            </blockquote>
                         </li>
                     </ol>
                 </li>
@@ -133,7 +123,6 @@
                 directrices:</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p><strong>Consolidación Interna (MySQL):</strong> Cada noche a las
                             03:00 AM, un evento interno del SGBD debe mover todas las ventas
                             completadas del día anterior a una tabla histórica consolidada llamada
@@ -141,10 +130,8 @@
                             tabla activa de producción de forma transaccional. Toda ejecución del
                             evento debe quedar auditada en una tabla de log interna
                             (registro_logs).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Copia de Seguridad Externa y Rotación (Bash + Cron):</strong>
                             Cada madrugada a las 04:00 AM, un script de sistema en Bash debe
                             realizar una copia de seguridad lógica, consistente e InnoDB-safe de la
@@ -153,14 +140,11 @@
                             optimizar el almacenamiento del servidor, el script debe purgar
                             automáticamente cualquier copia de seguridad con más de <strong>7
                                 días</strong> de antigüedad.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Plan de Recuperación (DRP):</strong> Se debe simular un fallo
                             total del esquema y verificar el proceso de restauración lógica
                             garantizando la integridad de los datos.</p>
-                    </blockquote>
                 </li>
             </ol>
             <h2 id="a3-actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink"
@@ -172,24 +156,18 @@
                 motor <strong>InnoDB</strong>:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>ventas_temporales: Contiene id_venta (Autonumérico), cliente
                             (VARCHAR), monto (DECIMAL 10,2), fecha_venta (DATETIME) y estado
                             (VARCHAR: 'Pendiente', 'Completado').</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>historico_ventas: Estructura idéntica a la anterior más un campo
                             fecha_consolidacion (TIMESTAMP).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>registro_logs: Tabla de auditoría interna con id_log (Autonumérico),
                             nombre_evento (VARCHAR), mensaje (TEXT) y fecha_registro
                             (TIMESTAMP).</p>
-                    </blockquote>
                 </li>
             </ul>
             <p>Puebla la tabla ventas_temporales con al menos 5 registros de prueba,
@@ -201,26 +179,20 @@
                     title="Enlace permanente">¶</a></h4>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p>Verifica que el planificador de eventos de MySQL está configurado de
                             forma persistente y activo.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Crea el evento ev_consolidar_ventas para ejecutarse diariamente a las
                             03:00 AM (puedes ajustar el tiempo a EVERY 1 MINUTE de forma temporal
                             para las capturas de demostración).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Requisito de Robustez:</strong> La consolidación debe
                             realizarse bajo transacciones seguras (START TRANSACTION, COMMIT,
                             ROLLBACK). Si el traspaso de registros a historico_ventas tiene éxito,
                             se eliminan de ventas_temporales y se guarda un registro en
                             registro_logs. Si falla, se hace rollback y se audita el error.</p>
-                    </blockquote>
                 </li>
             </ol>
             <h4 id="fase-3-script-de-automatizacion-de-backups-en-bash-backupsistemash">Fase
@@ -232,43 +204,31 @@
                 sistemas:</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p>Crear el directorio /backup/ecommerce/ si no existe.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Definir variables para credenciales de MySQL (usando un archivo de
                             configuración de accesos seguro o variables cifradas de entorno de forma
                             recomendada).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Utilizar mysqldump con el parámetro --single-transaction para no
                             bloquear lecturas/escrituras.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Redirigir el archivo .sql resultante, comprimirlo al vuelo usando
                             gzip para ahorrar espacio, y nombrarlo con el patrón:
                             backup_ecommerce_YYYYMMDD_HHMMSS.sql.gz.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Mecanismo de Rotación Práctica:</strong> Buscar y eliminar de
                             manera automática todos los ficheros .gz del directorio
                             /backup/ecommerce/ que tengan una fecha de modificación superior a 7
                             días.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Guardar la salida y posibles errores del script en un fichero de log
                             del sistema /var/log/backup_ecommerce.log.</p>
-                    </blockquote>
                 </li>
             </ol>
             <h4 id="fase-4-integracion-en-el-planificador-de-tareas-de-linux-cron">Fase
@@ -291,28 +251,22 @@ ecommerce;.</code></pre>
 </div>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Procede a restaurar la base de datos a partir del último archivo
                             comprimido .gz disponible.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Verifica la consistencia: comprueba que las tablas se han recuperado
                             de forma íntegra, con sus restricciones de clave y que el log de eventos
                             contiene el historial de consolidación.</p>
-                    </blockquote>
                 </li>
             </ol>
             <h1 id="a4-calificacion">4. CALIFICACIÓN <a class="headerlink" href="#a4-calificacion"
                     title="Enlace permanente">¶</a></h1>
-            <blockquote>
                 <p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
                     través de la plataforma, la entrega del documento en formatos editables
                     no permitidos (como .docx), capturas con identificación del alumno/a o
                     la omisión de los enlaces de las fuentes documentales utilizadas
                     penalizará gravemente la nota o invalidará la práctica.</p>
-            </blockquote>
             <p>La práctica avanzada se calificará sobre un total de <strong>10
                     puntos</strong> de acuerdo con la siguiente distribución:</p>
             <div class="table-wrapper">

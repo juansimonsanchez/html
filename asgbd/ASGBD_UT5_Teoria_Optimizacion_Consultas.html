@@ -88,17 +88,14 @@
             <p><a href="#a3-gestion-avanzada-de-indices"><u>1. INTRODUCCIÓN</u></a></p>
             <p><a href="#a31-creacion-de-indices"><u>2. FUNDAMENTOS
                         Y ESTRUCTURA DE LOS ÍNDICES</u></a></p>
-            <blockquote>
                 <p><a href="#a32-indices-compuestos-y-la-regla-del-prefijo-izquierdo"><u>2.1 La
                             Regla del Equilibrio de Escritura-Lectura</u></a></p>
                 <p><a href="#a33-indices-de-prefijo-de-columna"><u>2.2 Tipos de Índices
                             Lógicos</u></a></p>
                 <p><a href="#a34-indices-de-texto-completo-fulltext"><u>2.3
                             Arquitectura Física de Almacenamiento: Árboles B</u></a></p>
-            </blockquote>
             <p><a href="#a35-indices-funcionales"><u>3. GESTIÓN AVANZADA DE
                         ÍNDICES</u></a></p>
-            <blockquote>
                 <p><a href="#a4-mantenimiento-y-diagnostico-de-indices"><u>3.1 Creación de Índices</u></a></p>
                 <p><a href="#a41-inspeccion-del-estado-de-indices"><u>3.2
                             Índices Compuestos y la Regla del Prefijo Izquierdo</u></a></p>
@@ -107,24 +104,18 @@
                 <p><a href="#a42-reorganizacion-desfragmentacion-y-estadisticas"><u>3.4 Índices de Texto
                             Completo (FULLTEXT)</u></a></p>
                 <p><a href="#a5-planes-de-ejecucion-con-explain"><u>3.5 Índices Funcionales</u></a></p>
-            </blockquote>
             <p><a href="#a51-estructura-e-interpretacion-de-columnas-clave"><u>4. MANTENIMIENTO
                         Y DIAGNÓSTICO DE ÍNDICES</u></a></p>
-            <blockquote>
                 <p><a href="#a6-casos-practicos-y-escenarios"><u>4.1 Inspección del
                             Estado de Índices</u></a></p>
                 <p><a href="#resultado-del-plan-optimizado"><u>4.2
                             Reorganización, Desfragmentación y Estadísticas</u></a></p>
-            </blockquote>
             <p><a href="#a62-caso-2-perdida-de-sargabilidad-por-uso-de-funciones"><u>5. PLANES DE EJECUCIÓN
                         CON EXPLAIN</u></a></p>
-            <blockquote>
                 <p><a href="#a63-caso-3-busquedas-de-patrones-intermedios-like-text-vs-fulltext"><u>5.1
                             Estructura e Interpretación de Columnas Clave</u></a></p>
-            </blockquote>
             <p><a href="#a6-casos-practicos-y-escenarios"><u>6. CASOS PRÁCTICOS Y
                         ESCENARIOS</u></a></p>
-            <blockquote>
                 <p><a href="#a61-caso-1-optimizacion-de-busquedas-simples"><u>6.1 Caso 1:
                             Optimización de Búsquedas Simples</u></a></p>
                 <p><a href="#a62-caso-2-perdida-de-sargabilidad-por-uso-de-funciones"><u>6.2
@@ -132,7 +123,6 @@
                 <p><a href="#a63-caso-3-busquedas-de-patrones-intermedios-like-text-vs-fulltext"><u>6.3
                             Caso 3: Búsquedas de Patrones Intermedios (LIKE %text%) vs.
                             FULLTEXT</u></a></p>
-            </blockquote>
             <h1 id="a1-introduccion">1. INTRODUCCIÓN <a class="headerlink" href="#a1-introduccion"
                     title="Enlace permanente">¶</a></h1>
             <p>En entornos corporativos y servidores de alta concurrencia, el tiempo
@@ -162,28 +152,22 @@
                 cuidadosamente:</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Sobrecarga de Almacenamiento:</strong> Cada índice requiere
                             su propio espacio físico de almacenamiento en el tablespace (archivos
                             .ibd).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Sobrecarga en Operaciones DML (INSERT, UPDATE,
                                 DELETE):</strong> Cada vez que un registro muta, se inserta o se borra
                             de una tabla, el motor de bases de datos debe reorganizar y reescribir
                             de forma síncrona las estructuras de índices asociadas en disco,
                             penalizando el rendimiento de escritura.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Complejidad del Optimizador:</strong> Un exceso de índices
                             incrementa el tiempo de computación que el optimizador de costes de
                             MySQL requiere para evaluar y decidir el plan de ejecución más
                             óptimo.</p>
-                    </blockquote>
                 </li>
             </ul>
             <h2 id="a22-tipos-de-indices-logicos">2.2 Tipos de Índices Lógicos <a class="headerlink"
@@ -193,58 +177,44 @@
                 aplicadas:</p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p><strong>Índices de Clave Primaria (<em>Primary Key</em>):</strong>
                             Identifican un registro de manera unívoca. No permiten valores
                             duplicados ni nulos (NULL). En InnoDB, la Clave Primaria determina
                             físicamente el orden en el que se almacenan las filas en disco (Índice
                             Clustered o Agrupado).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Índices de Clave Ajena (<em>Foreign Key</em>):</strong>
                             Indizan de forma automática las columnas que actúan como enlaces
                             relacionales con otras tablas para optimizar el rendimiento de las
                             operaciones JOIN y verificar la integridad referencial de forma
                             ágil.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Índices Únicos (<em>Unique Index</em>):</strong> Garantizan
                             que no existan registros repetidos en la columna indexada. A diferencia
                             de las claves primarias, admiten valores nulos (NULL).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Índices con Valores Repetidos (Índices Secundarios o No
                                 Únicos):</strong> Optimizan las búsquedas de columnas no restrictivas
                             (por ejemplo, apellidos, estados de pedidos o códigos de país).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Índices de Columnas Múltiples (Compuestos):</strong>
                             Estructurados sobre una secuencia de varias columnas pertenecientes a la
                             misma tabla.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Índices de Texto Completo (<em>Fulltext</em>):</strong>
                             Especializados en la búsqueda léxica y semántica de grandes campos de
                             caracteres de texto (VARCHAR, TEXT), permitiendo búsquedas rápidas
                             mediante palabras clave.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Índices Funcionales:</strong> Permiten generar índices sobre
                             el resultado de evaluar expresiones o funciones sobre los datos en lugar
                             de los valores planos de la columna.</p>
-                    </blockquote>
                 </li>
             </ol>
             <h2 id="a23-arquitectura-fisica-de-almacenamiento-arboles-b">2.3
@@ -343,10 +313,8 @@
 </div>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Únicamente por la columna del prefijo izquierdo (WHERE
                             apellido_contacto = 'Gómez').</p>
-                    </blockquote>
                 </li>
             </ol>
             <p><strong>¿Qué ocurre si filtramos únicamente por
@@ -408,41 +376,29 @@
             <p><strong>Modos de Búsqueda Full-Text:</strong></p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p><strong>IN NATURAL LANGUAGE MODE (Por defecto):</strong> Trata los
                             datos de entrada como una frase en lenguaje natural. No admite
                             operadores lógicos ni caracteres de control especiales.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>IN BOOLEAN MODE:</strong> Permite el uso de operadores
                             booleanos avanzados para definir condiciones complejas:</p>
-                    </blockquote>
                     <ul>
                         <li>
-                            <blockquote>
                                 <p>+ : Indica que la palabra <strong>debe</strong> aparecer de forma
                                     obligatoria.</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>- : Indica que la palabra <strong>no debe</strong> aparecer en el
                                     resultado.</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>* : Actúa como comodín de truncamiento a la derecha de la cadena (por
                                     ejemplo, fruta* busca "fruta", "frutas", "frutales").</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>" " : Delimita una frase literal que debe coincidir de forma
                                     secuencial exacta.</p>
-                            </blockquote>
                         </li>
                     </ul>
                 </li>
@@ -478,51 +434,35 @@
                     title="Enlace permanente">¶</a></h4>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Table:</strong> El nombre físico de la tabla asociada.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Non_unique:</strong> Si devuelve 0, indica que es un índice
                             único (no permite duplicidad física). Si es 1, permite valores
                             duplicados.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Key_name:</strong> Nombre del índice.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Seq_in_index:</strong> Orden posicional de la columna actual
                             dentro de un índice compuesto (comienza en 1).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Column_name:</strong> Nombre físico del campo indexado.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Collation:</strong> Ordenamiento del índice (en árboles B
                             suele ser A para orden ascendente, o NULL si no hay ordenamiento).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Cardinality:</strong> Una estimación de la cantidad de
                             valores únicos almacenados en el índice. A mayor número de cardinalidad
                             respecto al número de filas de la tabla, mayor selectividad tendrá.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Index_type:</strong> El método de almacenamiento físico
                             utilizado (por ejemplo, BTREE, FULLTEXT).</p>
-                    </blockquote>
                 </li>
             </ul>
             <p>También es viable realizar diagnósticos rápidos utilizando DESCRIBE o
@@ -637,52 +577,38 @@ Using temporary indica la creación de tablas temporales internas).</code></pre>
                     rendimiento):</strong></p>
             <ol type="1">
                 <li>
-                    <blockquote>
                         <p><strong>system:</strong> La tabla tiene una única fila (caso
                             excepcional).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>const:</strong> La tabla se lee como máximo una vez al inicio
                             de la consulta por coincidencia exacta con una clave primaria o un
                             índice único (UNIQUE). Es el acceso de tiempo constante óptimo.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>eq_ref:</strong> Se utiliza un índice único o clave primaria
                             para resolver un JOIN con la tabla anterior. Se accede de forma unívoca
                             a un registro por cada fila procesada de la primera tabla.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>ref:</strong> Se realiza una búsqueda por índice secundario
                             no único utilizando un operador de coincidencia exacta (=).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>range:</strong> Se realiza un escaneo de un rango ordenado de
                             claves de un índice, resolviendo condiciones que usan operadores como
                             &gt;, &lt;, BETWEEN, IN(), o LIKE 'prefix%'.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>index:</strong> Se escanea el árbol de índices de forma
                             completa en lugar de la tabla física (evita I/O de disco pesado de
                             columnas no indexadas, pero requiere procesar el árbol entero).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>ALL:</strong> <strong>Full Table Scan.</strong> El motor
                             realiza un escaneo secuencial de todas las páginas de datos físicas de
                             la tabla en disco. Extremadamente ineficiente en tablas medianas y
                             grandes, provocando un elevado consumo de CPU y disco.</p>
-                    </blockquote>
                 </li>
             </ol>
             <h1 id="a6-casos-practicos-y-escenarios">6. CASOS PRÁCTICOS Y ESCENARIOS
@@ -700,29 +626,19 @@ Using temporary indica la creación de tablas temporales internas).</code></pre>
             <p><strong>Resultado del Plan:</strong></p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>type = ALL</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>possible_keys = NULL</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>key = NULL</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>rows = 36 (Número total de filas de la tabla cliente)</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Extra = Using where</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><strong>Diagnóstico:</strong> Como no existe un índice físico sobre
@@ -741,29 +657,19 @@ Using temporary indica la creación de tablas temporales internas).</code></pre>
             </h5>
             <ul>
                 <li>
-                    <blockquote>
                         <p>type = ref</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>possible_keys = idx_pais</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>key = idx_pais</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>rows = 2</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Extra = NULL</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><strong>Diagnóstico:</strong> Tras la creación de la estructura del
@@ -795,7 +701,6 @@ Using temporary indica la creación de tablas temporales internas).</code></pre>
                     un índice sobre fecha_pago):</strong></p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>Al analizar la <strong>Opción A</strong>, el motor devuelve type =
                             ALL. Esto sucede porque, para evaluar el año de cada fecha de pago, el
                             motor debe extraer de forma secuencial cada registro físico de la tabla
@@ -803,20 +708,16 @@ Using temporary indica la creación de tablas temporales internas).</code></pre>
                             host y comprobar si el resultado es igual a 2008. Al aplicar la función
                             a nivel de columna, <strong>el SGBD inhabilita el árbol B-Tree</strong>,
                             forzando un escaneo completo.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>Al analizar la <strong>Opción B</strong>, el motor devuelve type =
                             range y selecciona el índice idx_fecha_pago. El motor puede navegar
                             directamente por la estructura del índice de forma sargable,
                             identificando el inicio del rango ('2008-01-01') y recuperando de forma
                             consecutiva las claves de forma secuencial hasta llegar al fin del rango
                             ('2008-12-31').</p>
-                    </blockquote>
                 </li>
             </ul>
-            <blockquote>
                 <p>💡 <strong>Nota de Ingeniería de Rendimiento (DBA):</strong> En MySQL
                     8.0, si el uso de la función YEAR() es un requisito obligatorio del
                     desarrollo, el SysAdmin puede forzar al optimizador a utilizar el índice
@@ -825,7 +726,6 @@ Using temporary indica la creación de tablas temporales internas).</code></pre>
                     portabilidad y buenas prácticas, siempre es preferible reescribir las
                     consultas en formato de rangos numéricos puros para mantener la
                     sargabilidad estándar del sistema.</p>
-            </blockquote>
             <h2 id="a63-caso-3-busquedas-de-patrones-intermedios-like-text-vs-fulltext">6.3
                 Caso 3: Búsquedas de Patrones Intermedios (LIKE %text%) vs.
                 FULLTEXT <a class="headerlink" href="#a63-caso-3-busquedas-de-patrones-intermedios-like-text-vs-fulltext"
@@ -839,14 +739,10 @@ Using temporary indica la creación de tablas temporales internas).</code></pre>
             <p><strong>Resultado del Plan:</strong></p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>type = ALL</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>rows = 276 (Barrido secuencial completo de la tabla de productos)</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><strong>¿Por qué un índice estándar B-Tree no sirve en un LIKE
@@ -873,25 +769,17 @@ Using temporary indica la creación de tablas temporales internas).</code></pre>
             <p><strong>Resultado del Plan:</strong></p>
             <ul>
                 <li>
-                    <blockquote>
                         <p>type = fulltext</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>possible_keys = idx_nombre_descripcion</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>key = idx_nombre_descripcion</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p>rows = 1 (MySQL lee directamente la lista invertida correspondiente
                             al token 'acero' en un solo paso)</p>
-                    </blockquote>
                 </li>
             </ul>
 

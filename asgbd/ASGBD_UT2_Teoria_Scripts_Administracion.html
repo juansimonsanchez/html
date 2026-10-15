@@ -64,19 +64,16 @@
             <h2 id="a7"> <a class="headerlink" href="#a7" title="Enlace permanente">¶</a></h2>
             <p><strong>ÍNDICE DE CONTENIDOS</strong></p>
             <p><a href="#a31-informationschema-el-diccionario-de-datos"><u>1. Repaso Teórico</u></a></p>
-            <blockquote>
                 <p><a href="#a32-base-de-datos-mysql-el-repositorio-de-seguridad-y-privilegios"><u>1.1.
                             Procedimientos Almacenados (Stored Procedures)</u></a></p>
                 <p><a href="#a33-base-de-datos-performanceschema"><u>1.2. Funciones
                             Almacenadas (Stored Functions)</u></a></p>
                 <p><a href="#a34-base-de-datos-sys-la-abstraccion-simplificada"><u>1.3. Disparadores
                             (Triggers)</u></a></p>
-            </blockquote>
             <p><a href="#a8"><u>2.
                         Ventajas de la programación en la administración</u></a></p>
             <p><a href="#a5-ejemplos-practicos-de-scripts-de-administracion-sencillos-y-documentados"><u>3. Catálogo del Sistema
                         (Metadatos)</u></a></p>
-            <blockquote>
                 <p><a href="#a31-informationschema-el-diccionario-de-datos"><u>3.1.
                             information_schema (El Diccionario de Datos)</u></a></p>
                 <p><a href="#a32-base-de-datos-mysql-el-repositorio-de-seguridad-y-privilegios"><u>3.2.
@@ -86,7 +83,6 @@
                             performance_schema</u></a></p>
                 <p><a href="#a34-base-de-datos-sys-la-abstraccion-simplificada"><u>3.4. Base
                             de Datos sys (La Abstracción Simplificada)</u></a></p>
-            </blockquote>
             <p><a href="#a9"><u>4.
                         Automatización Mediante Scripts Externos (Bash)</u></a></p>
             <p><a href="#a5-ejemplos-practicos-de-scripts-de-administracion-sencillos-y-documentados"><u>5.
@@ -111,43 +107,31 @@
                 ejecutar sentencias DDL (Data Definition Language).</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Parámetros:</strong></p>
-                    </blockquote>
                     <ul>
                         <li>
-                            <blockquote>
                                 <p>IN (Entrada): El valor se pasa al procedimiento pero no se puede
                                     modificar hacia el exterior.</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>OUT (Salida): El procedimiento asigna un valor a este parámetro para
                                     devolverlo al entorno que lo invocó.</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>INOUT (Entrada/Salida): El parámetro aporta un valor inicial y puede
                                     ser modificado dentro del procedimiento para devolver el nuevo
                                     estado.</p>
-                            </blockquote>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Invocación:</strong> Se ejecutan explícitamente mediante la
                             instrucción CALL nombre_procedimiento(parametros);.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Uso Administrativo:</strong> Ideales para tareas de
                             mantenimiento repetitivas (ej. creación masiva de usuarios,
                             particionamiento de tablas, purgas programadas de logs).</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><strong>Ejemplo de Sintaxis Básica (MySQL)</strong></p>
@@ -182,36 +166,26 @@ DELIMITER ;</code></pre>
                     escalar</strong> (un número, una cadena de texto, una fecha).</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Características Clave:</strong></p>
-                    </blockquote>
                     <ul>
                         <li>
-                            <blockquote>
                                 <p>Deben contener obligatoriamente al menos una cláusula RETURN.</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p><strong>No</strong> pueden invocar sentencias de transacción (COMMIT
                                     o ROLLBACK) ni modificar directamente el estado de las tablas en la
                                     mayoría de escenarios de consulta estándar.</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>Se pueden integrar directamente dentro de sentencias SQL estándar
                                     (SELECT, WHERE, ORDER BY).</p>
-                            </blockquote>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Uso Administrativo:</strong> Ideales para normalizar
                             formatos, calcular métricas rápidas de rendimiento o formatear salidas
                             del catálogo.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><strong>Ejemplo de Sintaxis Básica (MySQL)</strong></p>
@@ -239,49 +213,37 @@ WHERE table_schema = 'mi_base_datos';</code></pre>
                 DELETE) sobre una tabla específica.</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>Estructura temporal:</strong></p>
-                    </blockquote>
                     <ul>
                         <li>
-                            <blockquote>
                                 <p>BEFORE: Se ejecuta antes de que los cambios se validen e inserten en
                                     la base de datos (útil para validación y saneamiento de datos).</p>
-                            </blockquote>
                         </li>
                         <li>
-                            <blockquote>
                                 <p>AFTER: Se ejecuta después de que el cambio se ha confirmado en la
                                     tabla (ideal para auditorías, propagación de datos y
                                     sincronizaciones).</p>
-                            </blockquote>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <blockquote>
 
                         <p><strong>Variables Especiales:</strong></p>
-                    </blockquote>
                     <ul>
                         <li>
-                            <blockquote>
                                 OLD: Accede a los valores de la fila antes del
-                                evento (disponible en UPDATE y DELETE).</blockquote>
+                                evento (disponible en UPDATE y DELETE).
                         </li>
                         <li>
-                            <blockquote>
                                 NEW: Accede a los nuevos valores que se van a guardar (disponible en
-                                INSERT y UPDATE).</blockquote>
+                                INSERT y UPDATE).
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>Uso Administrativo:</strong> Monitorización de cambios
                             críticos, auditoría de seguridad (saber quién modificó qué y cuándo) e
                             integridad referencial compleja.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><strong>Ejemplo de Sintaxis de Auditoría (MySQL)</strong></p>
@@ -360,36 +322,26 @@ DELIMITER ;</code></pre>
                 dinámicamente en memoria al consultarlas.</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>SCHEMATA:</strong> Almacena información sobre las bases de
                             datos existentes en el servidor (nombres, juegos de caracteres
                             predeterminados, etc.).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>TABLES:</strong> Contiene metadatos de todas las tablas
                             físicas y vistas (motor de almacenamiento, número estimado de filas,
                             tamaño de los datos y de los índices).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>COLUMNS:</strong> Detalla cada columna de cada tabla (tipos
                             de datos, nulabilidad, privilegios asignados).</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>STATISTICS:</strong> Proporciona información de bajo nivel
                             sobre los índices de las tablas del sistema.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>ROUTINES:</strong> Almacena información sobre los
                             procedimientos y funciones del SGBD.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><strong>Caso Práctico 1: Obtener el tamaño en disco de cada base de
@@ -436,22 +388,16 @@ AND t.table_type = 'BASE TABLE';</code></pre>
                 de accesos del servidor.</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>user:</strong> Almacena los usuarios creados, hosts
                             permitidos, contraseñas cifradas y privilegios globales del sistema.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>db:</strong> Controla los privilegios específicos de los
                             usuarios sobre bases de datos completas.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>tables_priv y columns_priv:</strong> Regulan accesos
                             extremadamente granulares a nivel de tabla o columna.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><strong>Caso Práctico 3: Auditoría rápida de expiración de
@@ -478,24 +424,18 @@ WHERE ssl_type != '' OR password_expired = 'Y' OR user !=
                 motor de almacenamiento en memoria que recopilan las métricas).</p>
             <ul>
                 <li>
-                    <blockquote>
                         <p><strong>events_statements_summary_by_digest:</strong> Agrupa
                             estadísticas sobre patrones de consultas (digests), facilitando
                             identificar cuáles consumen más CPU o tiempo de ejecución.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>threads:</strong> Muestra información técnica detallada sobre
                             los hilos de ejecución activos del servidor.</p>
-                    </blockquote>
                 </li>
                 <li>
-                    <blockquote>
                         <p><strong>events_errors_summary_by_user_by_error:</strong> Registra
                             resúmenes históricos de los errores de sintaxis o conexión provocados
                             por cada usuario del sistema.</p>
-                    </blockquote>
                 </li>
             </ul>
             <p><strong>Caso Práctico 4: Listar los errores más comunes provocados
