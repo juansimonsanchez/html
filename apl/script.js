@@ -201,6 +201,11 @@ function toggleChat() {
     }
 }
 
+window.toggleChat = toggleChat;
+window.iniciarSesion = iniciarSesion;
+window.cerrarSesion = cerrarSesion;
+window.enviarPregunta = enviarPregunta;
+
 function limpiarConversacion() {
     if (!chatBox || !chatInput) return;
 
