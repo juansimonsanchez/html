@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ASGBD - Ut2 Teoria Scripts Administracion</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <script src="script.js"></script>
 </head>
 
@@ -501,12 +501,20 @@ ORDER BY scans DESC;</code></pre>
                 directamente en el script utilizando -p"mi_password" es una
                 vulnerabilidad grave (cualquier usuario del sistema podría verla
                 ejecutando ps aux).</p>
-            <p><strong>Recomendación:</strong> Utilizar archivos de configuración
-                seguros limitados por permisos de lectura para el usuario de sistema
-                (ej. archivo .my.cnf con permisos 600).</p>
+            <p><strong>Recomendación:</strong> Guardar las credenciales en un archivo
+                <code>.env</code> con permisos 600 y cargarlo desde el propio script con
+                <code>source .env</code>. De este modo se evita dejar la contraseña en el
+                historial del sistema o en el código fuente.</p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                <pre><code># .env (guardar en la carpeta del proyecto y protegerlo: chmod 600 .env)
+MYSQL_USER=root
+MYSQL_PASSWORD='PasswordMuySegura123!'
+MYSQL_DATABASE=tienda_informatica
+BACKUP_DIR="/var/backups/mysql"
+</code></pre>
+            </div>
             <h1 id="a5-ejemplos-practicos-de-scripts-de-administracion-sencillos-y-documentados">5.
-                Ejemplos Prácticos de Scripts de Administración (Sencillos y
-                Documentados) <a class="headerlink"
+                Ejemplos Prácticos de Scripts<a class="headerlink"
                     href="#a5-ejemplos-practicos-de-scripts-de-administracion-sencillos-y-documentados"
                     title="Enlace permanente">¶</a></h1>
             <p>Para asentar estos conceptos, a continuación se presentan tres
@@ -520,33 +528,38 @@ ORDER BY scans DESC;</code></pre>
                 visual y un registro en el log del sistema.</p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>#!/bin/bash
-#
-======================================================================
-# SCRIPT DE COMPROBACIÓN DE SALUD DE MYSQL
-# Autor: Gema ASGBD
-# Propósito: Verificar la disponibilidad del servicio local de MySQL.
-#
-=======================================================================
-# 1. Variables de Configuración
-USER_BD="root"
-PASS_BD="ContrasenaSegura123" # Reemplazar con credenciales del entorno
-FECHA_LOG=$(date "+%Y-%m-%d %H:%M:%S")
-echo "=== INICIANDO CONTROL DE SALUD DEL SGBD ($FECHA_LOG) ==="
-# 2. Comprobar si el proceso del servicio se está ejecutando en el S.O.
-if ! systemctl is-active --quiet mysql; then
-echo "[ALERTA] El servicio systemd de MySQL está CAÍDO."
-echo "[ACCIÓN] Intentando levantar el servicio de manera automática..."
-sudo systemctl start mysql
-sleep 3 # Esperar tres segundos para que se estabilice el arranque
-fi
-# 3. Comprobar si el motor responde a consultas básicas mediante ping administrativo
-if mysqladmin -u "$USER_BD" -p"$PASS_BD" ping &amp;&gt;/dev/null;
-then
-echo "[OK] MySQL está levantado y responde de manera óptima a las peticiones."
+set -euo pipefail
+
+# Cargar variables seguras desde .env
+if [ -f ".env" ]; then
+  set -a
+  source .env
+  set +a
 else
-echo "[CRÍTICO] El servicio está activo pero rechaza la conexión de base de datos."
-exit 1
+  echo "[ERROR] No existe el archivo .env. Crea uno con MYSQL_USER y MYSQL_PASSWORD." >&amp;2
+  exit 1
 fi
+
+# Seguridad: evitar que el archivo .env sea visible por otros usuarios
+umask 077
+
+FECHA_LOG=$(date "+%Y-%m-%d %H:%M:%S")
+
+echo "=== INICIANDO CONTROL DE SALUD DEL SGBD ($FECHA_LOG) ==="
+
+if ! systemctl is-active --quiet mysql; then
+  echo "[ALERTA] MySQL está caído. Intentando arrancarlo..."
+  sudo systemctl start mysql
+  sleep 3
+fi
+
+if MYSQL_PWD="$MYSQL_PASSWORD" mysqladmin --user="$MYSQL_USER" ping &amp;&gt;/dev/null; then
+  echo "[OK] MySQL está levantado y responde correctamente."
+else
+  echo "[CRÍTICO] MySQL está activo pero no acepta conexiones."
+  exit 1
+fi
+
 echo "=== CONTROL DE SALUD FINALIZADO ==="
 exit 0</code></pre>
 
@@ -557,41 +570,36 @@ exit 0</code></pre>
                 el archivo para ahorrar espacio en disco.</p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>#!/bin/bash
-#
-=======================================================================
-# SCRIPT DE COPIA DE SEGURIDAD INDIVIDUAL
-# Autor: Gema ASGBD
-# Propósito: Realizar respaldo físico, comprimir y mantener orden en
-el almacén.
-#
-=======================================================================
-# 1. Variables de Configuración
-USER_BD="root"
-PASS_BD="ContrasenaSegura123"
-BD_NOMBRE="tienda_informatica" # Base de datos a respaldar
-RUTA_DESTINO="/var/backups/mysql" # Directorio donde se guardarán los backups
-MARCA_TIEMPO=$(date "+%Y%m%d_%H%M%S") # Formato: AñoMesDía_HoraMinutoSegundo
-FICHERO_BACKUP="$RUTA_DESTINO/backup_${BD_NOMBRE}_${MARCA_TIEMPO}.sql"
-# 2. Creación segura del directorio de destino si no existe
-if [ ! -d "$RUTA_DESTINO" ]; then
-echo "Creando el directorio de respaldos en $RUTA_DESTINO..."
-mkdir -p "$RUTA_DESTINO"
-fi
-echo "Iniciando copia de seguridad de la base de datos: $BD_NOMBRE..."
-# 3. Ejecución del volcado de datos con mysqldump
-mysqldump -u "$USER_BD" -p"$PASS_BD" "$BD_NOMBRE" &gt;
-"$FICHERO_BACKUP"
-# 4. Verificación del resultado del comando anterior (usando $?)
-if [ $? -eq 0 ]; then
-echo "¡Volcado generado con éxito! Procediendo a la compresión..."
-# Comprimir el archivo .sql resultante a formato .gz
-gzip "$FICHERO_BACKUP"
-echo "Copia de seguridad completada y guardada como:
-${FICHERO_BACKUP}.gz"
+set -euo pipefail
+
+if [ -f ".env" ]; then
+  set -a
+  source .env
+  set +a
 else
-echo "[ERROR] Ocurrió un fallo durante el volcado de la base de datos."
-exit 1
+  echo "[ERROR] Falta el archivo .env" >&amp;2
+  exit 1
 fi
+
+mkdir -p "$BACKUP_DIR"
+chmod 700 "$BACKUP_DIR"
+
+MARCA_TIEMPO=$(date "+%Y%m%d_%H%M%S")
+FICHERO_BACKUP="$BACKUP_DIR/backup_${MYSQL_DATABASE}_${MARCA_TIEMPO}.sql"
+
+echo "Iniciando copia de seguridad de $MYSQL_DATABASE..."
+
+MYSQL_PWD="$MYSQL_PASSWORD" mysqldump \
+  --user="$MYSQL_USER" \
+  --databases "$MYSQL_DATABASE" \
+  --single-transaction \
+  --routines \
+  --events \
+  > "$FICHERO_BACKUP"
+
+gzip -f "$FICHERO_BACKUP"
+
+echo "Copia creada correctamente en ${FICHERO_BACKUP}.gz"
 exit 0</code></pre>
 
             </div><strong>Script 3: Comprobación de Consumo y Limpieza de
@@ -602,38 +610,38 @@ exit 0</code></pre>
                 necesario para liberar espacio.</p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>#!/bin/bash
-#
-=======================================================================
-# SCRIPT DE DIAGNÓSTICO DE TAMAÑO Y PURGA DE TABLAS
-# Autor: Gema ASGBD
-# Propósito: Consultar información de metadatos y liberar espacio si
-excede límites.
-#
-=======================================================================
-# 1. Variables de Configuración
-USER_BD="root"
-PASS_BD="ContrasenaSegura123"
-LIMITE_MB=500 # Límite máximo de alerta en Megabytes
-# 2. Consulta de metadatos (Suma total de datos de todas las BD en MB)
-QUERY_TAMAÑO="SELECT ROUND(SUM(data_length + index_length) / 1024 / 1024, 2) FROM information_schema.tables;"
-echo "Consultando el tamaño total ocupado en disco por el SGBD..."
-TAMANO_ACTUAL=$(mysql -u "$USER_BD" -p"$PASS_BD" -AN -e "$QUERY_TAMAÑO")
-# Nota: -AN le indica a mysql que devuelva el resultado plano, sin cabeceras de tabla.
-echo "Tamaño de datos actual en el servidor: $TAMANO_ACTUAL MB"
-# 3. Comprobar si supera el límite establecido
-# Usamos comparación de números flotantes de Bash mediante 'bc' o conversión entera rápida
-TAMANO_ENTERO=${TAMANO_ACTUAL%.*} # Extrae la parte entera para simplificar en Bash
-if [ "$TAMANO_ENTERO" -gt "$LIMITE_MB" ]; then
-echo "[AVISO] Se ha superado el umbral seguro de $LIMITE_MB MB."
-echo "[MANTENIMIENTO] Procediendo a purgar datos antiguos de la tabla de logs..."
-# Consulta SQL de mantenimiento (vaciar registros de log más antiguos de 30 días)
-QUERY_PURGA="DELETE FROM logs_sistema.registro_eventos WHERE
-fecha_evento &lt; NOW() - INTERVAL 30 DAY;"
-mysql -u "$USER_BD" -p"$PASS_BD" -e "$QUERY_PURGA"
-echo "Purga de registros completada."
+set -euo pipefail
+
+if [ -f ".env" ]; then
+  set -a
+  source .env
+  set +a
 else
-echo "[INFORMACIÓN] El espacio ocupado está dentro de los rangos óptimos de operación."
+  echo "[ERROR] Falta el archivo .env" >&amp;2
+  exit 1
 fi
+
+LIMITE_MB=500
+QUERY_TAMAÑO="SELECT ROUND(SUM(data_length + index_length) / 1024 / 1024, 2) FROM information_schema.tables;"
+
+echo "Consultando el tamaño total ocupado en disco por el SGBD..."
+TAMANO_ACTUAL=$(MYSQL_PWD="$MYSQL_PASSWORD" mysql --user="$MYSQL_USER" -AN -e "$QUERY_TAMAÑO")
+TAMANO_ENTERO=${TAMANO_ACTUAL%.*}
+
+echo "Tamaño de datos actual en el servidor: $TAMANO_ACTUAL MB"
+
+if [ "$TAMANO_ENTERO" -gt "$LIMITE_MB" ]; then
+  echo "[AVISO] Se ha superado el umbral seguro de $LIMITE_MB MB."
+  echo "[MANTENIMIENTO] Procediendo a purgar datos antiguos..."
+
+  QUERY_PURGA="DELETE FROM logs_sistema.registro_eventos WHERE fecha_evento &lt; NOW() - INTERVAL 30 DAY;"
+  MYSQL_PWD="$MYSQL_PASSWORD" mysql --user="$MYSQL_USER" -e "$QUERY_PURGA"
+
+  echo "Purga de registros completada."
+else
+  echo "[INFORMACIÓN] El espacio ocupado está dentro de los rangos óptimos."
+fi
+
 exit 0</code></pre>
             </div>
 
