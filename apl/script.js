@@ -253,7 +253,8 @@ async function enviarPregunta() {
         });
 
         const data = await response.json();
-        document.getElementById(loadingId).remove();
+        const loadingElement = document.getElementById(loadingId);
+        if (loadingElement) loadingElement.remove();
 
         if (data.choices && data.choices) {
             const respuestaIA = data.choices.message.content;
@@ -268,9 +269,10 @@ async function enviarPregunta() {
             throw new Error();
         }
     } catch (error) {
-        document.getElementById(loadingId).remove();
+        const loadingElement = document.getElementById(loadingId);
+        if (loadingElement) loadingElement.remove();
         historialMensajes.pop(); // Limpieza preventiva del historial
-        
+
         chatBox.innerHTML += `
             <div class="owui-msg owui-msg-error">
                 <strong>Error de Red Privada:</strong> La petición no pudo alcanzar tu Open WebUI local. Verifica que estás conectado a tu LAN/VPN y que tienes CORS habilitado.
