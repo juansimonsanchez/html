@@ -103,7 +103,43 @@ body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background: var(--bg-body);
     color: var(--text-body);
+    line-height: 1.65;
     min-height: 100vh;
+}
+
+.page-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1.2rem;
+}
+
+.pdf-download-btn,
+.btn-download {
+    margin-top: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: var(--primary);
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+    transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.pdf-download-btn:hover,
+.btn-download:hover {
+    filter: brightness(0.96);
+    transform: translateY(-1px);
+}
+
+.image-small-600 {
+    width: 600px;
+    height: auto;
+    max-width: 100%;
 }
 
 @page {
@@ -334,19 +370,34 @@ td p, th p {
 }
 
 th {
-    background-color: #0f172a !important;
-    color: #ffffff !important;
+    background-color: var(--bg-header) !important;
+    color: var(--text-header) !important;
     font-weight: 600;
     font-size: 0.95rem;
-    border-bottom: 2px solid #0f172a !important;
+    border-bottom: 2px solid var(--bg-header) !important;
 }
 
-tr:nth-child(even) td {
+td:first-child:has(strong) {
+    background-color: var(--bg-header) !important;
+    color: var(--text-header) !important;
+    font-weight: 600;
+}
+
+tr:nth-child(even) td:not(:first-child:has(strong)) {
     background-color: #f8fafc !important;
 }
 
-tr:hover td {
+tr:hover td:not(:first-child:has(strong)) {
     background-color: #f1f5f9 !important;
+}
+
+tr:hover td:first-child:has(strong) {
+    background-color: var(--bg-header) !important;
+    color: var(--text-header) !important;
+}
+
+.table-standard {
+    text-align: center;
 }
 
 /* BLOQUES DE CÓDIGO CON BOTÓN COPIAR */
