@@ -221,7 +221,7 @@
                 Ajena (FK) en la tabla destino.</p>
             <p>Si la relación posee atributos propios, estos atributos también se
                 propagan a la tabla del lado de la cardinalidad máxima.</p>
-            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image15.png" alt="imagen" class="image-width-450"></p>
+            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image15.png" alt="imagen" class="image-width-500"></p>
                 <p>USUSARIO(<strong><u>id</u></strong>, email, password, nombre,
                     apellido1, apellido2)</p>
                 <p>VÍDEO(<strong><u>id</u></strong>, nombre, descripción, duración,
@@ -231,7 +231,7 @@
                 La clave primaria de la tabla se duplica dentro de la misma tabla con un
                 rol diferente (Clave Ajena que apunta a la propia tabla).</p>
             <p><strong>Ejemplo</strong> (Jefes y Empleados):</p>
-            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image21.png" alt="imagen" class="image-width-250"></p>
+            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image21.png" alt="imagen" class="image-width-300"></p>
                 <p>EMPLEADO(<strong><u>id</u></strong>, nombre, apellido1, apellido2,
                     id_jefe)</p>
             <p>Donde id_Jefe es una FK que referencia internamente a
@@ -302,7 +302,7 @@
                 entidad con participación opcional como clave ajena. De esta forma, se
                 minimiza la cantidad de valores nulos (NULL) en la base de datos.</p>
             <p>Ejemplo: Un usuario tiene o no un canal de YouTube.</p>
-            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image12.png" alt="imagen" class="image-width-450"></p>
+            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image12.png" alt="imagen" class="image-width-500"></p>
             <p>USUARIO(<strong>id</strong>, email, password, nombre, apellido1,
                 apellido2)</p>
             <p>CANAL_YOUTUBE(<strong>id</strong>, nombre, descripción,
@@ -347,7 +347,7 @@
                 La clave de la entidad fuerte pasa a la tabla de la entidad débil como
                 foránea y, simultáneamente, forma parte de la clave primaria de
                 esta.</p>
-            <p>Ejemplo (Cursos y Grupos):<img src="media_GBD_UT3_Teoria_Modelo/media/image1.png" alt="imagen" class="image-width-175"></p>
+            <p>Ejemplo (Cursos y Grupos):<img src="media_GBD_UT3_Teoria_Modelo/media/image1.png" alt="imagen" class="image-width-200"></p>
             <p>CURSO (<strong><u>Cod_Curso</u></strong>, Num_Curso,
                 Nivel_Educativo)</p>
             <p>GRUPO (<strong><u>Letra, Cod_Curso)</u></strong></p>
@@ -507,7 +507,7 @@
                 proporcionan los criterios para determinar el grado de vulnerabilidad de
                 una tabla a inconsistencias y anomalías lógicas. Cuanto más alta sea la
                 forma normal aplicable a una tabla, menos vulnerable será a
-                inconsistencias y anomalías. <img src="media_GBD_UT3_Teoria_Modelo/media/image25.png" alt="imagen" class="image-width-175"></p>
+                inconsistencias y anomalías. <img src="media_GBD_UT3_Teoria_Modelo/media/image25.png" alt="imagen" class="image-width-200"></p>
             <p>Edgar F. Codd originalmente definió las tres primeras formas normales
                 (1FN, 2FN, y 3FN) en 1970. Estas formas normales se han resumido de
                 forma que todos los atributos sean atómicos, dependan de la clave
@@ -656,14 +656,14 @@
                 es un campo cuyos valores sean atómicos. La solución sería la
                 siguiente:</p>
             <p><img src="media_GBD_UT3_Teoria_Modelo/media/image14.png" alt="imagen" class="image-width-600"></p>
-            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image11.png" alt="imagen" class="image-width-125"></p>
+            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image11.png" alt="imagen" class="image-width-100"></p>
             <p>Una Relación está en 2FN si y sólo si está en 1FN y todos los
                 atributos que no forman parte de la Clave Principal tienen dependencia
                 funcional completa de ella. Seguimos con esta tabla</p>
             <p><img src="media_GBD_UT3_Teoria_Modelo/media/image4.png" alt="imagen" class="image-width-600"></p>
             <p>Vamos a examinar las dependencias funcionales. El gráfico que las
                 representa es el siguiente:</p>
-            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image24.png" alt="imagen" class="image-width-450"></p>
+            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image24.png" alt="imagen" class="image-width-500"></p>
             <ul>
                 <li>
                         <p>Siempre que aparece un DNI aparecerá el Nombre correspondiente y la
@@ -699,7 +699,7 @@
                 respecto a la clave principal.</p>
             <p>Seguimos con el ejemplo anterior.Trabajaremos con la siguiente
                 tabla:</p>
-            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image2.png" alt="imagen" class="image-width-250"></p>
+            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image2.png" alt="imagen" class="image-width-300"></p>
             <p>Las dependencias funcionales existentes son las siguientes. Como
                 podemos observar existe una dependencia funcional transitiva:
                 DNI→Localidad→Provincia</p>
@@ -707,7 +707,7 @@
             <p>Para que la tabla esté en 3FN, no pueden existir dependencias
                 funcionales transitivas. Para solucionar el problema deberemos crear una
                 nueva tabla. El resultado es:</p>
-            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image9.png" alt="imagen" class="image-width-350"></p>
+            <p><img src="media_GBD_UT3_Teoria_Modelo/media/image9.png" alt="imagen" class="image-width-400"></p>
             <p>¿Te atreverías a obtener el diagrama E/R que daría lugar a este paso
                 a tablas?</p>
             <h2 id="a52-ordenes-de-pedido">5.2. Órdenes de pedido <a class="headerlink" href="#a52-ordenes-de-pedido"
