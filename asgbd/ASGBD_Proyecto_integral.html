@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ASGBD - Proyecto Integral</title>
     <link rel="stylesheet" href="../estilos.css">
-    <script src="script.js"></script>
+    <script src="../script.js"></script>
 </head>
 
 <body>
@@ -123,7 +123,7 @@
                 <li>
                         <p><strong>Despliegue de Contenedores:</strong> Diseña un archivo
                             docker-compose.yml que levante un servicio MySQL 8.x mapeando el puerto
-                            <img src="media_ASGBD_Proyecto_integral/media/image1.png" alt="imagen" class="u-45f466a827"> del host, configurando
+                            <img src="media_ASGBD_Proyecto_integral/media/image1.png" alt="imagen" class="image-width-50"> del host, configurando
                             almacenamiento persistente para /var/lib/mysql y un montaje de tipo bind
                             para un archivo custom.cnf.
                         </p>
@@ -144,7 +144,7 @@
                         <li>
                                 <p>Habilita el Log General de Consultas y el Log de Consultas Lentas
                                     (slow_query_log), estableciendo un umbral de detección de consultas
-                                    lentas de <img src="media_ASGBD_Proyecto_integral/media/image8.png" alt="imagen" class="u-ee767ac841"> segundos (long_query_time =
+                                    lentas de <img src="media_ASGBD_Proyecto_integral/media/image8.png" alt="imagen" class="image-width-25"> segundos (long_query_time =
                                     2.0).</p>
                         </li>
                     </ul>
@@ -789,7 +789,7 @@ booking);</code></pre>
                                     búsquedas sobre el campo de texto name de la tabla de pasajeros sin
                                     malgastar espacio en disco, determina la longitud de prefijo óptima
                                     ejecutando comparativas de cardinalidad incremental con consultas del
-                                    tipo:<img src="media_ASGBD_Proyecto_integral/media/image7.png" alt="imagen" class="u-0af4b15720"><br>
+                                    tipo:<img src="media_ASGBD_Proyecto_integral/media/image7.png" alt="imagen" class="image-width-600"><br>
                                     Crea el índice con el límite de caracteres óptimo calculado.</p>
                         </li>
                         <li>
@@ -953,7 +953,7 @@ booking);</code></pre>
                 <li>
                         <p><strong>Configuración de la Lógica de Sharding en ProxySQL:</strong>
                             Accede a la interfaz de administración lúdica de ProxySQL (mysql en el
-                            puerto administrativo <img src="media_ASGBD_Proyecto_integral/media/image5.png" alt="imagen" class="u-45f466a827">) y realiza las siguientes
+                            puerto administrativo <img src="media_ASGBD_Proyecto_integral/media/image5.png" alt="imagen" class="image-width-50">) y realiza las siguientes
                             configuraciones lógicas:</p>
                     <ul>
                         <li>
@@ -967,14 +967,14 @@ booking);</code></pre>
                             <ul>
                                 <li>
                                         <p>Consultas filtradas por identificador de reserva menor o igual a <img
-                                                src="media_ASGBD_Proyecto_integral/media/image2.png" alt="imagen" class="u-66ed13c909"> (<img
-                                                src="media_ASGBD_Proyecto_integral/media/image6.png" alt="imagen" class="u-04a310c632">) se enruten de forma
+                                                src="media_ASGBD_Proyecto_integral/media/image2.png" alt="imagen" class="image-width-20"> (<img
+                                                src="media_ASGBD_Proyecto_integral/media/image6.png" alt="imagen" class="image-width-75">) se enruten de forma
                                             transparente al Shard 1.</p>
                                 </li>
                                 <li>
                                         <p>Consultas filtradas por identificador superior a <img
-                                                src="media_ASGBD_Proyecto_integral/media/image2.png" alt="imagen" class="u-66ed13c909"> (<img
-                                                src="media_ASGBD_Proyecto_integral/media/image3.png" alt="imagen" class="u-04a310c632">) se enruten de forma
+                                                src="media_ASGBD_Proyecto_integral/media/image2.png" alt="imagen" class="image-width-20"> (<img
+                                                src="media_ASGBD_Proyecto_integral/media/image3.png" alt="imagen" class="image-width-75">) se enruten de forma
                                             transparente al Shard 2.</p>
                                 </li>
                             </ul>
@@ -984,7 +984,7 @@ booking);</code></pre>
                 <li>
                         <p><strong>Simulación de Caídas y Resiliencia:</strong> Comprueba la
                             transparencia del enrutador ejecutando consultas desde el puerto público
-                            de ProxySQL (<img src="media_ASGBD_Proyecto_integral/media/image4.png" alt="imagen" class="u-45f466a827">) verificando mediante
+                            de ProxySQL (<img src="media_ASGBD_Proyecto_integral/media/image4.png" alt="imagen" class="image-width-50">) verificando mediante
                             estadísticas de uso interno de ProxySQL que las peticiones se desvían de
                             forma autónoma al servidor correspondiente. Posteriormente, detén
                             físicamente uno de los contenedores (docker stop) y documenta
