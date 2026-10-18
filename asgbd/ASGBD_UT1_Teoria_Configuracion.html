@@ -52,10 +52,10 @@
                             <tr class="header">
                                 <td><strong>Resultados de Aprendizaje (RA) Asociados</strong></td>
                                 <td>
-                                    <p><strong>RA1:</strong> Identifica los elementos de un sistema
+                                    <p><strong class="tag label-info">RA1:</strong> Identifica los elementos de un sistema
                                         gestor de bases de datos analizando sus funciones y relación con el
                                         sistema operativo.</p>
-                                    <p><strong>RA2:</strong> Instala el sistema gestor de bases de datos
+                                    <p><strong class="tag label-info">RA2:</strong> Instala el sistema gestor de bases de datos
                                         especificando las opciones de configuración y describiendo la estructura
                                         de sus elementos.</p>
                                 </td>
@@ -63,19 +63,19 @@
                             <tr class="odd">
                                 <td><strong>Criterios de Evaluación (CE) Cubiertos</strong></td>
                                 <td>
-                                    <p><strong>CE 1.a:</strong> Se han identificado las funciones de los
+                                    <p><strong class="tag label-info">CE 1.a:</strong> Se han identificado las funciones de los
                                         sistemas gestores de bases de datos.</p>
-                                    <p><strong>CE 1.b:</strong> Se ha analizado la estructura de
+                                    <p><strong class="tag label-info">CE 1.b:</strong> Se ha analizado la estructura de
                                         almacenamiento de la información.</p>
-                                    <p><strong>CE 2.a:</strong> Se han analizado los requisitos del
+                                    <p><strong class="tag label-info">CE 2.a:</strong> Se han analizado los requisitos del
                                         sistema.</p>
-                                    <p><strong>CE 2.b:</strong> Se ha seleccionado el motor de
+                                    <p><strong class="tag label-info">CE 2.b:</strong> Se ha seleccionado el motor de
                                         almacenamiento.</p>
-                                    <p><strong>CE 2.c:</strong> Se han configurado los parámetros del
+                                    <p><strong class="tag label-info">CE 2.c:</strong> Se han configurado los parámetros del
                                         sistema gestor.</p>
-                                    <p><strong>CE 2.e:</strong> Se han verificado los ficheros de log del
+                                    <p><strong class="tag label-info">CE 2.e:</strong> Se han verificado los ficheros de log del
                                         SGBD.</p>
-                                    <p><strong>CE 2.f:</strong> Se han resuelto las incidencias de la
+                                    <p><strong class="tag label-info">CE 2.f:</strong> Se han resuelto las incidencias de la
                                         instalación.</p>
                                 </td>
                             </tr>
@@ -89,35 +89,35 @@
             </div>
             <h3 id="indice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#indice-de-contenidos"
                     title="Enlace permanente">¶</a></h3>
-            <p><a href="#a5-gestion-avanzada-de-variables"><u>1. INTRODUCCIÓN Y
+            <p><a href="#a1-introduccion-y-contextualizacion"><u>1. INTRODUCCIÓN Y
                         CONTEXTUALIZACIÓN</u></a></p>
-            <p><a href="#a51-ambitos-de-variables-global-vs-sesion"><u>2. ASPECTOS
+            <p><a href="#a2-aspectos-criticos-en-la-configuracion"><u>2. ASPECTOS
                         CRÍTICOS EN LA CONFIGURACIÓN</u></a></p>
-            <p><a href="#a52-variantes-sintacticas-de-asignacion-en-mysql"><u>3.
+            <p><a href="#a3-arquitectura-de-almacenamiento-y-archivos-del-motor"><u>3.
                         ARQUITECTURA DE ALMACENAMIENTO Y ARCHIVOS DEL MOTOR</u></a></p>
-            <p><a href="#sintaxis-de-variables-globales-global"><u>4. FICHEROS DE
+            <p><a href="#a4-ficheros-de-configuracion"><u>4. FICHEROS DE
                         CONFIGURACIÓN</u></a></p>
-            <p><a href="#a53-set-persist-y-set-persistonly"><u>5. GESTIÓN AVANZADA DE
+            <p><a href="#a5-gestion-avanzada-de-variables"><u>5. GESTIÓN AVANZADA DE
                         VARIABLES</u></a></p>
-                <p><a href="#el-comando-restrictivo-set-persistonly"><u>5.1 Ámbitos de
+                <p><a href="#a51-ambitos-de-variables-global-vs-sesion"><u>5.1 Ámbitos de
                             Variables: Global vs Sesión</u></a></p>
-                <p><a href="#a21"><u>5.2
+                <p><a href="#a52-variantes-sintacticas-de-asignacion-en-mysql"><u>5.2
                             Variantes Sintácticas de Asignación en MySQL</u></a></p>
-                <p><a href="#a62-registro-de-errores-error-log-y-filtros-json"><u>5.3 SET PERSIST y SET
+                <p><a href="#a53-set-persist-y-set-persistonly"><u>5.3 SET PERSIST y SET
                             PERSIST_ONLY</u></a></p>
-            <p><a href="#generacion-de-prueba-y-simulacion-de-latencia"><u>6.
+            <p><a href="#a6-fundamentos-teoricos-de-los-ficheros-de-registro-logs"><u>6.
                         FUNDAMENTOS TEÓRICOS DE LOS FICHEROS DE REGISTRO (LOGS)</u></a></p>
-                <p><a href="#parseo-tecnico-del-registro"><u>6.1
+                <p><a href="#a61-clasificacion-general-de-las-anotaciones-de-bitacora"><u>6.1
                             Clasificación General de las Anotaciones de Bitácora</u></a></p>
-                <p><a href="#a65-el-registro-binario-binary-log"><u>6.2
+                <p><a href="#a62-registro-de-errores-error-log-y-filtros-json"><u>6.2
                             Registro de Errores (Error Log) y Filtros JSON</u></a></p>
-                <p><a href="#propositos-fundamentales"><u>6.3
+                <p><a href="#a63-registro-general-de-consultas-general-query-log"><u>6.3
                             Registro General de Consultas (General Query Log)</u></a></p>
-                <p><a href="#a7-diagnostico-de-bajo-nivel-y-auditoria-con-performanceschema"><u>6.4
+                <p><a href="#a64-registro-de-consultas-lentas-slow-query-log"><u>6.4
                             Registro de Consultas Lentas (Slow Query Log)</u></a></p>
                 <p><a href="#a65-el-registro-binario-binary-log"><u>6.5 El Registro Binario
                             (Binary Log)</u></a></p>
-            <p><a href="#"><u>7. DIAGNÓSTICO DE BAJO NIVEL Y AUDITORÍA CON
+            <p><a href="#a7-diagnostico-de-bajo-nivel-y-auditoria-con-performanceschema"><u>7. DIAGNÓSTICO DE BAJO NIVEL Y AUDITORÍA CON
                         performance_schema</u></a></p>
             <p><a href="#a8-buenas-practicas-con-los-logs"><u>8. BUENAS PRÁCTICAS CON
                         LOS LOGS</u></a></p>
@@ -319,10 +319,10 @@
                 servidores dedicados sigue la regla de dimensionamiento de su memoria
                 caché interna (<em>Buffer Pool</em>):</p>
                 <p><img src="media_ASGBD_UT1_Teoria_Configuracion/media/image4.png"
-                    class="image-width-300" alt="imagen"><br>Para un servidor de base de
+                    class="image-width-800" alt="imagen"><br>Para un servidor de base de
                 datos con 16 GB de memoria RAM dedicada, la asignación de caché
                 sería:</p>
-            <img src="media_ASGBD_UT1_Teoria_Configuracion/media/image3.png" class="image-width-200" alt="imagen"><br>
+            <img src="media_ASGBD_UT1_Teoria_Configuracion/media/image3.png" class="image-width-800" alt="imagen"><br>
             <h1 id="a4-ficheros-de-configuracion">4. FICHEROS DE CONFIGURACIÓN
                 <a class="headerlink" href="#a4-ficheros-de-configuracion" title="Enlace permanente">¶</a>
             </h1>
