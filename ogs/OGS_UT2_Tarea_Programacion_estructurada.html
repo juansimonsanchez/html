@@ -35,8 +35,8 @@
         ACTIVIDAD <a class="headerlink" href="#a1-ficha-tecnica-de-la-actividad" title="Enlace permanente">¶</a></h3>
       <table>
         <colgroup>
-          <col  class="column-width-50">
-          <col  class="column-width-50">
+          <col class="column-width-50">
+          <col class="column-width-50">
         </colgroup>
         <tbody>
           <tr>
@@ -70,13 +70,13 @@
       <p>Esta tarea constituye el núcleo práctico de la unidad de Programación
         Estructurada. El objetivo es asentar las bases sintácticas del lenguaje
         Python, evolucionando desde estructuras secuenciales básicas hasta la
-        implementación de lógica compleja mediante bifurcaciones condicionales y
-        bucles de control, siempre bajo una óptica de <strong>Administración de
+        implementación de lógica compleja mediante bifurcaciones condicionales,
+        bucles de control y modularización por funciones, siempre bajo una óptica de <strong>Administración de
           Sistemas y Redes (ASIR)</strong>.</p>
       <h3 id="a3-cuaderno-de-actividades">3. CUADERNO DE ACTIVIDADES <a class="headerlink" href="#a3-cuaderno-de-actividades"
           title="Enlace permanente">¶</a></h3>
       <h4 id="grupo-a-ejercicios-iniciales-asimilacion-y-secuencialidad">GRUPO
-        A: EJERCICIOS INICIALES (Asimilación y Secuencialidad) <a class="headerlink"
+        A: EJERCICIOS INICIALES (Asimilación, Secuencialidad y Funciones) <a class="headerlink"
           href="#grupo-a-ejercicios-iniciales-asimilacion-y-secuencialidad" title="Enlace permanente">¶</a></h4>
       <p><strong>A.1. Secuenciales (Entrada, Proceso, Salida)</strong></p>
       <ol type="1">
@@ -88,7 +88,7 @@
         <li>
           <p><strong>Aritmética Básica:</strong> Crea un programa que pida dos
             números reales y realice las operaciones de suma, resta, multiplicación
-            y división, presentando los resultados formateados.</p>
+            y división, presenting los resultados formateados.</p>
         </li>
         <li>
           <p><strong>Conversor Térmico:</strong> Escribe un script que reciba
@@ -165,93 +165,99 @@
             debe indicar si es par o impar.</p>
         </li>
       </ol>
-      <h4 id="grupo-b-ejercicios-avanzados-logica-sistemas-y-redes">GRUPO B:
-        EJERCICIOS AVANZADOS (Lógica, Sistemas y Redes) <a class="headerlink"
-          href="#grupo-b-ejercicios-avanzados-logica-sistemas-y-redes" title="Enlace permanente">¶</a></h4>
-      <p><strong>B.1. Procesamiento de Logs y Cadenas</strong></p>
+
+      <p><strong>A.3. Introducción a Funciones</strong></p>
       <ol start="15" type="1">
         <li>
-          <p><strong>Extracción y Validación de IPs:</strong> Desarrolla un
-            script que reciba una cadena de texto representando un log de firewall
-            con formato 'src=192.168.1.1 dst=10.0.0.5'. El programa debe usar
-            métodos de slicing o split() para extraer las direcciones IP, validar
-            que tienen cuatro octetos y mostrar un error si el formato es
-            incorrecto.</p>
+          <p><strong>Saludo Personalizado:</strong> Define una función llamada <code>saludar(nombre)</code> que reciba un nombre como parámetro e imprima un mensaje de bienvenida. Llama a la función solicitando previamente el nombre al usuario por teclado.</p>
         </li>
         <li>
-          <p><strong>Análisis de Duración de Sesión:</strong> Escribe un
-            programa que reciba una cadena con el formato '[inicio: HH:MM:SS] [fin:
-            HH:MM:SS]'. El script debe parsear las horas, minutos y segundos,
-            calcular la diferencia exacta en segundos totales y devolver la duración
-            de la sesión en un formato legible.</p>
+          <p><strong>Calculadora de Área con Función:</strong> Crea una función <code>calcular_area_triangulo(base, altura)</code> que devuelva (usando <code>return</code>) el área de un triángulo. Solicita los datos en el programa principal e imprime el resultado devuelto.</p>
         </li>
         <li>
-          <p><strong>Parseo de Syslog Estructurado:</strong> Crea un script
-            que reciba una línea de log estructurada: '[CRITICO] [AUTH] Login
-            fallido - usuario admin'. El programa debe utilizar técnicas de búsqueda
-            de subcadenas para separar el nivel de severidad, el servicio y el
-            mensaje, e imprimir cada campo con una etiqueta clara para su posterior
-            auditoría.</p>
+          <p><strong>Comprobador de Paridad:</strong> Diseña una función <code>es_par(numero)</code> que devuelva <code>True</code> si el número es par y <code>False</code> si es impar. Utiliza esta función en el programa principal para comprobar un número introducido por el usuario.</p>
         </li>
         <li>
-          <p><strong>Monitor de Transferencia de Datos:</strong> Implementa un
-            script que solicite el tamaño de un archivo en MB y la velocidad de la
-            red en Mbps. El programa debe calcular el tiempo estimado de
-            transferencia en segundos, validando que ambos valores sean positivos
-            para evitar divisiones por cero.</p>
+          <p><strong>Conversor de Unidades (MB a GB):</strong> Define una función <code>mb_a_gb(megabytes)</code> que transforme una cantidad de megabytes en gigabytes y devuelva el resultado. Prueba la función con varios valores.</p>
         </li>
         <li>
-          <p><strong>Calculador de SLA (Downtime):</strong> Crea un programa
-            que solicite el porcentaje de disponibilidad de un servicio (ej. 99.9%).
-            El script debe calcular cuántas horas y minutos de inactividad
-            (downtime) representa ese porcentaje en un mes de 30 días, informando si
-            cumple con el estándar de alta disponibilidad (definido como &lt; 45
-            minutos al mes).</p>
+          <p><strong>Número Mayor de Dos:</strong> Implementa la función <code>obtener_mayor(a, b)</code> que reciba dos números y retorne el valor del número mayor. Si son iguales, puede devolver cualquiera de los dos.</p>
         </li>
         <li>
-          <p><strong>Simulador de Estado de Servicio:</strong> Diseña un
-            script que reciba el nombre de un servicio (ej. 'SSH', 'Apache',
-            'MySQL') y un código de estado (0=Down, 1=Up, 2=Mantenimiento). El
-            programa debe usar una estructura condicional para imprimir el estado
-            actual del servicio en formato amigable: 'Servicio [Nombre]: [Estado
-            técnico]'.</p>
+          <p><strong>Cálculo de Porcentaje:</strong> Crea la función <code>calcular_porcentaje(cantidad, porcentaje)</code> que reciba un valor numérico y el porcentaje a aplicar, devolviendo la cantidad resultante.</p>
+        </li>
+        <li>
+          <p><strong>Validador de Longitud de Contraseña:</strong> Diseña una función <code>es_clave_segura(clave)</code> que reciba una cadena de texto y devuelva <code>True</code> si tiene 8 o más caracteres, o <code>False</code> en caso contrario.</p>
+        </li>
+        <li>
+          <p><strong>Generador de Email Corporativo:</strong> Escribe una función <code>generar_email(nombre, apellido, dominio)</code> que reciba el nombre, el apellido y el dominio empresarial (ej. <code>"empresa.com"</code>) y retorne el correo en formato en minúsculas: <code>nombre.apellido@dominio</code>.</p>
+        </li>
+        <li>
+          <p><strong>Tabla de Multiplicar:</strong> Crea una función <code>mostrar_tabla_multiplicar(numero)</code> que imprima directamente la tabla de multiplicar del 1 al 10 del número pasado por parámetro (no requiere usar <code>return</code>).</p>
+        </li>
+        <li>
+          <p><strong>Conversor de Segundos a Formato Horas:</strong> Diseña una función <code>formatear_tiempo(segundos_totales)</code> que convierta una cantidad entera de segundos en una cadena con el formato <code>"Xh Ym Zs"</code> y la devuelva.</p>
+        </li>
+      </ol>
+
+      <h4 id="grupo-b-ejercicios-avanzados-logica-sistemas-y-redes">GRUPO B:
+        EJERCICIOS PRÁCTICOS (Lógica, Sistemas y Redes) <a class="headerlink"
+          href="#grupo-b-ejercicios-avanzados-logica-sistemas-y-redes" title="Enlace permanente">¶</a></h4>
+      <p><strong>B.1. Procesamiento de Cadenas y Logs</strong></p>
+      <ol start="25" type="1">
+        <li>
+          <p><strong>Extracción de IP de Log:</strong> Dado un texto con el formato <code>"Origen: 192.168.1.50"</code>, separa el texto para obtener únicamente la dirección IP y muéstrala en pantalla.</p>
+          <p class="ayuda"><strong>💡 Ayuda de Python:</strong> Utiliza el método de cadenas <code>split()</code> para dividir el texto en partes tomando como separador los espacios.</p>
+        </li>
+        <li>
+          <p><strong>Cálculo de Duración en Segundos:</strong> Solicita al usuario los minutos y segundos de duración de una tarea (ej. 3 minutos y 40 segundos) y calcula el tiempo total equivalente expresado solo en segundos.</p>
+          <p class="ayuda"><strong>💡 Ayuda de Python:</strong> No necesitas funciones avanzadas; puedes convertir los valores introducidos a entero usando <code>int()</code> y aplicar la fórmula: <code>totales = (minutos * 60) + segundos</code>.</p>
+        </li>
+        <li>
+          <p><strong>Detector de Error en Log:</strong> Solicita una línea de texto de log e indica si contiene la palabra <code>"ERROR"</code> o <code>"CRITICAL"</code>.</p>
+          <p class="ayuda"><strong>💡 Ayuda de Python:</strong> Puedes usar el operador de pertenencia <code>in</code> (ejemplo: <code>if "ERROR" in texto:</code>) o convertir el texto a mayúsculas con <code>upper()</code> para facilitar la búsqueda.</p>
+        </li>
+        <li>
+          <p><strong>Estimador de Tiempo de Descarga:</strong> Crea un script que pida el tamaño de un archivo en MB y la velocidad de descarga en MB/s, y muestre cuántos segundos tardará en descargarse.</p>
+          <p class="ayuda"><strong>💡 Ayuda de Python:</strong> Realiza una división simple de <code>tamaño / velocidad</code> y puedes usar la función <code>round(resultado, 2)</code> para redondear a dos decimales.</p>
+        </li>
+        <li>
+          <p><strong>Comprobador de SLA Mensual:</strong> Pida los minutos que un servidor ha estado fuera de servicio durante el mes. Si ha superado los 45 minutos, mostrará el mensaje "SLA Incumplido"; en caso contrario, "SLA Correcto".</p>
+          <p class="ayuda"><strong>💡 Ayuda de Python:</strong> Utiliza una estructura condicional básica <code>if / else</code> evaluando si la variable ingresada es mayor a 45.</p>
+        </li>
+        <li>
+          <p><strong>Simulador de Estado de Servicio:</strong> Crea un script que pida el nombre de un servicio (ej. Apache) y un número de estado (0 para detenido, 1 para activo). Debe mostrar un mensaje descriptivo del tipo "El servicio Apache está Activo".</p>
+          <p class="ayuda"><strong>💡 Ayuda de Python:</strong> Usa la estructura condicional <code>if / elif / else</code> para comparar el número de estado introducido.</p>
         </li>
       </ol>
       <p><strong>B.2. Redes y Telemetría</strong></p>
-      <ol start="21" type="1">
+      <ol start="31" type="1">
         <li>
-          <p><strong>Cálculo de Hosts CIDR:</strong> Implementa un algoritmo
-            que, dada una máscara de subred en formato CIDR, calcule el número total
-            de hosts útiles disponibles en dicha red.</p>
+          <p><strong>Calculadora de Hosts Útiles:</strong> Solicita el número de bits dedicados a host en una red (por ejemplo, 8 bits) y calcula el número de direcciones de IP útiles disponibles ($2^n - 2$).</p>
+          <p class="ayuda"><strong>💡 Ayuda de Python:</strong> Para elevar a una potencia en Python se utiliza el operador <code>**</code> (ejemplo: <code>2 ** bits - 2</code>).</p>
         </li>
         <li>
-          <p><strong>Analizador de Octetos:</strong> Diseña un programa que
-            valide una dirección IPv4 y descomponga cada octeto en su representación
-            binaria de 8 bits y hexadecimal.</p>
+          <p><strong>Conversor de Octeto a Binario:</strong> Pida un número entero entre 0 y 255 (correspondiente a un octeto de una dirección IP) y muestre su representación en código binario.</p>
+          <p class="ayuda"><strong>💡 Ayuda de Python:</strong> Utiliza la función integrada <code>bin(numero)</code>. Para quitar el prefijo `'0b'` de la salida puedes usar slicing: <code>bin(numero)[2:]</code>.</p>
         </li>
         <li>
-          <p><strong>Simulador de Jitter:</strong> Escribe un script que
-            reciba una serie de latencias (ping) en un array y calcule el Jitter de
-            red (variación estadística de la latencia máxima menos la
-            mínima).</p>
+          <p><strong>Calculador de Variación de Latencia (Jitter):</strong> Solicita al usuario la latencia máxima y la latencia mínima obtenidas en un test de red (en milisegundos) y calcula la diferencia entre ambas.</p>
+          <p class="ayuda"><strong>💡 Ayuda de Python:</strong> Si pides una lista de valores numéricos, puedes usar las funciones <code>max()</code> y <code>min()</code> para obtener directamente los extremos.</p>
         </li>
       </ol>
       <p><strong>B.3. Monitorización de Sistemas</strong></p>
-      <ol start="24" type="1">
+      <ol start="34" type="1">
         <li>
-          <p><strong>Umbrales de CPU:</strong> Crea un simulador que
-            monitorice la carga de CPU (%) y emita alertas visuales: Verde (Normal
-            &lt;= 50%), Amarillo (Aviso 51-85%) y Rojo (Crítico &gt; 85%).</p>
+          <p><strong>Alertas de Uso de CPU:</strong> Pida el porcentaje de uso de CPU actual y muestre una alerta: "OK" (si es menor o igual a 50%), "PRECAUCIÓN" (entre 51% y 85%) o "ALERTA CRÍTICA" (mayor a 85%).</p>
+          <p class="ayuda"><strong>💡 Ayuda de Python:</strong> Utiliza condicionales anidados o encadenados mediante <code>if</code>, <code>elif</code> y <code>else</code> evaluando rangos numéricos.</p>
         </li>
         <li>
-          <p><strong>Capacidad de Disco:</strong> Desarrolla un script que
-            calcule el espacio libre en disco tras proyectar el crecimiento de logs
-            de sistema durante un periodo de 30 días.</p>
+          <p><strong>Proyección de Espacio en Disco:</strong> Dado el espacio ocupado actual por los logs (en GB) y un crecimiento diario fijo, calcula cuánto espacio ocuparán dentro de 30 días.</p>
+          <p class="ayuda"><strong>💡 Ayuda de Python:</strong> Aplica una operación matemática sencilla acumulando el crecimiento: <code>espacio_final = espacio_actual + (crecimiento_diario * 30)</code>.</p>
         </li>
         <li>
-          <p><strong>Rotación de Archivos:</strong> Implementa la lógica de un
-            sistema de rotación que renombre archivos de backup antiguos y gestione
-            la cuota de almacenamiento máxima permitida.</p>
+          <p><strong>Generador de Nombres para Backup:</strong> Solicita el nombre de un archivo (ej. <code>"datos.db"</code>) y añade como prefijo la palabra <code>"backup_"</code> y como sufijo la extensión <code>".bak"</code> para simular una rotación simple.</p>
+          <p class="ayuda"><strong>💡 Ayuda de Python:</strong> Puedes concatenar cadenas directamente con el operador <code>+</code> o mediante f-strings: <code>f"backup_{nombre_archivo}.bak"</code>.</p>
         </li>
       </ol>
       <p><em>(Nota: Estas actividades se corregirán gradualmente en las

@@ -35,8 +35,8 @@
       <h3 id="ficha-tecnica-de-la-unidad">FICHA TÉCNICA DE LA UNIDAD <a class="headerlink" href="#ficha-tecnica-de-la-unidad" title="Enlace permanente">¶</a></h3>
       <table>
         <colgroup>
-          <col  class="column-width-20">
-          <col  class="column-width-50">
+          <col class="column-width-20">
+          <col class="column-width-50">
         </colgroup>
         <tbody>
           <tr>
@@ -88,9 +88,12 @@
         <p><a href="#a61-definicion-de-funciones"><u>6.1. Definición de Funciones</u></a></p>
         <p><a href="#a62-ambito-de-variables-variables-locales-y-globales"><u>6.2. Ámbito de Variables: Variables Locales y Globales</u></a></p>
         <p><a href="#a63-funciones-recursivas"><u>6.3. Funciones Recursivas</u></a></p>
+        <p><a href="#a64-devolucion-de-multiples-valores-en-funciones"><u>6.4. Devolución de Múltiples Valores en Funciones</u></a></p>
       <p><a href="#a7-modulos"><u>7. MÓDULOS</u></a></p>
         <p><a href="#a71-definicion-e-importacion-de-modulos"><u>7.1. Definición e Importación de Módulos</u></a></p>
         <p><a href="#a72-principales-modulos-estandar-de-python"><u>7.2. Principales Módulos Estándar de Python</u></a></p>
+        <p><a href="#a73-creacion-y-uso-de-librerias-propias-modulos-personalizados"><u>7.3. Creación y Uso de Librerías Propias (Módulos Personalizados)</u></a></p>
+        <p><a href="#a74-ejemplos-practicos-de-modulos-comunes-de-propósito-general-y-sistemas"><u>7.4. Ejemplos Prácticos de Módulos Comunes de Propósito General y Sistemas</u></a></p>
 
       <h1 id="a1-introduccion-y-contextualizacion">1. INTRODUCCIÓN Y CONTEXTUALIZACIÓN <a class="headerlink" href="#a1-introduccion-y-contextualizacion" title="Enlace permanente">¶</a></h1>
       <p>El aprendizaje de la programación estructurada constituye el primer paso metodológico real para la cualificación de un Administrador de Sistemas hacia el ámbito de la automatización (<em>scripting</em>) y la filosofía DevOps. Esta metodología se basa en un principio fundamental: <strong>las instrucciones de un script se ejecutan de manera lineal y secuencial</strong>, una detrás de otra, salvo cuando alteramos deliberadamente este orden natural mediante el uso de decisiones condicionales o repeticiones de código (bucles).</p>
@@ -100,6 +103,7 @@
         <li>
           <p><strong>Administración de Sistemas Operativos (2º ASIR):</strong> Al sentar las bases sintácticas necesarias para sustituir los antiguos scripts en Bash por scripts avanzados de Python capaces de realizar comprobaciones básicas de uso de hardware y control de credenciales de usuario.</p>
         </li>
+
         <li>
           <p><strong>Gestión de Bases de Datos (1º ASIR):</strong> Al capacitar al alumno en la comprensión del uso de operadores lógicos y relacionales, fundamentales para comprender el filtrado y estructuración de información en sistemas de bases de datos.</p>
         </li>
@@ -125,6 +129,7 @@
             <li>
               <p><strong>Variables Globales:</strong> Se definen en el flujo principal de nuestro script y son accesibles desde cualquier parte de nuestro código actual.</p>
             </li>
+
             <li>
               <p><strong>Variables Locales:</strong> Se definen dentro de una estructura específica (como una función o bloque de control) y solo existen mientras dure la ejecución de ese bloque.</p>
             </li>
@@ -186,10 +191,10 @@ print(type(consumo_electrico_amperios))</code></pre>
       <p>Símbolos matemáticos utilizados para manipular los valores numéricos:</p>
       <table>
         <colgroup>
-          <col  class="column-width-30">
-          <col  class="column-width-30">
-          <col  class="column-width-30">
-          <col  class="column-width-30">
+          <col class="column-width-30">
+          <col class="column-width-30">
+          <col class="column-width-30">
+          <col class="column-width-30">
         </colgroup>
         <tbody>
           <tr>
@@ -668,7 +673,32 @@ NameError: name 'resta' is not defined</code></pre>
       <p>Invocación de la función:</p>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
         <pre><code>&gt;&gt;&gt; factorial(6)
-      720</code></pre>
+720</code></pre>
+      </div>
+
+      <h2 id="a64-devolucion-de-multiples-valores-en-funciones">6.4. Devolución de Múltiples Valores en Funciones <a class="headerlink" href="#a64-devolucion-de-multiples-valores-en-funciones" title="Enlace permanente">¶</a></h2>
+      <p>A diferencia de la mayoría de los lenguajes de programación tradicionales, en Python una función puede retornar más de un valor simultáneamente dentro de la misma sentencia <code>return</code>.</p>
+      <p>Para ello, basta con separar los valores o variables devueltas mediante comas. Internamente, Python empaqueta automáticamente estos datos en una <strong>tupla</strong> inmutable. Al recibir el resultado en la llamada a la función, podemos desempaquetar cada valor de forma directa en variables independientes.</p>
+
+      <p><strong>Ejemplo Práctico:</strong></p>
+      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+        <pre><code>def calcular_operaciones(a, b):
+    """Devuelve la suma, la resta y la multiplicación de dos números"""
+    suma = a + b
+    resta = a - b
+    producto = a * b
+    return suma, resta, producto  # Devuelve múltiples valores separados por comas
+
+# Asignación por desempaquetamiento directo
+res_suma, res_resta, res_mult = calcular_operaciones(10, 5)
+print("Suma:", res_suma)          # Muestra: Suma: 15
+print("Resta:", res_resta)        # Muestra: Resta: 5
+print("Multiplicación:", res_mult) # Muestra: Multiplicación: 50
+
+# Si capturamos el resultado en una sola variable, veremos que es una tupla
+resultado_tupla = calcular_operaciones(10, 5)
+print(resultado_tupla)             # Muestra: (15, 5, 50)
+print(type(resultado_tupla))       # Muestra: &lt;class 'tuple'&gt;</code></pre>
       </div>
 
       <!-- ================= SECCIÓN 7: MÓDULOS ================= -->
@@ -697,19 +727,43 @@ NameError: name 'resta' is not defined</code></pre>
       <h3 id="modulos-matematicos">Módulos matemáticos</h3>
       <ul>
         <li>
-          <p><strong>Módulo <code>math</code>:</strong> Proporciona funciones y constantes matemáticas avanzadas.</p>
+          <p><strong>Módulo <code>math</code>:</strong> Proporciona funciones y constantes matemáticas avanzadas para cálculos algebraicos y de geometría básica.</p>
+          <ul>
+            <li><code>math.sqrt(x)</code>: Devuelve la raíz cuadrada flotante de <code>x</code>.</li>
+            <li><code>math.pow(x, y)</code>: Eleva <code>x</code> a la potencia <code>y</code> (devuelve <code>float</code>).</li>
+            <li><code>math.ceil(x)</code>: Redondea hacia arriba al entero más cercano (techo).</li>
+            <li><code>math.floor(x)</code>: Redondea hacia abajo al entero más cercano (suelo).</li>
+            <li><code>math.pi</code> / <code>math.e</code>: Constantes matemáticas de uso común ($\pi$ y número $e$).</li>
+          </ul>
           <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>&gt;&gt;&gt; math.sqrt(9)
-3.0</code></pre>
+            <pre><code>import math
+
+# Ejemplo general: Cálculo de área y redondeos de un producto
+radio = 5
+area_circulo = math.pi * math.pow(radio, 2)
+print("Área exacta del círculo:", area_circulo)
+print("Redondeo hacia arriba (ceil):", math.ceil(area_circulo))  # 79
+print("Redondeo hacia abajo (floor):", math.floor(area_circulo)) # 78</code></pre>
           </div>
         </li>
         <li>
-          <p><strong>Módulo <code>fractions</code>:</strong> Permite gestionar operaciones aritméticas con fracciones exactas y racionales.</p>
-        </li>
-        <li>
-          <p><strong>Módulo <code>random</code>:</strong> Diseñado para la generación de secuencias y valores pseudoaleatorios.</p>
+          <p><strong>Módulo <code>random</code>:</strong> Generación de números aleatorios y selecciones al azar, útil para juegos, sorteos, simulación de datos o asignación aleatoria de tareas.</p>
+          <ul>
+            <li><code>random.randint(a, b)</code>: Devuelve un número entero aleatorio comprendido entre $a$ y $b$ (ambos inclusive).</li>
+            <li><code>random.choice(secuencia)</code>: Selecciona un único elemento al azar de una lista o cadena.</li>
+            <li><code>random.sample(secuencia, k)</code>: Selecciona $k$ elementos aleatorios de una lista sin repetir.</li>
+            <li><code>random.shuffle(lista)</code>: Mezcla o desordena de forma aleatoria los elementos de una lista in situ.</li>
+          </ul>
           <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>&gt;&gt;&gt; random.randint(1, 10)</code></pre>
+            <pre><code>import random
+
+# Ejemplo general: Juego de dados y sorteo de alumnos
+dado = random.randint(1, 6)
+estudiantes = ["Ana", "Carlos", "Beatriz", "David", "Elena"]
+ganador = random.choice(estudiantes)
+
+print("Resultado del dado:", dado)
+print("Estudiante seleccionado al azar:", ganador)</code></pre>
           </div>
         </li>
       </ul>
@@ -717,22 +771,248 @@ NameError: name 'resta' is not defined</code></pre>
       <h3 id="modulos-de-hora-y-fecha">Módulos de hora y fecha</h3>
       <ul>
         <li>
-          <p><strong>Módulo <code>time</code>:</strong> Proporciona acceso a funciones de tiempo basadas en la época POSIX (segundos transcurridos desde el 1 de enero de 1970 UTC).</p>
+          <p><strong>Módulo <code>time</code>:</strong> Gestión del tiempo basado en marcas temporales (segundos desde la época POSIX) y control de pausas en programas.</p>
+          <ul>
+            <li><code>time.sleep(segundos)</code>: Pausa la ejecución del script durante los segundos indicados.</li>
+            <li><code>time.time()</code>: Obtiene la marca de tiempo actual en segundos; muy útil para medir cuánto tarda en ejecutarse un trozo de código.</li>
+          </ul>
           <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>&gt;&gt;&gt; time.sleep(1) # Pausa la ejecución durante un segundo</code></pre>
+            <pre><code>import time
+
+# Ejemplo general: Medición del tiempo de ejecución de un proceso
+inicio = time.time()
+print("Procesando datos...")
+time.sleep(1.5)  # Simula una tarea pesada pausando 1.5 segundos
+fin = time.time()
+print("Tiempo total transcurrido:", round(fin - inicio, 2), "segundos.")</code></pre>
           </div>
         </li>
         <li>
-          <p><strong>Módulo <code>datetime</code>:</strong> Amplía las capacidades de manipulación de fechas, horas y cálculos de intervalos temporales con una interfaz orientada a objetos.</p>
+          <p><strong>Módulo <code>datetime</code>:</strong> Manipulación amigable de fechas, horas y cálculos de intervalos entre días u horas.</p>
+          <ul>
+            <li><code>datetime.now()</code>: Devuelve un objeto con la fecha y hora exacta actual.</li>
+            <li><code>strftime(formato)</code>: Convierte una fecha en una cadena de texto personalizada.</li>
+            <li><code>timedelta(days, hours, ...)</code>: Permite sumar o restar días y horas a una fecha.</li>
+          </ul>
+          <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+            <pre><code>from datetime import datetime, timedelta
+
+# Ejemplo general: Cálculo de fecha de vencimiento
+hoy = datetime.now()
+plazo_devolucion = timedelta(days=15)
+fecha_limite = hoy + plazo_devolucion
+
+print("Fecha actual:", hoy.strftime("%d/%m/%Y"))
+print("Fecha límite de devolución (+15 días):", fecha_limite.strftime("%d/%m/%Y"))</code></pre>
+          </div>
         </li>
       </ul>
 
       <h3 id="modulos-de-interaccion-con-el-sistema">Módulos de interacción con el sistema</h3>
       <ul>
         <li>
-          <p><strong>Módulo <code>os</code>:</strong> Permite interactuar con el sistema operativo anfitrión, obtener información de variables de entorno y manipular directorios y rutas del sistema de archivos.</p>
+          <p><strong>Módulo <code>os</code>:</strong> Permite realizar operaciones generales con el sistema de archivos (consultar carpetas, crear directorios, verificar la existencia de ficheros).</p>
+          <ul>
+            <li><code>os.getcwd()</code>: Obtiene la ruta del directorio de trabajo actual.</li>
+            <li><code>os.listdir(ruta)</code>: Devuelve una lista con los nombres de archivos y carpetas contenidos en un directorio.</li>
+            <li><code>os.path.exists(ruta)</code>: Comprueba si existe un archivo o directorio en la ruta indicada.</li>
+            <li><code>os.mkdir(nombre)</code>: Crea una nueva carpeta en la ruta de trabajo.</li>
+          </ul>
           <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>&gt;&gt;&gt; os.system("clear") # Limpia la pantalla de la terminal en sistemas tipo UNIX</code></pre>
+            <pre><code>import os
+
+# Ejemplo general: Comprobación y creación automática de carpetas
+carpeta_destino = "mis_documentos"
+if not os.path.exists(carpeta_destino):
+    os.mkdir(carpeta_destino)
+    print("Carpeta creada correctamente:", carpeta_destino)
+else:
+    print("La carpeta ya existe. Contenido actual:", os.listdir(carpeta_destino))</code></pre>
+          </div>
+        </li>
+      </ul>
+
+      <h3 id="funciones-incorporadas-para-cadenas">Funciones e Instrucciones Incorporadas para Trabajar con Cadenas (Built-in)</h3>
+      <p>Las cadenas de texto (<code>str</code>) se utilizan en cualquier tipo de programa para procesar nombres, textos introducidos por usuario, limpiar datos de entrada y dar formato a informes. A continuación se presentan las funciones e instrucciones nativas más utilizadas:</p>
+
+      <ul>
+        <li>
+          <p><strong><code>len(cadena)</code>:</strong> Función integrada que devuelve la cantidad total de caracteres del texto.</p>
+        </li>
+        <li>
+          <p><strong><code>cadena.upper()</code> / <code>cadena.lower()</code> / <code>cadena.title()</code>:</strong> Transforman el texto completo a mayúsculas, minúsculas o formato título (primera letra de cada palabra en mayúscula).</p>
+        </li>
+        <li>
+          <p><strong><code>cadena.strip()</code>:</strong> Limpia y elimina los espacios sobrantes, tabulaciones o saltos de línea al principio y final de una cadena.</p>
+        </li>
+        <li>
+          <p><strong><code>cadena.replace(buscar, reemplazar)</code>:</strong> Sustituye una subcadena o carácter por otro dentro del texto.</p>
+        </li>
+        <li>
+          <p><strong><code>cadena.split(separador)</code>:</strong> Divide un texto en una lista de palabras tomando un separador por defecto (espacio en blanco, coma, guion, etc.).</p>
+        </li>
+        <li>
+          <p><strong><code>separador.join(lista)</code>:</strong> Junta los elementos de una lista de cadenas en un solo texto mediante un separador.</p>
+        </li>
+        <li>
+          <p><strong><code>cadena.find(subcadena)</code>:</strong> Busca la posición (índice) donde comienza un texto. Devuelve <code>-1</code> si no lo encuentra.</p>
+        </li>
+        <li>
+          <p><strong><code>cadena.startswith(prefijo)</code> / <code>cadena.endswith(sufijo)</code>:</strong> Evalúan si una cadena comienza o termina con determinado texto (devuelven <code>True</code> o <code>False</code>).</p>
+        </li>
+      </ul>
+
+      <p><strong>Ejemplo Práctico de Formateo y Normalización de Texto (Uso General):</strong></p>
+      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+        <pre><code># Entrada de datos sin formatear desde un formulario de usuario
+entrada_usuario = "  juan carlos pérez  "
+
+# 1. Limpieza de espacios en los extremos y formateo de nombre propio
+nombre_limpio = entrada_usuario.strip().title()
+print("Nombre formateado:", nombre_limpio) # Muestra: Juan Carlos Pérez
+
+# 2. División de palabras para separar nombre y apellidos
+partes_nombre = nombre_limpio.split(" ")
+print("Primer nombre:", partes_nombre[0])   # Muestra: Juan
+print("Primer apellido:", partes_nombre[1]) # Muestra: Carlos
+
+# 3. Sustitución de caracteres
+frase = "Aprender Java es divertido"
+frase_modificada = frase.replace("Java", "Python")
+print(frase_modificada) # Muestra: Aprender Python es divertido
+
+# 4. Comprobación de extensiones de archivos
+archivo = "documento_presentacion.pdf"
+if archivo.endswith(".pdf"):
+    print("El archivo es un documento PDF válido.")</code></pre>
+      </div>
+
+      <h2 id="a73-creacion-y-uso-de-librerias-propias-modulos-personalizados">7.3. Creación y Uso de Librerías Propias (Módulos Personalizados) <a class="headerlink" href="#a73-creacion-y-uso-de-librerias-propias-modulos-personalizados" title="Enlace permanente">¶</a></h2>
+      <p>Crear nuestra propia librería de funciones en Python es tan sencillo como agrupar funciones reutilizables dentro de un fichero con extensión <code>.py</code> y guardarlo en el mismo directorio de trabajo desde donde vayamos a ejecutar nuestro programa principal.</p>
+
+      <p><strong>Paso 1: Crear la librería propia con funciones generales (<code>mi_libreria.py</code>)</strong></p>
+      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+        <pre><code># Archivo: mi_libreria.py
+# Librería reutilizable de utilidades generales
+
+def es_monto_valido(cantidad):
+    """Comprueba que una cantidad monetaria o valor sea positivo"""
+    return cantidad &gt; 0
+
+def calcular_precio_final(precio_base, porcentaje_descuento=0):
+    """Calcula el precio final aplicando un descuento opcional"""
+    descuento = precio_base * (porcentaje_descuento / 100)
+    return precio_base - descuento
+
+def formatear_titulo(texto):
+    """Genera una cabecera vistosa con bordes para la consola"""
+    linea = "=" * (len(texto) + 6)
+    print(linea)
+    print("  ", texto)
+    print(linea)</code></pre>
+      </div>
+
+      <p><strong>Paso 2: Importar y reutilizar la librería en el script principal (<code>main.py</code>)</strong></p>
+      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+        <pre><code># Archivo: main.py
+import mi_libreria
+
+# Uso de las funciones generales importadas
+mi_libreria.formatear_titulo("SISTEMA DE GESTIÓN DE TIENDA")
+
+precio_producto = 150.0
+descuento_aplicado = 15
+
+if mi_libreria.es_monto_valido(precio_producto):
+    total = mi_libreria.calcular_precio_final(precio_producto, descuento_aplicado)
+    print("Precio base:", precio_producto, "€")
+    print("Precio final con descuento:", total, "€")</code></pre>
+      </div>
+
+      <h2 id="a74-ejemplos-practicos-de-modulos-comunes-de-propósito-general-y-sistemas">7.4. Ejemplos Prácticos de Módulos Comunes de Propósito General y Sistemas <a class="headerlink" href="#a74-ejemplos-practicos-de-modulos-comunes-de-propósito-general-y-sistemas" title="Enlace permanente">¶</a></h2>
+      <p>A continuación se detallan las librerías estándar de Python más utilizadas tanto en la resolución de tareas generales de programación como en la administración de redes y sistemas:</p>
+
+      <ul>
+        <li>
+          <p><strong>Módulo <code>sys</code> (Información del Intérprete y Parámetros de Entrada):</strong></p>
+          <p>Permite capturar argumentos pasados al programa desde la terminal de comandos (<code>sys.argv</code>) o detener limpiamente la ejecución del script (<code>sys.exit()</code>).</p>
+          <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+            <pre><code>import sys
+
+# Captura de argumentos recibidos por consola: python3 main.py Juan 25
+print("Nombre del programa:", sys.argv[0])
+
+if len(sys.argv) &lt; 2:
+    print("Error: Debes proporcionar al menos un argumento (tu nombre).")
+    sys.exit(1) # Finaliza el programa indicando error
+
+nombre_usuario = sys.argv[1]
+print("Bienvenido al programa,", nombre_usuario)</code></pre>
+          </div>
+        </li>
+
+        <li>
+          <p><strong>Módulo <code>math</code> / <code>statistics</code> (Cálculos Estadísticos y Matemáticos):</strong></p>
+          <p>Ideal para realizar análisis de datos sencillos como calcular medias, medianas y desviaciones sin necesidad de librerías externas.</p>
+          <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+            <pre><code>import statistics
+
+# Análisis de calificaciones o datos numéricos
+notas = [7.5, 9.0, 6.0, 8.5, 10.0]
+media = statistics.mean(notas)
+mediana = statistics.median(notas)
+
+print("Nota media de la clase:", media)     # Muestra: 8.2
+print("Mediana de las notas:", mediana)     # Muestra: 8.5</code></pre>
+          </div>
+        </li>
+
+        <li>
+          <p><strong>Módulo <code>json</code> (Intercambio de Datos y Ficheros de Configuración):</strong></p>
+          <p>Utilizado para guardar información de programas en formato JSON o consumir datos procedentes de APIs web públicas o bases de datos.</p>
+          <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+            <pre><code>import json
+
+# Convertir un diccionario de Python a formato de texto JSON
+datos_usuario = {
+    "nombre": "Laura",
+    "edad": 28,
+    "lenguajes": ["Python", "SQL", "HTML"]
+}
+
+# Generar cadena de texto JSON
+json_resultado = json.dumps(datos_usuario, indent=4)
+print("Representación en formato JSON:")
+print(json_resultado)</code></pre>
+          </div>
+        </li>
+
+        <li>
+          <p><strong>Módulo <code>platform</code> (Información del Entorno de Ejecución):</strong></p>
+          <p>Permite conocer en qué sistema operativo y arquitectura se está ejecutando el programa para adaptar su comportamiento.</p>
+          <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+            <pre><code>import platform
+
+print("Sistema Operativo:", platform.system())
+print("Versión del Sistema:", platform.release())
+print("Arquitectura de la CPU:", platform.machine())
+print("Versión de Python utilizada:", platform.python_version())</code></pre>
+          </div>
+        </li>
+
+        <li>
+          <p><strong>Módulo <code>subprocess</code> (Ejecución de Comandos Externos):</strong></p>
+          <p>Permite ejecutar programas externos o comandos de la consola del sistema operativo directamente desde Python y capturar su resultado.</p>
+          <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+            <pre><code>import subprocess
+
+# Ejecutar un comando externo según el sistema operativo
+resultado = subprocess.run(["ping", "-c", "1", "127.0.0.1"], capture_output=True, text=True)
+
+if resultado.returncode == 0:
+    print("La prueba de red ha respondido con éxito.")
+else:
+    print("Error al ejecutar la comprobación de red.")</code></pre>
           </div>
         </li>
       </ul>
