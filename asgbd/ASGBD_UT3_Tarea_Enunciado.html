@@ -270,11 +270,60 @@ VALUES ('Ricky', 'Rubio', 'Base', 1.92, 1);</code></pre>
                         únicamente a estas vistas y no a las tablas base.</li>
                 </ol>
             </section>
+<section><h3 id="actividad-10-auditoria-de-seguridad-y-bastionado-ce-3c-3g-3h">Actividad 9: Auditoría de Seguridad y Bastionado del Servidor <span class="tag label-info">CE 3.c, 3.g, 3.h</span></h3>
+<p>
+    En esta actividad final auditarás la seguridad de tu servidor MySQL frente a posibles accesos no autorizados locales y de red.
+    Para cada uno de los aspectos de la lista, debes comprobar en tu entorno si tu instalación es segura o presenta la incidencia.
+</p>
+<div class="nota-importante">
+    <strong>Uso guiado de la Inteligencia Artificial (IA):</strong> Puedes utilizar asistentes de IA (ChatGPT, Gemini, etc.) como apoyo consultivo. Pídele ayuda formulando preguntas claras sobre:
+    <ol >
+        <li><strong>¿Cómo detectarlo?</strong> Qué consulta SQL o comando de terminal Linux permite verificar el estado.</li>
+        <li><strong>¿Cómo solucionarlo?</strong> Qué sentencia SQL, directiva en <code>my.cnf</code> o cambio de permisos en el sistema operativo corrige el problema si está vulnerable.</li>
+    </ol>
+    <em>Recuerda contrastar críticamente las respuestas de la IA antes de aplicarlas en tu máquina para evitar dejar el servicio inoperativo.</em>
+</div>
 
+<p>Por cada punto del checklist, debes incluir en la memoria: el <strong>resultado de la comprobación</strong> .</p>
+
+<h4>1. Incidencias Graves (Riesgo Crítico / Compromiso Inmediato)</h4>
+<p>Fallos que permiten el control total del servidor, ejecución de comandos o acceso remoto no autenticado:</p>
+<ul>
+    <li><strong>Acceso remoto del superusuario <code>root</code>:</strong> Comprobar que <code>root</code> solo puede conectar desde <code>localhost</code> (o <code>127.0.0.1</code>) y jamás desde cualquier IP (<code>%</code>).</li>
+    <li><strong>Usuarios anónimos:</strong> Verificar que no existan cuentas con el nombre de usuario en blanco (<code>User = ''</code> en <code>mysql.user</code>).</li>
+    <li><strong>Privilegios globales excesivos:</strong> Comprobar que los usuarios de aplicaciones normales no tengan permisos administrativos (<code>SUPER</code>, <code>GRANT OPTION</code>, <code>FILE</code>, <code>SHUTDOWN</code>) ni acceso a <code>*.*</code>.</li>
+    <li><strong>Escritura/Lectura arbitraria de ficheros (<code>secure_file_priv</code>):</strong> Comprobar que no esté vacío (<code>""</code>). Debe apuntar a una ruta restringida o estar en <code>NULL</code>.</li>
+    <li><strong>Servicio ejecutado como superusuario del sistema:</strong> Verificar que el demonio <code>mysqld</code> se ejecuta bajo el usuario del sistema <code>mysql</code> y nunca como <code>root</code> de Linux.</li>
+    <li><strong>Permisos del directorio de datos (<code>datadir</code>):</strong> Comprobar que <code>/var/lib/mysql</code> tiene permisos restrictivos (<code>0700</code> o <code>0750</code>) y pertenece a <code>mysql:mysql</code>.</li>
+</ul>
+
+<h4>2. Incidencias Moderadas (Superficie de Exposición y Políticas de Acceso)</h4>
+<p>Debilidades de configuración que facilitan ataques dirigidos, fugas de credenciales o movimientos laterales:</p>
+<ul>
+    <li><strong>Escucha de red innecesaria (<code>bind-address</code>):</strong> Si la base de datos solo atiende a aplicaciones en la misma máquina, asegurar que escucha en <code>127.0.0.1</code> y no en todas las interfaces (<code>0.0.0.0</code>).</li>
+    <li><strong>Existencia de la base de datos <code>test</code>:</strong> Confirmar que se ha eliminado la base de datos <code>test</code> y sus permisos por defecto asociados (<code>test_%</code>).</li>
+    <li><strong>Permisos de los ficheros de configuración:</strong> Comprobar que <code>/etc/mysql/my.cnf</code> y sus subdirectorios tienen permisos seguros (<code>0640</code> o <code>0600</code>) y son propiedad de <code>root</code>.</li>
+    <li><strong>Cifrado en tránsito (TLS/SSL):</strong> Si se permiten conexiones de red, comprobar que <code>require_secure_transport = ON</code> o que se exige SSL a los usuarios remotos.</li>
+    <li><strong>Filtrado por cortafuegos:</strong> Asegurar mediante el cortafuegos del sistema (<code>ufw</code>, <code>firewalld</code> o <code>iptables</code>) que el puerto 3306 no está abierto a cualquier origen no autorizado.</li>
+    <li><strong>Historial de comandos con contraseñas:</strong> Comprobar que el archivo <code>~/.mysql_history</code> de los usuarios del sistema no almacena credenciales en texto claro (recomendar vaciado o enlace a <code>/dev/null</code>).</li>
+    <li><strong>Registro general activado (<code>general_log</code>):</strong> Verificar que está desactivado (<code>OFF</code>) en entornos reales para evitar guardar contraseñas y datos sensibles en texto claro.</li>
+</ul>
+
+<h4>3. Incidencias Leves (Buenas Prácticas y Defensa en Profundidad)</h4>
+<p>Ajustes recomendados para robustecer la robustez operativa, auditoría y resistencia a ataques de fuerza bruta:</p>
+<ul>
+    <li><strong>Componente de validación de contraseñas:</strong> Comprobar si está activo <code>validate_password</code> con directivas mínimas de longitud y complejidad.</li>
+    <li><strong>Política de expiración y bloqueo de cuentas:</strong> Verificar si están configurados límites de intentos fallidos (<code>FAILED_LOGIN_ATTEMPTS</code>) y caducidad periódica.</li>
+    <li><strong>Plugin de autenticación seguro:</strong> Asegurar el uso de mecanismos modernos (como <code>caching_sha2_password</code>) y evitar plugins desaconsejados u obsoletos.</li>
+    <li><strong>Enlaces simbólicos desactivados:</strong> Verificar que la opción <code>symbolic-links = 0</code> (o <code>skip-symbolic-links</code>) está habilitada.</li>
+    <li><strong>Permisos del registro de errores:</strong> Verificar que el archivo indicado en <code>log_error</code> solo puede ser leído por el usuario <code>mysql</code> o administradores (<code>0640</code>).</li>
+    <li><strong>Perfil de confinamiento activo:</strong> Comprobar que el servicio cuenta con perfil en modo <em>enforce</em> mediante AppArmor o SELinux.</li>
+    <li><strong>Trazabilidad y auditoría:</strong> Identificar la presencia o posibilidad de activar plugins de auditoría para registrar intentos de acceso y cambios de permisos (DCL).</li>
+</ul></section>
             <section>
                 <h2 id="bloque-v-matriz-de-evidencias-y-auditoria-de-seguridad-ra3">Bloque V: Matriz de Evidencias y Auditoría de Seguridad (RA3)</h2>
 
-                <h3 id="actividad-9-verificacion-cruzada-operaciones-autorizadas-vs-denegadas-ce-3c-3d-3f-3h">Actividad 9: Verificación Cruzada (Operaciones Autorizadas vs. Denegadas) <span class="tag label-info">CE
+                <h3 id="actividad-9-verificacion-cruzada-operaciones-autorizadas-vs-denegadas-ce-3c-3d-3f-3h">Actividad 10: Verificación Cruzada (Operaciones Autorizadas vs. Denegadas) <span class="tag label-info">CE
                         3.c, 3.d, 3.f, 3.h</span></h3>
                 <p>Para comprobar que el Principio del Menor Privilegio se cumple rigurosamente y no existen vías de
                     escalada de privilegios, aporta en tu memoria técnica las capturas emparejadas de las siguientes

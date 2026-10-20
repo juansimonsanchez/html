@@ -89,6 +89,7 @@
         <p><a href="#a62-ambito-de-variables-variables-locales-y-globales"><u>6.2. Ámbito de Variables: Variables Locales y Globales</u></a></p>
         <p><a href="#a63-funciones-recursivas"><u>6.3. Funciones Recursivas</u></a></p>
         <p><a href="#a64-devolucion-de-multiples-valores-en-funciones"><u>6.4. Devolución de Múltiples Valores en Funciones</u></a></p>
+        <p><a href="#a65-identificacion-del-programa-principal-main-y-control-de-ejecucion"><u>6.5. Identificación del Programa Principal (main) y Control de Ejecución</u></a></p>
       <p><a href="#a7-modulos"><u>7. MÓDULOS</u></a></p>
         <p><a href="#a71-definicion-e-importacion-de-modulos"><u>7.1. Definición e Importación de Módulos</u></a></p>
         <p><a href="#a72-principales-modulos-estandar-de-python"><u>7.2. Principales Módulos Estándar de Python</u></a></p>
@@ -701,6 +702,58 @@ print(resultado_tupla)             # Muestra: (15, 5, 50)
 print(type(resultado_tupla))       # Muestra: &lt;class 'tuple'&gt;</code></pre>
       </div>
 
+      <h2 id="a65-identificacion-del-programa-principal-main-y-control-de-ejecucion">6.5. Identificación del Programa Principal (main) y Control de Ejecución <a class="headerlink" href="#a65-identificacion-del-programa-principal-main-y-control-de-ejecucion" title="Enlace permanente">¶</a></h2>
+      <p>Cuando un programa en Python comienza a crecer y definimos múltiples funciones auxiliares, surge una pregunta clave: <strong>¿cómo distinguimos el código de las funciones de la parte principal del script encargada de iniciar la ejecución?</strong></p>
+
+      <p>A diferencia de lenguajes como C, Java o C#, donde es obligatorio declarar un método o función de entrada <code>main()</code>, en Python el intérprete lee el archivo secuencialmente de arriba abajo y ejecuta directamente cualquier instrucción situada en el nivel de indentación raíz (sin sangría). Las sentencias <code>def</code> se limitan a cargar las funciones en memoria, pero no ejecutan su lógica interna hasta que son invocadas.</p>
+
+      <p>Para estructurar el código de forma limpia, modular y profesional, se aplican dos patrones estándar en la industria:</p>
+      <ul>
+        <li>
+          <p><strong>1. Empaquetar la lógica de inicio en una función <code>main()</code>:</strong> En lugar de dejar variables e instrucciones sueltas al final del archivo, se agrupan en una función principal (denominada convencionalmente <code>def main():</code> o <code>def principal():</code>). En ella se solicitan los datos al usuario, se llama a las funciones secundarias y se presentan los resultados.</p>
+        </li>
+        <li>
+          <p><strong>2. El modismo de control <code>if __name__ == "__main__":</code>:</strong> Python asigna automáticamente a la variable especial interna <code>__name__</code> el valor literal <code>"__main__"</code> cuando el script es ejecutado directamente desde la terminal (por ejemplo: <code>python3 programa.py</code>). En cambio, si el archivo es importado desde otro script (<code>import programa</code>), <code>__name__</code> contendrá el nombre del propio archivo (<code>"programa"</code>).</p>
+        </li>
+      </ul>
+
+      <p>Al utilizar la condición <code>if __name__ == "__main__":</code> para invocar a <code>main()</code>, garantizamos que el programa principal solo se ejecutará cuando el usuario lance ese fichero directamente, evitando que se ejecute de manera accidental si en el futuro otro script decide importar alguna de sus funciones.</p>
+
+      <p><strong>Estructura canónica de un script en Python con funciones y <code>main()</code>:</strong></p>
+      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+        <pre><code># =====================================================================
+# 1. DEFINICIÓN DE FUNCIONES AUXILIARES (LÓGICA REUTILIZABLE)
+# =====================================================================
+def calcular_iva(precio, porcentaje=21):
+    """Calcula el importe del impuesto a partir de una base y un porcentaje"""
+    return precio * (porcentaje / 100)
+
+def formatear_moneda(cantidad):
+    """Devuelve la cantidad formateada con dos decimales y el símbolo de euro"""
+    return f"{cantidad:.2f} €"
+
+# =====================================================================
+# 2. FUNCIÓN PRINCIPAL (PUNTO DE ENTRADA DEL PROGRAMA)
+# =====================================================================
+def main():
+    """Coordina el flujo de ejecución principal del script"""
+    print("--- CALCULADORA DE FACTURACIÓN ---")
+    base_imponible = float(input("Introduce el precio base del producto: "))
+    # Invocación de las funciones auxiliares
+    impuesto = calcular_iva(base_imponible)
+    total = base_imponible + impuesto
+    print("Base:", formatear_moneda(base_imponible))
+    print("IVA aplicado:", formatear_moneda(impuesto))
+    print("Total a pagar:", formatear_moneda(total))
+
+# =====================================================================
+# 3. IDENTIFICADOR DEL PROGRAMA PRINCIPAL
+# =====================================================================
+if __name__ == "__main__":
+    # Solo se ejecuta si el script se ejecuta de forma directa
+    main()</code></pre>
+      </div>
+
       <!-- ================= SECCIÓN 7: MÓDULOS ================= -->
       <h1 id="a7-modulos">7. MÓDULOS <a class="headerlink" href="#a7-modulos" title="Enlace permanente">¶</a></h1>
 
@@ -890,6 +943,9 @@ if archivo.endswith(".pdf"):
       <h2 id="a73-creacion-y-uso-de-librerias-propias-modulos-personalizados">7.3. Creación y Uso de Librerías Propias (Módulos Personalizados) <a class="headerlink" href="#a73-creacion-y-uso-de-librerias-propias-modulos-personalizados" title="Enlace permanente">¶</a></h2>
       <p>Crear nuestra propia librería de funciones en Python es tan sencillo como agrupar funciones reutilizables dentro de un fichero con extensión <code>.py</code> y guardarlo en el mismo directorio de trabajo desde donde vayamos a ejecutar nuestro programa principal.</p>
 
+      <p><strong>¿En qué carpeta debe estar la librería? Rutas de búsqueda y localización:</strong><br>
+      Para que la sentencia <code>import mi_libreria</code> funcione correctamente, el intérprete de Python debe saber en qué directorio buscar el archivo. Por defecto, Python busca de forma prioritaria en la <strong>misma carpeta donde reside el script principal que estamos ejecutando</strong> (es la primera entrada registrada en su lista de rutas <code>sys.path</code>). Si organizamos nuestras librerías en una subcarpeta (por ejemplo, dentro de una carpeta llamada <code>modulos/</code> o <code>librerias/</code>), debemos importarla indicando la ruta mediante la notación de punto: <code>import modulos.mi_libreria</code> o <code>from modulos import mi_libreria</code>. Si la librería se encontrase en una carpeta externa completamente separada del proyecto, Python no la encontrará y devolverá un error <code>ModuleNotFoundError</code>, a menos que dicha carpeta se agregue a la variable de entorno <code>PYTHONPATH</code> del sistema operativo o se añada dinámicamente en tiempo de ejecución mediante <code>sys.path.append("/ruta/a/la/carpeta")</code>.</p>
+
       <p><strong>Paso 1: Crear la librería propia con funciones generales (<code>mi_libreria.py</code>)</strong></p>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
         <pre><code># Archivo: mi_libreria.py
@@ -909,7 +965,19 @@ def formatear_titulo(texto):
     linea = "=" * (len(texto) + 6)
     print(linea)
     print("  ", texto)
-    print(linea)</code></pre>
+    print(linea)
+
+# =====================================================================
+# BLOQUE DE PRUEBAS UNITARIAS (OPCIONAL)
+# Gracias a if __name__ == "__main__": este código solo corre al ejecutar
+# directamente "python3 mi_libreria.py". Si otro script hace "import mi_libreria",
+# este bloque se ignorará por completo.
+# =====================================================================
+if __name__ == "__main__":
+    print("Ejecutando pruebas locales de la librería:")
+    formatear_titulo("TEST DE LIBRERÍA")
+    print("¿100 es válido?:", es_monto_valido(100))
+    print("Precio con descuento:", calcular_precio_final(100, 20))</code></pre>
       </div>
 
       <p><strong>Paso 2: Importar y reutilizar la librería en el script principal (<code>main.py</code>)</strong></p>

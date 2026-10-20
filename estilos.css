@@ -481,6 +481,7 @@ code {
     font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace;
 }
 
+/* Código inline */
 p code,
 li code {
     padding: 2px 6px;
@@ -488,6 +489,18 @@ li code {
     background: #e2e8f0;
     color: #0f172a;
     font-size: 0.9em;
+}
+
+/* Código en bloques (pre): asegura fondo oscuro y texto claro incluso si el bloque está dentro de li, p, etc. */
+pre code,
+.code-wrapper code,
+li pre code,
+p pre code {
+    padding: 0;
+    background: transparent;
+    color: inherit;
+    font-size: inherit;
+    border-radius: 0;
 }
 
 /* --------------------------------------------------------------------------
