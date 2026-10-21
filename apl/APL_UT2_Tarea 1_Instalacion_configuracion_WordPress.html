@@ -28,10 +28,10 @@
           Descargar PDF</a></div>
 
 
-      <h1 id="ut2-tarea-1">UT2. TAREA 1 <a class="headerlink" href="#ut2-tarea-1" title="Enlace permanente">¶</a></h1>
-      <h1 id="instalacion-y-configuracion-de-wordpress">INSTALACIÓN Y
-        CONFIGURACIÓN DE WORDPRESS <a class="headerlink" href="#instalacion-y-configuracion-de-wordpress"
-          title="Enlace permanente">¶</a></h1>
+      <header id="a4">
+        <h1 class="title" id="ut2-tarea-1-instalacion-y-configuracion-de-wordpress"><span id="a5" class="anchor"></span>UT2.
+          TAREA 1: INSTALACIÓN Y CONFIGURACIÓN DE WORDPRESS</h1>
+      </header>
       <h3 id="ficha-tecnica-de-la-actividad">FICHA TÉCNICA DE LA
         ACTIVIDAD <a class="headerlink" href="#ficha-tecnica-de-la-actividad" title="Enlace permanente">¶</a></h3>
       <div class="table-wrapper">
@@ -75,16 +75,14 @@
           href="#metodo-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
       <ul>
         <li>
-          <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
-              <pre><code>[X] Documento: Documento en formato
-[PDF] (UT2_Tarea1_NombreAlumno.pdf) que incluya la
-explicación detallada de cada fase y el set de capturas de pantalla
-obligatorias solicitado en el desarrollo. El texto debe estar
-completamente justificado, con los apartados destacados
-en negrita. Cada captura debe llevar un comentario
-explicativo inferior sobre la acción de ingeniería realizada.</code></pre>
-
-</div>
+            <p><strong>[X] Documento:</strong> Documento en formato
+              <strong>[PDF]</strong> (UT2_Tarea1_iniciales.pdf) que incluya la
+              explicación detallada de cada fase y el set de capturas de pantalla
+              obligatorias solicitado en el desarrollo. El texto debe estar
+              completamente justificado, con los apartados destacados
+              en negrita. Cada captura debe llevar un comentario
+              explicativo inferior sobre la acción de ingeniería realizada.
+            </p>
         </li>
         <li>
             <p><strong>[ ] Archivos de Código:</strong> No se requiere la entrega de
@@ -94,10 +92,10 @@ explicativo inferior sobre la acción de ingeniería realizada.</code></pre>
             <p><strong>[X] Enlace/Texto:</strong> El portal debe permanecer
               operativo y accesible públicamente a través de la red del centro para su
               auditoría directa por parte del profesor en la URL:
-              http://&lt;TU_IP_FLOTANTE&gt;/iescelia.</p>
+              <code>http://&lt;TU_IP_FLOTANTE&gt;/iescelia</code>.
+            </p>
         </li>
       </ul>
-      <h1 id="a8"> <a class="headerlink" href="#a8" title="Enlace permanente">¶</a></h1>
       <h1 id="a1-descripcion-general-objetivos">1. DESCRIPCIÓN GENERAL.
         OBJETIVOS <a class="headerlink" href="#a1-descripcion-general-objetivos" title="Enlace permanente">¶</a></h1>
       <p>El propósito central de esta práctica es que el alumno aprenda a
@@ -169,8 +167,7 @@ explicativo inferior sobre la acción de ingeniería realizada.</code></pre>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
           <pre><code>sudo mkdir -p /srv/www
 sudo chown -R www-data: /srv/www
-curl https://wordpress.org/latest.tar.gz | sudo -u www-data tar zx -C
-/srv/www</code></pre>
+curl https://wordpress.org/latest.tar.gz | sudo -u www-data tar zx -C /srv/www</code></pre>
 
 </div>Hacer una captura de pantalla de la ejecución de esos comandos,
       indicando para qué sirve cada comando.
@@ -193,11 +190,8 @@ curl https://wordpress.org/latest.tar.gz | sudo -u www-data tar zx -C
         final de cada sentencia.</p>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
           <pre><code>CREATE DATABASE wordpress;
-CREATE USER wordpress@localhost IDENTIFIED BY
-'&lt;your-password&gt;';
-GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER
-ON wordpress.*
-TO wordpress@localhost;
+CREATE USER wordpress@localhost IDENTIFIED BY 'your-password';
+GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER ON wordpress.* TO wordpress@localhost;
 FLUSH PRIVILEGES;
 QUIT;</code></pre>
 
@@ -215,8 +209,7 @@ QUIT;</code></pre>
       <p>Hacemos una copia del archivo wp-config-sample.php con el nombre
         wp-config.php.</p>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
-          <pre><code>sudo cp /srv/www/wordpress/wp-config-sample.php
-/srv/www/wordpress/wp-config.php</code></pre>
+          <pre><code>sudo cp /srv/www/wordpress/wp-config-sample.php /srv/www/wordpress/wp-config.php</code></pre>
 
 </div>
 
@@ -387,39 +380,6 @@ QUIT;</code></pre>
           </table>
         </div>
       </div>
-      <h4 id="criterio-especifico-de-documentacion-y-capturas">CRITERIO
-        ESPECÍFICO DE DOCUMENTACIÓN Y CAPTURAS <a class="headerlink"
-          href="#criterio-especifico-de-documentacion-y-capturas" title="Enlace permanente">¶</a></h4>
-      <div class="table-wrapper">
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr class="header">
-                <th scope="col"><strong>Criterio</strong></th>
-                <th scope="col"><strong>Nivel Excelente (1.5 Ptos)</strong></th>
-                <th scope="col"><strong>Nivel Adecuado (1.0 Pto)</strong></th>
-                <th scope="col"><strong>Nivel Insuficiente (0 Ptos)</strong></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="odd">
-                <td><strong>Legibilidad, Identificación e IP del Alumno</strong></td>
-                <td>Todas las capturas de pantalla son nítidas. Muestran de forma
-                  obligatoria e inequívoca la <strong>IP Flotante</strong> del alumno en
-                  la barra de direcciones del navegador. Cada imagen cuenta con una
-                  descripción técnica inferior detallada de la acción.</td>
-                <td>Faltan textos descriptivos bajo alguna captura o la IP flotante del
-                  entorno Cloud se encuentra recortada u oculta en alguna de las fases de
-                  verificación web.</td>
-                <td>Las capturas son borrosas, han sido recortadas impidiendo validar la
-                  autoría del alumno a través de la dirección IP, o carecen por completo
-                  de texto explicativo asociado.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
     </main>
   </div>
 
