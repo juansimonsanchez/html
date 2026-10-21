@@ -63,78 +63,77 @@
             </div>
             <h2 id="a7"> <a class="headerlink" href="#a7" title="Enlace permanente">¶</a></h2>
             <p><strong>ÍNDICE DE CONTENIDOS</strong></p>
-            <p><a href="#a31-informationschema-el-diccionario-de-datos"><u>1. Repaso Teórico</u></a></p>
-                <p><a href="#a32-base-de-datos-mysql-el-repositorio-de-seguridad-y-privilegios"><u>1.1.
-                            Procedimientos Almacenados (Stored Procedures)</u></a></p>
-                <p><a href="#a33-base-de-datos-performanceschema"><u>1.2. Funciones
-                            Almacenadas (Stored Functions)</u></a></p>
-                <p><a href="#a34-base-de-datos-sys-la-abstraccion-simplificada"><u>1.3. Disparadores
-                            (Triggers)</u></a></p>
-            <p><a href="#a8"><u>2.
-                        Ventajas de la programación en la administración</u></a></p>
-            <p><a href="#a5-ejemplos-practicos-de-scripts-de-administracion-sencillos-y-documentados"><u>3. Catálogo del Sistema
-                        (Metadatos)</u></a></p>
-                <p><a href="#a31-informationschema-el-diccionario-de-datos"><u>3.1.
-                            information_schema (El Diccionario de Datos)</u></a></p>
-                <p><a href="#a32-base-de-datos-mysql-el-repositorio-de-seguridad-y-privilegios"><u>3.2.
-                            Base de Datos mysql (El Repositorio de Seguridad y
-                            Privilegios)</u></a></p>
-                <p><a href="#a33-base-de-datos-performanceschema"><u>3.3. Base de Datos
-                            performance_schema</u></a></p>
-                <p><a href="#a34-base-de-datos-sys-la-abstraccion-simplificada"><u>3.4. Base
-                            de Datos sys (La Abstracción Simplificada)</u></a></p>
-            <p><a href="#a9"><u>4.
-                        Automatización Mediante Scripts Externos (Bash)</u></a></p>
-            <p><a href="#a5-ejemplos-practicos-de-scripts-de-administracion-sencillos-y-documentados"><u>5.
-                        Ejemplos Prácticos de Scripts de Administración (Sencillos y
-                        Documentados)</u></a></p>
-            <h1 id="a1-repaso-teorico">1. Repaso Teórico <a class="headerlink" href="#a1-repaso-teorico"
+            <p><a href="#a1-repaso-teorico"><u>1. Repaso Teórico: Programación en el Servidor (MySQL)</u></a></p>
+                <p><a href="#a10-directivas-basicas-y-variables"><u>1.1. Directivas Básicas y Tipos de Variables</u></a></p>
+                <p><a href="#a11-procedimientos-almacenados-stored-procedures"><u>1.2. Procedimientos Almacenados (Stored Procedures)</u></a></p>
+                <p><a href="#a12-funciones-almacenadas-stored-functions"><u>1.3. Funciones Almacenadas (Stored Functions)</u></a></p>
+                <p><a href="#a13-estructuras-de-control-de-flujo"><u>1.4. Estructuras de Control de Flujo (Condicionales y Bucles)</u></a></p>
+                <p><a href="#a14-cursores-procesamiento-secuencial"><u>1.5. Cursores (Procesamiento Secuencial de Filas)</u></a></p>
+                <p><a href="#a15-control-de-excepciones-handlers-y-transacciones"><u>1.6. Control de Excepciones (Handlers) y Transacciones</u></a></p>
+                <p><a href="#a16-disparadores-triggers"><u>1.7. Disparadores (Triggers)</u></a></p>
+                <p><a href="#a17-casos-practicos-administracion-rutinas"><u>1.8. Casos Prácticos de Mantenimiento y Administración mediante Rutinas y Triggers</u></a></p>
+            <p><a href="#a8"><u>2. Ventajas de la programación en la administración</u></a></p>
+            <p><a href="#a3-catalogo-del-sistema-metadatos"><u>3. Catálogo del Sistema (Metadatos)</u></a></p>
+                <p><a href="#a31-informationschema-el-diccionario-de-datos"><u>3.1. information_schema (El Diccionario de Datos)</u></a></p>
+                <p><a href="#a32-base-de-datos-mysql-el-repositorio-de-seguridad-y-privilegios"><u>3.2. Base de Datos mysql (El Repositorio de Seguridad y Privilegios)</u></a></p>
+                <p><a href="#a33-base-de-datos-performanceschema"><u>3.3. Base de Datos performance_schema</u></a></p>
+                <p><a href="#a34-base-de-datos-sys-la-abstraccion-simplificada"><u>3.4. Base de Datos sys (La Abstracción Simplificada)</u></a></p>
+            <p><a href="#a9"><u>4. Automatización Mediante Scripts Externos (Bash)</u></a></p>
+            <p><a href="#a5-ejemplos-practicos-de-scripts-de-administracion-sencillos-y-documentados"><u>5. Ejemplos Prácticos de Scripts de Administración (Sencillos y Documentados)</u></a></p>
+
+            <h1 id="a1-repaso-teorico">1. Repaso Teórico: Programación en el Servidor (MySQL) <a class="headerlink" href="#a1-repaso-teorico"
                     title="Enlace permanente">¶</a></h1>
             <p>La administración moderna de bases de datos no se limita a ejecutar
-                consultas interactivas. Para garantizar la eficiencia, seguridad y
-                automatización, los SGBD permiten almacenar lógica programada
-                directamente en el servidor.</p>
-            <p>A continuación, repasamos los tres pilares de la programación en base
-                de datos: <strong>Procedimientos Almacenados</strong>,
-                <strong>Funciones</strong> y <strong>Disparadores
-                    (Triggers)</strong>.
-            </p>
-            <h2 id="a11-procedimientos-almacenados-stored-procedures">1.1.
-                Procedimientos Almacenados (Stored Procedures) <a class="headerlink"
-                    href="#a11-procedimientos-almacenados-stored-procedures" title="Enlace permanente">¶</a></h2>
-            <p>Son subprogramas que se compilan y almacenan en el SGBD. Pueden
-                realizar operaciones complejas, alterar datos en múltiples tablas y
-                ejecutar sentencias DDL (Data Definition Language).</p>
+                consultas interactivas[cite: 45]. Para garantizar la eficiencia, seguridad y
+                automatización, los SGBD permiten compilar y ejecutar lógica programada
+                directamente en el servidor a través de procedimientos, funciones, cursores y disparadores[cite: 2, 45].</p>
+
+            <h2 id="a10-directivas-basicas-y-variables">1.1. Directivas Básicas y Tipos de Variables <a class="headerlink"
+                    href="#a10-directivas-basicas-y-variables" title="Enlace permanente">¶</a></h2>
             <ul>
                 <li>
-                        <p><strong>Parámetros:</strong></p>
+                    <p><strong>Delimitador de Sentencias (<code>DELIMITER</code>):</strong> En MySQL, el terminador por defecto es el punto y coma (<code>;</code>)[cite: 3]. Al programar bloques de código que contienen múltiples instrucciones, es obligatorio cambiar temporalmente este delimitador (comúnmente por <code>$$</code> o <code>//</code>) para evitar que el intérprete corte la rutina antes de tiempo[cite: 3].</p>
+                </li>
+                <li>
+                    <p><strong>Variables Locales (<code>DECLARE</code>):</strong> Se definen exclusivamente dentro de bloques <code>BEGIN ... END</code> de procedimientos, funciones o disparadores[cite: 5, 6]. Su ámbito finaliza al concluir el bloque[cite: 5, 6]. <em>Regla obligatoria de orden:</em> deben declararse siempre al inicio del bloque, antes que los cursores y manejadores de error (<code>HANDLER</code>)[cite: 6].</p>
+                </li>
+                <li>
+                    <p><strong>Variables de Sesión de Usuario:</strong> Llevan como prefijo la arroba (<code>@nombre</code>)[cite: 5]. No requieren declaración explícita de tipo de dato y su valor perdura durante toda la sesión o conexión activa del cliente con el servidor[cite: 5].</p>
+                </li>
+            </ul>
+
+            <h2 id="a11-procedimientos-almacenados-stored-procedures">1.2.
+                Procedimientos Almacenados (Stored Procedures) <a class="headerlink"
+                    href="#a11-procedimientos-almacenados-stored-procedures" title="Enlace permanente">¶</a></h2>
+            <p>Son subprogramas que se compilan y almacenan en el SGBD[cite: 45]. Pueden
+                realizar operaciones complejas, alterar datos en múltiples tablas y
+                ejecutar sentencias DDL (Data Definition Language)[cite: 45].</p>
+            <ul>
+                <li>
+                        <p><strong>Parámetros:</strong>[cite: 45]</p>
                     <ul>
                         <li>
-                                <p>IN (Entrada): El valor se pasa al procedimiento pero no se puede
-                                    modificar hacia el exterior.</p>
+                                <p><code>IN</code> (Entrada): El valor se pasa al procedimiento pero no se puede modificar hacia el exterior (paso por valor)[cite: 4, 45].</p>
                         </li>
                         <li>
-                                <p>OUT (Salida): El procedimiento asigna un valor a este parámetro para
-                                    devolverlo al entorno que lo invocó.</p>
+                                <p><code>OUT</code> (Salida): El procedimiento asigna un valor a este parámetro para devolverlo al entorno que lo invocó (paso por referencia)[cite: 4, 45].</p>
                         </li>
                         <li>
-                                <p>INOUT (Entrada/Salida): El parámetro aporta un valor inicial y puede
-                                    ser modificado dentro del procedimiento para devolver el nuevo
-                                    estado.</p>
+                                <p><code>INOUT</code> (Entrada/Salida): El parámetro aporta un valor inicial y puede ser modificado dentro del procedimiento para devolver el nuevo estado resultante[cite: 4, 45].</p>
                         </li>
                     </ul>
                 </li>
                 <li>
-                        <p><strong>Invocación:</strong> Se ejecutan explícitamente mediante la
-                            instrucción CALL nombre_procedimiento(parametros);.</p>
+                        <p><strong>Invocación:</strong> Se ejecutan explícitamente mediante la instrucción <code>CALL nombre_procedimiento(parámetros);</code>[cite: 2, 5, 45].</p>
                 </li>
                 <li>
-                        <p><strong>Uso Administrativo:</strong> Ideales para tareas de
-                            mantenimiento repetitivas (ej. creación masiva de usuarios,
-                            particionamiento de tablas, purgas programadas de logs).</p>
+                        <p><strong>Asignación de datos:</strong> Para volcar resultados SQL en variables se utiliza tanto <code>SET variable = (SELECT ...)</code> como la cláusula directa <code>SELECT col INTO variable FROM ...</code>[cite: 8].</p>
+                </li>
+                <li>
+                        <p><strong>Uso Administrativo:</strong> Ideales para tareas de mantenimiento repetitivas (ej. creación masiva de usuarios, particionamiento de tablas, purgas programadas de logs)[cite: 45].</p>
                 </li>
             </ul>
-            <p><strong>Ejemplo de Sintaxis Básica (MySQL)</strong></p>
+            <p><strong>Ejemplo de Sintaxis Básica (MySQL)</strong>[cite: 45]</p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>DELIMITER //
 CREATE PROCEDURE sp_crear_usuario_lectura(
@@ -158,37 +157,33 @@ DELIMITER ;</code></pre>
 
             </div>
 
-            <h2 id="a12-funciones-almacenadas-stored-functions">1.2. Funciones
+            <h2 id="a12-funciones-almacenadas-stored-functions">1.3. Funciones
                 Almacenadas (Stored Functions) <a class="headerlink" href="#a12-funciones-almacenadas-stored-functions"
                     title="Enlace permanente">¶</a></h2>
-            <p>A diferencia de los procedimientos, las funciones están diseñadas
-                específicamente para <strong>calcular y devolver un único valor
-                    escalar</strong> (un número, una cadena de texto, una fecha).</p>
+            <p>A diferencia de los procedimientos, las funciones están diseñadas específicamente para <strong>calcular y devolver un único valor escalar</strong> (un número, una cadena de texto, una fecha)[cite: 45].</p>
             <ul>
                 <li>
-                        <p><strong>Características Clave:</strong></p>
+                        <p><strong>Características Clave:</strong>[cite: 45]</p>
                     <ul>
                         <li>
-                                <p>Deben contener obligatoriamente al menos una cláusula RETURN.</p>
+                                <p>Todos los parámetros recibidos son obligatoriamente de <strong>entrada</strong> (no se coloca la palabra <code>IN</code>)[cite: 11].</p>
                         </li>
                         <li>
-                                <p><strong>No</strong> pueden invocar sentencias de transacción (COMMIT
-                                    o ROLLBACK) ni modificar directamente el estado de las tablas en la
-                                    mayoría de escenarios de consulta estándar.</p>
+                                <p>Deben especificar el tipo de retorno en su cabecera mediante <code>RETURNS tipo_dato</code> y finalizar con una instrucción <code>RETURN valor;</code>[cite: 10, 11, 45].</p>
                         </li>
                         <li>
-                                <p>Se pueden integrar directamente dentro de sentencias SQL estándar
-                                    (SELECT, WHERE, ORDER BY).</p>
+                                <p><strong>Restricción Binaria / Determinismo:</strong> Es obligatorio definir al menos una de sus características de comportamiento: <code>DETERMINISTIC</code> (mismos datos producen siempre el mismo resultado), <code>NO SQL</code> o <code>READS SQL DATA</code> (para evitar el error 1418 en servidores con binary logging activado)[cite: 12]. Alternativamente, el administrador puede fijar en el servidor <code>SET GLOBAL log_bin_trust_function_creators = 1;</code>[cite: 12].</p>
+                        </li>
+                        <li>
+                                <p><strong>No</strong> pueden invocar sentencias de transacción (COMMIT o ROLLBACK) ni modificar directamente el estado de las tablas en la mayoría de escenarios de consulta estándar[cite: 45].</p>
+                        </li>
+                        <li>
+                                <p>Se integran e invocan directamente dentro de sentencias SQL estándar (<code>SELECT funcion(...)</code>, <code>WHERE</code>, <code>ORDER BY</code>)[cite: 2, 45].</p>
                         </li>
                     </ul>
                 </li>
-                <li>
-                        <p><strong>Uso Administrativo:</strong> Ideales para normalizar
-                            formatos, calcular métricas rápidas de rendimiento o formatear salidas
-                            del catálogo.</p>
-                </li>
             </ul>
-            <p><strong>Ejemplo de Sintaxis Básica (MySQL)</strong></p>
+            <p><strong>Ejemplo de Sintaxis Básica (MySQL)</strong>[cite: 45]</p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>DELIMITER //
 CREATE FUNCTION fn_obtener_tamano_megas(p_bytes BIGINT)
@@ -205,48 +200,100 @@ FROM information_schema.tables
 WHERE table_schema = 'mi_base_datos';</code></pre>
             </div>
 
-
-            <h2 id="a13-disparadores-triggers">1.3. Disparadores (Triggers) <a class="headerlink"
-                    href="#a13-disparadores-triggers" title="Enlace permanente">¶</a></h2>
-            <p>Un disparador es un bloque de código que se ejecuta <strong>de manera
-                    automática</strong> en respuesta a un evento DML (INSERT, UPDATE o
-                DELETE) sobre una tabla específica.</p>
+            <h2 id="a13-estructuras-de-control-de-flujo">1.4. Estructuras de Control de Flujo (Condicionales y Bucles) <a class="headerlink"
+                    href="#a13-estructuras-de-control-de-flujo" title="Enlace permanente">¶</a></h2>
+            <p>Permiten alterar el flujo secuencial de ejecución dentro de rutinas almacenadas[cite: 13, 14, 15, 16]:</p>
             <ul>
                 <li>
-                        <p><strong>Estructura temporal:</strong></p>
+                    <p><strong>Condicionales:</strong></p>
                     <ul>
-                        <li>
-                                <p>BEFORE: Se ejecuta antes de que los cambios se validen e inserten en
-                                    la base de datos (útil para validación y saneamiento de datos).</p>
-                        </li>
-                        <li>
-                                <p>AFTER: Se ejecuta después de que el cambio se ha confirmado en la
-                                    tabla (ideal para auditorías, propagación de datos y
-                                    sincronizaciones).</p>
-                        </li>
+                        <li><code>IF ... THEN ... [ELSEIF ... THEN ...] [ELSE ...] END IF;</code>[cite: 13]</li>
+                        <li><code>CASE ... WHEN ... THEN ... [ELSE ...] END CASE;</code> (admite evaluación de valor directo o de expresiones booleanas)[cite: 14].</li>
                     </ul>
                 </li>
                 <li>
-
-                        <p><strong>Variables Especiales:</strong></p>
+                    <p><strong>Bucles e Iteraciones:</strong></p>
                     <ul>
-                        <li>
-                                OLD: Accede a los valores de la fila antes del
-                                evento (disponible en UPDATE y DELETE).
-                        </li>
-                        <li>
-                                NEW: Accede a los nuevos valores que se van a guardar (disponible en
-                                INSERT y UPDATE).
-                        </li>
+                        <li><code>WHILE condición DO ... END WHILE;</code> (evalúa la condición antes de cada iteración)[cite: 16].</li>
+                        <li><code>REPEAT ... UNTIL condición END REPEAT;</code> (ejecuta el bloque al menos una vez hasta que la condición se haga verdadera)[cite: 15, 38].</li>
+                        <li><code>LOOP ... END LOOP;</code> (bucle continuo con etiquetas; requiere <code>LEAVE etiqueta;</code> para salir o <code>ITERATE etiqueta;</code> para pasar a la siguiente iteración)[cite: 14].</li>
                     </ul>
-                </li>
-                <li>
-                        <p><strong>Uso Administrativo:</strong> Monitorización de cambios
-                            críticos, auditoría de seguridad (saber quién modificó qué y cuándo) e
-                            integridad referencial compleja.</p>
                 </li>
             </ul>
-            <p><strong>Ejemplo de Sintaxis de Auditoría (MySQL)</strong></p>
+
+            <h2 id="a14-cursores-procesamiento-secuencial">1.5. Cursores (Procesamiento Secuencial de Filas) <a class="headerlink"
+                    href="#a14-cursores-procesamiento-secuencial" title="Enlace permanente">¶</a></h2>
+            <p>Los cursores permiten recorrer fila a fila el conjunto de resultados generado por una consulta <code>SELECT</code>[cite: 21]. En MySQL son estrictamente de <strong>sólo lectura</strong> (<em>read-only</em>) y <strong>unidireccionales</strong> (<em>non-scrollable</em>, únicamente avanzan hacia delante)[cite: 21].</p>
+            <p>Siguen de forma obligatoria cuatro pasos secuenciales[cite: 21, 22]:</p>
+            <ol type="1">
+                <li><code>DECLARE cursor_name CURSOR FOR sentencia_select;</code> (se declaran después de las variables y antes de los handlers)[cite: 21].</li>
+                <li><code>OPEN cursor_name;</code> (ejecuta la consulta e inicializa el puntero)[cite: 21, 22].</li>
+                <li><code>FETCH cursor_name INTO var1, var2, ...;</code> (recupera la fila actual en variables y avanza)[cite: 22].</li>
+                <li><code>CLOSE cursor_name;</code> (libera los recursos de memoria asignados)[cite: 22].</li>
+            </ol>
+            <p>Para controlar cuándo se han terminado de leer todas las filas, se asocia un manejador de tipo <code>NOT FOUND</code> (código SQLSTATE '02000')[cite: 18, 22]:</p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                <pre><code>DECLARE fin INT DEFAULT FALSE;
+DECLARE cur CURSOR FOR SELECT id, nombre FROM usuarios;
+DECLARE CONTINUE HANDLER FOR NOT FOUND SET fin = TRUE;
+
+OPEN cur;
+bucle_lectura: LOOP
+  FETCH cur INTO v_id, v_nombre;
+  IF fin THEN
+    LEAVE bucle_lectura;
+  END IF;
+  -- Procesamiento individual de cada fila...
+END LOOP;
+CLOSE cur;</code></pre>
+            </div>
+
+            <h2 id="a15-control-de-excepciones-handlers-y-transacciones">1.6. Control de Excepciones (Handlers) y Transacciones <a class="headerlink"
+                    href="#a15-control-de-excepciones-handlers-y-transacciones" title="Enlace permanente">¶</a></h2>
+            <p>MySQL permite atrapar errores producidos durante la ejecución mediante <code>DECLARE ... HANDLER</code>[cite: 17]:</p>
+            <ul>
+                <li><strong>Acción del manejador:</strong> <code>CONTINUE</code> (ejecuta el handler y sigue con la siguiente instrucción) o <code>EXIT</code> (ejecuta el handler y aborta el bloque <code>BEGIN...END</code> actual)[cite: 17].</li>
+                <li><strong>Condición capturada:</strong> Puede indicarse un código de error numérico de MySQL (ej. 1062 por clave primaria duplicada), un valor <code>SQLSTATE</code> (ej. '23000'), o clasificadores generales como <code>SQLEXCEPTION</code> o <code>SQLWARNING</code>[cite: 17, 18, 41].</li>
+                <li><strong>Control transaccional:</strong> La combinación de handlers con transacciones permite asegurar la atomicidad de operaciones críticas en administración[cite: 20]:</li>
+            </ul>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                <pre><code>DELIMITER $$ CREATE PROCEDURE sp_operacion_segura() BEGIN -- Si ocurre cualquier excepción SQL, se revierte la transacción DECLARE EXIT HANDLER FOR SQLEXCEPTION BEGIN ROLLBACK; END;    START TRANSACTION; -- Operaciones DML críticas... COMMIT; END $$
+DELIMITER ;</code></pre>
+            </div>
+
+            <h2 id="a16-disparadores-triggers">1.7. Disparadores (Triggers) <a class="headerlink"
+                    href="#a16-disparadores-triggers" title="Enlace permanente">¶</a></h2>
+            <p>Un disparador es un bloque de código que se ejecuta <strong>de manera
+                    automática</strong> en respuesta a un evento DML (INSERT, UPDATE o
+                DELETE) sobre una tabla específica[cite: 2, 24, 25, 45].</p>
+            <ul>
+                <li>
+                        <p><strong>Estructura temporal:</strong>[cite: 45]</p>
+                    <ul>
+                        <li>
+                                <p><code>BEFORE</code>: Se ejecuta antes de que los cambios se validen e inserten en la base de datos (útil para validación, normalización de campos o saneamiento de datos)[cite: 25, 45].</p>
+                        </li>
+                        <li>
+                                <p><code>AFTER</code>: Se ejecuta después de que el cambio se ha confirmado en la tabla (ideal para auditorías, propagación de datos y sincronizaciones)[cite: 45].</p>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                        <p><strong>Variables Especiales:</strong>[cite: 45]</p>
+                    <ul>
+                        <li>
+                                <code>OLD</code>: Accede a los valores originales de la fila antes del evento (disponible en <code>UPDATE</code> y <code>DELETE</code>)[cite: 45].
+                        </li>
+                        <li>
+                                <code>NEW</code>: Accede a los nuevos valores entrantes (disponible en <code>INSERT</code> y <code>UPDATE</code>)[cite: 45]. En triggers de tipo <code>BEFORE</code>, permite reasignar directamente el valor asignando a <code>NEW.columna = ...</code>[cite: 26].
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                        <p><strong>Uso Administrativo:</strong> Monitorización de cambios críticos, auditoría de seguridad (saber quién modificó qué y cuándo) e integridad referencial compleja[cite: 45].</p>
+                </li>
+            </ul>
+            <p><strong>Ejemplo de Sintaxis de Auditoría (MySQL)</strong>[cite: 45]</p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>CREATE TABLE log_cambios_privilegios (
 id INT AUTO_INCREMENT PRIMARY KEY,
@@ -260,16 +307,189 @@ DELIMITER //
 CREATE TRIGGER tg_auditoria_usuarios_update
 AFTER UPDATE ON mysql.user
 FOR EACH ROW
-BEGININSERT INTO log_cambios_privilegios (usuario_afectado, accion,realizado_por)
-VALUES (OLD.user, 'MODIFICACION_PERMISOS', USER());
+BEGIN
+  INSERT INTO log_cambios_privilegios (usuario_afectado, accion, realizado_por)
+  VALUES (OLD.user, 'MODIFICACION_PERMISOS', USER());
 END //
 DELIMITER ;</code></pre>
 
-            </div><h1 id="a8">2. Ventajas
-            de la programación en la administración</h1>
+            </div>
+
+            <!-- ================================================================= -->
+            <!-- NUEVA SUBSECCIÓN: CASOS PRÁCTICOS DE MANTENIMIENTO Y ADMINISTRACIÓN -->
+            <!-- ================================================================= -->
+            <h2 id="a17-casos-practicos-administracion-rutinas">1.8. Casos Prácticos de Mantenimiento y Administración mediante Rutinas y Triggers <a class="headerlink"
+                    href="#a17-casos-practicos-administracion-rutinas" title="Enlace permanente">¶</a></h2>
+            <p>En el trabajo cotidiano de un Administrador de Sistemas de Bases de Datos (DBA), los procedimientos, funciones y disparadores no se limitan a cálculos matemáticos; resuelven problemas de optimización física del almacenamiento, saneamiento por lotes y blindaje de seguridad interna:</p>
+
+            <h3 id="admin-caso-1-optimizacion-masiva">Caso 1 (Procedimiento): Desfragmentación y Optimización Masiva de Tablas</h3>
+            <p>Tras grandes operaciones de borrado o actualización, el espacio en disco queda fragmentado en los motores de almacenamiento (como InnoDB o MyISAM). Este procedimiento utiliza un cursor sobre el catálogo <code>information_schema.tables</code>[cite: 45] y construye consultas preparadas dinámicas (<code>PREPARE / EXECUTE</code>) para desfragmentar de forma consecutiva todas las tablas de una base de datos específica:</p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                <pre><code>DELIMITER $$DROP PROCEDURE IF EXISTS sp_admin_optimizar_tablas$$
+CREATE PROCEDURE sp_admin_optimizar_tablas(IN p_esquema VARCHAR(64))
+BEGIN
+  DECLARE v_fin INT DEFAULT FALSE;
+  DECLARE v_tabla VARCHAR(64);
+  -- Cursor que recupera todas las tablas físicas del esquema indicado
+  DECLARE cur_tablas CURSOR FOR
+    SELECT table_name
+    FROM information_schema.tables
+    WHERE table_schema = p_esquema AND table_type = 'BASE TABLE';
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET v_fin = TRUE;
+
+  OPEN cur_tablas;
+  bucle_tablas: LOOP
+    FETCH cur_tablas INTO v_tabla;
+    IF v_fin THEN
+      LEAVE bucle_tablas;
+    END IF;
+
+    -- Construcción y ejecución de la sentencia DDL de mantenimiento
+    SET @sql_opt = CONCAT('OPTIMIZE TABLE `', p_esquema, '`.`', v_tabla, '`;');
+    PREPARE stmt FROM @sql_opt;
+    EXECUTE stmt;
+    DEALLOCATE PREPARE stmt;
+  END LOOP;
+  CLOSE cur_tablas;
+END $$ DELIMITER ;  -- Invocación para optimizar todas las tablas de la BD de producción: -- CALL sp_admin_optimizar_tablas('tienda_informatica');</code></pre> </div>              <h3 id="admin-caso-2-purga-por-lotes">Caso 2 (Procedimiento): Purga Masiva Segura sin Bloqueo de Transacciones</h3> <p>Ejecutar un <code>DELETE FROM logs WHERE fecha &lt; ...</code> directo sobre tablas con millones de filas bloquea los recursos del servidor y llena el buffer del log de transacciones. La buena práctica consiste en realizar el borrado en <strong>lotes acotados (chunks)</strong> mediante un bucle <code>WHILE</code> con <code>LIMIT</code> y aplicando <code>COMMIT</code> tras cada bloque:</p> <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button> <pre><code>DELIMITER $$
+DROP PROCEDURE IF EXISTS sp_admin_purgar_logs_por_lotes$$ CREATE PROCEDURE sp_admin_purgar_logs_por_lotes( IN p_dias_retencion INT, IN p_tamano_lote INT, OUT p_total_eliminados INT ) BEGIN DECLARE v_filas_afectadas INT DEFAULT 1; SET p_total_eliminados = 0;    -- Itera eliminando bloques pequeños hasta vaciar el histórico obsoleto WHILE v_filas_afectadas > 0 DO DELETE FROM auditoria_sistema WHERE fecha_evento &lt; NOW() - INTERVAL p_dias_retencion DAY LIMIT p_tamano_lote;      -- Obtiene cuántas filas se eliminaron en el lote actual SET v_filas_afectadas = ROW_COUNT(); SET p_total_eliminados = p_total_eliminados + v_filas_afectadas;      -- Confirma la transacción para liberar bloqueos y memoria COMMIT; END WHILE; END $$
+DELIMITER ;
+
+-- Llamada: purgar registros de más de 90 días en lotes de 5000 filas
+-- CALL sp_admin_purgar_logs_por_lotes(90, 5000, @total_borrados);
+-- SELECT @total_borrados AS 'Filas eliminadas con éxito';</code></pre>
+            </div>
+
+            <h3 id="admin-caso-3-archivado-particionado">Caso 3 (Procedimiento): Rotación y Archivado Dinámico de Tablas</h3>
+            <p>Para mantener contenidas las tablas de alto volumen (ej. pedidos antiguos), este procedimiento crea dinámicamente una tabla de histórico identificada por año (si no existiera previamente), traslada los datos cerrados y purga la tabla en producción dentro de una transacción atómica:</p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                <pre><code>DELIMITER $$DROP PROCEDURE IF EXISTS sp_admin_archivar_historico_anual$$
+CREATE PROCEDURE sp_admin_archivar_historico_anual(IN p_anio INT)
+BEGIN
+  DECLARE EXIT HANDLER FOR SQLEXCEPTION
+  BEGIN
+    ROLLBACK;
+    RESIGNAL;
+  END;
+
+  -- 1. Crear la tabla destino histórica del año correspondiente
+  SET @tabla_historica = CONCAT('pedidos_historico_', p_anio);
+  SET @sql_crear = CONCAT('CREATE TABLE IF NOT EXISTS `', @tabla_historica, '` LIKE pedidos;');
+  PREPARE stmt1 FROM @sql_crear;
+  EXECUTE stmt1;
+  DEALLOCATE PREPARE stmt1;
+
+  -- 2. Transacción de volcado y purga atómica
+  START TRANSACTION;
+    SET @sql_volcar = CONCAT('INSERT INTO `', @tabla_historica, '` SELECT * FROM pedidos WHERE YEAR(fecha_pedido) = ', p_anio, ';');
+    PREPARE stmt2 FROM @sql_volcar;
+    EXECUTE stmt2;
+    DEALLOCATE PREPARE stmt2;
+
+    SET @sql_borrar = CONCAT('DELETE FROM pedidos WHERE YEAR(fecha_pedido) = ', p_anio, ';');
+    PREPARE stmt3 FROM @sql_borrar;
+    EXECUTE stmt3;
+    DEALLOCATE PREPARE stmt3;
+  COMMIT;
+END $$
+DELIMITER ;</code></pre>
+            </div>
+
+            <h3 id="admin-caso-4-diagnostico-fragmentacion">Caso 4 (Función): Diagnóstico de Fragmentación y Espacio No Reclamado</h3>
+            <p>Los administradores necesitan supervisar qué tablas contienen un alto índice de espacio libre residual (<em>Data Free</em>) para planificar ventanas de mantenimiento. Esta función consulta el diccionario de datos y devuelve el porcentaje de espacio desperdiciado sobre el tamaño total de la tabla:</p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                <pre><code>DELIMITER $$
+DROP FUNCTION IF EXISTS fn_admin_ratio_fragmentacion$$
+CREATE FUNCTION fn_admin_ratio_fragmentacion(
+  p_esquema VARCHAR(64),
+  p_tabla VARCHAR(64)
+)
+RETURNS DECIMAL(5,2)
+READS SQL DATA
+BEGIN
+  DECLARE v_data_bytes BIGINT;
+  DECLARE v_free_bytes BIGINT;
+  DECLARE v_ratio DECIMAL(5,2) DEFAULT 0.00;
+
+  SELECT (data_length + index_length), data_free
+  INTO v_data_bytes, v_free_bytes
+  FROM information_schema.tables
+  WHERE table_schema = p_esquema AND table_name = p_tabla;
+
+  -- Si la tabla tiene datos y espacio libre detectado
+  IF (v_data_bytes + v_free_bytes) > 0 THEN
+    SET v_ratio = (v_free_bytes / (v_data_bytes + v_free_bytes)) * 100;
+  END IF;
+
+  RETURN ROUND(v_ratio, 2);
+END $$
+DELIMITER ;
+
+-- Uso en una consulta de monitorización:
+-- SELECT table_name, fn_admin_ratio_fragmentacion('mi_tienda', table_name) AS 'Fragmentacion_%'
+-- FROM information_schema.tables
+-- WHERE table_schema = 'mi_tienda' AND fn_admin_ratio_fragmentacion('mi_tienda', table_name) > 20.00;</code></pre>
+            </div>
+
+            <h3 id="admin-caso-5-verificacion-privilegios">Caso 5 (Función): Verificación de Existencia de Privilegios Administrativos</h3>
+            <p>Antes de lanzar despliegues automatizados, es recomendable verificar si una cuenta posee permisos específicos. Esta función consulta la tabla física <code>mysql.user</code>[cite: 45] y devuelve un booleano confirmando si el usuario dispone o no de privilegios globales de administración (ej. <code>SUPER</code> o <code>Process_priv</code>):</p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                <pre><code>DELIMITER $$
+DROP FUNCTION IF EXISTS fn_admin_es_administrador$$
+CREATE FUNCTION fn_admin_es_administrador(
+  p_usuario VARCHAR(32),
+  p_host VARCHAR(60)
+)
+RETURNS BOOLEAN
+READS SQL DATA
+BEGIN
+  DECLARE v_es_admin INT DEFAULT 0;
+
+  SELECT COUNT(*)
+  INTO v_es_admin
+  FROM mysql.user
+  WHERE user = p_usuario
+    AND host = p_host
+    AND (Super_priv = 'Y' OR Process_priv = 'Y' OR Reload_priv = 'Y');
+
+  IF v_es_admin > 0 THEN
+    RETURN TRUE;
+  ELSE
+    RETURN FALSE;
+  END IF;
+END $$
+DELIMITER ;</code></pre>
+            </div>
+
+            <h3 id="admin-caso-6-seguridad-prevencion-borrado">Caso 6 (Disparador): Protección de Seguridad contra Borrados Accidentales</h3>
+            <p>Un error grave de administración es lanzar un <code>DELETE</code> sin la cláusula <code>WHERE</code> adecuada en producción. Este disparador de tipo <code>BEFORE DELETE</code> consulta la hora de ejecución o impide el borrado sobre tablas protegidas si quien lo intenta no es el administrador supremo (<code>root@localhost</code>), abortando la operación de inmediato con <code>SIGNAL SQLSTATE</code>[cite: 45]:</p>
+            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                <pre><code>DELIMITER $$
+DROP TRIGGER IF EXISTS tg_admin_bloqueo_borrado_critico$$
+CREATE TRIGGER tg_admin_bloqueo_borrado_critico
+BEFORE DELETE ON configuracion_global
+FOR EACH ROW
+BEGIN
+  -- Validar si el usuario actual es el administrador de mantenimiento
+  IF USER() != 'root@localhost' THEN
+    SIGNAL SQLSTATE '45000'
+      SET MESSAGE_TEXT = 'ACCESO DENEGADO: La tabla de configuracion solo puede ser modificada por el administrador supremo.';
+  END IF;
+
+  -- Comprobar si se intenta borrar un parámetro marcado como bloqueado
+  IF OLD.bloqueado = 1 THEN
+    SIGNAL SQLSTATE '45000'
+      SET MESSAGE_TEXT = 'OPERACION ABORTADA: No se permite la eliminacion de parametros del sistema con bloqueo activo.';
+  END IF;
+END $$
+DELIMITER ;</code></pre>
+            </div>
+            <!-- ================================================================= -->
+
+            <h1 id="a8">2. Ventajas de la programación en la administración</h1>
             <p>El uso de estos elementos dentro del SGBD ofrece tres ventajas
                 operativas críticas para un Administrador de Sistemas de Bases de Datos
-                (ASGBD):</p>
+                (ASGBD):[cite: 45]</p>
             <div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>
@@ -309,45 +529,45 @@ DELIMITER ;</code></pre>
                 (Metadatos) <a class="headerlink" href="#a3-catalogo-del-sistema-metadatos" title="Enlace permanente">¶</a>
             </h1>
             <p>MySQL almacena la información sobre su propia estructura (metadatos)
-                en esquemas específicos. Dominar estos catálogos es la herramienta más
+                en esquemas específicos[cite: 45]. Dominar estos catálogos es la herramienta más
                 potente de un Administrador de Sistemas (SysAdmin), ya que permite
                 auditar el servidor, monitorizar el almacenamiento y diagnosticar la
-                degradación de rendimiento directamente mediante sentencias SQL.</p>
+                degradación de rendimiento directamente mediante sentencias SQL[cite: 45].</p>
             <h2 id="a31-informationschema-el-diccionario-de-datos">3.1.
                 information_schema (El Diccionario de Datos) <a class="headerlink"
                     href="#a31-informationschema-el-diccionario-de-datos" title="Enlace permanente">¶</a></h2>
             <p>Es una base de datos virtual de solo lectura definida por el estándar
-                ANSI SQL. Actúa como el diccionario de datos del SGBD. No contiene
+                ANSI SQL[cite: 45]. Actúa como el diccionario de datos del SGBD[cite: 45]. No contiene
                 archivos de datos físicos; en su lugar, MySQL genera sus tablas
-                dinámicamente en memoria al consultarlas.</p>
+                dinámicamente en memoria al consultarlas[cite: 45].</p>
             <ul>
                 <li>
                         <p><strong>SCHEMATA:</strong> Almacena información sobre las bases de
                             datos existentes en el servidor (nombres, juegos de caracteres
-                            predeterminados, etc.).</p>
+                            predeterminados, etc.)[cite: 45].</p>
                 </li>
                 <li>
                         <p><strong>TABLES:</strong> Contiene metadatos de todas las tablas
                             físicas y vistas (motor de almacenamiento, número estimado de filas,
-                            tamaño de los datos y de los índices).</p>
+                            tamaño de los datos y de los índices)[cite: 45].</p>
                 </li>
                 <li>
                         <p><strong>COLUMNS:</strong> Detalla cada columna de cada tabla (tipos
-                            de datos, nulabilidad, privilegios asignados).</p>
+                            de datos, nulabilidad, privilegios asignados)[cite: 45].</p>
                 </li>
                 <li>
                         <p><strong>STATISTICS:</strong> Proporciona información de bajo nivel
-                            sobre los índices de las tablas del sistema.</p>
+                            sobre los índices de las tablas del sistema[cite: 45].</p>
                 </li>
                 <li>
                         <p><strong>ROUTINES:</strong> Almacena información sobre los
-                            procedimientos y funciones del SGBD.</p>
+                            procedimientos y funciones del SGBD[cite: 45].</p>
                 </li>
             </ul>
             <p><strong>Caso Práctico 1: Obtener el tamaño en disco de cada base de
-                    datos</strong></p>
+                    datos</strong>[cite: 45]</p>
             <p>Esta consulta calcula el espacio real en disco de cada base de datos
-                (Datos + Índices) expresado en Megabytes:</p>
+                (Datos + Índices) expresado en Megabytes:[cite: 45]</p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>SELECT
 table_schema AS 'Base de Datos',
@@ -362,10 +582,10 @@ ORDER BY (SUM(data_length + index_length)) DESC;</code></pre>
             </div>
 
             <p><strong>Caso Práctico 2: Detectar tablas sin Clave Primaria (Primary
-                    Key)</strong></p>
+                    Key)</strong>[cite: 45]</p>
             <p>La falta de claves primarias degrada catastróficamente el
                 rendimiento, especialmente en entornos con replicación activa
-                (Master-Slave) o clústeres.</p>
+                (Master-Slave) o clústeres[cite: 45].</p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>SELECT
 t.table_schema AS 'Base de Datos',
@@ -384,26 +604,26 @@ AND t.table_type = 'BASE TABLE';</code></pre>
             <h2 id="a32-base-de-datos-mysql-el-repositorio-de-seguridad-y-privilegios">3.2.
                 Base de Datos mysql (El Repositorio de Seguridad y Privilegios)</h2>
             <p>A diferencia de information_schema, la base de datos mysql contiene
-                tablas físicas persistentes en el disco. Es el cerebro de la seguridad
-                de accesos del servidor.</p>
+                tablas físicas persistentes en el disco[cite: 45]. Es el cerebro de la seguridad
+                de accesos del servidor[cite: 45].</p>
             <ul>
                 <li>
                         <p><strong>user:</strong> Almacena los usuarios creados, hosts
-                            permitidos, contraseñas cifradas y privilegios globales del sistema.</p>
+                            permitidos, contraseñas cifradas y privilegios globales del sistema[cite: 45].</p>
                 </li>
                 <li>
                         <p><strong>db:</strong> Controla los privilegios específicos de los
-                            usuarios sobre bases de datos completas.</p>
+                            usuarios sobre bases de datos completas[cite: 45].</p>
                 </li>
                 <li>
                         <p><strong>tables_priv y columns_priv:</strong> Regulan accesos
-                            extremadamente granulares a nivel de tabla o columna.</p>
+                            extremadamente granulares a nivel de tabla o columna[cite: 45].</p>
                 </li>
             </ul>
             <p><strong>Caso Práctico 3: Auditoría rápida de expiración de
-                    contraseñas de usuarios</strong></p>
+                    contraseñas de usuarios</strong>[cite: 45]</p>
             <p>Para cumplir con normativas de seguridad (como el RGPD), un SysAdmin
-                debe controlar la antigüedad y vigencia de las cuentas del sistema:</p>
+                debe controlar la antigüedad y vigencia de las cuentas del sistema:[cite: 45]</p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>SELECT
 user AS 'Usuario',
@@ -418,28 +638,28 @@ WHERE ssl_type != '' OR password_expired = 'Y' OR user !=
             </div>
             <h2 id="a33-base-de-datos-performanceschema">3.3. Base de Datos
                 performance_schema </h2>
-            <p>Se enfoca de forma estricta en el rendimiento físico del servidor.
+            <p>Se enfoca de forma estricta en el rendimiento físico del servidor[cite: 45].
                 Cuenta con una arquitectura basada en <strong>Instrumentos</strong>
                 (código fuente monitorizado) y <strong>Consumidores</strong> (tablas del
-                motor de almacenamiento en memoria que recopilan las métricas).</p>
+                motor de almacenamiento en memoria que recopilan las métricas)[cite: 45].</p>
             <ul>
                 <li>
                         <p><strong>events_statements_summary_by_digest:</strong> Agrupa
                             estadísticas sobre patrones de consultas (digests), facilitando
-                            identificar cuáles consumen más CPU o tiempo de ejecución.</p>
+                            identificar cuáles consumen más CPU o tiempo de ejecución[cite: 45].</p>
                 </li>
                 <li>
                         <p><strong>threads:</strong> Muestra información técnica detallada sobre
-                            los hilos de ejecución activos del servidor.</p>
+                            los hilos de ejecución activos del servidor[cite: 45].</p>
                 </li>
                 <li>
                         <p><strong>events_errors_summary_by_user_by_error:</strong> Registra
                             resúmenes históricos de los errores de sintaxis o conexión provocados
-                            por cada usuario del sistema.</p>
+                            por cada usuario del sistema[cite: 45].</p>
                 </li>
             </ul>
             <p><strong>Caso Práctico 4: Listar los errores más comunes provocados
-                    por los usuarios</strong></p>
+                    por los usuarios</strong>[cite: 45]</p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>SELECT
 user AS 'Usuario',
@@ -456,11 +676,11 @@ ORDER BY sum_error_raised DESC;</code></pre>
             <h2 id="a34-base-de-datos-sys-la-abstraccion-simplificada">3.4. Base de
                 Datos sys (La Abstracción Simplificada)</h2>
             <p>La complejidad de performance_schema dificulta su uso rutinario en el
-                día a día del SysAdmin. Para solucionar esto, MySQL incluye la base de
+                día a día del SysAdmin[cite: 45]. Para solucionar esto, MySQL incluye la base de
                 datos sys, que agrupa vistas estructuradas de forma intuitiva, funciones
-                y procedimientos predefinidos.</p>
+                y procedimientos predefinidos[cite: 45].</p>
             <p><strong>Caso Práctico 5: Identificar las consultas SQL que provocan
-                    mayor latencia</strong></p>
+                    mayor latencia</strong>[cite: 45]</p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>SELECT
 query AS 'Sentencia SQL',
@@ -475,10 +695,10 @@ LIMIT 5;</code></pre>
 
 
             <p><strong>Caso Práctico 6: Encontrar tablas con lecturas
-                    completas</strong></p>
+                    completas</strong>[cite: 45]</p>
             <p>La monitorización sistemática de consultas que no aprovechan los
                 índices evita problemas de degradación del disco físico y ahorra energía
-                en el centro de datos.</p>
+                en el centro de datos[cite: 45].</p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>SELECT
 schemaname AS 'Base de Datos',
@@ -492,19 +712,19 @@ ORDER BY scans DESC;</code></pre>
             Automatización Mediante Scripts Externos (Bash)</h1>
             <p>La verdadera automatización de la administración ocurre cuando
                 conectamos el SGBD con el Sistema Operativo utilizando scripts de
-                consola (por ejemplo, Bash en sistemas Linux).</p>
+                consola (por ejemplo, Bash en sistemas Linux)[cite: 45].</p>
             <p>Para que un script de Bash interactúe con MySQL de forma desasistida,
                 solemos utilizar el cliente de línea de comandos de MySQL mediante la
-                estructura:</p>
+                estructura:[cite: 45]</p>
             <p>mysql -u "usuario" -p"contraseña" -e "CONSULTA_SQL"</p>
             <p><strong>Buenas Prácticas de Seguridad:</strong> Exponer la contraseña
                 directamente en el script utilizando -p"mi_password" es una
                 vulnerabilidad grave (cualquier usuario del sistema podría verla
-                ejecutando ps aux).</p>
+                ejecutando ps aux)[cite: 45].</p>
             <p><strong>Recomendación:</strong> Guardar las credenciales en un archivo
                 <code>.env</code> con permisos 600 y cargarlo desde el propio script con
-                <code>source .env</code>. De este modo se evita dejar la contraseña en el
-                historial del sistema o en el código fuente.</p>
+                <code>source .env</code>[cite: 45]. De este modo se evita dejar la contraseña en el
+                historial del sistema o en el código fuente[cite: 45].</p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code># .env (guardar en la carpeta del proyecto y protegerlo: chmod 600 .env)
 MYSQL_USER=root
@@ -518,14 +738,14 @@ BACKUP_DIR="/var/backups/mysql"
                     href="#a5-ejemplos-practicos-de-scripts-de-administracion-sencillos-y-documentados"
                     title="Enlace permanente">¶</a></h1>
             <p>Para asentar estos conceptos, a continuación se presentan tres
-                scripts sencillos para administración de sistemas Linux/MySQL. Están
+                scripts sencillos para administración de sistemas Linux/MySQL[cite: 45]. Están
                 diseñados bajo criterios didácticos, con un nivel de complejidad
-                progresivo y comentarios exhaustivos de cada instrucción.</p>
+                progresivo y comentarios exhaustivos de cada instrucción[cite: 45].</p>
             <p><strong>Script 1: Comprobación de Salud del Servidor (Health
-                    Check)</strong></p>
+                    Check)</strong>[cite: 45]</p>
             <p>Este script verifica si el servicio MySQL está activo en el sistema
-                operativo y si responde a consultas básicas. Si falla, genera una alerta
-                visual y un registro en el log del sistema.</p>
+                operativo y si responde a consultas básicas[cite: 45]. Si falla, genera una alerta
+                visual y un registro en el log del sistema[cite: 45].</p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>#!/bin/bash
 set -euo pipefail
@@ -564,10 +784,10 @@ echo "=== CONTROL DE SALUD FINALIZADO ==="
 exit 0</code></pre>
 
             </div><strong>Script 2: Copia de Seguridad Sencilla (Backup
-                Automatizado)</strong>
+                Automatizado)</strong>[cite: 45]
             <p>Genera un respaldo (.sql) de una base de datos específica, le asigna
                 una marca de tiempo para no sobreescribir copias anteriores y comprime
-                el archivo para ahorrar espacio en disco.</p>
+                el archivo para ahorrar espacio en disco[cite: 45].</p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>#!/bin/bash
 set -euo pipefail
@@ -603,11 +823,11 @@ echo "Copia creada correctamente en ${FICHERO_BACKUP}.gz"
 exit 0</code></pre>
 
             </div><strong>Script 3: Comprobación de Consumo y Limpieza de
-                Logs</strong>
-            <p>Un administrador debe controlar el tamaño de la base de datos. Este
+                Logs</strong>[cite: 45]
+            <p>Un administrador debe controlar el tamaño de la base de datos[cite: 45]. Este
                 script consulta el catálogo information_schema para verificar si el
                 tamaño supera un límite seguro y limpia una tabla histórica si es
-                necesario para liberar espacio.</p>
+                necesario para liberar espacio[cite: 45].</p>
             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>#!/bin/bash
 set -euo pipefail
