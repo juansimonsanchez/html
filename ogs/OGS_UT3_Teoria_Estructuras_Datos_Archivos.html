@@ -25,7 +25,7 @@
           class="pdf-download-btn">📥 Descargar PDF</a></div>
 
       <header id="a4">
-        <h1 class="title" id="estructuras-de-datos"><span id="a5" class="anchor"></span>Estructuras de Datos</h1>
+        <h1 class="title" id="estructuras-de-datos"><span id="a5" class="anchor"></span>UT3. Estructuras de Datos y archivos</h1>
       </header>
 
       <h3 id="a6"> <a class="headerlink" href="#a6" title="Enlace permanente">¶</a></h3>
@@ -110,13 +110,10 @@ lista = [valor1, valor2, ...]
 # Ejemplos de declaración
 lista_vacia = [] # Crea una lista vacía
 enteros = [1, 4, 56, 78, 100] # Lista de números enteros
-decimales = [1.4, 4, 56.5, 78, 100.3] # Lista de números
-decimales
-cadenas = ['hola', 'adios', 'buena suerte'] # Lista de cadenas de
-caracteres
+decimales = [1.4, 4, 56.5, 78, 100.3] # Lista de números decimales
+cadenas = ['hola', 'adios', 'buena suerte'] # Lista de cadenas de caracteres
 mixta = ["a", 1, True] # Lista con distintos tipos de datos
-inicializada = [0, 0, 0, 0, 0, 0] # Lista de 6 elementos
-inicializados a 0</code></pre>
+inicializada = [0, 0, 0, 0, 0, 0] # Lista de 6 elementos inicializados a 0</code></pre>
       </div>
       <h2 id="a9">3.2.2. Indexación y Acceso</h2>
       <p>Cada uno de los elementos de una lista está indexado por una
@@ -130,14 +127,12 @@ print(loteria[0]) # Muestra 3
 print(loteria[5]) # Muestra 33
 print(loteria[-1]) # Muestra 33 (índice negativo)
 # ERROR DE ÍNDICE
-print(loteria[6]) # Produce un error IndexError: list index out of
-range</code></pre>
+print(loteria[6]) # Produce un error IndexError: list index out of range</code></pre>
       </div>Si intentamos asignar directamente un valor a una posición que no
       existe para expandir la lista, Python lanzará un error:
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
         <pre><code>valores = [1, 2, 3, 4, 5]
-valores[5] = 6 # ERROR: La posición 5 no existe en una lista de
-longitud 5</code></pre>
+valores[5] = 6 # ERROR: La posición 5 no existe en una lista de longitud 5</code></pre>
       </div>
       <h2 id="a10">3.2.3. Operaciones Básicas con
         Listas</h2>
@@ -152,14 +147,14 @@ longitud 5</code></pre>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
         <pre><code>lista = [1, 2, 3, 4, 5, 6]
 for num in lista:
-print(num, end="") # Resultado: 123456</code></pre>
+    print(num, end="") # Resultado: 123456</code></pre>
       </div>Recorrido múltiple (zip): Permite recorrer más de una lista
       simultáneamente en el mismo ciclo.
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
         <pre><code>lista = [1, 2, 3, 4, 5, 6]
 lista2 = ["a", "b", "c", "d", "e"]
 for num, letra in zip(lista, lista2):
-print(num, letra)
+    print(num, letra)
 # Resultado: 1 a / 2 b / 3 c / 4 d / 5 e</code></pre>
       </div>Operadores de pertenencia (in y not in): Comprueban si un
       elemento pertenece o no a la lista.
@@ -180,11 +175,9 @@ print(num, letra)
         <pre><code>lista = [1, 2, 3, 4, 5, 6]
 print(lista[2:4]) # [3, 4] (desde posición 2 hasta 4 sin incluir)
 print(lista[1:4:2]) # [2, 4] (desde 1 hasta 4, de 2 en 2)
-print(lista[:5]) # [1, 2, 3, 4, 5] (desde el inicio hasta la posición
-5)
+print(lista[:5]) # [1, 2, 3, 4, 5] (desde el inicio hasta la posición 5)
 print(lista[5:]) # [6] (desde la posición 5 hasta el final)
-print(lista[::-1]) # [6, 5, 4, 3, 2, 1] (invierte la lista usando
-paso negativo)</code></pre>
+print(lista[::-1]) # [6, 5, 4, 3, 2, 1] (invierte la lista usando paso negativo)</code></pre>
       </div>
       <h2 id="a11">3.2.4. Funciones Globales
         Predefinidas</h2>
@@ -195,10 +188,8 @@ len(lista1) # 5 -&gt; Devuelve la longitud/número de elementos
 max(lista1) # 50 -&gt; Devuelve el valor máximo
 min(lista1) # 10 -&gt; Devuelve el valor mínimo
 sum(lista1) # 160 -&gt; Devuelve la suma de todos los elementos
-sorted(lista1) # [10, 20, 40, 40, 50] -&gt; Devuelve una NUEVA lista
-ordenada sin modificar la original
-sorted(lista1, reverse=True) # [50, 40, 40, 20, 10] -&gt; Nueva lista
-ordenada de mayor a menor</code></pre>
+sorted(lista1) # [10, 20, 40, 40, 50] -&gt; Devuelve una NUEVA lista ordenada sin modificar la original
+sorted(lista1, reverse=True) # [50, 40, 40, 20, 10] -&gt; Nueva lista ordenada de mayor a menor</code></pre>
       </div>
       <h2 id="a12">3.2.5. Concepto de
         Mutabilidad y Copia de Listas</h2>
@@ -209,8 +200,7 @@ ordenada de mayor a menor</code></pre>
         <pre><code>lista1 = [1, 2, 3]
 lista1[2] = 4 # Modifica el elemento en la posición 2
 print(lista1) # [1, 2, 4]
-del lista1[2] # Borra el elemento en la posición 2 usando la
-instrucción 'del'
+del lista1[2] # Borra el elemento en la posición 2 usando la instrucción 'del'
 print(lista1) # [1, 2]</code></pre>
       </div>¿Cómo se copian las listas correctamente?
       <p>No se puede utilizar el operador de asignación (=) para copiar una
@@ -225,11 +215,9 @@ lista1[1] = 10
 print(lista2) # [1, 10, 3] -&gt; ¡La lista 2 también cambió!
 # Forma correcta de clonar/copiar una lista (Slicing completo)
 lista1 = [1, 2, 3]
-lista2 = lista1[:] # Se extrae una rebanada completa generando un
-nuevo objeto
+lista2 = lista1[:] # Se extrae una rebanada completa generando un nuevo objeto
 lista1[1] = 10
-print(lista2) # [1, 2, 3] -&gt; La lista original cambia, pero la
-copia se mantiene intacta</code></pre>
+print(lista2) # [1, 2, 3] -&gt; La lista original cambia, pero la copia se mantiene intacta</code></pre>
       </div>
       <h2 id="a13">3.2.6. Métodos Propios del
         Objeto Lista</h2>
@@ -271,8 +259,7 @@ print(valores) # [1, 12, 2, 3, 4, 5]</code></pre>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
         <pre><code>valores = [1, 2, 3, 4, 5]
 valores.pop() # Devuelve 5, la lista queda [1, 2, 3, 4]
-valores.pop(0) # Devuelve 1 (saca la posición 0), la lista queda [2,
-3, 4]</code></pre>
+valores.pop(0) # Devuelve 1 (saca la posición 0), la lista queda [2, 3, 4]</code></pre>
       </div>remove(valor): Busca y elimina el primer elemento cuyo valor
       coincida con el argumento dado.
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -301,8 +288,7 @@ lista.sort() # Ordena de menor a mayor
 print(lista) # [1, 2, 4, 5]
 lista.sort(reverse=True) # Ordena de mayor a menor
 print(lista) # [5, 4, 2, 1]
-# Ordenación de cadenas de texto (Orden alfabético/ASCII: Mayúsculas
-primero)
+# Ordenación de cadenas de texto (Orden alfabético/ASCII: Mayúsculasvprimero)
 texto = ["hola", "que", "tal", "Hola", "Que", "Tal"]
 texto.sort()
 print(texto) # ['Hola', 'Que', 'Tal', 'hola', 'que', 'tal']</code></pre>
@@ -312,7 +298,6 @@ print(texto) # ['Hola', 'Que', 'Tal', 'hola', 'que', 'tal']</code></pre>
           <p>count(valor): Devuelve el número de veces que aparece un valor en
             la lista.</p>
         </li>
-        <li></li>
       </ul>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
         <pre><code>valores = [5, 4, 2, 1, 5]
@@ -336,13 +321,12 @@ valores.index(5, 1, 4) # ERROR ValueError: 5 is not in list</code></pre>
         <pre><code># Definición de una matriz de 3x3
 tabla = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 # Acceso (Fila, Columna)
-print(tabla[1][1]) # Accede a la fila 1, columna 1 -&gt; Devuelve
-5
+print(tabla[1][1]) # Accede a la fila 1, columna 1 -&gt; Devuelve 5
 # Recorrido anidado
 for fila in tabla:
-for elem in fila:
-print(elem, end="")
-print() # Salto de línea por cada fila
+    for elem in fila:
+        print(elem, end="")
+    print() # Salto de línea por cada fila
 # Resultado visual:
 # 123
 # 456
@@ -388,8 +372,7 @@ tupla2 = ("a", 1, True) # Tupla con tres elementos heterogéneos</code></pre>
       <p>Demostración de Inmutabilidad:</p>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
         <pre><code>tupla = (1, 2, 3)
-tupla[1] = 5 # ERROR: TypeError: 'tuple' object does not support item
-assignment</code></pre>
+tupla[1] = 5 # ERROR: TypeError: 'tuple' object does not support item assignment</code></pre>
       </div>
       <h2 id="a17">3.3.3. Métodos de Búsqueda
         de las Tuplas</h2>
@@ -398,8 +381,7 @@ assignment</code></pre>
         <pre><code>tupla = (1, 2, 3, 4, 1, 2, 3)
 print(tupla.count(1)) # Devuelve 2
 print(tupla.index(2)) # Devuelve 1 (primera aparición)
-print(tupla.index(2, 2)) # Devuelve 5 (busca a partir de la posición
-2)</code></pre>
+print(tupla.index(2, 2)) # Devuelve 5 (busca a partir de la posición 2)</code></pre>
       </div>
       <h1 id="a18">3.4. El Tipo de Dato
         MAPA / DICCIONARIO (dict)</h1>
@@ -429,12 +411,10 @@ print(len(a)) # Devuelve 3
 # Indexación para lectura o modificación
 print(a["one"]) # Devuelve 1
 a["one"] += 1 # Modifica el valor asociado a la clave
-# Si se intenta acceder a una clave que no existe, lanza un error
-KeyError
+# Si se intenta acceder a una clave que no existe, lanza un error KeyError
 # del: Elimina un elemento por su clave
 del a["one"] # Elimina la clave "one" y su valor
-# Operadores de pertenencia: Comprueban si una CLAVE existe en el
-diccionario
+# Operadores de pertenencia: Comprueban si una CLAVE existe en el diccionario
 "two" in a # Devuelve True</code></pre>
       </div>
       <h2 id="a20">3.4.3. Mutabilidad y Copia
@@ -452,8 +432,7 @@ print(b) # {'two': 2} -&gt; b también se ve afectado
 a = {'one': 1, 'two': 2, 'three': 3}
 b = a.copy()
 a["one"] = 1000
-print(b) # {'three': 3, 'one': 1, 'two': 2} -&gt; El diccionario 'b'
-se mantiene intacto</code></pre>
+print(b) # {'three': 3, 'one': 1, 'two': 2} -&gt; El diccionario 'b' se mantiene intacto</code></pre>
       </div>
       <h2 id="a21">3.4.4. Métodos
         Principales de los Diccionarios</h2>
@@ -467,7 +446,6 @@ se mantiene intacto</code></pre>
             </li>
           </ul>
         </li>
-        <li></li>
       </ul>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
         <pre><code>dict1 = {'one': 1, 'two': 2}
@@ -501,8 +479,7 @@ dict1.get("four", "no existe") # Devuelve la cadena 'no existe'</code></pre>
       menos que se indique un valor por defecto.
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
         <pre><code>dict1.pop("one") # Devuelve 1 y lo borra del diccionario
-dict1.pop("four", "no existe") # Devuelve 'no existe' de manera
-segura</code></pre>
+dict1.pop("four", "no existe") # Devuelve 'no existe' de manera segura</code></pre>
       </div>
       <h2 id="a22">3.4.5. Recorrido de
         Diccionarios</h2>
@@ -512,13 +489,13 @@ segura</code></pre>
         <pre><code>dict1 = {'one': 1, 'two': 2, 'three': 3}
 # 1. .keys(): Recorrer solo las claves
 for clave in dict1.keys():
-print(clave) # Imprime: one, two, three
+    print(clave) # Imprime: one, two, three
 # 2. .values(): Recorrer solo los valores
 for valor in dict1.values():
-print(valor) # Imprime: 1, 2, 3
+    print(valor) # Imprime: 1, 2, 3
 # 3. .items(): Recorrer clave y valor simultáneamente
 for clave, valor in dict1.items():
-print(clave, "-&gt;", valor)</code></pre>
+    print(clave, "-&gt;", valor)</code></pre>
       </div>
       <h1 id="a23">3.5. Cadenas de
         Caracteres (str) y sus Operaciones</h1>
@@ -539,16 +516,13 @@ print(len(cadena)) # Resultado: 10 (incluye el espacio)</code></pre>
 print(cadena[2]) # Resultado: 'l'</code></pre>
       </div>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
-        <pre><code># Concatenación (+ y +=): Une cadenas de caracteres de forma
-secuencial.
+        <pre><code># Concatenación (+ y +=): Une cadenas de caracteres de forma secuencial.
 cadena = "Hola" + " " + "mundo" # Resultado: 'Hola mundo'</code></pre>
       </div>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
-        <pre><code># Conversión a cadena (str()): Es obligatorio convertir datos
-numéricos a texto si se desea concatenarlos con strings.
+        <pre><code># Conversión a cadena (str()): Es obligatorio convertir datos numéricos a texto si se desea concatenarlos con strings.
 precio = 34
-cadena = "El precio del producto serían " + str(precio) + " euros" #
-Correcto</code></pre>
+cadena = "El precio del producto serían " + str(precio) + " euros" # Correcto</code></pre>
       </div>
       <h2 id="a24">3.5.2. Métodos Principales de
         Cadenas</h2>
@@ -579,7 +553,6 @@ Correcto</code></pre>
         </li>
       </ul>
       <ul>
-        <li></li>
       </ul>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
         <pre><code>cadena = "Hola mundo"
@@ -625,11 +598,9 @@ print(cadena.split()) # ['Hola', 'mundo']</code></pre>
             está mal escrito formalmente y el intérprete no puede iniciar el
             programa.</p>
         </li>
-        <li></li>
       </ul>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
-        <pre><code>while True print('Hello world') # ERROR: SyntaxError: invalid syntax
-(faltan los ':')</code></pre>
+        <pre><code>while True print('Hello world') # ERROR: SyntaxError: invalid syntax (faltan los ':')</code></pre>
       </div>Excepciones / Errores de ejecución: Errores que ocurren mientras
       el programa ya se está ejecutando. Si no se manejan, detienen el
       programa de inmediato.
@@ -662,20 +633,21 @@ a + 4 # NameError: name 'a' is not defined
       </ol>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
         <pre><code>while True:
-try:
-x = int(input("Introduce un número:"))
-break
-except ValueError:
-print("Debes introducir un número")
+    try:
+        x = int(input("Introduce un número:"))
+        break
+    except ValueError:
+        print("Debes introducir un número")
+
 # Control de múltiples excepciones
 try:
-print(10 / int(cad))
+    print(10 / int(cad))
 except ValueError:
-print("No se puede convertir a entero")
+    print("No se puede convertir a entero")
 except ZeroDivisionError:
-print("No se puede dividir por cero")
+    print("No se puede dividir por cero")
 except:
-print("Otro error no especificado")</code></pre>
+    print("Otro error no especificado")</code></pre>
       </div>
       <h1 id="a27">3.7. Gestión de Archivos
         / Ficheros Nativos</h1>
@@ -791,8 +763,7 @@ f.close() # Cierra el archivo</code></pre>
         caracteres especiales.</p>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
         <pre><code>import locale
-print(locale.getpreferredencoding()) # Retorna la codificación por
-defecto del sistema</code></pre>
+print(locale.getpreferredencoding()) # Retorna la codificación por defecto del sistema</code></pre>
       </div>Propiedades de inspección básicas:
       <ul>
         <li>
@@ -871,14 +842,13 @@ f.close()</code></pre>
         alias:.</p>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
         <pre><code>try:
-with open("archivo_datos.txt", "r", encoding="utf-8") as f:
-for linea in f: # Recorrido directo y eficiente línea a línea sin
-saturar la RAM
-print(linea)
+    with open("archivo_datos.txt", "r", encoding="utf-8") as f:
+        for linea in f: # Recorrido directo y eficiente línea a línea sin saturar la RAM
+            print(linea)
 except FileNotFoundError:
-print("Error: El archivo no se encontró.")
+    print("Error: El archivo no se encontró.")
 except Exception as e:
-print(f"Ocurrió un error inesperado: {e}")</code></pre>
+    print(f"Ocurrió un error inesperado: {e}")</code></pre>
       </div>
       <h1 id="a30">3.8. Archivos
         Estructurados: Formato CSV</h1>
@@ -889,17 +859,18 @@ print(f"Ocurrió un error inesperado: {e}")</code></pre>
           href="#a381-lectura-de-archivos-csv" title="Enlace permanente">¶</a></h2>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
         <pre><code>import csv
+
 with open("ejemplo1.csv", "r", encoding="utf-8") as fichero:
-contenido = csv.reader(fichero) # Genera un objeto iterador
-# Opción A: Convertir todo directamente a una lista de listas
-datos = list(contenido)
-print(datos[0][0]) # Acceso directo a Fila 0, Columna 0</code></pre>
+    contenido = csv.reader(fichero) # Genera un objeto iterador
+    # Opción A: Convertir todo directamente a una lista de listas
+    datos = list(contenido)
+    print(datos[0][0]) # Acceso directo a Fila 0, Columna 0</code></pre>
       </div>Lectura avanzada con parámetros adicionales (quotechar):
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
         <pre><code>with open("ejemplo2.csv", "r") as fichero:
-contenido = csv.reader(fichero, quotechar='"')
-for row in contenido:
-print(f"Fila {contenido.line_num}: {row}")</code></pre>
+    contenido = csv.reader(fichero, quotechar='"')
+    for row in contenido:
+        print(f"Fila {contenido.line_num}: {row}")</code></pre>
       </div>
       <h2 id="a31">3.8.2. Escritura de Archivos
         CSV</h2>
@@ -915,14 +886,14 @@ print(f"Fila {contenido.line_num}: {row}")</code></pre>
       </ul>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
         <pre><code>import csv
-with open("ejemplo3.csv", "w", newline="", encoding="utf-8") as
-fichero:
-contenido = csv.writer(fichero)
-contenido.writerow(['4/5/2015 13:34', 'Apples', '73'])
-contenido.writerows([
-['4/5/2015 3:41', 'Cherries', '85'],
-['4/6/2015 12:46', 'Pears', '14']
-])</code></pre>
+
+with open("ejemplo3.csv", "w", newline="", encoding="utf-8") as fichero:
+    contenido = csv.writer(fichero)
+    contenido.writerow(['4/5/2015 13:34', 'Apples', '73'])
+    contenido.writerows([
+        ['4/5/2015 3:41', 'Cherries', '85'],
+        ['4/6/2015 12:46', 'Pears', '14']
+    ])</code></pre>
       </div>
       <h1 id="a32">3.9. Archivos
         Estructurados: Formato JSON</h1>
@@ -946,15 +917,17 @@ contenido.writerows([
       </ul>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
         <pre><code>import json
+
 # Caso 1: Desde una cadena de texto (String)
 datos_json = '{"nombre":"carlos", "edad":23}'
 datos = json.loads(datos_json)
 print(type(datos)) # Muestra &lt;class 'dict'&gt;
 print(datos["nombre"]) # Acceso por clave -&gt; 'carlos'
+
 # Caso 2: Desde un archivo físico .json en disco
 with open("ejemplo1.json", "r", encoding="utf-8") as fichero:
-datos_archivo = json.load(fichero)
-print(type(datos_archivo)) # &lt;class 'dict'&gt;</code></pre>
+    datos_archivo = json.load(fichero)
+    print(type(datos_archivo)) # &lt;class 'dict'&gt;</code></pre>
       </div>
       <h2 id="a33">3.9.2. Escritura de Estructuras
         JSON</h2>
@@ -963,14 +936,16 @@ print(type(datos_archivo)) # &lt;class 'dict'&gt;</code></pre>
         objeto_fichero).</p>
       <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
         <pre><code>import json
+
 datos_gato = {
-'isCat': True,
-'miceCaught': 0,
-'name': 'Zophie',
-'felineIQ': None
+    'isCat': True,
+    'miceCaught': 0,
+    'name': 'Zophie',
+    'felineIQ': None
 }
+
 with open("ejemplo2.json", "w", encoding="utf-8") as fichero:
-json.dump(datos_gato, fichero)</code></pre>
+    json.dump(datos_gato, fichero)</code></pre>
       </div>Nota de Traducción de Tipos: Al realizarse la exportación, Python
       traduce automáticamente sus palabras clave a los equivalentes
       universales de JSON (por ejemplo, el booleano True pasa a ser true, y el
