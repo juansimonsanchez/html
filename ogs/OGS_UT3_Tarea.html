@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OGS - UT3 Tarea Estructuras de Datos y Archivos</title>
+  <link rel="stylesheet" href="../estilos.css">
+  <script src="../script.js"></script>
+</head>
+
+<body>
+  <header id="a1">
+    <div class="header-container">
+      <div class="site-title site-title-row">
+        <img src="logo.png" alt="imagen" class="site-logo">
+        <span>OGS &ndash; UT3 Tarea Estructuras de Datos y Archivos</span>
+      </div>
+      <nav class="top-nav">
+        <a href="index.html" class="nav-btn">Inicio</a>
+      </nav>
+    </div>
+  </header>
+  <div id="a2">
+    <main id="a3">
+      <div class="page-actions">
+        <a href="OGS_UT3_Tarea_Estructuras_Datos.pdf" download class="pdf-download-btn">📥 Descargar PDF</a>
+      </div>
+
+      <h3 id="a4"> <a class="headerlink" href="#a4" title="Enlace permanente">¶</a></h3>
+      <h1 id="tarea-global-estructuras-de-datos-archivos-python-ut3">
+        <strong>TAREA GLOBAL: ESTRUCTURAS DE DATOS Y GESTIÓN DE ARCHIVOS EN PYTHON (UT3)</strong>
+        <a class="headerlink" href="#tarea-global-estructuras-de-datos-archivos-python-ut3" title="Enlace permanente">¶</a>
+      </h1>
+
+      <h3 id="a1-ficha-tecnica-de-la-actividad">1. FICHA TÉCNICA DE LA ACTIVIDADES
+                <a class="headerlink" href="#a1-ficha-tecnica-de-la-actividad" title="Enlace permanente">¶</a>
+      </h3>
+      <table>
+        <colgroup>
+          <col class="column-width-50">
+          <col class="column-width-50">
+        </colgroup>
+        <tbody>
+          <tr>
+            <td>Parámetro</td>
+            <td>Detalle</td>
+          </tr>
+          <tr>
+            <td><strong>Módulo</strong></td>
+            <td>Programación con Python (Optativa - ASIR)</td>
+          </tr>
+          <tr>
+            <td><strong>Unidad</strong></td>
+            <td>UT3. Estructuras de Datos, Cadenas y Gestión de Archivos</td>
+          </tr>
+          <tr>
+            <td><strong>Duración</strong></td>
+            <td>15 horas estimadas</td>
+          </tr>
+          <tr>
+            <td><strong>Herramientas</strong></td>
+            <td>Visual Studio Code, Python 3, Entorno GNU/Linux / Shell</td>
+          </tr>
+          <tr>
+            <td><strong>Formato</strong></td>
+            <td>Archivo comprimido .zip con scripts .py, ficheros de prueba y memoria técnica en PDF</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="a2-descripcion-general-y-objetivos">2. DESCRIPCIÓN GENERAL Y OBJETIVOS
+        <a class="headerlink" href="#a2-descripcion-general-y-objetivos" title="Enlace permanente">¶</a>
+      </h3>
+      <p>Esta unidad de trabajo profundiza en el almacenamiento y manipulación de datos en memoria y persistencia en disco. El alumnado aprenderá a seleccionar la estructura adecuada (listas, tuplas o diccionarios), procesar cadenas complejas y manipular ficheros del sistema de forma segura mediante control de excepciones (<code>try-except</code>) y gestores de contexto (<code>with open</code>), enfocándolo a tareas de administración de sistemas e infraestructura de red.</p>
+
+      <h3 id="a3-cuaderno-de-actividades">3. CUADERNO DE ACTIVIDADES
+        <a class="headerlink" href="#a3-cuaderno-de-actividades" title="Enlace permanente">¶</a>
+      </h3>
+
+      <!-- BLOQUE A -->
+      <h4 id="bloque-a-estructuras-secuenciales-listas-y-tuplas">BLOQUE A: ESTRUCTURAS DE DATOS SECUENCIALES (LISTAS Y TUPLAS)
+        <a class="headerlink" href="#bloque-a-estructuras-secuenciales-listas-y-tuplas" title="Enlace permanente">¶</a>
+      </h4>
+      <ol type="1">
+        <li>
+          <p><strong>Ejercicio 1: Análisis de Potencias (Cuadrados y Cubos)</strong><br>
+          Escribe un programa que inicialice una lista fija con 10 valores enteros (del 1 al 10). A continuación, recorre la lista e imprime en pantalla tres columnas formateadas: el número original, su cuadrado y su cubo.</p>
+          <p class="ayuda"><strong>Pista de Python:</strong> Puedes iterar con <code>for n in lista:</code> y utilizar <em>f-strings</em> con especificadores de alineación (ejemplo: <code>f"{n:&lt;5} {n**2:&lt;8} {n**3:&lt;8}"</code>) para generar columnas parejas.</p>
+        </li>
+        <li>
+          <p><strong>Ejercicio 2: Gestión de Calificaciones Escolares</strong><br>
+          Diseña un programa que solicite al usuario las notas de 5 asignaturas de un alumno (valores entre 0.0 y 10.0). Al finalizar la recogida de datos, el programa debe mostrar por consola:
+          <br>&bull; La lista completa de notas ingresadas.
+          <br>&bull; La nota media del alumno.
+          <br>&bull; La nota más alta (máxima) y la más baja (mínima).</p>
+          <p class="ayuda"><strong>Pista de Python:</strong> Ve acumulando los valores con <code>lista.append(float(...))</code> y apóyate en las funciones nativas <code>sum()</code>, <code>len()</code>, <code>max()</code> y <code>min()</code>.</p>
+        </li>
+        <li>
+          <p><strong>Ejercicio 3: Inversión de Nombres de Equipos</strong><br>
+          Escribe un script que solicite al usuario el nombre de 5 servidores de red por teclado y los almacene en una lista. Copia estos elementos en una nueva lista pero en orden inverso (sin usar <code>.reverse()</code> ni modificadores de la original, hazlo mediante segmentación/slicing) y muestra la lista resultante por pantalla.</p>
+          <p class="ayuda"><strong>Pista de Python:</strong> Recuerda que la sintaxis de paso negativo <code>servidores[::-1]</code> genera una nueva lista invertida sin mutar la fuente original.</p>
+        </li>
+        <li>
+          <p><strong>Ejercicio 4: Calendario de Sistemas</strong><br>
+          Crea un script que almacene los meses del año y sus respectivos días utilizando listas (supón que febrero siempre tiene 28 días). El programa pedirá al usuario un número de mes (del 1 al 12) y devolverá un mensaje indicando el nombre del mes y la cantidad de días que tiene. Si el número introducido está fuera de rango, debe informar del error.</p>
+          <p class="ayuda"><strong>Pista de Python:</strong> Ten en cuenta el desfase de indexación en Python: el mes 1 corresponde al índice <code>0</code> (es decir, <code>meses[numero - 1]</code>).</p>
+        </li>
+        <li>
+          <p><strong>Ejercicio 5: Filtro Antimulticast / Purga de IPs Duplicadas</strong><br>
+          Crea un programa que simule la recogida de direcciones de red IP de origen en un switch. El programa pedirá de forma continua direcciones IP (strings) hasta que el usuario introduzca un número negativo (o la palabra "fin"). Posteriormente, el programa debe generar una nueva lista eliminando todas las IPs duplicadas y mostrarla ordenada de menor a mayor.</p>
+          <p class="ayuda"><strong>Pista de Python:</strong> Al recorrer la lista original, añade cada elemento a la nueva lista solo si se cumple <code>if ip not in lista_unicas:</code>. Después aplica <code>sorted()</code> o <code>lista_unicas.sort()</code>.</p>
+        </li>
+      </ol>
+
+      <!-- BLOQUE B -->
+      <h4 id="bloque-b-estructuras-asociativas-y-cadenas">BLOQUE B: ESTRUCTURAS DE DATOS ASOCIATIVAS (DICCIONARIOS) Y CADENAS
+        <a class="headerlink" href="#bloque-b-estructuras-asociativas-y-cadenas" title="Enlace permanente">¶</a>
+      </h4>
+      <ol start="6" type="1">
+        <li>
+          <p><strong>Ejercicio 6: Generador de Diccionario Cuadrático</strong><br>
+          Escribe un programa que solicite un número entero $n$ por teclado. El script debe autogenerar un diccionario cuyas claves sean los números enteros desde el 1 hasta $n$, y sus valores correspondientes sean el cuadrado de dichas claves. Finalmente, muestra el diccionario por consola.</p>
+          <p class="ayuda"><strong>Pista de Python:</strong> Puedes poblarlo dinámicamente con un bucle <code>for i in range(1, n + 1):</code> asignando <code>cuadrados[i] = i ** 2</code> o mediante un diccionario por comprensión.</p>
+        </li>
+        <li>
+          <p><strong>Ejercicio 7: Telemetría de Caracteres</strong><br>
+          Crea un programa que lea una cadena de texto (por ejemplo, una línea de log) introducida por teclado y devuelva un diccionario con la frecuencia de aparición de cada uno de los caracteres en dicha cadena.</p>
+          <p class="ayuda"><strong>Pista de Python:</strong> Para cada carácter en la cadena puedes comprobar si ya existe en el diccionario o usar el método <code>conteo[char] = conteo.get(char, 0) + 1</code>.</p>
+        </li>
+        <li>
+          <p><strong>Ejercicio 8: Tarifas de Licencias Cloud</strong><br>
+          Declara un diccionario que almacene los nombres de diferentes suites de software cloud y sus precios de suscripción mensual por usuario (ej: <code>'SaaS_A': 15.5</code>, <code>'SaaS_B': 24.0</code>, etc.). El programa pedirá recursivamente el nombre del software y la cantidad de licencias necesarias. Mostrará el presupuesto total calculado. Si el software no se encuentra en el catálogo, debe lanzar un mensaje controlado y permitir otra consulta hasta que el usuario decida salir.</p>
+          <p class="ayuda"><strong>Pista de Python:</strong> Valida la existencia de la clave antes de calcular con <code>if suite in catalogo:</code> o utilizando <code>catalogo.get(nombre)</code> verificando que no retorne <code>None</code>.</p>
+        </li>
+        <li>
+          <p><strong>Ejercicio 9: Notas con Estructuras Anidadas</strong><br>
+          Codifica un programa en Python que guarde el nombre del alumnado de un grupo de sistemas y sus respectivas notas de prácticas de administración. Un alumno puede tener un número variable de notas. Almacena la información en un diccionario cuyas claves sean los nombres de los alumnos y los valores sean listas con sus notas. El programa solicitará el nombre y las notas (hasta que se introduzca un número negativo para terminar las notas de ese alumno). Al finalizar, el programa mostrará los nombres de los alumnos y la nota media obtenida por cada uno de ellos.</p>
+          <p class="ayuda"><strong>Pista de Python:</strong> Para recorrer e imprimir las medias recorre el diccionario con <code>for alumno, notas in registro.items():</code> y calcula la media con <code>sum(notas) / len(notas)</code> si la lista no está vacía.</p>
+        </li>
+        <li>
+          <p><strong>Ejercicio 10: Limpiador y Normalizador de Direcciones de Correo</strong><br>
+          En la administración de servidores de correo, a menudo se reciben listas crudas con espacios y mayúsculas desordenadas. Escribe un script que tome una cadena de correos electrónicos separados por punto y coma (<code>;</code>), elimine los espacios en blanco iniciales/finales de cada correo, los convierta por completo a minúsculas, y devuelva una lista limpia con las direcciones normalizadas.</p>
+          <p class="ayuda"><strong>Pista de Python:</strong> Divide primero la cadena usando <code>cadena.split(';')</code> y aplica <code>correo.strip().lower()</code> a cada elemento resultante.</p>
+        </li>
+      </ol>
+
+      <!-- BLOQUE C -->
+      <h4 id="bloque-c-gestion-de-archivos-y-excepciones">BLOQUE C: GESTIÓN DE ARCHIVOS Y EXCEPCIONES
+        <a class="headerlink" href="#bloque-c-gestion-de-archivos-y-excepciones" title="Enlace permanente">¶</a>
+      </h4>
+      <ol start="11" type="1">
+        <li>
+          <p><strong>Ejercicio 11: Bitácora Diaria (El Diario)</strong><br>
+          Crea un programa para administradores que pida al usuario escribir un evento o incidencia por teclado y lo guarde en un archivo llamado <code>diario.txt</code>. Cada vez que se ejecute el programa, la nueva entrada debe anexarse al final del archivo con un salto de línea, sin sobrescribir las incidencias anteriores.</p>
+          <p class="ayuda"><strong>Pista de Python:</strong> Abre el archivo con <code>with open("diario.txt", "a", encoding="utf-8") as f:</code> para usar el modo de adición (<em>append</em>) y añade explícitamente <code>\n</code>.</p>
+        </li>
+        <li>
+          <p><strong>Ejercicio 12: Lector Seguro de Cabecera y Cola</strong><br>
+          Crea de manera manual un archivo de texto llamado <code>configuracion.cfg</code> con al menos 5 líneas. Escribe un script en Python que intente abrir este archivo para lectura y muestre en pantalla únicamente la primera línea y la última línea del archivo. Controla posibles excepciones de acceso.</p>
+          <p class="ayuda"><strong>Pista de Python:</strong> Usa <code>f.readlines()</code> para cargar todas las líneas en una lista y accede a <code>lineas[0]</code> y <code>lineas[-1]</code>, encerrando la lectura en un bloque <code>try - except FileNotFoundError:</code>.</p>
+        </li>
+        <li>
+          <p><strong>Ejercicio 13: Copia de Seguridad Resiliente</strong><br>
+          Desarrolla un programa de backup que lea el contenido de un archivo llamado <code>notas.txt</code> y realice una copia exacta en otro archivo llamado <code>notas_backup.txt</code>. Debes prever y capturar con <code>try-except</code> la excepción en caso de que el archivo de origen no exista en el directorio de trabajo, informando amigablemente al usuario del error en lugar de colgar el programa.</p>
+          <p class="ayuda"><strong>Pista de Python:</strong> Estructura el flujo con <code>try:</code> abriendo origen en modo <code>"r"</code> y destino en modo <code>"w"</code>, capturando específicamente <code>except FileNotFoundError:</code>.</p>
+        </li>
+        <li>
+          <p><strong>Ejercicio 14: Contador de Palabras de Logs</strong><br>
+          Crea un programa que lea un archivo de logs de texto plano (<code>logs.txt</code>) y calcule el número total de palabras contenidas en él. Utiliza el método <code>.split()</code> de cadenas de texto para segmentar las palabras de forma óptima.</p>
+          <p class="ayuda"><strong>Pista de Python:</strong> Puedes leer todo el fichero en un solo string con <code>f.read()</code> y luego invocar <code>len(contenido.split())</code>, ya que <code>split()</code> sin argumentos agrupa y limpia cualquier separación de espacios o saltos de línea.</p>
+        </li>
+        <li>
+          <p><strong>Ejercicio 15: Rotación e Historial de Ejecuciones (Logs)</strong><br>
+          Crea un programa de telemetría de scripts que, cada vez que sea invocado por el sistema de tareas programadas (cron), escriba en un archivo <code>ejecuciones.log</code> la frase "Ejecución exitosa" junto con un número de secuencia progresivo (ej: "Ejecución 1", "Ejecución 2", etc.), respetando los registros históricos anteriores utilizando el modo append (<code>a</code>).</p>
+          <p class="ayuda"><strong>Pista de Python:</strong> Antes de escribir en modo <code>"a"</code>, puedes verificar si el archivo existe; si existe, léelo previamente en modo <code>"r"</code> con <code>len(f.readlines())</code> para conocer el número correlativo que corresponde asignar.</p>
+        </li>
+        <li>
+          <p><strong>Ejercicio 16: Exportación de Auditoría a JSON (Ampliación)</strong><br>
+          Crea un script que almacene un diccionario con el estado de 3 servicios del servidor (ej: <code>{"nginx": "active", "ssh": "active", "mysql": "failed"}</code>) y lo guarde en un archivo estructurado <code>auditoria.json</code> usando el módulo nativo <code>json</code> de Python.</p>
+          <p class="ayuda"><strong>Pista de Python:</strong> Importa <code>json</code> y utiliza la función <code>json.dump(datos, f, indent=4)</code> dentro de un bloque <code>with open("auditoria.json", "w")</code>.</p>
+        </li>
+      </ol>
+
+      <!-- BLOQUE CONSOLIDACIÓN -->
+      <h4 id="bloque-de-consolidacion-nivel-intermedio">2.1.2. EJERCICIOS DE CONSOLIDACIÓN (NIVEL INTERMEDIO)
+        <a class="headerlink" href="#bloque-de-consolidacion-nivel-intermedio" title="Enlace permanente">¶</a>
+      </h4>
+      <ol type="A">
+        <li>
+          <p><strong>Ejercicio A: Gestión de Inventario de Hardware (Diccionarios y Archivos)</strong><br>
+          <strong>Objetivo:</strong> Crear un programa para controlar el stock de componentes de un almacén.<br>
+          <strong>Técnica:</strong> Leer un archivo <code>stock.txt</code> (formato <code>componente:cantidad</code>) y cargarlo en un diccionario. El programa debe permitir añadir nuevos componentes o actualizar cantidades y guardar los cambios.<br>
+          <strong>Teoría aplicada:</strong> Diccionarios (mutabilidad), <code>with open</code> (lectura/escritura), <code>split()</code> de cadenas y bucles interactivos.</p>
+          <p class="ayuda"><strong>Pista de Python:</strong> Para procesar cada línea usa <code>linea.strip().split(":")</code>, guarda el valor numérico con <code>int(cantidad)</code> y al finalizar escribe recorriendo <code>diccionario.items()</code> con <code>f.write(f"{k}:{v}\n")</code>.</p>
+        </li>
+        <li>
+          <p><strong>Ejercicio B: Clasificador de Niveles de Log (Procesamiento de Strings)</strong><br>
+          <strong>Objetivo:</strong> Analizar <code>logs_sistema.txt</code> y clasificar líneas según su severidad (<code>INFO</code>, <code>WARNING</code>, <code>ERROR</code>).<br>
+          <strong>Técnica:</strong> Leer el archivo línea a línea, usar métodos de cadenas para detectar la palabra clave, guardar mensajes en tres listas y mostrar el conteo.<br>
+          <strong>Teoría aplicada:</strong> Métodos de cadenas (<code>find</code>, <code>upper</code>/<code>lower</code>, o el operador <code>in</code>), listas, bucles y control de flujo.</p>
+          <p class="ayuda"><strong>Pista de Python:</strong> Normaliza la línea con <code>linea.upper()</code> antes de comprobar pertenencia para evitar fallos si los logs mezclan mayúsculas y minúsculas.</p>
+        </li>
+        <li>
+          <p><strong>Ejercicio C: Registro de Usuarios y Permisos (Tuplas y Filtrado)</strong><br>
+          <strong>Objetivo:</strong> Filtrar una lista de usuarios de un sistema.<br>
+          <strong>Técnica:</strong> Usar una lista de tuplas con el formato <code>(nombre_usuario, nivel_acceso)</code>. El script pide un nivel de acceso y muestra solo los usuarios que cumplen el filtro, guardando el resultado en <code>filtrado.txt</code>.<br>
+          <strong>Teoría aplicada:</strong> Tuplas (inmutabilidad), listas (recorrido), condicionales, gestores de contexto y escritura en archivos.</p>
+          <p class="ayuda"><strong>Pista de Python:</strong> Puedes desempaquetar las tuplas directamente en el bucle: <code>for usuario, nivel in usuarios:</code> y comprobar si <code>nivel.lower() == filtro.lower()</code> antes de escribir en disco.</p>
+        </li>
+      </ol>
+
+      <p><em>(Nota: Estas actividades se corregirán gradualmente en las sesiones prácticas del aula para verificar la correcta asimilación e implementación de las estructuras de datos, persistencia en ficheros y manejo seguro de excepciones).</em></p>
+
+    </main>
+  </div>
+</body>
+
+</html>
