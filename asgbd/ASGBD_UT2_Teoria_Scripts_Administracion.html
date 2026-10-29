@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <header id="a1">
+    <header>
         <div class="header-container">
             <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>ASGBD
                     &ndash; Ut2 Teoria Scripts Administracion</span></div>
@@ -19,18 +19,17 @@
             </nav>
         </div>
     </header>
-    <div id="a2">
+    <div class="page-layout">
 
-        <main id="a3">
+        <main class="main-content">
             <div class="page-actions"><a
                     href="ASGBD_UT2_Teoria_Scripts_Administracion.pdf" download
                     class="pdf-download-btn">📥
                     Descargar PDF</a></div>
 
-            <header id="a4">
+            <header>
                 <h1 class="title" id="unidad-2-scripts-de-administracion-y-automatizacion-en-el-sgbd">
-                    <span id="a5" class="anchor"></span>Unidad 2:<br><span id="a6" class="anchor"></span>Scripts de
-                        Administración y Automatización en el SGBD
+                    Unidad 2:<br>Scripts de Administración y Automatización en el SGBD
                 </h1>
             </header>
 
@@ -61,8 +60,7 @@
                     </table>
                 </div>
             </div>
-            <h2 id="a7"> <a class="headerlink" href="#a7" title="Enlace permanente">¶</a></h2>
-            <p><strong>ÍNDICE DE CONTENIDOS</strong></p>
+            <h3 id="indice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#indice-de-contenidos" title="Enlace permanente">¶</a></h3>
             <p><a href="#a1-repaso-teorico"><u>1. Repaso Teórico: Programación en el Servidor (MySQL)</u></a></p>
                 <p><a href="#a10-directivas-basicas-y-variables"><u>1.1. Directivas Básicas y Tipos de Variables</u></a></p>
                 <p><a href="#a11-procedimientos-almacenados-stored-procedures"><u>1.2. Procedimientos Almacenados (Stored Procedures)</u></a></p>
@@ -72,13 +70,13 @@
                 <p><a href="#a15-control-de-excepciones-handlers-y-transacciones"><u>1.6. Control de Excepciones (Handlers) y Transacciones</u></a></p>
                 <p><a href="#a16-disparadores-triggers"><u>1.7. Disparadores (Triggers)</u></a></p>
                 <p><a href="#a17-casos-practicos-administracion-rutinas"><u>1.8. Casos Prácticos de Mantenimiento y Administración mediante Rutinas y Triggers</u></a></p>
-            <p><a href="#a8"><u>2. Ventajas de la programación en la administración</u></a></p>
+            <p><a href="#a2-ventajas-de-la-programacion-en-la-administracion"><u>2. Ventajas de la programación en la administración</u></a></p>
             <p><a href="#a3-catalogo-del-sistema-metadatos"><u>3. Catálogo del Sistema (Metadatos)</u></a></p>
                 <p><a href="#a31-informationschema-el-diccionario-de-datos"><u>3.1. information_schema (El Diccionario de Datos)</u></a></p>
                 <p><a href="#a32-base-de-datos-mysql-el-repositorio-de-seguridad-y-privilegios"><u>3.2. Base de Datos mysql (El Repositorio de Seguridad y Privilegios)</u></a></p>
                 <p><a href="#a33-base-de-datos-performanceschema"><u>3.3. Base de Datos performance_schema</u></a></p>
                 <p><a href="#a34-base-de-datos-sys-la-abstraccion-simplificada"><u>3.4. Base de Datos sys (La Abstracción Simplificada)</u></a></p>
-            <p><a href="#a9"><u>4. Automatización Mediante Scripts Externos (Bash)</u></a></p>
+            <p><a href="#a4-automatizacion-mediante-scripts-externos-bash"><u>4. Automatización Mediante Scripts Externos (Bash)</u></a></p>
             <p><a href="#a5-ejemplos-practicos-de-scripts-de-administracion-sencillos-y-documentados"><u>5. Ejemplos Prácticos de Scripts de Administración (Sencillos y Documentados)</u></a></p>
 
             <h1 id="a1-repaso-teorico">1. Repaso Teórico: Programación en el Servidor (MySQL) <a class="headerlink" href="#a1-repaso-teorico"
@@ -486,7 +484,7 @@ DELIMITER ;</code></pre>
             </div>
             <!-- ================================================================= -->
 
-            <h1 id="a8">2. Ventajas de la programación en la administración</h1>
+            <h1 id="a2-ventajas-de-la-programacion-en-la-administracion">2. Ventajas de la programación en la administración <a class="headerlink" href="#a2-ventajas-de-la-programacion-en-la-administracion" title="Enlace permanente">¶</a></h1>
             <p>El uso de estos elementos dentro del SGBD ofrece tres ventajas
                 operativas críticas para un Administrador de Sistemas de Bases de Datos
                 (ASGBD):[cite: 45]</p>
@@ -708,8 +706,8 @@ rows_sel AS 'Filas devueltas'
 FROM sys.schema_tables_with_full_table_scans
 ORDER BY scans DESC;</code></pre>
 
-            </div><h1 id="a9">4.
-            Automatización Mediante Scripts Externos (Bash)</h1>
+            </div>
+            <h1 id="a4-automatizacion-mediante-scripts-externos-bash">4. Automatización Mediante Scripts Externos (Bash) <a class="headerlink" href="#a4-automatizacion-mediante-scripts-externos-bash" title="Enlace permanente">¶</a></h1>
             <p>La verdadera automatización de la administración ocurre cuando
                 conectamos el SGBD con el Sistema Operativo utilizando scripts de
                 consola (por ejemplo, Bash en sistemas Linux)[cite: 45].</p>

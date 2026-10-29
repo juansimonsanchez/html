@@ -60,11 +60,14 @@ with sync_playwright() as p:
             button,
             .copy-btn,
             #left-panel,
+            .left-panel,
             .headerlink {
                 display: none !important;
             }
             #page-layout,
+            .page-layout,
             #main-content,
+            .main-content,
             main,
             body {
                 display: block !important;
@@ -110,8 +113,8 @@ with sync_playwright() as p:
         }
         @media print {
             body { margin: 0 !important; }
-            #site-header, header#site-header, .top-nav, .nav-btn, .dropdown, .dropbtn, a[download], button, .copy-btn, #left-panel, .headerlink { display: none !important; }
-            #page-layout, #main-content, main, body { display: block !important; width: 100% !important; max-width: none !important; }
+            #site-header, header#site-header, .top-nav, .nav-btn, .dropdown, .dropbtn, a[download], button, .copy-btn, #left-panel, .left-panel, .headerlink { display: none !important; }
+            #page-layout, .page-layout, #main-content, .main-content, main, body { display: block !important; width: 100% !important; max-width: none !important; }
         }
     """)
     page.pdf(
@@ -151,8 +154,8 @@ with sync_playwright() as p:
         }
         @media print {
             body { margin: 0 !important; }
-            #site-header, header#site-header, .top-nav, .nav-btn, .dropdown, .dropbtn, a[download], button, .copy-btn, #left-panel, .headerlink { display: none !important; }
-            #page-layout, #main-content, main, body { display: block !important; width: 100% !important; max-width: none !important; }
+            #site-header, header#site-header, .top-nav, .nav-btn, .dropdown, .dropbtn, a[download], button, .copy-btn, #left-panel, .left-panel, .headerlink { display: none !important; }
+            #page-layout, .page-layout, #main-content, .main-content, main, body { display: block !important; width: 100% !important; max-width: none !important; }
         }
     """)
     page.pdf(
@@ -182,8 +185,8 @@ convert_with_wkhtmltopdf() {
     tmp_css="$(mktemp)"
     cat > "$tmp_css" <<EOF
 @media print {
-  #site-header, header#site-header, .top-nav, .nav-btn, .dropdown, .dropbtn, a[download], button, .copy-btn, #left-panel, .headerlink { display: none !important; }
-  #page-layout, #main-content, main, body { display: block !important; width: 100% !important; max-width: none !important; }
+  #site-header, header#site-header, .top-nav, .nav-btn, .dropdown, .dropbtn, a[download], button, .copy-btn, #left-panel, .left-panel, .headerlink { display: none !important; }
+  #page-layout, .page-layout, #main-content, .main-content, main, body { display: block !important; width: 100% !important; max-width: none !important; }
 }
 @page { margin: 18mm 12mm 20mm 12mm; }
 EOF

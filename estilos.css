@@ -220,12 +220,12 @@ body > header {
 /* --------------------------------------------------------------------------
    4. Layout y Paneles de Contenido
    -------------------------------------------------------------------------- */
-#page-layout {
+.page-layout {
     display: block;
     min-height: calc(100vh - 62px);
 }
 
-#left-panel {
+.left-panel {
     width: 320px;
     min-width: 320px;
     background: #ffffff;
@@ -238,7 +238,7 @@ body > header {
     height: calc(100vh - 62px);
 }
 
-#left-panel h3 {
+.left-panel h3 {
     font-size: 1rem;
     margin-top: 0;
     color: #334155;
@@ -246,8 +246,8 @@ body > header {
     padding-bottom: 0.5rem;
 }
 
-#left-panel nav#TOC,
-#left-panel #TOC {
+.left-panel nav.toc,
+.left-panel .toc {
     background: transparent !important;
     border: none !important;
     padding: 0 !important;
@@ -255,17 +255,17 @@ body > header {
     box-shadow: none !important;
 }
 
-#left-panel ul {
+.left-panel ul {
     list-style-type: none;
     padding-left: 0.75rem;
     margin: 0.5rem 0;
 }
 
-#left-panel li {
+.left-panel li {
     margin: 6px 0;
 }
 
-#left-panel a {
+.left-panel a {
     color: #475569;
     text-decoration: none;
     font-size: 0.9rem;
@@ -274,12 +274,12 @@ body > header {
     transition: color 0.15s;
 }
 
-#left-panel a:hover {
+.left-panel a:hover {
     color: var(--primary);
     font-weight: 600;
 }
 
-#main-content,
+.main-content,
 main {
     flex: 1;
     min-width: 0;
@@ -290,13 +290,16 @@ main {
     box-sizing: border-box;
 }
 
-#main-content h1 {
+.main-content h1,
+main h1 {
     line-height: 1.2;
     margin: 0 0 1rem;
 }
 
-#main-content h2,
-#main-content h3 {
+.main-content h2,
+.main-content h3,
+main h2,
+main h3 {
     line-height: 1.3;
 }
 
@@ -766,14 +769,14 @@ main img {
     a[download],
     button,
     .copy-btn,
-    #left-panel,
+    .left-panel,
     .headerlink {
         display: none !important;
     }
 
     body,
-    #page-layout,
-    #main-content,
+    .page-layout,
+    .main-content,
     main {
         display: block !important;
         width: 100% !important;
@@ -822,11 +825,11 @@ main img {
         transform: translateX(-50%);
     }
 
-    #page-layout {
+    .page-layout {
         flex-direction: column;
     }
 
-    #left-panel {
+    .left-panel {
         width: 100% !important;
         min-width: 0 !important;
         height: auto !important;
@@ -836,7 +839,7 @@ main img {
         padding: 1rem !important;
     }
 
-    #main-content,
+    .main-content,
     main {
         width: 100% !important;
         padding: 1.25rem 1rem !important;
