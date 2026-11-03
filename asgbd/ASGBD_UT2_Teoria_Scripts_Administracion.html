@@ -650,7 +650,7 @@ BEGIN
   -- Forzar correo electrónico en minúsculas y sin espacios
   SET NEW.email = LOWER(TRIM(NEW.email));
   -- Corregir cuotas de almacenamiento anómalas
-  IF NEW.cuota_disco_mb < 0 THEN
+  IF NEW.cuota_disco_mb "&lt;" 0 THEN
     SET NEW.cuota_disco_mb = 100;
   END IF;
 END //
@@ -675,7 +675,7 @@ AFTER UPDATE ON administradores_sistema
 FOR EACH ROW
 BEGIN
   -- Auditar únicamente cuando exista un cambio real de rol o permisos
-  IF OLD.nivel_acceso <> NEW.nivel_acceso THEN
+  IF OLD.nivel_acceso != NEW.nivel_acceso THEN
     INSERT INTO log_auditoria_seguridad (
       id_afectado,
       nivel_anterior,
@@ -1237,7 +1237,7 @@ if [ "$TAMANO_ENTERO" -gt "$LIMITE_MB" ]; then
 
   # Sentencia SQL de borrado condicionada por fecha
   QUERY_PURGA="DELETE FROM logs_sistema.registro_eventos WHERE fecha_evento &lt; NOW() - INTERVAL 30 DAY;"
-  
+
   # Ejecución de la eliminación de registros obsoletos
   MYSQL_PWD="$MYSQL_PASSWORD" mysql --user="$MYSQL_USER" -e "$QUERY_PURGA"
 
