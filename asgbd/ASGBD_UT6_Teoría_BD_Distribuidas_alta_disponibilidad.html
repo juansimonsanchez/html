@@ -35,89 +35,94 @@
                 </h1>
             </header>
 
-            <h3 id="ficha-tecnica-de-la-unidad">FICHA TÉCNICA DE LA UNIDAD <a class="headerlink"
-                    href="#ficha-tecnica-de-la-unidad" title="Enlace permanente">¶</a></h3>
-            <div class="table-wrapper">
+            <div class="box-card">
+                <h3 id="ficha-tecnica-de-la-unidad">FICHA TÉCNICA DE LA UNIDAD <a class="headerlink"
+                        href="#ficha-tecnica-de-la-unidad" title="Enlace permanente">¶</a></h3>
                 <div class="table-wrapper">
-                    <table>
-                        <tbody>
-                            <tr class="header">
-                                <td><strong>Unidad Didáctica</strong></td>
-                                <td>UD 6: Bases de Datos Distribuidas y Alta Disponibilidad</td>
-                            </tr>
-                            <tr class="odd">
-                                <td><strong>Resultados de Aprendizaje</strong></td>
-                                <td><strong>RA6:</strong> Aplica criterios de integridad, disponibilidad
-                                    y rendimiento en la administración de bases de datos distribuidas,
-                                    analizando y configurando mecanismos de replicación y
-                                    fragmentación.</td>
-                            </tr>
-                            <tr class="header">
-                                <td><strong>Criterios de Evaluación</strong></td>
-                                <td><strong>CE 6.a:</strong> Se han identificado las ventajas e
-                                    inconvenientes de las bases de datos distribuidas. <strong>CE
-                                        6.b:</strong> Se han configurado y verificado escenarios de replicación.
-                                    <strong>CE 6.c:</strong> Se han resuelto problemas de replicación.
-                                    <strong>CE 6.d:</strong> Se han configurado y verificado escenarios de
-                                    fragmentación de datos (sharding). <strong>CE 6.e:</strong> Se han
-                                    analizado las características de los clústeres de bases de datos.
-                                    <strong>CE 6.f:</strong> Se han utilizado herramientas de balanceo de
-                                    carga. <strong>CE 6.g:</strong> Se han realizado pruebas de recuperación
-                                    ante fallos.
-                                </td>
-                            </tr>
-                            <tr class="odd">
-                                <td><strong>Tiempo</strong></td>
-                                <td>9 horas lectivas (equivalente a unas 4 semanas de clase en el módulo
-                                    ASGBD)</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="table-wrapper">
+                        <table>
+                            <tbody>
+                                <tr class="header">
+                                    <td><strong>Unidad Didáctica</strong></td>
+                                    <td>UD 6: Bases de Datos Distribuidas y Alta Disponibilidad</td>
+                                </tr>
+                                <tr class="odd">
+                                    <td><strong>Resultados de Aprendizaje</strong></td>
+                                    <td><strong>RA6:</strong> Aplica criterios de integridad, disponibilidad
+                                        y rendimiento en la administración de bases de datos distribuidas,
+                                        analizando y configurando mecanismos de replicación y
+                                        fragmentación.</td>
+                                </tr>
+                                <tr class="header">
+                                    <td><strong>Criterios de Evaluación</strong></td>
+                                    <td><strong>CE 6.a:</strong> Se han identificado las ventajas e
+                                        inconvenientes de las bases de datos distribuidas. <strong>CE
+                                            6.b:</strong> Se han configurado y verificado escenarios de replicación.
+                                        <strong>CE 6.c:</strong> Se han resuelto problemas de replicación.
+                                        <strong>CE 6.d:</strong> Se han configurado y verificado escenarios de
+                                        fragmentación de datos (sharding). <strong>CE 6.e:</strong> Se han
+                                        analizado las características de los clústeres de bases de datos.
+                                        <strong>CE 6.f:</strong> Se han utilizado herramientas de balanceo de
+                                        carga. <strong>CE 6.g:</strong> Se han realizado pruebas de recuperación
+                                        ante fallos.
+                                    </td>
+                                </tr>
+                                <tr class="odd">
+                                    <td><strong>Tiempo</strong></td>
+                                    <td>9 horas lectivas (equivalente a unas 4 semanas de clase en el módulo
+                                        ASGBD)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-            <h3 id="indice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#indice-de-contenidos"
-                    title="Enlace permanente">¶</a></h3>
-            <p><a href="#a1-introduccion-y-contextualizacion"><u>1. INTRODUCCIÓN Y
-                        CONTEXTUALIZACIÓN</u></a></p>
-            <p><a href="#a2-fundamentos-de-las-bases-de-datos-distribuidas-bdd"><u>2.
-                        FUNDAMENTOS DE LAS BASES DE DATOS DISTRIBUIDAS (BDD)</u></a></p>
-                <p><a href="#a21-definicion-y-conceptos-clave"><u>2.1. Definición y
-                            Conceptos Clave</u></a></p>
-                <p><a href="#a22-arquitecturas-homogeneas-vs-heterogeneas"><u>2.2.
-                            Arquitecturas Homogéneas vs. Heterogéneas</u></a></p>
-                <p><a href="#a23-ventajas-y-desventajas-desde-la-perspectiva-del-sysadmin"><u>2.3.
-                            Ventajas y Desventajas desde la Perspectiva del SysAdmin</u></a></p>
-            <p><a href="#a3-mecanismos-de-replicacion-en-mysqlmariadb"><u>3. MECANISMOS
-                        DE REPLICACIÓN EN MYSQL/MARIADB</u></a></p>
-                <p><a href="#a31-replicacion-asincrona-tradicional-source-replica"><u>3.1.
-                            Replicación Asíncrona Tradicional (Source-Replica)</u></a></p>
-                <p><a href="#a32-replicacion-semi-sincrona"><u>3.2. Replicación
-                            Semi-síncrona</u></a></p>
-                <p><a href="#a33-replicacion-sincrona-virtual-mysql-group-replication"><u>3.3.
-                            Replicación Síncrona Virtual: MySQL Group Replication</u></a></p>
-                <p><a href="#a34-el-binlog-relay-log-y-el-rol-critico-de-los-gtid-global-transaction-identifiers"><u>3.4.
-                            El Binlog, Relay Log y el Rol Crítico de los GTID (Global Transaction
-                            Identifiers)</u></a></p>
-            <p><a href="#a4-alta-disponibilidad-y-clusteres-de-bases-de-datos"><u>4.
-                        ALTA DISPONIBILIDAD Y CLÚSTERES DE BASES DE DATOS</u></a></p>
-                <p><a href="#a41-arquitectura-mysql-innodb-cluster"><u>4.1. Arquitectura
-                            MySQL InnoDB Cluster</u></a></p>
-                <p><a href="#a42-arquitectura-mysql-ndb-cluster"><u>4.2. Arquitectura MySQL
-                            NDB Cluster</u></a></p>
-            <p><a href="#a5-fragmentacion-y-sharding-particionado-de-datos"><u>5.
-                        FRAGMENTACIÓN Y SHARDING (PARTICIONADO DE DATOS)</u></a></p>
-                <p><a href="#a51-fragmentacion-horizontal-sharding-y-fragmentacion-vertical"><u>5.1.
-                            Fragmentación Horizontal (Sharding) y Fragmentación Vertical</u></a></p>
-                <p><a href="#a52-orquestacion-y-balanceo-con-proxysql"><u>5.2. Orquestación
-                            y Balanceo con ProxySQL</u></a></p>
-            <p><a href="#a6-casos-practicos-de-configuracion-y-scripts-de-administracion-sysadmin"><u>6.
-                        CASOS PRÁCTICOS DE CONFIGURACIÓN Y SCRIPTS DE ADMINISTRACIÓN
-                        (SYSADMIN)</u></a></p>
-                <p><a href="#a61-script-bash-para-monitorizacion-automatica-del-estado-de-la-replica"><u>6.1.
-                            Script Bash para Monitorización Automática del Estado de la
-                            Réplica</u></a></p>
-                <p><a href="#a62-configuracion-gtid-en-mysqldcnf-para-alta-disponibilidad"><u>6.2.
-                            Configuración GTID en mysqld.cnf para Alta Disponibilidad</u></a></p>
+
+            <div class="box-card">
+                <h3 id="indice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#indice-de-contenidos"
+                        title="Enlace permanente">¶</a></h3>
+                <p><a href="#a1-introduccion-y-contextualizacion"><u>1. INTRODUCCIÓN Y
+                            CONTEXTUALIZACIÓN</u></a></p>
+                <p><a href="#a2-fundamentos-de-las-bases-de-datos-distribuidas-bdd"><u>2.
+                            FUNDAMENTOS DE LAS BASES DE DATOS DISTRIBUIDAS (BDD)</u></a></p>
+                    <p><a href="#a21-definicion-y-conceptos-clave"><u>2.1. Definición y
+                                Conceptos Clave</u></a></p>
+                    <p><a href="#a22-arquitecturas-homogeneas-vs-heterogeneas"><u>2.2.
+                                Arquitecturas Homogéneas vs. Heterogéneas</u></a></p>
+                    <p><a href="#a23-ventajas-y-desventajas-desde-la-perspectiva-del-sysadmin"><u>2.3.
+                                Ventajas y Desventajas desde la Perspectiva del SysAdmin</u></a></p>
+                <p><a href="#a3-mecanismos-de-replicacion-en-mysqlmariadb"><u>3. MECANISMOS
+                            DE REPLICACIÓN EN MYSQL/MARIADB</u></a></p>
+                    <p><a href="#a31-replicacion-asincrona-tradicional-source-replica"><u>3.1.
+                                Replicación Asíncrona Tradicional (Source-Replica)</u></a></p>
+                    <p><a href="#a32-replicacion-semi-sincrona"><u>3.2. Replicación
+                                Semi-síncrona</u></a></p>
+                    <p><a href="#a33-replicacion-sincrona-virtual-mysql-group-replication"><u>3.3.
+                                Replicación Síncrona Virtual: MySQL Group Replication</u></a></p>
+                    <p><a href="#a34-el-binlog-relay-log-y-el-rol-critico-de-los-gtid-global-transaction-identifiers"><u>3.4.
+                                El Binlog, Relay Log y el Rol Crítico de los GTID (Global Transaction
+                                Identifiers)</u></a></p>
+                <p><a href="#a4-alta-disponibilidad-y-clusteres-de-bases-de-datos"><u>4.
+                            ALTA DISPONIBILIDAD Y CLÚSTERES DE BASES DE DATOS</u></a></p>
+                    <p><a href="#a41-arquitectura-mysql-innodb-cluster"><u>4.1. Arquitectura
+                                MySQL InnoDB Cluster</u></a></p>
+                    <p><a href="#a42-arquitectura-mysql-ndb-cluster"><u>4.2. Arquitectura MySQL
+                                NDB Cluster</u></a></p>
+                <p><a href="#a5-fragmentacion-y-sharding-particionado-de-datos"><u>5.
+                            FRAGMENTACIÓN Y SHARDING (PARTICIONADO DE DATOS)</u></a></p>
+                    <p><a href="#a51-fragmentacion-horizontal-sharding-y-fragmentacion-vertical"><u>5.1.
+                                Fragmentación Horizontal (Sharding) y Fragmentación Vertical</u></a></p>
+                    <p><a href="#a52-orquestacion-y-balanceo-con-proxysql"><u>5.2. Orquestación
+                                y Balanceo con ProxySQL</u></a></p>
+                <p><a href="#a6-casos-practicos-de-configuracion-y-scripts-de-administracion-sysadmin"><u>6.
+                            CASOS PRÁCTICOS DE CONFIGURACIÓN Y SCRIPTS DE ADMINISTRACIÓN
+                            (SYSADMIN)</u></a></p>
+                    <p><a href="#a61-script-bash-para-monitorizacion-automatica-del-estado-de-la-replica"><u>6.1.
+                                Script Bash para Monitorización Automática del Estado de la
+                                Réplica</u></a></p>
+                    <p><a href="#a62-configuracion-gtid-en-mysqldcnf-para-alta-disponibilidad"><u>6.2.
+                                Configuración GTID en mysqld.cnf para Alta Disponibilidad</u></a></p>
+            </div>
             <h1 id="a1-introduccion-y-contextualizacion">1. INTRODUCCIÓN Y
                 CONTEXTUALIZACIÓN <a class="headerlink" href="#a1-introduccion-y-contextualizacion"
                     title="Enlace permanente">¶</a></h1>

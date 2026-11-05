@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OGS - Ejercicios individuales</title>
+    <link rel="stylesheet" href="../estilos.css">
+    <script src="../script.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div class="site-title site-title-row">
+                <img src="logo.png" alt="imagen" class="site-logo">
+                <span>UT2. Programación estructurada. Ejercicios individuales </span>
+            </div>
+            <nav class="top-nav">
+                <a href="#" class="nav-btn">Inicio</a>
+            </nav>
+        </div>
+    </header>
+    <h1 class="title" id="unidad-de-trabajo-2-programacion-estructurada"><span id="a5" class="anchor"></span>UT 2 - PROGRAMACIÓN ESTRUCTURADA</h1>
+<div class="box-card">
+    <h2 >Ficha Técnica</h2>
+    <div class="table-wrapper">
+        <table>
+            <tbody>
+                <tr>
+                    <td><strong>Unidad de Trabajo</strong></td>
+                    <td>UT2. Programación Estructurada</td>
+                </tr>
+                <tr>
+                    <td><strong>Duración Estimada</strong></td>
+                    <td>2 horas (120 minutos)</td>
+                </tr>
+                <tr>
+                    <td><strong>Herramientas</strong></td>
+                    <td>Visual Studio Code, Python 3, GNU/Linux</td>
+                </tr>
+                <tr>
+                    <td><strong>Objetivos</strong></td>
+                    <td>Aplicar secuencialidad, operadores de sistemas, estructuras condicionales, bucles de control y modularización por funciones.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="box-card">
+    <h2 >Descripción General</h2>
+    <p>Esta prueba práctica está orientada a consolidar los contenidos teóricos y prácticos de la UT2. El alumnado resolverá problemas típicos de administración de sistemas y redes aplicando sintaxis rigurosa, validaciones de entrada, control de flujo y buenas prácticas de modularización.</p>
+</div>
+
+<div class="box-card">
+    <h2 >Actividades </h2>
+
+    <h3>Bloque 1: Secuencialidad y Cálculos de Sistemas (30 minutos)</h3>
+    <ol>
+        <li>
+            <strong>Cálculo de Ancho de Banda Libre:</strong> Diseña un script que solicite al usuario la velocidad de línea contratada en <code>Mbps</code> y el porcentaje actual de uso de la red. El programa debe calcular y mostrar mediante un <code>print</code> formateado cuántos Mbps están ocupados y cuántos Mbps libres quedan disponibles en el enlace.
+        </li>
+        <li>
+            <strong>Desglose de Tráfico en Segundos:</strong> Escribe un script que reciba una cantidad total de segundos correspondiente al tiempo de respuesta acumulado de un servicio web. El programa debe transformar ese valor y mostrar su desglose exacto expresado en <strong>horas, minutos y segundos restantes</strong>.
+            <div class="box-notice"><strong>Pista:</strong> Utiliza el operador de división entera (<code>//</code>) y el operador de módulo o resto (<code>%</code>).</div>
+        </li>
+    </ol>
+
+    <h3>Bloque 2: Estructuras Condicionales y Validación (40 minutos)</h3>
+    <ol start="3">
+        <li>
+            <strong>Validador de Códigos de Estado HTTP:</strong> Crea un script que solicite un código de respuesta numérica HTTP. Mediante una estructura condicional múltiple (<code>if - elif - else</code>), el programa debe emitir un diagnóstico técnico adaptado:
+            <ul>
+                <li><code>200</code>: "OK - Servidor operativo"</li>
+                <li><code>301</code> o <code>302</code>: "Redirección detectada"</li>
+                <li><code>400</code> a <code>499</code>: "Error de cliente (Client Error)"</li>
+                <li><code>500</code> o superior: "Error crítico del servidor (Server Error)"</li>
+                <li>Cualquier otro: "Código no reconocido"</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h3>Bloque 3: Modularidad, Funciones y Estructura Main (50 minutos)</h3>
+    <ol start="4">
+        <li>
+            <strong>Conversor de Unidades de Almacenamiento:</strong> Define una función llamada <code>mb_a_gb(megabytes)</code> que reciba una cantidad numérica de megabytes y retorne mediante <code>return</code> el valor convertido a gigabytes. El programa principal irá pidiendo valores hasta que se introduzca 0.
+        </li>
+        <li>
+            <strong>Calculadora de Nómina con Retorno Múltiple:</strong> Escribe una función llamada <code>calcular_neto_empleado(salario_base, ventas)</code> que compute las comisiones de un técnico sabiendo que cada venta realizada aporta un 5% extra sobre el sueldo base. La función debe devolver de forma simultánea tres valores: el salario base, la comisión total calculada y el sueldo bruto final a percibir. Desempaqueta estos valores en el programa principal y preséntalos formateados en pantalla.
+        </li>
+    </ol>
+</div>
+
+<div class="box-card" style="background:#f1f5f9;">
+    <h3 >Cronograma Sugerido de la Sesión (120 Minutos)</h3>
+    <ul>
+        <li><strong>10 minutos</strong> → Explicación de la dinámica y apertura de VS Code / Entorno virtual.</li>
+        <li><strong>20 minutos</strong> → Resolución del Bloque 1 (Secuenciales).</li>
+        <li><strong>15 minutos</strong> → Desarrollo del Bloque 2 (Condicionales y Bucles).</li>
+        <li><strong>30 minutos</strong> → Programación del Bloque 3 (Funciones ).</li>
+        <li><strong> 5 minutos</strong> → Subida al servidor del profesor.</li>
+    </ul>
+</div>
+</body>
+
+</html>
