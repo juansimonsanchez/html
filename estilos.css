@@ -75,6 +75,35 @@ body > header {
     margin-left: -20px;
 }
 
+body > footer {
+    background: var(--bg-header);
+    color: var(--text-header);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    width: calc(100% + 40px);
+    margin-right: -20px;
+    margin-left: -20px;
+    margin-top: auto;
+}
+
+.footer-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    padding: 0 1.5rem;
+    background: var(--bg-header);
+}
+
+.footer-text {
+    margin: 0;
+    color: var(--text-header);
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.25px;
+}
+
 .header-container {
     display: flex;
     align-items: center;
@@ -311,16 +340,26 @@ details {
     background: #ffffff;
 }
 
-summary {
+summary,
+.summary-title,
+.summary-compact {
     background: #f8fafc;
-    padding: 1rem;
-    font-weight: bold;
+    padding: 0.65rem 1rem;
+    font-size: 1.05rem;
+    font-weight: 700;
     cursor: pointer;
     user-select: none;
     list-style: none; /* Elimina la flecha por defecto en algunos navegadores */
     display: flex;
     align-items: center;
     justify-content: space-between;
+    transition: background-color 0.15s ease;
+}
+
+summary:hover,
+.summary-title:hover,
+.summary-compact:hover {
+    background: #f1f5f9;
 }
 
 /* Opcional: Añadir un icono de flecha personalizado */
@@ -804,6 +843,7 @@ main img {
 
 @media print {
     body > header,
+    body > footer,
     .top-nav,
     .nav-btn,
     .dropdown,

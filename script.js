@@ -107,10 +107,11 @@ function descargarPDF() {
 
     // Obtenemos el título de la página o del recurso para nombrar el PDF
     const tituloDoc = document.title.replace(/[^a-zA-Z0-9_-]/g, "_");
+    const nombreArchivo = `${tituloDoc}.pdf`;
 
     const opciones = {
-        margin:       10, // mm
-        filename:     `${tituloDoc}.pdf`,
+        margin:       [15, 10, 18, 10], // [superior, izquierdo, inferior, derecho] en mm para dejar espacio al header y footer
+        filename:     nombreArchivo,
         image:        { type: 'jpeg', quality: 0.98 },
         html2canvas:  {
             scale: 2,
@@ -134,7 +135,7 @@ function descargarPDF() {
 
     // Los navegadores limitan el tamaño máximo de un canvas (~32.000 px de alto).
     // Para páginas largas dividimos el contenido en fragmentos y los añadimos al mismo PDF.
-    const ALTO_MAX = 7000; // px CSS por fragmento (x2 de escala = 14.000 px de canvas)
+    const ALTO_MAX = 7000; // px CSS por fragmento
     const bloques = [];
     const recoger = nodo => {
         for (const hijo of nodo.children) {
@@ -177,7 +178,7 @@ function descargarPDF() {
         descargarPDF.enCurso = false;
     };
 
-    // Generar y descargar el PDF de forma automática
+    // Generar los fragmentos en el worker de html2pdf
     let worker = html2pdf().set(opciones).from(crearContenedor(grupos[0])).toPdf();
     grupos.slice(1).forEach(g => {
         worker = worker.get('pdf')
@@ -188,48 +189,45 @@ function descargarPDF() {
             .toPdf();
     });
 
-    new Promise((resolve, reject) => worker.save().then(resolve, reject))
-        .then(restaurar)
-        .catch(err => {
-            restaurar();
-            console.error('Error al generar el PDF:', err);
-            const local = location.protocol === 'file:';
-            const motivo = local
-                ? 'La página se ha abierto como archivo local (file://) y el navegador bloquea la captura de imágenes.\n' +
-                  'Ábrela desde un servidor web (p. ej. Live Server o "python3 -m http.server").\n\n'
-                : '';
-            if (confirm('No se ha podido generar el PDF.\n\n' + motivo +
-                        '¿Quieres abrir el diálogo de impresión para "Guardar como PDF"?')) {
-                window.print();
-            }
-        });
+    // Procesar todas las páginas generadas para estampar el Encabezado y el Pie de página
+    worker.toPdf().get('pdf').then(pdf => {
+        const totalPages = pdf.internal.getNumberOfPages();
+        const tituloOriginal = document.title;
+
+        for (let i = 1; i <= totalPages; i++) {
+            pdf.setPage(i);
+            pdf.setFont("helvetica", "normal");
+            pdf.setFontSize(9);
+            pdf.setTextColor(100, 100, 100);
+
+            // --- ENCABEZADO ---
+            pdf.text(tituloOriginal, 10, 8);
+            pdf.setLineWidth(0.2);
+            pdf.line(10, 10, pdf.internal.pageSize.getWidth() - 10, 10);
+
+            // --- PIE DE PÁGINA ---
+            const anchoPagina = pdf.internal.pageSize.getWidth();
+            const altoPagina = pdf.internal.pageSize.getHeight();
+            pdf.line(10, altoPagina - 14, anchoPagina - 10, altoPagina - 14);
+            pdf.text(`Página ${i} de ${totalPages}`, anchoPagina - 10, altoPagina - 9);
+            pdf.text("Curso 2026/2027", 10, altoPagina - 9);
+        }
+    }).then(() => {
+        // Guardar el documento final y restaurar el DOM
+        worker.save(nombreArchivo)
+            .then(restaurar)
+            .catch(err => {
+                restaurar();
+                console.error('Error al generar el PDF:', err);
+                const local = location.protocol === 'file:';
+                const motivo = local
+                    ? 'La página se ha abierto como archivo local (file://) y el navegador bloquea la captura de imágenes.\n' +
+                      'Ábrela desde un servidor web (p. ej. Live Server o "python3 -m http.server").\n\n'
+                    : '';
+                if (confirm('No se ha podido generar el PDF.\n\n' + motivo +
+                            '¿Quieres abrir el diálogo de impresión para "Guardar como PDF"?')) {
+                    window.print();
+                }
+            });
+    });
 }
-
-
-// Al imprimir / "Guardar como PDF" desde el navegador, se abren temporalmente los desplegables
-(() => {
-    let abiertosParaImprimir = [];
-    window.addEventListener('beforeprint', () => {
-        abiertosParaImprimir = Array.from(document.querySelectorAll('details:not([open])'));
-        abiertosParaImprimir.forEach(d => { d.open = true; });
-    });
-    window.addEventListener('afterprint', () => {
-        abiertosParaImprimir.forEach(d => { d.open = false; });
-        abiertosParaImprimir = [];
-    });
-})();
-
-
-
-// Al imprimir / "Guardar como PDF" desde el navegador, se abren temporalmente los desplegables
-(() => {
-    let abiertosParaImprimir = [];
-    window.addEventListener('beforeprint', () => {
-        abiertosParaImprimir = Array.from(document.querySelectorAll('details:not([open])'));
-        abiertosParaImprimir.forEach(d => { d.open = true; });
-    });
-    window.addEventListener('afterprint', () => {
-        abiertosParaImprimir.forEach(d => { d.open = false; });
-        abiertosParaImprimir = [];
-    });
-})();
