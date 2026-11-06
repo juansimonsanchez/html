@@ -61,7 +61,11 @@ with sync_playwright() as p:
             .copy-btn,
             #left-panel,
             .left-panel,
-            .headerlink {
+            .headerlink,
+            footer,
+            body > footer,
+            #site-footer,
+            .site-footer {
                 display: none !important;
             }
             #page-layout,
@@ -76,6 +80,11 @@ with sync_playwright() as p:
             }
         }
     """)
+    # Desplegar todos los elementos <details> (ocultos por defecto) antes de imprimir
+    page.evaluate("""() => {
+        document.querySelectorAll('details').forEach(d => d.setAttribute('open', ''));
+    }""")
+    page.emulate_media(media="print")
     page.pdf(
         path=pdf_file,
         print_background=True,
@@ -113,10 +122,15 @@ with sync_playwright() as p:
         }
         @media print {
             body { margin: 0 !important; }
-            #site-header, header#site-header, .top-nav, .nav-btn, .dropdown, .dropbtn, a[download], button, .copy-btn, #left-panel, .left-panel, .headerlink { display: none !important; }
+            #site-header, header#site-header, .top-nav, .nav-btn, .dropdown, .dropbtn, a[download], button, .copy-btn, #left-panel, .left-panel, .headerlink, footer, body > footer, #site-footer, .site-footer { display: none !important; }
             #page-layout, .page-layout, #main-content, .main-content, main, body { display: block !important; width: 100% !important; max-width: none !important; }
         }
     """)
+    # Desplegar todos los elementos <details> (ocultos por defecto) antes de imprimir
+    page.evaluate("""() => {
+        document.querySelectorAll('details').forEach(d => d.setAttribute('open', ''));
+    }""")
+    page.emulate_media(media="print")
     page.pdf(
         path=pdf_file,
         print_background=True,
@@ -154,10 +168,15 @@ with sync_playwright() as p:
         }
         @media print {
             body { margin: 0 !important; }
-            #site-header, header#site-header, .top-nav, .nav-btn, .dropdown, .dropbtn, a[download], button, .copy-btn, #left-panel, .left-panel, .headerlink { display: none !important; }
+            #site-header, header#site-header, .top-nav, .nav-btn, .dropdown, .dropbtn, a[download], button, .copy-btn, #left-panel, .left-panel, .headerlink, footer, body > footer, #site-footer, .site-footer { display: none !important; }
             #page-layout, .page-layout, #main-content, .main-content, main, body { display: block !important; width: 100% !important; max-width: none !important; }
         }
     """)
+    # Desplegar todos los elementos <details> (ocultos por defecto) antes de imprimir
+    page.evaluate("""() => {
+        document.querySelectorAll('details').forEach(d => d.setAttribute('open', ''));
+    }""")
+    page.emulate_media(media="print")
     page.pdf(
         path=pdf_file,
         print_background=True,
@@ -185,7 +204,7 @@ convert_with_wkhtmltopdf() {
     tmp_css="$(mktemp)"
     cat > "$tmp_css" <<EOF
 @media print {
-  #site-header, header#site-header, .top-nav, .nav-btn, .dropdown, .dropbtn, a[download], button, .copy-btn, #left-panel, .left-panel, .headerlink { display: none !important; }
+  #site-header, header#site-header, .top-nav, .nav-btn, .dropdown, .dropbtn, a[download], button, .copy-btn, #left-panel, .left-panel, .headerlink, footer, body > footer, #site-footer, .site-footer { display: none !important; }
   #page-layout, .page-layout, #main-content, .main-content, main, body { display: block !important; width: 100% !important; max-width: none !important; }
 }
 @page { margin: 18mm 12mm 20mm 12mm; }
