@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RECURSO - Instalacion Apache Php Mysql</title>
     <link rel="stylesheet" href="../estilos.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="../script.js"></script>
 </head>
 
@@ -16,29 +17,31 @@
                     &ndash; Instalacion Apache Php Mysql</span></div>
             <nav class="top-nav">
                 <a href="index.html" class="nav-btn">Inicio</a>
+                <a href="#" class="nav-btn" onclick="descargarPDF(); return false;">Descargar PDF</a>
             </nav>
         </div>
     </header>
     <div class="page-layout">
         <main class="main-content">
-            <div class="page-actions"><a
-                    href="Recurso_Instalacion_apache_php_mysql.pdf" download
-                    class="pdf-download-btn">📥
-                    Descargar PDF</a></div>
 
-            <header>
-                <h1 class="title" id="instalacion-de-apache-junto-php-y-mysql"><span id="a5" class="anchor"></span>Instalación de apache junto php y MySQL
-                </h1>
-            </header>
-            <p>Ejecutar</p>
+            <section class="title-section">
+                <header>
+                    <h1 class="title" id="instalacion-de-apache-junto-php-y-mysql"><span id="a5" class="anchor"></span>Instalación de apache junto php y MySQL
+                    </h1>
+                </header>
+            </section>
 
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>sudo apt update</code></pre>
-            </div>
-
-            <p>y después ejecutar lo siguiente</p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>sudo apt install apache2 \
+            <section class="content-section">
+                <article class="content-article">
+                    <details>
+                        <summary class="summary-title">Ejecución inicial y actualización de paquetes</summary>
+                        <p>Ejecutar</p>
+                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                            <pre><code>sudo apt update</code></pre>
+                        </div>
+                        <p>y después ejecutar lo siguiente</p>
+                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                            <pre><code>sudo apt install apache2 \
             ghostscript \
             libapache2-mod-php \
             mysql-server \
@@ -52,72 +55,69 @@
             php-mysql \
             php-xml \
             php-zip</code></pre>
+                        </div>
+                        <p>Cuidado al copiar y pegar, se tiene que ejecutar todo el proceso de instalación sin ningún error.</p>
+                    </details>
+                </article>
 
-            </div>
-            <p>Cuidado al copiar y pegar, se tiene que ejecutar todo el proceso de
-                instalación sin ningún error.</p>
-            <p>La mejor forma de transferir archivos a nuestra instancia es mediante
-                el comando scp (en linux):</p>
-            <p><strong>scp [origen] [destino]</strong></p>
-            <p>donde para hacer referencia a nuestra instancia utilizaremos
-                ubuntu@ip_flotante:/ruta</p>
-            <p>Previamente tendremos que asegurándonos de que <em>/var/www/html</em>
-                pertenezca al grupo www-data en nuestra instancia:</p>
-
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>sudo chgrp www-data /var/www/html</code></pre>
-            </div>
-
-            <p>Nos aseguramos también que nuestro usuario pertenezca al mismo
-                grupo:</p>
-
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>sudo usermod -a -G www-data ubuntu</code></pre>
-            </div>
-
-            <p>Asignamos los permisos adecuados:</p>
-
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>sudo chmod -R 775 /var/www/html
+                <article class="content-article">
+                    <details>
+                        <summary class="summary-title">Transferencia de archivos y configuración de permisos</summary>
+                        <p>La mejor forma de transferir archivos a nuestra instancia es mediante el comando scp (en linux):</p>
+                        <p><strong>scp [origen] [destino]</strong></p>
+                        <p>donde para hacer referencia a nuestra instancia utilizaremos ubuntu@ip_flotante:/ruta</p>
+                        <p>Previamente tendremos que asegurándonos de que <em>/var/www/html</em> pertenezca al grupo www-data en nuestra instancia:</p>
+                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                            <pre><code>sudo chgrp www-data /var/www/html</code></pre>
+                        </div>
+                        <p>Nos aseguramos también que nuestro usuario pertenezca al mismo grupo:</p>
+                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                            <pre><code>sudo usermod -a -G www-data ubuntu</code></pre>
+                        </div>
+                        <p>Asignamos los permisos adecuados:</p>
+                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                            <pre><code>sudo chmod -R 775 /var/www/html
 sudo chmod -R g+s /var/www/html</code></pre>
-            </div>
+                        </div>
+                        <p>Y por último nos aseguramos de ser los propietarios del directorio:</p>
+                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                            <pre><code>sudo chown -R ubuntu /var/www/html</code></pre>
+                        </div>
+                        <p>En este punto ya tenemos los permisos de usuario correctamente configurados</p>
+                    </details>
+                </article>
 
-            <p>Y por último nos aseguramos de ser los propietarios del
-                directorio:</p>
-
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>sudo chown -R ubuntu /var/www/html</code></pre>
-            </div>
-
-            <p>En este punto ya tenemos los permisos de usuario correctamente
-                configurados</p>
-            <p>Ejemplos para copiar archivos/carpetas desde nuestro ordenador:</p>
-            <ul>
-                <li>
-                        <p>Para copiar un archivo de la carpeta actual a la carpeta en nuestra
-                            instancia: <code>scp ejercicio1.html ubuntu@172.16.11.152:/var/www/html</code></p>
-                </li>
-            </ul>
-
-            <ul>
-                <li>
-                        <p>Para copiar un conjunto de archivos de la carpeta actual a una
-                            carpeta en nuestra instancia:<code>scp *.* ubuntu@172.16.11.152:/var/www/html</code></p>
-                </li>
-            </ul>
-            <ul>
-                <li>
-                        <p>Para copiar una carpeta con todas los archivos y subcarpetas a una
-                            carpeta determinada en nuestra instancia:
-                            <code>scp -r Carpeta ubuntu@172.16.11.152:/var/www/html</code>
-                        </p>
-                </li>
-            </ul>
-
-
-
+                <article class="content-article">
+                    <details>
+                        <summary class="summary-title">Ejemplos de transferencia scp</summary>
+                        <p>Ejemplos para copiar archivos/carpetas desde nuestro ordenador:</p>
+                        <ul>
+                            <li>
+                                <p>Para copiar un archivo de la carpeta actual a la carpeta en nuestra instancia: <code>scp ejercicio1.html ubuntu@172.16.11.152:/var/www/html</code></p>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <p>Para copiar un conjunto de archivos de la carpeta actual a una carpeta en nuestra instancia:<code>scp *.* ubuntu@172.16.11.152:/var/www/html</code></p>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <p>Para copiar una carpeta con todas los archivos y subcarpetas a una carpeta determinada en nuestra instancia:
+                                    <code>scp -r Carpeta ubuntu@172.16.11.152:/var/www/html</code>
+                                </p>
+                            </li>
+                        </ul>
+                    </details>
+                </article>
+            </section>
         </main>
     </div>
+    <footer>
+        <div class="footer-container">
+            <p class="footer-text">Curso 2026/2027</p>
+        </div>
+    </footer>
 </body>
 
 </html>

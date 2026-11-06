@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RECURSO - Instrucciones Actividades</title>
     <link rel="stylesheet" href="../estilos.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="../script.js"></script>
 </head>
 
@@ -16,157 +17,96 @@
                     &ndash; Instrucciones Actividades</span></div>
             <nav class="top-nav">
                 <a href="index.html" class="nav-btn">Inicio</a>
+                <a href="#" class="nav-btn" onclick="descargarPDF(); return false;">Descargar PDF</a>
             </nav>
         </div>
     </header>
     <div class="page-layout">
-
-
-
         <main class="main-content">
-            <div class="page-actions"><a
-                    href="Recurso_Instrucciones_actividades.pdf" download
-                    class="pdf-download-btn">📥
-                    Descargar PDF</a></div>
 
-            <header>
-                <h1 class="title" id="formato-de-los-documentos"><span id="a5" class="anchor"></span>FORMATO
-                    DE LOS DOCUMENTOS</h1>
-            </header>
+            <section class="title-section">
+                <header>
+                    <h1 class="title" id="formato-de-los-documentos"><span id="a5" class="anchor"></span>FORMATO DE LOS DOCUMENTOS</h1>
+                </header>
+            </section>
 
-            <h1 id="documentos">Documentos <a class="headerlink" href="#documentos" title="Enlace permanente">¶</a></h1>
-            <p>Para cada tarea/actividad se podrá pedir un texto, un
-                archivo/documento y/o un conjunto de archivos. Se especificarán los
-                tipos de archivos (normalmente PDF a no ser que el profesor indique lo
-                contrario), nombre que se les dará y cómo/dónde realizar la entrega.</p>
-            <p>El formato de lo documentos de texto, normalmente será siempre el
-                mismo:</p>
-            <ul>
-                <li>
-                        <p>Debe de tener una portada con:</p>
-                    <ul>
-                        <li>
-                                <p>Nombre de la materia y el título de la tarea/actividad</p>
-                        </li>
-                        <li>
-                                <p>Una imagen relacionada con la tarea</p>
-                        </li>
-                        <li>
-                                <p>Vuestros datos (nombre y apellidos, curso)</p>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                        <p>La fuente será Arial/Times New Roman a tamaño 11/12 excepto en la
-                            portada o títulos.</p>
-                </li>
-                <li>
-                        <p>Se incluirán los distintos apartados de la tarea/actividad,
-                            destacados en negrita y con tamaño 14.</p>
-                </li>
-                <li>
-                        <p>Recomendable incluir un índice, un encabezado de página, pie de
-                            página y numeración de páginas</p>
-                </li>
-                <li>
-                        <p>Se deberán destacar palabras con negrita.</p>
-                </li>
-                <li>
-                        <p>Todo el texto justificado excepto algún párrafo o título.</p>
-                </li>
-                <li>
-                        <p>Interlineado de 1,15 líneas.</p>
-                </li>
-                <li>
-                        <p>El texto será en color negro excepto para destacar algo o en la
-                            portada</p>
-                </li>
-                <li>
-                        <p>Debe de incluirse un apartado de bibliografía o webgrafía, o en cada
-                            apartado/actividad indicar los sitios web utilizados
-                            (<strong>prácticas</strong>)</p>
-                </li>
-                <li>
-                        <p>NUNCA se pondrá un fondo a las páginas</p>
-                </li>
-            </ul>
-            <h1 id="imagenes">Imágenes <a class="headerlink" href="#imagenes" title="Enlace permanente">¶</a></h1>
-            <p>Siempre se deben incluir imágenes relacionadas con el texto. Tener en
-                cuenta que:</p>
-            <ul>
-                <li>
-                        <p>Las imágenes no serán meramente decorativas, sino que se tendrán que
-                            citar en el texto (por ejemplo: en la siguiente imagen se puede
-                            ver…)</p>
-                </li>
-                <li>
-                        <p>Deberá incluir mínimo 2 imágenes</p>
-                </li>
-                <li>
-                        <p>Deben de ajustarse su tamaño y colocarse en de distinta forma, no
-                            siempre igual</p>
-                </li>
-            </ul>
-            <h1 id="capturas">Capturas <a class="headerlink" href="#capturas" title="Enlace permanente">¶</a></h1>
-            <p>Cuando se documentan operaciones realizadas en un equipo/máquina
-                virtual, no es suficiente una captura sin más.</p>
-            <ul>
-                <li>
-                        <p>Tenemos que decir que estamos haciendo, para qué y cómo.</p>
-                </li>
-                <li>
-                        <p>De forma complementaria indicar posibles errores que se pueden dar y
-                            cómo evitarlos. También podemos indicar distintas opciones a
-                            utilizar.</p>
-                </li>
-                <li>
-                        <p>En una captura, normalmente tenemos que poder identificar al alumno/a
-                            con el usuario del sistema, un mensaje escrito en la consola, una
-                            carpeta con vuestro nombre o el nombre de la máquina virtual.</p>
-                </li>
-                <li>
-                        <p>El tamaño de la captura debe de ser adecuado, no tiene que ocupar
-                            media página cuando lo que queremos ver es un comando y su resultado. No
-                            incluir en las capturas errores por escribir mal un comando u opción</p>
-                </li>
-            </ul>
-            <h1 id="uso-responsable-de-la-inteligencia-artificial">Uso Responsable
-                de la Inteligencia Artificial <a class="headerlink"
-                    href="#uso-responsable-de-la-inteligencia-artificial" title="Enlace permanente">¶</a></h1>
-            <p>Las herramientas de inteligencia artificial deben utilizarse como un
-                apoyo al aprendizaje y no como un sustituto del trabajo personal.
-                <strong>Cuando se autorice</strong> por parte del profesor el uso de la
-                IA en las actividades de clase, se deben tener en cuenta las siguientes
-                pautas:
-            </p>
-            <ul>
-                <li>
-                        <p><strong>Transparencia y declaración</strong>: Se debe indicar
-                            claramente para que se ha utilizado IA en la elaboración de la tarea,
-                            qué herramientas y prompt se han empleado.</p>
-                </li>
-                <li>
-                        <p><strong>Verificación de la información:</strong> Todo contenido o
-                            código generado por una IA debe ser revisado, comprendido y contrastado
-                            antes de su inclusión.</p>
-                </li>
-                <li>
-                        <p><strong>Autoría propia:</strong> No se permite la entrega de textos o
-                            trabajos generados íntegramente por IA sin aportación ni análisis
-                            personal del alumnado.</p>
-                </li>
-                <li>
-                        <p><strong>Cita adecuada:</strong> Las consultas o fuentes
-                            proporcionadas por la IA deben citarse adecuadamente en el apartado de
-                            bibliografía o webgrafía.</p>
-                </li>
-            </ul>
+            <section class="content-section">
+                <article class="content-article">
+                    <details>
+                        <summary class="summary-title">Formato de Documentos</summary>
+                        <h1 id="documentos">Documentos <a class="headerlink" href="#documentos" title="Enlace permanente">¶</a></h1>
+                        <p>Para cada tarea/actividad se podrá pedir un texto, un archivo/documento y/o un conjunto de archivos. Se especificarán los tipos de archivos (normalmente PDF a no ser que el profesor indique lo contrario), nombre que se les dará y cómo/dónde realizar la entrega.</p>
+                        <p>El formato de lo documentos de texto, normalmente será siempre el mismo:</p>
+                        <ul>
+                            <li>
+                                <p>Debe de tener una portada con:</p>
+                                <ul>
+                                    <li><p>Nombre de la materia y el título de la tarea/actividad</p></li>
+                                    <li><p>Una imagen relacionada con la tarea</p></li>
+                                    <li><p>Vuestros datos (nombre y apellidos, curso)</p></li>
+                                </ul>
+                            </li>
+                            <li><p>La fuente será Arial/Times New Roman a tamaño 11/12 excepto en la portada o títulos.</p></li>
+                            <li><p>Se incluirán los distintos apartados de la tarea/actividad, destacados en negrita y con tamaño 14.</p></li>
+                            <li><p>Recomendable incluir un índice, un encabezado de página, pie de página y numeración de páginas</p></li>
+                            <li><p>Se deberán destacar palabras con negrita.</p></li>
+                            <li><p>Todo el texto justificado excepto algún párrafo o título.</p></li>
+                            <li><p>Interlineado de 1,15 líneas.</p></li>
+                            <li><p>El texto será en color negro excepto para destacar algo o en la portada</p></li>
+                            <li><p>Debe de incluirse un apartado de bibliografía o webgrafía, o en cada apartado/actividad indicar los sitios web utilizados (<strong>prácticas</strong>)</p></li>
+                            <li><p>NUNCA se pondrá un fondo a las páginas</p></li>
+                        </ul>
+                    </details>
+                </article>
 
+                <article class="content-article">
+                    <details>
+                        <summary class="summary-title">Directrices sobre Imágenes</summary>
+                        <h1 id="imagenes">Imágenes <a class="headerlink" href="#imagenes" title="Enlace permanente">¶</a></h1>
+                        <p>Siempre se deben incluir imágenes relacionadas con el texto. Tener en cuenta que:</p>
+                        <ul>
+                            <li><p>Las imágenes no serán meramente decorativas, sino que se tendrán que citar en el texto (por ejemplo: en la siguiente imagen se puede ver…)</p></li>
+                            <li><p>Deberá incluir mínimo 2 imágenes</p></li>
+                            <li><p>Deben de ajustarse su tamaño y colocarse en de distinta forma, no siempre igual</p></li>
+                        </ul>
+                    </details>
+                </article>
+
+                <article class="content-article">
+                    <details>
+                        <summary class="summary-title">Pautas para Capturas de Pantalla</summary>
+                        <h1 id="capturas">Capturas <a class="headerlink" href="#capturas" title="Enlace permanente">¶</a></h1>
+                        <p>Cuando se documentan operaciones realizadas en un equipo/máquina virtual, no es suficiente una captura sin más.</p>
+                        <ul>
+                            <li><p>Tenemos que decir que estamos haciendo, para qué y cómo.</p></li>
+                            <li><p>De forma complementaria indicar posibles errores que se pueden dar y cómo evitarlos. También podemos indicar distintas opciones a utilizar.</p></li>
+                            <li><p>En una captura, normalmente tenemos que poder identificar al alumno/a con el usuario del sistema, un mensaje escrito en la consola, una carpeta con vuestro nombre o el nombre de la máquina virtual.</p></li>
+                            <li><p>El tamaño de la captura debe de ser adecuado, no tiene que ocupar media página cuando lo que queremos ver es un comando y su resultado. No incluir en las capturas errores por escribir mal un comando u opción</p></li>
+                        </ul>
+                    </details>
+                </article>
+
+                <article class="content-article">
+                    <details>
+                        <summary class="summary-title">Uso Responsable de la Inteligencia Artificial</summary>
+                        <h1 id="uso-responsable-de-la-inteligencia-artificial">Uso Responsable de la Inteligencia Artificial <a class="headerlink" href="#uso-responsable-de-la-inteligencia-artificial" title="Enlace permanente">¶</a></h1>
+                        <p>Las herramientas de inteligencia artificial deben utilizarse como un apoyo al aprendizaje y no como un sustituto del trabajo personal. <strong>Cuando se autorice</strong> por parte del profesor el uso de la IA en las actividades de clase, se deben tener en cuenta las siguientes pautas:</p>
+                        <ul>
+                            <li><p><strong>Transparencia y declaración</strong>: Se debe indicar claramente para que se ha utilizado IA en la elaboración de la tarea, qué herramientas y prompt se han empleado.</p></li>
+                            <li><p><strong>Verificación de la información:</strong> Todo contenido o código generado por una IA debe ser revisado, comprendido y contrastado antes de su inclusión.</p></li>
+                            <li><p><strong>Autoría propia:</strong> No se permite la entrega de textos o trabajos generados íntegramente por IA sin aportación ni análisis personal del alumnado.</p></li>
+                            <li><p><strong>Cita adecuada:</strong> Las consultas o fuentes proporcionadas por la IA deben citarse adecuadamente en el apartado de bibliografía o webgrafía.</p></li>
+                        </ul>
+                    </details>
+                </article>
+            </section>
         </main>
     </div>
-
-
-
+    <footer>
+        <div class="footer-container">
+            <p class="footer-text">Curso 2026/2027</p>
+        </div>
+    </footer>
 </body>
 
 </html>

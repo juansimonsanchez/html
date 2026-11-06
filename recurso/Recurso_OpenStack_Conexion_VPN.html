@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RECURSO - Openstack Conexion Vpn</title>
     <link rel="stylesheet" href="../estilos.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="../script.js"></script>
 </head>
 
@@ -16,71 +17,53 @@
                     &ndash; Openstack Conexion Vpn</span></div>
             <nav class="top-nav">
                 <a href="index.html" class="nav-btn">Inicio</a>
+                <a href="#" class="nav-btn" onclick="descargarPDF(); return false;">Descargar PDF</a>
             </nav>
         </div>
     </header>
     <div class="page-layout">
-
-
         <main class="main-content">
-            <div class="page-actions"><a
-                    href="Recurso_OpenStack_Conexion_VPN.pdf" download
-                    class="pdf-download-btn">📥
-                    Descargar PDF</a></div>
 
-            <header>
-                <h1 class="title" id="uso-de-la-vpn-del-departamento"><span id="a5" class="anchor"></span><strong>USO DE LA VPN DEL
-                        DEPARTAMENTO</strong></h1>
-            </header>
+            <section class="title-section">
+                <header>
+                    <h1 class="title" id="uso-de-la-vpn-del-departamento"><span id="a5" class="anchor"></span><strong>USO DE LA VPN DEL DEPARTAMENTO</strong></h1>
+                </header>
+            </section>
 
-            <h1 id="conexion-a-la-vpn-del-ies-celia-vinas">Conexión a la VPN del IES
-                Celia Viñas <a class="headerlink" href="#conexion-a-la-vpn-del-ies-celia-vinas"
-                    title="Enlace permanente">¶</a></h1>
-            <p>VPN son las siglas de Virtual Private Network, o red privada
-                virtual</p>
-            <p>Una conexión VPN lo que te permite es crear una red local sin
-                necesidad de que sus integrantes estén físicamente conectados entre sí,
-                sino a través de Internet. Es el componente "virtual" del que hablábamos
-                antes. Obtienen las ventajas de la red local (y alguna extra), con una
-                mayor flexibilidad, pues la conexión es a través de Internet y puede por
-                ejemplo ser de una punta del mundo a la otra.</p>
-            <p>Para conectarnos a la VPN del IES Celia Viñas seguiremos estos
-                pasos.<img src="media_Recurso_OpenStack_Conexion_VPN/media/image1.png" alt="imagen" class="image-width-100"></p>
-            <p>1. Descarga el cliente de OpenVPN para tu sistema operativo
-                favorito.</p>
-                <p><a href="https://openvpn.net/cloud-docs/openvpn-3-client-for-linux/"><u>Linux</u></a>
-                    <a
-                        href="https://play.google.com/store/apps/details?id=net.openvpn.openvpn&amp;hl=es_CL"><u>Android</u></a>
-                    <a href="https://openvpn.net/client-connect-vpn-for-windows/"><u>Windows</u></a>
-                    <a href="https://openvpn.net/client-connect-vpn-for-mac-os/"><u>MacOS</u></a>
-                </p>
-            <p><img src="media_Recurso_OpenStack_Conexion_VPN/media/image4.png" alt="imagen" class="image-width-400"></p>
-            <p>2. Utiliza el archivo de configuración .ovpn proporcionado para
-                conectar con el servidor de OpenVPN.</p>
-            <p>3. Crea una nueva conexión y accede con tu usuario y contraseña
-                proporcionados por tu profesor/a</p>
-            <p>4. Una vez que te hayas conectado a la VPN tendrás acceso a las
-                máquinas de OpenStack.</p>
-            <p><img src="media_Recurso_OpenStack_Conexion_VPN/media/image5.png" alt="imagen" class="image-width-400"></p>
-            <p>La URL del dashboard de OpenStack es: <a href="https://172.16.0.11/"><u>https://172.16.0.11/</u></a></p>
-            <p>5. Para cambiar la contraseña de tu usuario de la VPN accede a la
-                URL: <a href="http://172.16.0.1/"><u>http://172.16.0.1/</u></a></p>
-            <p>Ya tenemos configurado el DNS dinámico en el router del
-                departamento.</p>
-            <p>El nombre de dominio para conectar con la VPN es: <a
-                    href="http://vpn-iescelia.ddns.net/"><strong><u>vpn-iescelia.ddns.net</u></strong></a></p>
-            <p>Para esta parte, el profesor verificará que el alumno puede
-                conectarse de forma remota. Desde vuestra casa, realizar la conexión e
-                <strong>incluir en la práctica las capturas necesarias, donde se pueda
-                    ver que es vuestro equipo en vuestra red de casa, y la conexión a
-                    vuestra máquina en el instituto</strong>
-            </p>
-
+            <section class="content-section">
+                <article class="content-article">
+                    <details>
+                        <summary class="summary-title">Conexión a la VPN del IES Celia Viñas</summary>
+                        <h1 id="conexion-a-la-vpn-del-ies-celia-vinas">Conexión a la VPN del IES Celia Viñas <a class="headerlink" href="#conexion-a-la-vpn-del-ies-celia-vinas" title="Enlace permanente">¶</a></h1>
+                        <p>VPN son las siglas de Virtual Private Network, o red privada virtual</p>
+                        <p>Una conexión VPN lo que te permite es crear una red local sin necesidad de que sus integrantes estén físicamente conectados entre sí, sino a través de Internet. Es el componente "virtual" del que hablábamos antes. Obtienen las ventajas de la red local (y alguna extra), con una mayor flexibilidad, pues la conexión es a través de Internet y puede por ejemplo ser de una punta del mundo a la otra.</p>
+                        <p>Para conectarnos a la VPN del IES Celia Viñas seguiremos estos pasos.<img src="media_Recurso_OpenStack_Conexion_VPN/media/image1.png" alt="imagen" class="image-width-100"></p>
+                        <p>1. Descarga el cliente de OpenVPN para tu sistema operativo favorito.</p>
+                        <p><a href="https://openvpn.net/cloud-docs/openvpn-3-client-for-linux/"><u>Linux</u></a>
+                            <a href="https://play.google.com/store/apps/details?id=net.openvpn.openvpn&amp;hl=es_CL"><u>Android</u></a>
+                            <a href="https://openvpn.net/client-connect-vpn-for-windows/"><u>Windows</u></a>
+                            <a href="https://openvpn.net/client-connect-vpn-for-mac-os/"><u>MacOS</u></a>
+                        </p>
+                        <p><img src="media_Recurso_OpenStack_Conexion_VPN/media/image4.png" alt="imagen" class="image-width-400"></p>
+                        <p>2. Utiliza el archivo de configuración .ovpn proporcionado para conectar con el servidor de OpenVPN.</p>
+                        <p>3. Crea una nueva conexión y accede con tu usuario y contraseña proporcionados por tu profesor/a</p>
+                        <p>4. Una vez que te hayas conectado a la VPN tendrás acceso a las máquinas de OpenStack.</p>
+                        <p><img src="media_Recurso_OpenStack_Conexion_VPN/media/image5.png" alt="imagen" class="image-width-400"></p>
+                        <p>La URL del dashboard de OpenStack es: <a href="https://172.16.0.11/"><u>https://172.16.0.11/</u></a></p>
+                        <p>5. Para cambiar la contraseña de tu usuario de la VPN accede a la URL: <a href="http://172.16.0.1/"><u>http://172.16.0.1/</u></a></p>
+                        <p>Ya tenemos configurado el DNS dinámico en el router del departamento.</p>
+                        <p>El nombre de dominio para conectar con la VPN es: <a href="http://vpn-iescelia.ddns.net/"><strong><u>vpn-iescelia.ddns.net</u></strong></a></p>
+                        <p>Para esta parte, el profesor verificará que el alumno puede conectarse de forma remota. Desde vuestra casa, realizar la conexión e <strong>incluir en la práctica las capturas necesarias, donde se pueda ver que es vuestro equipo en vuestra red de casa, y la conexión a vuestra máquina en el instituto</strong></p>
+                    </details>
+                </article>
+            </section>
         </main>
     </div>
-
-
-
+    <footer>
+        <div class="footer-container">
+            <p class="footer-text">Curso 2026/2027</p>
+        </div>
+    </footer>
 </body>
 
 </html>

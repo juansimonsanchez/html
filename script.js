@@ -74,3 +74,22 @@ function copyCode(btn) {
         }, 2000);
     });
 }
+
+function descargarPDF() {
+    // Seleccionamos el contenedor principal de la página
+    const elemento = document.querySelector('.main-content') || document.body;
+    
+    // Obtenemos el título de la página o del recurso para nombrar el PDF
+    const tituloDoc = document.title.replace(/[^a-zA-Z0-9_-]/g, "_");
+    
+    const opciones = {
+        margin:       10, // mm
+        filename:     `${tituloDoc}.pdf`,
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2, useCORS: true, letterRendering: true },
+        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+
+    // Generar y descargar el PDF de forma automática
+    html2pdf().from(elemento).set(opciones).save();
+}
