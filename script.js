@@ -76,20 +76,114 @@ function copyCode(btn) {
 }
 
 function descargarPDF() {
+    // Evita lanzar varias generaciones a la vez por dobles clics
+    if (descargarPDF.enCurso) return;
+
+    // Si la librería no se ha cargado (p. ej. sin conexión), se usa la impresión del navegador
+    if (typeof html2pdf === 'undefined') {
+        alert('No se ha podido cargar la librería html2pdf (¿sin conexión a Internet?).\n' +
+              'Se abrirá el diálogo de impresión: elige "Guardar como PDF".');
+        window.print();
+        return;
+    }
+
     // Seleccionamos el contenedor principal de la página
-    const elemento = document.querySelector('.main-content') || document.body;
-    
+    const origen = document.querySelector('.main-content') || document.querySelector('main') || document.body;
+
     // Obtenemos el título de la página o del recurso para nombrar el PDF
     const tituloDoc = document.title.replace(/[^a-zA-Z0-9_-]/g, "_");
-    
+
     const opciones = {
         margin:       10, // mm
         filename:     `${tituloDoc}.pdf`,
         image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2, useCORS: true, letterRendering: true },
-        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        html2canvas:  {
+            scale: 2,
+            useCORS: true,
+            letterRendering: true,
+            scrollX: 0,
+            scrollY: 0, // evita PDFs en blanco o desplazados si la página está scrolleada
+            ignoreElements: el => el.classList && (el.classList.contains('headerlink') || el.classList.contains('copy-btn'))
+        },
+        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
+        pagebreak:    { mode: ['css', 'legacy'], avoid: ['pre', 'tr', 'img', 'h2', 'h3', 'h4'] }
+    };
+
+    descargarPDF.enCurso = true;
+
+    // Abrimos temporalmente los desplegables para que su contenido salga en el PDF
+    const cerrados = Array.from(origen.querySelectorAll('details:not([open])'));
+    cerrados.forEach(d => { d.open = true; });
+
+    // Los navegadores limitan el tamaño máximo de un canvas (~32.000 px de alto).
+    // Para páginas largas dividimos el contenido en fragmentos y los añadimos al mismo PDF.
+    const ALTO_MAX = 7000; // px CSS por fragmento (x2 de escala = 14.000 px de canvas)
+    const bloques = [];
+    const recoger = nodo => {
+        for (const hijo of nodo.children) {
+            if (hijo.offsetHeight === 0) continue;
+            const indivisible = ['TABLE', 'PRE', 'IMG', 'UL', 'OL'].includes(hijo.tagName);
+            if (hijo.offsetHeight > ALTO_MAX && hijo.children.length && !indivisible) {
+                recoger(hijo);
+            } else {
+                bloques.push(hijo);
+            }
+        }
+    };
+    recoger(origen);
+
+    const grupos = [];
+    let actual = [], alto = 0;
+    bloques.forEach(b => {
+        const h = b.offsetHeight;
+        if (actual.length && alto + h > ALTO_MAX) {
+            grupos.push(actual);
+            actual = [];
+            alto = 0;
+        }
+        actual.push(b);
+        alto += h;
+    });
+    if (actual.length) grupos.push(actual);
+    if (!grupos.length) grupos.push([origen]);
+
+    // Cada fragmento se envuelve en un <main class="main-content"> para conservar los estilos
+    const crearContenedor = grupo => {
+        const c = document.createElement('main');
+        c.className = 'main-content';
+        grupo.forEach(n => c.appendChild(n.cloneNode(true)));
+        return c;
+    };
+
+    const restaurar = () => {
+        cerrados.forEach(d => { d.open = false; });
+        descargarPDF.enCurso = false;
     };
 
     // Generar y descargar el PDF de forma automática
-    html2pdf().from(elemento).set(opciones).save();
+    let worker = html2pdf().set(opciones).from(crearContenedor(grupos[0])).toPdf();
+    grupos.slice(1).forEach(g => {
+        worker = worker.get('pdf')
+            .then(pdf => { pdf.addPage(); })
+            .from(crearContenedor(g))
+            .toContainer()
+            .toCanvas()
+            .toPdf();
+    });
+
+    new Promise((resolve, reject) => worker.save().then(resolve, reject))
+        .then(restaurar)
+        .catch(err => {
+            restaurar();
+            console.error('Error al generar el PDF:', err);
+            const local = location.protocol === 'file:';
+            const motivo = local
+                ? 'La página se ha abierto como archivo local (file://) y el navegador bloquea la captura de imágenes.\n' +
+                  'Ábrela desde un servidor web (p. ej. Live Server o "python3 -m http.server").\n\n'
+                : '';
+            if (confirm('No se ha podido generar el PDF.\n\n' + motivo +
+                        '¿Quieres abrir el diálogo de impresión para "Guardar como PDF"?')) {
+                window.print();
+            }
+        });
 }
