@@ -90,6 +90,21 @@ function descargarPDF() {
     // Seleccionamos el contenedor principal de la página
     const origen = document.querySelector('.main-content') || document.querySelector('main') || document.body;
 
+    // Con la página abierta como archivo local (file://), Chrome bloquea la exportación
+    // del canvas si contiene imágenes. En ese caso se ofrece generar sin imágenes o imprimir.
+    let omitirImagenes = false;
+    if (location.protocol === 'file:' && origen.querySelector('img, canvas, svg image')) {
+        const sinImagenes = confirm(
+            'La página está abierta como archivo local (file://) y Chrome no permite incluir sus imágenes en el PDF.\n\n' +
+            'Aceptar → descargar el PDF SIN imágenes.\n' +
+            'Cancelar → abrir el diálogo de impresión ("Guardar como PDF") CON imágenes.');
+        if (!sinImagenes) {
+            window.print();
+            return;
+        }
+        omitirImagenes = true;
+    }
+
     // Obtenemos el título de la página o del recurso para nombrar el PDF
     const tituloDoc = document.title.replace(/[^a-zA-Z0-9_-]/g, "_");
 
@@ -103,7 +118,9 @@ function descargarPDF() {
             letterRendering: true,
             scrollX: 0,
             scrollY: 0, // evita PDFs en blanco o desplazados si la página está scrolleada
-            ignoreElements: el => el.classList && (el.classList.contains('headerlink') || el.classList.contains('copy-btn'))
+            ignoreElements: el =>
+                (el.classList && (el.classList.contains('headerlink') || el.classList.contains('copy-btn'))) ||
+                (omitirImagenes && ['IMG', 'CANVAS', 'IMAGE', 'image'].includes(el.tagName))
         },
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
         pagebreak:    { mode: ['css', 'legacy'], avoid: ['pre', 'tr', 'img', 'h2', 'h3', 'h4'] }
@@ -187,3 +204,32 @@ function descargarPDF() {
             }
         });
 }
+
+
+// Al imprimir / "Guardar como PDF" desde el navegador, se abren temporalmente los desplegables
+(() => {
+    let abiertosParaImprimir = [];
+    window.addEventListener('beforeprint', () => {
+        abiertosParaImprimir = Array.from(document.querySelectorAll('details:not([open])'));
+        abiertosParaImprimir.forEach(d => { d.open = true; });
+    });
+    window.addEventListener('afterprint', () => {
+        abiertosParaImprimir.forEach(d => { d.open = false; });
+        abiertosParaImprimir = [];
+    });
+})();
+
+
+
+// Al imprimir / "Guardar como PDF" desde el navegador, se abren temporalmente los desplegables
+(() => {
+    let abiertosParaImprimir = [];
+    window.addEventListener('beforeprint', () => {
+        abiertosParaImprimir = Array.from(document.querySelectorAll('details:not([open])'));
+        abiertosParaImprimir.forEach(d => { d.open = true; });
+    });
+    window.addEventListener('afterprint', () => {
+        abiertosParaImprimir.forEach(d => { d.open = false; });
+        abiertosParaImprimir = [];
+    });
+})();
