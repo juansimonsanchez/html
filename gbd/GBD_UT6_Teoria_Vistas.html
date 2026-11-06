@@ -21,22 +21,25 @@
             </nav>
         </div>
     </header>
-    <div class="page-layout">
 
-
-        <main class="main-content">
-
+    <main class="main-content">
+        <section>
             <header>
                 <h1 class="title" id="unidad-6-vistas">
                     <span id="a5" class="anchor"></span>UNIDAD 6<br><span id="a6" class="anchor"></span>VISTAS<br>
 
                 </h1>
             </header>
+        </section>
 
-            <h3 id="ficha-tecnica-de-la-unidad-didactica">FICHA TÉCNICA DE LA UNIDAD
+        <section>
+            <details>
+                <summary>Ficha Técnica</summary>
+                <div class="box-card">
+                    <h3 id="ficha-tecnica-de-la-unidad-didactica">FICHA TÉCNICA DE LA UNIDAD
                 DIDÁCTICA <a class="headerlink" href="#ficha-tecnica-de-la-unidad-didactica"
                     title="Enlace permanente">¶</a></h3>
-            <div class="table-wrapper">
+<div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>
                         <tbody>
@@ -63,14 +66,22 @@
                     </table>
                 </div>
             </div>
-            <h3 id="indice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#indice-de-contenidos"
+                </div>
+            </details>
+        </section>
+
+        <section>
+            <details>
+                <summary>Índice de Contenidos</summary>
+                <div class="box-card">
+                    <h3 id="indice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#indice-de-contenidos"
                     title="Enlace permanente">¶</a></h3>
-            <p><a href="#a1-introduccion-y-contextualizacion"><u>1. INTRODUCCIÓN Y
+<p><a href="#a1-introduccion-y-contextualizacion"><u>1. INTRODUCCIÓN Y
                         CONTEXTUALIZACIÓN</u></a></p>
-                <p><a href="#a11-que-es-una-vista"><u>1.1 ¿Qué es una vista?</u></a></p>
-            <p><a href="#a2-operaciones-ddl-sobre-vistas"><u>2. OPERACIONES DDL SOBRE
+<p><a href="#a11-que-es-una-vista"><u>1.1 ¿Qué es una vista?</u></a></p>
+<p><a href="#a2-operaciones-ddl-sobre-vistas"><u>2. OPERACIONES DDL SOBRE
                         VISTAS</u></a></p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>2.1 Creación
 de Vistas (CREATE OR REPLACE VIEW)
 2.1.1 Sintaxis
@@ -87,53 +98,61 @@ Vistas (RENAME TABLE)
 Inspección de Vistas</code></pre>
 
 </div>
-            <p><a href="#a3-vistas-actualizables"><u>3. VISTAS
+<p><a href="#a3-vistas-actualizables"><u>3. VISTAS
                         ACTUALIZABLES</u></a></p>
-                <p><a href="#a31-restricciones-de-modificacion-insert-update-delete"><u>3.1
+<p><a href="#a31-restricciones-de-modificacion-insert-update-delete"><u>3.1
                             Restricciones de Modificación (INSERT, UPDATE, DELETE)</u></a></p>
-                <p><a href="#a32-la-clausula-with-check-option"><u>3.2 La Cláusula WITH
+<p><a href="#a32-la-clausula-with-check-option"><u>3.2 La Cláusula WITH
                             CHECK OPTION</u></a></p>
-                <p><a href="#a321-prevencion-de-inconsistencias-logicas"><u>3.2.1 Prevención
+<p><a href="#a321-prevencion-de-inconsistencias-logicas"><u>3.2.1 Prevención
                             de Inconsistencias Lógicas</u></a></p>
-                <p><a href="#a322-diferencias-entre-cascaded-y-local"><u>3.2.2 Diferencias
+<p><a href="#a322-diferencias-entre-cascaded-y-local"><u>3.2.2 Diferencias
                             entre CASCADED y LOCAL</u></a></p>
-            <p><a href="#a4-casos-de-uso-avanzados"><u>4. CASOS DE USO
+<p><a href="#a4-casos-de-uso-avanzados"><u>4. CASOS DE USO
                         AVANZADOS</u></a></p>
-                <p><a href="#a41-ejemplo-1-seguridad-logica-en-la-tabla-empleados"><u>4.1
+<p><a href="#a41-ejemplo-1-seguridad-logica-en-la-tabla-empleados"><u>4.1
                             Ejemplo 1: Seguridad Lógica en la Tabla Empleados</u></a></p>
-                <p><a href="#a42-ejemplo-2-simplificacion-de-relaciones-complejas"><u>4.2
+<p><a href="#a42-ejemplo-2-simplificacion-de-relaciones-complejas"><u>4.2
                             Ejemplo 2: Simplificación de Relaciones Complejas</u></a></p>
-                <p><a href="#a43-ejemplo-3-prevencion-de-inconsistencias-de-tipo"><u>4.3
+<p><a href="#a43-ejemplo-3-prevencion-de-inconsistencias-de-tipo"><u>4.3
                             Ejemplo 3: Prevención de Inconsistencias de Tipo</u></a></p>
-                <p><a href="#a7"><u>4.4
+<p><a href="#a7"><u>4.4
                             Ejemplo 4: Análisis de una Vista de Terceros No Actualizable</u></a></p>
-            <h1 id="a1-introduccion-y-contextualizacion">1. INTRODUCCIÓN Y
+                </div>
+            </details>
+        </section>
+
+        <section>
+            <details>
+                <summary>Contenidos y Apartados de la Unidad</summary>
+                <article class="box-card">
+                    <h1 id="a1-introduccion-y-contextualizacion">1. INTRODUCCIÓN Y
                 CONTEXTUALIZACIÓN <a class="headerlink" href="#a1-introduccion-y-contextualizacion"
                     title="Enlace permanente">¶</a></h1>
-            <h2 id="a11-que-es-una-vista">1.1 ¿Qué es una vista? <a class="headerlink" href="#a11-que-es-una-vista"
+<h2 id="a11-que-es-una-vista">1.1 ¿Qué es una vista? <a class="headerlink" href="#a11-que-es-una-vista"
                     title="Enlace permanente">¶</a></h2>
-            <p>Una vista es una <strong>tabla virtual</strong> cuya definición
+<p>Una vista es una <strong>tabla virtual</strong> cuya definición
                 lógica está almacenada de manera permanente en el diccionario de datos
                 de la base de datos, pero que no posee datos propios físicamente
                 almacenados en el disco. En su lugar, el motor de bases de datos
                 recupera de forma dinámica el conjunto de resultados ejecutando la
                 consulta SELECT que define la vista cada vez que esta se invoca en una
                 sentencia DML.</p>
-            <p>En la arquitectura clásica de tres niveles ANSI-SPARC
+<p>En la arquitectura clásica de tres niveles ANSI-SPARC
                 (Interno/Físico, Conceptual y Externo), las vistas constituyen la
                 representación por excelencia del <strong>nivel externo</strong>.</p>
-            <p>Permiten aislar la percepción de los datos que tiene el usuario final
+<p>Permiten aislar la percepción de los datos que tiene el usuario final
                 o la aplicación de la estructura real lógica de las tablas base. Esto
                 garantiza la <strong>independencia lógica de los datos</strong>: si el
                 Administrador de Sistemas decide normalizar, dividir o reestructurar una
                 tabla física subyacente, basta con redefinir la vista para que las
                 aplicaciones de frontend sigan consumiendo la misma estructura sin
                 requerir modificaciones en su código fuente.</p>
-            <h4 id="ventajas-de-las-vistas-para-el-administrador-de-sistemas">Ventajas
+<h4 id="ventajas-de-las-vistas-para-el-administrador-de-sistemas">Ventajas
                 de las Vistas para el Administrador de Sistemas: <a class="headerlink"
                     href="#ventajas-de-las-vistas-para-el-administrador-de-sistemas" title="Enlace permanente">¶</a>
             </h4>
-            <ol type="1">
+<ol type="1">
                 <li>
                         <p><strong>Seguridad Lógica (Control de Accesos):</strong> Permite
                             restringir el acceso a datos altamente confidenciales. En lugar de
@@ -157,18 +176,21 @@ Inspección de Vistas</code></pre>
                             misma lógica unificada de cálculo.</p>
                 </li>
             </ol>
-            <h1 id="a2-operaciones-ddl-sobre-vistas">2. OPERACIONES DDL SOBRE
+                </article>
+
+                <article class="box-card">
+                    <h1 id="a2-operaciones-ddl-sobre-vistas">2. OPERACIONES DDL SOBRE
                 VISTAS <a class="headerlink" href="#a2-operaciones-ddl-sobre-vistas" title="Enlace permanente">¶</a></h1>
-            <h2 id="a21-creacion-de-vistas-create-or-replace-view">2.1 Creación de
+<h2 id="a21-creacion-de-vistas-create-or-replace-view">2.1 Creación de
                 Vistas (CREATE OR REPLACE VIEW) <a class="headerlink" href="#a21-creacion-de-vistas-create-or-replace-view"
                     title="Enlace permanente">¶</a></h2>
-            <h3 id="a211-sintaxis-completa-y-parametros-del-motor">2.1.1 Sintaxis
+<h3 id="a211-sintaxis-completa-y-parametros-del-motor">2.1.1 Sintaxis
                 Completa y Parámetros del Motor <a class="headerlink" href="#a211-sintaxis-completa-y-parametros-del-motor"
                     title="Enlace permanente">¶</a></h3>
-            <p>La creación de vistas en MySQL permite definir modificadores que
+<p>La creación de vistas en MySQL permite definir modificadores que
                 influyen directamente en la optimización y en los privilegios de
                 ejecución del motor.</p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>CREATE
 [OR REPLACE]
 [ALGORITHM = {UNDEFINED | MERGE | TEMPTABLE}]
@@ -179,8 +201,7 @@ AS select_statement
 [WITH [CASCADED | LOCAL] CHECK OPTION];</code></pre>
 
 </div>
-
-            <h5 id="documentacion-oficial-consulta-la-sintaxis-gramatical-formal-y-todos-los-modificadores-disponibles-para-este-comando-create-view-en-mysql-reference-manual-create-view-syntax">
+<h5 id="documentacion-oficial-consulta-la-sintaxis-gramatical-formal-y-todos-los-modificadores-disponibles-para-este-comando-create-view-en-mysql-reference-manual-create-view-syntax">
                 🔗
                 Documentación Oficial: Consulta la sintaxis gramatical formal y todos
                 los modificadores disponibles para este comando CREATE VIEW en <a
@@ -188,12 +209,12 @@ AS select_statement
                         Reference Manual - CREATE VIEW Syntax</u></a> <a class="headerlink"
                     href="#documentacion-oficial-consulta-la-sintaxis-gramatical-formal-y-todos-los-modificadores-disponibles-para-este-comando-create-view-en-mysql-reference-manual-create-view-syntax"
                     title="Enlace permanente">¶</a></h5>
-            <h3 id="a212-algoritmos-de-procesamiento-de-vistas">2.1.2 Algoritmos de
+<h3 id="a212-algoritmos-de-procesamiento-de-vistas">2.1.2 Algoritmos de
                 Procesamiento de Vistas <a class="headerlink" href="#a212-algoritmos-de-procesamiento-de-vistas"
                     title="Enlace permanente">¶</a></h3>
-            <p>El parámetro ALGORITHM determina el método físico que utilizará el
+<p>El parámetro ALGORITHM determina el método físico que utilizará el
                 Optimizador de MySQL para resolver la vista:</p>
-            <ul>
+<ul>
                 <li>
                         <p><strong>MERGE:</strong> El motor combina el texto de la consulta del
                             usuario con la definición de la vista en una única consulta unificada
@@ -215,17 +236,17 @@ AS select_statement
                             posible.</p>
                 </li>
             </ul>
-            <h3 id="a213-definicion-de-alias-de-columnas">2.1.3 Definición de Alias de
+<h3 id="a213-definicion-de-alias-de-columnas">2.1.3 Definición de Alias de
                 Columnas <a class="headerlink" href="#a213-definicion-de-alias-de-columnas" title="Enlace permanente">¶</a>
             </h3>
-            <p>Podemos renombrar de forma estructural las columnas resultantes
+<p>Podemos renombrar de forma estructural las columnas resultantes
                 directamente en la cabecera de la declaración, aislando por completo los
                 nombres físicos del diseño relacional.</p>
-            <p><strong>Ejemplo de uso práctico:</strong></p>
-            <p>Si deseamos proyectar el personal de la oficina de Madrid ocultando
+<p><strong>Ejemplo de uso práctico:</strong></p>
+<p>Si deseamos proyectar el personal de la oficina de Madrid ocultando
                 sus atributos sensibles de salario, podemos definir alias en la cabecera
                 del SELECT:</p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>USE practica_dml;
 CREATE OR REPLACE VIEW v_personal_madrid (ID, Empleado, Correo,
 Ciudad) AS
@@ -238,49 +259,46 @@ FROM empleado
 WHERE codigo_oficina = 'OFI-MAD';</code></pre>
 
 </div>
-
-            <h2 id="a22-eliminacion-de-vistas-drop-view">2.2 Eliminación de Vistas (DROP
+<h2 id="a22-eliminacion-de-vistas-drop-view">2.2 Eliminación de Vistas (DROP
                 VIEW) <a class="headerlink" href="#a22-eliminacion-de-vistas-drop-view" title="Enlace permanente">¶</a></h2>
-            <p>Al eliminar una vista, únicamente se destruye su definición en el
+<p>Al eliminar una vista, únicamente se destruye su definición en el
                 catálogo de metadatos. Las tablas físicas y los datos subyacentes
                 permanecen inalterados.</p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>DROP VIEW [IF EXISTS]
 view_name [, view_name] ...
 [RESTRICT | CASCADE];</code></pre>
 
 </div>
-
-            <p><strong>Ejemplo de uso práctico:</strong></p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+<p><strong>Ejemplo de uso práctico:</strong></p>
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>DROP VIEW IF EXISTS v_personal_madrid;</code></pre>
 
 </div>
-
-            <h2 id="a23-renombrado-de-vistas-rename-table">2.3 Renombrado de Vistas
+<h2 id="a23-renombrado-de-vistas-rename-table">2.3 Renombrado de Vistas
                 (RENAME TABLE) <a class="headerlink" href="#a23-renombrado-de-vistas-rename-table"
                     title="Enlace permanente">¶</a></h2>
-            <p>Dado que las vistas se comportan en gran medida como tablas lógicas
+<p>Dado que las vistas se comportan en gran medida como tablas lógicas
                 en el espacio de nombres de la base de datos, se utiliza el comando
                 estándar de renombrado de tablas para modificar su identificador en el
                 esquema.</p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>RENAME TABLE old_view_name TO new_view_name;</code></pre>
 
-</div><strong>Ejemplo de uso práctico:</strong>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+</div>
+<strong>Ejemplo de uso práctico:</strong>
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>RENAME TABLE v_personal_madrid TO v_empleados_capital;</code></pre>
 
 </div>
-
-            <h2 id="a24-metadatos-e-inspeccion-de-vistas">2.4 Metadatos e Inspección de
+<h2 id="a24-metadatos-e-inspeccion-de-vistas">2.4 Metadatos e Inspección de
                 Vistas <a class="headerlink" href="#a24-metadatos-e-inspeccion-de-vistas" title="Enlace permanente">¶</a>
             </h2>
-            <p>En un servidor corporativo con cientos de objetos, el administrador
+<p>En un servidor corporativo con cientos de objetos, el administrador
                 necesita auditar y verificar el catálogo físico de tablas para aislar
                 exclusivamente las vistas del esquema y consultar su código fuente DDL
                 de creación.</p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Listar todos los objetos indicando si son tablas base o
 vistas
 SHOW FULL TABLES;
@@ -290,19 +308,21 @@ SHOW FULL TABLES WHERE Table_type = 'VIEW';
 SHOW CREATE VIEW v_empleados_capital;</code></pre>
 
 </div>
+                </article>
 
-            <h1 id="a3-vistas-actualizables">3. VISTAS ACTUALIZABLES <a class="headerlink" href="#a3-vistas-actualizables"
+                <article class="box-card">
+                    <h1 id="a3-vistas-actualizables">3. VISTAS ACTUALIZABLES <a class="headerlink" href="#a3-vistas-actualizables"
                     title="Enlace permanente">¶</a></h1>
-            <h2 id="a31-restricciones-de-modificacion-insert-update-delete">3.1
+<h2 id="a31-restricciones-de-modificacion-insert-update-delete">3.1
                 Restricciones de Modificación (INSERT, UPDATE, DELETE) <a class="headerlink"
                     href="#a31-restricciones-de-modificacion-insert-update-delete" title="Enlace permanente">¶</a></h2>
-            <p>MySQL permite realizar operaciones DML de modificación sobre una
+<p>MySQL permite realizar operaciones DML de modificación sobre una
                 vista, impactando de forma directa y automática en las tablas base. Sin
                 embargo, para que una vista sea <strong>actualizable</strong>, debe ser
                 sencilla y directa.</p>
-            <p>La modificación <strong>no está permitida</strong> si la consulta de
+<p>La modificación <strong>no está permitida</strong> si la consulta de
                 la vista contiene alguno de los siguientes elementos:</p>
-            <ol type="1">
+<ol type="1">
                 <li>
                         <p>Funciones de agregación (SUM, MIN, MAX, AVG, COUNT).</p>
                 </li>
@@ -327,31 +347,31 @@ SHOW CREATE VIEW v_empleados_capital;</code></pre>
                             escalares (no son actualizables sus valores derivados).</p>
                 </li>
             </ol>
-            <h5 id="documentacion-oficial-consulta-la-documentacion-sobre-las-vistas-actualizables-en-mysql-reference-manual-updatable-views">
+<h5 id="documentacion-oficial-consulta-la-documentacion-sobre-las-vistas-actualizables-en-mysql-reference-manual-updatable-views">
                 🔗
                 Documentación Oficial: Consulta la documentación sobre las vistas
                 actualizables en <a href="https://dev.mysql.com/doc/refman/8.0/en/view-updatable.html"><u>MySQL
                         Reference Manual - Updatable Views</u></a> <a class="headerlink"
                     href="#documentacion-oficial-consulta-la-documentacion-sobre-las-vistas-actualizables-en-mysql-reference-manual-updatable-views"
                     title="Enlace permanente">¶</a></h5>
-            <h2 id="a32-la-clausula-with-check-option">3.2 La Cláusula WITH CHECK
+<h2 id="a32-la-clausula-with-check-option">3.2 La Cláusula WITH CHECK
                 OPTION <a class="headerlink" href="#a32-la-clausula-with-check-option" title="Enlace permanente">¶</a></h2>
-            <h3 id="a321-prevencion-de-inconsistencias-logicas">3.2.1 Prevención de
+<h3 id="a321-prevencion-de-inconsistencias-logicas">3.2.1 Prevención de
                 Inconsistencias Lógicas <a class="headerlink" href="#a321-prevencion-de-inconsistencias-logicas"
                     title="Enlace permanente">¶</a></h3>
-            <p>Cuando realizamos una inserción o actualización mediante una vista
+<p>Cuando realizamos una inserción o actualización mediante una vista
                 que contiene una cláusula restrictiva (WHERE), es posible introducir un
                 registro en la tabla física que no cumpla con los propios criterios de
                 filtrado de la vista, provocando que el nuevo dato "desaparezca" de la
                 vista tras su creación.</p>
-            <p>Para evitar este comportamiento incoherente, se añade la cláusula
+<p>Para evitar este comportamiento incoherente, se añade la cláusula
                 WITH CHECK OPTION. El motor validará cualquier operación DML y rechazará
                 con un error aquellas modificaciones que generen filas fuera del alcance
                 del filtro de la vista.</p>
-            <h3 id="a322-diferencias-entre-cascaded-y-local">3.2.2 Diferencias entre
+<h3 id="a322-diferencias-entre-cascaded-y-local">3.2.2 Diferencias entre
                 CASCADED y LOCAL <a class="headerlink" href="#a322-diferencias-entre-cascaded-y-local"
                     title="Enlace permanente">¶</a></h3>
-            <ul>
+<ul>
                 <li>
                         <p><strong>CASCADED (Por defecto):</strong> Si la vista se ha construido
                             sobre otras vistas, se evalúan de manera jerárquica y obligatoria los
@@ -364,20 +384,23 @@ SHOW CREATE VIEW v_empleados_capital;</code></pre>
                             con su propia restricción de chequeo.</p>
                 </li>
             </ul>
-            <h1 id="a4-casos-de-uso-avanzados">4. CASOS DE USO AVANZADOS <a class="headerlink"
+                </article>
+
+                <article class="box-card">
+                    <h1 id="a4-casos-de-uso-avanzados">4. CASOS DE USO AVANZADOS <a class="headerlink"
                     href="#a4-casos-de-uso-avanzados" title="Enlace permanente">¶</a></h1>
-            <p>A continuación se presentan una serie de ejemplos reales de
+<p>A continuación se presentan una serie de ejemplos reales de
                 administración utilizando de forma íntegra el esquema físico
                 desarrollado en la Unidad 5 para resolver necesidades comunes de un
                 SysAdmin.</p>
-            <h2 id="a41-ejemplo-1-seguridad-logica-en-la-tabla-empleados">4.1 Ejemplo 1:
+<h2 id="a41-ejemplo-1-seguridad-logica-en-la-tabla-empleados">4.1 Ejemplo 1:
                 Seguridad Lógica en la Tabla Empleados <a class="headerlink"
                     href="#a41-ejemplo-1-seguridad-logica-en-la-tabla-empleados" title="Enlace permanente">¶</a></h2>
-            <p><strong>Requisito:</strong> Se necesita crear un objeto de acceso
+<p><strong>Requisito:</strong> Se necesita crear un objeto de acceso
                 para el personal técnico que muestre información del empleado, su email,
                 fecha de contratación y oficina, ocultando sus campos sensibles de
                 nómina (salario y comision).</p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Creación de la vista segura
 CREATE OR REPLACE VIEW v_empleados_publico AS
 SELECT
@@ -394,19 +417,18 @@ SELECT * FROM v_empleados_publico WHERE codigo_oficina =
 'OFI-BAR';</code></pre>
 
 </div>
-
-            <p><em>Análisis técnico:</em> Al conceder privilegios únicamente sobre
+<p><em>Análisis técnico:</em> Al conceder privilegios únicamente sobre
                 v_empleados_publico y no sobre la tabla física empleado, se impide que
                 usuarios con privilegios limitados conozcan el costo salarial
                 corporativo.</p>
-            <h2 id="a42-ejemplo-2-simplificacion-de-relaciones-complejas">4.2 Ejemplo 2:
+<h2 id="a42-ejemplo-2-simplificacion-de-relaciones-complejas">4.2 Ejemplo 2:
                 Simplificación de Relaciones Complejas <a class="headerlink"
                     href="#a42-ejemplo-2-simplificacion-de-relaciones-complejas" title="Enlace permanente">¶</a></h2>
-            <p><strong>Requisito:</strong> El equipo de desarrollo de frontend
+<p><strong>Requisito:</strong> El equipo de desarrollo de frontend
                 necesita pintar de forma unificada el catálogo de productos con sus
                 respectivos fabricantes asociados sin tener que escribir consultas INNER
                 JOIN repetidamente en el código de la aplicación.</p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Creación de la vista integradora de inventario
 CREATE OR REPLACE VIEW v_inventario_fabricantes AS
 SELECT
@@ -420,25 +442,23 @@ FROM producto p
 INNER JOIN fabricante f ON p.codigo_fabricante = f.codigo;</code></pre>
 
 </div>
-
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Consulta unificada directa desde la aplicación cliente
 SELECT * FROM v_inventario_fabricantes WHERE PVP &lt; 50.00;</code></pre>
 
-</div><em>Análisis técnico:</em> Esta vista es un ejemplo de composición
-            interna (INNER JOIN). <strong>No es actualizable con INSERT</strong> de
-            forma directa ya que afecta a múltiples tablas (producto y fabricante)
-            de manera simultánea en su proyección de origen.
-            <h2 id="a43-ejemplo-3-prevencion-de-inconsistencias-de-tipo">4.3 Ejemplo 3:
+</div>
+<em>Análisis técnico:</em>
+<strong>No es actualizable con INSERT</strong>
+<h2 id="a43-ejemplo-3-prevencion-de-inconsistencias-de-tipo">4.3 Ejemplo 3:
                 Prevención de Inconsistencias de Tipo <a class="headerlink"
                     href="#a43-ejemplo-3-prevencion-de-inconsistencias-de-tipo" title="Enlace permanente">¶</a></h2>
-            <p><strong>Requisito:</strong> El administrador debe delegar un acceso
+<p><strong>Requisito:</strong> El administrador debe delegar un acceso
                 de modificación en cascada sobre los productos que pertenecen
                 exclusivamente a la gama de 'Herramientas'. Debe garantizarse que, a
                 través de dicho canal de edición, no sea posible agregar o renombrar un
                 producto hacia otra gama distinta (como 'Ornamentales' o
                 'Frutales').</p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Creación de la vista restrictiva de gama
 CREATE OR REPLACE VIEW v_gestion_herramientas AS
 SELECT
@@ -466,14 +486,15 @@ VALUES ('PROD-O99', 'Ficus Benjamina Gigante', 45.00, 'Ornamentales',
 -- ERROR 1369 (HY000): CHECK OPTION failed
 'practica_dml.v_gestion_herramientas'</code></pre>
 
-</div><h2 id="a7">4.4
+</div>
+<h2 id="a7">4.4
             Ejemplo 4: Análisis de una Vista de Terceros No Actualizable</h2>
-            <p>La base de datos Sakila de MySQL utiliza de forma extensa vistas para
+<p>La base de datos Sakila de MySQL utiliza de forma extensa vistas para
                 simplificar estructuras lógicas orientadas a la facturación y generación
                 de informes de películas.</p>
-            <p>Analicemos la estructura sintáctica de la vista de producción
+<p>Analicemos la estructura sintáctica de la vista de producción
                 customer_list:</p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>CREATE VIEW customer_list AS
 SELECT
 cu.customer_id AS ID,
@@ -491,9 +512,8 @@ JOIN city ON a.city_id = city.city_id
 JOIN country ON city.country_id = country.country_id;</code></pre>
 
 </div>
-
-            <p><em>Análisis técnico para debate y auditoría:</em></p>
-            <ul>
+<p><em>Análisis técnico para debate y auditoría:</em></p>
+<ul>
                 <li>
                         <p><strong>¿Es esta vista actualizable con un comando INSERT?</strong>
                             No, la vista utiliza funciones de manipulación de cadenas en campos
@@ -503,12 +523,15 @@ JOIN country ON city.country_id = country.country_id;</code></pre>
                             físico impedirá cualquier acción DML de inserción a través de esta.</p>
                 </li>
             </ul>
+                </article>
+            </details>
+        </section>
+    </main>
 
-        </main>
-    </div>
-
-
-
+    <footer>
+        <div class="footer-container">
+            <p class="footer-text">Curso 2026/2027</p>
+        </div>
+    </footer>
 </body>
-
 </html>

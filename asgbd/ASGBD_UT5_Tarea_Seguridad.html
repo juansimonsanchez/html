@@ -21,23 +21,28 @@
             </nav>
         </div>
     </header>
-    <div class="page-layout">
-        <main class="main-content">
 
-
-                <p>[Ciclo formativo]: Grado Superior en Administración de Sistemas
+    <main class="main-content">
+        <section>
+            <p>[Ciclo formativo]: Grado Superior en Administración de Sistemas
                     Informáticos en Red (ASIR)</p>
-                <p>[Módulo]: ASGBD</p>
-                <p>[Tipo de Documento]: Tarea / Práctica / Solucionario</p>
-                <h1 id="tarea-51-bateria-de-actividades-de-seguridad-de-base">
+<p>[Módulo]: ASGBD</p>
+<p>[Tipo de Documento]: Tarea / Práctica / Solucionario</p>
+        </section>
+
+        <section>
+            <details>
+                <summary>Actividades y Cronograma</summary>
+                <article class="box-card">
+                    <h1 id="tarea-51-bateria-de-actividades-de-seguridad-de-base">
                     ============================================================
                     TAREA 5.1: BATERÍA DE ACTIVIDADES DE SEGURIDAD DE BASE <a class="headerlink"
                         href="#tarea-51-bateria-de-actividades-de-seguridad-de-base" title="Enlace permanente">¶</a>
                 </h1>
-                <h3 id="ficha-tecnica-de-la-actividad">FICHA TÉCNICA DE LA
+<h3 id="ficha-tecnica-de-la-actividad">FICHA TÉCNICA DE LA
                     ACTIVIDAD <a class="headerlink" href="#ficha-tecnica-de-la-actividad"
                         title="Enlace permanente">¶</a></h3>
-                <div class="table-wrapper">
+<div class="table-wrapper">
                     <div class="table-wrapper">
                         <table>
                             <tbody>
@@ -78,9 +83,9 @@
                         </table>
                     </div>
                 </div>
-                <h4 id="metodo-de-entrega-y-formato">MÉTODO DE ENTREGA Y FORMATO <a class="headerlink"
+<h4 id="metodo-de-entrega-y-formato">MÉTODO DE ENTREGA Y FORMATO <a class="headerlink"
                         href="#metodo-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
-                <ul>
+<ul>
                     <li>
                             <p><strong>[x] Documento de Memoria:</strong> Documento
                                 <strong>PDF</strong> (Tarea5_1_Nombre_Alumno.pdf) con la explicación
@@ -98,10 +103,10 @@
                                 pertenece cada sentencia.</p>
                     </li>
                 </ul>
-                <h3 id="a1-descripcion-general-de-la-tarea-objetivos">1. DESCRIPCIÓN
+<h3 id="a1-descripcion-general-de-la-tarea-objetivos">1. DESCRIPCIÓN
                     GENERAL DE LA TAREA. OBJETIVOS <a class="headerlink"
                         href="#a1-descripcion-general-de-la-tarea-objetivos" title="Enlace permanente">¶</a></h3>
-                <p>Como administradores de sistemas (SysAdmins) o administradores de
+<p>Como administradores de sistemas (SysAdmins) o administradores de
                     bases de datos (DBAs), es crítico dominar las bases lógicas y físicas de
                     cómo almacena la información nuestro SGBD. Antes de poder automatizar
                     planes de respaldo complejos en un entorno empresarial, debemos entender
@@ -109,11 +114,11 @@
                     los archivos en frío del sistema de ficheros de Linux y controlar las
                     herramientas estándares de línea de comandos de exportación lógica como
                     mysqldump y directivas del motor (SELECT INTO OUTFILE / LOAD DATA).</p>
-                <p>En esta tarea individual, realizarás una batería de 5 ejercicios
+<p>En esta tarea individual, realizarás una batería de 5 ejercicios
                     prácticos diseñados para asimilar estos conceptos fundamentales.</p>
-                <h3 id="a2-consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink"
+<h3 id="a2-consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink"
                         href="#a2-consideraciones-previas" title="Enlace permanente">¶</a></h3>
-                <ul>
+<ul>
                     <li>
                             <p><strong>Entorno de Trabajo:</strong> Máquina virtual (instancia en
                                 nube OpenStack o local) con <strong>Ubuntu 24.04 LTS</strong>.</p>
@@ -137,15 +142,18 @@ como root al servidor de base de datos MySQL.</code></pre>
                                 (/var/lib/mysql-files/ por defecto).</p>
                     </li>
                 </ul>
-                <h3 id="a3-actividades-a-realizar-ejercicios-individuales">3. ACTIVIDADES A
+<h3 id="a3-actividades-a-realizar-ejercicios-individuales">3. ACTIVIDADES A
                     REALIZAR (EJERCICIOS INDIVIDUALES) <a class="headerlink"
                         href="#a3-actividades-a-realizar-ejercicios-individuales" title="Enlace permanente">¶</a></h3>
-                <h4 id="ejercicio-1-arquitectura-fisica-de-almacenamiento-y-motores-myisam-innodb">Ejercicio
+                </article>
+
+                <article class="box-card">
+                    <h4 id="ejercicio-1-arquitectura-fisica-de-almacenamiento-y-motores-myisam-innodb">Ejercicio
                     1: Arquitectura física de almacenamiento y Motores (MyISAM /
                     InnoDB) <a class="headerlink"
                         href="#ejercicio-1-arquitectura-fisica-de-almacenamiento-y-motores-myisam-innodb"
                         title="Enlace permanente">¶</a></h4>
-                <ul>
+<ul>
                     <li>
                             <p>Crea la base de datos liga.</p>
                     </li>
@@ -165,10 +173,13 @@ como root al servidor de base de datos MySQL.</code></pre>
                                 creadas.</p>
                     </li>
                 </ul>
-                <h4 id="ejercicio-2-copias-de-seguridad-fisicas-en-frio">Ejercicio 2:
+                </article>
+
+                <article class="box-card">
+                    <h4 id="ejercicio-2-copias-de-seguridad-fisicas-en-frio">Ejercicio 2:
                     Copias de Seguridad Físicas en Frío <a class="headerlink"
                         href="#ejercicio-2-copias-de-seguridad-fisicas-en-frio" title="Enlace permanente">¶</a></h4>
-                <ul>
+<ul>
                     <li>
                             <p>Diseña un protocolo secuencial en la consola de comandos de Linux
                                 para realizar un respaldo completo físico y en frío de la base de datos
@@ -181,12 +192,15 @@ como root al servidor de base de datos MySQL.</code></pre>
                                 arranca de forma íntegra.</p>
                     </li>
                 </ul>
-                <h4 id="ejercicio-3-exportacionimportacion-de-datos-planos-select-into-outfile-load-data">Ejercicio
+                </article>
+
+                <article class="box-card">
+                    <h4 id="ejercicio-3-exportacionimportacion-de-datos-planos-select-into-outfile-load-data">Ejercicio
                     3: Exportación/Importación de Datos Planos (SELECT INTO OUTFILE / LOAD
                     DATA) <a class="headerlink"
                         href="#ejercicio-3-exportacionimportacion-de-datos-planos-select-into-outfile-load-data"
                         title="Enlace permanente">¶</a></h4>
-                <ul>
+<ul>
                     <li>
                             <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
                                     Copiar</button>
@@ -207,11 +221,14 @@ dentro del directorio permitido por el sistema.</code></pre>
                                 LOAD DATA.</p>
                     </li>
                 </ul>
-                <h4 id="ejercicio-4-uso-avanzado-de-la-consola-con-mysqldump">Ejercicio
+                </article>
+
+                <article class="box-card">
+                    <h4 id="ejercicio-4-uso-avanzado-de-la-consola-con-mysqldump">Ejercicio
                     4: Uso avanzado de la Consola con mysqldump <a class="headerlink"
                         href="#ejercicio-4-uso-avanzado-de-la-consola-con-mysqldump" title="Enlace permanente">¶</a>
                 </h4>
-                <ul>
+<ul>
                     <li>
                             <p>Realiza las siguientes copias de seguridad a través de la consola del
                                 sistema operativo utilizando la herramienta mysqldump de MySQL
@@ -253,11 +270,14 @@ dentro del directorio permitido por el sistema.</code></pre>
                         </ol>
                     </li>
                 </ul>
-                <h4 id="ejercicio-5-restauracion-logica-mediante-consola-y-comandos-internos">Ejercicio
+                </article>
+
+                <article class="box-card">
+                    <h4 id="ejercicio-5-restauracion-logica-mediante-consola-y-comandos-internos">Ejercicio
                     5: Restauración lógica mediante consola y comandos internos <a class="headerlink"
                         href="#ejercicio-5-restauracion-logica-mediante-consola-y-comandos-internos"
                         title="Enlace permanente">¶</a></h4>
-                <ul>
+<ul>
                     <li>
                             <p>Ejecuta y documenta la restauración del respaldo completo generado de
                                 la base de datos utilizando dos vías:</p>
@@ -273,16 +293,22 @@ dentro del directorio permitido por el sistema.</code></pre>
                         </ul>
                     </li>
                 </ul>
-                <h3 id="a4-calificacion">4. CALIFICACIÓN <a class="headerlink" href="#a4-calificacion"
+                </article>
+
+                <article class="box-card">
+                    <h3 id="a4-calificacion">4. CALIFICACIÓN <a class="headerlink" href="#a4-calificacion"
                         title="Enlace permanente">¶</a></h3>
-                <p>La actividad será evaluada según los siguientes criterios de
+<p>La actividad será evaluada según los siguientes criterios de
                     ponderación base: Funcionalidad técnica de las sentencias y comandos
                     (50%), Memoria, capturas e identificación (40%), Presentación formal del
                     PDF (10%).</p>
-                <h4 id="criterios-de-calificacion-rubrica-detallada">CRITERIOS DE
+                </article>
+
+                <article class="box-card">
+                    <h4 id="criterios-de-calificacion-rubrica-detallada">CRITERIOS DE
                     CALIFICACIÓN (RÚBRICA DETALLADA) <a class="headerlink"
                         href="#criterios-de-calificacion-rubrica-detallada" title="Enlace permanente">¶</a></h4>
-                <div class="table-wrapper">
+<div class="table-wrapper">
                     <div class="table-wrapper">
                         <table>
                             <thead>
@@ -376,15 +402,18 @@ dentro del directorio permitido por el sistema.</code></pre>
                         </table>
                     </div>
                 </div>
-                <h2 id="a5-solucionario-tecnico-detallado">5. SOLUCIONARIO TÉCNICO
+<h2 id="a5-solucionario-tecnico-detallado">5. SOLUCIONARIO TÉCNICO
                     DETALLADO <a class="headerlink" href="#a5-solucionario-tecnico-detallado"
                         title="Enlace permanente">¶</a></h2>
-                <h3 id="ejercicio-1-arquitectura-fisica-de-almacenamiento-y-motores-myisam-innodb-2">Ejercicio
+                </article>
+
+                <article class="box-card">
+                    <h3 id="ejercicio-1-arquitectura-fisica-de-almacenamiento-y-motores-myisam-innodb-2">Ejercicio
                     1: Arquitectura física de almacenamiento y Motores (MyISAM /
                     InnoDB) <a class="headerlink"
                         href="#ejercicio-1-arquitectura-fisica-de-almacenamiento-y-motores-myisam-innodb-2"
                         title="Enlace permanente">¶</a></h3>
-                <p>CREATE DATABASE IF NOT EXISTS liga;<br>
+<p>CREATE DATABASE IF NOT EXISTS liga;<br>
                     USE liga;<br>
                     <br>
                     -- Creación explícita MyISAM<br>
@@ -401,11 +430,11 @@ dentro del directorio permitido por el sistema.</code></pre>
                     fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP<br>
                     ) ENGINE=InnoDB;
                 </p>
-                <h4 id="explicacion-fisica-sysadmin-linux-host">Explicación física
+<h4 id="explicacion-fisica-sysadmin-linux-host">Explicación física
                     (SysAdmin Linux Host): <a class="headerlink" href="#explicacion-fisica-sysadmin-linux-host"
                         title="Enlace permanente">¶</a></h4>
-                <p>Ejecutando en el host: sudo ls -lh /var/lib/mysql/liga/</p>
-                <ul>
+<p>Ejecutando en el host: sudo ls -lh /var/lib/mysql/liga/</p>
+<ul>
                     <li>
                             <p><strong>MyISAM (tabla_myisam):</strong> Veremos los archivos:</p>
                         <ul>
@@ -430,10 +459,13 @@ dentro del directorio permitido por el sistema.</code></pre>
                         </ul>
                     </li>
                 </ul>
-                <h3 id="ejercicio-2-copias-de-seguridad-fisicas-en-frio-2">Ejercicio 2:
+                </article>
+
+                <article class="box-card">
+                    <h3 id="ejercicio-2-copias-de-seguridad-fisicas-en-frio-2">Ejercicio 2:
                     Copias de Seguridad Físicas en Frío <a class="headerlink"
                         href="#ejercicio-2-copias-de-seguridad-fisicas-en-frio-2" title="Enlace permanente">¶</a></h3>
-                <p># 1. Detener el servicio del motor de base de datos MySQL de forma
+<p># 1. Detener el servicio del motor de base de datos MySQL de forma
                     controlada<br>
                     sudo systemctl stop mysql<br>
                     <br>
@@ -462,12 +494,15 @@ dentro del directorio permitido por el sistema.</code></pre>
                     # 7. Iniciar el servicio del servidor de base de datos<br>
                     sudo systemctl start mysql
                 </p>
-                <h3 id="ejercicio-3-exportacionimportacion-de-datos-planos-select-into-outfile-load-data-2">Ejercicio
+                </article>
+
+                <article class="box-card">
+                    <h3 id="ejercicio-3-exportacionimportacion-de-datos-planos-select-into-outfile-load-data-2">Ejercicio
                     3: Exportación/Importación de Datos Planos (SELECT INTO OUTFILE / LOAD
                     DATA) <a class="headerlink"
                         href="#ejercicio-3-exportacionimportacion-de-datos-planos-select-into-outfile-load-data-2"
                         title="Enlace permanente">¶</a></h3>
-                <p>-- 1. Consultar ruta segura permitida en el SGBD<br>
+<p>-- 1. Consultar ruta segura permitida en el SGBD<br>
                     SHOW VARIABLES LIKE 'secure_file_priv';<br>
                     -- Supongamos que la ruta devuelta es: '/var/lib/mysql-files/'<br>
                     <br>
@@ -490,11 +525,14 @@ dentro del directorio permitido por el sistema.</code></pre>
                     LINES TERMINATED BY '\n'<br>
                     (id, nombre, fecha_registro);
                 </p>
-                <h3 id="ejercicio-4-uso-avanzado-de-la-consola-con-mysqldump-2">Ejercicio 4:
+                </article>
+
+                <article class="box-card">
+                    <h3 id="ejercicio-4-uso-avanzado-de-la-consola-con-mysqldump-2">Ejercicio 4:
                     Uso avanzado de la Consola con mysqldump <a class="headerlink"
                         href="#ejercicio-4-uso-avanzado-de-la-consola-con-mysqldump-2" title="Enlace permanente">¶</a>
                 </h3>
-                <p># Supongamos que el usuario es 'root' y la tabla a exportar es
+<p># Supongamos que el usuario es 'root' y la tabla a exportar es
                     'tabla_innodb' de la base de datos 'liga'<br>
                     <br>
                     # 1. Exportar la tabla (estructura DDL y datos DML)<br>
@@ -534,15 +572,18 @@ dentro del directorio permitido por el sistema.</code></pre>
                     mysqldump -u root -p --all-databases &gt;
                     08_backup_completo_servidor.sql
                 </p>
-                <h3 id="ejercicio-5-restauracion-logica-mediante-consola-y-comandos-internos-2">Ejercicio
+                </article>
+
+                <article class="box-card">
+                    <h3 id="ejercicio-5-restauracion-logica-mediante-consola-y-comandos-internos-2">Ejercicio
                     5: Restauración lógica mediante consola y comandos internos <a class="headerlink"
                         href="#ejercicio-5-restauracion-logica-mediante-consola-y-comandos-internos-2"
                         title="Enlace permanente">¶</a></h3>
-                <h4 id="opcion-a-consola-del-sistema-operativo-redireccion-externa">Opción
+<h4 id="opcion-a-consola-del-sistema-operativo-redireccion-externa">Opción
                     A (Consola del Sistema Operativo - Redirección externa): <a class="headerlink"
                         href="#opcion-a-consola-del-sistema-operativo-redireccion-externa"
                         title="Enlace permanente">¶</a></h4>
-                <p># Si el backup incluye la directiva CREATE DATABASE (generado con
+<p># Si el backup incluye la directiva CREATE DATABASE (generado con
                     --databases)<br>
                     mysql -u root -p &lt; 07_backup_liga_esquema_completo.sql<br>
                     <br>
@@ -550,15 +591,21 @@ dentro del directorio permitido por el sistema.</code></pre>
                     especificar el destino<br>
                     mysql -u root -p liga &lt; 01_backup_tabla_completa.sql
                 </p>
-                <h4 id="opcion-b-cliente-interactivo-de-mysql">Opción B (Cliente
+<h4 id="opcion-b-cliente-interactivo-de-mysql">Opción B (Cliente
                     interactivo de MySQL): <a class="headerlink" href="#opcion-b-cliente-interactivo-de-mysql"
                         title="Enlace permanente">¶</a></h4>
-                <p>mysql -u root -p</p>
-                <p>mysql&gt; USE liga;<br>
+<p>mysql -u root -p</p>
+<p>mysql&gt; USE liga;<br>
                     mysql&gt; SOURCE /var/lib/mysql-files/01_backup_tabla_completa.sql;</p>
+                </article>
+            </details>
+        </section>
+    </main>
 
-            </main>
-    </div>
+    <footer>
+        <div class="footer-container">
+            <p class="footer-text">Curso 2026/2027</p>
+        </div>
+    </footer>
 </body>
-
 </html>

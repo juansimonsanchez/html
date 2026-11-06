@@ -21,21 +21,24 @@
             </nav>
         </div>
     </header>
-    <div class="page-layout">
 
-
-        <main class="main-content">
-
+    <main class="main-content">
+        <section>
             <header>
                 <h1 class="title" id="practica-51-bateria-de-actividades-de-seguridad-y-eventos-de-base"><span id="a5" class="anchor"></span>PRÁCTICA 5.1: BATERÍA DE ACTIVIDADES DE
                     SEGURIDAD
                     Y EVENTOS DE BASE</h1>
             </header>
+        </section>
 
-            <h3 id="ficha-tecnica-de-la-actividad">FICHA TÉCNICA DE LA
+        <section>
+            <details>
+                <summary>Ficha Técnica</summary>
+                <div class="box-card">
+                    <h3 id="ficha-tecnica-de-la-actividad">FICHA TÉCNICA DE LA
                 ACTIVIDAD <a class="headerlink" href="#ficha-tecnica-de-la-actividad" title="Enlace permanente">¶</a>
             </h3>
-            <div class="table-wrapper">
+<div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>
                         <tbody>
@@ -79,9 +82,17 @@
                     </table>
                 </div>
             </div>
-            <h4 id="metodo-de-entrega-y-formato">MÉTODO DE ENTREGA Y FORMATO <a class="headerlink"
+                </div>
+            </details>
+        </section>
+
+        <section>
+            <details>
+                <summary>Actividades y Cronograma</summary>
+                <article class="box-card">
+                    <h4 id="metodo-de-entrega-y-formato">MÉTODO DE ENTREGA Y FORMATO <a class="headerlink"
                     href="#metodo-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
-            <ul>
+<ul>
                 <li>
                         <p><strong>[x] Documento de Memoria:</strong> Documento
                             <strong>PDF</strong> (Tarea5_1_Nombre_Alumno.pdf) con la explicación
@@ -99,22 +110,22 @@
                             ejercicio pertenece cada sentencia.</p>
                 </li>
             </ul>
-            <h2 id="a1-descripcion-general-objetivos">1. DESCRIPCIÓN GENERAL.
+<h2 id="a1-descripcion-general-objetivos">1. DESCRIPCIÓN GENERAL.
                 OBJETIVOS <a class="headerlink" href="#a1-descripcion-general-objetivos" title="Enlace permanente">¶</a>
             </h2>
-            <p>Como administradores de sistemas (SysAdmins) o administradores de
+<p>Como administradores de sistemas (SysAdmins) o administradores de
                 bases de datos (DBAs), es crítico dominar las bases lógicas y físicas de
                 cómo almacena la información nuestro SGBD y cómo podemos automatizar de
                 forma nativa sus rutinas de mantenimiento.</p>
-            <p>Esta tarea de base está diseñada para asimilar los principios físicos
+<p>Esta tarea de base está diseñada para asimilar los principios físicos
                 de almacenamiento en disco de los motores de MySQL, dominar las
                 herramientas estándares de línea de comandos de exportación (mysqldump,
                 SELECT INTO OUTFILE / LOAD DATA) y aprender a activar, programar y
                 monitorizar el planificador de eventos interno de la base de datos de
                 manera profesional.</p>
-            <h2 id="a2-consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink"
+<h2 id="a2-consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink"
                     href="#a2-consideraciones-previas" title="Enlace permanente">¶</a></h2>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Entorno de Trabajo:</strong> Instancia en la nube de
                             desarrollo o local con <strong>Ubuntu 24.04 LTS</strong>.</p>
@@ -137,14 +148,20 @@ como root al servidor de base de datos MySQL.</code></pre>
                             (/var/lib/mysql-files/ por defecto).</p>
                 </li>
             </ul>
-            <h2 id="a3-actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink"
+<h2 id="a3-actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink"
                     href="#a3-actividades-a-realizar" title="Enlace permanente">¶</a></h2>
-            <h4 id="bloque-i-arquitectura-fisica-motores-y-copias-en-frio">BLOQUE I:
+                </article>
+
+                <article class="box-card">
+                    <h4 id="bloque-i-arquitectura-fisica-motores-y-copias-en-frio">BLOQUE I:
                 ARQUITECTURA FÍSICA, MOTORES Y COPIAS EN FRÍO <a class="headerlink"
                     href="#bloque-i-arquitectura-fisica-motores-y-copias-en-frio" title="Enlace permanente">¶</a></h4>
-            <p><strong>Ejercicio 1: Arquitectura física de almacenamiento y Motores
+                </article>
+
+                <article class="box-card">
+                    <p><strong>Ejercicio 1: Arquitectura física de almacenamiento y Motores
                     (MyISAM / InnoDB)</strong></p>
-            <ul>
+<ul>
                 <li>
                         <p>Crea la base de datos liga.</p>
                 </li>
@@ -164,8 +181,11 @@ como root al servidor de base de datos MySQL.</code></pre>
                             creadas.</p>
                 </li>
             </ul>
-            <p><strong>Ejercicio 2: Copias de Seguridad Físicas en Frío</strong></p>
-            <ul>
+                </article>
+
+                <article class="box-card">
+                    <p><strong>Ejercicio 2: Copias de Seguridad Físicas en Frío</strong></p>
+<ul>
                 <li>
                         <p>Diseña un protocolo secuencial en la consola de comandos de Linux
                             para realizar un respaldo completo físico y en frío de la base de datos
@@ -178,9 +198,12 @@ como root al servidor de base de datos MySQL.</code></pre>
                             arranca de forma íntegra.</p>
                 </li>
             </ul>
-            <p><strong>Ejercicio 3: Exportación/Importación de Datos Planos (SELECT
+                </article>
+
+                <article class="box-card">
+                    <p><strong>Ejercicio 3: Exportación/Importación de Datos Planos (SELECT
                     INTO OUTFILE / LOAD DATA)</strong></p>
-            <ul>
+<ul>
                 <li>
                     <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Exporta los datos de una tabla utilizando la instrucción SELECT INTO
@@ -200,12 +223,18 @@ dentro del directorio permitido por el sistema.</code></pre>
                             LOAD DATA.</p>
                 </li>
             </ul>
-            <h4 id="bloque-ii-copias-de-seguridad-logicas-y-restauracion">BLOQUE II:
+                </article>
+
+                <article class="box-card">
+                    <h4 id="bloque-ii-copias-de-seguridad-logicas-y-restauracion">BLOQUE II:
                 COPIAS DE SEGURIDAD LÓGICAS Y RESTAURACIÓN <a class="headerlink"
                     href="#bloque-ii-copias-de-seguridad-logicas-y-restauracion" title="Enlace permanente">¶</a></h4>
-            <p><strong>Ejercicio 4: Uso avanzado de la Consola con
+                </article>
+
+                <article class="box-card">
+                    <p><strong>Ejercicio 4: Uso avanzado de la Consola con
                     mysqldump</strong></p>
-            <ul>
+<ul>
                 <li>
                         <p>Realiza las siguientes copias de seguridad a través de la consola del
                             sistema operativo utilizando la herramienta mysqldump de MySQL
@@ -248,9 +277,12 @@ dentro del directorio permitido por el sistema.</code></pre>
                     </ol>
                 </li>
             </ul>
-            <p><strong>Ejercicio 5: Restauración lógica mediante consola y comandos
+                </article>
+
+                <article class="box-card">
+                    <p><strong>Ejercicio 5: Restauración lógica mediante consola y comandos
                     internos</strong></p>
-            <ul>
+<ul>
                 <li>
                         <p>Ejecuta y documenta la restauración del respaldo completo generado de
                             la base de datos utilizando dos vías:</p>
@@ -266,13 +298,19 @@ dentro del directorio permitido por el sistema.</code></pre>
                     </ul>
                 </li>
             </ul>
-            <h4 id="bloque-iii-planificacion-de-tareas-mediante-eventos-mysql-events">BLOQUE
+                </article>
+
+                <article class="box-card">
+                    <h4 id="bloque-iii-planificacion-de-tareas-mediante-eventos-mysql-events">BLOQUE
                 III: PLANIFICACIÓN DE TAREAS MEDIANTE EVENTOS (MYSQL EVENTS) <a class="headerlink"
                     href="#bloque-iii-planificacion-de-tareas-mediante-eventos-mysql-events"
                     title="Enlace permanente">¶</a></h4>
-            <p><strong>Ejercicio 6: Verificación y Activación del
+                </article>
+
+                <article class="box-card">
+                    <p><strong>Ejercicio 6: Verificación y Activación del
                     Planificador</strong></p>
-            <ul>
+<ul>
                 <li>
                         <p>Ejecuta el comando SQL para verificar el estado actual de la variable
                             de sistema event_scheduler. ¿Qué valor obtienes y qué significa
@@ -285,8 +323,11 @@ dentro del directorio permitido por el sistema.</code></pre>
                             Explica qué información proporciona cada columna de este comando.</p>
                 </li>
             </ul>
-            <p><strong>Ejercicio 7: Evento de Ejecución Única (AT)</strong></p>
-            <ul>
+                </article>
+
+                <article class="box-card">
+                    <p><strong>Ejercicio 7: Evento de Ejecución Única (AT)</strong></p>
+<ul>
                 <li>
                     <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Crea una tabla de log para pruebas:
@@ -312,8 +353,11 @@ VARCHAR(100), fecha TIMESTAMP);</code></pre>
                             estado una vez transcurrido el tiempo programado.</p>
                 </li>
             </ul>
-            <p><strong>Ejercicio 8: Evento Recurrente Básico (EVERY)</strong></p>
-            <ul>
+                </article>
+
+                <article class="box-card">
+                    <p><strong>Ejercicio 8: Evento Recurrente Básico (EVERY)</strong></p>
+<ul>
                 <li>
                         <p>Crea un evento programado para ejecutarse cada 1 minuto, que comience
                             su vigencia pasados 3 minutos desde su creación, e inserte una entrada
@@ -329,9 +373,12 @@ VARCHAR(100), fecha TIMESTAMP);</code></pre>
                             técnicamente qué información detallada te proporciona su estructura.</p>
                 </li>
             </ul>
-            <p><strong>Ejercicio 9: Evento Recurrente con Fecha de Finalización
+                </article>
+
+                <article class="box-card">
+                    <p><strong>Ejercicio 9: Evento Recurrente con Fecha de Finalización
                     (ENDS)</strong></p>
-            <ul>
+<ul>
                 <li>
                         <p>Diseña y ejecuta un evento equivalente al anterior que actúe de forma
                             cíclica cada minuto, pero que declare una fecha límite de finalización
@@ -339,9 +386,12 @@ VARCHAR(100), fecha TIMESTAMP);</code></pre>
                             caducidad y detención del evento en el diccionario del sistema.</p>
                 </li>
             </ul>
-            <p><strong>Ejercicio 10: Modificación de Eventos (ALTER
+                </article>
+
+                <article class="box-card">
+                    <p><strong>Ejercicio 10: Modificación de Eventos (ALTER
                     EVENT)</strong></p>
-            <ul>
+<ul>
                 <li>
                         <p>Realiza las operaciones necesarias para modificar el evento
                             recurrente con solo hora de inicio de forma dinámica, asignándole ahora
@@ -349,9 +399,12 @@ VARCHAR(100), fecha TIMESTAMP);</code></pre>
                             que los metadatos se han actualizado de forma persistente.</p>
                 </li>
             </ul>
-            <p><strong>Ejercicio 11: Diccionarios de Sistema y Auditoría de
+                </article>
+
+                <article class="box-card">
+                    <p><strong>Ejercicio 11: Diccionarios de Sistema y Auditoría de
                     Logs</strong></p>
-            <ul>
+<ul>
                 <li>
                     <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Realiza una consulta SELECT * directa sobre la tabla de catálogo
@@ -368,11 +421,14 @@ administrativo localizas?</code></pre>
                             buscar los eventos procesados.</p>
                 </li>
             </ul>
-            <p><strong>Ejercicio 12: Práctica de Eventos Aplicados al
+                </article>
+
+                <article class="box-card">
+                    <p><strong>Ejercicio 12: Práctica de Eventos Aplicados al
                     Negocio</strong></p>
-            <p>Completa de forma secuencial las siguientes actividades lógicas
+<p>Completa de forma secuencial las siguientes actividades lógicas
                 basadas en eventos:</p>
-            <ul>
+<ul>
                 <li>
                         <p><strong>A.</strong> Diseña un evento que, en un día y hora
                             específicos, realice una copia de los datos de la tabla equipos (créala
@@ -417,16 +473,19 @@ administrativo localizas?</code></pre>
                         </p>
                 </li>
             </ul>
-            <h2 id="a4-calificacion">4. CALIFICACIÓN <a class="headerlink" href="#a4-calificacion"
+                </article>
+
+                <article class="box-card">
+                    <h2 id="a4-calificacion">4. CALIFICACIÓN <a class="headerlink" href="#a4-calificacion"
                     title="Enlace permanente">¶</a></h2>
-                <p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
+<p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
                     través de la plataforma, la entrega del documento en formatos editables
                     no permitidos (como .docx), capturas con identificación del alumno/a o
                     la omisión de los enlaces de las fuentes documentales utilizadas
                     penalizará gravemente la nota o invalidará la práctica.</p>
-            <p>La actividad se calificará sobre un total de <strong>10
+<p>La actividad se calificará sobre un total de <strong>10
                     puntos</strong> distribuidos de la siguiente forma:</p>
-            <div class="table-wrapper">
+<div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>
                         <thead>
@@ -508,12 +567,15 @@ administrativo localizas?</code></pre>
                     </table>
                 </div>
             </div>
+                </article>
+            </details>
+        </section>
+    </main>
 
-        </main>
-    </div>
-
-
-
+    <footer>
+        <div class="footer-container">
+            <p class="footer-text">Curso 2026/2027</p>
+        </div>
+    </footer>
 </body>
-
 </html>

@@ -21,21 +21,31 @@
             </nav>
         </div>
     </header>
-    <div class="page-layout">
 
-
-
-        <main class="main-content">
-
-
+    <main class="main-content">
+        <section>
             <h1 id="tarea-51-auditoria-de-rendimiento-e-indexacion-en-mysql">TAREA
                 5.1: AUDITORÍA DE RENDIMIENTO E INDEXACIÓN EN MYSQL <a class="headerlink"
                     href="#tarea-51-auditoria-de-rendimiento-e-indexacion-en-mysql" title="Enlace permanente">¶</a>
             </h1>
-            <h3 id="ficha-tecnica-de-la-actividad">FICHA TÉCNICA DE LA
+        </section>
+
+        <section>
+            <details>
+                <summary>Ficha Técnica</summary>
+                <div class="box-card">
+                    <h3 id="ficha-tecnica-de-la-actividad">FICHA TÉCNICA DE LA
                 ACTIVIDAD <a class="headerlink" href="#ficha-tecnica-de-la-actividad" title="Enlace permanente">¶</a>
             </h3>
-            <div class="table-wrapper">
+                </div>
+            </details>
+        </section>
+
+        <section>
+            <details>
+                <summary>Descripción General y Objetivos</summary>
+                <div class="box-card">
+                    <div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>
                         <tbody>
@@ -76,9 +86,17 @@
                     </table>
                 </div>
             </div>
-            <h4 id="metodo-de-entrega-y-formato">MÉTODO DE ENTREGA Y FORMATO <a class="headerlink"
+                </div>
+            </details>
+        </section>
+
+        <section>
+            <details>
+                <summary>Actividades y Cronograma</summary>
+                <article class="box-card">
+                    <h4 id="metodo-de-entrega-y-formato">MÉTODO DE ENTREGA Y FORMATO <a class="headerlink"
                     href="#metodo-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
-            <ul>
+<ul>
                 <li>
                         <p><strong>[ ] Documento de Memoria:</strong> Documento técnico en
                             formato <strong>PDF</strong> (Tarea5_1_NombreAlumno.pdf) con la
@@ -106,10 +124,10 @@ identificador;</code></pre>
 </div>
                 </li>
             </ul>
-            <h2 id="a1-descripcion-general-objetivos">1. DESCRIPCIÓN GENERAL.
+<h2 id="a1-descripcion-general-objetivos">1. DESCRIPCIÓN GENERAL.
                 OBJETIVOS <a class="headerlink" href="#a1-descripcion-general-objetivos" title="Enlace permanente">¶</a>
             </h2>
-            <p>El objetivo fundamental de esta tarea es que el alumno actúe como un
+<p>El objetivo fundamental de esta tarea es que el alumno actúe como un
                 Administrador de Bases de Datos (DBA) junior que asume la
                 responsabilidad de auditar y optimizar el rendimiento de un servidor
                 MySQL de desarrollo. Utilizando la base de datos empresarial
@@ -121,9 +139,9 @@ identificador;</code></pre>
                 y estructurar búsquedas semánticas eficientes mediante índices de texto
                 completo (FULLTEXT).
             </p>
-            <h2 id="a2-consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink"
+<h2 id="a2-consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink"
                     href="#a2-consideraciones-previas" title="Enlace permanente">¶</a></h2>
-            <ul>
+<ul>
                 <li>
                         <p>Se requiere tener acceso a una instancia de MySQL Server (v8.0+ o
                             MariaDB v10.5+) en funcionamiento sobre Ubuntu Server.</p>
@@ -140,18 +158,21 @@ identificador;</code></pre>
                             servidores remotos desatendidos.</p>
                 </li>
             </ul>
-            <h2 id="a3-actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink"
+<h2 id="a3-actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink"
                     href="#a3-actividades-a-realizar" title="Enlace permanente">¶</a></h2>
-            <h4 id="ejercicio-1-inspeccion-inicial-de-estructuras-de-indexacion-1-punto"><strong>Ejercicio
+                </article>
+
+                <article class="box-card">
+                    <h4 id="ejercicio-1-inspeccion-inicial-de-estructuras-de-indexacion-1-punto"><strong>Ejercicio
                     1: Inspección Inicial de Estructuras de Indexación (1
                     Punto)</strong> <a class="headerlink"
                     href="#ejercicio-1-inspeccion-inicial-de-estructuras-de-indexacion-1-punto"
                     title="Enlace permanente">¶</a></h4>
-            <p>Consulte de manera exhaustiva cuáles son los índices físicos activos
+<p>Consulte de manera exhaustiva cuáles son los índices físicos activos
                 en la tabla producto utilizando las instrucciones nativas del
                 diccionario de datos de MySQL. Documente la salida y explique
                 detalladamente:</p>
-            <ol type="1">
+<ol type="1">
                 <li>
                         <p>Qué claves e índices ha identificado.</p>
                 </li>
@@ -164,22 +185,25 @@ identificador;</code></pre>
                             InnoDB para gestionarlos de forma predeterminada.</p>
                 </li>
             </ol>
-            <h4 id="ejercicio-2-auditoria-comparativa-de-planes-de-ejecucion-basicos-1-punto"><strong>Ejercicio
+                </article>
+
+                <article class="box-card">
+                    <h4 id="ejercicio-2-auditoria-comparativa-de-planes-de-ejecucion-basicos-1-punto"><strong>Ejercicio
                     2: Auditoría Comparativa de Planes de Ejecución Básicos (1
                     Punto)</strong> <a class="headerlink"
                     href="#ejercicio-2-auditoria-comparativa-de-planes-de-ejecucion-basicos-1-punto"
                     title="Enlace permanente">¶</a></h4>
-            <p>Haga uso de la sentencia de diagnóstico EXPLAIN para obtener y
+<p>Haga uso de la sentencia de diagnóstico EXPLAIN para obtener y
                 analizar el plan de ejecución de las dos consultas siguientes:</p>
-            <p>-- Consulta A<br>
+<p>-- Consulta A<br>
                 SELECT * FROM producto WHERE codigo_producto = 'OR-114';<br>
                 <br>
                 -- Consulta B<br>
                 SELECT * FROM producto WHERE nombre = 'Evonimus Pulchellus';
             </p>
-            <p>Responda razonadamente a las siguientes cuestiones analizando la
+<p>Responda razonadamente a las siguientes cuestiones analizando la
                 salida del optimizador:</p>
-            <ol type="1">
+<ol type="1">
                 <li>
                         <p>¿Cuál de las dos consultas realizará un menor número de comparaciones
                             de registros y accesos a disco físico para hallar el resultado?</p>
@@ -193,25 +217,28 @@ identificador;</code></pre>
                             devueltos en las columnas type y key del EXPLAIN.</p>
                 </li>
             </ol>
-            <h4 id="ejercicio-3-perdida-de-sargabilidad-por-funciones-de-fecha-1-punto"><strong>Ejercicio
+                </article>
+
+                <article class="box-card">
+                    <h4 id="ejercicio-3-perdida-de-sargabilidad-por-funciones-de-fecha-1-punto"><strong>Ejercicio
                     3: Pérdida de Sargabilidad por Funciones de Fecha (1
                     Punto)</strong> <a class="headerlink"
                     href="#ejercicio-3-perdida-de-sargabilidad-por-funciones-de-fecha-1-punto"
                     title="Enlace permanente">¶</a></h4>
-            <p>Suponga que su equipo de desarrollo web ha propuesto las siguientes
+<p>Suponga que su equipo de desarrollo web ha propuesto las siguientes
                 alternativas para calcular el promedio de facturación total del año 2008
                 en la tabla pago:</p>
-            <p>-- Alternativa A (Inhabilitando el árbol B-Tree)<br>
+<p>-- Alternativa A (Inhabilitando el árbol B-Tree)<br>
                 SELECT AVG(total) FROM pago WHERE YEAR(fecha_pago) = 2008;<br>
                 <br>
                 -- Alternativa B (Sargable en rango puro)<br>
                 SELECT AVG(total) FROM pago WHERE fecha_pago &gt;= '2008-01-01' AND
                 fecha_pago &lt;= '2008-12-31';
             </p>
-            <p>Asumiendo que existe un índice activo sobre la columna fecha_pago,
+<p>Asumiendo que existe un índice activo sobre la columna fecha_pago,
                 ejecute un análisis EXPLAIN sobre ambas alternativas y responda de forma
                 técnica:</p>
-            <ol type="1">
+<ol type="1">
                 <li>
                         <p>¿Por qué el optimizador de costes de MySQL descarta el uso del índice
                             en la Alternativa A devolviendo un acceso de tipo ALL? Explique qué
@@ -222,17 +249,20 @@ identificador;</code></pre>
                             B y por qué se considera una práctica de "diseño sargable"?</p>
                 </li>
             </ol>
-            <h4 id="ejercicio-4-optimizacion-de-consultas-multitabla-con-relacion-inner-join-1-punto"><strong>Ejercicio
+                </article>
+
+                <article class="box-card">
+                    <h4 id="ejercicio-4-optimizacion-de-consultas-multitabla-con-relacion-inner-join-1-punto"><strong>Ejercicio
                     4: Optimización de Consultas Multitabla con Relación INNER JOIN (1
                     Punto)</strong> <a class="headerlink"
                     href="#ejercicio-4-optimizacion-de-consultas-multitabla-con-relacion-inner-join-1-punto"
                     title="Enlace permanente">¶</a></h4>
-            <p>Se desea optimizar la velocidad de respuesta de la siguiente consulta
+<p>Se desea optimizar la velocidad de respuesta de la siguiente consulta
                 de facturación e histórico de pedidos:</p>
-            <p>SELECT * FROM cliente INNER JOIN pedido<br>
+<p>SELECT * FROM cliente INNER JOIN pedido<br>
                 ON cliente.codigo_cliente = pedido.codigo_cliente<br>
                 WHERE cliente.nombre_cliente LIKE 'A%';</p>
-            <ol type="1">
+<ol type="1">
                 <li>
                         <p>Ejecute un EXPLAIN previo a la optimización para comprobar el número
                             de filas estimadas (rows) y el tipo de acceso (type) en ambas
@@ -248,14 +278,17 @@ identificador;</code></pre>
                             después.</p>
                 </li>
             </ol>
-            <h4 id="ejercicio-5-el-limite-de-los-indices-estandar-ante-comodines-iniciales-1-punto"><strong>Ejercicio
+                </article>
+
+                <article class="box-card">
+                    <h4 id="ejercicio-5-el-limite-de-los-indices-estandar-ante-comodines-iniciales-1-punto"><strong>Ejercicio
                     5: El Límite de los Índices Estándar ante Comodines Iniciales (1
                     Punto)</strong> <a class="headerlink"
                     href="#ejercicio-5-el-limite-de-los-indices-estandar-ante-comodines-iniciales-1-punto"
                     title="Enlace permanente">¶</a></h4>
-            <p>Analice las siguientes consultas multitabla requeridas por el
+<p>Analice las siguientes consultas multitabla requeridas por el
                 software de administración:</p>
-            <p>-- Consulta de Patronaje Intermedio<br>
+<p>-- Consulta de Patronaje Intermedio<br>
                 SELECT * FROM cliente INNER JOIN pedido<br>
                 ON cliente.codigo_cliente = pedido.codigo_cliente<br>
                 WHERE cliente.nombre_cliente LIKE '%A%';<br>
@@ -265,7 +298,7 @@ identificador;</code></pre>
                 ON cliente.codigo_cliente = pedido.codigo_cliente<br>
                 WHERE cliente.nombre_cliente LIKE '%A';
             </p>
-            <ol type="1">
+<ol type="1">
                 <li>
                         <p>Justifique detalladamente por qué no es posible optimizar el tiempo
                             de ejecución ni el número de lecturas en disco de estas sentencias,
@@ -278,16 +311,19 @@ identificador;</code></pre>
                             realizar un Full Table Scan.</p>
                 </li>
             </ol>
-            <h4 id="ejercicio-6-implementacion-de-indices-invertidos-para-busquedas-semanticas-1-punto">
+                </article>
+
+                <article class="box-card">
+                    <h4 id="ejercicio-6-implementacion-de-indices-invertidos-para-busquedas-semanticas-1-punto">
                 <strong>Ejercicio
                     6: Implementación de Índices Invertidos para Búsquedas Semánticas (1
                     Punto)</strong> <a class="headerlink"
                     href="#ejercicio-6-implementacion-de-indices-invertidos-para-busquedas-semanticas-1-punto"
                     title="Enlace permanente">¶</a></h4>
-            <p>Cree un índice de tipo FULLTEXT compuesto de forma síncrona sobre las
+<p>Cree un índice de tipo FULLTEXT compuesto de forma síncrona sobre las
                 columnas nombre y descripcion de la tabla producto de la base de datos
                 jardineria.</p>
-            <ol type="1">
+<ol type="1">
                 <li>
                         <p>Proporcione la sentencia DDL exacta de alteración estructural (ALTER
                             TABLE).</p>
@@ -302,14 +338,17 @@ identificador;</code></pre>
                             basada en operador LIKE convencional.</p>
                 </li>
             </ol>
-            <h4 id="ejercicio-7-modos-de-explotacion-de-indices-fulltext-1-punto"><strong>Ejercicio
+                </article>
+
+                <article class="box-card">
+                    <h4 id="ejercicio-7-modos-de-explotacion-de-indices-fulltext-1-punto"><strong>Ejercicio
                     7: Modos de Explotación de Índices FULLTEXT (1 Punto)</strong> <a class="headerlink"
                     href="#ejercicio-7-modos-de-explotacion-de-indices-fulltext-1-punto" title="Enlace permanente">¶</a>
             </h4>
-            <p>Haciendo uso del índice de texto completo creado en el Ejercicio 6,
+<p>Haciendo uso del índice de texto completo creado en el Ejercicio 6,
                 realice las siguientes consultas utilizando la sintaxis formal de MySQL
                 y documente la diferencia en los conjuntos de datos obtenidos:</p>
-            <ol type="1">
+<ol type="1">
                 <li>
                         <p><strong>Modo Lenguaje Natural:</strong> Busque los productos que
                             contengan la palabra 'planta' en modo por defecto (IN NATURAL LANGUAGE
@@ -331,25 +370,31 @@ identificador;</code></pre>
                             costas".</p>
                 </li>
             </ol>
-            <h4 id="ejercicio-8-creacion-de-indices-de-columnas-multiples-compuestos-1-punto"><strong>Ejercicio
+                </article>
+
+                <article class="box-card">
+                    <h4 id="ejercicio-8-creacion-de-indices-de-columnas-multiples-compuestos-1-punto"><strong>Ejercicio
                     8: Creación de Índices de Columnas Múltiples (Compuestos) (1
                     Punto)</strong> <a class="headerlink"
                     href="#ejercicio-8-creacion-de-indices-de-columnas-multiples-compuestos-1-punto"
                     title="Enlace permanente">¶</a></h4>
-            <p>Escriba la sentencia DDL para crear un índice secundario no único
+<p>Escriba la sentencia DDL para crear un índice secundario no único
                 compuesto por las columnas apellido_contacto y nombre_contacto
                 pertenecientes a la tabla cliente. El índice físico resultante debe
                 llamarse estrictamente idx_apellido_nombre.</p>
-            <h4 id="ejercicio-9-auditoria-analitica-de-la-regla-del-prefijo-izquierdo-1-punto"><strong>Ejercicio
+                </article>
+
+                <article class="box-card">
+                    <h4 id="ejercicio-9-auditoria-analitica-de-la-regla-del-prefijo-izquierdo-1-punto"><strong>Ejercicio
                     9: Auditoría Analítica de la Regla del Prefijo Izquierdo (1
                     Punto)</strong> <a class="headerlink"
                     href="#ejercicio-9-auditoria-analitica-de-la-regla-del-prefijo-izquierdo-1-punto"
                     title="Enlace permanente">¶</a></h4>
-            <p>Ejecute la sentencia diagnóstica EXPLAIN para auditar la eficiencia
+<p>Ejecute la sentencia diagnóstica EXPLAIN para auditar la eficiencia
                 del índice compuesto idx_apellido_nombre creado en el ejercicio anterior
                 sobre los siguientes tres escenarios de búsqueda requeridos por el
                 servicio técnico:</p>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Escenario A (Par Completo):</strong> Buscar el cliente con
                             apellido 'Villar' y nombre 'Javier'.</p>
@@ -363,9 +408,9 @@ identificador;</code></pre>
                             cliente utilizando únicamente el nombre 'Javier'.</p>
                 </li>
             </ul>
-            <p>Analice de forma crítica el plan de ejecución de cada uno de los tres
+<p>Analice de forma crítica el plan de ejecución de cada uno de los tres
                 escenarios. Responda:</p>
-            <ol type="1">
+<ol type="1">
                 <li>
                         <p>¿Cuántas filas físicas estima examinar el motor en cada caso?</p>
                 </li>
@@ -376,20 +421,23 @@ identificador;</code></pre>
                             B+.</p>
                 </li>
             </ol>
-            <h4 id="ejercicio-10-metodologia-practica-de-analisis-de-prefijos-de-columna-1-punto"><strong>Ejercicio
+                </article>
+
+                <article class="box-card">
+                    <h4 id="ejercicio-10-metodologia-practica-de-analisis-de-prefijos-de-columna-1-punto"><strong>Ejercicio
                     10: Metodología Práctica de Análisis de Prefijos de Columna (1
                     Punto)</strong> <a class="headerlink"
                     href="#ejercicio-10-metodologia-practica-de-analisis-de-prefijos-de-columna-1-punto"
                     title="Enlace permanente">¶</a></h4>
-            <p>Como administrador de bases de datos, debe optimizar la columna
+<p>Como administrador de bases de datos, debe optimizar la columna
                 nombre_cliente de la tabla cliente (definida originalmente como un campo
                 de texto VARCHAR de tamaño considerable). Para ahorrar consumo de
                 memoria RAM en el buffer de índices del SGBD, desea crear un
                 <strong>Índice de Prefijo de Columna</strong> óptimo.
             </p>
-            <p>Realice los siguientes pasos analíticos en su servidor de
+<p>Realice los siguientes pasos analíticos en su servidor de
                 pruebas:</p>
-            <ol type="1">
+<ol type="1">
                 <li>
                         <p><strong>Cálculo de la Cardinalidad de Base:</strong> Obtenga el
                             número exacto de valores únicos globales contenidos en esa columna
@@ -417,17 +465,23 @@ identificador;</code></pre>
                             justificadamente en el paso anterior.</p>
                 </li>
             </ol>
-            <h2 id="a4-calificacion">4. CALIFICACIÓN <a class="headerlink" href="#a4-calificacion"
+                </article>
+
+                <article class="box-card">
+                    <h2 id="a4-calificacion">4. CALIFICACIÓN <a class="headerlink" href="#a4-calificacion"
                     title="Enlace permanente">¶</a></h2>
-                <p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
+<p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
                     través de la plataforma, la entrega del documento en formatos editables
                     no permitidos (como .docx), capturas con identificación del alumno/a o
                     la omisión de los enlaces de las fuentes documentales utilizadas
                     penalizará gravemente la nota o invalidará la práctica.</p>
-            <h4 id="rubrica-de-evaluacion-tecnica">RÚBRICA DE EVALUACIÓN TÉCNICA
+                </article>
+
+                <article class="box-card">
+                    <h4 id="rubrica-de-evaluacion-tecnica">RÚBRICA DE EVALUACIÓN TÉCNICA
                 <a class="headerlink" href="#rubrica-de-evaluacion-tecnica" title="Enlace permanente">¶</a>
             </h4>
-            <div class="table-wrapper">
+<div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>
                         <thead>
@@ -488,11 +542,11 @@ identificador;</code></pre>
                     </table>
                 </div>
             </div>
-            <h4 id="criterio-especifico-de-documentacion-y-capturas-15-puntos">CRITERIO
+<h4 id="criterio-especifico-de-documentacion-y-capturas-15-puntos">CRITERIO
                 ESPECÍFICO DE DOCUMENTACIÓN Y CAPTURAS (1.5 Puntos) <a class="headerlink"
                     href="#criterio-especifico-de-documentacion-y-capturas-15-puntos" title="Enlace permanente">¶</a>
             </h4>
-            <div class="table-wrapper">
+<div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>
                         <thead>
@@ -519,12 +573,15 @@ identificador;</code></pre>
                     </table>
                 </div>
             </div>
+                </article>
+            </details>
+        </section>
+    </main>
 
-        </main>
-    </div>
-
-
-
+    <footer>
+        <div class="footer-container">
+            <p class="footer-text">Curso 2026/2027</p>
+        </div>
+    </footer>
 </body>
-
 </html>

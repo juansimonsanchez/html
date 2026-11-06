@@ -21,35 +21,50 @@
             </nav>
         </div>
     </header>
-    <div class="page-layout">
-        <main class="main-content">
+
+    <main class="main-content">
+        <section>
             <h1 id="practica-integradora-unidad-4-sistema-de-auditoria-monitorizacion-y-mantenimiento-de-bases-de-datos-en-produccion">
                 Práctica
                 Integradora Unidad 4: Sistema de Auditoría, Monitorización y
                 Mantenimiento de Bases de Datos en Producción <a class="headerlink"
                     href="#practica-integradora-unidad-4-sistema-de-auditoria-monitorizacion-y-mantenimiento-de-bases-de-datos-en-produccion"
                     title="Enlace permanente">¶</a></h1>
-            <h1 id="a1-descripcion-general-objetivos">1. DESCRIPCIÓN GENERAL.
+        </section>
+
+        <section>
+            <details>
+                <summary>Descripción General y Objetivos</summary>
+                <div class="box-card">
+                    <h1 id="a1-descripcion-general-objetivos">1. DESCRIPCIÓN GENERAL.
                 OBJETIVOS <a class="headerlink" href="#a1-descripcion-general-objetivos" title="Enlace permanente">¶</a>
             </h1>
-            <p>Trabajas como Administrador de Bases de Datos (DBA) y SysAdmin en
+<p>Trabajas como Administrador de Bases de Datos (DBA) y SysAdmin en
                 <strong>"Almería E-Market"</strong>, un portal de comercio electrónico
                 en plena expansión. Tras el último periodo de rebajas, el servidor MySQL
                 sufrió severas degradaciones de rendimiento y se detectaron
                 modificaciones no autorizadas en tablas sensibles de configuración y
                 privilegios.
             </p>
-            <p>El Director de Tecnología (CTO) te ha encargado diseñar e implementar
+<p>El Director de Tecnología (CTO) te ha encargado diseñar e implementar
                 un <strong>entorno automatizado de mantenimiento preventivo, auditoría
                     de seguridad y análisis de salud de base de datos</strong> utilizando
                 programación nativa del servidor (SQL) combinada con scripts de
                 automatización del sistema operativo (Bash).</p>
-            <h1 id="a2-arquitectura-de-datos-de-la-practica">2. Arquitectura de Datos
+                </div>
+            </details>
+        </section>
+
+        <section>
+            <details>
+                <summary>Actividades y Cronograma</summary>
+                <article class="box-card">
+                    <h1 id="a2-arquitectura-de-datos-de-la-practica">2. Arquitectura de Datos
                 de la Práctica <a class="headerlink" href="#a2-arquitectura-de-datos-de-la-practica"
                     title="Enlace permanente">¶</a></h1>
-            <p>Antes de comenzar, debes simular el ecosistema de la base de datos
+<p>Antes de comenzar, debes simular el ecosistema de la base de datos
                 empresarial ejecutando la siguiente estructura:</p>
-            <p>CREATE DATABASE IF NOT EXISTS almeria_emarket;<br>
+<p>CREATE DATABASE IF NOT EXISTS almeria_emarket;<br>
                 USE almeria_emarket;<br>
                 <br>
                 -- Tabla 1: Tabla transaccional crítica que sufre gran
@@ -77,18 +92,21 @@
                 ('MANTENIMIENTO_MODE', 'FALSE', 'root@localhost'),<br>
                 ('DESCUENTO_GLOBAL', '10%', 'root@localhost');
             </p>
-            <h1 id="a3-requerimientos-tecnicos-de-la-practica">3. Requerimientos
+<h1 id="a3-requerimientos-tecnicos-de-la-practica">3. Requerimientos
                 Técnicos de la Práctica <a class="headerlink" href="#a3-requerimientos-tecnicos-de-la-practica"
                     title="Enlace permanente">¶</a></h1>
-            <p>La práctica se divide en <strong>cuatro retos técnicos
+<p>La práctica se divide en <strong>cuatro retos técnicos
                     integrados</strong>. Debes aportar tanto el código fuente como las
                 explicaciones teóricas de su funcionamiento.</p>
-            <h3 id="reto-a-el-script-de-salud-de-sistemas-bash">Reto A: El Script de
+                </article>
+
+                <article class="box-card">
+                    <h3 id="reto-a-el-script-de-salud-de-sistemas-bash">Reto A: El Script de
                 Salud de Sistemas (Bash) <a class="headerlink" href="#reto-a-el-script-de-salud-de-sistemas-bash"
                     title="Enlace permanente">¶</a></h3>
-            <p>Crea un script de Bash llamado monitor_emarket.sh que realice las
+<p>Crea un script de Bash llamado monitor_emarket.sh que realice las
                 siguientes acciones de forma secuencial y desasistida:</p>
-            <ol type="1">
+<ol type="1">
                 <li>
                         <p>Compruebe si el servicio de MySQL está activo. Si no lo está, intente
                             levantarlo e informe del estado.</p>
@@ -106,12 +124,15 @@
                             usuario si no tienes permisos de superusuario).</p>
                 </li>
             </ol>
-            <h3 id="reto-b-auditoria-de-cambios-de-configuracion-triggers">Reto B:
+                </article>
+
+                <article class="box-card">
+                    <h3 id="reto-b-auditoria-de-cambios-de-configuracion-triggers">Reto B:
                 Auditoría de Cambios de Configuración (Triggers) <a class="headerlink"
                     href="#reto-b-auditoria-de-cambios-de-configuracion-triggers" title="Enlace permanente">¶</a></h3>
-            <p>Necesitamos bloquear y auditar cualquier intento de modificar la
+<p>Necesitamos bloquear y auditar cualquier intento de modificar la
                 tabla configuracion_tienda.</p>
-            <ol type="1">
+<ol type="1">
                 <li>
                         <p>Crea una tabla de logs denominada auditoria_config. Debe registrar:
                             id_log (PK), usuario_sistema, parametro_afectado, valor_antiguo,
@@ -129,14 +150,17 @@
                             de error específica (SIGNAL SQLSTATE).</p>
                 </li>
             </ol>
-            <h3 id="reto-c-diagnostico-automatizado-de-tablas-metadatos-e-information-schema">Reto
+                </article>
+
+                <article class="box-card">
+                    <h3 id="reto-c-diagnostico-automatizado-de-tablas-metadatos-e-information-schema">Reto
                 C: Diagnóstico Automatizado de Tablas (Metadatos e Information
                 Schema) <a class="headerlink"
                     href="#reto-c-diagnostico-automatizado-de-tablas-metadatos-e-information-schema"
                     title="Enlace permanente">¶</a></h3>
-            <p>El SGBD pierde rendimiento si existen tablas sin índice primario o
+<p>El SGBD pierde rendimiento si existen tablas sin índice primario o
                 con excesivo espacio asignado sin usar.</p>
-            <ol type="1">
+<ol type="1">
                 <li>
                         <p>Crea un procedimiento almacenado sp_diagnostico_tablas que realice
                             una consulta analítica contra information_schema.tables y
@@ -156,13 +180,16 @@
                     </ul>
                 </li>
             </ol>
-            <h3 id="reto-d-archivado-de-datos-mediante-cursores-sql">Reto D:
+                </article>
+
+                <article class="box-card">
+                    <h3 id="reto-d-archivado-de-datos-mediante-cursores-sql">Reto D:
                 Archivado de Datos mediante Cursores (SQL) <a class="headerlink"
                     href="#reto-d-archivado-de-datos-mediante-cursores-sql" title="Enlace permanente">¶</a></h3>
-            <p>Para evitar que la tabla pedidos crezca indefinidamente y ralentice
+<p>Para evitar que la tabla pedidos crezca indefinidamente y ralentice
                 los índices de búsqueda, debemos archivar los pedidos que tengan más de
                 un año de antigüedad.</p>
-            <ol type="1">
+<ol type="1">
                 <li>
                         <p>Crea una tabla idéntica en estructura llamada historico_pedidos.</p>
                 </li>
@@ -177,49 +204,67 @@
                             tabla original pedidos garantizando la integridad de los datos.</p>
                 </li>
             </ol>
-            <h2 id="a4-calificacion">4. CALIFICACIÓN <a class="headerlink" href="#a4-calificacion"
+                </article>
+
+                <article class="box-card">
+                    <h2 id="a4-calificacion">4. CALIFICACIÓN <a class="headerlink" href="#a4-calificacion"
                     title="Enlace permanente">¶</a></h2>
-                <p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
+<p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
                     través de la plataforma, la entrega del documento en formatos editables
                     no permitidos (como .docx), capturas con identificación del alumno/a o
                     la omisión de los enlaces de las fuentes documentales utilizadas
                     penalizará gravemente la nota o invalidará la práctica.</p>
-            <h2 id="a13"> <a class="headerlink" href="#a13" title="Enlace permanente">¶</a></h2>
-            <p>| <strong>Criterio</strong> | <strong>Excelente (9-10)</strong> |
+<h2 id="a13"> <a class="headerlink" href="#a13" title="Enlace permanente">¶</a></h2>
+<p>| <strong>Criterio</strong> | <strong>Excelente (9-10)</strong> |
                 <strong>Aceptable (5-8)</strong> | <strong>Insuficiente (0-4)</strong> |
                 <strong>Peso</strong> |
             </p>
-            <p>| <strong>Reto A: Bash Scripting</strong> | El script se ejecuta sin
+                </article>
+
+                <article class="box-card">
+                    <p>| <strong>Reto A: Bash Scripting</strong> | El script se ejecuta sin
                 errores, comprueba el servicio, calcula tamaños dinámicamente y loguea
                 cada evento con formato limpio. | El script funciona pero tiene
                 contraseñas explícitas en texto plano o el cálculo del tamaño de la BD
                 es estático o manual. | El script tiene fallos de sintaxis, no comprueba
                 la salud o no escribe logs. | 2.5 pts |</p>
-            <p>| <strong>Reto B: Triggers</strong> | Diseña correctamente la
+                </article>
+
+                <article class="box-card">
+                    <p>| <strong>Reto B: Triggers</strong> | Diseña correctamente la
                 auditoría, captura el usuario activo y bloquea operaciones de borrado
                 mediante SQLSTATE correctos. | Implementa los triggers pero no controla
                 bien las variables NEW o OLD o usa excepciones genéricas sin documentar.
                 | No controla eventos, faltan los disparadores o no bloquean la
                 eliminación. | 2.5 pts |</p>
-            <p>| <strong>Reto C: Diagnóstico Catálogo</strong> | Obtiene con total
+                </article>
+
+                <article class="box-card">
+                    <p>| <strong>Reto C: Diagnóstico Catálogo</strong> | Obtiene con total
                 precisión los datos de fragmentación y claves primarias utilizando JOINs
                 correctos en information_schema. | La consulta al catálogo funciona pero
                 el cálculo de la fragmentación de datos está mal estructurado o no
                 filtra por esquema. | No hace uso de metadatos o la consulta devuelve
                 datos erróneos de almacenamiento. | 2.5 pts |</p>
-            <p>| <strong>Reto D: Cursor de Archivado</strong> | El cursor procesa e
+                </article>
+
+                <article class="box-card">
+                    <p>| <strong>Reto D: Cursor de Archivado</strong> | El cursor procesa e
                 integra el flujo de lectura, inserción y borrado ordenadamente,
                 controlando la excepción NOT FOUND. | El cursor realiza la inserción
                 pero no controla correctamente el borrado o carece del manejador de
                 salida seguro del bucle. | No implementa cursor, utiliza un query simple
                 delete/insert (no se adecúa al requisito técnico del examen). | 2.5 pts
                 |</p>
+                </article>
+            </details>
+        </section>
+    </main>
 
-        </main>
-    </div>
-
-
-
+    <footer>
+        <div class="footer-container">
+            <p class="footer-text">Curso 2026/2027</p>
+        </div>
+    </footer>
 </body>
-
 </html>

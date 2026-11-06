@@ -21,21 +21,23 @@
             </nav>
         </div>
     </header>
-    <div class="page-layout">
 
-
-
-        <main class="main-content">
-
-
+    <main class="main-content">
+        <section>
             <h2 id="ud-6-practica-bases-de-datos-distribuidas-y-alta-disponibilidad">UD
                 6 - Práctica. Bases de Datos Distribuidas y Alta Disponibilidad <a class="headerlink"
                     href="#ud-6-practica-bases-de-datos-distribuidas-y-alta-disponibilidad"
                     title="Enlace permanente">¶</a></h2>
-            <h4 id="ficha-tecnica-de-la-actividad">FICHA TÉCNICA DE LA
+        </section>
+
+        <section>
+            <details>
+                <summary>Ficha Técnica</summary>
+                <div class="box-card">
+                    <h4 id="ficha-tecnica-de-la-actividad">FICHA TÉCNICA DE LA
                 ACTIVIDAD <a class="headerlink" href="#ficha-tecnica-de-la-actividad" title="Enlace permanente">¶</a>
             </h4>
-            <div class="table-wrapper">
+<div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>
                         <tbody>
@@ -71,19 +73,30 @@
                     </table>
                 </div>
             </div>
-            <h2 id="a6"> <a class="headerlink" href="#a6" title="Enlace permanente">¶</a></h2>
-            <h2 id="a1-descripcion-general-objetivos">1. DESCRIPCIÓN GENERAL.
+                </div>
+            </details>
+        </section>
+
+        <section>
+            <details>
+                <summary>Actividades y Cronograma</summary>
+                <article class="box-card">
+                    <h2 id="a6"> <a class="headerlink" href="#a6" title="Enlace permanente">¶</a></h2>
+<h2 id="a1-descripcion-general-objetivos">1. DESCRIPCIÓN GENERAL.
                 OBJETIVOS <a class="headerlink" href="#a1-descripcion-general-objetivos" title="Enlace permanente">¶</a>
             </h2>
-            <p><strong>Objetivo:</strong> Implementar un sistema de fragmentación
+<p><strong>Objetivo:</strong> Implementar un sistema de fragmentación
                 horizontal (<em>sharding</em>) utilizando dos nodos MySQL y un
                 orquestador ProxySQL basado en la arquitectura de contenedores
                 proporcionada.</p>
-            <h2 id="a2-actividades-a-realizar">2. ACTIVIDADES A REALIZAR <a class="headerlink"
+<h2 id="a2-actividades-a-realizar">2. ACTIVIDADES A REALIZAR <a class="headerlink"
                     href="#a2-actividades-a-realizar" title="Enlace permanente">¶</a></h2>
-            <h4 id="fase-1-preparacion-entorno">Fase 1: Preparación (Entorno) <a class="headerlink"
+                </article>
+
+                <article class="box-card">
+                    <h4 id="fase-1-preparacion-entorno">Fase 1: Preparación (Entorno) <a class="headerlink"
                     href="#fase-1-preparacion-entorno" title="Enlace permanente">¶</a></h4>
-            <ol type="1">
+<ol type="1">
                 <li>
                         <p>Disponer de <strong>Docker y Docker Compose</strong>.</p>
                 </li>
@@ -96,11 +109,17 @@
                             (puerto 3308) y proxysql (puertos 6032/6033).</p>
                 </li>
             </ol>
-            <h4 id="fase-2-desarrollo">Fase 2: Desarrollo <a class="headerlink" href="#fase-2-desarrollo"
+                </article>
+
+                <article class="box-card">
+                    <h4 id="fase-2-desarrollo">Fase 2: Desarrollo <a class="headerlink" href="#fase-2-desarrollo"
                     title="Enlace permanente">¶</a></h4>
-            <p><strong>Ejercicio 1: Despliegue de la Infraestructura (1.5
+                </article>
+
+                <article class="box-card">
+                    <p><strong>Ejercicio 1: Despliegue de la Infraestructura (1.5
                     puntos)</strong></p>
-            <ul>
+<ul>
                 <li>
                         <p>Levantar el escenario: docker-compose up -d.</p>
                 </li>
@@ -109,9 +128,12 @@
                             puertos expuestos.</p>
                 </li>
             </ul>
-            <p><strong>Ejercicio 2: Verificación de la Fragmentación Manual (2.5
+                </article>
+
+                <article class="box-card">
+                    <p><strong>Ejercicio 2: Verificación de la Fragmentación Manual (2.5
                     puntos)</strong></p>
-            <ul>
+<ul>
                 <li>
                         <p>Consultar la tabla users en ambos shards directamente.</p>
                 </li>
@@ -127,10 +149,13 @@ contenedores.</code></pre>
 </div>
                 </li>
             </ul>
-            <p><strong>Ejercicio 3: Configuración Técnica de ProxySQL (3
+                </article>
+
+                <article class="box-card">
+                    <p><strong>Ejercicio 3: Configuración Técnica de ProxySQL (3
                     puntos)</strong> El alumno debe configurar el enrutamiento para que sea
                 transparente al cliente. Pasos obligatorios:</p>
-            <ol type="1">
+<ol type="1">
                 <li>
                         <p><strong>Acceso a Administración (Puerto 6032):</strong> docker exec
                             -it proxysql mysql -u admin -padmin -h 127.0.0.1 -P 6032</p>
@@ -167,8 +192,11 @@ LOAD MYSQL QUERY RULES TO RUNTIME; SAVE MYSQL QUERY RULES TO DISK;</code></pre>
 </div>
                 </li>
             </ol>
-            <p><strong>Ejercicio 4: Pruebas de Transparencia (2 puntos)</strong></p>
-            <ul>
+                </article>
+
+                <article class="box-card">
+                    <p><strong>Ejercicio 4: Pruebas de Transparencia (2 puntos)</strong></p>
+<ul>
                 <li>
                         <p>Realizar consultas al puerto <strong>6033</strong> buscando un ID de
                             cada rango.</p>
@@ -178,22 +206,28 @@ LOAD MYSQL QUERY RULES TO RUNTIME; SAVE MYSQL QUERY RULES TO DISK;</code></pre>
                             a hostgroups distintos.</p>
                 </li>
             </ul>
-            <p><strong>Ejercicio 5: Gestión de Fallos (1 punto)</strong></p>
-            <ul>
+                </article>
+
+                <article class="box-card">
+                    <p><strong>Ejercicio 5: Gestión de Fallos (1 punto)</strong></p>
+<ul>
                 <li>
                         <p>Detener un shard y documentar el comportamiento del sistema
                             distribuido ante la pérdida de un fragmento.</p>
                 </li>
             </ul>
-            <h2 id="a3-calificacion">3. CALIFICACIÓN <a class="headerlink" href="#a3-calificacion"
+                </article>
+
+                <article class="box-card">
+                    <h2 id="a3-calificacion">3. CALIFICACIÓN <a class="headerlink" href="#a3-calificacion"
                     title="Enlace permanente">¶</a></h2>
-                <p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
+<p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
                     través de la plataforma, la entrega del documento en formatos editables
                     no permitidos (como .docx), capturas con identificación del alumno/a o
                     la omisión de los enlaces de las fuentes documentales utilizadas
                     penalizará gravemente la nota o invalidará la práctica.</p>
-            <h3 id="a12"> <a class="headerlink" href="#a12" title="Enlace permanente">¶</a></h3>
-            <div class="table-wrapper">
+<h3 id="a12"> <a class="headerlink" href="#a12" title="Enlace permanente">¶</a></h3>
+<div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>
                         <thead>
@@ -238,13 +272,16 @@ LOAD MYSQL QUERY RULES TO RUNTIME; SAVE MYSQL QUERY RULES TO DISK;</code></pre>
                     </table>
                 </div>
             </div>
-            <p><strong>Total: 10 Puntos</strong></p>
+<p><strong>Total: 10 Puntos</strong></p>
+                </article>
+            </details>
+        </section>
+    </main>
 
-        </main>
-    </div>
-
-
-
+    <footer>
+        <div class="footer-container">
+            <p class="footer-text">Curso 2026/2027</p>
+        </div>
+    </footer>
 </body>
-
 </html>

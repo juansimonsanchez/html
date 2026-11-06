@@ -21,19 +21,21 @@
             </nav>
         </div>
     </header>
-    <div class="page-layout">
 
-
-        <main class="main-content">
-
+    <main class="main-content">
+        <section>
             <header>
                 <h1 class="title" id="unidad-didactica-2-diseno-del-modelo-conceptual">
                     <span id="a5" class="anchor"></span>
                         UNIDAD DIDÁCTICA 2: <br><span id="a6" class="anchor"></span>DISEÑO DEL MODELO CONCEPTUAL
                 </h1>
             </header>
+        </section>
 
-            <div class="box-card">
+        <section>
+            <details>
+                <summary>Ficha Técnica</summary>
+                <div class="box-card">
                 <h3 id="ficha-tecnica-de-la-unidad-didactica">FICHA TÉCNICA DE LA UNIDAD
                     DIDÁCTICA <a class="headerlink" href="#ficha-tecnica-de-la-unidad-didactica"
                         title="Enlace permanente">¶</a></h3>
@@ -82,7 +84,13 @@
                     </div>
                 </div>
             </div>
-            <div class="box-card">
+            </details>
+        </section>
+
+        <section>
+            <details>
+                <summary>Índice de Contenidos</summary>
+                <div class="box-card">
                 <h3 id="indice">ÍNDICE <a class="headerlink" href="#indice" title="Enlace permanente">¶</a></h3>
                 <p><a href="#a1-introduccion-y-clasificacion-de-los-modelos-de-datos"><u>1.
                             INTRODUCCIÓN Y CLASIFICACIÓN DE LOS MODELOS DE DATOS</u></a></p>
@@ -119,69 +127,76 @@
             <p><a href="#a7-construccion-de-un-diagrama-er"><u>7 Construcción de un
                         diagrama E/R</u></a></p>
             </div>
-            <h1 id="a1-introduccion-y-clasificacion-de-los-modelos-de-datos">1.
+            </details>
+        </section>
+
+        <section>
+            <details>
+                <summary>Contenidos y Apartados de la Unidad</summary>
+                <article class="box-card">
+                    <h1 id="a1-introduccion-y-clasificacion-de-los-modelos-de-datos">1.
                 INTRODUCCIÓN Y CLASIFICACIÓN DE LOS MODELOS DE DATOS <a class="headerlink"
                     href="#a1-introduccion-y-clasificacion-de-los-modelos-de-datos" title="Enlace permanente">¶</a></h1>
-            <p>Una base de datos representa la información contenida en algún
+<p>Una base de datos representa la información contenida en algún
                 dominio del mundo real. El diseño de base de datos consiste en extraer
                 todos los datos relevantes de un problema, por ejemplo, saber qué datos
                 están implicados en el proceso de facturación de una empresa que vende
                 vehículos agrícolas, o, qué datos son necesarios para llevar el control
                 veterinario de los animales de un zoológico.</p>
-            <p>Para extraer estos datos, se debe realizar un análisis en profundidad
+<p>Para extraer estos datos, se debe realizar un análisis en profundidad
                 del dominio del problema, y saber, de esta forma, qué datos son
                 esenciales para la base de datos y descartar los qué no son de utilidad.
                 Una vez extraídos los datos esenciales comienza el proceso de
                 modelización, esto es, construir, mediante una herramienta de diseño de
                 base de datos, un esquema que exprese con total exactitud todos los
                 datos que el problema requiere almacenar.</p>
-            <p>Típicamente, los informáticos analizan un problema a través de
+<p>Típicamente, los informáticos analizan un problema a través de
                 diversas reuniones con los futuros usuarios del sistema. Nótese, que
                 generalmente, el problema no solo se resuelve poniendo una base de datos
                 a disposición de un usuario, sino también un conjunto de aplicaciones de
                 software que automaticen el acceso a los datos y su gestión.</p>
-            <p>Un Sistema Gestor de Bases de Datos (SGBD) se fundamenta en un modelo
+<p>Un Sistema Gestor de Bases de Datos (SGBD) se fundamenta en un modelo
                 de datos específico. Definimos un Modelo de Datos como una colección de
                 herramientas conceptuales, reglas sintácticas y convenciones que se
                 utilizan para describir los datos, las relaciones existentes entre
                 ellos, su semántica, sus dominios de valores y las restricciones de
                 integridad y consistencia que deben cumplir.</p>
-            <p>El modelado nos permite abstraer la complejidad del mundo real en
+<p>El modelado nos permite abstraer la complejidad del mundo real en
                 representaciones lógicas comprensibles por los ordenadores y los
                 diseñadores.</p>
-            <h2 id="a11-clasificacion-de-los-modelos-de-datos">1.1. Clasificación de los
+<h2 id="a11-clasificacion-de-los-modelos-de-datos">1.1. Clasificación de los
                 Modelos de Datos <a class="headerlink" href="#a11-clasificacion-de-los-modelos-de-datos"
                     title="Enlace permanente">¶</a></h2>
-            <p>Para satisfacer estas necesidades, se suele recurrir a tres
+<p>Para satisfacer estas necesidades, se suele recurrir a tres
                 modelados:</p>
-            <p>1. El <strong>modelo conceptual</strong>. Es un modelo que tiene un
+<p>1. El <strong>modelo conceptual</strong>. Es un modelo que tiene un
                 gran poder expresivo para poder comunicarse con un usuario que no es
                 experto en informática. Tiene una gran potencia para representar el
                 dominio del problema tal y como el usuario lo concibe. El modelo que se
                 usará en este libro será el modelo Entidad/Relación.</p>
-            <p>2. El <strong>modelo lógico.</strong> Este modelo es más técnico que
+<p>2. El <strong>modelo lógico.</strong> Este modelo es más técnico que
                 el anterior. Los conceptos expresados por este modelo, suelen ser
                 difíciles de entender por los usuarios y generalmente tienen traducción
                 directa al modelo físico que entiende el SGBD.</p>
-            <p>El modelo lógico elegido dependerá de la implementación de la base de
+<p>El modelo lógico elegido dependerá de la implementación de la base de
                 datos, así, no es lo mismo modelizar una base de datos orientada a
                 objetos, que modelizar una base de datos relacional. El modelo que se
                 usará en este libro será el Modelo Relacional.</p>
-            <p>3. El <strong>modelo físico</strong>. Es el resultado de aplicar el
+<p>3. El <strong>modelo físico</strong>. Es el resultado de aplicar el
                 modelo lógico a un SGBD concreto. Generalmente está expresado en un
                 lenguaje de programación de BBDD tipo SQL. Este libro transformará el
                 Modelo Relacional en modelo físico a través del sublenguaje DDL de
                 SQL.</p>
-            <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image30.png" class="img-figure" alt="imagen">
+<p><img src="media_GBD_UT2_Teoria_Diagramas/media/image30.png" class="img-figure" alt="imagen">
             </p>
-            <h4 id="a-modelos-logicos-basados-en-objetos">A. Modelos Lógicos
+<h4 id="a-modelos-logicos-basados-en-objetos">A. Modelos Lógicos
                 Basados en Objetos <a class="headerlink" href="#a-modelos-logicos-basados-en-objetos"
                     title="Enlace permanente">¶</a></h4>
-            <p>Se emplean para describir los datos en los niveles conceptual y
+<p>Se emplean para describir los datos en los niveles conceptual y
                 externo. Permiten representar la realidad de forma muy cercana a cómo la
                 captamos en el mundo real, ofreciendo una gran flexibilidad para
                 especificar restricciones de integridad.</p>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Modelo Entidad-Relación (E/R):</strong> Es el estándar de
                             facto para el diseño conceptual de bases de datos. Concibe la realidad
@@ -195,13 +210,13 @@
                             objetos (clases, herencia, encapsulación y métodos).</p>
                 </li>
             </ul>
-            <h4 id="b-modelos-logicos-basados-en-registros">B. Modelos Lógicos
+<h4 id="b-modelos-logicos-basados-en-registros">B. Modelos Lógicos
                 Basados en Registros <a class="headerlink" href="#b-modelos-logicos-basados-en-registros"
                     title="Enlace permanente">¶</a></h4>
-            <p>Se utilizan para especificar la estructura lógica global de la base
+<p>Se utilizan para especificar la estructura lógica global de la base
                 de datos. A diferencia de los basados en objetos, organizan los
                 registros en estructuras fijas de datos de tamaño homogéneo.</p>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Modelo Relacional:</strong> Organiza los datos en colecciones
                             de tablas bidimensionales (relaciones) compuestas por filas (tuplas) y
@@ -220,25 +235,28 @@
                             "hijo" solo puede tener un único nodo "padre".</p>
                 </li>
             </ul>
-            <h4 id="c-modelos-de-datos-fisicos">C. Modelos de Datos Físicos <a class="headerlink"
+<h4 id="c-modelos-de-datos-fisicos">C. Modelos de Datos Físicos <a class="headerlink"
                     href="#c-modelos-de-datos-fisicos" title="Enlace permanente">¶</a></h4>
-            <p>Describen cómo se guardan físicamente los datos en los soportes de
+<p>Describen cómo se guardan físicamente los datos en los soportes de
                 almacenamiento (discos, bloques, sectores) y las estructuras de acceso
                 físico como índices primarios, secundarios o agrupamientos
                 (<em>clustering</em>).</p>
-            <h1 id="a2-modelo-entidad-relacion-er-componentes-conceptuales">2. MODELO
+                </article>
+
+                <article class="box-card">
+                    <h1 id="a2-modelo-entidad-relacion-er-componentes-conceptuales">2. MODELO
                 ENTIDAD-RELACIÓN (E/R): COMPONENTES CONCEPTUALES <a class="headerlink"
                     href="#a2-modelo-entidad-relacion-er-componentes-conceptuales" title="Enlace permanente">¶</a></h1>
-            <p>El diseño conceptual es la fase inicial del desarrollo de bases de
+<p>El diseño conceptual es la fase inicial del desarrollo de bases de
                 datos, cuyo entregable principal es el diagrama Entidad/Relación (E/R).
                 A continuación, detallamos la semántica y simbología formal de cada uno
                 de sus elementos bajo la <strong>Notación clásica de Chen</strong>.</p>
-            <h2 id="a21-entidades-fuertes-y-debiles">2.1. Entidades: Fuertes y
+<h2 id="a21-entidades-fuertes-y-debiles">2.1. Entidades: Fuertes y
                 Débiles <a class="headerlink" href="#a21-entidades-fuertes-y-debiles" title="Enlace permanente">¶</a></h2>
-            <p>Una <strong>entidad</strong> representa un objeto, persona, concepto
+<p>Una <strong>entidad</strong> representa un objeto, persona, concepto
                 o evento del mundo real que es distinguible de otros y sobre el cual se
                 desea almacenar información en la base de datos.</p>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Ocurrencia de Entidad:</strong> Es la instancia o caso
                             concreto de una entidad (ej. el empleado con DNI 12345678A es una
@@ -250,11 +268,11 @@
                             EMPLEADO).</p>
                 </li>
             </ul>
-            <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image6.png" class="img-figure" alt="imagen"></p>
-            <h4 id="clasificacion-segun-su-autonomia-de-existencia">Clasificación
+<p><img src="media_GBD_UT2_Teoria_Diagramas/media/image6.png" class="img-figure" alt="imagen"></p>
+<h4 id="clasificacion-segun-su-autonomia-de-existencia">Clasificación
                 según su autonomía de existencia: <a class="headerlink"
                     href="#clasificacion-segun-su-autonomia-de-existencia" title="Enlace permanente">¶</a></h4>
-            <ol type="1">
+<ol type="1">
                 <li>
                         <p><strong>Entidades Fuertes (Regulares):</strong> Tienen existencia por
                             sí mismas en el dominio del problema. Poseen atributos identificadores
@@ -270,13 +288,13 @@
                         </p>
                 </li>
             </ol>
-            <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image23.png" class="img-figure" alt="imagen">
+<p><img src="media_GBD_UT2_Teoria_Diagramas/media/image23.png" class="img-figure" alt="imagen">
             </p>
-            <p>La asociación entre una entidad fuerte y una débil se establece
+<p>La asociación entre una entidad fuerte y una débil se establece
                 mediante una <strong>relación de dependencia</strong>, representada con
                 un <strong>rombo de línea doble</strong>. Existen dos tipos de
                 dependencia:</p>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Dependencia en Existencia (E):</strong> La eliminación de la
                             ocurrencia de la entidad fuerte implica necesariamente la eliminación
@@ -295,8 +313,8 @@
                     </ul>
                 </li>
             </ul>
-                <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image26.png" alt="imagen" class="image-width-600"></p>
-            <ul>
+<p><img src="media_GBD_UT2_Teoria_Diagramas/media/image26.png" alt="imagen" class="image-width-600"></p>
+<ul>
                 <li>
                         <p><strong>Dependencia en Identificación (ID):</strong> Además de
                             depender de la existencia de la fuerte, la entidad débil carece de
@@ -318,16 +336,16 @@
                     </ul>
                 </li>
             </ul>
-            <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image24.png" alt="imagen" class="image-width-600">
+<p><img src="media_GBD_UT2_Teoria_Diagramas/media/image24.png" alt="imagen" class="image-width-600">
             </p>
-            <h3 id="a22-atributos-y-su-clasificacion">2.2. Atributos y su
+<h3 id="a22-atributos-y-su-clasificacion">2.2. Atributos y su
                 Clasificación <a class="headerlink" href="#a22-atributos-y-su-clasificacion" title="Enlace permanente">¶</a>
             </h3>
-            <p>Los atributos describen las propiedades puntuales que caracterizan a
+<p>Los atributos describen las propiedades puntuales que caracterizan a
                 una entidad o a una relación. Se grafican mediante
                 <strong>elipses</strong> conectadas al elemento correspondiente.
             </p>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Atributo Clave (Identificador Principal):</strong> Es el
                             atributo (o conjunto de ellos) que identifica de forma unívoca a cada
@@ -388,85 +406,85 @@
                             desconoce temporalmente.</p>
                 </li>
             </ul>
-            <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image3.png" alt="imagen" class="image-width-500"></p>
-            <h3 id="a23-relaciones-interrelaciones">2.3. Relaciones
+<p><img src="media_GBD_UT2_Teoria_Diagramas/media/image3.png" alt="imagen" class="image-width-500"></p>
+<h3 id="a23-relaciones-interrelaciones">2.3. Relaciones
                 (Interrelaciones) <a class="headerlink" href="#a23-relaciones-interrelaciones"
                     title="Enlace permanente">¶</a></h3>
-            <p>Una <strong>relación</strong> es una asociación o correspondencia
+<p>Una <strong>relación</strong> es una asociación o correspondencia
                 conceptual entre dos o más entidades. Se representa mediante un
                 <strong>rombo de línea simple</strong> que se conecta a las entidades
                 mediante líneas.
             </p>
-            <h4 id="a231-grado-de-la-relacion">2.3.1. Grado de la Relación <a class="headerlink" href="#a231-grado-de-la-relacion"
+<h4 id="a231-grado-de-la-relacion">2.3.1. Grado de la Relación <a class="headerlink" href="#a231-grado-de-la-relacion"
                     title="Enlace permanente">¶</a></h4>
-            <p>El grado es el número de entidades distintas que participan en la
+<p>El grado es el número de entidades distintas que participan en la
                 relación.</p>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Grado 1 (Reflexivas o Recursivas):</strong> Relación donde
                             una entidad se asocia consigo misma bajo diferentes roles.</p>
                 </li>
             </ul>
-            <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image1.png" alt="imagen" class="image-width-200">
+<p><img src="media_GBD_UT2_Teoria_Diagramas/media/image1.png" alt="imagen" class="image-width-200">
             </p>
-            <ul>
+<ul>
                 <li>
                         <p><em>Ejemplo:</em> En la entidad EMPLEADO, una relación supervisa
                             asocia a un empleado en calidad de "supervisor" con otros empleados en
                             calidad de "supervisados".</p>
                 </li>
             </ul>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Grado 2 (Binarias):</strong> Relaciona a dos entidades
                             distintas (es el caso más común).</p>
                 </li>
             </ul>
-            <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image31.png" alt="imagen" class="image-width-500">
+<p><img src="media_GBD_UT2_Teoria_Diagramas/media/image31.png" alt="imagen" class="image-width-500">
             </p>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Grado 3 (Ternarias):</strong> Relaciona a tres entidades de
                             forma simultánea.</p>
                 </li>
             </ul>
-            <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image15.png" alt="imagen" class="image-width-400">
+<p><img src="media_GBD_UT2_Teoria_Diagramas/media/image15.png" alt="imagen" class="image-width-400">
             </p>
-            <h4 id="a232-cardinalidad-y-participacion">2.3.2. Cardinalidad y
+<h4 id="a232-cardinalidad-y-participacion">2.3.2. Cardinalidad y
                 participación <a class="headerlink" href="#a232-cardinalidad-y-participacion" title="Enlace permanente">¶</a>
             </h4>
-            <p>La <strong>cardinalidad</strong> expresa el número máximo de
+<p>La <strong>cardinalidad</strong> expresa el número máximo de
                 ocurrencias de una entidad que pueden asociarse con una ocurrencia de
                 otra entidad participante. Las conectividades binarias estándar son:</p>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Uno a Uno (1:1):</strong> Cada ocurrencia de la entidad A se
                             asocia con un máximo de una ocurrencia de B, y viceversa.</p>
                 </li>
             </ul>
-            <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image28.png" alt="imagen" class="image-width-500">
+<p><img src="media_GBD_UT2_Teoria_Diagramas/media/image28.png" alt="imagen" class="image-width-500">
             </p>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Uno a Muchos (1:N):</strong> Una ocurrencia de A puede
                             asociarse con múltiples ocurrencias de B, pero una ocurrencia de B solo
                             puede asociarse con un único registro de A.</p>
                 </li>
             </ul>
-            <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image2.png" alt="imagen" class="image-width-400"></p>
-            <ul>
+<p><img src="media_GBD_UT2_Teoria_Diagramas/media/image2.png" alt="imagen" class="image-width-400"></p>
+<ul>
                 <li>
                         <p><strong>Muchos a Muchos (N:M):</strong> Cualquier ocurrencia de A
                             puede asociarse con múltiples de B, e inversamente, cualquier ocurrencia
                             de B con múltiples de A.</p>
                 </li>
             </ul>
-            <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image33.png" alt="imagen" class="image-width-400">
+<p><img src="media_GBD_UT2_Teoria_Diagramas/media/image33.png" alt="imagen" class="image-width-400">
             </p>
-            <p>La <strong>participación</strong> o <strong>cardinalidad de
+<p>La <strong>participación</strong> o <strong>cardinalidad de
                     ocurrencias</strong> se escribe formalmente en el extremo de la línea de
                 conexión como un intervalo (min, max):</p>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Cardinalidad Mínima:</strong> El número mínimo de veces que
                             una ocurrencia puede participar en la relación (usualmente 0 si es
@@ -477,30 +495,33 @@
                             una ocurrencia puede participar en la relación (1 o n).</p>
                 </li>
             </ul>
-            <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image22.png" alt="imagen" class="image-width-400">
+<p><img src="media_GBD_UT2_Teoria_Diagramas/media/image22.png" alt="imagen" class="image-width-400">
             </p>
-            <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image4.png" alt="imagen" class="image-width-400">
+<p><img src="media_GBD_UT2_Teoria_Diagramas/media/image4.png" alt="imagen" class="image-width-400">
             </p>
-            <h1 id="a3-relaciones-ternarias-y-de-grado-superior">3. RELACIONES
+                </article>
+
+                <article class="box-card">
+                    <h1 id="a3-relaciones-ternarias-y-de-grado-superior">3. RELACIONES
                 TERNARIAS Y DE GRADO SUPERIOR <a class="headerlink" href="#a3-relaciones-ternarias-y-de-grado-superior"
                     title="Enlace permanente">¶</a></h1>
-            <p>Las relaciones de grado superior a dos (habitualmente ternarias)
+<p>Las relaciones de grado superior a dos (habitualmente ternarias)
                 requieren un análisis metodológico formal muy estricto para determinar
                 correctamente sus conectividades y cardinalidades.</p>
-            <p>Para averiguar la cardinalidad de la entidad C en una relación que
+<p>Para averiguar la cardinalidad de la entidad C en una relación que
                 asocia a las entidades A, B y C, debemos fijar mentalmente una
                 ocurrencia de A y una ocurrencia de B simultáneamente, y preguntarnos:
                 <em>¿Con cuántas ocurrencias de C se pueden relacionar en este
                     escenario?</em>
             </p>
-            <p>A continuación, analizamos detalladamente los cuatro escenarios
+<p>A continuación, analizamos detalladamente los cuatro escenarios
                 posibles de relaciones ternarias según sus cardinalidades teóricas:</p>
-            <h3 id="escenario-1-cardinalidad-muchos-a-muchos-a-muchos-nmp">Escenario
+<h3 id="escenario-1-cardinalidad-muchos-a-muchos-a-muchos-nmp">Escenario
                 1: Cardinalidad Muchos a Muchos a Muchos (N:M:P) <a class="headerlink"
                     href="#escenario-1-cardinalidad-muchos-a-muchos-a-muchos-nmp" title="Enlace permanente">¶</a></h3>
-            <p>Se produce cuando fijando dos entidades cualesquiera, estas se
+<p>Se produce cuando fijando dos entidades cualesquiera, estas se
                 asocian con múltiples ocurrencias de la tercera.</p>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Dominio de ejemplo:</strong> Control académico de alumnos
                             matriculados. Participan las entidades ESTUDIANTE, ASIGNATURA y SEMESTRE
@@ -532,13 +553,13 @@
                             N:M:P.</p>
                 </li>
             </ul>
-            <h3 id="escenario-2-cardinalidad-muchos-a-muchos-a-uno-mn1">Escenario 2:
+<h3 id="escenario-2-cardinalidad-muchos-a-muchos-a-uno-mn1">Escenario 2:
                 Cardinalidad Muchos a Muchos a Uno (M:N:1) <a class="headerlink"
                     href="#escenario-2-cardinalidad-muchos-a-muchos-a-uno-mn1" title="Enlace permanente">¶</a></h3>
-            <p>Se produce cuando fijando dos entidades estas se relacionan
+<p>Se produce cuando fijando dos entidades estas se relacionan
                 obligatoriamente con una única ocurrencia de la tercera, mientras que
                 las otras combinaciones admiten multiplicidad.</p>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Dominio de ejemplo:</strong> Control de la actividad laboral
                             de profesores. Participan MAESTRO, ESCUELA y CURSO en la relación
@@ -568,17 +589,17 @@
                             M:N:1 (el "1" se ubica en el extremo de ESCUELA).</p>
                 </li>
             </ul>
-            <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image32.png" alt="imagen" class="image-width-700">
+<p><img src="media_GBD_UT2_Teoria_Diagramas/media/image32.png" alt="imagen" class="image-width-700">
             </p>
-            <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image9.png" alt="imagen" class="image-width-700">
+<p><img src="media_GBD_UT2_Teoria_Diagramas/media/image9.png" alt="imagen" class="image-width-700">
             </p>
-            <h3 id="escenario-3-cardinalidad-uno-a-uno-a-muchos-11n">Escenario 3:
+<h3 id="escenario-3-cardinalidad-uno-a-uno-a-muchos-11n">Escenario 3:
                 Cardinalidad Uno a Uno a Muchos (1:1:N) <a class="headerlink"
                     href="#escenario-3-cardinalidad-uno-a-uno-a-muchos-11n" title="Enlace permanente">¶</a></h3>
-            <p>Se produce cuando dos de las combinaciones cruzadas devuelven una
+<p>Se produce cuando dos de las combinaciones cruzadas devuelven una
                 única ocurrencia de salida, y solo una combinación permite
                 multiplicidad.</p>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Dominio de ejemplo:</strong> Planificación espacial de
                             docencia. Participan AULA, HORA y ASIGNATURA en la relación OCUPA.</p>
@@ -610,15 +631,15 @@
                             1:1:N.</p>
                 </li>
             </ul>
-            <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image7.png" alt="imagen" class="image-width-700">
+<p><img src="media_GBD_UT2_Teoria_Diagramas/media/image7.png" alt="imagen" class="image-width-700">
             </p>
-            <h3 id="escenario-4-cardinalidad-uno-a-uno-a-uno-111">Escenario 4:
+<h3 id="escenario-4-cardinalidad-uno-a-uno-a-uno-111">Escenario 4:
                 Cardinalidad Uno a Uno a Uno (1:1:1) <a class="headerlink"
                     href="#escenario-4-cardinalidad-uno-a-uno-a-uno-111" title="Enlace permanente">¶</a></h3>
-            <p>Es un caso extremadamente restrictivo donde cualquier combinación
+<p>Es un caso extremadamente restrictivo donde cualquier combinación
                 biunívoca de dos entidades determina de forma única y obligatoria una
                 sola ocurrencia de la tercera.</p>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Dominio de ejemplo:</strong> Defensa de proyectos de fin de
                             ciclo. Participan TRIBUNAL, ESTUDIANTE y PROYECTO en la relación
@@ -651,26 +672,29 @@
                             1:1:1.</p>
                 </li>
             </ul>
-            <h1 id="a4-modelo-entidad-relacion-extendido-ere">4. MODELO
+                </article>
+
+                <article class="box-card">
+                    <h1 id="a4-modelo-entidad-relacion-extendido-ere">4. MODELO
                 ENTIDAD-RELACIÓN EXTENDIDO (E/RE) <a class="headerlink" href="#a4-modelo-entidad-relacion-extendido-ere"
                     title="Enlace permanente">¶</a></h1>
-            <p>El modelo de datos clásico de Chen se vio desbordado al intentar
+<p>El modelo de datos clásico de Chen se vio desbordado al intentar
                 modelar realidades organizativas complejas. Por ello, se añadieron
                 conceptos del diseño orientado a objetos dando lugar al <strong>Modelo
                     Entidad-Relación Extendido (E/RE)</strong>.</p>
-            <h2 id="a41-generalizacion-y-especializacion">4.1. Generalización y
+<h2 id="a41-generalizacion-y-especializacion">4.1. Generalización y
                 Especialización <a class="headerlink" href="#a41-generalizacion-y-especializacion"
                     title="Enlace permanente">¶</a></h2>
-            <p>Por ejemplo, imaginemos la siguiente situación.</p>
-            <p>Queremos hacer una BD sobre los animales de un Zoo. Tenemos las
+<p>Por ejemplo, imaginemos la siguiente situación.</p>
+<p>Queremos hacer una BD sobre los animales de un Zoo. Tenemos las
                 entidades ANIMAL, FELINO, AVE, REPTIL, INSECTO. FELINO, AVE, REPTIL e
                 INSECTO tendrían el mismo tipo de relación con ANIMAL: «son un tipo de».
                 Ahora bien, su representación mediante el E/R clásico sería bastante
                 engorrosa:</p>
-            <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image16.png" alt="imagen" class="image-width-600"><br>Consiste en agrupar o
+<p><img src="media_GBD_UT2_Teoria_Diagramas/media/image16.png" alt="imagen" class="image-width-600"><br>Consiste en agrupar o
                 subdividir entidades para modelar relaciones de jerarquía y herencia de
                 atributos.</p>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Superentidad (Clase Padre):</strong> Es la entidad genérica
                             que almacena los atributos comunes a todas las subdivisiones (ej.
@@ -684,34 +708,34 @@
                             PulsacionesPorMinuto).</p>
                 </li>
             </ul>
-            <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image13.png" alt="imagen" class="image-width-500">
+<p><img src="media_GBD_UT2_Teoria_Diagramas/media/image13.png" alt="imagen" class="image-width-500">
             </p>
-            <h2 id="a42-restricciones-de-cobertura-en-jerarquias">4.2. Restricciones de
+<h2 id="a42-restricciones-de-cobertura-en-jerarquias">4.2. Restricciones de
                 Cobertura en Jerarquías <a class="headerlink" href="#a42-restricciones-de-cobertura-en-jerarquias"
                     title="Enlace permanente">¶</a></h2>
-            <p>Al definir una especialización de una superentidad en varias
+<p>Al definir una especialización de una superentidad en varias
                 subentidades, se deben especificar obligatoriamente dos tipos de
                 restricciones ortogonales (cobertura total/parcial y
                 exclusión/solapamiento):</p>
-            <p><strong>Total</strong>: Subdividimos la entidad Empleado en:
+<p><strong>Total</strong>: Subdividimos la entidad Empleado en:
                 Ingeniero, Secretario y Técnico y en nuestra BD no hay ningún otro
                 empleado que no pertenezca a uno de estos tres tipos.</p>
-            <p><strong>Parcial</strong>: Subdividimos la entidad Empleado en:
+<p><strong>Parcial</strong>: Subdividimos la entidad Empleado en:
                 Ingeniero, Secretario y Técnico pero en nuestra BD puede haber empleados
                 que no pertenezcan a ninguno de estos tres tipos.</p>
-            <p><strong>Solapada</strong>: Subdividimos la entidad Empleado, en:
+<p><strong>Solapada</strong>: Subdividimos la entidad Empleado, en:
                 Ingeniero, Secretario y Técnico y en nuestra BD puede haber empleados
                 que sean a la vez Ingenieros y secretarios, o secretarios y técnicos,
                 etc.</p>
-            <p><strong>Exclusiva</strong>: Subdividimos la entidad Empleado en:
+<p><strong>Exclusiva</strong>: Subdividimos la entidad Empleado en:
                 Ingeniero, Secretario y Técnico. En nuestra BD ningún empleado pertenece
                 a más de una subentidad.</p>
-            <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image29.png" alt="imagen" class="image-width-600">
+<p><img src="media_GBD_UT2_Teoria_Diagramas/media/image29.png" alt="imagen" class="image-width-600">
             </p>
-            <p>Las cuatro combinaciones posibles se detallan a continuación
+<p>Las cuatro combinaciones posibles se detallan a continuación
                 utilizando la entidad EMPLEADO:</p>
-            <p><strong>1. Jerarquía Solapada y Parcial</strong></p>
-            <ul>
+<p><strong>1. Jerarquía Solapada y Parcial</strong></p>
+<ul>
                 <li>
                         <p><strong>Semántica:</strong> Un empleado puede pertenecer
                             simultáneamente a varias subentidades a la vez (solapada). Además,
@@ -733,9 +757,9 @@
                             entren en ninguna de esas categorías de especialización (parcial).</p>
                 </li>
             </ul>
-                <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image17.png" alt="imagen" class="image-width-300"></p>
-            <p><strong>2. Jerarquía Solapada y Total</strong></p>
-            <ul>
+<p><img src="media_GBD_UT2_Teoria_Diagramas/media/image17.png" alt="imagen" class="image-width-300"></p>
+<p><strong>2. Jerarquía Solapada y Total</strong></p>
+<ul>
                 <li>
                         <p><strong>Semántica:</strong> Un empleado puede pertenecer de manera
                             simultánea a varias categorías hijas (solapada), pero obligatoriamente
@@ -752,10 +776,10 @@
                             forma obligatoria, pudiendo compaginar varios roles a la vez.</p>
                 </li>
             </ul>
-            <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image14.png" alt="imagen" class="image-width-400">
+<p><img src="media_GBD_UT2_Teoria_Diagramas/media/image14.png" alt="imagen" class="image-width-400">
             </p>
-            <p><strong>3. Jerarquía Exclusiva y Parcial</strong></p>
-            <ul>
+<p><strong>3. Jerarquía Exclusiva y Parcial</strong></p>
+<ul>
                 <li>
                         <p><strong>Semántica:</strong> Un empleado solo puede pertenecer como
                             máximo a una única subentidad (exclusiva/disjunta). No obstante, es
@@ -775,10 +799,10 @@
                             subentidades (parcial).</p>
                 </li>
             </ul>
-            <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image12.png" alt="imagen" class="image-width-400">
+<p><img src="media_GBD_UT2_Teoria_Diagramas/media/image12.png" alt="imagen" class="image-width-400">
             </p>
-            <p><strong>4. Jerarquía Exclusiva y Total</strong></p>
-            <ul>
+<p><strong>4. Jerarquía Exclusiva y Total</strong></p>
+<ul>
                 <li>
                         <p><strong>Semántica:</strong> Un empleado pertenece de manera única y
                             excluyente a una sola de las subentidades propuestas. Además, es
@@ -797,44 +821,50 @@
                             ellas.</p>
                 </li>
             </ul>
-            <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image11.png" alt="imagen" class="image-width-400">
+<p><img src="media_GBD_UT2_Teoria_Diagramas/media/image11.png" alt="imagen" class="image-width-400">
             </p>
-            <h1 id="a5-exclusividad-o-inclusividad-entre-relaciones">5. Exclusividad o
+                </article>
+
+                <article class="box-card">
+                    <h1 id="a5-exclusividad-o-inclusividad-entre-relaciones">5. Exclusividad o
                 inclusividad entre relaciones <a class="headerlink" href="#a5-exclusividad-o-inclusividad-entre-relaciones"
                     title="Enlace permanente">¶</a></h1>
-            <p>Otros símbolos usados en el modelo E/R son los siguientes:</p>
-            <p>Restricción de exclusividad entre dos tipos de relaciones R1 y R2
+<p>Otros símbolos usados en el modelo E/R son los siguientes:</p>
+<p>Restricción de exclusividad entre dos tipos de relaciones R1 y R2
                 respecto a la entidad E1. Significa que E1 está relacionada, o bien con
                 E2 o bien con E3, pero no pueden darse ambas relaciones
                 simultáneamente.</p>
-            <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image27.png" alt="imagen" class="image-width-800">
+<p><img src="media_GBD_UT2_Teoria_Diagramas/media/image27.png" alt="imagen" class="image-width-800">
             </p>
-            <p>Restricción de inclusividad entre dos tipos de relaciones R1 y R2
+<p>Restricción de inclusividad entre dos tipos de relaciones R1 y R2
                 respecto a la entidad E1. Para que la entidad E1 participe en la
                 relación R2 debe participar previamente en la relación R1.</p>
-            <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image10.png" alt="imagen" class="image-width-800">
+<p><img src="media_GBD_UT2_Teoria_Diagramas/media/image10.png" alt="imagen" class="image-width-800">
             </p>
-            <p>Restricción de exclusión entre dos tipos de relaciones R1 y R2.
+<p>Restricción de exclusión entre dos tipos de relaciones R1 y R2.
                 Significa que E1 está relacionada con E2 bien mediante R1, o bien
                 mediante R2 pero que no pueden darse ambas relaciones
                 simultáneamente.</p>
-            <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image25.png" alt="imagen" class="image-width-800">
+<p><img src="media_GBD_UT2_Teoria_Diagramas/media/image25.png" alt="imagen" class="image-width-800">
             </p>
-            <p>Restricción de inclusión entre dos tipos de relaciones R1 y R2. Para
+<p>Restricción de inclusión entre dos tipos de relaciones R1 y R2. Para
                 que la entidad E1 participe en la relación R2 con E2 debe participar
                 previamente en la relación R1.</p>
-            <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image21.png" alt="imagen" class="image-width-800">
+<p><img src="media_GBD_UT2_Teoria_Diagramas/media/image21.png" alt="imagen" class="image-width-800">
             </p>
-            <h1 id="a6-notaciones-del-diagrama-er">6. NOTACIONES DEL DIAGRAMA E/R <a class="headerlink"
+                </article>
+
+                <article class="box-card">
+                    <h1 id="a6-notaciones-del-diagrama-er">6. NOTACIONES DEL DIAGRAMA E/R <a class="headerlink"
                     href="#a6-notaciones-del-diagrama-er" title="Enlace permanente">¶</a></h1>
-            <p>Aunque la <strong>Notación de Chen</strong> es excelente para
+<p>Aunque la <strong>Notación de Chen</strong> es excelente para
                 comprender los fundamentos teóricos del diseño de datos de forma muy
                 gráfica, existen otras notaciones industriales de amplio uso tanto en
                 software de diseño (DIA, draw.io, Visio) como en herramientas integradas
                 de ingeniería de software (CASE).</p>
-            <h2 id="a61-estilo-notacion-de-chen">6.1. Estilo Notación de Chen <a class="headerlink"
+<h2 id="a61-estilo-notacion-de-chen">6.1. Estilo Notación de Chen <a class="headerlink"
                     href="#a61-estilo-notacion-de-chen" title="Enlace permanente">¶</a></h2>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Entidades:</strong> Rectángulos de línea simple.</p>
                 </li>
@@ -850,17 +880,17 @@
                             líneas directas a la entidad o relación.</p>
                 </li>
             </ul>
-            <h2 id="a62-estilo-patas-de-gallo-crows-foot-notacion-de-martin">6.2. Estilo
+<h2 id="a62-estilo-patas-de-gallo-crows-foot-notacion-de-martin">6.2. Estilo
                 Patas de Gallo (Crow's Foot / Notación de Martin) <a class="headerlink"
                     href="#a62-estilo-patas-de-gallo-crows-foot-notacion-de-martin" title="Enlace permanente">¶</a></h2>
-            <p>Es el estándar por excelencia en el ámbito del diseño físico y lógico
+<p>Es el estándar por excelencia en el ámbito del diseño físico y lógico
                 moderno. Elimina los rombos de relación para simplificar el lienzo del
                 diagrama, integrando las cardinalidades directamente en los extremos de
                 las líneas de conexión.</p>
-            <h4 id="simbolos-de-cardinalidad-en-patas-de-gallo">Símbolos de
+<h4 id="simbolos-de-cardinalidad-en-patas-de-gallo">Símbolos de
                 Cardinalidad en Patas de Gallo: <a class="headerlink" href="#simbolos-de-cardinalidad-en-patas-de-gallo"
                     title="Enlace permanente">¶</a></h4>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Cero o Muchos (0:N):</strong> Un círculo (opcionalidad)
                             seguido de una bifurcación de tres líneas (pata de gallo).</p>
@@ -878,24 +908,24 @@
                             perpendicular.</p>
                 </li>
             </ul>
-            <p><strong>Notación E/R más utilizadas (Notación de Chen y Notación
+<p><strong>Notación E/R más utilizadas (Notación de Chen y Notación
                     patas de gallo)</strong></p>
-            <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image8.png" alt="imagen" class="image-width-500"></p>
-            <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image5.png" alt="imagen" class="image-width-500"><img
+<p><img src="media_GBD_UT2_Teoria_Diagramas/media/image8.png" alt="imagen" class="image-width-500"></p>
+<p><img src="media_GBD_UT2_Teoria_Diagramas/media/image5.png" alt="imagen" class="image-width-500"><img
                     src="media_GBD_UT2_Teoria_Diagramas/media/image20.png" alt="imagen" class="image-width-500">
             </p>
-            <h2 id="a63-estilo-notacion-de-bachman">6.3. Estilo Notación de Bachman <a class="headerlink"
+<h2 id="a63-estilo-notacion-de-bachman">6.3. Estilo Notación de Bachman <a class="headerlink"
                     href="#a63-estilo-notacion-de-bachman" title="Enlace permanente">¶</a></h2>
-            <p>Caracterizada porque las relaciones se representan como flechas
+<p>Caracterizada porque las relaciones se representan como flechas
                 dirigidas donde la punta de la flecha indica el sentido del "Muchos" (N)
                 y el origen de la línea representa el "Uno" (1). Los atributos se listan
                 directamente dentro del rectángulo de la entidad en lugar de usar globos
                 independientes.</p>
-            <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image18.png" alt="imagen" class="image-width-200">
+<p><img src="media_GBD_UT2_Teoria_Diagramas/media/image18.png" alt="imagen" class="image-width-200">
             </p>
-            <h2 id="a64-estilo-notacion-de-barker">6.4. Estilo Notación de Barker <a class="headerlink"
+<h2 id="a64-estilo-notacion-de-barker">6.4. Estilo Notación de Barker <a class="headerlink"
                     href="#a64-estilo-notacion-de-barker" title="Enlace permanente">¶</a></h2>
-            <p>Es la notación nativa adoptada por las herramientas de diseño de
+<p>Es la notación nativa adoptada por las herramientas de diseño de
                 <strong>Oracle</strong>. Las entidades se dibujan como rectángulos de
                 esquinas redondeadas. Utiliza líneas continuas para denotar relaciones
                 obligatorias y líneas discontinuas para representar relaciones
@@ -903,12 +933,12 @@
                 clásica. Los atributos clave se marcan internamente con un símbolo de
                 almohadilla (#) o asterisco (*).
             </p>
-            <p><img src="media_GBD_UT2_Teoria_Diagramas/media/image19.png" alt="imagen" class="image-width-400">
+<p><img src="media_GBD_UT2_Teoria_Diagramas/media/image19.png" alt="imagen" class="image-width-400">
             </p>
-            <h3 id="a65-tabla-resumen-de-equivalencias-graficas">6.5. Tabla Resumen de
+<h3 id="a65-tabla-resumen-de-equivalencias-graficas">6.5. Tabla Resumen de
                 Equivalencias Gráficas <a class="headerlink" href="#a65-tabla-resumen-de-equivalencias-graficas"
                     title="Enlace permanente">¶</a></h3>
-            <div class="table-wrapper">
+<div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>
                         <thead>
@@ -953,14 +983,14 @@
                     </table>
                 </div>
             </div>
-            <h1 id="a7-construccion-de-un-diagrama-er">7 Construcción de un diagrama
+<h1 id="a7-construccion-de-un-diagrama-er">7 Construcción de un diagrama
                 E/R <a class="headerlink" href="#a7-construccion-de-un-diagrama-er" title="Enlace permanente">¶</a></h1>
-            <p>A continuación se presenta una guía metodológica para crear un
+<p>A continuación se presenta una guía metodológica para crear un
                 entidad relación a partir de un análisis de requisitos:</p>
-            <p>1. Leer varias veces el problema hasta memorizarlo.</p>
-            <p>2. Obtener una lista inicial de candidatos a entidades, relaciones y
+<p>1. Leer varias veces el problema hasta memorizarlo.</p>
+<p>2. Obtener una lista inicial de candidatos a entidades, relaciones y
                 atributos. Se realiza siguiendo los siguientes consejos:</p>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Identificar las entidades</strong>. Suelen ser aquellos
                             nombres comunes que son importantes para el desarrollo del problema. Por
@@ -1045,34 +1075,37 @@
                         </p>
                 </li>
             </ul>
-            <p>3. Averiguar las <strong>participaciones</strong> y
+<p>3. Averiguar las <strong>participaciones</strong> y
                 <strong>cardinalidades</strong>. Generalmente se extraen del propio
                 enunciado del problema. Si no vienen especificadas, se elegirá la que
                 almacene mayor cantidad de información en la base de datos.
             </p>
-            <p>4. Poner todos los elementos listados en el paso 2 en un mapa y
+<p>4. Poner todos los elementos listados en el paso 2 en un mapa y
                 volver a considerar la pertenencia de cada uno de los elementos listados
                 a su categoría. Así, se replanteará de nuevo si cierto atributo es una
                 entidad, o si cierta entidad puede ser una relación, etc.</p>
-            <p>5. Refinar el diagrama hasta que se eliminen todas las incoherencias
+<p>5. Refinar el diagrama hasta que se eliminen todas las incoherencias
                 posibles, volviendo a los pasos anteriores en caso de encontrar algún
                 atasco mental o conceptos dudosos que dificulten la continuación del
                 análisis. Es bueno, en estas circunstancias discutir con compañeros u
                 otros expertos sobre el diseño realizado.</p>
-            <p>6. Si hay dudas sobre el enunciado o sobre los requisitos, o se han
+<p>6. Si hay dudas sobre el enunciado o sobre los requisitos, o se han
                 quedado algunas cosas en el tintero, será necesario acudir al
                 responsable del documento ERS o volver a concertar una entrevista con el
                 usuario para aclarar conceptos. En este caso, se aclararán las dudas y
                 se volverá al punto 2 para reiniciar el análisis.</p>
-            <p>En algunos casos podemos encontrarnos con información que no se
+<p>En algunos casos podemos encontrarnos con información que no se
                 representará en el diagrama E/R, Será información que tendremos en
                 cuenta en otros pasos de la construcción de la Base de Datos .</p>
+                </article>
+            </details>
+        </section>
+    </main>
 
-        </main>
-    </div>
-
-
-
+    <footer>
+        <div class="footer-container">
+            <p class="footer-text">Curso 2026/2027</p>
+        </div>
+    </footer>
 </body>
-
 </html>

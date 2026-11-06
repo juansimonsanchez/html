@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <header>
+    <header>
     <div class="header-container">
       <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>APL
           &ndash; Ut2 Tarea 1 Instalacion Configuracion Wordpress</span></div>
@@ -21,18 +21,22 @@
       </nav>
     </div>
   </header>
-  <div class="page-layout">
 
     <main class="main-content">
-
-
-      <header>
+        <section>
+            <header>
         <h1 class="title" id="ut2-tarea-1-instalacion-y-configuracion-de-wordpress"><span id="a5" class="anchor"></span>UT2.
           TAREA 1: INSTALACIÓN Y CONFIGURACIÓN DE WORDPRESS</h1>
       </header>
-      <h3 id="ficha-tecnica-de-la-actividad">FICHA TÉCNICA DE LA
+        </section>
+
+        <section>
+            <details>
+                <summary>Ficha Técnica</summary>
+                <div class="box-card">
+                    <h3 id="ficha-tecnica-de-la-actividad">FICHA TÉCNICA DE LA
         ACTIVIDAD <a class="headerlink" href="#ficha-tecnica-de-la-actividad" title="Enlace permanente">¶</a></h3>
-      <div class="table-wrapper">
+<div class="table-wrapper">
         <div class="table-wrapper">
           <table>
             <tbody>
@@ -69,9 +73,17 @@
           </table>
         </div>
       </div>
-      <h4 id="metodo-de-entrega-y-formato">MÉTODO DE ENTREGA Y FORMATO <a class="headerlink"
+                </div>
+            </details>
+        </section>
+
+        <section>
+            <details>
+                <summary>Actividades y Cronograma</summary>
+                <article class="box-card">
+                    <h4 id="metodo-de-entrega-y-formato">MÉTODO DE ENTREGA Y FORMATO <a class="headerlink"
           href="#metodo-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
-      <ul>
+<ul>
         <li>
             <p><strong>[X] Documento:</strong> Documento en formato
               <strong>[PDF]</strong> (UT2_Tarea1_iniciales.pdf) que incluya la
@@ -94,25 +106,25 @@
             </p>
         </li>
       </ul>
-      <h1 id="a1-descripcion-general-objetivos">1. DESCRIPCIÓN GENERAL.
+<h1 id="a1-descripcion-general-objetivos">1. DESCRIPCIÓN GENERAL.
         OBJETIVOS <a class="headerlink" href="#a1-descripcion-general-objetivos" title="Enlace permanente">¶</a></h1>
-      <p>El propósito central de esta práctica es que el alumno aprenda a
+<p>El propósito central de esta práctica es que el alumno aprenda a
         desplegar, configurar y verificar de extremo a extremo un Gestor de
         Contenidos (CMS) de referencia industrial como
         <strong>WordPress</strong> en un entorno de infraestructura real de
         producción.
       </p>
-      <p>El alumno preparará el entorno de servidor web, descargará los
+<p>El alumno preparará el entorno de servidor web, descargará los
         archivos del núcleo de la aplicación mediante la consola de comandos de
         Linux, gestionará las rutas del sistema de archivos de Apache y
         completará el proceso de instalación a través de la interfaz gráfica web
         conectándolo con el motor de base de datos MySQL/MariaDB.</p>
-      <h1 id="a2-consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink" href="#a2-consideraciones-previas"
+<h1 id="a2-consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink" href="#a2-consideraciones-previas"
           title="Enlace permanente">¶</a></h1>
-      <p>Antes de iniciar los bloques prácticos de comandos, el alumno debe
+<p>Antes de iniciar los bloques prácticos de comandos, el alumno debe
         verificar el cumplimiento del siguiente ecosistema de
         infraestructura:</p>
-      <ol type="1">
+<ol type="1">
         <li>
             <p><strong>Instancia Cloud Operativa:</strong> Tener acceso SSH activo a
               su máquina virtual Linux desplegada sobre la plataforma OpenStack del
@@ -130,9 +142,9 @@
               PHP (Stack LAMP) se encuentran en ejecución</p>
         </li>
       </ol>
-      <p>Debemos preparar el entorno necesario para poder instalar el CMS que
+<p>Debemos preparar el entorno necesario para poder instalar el CMS que
         vamos a utilizar. Necesitamos:</p>
-      <ul>
+<ul>
         <li>
             <p>Servidor Web (Apache)</p>
         </li>
@@ -143,50 +155,57 @@
             <p>PHP</p>
         </li>
       </ul>
-      <p>Para configurar el hosting en Linux será necesario instalar y
+<p>Para configurar el hosting en Linux será necesario instalar y
         configurar las aplicaciones anteriores.</p>
-      <p>La manera más sencilla es a través de la instalación y configuración
+<p>La manera más sencilla es a través de la instalación y configuración
         de XAMPP, un paquete que instala todo lo anterior. Nosotros ya lo
         hicimos al montar nuestro servidor Apache. Ya se instalaron todas las
         librerías y paquetes necesarios.</p>
-      <h1 id="a3-explicacion-detallada-paso-a-paso">3. EXPLICACIÓN DETALLADA
+<h1 id="a3-explicacion-detallada-paso-a-paso">3. EXPLICACIÓN DETALLADA
         (PASO A PASO) <a class="headerlink" href="#a3-explicacion-detallada-paso-a-paso" title="Enlace permanente">¶</a>
       </h1>
-      <p>Esta tarea se desarrolla en varios pasos. Cuidado al copiar y
+<p>Esta tarea se desarrolla en varios pasos. Cuidado al copiar y
         pegar.</p>
-      <p><strong>Paso 1: Verificación de requisitos previos</strong></p>
-      <p>Incluir en el documento, los pasos a seguir (están en el documento de
+                </article>
+
+                <article class="box-card">
+                    <p><strong>Paso 1: Verificación de requisitos previos</strong></p>
+<p>Incluir en el documento, los pasos a seguir (están en el documento de
         creación de instancias de Openstack). Incluir una captura de vuestro
         navegador, accediendo a vuestro archivo index.html. Se debe de
         visualizar en la barra de direcciones vuestra ip-flotante.</p>
-      <p><strong>Paso 2: Descarga y preparación del gestor de
+                </article>
+
+                <article class="box-card">
+                    <p><strong>Paso 2: Descarga y preparación del gestor de
           contenidos</strong></p>
-      <p>Vamos a ejecutar los siguientes comandos</p>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+<p>Vamos a ejecutar los siguientes comandos</p>
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
           <pre><code>sudo mkdir -p /srv/www
 sudo chown -R www-data: /srv/www
 curl https://wordpress.org/latest.tar.gz | sudo -u www-data tar zx -C /srv/www</code></pre>
 
-</div>Hacer una captura de pantalla de la ejecución de esos comandos,
-      indicando para qué sirve cada comando.
-      <p>Con el último comando saldrá algo así:</p>
-      <p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/media/image1.png" alt="imagen" class="image-width-600"></p>
-      <p><strong>Paso 3: Creación de la Base de datos</strong></p>
-      <p>Para configurar WordPress, necesitamos crear una base de datos en
+</div>
+<p>Con el último comando saldrá algo así:</p>
+<p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/media/image1.png" alt="imagen" class="image-width-600"></p>
+                </article>
+
+                <article class="box-card">
+                    <p><strong>Paso 3: Creación de la Base de datos</strong></p>
+<p>Para configurar WordPress, necesitamos crear una base de datos en
         MySQL. Vamos a crearla. Entramos en la consola de MySQL y ejecutamos
         unas sentencias SQL.</p>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
           <pre><code>sudo mysql -u root</code></pre>
 
 </div>
-
-      <p>Está marcado en negrita lo que se tiene que introducir, así como los
+<p>Está marcado en negrita lo que se tiene que introducir, así como los
         mensajes que salen al introducirlos. <strong>IMPORTANTE</strong>: Donde
         aparece <strong>'your-password'</strong> cambiarlo por la
         contraseña de vuestra elección sin poner los signos &lt; y &gt;. Vuestra
         contraseña entre comillas simples. No copies. Los “;” son importantes al
         final de cada sentencia.</p>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
           <pre><code>CREATE DATABASE wordpress;
 CREATE USER wordpress@localhost IDENTIFIED BY 'your-password';
 GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER ON wordpress.* TO wordpress@localhost;
@@ -194,45 +213,44 @@ FLUSH PRIVILEGES;
 QUIT;</code></pre>
 
 </div>
-
-      <p>Hacer capturas de la ejecución de esos comandos.</p>
-      <p>Reiniciamos MySQL con:</p>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+<p>Hacer capturas de la ejecución de esos comandos.</p>
+<p>Reiniciamos MySQL con:</p>
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
           <pre><code>sudo systemctl restart mysql</code></pre>
 
 </div>
+                </article>
 
-      <p><strong>Paso 4. Creamos un archivo con la configuración para
+                <article class="box-card">
+                    <p><strong>Paso 4. Creamos un archivo con la configuración para
           Wordpress.</strong></p>
-      <p>Hacemos una copia del archivo wp-config-sample.php con el nombre
+<p>Hacemos una copia del archivo wp-config-sample.php con el nombre
         wp-config.php.</p>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
           <pre><code>sudo cp /srv/www/wordpress/wp-config-sample.php /srv/www/wordpress/wp-config.php</code></pre>
 
 </div>
-
-      <p>Vamos a modificar este archivo teniendo en cuenta lo siguiente:</p>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+<p>Vamos a modificar este archivo teniendo en cuenta lo siguiente:</p>
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
           <pre><code>sudo nano /srv/www/wordpress/wp-config.php</code></pre>
 
 </div>
-
-      <p>Buscamos</p>
-      <p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/media/image6.png" alt="imagen" class="image-width-600"></p>
-      <p>y tenemos que indicar el nombre de la base de datos (wordpress),
+<p>Buscamos</p>
+<p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/media/image6.png" alt="imagen" class="image-width-600"></p>
+<p>y tenemos que indicar el nombre de la base de datos (wordpress),
         nombre del usuario (wordpress) y la contraseña (la que habéis indicado).
         Hacer una captura con las modificaciones.</p>
-      <p>Desde otra ventana, accedemos con el navegador a la URL</p>
-        <p>https://api.wordpress.org/secret-key/1.1/salt/</p>
-      <p>Esto nos generará una clave única. Copiar lo que ha salido en el
+<p>Desde otra ventana, accedemos con el navegador a la URL</p>
+<p>https://api.wordpress.org/secret-key/1.1/salt/</p>
+<p>Esto nos generará una clave única. Copiar lo que ha salido en el
         navegador, algo como esto</p>
-      <p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/media/image8.png" alt="imagen" class="image-width-600"></p>
-      <p>Seguir buscando en el archivo anterior (wp-config.php) unas líneas
+<p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/media/image8.png" alt="imagen" class="image-width-600"></p>
+<p>Seguir buscando en el archivo anterior (wp-config.php) unas líneas
         similares a las anteriores, borrarlas y sustituirlas por las obtenidas.
         Hacer una captura. Guardar todos los cambios.</p>
-      <p>Coloca los archivos de WordPress en la ubicación deseada en tu
+<p>Coloca los archivos de WordPress en la ubicación deseada en tu
         servidor web:</p>
-      <ol type="1">
+<ol type="1">
         <li>
             <p>Si quieres integrar WordPress en la raíz de tu dominio (ej.
               http://example.com/) mueve o sube los contenidos de la carpeta donde
@@ -247,29 +265,34 @@ QUIT;</code></pre>
               web. Nosotros vamos a hacer esto, pero con la carpeta “iescelia”.</p>
         </li>
       </ol>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
           <pre><code>sudo mv /srv/www/wordpress /var/www/html/iescelia</code></pre>
 
 </div>
+                </article>
 
-      <p><strong>Paso 5: Primer acceso a Wordpress</strong></p>
-      <p>Ya podemos acceder a nuestro Wordpress desde el navegador con la
+                <article class="box-card">
+                    <p><strong>Paso 5: Primer acceso a Wordpress</strong></p>
+<p>Ya podemos acceder a nuestro Wordpress desde el navegador con la
         URL</p>
-      <p>http://&lt;ip-flotante&gt;/iescelia</p>
-      <p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/media/image4.png" alt="imagen" class="image-width-300"></p>
-      <p>y nos aparecerá el asistente para configurar nuestro gestor de
+<p>http://&lt;ip-flotante&gt;/iescelia</p>
+<p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/media/image4.png" alt="imagen" class="image-width-300"></p>
+<p>y nos aparecerá el asistente para configurar nuestro gestor de
         contenidos. Escogeremos Español y en la siguiente paso, lo configuremos
         de la siguiente forma:</p>
-      <p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/media/image5.png" alt="imagen" class="image-width-400"></p>
-      <p><strong>IMPORTANTE</strong>: Yo he ocultado la contraseña, vosotros
+<p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/media/image5.png" alt="imagen" class="image-width-400"></p>
+<p><strong>IMPORTANTE</strong>: Yo he ocultado la contraseña, vosotros
         dejarla visible para hacer una captura y no perderla</p>
-      <p>Pulsaremos en el botón para Instalar Wordpress y nos confirmará que
+<p>Pulsaremos en el botón para Instalar Wordpress y nos confirmará que
         ya está instalado y nos mostrará un enlace para poder acceder. Si
         accedemos aparecerá:</p>
-      <h4 id="fase-5-asistente-grafico-de-instalacion-y-validacion-inicial">Fase
+                </article>
+
+                <article class="box-card">
+                    <h4 id="fase-5-asistente-grafico-de-instalacion-y-validacion-inicial">Fase
         5: Asistente Gráfico de Instalación y Validación Inicial <a class="headerlink"
           href="#fase-5-asistente-grafico-de-instalacion-y-validacion-inicial" title="Enlace permanente">¶</a></h4>
-      <ol type="1">
+<ol type="1">
         <li>
             <p>Abre tu navegador web e ingresa a la URL del proyecto:
               http://&lt;TU_IP_FLOTANTE&gt;/iescelia.</p>
@@ -306,26 +329,32 @@ QUIT;</code></pre>
               del sitio web.</p>
         </li>
       </ol>
-      <p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/media/image7.png" alt="imagen" class="image-width-600"></p>
-      <p>Arriba a la izquierda tenemos un botón para acceder a nuestro sitio y
+<p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/media/image7.png" alt="imagen" class="image-width-600"></p>
+<p>Arriba a la izquierda tenemos un botón para acceder a nuestro sitio y
         verlo como lo verían los visitantes del sitio</p>
-      <p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/media/image3.png" alt="imagen" class="image-width-600"></p>
-      <p>Para acceder como administradores o usuarios la url será:</p>
-      <p><strong>http://ip-flotante/iescelia/wp-admin</strong></p>
-      <h1 id="a4-calificacion">4. CALIFICACIÓN <a class="headerlink" href="#a4-calificacion" title="Enlace permanente">¶</a>
+<p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/media/image3.png" alt="imagen" class="image-width-600"></p>
+<p>Para acceder como administradores o usuarios la url será:</p>
+<p><strong>http://ip-flotante/iescelia/wp-admin</strong></p>
+                </article>
+
+                <article class="box-card">
+                    <h1 id="a4-calificacion">4. CALIFICACIÓN <a class="headerlink" href="#a4-calificacion" title="Enlace permanente">¶</a>
       </h1>
-      <p><strong>IMPORTANTE:</strong> Las entregas realizadas fuera de plazo a
+<p><strong>IMPORTANTE:</strong> Las entregas realizadas fuera de plazo a
         través de la plataforma virtual, la falta de justificación técnica en
         las capturas o la omisión de la IP flotante pública del alumno supondrán
         una penalización directa en la nota de la actividad o la anulación de la
         misma.</p>
-      <p>La actividad será evaluada siguiendo los porcentajes e indicadores
+<p>La actividad será evaluada siguiendo los porcentajes e indicadores
         base aprobados por el Departamento de Informática: <strong>Funcionalidad
           Técnica (20%)</strong>, <strong>Memoria de Documentación (70%)</strong>,
         y <strong>Presentación y Formato (10%)</strong>.</p>
-      <h4 id="criterios-de-calificacion">CRITERIOS DE CALIFICACIÓN <a class="headerlink"
+                </article>
+
+                <article class="box-card">
+                    <h4 id="criterios-de-calificacion">CRITERIOS DE CALIFICACIÓN <a class="headerlink"
           href="#criterios-de-calificacion" title="Enlace permanente">¶</a></h4>
-      <div class="table-wrapper">
+<div class="table-wrapper">
         <div class="table-wrapper">
           <table>
             <thead>
@@ -378,11 +407,15 @@ QUIT;</code></pre>
           </table>
         </div>
       </div>
+                </article>
+            </details>
+        </section>
     </main>
-  </div>
 
-
-
+    <footer>
+        <div class="footer-container">
+            <p class="footer-text">Curso 2026/2027</p>
+        </div>
+    </footer>
 </body>
-
 </html>

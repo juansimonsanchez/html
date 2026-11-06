@@ -21,19 +21,30 @@
             </nav>
         </div>
     </header>
-    <div class="page-layout">
 
-
-        <main class="main-content">
-
-
+    <main class="main-content">
+        <section>
             <h1 id="practica-5-diagnostico-de-rendimiento-y-tuning">PRÁCTICA 5:
                 DIAGNÓSTICO DE RENDIMIENTO Y TUNING <a class="headerlink"
                     href="#practica-5-diagnostico-de-rendimiento-y-tuning" title="Enlace permanente">¶</a></h1>
-            <h3 id="ficha-tecnica-de-la-actividad">FICHA TÉCNICA DE LA
+        </section>
+
+        <section>
+            <details>
+                <summary>Ficha Técnica</summary>
+                <div class="box-card">
+                    <h3 id="ficha-tecnica-de-la-actividad">FICHA TÉCNICA DE LA
                 ACTIVIDAD <a class="headerlink" href="#ficha-tecnica-de-la-actividad" title="Enlace permanente">¶</a>
             </h3>
-            <div class="table-wrapper">
+                </div>
+            </details>
+        </section>
+
+        <section>
+            <details>
+                <summary>Descripción General y Objetivos</summary>
+                <div class="box-card">
+                    <div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>
                         <tbody>
@@ -74,9 +85,17 @@
                     </table>
                 </div>
             </div>
-            <h4 id="metodo-de-entrega-y-formato">MÉTODO DE ENTREGA Y FORMATO <a class="headerlink"
+                </div>
+            </details>
+        </section>
+
+        <section>
+            <details>
+                <summary>Actividades y Cronograma</summary>
+                <article class="box-card">
+                    <h4 id="metodo-de-entrega-y-formato">MÉTODO DE ENTREGA Y FORMATO <a class="headerlink"
                     href="#metodo-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
-            <ul>
+<ul>
                 <li>
                         <p><strong>[ ] Informe de Diagnóstico y Tuning:</strong> Documento
                             formal en formato <strong>PDF</strong> (Practica5_DBA_NombreAlumno.pdf)
@@ -110,21 +129,21 @@
                             de pruebas para asegurar la autoría.</p>
                 </li>
             </ul>
-            <h2 id="a1-descripcion-general-objetivos">1. DESCRIPCIÓN GENERAL.
+<h2 id="a1-descripcion-general-objetivos">1. DESCRIPCIÓN GENERAL.
                 OBJETIVOS <a class="headerlink" href="#a1-descripcion-general-objetivos" title="Enlace permanente">¶</a>
             </h2>
-            <p>En un entorno de producción real, el rendimiento de las bases de
+<p>En un entorno de producción real, el rendimiento de las bases de
                 datos no se limita de forma única al diseño de índices individuales. A
                 menudo, un mal tuning de las variables internas del motor de
                 almacenamiento de bases de datos (InnoDB en este caso) o la ausencia de
                 monitorización avanzada mediante esquemas del sistema (sys y
                 performance_schema) provocan graves retrasos de servicio.</p>
-            <p>En esta práctica, el alumno asumirá el rol de un
+<p>En esta práctica, el alumno asumirá el rol de un
                 <strong>Administrador de Sistemas de Bases de Datos (DBA)</strong> que
                 se enfrenta a un servidor MySQL saturado por la ineficiencia. Sus
                 objetivos principales son:
             </p>
-            <ol type="1">
+<ol type="1">
                 <li>
                         <p><strong>Analizar y ajustar parámetros críticos del motor en caliente
                                 y frío</strong> a través del archivo de configuración general
@@ -140,9 +159,9 @@
                             avanzada del planificador EXPLAIN.</p>
                 </li>
             </ol>
-            <h2 id="a2-consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink"
+<h2 id="a2-consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink"
                     href="#a2-consideraciones-previas" title="Enlace permanente">¶</a></h2>
-            <ul>
+<ul>
                 <li>
                         <p>Se utilizará la instancia virtual Linux del alumno sobre
                             infraestructura OpenStack (o similar).</p>
@@ -157,16 +176,19 @@
                             a través de sesión SSH interactiva utilizando clientes nativos.</p>
                 </li>
             </ul>
-            <h2 id="a3-actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink"
+<h2 id="a3-actividades-a-realizar">3. ACTIVIDADES A REALIZAR <a class="headerlink"
                     href="#a3-actividades-a-realizar" title="Enlace permanente">¶</a></h2>
-            <h4 id="fase-1-tunning-de-variables-del-motor-innodb-y-configuracion-del-servidor"><strong>Fase
+                </article>
+
+                <article class="box-card">
+                    <h4 id="fase-1-tunning-de-variables-del-motor-innodb-y-configuracion-del-servidor"><strong>Fase
                     1: Tunning de Variables del Motor InnoDB y Configuración del
                     Servidor</strong> <a class="headerlink"
                     href="#fase-1-tunning-de-variables-del-motor-innodb-y-configuracion-del-servidor"
                     title="Enlace permanente">¶</a></h4>
-            <p>El alumno debe auditar el estado de los recursos físicos del host que
+<p>El alumno debe auditar el estado de los recursos físicos del host que
                 están asignados al SGBD.</p>
-            <ol type="1">
+<ol type="1">
                 <li>
                         <p><strong>Consulta de Estado Inicial:</strong> Ejecute los comandos de
                             inspección en consola de MySQL para consultar los valores establecidos
@@ -210,14 +232,17 @@ están cargados en caliente.</code></pre>
 </div>
                 </li>
             </ol>
-            <h4 id="fase-2-diagnostico-de-sentencias-lentas-y-consultas-mas-ejecutadas"><strong>Fase
+                </article>
+
+                <article class="box-card">
+                    <h4 id="fase-2-diagnostico-de-sentencias-lentas-y-consultas-mas-ejecutadas"><strong>Fase
                     2: Diagnóstico de Sentencias Lentas y Consultas más
                     Ejecutadas</strong> <a class="headerlink"
                     href="#fase-2-diagnostico-de-sentencias-lentas-y-consultas-mas-ejecutadas"
                     title="Enlace permanente">¶</a></h4>
-            <p>Antes de tocar el esquema, el DBA debe saber exactamente qué
+<p>Antes de tocar el esquema, el DBA debe saber exactamente qué
                 consultas están lastrando el rendimiento del host.</p>
-            <ol type="1">
+<ol type="1">
                 <li>
                         <p><strong>Activación de los Trazados de Rendimiento:</strong> Asegúrese
                             de que el esquema performance_schema está habilitado.</p>
@@ -241,15 +266,18 @@ están cargados en caliente.</code></pre>
                             las columnas DIGEST_TEXT y COUNT_STAR.</p>
                 </li>
             </ol>
-            <h4 id="fase-3-optimizacion-estructural-de-consultas-multitabla-complejas"><strong>Fase
+                </article>
+
+                <article class="box-card">
+                    <h4 id="fase-3-optimizacion-estructural-de-consultas-multitabla-complejas"><strong>Fase
                     3: Optimización Estructural de Consultas Multitabla
                     Complejas</strong> <a class="headerlink"
                     href="#fase-3-optimizacion-estructural-de-consultas-multitabla-complejas"
                     title="Enlace permanente">¶</a></h4>
-            <p>Se ha reportado una caída de rendimiento masiva en la plataforma web
+<p>Se ha reportado una caída de rendimiento masiva en la plataforma web
                 al consultar el siguiente reporte histórico de facturación de agentes de
                 ventas:</p>
-            <p>SELECT<br>
+<p>SELECT<br>
                 e.nombre AS agente,<br>
                 e.puesto,<br>
                 c.nombre_cliente AS cliente,<br>
@@ -264,7 +292,7 @@ están cargados en caliente.</code></pre>
                 WHERE c.pais = 'USA' AND dp.cantidad &gt; 20<br>
                 GROUP BY e.codigo_empleado, c.codigo_cliente, p.codigo_pedido<br>
                 ORDER BY subtotal_pedido DESC;</p>
-            <ol type="1">
+<ol type="1">
                 <li>
                         <p><strong>Auditoría con EXPLAIN (Antes de Optimizar):</strong> Ejecute
                             el diagnóstico del plan de ejecución sobre la consulta multitabla
@@ -327,16 +355,22 @@ motor a procesar de forma secuencial completa las tablas.</code></pre>
                     </ul>
                 </li>
             </ol>
-            <h2 id="a4-calificacion">4. CALIFICACIÓN <a class="headerlink" href="#a4-calificacion"
+                </article>
+
+                <article class="box-card">
+                    <h2 id="a4-calificacion">4. CALIFICACIÓN <a class="headerlink" href="#a4-calificacion"
                     title="Enlace permanente">¶</a></h2>
-                <p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
+<p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
                     través de la plataforma, la entrega del documento en formatos editables
                     no permitidos (como .docx), capturas con identificación del alumno/a o
                     la omisión de los enlaces de las fuentes documentales utilizadas
                     penalizará gravemente la nota o invalidará la práctica.</p>
-            <h4 id="criterios-de-calificacion">CRITERIOS DE CALIFICACIÓN <a class="headerlink"
+                </article>
+
+                <article class="box-card">
+                    <h4 id="criterios-de-calificacion">CRITERIOS DE CALIFICACIÓN <a class="headerlink"
                     href="#criterios-de-calificacion" title="Enlace permanente">¶</a></h4>
-            <div class="table-wrapper">
+<div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>
                         <thead>
@@ -427,13 +461,16 @@ motor a procesar de forma secuencial completa las tablas.</code></pre>
                     </table>
                 </div>
             </div>
-            <p><strong>Total Práctica: 10 Puntos</strong></p>
+<p><strong>Total Práctica: 10 Puntos</strong></p>
+                </article>
+            </details>
+        </section>
+    </main>
 
-        </main>
-    </div>
-
-
-
+    <footer>
+        <div class="footer-container">
+            <p class="footer-text">Curso 2026/2027</p>
+        </div>
+    </footer>
 </body>
-
 </html>

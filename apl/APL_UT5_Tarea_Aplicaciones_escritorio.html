@@ -21,21 +21,24 @@
             </nav>
         </div>
     </header>
-    <div class="page-layout">
 
-
-        <main class="main-content">
-
+    <main class="main-content">
+        <section>
             <header>
                 <h1 class="title" id="tarea-montaje-y-configuracion-de-un-entorno-de-escritorio-web-corporativo"><span id="a5" class="anchor"></span><br>
                     TAREA: MONTAJE Y CONFIGURACIÓN DE UN<br>
                     ENTORNO DE ESCRITORIO WEB CORPORATIVO</h1>
             </header>
+        </section>
 
-            <h3 id="ficha-tecnica-de-la-actividad">FICHA TÉCNICA DE LA
+        <section>
+            <details>
+                <summary>Ficha Técnica</summary>
+                <div class="box-card">
+                    <h3 id="ficha-tecnica-de-la-actividad">FICHA TÉCNICA DE LA
                 ACTIVIDAD <a class="headerlink" href="#ficha-tecnica-de-la-actividad" title="Enlace permanente">¶</a>
             </h3>
-            <div class="table-wrapper">
+<div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>
                         <tbody>
@@ -81,9 +84,17 @@
                     </table>
                 </div>
             </div>
-            <h4 id="metodo-de-entrega-y-formato">MÉTODO DE ENTREGA Y FORMATO <a class="headerlink"
+                </div>
+            </details>
+        </section>
+
+        <section>
+            <details>
+                <summary>Actividades y Cronograma</summary>
+                <article class="box-card">
+                    <h4 id="metodo-de-entrega-y-formato">MÉTODO DE ENTREGA Y FORMATO <a class="headerlink"
                     href="#metodo-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
-            <ul>
+<ul>
                 <li>
                         <p><strong>[X] Documento:</strong> Documento [PDF]
                             (Tarea5_NombreAlumno.pdf) con la explicación razonada del desarrollo y
@@ -107,18 +118,18 @@
                         </p>
                 </li>
             </ul>
-            <h1 id="a1-descripcion-general-objetivos">1. DESCRIPCIÓN GENERAL.
+<h1 id="a1-descripcion-general-objetivos">1. DESCRIPCIÓN GENERAL.
                 OBJETIVOS <a class="headerlink" href="#a1-descripcion-general-objetivos" title="Enlace permanente">¶</a>
             </h1>
-            <p>El alumno, actuando como Administrador de Sistemas de una PYME,
+<p>El alumno, actuando como Administrador de Sistemas de una PYME,
                 montará un servidor unificado que ofrezca servicios de escritorio web a
                 la plantilla de trabajadores. Para ello, partiendo de una máquina
                 virtual limpia con Ubuntu/Debian Server, deberá desplegar la suite LAMP,
                 configurar el cliente de Webmail Roundcube enlazado a un servidor de
                 correo e implementar un gestor de calendario Baïkal basado en
                 CalDAV.</p>
-            <p><strong>Objetivos de Competencia Técnica:</strong></p>
-            <ol type="1">
+<p><strong>Objetivos de Competencia Técnica:</strong></p>
+<ol type="1">
                 <li>
                         <p>Instalar y securizar el stack de servicios LAMP (Apache, MariaDB,
                             PHP) en Linux.</p>
@@ -136,9 +147,9 @@
                             sesión y creación de citas.</p>
                 </li>
             </ol>
-            <h1 id="a2-consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink"
+<h1 id="a2-consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink"
                     href="#a2-consideraciones-previas" title="Enlace permanente">¶</a></h1>
-            <ul>
+<ul>
                 <li>
                         <p>Disponer de una Máquina Virtual en el aula de informática con Ubuntu
                             Server o Debian Server configurada con direccionamiento IP Estático
@@ -153,20 +164,23 @@
                             IMAP (Puerto 143) y SMTP (Puerto 25).</p>
                 </li>
             </ul>
-            <h1 id="a3-explicacion-detallada-paso-a-paso">3. EXPLICACIÓN DETALLADA
+<h1 id="a3-explicacion-detallada-paso-a-paso">3. EXPLICACIÓN DETALLADA
                 (PASO A PASO) <a class="headerlink" href="#a3-explicacion-detallada-paso-a-paso"
                     title="Enlace permanente">¶</a></h1>
-            <h4 id="fase-1-preparacion-de-la-infraestructura-lamp-y-base-de-datos-relacional">Fase
+                </article>
+
+                <article class="box-card">
+                    <h4 id="fase-1-preparacion-de-la-infraestructura-lamp-y-base-de-datos-relacional">Fase
                 1: Preparación de la Infraestructura LAMP y Base de Datos
                 Relacional <a class="headerlink"
                     href="#fase-1-preparacion-de-la-infraestructura-lamp-y-base-de-datos-relacional"
                     title="Enlace permanente">¶</a></h4>
-            <p>El alumno deberá conectarse a su servidor mediante terminal y
+<p>El alumno deberá conectarse a su servidor mediante terminal y
                 ejecutar la instalación de Apache, MariaDB y PHP con los módulos
                 requeridos para el procesamiento de correo y XML.</p>
-            <p>Posteriormente, accederá a la consola de MariaDB para crear de forma
+<p>Posteriormente, accederá a la consola de MariaDB para crear de forma
                 segura la estructura relacional:</p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code># 1. Instalación del entorno base y sus dependencias
 sudo apt update &amp;&amp; sudo apt install -y apache2 mariadb-server
 php php-mysql php-imap php-mbstring php-xml wget unzip
@@ -181,17 +195,19 @@ sudo mysql -e "GRANT ALL PRIVILEGES ON roundcube_db.* TO
 sudo mysql -e "FLUSH PRIVILEGES;"</code></pre>
 
 </div>
-
-            <p>Realizar una captura del terminal donde se evidencie la ejecución
+<p>Realizar una captura del terminal donde se evidencie la ejecución
                 correcta de las sentencias SQL de base de datos.</p>
-            <h4 id="fase-2-despliegue-y-enlace-estructural-del-cliente-webmail-roundcube">Fase
+                </article>
+
+                <article class="box-card">
+                    <h4 id="fase-2-despliegue-y-enlace-estructural-del-cliente-webmail-roundcube">Fase
                 2: Despliegue y Enlace Estructural del Cliente Webmail Roundcube <a class="headerlink"
                     href="#fase-2-despliegue-y-enlace-estructural-del-cliente-webmail-roundcube"
                     title="Enlace permanente">¶</a></h4>
-            <p>El alumno descargará el paquete completo de Roundcube Webmail, lo
+<p>El alumno descargará el paquete completo de Roundcube Webmail, lo
                 extraerá en la ruta raíz del servidor web Apache y volcará el esquema
                 estructurado de tablas inicial sobre la base de datos de producción:</p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>cd /tmp
 wget
 https://github.com/roundcube/roundcubemail/releases/download/1.6.6/roundcubemail-1.6.6-complete.tar.gz
@@ -208,13 +224,12 @@ sudo chmod -R 750 /var/www/html/webmail/temp
 /var/www/html/webmail/logs</code></pre>
 
 </div>
-
-            <p>A continuación, el alumno configurará el archivo de enlace de la
+<p>A continuación, el alumno configurará el archivo de enlace de la
                 aplicación copiando la plantilla base en
                 /var/www/html/webmail/config/config.inc.php y alterando sus variables
                 internas para establecer la conexión con la base de datos y definir de
                 forma explícita los sockets de comunicación de correo IMAP/SMTP:</p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>&lt;?php
 $config['db_dsnw'] =
 'mysql://roundcube_user:PasswordCorporativa2026_!@localhost/roundcube_db';
@@ -229,31 +244,36 @@ $config['skin'] = 'elastic';
 ?&gt;</code></pre>
 
 </div>
-
-            <p>Adjuntar captura del contenido editado del archivo config.inc.php
+<p>Adjuntar captura del contenido editado del archivo config.inc.php
                 prestando atención a los parámetros de red.</p>
-            <h4 id="a13"> <a class="headerlink" href="#a13" title="Enlace permanente">¶</a></h4>
-            <h4 id="fase-3-verificacion-de-acceso-y-validacion-de-servicios-de-correo">Fase
+<h4 id="a13"> <a class="headerlink" href="#a13" title="Enlace permanente">¶</a></h4>
+                </article>
+
+                <article class="box-card">
+                    <h4 id="fase-3-verificacion-de-acceso-y-validacion-de-servicios-de-correo">Fase
                 3: Verificación de Acceso y Validación de Servicios de Correo <a class="headerlink"
                     href="#fase-3-verificacion-de-acceso-y-validacion-de-servicios-de-correo"
                     title="Enlace permanente">¶</a></h4>
-            <p>El alumno abrirá el navegador web en una máquina cliente apuntando a
+<p>El alumno abrirá el navegador web en una máquina cliente apuntando a
                 la dirección http://&lt;IP_DE_TU_SERVIDOR&gt;/webmail. Introducirá las
                 credenciales del buzón de pruebas corporativo asignado a su puesto de
                 taller.</p>
-            <p>Tras verificar el inicio de sesión exitoso, redactará un correo
+<p>Tras verificar el inicio de sesión exitoso, redactará un correo
                 saliente dirigido al buzón del profesor para validar el enrutamiento
                 SMTP, comentando la captura de pantalla del registro log del servidor si
                 fuese necesario para demostrar el éxito de la operación.</p>
-            <h4 id="a15"> <a class="headerlink" href="#a15" title="Enlace permanente">¶</a></h4>
-            <h4 id="fase-4-despliegue-de-servicios-de-productividad-y-calendarios-web-con-baikal">Fase
+<h4 id="a15"> <a class="headerlink" href="#a15" title="Enlace permanente">¶</a></h4>
+                </article>
+
+                <article class="box-card">
+                    <h4 id="fase-4-despliegue-de-servicios-de-productividad-y-calendarios-web-con-baikal">Fase
                 4: Despliegue de Servicios de Productividad y Calendarios Web con
                 Baïkal <a class="headerlink"
                     href="#fase-4-despliegue-de-servicios-de-productividad-y-calendarios-web-con-baikal"
                     title="Enlace permanente">¶</a></h4>
-            <p>Para la gestión del tiempo y agendas de la organización, el alumno
+<p>Para la gestión del tiempo y agendas de la organización, el alumno
                 instalará el servidor ligero Baïkal en el directorio raíz web:</p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>cd /var/www/html
 sudo wget
 https://github.com/sabre-io/Baikal/releases/download/0.9.5/baikal-0.9.5.zip
@@ -262,25 +282,21 @@ sudo mv baikal calendario
 sudo chown -R www-data:www-data /var/www/html/calendario
 sudo chmod -R 755 /var/www/html/calendario/Specific</code></pre>
 
-</div>El alumno accederá a
-            http://&lt;IP_DE_TU_SERVIDOR&gt;/calendario/html/ desde el navegador
-            cliente para completar el asistente técnico. Tras definir el usuario
-            administrador del portal de agendas, accederá al panel de control para
-            dar de alta una cuenta de usuario corporativa y crear un calendario
-            compartido bajo el nombre Mantenimientos_SMR. Conectará un cliente de
-            escritorio externo compatible o utilizará la interfaz para insertar una
-            cita programada.
-            <h4 id="a17"> <a class="headerlink" href="#a17" title="Enlace permanente">¶</a></h4>
-            <h4 id="fase-5-fortalecimiento-de-la-aplicacion-y-cierre-de-seguridad-hardening">Fase
+</div>
+<h4 id="a17"> <a class="headerlink" href="#a17" title="Enlace permanente">¶</a></h4>
+                </article>
+
+                <article class="box-card">
+                    <h4 id="fase-5-fortalecimiento-de-la-aplicacion-y-cierre-de-seguridad-hardening">Fase
                 5: Fortalecimiento de la Aplicación y Cierre de Seguridad
                 (<em>Hardening</em>) <a class="headerlink"
                     href="#fase-5-fortalecimiento-de-la-aplicacion-y-cierre-de-seguridad-hardening"
                     title="Enlace permanente">¶</a></h4>
-            <p>Como fase final obligatoria para garantizar un entorno de producción
+<p>Como fase final obligatoria para garantizar un entorno de producción
                 seguro, el alumno endurecerá el sistema eliminando los scripts del
                 asistente web y bloqueando accesos no autorizados a los archivos de
                 configuración:</p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+<div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code># Eliminación irreversible de la interfaz del instalador web
 sudo rm -rf /var/www/html/webmail/installer
 # Restricción de permisos sobre el archivo de credenciales de
@@ -288,25 +304,33 @@ configuración de base de datos
 sudo chmod 640 /var/www/html/webmail/config/config.inc.php</code></pre>
 
 </div>
-
-            <p>Captura del terminal donde se verifique mediante un comando ls -l que
+<p>Captura del terminal donde se verifique mediante un comando ls -l que
                 la carpeta installer ha desaparecido y que los permisos del archivo
                 config son restrictivos.</p>
-            <h1 id="a4-calificacion">4. CALIFICACIÓN <a class="headerlink" href="#a4-calificacion"
+                </article>
+
+                <article class="box-card">
+                    <h1 id="a4-calificacion">4. CALIFICACIÓN <a class="headerlink" href="#a4-calificacion"
                     title="Enlace permanente">¶</a></h1>
-            <p><strong>IMPORTANTE:</strong> El retraso en la entrega de los
+                </article>
+
+                <article class="box-card">
+                    <p><strong>IMPORTANTE:</strong> El retraso en la entrega de los
                 materiales, la copia total o parcial de memorias entre compañeros de
                 clase, o la ausencia de identificadores personales en las capturas de
                 pantalla penalizará severamente o anulará la calificación de la
                 actividad.</p>
-            <p>La actividad será evaluada según los siguientes criterios de
+<p>La actividad será evaluada según los siguientes criterios de
                 ponderación base: Funcionalidad (50%), Memoria y Documentación (40%),
                 Presentación (10%).</p>
-            <h4 id="a20"> <a class="headerlink" href="#a20" title="Enlace permanente">¶</a></h4>
-            <h4 id="criterios-de-calificacion-rubrica-general">CRITERIOS DE
+<h4 id="a20"> <a class="headerlink" href="#a20" title="Enlace permanente">¶</a></h4>
+                </article>
+
+                <article class="box-card">
+                    <h4 id="criterios-de-calificacion-rubrica-general">CRITERIOS DE
                 CALIFICACIÓN (RÚBRICA GENERAL) <a class="headerlink" href="#criterios-de-calificacion-rubrica-general"
                     title="Enlace permanente">¶</a></h4>
-            <div class="table-wrapper">
+<div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>
                         <thead>
@@ -357,11 +381,11 @@ sudo chmod 640 /var/www/html/webmail/config/config.inc.php</code></pre>
                     </table>
                 </div>
             </div>
-            <h4 id="criterio-especifico-de-documentacion-y-capturas-15-puntos">CRITERIO
+<h4 id="criterio-especifico-de-documentacion-y-capturas-15-puntos">CRITERIO
                 ESPECÍFICO DE DOCUMENTACIÓN Y CAPTURAS (1.5 Puntos) <a class="headerlink"
                     href="#criterio-especifico-de-documentacion-y-capturas-15-puntos" title="Enlace permanente">¶</a>
             </h4>
-            <div class="table-wrapper">
+<div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>
                         <tbody>
@@ -388,12 +412,15 @@ sudo chmod 640 /var/www/html/webmail/config/config.inc.php</code></pre>
                     </table>
                 </div>
             </div>
+                </article>
+            </details>
+        </section>
+    </main>
 
-        </main>
-    </div>
-
-
-
+    <footer>
+        <div class="footer-container">
+            <p class="footer-text">Curso 2026/2027</p>
+        </div>
+    </footer>
 </body>
-
 </html>

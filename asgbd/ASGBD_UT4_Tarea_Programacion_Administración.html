@@ -21,37 +21,49 @@
             </nav>
         </div>
     </header>
-    <div class="page-layout">
 
-        <main class="main-content">
-
-
+    <main class="main-content">
+        <section>
             <h1 id="tarea-unidad-4-programacion-de-scripts-de-administracion-y-automatizacion">Tarea
                 Unidad 4: Programación de Scripts de Administración y Automatización
                 <a class="headerlink" href="#tarea-unidad-4-programacion-de-scripts-de-administracion-y-automatizacion"
                     title="Enlace permanente">¶</a>
             </h1>
-            <h2 id="a1-descripcion-general-objetivos">1. DESCRIPCIÓN GENERAL.
+        </section>
+
+        <section>
+            <details>
+                <summary>Índice de Contenidos</summary>
+                <div class="box-card">
+                    <h2 id="a1-descripcion-general-objetivos">1. DESCRIPCIÓN GENERAL.
                 OBJETIVOS <a class="headerlink" href="#a1-descripcion-general-objetivos" title="Enlace permanente">¶</a>
             </h2>
-            <p>Esta tarea consolida las competencias de programación dentro del
+<p>Esta tarea consolida las competencias de programación dentro del
                 servidor de bases de datos (procedimientos, funciones y disparadores) y
                 su interacción con los metadatos del SGBD para labores de
                 administración.</p>
-            <p>Para la realización de esta entrega, utilizaremos la base de datos de
+<p>Para la realización de esta entrega, utilizaremos la base de datos de
                 la <strong>"Liga de Baloncesto"</strong> (liga), cuya estructura de
                 tablas (equipos, jugadores, partidos, estadisticas) debió ser desplegada
                 previamente.</p>
-            <h2 id="a2-actividades-a-realizar">2. ACTIVIDADES A REALIZAR <a class="headerlink"
+                </div>
+            </details>
+        </section>
+
+        <section>
+            <details>
+                <summary>Contenidos y Apartados de la Unidad</summary>
+                <article class="box-card">
+                    <h2 id="a2-actividades-a-realizar">2. ACTIVIDADES A REALIZAR <a class="headerlink"
                     href="#a2-actividades-a-realizar" title="Enlace permanente">¶</a></h2>
-            <h2 id="bloque-i-estructuras-basicas-funciones-y-control-de-flujo-repaso">Bloque
+<h2 id="bloque-i-estructuras-basicas-funciones-y-control-de-flujo-repaso">Bloque
                 I: Estructuras Básicas, Funciones y Control de Flujo (Repaso) <a class="headerlink"
                     href="#bloque-i-estructuras-basicas-funciones-y-control-de-flujo-repaso"
                     title="Enlace permanente">¶</a></h2>
-            <h3 id="ejercicio-1-procedimiento-sumador">Ejercicio 1: Procedimiento
+<h3 id="ejercicio-1-procedimiento-sumador">Ejercicio 1: Procedimiento
                 Sumador <a class="headerlink" href="#ejercicio-1-procedimiento-sumador" title="Enlace permanente">¶</a>
             </h3>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Enunciado:</strong> Diseña un procedimiento almacenado
                             sp_sumar_valores al cual le pases dos valores numéricos enteros como
@@ -59,19 +71,19 @@
                             de salida (OUT).</p>
                 </li>
             </ul>
-            <h3 id="ejercicio-2-funcion-sumadora">Ejercicio 2: Función Sumadora <a class="headerlink"
+<h3 id="ejercicio-2-funcion-sumadora">Ejercicio 2: Función Sumadora <a class="headerlink"
                     href="#ejercicio-2-funcion-sumadora" title="Enlace permanente">¶</a></h3>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Enunciado:</strong> Crea una función almacenada
                             fn_sumar_valores que tenga exactamente la misma funcionalidad del
                             ejercicio anterior (recibir dos enteros y retornar su suma).</p>
                 </li>
             </ul>
-            <h3 id="ejercicio-3-control-de-signo-y-paridad">Ejercicio 3: Control de
+<h3 id="ejercicio-3-control-de-signo-y-paridad">Ejercicio 3: Control de
                 Signo y Paridad <a class="headerlink" href="#ejercicio-3-control-de-signo-y-paridad"
                     title="Enlace permanente">¶</a></h3>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Enunciado:</strong> Crea un procedimiento sp_analizar_suma
                             que invoque internamente al procedimiento o función de los ejercicios
@@ -91,10 +103,10 @@
                     </ul>
                 </li>
             </ul>
-            <h3 id="ejercicio-4-contador-de-homonimos">Ejercicio 4: Contador de
+<h3 id="ejercicio-4-contador-de-homonimos">Ejercicio 4: Contador de
                 Homónimos <a class="headerlink" href="#ejercicio-4-contador-de-homonimos"
                     title="Enlace permanente">¶</a></h3>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Enunciado:</strong> Escribe una función
                             fn_contar_jugadores_nombre que reciba como parámetro el nombre de un
@@ -102,10 +114,10 @@
                             dentro de la tabla jugadores.</p>
                 </li>
             </ul>
-            <h3 id="ejercicio-5-bucle-de-capitanes">Ejercicio 5: Bucle de
+<h3 id="ejercicio-5-bucle-de-capitanes">Ejercicio 5: Bucle de
                 Capitanes <a class="headerlink" href="#ejercicio-5-bucle-de-capitanes" title="Enlace permanente">¶</a>
             </h3>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Enunciado:</strong> Crea un procedimiento
                             sp_contar_por_capitan que emplee una estructura de bucle repetitivo
@@ -114,14 +126,14 @@
                             de forma secuencial.</p>
                 </li>
             </ul>
-            <h2 id="bloque-ii-estructuras-avanzadas-cursores">Bloque II:
+<h2 id="bloque-ii-estructuras-avanzadas-cursores">Bloque II:
                 Estructuras Avanzadas - Cursores <a class="headerlink"
                     href="#bloque-ii-estructuras-avanzadas-cursores" title="Enlace permanente">¶</a></h2>
-            <h3 id="ejercicio-6-cursor-de-resultados-limites-puntuacion-de-90">Ejercicio
+<h3 id="ejercicio-6-cursor-de-resultados-limites-puntuacion-de-90">Ejercicio
                 6: Cursor de Resultados Límites (Puntuación de 90) <a class="headerlink"
                     href="#ejercicio-6-cursor-de-resultados-limites-puntuacion-de-90" title="Enlace permanente">¶</a>
             </h3>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Enunciado:</strong> Diseña un procedimiento
                             sp_partidos_puntuacion_limite que utilice un <strong>CURSOR</strong>
@@ -131,11 +143,11 @@
                             los 90 puntos en el encuentro.</p>
                 </li>
             </ul>
-            <h3 id="ejercicio-7-busqueda-del-maximo-salario-sin-funciones-de-agregado">Ejercicio
+<h3 id="ejercicio-7-busqueda-del-maximo-salario-sin-funciones-de-agregado">Ejercicio
                 7: Búsqueda del Máximo Salario sin funciones de agregado <a class="headerlink"
                     href="#ejercicio-7-busqueda-del-maximo-salario-sin-funciones-de-agregado"
                     title="Enlace permanente">¶</a></h3>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Enunciado:</strong> Crea un procedimiento
                             sp_jugador_max_salario que utilice un <strong>CURSOR</strong> para
@@ -144,10 +156,10 @@
                             del club <strong>sin utilizar la función predefinida MAX()</strong>.</p>
                 </li>
             </ul>
-            <h3 id="ejercicio-8-equipo-con-mayor-actividad">Ejercicio 8: Equipo con
+<h3 id="ejercicio-8-equipo-con-mayor-actividad">Ejercicio 8: Equipo con
                 Mayor Actividad <a class="headerlink" href="#ejercicio-8-equipo-con-mayor-actividad"
                     title="Enlace permanente">¶</a></h3>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Enunciado:</strong> Crea un procedimiento
                             sp_equipo_mas_partidos que utilice un <strong>CURSOR</strong> para
@@ -157,12 +169,12 @@
                         </p>
                 </li>
             </ul>
-            <h3 id="ejercicio-9-procedimiento-con-cursor-para-modificacion-de-salarios-mantenimiento">Ejercicio
+<h3 id="ejercicio-9-procedimiento-con-cursor-para-modificacion-de-salarios-mantenimiento">Ejercicio
                 9: Procedimiento con Cursor para Modificación de Salarios
                 (Mantenimiento) <a class="headerlink"
                     href="#ejercicio-9-procedimiento-con-cursor-para-modificacion-de-salarios-mantenimiento"
                     title="Enlace permanente">¶</a></h3>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Enunciado:</strong> Crea un procedimiento
                             sp_incrementar_salario_jugadores con un cursor al que se le pasará un
@@ -171,14 +183,14 @@
                             individual.</p>
                 </li>
             </ul>
-            <h2 id="bloque-iii-automatizacion-mediante-disparadores-triggers">Bloque
+<h2 id="bloque-iii-automatizacion-mediante-disparadores-triggers">Bloque
                 III: Automatización mediante Disparadores (Triggers) <a class="headerlink"
                     href="#bloque-iii-automatizacion-mediante-disparadores-triggers" title="Enlace permanente">¶</a>
             </h2>
-            <h3 id="ejercicio-10-control-de-salarios-negativos">Ejercicio 10:
+<h3 id="ejercicio-10-control-de-salarios-negativos">Ejercicio 10:
                 Control de Salarios Negativos <a class="headerlink" href="#ejercicio-10-control-de-salarios-negativos"
                     title="Enlace permanente">¶</a></h3>
-            <ul>
+<ul>
                 <li>
                     <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Enunciado: Crea un disparador
@@ -191,10 +203,10 @@ lanzar un error personalizado.</code></pre>
 </div>
                 </li>
             </ul>
-            <h3 id="ejercicio-11-actualizacion-dinamica-de-clasificacion">Ejercicio
+<h3 id="ejercicio-11-actualizacion-dinamica-de-clasificacion">Ejercicio
                 11: Actualización Dinámica de Clasificación <a class="headerlink"
                     href="#ejercicio-11-actualizacion-dinamica-de-clasificacion" title="Enlace permanente">¶</a></h3>
-            <ul>
+<ul>
                 <li>
                     <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Enunciado: Crea un disparador
@@ -207,10 +219,10 @@ Realiza pruebas de inserción para verificar su funcionamiento.</code></pre>
 </div>
                 </li>
             </ul>
-            <h3 id="ejercicio-12-auditoria-integral-de-la-tabla-equipos">Ejercicio
+<h3 id="ejercicio-12-auditoria-integral-de-la-tabla-equipos">Ejercicio
                 12: Auditoría Integral de la Tabla Equipos <a class="headerlink"
                     href="#ejercicio-12-auditoria-integral-de-la-tabla-equipos" title="Enlace permanente">¶</a></h3>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Enunciado:</strong> Diseña un sistema de auditoría para
                             monitorizar los cambios en la tabla equipos.</p>
@@ -236,11 +248,11 @@ la operación, la fecha exacta y la tabla afectada.</code></pre>
                     </ol>
                 </li>
             </ul>
-            <h3 id="ejercicio-13-restriccion-de-inserciones-por-privilegio-de-usuario">Ejercicio
+<h3 id="ejercicio-13-restriccion-de-inserciones-por-privilegio-de-usuario">Ejercicio
                 13: Restricción de Inserciones por Privilegio de Usuario <a class="headerlink"
                     href="#ejercicio-13-restriccion-de-inserciones-por-privilegio-de-usuario"
                     title="Enlace permanente">¶</a></h3>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Enunciado:</strong> Crea un disparador tg_insert_solo_root
                             para la tabla equipos. El disparador debe validar si el usuario que está
@@ -250,13 +262,13 @@ la operación, la fecha exacta y la tabla afectada.</code></pre>
                             descriptivo de denegación de privilegios.</p>
                 </li>
             </ul>
-            <h2 id="bloque-iv-administracion-e-interaccion-con-el-catalogo">Bloque
+<h2 id="bloque-iv-administracion-e-interaccion-con-el-catalogo">Bloque
                 IV: Administración e Interacción con el Catálogo <a class="headerlink"
                     href="#bloque-iv-administracion-e-interaccion-con-el-catalogo" title="Enlace permanente">¶</a></h2>
-            <h3 id="ejercicio-14-replicador-del-comando-describe-desc">Ejercicio 14:
+<h3 id="ejercicio-14-replicador-del-comando-describe-desc">Ejercicio 14:
                 Replicador del Comando Describe (DESC) <a class="headerlink"
                     href="#ejercicio-14-replicador-del-comando-describe-desc" title="Enlace permanente">¶</a></h3>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Enunciado:</strong> Diseña un procedimiento almacenado
                             llamado sp_describir_tabla que reciba como parámetro de entrada el
@@ -267,10 +279,10 @@ la operación, la fecha exacta y la tabla afectada.</code></pre>
                             la orden DESCRIBE o DESC).</p>
                 </li>
             </ul>
-            <h3 id="ejercicio-15-purga-programada-de-partidos-antiguos">Ejercicio
+<h3 id="ejercicio-15-purga-programada-de-partidos-antiguos">Ejercicio
                 15: Purga Programada de Partidos Antiguos <a class="headerlink"
                     href="#ejercicio-15-purga-programada-de-partidos-antiguos" title="Enlace permanente">¶</a></h3>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Enunciado:</strong> Desarrolla un procedimiento
                             sp_purgar_partidos al cual se le pasará una fecha como parámetro de
@@ -279,20 +291,23 @@ la operación, la fecha exacta y la tabla afectada.</code></pre>
                             el peso en tablas históricas.</p>
                 </li>
             </ul>
-            <h2 id="a4-calificacion">4. CALIFICACIÓN <a class="headerlink" href="#a4-calificacion"
+                </article>
+
+                <article class="box-card">
+                    <h2 id="a4-calificacion">4. CALIFICACIÓN <a class="headerlink" href="#a4-calificacion"
                     title="Enlace permanente">¶</a></h2>
-                <p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
+<p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
                     través de la plataforma, la entrega del documento en formatos editables
                     no permitidos (como .docx), capturas con identificación del alumno/a o
                     la omisión de los enlaces de las fuentes documentales utilizadas
                     penalizará gravemente la nota o invalidará la práctica.</p>
-            <p>La evaluación de la tarea se basará en una puntuación máxima de
+<p>La evaluación de la tarea se basará en una puntuación máxima de
                 <strong>10 puntos</strong>, distribuidos de la siguiente manera:
             </p>
-            <h3 id="distribucion-de-puntos-por-ejercicio"><strong>Distribución de
+<h3 id="distribucion-de-puntos-por-ejercicio"><strong>Distribución de
                     Puntos por Ejercicio:</strong> <a class="headerlink" href="#distribucion-de-puntos-por-ejercicio"
                     title="Enlace permanente">¶</a></h3>
-            <ul>
+<ul>
                 <li>
                         <p><strong>Bloque I: Estructuras Básicas (2.0 puntos en
                                 total)</strong></p>
@@ -381,9 +396,15 @@ la operación, la fecha exacta y la tabla afectada.</code></pre>
                     </ul>
                 </li>
             </ul>
+                </article>
+            </details>
+        </section>
+    </main>
 
-        </main>
-    </div>
+    <footer>
+        <div class="footer-container">
+            <p class="footer-text">Curso 2026/2027</p>
+        </div>
+    </footer>
 </body>
-
 </html>

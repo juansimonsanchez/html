@@ -21,37 +21,40 @@
             </nav>
         </div>
     </header>
-    <div class="page-layout">
 
-
-        <main class="main-content">
-
-
+    <main class="main-content">
+        <section>
             <h1 id="ut3-tarea-2-practica-avanzada-de-gestion-de-identidades-auditoria-y-automatizacion-en-mysql-80">
                 UT3
                 - Tarea 2: Práctica Avanzada de Gestión de Identidades, Auditoría y
                 Automatización en MySQL 8.0 <a class="headerlink"
                     href="#ut3-tarea-2-practica-avanzada-de-gestion-de-identidades-auditoria-y-automatizacion-en-mysql-80"
                     title="Enlace permanente">¶</a></h1>
-            <h2 id="a1-consideraciones-previas">1. CONSIDERACIONES PREVIAS <a class="headerlink"
+<h2 id="a1-consideraciones-previas">1. CONSIDERACIONES PREVIAS <a class="headerlink"
                     href="#a1-consideraciones-previas" title="Enlace permanente">¶</a></h2>
-            <h2 id="escenario-profesional-contexto-real-de-produccion">Escenario
+<h2 id="escenario-profesional-contexto-real-de-produccion">Escenario
                 Profesional (Contexto Real de Producción) <a class="headerlink"
                     href="#escenario-profesional-contexto-real-de-produccion" title="Enlace permanente">¶</a></h2>
-            <p>Trabajas como Administrador de Sistemas y Bases de Datos
+<p>Trabajas como Administrador de Sistemas y Bases de Datos
                 (SysAdmin/DBA) en <strong>SanaSalud S.A.</strong>, una empresa
                 proveedora de servicios médicos de alta disponibilidad. El SGBD
                 corporativo (MySQL 8.0) custodia información clínica y datos personales
                 extremadamente sensibles sometidos al Reglamento General de Protección
                 de Datos (RGPD) y a la Ley Orgánica de Protección de Datos y Garantía de
                 Derechos Digitales (LOPDGDD).</p>
-            <p>Recientemente se ha detectado una fuga de credenciales debido a la
+<p>Recientemente se ha detectado una fuga de credenciales debido a la
                 existencia de scripts con contraseñas en texto claro
                 (<em>hardcoded</em>) y cuentas con permisos globales desproporcionados.
                 La dirección de sistemas te encarga la reestructuración completa del
                 sistema de control de accesos e identidades bajo las siguientes
                 premisas:</p>
-            <ol type="1">
+        </section>
+
+        <section>
+            <details>
+                <summary>Actividades y Cronograma</summary>
+                <article class="box-card">
+                    <ol type="1">
                 <li>
                         <p><strong>Políticas de endurecimiento (Hardening) de
                                 credenciales.</strong></p>
@@ -69,21 +72,24 @@
                                 sistema.</strong></p>
                 </li>
             </ol>
-            <h2 id="a2-actividades-a-realizar">2. ACTIVIDADES A REALIZAR <a class="headerlink"
+<h2 id="a2-actividades-a-realizar">2. ACTIVIDADES A REALIZAR <a class="headerlink"
                     href="#a2-actividades-a-realizar" title="Enlace permanente">¶</a></h2>
-            <h2 id="fase-1-politicas-de-contrasenas-y-bloqueos-hardening">Fase 1:
+                </article>
+
+                <article class="box-card">
+                    <h2 id="fase-1-politicas-de-contrasenas-y-bloqueos-hardening">Fase 1:
                 Políticas de Contraseñas y Bloqueos (Hardening) <a class="headerlink"
                     href="#fase-1-politicas-de-contrasenas-y-bloqueos-hardening" title="Enlace permanente">¶</a></h2>
-            <p>Como primera medida de mitigación de riesgos, debes activar e
+<p>Como primera medida de mitigación de riesgos, debes activar e
                 implementar políticas estrictas sobre el ciclo de vida de las
                 credenciales de los usuarios utilizando los componentes nativos de MySQL
                 8.0.</p>
-            <h3 id="requisitos-tecnicos"><strong>Requisitos Técnicos:</strong> <a class="headerlink"
+<h3 id="requisitos-tecnicos"><strong>Requisitos Técnicos:</strong> <a class="headerlink"
                     href="#requisitos-tecnicos" title="Enlace permanente">¶</a></h3>
-            <p>Escribe un script SQL que configure una cuenta de usuario
+<p>Escribe un script SQL que configure una cuenta de usuario
                 administrativa llamada sec_auditor@localhost que cumpla obligatoriamente
                 con las siguientes reglas de hardening:</p>
-            <ul>
+<ul>
                 <li>
                         <p>Debe expirar de forma forzosa cada <strong>90 días</strong> para
                             obligar a su rotación.</p>
@@ -101,10 +107,10 @@
                         </p>
                 </li>
             </ul>
-            <h3 id="script-sql-de-hardening-fase-1"><strong>Script SQL de Hardening
+<h3 id="script-sql-de-hardening-fase-1"><strong>Script SQL de Hardening
                     (Fase 1):</strong> <a class="headerlink" href="#script-sql-de-hardening-fase-1"
                     title="Enlace permanente">¶</a></h3>
-            <p>-- Creación y configuración de la cuenta con políticas de Hardening
+<p>-- Creación y configuración de la cuenta con políticas de Hardening
                 integradas<br>
                 CREATE USER IF NOT EXISTS 'sec_auditor'@'localhost'<br>
                 IDENTIFIED BY 'SanaSecure#2026'<br>
@@ -120,18 +126,21 @@
                 SET GLOBAL default_password_lifetime = 90;<br>
                 SET GLOBAL disconnect_on_expired_password = ON;
             </p>
-            <h2 id="fase-2-implementacion-de-seguridad-basada-en-roles-rbac"><strong>Fase
+                </article>
+
+                <article class="box-card">
+                    <h2 id="fase-2-implementacion-de-seguridad-basada-en-roles-rbac"><strong>Fase
                     2: Implementación de Seguridad Basada en Roles (RBAC)</strong> <a class="headerlink"
                     href="#fase-2-implementacion-de-seguridad-basada-en-roles-rbac" title="Enlace permanente">¶</a></h2>
-            <p>Para evitar la asignación caótica de permisos individuales,
+<p>Para evitar la asignación caótica de permisos individuales,
                 estructurarás el acceso del personal de la clínica mediante el control
                 de accesos basado en roles (RBAC) sobre la base de datos corporativa
                 sanasalud_db (la cual consta de las tablas pacientes,
                 historiales_clinicos, personal_medico y citas_medicas).</p>
-            <h3 id="definicion-de-roles-y-permisos"><strong>Definición de Roles y
+<h3 id="definicion-de-roles-y-permisos"><strong>Definición de Roles y
                     Permisos:</strong> <a class="headerlink" href="#definicion-de-roles-y-permisos"
                     title="Enlace permanente">¶</a></h3>
-            <ol type="1">
+<ol type="1">
                 <li>
                         <p><strong>rol_sanitario:</strong> Acceso de lectura (SELECT) a la
                             información general de pacientes y citas para coordinar consultas, y
@@ -151,9 +160,12 @@
                             vistas de monitorización del rendimiento.</p>
                 </li>
             </ol>
-            <h3 id="tarea-del-alumno"><strong>Tarea del Alumno:</strong> <a class="headerlink" href="#tarea-del-alumno"
+                </article>
+
+                <article class="box-card">
+                    <h3 id="tarea-del-alumno"><strong>Tarea del Alumno:</strong> <a class="headerlink" href="#tarea-del-alumno"
                     title="Enlace permanente">¶</a></h3>
-            <ul>
+<ul>
                 <li>
                         <p>Crear los roles indicados.</p>
                 </li>
@@ -169,10 +181,10 @@
                             sesión del usuario (SET DEFAULT ROLE).</p>
                 </li>
             </ul>
-            <h3 id="solucionario-de-la-configuracion-rbac-fase-2"><strong>Solucionario
+<h3 id="solucionario-de-la-configuracion-rbac-fase-2"><strong>Solucionario
                     de la Configuración RBAC (Fase 2):</strong> <a class="headerlink"
                     href="#solucionario-de-la-configuracion-rbac-fase-2" title="Enlace permanente">¶</a></h3>
-            <p>-- 1. Creación de la base de datos de pruebas para el escenario<br>
+<p>-- 1. Creación de la base de datos de pruebas para el escenario<br>
                 CREATE DATABASE IF NOT EXISTS sanasalud_db;<br>
                 USE sanasalud_db;<br>
                 <br>
@@ -245,17 +257,20 @@
                 -- Sincronizar diccionario<br>
                 FLUSH PRIVILEGES;
             </p>
-            <h2 id="fase-3-integracion-y-automatizacion-segura-con-python-pariaw-interdisciplinar"><strong>Fase
+                </article>
+
+                <article class="box-card">
+                    <h2 id="fase-3-integracion-y-automatizacion-segura-con-python-pariaw-interdisciplinar"><strong>Fase
                     3: Integración y Automatización Segura con Python (PAR/IAW
                     Interdisciplinar)</strong> <a class="headerlink"
                     href="#fase-3-integracion-y-automatizacion-segura-con-python-pariaw-interdisciplinar"
                     title="Enlace permanente">¶</a></h2>
-            <p>Uno de los errores más graves en entornos de producción es programar
+<p>Uno de los errores más graves en entornos de producción es programar
                 scripts en Bash, Python o PHP que contienen la contraseña del usuario
                 administrador (root) en texto claro (<em>hardcoded</em>).</p>
-            <p>Para resolver esta vulnerabilidad, diseñarás una solución
+<p>Para resolver esta vulnerabilidad, diseñarás una solución
                 profesional:</p>
-            <ol type="1">
+<ol type="1">
                 <li>
                         <p>Crearás una cuenta de servicio de mínimos privilegios en MySQL
                             llamada monitor_agent@localhost.</p>
@@ -267,10 +282,10 @@
                             de código fuente.</p>
                 </li>
             </ol>
-            <h3 id="configuracion-del-usuario-de-servicio-sql"><strong>Configuración
+<h3 id="configuracion-del-usuario-de-servicio-sql"><strong>Configuración
                     del Usuario de Servicio (SQL):</strong> <a class="headerlink"
                     href="#configuracion-del-usuario-de-servicio-sql" title="Enlace permanente">¶</a></h3>
-            <p>-- Usuario exclusivo para el microservicio de monitorización<br>
+<p>-- Usuario exclusivo para el microservicio de monitorización<br>
                 CREATE USER 'monitor_agent'@'localhost' IDENTIFIED BY
                 'SanaMonitorAgentPass2026#';<br>
                 <br>
@@ -280,12 +295,12 @@
                 'monitor_agent'@'localhost';<br>
                 GRANT SELECT ON sanasalud_db.* TO 'monitor_agent'@'localhost';
             </p>
-            <h3 id="script-de-python-para-monitorizacion-de-almacenamiento-monitorspacepy"><strong>Script
+<h3 id="script-de-python-para-monitorizacion-de-almacenamiento-monitorspacepy"><strong>Script
                     de Python para Monitorización de Almacenamiento
                     (monitor_space.py):</strong> <a class="headerlink"
                     href="#script-de-python-para-monitorizacion-de-almacenamiento-monitorspacepy"
                     title="Enlace permanente">¶</a></h3>
-            <p>#!/usr/bin/env python3<br>
+<p>#!/usr/bin/env python3<br>
                 # -*- coding: utf-8 -*-<br>
                 """<br>
                 SanaSalud S.A. - Script de Monitorización de Almacenamiento Seguro<br>
@@ -380,69 +395,75 @@
                 if __name__ == "__main__":<br>
                 monitorizar_almacenamiento()
             </p>
-            <h2 id="fase-4-auditoria-avanzada-de-cuentas-mediante-catalogos-del-sistema"><strong>Fase
+                </article>
+
+                <article class="box-card">
+                    <h2 id="fase-4-auditoria-avanzada-de-cuentas-mediante-catalogos-del-sistema"><strong>Fase
                     4: Auditoría Avanzada de Cuentas mediante Catálogos del
                     Sistema</strong> <a class="headerlink"
                     href="#fase-4-auditoria-avanzada-de-cuentas-mediante-catalogos-del-sistema"
                     title="Enlace permanente">¶</a></h2>
-            <p>Como Auditor de Seguridad / DBA, tu tarea no es sólo configurar los
+<p>Como Auditor de Seguridad / DBA, tu tarea no es sólo configurar los
                 accesos, sino también programar consultas de supervisión de forma
                 periódica contra el catálogo interno de MySQL para detectar posibles
                 agujeros de seguridad.</p>
-            <h3 id="consultas-de-auditoria-requeridas"><strong>Consultas de
+<h3 id="consultas-de-auditoria-requeridas"><strong>Consultas de
                     Auditoría requeridas:</strong> <a class="headerlink" href="#consultas-de-auditoria-requeridas"
                     title="Enlace permanente">¶</a></h3>
-            <h4 id="a1-deteccion-de-comodines-inseguros-de-red"><strong>1. Detección de
+<h4 id="a1-deteccion-de-comodines-inseguros-de-red"><strong>1. Detección de
                     comodines inseguros de red</strong> <a class="headerlink"
                     href="#a1-deteccion-de-comodines-inseguros-de-red" title="Enlace permanente">¶</a></h4>
-            <p>Muestra todos los usuarios y roles configurados que permiten el
+<p>Muestra todos los usuarios y roles configurados que permiten el
                 acceso desde cualquier ubicación remota (%), omitiendo las cuentas
                 legítimas autorizadas:</p>
-            <p>SELECT user, host, plugin<br>
+<p>SELECT user, host, plugin<br>
                 FROM mysql.user<br>
                 WHERE host = '%' AND user NOT IN ('root', 'mysql.sys');</p>
-            <h4 id="a2-localizacion-de-algoritmos-obsoletos-o-debiles"><strong>2.
+<h4 id="a2-localizacion-de-algoritmos-obsoletos-o-debiles"><strong>2.
                     Localización de algoritmos obsoletos o débiles</strong> <a class="headerlink"
                     href="#a2-localizacion-de-algoritmos-obsoletos-o-debiles" title="Enlace permanente">¶</a></h4>
-            <p>Localiza cuentas que sigan utilizando el algoritmo heredado de hash
+<p>Localiza cuentas que sigan utilizando el algoritmo heredado de hash
                 mysql_native_password en lugar de la encriptación moderna SHA-256
                 (caching_sha2_password):</p>
-            <p>SELECT user, host, plugin, password_last_changed<br>
+<p>SELECT user, host, plugin, password_last_changed<br>
                 FROM mysql.user<br>
                 WHERE plugin = 'mysql_native_password';</p>
-            <h4 id="a3-auditoria-de-asignacion-y-herencia-de-roles-mapeo-de-privilegios"><strong>3.
+<h4 id="a3-auditoria-de-asignacion-y-herencia-de-roles-mapeo-de-privilegios"><strong>3.
                     Auditoría de asignación y herencia de Roles (Mapeo de
                     privilegios)</strong> <a class="headerlink"
                     href="#a3-auditoria-de-asignacion-y-herencia-de-roles-mapeo-de-privilegios"
                     title="Enlace permanente">¶</a></h4>
-            <p>Muestra un reporte claro que relacione los usuarios de la base de
+<p>Muestra un reporte claro que relacione los usuarios de la base de
                 datos con los roles que tienen asociados y el estado de activación por
                 defecto:</p>
-            <p>SELECT<br>
+<p>SELECT<br>
                 FROM_USER AS 'Rol_Origen',<br>
                 TO_USER AS 'Usuario_Destino',<br>
                 WITH_ADMIN_OPTION AS 'Puede_Delegar'<br>
                 FROM mysql.role_edges;</p>
-            <h4 id="a4-identificacion-de-cuentas-bloqueadas-o-con-claves-expiradas"><strong>4.
+<h4 id="a4-identificacion-de-cuentas-bloqueadas-o-con-claves-expiradas"><strong>4.
                     Identificación de cuentas bloqueadas o con claves
                     expiradas</strong> <a class="headerlink"
                     href="#a4-identificacion-de-cuentas-bloqueadas-o-con-claves-expiradas" title="Enlace permanente">¶</a>
             </h4>
-            <p>Lista los usuarios que tienen suspendido el acceso temporal o
+<p>Lista los usuarios que tienen suspendido el acceso temporal o
                 permanentemente por motivos de seguridad:</p>
-            <p>SELECT user, host, account_locked, password_expired,
+<p>SELECT user, host, account_locked, password_expired,
                 password_lifetime<br>
                 FROM mysql.user<br>
                 WHERE account_locked = 'Y' OR password_expired = 'Y';</p>
-            <h2 id="a4-calificacion">4. CALIFICACIÓN <a class="headerlink" href="#a4-calificacion"
+                </article>
+
+                <article class="box-card">
+                    <h2 id="a4-calificacion">4. CALIFICACIÓN <a class="headerlink" href="#a4-calificacion"
                     title="Enlace permanente">¶</a></h2>
-                <p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
+<p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
                     través de la plataforma, la entrega del documento en formatos editables
                     no permitidos (como .docx), capturas con identificación del alumno/a o
                     la omisión de los enlaces de las fuentes documentales utilizadas
                     penalizará gravemente la nota o invalidará la práctica.</p>
-            <h2 id="a25"> <a class="headerlink" href="#a25" title="Enlace permanente">¶</a></h2>
-            <div class="table-wrapper">
+<h2 id="a25"> <a class="headerlink" href="#a25" title="Enlace permanente">¶</a></h2>
+<div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>
                         <thead>
@@ -483,12 +504,15 @@
                     </table>
                 </div>
             </div>
+                </article>
+            </details>
+        </section>
+    </main>
 
-        </main>
-    </div>
-
-
-
+    <footer>
+        <div class="footer-container">
+            <p class="footer-text">Curso 2026/2027</p>
+        </div>
+    </footer>
 </body>
-
 </html>
