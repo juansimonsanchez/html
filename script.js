@@ -110,7 +110,7 @@ function descargarPDF() {
     const nombreArchivo = `${tituloDoc}.pdf`;
 
     const opciones = {
-        margin:       [15, 10, 18, 10], // [superior, izquierdo, inferior, derecho] en mm para dejar espacio al header y footer
+        margin:       [15, 10, 18, 10], // [superior, izquierdo, inferior, derecho] en mm
         filename:     nombreArchivo,
         image:        { type: 'jpeg', quality: 0.98 },
         html2canvas:  {
@@ -118,13 +118,18 @@ function descargarPDF() {
             useCORS: true,
             letterRendering: true,
             scrollX: 0,
-            scrollY: 0, // evita PDFs en blanco o desplazados si la página está scrolleada
+            scrollY: 0,
             ignoreElements: el =>
                 (el.classList && (el.classList.contains('headerlink') || el.classList.contains('copy-btn'))) ||
                 (omitirImagenes && ['IMG', 'CANVAS', 'IMAGE', 'image'].includes(el.tagName))
         },
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
-        pagebreak:    { mode: ['css', 'legacy'], avoid: ['pre', 'tr', 'img', 'h2', 'h3', 'h4'] }
+        
+        // REGLAS CLAVE PARA EVITAR CORTES:
+        pagebreak:    { 
+            mode: ['avoid-all', 'css', 'legacy'], 
+            avoid: ['pre', 'table', 'img', 'figure', 'article', 'details', 'h2', 'h3', 'h4', 'ul', 'ol'] 
+        }
     };
 
     descargarPDF.enCurso = true;

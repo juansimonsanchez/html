@@ -955,3 +955,29 @@ main img {
     }
 }
 
+/* Asegurar que las imágenes nunca excedan el ancho del contenedor ni se salgan del margen */
+.main-content img {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block;
+    margin: 10px auto;
+}
+
+/* Evitar que los bloques de código o tablas rompan el ancho del PDF */
+.main-content pre, 
+.main-content .code-wrapper, 
+.main-content .table-wrapper {
+    max-width: 100% !important;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    white-space: pre-wrap; /* Fuerza el ajuste de línea en textos largos de código */
+    word-break: break-word;
+}
+
+/* Forzar que los elementos dentro del PDF respeten los cortes limpios */
+.main-content article, 
+.main-content details, 
+.main-content section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
