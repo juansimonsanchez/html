@@ -26,9 +26,17 @@
 
     <main class="main-content">
         <section>
-            <section class="box-card">
-                <h2 id="ficha-tecnica-de-la-actividad">Ficha Técnica de la Actividad</h2>
-                <table>
+            <header>
+                <h1 class="title">ASGBD – UT2 Tarea Control de Acceso y Vistas</h1>
+            </header>
+        </section>
+
+        <section>
+            <details>
+                <summary>Ficha Técnica</summary>
+                <div class="box-card">
+                    <h2 id="ficha-tecnica-de-la-actividad">Ficha Técnica de la Actividad</h2>
+                    <table>
                     <tbody>
                         <tr>
                             <th scope="col" class="column-width-30">Unidad de Trabajo</th>
@@ -56,29 +64,27 @@
                         </tr>
                     </tbody>
                 </table>
-
-                <div class="nota-importante">
+                    <div class="nota-importante">
                     <strong>Requisito obligatorio de autoría y evidencias:</strong> Para dar por válida cualquier
                     captura de pantalla, debe apreciarse claramente en la terminal interactiva de MySQL el prompt
                     configurado en la UT1 (ej. <code>[alumno@localhost (liga)]></code>) o la salida explícita de
                     <code>SELECT CURRENT_USER(), CURRENT_ROLE();</code>. Las capturas anónimas, incompletas o recortadas
                     invalidarán la actividad.
                 </div>
-            </section>
+                </div>
+            </details>
         </section>
 
         <section>
             <details>
-                <summary>Actividades y Cronograma</summary>
+                <summary>Actividades</summary>
                 <article class="box-card">
-                    <section>
-                <h2 id="bloque-i-fundamentos-teoricos-y-principio-del-menor-privilegio-ra3">Bloque I: Fundamentos Teóricos y Principio del Menor Privilegio (RA3)</h2>
-
-                <h3 id="actividad-1-arquitectura-del-catalogo-y-niveles-de-concesion-ce-3d-3h">Actividad 1: Arquitectura del Catálogo y Niveles de Concesión <span class="tag label-info">CE
+                    <h2 id="bloque-i-fundamentos-teoricos-y-principio-del-menor-privilegio-ra3">Bloque I: Fundamentos Teóricos y Principio del Menor Privilegio (RA3)</h2>
+                    <h3 id="actividad-1-arquitectura-del-catalogo-y-niveles-de-concesion-ce-3d-3h">Actividad 1: Arquitectura del Catálogo y Niveles de Concesión <span class="tag label-info">CE
                         3.d, 3.h</span></h3>
-                <p>Responde de manera sintética, rigurosa y justificada a las siguientes cuestiones técnicas en tu
+                    <p>Responde de manera sintética, rigurosa y justificada a las siguientes cuestiones técnicas en tu
                     memoria:</p>
-                <ol>
+                    <ol>
                     <li><strong>Principio del Menor Privilegio (PoLP):</strong> Justifica técnicamente por qué una
                         aplicación web que interactúa con la base de datos de la liga nunca debe conectarse al servicio
                         utilizando la cuenta <code>root</code> ni disponer de privilegios globales (<code>*.*</code>).
@@ -101,18 +107,15 @@
                         una nueva sesión y qué instrucción administrativa permite automatizar su activación por defecto.
                     </li>
                 </ol>
-            </section>
                 </article>
 
                 <article class="box-card">
-                    <section>
-                <h2 id="bloque-ii-provision-de-cuentas-y-granularidad-escalar-de-privilegios-ra3">Bloque II: Provisión de Cuentas y Granularidad Escalar de Privilegios (RA3)</h2>
-
-                <h3 id="actividad-2-creacion-de-usuarios-y-control-de-acceso-de-red-ce-3c-3h">Actividad 2: Creación de Usuarios y Control de Acceso de Red <span class="tag label-info">CE
+                    <h2 id="bloque-ii-provision-de-cuentas-y-granularidad-escalar-de-privilegios-ra3">Bloque II: Provisión de Cuentas y Granularidad Escalar de Privilegios (RA3)</h2>
+                    <h3 id="actividad-2-creacion-de-usuarios-y-control-de-acceso-de-red-ce-3c-3h">Actividad 2: Creación de Usuarios y Control de Acceso de Red <span class="tag label-info">CE
                         3.c, 3.h</span></h3>
-                <p>Crea las siguientes cuentas de usuario delimitando con exactitud el host de conexión y las
+                    <p>Crea las siguientes cuentas de usuario delimitando con exactitud el host de conexión y las
                     credenciales mediante el plugin de autenticación compatible:</p>
-                <ol>
+                    <ol>
                     <li><code>'usr_prensa'@'localhost'</code>: Conectado vía socket local con autenticación
                         <code>mysql_native_password</code> y contraseña <code>PrensaPass_2026!</code>.</li>
                     <li><code>'usr_delegado'@'localhost'</code>: Conectado localmente con autenticación
@@ -120,18 +123,17 @@
                     <li><code>'usr_rrhh'@'127.0.0.1'</code>: Conectado a través del loopback TCP/IP con autenticación
                         <code>mysql_native_password</code> y contraseña <code>RrhhSecure_2026!</code>.</li>
                 </ol>
-                <p><em>Adjunta captura consultando la tabla <code>mysql.user</code> donde se verifiquen los campos
+                    <p><em>Adjunta captura consultando la tabla <code>mysql.user</code> donde se verifiquen los campos
                         <code>user</code>, <code>host</code> y <code>plugin</code> para estas tres identidades.</em></p>
-                <p>Desde Opensuse no hemos podido conectarnos utilizando caching_sha2_password. Verifica si creamos un
+                    <p>Desde Opensuse no hemos podido conectarnos utilizando caching_sha2_password. Verifica si creamos un
                     usuario utilizando caching_sha2_password
                     se puede conectar. Si no lo puede hacer buscar como solucionarlo. Pista: normalmente es por utilizar
                     un cliente antiguo o nos falta una librería (libmysqlclient-dev). Hacer una captura para comprobar
                     el plugin del usuario, el
                     error al intentar conectarse, la solución aplicada y como puede conectarse</p>
-
-                <h3 id="actividad-3-concesion-de-privilegios-a-nivel-de-tabla-y-columna-ce-3d-3f">Actividad 3: Concesión de Privilegios a Nivel de Tabla y Columna <span class="tag label-info">CE
+                    <h3 id="actividad-3-concesion-de-privilegios-a-nivel-de-tabla-y-columna-ce-3d-3f">Actividad 3: Concesión de Privilegios a Nivel de Tabla y Columna <span class="tag label-info">CE
                         3.d, 3.f</span></h3>
-                <ol>
+                    <ol>
                     <li><strong>Nivel de Tabla (Mesa de Control - <code>usr_delegado</code>):</strong>
                         Concede permisos para consultar (<code>SELECT</code>), insertar actas de partido
                         (<code>INSERT</code>) y actualizar incidencias (<code>UPDATE</code>) exclusivamente sobre la
@@ -150,48 +152,66 @@
                     <li><em>(Nota técnica):</em> El usuario <code>usr_prensa</code> recibirá sus privilegios en el
                         Bloque IV una vez desplegadas las vistas públicas.</li>
                 </ol>
-                <p><em>Ejecuta e incluye la captura del comando <code>SHOW GRANTS FOR ...</code> para las cuentas
+                    <p><em>Ejecuta e incluye la captura del comando <code>SHOW GRANTS FOR ...</code> para las cuentas
                         <code>usr_delegado</code> y <code>usr_rrhh</code>.</em></p>
-            </section>
                 </article>
 
                 <article class="box-card">
-                    <section>
-                <h2 id="bloque-iii-gestion-avanzada-mediante-roles-rbac-y-ciclo-de-vida-ra3">Bloque III: Gestión Avanzada Mediante Roles (RBAC) y Ciclo de Vida (RA3)</h2>
-
-                <h3 id="actividad-4-despliegue-de-roles-y-activacion-automatica-ce-3e-3g-3h">Actividad 4: Despliegue de Roles y Activación Automática <span class="tag label-info">CE
+                    <h2 id="bloque-iii-gestion-avanzada-mediante-roles-rbac-y-ciclo-de-vida-ra3">Bloque III: Gestión Avanzada Mediante Roles (RBAC) y Ciclo de Vida (RA3)</h2>
+                    <h3 id="actividad-4-despliegue-de-roles-y-activacion-automatica-ce-3e-3g-3h">Actividad 4: Despliegue de Roles y Activación Automática <span class="tag label-info">CE
                         3.e, 3.g, 3.h</span></h3>
-                <strong>Creación del Rol:</strong> Crea un rol administrativo denominado
-                <code>rol_competicion_admin</code>:
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <strong>Creación del Rol:</strong>
+                    Crea un rol administrativo denominado
+                    <code>rol_competicion_admin</code>
+                    :
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>CREATE ROLE IF NOT EXISTS 'rol_competicion_admin';</code></pre>
                 </div>
-                <strong>Dotación de Privilegios al Rol:</strong> Concede al rol permisos completos de manipulación
-                (<code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>) sobre las tablas
-                <code>equipos</code> y <code>partidos</code> de la base de datos <code>liga</code>.
-                <strong>Provisión y Enlace:</strong> Crea la cuenta <code>'gestor_liga'@'localhost'</code> identificada
-                con <code>mysql_native_password</code> y vincúlale el rol:
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <strong>Dotación de Privilegios al Rol:</strong>
+                    Concede al rol permisos completos de manipulación
+                (
+                    <code>SELECT</code>
+                    ,
+                    <code>INSERT</code>
+                    ,
+                    <code>UPDATE</code>
+                    ,
+                    <code>DELETE</code>
+                    ) sobre las tablas
+                    <code>equipos</code>
+                    y
+                    <code>partidos</code>
+                    de la base de datos
+                    <code>liga</code>
+                    .
+                    <strong>Provisión y Enlace:</strong>
+                    Crea la cuenta
+                    <code>'gestor_liga'@'localhost'</code>
+                    identificada
+                con
+                    <code>mysql_native_password</code>
+                    y vincúlale el rol:
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>GRANT 'rol_competicion_admin' TO 'gestor_liga'@'localhost';</code></pre>
                 </div>
-                <strong>Activación por Defecto:</strong> Configura la cuenta para que el rol se active de manera
+                    <strong>Activación por Defecto:</strong>
+                    Configura la cuenta para que el rol se active de manera
                 automática en cada inicio de sesión:
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>SET DEFAULT ROLE 'rol_competicion_admin' TO 'gestor_liga'@'localhost';</code></pre>
                 </div>
-
-                <strong>Verificación de Sesión:</strong> Inicia sesión interactiva con el usuario
-                <code>gestor_liga</code> y aporta una captura donde se visualice:
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <strong>Verificación de Sesión:</strong>
+                    Inicia sesión interactiva con el usuario
+                    <code>gestor_liga</code>
+                    y aporta una captura donde se visualice:
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>SELECT CURRENT_USER(), CURRENT_ROLE();</code></pre>
                 </div>
-                <em>Debe apreciarse de forma inequívoca el rol <code>`rol_competicion_admin`@`%`</code> en estado
+                    <em>Debe apreciarse de forma inequívoca el rol <code>`rol_competicion_admin`@`%`</code> en estado
                     activo.</em>
-
-
-                <h3 id="actividad-5-delegacion-y-revocacion-estricta-de-accesos-ce-3d-3f-3g">Actividad 5: Delegación y Revocación Estricta de Accesos <span class="tag label-info">CE
+                    <h3 id="actividad-5-delegacion-y-revocacion-estricta-de-accesos-ce-3d-3f-3g">Actividad 5: Delegación y Revocación Estricta de Accesos <span class="tag label-info">CE
                         3.d, 3.f, 3.g</span></h3>
-                <ol>
+                    <ol>
                     <li>Permite que el usuario <code>gestor_liga</code> pueda delegar privilegios de lectura sobre la
                         tabla <code>equipos</code> a terceros utilizando la cláusula <code>WITH GRANT OPTION</code>.
                     </li>
@@ -200,18 +220,15 @@
                     <li>Demuestra con <code>SHOW GRANTS FOR 'gestor_liga'@'localhost';</code> que la cuenta ha quedado
                         despojada de sus derechos operativos.</li>
                 </ol>
-            </section>
                 </article>
 
                 <article class="box-card">
-                    <section>
-                <h2 id="bloque-iv-capa-de-abstraccion-con-vistas-y-sinonimos-ra3">Bloque IV: Capa de Abstracción con Vistas y Sinónimos (RA3)</h2>
-
-                <h3 id="actividad-6-diseno-de-vistas-de-consulta-y-ofuscacion-de-datos-ce-3a-3h">Actividad 6: Diseño de Vistas de Consulta y Ofuscación de Datos <span class="tag label-info">CE
+                    <h2 id="bloque-iv-capa-de-abstraccion-con-vistas-y-sinonimos-ra3">Bloque IV: Capa de Abstracción con Vistas y Sinónimos (RA3)</h2>
+                    <h3 id="actividad-6-diseno-de-vistas-de-consulta-y-ofuscacion-de-datos-ce-3a-3h">Actividad 6: Diseño de Vistas de Consulta y Ofuscación de Datos <span class="tag label-info">CE
                         3.a, 3.h</span></h3>
-                <p>Implementa sobre la base de datos <code>liga</code> las siguientes vistas para ocultar información
+                    <p>Implementa sobre la base de datos <code>liga</code> las siguientes vistas para ocultar información
                     sensible y simplificar consultas analíticas:</p>
-                <ol>
+                    <ol>
                     <li>
                         <strong><code>v_jugadores_plantilla</code>:</strong> Muestra el identificador del jugador, su
                         nombre completo en un único campo (<code>nombre</code> y <code>apellido</code>), su puesto,
@@ -239,39 +256,44 @@
                         de la tabla <code>jugadores</code> mediante la clave <code>id_capitan</code>.
                     </li>
                 </ol>
-                <p><em>Adjunta capturas de la creación de las vistas y de la comprobación ejecutando un
+                    <p><em>Adjunta capturas de la creación de las vistas y de la comprobación ejecutando un
                         <code>SELECT * FROM vista LIMIT 5;</code> sobre cada una de ellas.</em></p>
-
-                <h3 id="actividad-7-vistas-actualizables-y-clausula-with-check-option-ce-3a-3h">Actividad 7: Vistas Actualizables y Cláusula <code>WITH CHECK OPTION</code> <span class="tag label-info">CE
+                    <h3 id="actividad-7-vistas-actualizables-y-clausula-with-check-option-ce-3a-3h">Actividad 7: Vistas Actualizables y Cláusula <code>WITH CHECK OPTION</code> <span class="tag label-info">CE
                         3.a, 3.h</span></h3>
-                Crea la vista actualizable <code>v_pivots_candidatos</code>:
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    Crea la vista actualizable
+                    <code>v_pivots_candidatos</code>
+                    :
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>CREATE OR REPLACE VIEW v_pivots_candidatos AS
 SELECT id_jugador, nombre, apellido, puesto, altura, id_equipo
 FROM jugadores
 WHERE puesto = 'Pívot' AND altura >= 2.00
 WITH CHECK OPTION;</code></pre>
                 </div>
-                Inserta un jugador válido a través de la vista:
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    Inserta un jugador válido a través de la vista:
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>INSERT INTO v_pivots_candidatos (nombre, apellido, puesto, altura, id_equipo)
 VALUES ('Pau', 'Gasol', 'Pívot', 2.15, 1);</code></pre>
                 </div>
-                <em>Aporta captura comprobando que el registro se ha persistido correctamente en la tabla física
+                    <em>Aporta captura comprobando que el registro se ha persistido correctamente en la tabla física
                     <code>jugadores</code>.</em>
-                Intenta insertar un registro que incumpla las condiciones de la vista (por ejemplo, con puesto
-                <code>'Base'</code> o altura <code>1.92</code>):
-                <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    Intenta insertar un registro que incumpla las condiciones de la vista (por ejemplo, con puesto
+                    <code>'Base'</code>
+                    o altura
+                    <code>1.92</code>
+                    ):
+                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>INSERT INTO v_pivots_candidatos (nombre, apellido, puesto, altura, id_equipo)
 VALUES ('Ricky', 'Rubio', 'Base', 1.92, 1);</code></pre>
                 </div>
-                Documenta mediante captura el error de bloqueo (<strong>Error 1369</strong>) y explica el papel de
-                <code>WITH CHECK OPTION</code> para garantizar la coherencia lógica de los datos.
-
-
-                <h3 id="actividad-8-asignacion-de-permisos-sobre-vistas-y-emulacion-de-sinonimos-ce-3a-3b">Actividad 8: Asignación de Permisos sobre Vistas y Emulación de Sinónimos <span class="tag label-info">CE
+                    Documenta mediante captura el error de bloqueo (
+                    <strong>Error 1369</strong>
+                    ) y explica el papel de
+                    <code>WITH CHECK OPTION</code>
+                    para garantizar la coherencia lógica de los datos.
+                    <h3 id="actividad-8-asignacion-de-permisos-sobre-vistas-y-emulacion-de-sinonimos-ce-3a-3b">Actividad 8: Asignación de Permisos sobre Vistas y Emulación de Sinónimos <span class="tag label-info">CE
                         3.a, 3.b</span></h3>
-                <ol>
+                    <ol>
                     <li><strong>Emulación de Sinónimos:</strong> En MySQL 8.0, donde no existe
                         <code>CREATE SYNONYM</code>, crea la vista <code>arbitros_liga</code> que emule un sinónimo
                         exacto 1:1 de la tabla física <code>arbitros</code>. Verifica su registro con
@@ -283,13 +305,12 @@ VALUES ('Ricky', 'Rubio', 'Base', 1.92, 1);</code></pre>
                     <li>Demuestra con <code>SHOW GRANTS FOR 'usr_prensa'@'localhost';</code> que la cuenta tiene acceso
                         únicamente a estas vistas y no a las tablas base.</li>
                 </ol>
-            </section>
-<section><h3 id="actividad-10-auditoria-de-seguridad-y-bastionado-ce-3c-3g-3h">Actividad 9: Auditoría de Seguridad y Bastionado del Servidor <span class="tag label-info">CE 3.c, 3.g, 3.h</span></h3>
-<p>
+                    <h3 id="actividad-10-auditoria-de-seguridad-y-bastionado-ce-3c-3g-3h">Actividad 9: Auditoría de Seguridad y Bastionado del Servidor <span class="tag label-info">CE 3.c, 3.g, 3.h</span></h3>
+                    <p>
     En esta actividad final auditarás la seguridad de tu servidor MySQL frente a posibles accesos no autorizados locales y de red.
     Para cada uno de los aspectos de la lista, debes comprobar en tu entorno si tu instalación es segura o presenta la incidencia.
 </p>
-<div class="nota-importante">
+                    <div class="nota-importante">
     <strong>Uso guiado de la Inteligencia Artificial (IA):</strong> Puedes utilizar asistentes de IA (ChatGPT, Gemini, etc.) como apoyo consultivo. Pídele ayuda formulando preguntas claras sobre:
     <ol >
         <li><strong>¿Cómo detectarlo?</strong> Qué consulta SQL o comando de terminal Linux permite verificar el estado.</li>
@@ -297,12 +318,10 @@ VALUES ('Ricky', 'Rubio', 'Base', 1.92, 1);</code></pre>
     </ol>
     <em>Recuerda contrastar críticamente las respuestas de la IA antes de aplicarlas en tu máquina para evitar dejar el servicio inoperativo.</em>
 </div>
-
-<p>Por cada punto del checklist, debes incluir en la memoria: el <strong>resultado de la comprobación</strong> .</p>
-
-<h4>1. Incidencias Graves (Riesgo Crítico / Compromiso Inmediato)</h4>
-<p>Fallos que permiten el control total del servidor, ejecución de comandos o acceso remoto no autenticado:</p>
-<ul>
+                    <p>Por cada punto del checklist, debes incluir en la memoria: el <strong>resultado de la comprobación</strong> .</p>
+                    <h4>1. Incidencias Graves (Riesgo Crítico / Compromiso Inmediato)</h4>
+                    <p>Fallos que permiten el control total del servidor, ejecución de comandos o acceso remoto no autenticado:</p>
+                    <ul>
     <li><strong>Acceso remoto del superusuario <code>root</code>:</strong> Comprobar que <code>root</code> solo puede conectar desde <code>localhost</code> (o <code>127.0.0.1</code>) y jamás desde cualquier IP (<code>%</code>).</li>
     <li><strong>Usuarios anónimos:</strong> Verificar que no existan cuentas con el nombre de usuario en blanco (<code>User = ''</code> en <code>mysql.user</code>).</li>
     <li><strong>Privilegios globales excesivos:</strong> Comprobar que los usuarios de aplicaciones normales no tengan permisos administrativos (<code>SUPER</code>, <code>GRANT OPTION</code>, <code>FILE</code>, <code>SHUTDOWN</code>) ni acceso a <code>*.*</code>.</li>
@@ -310,10 +329,9 @@ VALUES ('Ricky', 'Rubio', 'Base', 1.92, 1);</code></pre>
     <li><strong>Servicio ejecutado como superusuario del sistema:</strong> Verificar que el demonio <code>mysqld</code> se ejecuta bajo el usuario del sistema <code>mysql</code> y nunca como <code>root</code> de Linux.</li>
     <li><strong>Permisos del directorio de datos (<code>datadir</code>):</strong> Comprobar que <code>/var/lib/mysql</code> tiene permisos restrictivos (<code>0700</code> o <code>0750</code>) y pertenece a <code>mysql:mysql</code>.</li>
 </ul>
-
-<h4>2. Incidencias Moderadas (Superficie de Exposición y Políticas de Acceso)</h4>
-<p>Debilidades de configuración que facilitan ataques dirigidos, fugas de credenciales o movimientos laterales:</p>
-<ul>
+                    <h4>2. Incidencias Moderadas (Superficie de Exposición y Políticas de Acceso)</h4>
+                    <p>Debilidades de configuración que facilitan ataques dirigidos, fugas de credenciales o movimientos laterales:</p>
+                    <ul>
     <li><strong>Escucha de red innecesaria (<code>bind-address</code>):</strong> Si la base de datos solo atiende a aplicaciones en la misma máquina, asegurar que escucha en <code>127.0.0.1</code> y no en todas las interfaces (<code>0.0.0.0</code>).</li>
     <li><strong>Existencia de la base de datos <code>test</code>:</strong> Confirmar que se ha eliminado la base de datos <code>test</code> y sus permisos por defecto asociados (<code>test_%</code>).</li>
     <li><strong>Permisos de los ficheros de configuración:</strong> Comprobar que <code>/etc/mysql/my.cnf</code> y sus subdirectorios tienen permisos seguros (<code>0640</code> o <code>0600</code>) y son propiedad de <code>root</code>.</li>
@@ -322,10 +340,9 @@ VALUES ('Ricky', 'Rubio', 'Base', 1.92, 1);</code></pre>
     <li><strong>Historial de comandos con contraseñas:</strong> Comprobar que el archivo <code>~/.mysql_history</code> de los usuarios del sistema no almacena credenciales en texto claro (recomendar vaciado o enlace a <code>/dev/null</code>).</li>
     <li><strong>Registro general activado (<code>general_log</code>):</strong> Verificar que está desactivado (<code>OFF</code>) en entornos reales para evitar guardar contraseñas y datos sensibles en texto claro.</li>
 </ul>
-
-<h4>3. Incidencias Leves (Buenas Prácticas y Defensa en Profundidad)</h4>
-<p>Ajustes recomendados para robustecer la robustez operativa, auditoría y resistencia a ataques de fuerza bruta:</p>
-<ul>
+                    <h4>3. Incidencias Leves (Buenas Prácticas y Defensa en Profundidad)</h4>
+                    <p>Ajustes recomendados para robustecer la robustez operativa, auditoría y resistencia a ataques de fuerza bruta:</p>
+                    <ul>
     <li><strong>Componente de validación de contraseñas:</strong> Comprobar si está activo <code>validate_password</code> con directivas mínimas de longitud y complejidad.</li>
     <li><strong>Política de expiración y bloqueo de cuentas:</strong> Verificar si están configurados límites de intentos fallidos (<code>FAILED_LOGIN_ATTEMPTS</code>) y caducidad periódica.</li>
     <li><strong>Plugin de autenticación seguro:</strong> Asegurar el uso de mecanismos modernos (como <code>caching_sha2_password</code>) y evitar plugins desaconsejados u obsoletos.</li>
@@ -333,20 +350,17 @@ VALUES ('Ricky', 'Rubio', 'Base', 1.92, 1);</code></pre>
     <li><strong>Permisos del registro de errores:</strong> Verificar que el archivo indicado en <code>log_error</code> solo puede ser leído por el usuario <code>mysql</code> o administradores (<code>0640</code>).</li>
     <li><strong>Perfil de confinamiento activo:</strong> Comprobar que el servicio cuenta con perfil en modo <em>enforce</em> mediante AppArmor o SELinux.</li>
     <li><strong>Trazabilidad y auditoría:</strong> Identificar la presencia o posibilidad de activar plugins de auditoría para registrar intentos de acceso y cambios de permisos (DCL).</li>
-</ul></section>
+</ul>
                 </article>
 
                 <article class="box-card">
-                    <section>
-                <h2 id="bloque-v-matriz-de-evidencias-y-auditoria-de-seguridad-ra3">Bloque V: Matriz de Evidencias y Auditoría de Seguridad (RA3)</h2>
-
-                <h3 id="actividad-9-verificacion-cruzada-operaciones-autorizadas-vs-denegadas-ce-3c-3d-3f-3h">Actividad 10: Verificación Cruzada (Operaciones Autorizadas vs. Denegadas) <span class="tag label-info">CE
+                    <h2 id="bloque-v-matriz-de-evidencias-y-auditoria-de-seguridad-ra3">Bloque V: Matriz de Evidencias y Auditoría de Seguridad (RA3)</h2>
+                    <h3 id="actividad-9-verificacion-cruzada-operaciones-autorizadas-vs-denegadas-ce-3c-3d-3f-3h">Actividad 10: Verificación Cruzada (Operaciones Autorizadas vs. Denegadas) <span class="tag label-info">CE
                         3.c, 3.d, 3.f, 3.h</span></h3>
-                <p>Para comprobar que el Principio del Menor Privilegio se cumple rigurosamente y no existen vías de
+                    <p>Para comprobar que el Principio del Menor Privilegio se cumple rigurosamente y no existen vías de
                     escalada de privilegios, aporta en tu memoria técnica las capturas emparejadas de las siguientes
                     pruebas:</p>
-
-                <table>
+                    <table>
                     <thead>
                         <tr>
                             <th scope="col" class="column-width-20">Usuario Conectado</th>
@@ -384,13 +398,11 @@ VALUES ('Ricky', 'Rubio', 'Base', 1.92, 1);</code></pre>
                         </tr>
                     </tbody>
                 </table>
-            </section>
                 </article>
 
                 <article class="box-card">
-                    <section>
-                <h2 id="rubrica-de-calificacion">Rúbrica de Calificación</h2>
-                <table>
+                    <h2 id="rubrica-de-calificacion">Rúbrica de Calificación</h2>
+                    <table>
                     <thead>
                         <tr>
                             <th scope="col">Bloque Evaluado</th>
@@ -456,7 +468,6 @@ VALUES ('Ricky', 'Rubio', 'Base', 1.92, 1);</code></pre>
                         </tr>
                     </tbody>
                 </table>
-            </section>
                 </article>
             </details>
         </section>
