@@ -152,10 +152,11 @@ function descargarPDF() {
         },
         jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
         
-        // REGLAS CLAVE PARA EVITAR CORTES:
+        // REGLAS CLAVE PARA EVITAR CORTES SIN CREAR PÁGINAS VACÍAS:
+        // No forzamos avoid en encabezados para evitar saltos de página artificiales entre apartados.
         pagebreak:    { 
-            mode: ['avoid-all', 'css', 'legacy'], 
-            avoid: ['p', 'li', 'tr', 'pre', 'table', 'img', 'figure', 'article', 'details', 'h1', 'h2', 'h3', 'h4', 'ul', 'ol', '.box-card', '.box-notice', '.code-wrapper'] 
+            mode: ['css', 'legacy'], 
+            avoid: ['table', 'img', 'figure', 'tr', '.box-notice'] 
         }
     };
 
@@ -165,64 +166,33 @@ function descargarPDF() {
     const cerrados = Array.from(origen.querySelectorAll('details:not([open])'));
     cerrados.forEach(d => { d.open = true; });
 
-    // Los navegadores limitan el tamaño máximo de un canvas (~32.000 px de alto).
-    // Para páginas largas dividimos el contenido en fragmentos y los añadimos al mismo PDF.
-    const ALTO_MAX = 7000; // px CSS por fragmento
-    const bloques = [];
-    const recoger = nodo => {
-        for (const hijo of nodo.children) {
-            if (hijo.offsetHeight === 0) continue;
-            const indivisible = ['TABLE', 'PRE', 'IMG', 'UL', 'OL'].includes(hijo.tagName);
-            if (hijo.offsetHeight > ALTO_MAX && hijo.children.length && !indivisible) {
-                recoger(hijo);
-            } else {
-                bloques.push(hijo);
-            }
-        }
-    };
-    recoger(origen);
+    // Preparamos el elemento de origen directamente aplicándole la clase de exportación
+    // Esto garantiza que html2pdf capture el documento auténtico una sola vez, sin duplicarlo ni fragmentarlo
+    origen.classList.add('pdf-export');
 
-    const grupos = [];
-    let actual = [], alto = 0;
-    bloques.forEach(b => {
-        const h = b.offsetHeight;
-        if (actual.length && alto + h > ALTO_MAX) {
-            grupos.push(actual);
-            actual = [];
-            alto = 0;
+    // Ocultar botones y enlaces auxiliares durante la exportación
+    const botonesOcultar = Array.from(origen.querySelectorAll('.copy-btn, button, .headerlink'));
+    botonesOcultar.forEach(el => { el.dataset.prevDisplay = el.style.display; el.style.display = 'none'; });
+
+    // Recortar espacios y saltos de línea superfluos dentro de bloques de código
+    const codigosTrim = [];
+    origen.querySelectorAll('pre code, pre').forEach(el => {
+        if (el.childNodes.length === 1 && el.childNodes[0].nodeType === Node.TEXT_NODE) {
+            codigosTrim.push({ el, original: el.textContent });
+            el.textContent = el.textContent.trim();
         }
-        actual.push(b);
-        alto += h;
     });
-    if (actual.length) grupos.push(actual);
-    if (!grupos.length) grupos.push([origen]);
-
-    // Cada fragmento se envuelve en un <main class="main-content"> para conservar los estilos
-    const crearContenedor = grupo => {
-        const c = document.createElement('main');
-        c.className = 'main-content';
-        grupo.forEach(n => c.appendChild(n.cloneNode(true)));
-        return c;
-    };
 
     const restaurar = () => {
+        origen.classList.remove('pdf-export');
+        botonesOcultar.forEach(el => { el.style.display = el.dataset.prevDisplay || ''; });
+        codigosTrim.forEach(item => { item.el.textContent = item.original; });
         cerrados.forEach(d => { d.open = false; });
         descargarPDF.enCurso = false;
     };
 
-    // Generar los fragmentos en el worker de html2pdf
-    let worker = html2pdf().set(opciones).from(crearContenedor(grupos[0])).toPdf();
-    grupos.slice(1).forEach(g => {
-        worker = worker.get('pdf')
-            .then(pdf => { pdf.addPage(); })
-            .from(crearContenedor(g))
-            .toContainer()
-            .toCanvas()
-            .toPdf();
-    });
-
-    // Procesar todas las páginas generadas para estampar el Encabezado y el Pie de página
-    worker.toPdf().get('pdf').then(pdf => {
+    // Generar el PDF directamente desde el origen limpio
+    html2pdf().set(opciones).from(origen).toPdf().get('pdf').then(pdf => {
         const totalPages = pdf.internal.getNumberOfPages();
         const tituloOriginal = document.title;
 
@@ -244,22 +214,19 @@ function descargarPDF() {
             pdf.text(`Página ${i} de ${totalPages}`, anchoPagina - 10, altoPagina - 9, { align: "right" });
             pdf.text("Curso 2026/2027", 10, altoPagina - 9);
         }
-    }).then(() => {
-        // Guardar el documento final y restaurar el DOM
-        worker.save(nombreArchivo)
-            .then(restaurar)
-            .catch(err => {
-                restaurar();
-                console.error('Error al generar el PDF:', err);
-                const local = location.protocol === 'file:';
-                const motivo = local
-                    ? 'La página se ha abierto como archivo local (file://) y el navegador bloquea la captura de imágenes.\n' +
-                      'Ábrela desde un servidor web (p. ej. Live Server o "python3 -m http.server").\n\n'
-                    : '';
-                if (confirm('No se ha podido generar el PDF.\n\n' + motivo +
-                            '¿Quieres abrir el diálogo de impresión para "Guardar como PDF"?')) {
-                    window.print();
-                }
-            });
+
+        return pdf;
+    }).save(nombreArchivo).then(restaurar).catch(err => {
+        restaurar();
+        console.error('Error al generar el PDF:', err);
+        const local = location.protocol === 'file:';
+        const motivo = local
+            ? 'La página se ha abierto como archivo local (file://) y el navegador bloquea la captura de imágenes.\n' +
+              'Ábrela desde un servidor web (p. ej. Live Server o "python3 -m http.server").\n\n'
+            : '';
+        if (confirm('No se ha podido generar el PDF.\n\n' + motivo +
+                    '¿Quieres abrir el diálogo de impresión para "Guardar como PDF"?')) {
+            window.print();
+        }
     });
 }

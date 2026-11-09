@@ -52,7 +52,8 @@ body {
     background-color: var(--bg-body);
     color: var(--text-body);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    line-height: 1.65;
+    font-size: 0.95rem;
+    line-height: 1.5;
     margin: 0;
     padding: 20px;
     min-height: 100vh;
@@ -416,13 +417,17 @@ h6:hover .headerlink {
     color: var(--primary);
 }
 
+p {
+    margin: 0.5rem 0;
+}
+
 ul, ol {
-    margin: 1rem 0;
-    padding-left: 2rem;
+    margin: 0.6rem 0;
+    padding-left: 1.75rem;
 }
 
 li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
 }
 
 .h1-tight {
@@ -516,24 +521,24 @@ tr:hover td:first-child:has(strong) {
    -------------------------------------------------------------------------- */
 .code-wrapper {
     position: relative;
-    margin: 1.5rem 0;
-    border-radius: var(--radius-lg);
+    margin: 0.4rem 0;
+    border-radius: var(--radius-md);
     overflow: hidden;
     background: #0f172a;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .copy-btn {
     position: absolute;
-    top: 8px;
-    right: 8px;
+    top: 4px;
+    right: 4px;
     z-index: 10;
-    padding: 6px 12px;
+    padding: 2px 8px;
     border: 0;
-    border-radius: 5px;
+    border-radius: 4px;
     background: #334155;
     color: #f8fafc;
-    font-size: 0.8rem;
+    font-size: 0.72rem;
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.2s;
@@ -545,12 +550,12 @@ tr:hover td:first-child:has(strong) {
 
 pre {
     margin: 0;
-    padding: 1.25rem;
+    padding: 0.4rem 0.75rem;
     background: #0f172a;
     color: #f8fafc;
     font-family: "Fira Code", Consolas, Monaco, "Andale Mono", monospace;
-    font-size: 0.92rem;
-    line-height: 1.6;
+    font-size: 0.8rem;
+    line-height: 1.35;
     overflow-x: auto;
     white-space: pre-wrap;
     word-break: break-all;
@@ -974,24 +979,125 @@ main img {
     word-break: break-word;
 }
 
-/* Forzar que los elementos dentro del PDF respeten los cortes limpios */
-.main-content article, 
-.main-content details, 
-.main-content section,
-.main-content p,
-.main-content li,
+/* Forzar que los elementos atómicos dentro del PDF respeten los cortes limpios sin romper contenedores grandes */
 .main-content tr,
-.main-content h1,
-.main-content h2,
-.main-content h3,
-.main-content h4,
-.main-content h5,
-.main-content h6,
-.main-content .box-card,
-.main-content .box-notice,
-.main-content .code-wrapper {
+.main-content .table-wrapper,
+.main-content img,
+.main-content figure,
+.main-content .box-notice {
     break-inside: avoid;
     page-break-inside: avoid;
+}
+
+/* En PDF permitimos que los títulos fluyan sin forzar saltos previos o posteriores */
+.pdf-export h1,
+.pdf-export h2,
+.pdf-export h3,
+.pdf-export h4,
+.pdf-export h5,
+.pdf-export h6 {
+    break-after: auto !important;
+    page-break-after: auto !important;
+    break-before: auto !important;
+    page-break-before: auto !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-top: 0.35rem !important;
+    margin-bottom: 0.2rem !important;
+}
+
+/* Reducir márgenes/paddings superfluos durante la generación o impresión de PDF */
+.pdf-export,
+.pdf-export body {
+    font-size: 0.85rem !important;
+    line-height: 1.35 !important;
+    display: block !important;
+}
+
+.pdf-export p {
+    margin: 0.25rem 0 !important;
+}
+
+.pdf-export ul,
+.pdf-export ol {
+    margin: 0.25rem 0 !important;
+    padding-left: 1.4rem !important;
+}
+
+.pdf-export li {
+    margin-bottom: 0.15rem !important;
+}
+
+/* Ocultar la barra/botón de desplegar (summary) en el PDF para eliminar espacio y flechas */
+.pdf-export summary,
+.pdf-export .summary-title,
+.pdf-export .summary-compact {
+    display: none !important;
+}
+
+.pdf-export details > *:not(summary) {
+    padding: 0 !important;
+}
+
+.pdf-export section,
+.pdf-export article,
+.pdf-export details {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    margin: 0 0 0.35rem 0 !important;
+    padding: 0 !important;
+    display: block !important;
+    break-before: auto !important;
+    page-break-before: auto !important;
+    break-after: auto !important;
+    page-break-after: auto !important;
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+}
+
+.pdf-export .box-card,
+.pdf-export details > .box-card {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    margin: 0 0 0.35rem 0 !important;
+    padding: 0 !important;
+    display: block !important;
+    break-before: auto !important;
+    page-break-before: auto !important;
+    break-after: auto !important;
+    page-break-after: auto !important;
+    break-inside: auto !important;
+    page-break-inside: auto !important;
+}
+
+.pdf-export .table-wrapper {
+    margin: 0.4rem 0 !important;
+    box-shadow: none !important;
+}
+
+.pdf-export .code-wrapper {
+    margin: 0.15rem 0 !important;
+    padding: 0 !important;
+    border-radius: 3px !important;
+    box-shadow: none !important;
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+}
+
+.pdf-export pre {
+    padding: 0.15rem 0.4rem !important;
+    font-size: 0.7rem !important;
+    line-height: 1.15 !important;
+    margin: 0 !important;
+}
+
+.pdf-export pre code {
+    padding: 0 !important;
+    margin: 0 !important;
+    line-height: 1.15 !important;
+    display: block !important;
 }
 
 @media print {
@@ -1005,7 +1111,10 @@ main img {
     button,
     .copy-btn,
     .left-panel,
-    .headerlink {
+    .headerlink,
+    summary,
+    .summary-title,
+    .summary-compact {
         display: none !important;
     }
 
@@ -1018,13 +1127,15 @@ main img {
         max-width: none !important;
         margin: 0 !important;
         padding: 0 !important;
+        font-size: 0.85rem !important;
+        line-height: 1.35 !important;
     }
 
     html {
         background: #ffffff !important;
     }
 
-    p, li, tr, pre, code, .box-card, .box-notice, article {
+    tr, table, img, figure, .box-notice {
         break-inside: avoid;
         page-break-inside: avoid;
     }
@@ -1032,5 +1143,65 @@ main img {
     h1, h2, h3, h4, h5, h6 {
         break-after: avoid;
         page-break-after: avoid;
+        margin-top: 0.4rem !important;
+        margin-bottom: 0.3rem !important;
+    }
+
+    details {
+        border: none !important;
+        margin: 0 0 0.4rem 0 !important;
+        padding: 0 !important;
+        background: transparent !important;
+        page-break-inside: auto !important;
+        break-inside: auto !important;
+    }
+
+    details > *:not(summary) {
+        padding: 0 !important;
+    }
+
+    .box-card,
+    details > .box-card {
+        border: none !important;
+        box-shadow: none !important;
+        background: transparent !important;
+        margin: 0 0 0.4rem 0 !important;
+        padding: 0 !important;
+        page-break-inside: auto !important;
+        break-inside: auto !important;
+    }
+
+    .code-wrapper {
+        margin: 0.2rem 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        page-break-inside: auto !important;
+        break-inside: auto !important;
+    }
+
+    pre {
+        padding: 0.25rem 0.5rem !important;
+        font-size: 0.72rem !important;
+        line-height: 1.2 !important;
+        margin: 0 !important;
+    }
+
+    pre code {
+        padding: 0 !important;
+        margin: 0 !important;
+        line-height: 1.2 !important;
+    }
+
+    p {
+        margin: 0.25rem 0 !important;
+    }
+
+    ul, ol {
+        margin: 0.25rem 0 !important;
+        padding-left: 1.4rem !important;
+    }
+
+    li {
+        margin-bottom: 0.15rem !important;
     }
 }
