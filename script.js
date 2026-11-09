@@ -21,6 +21,48 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
     });
 
+    const findTargetByHash = (hash) => {
+        if (!hash) return null;
+        let targetId = hash;
+        try { targetId = decodeURIComponent(hash); } catch (err) {}
+
+        let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
+        if (!targetEl) {
+            for (const el of document.querySelectorAll('[id]')) {
+                if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
+                    targetEl = el;
+                    break;
+                }
+            }
+        }
+        return { targetEl, targetId };
+    };
+
+    const revealAndScrollTo = (targetEl, targetId, pushHistory) => {
+        if (!targetEl) return;
+        // Abrir todos los desplegables <details> ancestros (salvo el propio Índice si el enlace está fuera de él)
+        let el = targetEl;
+        while (el) {
+            if (el.tagName === 'DETAILS') {
+                el.open = true;
+            }
+            el = el.parentElement;
+        }
+        const scrollEl = (targetEl.offsetHeight === 0 && targetEl.parentElement) ? targetEl.parentElement : targetEl;
+        const headerOffset = 75;
+        const elementPosition = scrollEl.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+
+        if (pushHistory && history.pushState && targetId) {
+            history.pushState(null, null, '#' + targetId);
+        }
+    };
+
     // Controlador universal de clics en enlaces ancla (#...)
     document.querySelectorAll('a[href*="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -29,37 +71,22 @@ document.addEventListener('DOMContentLoaded', () => {
             if (hashIdx === -1) return;
             const hash = rawHref.substring(hashIdx + 1);
             if (!hash) return;
-            
-            let targetId = hash;
-            try { targetId = decodeURIComponent(hash); } catch(err) {}
 
-            let targetEl = document.getElementById(targetId) || document.querySelector('[name="' + targetId + '"]');
-            if (!targetEl) {
-                for (let el of document.querySelectorAll('[id]')) {
-                    if (el.id === targetId || decodeURIComponent(el.id) === targetId) {
-                        targetEl = el;
-                        break;
-                    }
-                }
-            }
-
-            if (targetEl) {
+            const found = findTargetByHash(hash);
+            if (found && found.targetEl) {
                 e.preventDefault();
-                const headerOffset = 75;
-                const elementPosition = targetEl.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-                
-                if (history.pushState) {
-                    history.pushState(null, null, '#' + targetId);
-                }
+                revealAndScrollTo(found.targetEl, found.targetId, true);
             }
         });
     });
+
+    // Si la página se carga directamente con un hash en la URL, abrir su <details> y desplazar
+    if (window.location.hash && window.location.hash.length > 1) {
+        const found = findTargetByHash(window.location.hash.substring(1));
+        if (found && found.targetEl) {
+            revealAndScrollTo(found.targetEl, found.targetId, false);
+        }
+    }
 });
 
 function copyCode(btn) {
