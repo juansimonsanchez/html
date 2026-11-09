@@ -91,8 +91,10 @@
                             <strong>Cálculo de Ancho de Banda Libre:</strong> Diseña un script que solicite al usuario la velocidad de línea contratada en <code>Mbps</code> y el porcentaje actual de uso de la red. El programa debe calcular y mostrar mediante un <code>print</code> formateado cuántos Mbps están ocupados y cuántos Mbps libres quedan disponibles en el enlace.
                         </li>
                         <li>
-                            <strong>Desglose de Tráfico en Segundos:</strong> Escribe un script que reciba una cantidad total de segundos correspondiente al tiempo de respuesta acumulado de un servicio web. El programa debe transformar ese valor y mostrar su desglose exacto expresado en <strong>horas, minutos y segundos restantes</strong>.
-                            <div class="box-notice"><strong>Pista:</strong> Utiliza el operador de división entera (<code>//</code>) y el operador de módulo o resto (<code>%</code>).</div>
+                            Escribe un script que reciba una cadena de texto que representa el nombre completo de un archivo subido por un usuario (por ejemplo, informe_financiero_2026.pdf). El programa debe extraer su extensión (el texto posterior al último punto), convertirla automáticamente a minúsculas y comprobar si está permitida dentro de una lista blanca de formatos válidos (['pdf', 'docx', 'xlsx', 'txt']).
+
+El script debe mostrar por pantalla el nombre del archivo, la extensión detectada y un mensaje de texto indicando si el tipo de archivo que es (por ejemplo: El archivo es un documento pdf).
+
                         </li>
                     </ol>
 
@@ -113,7 +115,21 @@
                     <h3>Bloque 3: Modularidad, Funciones y Estructura Main </h3>
                     <ol start="4">
                         <li>
-                            <strong>Conversor de Unidades de Almacenamiento:</strong> Define una función llamada <code>mb_a_gb(megabytes)</code> que reciba una cantidad numérica de megabytes y retorne mediante <code>return</code> el valor convertido a gigabytes. El programa principal irá pidiendo valores hasta que se introduzca 0.
+                            Define una función llamada comprobar_permiso(rol_usuario, nivel_critico) que reciba dos parámetros:
+
+rol_usuario: una cadena que puede ser 'alumno', 'profesor' o 'administrador'.
+
+nivel_critico: un número entero del 1 al 5 que indica el nivel de seguridad del recurso solicitado.
+
+La función debe retornar True si el usuario tiene autorización según las siguientes reglas, o False en caso contrario:
+
+Los alumnos solo pueden acceder a recursos con nivel crítico menor o igual a 2.
+
+Los profesores pueden acceder a recursos con nivel crítico menor o igual a 4.
+
+Los administradores tienen acceso total a cualquier nivel (1 a 5).
+
+El programa principal debe solicitar repetidamente el rol y el nivel de seguridad al usuario, comprobando el acceso mediante la función, hasta que se introduzca la palabra 'salir' como rol para finalizar la ejecución.
                         </li>
                         <li>
                             <strong>Calculadora de Nómina con Retorno Múltiple:</strong> Escribe una función llamada <code>calcular_neto_empleado(salario_base, ventas)</code> que compute las comisiones de un técnico sabiendo que cada venta realizada aporta un 5% extra sobre el sueldo base. La función debe devolver de forma simultánea tres valores: el salario base, la comisión total calculada y el sueldo bruto final a percibir. Desempaqueta estos valores en el programa principal y preséntalos formateados en pantalla.
