@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantilla de Ejemplo - Guía de Estructura y Estilos</title>
+    <!-- Si el archivo está dentro de una subcarpeta (ej. ogs/, gbd/), usar "../estilos.css" y "../script.js" -->
+    <link rel="stylesheet" href="estilos.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <!-- ======================================================================
+         1. CABECERA (<header>) Y NAVEGACIÓN (.header-container, .top-nav, .dropdown)
+         ====================================================================== -->
+    <header>
+        <div class="header-container">
+            <div class="site-title site-title-row">
+                <img src="logo.png" alt="Logo IES Celia Viñas" class="site-logo">
+                <span>Módulo – Plantilla de Ejemplo y Guía de Estilos</span>
+            </div>
+
+            <nav class="top-nav">
+                <a href="index.html" class="nav-btn active">Inicio</a>
+                <a href="#ficha-tecnica" class="nav-btn">Ficha</a>
+
+                <!-- Menú desplegable (.dropdown, .dropbtn, .dropdown-content) -->
+                <div class="dropdown">
+                    <button class="dropbtn" type="button">Secciones ▾</button>
+                    <div class="dropdown-content">
+                        <a href="#ficha-tecnica">1. Ficha Técnica y Tablas</a>
+                        <a href="#indice-contenidos">2. Índice y Paneles de Contenido</a>
+                        <a href="#tipografia-utilidades">3. Tipografía, Cajas y Utilidades</a>
+                        <a href="#bloques-codigo">4. Bloques de Código</a>
+                        <a href="#modulos-recursos">5. Índices de Módulo y Recursos</a>
+                        <a href="#multimedia-pdf">6. Imágenes y Visor PDF</a>
+                    </div>
+                </div>
+
+                <a href="#" class="nav-btn disabled">Deshabilitado</a>
+                <a href="#" class="nav-btn" onclick="descargarPDF(); return false;">Descargar PDF</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ======================================================================
+         2. CONTENIDO PRINCIPAL (<main class="main-content">)
+         Nota: En portales de índice se añade también la clase "module-index"
+         ====================================================================== -->
+    <main class="main-content">
+
+        <!-- SECCIÓN DE TÍTULO PRINCIPAL -->
+        <section>
+            <h1 class="title h1-tight" id="titulo-principal">
+                <span id="a0" class="anchor"></span>PLANTILLA GENERAL Y CATÁLOGO DE CLASES CSS
+                <a class="headerlink" href="#titulo-principal" title="Enlace permanente">¶</a>
+            </h1>
+        </section>
+
+        <!-- SECCIÓN 1: FICHA TÉCNICA Y TABLAS -->
+        <section>
+            <details open>
+                <summary class="summary-title">1. Ficha Técnica y Estilos de Tablas</summary>
+                <article class="box-card">
+                    <h2 id="ficha-tecnica">
+                        1.1. Tabla de Ficha Técnica (Estándar)
+                        <a class="headerlink" href="#ficha-tecnica" title="Enlace permanente">¶</a>
+                    </h2>
+                    <p>
+                        Cuando la primera celda (<code>td:first-child</code>) contiene una etiqueta <code>&lt;strong&gt;</code>,
+                        el CSS le aplica automáticamente el fondo azul corporativo (<code>--bg-header</code>) y texto blanco:
+                    </p>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <tbody>
+                                <tr class="header">
+                                    <td><strong>Unidad de Trabajo</strong></td>
+                                    <td>UTX: Nombre de la Unidad de Trabajo</td>
+                                </tr>
+                                <tr class="odd">
+                                    <td><strong>Resultado de Aprendizaje</strong></td>
+                                    <td><strong>RA1:</strong> Descripción del resultado de aprendizaje asociado.</td>
+                                </tr>
+                                <tr class="header">
+                                    <td><strong>Criterios de Evaluación</strong></td>
+                                    <td>
+                                        <p><strong>CE1.a:</strong> Primer criterio de evaluación.</p>
+                                        <p><strong>CE1.b:</strong> Segundo criterio de evaluación.</p>
+                                    </td>
+                                </tr>
+                                <tr class="odd">
+                                    <td><strong>Tiempo Estimado</strong></td>
+                                    <td>10 horas</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3 id="tablas-anchos-alineacion">
+                        1.2. Tablas con Cabecera (th), Anchos de Columna y Alineación
+                        <a class="headerlink" href="#tablas-anchos-alineacion" title="Enlace permanente">¶</a>
+                    </h3>
+                    <p>
+                        Ejemplo combinando <code>.table-wrapper</code>, <code>.table-standard</code>,
+                        <code>.table-full-centered</code>, <code>.table-width-97</code>, anchos de columna
+                        (<code>.column-width-10</code> a <code>.column-width-50</code>) y alineación
+                        (<code>.text-left</code>, <code>.text-center</code>):
+                    </p>
+
+                    <div class="table-wrapper">
+                        <table class="table-standard table-full-centered table-width-97">
+                            <colgroup>
+                                <col class="column-width-10">
+                                <col class="column-width-20">
+                                <col class="column-width-30">
+                                <col class="column-width-40">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>10%</th>
+                                    <th>20%</th>
+                                    <th>30%</th>
+                                    <th>40%</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">#01</td>
+                                    <td class="text-left"><code>.column-width-20</code></td>
+                                    <td class="text-left">Alineación izquierda (<code>.text-left</code>)</td>
+                                    <td class="text-center">Alineación centrada (<code>.text-center</code>)</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">#02</td>
+                                    <td class="text-left"><code>.column-width-30</code></td>
+                                    <td class="text-left">Fila par con color alterno automático</td>
+                                    <td class="text-center"><span class="tag label-info">Etiqueta Info</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+            </details>
+        </section>
+
+        <!-- SECCIÓN 2: ÍNDICE DE CONTENIDOS Y NAVEGACIÓN LATERAL -->
+        <section>
+            <details>
+                <summary class="summary-compact">2. Índice de Contenidos y Paneles (.contents-panel, .left-panel)</summary>
+                <article class="box-card">
+                    <h2 id="indice-contenidos">
+                        2.1. Panel de Contenidos (.contents-panel)
+                        <a class="headerlink" href="#indice-contenidos" title="Enlace permanente">¶</a>
+                    </h2>
+                    <div class="contents-panel">
+                        <h3 class="heading-compact">Índice Rápido (con .heading-compact y .list-compact)</h3>
+                        <ul class="list-compact">
+                            <li>
+                                <a href="#ficha-tecnica" class="link-primary">1. Ficha Técnica y Tablas (.link-primary)</a>
+                                <ul class="list-compact-nested">
+                                    <li><a href="#tablas-anchos-alineacion" class="link-muted">1.2. Anchos de columna (.link-muted y .list-compact-nested)</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#tipografia-utilidades" class="link-primary">3. Tipografía, Cajas y Utilidades</a></li>
+                            <li><a href="#bloques-codigo" class="link-primary">4. Bloques de Código</a></li>
+                        </ul>
+                    </div>
+
+                    <h3 id="ejemplo-left-panel">
+                        2.2. Estructura de Panel Lateral (.page-layout y .left-panel)
+                        <a class="headerlink" href="#ejemplo-left-panel" title="Enlace permanente">¶</a>
+                    </h3>
+                    <p>
+                        Para páginas con barra lateral de tabla de contenidos (TOC), se utiliza
+                        <code>.left-panel</code> junto con <code>nav.toc</code>:
+                    </p>
+                    <div class="box-gray" style="padding: 1rem; border-radius: 6px;">
+                        <aside class="left-panel" style="position: static; height: auto; width: 100%;">
+                            <h3>Tabla de Contenidos (.left-panel)</h3>
+                            <nav class="toc">
+                                <ul>
+                                    <li><a href="#ficha-tecnica">1. Ficha Técnica</a></li>
+                                    <li><a href="#indice-contenidos">2. Índice de Contenidos</a></li>
+                                    <li><a href="#tipografia-utilidades">3. Tipografía y Utilidades</a></li>
+                                </ul>
+                            </nav>
+                        </aside>
+                    </div>
+                </article>
+            </details>
+        </section>
+
+        <!-- SECCIÓN 3: TIPOGRAFÍA, CAJAS Y CLASES DE UTILIDAD -->
+        <section>
+            <details open>
+                <summary>3. Tipografía, Cajas de Aviso y Clases de Utilidad</summary>
+                <article class="box-card">
+                    <h2 id="tipografia-utilidades">
+                        3.1. Cajas de Aviso y Fondos (.box-card, .box-notice, .box-gray)
+                        <a class="headerlink" href="#tipografia-utilidades" title="Enlace permanente">¶</a>
+                    </h2>
+
+                    <div class="box-notice">
+                        <strong>Aviso Importante (<code>.box-notice</code>):</strong>
+                        Caja destacada con fondo gris claro y borde izquierdo azul primario para notas o recordatorios clave.
+                    </div>
+
+                    <br>
+
+                    <div class="box-card box-gray">
+                        <h3 class="heading-compact">Tarjeta con Fondo Gris (<code>.box-card.box-gray</code> + <code>.heading-compact</code>)</h3>
+                        <p>Combina el borde y espaciado de <code>.box-card</code> con el fondo de <code>.box-gray</code>.</p>
+                    </div>
+
+                    <h3 id="clases-texto-etiquetas">
+                        3.2. Etiquetas y Utilidades de Texto
+                        <a class="headerlink" href="#clases-texto-etiquetas" title="Enlace permanente">¶</a>
+                    </h3>
+                    <ul>
+                        <li>Etiqueta informativa: <span class="label-info">.label-info</span> o <span class="tag label-info">.tag.label-info</span></li>
+                        <li>Enlace principal destacado: <a href="#" class="link-primary">Enlace con .link-primary</a></li>
+                        <li>Enlace secundario / desactivado: <a href="#" class="link-muted">Enlace con .link-muted</a></li>
+                        <li>Texto azul pequeño: <span class="text-small-blue">Texto con clase .text-small-blue (14px, azul)</span></li>
+                        <li>Texto de peligro / alerta: <span class="text-danger">Texto con clase .text-danger (rojo)</span></li>
+                        <li>Texto de peligro en negrita: <span class="text-danger-strong">Texto con clase .text-danger-strong (rojo y negrita)</span></li>
+                        <li>Código en línea dentro de párrafo o lista: <code>p code</code> y <code>li code</code></li>
+                    </ul>
+                </article>
+            </details>
+        </section>
+
+        <!-- SECCIÓN 4: BLOQUES DE CÓDIGO -->
+        <section>
+            <details open>
+                <summary>4. Bloques de Código (.code-wrapper y .copy-btn)</summary>
+                <article class="box-card">
+                    <h2 id="bloques-codigo">
+                        4.1. Bloque de Código con Botón de Copiado
+                        <a class="headerlink" href="#bloques-codigo" title="Enlace permanente">¶</a>
+                    </h2>
+                    <p>
+                        El contenedor <code>.code-wrapper</code> incluye un botón <code>.copy-btn</code> conectado a la función
+                        <code>copyCode(this)</code> definida en <code>script.js</code>:
+                    </p>
+
+                    <div class="code-wrapper">
+                        <button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                        <pre><code>#!/usr/bin/env python3
+# Ejemplo de bloque de código con .code-wrapper y .copy-btn
+
+def verificar_servicio(nombre_servicio, activo=True):
+    Estado = "OPERATIVO" if activo else "CAÍDO"
+    print(f"[{nombre_servicio.upper()}] Estado actual: {Estado}")
+
+if __name__ == "__main__":
+    verificar_servicio("nginx", activo=True)</code></pre>
+                    </div>
+                </article>
+            </details>
+        </section>
+
+        <!-- SECCIÓN 5: ÍNDICES DE MÓDULO Y PANELES DE RECURSOS -->
+        <section>
+            <details open>
+                <summary>5. Componentes de Módulo y Recursos (.module-index, .resource-panel)</summary>
+                <article class="box-card">
+                    <h2 id="modulos-recursos">
+                        5.1. Panel de Recursos (.resource-panel, .resource-list, .resource-item, .resource-link, .module-link)
+                        <a class="headerlink" href="#modulos-recursos" title="Enlace permanente">¶</a>
+                    </h2>
+
+                    <article class="resource-panel">
+                        <h2>Unidades Didácticas y Recursos</h2>
+                        <ul class="resource-list">
+                            <li class="resource-item">
+                                <a href="#" class="resource-link">📄 UT1 - Teoría: Fundamentos (.resource-link)</a>
+                            </li>
+                            <li class="resource-item">
+                                <a href="#" class="resource-link">🛠️ UT1 - Tarea Práctica (.resource-link)</a>
+                            </li>
+                        </ul>
+                        <p><a href="#" class="module-link">Acceder al módulo completo (.module-link) &rarr;</a></p>
+                    </article>
+
+                    <h3 id="cuadricula-modulos">
+                        5.2. Cuadrícula de Índice de Módulos (.module-index, .module-intro, .module-sections, .module-section)
+                        <a class="headerlink" href="#cuadricula-modulos" title="Enlace permanente">¶</a>
+                    </h3>
+                    <div class="module-index">
+                        <p class="module-intro">
+                            Texto introductorio del módulo usando <code>.module-intro</code> dentro de un contenedor <code>.module-index</code>.
+                        </p>
+                        <div class="module-sections">
+                            <article class="module-section">
+                                <h2>Bloque Teórico (.module-section)</h2>
+                                <ul>
+                                    <li><a href="#">UT1. Introducción a Sistemas</a></li>
+                                    <li><a href="#">UT2. Programación Estructurada</a></li>
+                                </ul>
+                            </article>
+                            <article class="module-section">
+                                <h2>Bloque Práctico (.module-section)</h2>
+                                <ul>
+                                    <li><a href="#">Tarea 1. Configuración Inicial</a></li>
+                                    <li><a href="#">Tarea 2. Scripting en Python</a></li>
+                                </ul>
+                            </article>
+                        </div>
+                    </div>
+                </article>
+            </details>
+        </section>
+
+        <!-- SECCIÓN 6: IMÁGENES, BOTONES DE DESCARGA Y VISOR PDF -->
+        <section>
+            <details>
+                <summary>6. Tamaños de Imagen, Botones de Acción y Visor PDF</summary>
+                <article class="box-card">
+                    <h2 id="multimedia-pdf">
+                        6.1. Clases de Escalado de Imágenes (.image-width-100 a .image-width-800, .image-height-20)
+                        <a class="headerlink" href="#multimedia-pdf" title="Enlace permanente">¶</a>
+                    </h2>
+                    <p>
+                        Clases disponibles para controlar las dimensiones de las imágenes:
+                        <code>.image-width-100</code>, <code>.image-width-200</code>, <code>.image-width-300</code>,
+                        <code>.image-width-400</code>, <code>.image-width-500</code>, <code>.image-width-600</code>,
+                        <code>.image-width-700</code>, <code>.image-width-800</code> y <code>.image-height-20</code>.
+                    </p>
+                    <p>
+                        Ejemplo de icono en línea con <code>.image-height-20</code>:
+                        <img src="logo.png" alt="Logo miniatura" class="image-height-20" style="display: inline-block; vertical-align: middle; margin: 0;">
+                        y debajo con <code>.image-width-100</code>:
+                    </p>
+                    <img src="logo.png" alt="Ejemplo image-width-100" class="image-width-100">
+
+                    <h3 id="acciones-y-pdf">
+                        6.2. Acciones de Página y Contenedor PDF Embebido (.page-actions, .pdf-download-btn, .btn-download, .pdf-embed-container)
+                        <a class="headerlink" href="#acciones-y-pdf" title="Enlace permanente">¶</a>
+                    </h3>
+                    <div class="page-actions">
+                        <a href="#" class="pdf-download-btn" onclick="descargarPDF(); return false;">📥 Botón .pdf-download-btn</a>
+                        &nbsp;
+                        <a href="#" class="btn-download">📄 Botón .btn-download</a>
+                    </div>
+
+                    <div class="pdf-embed-container" style="height: 220px;">
+                        <iframe class="pdf-embed" title="Ejemplo de visor PDF embebido (.pdf-embed)" srcdoc="<body style='font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:90vh;margin:0;background:#f1f5f9;color:#475569;'>Vista previa del contenedor .pdf-embed-container / .pdf-embed-shell con iframe.pdf-embed</body>"></iframe>
+                    </div>
+                </article>
+            </details>
+        </section>
+
+    </main>
+
+    <!-- ======================================================================
+         3. PIE DE PÁGINA (<footer>)
+         ====================================================================== -->
+    <footer>
+        <div class="footer-container">
+            <p class="footer-text">Curso 2026/2027</p>
+        </div>
+    </footer>
+</body>
+
+</html>
