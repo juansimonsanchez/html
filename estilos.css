@@ -969,9 +969,15 @@ main img {
 }
 
 /* Evitar que los bloques de código o tablas rompan el ancho del PDF */
-.main-content pre, 
 .main-content .code-wrapper, 
 .main-content .table-wrapper {
+    max-width: 100% !important;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    white-space: normal !important; /* Evita que los saltos de línea del HTML entre <div class="code-wrapper"> y <pre> creen líneas vacías arriba y abajo */
+}
+
+.main-content pre {
     max-width: 100% !important;
     box-sizing: border-box;
     overflow-x: hidden;
@@ -1077,27 +1083,31 @@ main img {
     box-shadow: none !important;
 }
 
+/* Corrección de espacio vertical excesivo en bloques de código para el PDF */
 .pdf-export .code-wrapper {
-    margin: 0.15rem 0 !important;
+    margin: 0.1rem 0 !important;
     padding: 0 !important;
-    border-radius: 3px !important;
+    background: #0f172a !important;
     box-shadow: none !important;
-    page-break-inside: auto !important;
-    break-inside: auto !important;
+    white-space: normal !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
 }
 
 .pdf-export pre {
-    padding: 0.15rem 0.4rem !important;
-    font-size: 0.7rem !important;
-    line-height: 1.15 !important;
     margin: 0 !important;
+    padding: 0.3rem 0.5rem !important;
+    font-size: 0.68rem !important;
+    line-height: 1.15 !important;
+    white-space: pre !important; /* Evita que el texto envuelva líneas vacías de más */
+    word-break: normal !important;
 }
 
 .pdf-export pre code {
+    display: inline-block !important;
     padding: 0 !important;
     margin: 0 !important;
     line-height: 1.15 !important;
-    display: block !important;
 }
 
 @media print {
@@ -1172,24 +1182,28 @@ main img {
     }
 
     .code-wrapper {
-        margin: 0.2rem 0 !important;
+        margin: 0.1rem 0 !important;
         padding: 0 !important;
+        background: #0f172a !important;
         box-shadow: none !important;
-        page-break-inside: auto !important;
-        break-inside: auto !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
     }
 
     pre {
-        padding: 0.25rem 0.5rem !important;
-        font-size: 0.72rem !important;
-        line-height: 1.2 !important;
         margin: 0 !important;
+        padding: 0.3rem 0.5rem !important;
+        font-size: 0.68rem !important;
+        line-height: 1.15 !important;
+        white-space: pre !important;
+        word-break: normal !important;
     }
 
     pre code {
+        display: inline-block !important;
         padding: 0 !important;
         margin: 0 !important;
-        line-height: 1.2 !important;
+        line-height: 1.15 !important;
     }
 
     p {
