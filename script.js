@@ -155,7 +155,7 @@ function descargarPDF() {
         // REGLAS CLAVE PARA EVITAR CORTES:
         pagebreak:    { 
             mode: ['avoid-all', 'css', 'legacy'], 
-            avoid: ['pre', 'table', 'img', 'figure', 'article', 'details', 'h2', 'h3', 'h4', 'ul', 'ol'] 
+            avoid: ['p', 'li', 'tr', 'pre', 'table', 'img', 'figure', 'article', 'details', 'h1', 'h2', 'h3', 'h4', 'ul', 'ol', '.box-card', '.box-notice', '.code-wrapper'] 
         }
     };
 
@@ -241,7 +241,7 @@ function descargarPDF() {
             const anchoPagina = pdf.internal.pageSize.getWidth();
             const altoPagina = pdf.internal.pageSize.getHeight();
             pdf.line(10, altoPagina - 14, anchoPagina - 10, altoPagina - 14);
-            pdf.text(`Página ${i} de ${totalPages}`, anchoPagina - 10, altoPagina - 9);
+            pdf.text(`Página ${i} de ${totalPages}`, anchoPagina - 10, altoPagina - 9, { align: "right" });
             pdf.text("Curso 2026/2027", 10, altoPagina - 9);
         }
     }).then(() => {

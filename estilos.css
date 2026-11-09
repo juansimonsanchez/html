@@ -977,7 +977,60 @@ main img {
 /* Forzar que los elementos dentro del PDF respeten los cortes limpios */
 .main-content article, 
 .main-content details, 
-.main-content section {
+.main-content section,
+.main-content p,
+.main-content li,
+.main-content tr,
+.main-content h1,
+.main-content h2,
+.main-content h3,
+.main-content h4,
+.main-content h5,
+.main-content h6,
+.main-content .box-card,
+.main-content .box-notice,
+.main-content .code-wrapper {
     break-inside: avoid;
     page-break-inside: avoid;
+}
+
+@media print {
+    body > header,
+    body > footer,
+    .top-nav,
+    .nav-btn,
+    .dropdown,
+    .dropbtn,
+    a[download],
+    button,
+    .copy-btn,
+    .left-panel,
+    .headerlink {
+        display: none !important;
+    }
+
+    body,
+    .page-layout,
+    .main-content,
+    main {
+        display: block !important;
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    html {
+        background: #ffffff !important;
+    }
+
+    p, li, tr, pre, code, .box-card, .box-notice, article {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        break-after: avoid;
+        page-break-after: avoid;
+    }
 }
