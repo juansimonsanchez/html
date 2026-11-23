@@ -11,14 +11,28 @@
 </head>
 
 <body>
-    <header>
+    <header class="site-header">
         <div class="header-container">
-            <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>OGS
+        <div class="header-bar">
+            <div class="site-title site-title-row"><img src="logo.png" alt="Logo IES Celia Viñas" class="site-logo"><span>OGS
                     &ndash; UT1 Teoría Fundamentos</span></div>
-            <nav class="top-nav">
-                <a href="index.html" class="nav-btn">Inicio</a>
-                <a href="#" class="nav-btn" onclick="descargarPDF(); return false;">Descargar PDF</a>
-            </nav>
+        <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="7 7 12 12 17 7"></polyline><polyline points="7 13 12 18 17 13"></polyline></svg>
+          </button>
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(false)" title="Contraer todo" aria-label="Contraer todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 17 12 12 7 17"></polyline></svg>
+          </button>
+          <button type="button" id="btn-pdf" class="btn-icon-header btn-pdf-accent" onclick="descargarPDF()" title="Descargar PDF" aria-label="Descargar PDF">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          </button>
+        </div>
+      </div>
+      <nav aria-label="Navegación por bloques temáticos" class="main-nav no-print">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Inicio</a></li>
+        </ul>
+      </nav>
         </div>
     </header>
 
@@ -32,8 +46,8 @@
         </section>
 
                 <section>
-            <details>
-                <summary>Ficha Técnica de la Unidad</summary>
+            <details class="accordion" id="page-section-1">
+                <summary class="summary-title">Ficha Técnica de la Unidad</summary>
                 <div class="box-card">
                     <h2 id="ficha-tecnica-de-la-unidad">FICHA TÉCNICA DE LA UNIDAD <a class="headerlink"
                             href="#ficha-tecnica-de-la-unidad" title="Enlace permanente">¶</a></h2>
@@ -68,8 +82,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>Índice de Contenidos</summary>
+            <details class="accordion" id="page-section-2">
+                <summary class="summary-title">Índice de Contenidos</summary>
                 <div class="box-card">
                     <h2 id="indice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#indice-de-contenidos"
                             title="Enlace permanente">¶</a></h2>
@@ -129,8 +143,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>1. Introducción</summary>
+            <details class="accordion" id="page-section-3">
+                <summary class="summary-title">1. Introducción</summary>
 
                 <article class="box-card">
                     <h1 id="a1-introduccion">1. INTRODUCCIÓN <a class="headerlink" href="#a1-introduccion"
@@ -169,8 +183,8 @@
     </section>
 
     <section>
-      <details>
-        <summary>2. Fundamentos de Python</summary>
+      <details class="accordion" id="page-section-4">
+        <summary class="summary-title">2. Fundamentos de Python</summary>
                 <article class="box-card">
                     <h1 id="a2-algoritmica-y-pensamiento-computacional">2. ALGORÍTMICA Y
                         PENSAMIENTO COMPUTACIONAL <a class="headerlink" href="#a2-algoritmica-y-pensamiento-computacional"
@@ -250,8 +264,8 @@
     </section>
 
     <section>
-      <details>
-        <summary>3. Herramientas de representación de algoritmos</summary>
+      <details class="accordion" id="page-section-5">
+        <summary class="summary-title">3. Herramientas de representación de algoritmos</summary>
 
                 <article class="box-card">
                     <h1 id="a3-herramientas-de-representacion-de-algoritmos">3. HERRAMIENTAS DE
@@ -359,8 +373,8 @@
     </section>
 
     <section>
-      <details>
-        <summary>4. Fases del desarrollo de software</summary>
+      <details class="accordion" id="page-section-6">
+        <summary class="summary-title">4. Fases del desarrollo de software</summary>
                 <article class="box-card">
                     <h1 id="a4-fases-del-desarrollo-de-software">4. FASES DEL DESARROLLO DE
                         SOFTWARE <a class="headerlink" href="#a4-fases-del-desarrollo-de-software" title="Enlace permanente">¶</a>
@@ -512,8 +526,8 @@
     </section>
 
     <section>
-      <details>
-        <summary>5. Estructuras de control de flujo</summary>
+      <details class="accordion" id="page-section-7">
+        <summary class="summary-title">5. Estructuras de control de flujo</summary>
                 <article class="box-card">
                     <h1 id="a5-estructuras-de-control-de-flujo">5. ESTRUCTURAS DE CONTROL DE
                         FLUJO <a class="headerlink" href="#a5-estructuras-de-control-de-flujo" title="Enlace permanente">¶</a></h1>
@@ -531,7 +545,7 @@
                         condicional booleana (cuyo resultado solo puede ser Verdadero o
                         Falso).</p>
                     <p><strong>Sintaxis abstracta:</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Si (Expresión_Condicional) Entonces
     Bloque_de_sentencias_1
 SiNo
@@ -539,7 +553,7 @@ SiNo
 Fin Si</code></pre>
                     </div>
                     <p><strong>Ejemplo de implementación:</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Escribir "Introduzca la calificación del alumno/a:"
 Leer nota
 Si nota &lt; 5 Entonces
@@ -552,7 +566,7 @@ Fin Si</code></pre>
                     <p>Permite encadenar condiciones lógicas secuenciales para evaluar
                         múltiples escenarios posibles.</p>
                     <p><strong>Ejemplo de anidamiento de calificaciones:</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Escribir "Introduzca la nota numérica de la prueba:"
 Leer nota
 Si nota &lt; 5 Entonces
@@ -575,7 +589,7 @@ Fin Si</code></pre>
                         excesivo de condicionales Si-Entonces-Sino cuando se evalúa una única
                         variable o expresión frente a diferentes valores fijos o constantes.</p>
                     <p><strong>Sintaxis abstracta:</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Segun variable Hacer
 opcion_1:
     secuencia_de_acciones_1
@@ -588,7 +602,7 @@ De Otro Modo:
 Fin Segun</code></pre>
                     </div>
                     <p><strong>Ejemplo práctico:</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Escribir "Introduzca el descriptor cualitativo de la nota (suspenso,
 aprobado, notable, sobresaliente):"
 Leer calificacion
@@ -611,13 +625,13 @@ Fin Segun</code></pre>
                     <p>Bucle pre-test. Evalúa la condición booleana <strong>antes</strong>
                         de entrar a ejecutar el bloque de instrucciones interno.</p>
                     <p><strong>Sintaxis:</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Mientras condicion Hacer
     Secuencia_de_acciones
 Fin Mientras</code></pre>
                     </div>
                     <p><strong>Ejemplo (Búsqueda del número secreto):</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>secreto &lt;- 3
 Escribir "Intente adivinar el número secreto. Introduzca un número del 0 al 10:"
 Leer num_secreto
@@ -633,14 +647,14 @@ Escribir "¡Felicidades! Ha acertado. El número secreto era ", secreto</code></
                     <p>Bucle post-test. Ejecuta el cuerpo de instrucciones internas al menos
                         <strong>una vez</strong>.</p>
                     <p><strong>Sintaxis:</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Repetir
     Secuencia_de_acciones
 Hasta Que condicion</code></pre>
                     </div>
                     <p><strong>Ejemplo (Búsqueda del número secreto con validación
                         inicial):</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>secreto &lt;- 3
 Repetir
     Escribir "Por favor, introduzca un número entero de prueba entre el 0 y el 10:"
@@ -651,13 +665,13 @@ Escribir "¡Felicidades! Ha acertado. El número secreto era ",secreto</code></p
                     <p><strong>C) Estructura Para-Hasta-Con Paso (For-To-Step)</strong></p>
                     <p>Bucle de iteración controlada.</p>
                     <p><strong>Sintaxis:</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Para variable_numerica &lt;- valor_inicial Hasta valor_final Con Paso paso Hacer
     secuencia_de_acciones
 Fin Para</code></pre>
                     </div>
                     <p><strong>Ejemplo:</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Escribir "Introduzca el límite inferior del rango numérico:"
 Leer menor
 Escribir "Introduzca el límite superior del rango numérico:"
@@ -671,8 +685,8 @@ Fin Para</code></pre>
     </section>
 
     <section>
-      <details>
-        <summary>6. Estrucuras de datos homogéneas: array</summary>
+      <details class="accordion" id="page-section-8">
+        <summary class="summary-title">6. Estrucuras de datos homogéneas: array</summary>
                 <article class="box-card">
                     <h1 id="a6-estructuras-de-datos-homogeneas-arrays-arreglos">6. ESTRUCTURAS
                         DE DATOS HOMOGÉNEAS: ARRAYS (ARREGLOS)</h1>
@@ -687,7 +701,7 @@ Fin Para</code></pre>
                     </h2>
                     <p><strong>Ejemplo de Declaración y Asignación de Valores de un Array de
                             5 posiciones:</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Dimension array[5]
 array[1] &lt;- 5
 array[2] &lt;- 10
@@ -703,8 +717,8 @@ Fin Para</code></pre>
     </section>
 
     <section>
-      <details>
-        <summary>7. Modularidad y programación estructurada</summary>
+      <details class="accordion" id="page-section-9">
+        <summary class="summary-title">7. Modularidad y programación estructurada</summary>
                 <article class="box-card">
                     <h1 id="a7-modularidad-y-programacion-estructurada-funciones">7.
                         MODULARIDAD Y PROGRAMACIÓN ESTRUCTURADA: FUNCIONES <a class="headerlink"
@@ -718,7 +732,7 @@ Fin Para</code></pre>
                             title="Enlace permanente">¶</a></h2>
                     <p>Una <strong>función</strong> es un bloque estructurado de instrucciones
                         de código con un nombre único asociado.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Funcion variable_de_retorno &lt;- Nombre_funcion ( Parámetros )
     Instrucciones_del_subprograma
 Fin Funcion</code></pre>
@@ -728,8 +742,8 @@ Fin Funcion</code></pre>
     </section>
 
     <section>
-      <details>
-        <summary>8. Prácticas resueltas</summary>
+      <details class="accordion" id="page-section-10">
+        <summary class="summary-title">8. Prácticas resueltas</summary>
                 <article class="box-card">
                     <h1 id="a8-cuaderno-de-practicas-resueltas">8. PRÁCTICAS
                         RESUELTAS <a class="headerlink" href="#a8-cuaderno-de-practicas-resueltas" title="Enlace permanente">¶</a>
@@ -739,7 +753,7 @@ Fin Funcion</code></pre>
                             title="Enlace permanente">¶</a></h2>
                     <p><strong>Práctica 1: Diseñar un algoritmo que solicite la carga de 10
                             números por teclado al usuario...</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Algoritmo CalcularMenorDeDiezNumeros
 Dimension coleccion[10]
 Para i &lt;- 1 Hasta 10 Con Paso 1 Hacer
@@ -760,7 +774,7 @@ FinAlgoritmo</code></pre>
                             title="Enlace permanente">¶</a></h2>
                     <p><strong>Práctica 1: Crear una función que reciba un número y devuelva
                             su cuadrado...</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Funcion retorno_cuadrado &lt;- calcular_cuadrado ( valor )
     retorno_cuadrado &lt;- valor * valor
 Fin Funcion</code></pre>

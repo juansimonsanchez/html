@@ -11,14 +11,28 @@
 </head>
 
 <body>
-    <header>
+    <header class="site-header">
         <div class="header-container">
-            <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>GBD
+        <div class="header-bar">
+            <div class="site-title site-title-row"><img src="logo.png" alt="Logo IES Celia Viñas" class="site-logo"><span>GBD
                     &ndash; Ut7 Teoria Dml</span></div>
-            <nav class="top-nav">
-                <a href="index.html" class="nav-btn">Inicio</a>
-                <a href="#" class="nav-btn" onclick="descargarPDF(); return false;">Descargar PDF</a>
-            </nav>
+        <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="7 7 12 12 17 7"></polyline><polyline points="7 13 12 18 17 13"></polyline></svg>
+          </button>
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(false)" title="Contraer todo" aria-label="Contraer todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 17 12 12 7 17"></polyline></svg>
+          </button>
+          <button type="button" id="btn-pdf" class="btn-icon-header btn-pdf-accent" onclick="descargarPDF()" title="Descargar PDF" aria-label="Descargar PDF">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          </button>
+        </div>
+      </div>
+      <nav aria-label="Navegación por bloques temáticos" class="main-nav no-print">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Inicio</a></li>
+        </ul>
+      </nav>
         </div>
     </header>
 
@@ -34,8 +48,8 @@
         </section>
 
                 <section>
-            <details>
-                <summary>Ficha Técnica</summary>
+            <details class="accordion" id="page-section-1">
+                <summary class="summary-title">Ficha Técnica</summary>
                 <div class="box-card">
                     <h3 id="ficha-tecnica-de-la-unidad-didactica">FICHA TÉCNICA DE LA UNIDAD
                 DIDÁCTICA <a class="headerlink" href="#ficha-tecnica-de-la-unidad-didactica"
@@ -72,8 +86,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>Índice de Contenidos</summary>
+            <details class="accordion" id="page-section-2">
+                <summary class="summary-title">Índice de Contenidos</summary>
                 <div class="box-card">
                     <h3 id="indice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#indice-de-contenidos"
                     title="Enlace permanente">¶</a></h3>
@@ -81,7 +95,7 @@
                         CONTEXTUALIZACIÓN</u></a></p>
                     <p><a href="#a2-lenguaje-de-manipulacion-de-datos-dml"><u>2. LENGUAJE DE
                         MANIPULACIÓN DE DATOS (DML)</u></a></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>2.1 Inserción de
 Datos: Sentencia INSERT
 2.2 Modificación
@@ -116,8 +130,8 @@ Operaciones de Manipulación e Integridad Referencial</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>1. INTRODUCCIÓN Y CONTEXTUALIZACIÓN</summary>
+            <details class="accordion" id="page-section-3">
+                <summary class="summary-title">1. INTRODUCCIÓN Y CONTEXTUALIZACIÓN</summary>
                 <article class="box-card">
                     <h1 id="a1-introduccion-y-contextualizacion">1. INTRODUCCIÓN Y
                 CONTEXTUALIZACIÓN <a class="headerlink" href="#a1-introduccion-y-contextualizacion"
@@ -144,8 +158,8 @@ Operaciones de Manipulación e Integridad Referencial</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>2. LENGUAJE DE MANIPULACIÓN DE DATOS (DML)</summary>
+            <details class="accordion" id="page-section-4">
+                <summary class="summary-title">2. LENGUAJE DE MANIPULACIÓN DE DATOS (DML)</summary>
                 <article class="box-card">
                     <h1 id="a2-lenguaje-de-manipulacion-de-datos-dml">2. LENGUAJE DE
                 MANIPULACIÓN DE DATOS (DML) <a class="headerlink" href="#a2-lenguaje-de-manipulacion-de-datos-dml"
@@ -153,7 +167,7 @@ Operaciones de Manipulación e Integridad Referencial</code></pre>
                     <p>Para realizar los ejemplos de esta unidad de trabajo, utilizaremos el
                 esquema relacional de la base de datos de <strong>Jardinería /
                     Pedidos</strong> definido a continuación:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Creación de la base de datos con codificación utf8mb4 recomendada
 para SysAdmins
 CREATE DATABASE IF NOT EXISTS jardineria_pedidos
@@ -224,7 +238,7 @@ REFERENCES cliente (codigo_cliente)
                     <p>La buena práctica en administración exige siempre detallar la lista
                 de columnas destino para evitar que cambios futuros en el esquema de la
                 tabla rompan los scripts de automatización:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Práctica Recomendada: Inserción explícita especificando
 columnas
 INSERT INTO cliente (nombre_cliente, limite_credito)
@@ -243,7 +257,7 @@ VALUES
                 resultados devuelto por una consulta SELECT. Es un recurso de
                 rendimiento clave para migraciones de datos o generación de tablas de
                 agregación histórica:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Supongamos una tabla para almacenar un histórico de clientes
 premium
 CREATE TABLE clientes_vip (
@@ -274,7 +288,7 @@ WHERE limite_credito &gt;= 5000.00;</code></pre>
                     <p>La cláusula WHERE es obligatoria para acotar el impacto del cambio.
                 Su omisión modificará todos los registros de la tabla de forma
                 irreversible:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Actualización selectiva de un producto específico
 UPDATE producto
 SET cantidad_en_stock = cantidad_en_stock - 5,
@@ -321,7 +335,7 @@ AND fecha_esperada &lt; CURDATE();</code></pre>
                     <p>Borra los registros que cumplen las condiciones del filtro WHERE uno
                 a uno, disparando disparadores (triggers) y registrando la operación en
                 el registro binario (binary log):</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Borrado selectivo de un pago específico
 DELETE FROM pago
 WHERE id_transaccion = 'TXN-2026-001';</code></pre>
@@ -353,7 +367,7 @@ WHERE id_transaccion = 'TXN-2026-001';</code></pre>
                             referenciadas por otras tablas.</p>
                 </li>
             </ul>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Vaciar por completo los datos históricos para preparar una nueva
 carga de datos
 TRUNCATE TABLE clientes_vip;</code></pre>
@@ -365,20 +379,20 @@ TRUNCATE TABLE clientes_vip;</code></pre>
                     <p>Cuando modificamos o eliminamos registros que están asociados con
                 otras tablas a través de relaciones de clave ajena (FOREIGN KEY), el
                 SGBD actúa según la regla referencial definida:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Intento de borrado de un producto referenciado
 DELETE FROM producto WHERE codigo_producto = 'PROD-M02';</code></pre>
 
 </div>
                     <strong>ON DELETE RESTRICT / NO ACTION (Por defecto):</strong>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                         <pre><code>ON DELETE CASCADE: Si se borrara un registro en la
 tabla pedido, InnoDB eliminará automáticamente todas las líneas
 asociadas en detalle_pedido para mantener la base de datos libre de
 registros huérfanos.</code></pre>
 
 </div>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                         <pre><code>ON DELETE SET NULL: Si el registro principal se
 elimina, los registros secundarios asociados cambian el valor de su
 clave ajena a NULL (requiere que el campo acepte nulos).</code></pre>
@@ -389,8 +403,8 @@ clave ajena a NULL (requiere que el campo acepte nulos).</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>3. TRANSACCIONES</summary>
+            <details class="accordion" id="page-section-5">
+                <summary class="summary-title">3. TRANSACCIONES</summary>
                 <article class="box-card">
                     <h1 id="a3-transacciones">3. TRANSACCIONES <a class="headerlink" href="#a3-transacciones"
                     title="Enlace permanente">¶</a></h1>
@@ -410,7 +424,7 @@ clave ajena a NULL (requiere que el campo acepte nulos).</code></pre>
                             original.</p>
                 </li>
                 <li>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Consistencia (Consistency): La transacción debe
 llevar a la base de datos de un estado válido a otro, respetando
 estrictamente todas las restricciones declaradas en el esquema (claves
@@ -447,7 +461,7 @@ primarias, de unicidad, nulos y checks).</code></pre>
                     <p>Para trabajar de manera profesional con transacciones complejas,
                 debemos configurar y monitorizar el estado de este parámetro en el
                 servidor:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Consultar el estado del autocommit de la sesión actual
 SELECT @@SESSION.autocommit;
 -- Desactivar el autocommit (Recomendado para scripts interactivos de
@@ -498,7 +512,7 @@ SET autocommit = 1;</code></pre>
             </ol>
                     <p>Si falla la inserción de las líneas de detalle, se debe abortar la
                 operación para no descontar existencias de forma errónea:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Iniciamos explícitamente el bloque transaccional
 START TRANSACTION;
 -- Paso 1: Insertar la cabecera del pedido para el cliente 1
@@ -521,7 +535,7 @@ VALUES (@nuevo_pedido, 'PROD-P01', 2, 19.95);
 COMMIT;</code></pre>
 
 </div>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- En caso de error, abortar todas las operaciones del bloque
 ROLLBACK;</code></pre>
 
@@ -539,7 +553,7 @@ ROLLBACK;</code></pre>
                         Oficial de MySQL sobre SAVEPOINT</u></a> <a class="headerlink"
                     href="#documentacion-oficial-mas-informacion-en-documentacion-oficial-de-mysql-sobre-savepoint"
                     title="Enlace permanente">¶</a></h5>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>START TRANSACTION;
 -- Registro de la cabecera del pedido
 INSERT INTO pedido (fecha_pedido, fecha_esperada, estado,
@@ -571,8 +585,8 @@ COMMIT;</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>4. ACCESO CONCURRENTE Y NIVELES DE AISLAMIENTO EN INNODB</summary>
+            <details class="accordion" id="page-section-6">
+                <summary class="summary-title">4. ACCESO CONCURRENTE Y NIVELES DE AISLAMIENTO EN INNODB</summary>
                 <article class="box-card">
                     <h1 id="a4-acceso-concurrente-y-niveles-de-aislamiento-en-innodb">4. ACCESO
                 CONCURRENTE Y NIVELES DE AISLAMIENTO EN INNODB <a class="headerlink"
@@ -696,7 +710,7 @@ COMMIT;</code></pre>
                     <p>Como administradores, podemos consultar y parametrizar los niveles de
                 aislamiento a nivel de servidor (GLOBAL) o a nivel de conexión activa
                 (SESSION):</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Consultar el aislamiento a nivel de servidor global
 SELECT @@GLOBAL.transaction_isolation;
 -- Consultar el aislamiento de la sesión activa
@@ -713,8 +727,8 @@ SET SESSION TRANSACTION ISOLATION LEVEL SERIALIZABLE;</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>5. TRANSACCIONES EN PROCEDIMIENTOS ALMACENADOS</summary>
+            <details class="accordion" id="page-section-7">
+                <summary class="summary-title">5. TRANSACCIONES EN PROCEDIMIENTOS ALMACENADOS</summary>
                 <article class="box-card">
                     <h1 id="a5-transacciones-en-procedimientos-almacenados">5. TRANSACCIONES EN
                 PROCEDIMIENTOS ALMACENADOS <a class="headerlink" href="#a5-transacciones-en-procedimientos-almacenados"
@@ -740,7 +754,7 @@ SET SESSION TRANSACTION ISOLATION LEVEL SERIALIZABLE;</code></pre>
                 (error de clave externa, de tipo o nulo), el manejador ejecutará una
                 sección de código encargada de hacer el rollback automático de forma
                 controlada y segura para la sesión:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>DELIMITER $$
 CREATE PROCEDURE procesar_pago_pedido (
 IN p_cliente_id INT UNSIGNED,

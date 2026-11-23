@@ -1,4 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
+    enhanceTechnicalSheets();
+    enhanceCodeBlocks();
+
+    const navList = document.querySelector('.main-nav .nav-list');
+    if (navList) {
+        document.querySelectorAll('main details').forEach((detail, index) => {
+            if (detail.parentElement.closest('details')) return;
+
+            const summary = detail.querySelector(':scope > summary');
+            if (!summary) return;
+
+            const label = summary.textContent.replace(/\s+/g, ' ').trim();
+            if (!label || /^(ficha|índice)\b/i.test(label)) return;
+
+            if (!detail.id) {
+                detail.id = `page-section-${index + 1}`;
+            }
+
+            const item = document.createElement('li');
+            const link = document.createElement('a');
+            link.className = 'nav-link';
+            link.href = `#${detail.id}`;
+            link.textContent = label;
+            if (/test/i.test(label)) {
+                link.classList.add('nav-link-test');
+            }
+            item.appendChild(link);
+            navList.appendChild(item);
+        });
+    }
+
     document.querySelectorAll('.dropdown').forEach(dd => {
         const btn = dd.querySelector('.dropbtn');
         const content = dd.querySelector('.dropdown-content');
@@ -7,10 +38,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.stopPropagation();
                 const isOpen = content.style.display === 'block';
                 document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = 'none');
-                document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.dropbtn').forEach(b => {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-expanded', 'false');
+                });
                 if (!isOpen) {
                     content.style.display = 'block';
                     btn.classList.add('active');
+                    btn.setAttribute('aria-expanded', 'true');
                 }
             });
         }
@@ -18,7 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('click', () => {
         document.querySelectorAll('.dropdown-content').forEach(c => c.style.display = '');
-        document.querySelectorAll('.dropbtn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.dropbtn').forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-expanded', 'false');
+        });
     });
 
     const findTargetByHash = (hash) => {
@@ -89,17 +127,322 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-function copyCode(btn) {
-    const code = btn.nextElementSibling ? btn.nextElementSibling.innerText : '';
-    navigator.clipboard.writeText(code).then(() => {
-        const orig = btn.innerText;
-        btn.innerText = '✅ ¡Copiado!';
-        btn.style.background = '#16a34a';
-        setTimeout(() => {
-            btn.innerText = orig;
-            btn.style.background = '#334155';
-        }, 2000);
+function enhanceTechnicalSheets() {
+    document.querySelectorAll('main details > summary').forEach(summary => {
+        if (/^ficha\b/i.test(summary.textContent.trim())) {
+            summary.parentElement.classList.add('ficha-tecnica');
+        }
     });
+
+    document.querySelectorAll('main h2, main h3, main h4').forEach(heading => {
+        if (!/^ficha\b/i.test(heading.textContent.trim())) return;
+
+        const card = heading.closest('.box-card');
+        if (card) {
+            card.classList.add('ficha-tecnica-card');
+            heading.classList.add('ficha-title');
+        }
+    });
+}
+
+function detectCodeExtension(pre) {
+    const code = pre.querySelector('code') || pre;
+    const explicitLanguage = `${code.className} ${pre.className} ${pre.dataset.language || ''}`
+        .match(/\b(?:language|lang)-([\w+#.-]+)/i);
+    const aliases = {
+        bash: 'sh',
+        javascript: 'js',
+        python: 'py',
+        python3: 'py',
+        shell: 'sh',
+        html: 'html',
+        xml: 'xml',
+        yml: 'yaml'
+    };
+
+    if (explicitLanguage) {
+        const language = explicitLanguage[1].toLowerCase();
+        return aliases[language] || language;
+    }
+
+    const source = code.textContent.trim();
+    if (/^\s*#\s*include\s*</m.test(source) ||
+        /^\s*(?:public\s+class|public\s+static\s+void\s+main|System\.out\.)/m.test(source)) {
+        return /^\s*#\s*include\s*</m.test(source) ? 'c' : 'java';
+    }
+    if (/^\s*#!.*\b(?:bash|sh)\b/m.test(source) ||
+        /^\s*(?:sudo\s|apt(?:-get)?\s|systemctl\s|docker\s|chmod\s|chown\s|mkdir\s|cd\s|grep\s|curl\s|wget\s)/m.test(source)) {
+        return 'sh';
+    }
+    const heading = getCodeHeading(pre);
+    if (/\b(?:sql|mysql|dml|consultas?|subconsultas?)\b/i.test(heading) &&
+        /^\s*(?:--|#)|^\s*(?:\d+\.\s*)?(?:SELECT|FROM|JOIN|WHERE|INSERT|CREATE|UPDATE|DELETE)\b/im.test(source)) {
+        return 'sql';
+    }
+    if (/^\s*(?:SELECT|WITH|INSERT|UPDATE|DELETE|CREATE|ALTER|DROP|USE|SHOW)\b/im.test(source) &&
+        /\b(?:FROM|INTO|TABLE|DATABASE|WHERE|JOIN|SET|VALUES)\b/i.test(source)) {
+        return 'sql';
+    }
+    if (/^\s*#!.*\bpython\b/m.test(source) ||
+        /^\s*(?:from\s+[\w.]+\s+import\s+|import\s+[\w.]+|def\s+\w+\s*\(|class\s+\w+|print\s*\(|if __name__\s*==)/m.test(source) ||
+        (/#.*(?:\n|$)/m.test(source) && /^\s*\w+(?:\[[^\]]+\])?\s*=\s*[\[{]/m.test(source)) ||
+        /^\s*\w+\[[^\]]+\]\s*=/m.test(source) ||
+        /\b(?:True|False|None|len|range|zip|enumerate|append|extend|sorted|ZeroDivisionError|NameError|TypeError|ValueError|IndexError|FileNotFoundError|KeyError|SyntaxError)\b/.test(source) ||
+        /\b(?:str|int|float|input|open)\s*\(|\.\s*(?:replace|upper|lower|strip)\s*\(/.test(source) ||
+        (/#.*(?:\n|$)/m.test(source) && /^\s*[\w.]+\s*=/m.test(source))) {
+        return 'py';
+    }
+    if (/^\s*(?:<!doctype\s+html|<html\b|<\/?[a-z][\w-]*(?:\s|>|\/))/i.test(source)) {
+        return 'html';
+    }
+    if (/^\s*(?:const|let|var|function|class|export|import)\s|\bconsole\.\w+\s*\(/m.test(source)) {
+        return 'js';
+    }
+    if (/^\s*(?:\{[\s\S]*"[\w-]+"\s*:|\[[\s\S]*\{)/.test(source)) {
+        return 'json';
+    }
+    if (/^\s*(?:@media|@import|[.#]?[a-z][\w-]*(?:\s+[.#]?[a-z][\w-]*)?\s*\{[\s\S]*?:\s*[^;{}]+;)/i.test(source)) {
+        return 'css';
+    }
+    if (/\bpython\b|listas?|tuplas?|diccionarios?|cadenas?|ficheros?|archivos?|funciones?|m[eé]todos?/i.test(getCodeHeading(pre)) &&
+        /(?:#|=|\b(?:in|print)\b|\[[^\]]*\])/m.test(source)) {
+        return 'py';
+    }
+
+    return 'txt';
+}
+
+function getCodeHeading(pre) {
+    const main = pre.closest('main');
+    if (!main) return document.title;
+
+    let currentHeading = '';
+    for (const heading of main.querySelectorAll('h1, h2, h3, h4, h5, h6')) {
+        if (heading.compareDocumentPosition(pre) & Node.DOCUMENT_POSITION_FOLLOWING) {
+            currentHeading = heading.textContent;
+        } else {
+            break;
+        }
+    }
+
+    return currentHeading || document.title;
+}
+
+function slugifyCodeFilename(value) {
+    return value
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .replace(/^\s*\d+(?:\.\d+)*\.?\s*/, '')
+        .replace(/[^a-z0-9]+/g, '_')
+        .replace(/^_+|_+$/g, '')
+        .slice(0, 48)
+        .replace(/_+$/g, '') || 'codigo';
+}
+
+function createCodeIcon(markup) {
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('fill', 'none');
+    svg.setAttribute('stroke', 'currentColor');
+    svg.setAttribute('stroke-width', '2');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.innerHTML = markup;
+    return svg;
+}
+
+function enhanceCodeBlocks() {
+    const filenameCounts = new Map();
+    const codeBlocks = document.querySelectorAll('main pre');
+
+    codeBlocks.forEach((pre, index) => {
+        if (pre.closest('.console-box, .file-buffer')) return;
+        if (!pre.querySelector('code') && !pre.closest('.code-wrapper, .code-container')) return;
+
+        let container = pre.closest('.code-wrapper, .code-container');
+        if (!container) {
+            container = document.createElement('div');
+            pre.parentNode.insertBefore(container, pre);
+            container.appendChild(pre);
+        }
+
+        container.classList.add('code-wrapper', 'code-container');
+        container.setAttribute('role', 'group');
+        if (!container.hasAttribute('aria-label')) {
+            container.setAttribute('aria-label', 'Bloque de código');
+        }
+
+        let header = container.querySelector(':scope > .code-header');
+        if (!header) {
+            header = document.createElement('div');
+            header.className = 'code-header';
+            container.insertBefore(header, pre);
+        } else if (header.nextElementSibling !== pre) {
+            container.insertBefore(header, pre);
+        }
+
+        let filename = header.querySelector('.code-filename');
+        const extension = detectCodeExtension(pre);
+        if (!filename) {
+            filename = document.createElement('span');
+            filename.className = 'code-filename';
+            header.prepend(filename);
+        }
+
+        if (!filename.textContent.trim()) {
+            const title = getCodeHeading(pre);
+            const base = slugifyCodeFilename(title);
+            const key = `${base}.${extension}`;
+            const count = (filenameCounts.get(key) || 0) + 1;
+            filenameCounts.set(key, count);
+            filename.textContent = `${base}_${String(count).padStart(2, '0')}.${extension}`;
+        }
+
+        let actions = header.querySelector('.code-actions');
+        if (!actions) {
+            actions = document.createElement('div');
+            actions.className = 'code-actions no-print';
+            header.appendChild(actions);
+        }
+
+        let copyButton = container.querySelector('button.copy-btn, button[onclick*="copyCode"]');
+        if (!copyButton) {
+            copyButton = document.createElement('button');
+            copyButton.type = 'button';
+            copyButton.addEventListener('click', () => copyCode(copyButton));
+        }
+        copyButton.type = 'button';
+        copyButton.classList.add('btn-code-action');
+        copyButton.title = 'Copiar código al portapapeles';
+        copyButton.setAttribute('aria-label', 'Copiar código al portapapeles');
+        copyButton.replaceChildren(
+            createCodeIcon('<rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>'),
+            Object.assign(document.createElement('span'), { textContent: 'Copiar' })
+        );
+        actions.appendChild(copyButton);
+
+        let downloadButton = actions.querySelector('button[onclick*="downloadCode"], button[data-code-download]');
+        if (!downloadButton) {
+            downloadButton = document.createElement('button');
+            downloadButton.type = 'button';
+            downloadButton.dataset.codeDownload = 'true';
+            downloadButton.addEventListener('click', () => downloadCode(downloadButton));
+            actions.appendChild(downloadButton);
+        }
+        downloadButton.type = 'button';
+        downloadButton.classList.add('btn-code-action');
+        downloadButton.title = `Descargar archivo ${filename.textContent.trim()}`;
+        downloadButton.setAttribute('aria-label', `Descargar archivo ${filename.textContent.trim()}`);
+        downloadButton.replaceChildren(
+            createCodeIcon('<path stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m0 0l-4-4m4 4l4-4M4 19h16"></path>'),
+            Object.assign(document.createElement('span'), { textContent: 'Descargar' })
+        );
+
+        pre.classList.add('code-pre');
+    });
+}
+
+function toggleAllDetails(openState) {
+    document.querySelectorAll('main details').forEach(detail => {
+        detail.open = openState;
+    });
+}
+
+function showToast(message) {
+    let toast = document.getElementById('page-toast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'page-toast';
+        toast.className = 'page-toast';
+        toast.setAttribute('role', 'status');
+        toast.setAttribute('aria-live', 'polite');
+        document.body.appendChild(toast);
+    }
+
+    toast.textContent = message;
+    toast.classList.add('is-visible');
+    clearTimeout(window._pageToastTimer);
+    window._pageToastTimer = setTimeout(() => {
+        toast.classList.remove('is-visible');
+    }, 2500);
+}
+
+async function copyCode(btn) {
+    const container = btn.closest('.code-wrapper, .code-container');
+    const pre = container ? container.querySelector('pre') : btn.nextElementSibling;
+    const code = pre ? (pre.querySelector('code') || pre).textContent.replace(/\r\n?/g, '\n') : '';
+    if (!code) {
+        showToast('No se encontró código para copiar');
+        return;
+    }
+
+    try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            await navigator.clipboard.writeText(code);
+        } else {
+            copyCodeFallback(code);
+        }
+    } catch {
+        try {
+            copyCodeFallback(code);
+        } catch {
+            showToast('No se pudo copiar el código');
+            return;
+        }
+    }
+
+    const label = btn.querySelector('span') || btn;
+    const originalText = label.textContent;
+    label.textContent = 'Copiado';
+    btn.classList.add('is-copied');
+    showToast('Código copiado al portapapeles');
+    setTimeout(() => {
+        label.textContent = originalText;
+        btn.classList.remove('is-copied');
+    }, 1600);
+}
+
+function downloadCode(btn) {
+    const container = btn.closest('.code-wrapper, .code-container');
+    const pre = container ? container.querySelector('pre') : null;
+    const filenameEl = container ? container.querySelector('.code-filename') : null;
+    if (!pre || !filenameEl) {
+        showToast('No se encontró el archivo de código para descargar');
+        return;
+    }
+
+    const filename = filenameEl.textContent.trim();
+    const code = (pre.querySelector('code') || pre).textContent.replace(/\r\n?/g, '\n');
+    const blob = new Blob([code], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+    showToast(`Descargando ${filename}`);
+}
+
+function copyCodeFallback(text) {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.setAttribute('readonly', '');
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    let copied = false;
+    try {
+        textarea.select();
+        copied = document.execCommand('copy');
+    } finally {
+        document.body.removeChild(textarea);
+    }
+
+    if (!copied) {
+        throw new Error('El navegador ha rechazado la copia al portapapeles');
+    }
 }
 
 function descargarPDF() {

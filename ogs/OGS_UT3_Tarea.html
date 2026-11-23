@@ -11,15 +11,29 @@
 </head>
 
 <body>
-  <header>
+  <header class="site-header">
     <div class="header-container">
+        <div class="header-bar">
       <div class="site-title site-title-row">
-        <img src="logo.png" alt="imagen" class="site-logo">
+        <img src="logo.png" alt="Logo IES Celia Viñas" class="site-logo">
         <span>OGS &ndash; UT3 Tarea Estructuras de Datos y Archivos</span>
       </div>
-      <nav class="top-nav">
-        <a href="index.html" class="nav-btn">Inicio</a>
-        <a href="#" class="nav-btn" onclick="descargarPDF(); return false;">Descargar PDF</a>
+        <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="7 7 12 12 17 7"></polyline><polyline points="7 13 12 18 17 13"></polyline></svg>
+          </button>
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(false)" title="Contraer todo" aria-label="Contraer todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 17 12 12 7 17"></polyline></svg>
+          </button>
+          <button type="button" id="btn-pdf" class="btn-icon-header btn-pdf-accent" onclick="descargarPDF()" title="Descargar PDF" aria-label="Descargar PDF">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          </button>
+        </div>
+      </div>
+      <nav aria-label="Navegación por bloques temáticos" class="main-nav no-print">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Inicio</a></li>
+        </ul>
       </nav>
     </div>
   </header>
@@ -35,8 +49,8 @@
     </section>
 
             <section>
-            <details>
-                <summary>Ficha Técnica de la Actividad</summary>
+            <details class="accordion" id="page-section-1">
+                <summary class="summary-title">Ficha Técnica de la Actividad</summary>
                 <article class="box-card">
                     <div class="table-wrapper">
                         <table>
@@ -81,8 +95,8 @@
         </section>
 
     <section>
-      <details>
-        <summary>1. Descripción General y Objetivos</summary>
+      <details class="accordion" id="page-section-2">
+        <summary class="summary-title">1. Descripción General y Objetivos</summary>
         <article class="box-card">
           <p>Esta unidad de trabajo profundiza en el almacenamiento y manipulación de datos en memoria y persistencia en disco. El alumnado aprenderá a seleccionar la estructura adecuada (listas, tuplas o diccionarios), procesar cadenas complejas y manipular ficheros del sistema de forma segura mediante control de excepciones (<code>try-except</code>) y gestores de contexto (<code>with open</code>), enfocándolo a tareas de administración de sistemas e infraestructura de red.</p>
         </article>
@@ -90,8 +104,8 @@
     </section>
 
     <section>
-      <details>
-        <summary>2. Actividades</summary>
+      <details class="accordion" id="page-section-3">
+        <summary class="summary-title">2. Actividades</summary>
         <article class="box-card">
           <h4 id="bloque-a-estructuras-secuenciales-listas-y-tuplas">BLOQUE A: ESTRUCTURAS DE DATOS SECUENCIALES (LISTAS Y TUPLAS)
             <a class="headerlink" href="#bloque-a-estructuras-secuenciales-listas-y-tuplas" title="Enlace permanente">¶</a>

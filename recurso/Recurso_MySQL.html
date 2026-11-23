@@ -11,13 +11,27 @@
 </head>
 
 <body>
-  <header>
+  <header class="site-header">
     <div class="header-container">
-      <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>RECURSO
+        <div class="header-bar">
+      <div class="site-title site-title-row"><img src="logo.png" alt="Logo IES Celia Viñas" class="site-logo"><span>RECURSO
           &ndash; Mysql</span></div>
-      <nav class="top-nav">
-        <a href="index.html" class="nav-btn">Inicio</a>
-        <a href="#" class="nav-btn" onclick="descargarPDF(); return false;">Descargar PDF</a>
+        <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="7 7 12 12 17 7"></polyline><polyline points="7 13 12 18 17 13"></polyline></svg>
+          </button>
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(false)" title="Contraer todo" aria-label="Contraer todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 17 12 12 7 17"></polyline></svg>
+          </button>
+          <button type="button" id="btn-pdf" class="btn-icon-header btn-pdf-accent" onclick="descargarPDF()" title="Descargar PDF" aria-label="Descargar PDF">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          </button>
+        </div>
+      </div>
+      <nav aria-label="Navegación por bloques temáticos" class="main-nav no-print">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Inicio</a></li>
+        </ul>
       </nav>
     </div>
   </header>
@@ -31,33 +45,33 @@
 
       <section class="content-section">
         <article class="content-article">
-          <details>
+          <details class="accordion" id="page-section-1">
             <summary class="summary-title">Descripción general e introducción</summary>
             <p>El estándar de la industria moderna prioriza entornos inmutables y reproducibles frente a las tradicionales instalaciones locales sobre sistemas hosts de desarrollo (<em>bare-metal</em>). Utilizar <strong>Docker</strong> y <strong>Docker Compose</strong> asegura que todo el alumnado trabaje en un entorno idéntico. Con este recurso aprenderas a realizar la instalación de MySQL o utilizar MySQL con contenedores Docker</p>
           </details>
         </article>
 
         <article class="content-article">
-          <details>
+          <details class="accordion" id="page-section-2">
             <summary class="summary-title">Instalación de MySQL en Ubuntu</summary>
             <h2 id="instalacion-de-mysql-en-ubuntu">Instalación de MySQL en Ubuntu <a class="headerlink" href="#instalacion-de-mysql-en-ubuntu" title="Enlace permanente">¶</a></h2>
             <h3 id="paso-1-actualizar-el-repositorio-e-instalar-mysql-server">Paso 1: Actualizar el repositorio e instalar MySQL Server <a class="headerlink" href="#paso-1-actualizar-el-repositorio-e-instalar-mysql-server" title="Enlace permanente">¶</a></h3>
             <p>Ejecuta el gestor de paquetes apt para instalar la versión oficial incluida en los repositorios de Ubuntu:</p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+            <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>sudo apt update
 sudo apt install -y mysql-server</code></pre>
             </div>
 
             <p><strong>Paso 2: Verificar que el servicio esté activo</strong></p>
             <p>Una vez finalizada la instalación, verifica que el motor de la base de datos esté ejecutándose correctamente:</p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+            <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>sudo systemctl status mysql</code></pre>
             </div>
             <em>Deberías ver el estado en verde como active (running).</em>
 
             <p><strong>Paso 3: Configurar la seguridad inicial (mysql_secure_installation)</strong></p>
             <p>Ejecuta el script de seguridad integrado para establecer reglas básicas (como cambiar la política de contraseñas y eliminar usuarios anónimos):</p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+            <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>sudo mysql_secure_installation</code></pre>
             </div>
             El asistente te hará las siguientes preguntas:
@@ -75,18 +89,18 @@ sudo apt install -y mysql-server</code></pre>
             <ol type="1">
               <li><p>Accede a la consola de MySQL:</p></li>
             </ol>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+            <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>sudo mysql</code></pre>
             </div>
             Cambia el método de autenticación y asigna una contraseña ejecutando la siguiente consulta SQL (reemplaza TuPasswordSegura123! por tu clave):
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+            <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password
 BY 'TuPasswordSegura123!';
 FLUSH PRIVILEGES;
 EXIT;</code></pre>
             </div>
             Cuidado para no tener problema y poder acceder desde cualquier equipo establecer como método de autenticación mysql_native_password
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+            <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password
 BY 'TuPasswordSegura123!';
 FLUSH PRIVILEGES;
@@ -95,14 +109,14 @@ EXIT;</code></pre>
 
             <h3 id="a4">Paso 5: Comprobar el acceso local</h3>
             <p>Ahora puedes iniciar sesión en MySQL con tu usuario y contraseña mediante el cliente local:</p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+            <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>mysql -u root -p</code></pre>
             </div>
           </details>
         </article>
 
         <article class="content-article">
-          <details>
+          <details class="accordion" id="page-section-3">
             <summary class="summary-title">Instalación en OpenSuse y Primeros pasos</summary>
             <h2 id="instalacion-de-mysql-en-opensuse">Instalación de MySQL en OpenSuse <a class="headerlink" href="#instalacion-de-mysql-en-opensuse" title="Enlace permanente">¶</a></h2>
             <h2 id="primeros-pasos-con-mysql">Primeros pasos con MySQL <a class="headerlink" href="#primeros-pasos-con-mysql" title="Enlace permanente">¶</a></h2>
@@ -110,12 +124,12 @@ EXIT;</code></pre>
         </article>
 
         <article class="content-article">
-          <details>
+          <details class="accordion" id="page-section-4">
             <summary class="summary-title">Uso de MySQL con Docker y Docker Compose</summary>
             <h2 id="uso-de-mysql-con-docker-y-docker-componse">Uso de MySQL con Docker y Docker Compose <a class="headerlink" href="#uso-de-mysql-con-docker-y-docker-componse" title="Enlace permanente">¶</a></h2>
             <h3 id="version-avanzada-1-2o-asir-ut1">Versión avanzada 1 (2º ASIR - UT1) <a class="headerlink" href="#version-avanzada-1-2o-asir-ut1" title="Enlace permanente">¶</a></h3>
             <p>Este archivo monta los directorios críticos de configuración, datos y logs sobre el volumen físico local para permitir un análisis interactivo sin perder persistencia.</p>
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+            <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>version: '3.8'
 services:
 db:
@@ -151,7 +165,7 @@ asir-net:
 driver: bridge</code></pre>
             </div>
 
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+            <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code># Iniciar contenedor
 docker compose up -d
 # Detener contenedor
@@ -166,7 +180,7 @@ docker exec -it mysql-sysadmin-ut1 bash
 mysql -u root -p -P 3306</code></pre>
             </div>
             Si no tenemos instalado MySQL en el servidor necesitaremos un cliente:
-            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+            <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>sudo apt install mysql-client-core-8.0
 # El acceso en este caso será con:
 mysql -u root -p -h 127.0.0.1 -P 3306</code></pre>

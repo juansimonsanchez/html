@@ -11,14 +11,28 @@
 </head>
 
 <body>
-    <header>
+    <header class="site-header">
         <div class="header-container">
-            <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>GBD
+        <div class="header-bar">
+            <div class="site-title site-title-row"><img src="logo.png" alt="Logo IES Celia Viñas" class="site-logo"><span>GBD
                     &ndash; Ut4 Teoria Ddl</span></div>
-            <nav class="top-nav">
-                <a href="index.html" class="nav-btn">Inicio</a>
-                <a href="#" class="nav-btn" onclick="descargarPDF(); return false;">Descargar PDF</a>
-            </nav>
+        <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="7 7 12 12 17 7"></polyline><polyline points="7 13 12 18 17 13"></polyline></svg>
+          </button>
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(false)" title="Contraer todo" aria-label="Contraer todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 17 12 12 7 17"></polyline></svg>
+          </button>
+          <button type="button" id="btn-pdf" class="btn-icon-header btn-pdf-accent" onclick="descargarPDF()" title="Descargar PDF" aria-label="Descargar PDF">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          </button>
+        </div>
+      </div>
+      <nav aria-label="Navegación por bloques temáticos" class="main-nav no-print">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Inicio</a></li>
+        </ul>
+      </nav>
         </div>
     </header>
 
@@ -34,8 +48,8 @@
         </section>
 
                 <section>
-            <details>
-                <summary>Ficha Técnica</summary>
+            <details class="accordion" id="page-section-1">
+                <summary class="summary-title">Ficha Técnica</summary>
                 <div class="box-card">
                     <h3 id="ficha-tecnica-de-la-unidad-didactica">FICHA TÉCNICA DE LA UNIDAD
                 DIDÁCTICA <a class="headerlink" href="#ficha-tecnica-de-la-unidad-didactica"
@@ -72,8 +86,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>Índice de Contenidos</summary>
+            <details class="accordion" id="page-section-2">
+                <summary class="summary-title">Índice de Contenidos</summary>
                 <div class="box-card">
                     <h3 id="indice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#indice-de-contenidos"
                     title="Enlace permanente">¶</a></h3>
@@ -147,8 +161,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>1. INTRODUCCIÓN Y CONTEXTUALIZACIÓN</summary>
+            <details class="accordion" id="page-section-3">
+                <summary class="summary-title">1. INTRODUCCIÓN Y CONTEXTUALIZACIÓN</summary>
                 <article class="box-card">
                     <h1 id="a1-introduccion-y-contextualizacion">1. INTRODUCCIÓN Y
                 CONTEXTUALIZACIÓN <a class="headerlink" href="#a1-introduccion-y-contextualizacion"
@@ -175,8 +189,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>2. EL LENGUAJE DDL DE SQL</summary>
+            <details class="accordion" id="page-section-4">
+                <summary class="summary-title">2. EL LENGUAJE DDL DE SQL</summary>
                 <article class="box-card">
                     <h1 id="a2-el-lenguaje-ddl-de-sql">2. EL LENGUAJE DDL DE SQL <a class="headerlink"
                     href="#a2-el-lenguaje-ddl-de-sql" title="Enlace permanente">¶</a></h1>
@@ -236,8 +250,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>3. MANIPULACIÓN DE BASES DE DATOS EN MYSQL</summary>
+            <details class="accordion" id="page-section-5">
+                <summary class="summary-title">3. MANIPULACIÓN DE BASES DE DATOS EN MYSQL</summary>
                 <article class="box-card">
                     <h1 id="a3-manipulacion-de-bases-de-datos-en-mysql">3. MANIPULACIÓN DE
                 BASES DE DATOS EN MYSQL <a class="headerlink" href="#a3-manipulacion-de-bases-de-datos-en-mysql"
@@ -249,7 +263,7 @@
                 absolutos. La directiva IF NOT EXISTS evita que se interrumpa la
                 ejecución de scripts automatizados de despliegue (como Ansible o scripts
                 de Shell) si el esquema ya se encuentra en el servidor.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Creación básica (Aplica el juego de caracteres del servidor por defecto)
 CREATE DATABASE IF NOT EXISTS sysadmin_prod;
 
@@ -335,7 +349,7 @@ CREATE DATABASE IF NOT EXISTS sysadmin_prod
                     </table>
                 </div>
             </div>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Inspección del juego de caracteres y colaciones disponibles en el motor
 SHOW CHARACTER SET;
 SHOW COLLATION LIKE "utf8mb4%";
@@ -352,7 +366,7 @@ SELECT @@character_set_database, @@collation_database;</code></pre>
                 BY). A continuación se ejemplifica cómo se almacena y ordena el
                 diccionario de datos en base al cotejamiento asignado a la columna o
                 tabla:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Creación de tabla de prueba con codificación clásica latina
 CREATE TABLE tabla_cotejo (
     cadena CHAR(3) CHARACTER SET latin1
@@ -378,7 +392,7 @@ SELECT cadena FROM tabla_cotejo ORDER BY cadena COLLATE latin1_bin;</code></pre>
                     href="#a32-modificacion-de-bases-de-datos-alter-database" title="Enlace permanente">¶</a></h2>
                     <p>Permite alterar los parámetros estructurales por defecto del esquema
                 sin necesidad de recrear los objetos internos.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Cambio de codificación en caliente para dar soporte a Unicode completo
 ALTER DATABASE sysadmin_prod CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;</code></pre>
                 </div>
@@ -388,7 +402,7 @@ ALTER DATABASE sysadmin_prod CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;</
                     <p>Elimina físicamente el directorio que contiene los ficheros de la
                 base de datos y todas sus tablas. Debe usarse con extrema precaución en
                 scripts de automatización.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Eliminación controlada de un esquema de datos
 DROP DATABASE IF EXISTS sysadmin_prod;</code></pre>
                 </div>
@@ -397,8 +411,8 @@ DROP DATABASE IF EXISTS sysadmin_prod;</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>4. MANIPULACIÓN DE TABLAS</summary>
+            <details class="accordion" id="page-section-6">
+                <summary class="summary-title">4. MANIPULACIÓN DE TABLAS</summary>
                 <article class="box-card">
                     <h1 id="a4-manipulacion-de-tablas">4. MANIPULACIÓN DE TABLAS <a class="headerlink"
                     href="#a4-manipulacion-de-tablas" title="Enlace permanente">¶</a></h1>
@@ -423,7 +437,7 @@ DROP DATABASE IF EXISTS sysadmin_prod;</code></pre>
                     </table>
                 </div>
             </div>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Creación de la base de datos para el despliegue del esquema
 CREATE DATABASE IF NOT EXISTS logistica_empresa CHARSET utf8mb4;
 USE logistica_empresa;
@@ -518,7 +532,7 @@ CREATE TABLE pieza (
                     </table>
                 </div>
             </div>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Ejemplo de configuración relacional con Cascade para gestión automatizada
 CREATE TABLE pieza_cascade (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -545,7 +559,7 @@ CREATE TABLE pieza_cascade (
                             inserción autonumérico.</p>
                 </li>
             </ul>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Configuración avanzada de almacenamiento
 CREATE TABLE usuarios_logs (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -577,7 +591,7 @@ CREATE TABLE usuarios_logs (
                     title="Enlace permanente">¶</a></h3>
                     <p>Modifica el tipo de dato o las restricciones asociadas a una columna
                 existente, manteniendo el nombre de esta.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Cambiar la columna "nombre" para aceptar más caracteres y hacerla obligatoria
 ALTER TABLE categoria MODIFY nombre VARCHAR(150) NOT NULL;</code></pre>
                 </div>
@@ -586,7 +600,7 @@ ALTER TABLE categoria MODIFY nombre VARCHAR(150) NOT NULL;</code></pre>
                     title="Enlace permanente">¶</a></h3>
                     <p>Permite renombrar una columna física además de redefinir su tipo de
                 dato de forma simultánea.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Modifica el nombre de la columna "nombre" a "nombre_categoria"
 ALTER TABLE categoria CHANGE nombre nombre_categoria VARCHAR(100) NOT NULL;</code></pre>
                 </div>
@@ -596,7 +610,7 @@ ALTER TABLE categoria CHANGE nombre nombre_categoria VARCHAR(100) NOT NULL;</cod
             </h3>
                     <p>Permite la modificación del metadato por defecto sin modificar el
                 tipo de columna.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Añadir rol por defecto al registrar un usuario nuevo
 ALTER TABLE usuarios_logs ADD COLUMN rol ENUM("SysAdmin", "Operador") NOT NULL;
 ALTER TABLE usuarios_logs ALTER rol SET DEFAULT "Operador";
@@ -608,7 +622,7 @@ ALTER TABLE usuarios_logs ALTER rol DROP DEFAULT;</code></pre>
             Adición y Eliminación de Atributos (ADD / DROP COLUMN)</h3>
                     <p>Define las reglas físicas de ubicación de nuevas columnas dentro de
                 la estructura de la tupla física en disco.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Añade una columna al final de la tabla
 ALTER TABLE usuarios_logs ADD COLUMN timestamp_registro TIMESTAMP NOT NULL;
 
@@ -624,7 +638,7 @@ ALTER TABLE usuarios_logs DROP COLUMN id_interno;</code></pre>
                     title="Enlace permanente">¶</a></h2>
                     <p>Elimina la estructura de metadatos, los índices físicos y los datos
                 contenidos de la tabla del disco.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Borrado unitario y múltiple controlado
 DROP TABLE IF EXISTS pieza;
 DROP TABLE IF EXISTS pieza_cascade, usuarios_logs;</code></pre>
@@ -634,8 +648,8 @@ DROP TABLE IF EXISTS pieza_cascade, usuarios_logs;</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>5. TIPOS DE DATOS EN MYSQL</summary>
+            <details class="accordion" id="page-section-7">
+                <summary class="summary-title">5. TIPOS DE DATOS EN MYSQL</summary>
                 <article class="box-card">
                     <h1 id="a5-tipos-de-datos-en-mysql">5. TIPOS DE DATOS EN MYSQL <a class="headerlink"
                     href="#a5-tipos-de-datos-en-mysql" title="Enlace permanente">¶</a></h1>
@@ -716,7 +730,7 @@ DROP TABLE IF EXISTS pieza_cascade, usuarios_logs;</code></pre>
                 utiliza conjuntamente con el modificador ZEROFILL, MySQL rellenará con
                 ceros a la izquierda de forma visual en las terminales que soporten este
                 atributo hasta alcanzar el tamaño especificado.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Ejemplo práctico de visualización
 CREATE TABLE demo_zerofill (
     numero INT(4) ZEROFILL
@@ -776,7 +790,7 @@ INSERT INTO demo_zerofill VALUES (5);
                             cifras decimales (rango de 0 a 30).</p>
                 </li>
             </ul>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Definición idónea para transacciones bancarias o e-commerce
 CREATE TABLE transaccion (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -935,7 +949,7 @@ CREATE TABLE transaccion (
                     </table>
                 </div>
             </div>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Creación de tabla para almacenamiento no relacional estructurado
 CREATE TABLE auditoria_config (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -974,7 +988,7 @@ FROM auditoria_config;</code></pre>
                     </table>
                 </div>
             </div>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Consulta del valor actual de sql_mode del servidor
 SELECT @@GLOBAL.sql_mode;
 SELECT @@SESSION.sql_mode;

@@ -11,14 +11,28 @@
 </head>
 
 <body>
-    <header>
+    <header class="site-header">
         <div class="header-container">
-            <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>ASGBD
+        <div class="header-bar">
+            <div class="site-title site-title-row"><img src="logo.png" alt="Logo IES Celia Viñas" class="site-logo"><span>ASGBD
                     &ndash; Ut5 Teoria Optimizacion Consultas</span></div>
-            <nav class="top-nav">
-                <a href="index.html" class="nav-btn">Inicio</a>
-                <a href="#" class="nav-btn" onclick="descargarPDF(); return false;">Descargar PDF</a>
-            </nav>
+        <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="7 7 12 12 17 7"></polyline><polyline points="7 13 12 18 17 13"></polyline></svg>
+          </button>
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(false)" title="Contraer todo" aria-label="Contraer todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 17 12 12 7 17"></polyline></svg>
+          </button>
+          <button type="button" id="btn-pdf" class="btn-icon-header btn-pdf-accent" onclick="descargarPDF()" title="Descargar PDF" aria-label="Descargar PDF">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          </button>
+        </div>
+      </div>
+      <nav aria-label="Navegación por bloques temáticos" class="main-nav no-print">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Inicio</a></li>
+        </ul>
+      </nav>
         </div>
     </header>
 
@@ -33,8 +47,8 @@
         </section>
 
                 <section>
-            <details>
-                <summary>Ficha Técnica</summary>
+            <details class="accordion" id="page-section-1">
+                <summary class="summary-title">Ficha Técnica</summary>
                 <div class="box-card">
                     <h3 id="ficha-tecnica-de-la-unidad-didactica">FICHA TÉCNICA DE LA UNIDAD
                     DIDÁCTICA <a class="headerlink" href="#ficha-tecnica-de-la-unidad-didactica"
@@ -83,8 +97,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>Índice de Contenidos</summary>
+            <details class="accordion" id="page-section-2">
+                <summary class="summary-title">Índice de Contenidos</summary>
                 <div class="box-card">
                     <h3 id="indice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#indice-de-contenidos"
                         title="Enlace permanente">¶</a></h3>
@@ -131,8 +145,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>1. INTRODUCCIÓN</summary>
+            <details class="accordion" id="page-section-3">
+                <summary class="summary-title">1. INTRODUCCIÓN</summary>
                 <article class="box-card">
                     <h1 id="a1-introduccion">1. INTRODUCCIÓN <a class="headerlink" href="#a1-introduccion"
                     title="Enlace permanente">¶</a></h1>
@@ -152,8 +166,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>2. FUNDAMENTOS Y ESTRUCTURA DE LOS ÍNDICES</summary>
+            <details class="accordion" id="page-section-4">
+                <summary class="summary-title">2. FUNDAMENTOS Y ESTRUCTURA DE LOS ÍNDICES</summary>
                 <article class="box-card">
                     <h1 id="a2-fundamentos-y-estructura-de-los-indices">2. FUNDAMENTOS Y
                 ESTRUCTURA DE LOS ÍNDICES <a class="headerlink" href="#a2-fundamentos-y-estructura-de-los-indices"
@@ -274,8 +288,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>3. GESTIÓN AVANZADA DE ÍNDICES</summary>
+            <details class="accordion" id="page-section-5">
+                <summary class="summary-title">3. GESTIÓN AVANZADA DE ÍNDICES</summary>
                 <article class="box-card">
                     <h1 id="a3-gestion-avanzada-de-indices">3. GESTIÓN AVANZADA DE ÍNDICES <a class="headerlink"
                     href="#a3-gestion-avanzada-de-indices" title="Enlace permanente">¶</a></h1>
@@ -333,7 +347,7 @@
                 solo podrá utilizar este índice en consultas que filtren:</p>
                     <ol type="1">
                 <li>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Por el apellido y nombre simultáneamente (WHERE apellido_contacto =
 'Gómez' AND nombre_contacto = 'Ana').</code></pre>
 
@@ -451,8 +465,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>4. MANTENIMIENTO Y DIAGNÓSTICO DE ÍNDICES</summary>
+            <details class="accordion" id="page-section-6">
+                <summary class="summary-title">4. MANTENIMIENTO Y DIAGNÓSTICO DE ÍNDICES</summary>
                 <article class="box-card">
                     <h1 id="a4-mantenimiento-y-diagnostico-de-indices">4. MANTENIMIENTO Y
                 DIAGNÓSTICO DE ÍNDICES <a class="headerlink" href="#a4-mantenimiento-y-diagnostico-de-indices"
@@ -529,8 +543,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>5. PLANES DE EJECUCIÓN CON EXPLAIN</summary>
+            <details class="accordion" id="page-section-7">
+                <summary class="summary-title">5. PLANES DE EJECUCIÓN CON EXPLAIN</summary>
                 <article class="box-card">
                     <h1 id="a5-planes-de-ejecucion-con-explain">5. PLANES DE EJECUCIÓN CON
                 EXPLAIN <a class="headerlink" href="#a5-planes-de-ejecucion-con-explain" title="Enlace permanente">¶</a>
@@ -545,7 +559,7 @@
                     href="#a51-estructura-e-interpretacion-de-columnas-clave" title="Enlace permanente">¶</a></h2>
                     <p>Al ejecutar EXPLAIN, el SGBD devuelve una fila por cada tabla
                 implicada en la consulta con la siguiente estructura de columnas:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                         <pre><code>Columna
 Significado Técnico e Impacto en el
 Rendimiento
@@ -659,8 +673,8 @@ Using temporary indica la creación de tablas temporales internas).</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>6. CASOS PRÁCTICOS Y ESCENARIOS</summary>
+            <details class="accordion" id="page-section-8">
+                <summary class="summary-title">6. CASOS PRÁCTICOS Y ESCENARIOS</summary>
                 <article class="box-card">
                     <h1 id="a6-casos-practicos-y-escenarios">6. CASOS PRÁCTICOS Y ESCENARIOS
                 <a class="headerlink" href="#a6-casos-practicos-y-escenarios" title="Enlace permanente">¶</a>

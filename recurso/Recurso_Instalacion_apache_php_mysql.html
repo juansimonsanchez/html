@@ -11,14 +11,28 @@
 </head>
 
 <body>
-    <header>
+    <header class="site-header">
         <div class="header-container">
-            <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>RECURSO
+        <div class="header-bar">
+            <div class="site-title site-title-row"><img src="logo.png" alt="Logo IES Celia Viñas" class="site-logo"><span>RECURSO
                     &ndash; Instalacion Apache Php Mysql</span></div>
-            <nav class="top-nav">
-                <a href="index.html" class="nav-btn">Inicio</a>
-                <a href="#" class="nav-btn" onclick="descargarPDF(); return false;">Descargar PDF</a>
-            </nav>
+        <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="7 7 12 12 17 7"></polyline><polyline points="7 13 12 18 17 13"></polyline></svg>
+          </button>
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(false)" title="Contraer todo" aria-label="Contraer todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 17 12 12 7 17"></polyline></svg>
+          </button>
+          <button type="button" id="btn-pdf" class="btn-icon-header btn-pdf-accent" onclick="descargarPDF()" title="Descargar PDF" aria-label="Descargar PDF">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          </button>
+        </div>
+      </div>
+      <nav aria-label="Navegación por bloques temáticos" class="main-nav no-print">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Inicio</a></li>
+        </ul>
+      </nav>
         </div>
     </header>
     <div class="page-layout">
@@ -33,14 +47,14 @@
 
             <section class="content-section">
                 <article class="content-article">
-                    <details>
+                    <details class="accordion" id="page-section-1">
                         <summary class="summary-title">Ejecución inicial y actualización de paquetes</summary>
                         <p>Ejecutar</p>
-                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                        <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>sudo apt update</code></pre>
                         </div>
                         <p>y después ejecutar lo siguiente</p>
-                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                        <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>sudo apt install apache2 \
             ghostscript \
             libapache2-mod-php \
@@ -61,26 +75,26 @@
                 </article>
 
                 <article class="content-article">
-                    <details>
+                    <details class="accordion" id="page-section-2">
                         <summary class="summary-title">Transferencia de archivos y configuración de permisos</summary>
                         <p>La mejor forma de transferir archivos a nuestra instancia es mediante el comando scp (en linux):</p>
                         <p><strong>scp [origen] [destino]</strong></p>
                         <p>donde para hacer referencia a nuestra instancia utilizaremos ubuntu@ip_flotante:/ruta</p>
                         <p>Previamente tendremos que asegurándonos de que <em>/var/www/html</em> pertenezca al grupo www-data en nuestra instancia:</p>
-                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                        <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>sudo chgrp www-data /var/www/html</code></pre>
                         </div>
                         <p>Nos aseguramos también que nuestro usuario pertenezca al mismo grupo:</p>
-                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                        <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>sudo usermod -a -G www-data ubuntu</code></pre>
                         </div>
                         <p>Asignamos los permisos adecuados:</p>
-                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                        <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>sudo chmod -R 775 /var/www/html
 sudo chmod -R g+s /var/www/html</code></pre>
                         </div>
                         <p>Y por último nos aseguramos de ser los propietarios del directorio:</p>
-                        <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                        <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>sudo chown -R ubuntu /var/www/html</code></pre>
                         </div>
                         <p>En este punto ya tenemos los permisos de usuario correctamente configurados</p>
@@ -88,7 +102,7 @@ sudo chmod -R g+s /var/www/html</code></pre>
                 </article>
 
                 <article class="content-article">
-                    <details>
+                    <details class="accordion" id="page-section-3">
                         <summary class="summary-title">Ejemplos de transferencia scp</summary>
                         <p>Ejemplos para copiar archivos/carpetas desde nuestro ordenador:</p>
                         <ul>

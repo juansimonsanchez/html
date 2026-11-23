@@ -11,13 +11,27 @@
 </head>
 
 <body>
-  <header>
+  <header class="site-header">
     <div class="header-container">
-      <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>RECURSO
+        <div class="header-bar">
+      <div class="site-title site-title-row"><img src="logo.png" alt="Logo IES Celia Viñas" class="site-logo"><span>RECURSO
           &ndash; Instalacion Docker Ubuntu</span></div>
-      <nav class="top-nav">
-        <a href="index.html" class="nav-btn">Inicio</a>
-        <a href="#" class="nav-btn" onclick="descargarPDF(); return false;">Descargar PDF</a>
+        <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="7 7 12 12 17 7"></polyline><polyline points="7 13 12 18 17 13"></polyline></svg>
+          </button>
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(false)" title="Contraer todo" aria-label="Contraer todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 17 12 12 7 17"></polyline></svg>
+          </button>
+          <button type="button" id="btn-pdf" class="btn-icon-header btn-pdf-accent" onclick="descargarPDF()" title="Descargar PDF" aria-label="Descargar PDF">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          </button>
+        </div>
+      </div>
+      <nav aria-label="Navegación por bloques temáticos" class="main-nav no-print">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Inicio</a></li>
+        </ul>
       </nav>
     </div>
   </header>
@@ -31,7 +45,7 @@
 
       <section class="content-section">
         <article class="content-article">
-          <details>
+          <details class="accordion" id="page-section-1">
             <summary class="summary-title">Índice de contenidos</summary>
             <p><a href="#a4-mantenimiento-y-limpieza-del-sistema"><u>1. Instalación de Docker en Ubuntu</u></a></p>
             <p><a href="#a5-gestion-con-docker-compose-docker-compose"><u>2. Gestión de Contenedores (docker run / docker exec)</u></a></p>
@@ -43,10 +57,10 @@
         </article>
 
         <article class="content-article">
-          <details>
+          <details class="accordion" id="page-section-2">
             <summary class="summary-title">1. Instalación de Docker en Ubuntu</summary>
             <h2 id="a1instalacion-de-docker-en-ubuntu">1.Instalación de Docker en Ubuntu <a class="headerlink" href="#a1instalacion-de-docker-en-ubuntu" title="Enlace permanente">¶</a></h2>
-            <div class="code-wrapper"><button class="copy-btn" type="button" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" type="button" onclick="copyCode(this)">📋 Copiar</button>
                 <pre><code># Añade la clave GPG oficial de Docker:
 sudo apt update
 sudo apt install -y ca-certificates curl
@@ -54,7 +68,7 @@ sudo install -m 0755 -d /etc/apt/keyrings
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
 sudo chmod a+r /etc/apt/keyrings/docker.asc</code></pre>
             </div>
-            <div class="code-wrapper"><button class="copy-btn" type="button" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" type="button" onclick="copyCode(this)">📋 Copiar</button>
                 <pre><code># Añadir el repositorio a las fuentes de APT:
 echo \
 "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
@@ -62,16 +76,16 @@ $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
 sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt update</code></pre>
             </div>
-            <div class="code-wrapper"><button class="copy-btn" type="button" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" type="button" onclick="copyCode(this)">📋 Copiar</button>
                 <pre><code># Instalar los paquetes necesarios:
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</code></pre>
             </div>
-            <div class="code-wrapper"><button class="copy-btn" type="button" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" type="button" onclick="copyCode(this)">📋 Copiar</button>
                 <pre><code># Verificar que el servicio esté activo:
 sudo systemctl status docker</code></pre>
             </div>
             <p>Deberías ver el estado resaltado en verde como active (running).</p>
-            <div class="code-wrapper"><button class="copy-btn" type="button" onclick="copyCode(this)">📋 Copiar</button>
+            <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" type="button" onclick="copyCode(this)">📋 Copiar</button>
                 <pre><code># Ejecutar Docker sin 'sudo' (opcional):
 sudo usermod -aG docker $USER
 newgrp docker</code></pre>
@@ -81,7 +95,7 @@ newgrp docker</code></pre>
         </article>
 
         <article class="content-article">
-          <details>
+          <details class="accordion" id="page-section-3">
             <summary class="summary-title">2. Gestión de Contenedores (docker run / docker exec)</summary>
             <h2 id="a2-gestion-de-contenedores-docker-run-docker-exec">2. Gestión de Contenedores (docker run / docker exec) <a class="headerlink" href="#a2-gestion-de-contenedores-docker-run-docker-exec" title="Enlace permanente">¶</a></h2>
             <p>El comando docker run crea e inicia un contenedor. Sus opciones más comunes son:</p>
@@ -103,7 +117,7 @@ newgrp docker</code></pre>
         </article>
 
         <article class="content-article">
-          <details>
+          <details class="accordion" id="page-section-4">
             <summary class="summary-title">3. Administración y control de Contenedores</summary>
             <h2 id="a3-administracion-y-control-de-contenedores">3. Administración y control de Contenedores <a class="headerlink" href="#a3-administracion-y-control-de-contenedores" title="Enlace permanente">¶</a></h2>
             <p>Comandos esenciales para inspeccionar y controlar el estado de los contenedores:</p>
@@ -138,7 +152,7 @@ newgrp docker</code></pre>
         </article>
 
         <article class="content-article">
-          <details>
+          <details class="accordion" id="page-section-5">
             <summary class="summary-title">4. Gestión de Imágenes y Mantenimiento del Sistema</summary>
             <h3 id="a4-gestion-de-imagenes-docker-image">4. Gestión de Imágenes (docker image) <a class="headerlink" href="#a4-gestion-de-imagenes-docker-image" title="Enlace permanente">¶</a></h3>
             <p>Opciones para descargar, listar y limpiar imágenes del sistema:</p>
@@ -159,7 +173,7 @@ newgrp docker</code></pre>
         </article>
 
         <article class="content-article">
-          <details>
+          <details class="accordion" id="page-section-6">
             <summary class="summary-title">5. Gestión con Docker Compose</summary>
             <h2 id="a5-gestion-con-docker-compose-docker-compose">5. Gestión con Docker Compose (docker compose) <a class="headerlink" href="#a5-gestion-con-docker-compose-docker-compose" title="Enlace permanente">¶</a></h2>
             <p>Cuando se definen múltiples servicios en un archivo docker-compose.yml:</p>

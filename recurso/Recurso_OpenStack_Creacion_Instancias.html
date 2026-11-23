@@ -11,14 +11,27 @@
 </head>
 
 <body>
-  <header>
+  <header class="site-header">
     <div class="header-container">
-      <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>RECURSO
+        <div class="header-bar">
+      <div class="site-title site-title-row"><img src="logo.png" alt="Logo IES Celia Viñas" class="site-logo"><span>RECURSO
           &ndash; Openstack Creacion Instancias</span></div>
-      <nav class="top-nav">
-        <a href="index.html" class="nav-btn">Inicio</a>
-        <!-- Botón de descarga con la misma clase .nav-btn -->
-        <a href="#" class="nav-btn" onclick="descargarPDF(); return false;">Descargar PDF</a>
+        <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="7 7 12 12 17 7"></polyline><polyline points="7 13 12 18 17 13"></polyline></svg>
+          </button>
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(false)" title="Contraer todo" aria-label="Contraer todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 17 12 12 7 17"></polyline></svg>
+          </button>
+          <button type="button" id="btn-pdf" class="btn-icon-header btn-pdf-accent" onclick="descargarPDF()" title="Descargar PDF" aria-label="Descargar PDF">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          </button>
+        </div>
+      </div>
+      <nav aria-label="Navegación por bloques temáticos" class="main-nav no-print">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Inicio</a></li>
+        </ul>
       </nav>
     </div>
   </header>
@@ -34,7 +47,7 @@
 
       <section class="content-section">
         <article class="content-article">
-          <details>
+          <details class="accordion" id="page-section-1">
             <summary class="summary-title">Índice general de contenidos</summary>
             <p><a href="#a41-conexion-desde-consola"><u>1. ¿Qué es OpenStack?</u></a></p>
             <p><a href="#a42-error-por-reutilizacion-de-ip-flotante"><u>2. ¿Para qué lo vamos a utilizar?</u></a></p>
@@ -48,7 +61,7 @@
         </article>
 
         <article class="content-article">
-          <details>
+          <details class="accordion" id="page-section-2">
             <summary class="summary-title">1. ¿Qué es OpenStack?</summary>
             <h1 id="que-es-openstack">¿Qué es OpenStack? <a class="headerlink" href="#a41-conexion-desde-consola" title="Enlace permanente">¶</a></h1>
             <p>Primero tenemos que saber algo sobre la computación en la nube. El <strong>Cloud Computing</strong> o la <strong>computación en la nube</strong> se basa en la entrega de servicios de tipo informático a petición y a través de internet. Algunos de estos servicios son el almacenamiento, los servidores, centros de datos, redes, software y desarrollar aplicaciones, entre otros.</p>
@@ -60,7 +73,7 @@
         </article>
 
         <article class="content-article">
-          <details>
+          <details class="accordion" id="page-section-3">
             <summary class="summary-title">2. ¿Para qué lo vamos a utilizar?</summary>
             <h1 id="para-que-lo-vamos-a-utilizar">¿Para qué lo vamos a utilizar? <a class="headerlink" href="#a42-error-por-reutilizacion-de-ip-flotante" title="Enlace permanente">¶</a></h1>
             <p>En nuestro caso nos va a permitir crear instancias (lo que serían máquinas virtuales) en la nube, que van a ser accesibles tanto desde la red del departamento como desde el exterior. Lo que actualmente hacíamos con VirtualBox (con los inconvenientes que esto tenía), ahora lo vamos a hacer con OpenStack, y podremos acceder desde cualquier lugar. En estas instancias vamos a configurar distintos sistemas gestores de bases de datos, servidores, sistemas operativos, etc., para las distintas actividades y prácticas.</p>
@@ -68,7 +81,7 @@
         </article>
 
         <article class="content-article">
-          <details>
+          <details class="accordion" id="page-section-4">
             <summary class="summary-title">3. Creación de una instancia</summary>
             <h1 id="creacion-de-una-instancia">Creación de una instancia <a class="headerlink" href="#creacion-de-una-instancia" title="Enlace permanente">¶</a></h1>
             <p>Tanto desde la red del departamento, como desde el exterior (con la VPN del departamento, ver el siguiente <a href="https://docs.google.com/document/d/1RWOL-poQkPQflSKgC64M2DPy3FrCQht9yLszdioofaM/edit?usp=sharing"><u>documento</u></a>), podemos acceder a OpenStack desde nuestro navegador en la dirección <a href="http://172.16.0.11/"><u>http://172.16.0.11/</u></a> o <a href="http://openstack.celia"><u>http://openstack.celia</u></a> Nos tendremos que identificar con nuestro usuario y contraseña.</p>
@@ -124,7 +137,7 @@
         </article>
 
         <article class="content-article">
-          <details>
+          <details class="accordion" id="page-section-5">
             <summary class="summary-title">4. Conexión y gestión de la instancia</summary>
             <h1 id="conexion-a-nuestra-instancia">Conexión a nuestra instancia <a class="headerlink" href="#conexion-a-nuestra-instancia" title="Enlace permanente">¶</a></h1>
             <h2 id="a41-conexion-desde-consola">4.1. Conexión desde consola <a class="headerlink" href="#a41-conexion-desde-consola" title="Enlace permanente">¶</a></h2>

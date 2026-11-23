@@ -9,13 +9,27 @@
     <script src="../script.js"></script>
 </head>
 <body>
-    <header>
+    <header class="site-header">
   <div class="header-container">
-    <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>OGS &ndash; UT4 Teoria Poo</span></div>
-    <nav class="top-nav">
-      <a href="index.html" class="nav-btn">Inicio</a>
-      <a href="#" class="nav-btn" onclick="descargarPDF(); return false;">Descargar PDF</a>
-    </nav>
+        <div class="header-bar">
+    <div class="site-title site-title-row"><img src="logo.png" alt="Logo IES Celia Viñas" class="site-logo"><span>OGS &ndash; UT4 Teoria Poo</span></div>
+        <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="7 7 12 12 17 7"></polyline><polyline points="7 13 12 18 17 13"></polyline></svg>
+          </button>
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(false)" title="Contraer todo" aria-label="Contraer todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 17 12 12 7 17"></polyline></svg>
+          </button>
+          <button type="button" id="btn-pdf" class="btn-icon-header btn-pdf-accent" onclick="descargarPDF()" title="Descargar PDF" aria-label="Descargar PDF">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          </button>
+        </div>
+      </div>
+      <nav aria-label="Navegación por bloques temáticos" class="main-nav no-print">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Inicio</a></li>
+        </ul>
+      </nav>
   </div>
 </header>
     <div class="page-layout">
@@ -28,8 +42,8 @@ Datos</h1>
 </section>
 
         <section>
-            <details>
-                <summary>Ficha Técnica de la Unidad</summary>
+            <details class="accordion" id="page-section-1">
+                <summary class="summary-title">Ficha Técnica de la Unidad</summary>
                 <article class="box-card">
                     <h3 id="ficha-tecnica-de-la-unidad">FICHA TÉCNICA DE LA UNIDAD  <a class="headerlink" href="#ficha-tecnica-de-la-unidad" title="Enlace permanente">¶</a></h3>
                     <div class="table-wrapper">
@@ -63,8 +77,8 @@ Datos</h1>
         </section>
 
 <section>
-  <details>
-    <summary>Índice de Contenidos</summary>
+  <details class="accordion" id="page-section-2">
+    <summary class="summary-title">Índice de Contenidos</summary>
     <article class="box-card">
       <p><strong>ÍNDICE DE CONTENIDOS</strong></p>
       <p><a href="#a1-introduccion-a-la-poo"><u>1. Introducción a la
@@ -124,8 +138,8 @@ Datos</h1>
 </section>
 
 <section>
-  <details>
-    <summary>1. Introducción a la POO</summary>
+  <details class="accordion" id="page-section-3">
+    <summary class="summary-title">1. Introducción a la POO</summary>
     <article class="box-card">
       <h1 id="a1-introduccion-a-la-poo">1. Introducción a la POO <a class="headerlink" href="#a1-introduccion-a-la-poo" title="Enlace permanente">¶</a></h1>
       <p>Hasta ahora se ha trabajado utilizando la programación estructurada
@@ -205,7 +219,7 @@ Datos</h1>
       referencia directa a la propia instancia sobre la cual se está
       ejecutando el bloque de código, permitiendo manipular sus atributos
       internos.</p>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code># Ejemplo de declaración de clase base e instanciación básica
+      <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code># Ejemplo de declaración de clase base e instanciación básica
 class Persona:
     nombre = ""
     apellidos = ""
@@ -230,8 +244,8 @@ if pedro.edad &lt; 18:
 </section>
 
 <section>
-  <details>
-    <summary>2. Ciclo de Vida del Objeto y Métodos Avanzados</summary>
+  <details class="accordion" id="page-section-4">
+    <summary class="summary-title">2. Ciclo de Vida del Objeto y Métodos Avanzados</summary>
     <article class="box-card">
       <h1 id="a17">2. Ciclo de Vida
       del Objeto y Métodos Avanzados</h1>
@@ -242,7 +256,7 @@ if pedro.edad &lt; 18:
       Para automatizar este proceso y garantizar que toda instancia cuente con
       valores de arranque válidos desde su nacimiento, se utiliza el método
       especial constructor __init__.</p>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>class Persona:
+      <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>class Persona:
     def __init__(self, nombre, apellidos, dni, edad, peso, altura):
         # Inicialización de los atributos de instancia mediante el parámetro
         self
@@ -264,7 +278,7 @@ pedro = Persona('Pedro', 'Ruiz Serrano', '87654321G', 21, 78,
       simulando el comportamiento organizativo de los registros de una base de
       datos relacional y permitiendo aplicar métodos nativos como append(),
       pop() o insert().</p>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>personas = []
+      <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>personas = []
 personas.append(Persona('Pedro', 'Ruiz Serrano', '87654321G', 21, 78,
 1.67))
 personas.append(Persona('Ana', 'Cobo Sánchez', '12345678T', 26, 65,
@@ -285,7 +299,7 @@ print(personas[2].nombre)</code></pre></div>
       error de tipo AttributeError). Para gestionarlos con elegancia sin
       perder la sintaxis limpia de atributos, se emplean los decoradores
       @property (Getters) y @&lt;atributo&gt;.setter (Setters).</p>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>class Circulo:
+      <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>class Circulo:
     def __init__(self, radio):
         self.radio = radio # Invoca automáticamente al setter para su
         validación
@@ -314,8 +328,8 @@ fija en 0</code></pre></div>
 </section>
 
 <section>
-  <details>
-    <summary>3. Relaciones entre Clases</summary>
+  <details class="accordion" id="page-section-5">
+    <summary class="summary-title">3. Relaciones entre Clases</summary>
     <article class="box-card">
       <h1 id="a20">3. Relaciones entre Clases</h1>
       <h2 id="a31-herencia-simple-y-la-funcion-super">3.1. Herencia Simple y la
@@ -326,7 +340,7 @@ fija en 0</code></pre></div>
       función integrada super() proporciona una referencia directa a la clase
       base, posibilitando la reutilización o extensión de sus métodos mediante
       la técnica de sobreescritura.</p>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>import math
+      <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>import math
 class Punto:
     def __init__(self, x=0, y=0):
         self.x = x
@@ -353,7 +367,7 @@ class Punto3D(Punto):
       más instancias de otras clases como atributos internos, delegando en
       ellas parte de su comportamiento lógico o responsabilidades de
       cálculo.</p>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>class CirculoCentro:
+      <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>class CirculoCentro:
     def __init__(self, centro, radio):
         # 'centro' se espera que sea una instancia previamente creada de la
         clase Punto
@@ -369,7 +383,7 @@ class Punto3D(Punto):
       múltiples clases superiores. En este escenario, es crítico estructurar y
       nombrar los métodos con claridad para evitar colisiones de nombres o
       ambigüedades en la resolución.</p>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>class Telefono:
+      <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>class Telefono:
     def __init__(self, numero):
         self.numero = numero
     def telefonear(self): print("Llamando...")
@@ -400,7 +414,7 @@ class Movil(Telefono, Camara, Reproductor):
       conceptual, pero que no requieren leer ni modificar datos específicos
       del objeto (no reciben self).</p></li>
       </ul>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>class Calculadora:
+      <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>class Calculadora:
     def __init__(self, modelo):
         self.modelo = modelo
     @staticmethod
@@ -468,8 +482,8 @@ class Movil(Telefono, Camara, Reproductor):
 </section>
 
 <section>
-  <details>
-    <summary>4. Interfaces Gráficas de Usuario (GUI) con Tkinter</summary>
+  <details class="accordion" id="page-section-6">
+    <summary class="summary-title">4. Interfaces Gráficas de Usuario (GUI) con Tkinter</summary>
     <article class="box-card">
       <h1 id="a4-interfaces-graficas-de-usuario-gui-con-tkinter">4. Interfaces
       Gráficas de Usuario (GUI) con Tkinter <a class="headerlink" href="#a4-interfaces-graficas-de-usuario-gui-con-tkinter" title="Enlace permanente">¶</a></h1>
@@ -524,7 +538,7 @@ class Movil(Telefono, Camara, Reproductor):
       interactiva, utilizando el método .grid() para asegurar un diseño limpio
       y enlazando eventos a funciones (callbacks) utilizando el parámetro
       command.</p>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>import tkinter as tk
+      <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>import tkinter as tk
 def procesarSuma():
     # .get() extrae la cadena del Entry; se castea a int para operar
     aritméticamente
@@ -562,8 +576,8 @@ app.mainloop()</code></pre></div>
 </section>
 
 <section>
-  <details>
-    <summary>5. Conexión con Sistemas de Base de Datos (MySQL)</summary>
+  <details class="accordion" id="page-section-7">
+    <summary class="summary-title">5. Conexión con Sistemas de Base de Datos (MySQL)</summary>
     <article class="box-card">
       <h1 id="a25">5. Conexión con
       Sistemas de Base de Datos (MySQL)</h1>
@@ -629,7 +643,7 @@ app.mainloop()</code></pre></div>
       </tr>
       </tbody>
       </table>
-      <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>import mysql.connector
+      <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>import mysql.connector
 from mysql.connector import Error, errorcode
 try:
     # Intento de establecimiento del canal de comunicación relacional

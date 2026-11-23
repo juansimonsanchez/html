@@ -11,14 +11,28 @@
 </head>
 
 <body>
-    <header>
+    <header class="site-header">
         <div class="header-container">
-            <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>APL
+        <div class="header-bar">
+            <div class="site-title site-title-row"><img src="logo.png" alt="Logo IES Celia Viñas" class="site-logo"><span>APL
                     &ndash; UT1 Teoria Introduccion</span></div>
-            <nav class="top-nav">
-                <a href="index.html" class="nav-btn">Inicio</a>
-                <a href="#" class="nav-btn" onclick="descargarPDF(); return false;">Descargar PDF</a>
-            </nav>
+        <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="7 7 12 12 17 7"></polyline><polyline points="7 13 12 18 17 13"></polyline></svg>
+          </button>
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(false)" title="Contraer todo" aria-label="Contraer todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 17 12 12 7 17"></polyline></svg>
+          </button>
+          <button type="button" id="btn-pdf" class="btn-icon-header btn-pdf-accent" onclick="descargarPDF()" title="Descargar PDF" aria-label="Descargar PDF">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          </button>
+        </div>
+      </div>
+      <nav aria-label="Navegación por bloques temáticos" class="main-nav no-print">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Inicio</a></li>
+        </ul>
+      </nav>
         </div>
     </header>
 
@@ -32,8 +46,8 @@
         </section>
 
                 <section>
-            <details>
-                <summary>Ficha Técnica</summary>
+            <details class="accordion" id="page-section-1">
+                <summary class="summary-title">Ficha Técnica</summary>
                 <div class="box-card">
                     <h3 id="ficha-tecnica-de-la-unidad">FICHA TÉCNICA DE LA UNIDAD <a class="headerlink"
                     href="#ficha-tecnica-de-la-unidad" title="Enlace permanente">¶</a></h3>
@@ -69,8 +83,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>Índice de Contenidos</summary>
+            <details class="accordion" id="page-section-2">
+                <summary class="summary-title">Índice de Contenidos</summary>
                 <div class="box-card">
                     <h3 id="indice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#indice-de-contenidos"
                         title="Enlace permanente">¶</a></h3>
@@ -152,8 +166,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>1. INTRODUCCIÓN Y CONTEXTUALIZACIÓN 📖</summary>
+            <details class="accordion" id="page-section-3">
+                <summary class="summary-title">1. INTRODUCCIÓN Y CONTEXTUALIZACIÓN 📖</summary>
                 <article class="box-card">
                     <h2 id="a1-introduccion-y-contextualizacion">1. INTRODUCCIÓN Y
                     CONTEXTUALIZACIÓN 📖 <a class="headerlink" href="#a1-introduccion-y-contextualizacion"
@@ -175,8 +189,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>2. CONCEPTOS FUNDAMENTALES</summary>
+            <details class="accordion" id="page-section-4">
+                <summary class="summary-title">2. CONCEPTOS FUNDAMENTALES</summary>
                 <article class="box-card">
                     <h2 id="a2-conceptos-fundamentales">2. CONCEPTOS FUNDAMENTALES <a class="headerlink"
                         href="#a2-conceptos-fundamentales" title="Enlace permanente">¶</a></h2>
@@ -327,8 +341,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>3. FUNDAMENTOS, ARQUITECTURA Y SERVICIOS</summary>
+            <details class="accordion" id="page-section-5">
+                <summary class="summary-title">3. FUNDAMENTOS, ARQUITECTURA Y SERVICIOS</summary>
                 <article class="box-card">
                     <h2 id="a3-fundamentos-arquitectura-y-servicios">3. FUNDAMENTOS,
                     ARQUITECTURA Y SERVICIOS <a class="headerlink" href="#a3-fundamentos-arquitectura-y-servicios"
@@ -479,7 +493,7 @@
                     puede alojar múltiples sitios web distintos (ej: iescelia.org y
                     departamento.local) mediante la configuración de <strong>Virtual
                         Hosts</strong> en servidores como Apache o Nginx:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code># Configuración básica en Apache
 (/etc/apache2/sites-available/iescelia.conf)
@@ -556,8 +570,8 @@ CustomLog ${APACHE_LOG_DIR}/iescelia_access.log combined
         </section>
 
         <section>
-            <details>
-                <summary>4. EVOLUCIÓN DE LAS ETAPAS DE LA WEB 📖</summary>
+            <details class="accordion" id="page-section-6">
+                <summary class="summary-title">4. EVOLUCIÓN DE LAS ETAPAS DE LA WEB 📖</summary>
                 <article class="box-card">
                     <h2 id="a4-evolucion-de-las-etapas-de-la-web">4. EVOLUCIÓN DE LAS ETAPAS DE
                     LA WEB 📖 <a class="headerlink" href="#a4-evolucion-de-las-etapas-de-la-web"
@@ -572,8 +586,8 @@ CustomLog ${APACHE_LOG_DIR}/iescelia_access.log combined
         </section>
 
         <section>
-            <details>
-                <summary>5. INTEGRACIÓN WEB Y BASES DE DATOS</summary>
+            <details class="accordion" id="page-section-7">
+                <summary class="summary-title">5. INTEGRACIÓN WEB Y BASES DE DATOS</summary>
                 <article class="box-card">
                     <h2 id="a5-integracion-web-y-bases-de-datos">5. INTEGRACIÓN WEB Y BASES DE
                     DATOS <a class="headerlink" href="#a5-integracion-web-y-bases-de-datos"
@@ -646,8 +660,8 @@ CustomLog ${APACHE_LOG_DIR}/iescelia_access.log combined
         </section>
 
         <section>
-            <details>
-                <summary>6. LENGUAJE DE MARCAS: HTML5</summary>
+            <details class="accordion" id="page-section-8">
+                <summary class="summary-title">6. LENGUAJE DE MARCAS: HTML5</summary>
                 <article class="box-card">
                     <h2 id="a6-lenguaje-de-marcas-html5">6. LENGUAJE DE MARCAS: HTML5 <a class="headerlink"
                         href="#a6-lenguaje-de-marcas-html5" title="Enlace permanente">¶</a></h2>
@@ -675,14 +689,14 @@ CustomLog ${APACHE_LOG_DIR}/iescelia_access.log combined
                     &lt;img&gt; o &lt;meta&gt;, que no encierran contenido.</p>
                     <p>Los atributos añaden información a la etiqueta. Se escriben en la
                     etiqueta de apertura: nombre="valor".</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;img src="foto.jpg" alt="Paisaje" width="300" height="200"&gt;</code></pre>
                 </div>
                     <p>Para asegurar la compatibilidad con dispositivos móviles modernos, un
                     documento HTML5 correcto debe tener la siguiente estructura semántica y
                     de cabecera:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="es"&gt;
@@ -778,7 +792,7 @@ CustomLog ${APACHE_LOG_DIR}/iescelia_access.log combined
                             etiqueta de cierre.</p>
                     </li>
                 </ul>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;p&gt;SQL es el lenguaje estándar de bases de datos.&lt;br&gt;
 MySQL es un servidor de base de datos muy popular.&lt;/p&gt;</code></pre>
@@ -789,7 +803,7 @@ MySQL es un servidor de base de datos muy popular.&lt;/p&gt;</code></pre>
                     <p><strong>B) Títulos y Encabezados</strong></p>
                     <p>HTML5 proporciona seis niveles jerárquicos de títulos para organizar
                     la información de mayor a menor importancia:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;h1&gt;Este es un Título de Nivel 1 (Mayor importancia)&lt;/h1&gt;
 &lt;h2&gt;Este es un Título de Nivel 2 (Secciones principales)&lt;/h2&gt;
@@ -811,7 +825,7 @@ MySQL es un servidor de base de datos muy popular.&lt;/p&gt;</code></pre>
                             autores o empresas.</p>
                     </li>
                 </ul>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;blockquote&gt;
 &lt;p&gt;La web es una herramienta fundamental para el acceso a la información global.&lt;/p&gt;
@@ -836,7 +850,7 @@ Email: &lt;a href="mailto:juansimonsanchez@gmail.com"&gt;juansimonsanchez@gmail.
                             Tradicionalmente los navegadores la renderizan en <em>cursiva</em>.</p>
                     </li>
                 </ul>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;p&gt;El protocolo &lt;strong&gt;HTTPS&lt;/strong&gt; es la variante segura de HTTP y viaja de forma
 &lt;em&gt;cifrada&lt;/em&gt;.&lt;/p&gt;</code></pre>
@@ -845,12 +859,12 @@ Email: &lt;a href="mailto:juansimonsanchez@gmail.com"&gt;juansimonsanchez@gmail.
                 &lt;u&gt;, &lt;sub&gt;, &lt;sup&gt;, &lt;big&gt; y &lt;small&gt;.
                     <p>También conviene diferenciar entre formato visual y significado
                     semántico: &lt;strong&gt; indica importancia y &lt;em&gt; énfasis.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;p&gt;&lt;b&gt;Negrita&lt;/b&gt;, &lt;i&gt;cursiva&lt;/i&gt; y
 &lt;u&gt;subrayado&lt;/u&gt;.&lt;/p&gt;</code></pre>
                 </div>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;p&gt;H&lt;sub&gt;2&lt;/sub&gt;O y 2&lt;sup&gt;3&lt;/sup&gt; =
 8.&lt;/p&gt;</code></pre>
@@ -879,7 +893,7 @@ Email: &lt;a href="mailto:juansimonsanchez@gmail.com"&gt;juansimonsanchez@gmail.
                     <p><strong>A) Listas No Ordenadas (&lt;ul&gt;)</strong></p>
                     <p>Colección de elementos donde no importa el orden secuencial. Los
                     elementos van precedidos de viñetas (puntos):</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;ul&gt;
 &lt;li&gt;Inicio&lt;/li&gt;
@@ -890,7 +904,7 @@ Email: &lt;a href="mailto:juansimonsanchez@gmail.com"&gt;juansimonsanchez@gmail.
                     <strong>B) Listas Ordenadas (&lt;ol&gt;)</strong>
                     <p>Especialmente útiles para tutoriales o instrucciones de instalación
                     técnica paso a paso:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;ol&gt;
 &lt;li&gt;Instalar el servidor web Apache.&lt;/li&gt;
@@ -915,7 +929,7 @@ Email: &lt;a href="mailto:juansimonsanchez@gmail.com"&gt;juansimonsanchez@gmail.
                             (<em>Definition Description</em>).</p>
                     </li>
                 </ul>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;dl&gt;
 &lt;dt&gt;Hosting&lt;/dt&gt;
@@ -926,7 +940,7 @@ un servidor conectado a Internet.&lt;/dd&gt;
                     <p><strong>D) Anidamiento de Listas</strong></p>
                     <p>Podemos insertar una lista completa dentro de un elemento de otra
                     lista para crear jerarquías multinivel:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;ol&gt;
 &lt;li&gt;Sistemas Operativos:
@@ -959,7 +973,7 @@ un servidor conectado a Internet.&lt;/dd&gt;
                                 Data</em>).</p>
                     </li>
                 </ul>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;!-- Ejemplo de tabla sencilla --&gt;
 &lt;table border="1" &gt;
@@ -985,7 +999,7 @@ un servidor conectado a Internet.&lt;/dd&gt;
 &lt;/table&gt;
                 </code></pre>
                 </div>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;!-- Ejemplo de tabla con colspan y rowspan --&gt;
 &lt;table border="1" &gt;
@@ -1014,7 +1028,7 @@ un servidor conectado a Internet.&lt;/dd&gt;
 &lt;/table&gt;
                 </code></pre>
                 </div>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;!-- Ejemplo de tabla semántica con estilos CSS básicos integrados --&gt;
 &lt;table border="1" style="border-collapse: collapse; width: 100%; text-align: center;"&gt;
@@ -1054,7 +1068,7 @@ un servidor conectado a Internet.&lt;/dd&gt;
                     caso de que el motor de renderizado no logre cargar el recurso.</p>
                     <p>Técnicamente, se trata de una etiqueta vacía, por lo que carece de
                     marca de cierre.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;img src="nombrefoto.jpg" alt="Descripción de la fotografía"&gt;</code></pre>
                 </div>
@@ -1068,7 +1082,7 @@ un servidor conectado a Internet.&lt;/dd&gt;
                     <p>La propiedad <em>align</em> permite gestionar la distribución
                     horizontal del recurso, facilitando su alineación lateral o central
                     respecto al flujo del documento.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;img src="nombrefoto.jpg" width="25" height="25" align="center" border="2"&gt;</code></pre>
                 </div>
@@ -1078,7 +1092,7 @@ un servidor conectado a Internet.&lt;/dd&gt;
                     en píxeles.</p>
                     <p><strong>hspace:</strong> Establece el margen de separación horizontal
                     en píxeles.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;img src="imagen.gif" align="left" vspace="35" hspace="35"&gt;</code></pre>
                 </div>
@@ -1086,7 +1100,7 @@ un servidor conectado a Internet.&lt;/dd&gt;
                     gráficos con la creación de enlaces de hipertexto.</p>
                     <p>Al anidar una etiqueta de imagen dentro de un contenedor de enlace,
                     convertimos el recurso visual en un elemento clicable.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;a href="index.htm"&gt;&lt;img src="img/izda.gif"&gt;&lt;/a&gt;</code></pre>
                 </div>
@@ -1107,7 +1121,7 @@ un servidor conectado a Internet.&lt;/dd&gt;
                     destino especificado.</p>
                     <p>La sintaxis estructural para establecer enlaces externos o internos
                     es la siguiente:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;a href="https://www.20minutos.es"&gt;Acceso a Noticias&lt;/a&gt;</code></pre>
                 </div>
@@ -1119,7 +1133,7 @@ un servidor conectado a Internet.&lt;/dd&gt;
                     <p>El atributo <strong>href</strong> del elemento "a" define la
                     referencia del recurso que el navegador debe renderizar tras la
                     activación del vínculo.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;body&gt;
 &lt;a href="https://www.google.es/"&gt;Buscador Google&lt;/a&gt;&lt;br&gt;
@@ -1134,7 +1148,7 @@ un servidor conectado a Internet.&lt;/dd&gt;
                     <p>A modo de ejemplo técnico, consideremos la interconexión entre dos
                     archivos denominados <em>pagina1.html</em> y <em>pagina2.html</em>.</p>
                     <p>Contenido estructural del archivo principal:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;html&gt;
 &lt;head&gt;
@@ -1155,7 +1169,7 @@ un servidor conectado a Internet.&lt;/dd&gt;
                     instrucción: <em>&lt;a href="pagina1.html"&gt;Salir&lt;/a&gt;</em>.</p>
                     <p>El técnico puede configurar interfaces donde las imágenes actúen como
                     activadores de navegación al ser seleccionadas por el usuario.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;h2&gt;Interactúe con los logotipos para acceder a los motores de
 búsqueda principales.&lt;/h2&gt;
@@ -1172,7 +1186,7 @@ alt="Enlace a Amazon"&gt; &lt;/a&gt;</code></pre>
                     <p>Asignando el valor <strong>"_blank"</strong>, forzamos al sistema a
                     desplegar el contenido en una pestaña independiente, preservando la
                     sesión actual.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;a href="http://www.youtube.com" target="_blank"&gt;Plataforma de Video&lt;/a&gt;</code></pre>
                 </div>
@@ -1181,22 +1195,22 @@ alt="Enlace a Amazon"&gt; &lt;/a&gt;</code></pre>
                     <p>El proceso se basa en la inserción de marcadores técnicos en puntos
                     estratégicos que servirán de destino para futuras peticiones.</p>
                     <p><strong>A) Definición del Marcador</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;a name="identificador"&gt;Texto de referencia&lt;/a&gt;</code></pre>
                 </div>
                     <strong>B) Implementación del Vínculo Interno</strong>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;a href="#identificador"&gt;Desplazamiento al marcador&lt;/a&gt;</code></pre>
                 </div>
                     <strong>C) Acceso Remoto a Marcadores</strong>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;a href="historia.html#identificador"&gt;Enlace a sección externa&lt;/a&gt;</code></pre>
                 </div>
                     Por ejemplo
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;a href="#geografia"&gt;Ir a Sección Geográfica&lt;/a&gt;
 
@@ -1236,7 +1250,7 @@ alt="Enlace a Amazon"&gt; &lt;/a&gt;</code></pre>
                     <p>Un formulario web (&lt;form&gt;) es el mecanismo básico que permite
                     recopilar información introducida por el usuario y enviarla a un
                     servidor web o motor dinámico para su procesamiento.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;!-- Ejemplo de formulario básico de contacto --&gt;
 &lt;form action="procesar_contacto.php" method="POST"&gt;
@@ -1294,7 +1308,7 @@ alt="Enlace a Amazon"&gt; &lt;/a&gt;</code></pre>
                             seleccionar una de varias opciones de una lista:</p>
                     </li>
                 </ol>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;select id="a37" name="sistema_operativo"&gt;
     &lt;option value="win"&gt;Windows Server&lt;/option&gt;
@@ -1302,7 +1316,7 @@ alt="Enlace a Amazon"&gt; &lt;/a&gt;</code></pre>
 &lt;/select&gt;</code></pre>
                 </div>
                     <p><strong>Ejemplos de casilla de verificación y botón de radio:</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;!-- Casillas de verificación: se pueden marcar varias opciones --&gt;
 &lt;label&gt;
@@ -1346,8 +1360,8 @@ alt="Enlace a Amazon"&gt; &lt;/a&gt;</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>7. CAPA DE DISEÑO Y MAQUETACIÓN: CSS3</summary>
+            <details class="accordion" id="page-section-9">
+                <summary class="summary-title">7. CAPA DE DISEÑO Y MAQUETACIÓN: CSS3</summary>
                 <article class="box-card">
                     <h2 id="a7-capa-de-diseno-y-maquetacion-css3">7. CAPA DE DISEÑO Y
                     MAQUETACIÓN: CSS3 <a class="headerlink" href="#a7-capa-de-diseno-y-maquetacion-css3"
@@ -1418,7 +1432,7 @@ alt="Enlace a Amazon"&gt; &lt;/a&gt;</code></pre>
                     </li>
                 </ol>
                     <p><strong>Ejemplos de aplicación:</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;!-- 1. Pequeñas partes con span --&gt;
 &lt;p&gt;Texto normal y &lt;span style="color: red; font-weight: bold;"&gt;texto destacado en rojo&lt;/span&gt;.&lt;/p&gt;
@@ -1515,7 +1529,7 @@ alt="Enlace a Amazon"&gt; &lt;/a&gt;</code></pre>
                         <code>center</code>, <code>bold</code>).
                     </li>
                 </ul>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>p { font-size: 10pt; text-decoration: underline; color: black; }
 h1 { text-align: center; color: black; }</code></pre>
@@ -1529,7 +1543,7 @@ h1 { text-align: center; color: black; }</code></pre>
                     estas
                     propiedades directamente mediante CSS:
                 </p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>&lt;!-- Tradicional (obsoleto) --&gt;
 &lt;hr size="3" color="pink" width="50%"&gt;
@@ -1569,7 +1583,7 @@ h1 { text-align: center; color: black; }</code></pre>
                         elementos
                         con el mismo ID dentro de un mismo documento HTML.</li>
                 </ul>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>/* Regla de clase en hoja de estilo */
 .texto-alerta {
@@ -1754,7 +1768,7 @@ h1 { text-align: center; color: black; }</code></pre>
                     <p><img src="media_APL_UT1_Teoria_Introduccion_26_27/media/image4.png" alt="imagen"
                         class="image-width-300">
                 </p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                         Copiar</button>
                     <pre><code>/* Ejemplo de caja con box-sizing configurado */
 .caja-noticia {

@@ -11,14 +11,28 @@
 </head>
 
 <body>
-    <header>
+    <header class="site-header">
         <div class="header-container">
-            <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>ASGBD
+        <div class="header-bar">
+            <div class="site-title site-title-row"><img src="logo.png" alt="Logo IES Celia Viñas" class="site-logo"><span>ASGBD
                     &ndash; Ut5 Práctica Tunning Servidores Explain Avanzado</span></div>
-            <nav class="top-nav">
-                <a href="index.html" class="nav-btn">Inicio</a>
-                <a href="#" class="nav-btn" onclick="descargarPDF(); return false;">Descargar PDF</a>
-            </nav>
+        <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="7 7 12 12 17 7"></polyline><polyline points="7 13 12 18 17 13"></polyline></svg>
+          </button>
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(false)" title="Contraer todo" aria-label="Contraer todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 17 12 12 7 17"></polyline></svg>
+          </button>
+          <button type="button" id="btn-pdf" class="btn-icon-header btn-pdf-accent" onclick="descargarPDF()" title="Descargar PDF" aria-label="Descargar PDF">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          </button>
+        </div>
+      </div>
+      <nav aria-label="Navegación por bloques temáticos" class="main-nav no-print">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Inicio</a></li>
+        </ul>
+      </nav>
         </div>
     </header>
 
@@ -30,8 +44,8 @@
         </section>
 
                 <section>
-            <details>
-                <summary>Ficha Técnica</summary>
+            <details class="accordion" id="page-section-1">
+                <summary class="summary-title">Ficha Técnica</summary>
                 <div class="box-card">
                     <h3 id="ficha-tecnica-de-la-actividad">FICHA TÉCNICA DE LA
                 ACTIVIDAD <a class="headerlink" href="#ficha-tecnica-de-la-actividad" title="Enlace permanente">¶</a>
@@ -77,8 +91,8 @@
         
 
         <section>
-            <details>
-                <summary>Actividades y Cronograma</summary>
+            <details class="accordion" id="page-section-2">
+                <summary class="summary-title">Actividades y Cronograma</summary>
                 <article class="box-card">
                     <h4 id="metodo-de-entrega-y-formato">MÉTODO DE ENTREGA Y FORMATO <a class="headerlink"
                     href="#metodo-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
@@ -207,7 +221,7 @@
                             innodb_flush_log_at_trx_commit = 2</p>
                 </li>
                 <li>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Reinicio y Verificación: Reinicie el servicio de
 forma limpia utilizando el gestor del sistema (systemctl restart mysql).
 Verifique en los ficheros de log de errores del sistema
@@ -300,7 +314,7 @@ están cargados en caliente.</code></pre>
                     </ul>
                 </li>
                 <li>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Identificación de Cuellos de Botella: Identifique
 razonadamente qué relaciones JOIN o filtrados WHERE están obligando al
 motor a procesar de forma secuencial completa las tablas.</code></pre>

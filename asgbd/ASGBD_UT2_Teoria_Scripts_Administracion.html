@@ -11,14 +11,28 @@
 </head>
 
 <body>
-    <header>
+    <header class="site-header">
         <div class="header-container">
-            <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>ASGBD
+        <div class="header-bar">
+            <div class="site-title site-title-row"><img src="logo.png" alt="Logo IES Celia Viñas" class="site-logo"><span>ASGBD
                     &ndash; UT3 Teoria Scripts Administracion</span></div>
-            <nav class="top-nav">
-                <a href="index.html" class="nav-btn">Inicio</a>
-                <a href="#" class="nav-btn" onclick="descargarPDF(); return false;">Descargar PDF</a>
-            </nav>
+        <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="7 7 12 12 17 7"></polyline><polyline points="7 13 12 18 17 13"></polyline></svg>
+          </button>
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(false)" title="Contraer todo" aria-label="Contraer todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 17 12 12 7 17"></polyline></svg>
+          </button>
+          <button type="button" id="btn-pdf" class="btn-icon-header btn-pdf-accent" onclick="descargarPDF()" title="Descargar PDF" aria-label="Descargar PDF">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          </button>
+        </div>
+      </div>
+      <nav aria-label="Navegación por bloques temáticos" class="main-nav no-print">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Inicio</a></li>
+        </ul>
+      </nav>
         </div>
     </header>
 
@@ -32,8 +46,8 @@
         </section>
 
                 <section>
-            <details>
-                <summary>Ficha Técnica</summary>
+            <details class="accordion" id="page-section-1">
+                <summary class="summary-title">Ficha Técnica</summary>
                 <div class="box-card">
                     <div class="table-wrapper">
                         <table>
@@ -69,8 +83,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>Índice de Contenidos</summary>
+            <details class="accordion" id="page-section-2">
+                <summary class="summary-title">Índice de Contenidos</summary>
                 <div class="box-card">
                     <h3 id="indice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#indice-de-contenidos" title="Enlace permanente">¶</a></h3>
                     <p><a href="#a1-repaso-teorico"><u>1. Repaso Teórico: Programación en MySQL</u></a></p>
@@ -95,8 +109,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>1. Repaso Teórico: Programación en MySQL</summary>
+            <details class="accordion" id="page-section-3">
+                <summary class="summary-title">1. Repaso Teórico: Programación en MySQL</summary>
                 <article class="box-card">
                     <h1 id="a1-repaso-teorico">1. Repaso Teórico: Programación en MySQL<a class="headerlink" href="#a1-repaso-teorico"
                     title="Enlace permanente">¶</a></h1>
@@ -118,7 +132,7 @@
                 </li>
             </ul>
                     <p><strong>Ejemplo 1.1.A (Sencillo): Comparativa de ámbito entre variables locales y de sesión</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>-- Variable de sesión de usuario (visible durante toda la conexión actual)
 SET @iva_reducido = 0.10;
 
@@ -137,7 +151,7 @@ DELIMITER ;
 CALL sp_calcular_pvp(100.00);</code></pre>
             </div>
                     <p><strong>Ejemplo 1.1.B (Complejo): Captura, alteración temporal y restauración de variables del sistema</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>DROP PROCEDURE IF EXISTS sp_admin_ajuste_carga_masiva;
 DELIMITER //
 CREATE PROCEDURE sp_admin_ajuste_carga_masiva()
@@ -185,7 +199,7 @@ DELIMITER ;</code></pre>
                 </li>
             </ul>
                     <p><strong>Ejemplo 1.2.A (Sencillo): Conteo de jugadores por equipo con parámetro de salida OUT y SELECT INTO (Base de datos liga)</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>USE liga;
 
 DROP PROCEDURE IF EXISTS sp_contar_jugadores_equipo;
@@ -207,7 +221,7 @@ CALL sp_contar_jugadores_equipo(1, @total_jugadores);
 SELECT @total_jugadores AS 'Total Jugadores Equipo 1';</code></pre>
             </div>
                     <p><strong>Ejemplo 1.2.B (Complejo): Cálculo estadístico agregado de almacenamiento por esquema con múltiples parámetros</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>DROP PROCEDURE IF EXISTS sp_admin_metricas_espacio_esquema;
 DELIMITER //
 CREATE PROCEDURE sp_admin_metricas_espacio_esquema(
@@ -249,7 +263,7 @@ SELECT @total AS 'Tablas', @mb AS 'Megabytes', @mayor_tabla AS 'Tabla Mayor';</c
                 <li><p>Se integran directamente dentro de sentencias SQL estándar (<code>SELECT funcion(...)</code>, <code>WHERE</code>, <code>ORDER BY</code>).</p></li>
             </ul>
                     <p><strong>Ejemplo 1.3.A (Sencillo): Función escalar de conversión de unidades</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>DROP FUNCTION IF EXISTS fn_bytes_a_gigabytes;
 DELIMITER //
 CREATE FUNCTION fn_bytes_a_gigabytes(p_bytes BIGINT)
@@ -268,7 +282,7 @@ WHERE table_schema = 'mysql'
 LIMIT 5;</code></pre>
             </div>
                     <p><strong>Ejemplo 1.3.B (Complejo): Saneamiento y normalización de identificadores</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>DROP FUNCTION IF EXISTS fn_sanitizar_identificador;
 DELIMITER //
 CREATE FUNCTION fn_sanitizar_identificador(p_texto VARCHAR(255))
@@ -317,7 +331,7 @@ SELECT fn_sanitizar_identificador('Copia Seguridad_Producción 2026!') AS 'Ident
             </ul>
                     <p><strong>Ejemplo 1.4.A: Clasificación condicional con IF / ELSEIF (Base de datos liga)</strong></p>
                     <p>Evalúa el salario asignado a un jugador en la tabla <code>jugadores</code> y lo cataloga en una escala salarial:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>USE liga;
 
 DROP PROCEDURE IF EXISTS sp_evaluar_salario_jugador;
@@ -350,7 +364,7 @@ SELECT @cat AS 'Escala Salarial Jugador 1';</code></pre>
             </div>
                     <p><strong>Ejemplo 1.4.B: Bucle WHILE (Evaluación Previa) sobre la base de datos liga</strong></p>
                     <p>Calcula el gasto salarial acumulado de los primeros <code>N</code> equipos registrados en la tabla <code>equipos</code> recorriendo ordenadamente sus identificadores correlativos:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>USE liga;
 
 DROP PROCEDURE IF EXISTS sp_acumular_salarios_while;
@@ -382,7 +396,7 @@ SELECT @total_salarios AS 'Gasto Salarial Equipos 1 al 3';</code></pre>
             </div>
                     <p><strong>Ejemplo 1.4.C: Bucle LOOP con LEAVE e ITERATE sobre la base de datos liga</strong></p>
                     <p>Recorre una serie de identificadores de equipos insertando en una tabla temporal el balance de puntos como local (puntos anotados a favor frente a puntos recibidos en contra), utilizando <code>ITERATE</code> para omitir equipos exentos y <code>LEAVE</code> para salir del bucle indefinido:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>USE liga;
 
 DROP PROCEDURE IF EXISTS sp_balance_local_loop;
@@ -437,7 +451,7 @@ CALL sp_balance_local_loop(4);</code></pre>
             </div>
                     <p><strong>Ejemplo 1.4.D: Bucle REPEAT ... UNTIL (Evaluación Posterior) sobre la base de datos liga</strong></p>
                     <p>Ejecuta el bloque de sentencias al menos una vez y evalúa la condición de finalización al cierre. En este caso, suma las alturas de los jugadores de un equipo hasta alcanzar o superar un umbral de altura acumulada en metros o agotar el listado:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>USE liga;
 
 DROP PROCEDURE IF EXISTS sp_sumar_alturas_repeat;
@@ -492,7 +506,7 @@ SELECT @altura_total AS 'Altura Acumulada (m)', @num_jugadores AS 'Jugadores Eva
             </ol>
                     <p>El agotamiento del cursor se controla capturando la condición <code>NOT FOUND</code> (SQLSTATE '02000'):</p>
                     <p><strong>Ejemplo 1.5.A (Sencillo): Recorrido con cursor e impresión diagnóstica</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>DROP PROCEDURE IF EXISTS sp_listar_esquemas_usuario;
 DELIMITER //
 CREATE PROCEDURE sp_listar_esquemas_usuario()
@@ -520,7 +534,7 @@ END //
 DELIMITER ;</code></pre>
             </div>
                     <p><strong>Ejemplo 1.5.B (Complejo): Verificación física masiva de tablas (CHECK TABLE) con DDL dinámico</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>DROP PROCEDURE IF EXISTS sp_admin_auditar_tablas_esquema;
 DELIMITER //
 CREATE PROCEDURE sp_admin_auditar_tablas_esquema(IN p_esquema VARCHAR(64))
@@ -561,7 +575,7 @@ DELIMITER ;</code></pre>
                 <li><strong>Garantía transaccional:</strong> La unión de handlers con transacciones asegura la atomicidad en operaciones de riesgo.</li>
             </ul>
                     <p><strong>Ejemplo 1.6.A (Sencillo): Captura de clave primaria duplicada con CONTINUE HANDLER</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>DROP PROCEDURE IF EXISTS sp_insertar_ip_whitelist;
 DELIMITER //
 CREATE PROCEDURE sp_insertar_ip_whitelist(IN p_ip VARCHAR(45), OUT p_estado VARCHAR(50))
@@ -578,7 +592,7 @@ END //
 DELIMITER ;</code></pre>
             </div>
                     <p><strong>Ejemplo 1.6.B (Complejo): Transacción atómica con rollback forzado y comprobación de filas afectadas</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>DROP PROCEDURE IF EXISTS sp_admin_traspaso_fondos;
 DELIMITER //
 CREATE PROCEDURE sp_admin_traspaso_fondos(
@@ -637,7 +651,7 @@ DELIMITER ;</code></pre>
                 </li>
             </ul>
                     <p><strong>Ejemplo 1.7.A (Sencillo): Normalización y ajuste de campos en BEFORE INSERT</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>DROP TRIGGER IF EXISTS tg_usuarios_formatear_credenciales;
 DELIMITER //
 CREATE TRIGGER tg_usuarios_formatear_credenciales
@@ -654,7 +668,7 @@ END //
 DELIMITER ;</code></pre>
             </div>
                     <p><strong>Ejemplo 1.7.B (Complejo): Auditoría forense de cambios de privilegios en AFTER UPDATE</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>CREATE TABLE IF NOT EXISTS log_auditoria_seguridad (
   id INT AUTO_INCREMENT PRIMARY KEY,
   id_afectado INT,
@@ -697,7 +711,7 @@ DELIMITER ;</code></pre>
                     <p>En el trabajo cotidiano de un Administrador de Sistemas de Bases de Datos (DBA), los procedimientos, funciones y disparadores no se limitan a cálculos matemáticos; resuelven problemas de optimización física del almacenamiento, saneamiento por lotes y blindaje de seguridad interna:</p>
                     <h3 id="admin-caso-1-optimizacion-masiva">Caso 1 (Procedimiento): Desfragmentación y Optimización Masiva de Tablas</h3>
                     <p>Tras grandes operaciones de borrado o actualización, el espacio en disco queda fragmentado en los motores de almacenamiento (como InnoDB o MyISAM). Este procedimiento utiliza un cursor sobre el catálogo <code>information_schema.tables</code> y construye consultas preparadas dinámicas (<code>PREPARE / EXECUTE</code>) para desfragmentar de forma consecutiva todas las tablas de una base de datos específica:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>DELIMITER //
 DROP PROCEDURE IF EXISTS sp_admin_optimizar_tablas//
 CREATE PROCEDURE sp_admin_optimizar_tablas(IN p_esquema VARCHAR(64))
@@ -730,7 +744,7 @@ DELIMITER ;</code></pre>
             </div>
                     <h3 id="admin-caso-2-purga-por-lotes">Caso 2 (Procedimiento): Purga Masiva Segura sin Bloqueo de Transacciones</h3>
                     <p>Ejecutar un <code>DELETE FROM logs WHERE fecha &lt; ...</code> directo sobre tablas con millones de filas bloquea los recursos del servidor y llena el buffer del log de transacciones. La buena práctica consiste en realizar el borrado en <strong>lotes acotados (chunks)</strong> mediante un bucle <code>WHILE</code> con <code>LIMIT</code> y aplicando <code>COMMIT</code> tras cada bloque:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>DELIMITER //
 DROP PROCEDURE IF EXISTS sp_admin_purgar_logs_por_lotes//
 CREATE PROCEDURE sp_admin_purgar_logs_por_lotes(
@@ -760,7 +774,7 @@ DELIMITER ;</code></pre>
             </div>
                     <h3 id="admin-caso-3-archivado-particionado">Caso 3 (Procedimiento): Rotación y Archivado Dinámico de Tablas</h3>
                     <p>Para mantener contenidas las tablas de alto volumen (ej. pedidos antiguos), este procedimiento crea dinámicamente una tabla de histórico identificada por año (si no existiera previamente), traslada los datos cerrados y purga la tabla en producción dentro de una transacción atómica:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>DELIMITER //
 DROP PROCEDURE IF EXISTS sp_admin_archivar_historico_anual//
 CREATE PROCEDURE sp_admin_archivar_historico_anual(IN p_anio INT)
@@ -795,7 +809,7 @@ DELIMITER ;</code></pre>
             </div>
                     <h3 id="admin-caso-4-diagnostico-fragmentacion">Caso 4 (Función): Diagnóstico de Fragmentación y Espacio No Reclamado</h3>
                     <p>Los administradores necesitan supervisar qué tablas contienen un alto índice de espacio libre residual (<em>Data Free</em>) para planificar ventanas de mantenimiento. Esta función consulta el diccionario de datos y devuelve el porcentaje de espacio desperdiciado sobre el tamaño total de la tabla:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>DELIMITER //
 DROP FUNCTION IF EXISTS fn_admin_ratio_fragmentacion//
 CREATE FUNCTION fn_admin_ratio_fragmentacion(
@@ -825,7 +839,7 @@ DELIMITER ;</code></pre>
             </div>
                     <h3 id="admin-caso-5-verificacion-privilegios">Caso 5 (Función): Verificación de Existencia de Privilegios Administrativos</h3>
                     <p>Antes de lanzar despliegues automatizados, es recomendable verificar si una cuenta posee permisos específicos. Esta función consulta la tabla física <code>mysql.user</code> y devuelve un booleano confirmando si el usuario dispone o no de privilegios globales de administración (ej. <code>SUPER</code> o <code>Process_priv</code>):</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>DELIMITER //
 DROP FUNCTION IF EXISTS fn_admin_es_administrador//
 CREATE FUNCTION fn_admin_es_administrador(
@@ -854,7 +868,7 @@ DELIMITER ;</code></pre>
             </div>
                     <h3 id="admin-caso-6-seguridad-prevencion-borrado">Caso 6 (Disparador): Protección de Seguridad contra Borrados Accidentales</h3>
                     <p>Un error grave de administración es lanzar un <code>DELETE</code> sin la cláusula <code>WHERE</code> adecuada en producción. Este disparador de tipo <code>BEFORE DELETE</code> consulta la identidad de ejecución o impide el borrado sobre tablas protegidas si quien lo intenta no es el administrador supremo (<code>root@localhost</code>), abortando la operación de inmediato con <code>SIGNAL SQLSTATE</code>:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>DELIMITER //
 DROP TRIGGER IF EXISTS tg_admin_bloqueo_borrado_critico//
 CREATE TRIGGER tg_admin_bloqueo_borrado_critico
@@ -880,8 +894,8 @@ DELIMITER ;</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>2. Ventajas de la programación en la administración</summary>
+            <details class="accordion" id="page-section-4">
+                <summary class="summary-title">2. Ventajas de la programación en la administración</summary>
                 <article class="box-card">
                     <h1 id="a2-ventajas-de-la-programacion-en-la-administracion">2. Ventajas de la programación en la administración <a class="headerlink" href="#a2-ventajas-de-la-programacion-en-la-administracion" title="Enlace permanente">¶</a></h1>
                     <p>El uso de estos elementos dentro del SGBD ofrece tres ventajas operativas críticas para un Administrador de Sistemas de Bases de Datos (ASGBD):</p>
@@ -920,8 +934,8 @@ DELIMITER ;</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>3. Catálogo del Sistema (Metadatos)</summary>
+            <details class="accordion" id="page-section-5">
+                <summary class="summary-title">3. Catálogo del Sistema (Metadatos)</summary>
                 <article class="box-card">
                     <h1 id="a3-catalogo-del-sistema-metadatos">3. Catálogo del Sistema (Metadatos) <a class="headerlink" href="#a3-catalogo-del-sistema-metadatos" title="Enlace permanente">¶</a></h1>
                     <p>MySQL almacena la información sobre su propia estructura (metadatos) en esquemas específicos. Dominar estos catálogos es la herramienta más potente de un Administrador de Sistemas (SysAdmin), ya que permite auditar el servidor, monitorizar el almacenamiento y diagnosticar la degradación de rendimiento directamente mediante sentencias SQL.</p>
@@ -937,7 +951,7 @@ DELIMITER ;</code></pre>
             </ul>
                     <p><strong>Caso Práctico 1: Obtener el tamaño en disco de cada base de datos</strong></p>
                     <p>Esta consulta calcula el espacio real en disco de cada base de datos (Datos + Índices) expresado en Megabytes:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>SELECT
 table_schema AS 'Base de Datos',
 ROUND(SUM(data_length + index_length) / 1024 / 1024, 2) AS 'Tamaño total (MB)',
@@ -949,7 +963,7 @@ ORDER BY (SUM(data_length + index_length)) DESC;</code></pre>
             </div>
                     <p><strong>Caso Práctico 2: Detectar tablas sin Clave Primaria (Primary Key)</strong></p>
                     <p>La ausencia de claves primarias degrada el rendimiento de búsqueda y rompe esquemas de replicación transaccional:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>SELECT
 t.table_schema AS 'Base de Datos',
 t.table_name AS 'Tabla sin PK'
@@ -972,7 +986,7 @@ AND t.table_type = 'BASE TABLE';</code></pre>
             </ul>
                     <p><strong>Caso Práctico 3: Auditoría rápida de expiración de contraseñas de usuarios</strong></p>
                     <p>Control del ciclo de vida de credenciales para normativas de seguridad y compliance:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>SELECT
 user AS 'Usuario',
 host AS 'Host de Origen',
@@ -991,7 +1005,7 @@ WHERE ssl_type != '' OR password_expired = 'Y' OR user != 'mysql.infoschema';</c
                 <li><p><strong>events_errors_summary_by_user_by_error:</strong> Errores provocados por cada cuenta de usuario.</p></li>
             </ul>
                     <p><strong>Caso Práctico 4: Listar los errores más comunes provocados por los usuarios</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>SELECT
 user AS 'Usuario',
 error_number AS 'Código de Error',
@@ -1007,7 +1021,7 @@ ORDER BY sum_error_raised DESC;</code></pre>
                     href="#a34-base-de-datos-sys-la-abstraccion-simplificada" title="Enlace permanente">¶</a></h2>
                     <p>La complejidad de performance_schema dificulta su explotación diaria. El esquema sys proporciona vistas precalculadas y procedimientos para simplificar el diagnóstico rápido del rendimiento.</p>
                     <p><strong>Caso Práctico 5: Identificar las consultas SQL que provocan mayor latencia</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>SELECT
 query AS 'Sentencia SQL',
 db AS 'Base de Datos',
@@ -1020,7 +1034,7 @@ LIMIT 5;</code></pre>
             </div>
                     <p><strong>Caso Práctico 6: Encontrar tablas con lecturas completas (Full Table Scans)</strong></p>
                     <p>Permite identificar tablas que carecen de índices adecuados o ejecutan consultas ineficientes con barridos completos:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>SELECT
 schemaname AS 'Base de Datos',
 tablename AS 'Tabla',
@@ -1034,15 +1048,15 @@ ORDER BY scans DESC;</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>4. Automatización Mediante Scripts Externos (Bash)</summary>
+            <details class="accordion" id="page-section-6">
+                <summary class="summary-title">4. Automatización Mediante Scripts Externos (Bash)</summary>
                 <article class="box-card">
                     <h1 id="a4-automatizacion-mediante-scripts-externos-bash">4. Automatización Mediante Scripts Externos (Bash) <a class="headerlink" href="#a4-automatizacion-mediante-scripts-externos-bash" title="Enlace permanente">¶</a></h1>
                     <p>La automatización de la administración se consolida al conectar el SGBD con el Sistema Operativo utilizando scripts de shell (Bash en Linux).</p>
                     <p>Para ejecutar consultas no interactivas se utiliza el cliente de MySQL con flags no interactivos:</p>
                     <p><code>mysql -u "usuario" -p"contraseña" -e "CONSULTA_SQL"</code></p>
                     <p><strong>Buenas Prácticas de Seguridad:</strong> Exponer credenciales en línea de comandos es visible en la tabla de procesos (<code>ps aux</code>). Se recomienda almacenarlas en un fichero <code>.env</code> protegido con permisos 600 y consumirlas con <code>source .env</code> o a través de archivos de opciones <code>.my.cnf</code>.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code># .env (guardar en directorio protegido: chmod 600 .env)
 MYSQL_USER=root
 MYSQL_PASSWORD='PasswordMuySegura123!'
@@ -1054,15 +1068,15 @@ BACKUP_DIR="/var/backups/mysql"</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>5. Ejemplos Prácticos de Scripts de Administración (Sencillos y Documentados)</summary>
+            <details class="accordion" id="page-section-7">
+                <summary class="summary-title">5. Ejemplos Prácticos de Scripts de Administración (Sencillos y Documentados)</summary>
                 <article class="box-card">
                     <h1 id="a5-ejemplos-practicos-de-scripts-de-administracion-sencillos-y-documentados">5. Ejemplos Prácticos de Scripts de Administración (Sencillos y Documentados) <a class="headerlink"
                     href="#a5-ejemplos-practicos-de-scripts-de-administracion-sencillos-y-documentados"
                     title="Enlace permanente">¶</a></h1>
                     <p>Scripts funcionales para tareas de administración operativa y mantenimiento automatizado en Linux/MySQL:</p>
                     <p><strong>Script 1: Comprobación de Salud del Servidor (Health Check)</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>#!/bin/bash
 # ==============================================================================
 # Script: health_check_mysql.sh
@@ -1124,7 +1138,7 @@ echo "=== CONTROL DE SALUD FINALIZADO SATISFACTORIAMENTE ==="
 exit 0</code></pre>
             </div>
                     <p><strong>Script 2: Copia de Seguridad Sencilla (Backup Automatizado)</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>#!/bin/bash
 # ==============================================================================
 # Script: backup_mysql.sh
@@ -1185,7 +1199,7 @@ echo "Copia creada correctamente y comprimida en: ${FICHERO_BACKUP}.gz"
 exit 0</code></pre>
             </div>
                     <p><strong>Script 3: Comprobación de Consumo y Limpieza de Logs</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>#!/bin/bash
 # ==============================================================================
 # Script: check_storage_and_purge.sh

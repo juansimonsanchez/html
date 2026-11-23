@@ -11,14 +11,28 @@
 </head>
 
 <body>
-    <header>
+    <header class="site-header">
         <div class="header-container">
-            <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>ASGBD
+        <div class="header-bar">
+            <div class="site-title site-title-row"><img src="logo.png" alt="Logo IES Celia Viñas" class="site-logo"><span>ASGBD
                     &ndash; Ut4 Teoría Planificación Seguridad</span></div>
-            <nav class="top-nav">
-                <a href="index.html" class="nav-btn">Inicio</a>
-                <a href="#" class="nav-btn" onclick="descargarPDF(); return false;">Descargar PDF</a>
-            </nav>
+        <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="7 7 12 12 17 7"></polyline><polyline points="7 13 12 18 17 13"></polyline></svg>
+          </button>
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(false)" title="Contraer todo" aria-label="Contraer todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 17 12 12 7 17"></polyline></svg>
+          </button>
+          <button type="button" id="btn-pdf" class="btn-icon-header btn-pdf-accent" onclick="descargarPDF()" title="Descargar PDF" aria-label="Descargar PDF">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          </button>
+        </div>
+      </div>
+      <nav aria-label="Navegación por bloques temáticos" class="main-nav no-print">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Inicio</a></li>
+        </ul>
+      </nav>
         </div>
     </header>
 
@@ -33,8 +47,8 @@
         </section>
 
                 <section>
-            <details>
-                <summary>Ficha Técnica</summary>
+            <details class="accordion" id="page-section-1">
+                <summary class="summary-title">Ficha Técnica</summary>
                 <div class="box-card">
                     <h3 id="ficha-tecnica-de-la-unidad">FICHA TÉCNICA DE LA UNIDAD <a class="headerlink"
                         href="#ficha-tecnica-de-la-unidad" title="Enlace permanente">¶</a></h3>
@@ -72,8 +86,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>Índice de Contenidos</summary>
+            <details class="accordion" id="page-section-2">
+                <summary class="summary-title">Índice de Contenidos</summary>
                 <div class="box-card">
                     <h3 id="indice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#indice-de-contenidos"
                         title="Enlace permanente">¶</a></h3>
@@ -118,8 +132,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>1. INTRODUCCIÓN Y CONTEXTUALIZACIÓN</summary>
+            <details class="accordion" id="page-section-3">
+                <summary class="summary-title">1. INTRODUCCIÓN Y CONTEXTUALIZACIÓN</summary>
                 <article class="box-card">
                     <h1 id="a1-introduccion-y-contextualizacion">1. INTRODUCCIÓN Y
                 CONTEXTUALIZACIÓN <a class="headerlink" href="#a1-introduccion-y-contextualizacion"
@@ -148,8 +162,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>2. PLANIFICACIÓN DE TAREAS AUTOMÁTICAS MEDIANTE EVENTOS</summary>
+            <details class="accordion" id="page-section-4">
+                <summary class="summary-title">2. PLANIFICACIÓN DE TAREAS AUTOMÁTICAS MEDIANTE EVENTOS</summary>
                 <article class="box-card">
                     <h1 id="a2-planificacion-de-tareas-automaticas-mediante-eventos">2.
                 PLANIFICACIÓN DE TAREAS AUTOMÁTICAS MEDIANTE EVENTOS <a class="headerlink"
@@ -182,7 +196,7 @@
                             la cola de tareas automáticas.</p>
                 </li>
                 <li>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>DISABLED: El hilo está deshabilitado físicamente y
 no se puede activar dinámicamente en caliente.</code></pre>
 
@@ -190,14 +204,14 @@ no se puede activar dinámicamente en caliente.</code></pre>
                 </li>
             </ul>
                     <p><strong>Verificación:</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>SHOW VARIABLES LIKE 'event_scheduler';
 -- O alternativamente mediante consulta directa:
 SELECT @@global.event_scheduler;</code></pre>
 
 </div>
                     <strong>Activación Dinámica (en caliente):</strong>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>SET GLOBAL event_scheduler = ON;</code></pre>
 
 </div>
@@ -205,7 +219,7 @@ SELECT @@global.event_scheduler;</code></pre>
                     <p>Para evitar que se desactive tras un reinicio del servicio, se añade
                 al fichero de configuración (/etc/mysql/mysql.conf.d/mysqld.cnf o
                 my.ini):</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>[mysqld]
 event_scheduler=ON</code></pre>
 
@@ -213,7 +227,7 @@ event_scheduler=ON</code></pre>
                     <h2 id="a23-sintaxis-de-creacion-de-eventos-create-event">2.3. Sintaxis de
                 Creación de Eventos (CREATE EVENT) <a class="headerlink"
                     href="#a23-sintaxis-de-creacion-de-eventos-create-event" title="Enlace permanente">¶</a></h2>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>CREATE
 [DEFINER = { user | CURRENT_USER }]
 EVENT
@@ -261,7 +275,7 @@ AT timestamp [+ INTERVAL interval] ...
                     <p>Un evento que se ejecutará de forma única pasados exactamente 5
                 minutos desde su creación para depurar registros huérfanos. Se mantendrá
                 registrado en el sistema tras concluir.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>CREATE EVENT IF NOT EXISTS ev_depurar_huerfanos_unico
 ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 5 MINUTE
 ON COMPLETION PRESERVE
@@ -278,7 +292,7 @@ HOUR;</code></pre>
                     <p>Para programar un evento que ejecute múltiples operaciones complejas,
                 se debe encapsular la lógica en un bloque estructurado (BEGIN ... END) y
                 redefinir el delimitador temporal de fin de instrucción:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>DELIMITER $$
 CREATE EVENT IF NOT EXISTS ev_mantenimiento_mensual_ventas
 ON SCHEDULE EVERY 1 MONTH
@@ -307,7 +321,7 @@ DELIMITER ;</code></pre>
                     <p>Permite cambiar las propiedades de planificación, estado o
                 comportamiento de un evento existente de forma dinâmica sin afectar al
                 diccionario de datos:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Desactivar temporalmente el evento de mantenimiento
 ALTER EVENT ev_mantenimiento_mensual_ventas DISABLE;
 -- Modificar su planificación para que se ejecute a partir de hoy en
@@ -319,7 +333,7 @@ ENABLE;</code></pre>
 </div>
                     <p><strong>Borrado de Eventos (DROP EVENT)</strong></p>
                     <p>Elimina definitivamente un evento del servidor de bases de datos:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>DROP EVENT IF EXISTS ev_depurar_huerfanos_unico;</code></pre>
 
 </div>
@@ -327,7 +341,7 @@ ENABLE;</code></pre>
                 Visualización y Monitorización de Eventos en el Sistema <a class="headerlink"
                     href="#a26-visualizacion-y-monitorizacion-de-eventos-en-el-sistema" title="Enlace permanente">¶</a></h2>
                     <p><strong>Listado de Eventos Activos en el Esquema actual</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>SHOW EVENTS;</code></pre>
 
 </div>
@@ -335,7 +349,7 @@ ENABLE;</code></pre>
                     <p>La vista de catálogo INFORMATION_SCHEMA.EVENTS almacena metadatos
                 críticos para auditar el rendimiento y planificación de tareas (como
                 cuándo fue la última ejecución real):</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>SELECT EVENT_SCHEMA, EVENT_NAME, STATUS, LAST_EXECUTED FROM
 INFORMATION_SCHEMA.EVENTS WHERE EVENT_SCHEMA = 'tienda';</code></pre>
 
@@ -344,7 +358,7 @@ INFORMATION_SCHEMA.EVENTS WHERE EVENT_SCHEMA = 'tienda';</code></pre>
                     <p>El inicio, parada o fallos en tiempo de ejecución del cuerpo de un
                 evento se registran en el fichero de errores de MySQL en disco. En
                 Linux, se puede auditar con:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>sudo cat /var/log/mysql/error.log | grep -i "Event"</code></pre>
 
 </div>
@@ -353,8 +367,8 @@ INFORMATION_SCHEMA.EVENTS WHERE EVENT_SCHEMA = 'tienda';</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>3. GESTIÓN DE LA SEGURIDAD DE LOS DATOS</summary>
+            <details class="accordion" id="page-section-5">
+                <summary class="summary-title">3. GESTIÓN DE LA SEGURIDAD DE LOS DATOS</summary>
                 <article class="box-card">
                     <h1 id="a3-gestion-de-la-seguridad-de-los-datos">3. GESTIÓN DE LA SEGURIDAD
                 DE LOS DATOS <a class="headerlink" href="#a3-gestion-de-la-seguridad-de-los-datos"
@@ -459,7 +473,7 @@ INFORMATION_SCHEMA.EVENTS WHERE EVENT_SCHEMA = 'tienda';</code></pre>
                     title="Enlace permanente">¶</a></h2>
                     <p><strong>Operación de copia física en caliente de tablas
                     MyISAM:</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- 1. Cerrar tablas e impedir escrituras externas bloqueando para
 lectura
 FLUSH TABLES producto FOR EXPORT;</code></pre>
@@ -468,7 +482,7 @@ FLUSH TABLES producto FOR EXPORT;</code></pre>
                     <em>(En este punto, el SysAdmin copia de forma segura los archivos
                 .MYD y .myi de la ruta física /var/lib/mysql/tienda/ a un directorio
                 externo de almacenamiento).</em>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- 2. Liberar el bloqueo para restaurar la operatividad en caliente
 del servidor
 UNLOCK TABLES;</code></pre>
@@ -479,7 +493,7 @@ UNLOCK TABLES;</code></pre>
                     <p>Dado que InnoDB gestiona su propio espacio de tablas
                 (<em>tablespace</em>), la restauración física de un archivo .ibd de
                 forma individual requiere el siguiente procedimiento:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- 1. Desasociar el espacio de tablas lógico actual en MySQL
 ALTER TABLE tienda.producto DISCARD TABLESPACE;</code></pre>
 
@@ -487,7 +501,7 @@ ALTER TABLE tienda.producto DISCARD TABLESPACE;</code></pre>
                     <em>(El SysAdmin copia de forma manual el archivo físico
                 producto.ibd de respaldo al directorio /var/lib/mysql/tienda/ y le
                 asigna la propiedad de usuario necesaria: chown mysql:mysql)</em>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- 2. Importar el nuevo espacio de tablas restaurado
 ALTER TABLE tienda.producto IMPORT TABLESPACE;</code></pre>
 
@@ -501,7 +515,7 @@ ALTER TABLE tienda.producto IMPORT TABLESPACE;</code></pre>
                     <p>Vuelca los datos de una consulta en formato de texto plano
                 estructurado. Requiere el uso del directorio seguro de MySQL (auditable
                 mediante la variable global secure_file_priv):</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>SELECT codigo, nombre, cantidad_en_stock INTO OUTFILE
 '/var/lib/mysql-files/fabricante_backup.txt' FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\n' FROM tienda.fabricante;</code></pre>
@@ -510,7 +524,7 @@ LINES TERMINATED BY '\n' FROM tienda.fabricante;</code></pre>
                     <strong>Importación de Datos (LOAD DATA)</strong>
                     <p>Carga un archivo de texto estructurado de forma inmediata en una
                 tabla previamente definida:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>LOAD DATA INFILE '/var/lib/mysql-files/fabricante_backup.txt' INTO
 TABLE tienda.fabricante_copia FIELDS TERMINATED BY ',' LINES TERMINATED
 BY '\n';</code></pre>
@@ -522,21 +536,21 @@ BY '\n';</code></pre>
                 consola es mysqldump. Su sintaxis y modos de uso principales son:</p>
                     <p><strong>A. Exportar una única tabla de una base de datos
                     específica:</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>mysqldump -u root -p tienda producto &gt;
 backup_producto_tienda.sql</code></pre>
 
 </div>
                     <strong>B. Exportar una o varias bases de datos completas (incluye
                 sentencias CREATE DATABASE):</strong>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>mysqldump -u root -p --databases tienda biblioteca &gt;
 backup_sistemas.sql</code></pre>
 
 </div>
                     <strong>C. Exportar toda la instancia de MySQL (todas las bases de
                 datos de usuario y sistema):</strong>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>mysqldump -u root -p --all-databases &gt;
 backup_completo_servidor.sql</code></pre>
 
@@ -565,7 +579,7 @@ backup_completo_servidor.sql</code></pre>
                 MySQL y el operador de redirección:</p>
                     <p><strong>Opción A: Desde el terminal del sistema operativo
                     (Redirección externa &lt;)</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Si el backup tiene sentencias 'CREATE DATABASE' integradas:
 mysql -u root -p &lt; backup_sistemas.sql
 -- Si el backup no las tiene, se especifica la base de datos de
@@ -575,7 +589,7 @@ mysql -u root -p tienda &lt; backup_producto_tienda.sql</code></pre>
 </div>
                     <strong>Opción B: Desde el intérprete de comandos interno de MySQL
                 (source)</strong>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>mysql&gt; USE tienda;
 mysql&gt; SOURCE /var/lib/mysql-files/backup_producto_tienda.sql;</code></pre>
 
@@ -584,7 +598,7 @@ mysql&gt; SOURCE /var/lib/mysql-files/backup_producto_tienda.sql;</code></pre>
             de Backups mediante Interfaces Gráficas</h2>
                     <ul>
                 <li>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>MySQL Workbench: Ofrece el módulo Data
 Export y Data Import que encapsulan el
 funcionamiento de la utilidad de consola mysqldump bajo una interfaz
@@ -606,8 +620,8 @@ carpetas autocontenidas de proyectos.</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>4. BUENAS PRÁCTICAS</summary>
+            <details class="accordion" id="page-section-6">
+                <summary class="summary-title">4. BUENAS PRÁCTICAS</summary>
                 <article class="box-card">
                     <h1 id="a4-buenas-practicas">4. BUENAS PRÁCTICAS <a class="headerlink" href="#a4-buenas-practicas"
                     title="Enlace permanente">¶</a></h1>

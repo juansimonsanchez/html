@@ -11,14 +11,28 @@
 </head>
 
 <body>
-    <header>
+    <header class="site-header">
         <div class="header-container">
-            <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>GBD
+        <div class="header-bar">
+            <div class="site-title site-title-row"><img src="logo.png" alt="Logo IES Celia Viñas" class="site-logo"><span>GBD
                     &ndash; UT2 Diseño del modelo conceptural</span></div>
-            <nav class="top-nav">
-                <a href="index.html" class="nav-btn">Inicio</a>
-                <a href="#" class="nav-btn" onclick="descargarPDF(); return false;">Descargar PDF</a>
-            </nav>
+        <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="7 7 12 12 17 7"></polyline><polyline points="7 13 12 18 17 13"></polyline></svg>
+          </button>
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(false)" title="Contraer todo" aria-label="Contraer todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 17 12 12 7 17"></polyline></svg>
+          </button>
+          <button type="button" id="btn-pdf" class="btn-icon-header btn-pdf-accent" onclick="descargarPDF()" title="Descargar PDF" aria-label="Descargar PDF">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          </button>
+        </div>
+      </div>
+      <nav aria-label="Navegación por bloques temáticos" class="main-nav no-print">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Inicio</a></li>
+        </ul>
+      </nav>
         </div>
     </header>
 
@@ -33,8 +47,8 @@
         </section>
 
                 <section>
-            <details>
-                <summary>Ficha Técnica</summary>
+            <details class="accordion" id="page-section-1">
+                <summary class="summary-title">Ficha Técnica</summary>
                 <div class="box-card">
                     <h3 id="ficha-tecnica-de-la-unidad-didactica">FICHA TÉCNICA DE LA UNIDAD
                         DIDÁCTICA <a class="headerlink" href="#ficha-tecnica-de-la-unidad-didactica"
@@ -71,8 +85,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>Índice de Contenidos</summary>
+            <details class="accordion" id="page-section-2">
+                <summary class="summary-title">Índice de Contenidos</summary>
                 <div class="box-card">
                     <h3 id="indice">ÍNDICE <a class="headerlink" href="#indice" title="Enlace permanente">¶</a></h3>
                     <p><a href="#a1-introduccion-y-clasificacion-de-los-modelos-de-datos"><u>1.
@@ -114,8 +128,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>1.
+            <details class="accordion" id="page-section-3">
+                <summary class="summary-title">1.
                     INTRODUCCIÓN Y CLASIFICACIÓN DE LOS MODELOS DE DATOS</summary>
                 <article class="box-card">
                     <h1 id="a1-introduccion-y-clasificacion-de-los-modelos-de-datos">1.
@@ -231,8 +245,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>2. MODELO
+            <details class="accordion" id="page-section-4">
+                <summary class="summary-title">2. MODELO
                     ENTIDAD-RELACIÓN (E/R): COMPONENTES CONCEPTUALES</summary>
                 <article class="box-card">
                     <h1 id="a2-modelo-entidad-relacion-er-componentes-conceptuales">2. MODELO
@@ -502,8 +516,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>3. RELACIONES
+            <details class="accordion" id="page-section-5">
+                <summary class="summary-title">3. RELACIONES
                     TERNARIAS Y DE GRADO SUPERIOR </summary>
                 <article class="box-card">
                     <h1 id="a3-relaciones-ternarias-y-de-grado-superior">3. RELACIONES
@@ -683,8 +697,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>4. MODELO
+            <details class="accordion" id="page-section-6">
+                <summary class="summary-title">4. MODELO
                     ENTIDAD-RELACIÓN EXTENDIDO (E/RE) </summary>
                 <article class="box-card">
                     <h1 id="a4-modelo-entidad-relacion-extendido-ere">4. MODELO
@@ -842,8 +856,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>5. Exclusividad o
+            <details class="accordion" id="page-section-7">
+                <summary class="summary-title">5. Exclusividad o
                     inclusividad entre relaciones </summary>
                 <article class="box-card">
                     <h1 id="a5-exclusividad-o-inclusividad-entre-relaciones">5. Exclusividad o
@@ -877,8 +891,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>6. NOTACIONES DEL DIAGRAMA E/R</summary>
+            <details class="accordion" id="page-section-8">
+                <summary class="summary-title">6. NOTACIONES DEL DIAGRAMA E/R</summary>
                 <article class="box-card">
                     <h1 id="a6-notaciones-del-diagrama-er">6. NOTACIONES DEL DIAGRAMA E/R <a class="headerlink"
                             href="#a6-notaciones-del-diagrama-er" title="Enlace permanente">¶</a></h1>
@@ -1016,8 +1030,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>7 Construcción de un diagrama E/R</summary>
+            <details class="accordion" id="page-section-9">
+                <summary class="summary-title">7 Construcción de un diagrama E/R</summary>
                 <article class="box-card">
                     <h1 id="a7-construccion-de-un-diagrama-er">7 Construcción de un diagrama
                         E/R <a class="headerlink" href="#a7-construccion-de-un-diagrama-er" title="Enlace permanente">¶</a>

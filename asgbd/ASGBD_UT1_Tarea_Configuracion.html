@@ -11,13 +11,27 @@
 </head>
 
 <body>
-    <header>
+    <header class="site-header">
     <div class="header-container">
-      <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>ASGBD
+        <div class="header-bar">
+      <div class="site-title site-title-row"><img src="logo.png" alt="Logo IES Celia Viñas" class="site-logo"><span>ASGBD
           &ndash; UT1 Tarea Configuracion</span></div>
-      <nav class="top-nav">
-        <a href="index.html" class="nav-btn">Inicio</a>
-        <a href="#" class="nav-btn" onclick="descargarPDF(); return false;">Descargar PDF</a>
+        <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="7 7 12 12 17 7"></polyline><polyline points="7 13 12 18 17 13"></polyline></svg>
+          </button>
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(false)" title="Contraer todo" aria-label="Contraer todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 17 12 12 7 17"></polyline></svg>
+          </button>
+          <button type="button" id="btn-pdf" class="btn-icon-header btn-pdf-accent" onclick="descargarPDF()" title="Descargar PDF" aria-label="Descargar PDF">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          </button>
+        </div>
+      </div>
+      <nav aria-label="Navegación por bloques temáticos" class="main-nav no-print">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Inicio</a></li>
+        </ul>
       </nav>
     </div>
   </header>
@@ -30,8 +44,8 @@
         </section>
 
                 <section>
-            <details>
-                <summary>Ficha Técnica</summary>
+            <details class="accordion" id="page-section-1">
+                <summary class="summary-title">Ficha Técnica</summary>
                 <div class="box-card">
                     <h2 id="ficha-tecnica-de-la-actividad">Ficha Técnica de la Actividad</h2>
                     <div class="table-wrapper">
@@ -85,8 +99,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>Actividades</summary>
+            <details class="accordion" id="page-section-2">
+                <summary class="summary-title">Actividades</summary>
                 <article class="box-card">
                     <h2 id="bloque-i-implantacion-y-verificacion-del-motor-ra1">Bloque I: Implantación y Verificación del Motor (RA1)</h2>
                     <h3 id="actividad-1-investigacion-seleccion-y-componentes-del-sgbd-ce-1a-1b-1c-1d">Actividad 1: Investigación – Selección y Componentes del SGBD <span class="tag">CE 1.a, 1.b, 1.c, 1.d</span>
@@ -142,7 +156,7 @@
                     <h3 id="actividad-2-auditoria-previa-de-requisitos-hardware-ce-1e">Actividad 2: Auditoría Previa de Requisitos Hardware <span class="tag">CE 1.e</span></h3>
                     <p>Comprueba si el equipo o máquina virtual de prácticas cumple con los requisitos mínimos de explotación antes
           de proceder con el despliegue del servicio:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
           <pre><code># Comprobar núcleos y arquitectura de la CPU
 lscpu | grep -E "Model name|CPU\(s\):|Architecture"
 
@@ -156,7 +170,7 @@ df -h /</code></pre>
             instancia de desarrollo (recomendado: 1-2 núcleos, 2 GB RAM y 10 GB de disco).</em></p>
                     <h3 id="actividad-3-instalacion-y-documentacion-del-proceso-ce-1f-1g">Actividad 3: Instalación y Documentación del Proceso <span class="tag">CE 1.f, 1.g</span></h3>
                     <p>Despliega el motor MySQL Server mediante el gestor de paquetes de tu distribución Linux:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
           <pre><code>sudo apt update &amp;&amp; sudo apt install -y mysql-server # Ya se realizó
 sudo systemctl status mysql --no-pager</code></pre>
         </div>
@@ -165,11 +179,11 @@ sudo systemctl status mysql --no-pager</code></pre>
                     <h3 id="actividad-4-analisis-de-ficheros-de-registro-y-diagnostico-ce-1h">Actividad 4: Análisis de Ficheros de Registro y Diagnóstico <span class="tag">CE 1.h</span></h3>
                     <p>Examina los mensajes generados durante el arranque inicial del servidor inspeccionando el fichero de error:
         </p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
           <pre><code>sudo tail -n 25 /var/log/mysql/error.log</code></pre>
         </div>
                     <p>Si no te ha devuelto nada, verifica si existe. ¿Qué puede estar pasando? En caso contrario prueba:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
           <pre><code>sudo journalctl -u mysql.service -n 50 --no-pager</code></pre>
         </div>
                     <p>Incluye una captura del resultado obtenido. Localiza el mensaje que confirma que el servicio está listo para
@@ -177,12 +191,12 @@ sudo systemctl status mysql --no-pager</code></pre>
                     <h3 id="actividad-5-resolucion-de-incidencias-en-la-instalacion-ce-1i">Actividad 5: Resolución de Incidencias en la Instalación <span class="tag">CE 1.i</span></h3>
                     <p>Simula y corrige un fallo típico de bloqueo de puerto de escucha:</p>
                     <p>Detén el servicio (<code>sudo systemctl stop mysql</code>) y ejecuta el siguiente comando:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
           <pre><code>sudo nc -l -p 3306 &amp;</code></pre>
         </div>
                     <p>Intenta arrancar MySQL (<code>sudo systemctl start mysql</code>), constata que entra en estado fallido e
           inspecciona el motivo con:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
           <pre><code>journalctl -xeu mysql.service --no-pager -n 20</code></pre>
         </div>
                     <p>Realiza una captura de la salida y localiza el mensaje de error que indica cual es el motivo.</p>
@@ -191,7 +205,7 @@ sudo systemctl status mysql --no-pager</code></pre>
                     <h3 id="actividad-6-verificacion-funcional-del-sgbd-ce-1j">Actividad 6: Verificación Funcional del SGBD <span class="tag">CE 1.j</span></h3>
                     <p>Conéctate a la consola interactiva (<code>sudo mysql</code>) y valida el procesamiento de comandos DDL y
           DML:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
           <pre><code>STATUS;
 CREATE DATABASE test_instalacion;
 USE test_instalacion;
@@ -211,20 +225,20 @@ DROP DATABASE test_instalacion;</code></pre>
                     <h2 id="bloque-ii-configuracion-modular-del-motor-y-clientes-ra2">Bloque II: Configuración Modular del Motor y Clientes (RA2)</h2>
                     <h3 id="actividad-7-control-del-servicio-e-inicioparada-ce-2a">Actividad 7: Control del Servicio e Inicio/Parada <span class="tag">CE 2.a</span></h3>
                     Comprueba si el demonio arrancará de forma persistente tras el encendido del sistema:
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
           <pre><code>systemctl is-enabled mysql</code></pre>
         </div>
                     Reinicia el servicio y aporta una captura donde se evidencie la renovación del tiempo de actividad
         (
                     <em>uptime</em>
                     ):
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
           <pre><code>sudo systemctl restart mysql
 systemctl status mysql --no-pager</code></pre>
         </div>
                     <h3 id="actividad-8-estado-inicial-de-logs-y-variables-de-entorno-ce-2e-2f-2g">Actividad 8: Estado Inicial de Logs y Variables de Entorno <span class="tag">CE 2.e, 2.f, 2.g</span></h3>
                     <p>Conéctate al gestor y comprueba las directivas asignadas por defecto en la memoria del motor:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
           <pre><code>SHOW GLOBAL VARIABLES LIKE 'general_log%';
 SHOW GLOBAL VARIABLES LIKE 'log_bin%';
 SELECT @@GLOBAL.autocommit, @@GLOBAL.default_password_lifetime, @@GLOBAL.max_connections, @@GLOBAL.wait_timeout;</code></pre>
@@ -234,7 +248,7 @@ SELECT @@GLOBAL.autocommit, @@GLOBAL.default_password_lifetime, @@GLOBAL.max_con
             2.f, 2.g</span></h3>
                     <p>Crea el archivo modular <code>/etc/mysql/mysql.conf.d/99-server-custom.cnf</code> para aplicar directivas al
           demonio servidor:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>[mysqld]
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>[mysqld]
 # Red y Conexiones (CE 2.e, CE 2.g)
 bind-address              = 0.0.0.0
 max_connections           = 80
@@ -255,7 +269,7 @@ long_query_time           = 2.000000</code></pre></div>
                     <code>sudo systemctl restart mysql</code>
                     .
          Comprueba en la consola SQL que las variables se cargaron correctamente:
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>SHOW GLOBAL VARIABLES WHERE Variable_name IN (
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>SHOW GLOBAL VARIABLES WHERE Variable_name IN (
     'bind_address', 'max_connections', 'wait_timeout',
     'default_storage_engine', 'character_set_server',
     'autocommit', 'default_password_lifetime', 'slow_query_log'
@@ -265,9 +279,9 @@ long_query_time           = 2.000000</code></pre></div>
         </p>
                     <h3 id="actividad-10-aseguramiento-de-cuentas-de-administracion-ce-2c">Actividad 10: Aseguramiento de Cuentas de Administración <span class="tag">CE 2.c</span></h3>
                     Comprueba el plugin de autenticación del usuario administrador:
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button> <pre><code>SELECT user, host, plugin FROM mysql.user WHERE user = 'root';</code></pre></div>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button> <pre><code>SELECT user, host, plugin FROM mysql.user WHERE user = 'root';</code></pre></div>
                     Establece una contraseña robusta para la cuenta administrativa:
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'AdminSecure_2026!';
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'AdminSecure_2026!';
 FLUSH PRIVILEGES;</code></pre></div>
                     Sal de la consola y demuestra mediante captura que intentar acceder sin clave (
                     <code>mysql -u root</code>
@@ -279,7 +293,7 @@ FLUSH PRIVILEGES;</code></pre></div>
                     <h3 id="actividad-11-configuracion-de-herramientas-cliente-en-confd-ce-2d">Actividad 11: Configuración de Herramientas Cliente en <code>conf.d/</code> <span class="tag">CE 2.d</span>
         </h3>
                     <p>Crea el fichero de opciones cliente globales <code>/etc/mysql/conf.d/99-client-custom.cnf</code>:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>[client]
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>[client]
 default-character-set = utf8mb4
 
 [mysql]
@@ -302,14 +316,14 @@ max_allowed_packet = 32M</code></pre></div>
                     ), crea el archivo
                     <code>~/.my.cnf</code>
                     :
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>[client]
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>[client]
 user = root
 password = AdminSecure_2026!
 
 [mysql]
 pager = less -SFX</code></pre></div>
                     Aplica los permisos obligatorios de seguridad:
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button> <pre><code>chmod 600 ~/.my.cnf</code></pre></div>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button> <pre><code>chmod 600 ~/.my.cnf</code></pre></div>
                     Demuestra que ahora puedes escribir
                     <code>mysql</code>
                     en la terminal y acceder directamente sin tener que
@@ -321,7 +335,7 @@ pager = less -SFX</code></pre></div>
                     ?
                     <h3 id="actividad-13-latencia-y-analisis-del-slow-log-ce-2e-2h">Actividad 13: Latencia y Análisis del Slow Log <span class="tag">CE 2.e, 2.h</span></h3>
                     Ejecuta secuencialmente desde el cliente MySQL:
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>SELECT NOW(), SLEEP(3);
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>SELECT NOW(), SLEEP(3);
 SELECT NOW();</code></pre></div>
                     <p>Abre el fichero <code>/var/log/mysql/slow_querys.log</code> con <code>sudo tail -n 15</code>.</p>
                     Aporta una captura del bloque de la consulta registrada y explica técnicamente el significado de:
@@ -335,27 +349,27 @@ SELECT NOW();</code></pre></div>
                     <h3 id="actividad-14-persistencia-dinamica-en-caliente-mysqld-autocnf-ce-2g-2h">Actividad 14: Persistencia Dinámica en Caliente (<code>mysqld-auto.cnf</code>) <span class="tag">CE 2.g,
             2.h</span></h3>
                     Ajusta en caliente y persiste el límite de conexiones concurrentes sin reiniciar:
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>SET PERSIST max_connections = 250;</code></pre></div>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>SET PERSIST max_connections = 250;</code></pre></div>
                     Inspecciona el fichero físico generado en Linux:
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button> <pre><code>sudo cat /var/lib/mysql/mysqld-auto.cnf</code></pre></div>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button> <pre><code>sudo cat /var/lib/mysql/mysqld-auto.cnf</code></pre></div>
                     <em>Aporta captura del archivo JSON generado internamente por MySQL 8.x.</em>
                     Devuelve la variable a su estado original:
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>RESET PERSIST max_connections;</code></pre></div>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>RESET PERSIST max_connections;</code></pre></div>
                     <h3 id="actividad-15-auditoria-y-diagnostico-con-performanceschema-ce-2h">Actividad 15: Auditoría y Diagnóstico con <code>performance_schema</code> <span class="tag">CE 2.h</span>
         </h3>
                     Provoca deliberadamente un error de sintaxis o de objeto inexistente:
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>SELECT * FROM base_inexistente.tabla_falsa;</code></pre></div>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>SELECT * FROM base_inexistente.tabla_falsa;</code></pre></div>
                     Apunta el código numérico producido (ej.
                     <code>Error 1146</code>
                     ).
           Consulta los errores registrados en el catálogo para el usuario
                     <code>root</code>
                     :
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>SELECT * FROM performance_schema.events_errors_summary_by_user_by_error
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>SELECT * FROM performance_schema.events_errors_summary_by_user_by_error
 WHERE USER = 'root' AND sum_error_raised > 0;</code></pre></div>
                     <em>Aporta captura donde se aprecie el error reflejado en <code>COUNT_STAR</code>.</em>
                     Consulta el total de operaciones de lectura realizadas por el usuario activo:
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button> <pre><code>SELECT * FROM performance_schema.status_by_user
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button> <pre><code>SELECT * FROM performance_schema.status_by_user
 WHERE USER = 'root' AND VARIABLE_NAME LIKE 'Handler_read%';</code></pre></div>
                 </article>
 

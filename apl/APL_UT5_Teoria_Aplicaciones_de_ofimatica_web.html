@@ -11,13 +11,27 @@
 </head>
 
 <body>
-    <header>
+    <header class="site-header">
     <div class="header-container">
-      <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>APL
+        <div class="header-bar">
+      <div class="site-title site-title-row"><img src="logo.png" alt="Logo IES Celia Viñas" class="site-logo"><span>APL
           &ndash; Ut5 Teoria Aplicaciones De Ofimatica Web</span></div>
-      <nav class="top-nav">
-        <a href="index.html" class="nav-btn">Inicio</a>
-        <a href="#" class="nav-btn" onclick="descargarPDF(); return false;">Descargar PDF</a>
+        <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="7 7 12 12 17 7"></polyline><polyline points="7 13 12 18 17 13"></polyline></svg>
+          </button>
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(false)" title="Contraer todo" aria-label="Contraer todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 17 12 12 7 17"></polyline></svg>
+          </button>
+          <button type="button" id="btn-pdf" class="btn-icon-header btn-pdf-accent" onclick="descargarPDF()" title="Descargar PDF" aria-label="Descargar PDF">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          </button>
+        </div>
+      </div>
+      <nav aria-label="Navegación por bloques temáticos" class="main-nav no-print">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Inicio</a></li>
+        </ul>
       </nav>
     </div>
   </header>
@@ -31,8 +45,8 @@
         </section>
 
                 <section>
-            <details>
-                <summary>Ficha Técnica</summary>
+            <details class="accordion" id="page-section-1">
+                <summary class="summary-title">Ficha Técnica</summary>
                 <div class="box-card">
                     <h3 id="ficha-tecnica-de-la-unidad">FICHA TÉCNICA DE LA UNIDAD <a class="headerlink"
           href="#ficha-tecnica-de-la-unidad" title="Enlace permanente">¶</a></h3>
@@ -68,8 +82,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>Índice de Contenidos</summary>
+            <details class="accordion" id="page-section-2">
+                <summary class="summary-title">Índice de Contenidos</summary>
                 <div class="box-card">
                     <h3 id="indice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#indice-de-contenidos"
           title="Enlace permanente">¶</a></h3>
@@ -97,8 +111,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>1. Introducción y contextualización</summary>
+            <details class="accordion" id="page-section-3">
+                <summary class="summary-title">1. Introducción y contextualización</summary>
                 <article class="box-card">
                     <h1 id="a1-introduccion-y-contextualizacion">1. Introducción y
         contextualización <a class="headerlink" href="#a1-introduccion-y-contextualizacion" title="Enlace permanente">¶</a>
@@ -127,8 +141,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>2. Utilidad</summary>
+            <details class="accordion" id="page-section-4">
+                <summary class="summary-title">2. Utilidad</summary>
                 <article class="box-card">
                     <h1 id="a2-utilidad">2. Utilidad <a class="headerlink" href="#a2-utilidad" title="Enlace permanente">¶</a></h1>
                     <p>Podrás comprobar que una suite ofimática online incluye diferentes
@@ -162,8 +176,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>3. Ventajas e inconvenientes</summary>
+            <details class="accordion" id="page-section-5">
+                <summary class="summary-title">3. Ventajas e inconvenientes</summary>
                 <article class="box-card">
                     <h1 id="a3-ventajas-e-inconvenientes">3. Ventajas e inconvenientes <a class="headerlink"
           href="#a3-ventajas-e-inconvenientes" title="Enlace permanente">¶</a></h1>
@@ -174,7 +188,7 @@
                     <p>Ventajas:</p>
                     <ul>
         <li>
-          <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
               <pre><code>Tendrás acceso on-line a los documentos, podrás
 acceder a ellos desde cualquier ordenador con conexión a Internet. Ya no
 tendrás que copiar y transferir ficheros, de forma que no tendrás que
@@ -235,8 +249,8 @@ llevar tu memoria USB a todos los lados.</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>4. El procesador de textos.</summary>
+            <details class="accordion" id="page-section-6">
+                <summary class="summary-title">4. El procesador de textos.</summary>
                 <article class="box-card">
                     <h1 id="a4-el-procesador-de-textos">4. El procesador de textos. <a class="headerlink"
           href="#a4-el-procesador-de-textos" title="Enlace permanente">¶</a></h1>
@@ -269,8 +283,8 @@ llevar tu memoria USB a todos los lados.</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>5. La hoja de cálculo.</summary>
+            <details class="accordion" id="page-section-7">
+                <summary class="summary-title">5. La hoja de cálculo.</summary>
                 <article class="box-card">
                     <h1 id="a5-la-hoja-de-calculo">5. La hoja de cálculo. <a class="headerlink" href="#a5-la-hoja-de-calculo"
           title="Enlace permanente">¶</a></h1>
@@ -304,8 +318,8 @@ llevar tu memoria USB a todos los lados.</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>6. Aplicaciones de uso común.</summary>
+            <details class="accordion" id="page-section-8">
+                <summary class="summary-title">6. Aplicaciones de uso común.</summary>
                 <article class="box-card">
                     <h1 id="a6-aplicaciones-de-uso-comun">6. Aplicaciones de uso común. <a class="headerlink"
           href="#a6-aplicaciones-de-uso-comun" title="Enlace permanente">¶</a></h1>
@@ -348,8 +362,8 @@ llevar tu memoria USB a todos los lados.</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>7. Herramientas de Google.</summary>
+            <details class="accordion" id="page-section-9">
+                <summary class="summary-title">7. Herramientas de Google.</summary>
                 <article class="box-card">
                     <h1 id="a7-herramientas-de-google">7. Herramientas de Google. <a class="headerlink" href="#a7-herramientas-de-google"
           title="Enlace permanente">¶</a></h1>
@@ -423,8 +437,8 @@ llevar tu memoria USB a todos los lados.</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>8. Instalación.</summary>
+            <details class="accordion" id="page-section-10">
+                <summary class="summary-title">8. Instalación.</summary>
                 <article class="box-card">
                     <h1 id="a8-instalacion">8. Instalación. <a class="headerlink" href="#a8-instalacion" title="Enlace permanente">¶</a>
       </h1>
@@ -458,8 +472,8 @@ llevar tu memoria USB a todos los lados.</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>9. Configuración.</summary>
+            <details class="accordion" id="page-section-11">
+                <summary class="summary-title">9. Configuración.</summary>
                 <article class="box-card">
                     <h1 id="a9-configuracion">9. Configuración. <a class="headerlink" href="#a9-configuracion"
           title="Enlace permanente">¶</a></h1>
@@ -520,8 +534,8 @@ llevar tu memoria USB a todos los lados.</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>10. Trabajar con aplicaciones de ofimática web.</summary>
+            <details class="accordion" id="page-section-12">
+                <summary class="summary-title">10. Trabajar con aplicaciones de ofimática web.</summary>
                 <article class="box-card">
                     <h1 id="a10-trabajar-con-aplicaciones-de-ofimatica-web">10. Trabajar con
         aplicaciones de ofimática web. <a class="headerlink" href="#a10-trabajar-con-aplicaciones-de-ofimatica-web"
@@ -609,8 +623,8 @@ llevar tu memoria USB a todos los lados.</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>11. Mantenimiento y administración de una aplicación ofimática web.</summary>
+            <details class="accordion" id="page-section-13">
+                <summary class="summary-title">11. Mantenimiento y administración de una aplicación ofimática web.</summary>
                 <article class="box-card">
                     <h1 id="a11-mantenimiento-y-administracion-de-una-aplicacion-ofimatica-web">11.
         Mantenimiento y administración de una aplicación ofimática web. <a class="headerlink"

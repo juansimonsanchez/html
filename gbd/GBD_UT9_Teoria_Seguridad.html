@@ -11,14 +11,28 @@
 </head>
 
 <body>
-    <header>
+    <header class="site-header">
         <div class="header-container">
-            <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>GBD
+        <div class="header-bar">
+            <div class="site-title site-title-row"><img src="logo.png" alt="Logo IES Celia Viñas" class="site-logo"><span>GBD
                     &ndash; Ut9 Teoria Seguridad</span></div>
-            <nav class="top-nav">
-                <a href="index.html" class="nav-btn">Inicio</a>
-                <a href="#" class="nav-btn" onclick="descargarPDF(); return false;">Descargar PDF</a>
-            </nav>
+        <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="7 7 12 12 17 7"></polyline><polyline points="7 13 12 18 17 13"></polyline></svg>
+          </button>
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(false)" title="Contraer todo" aria-label="Contraer todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 17 12 12 7 17"></polyline></svg>
+          </button>
+          <button type="button" id="btn-pdf" class="btn-icon-header btn-pdf-accent" onclick="descargarPDF()" title="Descargar PDF" aria-label="Descargar PDF">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          </button>
+        </div>
+      </div>
+      <nav aria-label="Navegación por bloques temáticos" class="main-nav no-print">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Inicio</a></li>
+        </ul>
+      </nav>
         </div>
     </header>
 
@@ -33,8 +47,8 @@
         </section>
 
                 <section>
-            <details>
-                <summary>Ficha Técnica</summary>
+            <details class="accordion" id="page-section-1">
+                <summary class="summary-title">Ficha Técnica</summary>
                 <div class="box-card">
                     <h3 id="ficha-tecnica-de-la-unidad-didactica">FICHA TÉCNICA DE LA UNIDAD
                         DIDÁCTICA <a class="headerlink" href="#ficha-tecnica-de-la-unidad-didactica"
@@ -68,8 +82,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>Índice de Contenidos</summary>
+            <details class="accordion" id="page-section-2">
+                <summary class="summary-title">Índice de Contenidos</summary>
                 <div class="box-card">
                     <h3 id="indice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink"
                             href="#indice-de-contenidos" title="Enlace permanente">¶</a></h3>
@@ -96,8 +110,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>1. INTRODUCCIÓN</summary>
+            <details class="accordion" id="page-section-3">
+                <summary class="summary-title">1. INTRODUCCIÓN</summary>
                 <article class="box-card">
                     <h1 id="a1-introduccion">1. INTRODUCCIÓN <a class="headerlink" href="#a1-introduccion"
                             title="Enlace permanente">¶</a></h1>
@@ -134,8 +148,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>2. DIAGNÓSTICO Y ORIGEN DE FALLOS EN UN SGBD</summary>
+            <details class="accordion" id="page-section-4">
+                <summary class="summary-title">2. DIAGNÓSTICO Y ORIGEN DE FALLOS EN UN SGBD</summary>
                 <article class="box-card">
                     <h1 id="a2-diagnostico-y-origen-de-fallos-en-un-sgbd">2. DIAGNÓSTICO Y
                         ORIGEN DE FALLOS EN UN SGBD <a class="headerlink"
@@ -203,7 +217,7 @@
                                 de compresión y cifrado fuerte.</p>
                         </li>
                         <li>
-                            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                            <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                                     Copiar</button>
                                 <pre><code>Almacenamiento de Respaldos Offsite / Remotos:
 Conservar las copias en una ubicación geográfica distinta a la del
@@ -231,8 +245,8 @@ respaldo remotos protegidos contra catástrofes).</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>3. FICHEROS DE REGISTRO LOG DE MYSQL</summary>
+            <details class="accordion" id="page-section-5">
+                <summary class="summary-title">3. FICHEROS DE REGISTRO LOG DE MYSQL</summary>
                 <article class="box-card">
                     <h1 id="a3-ficheros-de-registro-log-de-mysql">3. FICHEROS DE REGISTRO LOG
                         DE MYSQL <a class="headerlink" href="#a3-ficheros-de-registro-log-de-mysql"
@@ -245,7 +259,7 @@ respaldo remotos protegidos contra catástrofes).</code></pre>
                     <p>En sistemas operativos Linux, el directorio por defecto donde MySQL
                         almacena físicamente las bases de datos está configurado en la variable
                         del sistema datadir:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                             Copiar</button>
                         <pre><code># Comprobación de la ruta física desde la terminal del sistema
 operativo
@@ -315,7 +329,7 @@ mysql -u root -p -e "SHOW VARIABLES LIKE 'datadir';"</code></pre>
                     <p>Para cerrar los archivos de log abiertos y forzar la inicialización
                         de logs nuevos (muy útil para procesos de rotación y antes de copias de
                         seguridad), se ejecuta la instrucción:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                             Copiar</button>
                         <pre><code>-- Forzar el volcado de buffers a disco y la rotación de logs
 FLUSH LOGS;</code></pre>
@@ -334,7 +348,7 @@ FLUSH LOGS;</code></pre>
                         almacenados.
                     </p>
                     <p>La sintaxis básica de ejecución desde el shell de Linux es:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                             Copiar</button>
                         <pre><code>mysqlbinlog [opciones] nombre_log_binario</code></pre>
 
@@ -361,7 +375,7 @@ FLUSH LOGS;</code></pre>
                         </li>
                     </ul>
                     <p>Ejemplos Prácticos de mysqlbinlog sobre nuestra base de datos</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                             Copiar</button>
                         <pre><code># Ejemplo 1: Convertir un binlog a fichero de texto plano legible
 para auditoría
@@ -384,8 +398,8 @@ mysql -u root -p</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>4. MANTENIMIENTO Y REPARACIÓN DE TABLAS</summary>
+            <details class="accordion" id="page-section-6">
+                <summary class="summary-title">4. MANTENIMIENTO Y REPARACIÓN DE TABLAS</summary>
                 <article class="box-card">
                     <h1 id="a4-mantenimiento-y-reparacion-de-tablas">4. MANTENIMIENTO Y
                         REPARACIÓN DE TABLAS <a class="headerlink" href="#a4-mantenimiento-y-reparacion-de-tablas"
@@ -403,7 +417,7 @@ mysql -u root -p</code></pre>
                         .MYI). <strong>Exige que el servidor MySQL esté completamente apagado o
                             que las tablas implicadas estén bloqueadas contra escritura</strong>
                         para evitar la corrupción de datos.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                             Copiar</button>
                         <pre><code># Comprobar estado de consistencia de la tabla fabricante (tipo
 MyISAM si se requiere)
@@ -417,7 +431,7 @@ myisamchk --recover --quick
                     <p>A diferencia de myisamchk, esta utilidad se comunica con el servidor
                         MySQL en caliente (en ejecución) mediante comandos SQL nativos. Puede
                         utilizarse para tablas InnoDB y MyISAM.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                             Copiar</button>
                         <pre><code># Analizar y reparar automáticamente todas las tablas del esquema
 'practica_dml'
@@ -440,7 +454,7 @@ mysqlcheck -u root -p --auto-repair --check practica_dml</code></pre>
                     </h5>
                     <p>Chequea la estructura de la tabla y valida sus índices asociados.
                         Devolverá una tabla con el estado.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                             Copiar</button>
                         <pre><code>USE practica_dml;
 CHECK TABLE empleado, producto;</code></pre>
@@ -452,7 +466,7 @@ CHECK TABLE empleado, producto;</code></pre>
                         índices. Esto permite que el Optimizador de Consultas de MySQL elija
                         planes de ejecución óptimos (uso de índices secundarios adecuados).
                         Bloquea la tabla para lectura durante el procesamiento.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                             Copiar</button>
                         <pre><code>-- Analizar el estado de los índices en la tabla de empleados
 ANALYZE TABLE empleado;</code></pre>
@@ -465,7 +479,7 @@ ANALYZE TABLE empleado;</code></pre>
                         columnas de longitud variable (como VARCHAR o TEXT en la tabla
                         fabricante de nuestro esquema practica_dml). Desfragmenta el archivo y
                         reduce su tamaño en disco.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                             Copiar</button>
                         <pre><code>-- Desfragmentar la tabla fabricante tras realizar eliminaciones
 masivas
@@ -476,7 +490,7 @@ OPTIMIZE TABLE fabricante;</code></pre>
                             title="Enlace permanente">¶</a></h5>
                     <p>Sintaxis SQL para intentar la reparación inmediata de tablas
                         corruptas de tipo MyISAM (no compatible con InnoDB).</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                             Copiar</button>
                         <pre><code>REPAIR TABLE fabricante QUICK;</code></pre>
 
@@ -492,8 +506,8 @@ OPTIMIZE TABLE fabricante;</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>5. POLÍTICAS DE COPIAS DE SEGURIDAD</summary>
+            <details class="accordion" id="page-section-7">
+                <summary class="summary-title">5. POLÍTICAS DE COPIAS DE SEGURIDAD</summary>
                 <article class="box-card">
                     <h1 id="a5-politicas-de-copias-de-seguridad">5. POLÍTICAS DE COPIAS DE
                         SEGURIDAD <a class="headerlink" href="#a5-politicas-de-copias-de-seguridad"
@@ -555,7 +569,7 @@ OPTIMIZE TABLE fabricante;</code></pre>
                         servidor origen para garantizar que las páginas de datos en el Buffer
                         Pool de la tabla producto se vuelquen de forma consistente a disco,
                         cerrando la tabla temporalmente:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                             Copiar</button>
                         <pre><code>USE practica_dml;
 FLUSH TABLES producto FOR EXPORT;</code></pre>
@@ -566,7 +580,7 @@ FLUSH TABLES producto FOR EXPORT;</code></pre>
                     <p><strong>Paso 2:</strong> Desde otra terminal de Linux, copiar
                         físicamente los metadatos .cfg y el archivo de datos producto.ibd
                         generados hacia la ruta de almacenamiento de backups segura:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                             Copiar</button>
                         <pre><code>cp /var/lib/mysql/practica_dml/producto.{ibd,cfg}
 /backups/fisico_practica/</code></pre>
@@ -574,7 +588,7 @@ FLUSH TABLES producto FOR EXPORT;</code></pre>
                     </div>
                     <p><strong>Paso 3:</strong> Una vez finalizada la copia física de los
                         ficheros, liberar el bloqueo en la terminal origen:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                             Copiar</button>
                         <pre><code>UNLOCK TABLES;</code></pre>
 
@@ -587,7 +601,7 @@ FLUSH TABLES producto FOR EXPORT;</code></pre>
                     <p><strong>Paso 4:</strong> En el servidor de destino (donde existe la
                         tabla creada vacía), se debe descartar el espacio de tablas lógico
                         existente para desvincular el archivo .ibd actual:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                             Copiar</button>
                         <pre><code>ALTER TABLE practica_dml.producto DISCARD TABLESPACE;</code></pre>
 
@@ -596,7 +610,7 @@ FLUSH TABLES producto FOR EXPORT;</code></pre>
                         el paso 2 dentro del directorio de la base de datos de destino
                         /var/lib/mysql/practica_dml/ y asegurar que el propietario y grupo de
                         permisos correspondan exactamente al daemon de MySQL:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                             Copiar</button>
                         <pre><code>cp /backups/fisico_practica/producto.ibd
 /var/lib/mysql/practica_dml/
@@ -606,7 +620,7 @@ chmod 660 /var/lib/mysql/practica_dml/producto.ibd</code></pre>
                     </div>
                     <p><strong>Paso 6:</strong> Importar y vincular el nuevo archivo .ibd de
                         datos en la estructura del diccionario del SGBD:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                             Copiar</button>
                         <pre><code>ALTER TABLE practica_dml.producto IMPORT TABLESPACE;</code></pre>
 
@@ -626,7 +640,7 @@ chmod 660 /var/lib/mysql/practica_dml/producto.ibd</code></pre>
                         exportación fuera del directorio definido en dicha variable lanzará el
                         <strong>Error 1290</strong>.
                     </p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                             Copiar</button>
                         <pre><code>-- Comprobar el directorio permitido para exportación
 SHOW VARIABLES LIKE 'secure_file_priv';
@@ -635,7 +649,7 @@ SHOW VARIABLES LIKE 'secure_file_priv';
 
                     </div>
                     <p><strong>Exportación consistente de la tabla de empleados</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                             Copiar</button>
                         <pre><code>SELECT codigo_empleado, nombre, apellido1, email, salario,
 comision
@@ -650,7 +664,7 @@ FROM practica_dml.empleado;</code></pre>
                             INFILE</strong></p>
                     <p>Para importar los datos en una tabla de backup previamente
                         estructurada:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                             Copiar</button>
                         <pre><code>USE practica_dml;
 -- Crear tabla vacía de copia de seguridad (estructura clonada de
@@ -669,7 +683,7 @@ LINES TERMINATED BY '\n';</code></pre>
                         en un archivo SQL con instrucciones DDL/DML.</p>
                     <p><strong>A. Sintaxis para exportar tablas específicas de una base de
                             datos:</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                             Copiar</button>
                         <pre><code>mysqldump -u root -p practica_dml producto fabricante &gt;
 /backups/productos_fabricantes.sql</code></pre>
@@ -677,7 +691,7 @@ LINES TERMINATED BY '\n';</code></pre>
                     </div>
                     <p><strong>B. Sintaxis para exportar una o varias bases de datos
                             completas:</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                             Copiar</button>
                         <pre><code># Exportar las bases de datos practica_dml y tienda de forma
 estructurada
@@ -689,7 +703,7 @@ mysqldump -u root -p --databases practica_dml &gt;
                         directivas CREATE DATABASE y USE en el fichero SQL de salida).</em>
                     <p><strong>C. Sintaxis para exportar todas las bases de datos de la
                             instancia de MySQL:</strong></p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                             Copiar</button>
                         <pre><code>mysqldump -u root -p --all-databases &gt;
 /backups/instancia_completa.sql</code></pre>
@@ -716,7 +730,7 @@ mysqldump -u root -p --databases practica_dml &gt;
                                 registros lógicos.</p>
                         </li>
                         <li>
-                            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                            <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                                     Copiar</button>
                                 <pre><code>--no-create-info (-t): Exporta únicamente los comandos INSERT INTO
 con los datos, omitiendo las instrucciones DDL de creación de
@@ -725,7 +739,7 @@ tablas.</code></pre>
                             </div>
                         </li>
                         <li>
-                            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                            <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                                     Copiar</button>
                                 <pre><code>--add-drop-table: Agrega la sentencia DROP TABLE IF EXISTS antes de
 cada definición de tabla. Evita errores de duplicados al restaurar bases
@@ -745,7 +759,7 @@ de datos ya existentes.</code></pre>
                         DATA INFILE. Lee ficheros de texto formateados en csv y los inserta en
                         la tabla correspondiente, la cual debe llamarse exactamente igual que el
                         nombre base del archivo físico a importar.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                             Copiar</button>
                         <pre><code># Importar el fichero 'empleado.txt' en la tabla 'empleado' del
 esquema 'practica_dml'
@@ -758,8 +772,8 @@ mysqlimport -u root -p --fields-terminated-by=',' practica_dml
         </section>
 
         <section>
-            <details>
-                <summary>6. ESCENARIO DE PRODUCCIÓN: PLAN DE RESPALDO INCREMENTAL Y RECUPERACIÓN POINT-IN-TIME</summary>
+            <details class="accordion" id="page-section-8">
+                <summary class="summary-title">6. ESCENARIO DE PRODUCCIÓN: PLAN DE RESPALDO INCREMENTAL Y RECUPERACIÓN POINT-IN-TIME</summary>
                 <article class="box-card">
                     <h1 id="a6-escenario-de-produccion-plan-de-respaldo-incremental-y-recuperacion-point-in-time">6.
                         ESCENARIO DE PRODUCCIÓN: PLAN DE RESPALDO INCREMENTAL Y RECUPERACIÓN
@@ -777,7 +791,7 @@ mysqlimport -u root -p --fields-terminated-by=',' practica_dml
                         rotación de los logs binarios. El servidor comenzará a registrar
                         cualquier cambio posterior en un nuevo binlog secuencial (por ejemplo,
                         binlog.000002).</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                             Copiar</button>
                         <pre><code>mysqldump -u root -p --single-transaction --flush-logs --databases
 practica_dml &gt; /backups/practica_dml_domingo.sql</code></pre>
@@ -795,7 +809,7 @@ practica_dml &gt; /backups/practica_dml_domingo.sql</code></pre>
                         escritura para evitar que nuevos registros interfieran o cerrar las
                         conexiones clientes y rotar los logs binarios para aislar la actividad
                         actual:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                             Copiar</button>
                         <pre><code>mysqladmin -u root -p flush-logs</code></pre>
 
@@ -805,7 +819,7 @@ practica_dml &gt; /backups/practica_dml_domingo.sql</code></pre>
                     <p><strong>Paso 2:</strong> Importar la copia de seguridad completa
                         realizada el domingo, devolviendo la base de datos al estado consistente
                         del domingo a las 02:00 h:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                             Copiar</button>
                         <pre><code>mysql -u root -p &lt; /backups/practica_dml_domingo.sql</code></pre>
 
@@ -813,7 +827,7 @@ practica_dml &gt; /backups/practica_dml_domingo.sql</code></pre>
                     <p><strong>Paso 3:</strong> Analizar el log binario binlog.000002 de
                         manera visual para encontrar la posición física o la fecha y hora
                         exactas de la transacción dañina:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                             Copiar</button>
                         <pre><code>mysqlbinlog --database=practica_dml /var/lib/mysql/binlog.000002 |
 grep -i -C 5 "delete"</code></pre>
@@ -824,7 +838,7 @@ grep -i -C 5 "delete"</code></pre>
                     <p><strong>Paso 4:</strong> Aplicar de forma secuencial todas las
                         transacciones realizadas desde el domingo hasta el instante previo a la
                         eliminación accidental (10:00:14 h):</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                             Copiar</button>
                         <pre><code>mysqlbinlog --database=practica_dml --stop-datetime="2026-06-22
 10:00:14" /var/lib/mysql/binlog.000002 | mysql -u root -p</code></pre>
@@ -837,8 +851,8 @@ grep -i -C 5 "delete"</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>7. HERRAMIENTAS GRÁFICAS Y MIGRACIÓN ENTRE SGBD</summary>
+            <details class="accordion" id="page-section-9">
+                <summary class="summary-title">7. HERRAMIENTAS GRÁFICAS Y MIGRACIÓN ENTRE SGBD</summary>
                 <article class="box-card">
                     <h1 id="a7-herramientas-graficas-y-migracion-entre-sgbd">7. HERRAMIENTAS
                         GRÁFICAS Y MIGRACIÓN ENTRE SGBD <a class="headerlink"
@@ -858,7 +872,7 @@ grep -i -C 5 "delete"</code></pre>
                                 continuo (Self-Contained File).</p>
                         </li>
                         <li>
-                            <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋
+                            <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
                                     Copiar</button>
                                 <pre><code>Activar las casillas Dump Stored Procedures and
 Functions, Dump Events y Dump
@@ -929,8 +943,8 @@ negocio de la unidad 11.</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>8. DOCUMENTACIÓN DE POLÍTICAS DE SEGURIDAD Y CUMPLIMIENTO NORMATIVO (RGPD)</summary>
+            <details class="accordion" id="page-section-10">
+                <summary class="summary-title">8. DOCUMENTACIÓN DE POLÍTICAS DE SEGURIDAD Y CUMPLIMIENTO NORMATIVO (RGPD)</summary>
                 <article class="box-card">
                     <h1 id="a8-documentacion-de-politicas-de-seguridad-y-cumplimiento-normativo-rgpd">8.
                         DOCUMENTACIÓN DE POLÍTICAS DE SEGURIDAD Y CUMPLIMIENTO NORMATIVO

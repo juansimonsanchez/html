@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UT3: Estructuras de Datos y Archivos en Python</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilos_ejemplo.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" defer></script>
+    <script src="app_general.js" defer></script>
+    <script src="simuladores_ut3.js" defer></script>
+</head>
+<body>
+
+    <!-- Notificación Toast Flotante -->
+    <div id="toast" class="toast-banner" role="status" aria-live="polite">
+        <span class="toast-dot"></span>
+        <span id="toast-msg">Código copiado al portapapeles</span>
+    </div>
+
+    <!-- CABECERA SEMÁNTICA -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="header-bar">
+                <h1 class="site-title">UT3. Estructuras de Datos y Archivos</h1>
+
+                <!-- Acciones globales compactas SVG -->
+                <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
+                    <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <polyline points="7 7 12 12 17 7"></polyline>
+                            <polyline points="7 13 12 18 17 13"></polyline>
+                        </svg>
+                    </button>
+
+                    <button type="button" class="btn-icon-header" onclick="toggleAllDetails(false)" title="Contraer todo" aria-label="Contraer todo">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <polyline points="17 11 12 6 7 11"></polyline>
+                            <polyline points="17 17 12 12 7 17"></polyline>
+                        </svg>
+                    </button>
+
+                    <button type="button" id="btn-pdf" class="btn-icon-header btn-pdf-accent" onclick="descargarPDF()" title="Descargar PDF" aria-label="Descargar PDF">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- MENÚ DE NAVEGACIÓN RÁPIDA -->
+            <nav aria-label="Navegación por bloques temáticos" class="main-nav no-print">
+                <ul class="nav-list">
+                    <li><a href="#sec-1" onclick="openSection('sec-1')" class="nav-link">1. Introducción</a></li>
+                    <li><a href="#sec-2" onclick="openSection('sec-2')" class="nav-link">2. Listas (list)</a></li>
+                    <li><a href="#sec-3" onclick="openSection('sec-3')" class="nav-link">3. Tuplas (tuple)</a></li>
+                    <li><a href="#sec-4" onclick="openSection('sec-4')" class="nav-link">4. Diccionarios (dict)</a></li>
+                    <li><a href="#sec-5" onclick="openSection('sec-5')" class="nav-link">5. Cadenas (str)</a></li>
+                    <li><a href="#sec-6" onclick="openSection('sec-6')" class="nav-link">6. Excepciones</a></li>
+                    <li><a href="#sec-7" onclick="openSection('sec-7')" class="nav-link">7. Ficheros</a></li>
+                    <li><a href="#sec-8" onclick="openSection('sec-8')" class="nav-link">8. CSV</a></li>
+                    <li><a href="#sec-9" onclick="openSection('sec-9')" class="nav-link">9. JSON</a></li>
+                    <li><a href="#sec-10" onclick="openSection('sec-10')" class="nav-link nav-link-test">10. Test UT3</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main id="documento-ut3" class="main-container">
+
+        <!-- Ficha Técnica Resumida -->
+        <section aria-labelledby="ficha-title" class="card ficha-tecnica">
+            <div class="ficha-header">
+                <h2 id="ficha-title" class="ficha-title">
+                    <span class="title-pill"></span>
+                    Ficha Técnica de la Unidad
+                </h2>
+                <span class="hint-text no-print">Haz clic en cada bloque temático para desplegar teoría y simuladores</span>
+            </div>
+
+            <div class="badge-group">
+                <span class="badge badge-dark">UT3: Estructuras de datos</span>
+                <span class="badge badge-dark">⏱ 15 horas (23 Nov - 22 Dic / 1º Trimestre)</span>
+            </div>
+
+            <div class="grid-2">
+                <div class="sub-box">
+                    <p class="sub-box-title">
+                        <span class="badge badge-yellow">RA4</span>
+                        <span>Resultado de Aprendizaje Asociado:</span>
+                    </p>
+                    <p>Implementa estructuras de datos para la gestión eficiente de información.</p>
+                </div>
+                <div class="sub-box">
+                    <p class="sub-box-title">Criterios de Evaluación:</p>
+                    <ul class="ce-list">
+                        <li class="ce-item">
+                            <span class="badge badge-blue">CE4.a</span>
+                            <span>Se han descrito y comparado diferentes estructuras de datos (arrays, listas enlazadas, pilas, colas, árboles, etc.).</span>
+                        </li>
+                        <li class="ce-item">
+                            <span class="badge badge-blue">CE4.b</span>
+                            <span>Se han implementado estructuras de datos en un lenguaje de programación específico.</span>
+                        </li>
+                        <li class="ce-item">
+                            <span class="badge badge-blue">CE4.c</span>
+                            <span>Se ha seleccionado la estructura de datos más adecuada en función de la naturaleza del problema a resolver.</span>
+                        </li>
+                        <li class="ce-item">
+                            <span class="badge badge-blue">CE4.d</span>
+                            <span>Se ha evaluado la eficiencia de las operaciones realizadas sobre las estructuras de datos.</span>
+                        </li>
+                        <li class="ce-item">
+                            <span class="badge badge-blue">CE4.e</span>
+                            <span>Se han aplicado técnicas de optimización para mejorar el rendimiento de estructuras de datos, incluyendo arrays multidimensionales y dinámicos.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================== -->
+        <!-- BLOQUE 1: INTRODUCCIÓN -->
+        <!-- ===================================================================== -->
+        <section id="sec-1" class="topic-section">
+            <details class="accordion">
+                <summary>
+                    <div class="summary-left">
+                        <span class="sec-num">1</span>
+                        <div>
+                            <h2 class="sec-heading">Introducción: Arrays Tradicionales vs. Colecciones en Python</h2>
+                            <p class="sec-desc">Limitaciones de los arreglos estáticos frente a las estructuras dinámicas nativas</p>
+                        </div>
+                    </div>
+                    <svg class="chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </summary>
+
+                <article class="accordion-body">
+                    <p class="body-text">
+                        En muchos lenguajes de programación tradicionales (como C o Java básico) se implementan los <strong>arrays (o arreglos)</strong>, estructuras que almacenan elementos bajo un nombre común. Sin embargo, los arrays tradicionales presentan dos grandes limitaciones:
+                    </p>
+
+                    <div class="grid-2">
+                        <div class="callout callout-danger">
+                            <h3 class="callout-title">⚠️ Arrays Tradicionales</h3>
+                            <ul class="clean-list">
+                                <li><strong>Homogéneos:</strong> Solo permiten guardar datos del mismo tipo (todos enteros o todos texto).</li>
+                                <li><strong>Estáticos:</strong> Al declararse se debe indicar su tamaño fijo y su longitud no puede modificarse en tiempo de ejecución.</li>
+                            </ul>
+                        </div>
+
+                        <div class="callout callout-success">
+                            <h3 class="callout-title">🐍 Colecciones Nativas en Python</h3>
+                            <ul class="clean-list">
+                                <li><strong>Heterogéneas:</strong> Permiten mezclar distintos tipos de datos (<code class="inline-code">int</code>, <code class="inline-code">str</code>, <code class="inline-code">bool</code>, otras listas...).</li>
+                                <li><strong>Dinámicas:</strong> Crecen o decrecen automáticamente en memoria al añadir o eliminar elementos (<code class="inline-code">list</code>, <code class="inline-code">dict</code>).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+            </details>
+        </section>
+
+        <!-- ===================================================================== -->
+        <!-- BLOQUE 2: EL TIPO DE DATO LISTA (list) -->
+        <!-- ===================================================================== -->
+        <section id="sec-2" class="topic-section">
+            <details class="accordion">
+                <summary>
+                    <div class="summary-left">
+                        <span class="sec-num">2</span>
+                        <div>
+                            <h2 class="sec-heading">El Tipo de Dato LISTA (<code class="code-blue font-mono">list</code>)</h2>
+                            <p class="sec-desc">Construcción, indexación, slicing, mutabilidad, copia segura, métodos y matrices</p>
+                        </div>
+                    </div>
+                    <svg class="chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </summary>
+
+                <article class="accordion-body">
+                    <div>
+                        <h3 class="topic-h3">2.1 Construcción, Declaración e Indexación</h3>
+                        <p class="body-text">
+                            Las listas se declaran entre corchetes <code class="inline-code">[]</code>. Sus posiciones empiezan en <code class="inline-code">0</code> y admiten índices negativos desde el final (<code class="inline-code">-1</code> es el último elemento).
+                        </p>
+                        <div class="code-container">
+                            <div class="code-header">
+                                <span class="code-filename">listas_construccion_indexacion.py</span>
+                                <div class="code-actions no-print">
+                                    <button type="button" onclick="copyCode(this)" class="btn-code-action" title="Copiar código al portapapeles" aria-label="Copiar código al portapapeles">
+                                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                        <span>Copiar</span>
+                                    </button>
+                                    <button type="button" onclick="downloadCode(this)" class="btn-code-action" title="Descargar archivo listas_construccion_indexacion.py" aria-label="Descargar archivo listas_construccion_indexacion.py">
+                                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m0 0l-4-4m4 4l4-4M4 19h16"></path></svg>
+                                        <span>Descargar</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <pre class="code-pre"><code># Ejemplos de declaración de listas
+lista_vacia = []
+enteros = [1, 4, 56, 78, 100]
+decimales = [1.4, 4, 56.5, 78, 100.3]
+cadenas = ['hola', 'adios', 'buena suerte']
+mixta = ["a", 1, True]
+inicializada = [0, 0, 0, 0, 0, 0]
+
+# Indexación y acceso
+loteria = [3, 32, 12, 21, 16, 33]
+print(loteria[0])   # Muestra 3 (primer elemento)
+print(loteria[5])   # Muestra 33 (último elemento)
+print(loteria[-1])  # Muestra 33 (índice negativo)
+
+# ERROR DE ÍNDICE:
+# print(loteria[6]) -> IndexError: list index out of range
+# loteria[6] = 99   -> IndexError: no se puede expandir asignando a índice inexistente</code></pre>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="topic-h3">2.2 Operaciones Básicas, Slicing y Funciones Globales</h3>
+                        <div class="code-container">
+                            <div class="code-header">
+                                <span class="code-filename">operaciones_slicing.py</span>
+                                <div class="code-actions no-print">
+                                    <button type="button" onclick="copyCode(this)" class="btn-code-action" title="Copiar código al portapapeles" aria-label="Copiar código al portapapeles">
+                                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                        <span>Copiar</span>
+                                    </button>
+                                    <button type="button" onclick="downloadCode(this)" class="btn-code-action" title="Descargar archivo operaciones_slicing.py" aria-label="Descargar archivo operaciones_slicing.py">
+                                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m0 0l-4-4m4 4l4-4M4 19h16"></path></svg>
+                                        <span>Descargar</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <pre class="code-pre"><code>lista = [1, 2, 3, 4, 5, 6]
+letras = ["a", "b", "c", "d", "e"]
+
+# Recorrido múltiple simultáneo con zip()
+for num, letra in zip(lista, letras):
+    print(num, letra)  # 1 a / 2 b / 3 c / 4 d / 5 e
+
+# Pertenencia, concatenación y repetición
+print(2 in lista)        # True
+print(8 not in lista)    # True
+print(lista + [7, 8])    # [1, 2, 3, 4, 5, 6, 7, 8]
+print([0, 1] * 2)        # [0, 1, 0, 1]
+
+# Slicing / Rebanadas: lista[inicio:fin:paso] (fin no incluido)
+print(lista[2:4])        # [3, 4]
+print(lista[1:4:2])      # [2, 4]
+print(lista[:5])         # [1, 2, 3, 4, 5]
+print(lista[5:])         # [6]
+print(lista[::-1])       # [6, 5, 4, 3, 2, 1] (invierte la lista)
+
+# Funciones globales predefinidas
+nums = [20, 40, 10, 40, 50]
+print(len(nums), max(nums), min(nums), sum(nums))  # 5, 50, 10, 160
+print(sorted(nums))                # [10, 20, 40, 40, 50] (NO modifica original)
+print(sorted(nums, reverse=True))  # [50, 40, 40, 20, 10]</code></pre>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="topic-h3">2.3 Mutabilidad, Copia Segura (<code class="inline-code">[:]</code>), Métodos y Matrices</h3>
+                        <div class="code-container">
+                            <div class="code-header">
+                                <span class="code-filename">mutabilidad_metodos_matrices.py</span>
+                                <div class="code-actions no-print">
+                                    <button type="button" onclick="copyCode(this)" class="btn-code-action" title="Copiar código al portapapeles" aria-label="Copiar código al portapapeles">
+                                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                        <span>Copiar</span>
+                                    </button>
+                                    <button type="button" onclick="downloadCode(this)" class="btn-code-action" title="Descargar archivo mutabilidad_metodos_matrices.py" aria-label="Descargar archivo mutabilidad_metodos_matrices.py">
+                                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m0 0l-4-4m4 4l4-4M4 19h16"></path></svg>
+                                        <span>Descargar</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <pre class="code-pre"><code># ALIAS vs CLONADO EN MEMORIA
+lista1 = [1, 2, 3]
+alias = lista1        # Apuntan al MISMO objeto en memoria
+copia = lista1[:]     # Crea una nueva lista independiente
+lista1[1] = 99
+del lista1[2]         # Borra el elemento en índice 2 con 'del'
+print(alias)          # [1, 99] -> ¡Cambia también!
+print(copia)          # [1, 2, 3] -> Intacta
+
+# MÉTODOS PROPIOS (modifican in-place)
+valores = [1, 2, 3, 4, 5]
+valores.append(6)         # Añade 6 al final -> [1, 2, 3, 4, 5, 6]
+valores.extend([7, 8])    # Une otra lista al final
+valores.insert(1, 12)     # Inserta 12 en índice 1
+eliminado = valores.pop() # Extrae y devuelve el último (8); pop(0) saca el primero
+valores.remove(12)        # Elimina la primera aparición del valor 12
+valores.reverse()         # Invierte la lista en el lugar
+valores.sort()            # Ordena de menor a mayor (sort(reverse=True) descendente)
+print(valores.count(5))   # Veces que aparece el 5
+print(valores.index(5))   # Índice de primera aparición (ValueError si no existe)
+
+# LISTAS MULTIDIMENSIONALES (Matriz 3x3)
+tabla = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+print(tabla[1][1])        # Fila 1, Columna 1 -> 5</code></pre>
+                        </div>
+                    </div>
+
+                    <!-- SIMULADOR INTERACTIVO DE LISTAS -->
+                    <div class="simulator-box sim-blue">
+                        <div class="sim-header">
+                            <div>
+                                <span class="sim-tag tag-blue">Simulador Interactivo</span>
+                                <h4 class="sim-title">Laboratorio de Listas, Slicing y Memoria</h4>
+                            </div>
+                            <button type="button" onclick="resetListSim()" class="btn btn-sm btn-light">Reiniciar lista</button>
+                        </div>
+
+                        <div>
+                            <p class="hint-text">Estado actual de <code class="inline-code">mi_lista</code> (Índices positivos arriba / negativos abajo):</p>
+                            <div id="list-visual-container" class="list-cells-board"></div>
+                        </div>
+
+                        <div class="grid-2">
+                            <div class="sim-panel">
+                                <p class="panel-label">1. Métodos In-Place</p>
+                                <div class="flex-nowrap-row">
+                                    <input type="text" id="list-val-input" placeholder="Valor (ej: 99 o 'py')" class="field-input">
+                                    <button type="button" onclick="simListAppend()" class="btn btn-primary">append()</button>
+                                </div>
+                                <div class="flex-nowrap-row">
+                                    <input type="number" id="list-idx-input" placeholder="Índice" class="field-input field-w-sm">
+                                    <button type="button" onclick="simListInsert()" class="btn btn-indigo">insert(idx, val)</button>
+                                    <button type="button" onclick="simListPop()" class="btn btn-danger">pop()</button>
+                                </div>
+                                <div class="flex-row">
+                                    <button type="button" onclick="simListSort()" class="btn btn-sm btn-dark">sort()</button>
+                                    <button type="button" onclick="simListReverse()" class="btn btn-sm btn-dark">reverse()</button>
+                                </div>
+                            </div>
+
+                            <div class="sim-panel">
+                                <p class="panel-label">2. Prueba de Slicing <code class="inline-code">mi_lista[inicio:fin:paso]</code></p>
+                                <div class="grid-3">
+                                    <div>
+                                        <label for="slice-start" class="hint-text">inicio</label>
+                                        <input type="number" id="slice-start" oninput="updateSliceSim()" placeholder="vacío" class="field-input">
+                                    </div>
+                                    <div>
+                                        <label for="slice-end" class="hint-text">fin</label>
+                                        <input type="number" id="slice-end" oninput="updateSliceSim()" placeholder="vacío" class="field-input">
+                                    </div>
+                                    <div>
+                                        <label for="slice-step" class="hint-text">paso</label>
+                                        <input type="number" id="slice-step" oninput="updateSliceSim()" placeholder="1" class="field-input">
+                                    </div>
+                                </div>
+                                <div class="console-box">
+                                    <span id="slice-expr">mi_lista[:]</span> &rarr; <span id="slice-result" class="console-green font-bold">[]</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sim-panel">
+                            <p class="panel-label">3. Comparativa en Memoria (Reflejo en vivo al modificar <code class="inline-code">mi_lista</code>)</p>
+                            <div class="grid-2">
+                                <div class="mem-box-alias">
+                                    <span class="mem-title">alias = mi_lista (Misma referencia)</span>
+                                    <span id="list-alias-view"></span>
+                                </div>
+                                <div class="mem-box-clone">
+                                    <span class="mem-title">clon = mi_lista[:] (Copia inicial independiente)</span>
+                                    <span id="list-clone-view"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </details>
+        </section>
+
+        <!-- ===================================================================== -->
+        <!-- BLOQUE 3: EL TIPO DE DATO TUPLA (tuple) -->
+        <!-- ===================================================================== -->
+        <section id="sec-3" class="topic-section">
+            <details class="accordion">
+                <summary>
+                    <div class="summary-left">
+                        <span class="sec-num">3</span>
+                        <div>
+                            <h2 class="sec-heading">El Tipo de Dato TUPLA (<code class="code-blue font-mono">tuple</code>)</h2>
+                            <p class="sec-desc">Colecciones ordenadas inmutables, TypeError y métodos de búsqueda</p>
+                        </div>
+                    </div>
+                    <svg class="chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </summary>
+
+                <article class="accordion-body">
+                    <p class="body-text">
+                        Las <strong>tuplas</strong> cumplen el mismo propósito conceptual que las listas (colecciones ordenadas de datos repetibles y heterogéneos), con la diferencia clave de que son <strong>inmutables</strong>: una vez creadas con paréntesis <code class="inline-code">()</code>, no se puede alterar su tamaño ni modificar sus elementos.
+                    </p>
+
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span class="code-filename">tuplas_inmutabilidad.py</span>
+                            <div class="code-actions no-print">
+                                <button type="button" onclick="copyCode(this)" class="btn-code-action" title="Copiar código al portapapeles" aria-label="Copiar código al portapapeles">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copiar</span>
+                                </button>
+                                <button type="button" onclick="downloadCode(this)" class="btn-code-action" title="Descargar archivo tuplas_inmutabilidad.py" aria-label="Descargar archivo tuplas_inmutabilidad.py">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m0 0l-4-4m4 4l4-4M4 19h16"></path></svg>
+                                    <span>Descargar</span>
+                                </button>
+                            </div>
+                        </div>
+                        <pre class="code-pre"><code># Construcción de tuplas
+tupla_vacia = ()
+tupla_heterogenea = ("a", 1, True)
+tupla_un_elemento = (42,)  # ¡La coma final es obligatoria para que sea tupla!
+
+# Operaciones permitidas (lectura, slicing, concatenación, funciones globales)
+t = (1, 2, 3, 4, 1, 2, 3)
+print(t[1:4])          # (2, 3, 4)
+print(len(t), max(t))  # 7, 4
+print(3 in t)          # True
+
+# Métodos exclusivos de búsqueda (al no poder modificarse)
+print(t.count(1))      # 2 (número de apariciones)
+print(t.index(2))      # 1 (primera aparición)
+print(t.index(2, 2))   # 5 (busca a partir de la posición 2)
+
+# DEMOSTRACIÓN DE INMUTABILIDAD:
+# t[1] = 5  --> TypeError: 'tuple' object does not support item assignment</code></pre>
+                    </div>
+
+                    <!-- COMPARADOR INTERACTIVO LISTA VS TUPLA -->
+                    <div class="simulator-box sim-purple">
+                        <div>
+                            <span class="sim-tag tag-purple">Comparador de Diseño (CE4.c)</span>
+                            <h4 class="sim-title">¿Cuándo elegir <code class="inline-code">list</code> y cuándo <code class="inline-code">tuple</code>?</h4>
+                            <p class="hint-text">Selecciona un escenario práctico y decide qué estructura es más óptima en Python:</p>
+                        </div>
+
+                        <div id="tuple-cases-container" class="quiz-options"></div>
+                    </div>
+                </article>
+            </details>
+        </section>
+
+        <!-- ===================================================================== -->
+        <!-- BLOQUE 4: EL TIPO DE DATO DICCIONARIO (dict) -->
+        <!-- ===================================================================== -->
+        <section id="sec-4" class="topic-section">
+            <details class="accordion">
+                <summary>
+                    <div class="summary-left">
+                        <span class="sec-num">4</span>
+                        <div>
+                            <h2 class="sec-heading">El Tipo de Dato MAPA / DICCIONARIO (<code class="code-blue font-mono">dict</code>)</h2>
+                            <p class="sec-desc">Pares clave-valor, acceso seguro con .get(), .copy() y recorridos</p>
+                        </div>
+                    </div>
+                    <svg class="chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </summary>
+
+                <article class="accordion-body">
+                    <p class="body-text">
+                        Los <strong>diccionarios</strong> almacenan parejas de <strong>clave-valor</strong> delimitadas por llaves <code class="inline-code">{}</code>. Son estructuras <strong>mutables</strong> donde los valores se recuperan directamente mediante su clave única en lugar de un índice numérico.
+                    </p>
+
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span class="code-filename">diccionarios.py</span>
+                            <div class="code-actions no-print">
+                                <button type="button" onclick="copyCode(this)" class="btn-code-action" title="Copiar código al portapapeles" aria-label="Copiar código al portapapeles">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copiar</span>
+                                </button>
+                                <button type="button" onclick="downloadCode(this)" class="btn-code-action" title="Descargar archivo diccionarios.py" aria-label="Descargar archivo diccionarios.py">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m0 0l-4-4m4 4l4-4M4 19h16"></path></svg>
+                                    <span>Descargar</span>
+                                </button>
+                            </div>
+                        </div>
+                        <pre class="code-pre"><code># Creación directa y progresiva
+diccionario = {'one': 1, 'two': 2, 'three': 3}
+dict1 = {}
+dict1["one"] = 1
+
+# Operaciones básicas
+print(len(diccionario))     # 3 (número de pares clave-valor)
+print(diccionario["one"])   # 1 (si no existe la clave -> KeyError)
+print("two" in diccionario) # True (comprueba existencia de CLAVE)
+del diccionario["one"]      # Elimina la clave "one" y su valor
+
+# Copia independiente con .copy() (evita alias con =)
+copia_segura = diccionario.copy()
+
+# Métodos principales
+diccionario.update({'four': 4, 'five': 5})    # Agrega o actualiza claves
+print(diccionario.get("two"))                 # 2
+print(diccionario.get("diez", "no existe"))   # 'no existe' (sin lanzar KeyError)
+valor = diccionario.pop("two", "no existe")   # Extrae y devuelve el valor; borra la clave
+# diccionario.clear()                         # Vacía por completo el diccionario -> {}
+
+# Recorridos fundamentales
+for clave in diccionario.keys():
+    print("Clave:", clave)
+
+for valor in diccionario.values():
+    print("Valor:", valor)
+
+for clave, valor in diccionario.items():
+    print(f"{clave} -> {valor}")</code></pre>
+                    </div>
+
+                    <!-- SIMULADOR INTERACTIVO DE DICCIONARIO -->
+                    <div class="simulator-box sim-emerald">
+                        <div class="sim-header">
+                            <div>
+                                <span class="sim-tag tag-emerald">Simulador Interactivo</span>
+                                <h4 class="sim-title">Explorador de Diccionarios y Búsqueda Segura</h4>
+                            </div>
+                            <button type="button" onclick="resetDictSim()" class="btn btn-sm btn-light">Reiniciar dict</button>
+                        </div>
+
+                        <div class="console-box">
+                            <span class="console-green">alumno = </span><span id="dict-json-view">{}</span>
+                        </div>
+
+                        <div class="grid-2">
+                            <div class="sim-panel">
+                                <p class="panel-label">1. Modificar pares clave-valor</p>
+                                <div class="grid-2">
+                                    <input type="text" id="dict-key-in" placeholder="Clave (ej: nota)" class="field-input">
+                                    <input type="text" id="dict-val-in" placeholder="Valor (ej: 9.5)" class="field-input">
+                                </div>
+                                <div class="flex-nowrap-row">
+                                    <button type="button" onclick="simDictSet()" class="btn btn-emerald flex-1">alumno[clave] = valor</button>
+                                    <button type="button" onclick="simDictDel()" class="btn btn-danger">del [clave]</button>
+                                </div>
+                            </div>
+
+                            <div class="sim-panel">
+                                <p class="panel-label">2. Acceso Directo vs. <code class="inline-code">.get()</code></p>
+                                <div class="grid-2">
+                                    <input type="text" id="dict-query-key" placeholder="Clave a buscar" class="field-input">
+                                    <input type="text" id="dict-default-val" placeholder="Por defecto (ej: N/A)" class="field-input">
+                                </div>
+                                <div class="flex-nowrap-row">
+                                    <button type="button" onclick="simDictDirectGet()" class="btn btn-dark flex-1">alumno[clave]</button>
+                                    <button type="button" onclick="simDictSafeGet()" class="btn btn-teal flex-1">.get(clave, def)</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sim-panel">
+                            <div class="ficha-header">
+                                <span class="panel-label">Iteración y Salida:</span>
+                                <div class="flex-row">
+                                    <button type="button" onclick="simDictIter('keys')" class="btn btn-sm btn-mono btn-soft-emerald">.keys()</button>
+                                    <button type="button" onclick="simDictIter('values')" class="btn btn-sm btn-mono btn-soft-emerald">.values()</button>
+                                    <button type="button" onclick="simDictIter('items')" class="btn btn-sm btn-mono btn-soft-emerald">.items()</button>
+                                </div>
+                            </div>
+                            <div id="dict-output" class="output-strip">
+                                Prueba a buscar una clave inexistente con ambos métodos o recorre el diccionario.
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </details>
+        </section>
+
+        <!-- ===================================================================== -->
+        <!-- BLOQUE 5: CADENAS DE CARACTERES (str) -->
+        <!-- ===================================================================== -->
+        <section id="sec-5" class="topic-section">
+            <details class="accordion">
+                <summary>
+                    <div class="summary-left">
+                        <span class="sec-num">5</span>
+                        <div>
+                            <h2 class="sec-heading">Cadenas de Caracteres (<code class="code-blue font-mono">str</code>) y sus Operaciones</h2>
+                            <p class="sec-desc">Secuencias inmutables, conversión str(), búsqueda, reemplazo y split()</p>
+                        </div>
+                    </div>
+                    <svg class="chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </summary>
+
+                <article class="accordion-body">
+                    <p class="body-text">
+                        En Python, las cadenas (<code class="inline-code">str</code>) se comportan como <strong>secuencias inmutables</strong> de caracteres (similares a tuplas de caracteres), indexadas desde <code class="inline-code">0</code> hasta <code class="inline-code">len(cadena) - 1</code>.
+                    </p>
+
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span class="code-filename">cadenas_operaciones.py</span>
+                            <div class="code-actions no-print">
+                                <button type="button" onclick="copyCode(this)" class="btn-code-action" title="Copiar código al portapapeles" aria-label="Copiar código al portapapeles">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copiar</span>
+                                </button>
+                                <button type="button" onclick="downloadCode(this)" class="btn-code-action" title="Descargar archivo cadenas_operaciones.py" aria-label="Descargar archivo cadenas_operaciones.py">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m0 0l-4-4m4 4l4-4M4 19h16"></path></svg>
+                                    <span>Descargar</span>
+                                </button>
+                            </div>
+                        </div>
+                        <pre class="code-pre"><code>cadena = "Hola mundo"
+print(len(cadena))   # 10 (incluye el espacio)
+print(cadena[2])     # 'l'
+
+# Concatenación y conversión obligatoria con str()
+precio = 34
+mensaje = "El precio del producto sería " + str(precio) + " euros"
+
+# Métodos principales de transformación
+print(cadena.upper())        # "HOLA MUNDO"
+print(cadena.lower())        # "hola mundo"
+print("python".capitalize()) # "Python"
+
+# Búsqueda y reemplazo
+print(cadena.find("mundo"))             # 5 (índice de inicio)
+print(cadena.find("mondo"))             # -1 (no encontrado)
+print(cadena.replace("Hola", "Ostras")) # "Ostras mundo"
+
+# Segmentación: Slicing y split()
+print(cadena[1:7])          # "ola mu"
+print(cadena.split())       # ['Hola', 'mundo'] (devuelve una lista)</code></pre>
+                    </div>
+
+                    <!-- LABORATORIO INTERACTIVO DE STRINGS -->
+                    <div class="simulator-box sim-amber">
+                        <div>
+                            <span class="sim-tag tag-amber">Laboratorio en Vivo</span>
+                            <h4 class="sim-title">Manipulador Interactivo de Strings</h4>
+                        </div>
+
+                        <div>
+                            <label for="str-input" class="panel-label">Cadena original (<code class="inline-code">texto</code>):</label>
+                            <input type="text" id="str-input" oninput="updateStringLab()" value="Aprendiendo Python en UT3" class="field-input mono-input">
+                        </div>
+
+                        <div class="grid-4">
+                            <div class="sim-panel">
+                                <span class="hint-text font-mono">len(texto)</span>
+                                <span id="str-len" class="font-bold font-mono"></span>
+                            </div>
+                            <div class="sim-panel">
+                                <span class="hint-text font-mono">texto.upper()</span>
+                                <span id="str-upper" class="font-bold font-mono code-blue"></span>
+                            </div>
+                            <div class="sim-panel">
+                                <span class="hint-text font-mono">texto.lower()</span>
+                                <span id="str-lower" class="font-bold font-mono code-blue"></span>
+                            </div>
+                            <div class="sim-panel">
+                                <span class="hint-text font-mono">texto.capitalize()</span>
+                                <span id="str-cap" class="font-bold font-mono code-blue"></span>
+                            </div>
+                        </div>
+
+                        <div class="grid-3">
+                            <div class="sim-panel">
+                                <label for="str-find-sub" class="panel-label">texto.find(sub)</label>
+                                <input type="text" id="str-find-sub" oninput="updateStringLab()" value="Python" class="field-input mono-input">
+                                <div class="font-mono txt-ok">Resultado: <span id="str-find-res">12</span></div>
+                            </div>
+
+                            <div class="sim-panel">
+                                <label for="str-rep-old" class="panel-label">texto.replace(old, new)</label>
+                                <div class="flex-nowrap-row">
+                                    <input type="text" id="str-rep-old" oninput="updateStringLab()" value="UT3" class="field-input mono-input">
+                                    <input type="text" id="str-rep-new" oninput="updateStringLab()" value="Clase" class="field-input mono-input">
+                                </div>
+                                <div class="font-mono font-bold" id="str-rep-res"></div>
+                            </div>
+
+                            <div class="sim-panel">
+                                <label for="str-split-sep" class="panel-label">texto.split(sep)</label>
+                                <input type="text" id="str-split-sep" oninput="updateStringLab()" placeholder="(vacío = espacios)" class="field-input mono-input">
+                                <div class="font-mono font-bold" id="str-split-res"></div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </details>
+        </section>
+
+        <!-- ===================================================================== -->
+        <!-- BLOQUE 6: MANEJO DE ERRORES Y EXCEPCIONES -->
+        <!-- ===================================================================== -->
+        <section id="sec-6" class="topic-section">
+            <details class="accordion">
+                <summary>
+                    <div class="summary-left">
+                        <span class="sec-num">6</span>
+                        <div>
+                            <h2 class="sec-heading">Manejo de Errores y Excepciones</h2>
+                            <p class="sec-desc">Errores sintácticos vs. tiempo de ejecución y bloque try - except - else - finally</p>
+                        </div>
+                    </div>
+                    <svg class="chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </summary>
+
+                <article class="accordion-body">
+                    <div class="grid-2">
+                        <div class="sub-box">
+                            <h3 class="sub-box-title">1. Errores Sintácticos (<code class="inline-code txt-err">SyntaxError</code>)</h3>
+                            <p class="hint-text">El código está mal escrito formalmente y el intérprete no puede ni siquiera iniciar el programa.</p>
+                            <div class="console-box">
+                                <span class="console-rose">while True print('Hola') # Faltan los ':'</span>
+                            </div>
+                        </div>
+                        <div class="sub-box">
+                            <h3 class="sub-box-title">2. Excepciones en Ejecución</h3>
+                            <p class="hint-text">Ocurren mientras el programa se ejecuta. Si no se capturan, detienen la ejecución:</p>
+                            <ul class="clean-list font-mono">
+                                <li><strong>ZeroDivisionError:</strong> 4 / 0</li>
+                                <li><strong>NameError:</strong> variable no definida</li>
+                                <li><strong>TypeError:</strong> "2" + 2</li>
+                                <li><strong>ValueError:</strong> int("abc")</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span class="code-filename">control_excepciones.py</span>
+                            <div class="code-actions no-print">
+                                <button type="button" onclick="copyCode(this)" class="btn-code-action" title="Copiar código al portapapeles" aria-label="Copiar código al portapapeles">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copiar</span>
+                                </button>
+                                <button type="button" onclick="downloadCode(this)" class="btn-code-action" title="Descargar archivo control_excepciones.py" aria-label="Descargar archivo control_excepciones.py">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m0 0l-4-4m4 4l4-4M4 19h16"></path></svg>
+                                    <span>Descargar</span>
+                                </button>
+                            </div>
+                        </div>
+                        <pre class="code-pre"><code># Estructura completa: try - except - else - finally
+try:
+    cad = input("Introduce un divisor: ")
+    resultado = 10 / int(cad)
+except ValueError:
+    print("Error: No se puede convertir a entero.")
+except ZeroDivisionError:
+    print("Error: No se puede dividir por cero.")
+except Exception as e:
+    print(f"Otro error inesperado: {e}")
+else:
+    # Se ejecuta SOLO si el bloque 'try' terminó sin errores
+    print(f"Cálculo exitoso. Resultado = {resultado}")
+finally:
+    # Se ejecuta SIEMPRE, haya habido error o no
+    print("Fin de la operación.")</code></pre>
+                    </div>
+
+                    <!-- SIMULADOR DE FLUJO TRY-EXCEPT-ELSE-FINALLY -->
+                    <div class="simulator-box sim-rose">
+                        <div>
+                            <span class="sim-tag tag-rose">Simulador de Flujo</span>
+                            <h4 class="sim-title">Traza de Ejecución: <code class="inline-code">10 / int(entrada)</code></h4>
+                            <p class="hint-text">Introduce un valor o usa los botones rápidos para observar qué bloques se activan:</p>
+                        </div>
+
+                        <div class="flex-row">
+                            <input type="text" id="exc-input" value="2" placeholder="Entrada usuario..." class="field-input field-w-md mono-input">
+                            <button type="button" onclick="runExceptionSim()" class="btn btn-dark">Ejecutar bloque</button>
+                            <button type="button" onclick="setExcPreset('5')" class="btn btn-sm btn-mono btn-soft-emerald">Probar "5"</button>
+                            <button type="button" onclick="setExcPreset('0')" class="btn btn-sm btn-mono btn-soft-amber">Probar "0"</button>
+                            <button type="button" onclick="setExcPreset('abc')" class="btn btn-sm btn-mono btn-soft-rose">Probar "abc"</button>
+                        </div>
+
+                        <div class="grid-5">
+                            <div id="blk-try" class="exc-block">
+                                <span class="font-bold">1. try:</span><br>
+                                <span class="hint-text">10 / int(cad)</span>
+                            </div>
+                            <div id="blk-val" class="exc-block">
+                                <span class="font-bold">2a. except ValueError:</span><br>
+                                <span class="hint-text">Texto no numérico</span>
+                            </div>
+                            <div id="blk-zero" class="exc-block">
+                                <span class="font-bold">2b. except ZeroDivision:</span><br>
+                                <span class="hint-text">División entre 0</span>
+                            </div>
+                            <div id="blk-else" class="exc-block">
+                                <span class="font-bold">3. else:</span><br>
+                                <span class="hint-text">Solo si no hay error</span>
+                            </div>
+                            <div id="blk-finally" class="exc-block">
+                                <span class="font-bold">4. finally:</span><br>
+                                <span class="hint-text">Se ejecuta SIEMPRE</span>
+                            </div>
+                        </div>
+
+                        <div id="exc-console" class="console-box">
+                            Pulsa "Ejecutar bloque" para ver la salida en consola.
+                        </div>
+                    </div>
+                </article>
+            </details>
+        </section>
+
+        <!-- ===================================================================== -->
+        <!-- BLOQUE 7: GESTIÓN DE ARCHIVOS / FICHEROS NATIVOS -->
+        <!-- ===================================================================== -->
+        <section id="sec-7" class="topic-section">
+            <details class="accordion">
+                <summary>
+                    <div class="summary-left">
+                        <span class="sec-num">7</span>
+                        <div>
+                            <h2 class="sec-heading">Gestión de Archivos / Ficheros Nativos</h2>
+                            <p class="sec-desc">Modos de apertura open(), cursor tell()/seek(), escritura y sentencia with open</p>
+                        </div>
+                    </div>
+                    <svg class="chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </summary>
+
+                <article class="accordion-body">
+                    <p class="body-text">
+                        La función nativa <code class="inline-code">open(ruta, modo, encoding="utf-8")</code> permite interactuar con archivos en disco. Se recomienda usar siempre <code class="inline-code">encoding="utf-8"</code> y el gestor de contexto <code class="inline-code">with open</code> para garantizar el cierre automático del fichero.
+                    </p>
+
+                    <div class="table-wrap">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Modo</th>
+                                    <th>Nombre</th>
+                                    <th>Descripción / Comportamiento</th>
+                                    <th class="text-center">¿Crea si no existe?</th>
+                                    <th class="text-center">¿Borra previo?</th>
+                                    <th>Posición Puntero</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="font-mono mode-r">r</td>
+                                    <td class="font-bold">Leer</td>
+                                    <td>Solo lectura. Lanza <code class="inline-code">FileNotFoundError</code> si no existe.</td>
+                                    <td class="text-center txt-no">No</td>
+                                    <td class="text-center txt-yes">No</td>
+                                    <td>Al inicio (0)</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-mono mode-r">rb</td>
+                                    <td class="font-bold">Lectura Binaria</td>
+                                    <td>Solo lectura de archivos en formato binario.</td>
+                                    <td class="text-center txt-no">No</td>
+                                    <td class="text-center txt-yes">No</td>
+                                    <td>Al inicio (0)</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-mono mode-w">w</td>
+                                    <td class="font-bold">Escribir</td>
+                                    <td>Solo escritura. Sobrescribe todo si existe; lo crea si no.</td>
+                                    <td class="text-center txt-yes">Sí</td>
+                                    <td class="text-center txt-no">Sí</td>
+                                    <td>Al inicio (0)</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-mono mode-w">wb</td>
+                                    <td class="font-bold">Escritura Binaria</td>
+                                    <td>Solo escritura en formato binario. Sobrescribe.</td>
+                                    <td class="text-center txt-yes">Sí</td>
+                                    <td class="text-center txt-no">Sí</td>
+                                    <td>Al inicio (0)</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-mono mode-a">a</td>
+                                    <td class="font-bold">Anexar (Append)</td>
+                                    <td>Modo añadir contenido. Escribe al final sin borrar lo previo.</td>
+                                    <td class="text-center txt-yes">Sí</td>
+                                    <td class="text-center txt-yes">No</td>
+                                    <td>Al final</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-mono mode-m">r+</td>
+                                    <td class="font-bold">Mixto estándar</td>
+                                    <td>Lectura y escritura combinadas sobre archivo existente.</td>
+                                    <td class="text-center txt-no">No</td>
+                                    <td class="text-center txt-yes">No</td>
+                                    <td>Al inicio (0)</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-mono mode-m">w+</td>
+                                    <td class="font-bold">Mixto escritura</td>
+                                    <td>Escritura y lectura. Sobrescribe el contenido previo.</td>
+                                    <td class="text-center txt-yes">Sí</td>
+                                    <td class="text-center txt-no">Sí</td>
+                                    <td>Al inicio (0)</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-mono mode-m">a+</td>
+                                    <td class="font-bold">Mixto anexar</td>
+                                    <td>Añadido y lectura. Crea el archivo si no existe.</td>
+                                    <td class="text-center txt-yes">Sí</td>
+                                    <td class="text-center txt-yes">No</td>
+                                    <td>Al final</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span class="code-filename">ficheros_nativos.py</span>
+                            <div class="code-actions no-print">
+                                <button type="button" onclick="copyCode(this)" class="btn-code-action" title="Copiar código al portapapeles" aria-label="Copiar código al portapapeles">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copiar</span>
+                                </button>
+                                <button type="button" onclick="downloadCode(this)" class="btn-code-action" title="Descargar archivo ficheros_nativos.py" aria-label="Descargar archivo ficheros_nativos.py">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m0 0l-4-4m4 4l4-4M4 19h16"></path></svg>
+                                    <span>Descargar</span>
+                                </button>
+                            </div>
+                        </div>
+                        <pre class="code-pre"><code># Escritura con diferentes métodos
+with open("datos.txt", "w", encoding="utf-8") as f:
+    f.write("Prueba 1\n")                         # No introduce saltos automáticos
+    print("Prueba 2", file=f)                   # Redirección de print()
+    f.writelines(["Prueba 3\n", "Prueba 4\n"])  # Inyecta lista de textos
+    print(f.name, f.mode, f.encoding, f.closed) # Propiedades del objeto fichero
+
+# Lectura eficiente y control de cursor (tell / seek)
+try:
+    with open("datos.txt", "r", encoding="utf-8") as f:
+        print(f.read(4))      # Lee los primeros 4 caracteres
+        print(f.tell())       # Posición numérica exacta del cursor
+        f.seek(0)             # Reubica el puntero al inicio absoluto (0)
+        for linea in f:       # Recorrido línea a línea sin saturar RAM
+            print(linea.strip())
+except FileNotFoundError:
+    print("Error: El archivo no se encontró.")</code></pre>
+                    </div>
+
+                    <!-- SIMULADOR DE PUNTERO Y MODOS DE ARCHIVO -->
+                    <div class="simulator-box sim-sky">
+                        <div class="sim-header">
+                            <div>
+                                <span class="sim-tag tag-sky">Simulador de Fichero Virtual</span>
+                                <h4 class="sim-title">Control de Modos (<code class="inline-code">r, w, a, r+</code>) y Puntero (<code class="inline-code">tell / seek</code>)</h4>
+                            </div>
+                            <button type="button" onclick="resetFileSim()" class="btn btn-sm btn-light">Restaurar archivo original</button>
+                        </div>
+
+                        <div class="sim-panel">
+                            <div class="flex-row">
+                                <label for="file-mode-select" class="font-mono font-bold">with open("notas.txt",</label>
+                                <select id="file-mode-select" class="field-select field-w-md mono-select">
+                                    <option value="r">"r" (Lectura)</option>
+                                    <option value="w">"w" (Escritura)</option>
+                                    <option value="a">"a" (Anexar)</option>
+                                    <option value="r+">"r+" (Mixto)</option>
+                                </select>
+                                <span class="font-mono font-bold">) as f:</span>
+                                <button type="button" onclick="simFileOpen()" class="btn btn-primary">Abrir fichero</button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="ficha-header">
+                                <span class="hint-text">Contenido de <code class="inline-code">notas.txt</code> (el bloque <span class="cursor-caret">|</span> marca el cursor):</span>
+                                <span class="font-mono font-bold code-blue">f.tell() = <span id="file-cursor-pos">0</span> | f.mode = "<span id="file-active-mode">r</span>"</span>
+                            </div>
+                            <div id="file-visual-buffer" class="file-buffer"></div>
+                        </div>
+
+                        <div class="grid-2">
+                            <div class="sim-panel">
+                                <p class="panel-label">Lectura y Movimiento de Cursor</p>
+                                <div class="flex-row">
+                                    <button type="button" onclick="simFileRead(5)" class="btn btn-sm btn-mono btn-primary">f.read(5)</button>
+                                    <button type="button" onclick="simFileReadLine()" class="btn btn-sm btn-mono btn-primary">f.readline()</button>
+                                    <button type="button" onclick="simFileSeek(0)" class="btn btn-sm btn-mono btn-dark">f.seek(0)</button>
+                                </div>
+                            </div>
+
+                            <div class="sim-panel">
+                                <p class="panel-label">Escritura en el Puntero Actual</p>
+                                <div class="flex-nowrap-row">
+                                    <input type="text" id="file-write-text" value="Nueva linea\n" class="field-input mono-input">
+                                    <button type="button" onclick="simFileWrite()" class="btn btn-mono btn-emerald">f.write()</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="file-sim-log" class="output-strip">
+                            Archivo abierto en modo "r". Puntero en posición 0.
+                        </div>
+                    </div>
+                </article>
+            </details>
+        </section>
+
+        <!-- ===================================================================== -->
+        <!-- BLOQUE 8: ARCHIVOS ESTRUCTURADOS: FORMATO CSV -->
+        <!-- ===================================================================== -->
+        <section id="sec-8" class="topic-section">
+            <details class="accordion">
+                <summary>
+                    <div class="summary-left">
+                        <span class="sec-num">8</span>
+                        <div>
+                            <h2 class="sec-heading">Archivos Estructurados: Formato CSV</h2>
+                            <p class="sec-desc">Módulo nativo csv, csv.reader(), writerow(), writerows() y newline=""</p>
+                        </div>
+                    </div>
+                    <svg class="chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </summary>
+
+                <article class="accordion-body">
+                    <p class="body-text">
+                        El formato <strong>CSV (Comma-Separated Values)</strong> representa datos tabulares sencillos en texto plano. Para gestionarlos correctamente, Python incluye de manera nativa el módulo <code class="inline-code">csv</code>, mapeando filas como listas de cadenas.
+                    </p>
+
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span class="code-filename">gestion_csv.py</span>
+                            <div class="code-actions no-print">
+                                <button type="button" onclick="copyCode(this)" class="btn-code-action" title="Copiar código al portapapeles" aria-label="Copiar código al portapapeles">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copiar</span>
+                                </button>
+                                <button type="button" onclick="downloadCode(this)" class="btn-code-action" title="Descargar archivo gestion_csv.py" aria-label="Descargar archivo gestion_csv.py">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m0 0l-4-4m4 4l4-4M4 19h16"></path></svg>
+                                    <span>Descargar</span>
+                                </button>
+                            </div>
+                        </div>
+                        <pre class="code-pre"><code>import csv
+
+# 1. LECTURA DE ARCHIVOS CSV
+with open("ejemplo1.csv", "r", encoding="utf-8") as fichero:
+    contenido = csv.reader(fichero, quotechar='"')
+    # Opción A: Convertir todo directamente a una lista de listas
+    datos = list(contenido)
+    print(datos[0][0])  # Acceso directo a Fila 0, Columna 0
+
+# 2. ESCRITURA DE ARCHIVOS CSV (newline="" evita filas vacías intermedias)
+with open("ejemplo3.csv", "w", newline="", encoding="utf-8") as fichero:
+    escritor = csv.writer(fichero)
+    # Escribe una única fila
+    escritor.writerow(['4/5/2015 13:34', 'Apples', '73'])
+    # Escribe múltiples filas consecutivas
+    escritor.writerows([
+        ['4/5/2015 3:41', 'Cherries', '85'],
+        ['4/6/2015 12:46', 'Pears', '14']
+    ])</code></pre>
+                    </div>
+
+                    <!-- CONVERSOR INTERACTIVO CSV <-> LISTA DE LISTAS -->
+                    <div class="simulator-box sim-emerald">
+                        <div>
+                            <span class="sim-tag tag-emerald">Conversor Interactivo</span>
+                            <h4 class="sim-title">Visor <code class="inline-code">csv.reader</code> &rarr; Lista de Listas Python</h4>
+                            <p class="hint-text">Edita el contenido CSV y observa cómo Python lo transforma en una matriz bidimensional (<code class="inline-code">list(csv.reader)</code>):</p>
+                        </div>
+
+                        <div class="grid-2">
+                            <div>
+                                <label for="csv-raw-input" class="panel-label">Texto plano <code class="inline-code">inventario.csv</code>:</label>
+                                <textarea id="csv-raw-input" rows="5" oninput="updateCsvSim()" class="field-textarea mono-area">Fecha,Producto,Cantidad
+4/5/2015 13:34,Apples,73
+4/5/2015 03:41,Cherries,85
+4/6/2015 12:46,"Pears, Fresh",14</textarea>
+                            </div>
+                            <div>
+                                <span class="panel-label">Estructura resultante en Python (<code class="inline-code">datos</code>):</span>
+                                <pre id="csv-py-output" class="console-box console-green"></pre>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </details>
+        </section>
+
+        <!-- ===================================================================== -->
+        <!-- BLOQUE 9: ARCHIVOS ESTRUCTURADOS: FORMATO JSON -->
+        <!-- ===================================================================== -->
+        <section id="sec-9" class="topic-section">
+            <details class="accordion">
+                <summary>
+                    <div class="summary-left">
+                        <span class="sec-num">9</span>
+                        <div>
+                            <h2 class="sec-heading">Archivos Estructurados: Formato JSON</h2>
+                            <p class="sec-desc">Módulo json, loads/load vs. dumps/dump y traducción automática de tipos</p>
+                        </div>
+                    </div>
+                    <svg class="chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </summary>
+
+                <article class="accordion-body">
+                    <p class="body-text">
+                        <strong>JSON (JavaScript Object Notation)</strong> es un estándar abierto muy extendido para el intercambio de datos estructurados. En Python se gestiona importando el módulo <code class="inline-code">json</code>, traduciendo automáticamente los tipos nativos entre ambos formatos:
+                    </p>
+
+                    <div class="grid-4">
+                        <div class="sub-box text-center font-mono">
+                            <span class="code-blue font-bold">dict</span> &harr; <span class="mode-w">Object {}</span>
+                        </div>
+                        <div class="sub-box text-center font-mono">
+                            <span class="code-blue font-bold">list</span> &harr; <span class="mode-w">Array []</span>
+                        </div>
+                        <div class="sub-box text-center font-mono">
+                            <span class="code-blue font-bold">True / False</span> &harr; <span class="mode-w">true / false</span>
+                        </div>
+                        <div class="sub-box text-center font-mono">
+                            <span class="code-blue font-bold">None</span> &harr; <span class="mode-w">null</span>
+                        </div>
+                    </div>
+
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span class="code-filename">gestion_json.py</span>
+                            <div class="code-actions no-print">
+                                <button type="button" onclick="copyCode(this)" class="btn-code-action" title="Copiar código al portapapeles" aria-label="Copiar código al portapapeles">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    <span>Copiar</span>
+                                </button>
+                                <button type="button" onclick="downloadCode(this)" class="btn-code-action" title="Descargar archivo gestion_json.py" aria-label="Descargar archivo gestion_json.py">
+                                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m0 0l-4-4m4 4l4-4M4 19h16"></path></svg>
+                                    <span>Descargar</span>
+                                </button>
+                            </div>
+                        </div>
+                        <pre class="code-pre"><code>import json
+
+# 1. LECTURA DE ESTRUCTURAS JSON
+# Caso A: Desde cadena de texto (String) -> json.loads()
+datos_json = '{"nombre": "carlos", "edad": 23}'
+datos = json.loads(datos_json)
+print(type(datos))      # &lt;class 'dict'&gt;
+print(datos["nombre"])  # 'carlos'
+
+# Caso B: Desde archivo físico en disco -> json.load()
+with open("ejemplo1.json", "r", encoding="utf-8") as fichero:
+    datos_archivo = json.load(fichero)
+
+# 2. ESCRITURA DE ESTRUCTURAS JSON -> json.dump()
+datos_gato = {
+    'isCat': True,
+    'miceCaught': 0,
+    'name': 'Zophie',
+    'felineIQ': None
+}
+
+with open("ejemplo2.json", "w", encoding="utf-8") as fichero:
+    json.dump(datos_gato, fichero, indent=2)</code></pre>
+                    </div>
+
+                    <!-- TRADUCTOR INTERACTIVO PYTHON DICT -> JSON -->
+                    <div class="simulator-box sim-purple">
+                        <div class="sim-header">
+                            <div>
+                                <span class="sim-tag tag-purple">Traductor de Tipos</span>
+                                <h4 class="sim-title">Serialización Python (<code class="inline-code">dict</code>) &rarr; JSON (<code class="inline-code">json.dumps</code>)</h4>
+                            </div>
+                            <div class="flex-row">
+                                <button type="button" onclick="toggleJsonBool()" class="btn btn-sm btn-soft-purple">Alternar True/False</button>
+                                <button type="button" onclick="toggleJsonNone()" class="btn btn-sm btn-soft-blue">Alternar None / 145</button>
+                            </div>
+                        </div>
+
+                        <div class="grid-2">
+                            <div>
+                                <span class="panel-label">Diccionario en Python (<code class="inline-code">datos_gato</code>):</span>
+                                <pre id="json-py-view" class="console-box console-sky"></pre>
+                            </div>
+                            <div>
+                                <span class="panel-label">Salida serializada (<code class="inline-code">ejemplo2.json</code>):</span>
+                                <pre id="json-out-view" class="console-box console-green"></pre>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </details>
+        </section>
+
+        <!-- ===================================================================== -->
+        <!-- BLOQUE 10: TEST DE AUTOEVALUACIÓN UT3 -->
+        <!-- ===================================================================== -->
+        <section id="sec-10" class="topic-section">
+            <details class="accordion accordion-highlight">
+                <summary>
+                    <div class="summary-left">
+                        <span class="sec-num sec-num-accent">10</span>
+                        <div>
+                            <h2 class="sec-heading">Test de Autoevaluación UT3 (10 Preguntas)</h2>
+                            <p class="sec-desc">Comprueba tu dominio de listas, tuplas, diccionarios, excepciones y archivos</p>
+                        </div>
+                    </div>
+                    <svg class="chevron-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </summary>
+
+                <article class="accordion-body">
+                    <div class="quiz-scoreboard">
+                        <div>
+                            <span>Puntuación actual: <strong id="quiz-score" class="quiz-score-num">0 / 10</strong></span>
+                        </div>
+                        <button type="button" onclick="resetQuiz()" class="btn btn-sm btn-light">Reiniciar test</button>
+                    </div>
+
+                    <div id="quiz-container" class="quiz-options"></div>
+                </article>
+            </details>
+        </section>
+
+    </main>
+
+    <!-- BOTÓN FLOTANTE VOLVER ARRIBA -->
+    <button type="button" id="btn-scroll-top" class="btn-scroll-top no-print" onclick="scrollToTop()" title="Volver arriba" aria-label="Volver arriba">
+        <svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
+        </svg>
+    </button>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="site-footer">
+        <p>Curso 2026/2027</p>
+    </footer>
+
+</body>
+</html>

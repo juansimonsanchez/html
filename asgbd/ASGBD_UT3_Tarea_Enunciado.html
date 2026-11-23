@@ -11,16 +11,30 @@
 </head>
 
 <body>
-    <header>
+    <header class="site-header">
         <div class="header-container">
+        <div class="header-bar">
             <div class="site-title site-title-row">
-                <img src="logo.png" alt="imagen" class="site-logo">
+                <img src="logo.png" alt="Logo IES Celia Viñas" class="site-logo">
                 <span>ASGBD &ndash; UT2 Tarea Control de Acceso y Vistas</span>
             </div>
-            <nav class="top-nav">
-                <a href="index.html" class="nav-btn">Inicio</a>
-                <a href="#" class="nav-btn" onclick="descargarPDF(); return false;">Descargar PDF</a>
-            </nav>
+        <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="7 7 12 12 17 7"></polyline><polyline points="7 13 12 18 17 13"></polyline></svg>
+          </button>
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(false)" title="Contraer todo" aria-label="Contraer todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 17 12 12 7 17"></polyline></svg>
+          </button>
+          <button type="button" id="btn-pdf" class="btn-icon-header btn-pdf-accent" onclick="descargarPDF()" title="Descargar PDF" aria-label="Descargar PDF">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          </button>
+        </div>
+      </div>
+      <nav aria-label="Navegación por bloques temáticos" class="main-nav no-print">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Inicio</a></li>
+        </ul>
+      </nav>
         </div>
     </header>
 
@@ -32,8 +46,8 @@
         </section>
 
                 <section>
-            <details>
-                <summary>Ficha Técnica</summary>
+            <details class="accordion" id="page-section-1">
+                <summary class="summary-title">Ficha Técnica</summary>
                 <div class="box-card">
                     <h2 id="ficha-tecnica-de-la-actividad">Ficha Técnica de la Actividad</h2>
                     <div class="table-wrapper">
@@ -77,8 +91,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>Actividades</summary>
+            <details class="accordion" id="page-section-2">
+                <summary class="summary-title">Actividades</summary>
                 <article class="box-card">
                     <h2 id="bloque-i-fundamentos-teoricos-y-principio-del-menor-privilegio-ra3">Bloque I: Fundamentos Teóricos y Principio del Menor Privilegio (RA3)</h2>
                     <h3 id="actividad-1-arquitectura-del-catalogo-y-niveles-de-concesion-ce-3d-3h">Actividad 1: Arquitectura del Catálogo y Niveles de Concesión <span class="tag label-info">CE
@@ -165,7 +179,7 @@
                     Crea un rol administrativo denominado
                     <code>rol_competicion_admin</code>
                     :
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>CREATE ROLE IF NOT EXISTS 'rol_competicion_admin';</code></pre>
                 </div>
                     <strong>Dotación de Privilegios al Rol:</strong>
@@ -192,20 +206,20 @@
                 con
                     <code>mysql_native_password</code>
                     y vincúlale el rol:
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>GRANT 'rol_competicion_admin' TO 'gestor_liga'@'localhost';</code></pre>
                 </div>
                     <strong>Activación por Defecto:</strong>
                     Configura la cuenta para que el rol se active de manera
                 automática en cada inicio de sesión:
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>SET DEFAULT ROLE 'rol_competicion_admin' TO 'gestor_liga'@'localhost';</code></pre>
                 </div>
                     <strong>Verificación de Sesión:</strong>
                     Inicia sesión interactiva con el usuario
                     <code>gestor_liga</code>
                     y aporta una captura donde se visualice:
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>SELECT CURRENT_USER(), CURRENT_ROLE();</code></pre>
                 </div>
                     <em>Debe apreciarse de forma inequívoca el rol <code>`rol_competicion_admin`@`%`</code> en estado
@@ -264,7 +278,7 @@
                     Crea la vista actualizable
                     <code>v_pivots_candidatos</code>
                     :
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>CREATE OR REPLACE VIEW v_pivots_candidatos AS
 SELECT id_jugador, nombre, apellido, puesto, altura, id_equipo
 FROM jugadores
@@ -272,7 +286,7 @@ WHERE puesto = 'Pívot' AND altura >= 2.00
 WITH CHECK OPTION;</code></pre>
                 </div>
                     Inserta un jugador válido a través de la vista:
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>INSERT INTO v_pivots_candidatos (nombre, apellido, puesto, altura, id_equipo)
 VALUES ('Pau', 'Gasol', 'Pívot', 2.15, 1);</code></pre>
                 </div>
@@ -283,7 +297,7 @@ VALUES ('Pau', 'Gasol', 'Pívot', 2.15, 1);</code></pre>
                     o altura
                     <code>1.92</code>
                     ):
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>INSERT INTO v_pivots_candidatos (nombre, apellido, puesto, altura, id_equipo)
 VALUES ('Ricky', 'Rubio', 'Base', 1.92, 1);</code></pre>
                 </div>

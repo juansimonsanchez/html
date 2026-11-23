@@ -11,13 +11,27 @@
 </head>
 
 <body>
-    <header>
+    <header class="site-header">
     <div class="header-container">
-      <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>APL
+        <div class="header-bar">
+      <div class="site-title site-title-row"><img src="logo.png" alt="Logo IES Celia Viñas" class="site-logo"><span>APL
           &ndash; Ut2 Tarea 1 Instalacion Configuracion Wordpress</span></div>
-      <nav class="top-nav">
-        <a href="index.html" class="nav-btn">Inicio</a>
-        <a href="#" class="nav-btn" onclick="descargarPDF(); return false;">Descargar PDF</a>
+        <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="7 7 12 12 17 7"></polyline><polyline points="7 13 12 18 17 13"></polyline></svg>
+          </button>
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(false)" title="Contraer todo" aria-label="Contraer todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 17 12 12 7 17"></polyline></svg>
+          </button>
+          <button type="button" id="btn-pdf" class="btn-icon-header btn-pdf-accent" onclick="descargarPDF()" title="Descargar PDF" aria-label="Descargar PDF">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          </button>
+        </div>
+      </div>
+      <nav aria-label="Navegación por bloques temáticos" class="main-nav no-print">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Inicio</a></li>
+        </ul>
       </nav>
     </div>
   </header>
@@ -31,8 +45,8 @@
         </section>
 
                 <section>
-            <details>
-                <summary>Ficha Técnica</summary>
+            <details class="accordion" id="page-section-1">
+                <summary class="summary-title">Ficha Técnica</summary>
                 <div class="box-card">
                     <h3 id="ficha-tecnica-de-la-actividad">FICHA TÉCNICA DE LA
         ACTIVIDAD <a class="headerlink" href="#ficha-tecnica-de-la-actividad" title="Enlace permanente">¶</a></h3>
@@ -95,8 +109,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>Actividades</summary>
+            <details class="accordion" id="page-section-2">
+                <summary class="summary-title">Actividades</summary>
                 <article class="box-card">
                     <h1 id="a1-descripcion-general-objetivos">1. DESCRIPCIÓN GENERAL.
         OBJETIVOS <a class="headerlink" href="#a1-descripcion-general-objetivos" title="Enlace permanente">¶</a></h1>
@@ -172,7 +186,7 @@
                     <p><strong>Paso 2: Descarga y preparación del gestor de
           contenidos</strong></p>
                     <p>Vamos a ejecutar los siguientes comandos</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
           <pre><code>sudo mkdir -p /srv/www
 sudo chown -R www-data: /srv/www
 curl https://wordpress.org/latest.tar.gz | sudo -u www-data tar zx -C /srv/www</code></pre>
@@ -184,7 +198,7 @@ curl https://wordpress.org/latest.tar.gz | sudo -u www-data tar zx -C /srv/www</
                     <p>Para configurar WordPress, necesitamos crear una base de datos en
         MySQL. Vamos a crearla. Entramos en la consola de MySQL y ejecutamos
         unas sentencias SQL.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
           <pre><code>sudo mysql -u root</code></pre>
 
 </div>
@@ -194,7 +208,7 @@ curl https://wordpress.org/latest.tar.gz | sudo -u www-data tar zx -C /srv/www</
         contraseña de vuestra elección sin poner los signos &lt; y &gt;. Vuestra
         contraseña entre comillas simples. No copies. Los “;” son importantes al
         final de cada sentencia.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
           <pre><code>CREATE DATABASE wordpress;
 CREATE USER wordpress@localhost IDENTIFIED BY 'your-password';
 GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER ON wordpress.* TO wordpress@localhost;
@@ -204,7 +218,7 @@ QUIT;</code></pre>
 </div>
                     <p>Hacer capturas de la ejecución de esos comandos.</p>
                     <p>Reiniciamos MySQL con:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
           <pre><code>sudo systemctl restart mysql</code></pre>
 
 </div>
@@ -212,12 +226,12 @@ QUIT;</code></pre>
           Wordpress.</strong></p>
                     <p>Hacemos una copia del archivo wp-config-sample.php con el nombre
         wp-config.php.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
           <pre><code>sudo cp /srv/www/wordpress/wp-config-sample.php /srv/www/wordpress/wp-config.php</code></pre>
 
 </div>
                     <p>Vamos a modificar este archivo teniendo en cuenta lo siguiente:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
           <pre><code>sudo nano /srv/www/wordpress/wp-config.php</code></pre>
 
 </div>
@@ -251,7 +265,7 @@ QUIT;</code></pre>
               web. Nosotros vamos a hacer esto, pero con la carpeta “iescelia”.</p>
         </li>
       </ol>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
           <pre><code>sudo mv /srv/www/wordpress /var/www/html/iescelia</code></pre>
 
 </div>

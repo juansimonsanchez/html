@@ -11,14 +11,28 @@
 </head>
 
 <body>
-    <header>
+    <header class="site-header">
         <div class="header-container">
-            <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>APL
+        <div class="header-bar">
+            <div class="site-title site-title-row"><img src="logo.png" alt="Logo IES Celia Viñas" class="site-logo"><span>APL
                     &ndash; Ut3 Teoria Moodle</span></div>
-            <nav class="top-nav">
-                <a href="index.html" class="nav-btn">Inicio</a>
-                <a href="#" class="nav-btn" onclick="descargarPDF(); return false;">Descargar PDF</a>
-            </nav>
+        <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="7 7 12 12 17 7"></polyline><polyline points="7 13 12 18 17 13"></polyline></svg>
+          </button>
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(false)" title="Contraer todo" aria-label="Contraer todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 17 12 12 7 17"></polyline></svg>
+          </button>
+          <button type="button" id="btn-pdf" class="btn-icon-header btn-pdf-accent" onclick="descargarPDF()" title="Descargar PDF" aria-label="Descargar PDF">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          </button>
+        </div>
+      </div>
+      <nav aria-label="Navegación por bloques temáticos" class="main-nav no-print">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Inicio</a></li>
+        </ul>
+      </nav>
         </div>
     </header>
 
@@ -34,8 +48,8 @@
         </section>
 
                 <section>
-            <details>
-                <summary>Ficha Técnica</summary>
+            <details class="accordion" id="page-section-1">
+                <summary class="summary-title">Ficha Técnica</summary>
                 <div class="box-card">
                     <h3 id="ficha-tecnica-de-la-unidad">FICHA TÉCNICA DE LA UNIDAD <a class="headerlink"
                     href="#ficha-tecnica-de-la-unidad" title="Enlace permanente">¶</a></h3>
@@ -73,8 +87,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>Índice de Contenidos</summary>
+            <details class="accordion" id="page-section-2">
+                <summary class="summary-title">Índice de Contenidos</summary>
                 <div class="box-card">
                     <h3 id="indice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#indice-de-contenidos"
                     title="Enlace permanente">¶</a></h3>
@@ -95,8 +109,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>1. CONCEPTO Y CARACTERÍSTICAS GENERALES</summary>
+            <details class="accordion" id="page-section-3">
+                <summary class="summary-title">1. CONCEPTO Y CARACTERÍSTICAS GENERALES</summary>
                 <article class="box-card">
                     <h1 id="a1-concepto-y-caracteristicas-generales">1. CONCEPTO Y
                 CARACTERÍSTICAS GENERALES <a class="headerlink" href="#a1-concepto-y-caracteristicas-generales"
@@ -142,8 +156,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>2. ORIGEN E HISTORIA DE MOODLE</summary>
+            <details class="accordion" id="page-section-4">
+                <summary class="summary-title">2. ORIGEN E HISTORIA DE MOODLE</summary>
                 <article class="box-card">
                     <h1 id="a2-origen-e-historia-de-moodle">2. ORIGEN E HISTORIA DE MOODLE <a class="headerlink"
                     href="#a2-origen-e-historia-de-moodle" title="Enlace permanente">¶</a></h1>
@@ -179,8 +193,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>3. FUNDAMENTOS PEDAGÓGICOS: EL CONSTRUCTIVISMO SOCIAL</summary>
+            <details class="accordion" id="page-section-5">
+                <summary class="summary-title">3. FUNDAMENTOS PEDAGÓGICOS: EL CONSTRUCTIVISMO SOCIAL</summary>
                 <article class="box-card">
                     <h1 id="a3-fundamentos-pedagogicos-el-constructivismo-social">3.
                 FUNDAMENTOS PEDAGÓGICOS: EL CONSTRUCTIVISMO SOCIAL <a class="headerlink"
@@ -207,8 +221,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>4. CARACTERÍSTICAS PRINCIPALES DE MOODLE</summary>
+            <details class="accordion" id="page-section-6">
+                <summary class="summary-title">4. CARACTERÍSTICAS PRINCIPALES DE MOODLE</summary>
                 <article class="box-card">
                     <h1 id="a4-caracteristicas-principales-de-moodle">4. CARACTERÍSTICAS
                 PRINCIPALES DE MOODLE <a class="headerlink" href="#a4-caracteristicas-principales-de-moodle"
@@ -247,8 +261,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>5. ARQUITECTURA CONCEPTUAL Y MODULAR</summary>
+            <details class="accordion" id="page-section-7">
+                <summary class="summary-title">5. ARQUITECTURA CONCEPTUAL Y MODULAR</summary>
                 <article class="box-card">
                     <h1 id="a5-arquitectura-conceptual-y-modular">5. ARQUITECTURA CONCEPTUAL Y
                 MODULAR <a class="headerlink" href="#a5-arquitectura-conceptual-y-modular" title="Enlace permanente">¶</a>
@@ -296,8 +310,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>6. EL SISTEMA DE ROLES Y CONTEXTOS</summary>
+            <details class="accordion" id="page-section-8">
+                <summary class="summary-title">6. EL SISTEMA DE ROLES Y CONTEXTOS</summary>
                 <article class="box-card">
                     <h1 id="a6-el-sistema-de-roles-y-contextos">6. EL SISTEMA DE ROLES Y
                 CONTEXTOS <a class="headerlink" href="#a6-el-sistema-de-roles-y-contextos" title="Enlace permanente">¶</a>

@@ -11,14 +11,28 @@
 </head>
 
 <body>
-    <header>
+    <header class="site-header">
         <div class="header-container">
-            <div class="site-title site-title-row"><img src="logo.png" alt="imagen" class="site-logo"><span>GBD
+        <div class="header-bar">
+            <div class="site-title site-title-row"><img src="logo.png" alt="Logo IES Celia Viñas" class="site-logo"><span>GBD
                     &ndash; Ut5 Teoria Consultas</span></div>
-            <nav class="top-nav">
-                <a href="index.html" class="nav-btn">Inicio</a>
-                <a href="#" class="nav-btn" onclick="descargarPDF(); return false;">Descargar PDF</a>
-            </nav>
+        <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="7 7 12 12 17 7"></polyline><polyline points="7 13 12 18 17 13"></polyline></svg>
+          </button>
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(false)" title="Contraer todo" aria-label="Contraer todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 17 12 12 7 17"></polyline></svg>
+          </button>
+          <button type="button" id="btn-pdf" class="btn-icon-header btn-pdf-accent" onclick="descargarPDF()" title="Descargar PDF" aria-label="Descargar PDF">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          </button>
+        </div>
+      </div>
+      <nav aria-label="Navegación por bloques temáticos" class="main-nav no-print">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Inicio</a></li>
+        </ul>
+      </nav>
         </div>
     </header>
 
@@ -33,8 +47,8 @@
         </section>
 
                 <section>
-            <details>
-                <summary>Ficha Técnica</summary>
+            <details class="accordion" id="page-section-1">
+                <summary class="summary-title">Ficha Técnica</summary>
                 <div class="box-card">
                     <h3 id="ficha-tecnica-de-la-unidad-didactica">FICHA TÉCNICA DE LA UNIDAD
                 DIDÁCTICA <a class="headerlink" href="#ficha-tecnica-de-la-unidad-didactica"
@@ -70,8 +84,8 @@
         </section>
 
         <section>
-            <details>
-                <summary>Índice de Contenidos</summary>
+            <details class="accordion" id="page-section-2">
+                <summary class="summary-title">Índice de Contenidos</summary>
                 <div class="box-card">
                     <h3 id="indice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#indice-de-contenidos"
                     title="Enlace permanente">¶</a></h3>
@@ -208,8 +222,8 @@ Errores Comunes de Execution en Subconsultas
         </section>
 
         <section>
-            <details>
-                <summary>1. INTRODUCCIÓN AL LENGUAJE DML</summary>
+            <details class="accordion" id="page-section-3">
+                <summary class="summary-title">1. INTRODUCCIÓN AL LENGUAJE DML</summary>
                 <article class="box-card">
                     <h1 id="a1-introduccion-al-lenguaje-dml">1. INTRODUCCIÓN AL LENGUAJE DML
                 <a class="headerlink" href="#a1-introduccion-al-lenguaje-dml" title="Enlace permanente">¶</a>
@@ -254,7 +268,7 @@ Errores Comunes de Execution en Subconsultas
                 el mismo orden en que se escriben en el editor. El orden lógico de
                 procesamiento determina de forma rigurosa la visibilidad de los alias de
                 columnas y el alcance de los filtros:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                         <pre><code>Orden de Escritura
 Orden de Ejecución Lógico
 
@@ -303,7 +317,7 @@ salida)
 
 
 </div>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                         <pre><code>Nota
 de Diseño: Debido a que la cláusula SELECT se ejecuta en el
 paso número , los alias definidos con la palabra clave AS no están
@@ -317,8 +331,8 @@ emplear en ORDER BY (paso ) y LIMIT (paso ).</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>2. CONSULTAS BÁSICAS SOBRE UNA TABLA</summary>
+            <details class="accordion" id="page-section-4">
+                <summary class="summary-title">2. CONSULTAS BÁSICAS SOBRE UNA TABLA</summary>
                 <article class="box-card">
                     <h1 id="a2-consultas-basicas-sobre-una-tabla">2. CONSULTAS BÁSICAS SOBRE
                 UNA TABLA <a class="headerlink" href="#a2-consultas-basicas-sobre-una-tabla"
@@ -363,7 +377,7 @@ emplear en ORDER BY (paso ) y LIMIT (paso ).</code></pre>
             </h3>
                     <p>Especifica explícitamente los campos requeridos, optimizando el
                 rendimiento físico de la consulta.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Recuperación optimizada de datos identificativos de empleados
 SELECT codigo_empleado, nombre, apellido1, email
 FROM empleado;</code></pre>
@@ -371,7 +385,7 @@ FROM empleado;</code></pre>
 </div>
                     <h3 id="a223-comentarios-en-sentencias-sql">2.2.3 Comentarios en Sentencias
                 SQL <a class="headerlink" href="#a223-comentarios-en-sentencias-sql" title="Enlace permanente">¶</a></h3>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Comentario de línea única estándar SQL
 # Comentario de línea única específico de MySQL
 /*
@@ -386,7 +400,7 @@ de utilidad para documentar scripts SysAdmin complejos
                     <p>La cláusula SELECT puede computar expresiones matemáticas directas de
                 tipo constante o valores dinámicos derivados de los atributos de cada
                 registro.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Cálculo dinámico de precios incrementados con el IVA (21%)
 SELECT codigo_producto, nombre, precio_venta, (precio_venta *
 1.21)
@@ -397,7 +411,7 @@ FROM producto;</code></pre>
                 (AS) <a class="headerlink" href="#a225-renombrado-de-columnas-as" title="Enlace permanente">¶</a></h3>
                     <p>Para dotar de legibilidad semántica a las columnas calculadas, se
                 asignan alias mediante la cláusula AS.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>SELECT codigo_producto, nombre, precio_venta AS precio_base,
 (precio_venta * 1.21) AS precio_pvd_iva
 FROM producto;</code></pre>
@@ -408,7 +422,7 @@ FROM producto;</code></pre>
                     href="#a226-funciones-escalares-cadenas-matematicas-y-fechas" title="Enlace permanente">¶</a></h3>
                     <p>MySQL implementa un vasto catálogo de funciones de transformación
                 rápida en el hilo de ejecución de la consulta.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Manipulación avanzada de cadenas de texto y fechas de pedidos
 SELECT
 CONCAT(nombre, ' ', apellido1) AS nombre_completo,
@@ -425,7 +439,7 @@ FROM pedido;</code></pre>
             Modificadores de Resultados: DISTINCT, ALL y DISTINCTROW</h3>
                     <p>El modificador DISTINCT instruye al motor a ordenar temporalmente los
                 resultados de salida para purgar todas aquellas tuplas duplicadas.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Recuperación de los códigos de fabricantes únicos que tienen
 productos registrados
 SELECT DISTINCT codigo_fabricante
@@ -448,7 +462,7 @@ FROM producto;</code></pre>
                         <p><strong>Conectores lógicos:</strong> AND, OR, NOT.</p>
                 </li>
             </ul>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Filtrado estricto combinado
 SELECT nombre, gama, precio_venta
 FROM producto
@@ -458,7 +472,7 @@ WHERE gama = 'Herramientas' AND precio_venta &gt;= 100.00;</code></pre>
                     <h3 id="a232-evaluacion-de-rangos-between-y-listas-de-valores-in">2.3.2
                 Evaluación de Rangos (BETWEEN) y Listas de Valores (IN) <a class="headerlink"
                     href="#a232-evaluacion-de-rangos-between-y-listas-de-valores-in" title="Enlace permanente">¶</a></h3>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Filtrado por rango inclusivo (Equivale a precio_venta &gt;= 50
 AND precio_venta &lt;= 150)
 SELECT nombre, precio_venta
@@ -483,7 +497,7 @@ WHERE gama IN ('Herramientas', 'Frutales', 'Ornamentales');</code></pre>
                         <p>_ representa exactamente un único carácter físico.</p>
                 </li>
             </ul>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Recupera productos cuyo nombre empiece con "Maza", contenga
 cualquier carácter intermedio y termine en "a"
 SELECT nombre
@@ -505,7 +519,7 @@ WHERE email LIKE '_@%';</code></pre>
                     indeterminado (UNKNOWN)</strong> bajo la lógica triestatal de SQL. Por
                 ende, para evaluar la presencia o ausencia de datos, deben emplearse de
                 forma exclusiva los operadores estructurados IS NULL y IS NOT NULL.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- IDENTIFICACIÓN CORRECTA de clientes que no tienen representante
 de ventas asociado
 SELECT nombre_cliente
@@ -533,7 +547,7 @@ WHERE codigo_empleado_rep_ventas IS NULL;</code></pre>
                     <p>Para un administrador de sistemas, es fundamental controlar el
                 filtrado de estados booleanos y rangos temporales específicos de tipo
                 TIME o DATETIME:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- 1. Filtrado de campos BOOLEAN (Soportados internamente como
 TINYINT(1) en MySQL)
 -- Recupera únicamente los clientes VIP que tienen activado el estado
@@ -565,7 +579,7 @@ WHERE fecha_alta &gt;= '2026-01-01 00:00:00';</code></pre>
                     <h3 id="a241-ordenacion-ascendente-asc-y-descendente-desc">2.4.1 Ordenación
                 Ascendente (ASC) y Descendente (DESC) <a class="headerlink"
                     href="#a241-ordenacion-ascendente-asc-y-descendente-desc" title="Enlace permanente">¶</a></h3>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Ordenación explícita descendente de precios
 SELECT nombre, precio_venta
 FROM producto
@@ -579,7 +593,7 @@ ORDER BY precio_venta DESC;</code></pre>
                     <p>Permite la ordenación jerárquica: si hay valores idénticos en la
                 primera columna, se clasifican según los criterios de las columnas
                 sucesivas.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Ordena alfabéticamente por apellido; ante apellidos iguales,
 ordena de forma descendente por nombre
 SELECT apellido1, nombre
@@ -594,7 +608,7 @@ ORDER BY apellido1 ASC, nombre DESC;</code></pre>
                 al host cliente, lo cual es vital para estructurar consultas de
                 paginación en interfaces y limitar el consumo de RAM de los hilos de
                 conexión.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Recuperación de los 5 productos más caros de la tienda
 SELECT nombre, precio_venta
 FROM producto
@@ -619,8 +633,8 @@ LIMIT 10, 5;</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>3. CONSULTAS SOBRE VARIAS TABLAS</summary>
+            <details class="accordion" id="page-section-5">
+                <summary class="summary-title">3. CONSULTAS SOBRE VARIAS TABLAS</summary>
                 <article class="box-card">
                     <h1 id="a3-consultas-sobre-varias-tablas">3. CONSULTAS SOBRE VARIAS TABLAS
                 <a class="headerlink" href="#a3-consultas-sobre-varias-tablas" title="Enlace permanente">¶</a>
@@ -642,7 +656,7 @@ LIMIT 10, 5;</code></pre>
                 <strong>50 millones de registros</strong>, saturando la memoria del
                 proceso mysqld y pudiendo bloquear el servicio.
             </p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Producto cartesiano explícito (Ejecutar solo bajo estricta
 necesidad de diseño)
 SELECT * FROM fabricante CROSS JOIN producto;</code></pre>
@@ -661,7 +675,7 @@ SELECT * FROM fabricante CROSS JOIN producto;</code></pre>
                 explícita mediante la cláusula INNER JOIN ... ON la estándar y
                 recomendada para preservar la legibilidad del código frente a filtros
                 lógicos.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- VÍA 1: Sintaxis Explícita Estándar (Recomendada)
 SELECT producto.nombre, fabricante.nombre AS fabricante
 FROM producto
@@ -697,7 +711,7 @@ WHERE producto.codigo_fabricante = fabricante.codigo;</code></pre>
                             etc.).</p>
                 </li>
             </ul>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Ejemplo de Non-Equi-Join para asociar salarios con categorías de
 rango de nómina
 SELECT E.nombre, E.salario, G.grado_salarial
@@ -712,7 +726,7 @@ ON E.salario BETWEEN G.salario_minimo AND G.salario_maximo;</code></pre>
                 Para implementarla, <strong>es obligatorio el uso de alias de
                     tabla</strong> para simular ante el analizador de MySQL que se trata de
                 dos orígenes de datos físicos distintos.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Recupera el nombre de los empleados junto al nombre de su
 supervisor directo
 SELECT
@@ -730,7 +744,7 @@ ON E.codigo_jefe = J.codigo_empleado;</code></pre>
                     <p>Al unir más de dos tablas, el orden semántico debe definir un camino
                 relacional coherente para evitar la aparición accidental de productos
                 cartesianos intermedios.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Unión encadenada: Cliente -&gt; Empleado (Rep Ventas) -&gt;
 Oficina
 SELECT
@@ -757,7 +771,7 @@ INNER JOIN oficina O ON E.codigo_oficina = O.codigo_oficina;</code></pre>
                 registros que no posean una correspondencia en la tabla de la derecha,
                 el motor rellenará los atributos correspondientes a esta última con
                 valores NULL.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Recupera TODOS los fabricantes de la base de datos con sus
 respectivos productos
 -- Fabricantes como "Xiaomi" que no tienen productos, aparecerán con
@@ -773,7 +787,7 @@ ON fabricante.codigo = producto.codigo_fabricante;</code></pre>
                     <p>Funciona de forma análoga a LEFT JOIN pero preservando la totalidad
                 del conjunto de datos de la <strong>tabla declarada a la
                     derecha</strong> de la instrucción.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Comportamiento equivalente al anterior invirtiendo el orden de
 las tablas
 SELECT fabricante.nombre, producto.nombre AS producto
@@ -796,7 +810,7 @@ ON producto.codigo_fabricante = fabricante.codigo;</code></pre>
                 ejecutando un LEFT JOIN y un RIGHT JOIN unificados mediante el operador
                 de conjunto UNION (el cual remueve duplicados del set final).
             </p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Simulación de FULL OUTER JOIN en MySQL
 SELECT E.nombre AS empleado, D.nombre AS departamento
 FROM empleado E
@@ -827,7 +841,7 @@ RIGHT JOIN departamento D ON E.codigo_departamento = D.codigo;</code></pre>
                 esquemas distintos dentro de la misma instancia cualificando los objetos
                 mediante el prefijo del nombre del esquema:
                 &lt;nombre_bd&gt;.&lt;nombre_tabla&gt;.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Intersección entre bases de datos de entornos de facturación e
 inventario (Ejemplo ilustrativo de producción)
 SELECT F.id_factura, I.nombre_articulo
@@ -841,8 +855,8 @@ ON F.codigo_articulo = I.id_articulo;</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>4. CONSULTAS DE AGREGACIÓN Y RESUMEN</summary>
+            <details class="accordion" id="page-section-6">
+                <summary class="summary-title">4. CONSULTAS DE AGREGACIÓN Y RESUMEN</summary>
                 <article class="box-card">
                     <h1 id="a4-consultas-de-agregacion-y-resumen">4. CONSULTAS DE AGREGACIÓN Y
                 RESUMEN <a class="headerlink" href="#a4-consultas-de-agregacion-y-resumen" title="Enlace permanente">¶</a>
@@ -870,7 +884,7 @@ ON F.codigo_articulo = I.id_articulo;</code></pre>
                                 NULL</strong>.</p>
                 </li>
             </ul>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Caso de estudio en producción (basado en nuestra tabla
 'cliente'):
 -- Supongamos clientes con y sin representante de ventas asignado
@@ -885,7 +899,7 @@ los que no tengan NULL en esa columna</code></pre>
                     href="#a412-agregacion-de-valores-unicos-count-distinct" title="Enlace permanente">¶</a></h3>
                     <p>Permite omitir los valores duplicados antes de ejecutar la acción
                 aritmética de conteo de registros.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Determina cuántos países distintos tienen clientes
 registrados
 SELECT COUNT(DISTINCT pais) FROM cliente;</code></pre>
@@ -898,7 +912,7 @@ SELECT COUNT(DISTINCT pais) FROM cliente;</code></pre>
                     <p>Con la excepción de COUNT(*), todas las funciones de agregación (SUM,
                 AVG, MIN, MAX) <strong>ignoran por completo los valores NULL</strong>
                 para sus cálculos matemáticos:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- AVG calcula la media dividiendo la suma total únicamente entre
 los registros que NO tengan NULL
 -- En nuestro script de prácticas, 'comision' puede tener valores
@@ -918,7 +932,7 @@ SELECT AVG(comision) FROM empleado;</code></pre>
                 [Gama: Htas, Precio: 10]<br>
                 [Gama: Htas, Precio: 20] GROUP BY Gama [Gama: Htas, Suma: 30]<br>
                 [Gama: Jrdn, Precio: 15] -------------&gt; [Gama: Jrdn, Suma: 15]</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Suma total de los precios de venta agrupados por el código del
 fabricante asociado
 SELECT codigo_fabricante, SUM(precio_venta) AS total_ventas
@@ -930,7 +944,7 @@ GROUP BY codigo_fabricante;</code></pre>
             sobre Múltiples Atributos</h3>
                     <p>Permite la creación de subgrupos anidados para informes detallados
                 multi-nivel.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Agrupamiento cruzado por gama y fabricante
 SELECT gama, codigo_fabricante, COUNT(*) AS total_productos
 FROM producto
@@ -958,7 +972,7 @@ GROUP BY gama, codigo_fabricante;</code></pre>
                             basándose en el grupo completo.</p>
                 </li>
             </ul>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- FILTRADO COMBINADO CORRECTO:
 -- Filtra primero los productos que valen más de 10 euros y, tras
 agrupar por fabricante,
@@ -971,7 +985,7 @@ GROUP BY codigo_fabricante
 HAVING COUNT(*) &gt; 1;</code></pre>
 
 </div>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- FILTRADO COMBINADO CORRECTO:
 -- Filtra primero los productos que valen más de 10 euros y, tras
 agrupar por fabricante,
@@ -989,7 +1003,7 @@ HAVING COUNT(*) &gt; 1;</code></pre>
                     <p>Uno de los mayores dolores de cabeza para los administradores de
                 sistemas al desplegar código heredado en MySQL 8.0+ es el comportamiento
                 derivado del modo estricto de SQL ONLY_FULL_GROUP_BY.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- CONSULTA INVÁLIDA bajo el estándar de producción (Lanza ERROR
 1055)
 SELECT codigo_fabricante, nombre, COUNT(*)
@@ -997,7 +1011,7 @@ FROM producto
 GROUP BY codigo_fabricante;</code></pre>
 
 </div>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- CONSULTA INVÁLIDA bajo el estándar de producción (Lanza ERROR
 1055)
 SELECT codigo_fabricante, nombre, COUNT(*)
@@ -1015,8 +1029,8 @@ GROUP BY codigo_fabricante;</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>5. SUBCONSULTAS (CONSULTAS ANIDADAS)</summary>
+            <details class="accordion" id="page-section-7">
+                <summary class="summary-title">5. SUBCONSULTAS (CONSULTAS ANIDADAS)</summary>
                 <article class="box-card">
                     <h1 id="a5-subconsultas-consultas-anidadas">5. SUBCONSULTAS (CONSULTAS
                 ANIDADAS) <a class="headerlink" href="#a5-subconsultas-consultas-anidadas" title="Enlace permanente">¶</a>
@@ -1056,14 +1070,14 @@ GROUP BY codigo_fabricante;</code></pre>
                 Escalar <a class="headerlink" href="#a52-subconsultas-de-valor-escalar" title="Enlace permanente">¶</a></h2>
                     <p>Suelen acoplarse con operadores de comparación relacionales clásicos
                 en las cláusulas WHERE o HAVING.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Obtener los datos de los productos que tienen el precio máximo
 registrado
 SELECT * FROM producto
 WHERE precio_venta = (SELECT MAX(precio_venta) FROM producto);</code></pre>
 
 </div>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Obtener los datos de los productos que tienen el precio máximo
 registrado
 SELECT * FROM producto
@@ -1085,14 +1099,14 @@ WHERE precio_venta = (SELECT MAX(precio_venta) FROM producto);</code></pre>
                             ningún elemento del conjunto devuelto por la subconsulta.</p>
                 </li>
             </ul>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Obtener productos de fabricantes ubicados en España
 SELECT * FROM producto
 WHERE codigo_fabricante IN (SELECT codigo FROM fabricante WHERE pais
 = 'España');</code></pre>
 
 </div>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Obtener productos de fabricantes ubicados en España
 SELECT * FROM producto
 WHERE codigo_fabricante IN (SELECT codigo FROM fabricante WHERE pais
@@ -1115,7 +1129,7 @@ WHERE codigo_fabricante IN (SELECT codigo FROM fabricante WHERE pais
                             relacional AND masivo).</p>
                 </li>
             </ul>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Obtener los productos cuyo precio de venta sea mayor que TODOS
 los productos de la gama 'Herramientas'
 SELECT nombre, precio_venta
@@ -1124,7 +1138,7 @@ WHERE precio_venta &gt; ALL (SELECT precio_venta FROM producto WHERE
 gama = 'Herramientas');</code></pre>
 
 </div>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Obtener los productos cuyo precio de venta sea mayor que TODOS
 los productos de la gama 'Herramientas'
 SELECT nombre, precio_venta
@@ -1146,7 +1160,7 @@ gama = 'Herramientas');</code></pre>
                 UNKNOWN, invalidando toda la expresión lógica conectorizada con AND.
                 Para mitigar esto, es obligatorio filtrar explícitamente los valores
                 nulos en el filtro de la subconsulta interna:</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- CONTROL CORRECTO DE NOT IN PARA SEGURIDAD DE DATOS
 SELECT nombre
 FROM departamento
@@ -1157,7 +1171,7 @@ WHERE codigo_departamento IS NOT NULL
 );</code></pre>
 
 </div>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- CONTROL CORRECTO DE NOT IN PARA SEGURIDAD DE DATOS
 SELECT nombre
 FROM departamento
@@ -1175,7 +1189,7 @@ WHERE codigo_departamento IS NOT NULL
                 derivada o inline view). <strong>En MySQL, es estrictamente obligatorio
                     asignar un alias de tabla a estas estructuras</strong> para evitar
                 fallos sintácticos graves del parser del sistema.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Uso de Derived Table con alias 'subtabla'
 SELECT AVG(subtabla.precio_maximo) AS media_maxima
 FROM (
@@ -1185,7 +1199,7 @@ GROUP BY codigo_fabricante
 ) AS subtabla;</code></pre>
 
 </div>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Uso de Derived Table con alias 'subtabla'
 SELECT AVG(subtabla.precio_maximo) AS media_maxima
 FROM (
@@ -1214,7 +1228,7 @@ GROUP BY codigo_fabricante
                         </p>
                 </li>
             </ul>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Ejemplo correlacionado: Encuentra productos que son más caros que
 la media de su propia gama
 SELECT P_Ext.nombre, P_Ext.precio_venta, P_Ext.gama
@@ -1226,7 +1240,7 @@ WHERE P_Int.gama = P_Ext.gama
 );</code></pre>
 
 </div>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Ejemplo correlacionado: Encuentra productos que son más caros que
 la media de su propia gama
 SELECT P_Ext.nombre, P_Ext.precio_venta, P_Ext.gama
@@ -1250,7 +1264,7 @@ WHERE P_Int.gama = P_Ext.gama
                 optimizado por MySQL: una vez que el motor lo localiza, interrumpe
                 inmediatamente el escaneo de la subconsulta (early exit), minimizando
                 las operaciones de lectura en disco.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Obtener aquellos clientes que han efectuado al menos un
 pedido
 SELECT C.nombre_cliente
@@ -1262,7 +1276,7 @@ WHERE P.codigo_cliente = C.codigo_cliente
 );</code></pre>
 
 </div>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Obtener aquellos clientes que han efectuado al menos un
 pedido
 SELECT C.nombre_cliente
@@ -1282,14 +1296,14 @@ WHERE P.codigo_cliente = C.codigo_cliente
                     <p>Ocurre cuando una subconsulta asociada a un comparador unitario (como
                 =, &lt; o &gt;) devuelve dos o más registros en tiempo de ejecución de
                 la base de datos.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- ERROR EN PRODUCCIÓN si se intenta buscar un precio máximo con
 operadores de igualdad y la subconsulta devuelve varios valores
 -- SELECT * FROM producto WHERE precio_venta = (SELECT precio_venta
 FROM producto ORDER BY precio_venta DESC LIMIT 2);</code></pre>
 
 </div>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- ERROR EN PRODUCCIÓN si se intenta buscar un precio máximo con
 operadores de igualdad y la subconsulta devuelve varios valores
 -- SELECT * FROM producto WHERE precio_venta = (SELECT precio_venta
@@ -1301,8 +1315,8 @@ FROM producto ORDER BY precio_venta DESC LIMIT 2);</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>6. ERRORES COMUNES Y GUÍA DE BUENAS PRÁCTICAS</summary>
+            <details class="accordion" id="page-section-8">
+                <summary class="summary-title">6. ERRORES COMUNES Y GUÍA DE BUENAS PRÁCTICAS</summary>
                 <article class="box-card">
                     <h1 id="a6-errores-comunes-y-guia-de-buenas-practicas">6. ERRORES COMUNES Y
                 GUÍA DE BUENAS PRÁCTICAS <a class="headerlink" href="#a6-errores-comunes-y-guia-de-buenas-practicas"
@@ -1318,7 +1332,7 @@ FROM producto ORDER BY precio_venta DESC LIMIT 2);</code></pre>
                             física (ON o USING).</p>
                 </li>
                 <li>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>Utilizar filtros WHERE sobre columnas indexadas:
 Para evitar lecturas completas de tabla (Full Table Scans), asegúrate de
 que los filtros de búsqueda frecuente y las columnas que enlazan JOINs
@@ -1328,7 +1342,7 @@ base de datos.</code></pre>
 </div>
                 </li>
                 <li>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                             <pre><code>No utilizar funciones directamente sobre columnas
 filtradas: Si consultas WHERE YEAR(fecha_registro) = 2026,
 MySQL se verá obligado a procesar la función matemática para cada fila
@@ -1351,8 +1365,8 @@ AND '2026-12-31'.</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>7. ANEXO I: FUNCIONES DE MYSQL MÁS UTILIZADAS</summary>
+            <details class="accordion" id="page-section-9">
+                <summary class="summary-title">7. ANEXO I: FUNCIONES DE MYSQL MÁS UTILIZADAS</summary>
                 <article class="box-card">
                     <h1 id="a7-anexo-i-funciones-de-mysql-mas-utilizadas">7. ANEXO I: FUNCIONES
                 DE MYSQL MÁS UTILIZADAS <a class="headerlink" href="#a7-anexo-i-funciones-de-mysql-mas-utilizadas"
@@ -1369,7 +1383,7 @@ AND '2026-12-31'.</code></pre>
                     <ul>
                 <li></li>
             </ul>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>SELECT CONCAT(nombre, ' ', apellido1) AS nombre_completo FROM
 empleado;
 SELECT UPPER(email) FROM empleado;
@@ -1388,7 +1402,7 @@ SELECT TRIM(' Texto con espacios ') AS limpio;</code></pre>
                     <ul>
                 <li></li>
             </ul>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>SELECT ROUND(precio_venta, 1) FROM producto;
 SELECT FLOOR(15.99) AS bajo, CEIL(15.01) AS alto;
 SELECT ABS(-25.35) AS valor_absoluto;
@@ -1404,7 +1418,7 @@ SELECT POW(2, 3) AS resultado_potencia;</code></pre>
                     <ul>
                 <li></li>
             </ul>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>SELECT NOW() AS registro_temporal_servidor;
 SELECT CURDATE() AS fecha_hoy;
 SELECT DATE_ADD(CURDATE(), INTERVAL 30 DAY) AS fecha_vencimiento;
@@ -1423,7 +1437,7 @@ SELECT YEAR(fecha_esperada) AS anio_pedido FROM pedido;</code></pre>
                     <ul>
                 <li></li>
             </ul>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>SELECT COALESCE(comision, 0.00) AS comision_final FROM empleado;
 SELECT IFNULL(comision, 0) FROM empleado;
 SELECT nombre, IF(precio_venta &gt; 100, 'Caro', 'Asequible') AS
@@ -1441,8 +1455,8 @@ rango_precio FROM producto;</code></pre>
         </section>
 
         <section>
-            <details>
-                <summary>8. ANEXO II: SCRIPT SQL</summary>
+            <details class="accordion" id="page-section-10">
+                <summary class="summary-title">8. ANEXO II: SCRIPT SQL</summary>
                 <article class="box-card">
                     <h1 id="a8-anexo-ii-script-sql">8. ANEXO II: SCRIPT SQL <a class="headerlink" href="#a8-anexo-ii-script-sql"
                     title="Enlace permanente">¶</a></h1>
@@ -1455,7 +1469,7 @@ rango_precio FROM producto;</code></pre>
                     las políticas de bloqueo físico, puedes visitar <a
                         href="https://dev.mysql.com/doc/refman/8.0/en/innodb-storage-engine.html"><u>MySQL
                             Manual - InnoDB Storage Engine</u></a>.</p>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>--
 =============================================================================
 -- BASE DE DATOS DE PRÁCTICAS DML - UNIDAD 5 (ESQUEMA ENRIQUECIDO
@@ -1716,7 +1730,7 @@ salario_maximo) VALUES
 directores principales</code></pre>
 
 </div>
-                    <div class="code-wrapper"><button class="copy-btn" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>--
 =============================================================================
 -- BASE DE DATOS DE PRÁCTICAS DML - UNIDAD 5 (ESQUEMA ENRIQUECIDO
