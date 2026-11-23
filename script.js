@@ -1024,7 +1024,13 @@ function initAsistente() {
     btn.title = 'Comprobando conexión con Ollama…';
     btn.setAttribute('aria-disabled', 'true');
     btn.setAttribute('aria-label', 'Abrir asistente IA');
-    btn.textContent = '🤖';
+    btn.innerHTML = `
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 12.5a7.5 7.5 0 0 1-10.9 6.7L4 20.5l1.3-4.6A7.5 7.5 0 1 1 20 12.5Z"></path>
+            <path d="M12.5 8.2l.75 1.85 1.85.75-1.85.75-.75 1.85-.75-1.85-1.85-.75 1.85-.75z" fill="currentColor" stroke-width="1"></path>
+            <circle cx="16" cy="14.2" r="0.9" fill="currentColor" stroke="none"></circle>
+            <circle cx="9" cy="14.6" r="0.6" fill="currentColor" stroke="none"></circle>
+        </svg>`;
     document.body.appendChild(btn);
 
     const panel = document.createElement('div');
