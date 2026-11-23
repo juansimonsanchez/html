@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>APL - Ut3 Tarea 3 1 Instalacion Moodle</title>
+  <title>APL - UT3 Tarea 3 1 Instalacion Moodle</title>
   <link rel="stylesheet" href="../estilos.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <script src="../script.js"></script>
@@ -15,7 +15,7 @@
     <div class="header-container">
         <div class="header-bar">
       <div class="site-title site-title-row"><img src="logo.png" alt="Logo IES Celia Viñas" class="site-logo"><span>APL
-          &ndash; Ut3 Tarea 3 1 Instalacion Moodle</span></div>
+          &ndash; UT3 Tarea 3 1 Instalacion Moodle</span></div>
         <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
           <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
             <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="7 7 12 12 17 7"></polyline><polyline points="7 13 12 18 17 13"></polyline></svg>
@@ -92,17 +92,16 @@
 
         <section>
             <details class="accordion" id="page-section-2">
-                <summary class="summary-title">Actividades</summary>
+                <summary class="summary-title">Actividades <a class="headerlink" href="#page-section-2" title="Enlace permanente">¶</a></summary>
                 <article class="box-card">
                     <h1 id="a1-descripcion-general-objetivos">1. DESCRIPCIÓN GENERAL.
-        OBJETIVOS <a class="headerlink" href="#a1-descripcion-general-objetivos" title="Enlace permanente">¶</a></h1>
+        OBJETIVOS</h1>
                     <p>En esta actividad el alumno deberá instalar una plataforma Moodle en
         el servidor Web utilizado durante el curso.</p>
                 </article>
 
                 <article class="box-card">
-                    <h1 id="a2-consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink" href="#a2-consideraciones-previas"
-          title="Enlace permanente">¶</a></h1>
+                    <h1 id="a2-consideraciones-previas">2. CONSIDERACIONES PREVIAS</h1>
                     <p>Partiendo de que tenemos instalado el servidor web (apache, php y
         mysql), vamos a descargar e instalar Moodle. Además de realizar los
         siguientes pasos, se tendrán que ir realizando capturas de pantalla
@@ -115,7 +114,7 @@
 
                 <article class="box-card">
                     <h1 id="a3-explicacion-detallada-paso-a-paso">3. EXPLICACIÓN DETALLADA
-        (PASO A PASO) <a class="headerlink" href="#a3-explicacion-detallada-paso-a-paso" title="Enlace permanente">¶</a>
+        (PASO A PASO)
       </h1>
                     <p><strong>PARTE 1. Instalación de Moodle</strong></p>
                     <p>¿Qué es un LMS o sistema de gestión de aprendizaje? (0,25)</p>
@@ -132,7 +131,7 @@
 sudo git clone git://git.moodle.org/moodle.git</code></pre>
 
 </div>
-                    <p><img src="media_APL_UT3_Tarea_3_1_Instalacion_Moodle/media/image6.png" alt="imagen" class="image-width-600"></p>
+                    <p><img src="media_APL_UT3_Tarea_3_1_Instalacion_Moodle/image6.png" alt="imagen" class="image-width-600"></p>
                     <p>Una vez instalado, navegue hasta la carpeta donde vamos a descargar
         los archivos deseados.</p>
                     <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -144,7 +143,7 @@ sudo git clone git://git.moodle.org/moodle.git</code></pre>
           <pre><code>sudo git branch -a</code></pre>
 
 </div>
-                    <p><img src="media_APL_UT3_Tarea_3_1_Instalacion_Moodle/media/image4.png" alt="imagen" class="image-width-300"></p>
+                    <p><img src="media_APL_UT3_Tarea_3_1_Instalacion_Moodle/image4.png" alt="imagen" class="image-width-300"></p>
                     <p>Pulsar ENTER para verlas todas y CTRL+Z para finalizar.</p>
                     <p>Después de eso, seleccionamos una rama en particular y la
         instalamos.</p>
@@ -155,7 +154,7 @@ sudo git clone git://git.moodle.org/moodle.git</code></pre>
 origin/MOODLE_405_STABLE</code></pre>
 
 </div>
-                    <p><img src="media_APL_UT3_Tarea_3_1_Instalacion_Moodle/media/image12.png" alt="imagen" class="image-width-600"></p>
+                    <p><img src="media_APL_UT3_Tarea_3_1_Instalacion_Moodle/image12.png" alt="imagen" class="image-width-600"></p>
                     <p>Las nuevas versiones 500 y 501 son distintas en cuanto a los
         requisitos y proceso de instalación.</p>
                     <p>Verifique la versión instalada de Moodle en nuestro servidor :</p>
@@ -163,7 +162,7 @@ origin/MOODLE_405_STABLE</code></pre>
           <pre><code>sudo git checkout MOODLE_405_STABLE</code></pre>
 
 </div>
-                    <p><img src="media_APL_UT3_Tarea_3_1_Instalacion_Moodle/media/image8.png" alt="imagen" class="image-width-600"></p>
+                    <p><img src="media_APL_UT3_Tarea_3_1_Instalacion_Moodle/image8.png" alt="imagen" class="image-width-600"></p>
                     <p>Vamos a copiar el contenido de la carpeta donde hemos descargado
         Moodle (en nuestro caso <strong>/opt/moodle)</strong>, al directorio
         donde será accesible para apache. En nuestro caso, Wordpress lo
@@ -214,7 +213,7 @@ sudo chmod -R 0755 /var/www/html/moodle</code></pre>
         (mysqld.cnf).</p>
                     <p>Hacer una captura donde se vea la inclusión de las líneas que se van
         a incluir tal y como se aprecia en la siguiente captura.</p>
-                    <p><img src="media_APL_UT3_Tarea_3_1_Instalacion_Moodle/media/image10.png" alt="imagen" class="image-width-600"></p>
+                    <p><img src="media_APL_UT3_Tarea_3_1_Instalacion_Moodle/image10.png" alt="imagen" class="image-width-600"></p>
                     <p>Guarde el archivo de configuración y reinicie la base de datos</p>
                     <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
           <pre><code>sudo systemctl restart mysql</code></pre>
@@ -222,9 +221,7 @@ sudo chmod -R 0755 /var/www/html/moodle</code></pre>
 </div>
                     <h3 id="para-crear-la-base-de-datos-ejecutamos-el-siguiente-comando-nos-conecta-a-mysql">Para
         crear la base de datos, ejecutamos el siguiente comando nos conecta a
-        mysql: <a class="headerlink"
-          href="#para-crear-la-base-de-datos-ejecutamos-el-siguiente-comando-nos-conecta-a-mysql"
-          title="Enlace permanente">¶</a></h3>
+        mysql:</h3>
                     <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
           <pre><code>sudo mysql -u root</code></pre>
 
@@ -269,8 +266,8 @@ sudo chmod -R 0755 /var/www/html/moodle</code></pre>
         config-dist.php con el nombre config.php.</p>
                     <p>Editar el archivo config.php para que quede de la siguiente
         forma:</p>
-                    <p><img src="media_APL_UT3_Tarea_3_1_Instalacion_Moodle/media/image11.png" alt="imagen" class="image-width-600"></p>
-                    <p><img src="media_APL_UT3_Tarea_3_1_Instalacion_Moodle/media/image9.png" alt="imagen" class="image-width-600"></p>
+                    <p><img src="media_APL_UT3_Tarea_3_1_Instalacion_Moodle/image11.png" alt="imagen" class="image-width-600"></p>
+                    <p><img src="media_APL_UT3_Tarea_3_1_Instalacion_Moodle/image9.png" alt="imagen" class="image-width-600"></p>
                     <p>Cuidado, establecer vuestra contraseña de la base de datos y vuestro
         dominio (IP flotante) de forma correcta. La carpeta dataroot es
         /var/www/moodledata</p>
@@ -280,7 +277,7 @@ sudo chmod -R 0755 /var/www/html/moodle</code></pre>
         </li>
       </ol>
                     <p>Si accedemos a Moodle, procederemos a sus instalación</p>
-                    <p><img src="media_APL_UT3_Tarea_3_1_Instalacion_Moodle/media/image5.png" alt="imagen" class="image-width-500">
+                    <p><img src="media_APL_UT3_Tarea_3_1_Instalacion_Moodle/image5.png" alt="imagen" class="image-width-500">
       </p>
                     <p>Incluir una captura como la imagen anterior para verificar que se
         puede entrar a vuestro Moodle con vuestra URL. (0,25)</p>
@@ -291,8 +288,8 @@ sudo chmod -R 0755 /var/www/html/moodle</code></pre>
         establecemos la base de datos de moodle, usuario y contraseña (se indicó
         en los pasos iniciales), etc. En uno de los pasos se verifica que el
         sistema permite su instalación:</p>
-                    <p><img src="media_APL_UT3_Tarea_3_1_Instalacion_Moodle/media/image7.png" alt="imagen" class="image-width-600"></p>
-                    <p><img src="media_APL_UT3_Tarea_3_1_Instalacion_Moodle/media/image3.png" alt="imagen" class="image-width-600"></p>
+                    <p><img src="media_APL_UT3_Tarea_3_1_Instalacion_Moodle/image7.png" alt="imagen" class="image-width-600"></p>
+                    <p><img src="media_APL_UT3_Tarea_3_1_Instalacion_Moodle/image3.png" alt="imagen" class="image-width-600"></p>
                     <p>Incluir capturas como las imágenes anteriores donde se vean los
         errores que se han detectado (0,25)</p>
                     <p>Si nos sale algún error importante (color rojo) se ha de corregir.
@@ -305,7 +302,7 @@ sudo chmod -R 0755 /var/www/html/moodle</code></pre>
                     <p>Incluir una nueva captura para verificar que se ha solucionado todos
         los problemas detectados. (0,25)</p>
                     <p>Si sale el siguiente error</p>
-                    <p><img src="media_APL_UT3_Tarea_3_1_Instalacion_Moodle/media/image2.png" alt="imagen" class="image-width-600"></p>
+                    <p><img src="media_APL_UT3_Tarea_3_1_Instalacion_Moodle/image2.png" alt="imagen" class="image-width-600"></p>
                     <p>Este aviso lo podemos ignorar, ya que no tenemos configurado https
         para nuestro servidor web</p>
                     <p>Incluir capturas de los pasos siguientes para verificar su
@@ -318,7 +315,7 @@ sudo chmod -R 0755 /var/www/html/moodle</code></pre>
                 </article>
 
                 <article class="box-card">
-                    <h1 id="a4-calificacion">4. CALIFICACIÓN <a class="headerlink" href="#a4-calificacion" title="Enlace permanente">¶</a>
+                    <h1 id="a4-calificacion">4. CALIFICACIÓN
       </h1>
                     <p>La práctica será evaluada según los siguientes criterios:</p>
                     <ul>
@@ -336,7 +333,7 @@ sudo chmod -R 0755 /var/www/html/moodle</code></pre>
         requisitos o la realización de forma inadecuada puede penalizar la
         calificación o anular la entrega</p>
                     <h3 id="criterios-de-calificacion-rubrica">CRITERIOS DE CALIFICACIÓN
-        (RÚBRICA) <a class="headerlink" href="#criterios-de-calificacion-rubrica" title="Enlace permanente">¶</a></h3>
+        (RÚBRICA)</h3>
                     <div class="table-wrapper">
         <div class="table-wrapper">
           <table>

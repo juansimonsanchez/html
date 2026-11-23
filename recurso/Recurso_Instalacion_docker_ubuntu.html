@@ -15,7 +15,7 @@
     <div class="header-container">
         <div class="header-bar">
       <div class="site-title site-title-row"><img src="logo.png" alt="Logo IES Celia Viñas" class="site-logo"><span>RECURSO
-          &ndash; Instalacion Docker Ubuntu</span></div>
+          &ndash; Instalacion Docker en Ubuntu</span></div>
         <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
           <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
             <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="7 7 12 12 17 7"></polyline><polyline points="7 13 12 18 17 13"></polyline></svg>
@@ -39,27 +39,14 @@
     <main class="main-content">
       <section class="title-section">
         <header>
-          <h1 class="title" id="instalacion-de-docker"><span id="a5" class="anchor"></span>Instalación de Docker</h1>
+          <h1 class="title" id="instalacion-de-docker"><span id="a5" class="anchor"></span>Instalación de Docker en Ubuntu</h1>
         </header>
       </section>
 
       <section class="content-section">
         <article class="content-article">
-          <details class="accordion" id="page-section-1">
-            <summary class="summary-title">Índice de contenidos</summary>
-            <p><a href="#a4-mantenimiento-y-limpieza-del-sistema"><u>1. Instalación de Docker en Ubuntu</u></a></p>
-            <p><a href="#a5-gestion-con-docker-compose-docker-compose"><u>2. Gestión de Contenedores (docker run / docker exec)</u></a></p>
-            <p><a href="#a3-administracion-y-control-de-contenedores"><u>3. Administración y control de Contenedores</u></a></p>
-            <p><a href="#a4-gestion-de-imagenes-docker-image"><u>4. Gestión de Imágenes (docker image)</u></a></p>
-            <p><a href="#a4-mantenimiento-y-limpieza-del-sistema"><u>4. Mantenimiento y Limpieza del Sistema</u></a></p>
-            <p><a href="#a5-gestion-con-docker-compose-docker-compose"><u>5. Gestión con Docker Compose (docker compose)</u></a></p>
-          </details>
-        </article>
-
-        <article class="content-article">
           <details class="accordion" id="page-section-2">
-            <summary class="summary-title">1. Instalación de Docker en Ubuntu</summary>
-            <h2 id="a1instalacion-de-docker-en-ubuntu">1.Instalación de Docker en Ubuntu <a class="headerlink" href="#a1instalacion-de-docker-en-ubuntu" title="Enlace permanente">¶</a></h2>
+            <summary class="summary-title">1. Instalación  <a class="headerlink" href="#a1instalacion-de-docker-en-ubuntu" title="Enlace permanente">¶</a></summary>
             <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" type="button" onclick="copyCode(this)">📋 Copiar</button>
                 <pre><code># Añade la clave GPG oficial de Docker:
 sudo apt update
@@ -96,8 +83,8 @@ newgrp docker</code></pre>
 
         <article class="content-article">
           <details class="accordion" id="page-section-3">
-            <summary class="summary-title">2. Gestión de Contenedores (docker run / docker exec)</summary>
-            <h2 id="a2-gestion-de-contenedores-docker-run-docker-exec">2. Gestión de Contenedores (docker run / docker exec) <a class="headerlink" href="#a2-gestion-de-contenedores-docker-run-docker-exec" title="Enlace permanente">¶</a></h2>
+            <summary class="summary-title">2. Gestión de Contenedores <a class="headerlink" href="#a2-gestion-de-contenedores-docker-run-docker-exec" title="Enlace permanente">¶</a></summary>
+            
             <p>El comando docker run crea e inicia un contenedor. Sus opciones más comunes son:</p>
             <ul>
               <li><p>-d (detached): Ejecuta el contenedor en segundo plano.</p></li>
@@ -118,8 +105,7 @@ newgrp docker</code></pre>
 
         <article class="content-article">
           <details class="accordion" id="page-section-4">
-            <summary class="summary-title">3. Administración y control de Contenedores</summary>
-            <h2 id="a3-administracion-y-control-de-contenedores">3. Administración y control de Contenedores <a class="headerlink" href="#a3-administracion-y-control-de-contenedores" title="Enlace permanente">¶</a></h2>
+            <summary class="summary-title">3. Administración y control <a class="headerlink" href="#a3-administracion-y-control-de-contenedores" title="Enlace permanente">¶</a></summary>
             <p>Comandos esenciales para inspeccionar y controlar el estado de los contenedores:</p>
             <ul>
               <li>
@@ -153,8 +139,8 @@ newgrp docker</code></pre>
 
         <article class="content-article">
           <details class="accordion" id="page-section-5">
-            <summary class="summary-title">4. Gestión de Imágenes y Mantenimiento del Sistema</summary>
-            <h3 id="a4-gestion-de-imagenes-docker-image">4. Gestión de Imágenes (docker image) <a class="headerlink" href="#a4-gestion-de-imagenes-docker-image" title="Enlace permanente">¶</a></h3>
+            <summary class="summary-title">4. Gestión de Imágenes <a class="headerlink" href="#page-section-5" title="Enlace permanente">¶</a></summary>
+            <h3 id="a4-gestion-de-imagenes-docker-image">Gestión de Imágenes (docker image)</h3>
             <p>Opciones para descargar, listar y limpiar imágenes del sistema:</p>
             <ul>
               <li><p>docker pull [imagen]: Descarga una imagen desde Docker Hub.</p></li>
@@ -162,7 +148,7 @@ newgrp docker</code></pre>
               <li><p>docker rmi [imagen] (o docker image rm): Elimina una imagen local.</p></li>
               <li><p>docker build -t [nombre:tag] .: Construye una imagen a partir de un archivo Dockerfile presente en el directorio actual.</p></li>
             </ul>
-            <h2 id="a4-mantenimiento-y-limpieza-del-sistema">4. Mantenimiento y Limpieza del Sistema <a class="headerlink" href="#a4-mantenimiento-y-limpieza-del-sistema" title="Enlace permanente">¶</a></h2>
+            <h3 id="a4-mantenimiento-y-limpieza-del-sistema">Mantenimiento y Limpieza del Sistema</h3>
             <p>Para liberar espacio en disco eliminado recursos obsoletos o en desuso:</p>
             <ul>
               <li><p>docker system prune: Elimina contenedores detenidos, redes no utilizadas e imágenes sin etiqueta (<em>dangling</em>).</p></li>
@@ -174,8 +160,7 @@ newgrp docker</code></pre>
 
         <article class="content-article">
           <details class="accordion" id="page-section-6">
-            <summary class="summary-title">5. Gestión con Docker Compose</summary>
-            <h2 id="a5-gestion-con-docker-compose-docker-compose">5. Gestión con Docker Compose (docker compose) <a class="headerlink" href="#a5-gestion-con-docker-compose-docker-compose" title="Enlace permanente">¶</a></h2>
+            <summary class="summary-title">Docker Compose <a class="headerlink" href="#a5-gestion-con-docker-compose-docker-compose" title="Enlace permanente">¶</a></summary>
             <p>Cuando se definen múltiples servicios en un archivo docker-compose.yml:</p>
             <ul>
               <li><p>docker compose up -d: Levanta todos los servicios definidos en segundo plano.</p></li>

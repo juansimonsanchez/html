@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RECURSO - Mysql</title>
+  <title>RECURSO - MySQL</title>
   <link rel="stylesheet" href="../estilos.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <script src="../script.js"></script>
@@ -15,7 +15,7 @@
     <div class="header-container">
         <div class="header-bar">
       <div class="site-title site-title-row"><img src="logo.png" alt="Logo IES Celia Viñas" class="site-logo"><span>RECURSO
-          &ndash; Mysql</span></div>
+          &ndash; MySQL</span></div>
         <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
           <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
             <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="7 7 12 12 17 7"></polyline><polyline points="7 13 12 18 17 13"></polyline></svg>
@@ -39,23 +39,21 @@
     <main class="main-content">
 
       <section class="title-section">
-        <h1 id="despliegue-de-mysql" class="title"><strong>DESPLIEGUE DE MYSQL</strong> <a class="headerlink"
-            href="#despliegue-de-mysql" title="Enlace permanente">¶</a></h1>
+        <h1 id="despliegue-de-mysql" class="title"><strong>DESPLIEGUE DE MYSQL</strong></h1>
       </section>
 
       <section class="content-section">
         <article class="content-article">
           <details class="accordion" id="page-section-1">
-            <summary class="summary-title">Descripción general e introducción</summary>
+            <summary class="summary-title">Introducción <a class="headerlink" href="#page-section-1" title="Enlace permanente">¶</a></summary>
             <p>El estándar de la industria moderna prioriza entornos inmutables y reproducibles frente a las tradicionales instalaciones locales sobre sistemas hosts de desarrollo (<em>bare-metal</em>). Utilizar <strong>Docker</strong> y <strong>Docker Compose</strong> asegura que todo el alumnado trabaje en un entorno idéntico. Con este recurso aprenderas a realizar la instalación de MySQL o utilizar MySQL con contenedores Docker</p>
           </details>
         </article>
 
         <article class="content-article">
           <details class="accordion" id="page-section-2">
-            <summary class="summary-title">Instalación de MySQL en Ubuntu</summary>
-            <h2 id="instalacion-de-mysql-en-ubuntu">Instalación de MySQL en Ubuntu <a class="headerlink" href="#instalacion-de-mysql-en-ubuntu" title="Enlace permanente">¶</a></h2>
-            <h3 id="paso-1-actualizar-el-repositorio-e-instalar-mysql-server">Paso 1: Actualizar el repositorio e instalar MySQL Server <a class="headerlink" href="#paso-1-actualizar-el-repositorio-e-instalar-mysql-server" title="Enlace permanente">¶</a></h3>
+            <summary class="summary-title">Instalación de MySQL (Ubuntu) <a class="headerlink" href="#instalacion-de-mysql-en-ubuntu" title="Enlace permanente">¶</a></summary>
+            <h3 id="paso-1-actualizar-el-repositorio-e-instalar-mysql-server">Paso 1: Actualizar el repositorio e instalar MySQL Server</h3>
             <p>Ejecuta el gestor de paquetes apt para instalar la versión oficial incluida en los repositorios de Ubuntu:</p>
             <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>sudo apt update
@@ -117,52 +115,116 @@ EXIT;</code></pre>
 
         <article class="content-article">
           <details class="accordion" id="page-section-3">
-            <summary class="summary-title">Instalación en OpenSuse y Primeros pasos</summary>
-            <h2 id="instalacion-de-mysql-en-opensuse">Instalación de MySQL en OpenSuse <a class="headerlink" href="#instalacion-de-mysql-en-opensuse" title="Enlace permanente">¶</a></h2>
-            <h2 id="primeros-pasos-con-mysql">Primeros pasos con MySQL <a class="headerlink" href="#primeros-pasos-con-mysql" title="Enlace permanente">¶</a></h2>
+            <summary class="summary-title">Instalación de MySQL (OpenSuse)<a class="headerlink" href="#page-section-3" title="Enlace permanente">¶</a></summary>
+            <h3 id="instalacion-de-mysql-en-opensuse">Instalación de MySQL en OpenSuse</h3>
+            <h3 id="primeros-pasos-con-mysql">Primeros pasos con MySQL</h3>
           </details>
         </article>
 
         <article class="content-article">
           <details class="accordion" id="page-section-4">
-            <summary class="summary-title">Uso de MySQL con Docker y Docker Compose</summary>
-            <h2 id="uso-de-mysql-con-docker-y-docker-componse">Uso de MySQL con Docker y Docker Compose <a class="headerlink" href="#uso-de-mysql-con-docker-y-docker-componse" title="Enlace permanente">¶</a></h2>
-            <h3 id="version-avanzada-1-2o-asir-ut1">Versión avanzada 1 (2º ASIR - UT1) <a class="headerlink" href="#version-avanzada-1-2o-asir-ut1" title="Enlace permanente">¶</a></h3>
+            <summary class="summary-title">Uso Docker y Docker Compose <a class="headerlink" href="#uso-de-mysql-con-docker-y-docker-componse" title="Enlace permanente">¶</a></summary>
+            <h3 id="version-sencilla-1o-asir">Versión sencilla (1º ASIR)</h3>
+            <p>Esta configuración mínima de <code>docker-compose.yaml</code> levanta un contenedor con <strong>MySQL 8.0</strong>, habilita el método de autenticación clásico (<code>mysql_native_password</code>), establece la contraseña del usuario <code>root</code> y expone el servicio en el puerto <strong>3307</strong> del equipo anfitrión (evitando conflictos si ya hay otro MySQL en el 3306).</p>
+            <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><div class="code-header"><span class="code-filename">docker-compose.yaml</span></div><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                <pre><code class="language-yaml">services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-1asir
+    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: root1234
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:</code></pre>
+            </div>
+
+            <p><strong>Comandos básicos para gestionar el contenedor:</strong></p>
+            <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                <pre><code># Crear y arrancar el contenedor en segundo plano (desde la carpeta del docker-compose.yaml)
+docker compose up -d
+
+# Comprobar si el contenedor está en ejecución
+docker ps
+
+# Ver los registros (logs) para comprobar que MySQL ha arrancado correctamente
+docker compose logs -f
+
+# Detener el contenedor sin borrar los datos
+docker compose stop
+
+# Volver a iniciar el contenedor detenido
+docker compose start
+
+# Detener y eliminar el contenedor (mantiene el volumen con los datos)
+docker compose down
+
+# Detener y eliminar el contenedor y también los datos almacenados
+docker compose down -v</code></pre>
+            </div>
+
+            <p><strong>Comandos básicos para conectarse y trabajar con MySQL:</strong></p>
+            <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                <pre><code># Abrir directamente la consola de MySQL dentro del contenedor (pedirá la contraseña: root1234)
+docker exec -it mysql-1asir mysql -u root -p
+
+# Entrar a la terminal bash del contenedor
+docker exec -it mysql-1asir bash
+
+# Conectarse desde el equipo anfitrión (si tienes el cliente mysql instalado) usando el puerto 3307
+mysql -u root -p -h 127.0.0.1 -P 3307</code></pre>
+            </div>
+
+            <p><strong>Primeros comandos SQL dentro de la consola de MySQL:</strong></p>
+            <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                <pre><code>SHOW DATABASES;          -- Muestra las bases de datos existentes
+CREATE DATABASE prueba;  -- Crea una nueva base de datos
+USE prueba;              -- Selecciona la base de datos con la que trabajar
+SHOW TABLES;             -- Muestra las tablas de la base de datos activa
+EXIT;                    -- Sale de la consola de MySQL</code></pre>
+            </div>
+
+            <h3 id="version-avanzada-1-2o-asir-ut1">Versión avanzada 1 (2º ASIR - UT1)</h3>
             <p>Este archivo monta los directorios críticos de configuración, datos y logs sobre el volumen físico local para permitir un análisis interactivo sin perder persistencia.</p>
             <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                 <pre><code>version: '3.8'
 services:
-db:
-image: mysql:8.0
-container_name: mysql-sysadmin-ut1
-restart: always
-command: --default-authentication-plugin=mysql_native_password
-environment:
-MYSQL_ROOT_PASSWORD: RootPass_2026
-MYSQL_DATABASE: sysadmin_audit
-ports:
-- "3306:3306"
+  db:
+    image: mysql:8.0
+    container_name: mysql-sysadmin-ut1
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: RootPass_2026
+      MYSQL_DATABASE: sysadmin_audit
+    ports:
+      - "3306:3306"
+    volumes:
+      # Persistencia del directorio de datos del motor
+      - db_data:/var/lib/mysql
+      # Mapeo personalizado para aplicar configuraciones (/etc/mysql/conf.d/)
+      - ./config:/etc/mysql/conf.d
+      # Directorio de Logs mapeado para permitir análisis externo directo en el host
+      - ./logs:/var/log/mysql
+    networks:
+      - asir-net
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 1500M
+
 volumes:
-# Persistencia del directorio de datos del motor
-- db_data:/var/lib/mysql
-# Mapeo personalizado para aplicar configuraciones
-(/etc/mysql/conf.d/)
-- ./config:/etc/mysql/conf.d
-# Directorio de Logs mapeado para permitir análisis externo directo
-en el host
-- ./logs:/var/log/mysql
+  db_data:
+
 networks:
-- asir-net
-deploy:
-resources:
-limits:
-cpus: '1.5'
-memory: 1500M
-volumes:
-db_data:
-networks:
-asir-net:
-driver: bridge</code></pre>
+  asir-net:
+    driver: bridge</code></pre>
             </div>
 
             <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>

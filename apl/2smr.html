@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,31 +9,45 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="../script.js"></script>
 </head>
+
 <body>
     <header class="site-header">
         <div class="header-container">
-        <div class="header-bar">
-            <div class="site-title site-title-row">
-                <img src="logo.png" alt="Logo IES Celia Viñas" class="site-logo">
-                <span>Seguimiento de Alumnos – Configuración y Tareas </span>
+            <div class="header-bar">
+                <div class="site-title site-title-row">
+                    <img src="logo.png" alt="Logo IES Celia Viñas" class="site-logo">
+                    <span>Seguimiento de Alumnos – Configuración y Tareas </span>
+                </div>
+                <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
+                    <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo"
+                        aria-label="Expandir todo">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <polyline points="7 7 12 12 17 7"></polyline>
+                            <polyline points="7 13 12 18 17 13"></polyline>
+                        </svg>
+                    </button>
+                    <button type="button" class="btn-icon-header" onclick="toggleAllDetails(false)"
+                        title="Contraer todo" aria-label="Contraer todo">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <polyline points="17 11 12 6 7 11"></polyline>
+                            <polyline points="17 17 12 12 7 17"></polyline>
+                        </svg>
+                    </button>
+                    <button type="button" id="btn-pdf" class="btn-icon-header btn-pdf-accent" onclick="descargarPDF()"
+                        title="Descargar PDF" aria-label="Descargar PDF">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                    </button>
+                </div>
             </div>
-        <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
-          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="7 7 12 12 17 7"></polyline><polyline points="7 13 12 18 17 13"></polyline></svg>
-          </button>
-          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(false)" title="Contraer todo" aria-label="Contraer todo">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 17 12 12 7 17"></polyline></svg>
-          </button>
-          <button type="button" id="btn-pdf" class="btn-icon-header btn-pdf-accent" onclick="descargarPDF()" title="Descargar PDF" aria-label="Descargar PDF">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-          </button>
-        </div>
-      </div>
-      <nav aria-label="Navegación por bloques temáticos" class="main-nav no-print">
-        <ul class="nav-list">
-          <li><a href="index.html" class="nav-link">Inicio</a></li>
-        </ul>
-      </nav>
+            <nav aria-label="Navegación por bloques temáticos" class="main-nav no-print">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
@@ -42,357 +57,353 @@
         </section>
 
         <section>
-            <details class="accordion" id="page-section-1">
-                <summary class="summary-title">Registro de Entregas y Direcciones IP (31/10/2026)</summary>
-                <article class="box-card">
-                    <section>
-                <h2 id="registro-de-entregas-y-direcciones-ip-9102026">Registro de Entregas y Direcciones IP (31/10/2026)</h2>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th scope="col"> </th>
-                                <th scope="col">Iniciales</th>
-                                <th scope="col">Dirección IP</th>
-                                <th scope="col">Apache</th>
-                                <th scope="col">Ejemplos</th>
-                                <th scope="col">Tarea HTML</th>
-                                <th scope="col">Tarea CSS</th>
-                                <th scope="col">Wordpress</th>
-                                <th scope="col">Moodle</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td class="initials-col">ASA</td>
-                                <td class="ip-col"><a href="http://172.16.14.57" >172.16.14.57</a></td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td class="initials-col">BSE</td>
-                                <td class="ip-col"><a href="http://172.16.13.114" >172.16.13.114</a></td>
-                                <td>✅</td>
-                                <td>✅ (i)</td>
-                                <td><b>?</b></td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td class="initials-col">BPV</td>
-                                <td class="ip-col"><a href="http://172.16.10.225" >172.16.10.225</a></td>
-                                <td>✅</td>
-                                <td>❌ (i)(e)</td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td class="initials-col">CPM</td>
-                                <td class="ip-col"><a href="http://172.16.13.47" >172.16.13.47</a></td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td class="initials-col">CMJW</td>
-                                <td class="ip-col"><a href="http://172.16.13.241" >172.16.13.241</a></td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>❌</td>
-                                <td>❌ (n)</td>
-                                <td>✅</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td class="initials-col">CPA</td>
-                                <td class="ip-col"><a href="http://172.16.11.95" >172.16.11.95</a></td>
-                                <td>✅</td>
-                                <td>❌</td>
-                                <td>❌</td>
-                                <td>❌</td>
-                                <td>-</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td class="initials-col">EMM</td>
-                                <td class="ip-col"><a href="http://pte" >PTE</a></td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td class="initials-col">EOM</td>
-                                <td class="ip-col"><a href="http://172.16.11.149" >172.16.11.149</a></td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>❌</td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>9</td>
-                                <td class="initials-col">FARJ</td>
-                                <td class="ip-col"><a href="http://172.16.14.64" >172.16.14.64</a></td>
-                                <td>✅</td>
-                                <td>❌</td>
-                                <td>❌</td>
-                                <td>❌</td>
-                                <td>❌</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>10</td>
-                                <td class="initials-col">GAJA</td>
-                                <td class="ip-col"><a href="http://pte" >PTE</a></td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>11</td>
-                                <td class="initials-col">GDFJ</td>
-                                <td class="ip-col"><a href="http://172.16.10.117" >172.16.10.117</a></td>
-                                <td>✅</td>
-                                <td>❌</td>
-                                <td>❌</td>
-                                <td>❌</td>
-                                <td>-</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>12</td>
-                                <td class="initials-col">GDJ</td>
-                                <td class="ip-col"><a href="http://172.16.14.232" >172.16.14.232</a></td>
-                                <td>✅</td>
-                                <td>❌</td>
-                                <td>❌</td>
-                                <td>❌</td>
-                                <td>-</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>13</td>
-                                <td class="initials-col">GCC</td>
-                                <td class="ip-col"><a href="http://172.16.14.26" >172.16.14.26</a></td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>❌</td>
-                                <td>✅</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>14</td>
-                                <td class="initials-col">GRM</td>
-                                <td class="ip-col"><a href="http://172.16.14.204" >172.16.14.204</a></td>
-                                <td>✅</td>
-                                <td>❌</td>
-                                <td>❌</td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>15</td>
-                                <td class="initials-col">MO</td>
-                                <td class="ip-col"><a href="http://pte" >PTE</a></td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>16</td>
-                                <td class="initials-col">MLJM</td>
-                                <td class="ip-col"><a href="http://172.16.14.178" >172.16.14.178</a></td>
-                                <td>✅</td>
-                                <td>✅ (e)(E)</td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>17</td>
-                                <td class="initials-col">MCMR</td>
-                                <td class="ip-col"><a href="http://172.16.11.21" >172.16.11.21</a></td>
-                                <td>✅</td>
-                                <td>✅ (E)</td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>18</td>
-                                <td class="initials-col">MA</td>
-                                <td class="ip-col"><a href="http://172.16.13.133" >172.16.13.133</a></td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>❌ (n)</td>
-                                <td>✅</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>19</td>
-                                <td class="initials-col">MRA</td>
-                                <td class="ip-col"><a href="http://172.16.14.205" >172.16.14.205</a></td>
-                                <td>✅</td>
-                                <td>✅ (E)</td>
-                                <td>❌</td>
-                                <td>✅ (e)(E)</td>
-                                <td>✅</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>20</td>
-                                <td class="initials-col">RWL</td>
-                                <td class="ip-col"><a href="http://172.16.11.204" >172.16.11.204</a></td>
-                                <td>✅</td>
-                                <td>✅ (E)</td>
-                                <td>✅</td>
-                                <td>✅ (e)</td>
-                                <td>✅</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>21</td>
-                                <td class="initials-col">RAS</td>
-                                <td class="ip-col"><a href="http://172.16.14.46" >172.16.14.46</a></td>
-                                <td>❌</td>
-                                <td>❌</td>
-                                <td>✅</td>
-                                <td>✅ (e)</td>
-                                <td>-</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>22</td>
-                                <td class="initials-col">RRM</td>
-                                <td class="ip-col"><a href="http://172.16.10.192" >172.16.10.192</a></td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>✅ (e)</td>
-                                <td>✅</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>23</td>
-                                <td class="initials-col">RFF</td>
-                                <td class="ip-col"><a href="http://172.16.13.61" >172.16.13.61</a></td>
-                                <td>✅</td>
-                                <td>✅ (E)</td>
-                                <td>❌</td>
-                                <td>❌ (e)</td>
-                                <td>✅</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>24</td>
-                                <td class="initials-col">STSE</td>
-                                <td class="ip-col"><a href="http://172.16.10.95 " >172.16.10.95 </a></td>
-                                <td>✅</td>
-                                <td>❌</td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>25</td>
-                                <td class="initials-col">SMJF</td>
-                                <td class="ip-col"><a href="http://172.16.14.103" >172.16.14.103</a></td>
-                                <td>❌</td>
-                                <td>❌</td>
-                                <td>✅</td>
-                                <td>❌ (e)</td>
-                                <td>✅</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>26</td>
-                                <td class="initials-col">SSJ</td>
-                                <td class="ip-col"><a href="http://172.16.11.78" >172.16.11.78</a></td>
-                                <td>✅</td>
-                                <td>❌</td>
-                                <td>❌</td>
-                                <td>❌</td>
-                                <td>-</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>27</td>
-                                <td class="initials-col">TML</td>
-                                <td class="ip-col"><a href="http://172.16.14.85" >172.16.14.85</a></td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>❌</td>
-                                <td>✅</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>28</td>
-                                <td class="initials-col">VCJF</td>
-                                <td class="ip-col"><a href="http://172.16.14.184" >172.16.14.184</a></td>
-                                <td>✅</td>
-                                <td>✅ (E)</td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>29</td>
-                                <td class="initials-col">XY</td>
-                                <td class="ip-col"><a href="http://172.16.11.40" >172.16.11.40</a></td>
-                                <td>✅</td>
-                                <td>✅ (E)</td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>✅</td>
-                                <td>-</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p>
-                    <sub>(e) Faltan ejercicios</sub><br>
-                    <sub>(i) Falta la imagen de index</sub><br>
-                    <sub>(n) No es lo que se pide</sub><br>
-                    <sub>(E) Ejercicios con errores en el código</sub></p>
-            </section>
-                </article>
-            </details>
+            <h2 id="registro-de-entregas-y-direcciones-ip-9102026">Registro de Entregas y Direcciones IP (31/10/2026)
+            </h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col"> </th>
+                            <th scope="col">Iniciales</th>
+                            <th scope="col">Dirección IP</th>
+                            <th scope="col">Apache</th>
+                            <th scope="col">Ejemplos</th>
+                            <th scope="col">Tarea HTML</th>
+                            <th scope="col">Tarea CSS</th>
+                            <th scope="col">Wordpress</th>
+                            <th scope="col">Moodle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td class="initials-col">ASA</td>
+                            <td class="ip-col"><a href="http://172.16.14.57">172.16.14.57</a></td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td class="initials-col">BSE</td>
+                            <td class="ip-col"><a href="http://172.16.13.114">172.16.13.114</a></td>
+                            <td>✅</td>
+                            <td>✅ (i)</td>
+                            <td><b>?</b></td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td class="initials-col">BPV</td>
+                            <td class="ip-col"><a href="http://172.16.10.225">172.16.10.225</a></td>
+                            <td>✅</td>
+                            <td>❌ (i)(e)</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td class="initials-col">CPM</td>
+                            <td class="ip-col"><a href="http://172.16.13.47">172.16.13.47</a></td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td class="initials-col">CMJW</td>
+                            <td class="ip-col"><a href="http://172.16.13.241">172.16.13.241</a></td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>❌</td>
+                            <td>❌ (n)</td>
+                            <td>✅</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td class="initials-col">CPA</td>
+                            <td class="ip-col"><a href="http://172.16.11.95">172.16.11.95</a></td>
+                            <td>✅</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td class="initials-col">EMM</td>
+                            <td class="ip-col"><a href="http://pte">PTE</a></td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td class="initials-col">EOM</td>
+                            <td class="ip-col"><a href="http://172.16.11.149">172.16.11.149</a></td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>❌</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td class="initials-col">FARJ</td>
+                            <td class="ip-col"><a href="http://172.16.14.64">172.16.14.64</a></td>
+                            <td>✅</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td class="initials-col">GAJA</td>
+                            <td class="ip-col"><a href="http://pte">PTE</a></td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td class="initials-col">GDFJ</td>
+                            <td class="ip-col"><a href="http://172.16.10.117">172.16.10.117</a></td>
+                            <td>✅</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td class="initials-col">GDJ</td>
+                            <td class="ip-col"><a href="http://172.16.14.232">172.16.14.232</a></td>
+                            <td>✅</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td class="initials-col">GCC</td>
+                            <td class="ip-col"><a href="http://172.16.14.26">172.16.14.26</a></td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>❌</td>
+                            <td>✅</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>14</td>
+                            <td class="initials-col">GRM</td>
+                            <td class="ip-col"><a href="http://172.16.14.204">172.16.14.204</a></td>
+                            <td>✅</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>15</td>
+                            <td class="initials-col">MO</td>
+                            <td class="ip-col"><a href="http://pte">PTE</a></td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>16</td>
+                            <td class="initials-col">MLJM</td>
+                            <td class="ip-col"><a href="http://172.16.14.178">172.16.14.178</a></td>
+                            <td>✅</td>
+                            <td>✅ (e)(E)</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>17</td>
+                            <td class="initials-col">MCMR</td>
+                            <td class="ip-col"><a href="http://172.16.11.21">172.16.11.21</a></td>
+                            <td>✅</td>
+                            <td>✅ (E)</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>18</td>
+                            <td class="initials-col">MA</td>
+                            <td class="ip-col"><a href="http://172.16.13.133">172.16.13.133</a></td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>❌ (n)</td>
+                            <td>✅</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>19</td>
+                            <td class="initials-col">MRA</td>
+                            <td class="ip-col"><a href="http://172.16.14.205">172.16.14.205</a></td>
+                            <td>✅</td>
+                            <td>✅ (E)</td>
+                            <td>❌</td>
+                            <td>✅ (e)(E)</td>
+                            <td>✅</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>20</td>
+                            <td class="initials-col">RWL</td>
+                            <td class="ip-col"><a href="http://172.16.11.204">172.16.11.204</a></td>
+                            <td>✅</td>
+                            <td>✅ (E)</td>
+                            <td>✅</td>
+                            <td>✅ (e)</td>
+                            <td>✅</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>21</td>
+                            <td class="initials-col">RAS</td>
+                            <td class="ip-col"><a href="http://172.16.14.46">172.16.14.46</a></td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>✅</td>
+                            <td>✅ (e)</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>22</td>
+                            <td class="initials-col">RRM</td>
+                            <td class="ip-col"><a href="http://172.16.10.192">172.16.10.192</a></td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅ (e)</td>
+                            <td>✅</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>23</td>
+                            <td class="initials-col">RFF</td>
+                            <td class="ip-col"><a href="http://172.16.13.61">172.16.13.61</a></td>
+                            <td>✅</td>
+                            <td>✅ (E)</td>
+                            <td>❌</td>
+                            <td>❌ (e)</td>
+                            <td>✅</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>24</td>
+                            <td class="initials-col">STSE</td>
+                            <td class="ip-col"><a href="http://172.16.10.95 ">172.16.10.95 </a></td>
+                            <td>✅</td>
+                            <td>❌</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>25</td>
+                            <td class="initials-col">SMJF</td>
+                            <td class="ip-col"><a href="http://172.16.14.103">172.16.14.103</a></td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>✅</td>
+                            <td>❌ (e)</td>
+                            <td>✅</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>26</td>
+                            <td class="initials-col">SSJ</td>
+                            <td class="ip-col"><a href="http://172.16.11.78">172.16.11.78</a></td>
+                            <td>✅</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>❌</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>27</td>
+                            <td class="initials-col">TML</td>
+                            <td class="ip-col"><a href="http://172.16.14.85">172.16.14.85</a></td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>❌</td>
+                            <td>✅</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>28</td>
+                            <td class="initials-col">VCJF</td>
+                            <td class="ip-col"><a href="http://172.16.14.184">172.16.14.184</a></td>
+                            <td>✅</td>
+                            <td>✅ (E)</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>29</td>
+                            <td class="initials-col">XY</td>
+                            <td class="ip-col"><a href="http://172.16.11.40">172.16.11.40</a></td>
+                            <td>✅</td>
+                            <td>✅ (E)</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>✅</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            
+            <p>
+                <sub>(e) Faltan ejercicios</sub><br>
+                <sub>(i) Falta la imagen de index</sub><br>
+                <sub>(n) No es lo que se pide</sub><br>
+                <sub>(E) Ejercicios con errores en el código</sub>
+            </p>
+            </div>
         </section>
     </main>
 
@@ -402,4 +413,5 @@
         </div>
     </footer>
 </body>
+
 </html>

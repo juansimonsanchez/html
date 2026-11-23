@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>APL - Ut2 Tarea 1 Instalacion Configuracion Wordpress</title>
+  <title>APL - UT2 Tarea 1 Instalacion Configuracion WordPress</title>
   <link rel="stylesheet" href="../estilos.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <script src="../script.js"></script>
@@ -15,7 +15,7 @@
     <div class="header-container">
         <div class="header-bar">
       <div class="site-title site-title-row"><img src="logo.png" alt="Logo IES Celia Viñas" class="site-logo"><span>APL
-          &ndash; Ut2 Tarea 1 Instalacion Configuracion Wordpress</span></div>
+          &ndash; UT2 Tarea 1 Instalacion Configuracion WordPress</span></div>
         <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
           <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
             <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="7 7 12 12 17 7"></polyline><polyline points="7 13 12 18 17 13"></polyline></svg>
@@ -49,7 +49,7 @@
                 <summary class="summary-title">Ficha Técnica</summary>
                 <div class="box-card">
                     <h3 id="ficha-tecnica-de-la-actividad">FICHA TÉCNICA DE LA
-        ACTIVIDAD <a class="headerlink" href="#ficha-tecnica-de-la-actividad" title="Enlace permanente">¶</a></h3>
+        ACTIVIDAD</h3>
                     <div class="table-wrapper">
                         <table>
                             <tbody>
@@ -79,8 +79,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <h4 id="metodo-de-entrega-y-formato">MÉTODO DE ENTREGA Y FORMATO <a class="headerlink"
-          href="#metodo-de-entrega-y-formato" title="Enlace permanente">¶</a></h4>
+                    <h4 id="metodo-de-entrega-y-formato">MÉTODO DE ENTREGA Y FORMATO</h4>
                     <ul>
         <li>
             <p><strong>[X] Documento:</strong> Documento en formato
@@ -110,10 +109,10 @@
 
         <section>
             <details class="accordion" id="page-section-2">
-                <summary class="summary-title">Actividades</summary>
+                <summary class="summary-title">Actividades <a class="headerlink" href="#page-section-2" title="Enlace permanente">¶</a></summary>
                 <article class="box-card">
                     <h1 id="a1-descripcion-general-objetivos">1. DESCRIPCIÓN GENERAL.
-        OBJETIVOS <a class="headerlink" href="#a1-descripcion-general-objetivos" title="Enlace permanente">¶</a></h1>
+        OBJETIVOS</h1>
                     <p>El propósito central de esta práctica es que el alumno aprenda a
         desplegar, configurar y verificar de extremo a extremo un Gestor de
         Contenidos (CMS) de referencia industrial como
@@ -128,8 +127,7 @@
                 </article>
 
                 <article class="box-card">
-                    <h1 id="a2-consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink" href="#a2-consideraciones-previas"
-          title="Enlace permanente">¶</a></h1>
+                    <h1 id="a2-consideraciones-previas">2. CONSIDERACIONES PREVIAS</h1>
                     <p>Antes de iniciar los bloques prácticos de comandos, el alumno debe
         verificar el cumplimiento del siguiente ecosistema de
         infraestructura:</p>
@@ -174,7 +172,7 @@
 
                 <article class="box-card">
                     <h1 id="a3-explicacion-detallada-paso-a-paso">3. EXPLICACIÓN DETALLADA
-        (PASO A PASO) <a class="headerlink" href="#a3-explicacion-detallada-paso-a-paso" title="Enlace permanente">¶</a>
+        (PASO A PASO)
       </h1>
                     <p>Esta tarea se desarrolla en varios pasos. Cuidado al copiar y
         pegar.</p>
@@ -193,7 +191,7 @@ curl https://wordpress.org/latest.tar.gz | sudo -u www-data tar zx -C /srv/www</
 
 </div>
                     <p>Con el último comando saldrá algo así:</p>
-                    <p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/media/image1.png" alt="imagen" class="image-width-600"></p>
+                    <p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/image1.png" alt="imagen" class="image-width-600"></p>
                     <p><strong>Paso 3: Creación de la Base de datos</strong></p>
                     <p>Para configurar WordPress, necesitamos crear una base de datos en
         MySQL. Vamos a crearla. Entramos en la consola de MySQL y ejecutamos
@@ -236,7 +234,7 @@ QUIT;</code></pre>
 
 </div>
                     <p>Buscamos</p>
-                    <p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/media/image6.png" alt="imagen" class="image-width-600"></p>
+                    <p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/image6.png" alt="imagen" class="image-width-600"></p>
                     <p>y tenemos que indicar el nombre de la base de datos (wordpress),
         nombre del usuario (wordpress) y la contraseña (la que habéis indicado).
         Hacer una captura con las modificaciones.</p>
@@ -244,7 +242,7 @@ QUIT;</code></pre>
                     <p>https://api.wordpress.org/secret-key/1.1/salt/</p>
                     <p>Esto nos generará una clave única. Copiar lo que ha salido en el
         navegador, algo como esto</p>
-                    <p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/media/image8.png" alt="imagen" class="image-width-600"></p>
+                    <p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/image8.png" alt="imagen" class="image-width-600"></p>
                     <p>Seguir buscando en el archivo anterior (wp-config.php) unas líneas
         similares a las anteriores, borrarlas y sustituirlas por las obtenidas.
         Hacer una captura. Guardar todos los cambios.</p>
@@ -273,19 +271,18 @@ QUIT;</code></pre>
                     <p>Ya podemos acceder a nuestro Wordpress desde el navegador con la
         URL</p>
                     <p>http://&lt;ip-flotante&gt;/iescelia</p>
-                    <p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/media/image4.png" alt="imagen" class="image-width-300"></p>
+                    <p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/image4.png" alt="imagen" class="image-width-300"></p>
                     <p>y nos aparecerá el asistente para configurar nuestro gestor de
         contenidos. Escogeremos Español y en la siguiente paso, lo configuremos
         de la siguiente forma:</p>
-                    <p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/media/image5.png" alt="imagen" class="image-width-400"></p>
+                    <p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/image5.png" alt="imagen" class="image-width-400"></p>
                     <p><strong>IMPORTANTE</strong>: Yo he ocultado la contraseña, vosotros
         dejarla visible para hacer una captura y no perderla</p>
                     <p>Pulsaremos en el botón para Instalar Wordpress y nos confirmará que
         ya está instalado y nos mostrará un enlace para poder acceder. Si
         accedemos aparecerá:</p>
                     <h4 id="fase-5-asistente-grafico-de-instalacion-y-validacion-inicial">Fase
-        5: Asistente Gráfico de Instalación y Validación Inicial <a class="headerlink"
-          href="#fase-5-asistente-grafico-de-instalacion-y-validacion-inicial" title="Enlace permanente">¶</a></h4>
+        5: Asistente Gráfico de Instalación y Validación Inicial</h4>
                     <ol type="1">
         <li>
             <p>Abre tu navegador web e ingresa a la URL del proyecto:
@@ -323,16 +320,16 @@ QUIT;</code></pre>
               del sitio web.</p>
         </li>
       </ol>
-                    <p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/media/image7.png" alt="imagen" class="image-width-600"></p>
+                    <p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/image7.png" alt="imagen" class="image-width-600"></p>
                     <p>Arriba a la izquierda tenemos un botón para acceder a nuestro sitio y
         verlo como lo verían los visitantes del sitio</p>
-                    <p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/media/image3.png" alt="imagen" class="image-width-600"></p>
+                    <p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/image3.png" alt="imagen" class="image-width-600"></p>
                     <p>Para acceder como administradores o usuarios la url será:</p>
                     <p><strong>http://ip-flotante/iescelia/wp-admin</strong></p>
                 </article>
 
                 <article class="box-card">
-                    <h1 id="a4-calificacion">4. CALIFICACIÓN <a class="headerlink" href="#a4-calificacion" title="Enlace permanente">¶</a>
+                    <h1 id="a4-calificacion">4. CALIFICACIÓN
       </h1>
                     <p><strong>IMPORTANTE:</strong> Las entregas realizadas fuera de plazo a
         través de la plataforma virtual, la falta de justificación técnica en
@@ -343,8 +340,7 @@ QUIT;</code></pre>
         base aprobados por el Departamento de Informática: <strong>Funcionalidad
           Técnica (20%)</strong>, <strong>Memoria de Documentación (70%)</strong>,
         y <strong>Presentación y Formato (10%)</strong>.</p>
-                    <h4 id="criterios-de-calificacion">CRITERIOS DE CALIFICACIÓN <a class="headerlink"
-          href="#criterios-de-calificacion" title="Enlace permanente">¶</a></h4>
+                    <h4 id="criterios-de-calificacion">CRITERIOS DE CALIFICACIÓN</h4>
                     <div class="table-wrapper">
         <div class="table-wrapper">
           <table>

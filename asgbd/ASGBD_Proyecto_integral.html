@@ -47,12 +47,9 @@
                 <strong>====================================================================
                     PROYECTO INTEGRAL: CONFIGURACIÓN, EXPLOTACIÓN, OPTIMIZACIÓN Y ALTA
                     DISPONIBILIDAD DE "AERODATA SOLUTIONS" (DE LA UD1 A LA
-                    UD6)</strong> <a class="headerlink"
-                    href="#proyecto-integral-configuracion-explotacion-optimizacion-y-alta-disponibilidad-de-aerodata-solutions-de-la-ud1-a-la-ud6"
-                    title="Enlace permanente">¶</a></h1>
+                    UD6)</strong></h1>
 <h3 id="introduccion-general-al-proyecto"><strong>INTRODUCCIÓN GENERAL
-                    AL PROYECTO</strong> <a class="headerlink" href="#introduccion-general-al-proyecto"
-                    title="Enlace permanente">¶</a></h3>
+                    AL PROYECTO</strong></h3>
 <p>¡Bienvenido al equipo de ingeniería de <strong>AeroData Solutions
                     S.L.</strong>! Acabas de ser contratado como Administrador de Sistemas y
                 DBA Principal (Database Administrator). La compañía ofrece servicios
@@ -66,9 +63,7 @@
                 lógicas:</p>
 <h2 id="fase-1-instalacion-configuracion-de-parametros-y-gestion-de-logs-asociada-a-la-ud1"><strong>FASE
                     1: INSTALACIÓN, CONFIGURACIÓN DE PARÁMETROS Y GESTIÓN DE LOGS (ASOCIADA
-                    A LA UD1)</strong> <a class="headerlink"
-                    href="#fase-1-instalacion-configuracion-de-parametros-y-gestion-de-logs-asociada-a-la-ud1"
-                    title="Enlace permanente">¶</a></h2>
+                    A LA UD1)</strong></h2>
         </section>
 
                 <section>
@@ -76,8 +71,7 @@
                 <summary class="summary-title">Ficha Técnica</summary>
                 <div class="box-card">
                     <h3 id="ficha-tecnica-de-la-actividad-1">FICHA TÉCNICA DE LA ACTIVIDAD
-                <strong>1</strong> <a class="headerlink" href="#ficha-tecnica-de-la-actividad-1"
-                    title="Enlace permanente">¶</a>
+                <strong>1</strong>
             </h3>
                     <div class="table-wrapper">
                         <table>
@@ -138,30 +132,27 @@
 
         <section>
             <details class="accordion" id="page-section-2">
-                <summary class="summary-title">Descripción General y Objetivos</summary>
+                <summary class="summary-title">Descripción General y Objetivos <a class="headerlink" href="#page-section-2" title="Enlace permanente">¶</a></summary>
                 <div class="box-card">
                     <h3 id="a1-descripcion-general-de-la-tarea-objetivos">1. DESCRIPCIÓN
-                GENERAL DE LA TAREA. OBJETIVOS <a class="headerlink" href="#a1-descripcion-general-de-la-tarea-objetivos"
-                    title="Enlace permanente">¶</a></h3>
+                GENERAL DE LA TAREA. OBJETIVOS</h3>
 <p>El departamento de desarrollo necesita desplegar una instancia limpia
                 y aislada de MySQL 8.0 en la infraestructura local. Debes automatizar el
                 despliegue mediante Docker, parametrizar la memoria del motor de
                 almacenamiento InnoDB para un uso eficiente de los recursos del host y
                 activar de forma persistente los sistemas de logs y auditorías.</p>
-<h3 id="a2-consideraciones-previas">2. CONSIDERACIONES PREVIAS <a class="headerlink"
-                    href="#a2-consideraciones-previas" title="Enlace permanente">¶</a></h3>
+<h3 id="a2-consideraciones-previas">2. CONSIDERACIONES PREVIAS</h3>
 <p>Asegúrate de contar con Docker y Docker Compose instalados en tu
                 máquina virtual Ubuntu Server. El contenedor deberá mapear los volúmenes
                 del motor para evitar pérdidas accidentales de datos si el servicio se
                 reinicia.</p>
 <h3 id="a3-explicacion-detallada-paso-a-paso">3. EXPLICACIÓN DETALLADA
-                (PASO A PASO) <a class="headerlink" href="#a3-explicacion-detallada-paso-a-paso"
-                    title="Enlace permanente">¶</a></h3>
+                (PASO A PASO)</h3>
 <ol type="1">
                 <li>
                         <p><strong>Despliegue de Contenedores:</strong> Diseña un archivo
                             docker-compose.yml que levante un servicio MySQL 8.x mapeando el puerto
-                            <img src="media_ASGBD_Proyecto_integral/media/image1.png" alt="imagen" class="image-width-100"> del host, configurando
+                            <img src="media_ASGBD_Proyecto_integral/image1.png" alt="imagen" class="image-width-100"> del host, configurando
                             almacenamiento persistente para /var/lib/mysql y un montaje de tipo bind
                             para un archivo custom.cnf.
                         </p>
@@ -182,7 +173,7 @@
                         <li>
                                 <p>Habilita el Log General de Consultas y el Log de Consultas Lentas
                                     (slow_query_log), estableciendo un umbral de detección de consultas
-                                    lentas de <img src="media_ASGBD_Proyecto_integral/media/image8.png" alt="imagen" class="image-width-100"> segundos (long_query_time =
+                                    lentas de <img src="media_ASGBD_Proyecto_integral/image8.png" alt="imagen" class="image-width-100"> segundos (long_query_time =
                                     2.0).</p>
                         </li>
                     </ul>
@@ -196,8 +187,7 @@
                 </li>
             </ol>
 <h3 id="a4-preguntas-teoricas-y-de-investigacion"><strong>4. PREGUNTAS
-                    TEÓRICAS Y DE INVESTIGACIÓN</strong> <a class="headerlink"
-                    href="#a4-preguntas-teoricas-y-de-investigacion" title="Enlace permanente">¶</a></h3>
+                    TEÓRICAS Y DE INVESTIGACIÓN</strong></h3>
 <ol type="1">
                 <li>
                         <p>¿Cuál es el impacto en términos de rendimiento de E/S y
@@ -210,8 +200,7 @@
                 </li>
             </ol>
 <h3 id="a5-rubrica-de-evaluacion-de-la-fase-1"><strong>5. RÚBRICA DE
-                    EVALUACIÓN DE LA FASE 1</strong> <a class="headerlink" href="#a5-rubrica-de-evaluacion-de-la-fase-1"
-                    title="Enlace permanente">¶</a></h3>
+                    EVALUACIÓN DE LA FASE 1</strong></h3>
 <div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>
@@ -255,16 +244,13 @@
 
         <section>
             <details class="accordion" id="page-section-3">
-                <summary class="summary-title">Actividades y Cronograma</summary>
+                <summary class="summary-title">Actividades y Cronograma <a class="headerlink" href="#page-section-3" title="Enlace permanente">¶</a></summary>
                 <article class="box-card">
                     <h2 id="fase-2-control-de-acceso-roles-rbac-y-seguridad-asociada-a-la-ud2"><strong>FASE
                     2: CONTROL DE ACCESO, ROLES (RBAC) Y SEGURIDAD (ASOCIADA A LA
-                    UD2)</strong> <a class="headerlink"
-                    href="#fase-2-control-de-acceso-roles-rbac-y-seguridad-asociada-a-la-ud2"
-                    title="Enlace permanente">¶</a></h2>
+                    UD2)</strong></h2>
 <h3 id="ficha-tecnica-de-la-actividad-2"><strong>FICHA TÉCNICA DE LA
-                    ACTIVIDAD 2</strong> <a class="headerlink" href="#ficha-tecnica-de-la-actividad-2"
-                    title="Enlace permanente">¶</a></h3>
+                    ACTIVIDAD 2</strong></h3>
 <div class="table-wrapper">
                     <table>
                         <tbody>
@@ -298,22 +284,19 @@
                     </table>
                 </div>
 <h3 id="a1-descripcion-general-de-la-tarea-objetivos-2"><strong>1.
-                    DESCRIPCIÓN GENERAL DE LA TAREA. OBJETIVOS</strong> <a class="headerlink"
-                    href="#a1-descripcion-general-de-la-tarea-objetivos-2" title="Enlace permanente">¶</a></h3>
+                    DESCRIPCIÓN GENERAL DE LA TAREA. OBJETIVOS</strong></h3>
 <p>AeroData Solutions requiere un sistema estricto de accesos lógicos
                 para el cumplimiento de normativas de seguridad de datos. Implementarás
                 un modelo de seguridad basado en roles (RBAC) y configurarás políticas
                 globales de contraseñas de nivel empresarial en MySQL.</p>
 <h3 id="a2-consideraciones-previas-2"><strong>2. CONSIDERACIONES
-                    PREVIAS</strong> <a class="headerlink" href="#a2-consideraciones-previas-2"
-                    title="Enlace permanente">¶</a></h3>
+                    PREVIAS</strong></h3>
 <p>La base de datos del sistema mysql contiene los privilegios y accesos
                 globales de la instancia. Todas las sentencias de creación de roles,
                 asignación y herencia de privilegios deben realizarse con la cuenta
                 administrativa con máximos privilegios (root).</p>
 <h3 id="a3-explicacion-detallada-paso-a-paso-2"><strong>3. EXPLICACIÓN
-                    DETALLADA (PASO A PASO)</strong> <a class="headerlink" href="#a3-explicacion-detallada-paso-a-paso-2"
-                    title="Enlace permanente">¶</a></h3>
+                    DETALLADA (PASO A PASO)</strong></h3>
 <ol type="1">
                 <li>
                         <p><strong>Configuración de Políticas de Hardening de Claves:</strong>
@@ -356,8 +339,7 @@ borrado (DELETE denegado).</code></pre>
                 </li>
             </ol>
 <h3 id="a4-preguntas-teoricas-y-de-investigacion-2"><strong>4. PREGUNTAS
-                    TEÓRICAS Y DE INVESTIGACIÓN</strong> <a class="headerlink"
-                    href="#a4-preguntas-teoricas-y-de-investigacion-2" title="Enlace permanente">¶</a></h3>
+                    TEÓRICAS Y DE INVESTIGACIÓN</strong></h3>
 <ol type="1">
                 <li>
                         <p>Investiga el principio de seguridad informática del "Menor
@@ -375,8 +357,7 @@ borrado (DELETE denegado).</code></pre>
 
                 <article class="box-card">
                     <h3 id="a5-rubrica-de-evaluacion-de-la-fase-2"><strong>5. RÚBRICA DE
-                    EVALUACIÓN DE LA FASE 2</strong> <a class="headerlink" href="#a5-rubrica-de-evaluacion-de-la-fase-2"
-                    title="Enlace permanente">¶</a></h3>
+                    EVALUACIÓN DE LA FASE 2</strong></h3>
 <div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>
@@ -420,12 +401,9 @@ borrado (DELETE denegado).</code></pre>
                     <h2 id="fase-3-automatizacion-de-logica-de-negocio-procedimientos-funciones-y-disparadores-asociada-a-la-ud3">
                 <strong>FASE
                     3: AUTOMATIZACIÓN DE LÓGICA DE NEGOCIO (PROCEDIMIENTOS, FUNCIONES Y
-                    DISPARADORES) (ASOCIADA A LA UD3)</strong> <a class="headerlink"
-                    href="#fase-3-automatizacion-de-logica-de-negocio-procedimientos-funciones-y-disparadores-asociada-a-la-ud3"
-                    title="Enlace permanente">¶</a></h2>
+                    DISPARADORES) (ASOCIADA A LA UD3)</strong></h2>
 <h3 id="ficha-tecnica-de-la-actividad-3"><strong>FICHA TÉCNICA DE LA
-                    ACTIVIDAD 3</strong> <a class="headerlink" href="#ficha-tecnica-de-la-actividad-3"
-                    title="Enlace permanente">¶</a></h3>
+                    ACTIVIDAD 3</strong></h3>
 <div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>
@@ -462,24 +440,21 @@ borrado (DELETE denegado).</code></pre>
                 </div>
             </div>
 <h3 id="a1-descripcion-general-de-la-tarea-objetivos-3"><strong>1.
-                    DESCRIPCIÓN GENERAL DE LA TAREA. OBJETIVOS</strong> <a class="headerlink"
-                    href="#a1-descripcion-general-de-la-tarea-objetivos-3" title="Enlace permanente">¶</a></h3>
+                    DESCRIPCIÓN GENERAL DE LA TAREA. OBJETIVOS</strong></h3>
 <p>Los flujos de inserción de vuelos requieren reglas de validación en
                 tiempo real para impedir anomalías en la programación espacial del
                 aeropuerto. Además, el departamento de control necesita generar informes
                 consolidados de pasajeros y automatizar el traspaso de datos históricos
                 para liberar memoria activa de almacenamiento en disco.</p>
 <h3 id="a2-consideraciones-previas-3"><strong>2. CONSIDERACIONES
-                    PREVIAS</strong> <a class="headerlink" href="#a2-consideraciones-previas-3"
-                    title="Enlace permanente">¶</a></h3>
+                    PREVIAS</strong></h3>
 <p>Dado que utilizaremos la base de datos real airportdb, debes asegurar
                 la consistencia transaccional de los datos históricos. Asegúrate de
                 declarar correctamente los bloques transaccionales e incluir los
                 manejadores de salida (DECLARE CONTINUE HANDLER) al procesar los
                 cursores lógicos.</p>
 <h3 id="a3-explicacion-detallada-paso-a-paso-3"><strong>3. EXPLICACIÓN
-                    DETALLADA (PASO A PASO)</strong> <a class="headerlink" href="#a3-explicacion-detallada-paso-a-paso-3"
-                    title="Enlace permanente">¶</a></h3>
+                    DETALLADA (PASO A PASO)</strong></h3>
 <ol type="1">
                 <li>
                         <p><strong>Trigger de Integridad Espacial
@@ -533,8 +508,7 @@ borrado (DELETE denegado).</code></pre>
                 </li>
             </ol>
 <h3 id="a4-preguntas-teoricas-y-de-investigacion-3"><strong>4. PREGUNTAS
-                    TEÓRICAS Y DE INVESTIGACIÓN</strong> <a class="headerlink"
-                    href="#a4-preguntas-teoricas-y-de-investigacion-3" title="Enlace permanente">¶</a></h3>
+                    TEÓRICAS Y DE INVESTIGACIÓN</strong></h3>
 <ol type="1">
                 <li>
                         <p>¿Por qué se considera que las rutinas almacenadas (procedimientos y
@@ -552,8 +526,7 @@ borrado (DELETE denegado).</code></pre>
 
                 <article class="box-card">
                     <h3 id="a5-rubrica-de-evaluacion-de-la-fase-3"><strong>5. RÚBRICA DE
-                    EVALUACIÓN DE LA FASE 3</strong> <a class="headerlink" href="#a5-rubrica-de-evaluacion-de-la-fase-3"
-                    title="Enlace permanente">¶</a></h3>
+                    EVALUACIÓN DE LA FASE 3</strong></h3>
 <div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>
@@ -606,12 +579,9 @@ borrado (DELETE denegado).</code></pre>
                 <article class="box-card">
                     <h2 id="fase-4-planificacion-de-tareas-y-eventos-programados-en-el-servidor-asociada-a-la-ud4"><strong>FASE
                     4: PLANIFICACIÓN DE TAREAS Y EVENTOS PROGRAMADOS EN EL SERVIDOR
-                    (ASOCIADA A LA UD4)</strong> <a class="headerlink"
-                    href="#fase-4-planificacion-de-tareas-y-eventos-programados-en-el-servidor-asociada-a-la-ud4"
-                    title="Enlace permanente">¶</a></h2>
+                    (ASOCIADA A LA UD4)</strong></h2>
 <h3 id="ficha-tecnica-de-la-actividad-4"><strong>FICHA TÉCNICA DE LA
-                    ACTIVIDAD 4</strong> <a class="headerlink" href="#ficha-tecnica-de-la-actividad-4"
-                    title="Enlace permanente">¶</a></h3>
+                    ACTIVIDAD 4</strong></h3>
 <div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>
@@ -647,23 +617,20 @@ borrado (DELETE denegado).</code></pre>
                 </div>
             </div>
 <h3 id="a1-descripcion-general-de-la-tarea-objetivos-4"><strong>1.
-                    DESCRIPCIÓN GENERAL DE LA TAREA. OBJETIVOS</strong> <a class="headerlink"
-                    href="#a1-descripcion-general-de-la-tarea-objetivos-4" title="Enlace permanente">¶</a></h3>
+                    DESCRIPCIÓN GENERAL DE LA TAREA. OBJETIVOS</strong></h3>
 <p>AeroData Solutions requiere que las tareas rutinarias de purga de
                 logs antiguos y agregación de métricas de ingresos se ejecuten en
                 segundo plano sin requerir intervención manual de un SysAdmin.
                 Configurarás el planificador de eventos interno de MySQL y diseñarás
                 rutinas autónomas automatizadas.</p>
 <h3 id="a2-consideraciones-previas-4"><strong>2. CONSIDERACIONES
-                    PREVIAS</strong> <a class="headerlink" href="#a2-consideraciones-previas-4"
-                    title="Enlace permanente">¶</a></h3>
+                    PREVIAS</strong></h3>
 <p>El planificador de eventos (event_scheduler) de MySQL debe estar
                 activado a nivel global. Asegúrate de configurar este parámetro en
                 caliente y garantizar que persista de manera segura si se reinicia el
                 contenedor de base de datos.</p>
 <h3 id="a3-explicacion-detallada-paso-a-paso-4"><strong>3. EXPLICACIÓN
-                    DETALLADA (PASO A PASO)</strong> <a class="headerlink" href="#a3-explicacion-detallada-paso-a-paso-4"
-                    title="Enlace permanente">¶</a></h3>
+                    DETALLADA (PASO A PASO)</strong></h3>
 <ol type="1">
                 <li>
                         <p><strong>Activación de Tareas Automáticas:</strong> Realiza la
@@ -690,8 +657,7 @@ borrado (DELETE denegado).</code></pre>
                 </li>
             </ol>
 <h3 id="a4-preguntas-teoricas-y-de-investigacion-4"><strong>4. PREGUNTAS
-                    TEÓRICAS Y DE INVESTIGACIÓN</strong> <a class="headerlink"
-                    href="#a4-preguntas-teoricas-y-de-investigacion-4" title="Enlace permanente">¶</a></h3>
+                    TEÓRICAS Y DE INVESTIGACIÓN</strong></h3>
 <ol type="1">
                 <li>
                         <p>¿Qué ventajas e inconvenientes tiene planificar tareas de base de
@@ -709,8 +675,7 @@ borrado (DELETE denegado).</code></pre>
 
                 <article class="box-card">
                     <h3 id="a5-rubrica-de-evaluacion-de-la-fase-4"><strong>5. RÚBRICA DE
-                    EVALUACIÓN DE LA FASE 4</strong> <a class="headerlink" href="#a5-rubrica-de-evaluacion-de-la-fase-4"
-                    title="Enlace permanente">¶</a></h3>
+                    EVALUACIÓN DE LA FASE 4</strong></h3>
 <div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>
@@ -754,12 +719,9 @@ borrado (DELETE denegado).</code></pre>
                     <h2 id="fase-5-tuning-diagnostico-avanzado-con-explain-y-estrategias-de-indexacion-asociada-a-la-ud5">
                 <strong>FASE
                     5: TUNING, DIAGNÓSTICO AVANZADO CON EXPLAIN Y ESTRATEGIAS DE INDEXACIÓN
-                    (ASOCIADA A LA UD5)</strong> <a class="headerlink"
-                    href="#fase-5-tuning-diagnostico-avanzado-con-explain-y-estrategias-de-indexacion-asociada-a-la-ud5"
-                    title="Enlace permanente">¶</a></h2>
+                    (ASOCIADA A LA UD5)</strong></h2>
 <h3 id="ficha-tecnica-de-la-actividad-5"><strong>FICHA TÉCNICA DE LA
-                    ACTIVIDAD 5</strong> <a class="headerlink" href="#ficha-tecnica-de-la-actividad-5"
-                    title="Enlace permanente">¶</a></h3>
+                    ACTIVIDAD 5</strong></h3>
 <div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>
@@ -795,8 +757,7 @@ borrado (DELETE denegado).</code></pre>
                 </div>
             </div>
 <h3 id="a1-descripcion-general-de-la-tarea-objetivos-5"><strong>1.
-                    DESCRIPCIÓN GENERAL DE LA TAREA. OBJETIVOS</strong> <a class="headerlink"
-                    href="#a1-descripcion-general-de-la-tarea-objetivos-5" title="Enlace permanente">¶</a></h3>
+                    DESCRIPCIÓN GENERAL DE LA TAREA. OBJETIVOS</strong></h3>
 <p>Con la importación masiva de la base de datos real de pruebas de
                 Oracle <strong>airportdb</strong> (con más de 10 millones de filas), las
                 consultas analíticas de los analistas bloquean la base de datos. Serás
@@ -804,14 +765,12 @@ borrado (DELETE denegado).</code></pre>
                 accesos, reestructurar la indexación de las tablas más densas utilizando
                 reglas de prefijos y optimizar consultas complejas.</p>
 <h3 id="a2-consideraciones-previas-5"><strong>2. CONSIDERACIONES
-                    PREVIAS</strong> <a class="headerlink" href="#a2-consideraciones-previas-5"
-                    title="Enlace permanente">¶</a></h3>
+                    PREVIAS</strong></h3>
 <p>La optimización física es un balance de velocidad y almacenamiento.
                 Debes justificar el impacto de cada nuevo índice analizando la reducción
                 matemática de filas escaneadas en el árbol binario.</p>
 <h3 id="a3-explicacion-detallada-paso-a-paso-5"><strong>3. EXPLICACIÓN
-                    DETALLADA (PASO A PASO)</strong> <a class="headerlink" href="#a3-explicacion-detallada-paso-a-paso-5"
-                    title="Enlace permanente">¶</a></h3>
+                    DETALLADA (PASO A PASO)</strong></h3>
 <ol type="1">
                 <li>
                         <p><strong>Carga y Medición de Datos Masivos:</strong> Importa la base
@@ -853,7 +812,7 @@ booking);</code></pre>
                                     búsquedas sobre el campo de texto name de la tabla de pasajeros sin
                                     malgastar espacio en disco, determina la longitud de prefijo óptima
                                     ejecutando comparativas de cardinalidad incremental con consultas del
-                                    tipo:<img src="media_ASGBD_Proyecto_integral/media/image7.png" alt="imagen" class="image-width-600"><br>
+                                    tipo:<img src="media_ASGBD_Proyecto_integral/image7.png" alt="imagen" class="image-width-600"><br>
                                     Crea el índice con el límite de caracteres óptimo calculado.</p>
                         </li>
                         <li>
@@ -865,8 +824,7 @@ booking);</code></pre>
                 </li>
             </ol>
 <h3 id="a4-preguntas-teoricas-y-de-investigacion-5"><strong>4. PREGUNTAS
-                    TEÓRICAS Y DE INVESTIGACIÓN</strong> <a class="headerlink"
-                    href="#a4-preguntas-teoricas-y-de-investigacion-5" title="Enlace permanente">¶</a></h3>
+                    TEÓRICAS Y DE INVESTIGACIÓN</strong></h3>
 <ol type="1">
                 <li>
                         <p>Explica técnicamente por qué un exceso de índices no estructurados en
@@ -884,8 +842,7 @@ booking);</code></pre>
 
                 <article class="box-card">
                     <h3 id="a5-rubrica-de-evaluacion-de-la-fase-5"><strong>5. RÚBRICA DE
-                    EVALUACIÓN DE LA FASE 5</strong> <a class="headerlink" href="#a5-rubrica-de-evaluacion-de-la-fase-5"
-                    title="Enlace permanente">¶</a></h3>
+                    EVALUACIÓN DE LA FASE 5</strong></h3>
 <div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>
@@ -940,12 +897,9 @@ booking);</code></pre>
                     <h2 id="fase-6-alta-disponibilidad-bases-de-datos-distribuidas-y-enrutamiento-con-proxysql-asociada-a-la-ud6">
                 <strong>FASE
                     6: ALTA DISPONIBILIDAD, BASES DE DATOS DISTRIBUIDAS Y ENRUTAMIENTO CON
-                    PROXYSQL (ASOCIADA A LA UD6)</strong> <a class="headerlink"
-                    href="#fase-6-alta-disponibilidad-bases-de-datos-distribuidas-y-enrutamiento-con-proxysql-asociada-a-la-ud6"
-                    title="Enlace permanente">¶</a></h2>
+                    PROXYSQL (ASOCIADA A LA UD6)</strong></h2>
 <h3 id="ficha-tecnica-de-la-actividad-6"><strong>FICHA TÉCNICA DE LA
-                    ACTIVIDAD 6</strong> <a class="headerlink" href="#ficha-tecnica-de-la-actividad-6"
-                    title="Enlace permanente">¶</a></h3>
+                    ACTIVIDAD 6</strong></h3>
 <div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>
@@ -982,8 +936,7 @@ booking);</code></pre>
                 </div>
             </div>
 <h3 id="a1-descripcion-general-de-la-tarea-objetivos-6"><strong>1.
-                    DESCRIPCIÓN GENERAL DE LA TAREA. OBJETIVOS</strong> <a class="headerlink"
-                    href="#a1-descripcion-general-de-la-tarea-objetivos-6" title="Enlace permanente">¶</a></h3>
+                    DESCRIPCIÓN GENERAL DE LA TAREA. OBJETIVOS</strong></h3>
 <p>AeroData Solutions requiere una infraestructura de base de datos
                 elástica de alto rendimiento capaz de escalar horizontalmente y resistir
                 fallos de hardware en producción. Configurarás una arquitectura
@@ -991,15 +944,13 @@ booking);</code></pre>
                 dos Shards independientes y un orquestador ProxySQL para el enrutamiento
                 de consultas transparentes según rangos de clave primaria.</p>
 <h3 id="a2-consideraciones-previas-6"><strong>2. CONSIDERACIONES
-                    PREVIAS</strong> <a class="headerlink" href="#a2-consideraciones-previas-6"
-                    title="Enlace permanente">¶</a></h3>
+                    PREVIAS</strong></h3>
 <p>Este laboratorio avanzado de sistemas simulará entornos distribuidos
                 de alta complejidad utilizando redes internas virtuales de Docker
                 Compose. Es de vital importancia asegurar que los puertos y los grupos
                 de host de ProxySQL estén alineados en sus configuraciones lógicas.</p>
 <h3 id="a3-explicacion-detallada-paso-a-paso-6"><strong>3. EXPLICACIÓN
-                    DETALLADA (PASO A PASO)</strong> <a class="headerlink" href="#a3-explicacion-detallada-paso-a-paso-6"
-                    title="Enlace permanente">¶</a></h3>
+                    DETALLADA (PASO A PASO)</strong></h3>
 <ol type="1">
                 <li>
                         <p><strong>Despliegue del Escenario Distribuido:</strong> Diseña una
@@ -1023,7 +974,7 @@ booking);</code></pre>
                 <li>
                         <p><strong>Configuración de la Lógica de Sharding en ProxySQL:</strong>
                             Accede a la interfaz de administración lúdica de ProxySQL (mysql en el
-                            puerto administrativo <img src="media_ASGBD_Proyecto_integral/media/image5.png" alt="imagen" class="image-width-100">) y realiza las siguientes
+                            puerto administrativo <img src="media_ASGBD_Proyecto_integral/image5.png" alt="imagen" class="image-width-100">) y realiza las siguientes
                             configuraciones lógicas:</p>
                     <ul>
                         <li>
@@ -1037,14 +988,14 @@ booking);</code></pre>
                             <ul>
                                 <li>
                                         <p>Consultas filtradas por identificador de reserva menor o igual a <img
-                                                src="media_ASGBD_Proyecto_integral/media/image2.png" alt="imagen" class="image-width-100"> (<img
-                                                src="media_ASGBD_Proyecto_integral/media/image6.png" alt="imagen" class="image-width-100">) se enruten de forma
+                                                src="media_ASGBD_Proyecto_integral/image2.png" alt="imagen" class="image-width-100"> (<img
+                                                src="media_ASGBD_Proyecto_integral/image6.png" alt="imagen" class="image-width-100">) se enruten de forma
                                             transparente al Shard 1.</p>
                                 </li>
                                 <li>
                                         <p>Consultas filtradas por identificador superior a <img
-                                                src="media_ASGBD_Proyecto_integral/media/image2.png" alt="imagen" class="image-width-100"> (<img
-                                                src="media_ASGBD_Proyecto_integral/media/image3.png" alt="imagen" class="image-width-100">) se enruten de forma
+                                                src="media_ASGBD_Proyecto_integral/image2.png" alt="imagen" class="image-width-100"> (<img
+                                                src="media_ASGBD_Proyecto_integral/image3.png" alt="imagen" class="image-width-100">) se enruten de forma
                                             transparente al Shard 2.</p>
                                 </li>
                             </ul>
@@ -1054,7 +1005,7 @@ booking);</code></pre>
                 <li>
                         <p><strong>Simulación de Caídas y Resiliencia:</strong> Comprueba la
                             transparencia del enrutador ejecutando consultas desde el puerto público
-                            de ProxySQL (<img src="media_ASGBD_Proyecto_integral/media/image4.png" alt="imagen" class="image-width-100">) verificando mediante
+                            de ProxySQL (<img src="media_ASGBD_Proyecto_integral/image4.png" alt="imagen" class="image-width-100">) verificando mediante
                             estadísticas de uso interno de ProxySQL que las peticiones se desvían de
                             forma autónoma al servidor correspondiente. Posteriormente, detén
                             físicamente uno de los contenedores (docker stop) y documenta
@@ -1063,8 +1014,7 @@ booking);</code></pre>
                 </li>
             </ol>
 <h3 id="a4-preguntas-teoricas-y-de-investigacion-6"><strong>4. PREGUNTAS
-                    TEÓRICAS Y DE INVESTIGACIÓN</strong> <a class="headerlink"
-                    href="#a4-preguntas-teoricas-y-de-investigacion-6" title="Enlace permanente">¶</a></h3>
+                    TEÓRICAS Y DE INVESTIGACIÓN</strong></h3>
 <ol type="1">
                 <li>
                         <p>Explica las implicaciones lógicas y de consistencia del Teorema de
@@ -1083,8 +1033,7 @@ booking);</code></pre>
 
                 <article class="box-card">
                     <h3 id="a5-rubrica-de-evaluacion-de-la-fase-6"><strong>5. RÚBRICA DE
-                    EVALUACIÓN DE LA FASE 6</strong> <a class="headerlink" href="#a5-rubrica-de-evaluacion-de-la-fase-6"
-                    title="Enlace permanente">¶</a></h3>
+                    EVALUACIÓN DE LA FASE 6</strong></h3>
 <div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>

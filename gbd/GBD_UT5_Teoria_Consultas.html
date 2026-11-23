@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GBD - Ut5 Teoria Consultas</title>
+    <title>GBD - UT5 Teoria Consultas</title>
     <link rel="stylesheet" href="../estilos.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="../script.js"></script>
@@ -15,7 +15,7 @@
         <div class="header-container">
         <div class="header-bar">
             <div class="site-title site-title-row"><img src="logo.png" alt="Logo IES Celia Viñas" class="site-logo"><span>GBD
-                    &ndash; Ut5 Teoria Consultas</span></div>
+                    &ndash; UT5 Teoria Consultas</span></div>
         <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
           <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
             <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="7 7 12 12 17 7"></polyline><polyline points="7 13 12 18 17 13"></polyline></svg>
@@ -51,8 +51,7 @@
                 <summary class="summary-title">Ficha Técnica</summary>
                 <div class="box-card">
                     <h3 id="ficha-tecnica-de-la-unidad-didactica">FICHA TÉCNICA DE LA UNIDAD
-                DIDÁCTICA <a class="headerlink" href="#ficha-tecnica-de-la-unidad-didactica"
-                    title="Enlace permanente">¶</a></h3>
+                DIDÁCTICA</h3>
                     <div class="table-wrapper">
                         <table>
                             <tbody>
@@ -84,149 +83,10 @@
         </section>
 
         <section>
-            <details class="accordion" id="page-section-2">
-                <summary class="summary-title">Índice de Contenidos</summary>
-                <div class="box-card">
-                    <h3 id="indice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#indice-de-contenidos"
-                    title="Enlace permanente">¶</a></h3>
-                    <p><a href="#a1-introduccion-al-lenguaje-dml"><u>1. INTRODUCCIÓN AL
-                        LENGUAJE DML</u></a></p>
-                    <p><a href="#a2-consultas-basicas-sobre-una-tabla"><u>2. CONSULTAS BÁSICAS
-                        SOBRE UNA TABLA</u></a></p>
-                    <p><a href="#a21-estructura-general"><u>2.1 Estructura General</u></a></p>
-                    <p><a href="#a22-la-clausula-select"><u>2.2 La Cláusula SELECT</u></a></p>
-                    <p><a href="#a221-proyeccion-total-select"><u>2.2.1 Proyección Total (SELECT
-                            *)</u></a></p>
-                    <p><a href="#a222-proyeccion-parcial-de-columnas"><u>2.2.2 Proyección Parcial
-                            de Columnas</u></a></p>
-                    <p><a href="#a223-comentarios-en-sentencias-sql"><u>2.2.3 Comentarios en
-                            Sentencias SQL</u></a></p>
-                    <p><a href="#a224-expresiones-y-columnas-calculadas"><u>2.2.4 Expresiones y
-                            Columnas Calculadas</u></a></p>
-                    <p><a href="#a225-renombrado-de-columnas-as"><u>2.2.5 Renombrado de Columnas
-                            (AS)</u></a></p>
-                    <p><a href="#a226-funciones-escalares-cadenas-matematicas-y-fechas"><u>2.2.6
-                            Funciones Escalares (Cadenas, Matemáticas y Fechas)</u></a></p>
-                    <p><a href="#a2-2-7-modificadores-de-resultados-distinct-all-y-distinctrow"><u>2.2.7
-                            Modificadores de Resultados: DISTINCT, ALL y DISTINCTROW</u></a></p>
-                    <p><a href="#a2-3-clausula-where-filtrado"><u>2.3 Cláusula WHERE
-                            (Filtrado)</u></a></p>
-                    <p><a href="#a231-operadores-de-comparacion-y-logicos"><u>2.3.1 Operadores de
-                            Comparación y Lógicos</u></a></p>
-                    <p><a href="#a232-evaluacion-de-rangos-between-y-listas-de-valores-in"><u>2.3.2
-                            Evaluación de Rangos (BETWEEN) y Listas de Valores (IN)</u></a></p>
-                    <p><a href="#a233-busqueda-de-patrones-de-texto-like"><u>2.3.3 Búsqueda de
-                            Patrones de Texto (LIKE)</u></a></p>
-                    <p><a href="#a2-3-4-tratamiento-de-la-ausencia-de-datos-is-null-is-not-null"><u>2.3.4
-                            Tratamiento de la Ausencia de Datos (IS NULL / IS NOT NULL)</u></a></p>
-                    <p><a href="#a235-filtrado-especiales-booleanos-horas-y-marcas-de-tiempo"><u>2.3.5
-                            Filtrado por Tipos Especiales (Booleanos, Horas y Marcas de
-                            Tiempo)</u></a></p>
-                    <p><a href="#a24-clausula-order-by-clasificacion-fisica-de-resultados"><u>2.4
-                            Cláusula ORDER BY: Clasificación Física de Resultados</u></a></p>
-                    <p><a href="#a241-ordenacion-ascendente-asc-y-descendente-desc"><u>2.4.1
-                            Ordenación Ascendente (ASC) y Descendente (DESC)</u></a></p>
-                    <p><a href="#a242-ordenacion-por-multiples-atributos"><u>2.4.2 Ordenación por
-                            Múltiples Atributos</u></a></p>
-                    <p><a href="#a25-clausula-limit-paginacion-y-control-del-transito-de-red"><u>2.5
-                            Cláusula LIMIT: Paginación y Control del Tránsito de Red</u></a></p>
-                    <p><a href="#a3-consultas-sobre-varias-tablas"><u>3. CONSULTAS SOBRE VARIAS
-                        TABLAS</u></a></p>
-                    <p><a href="#a31-concepto-de-producto-cartesiano-composicion-cruzada-o-cross-join"><u>3.1
-                            Concepto de Producto Cartesiano (Composición Cruzada o CROSS
-                            JOIN)</u></a></p>
-                    <p><a href="#a32-composicion-interna-inner-join"><u>3.2 Composición Interna
-                            (INNER JOIN)</u></a></p>
-                    <p><a href="#a321-sintaxis-explicita-on-using-vs-implicita-equi-join"><u>3.2.1
-                            Sintaxis Explícita (ON / USING) vs. Implícita (Equi-Join)</u></a></p>
-                    <p><a href="#a322-uniones-equivalentes-y-no-equivalentes"><u>3.2.2 Uniones
-                            Equivalentes (Equi-Joins) y No Equivalentes (Non-Equi-Joins)</u></a></p>
-                    <p><a href="#a3-2-3-autocomposicion-o-union-reflexiva-self-join"><u>3.2.3
-                            Autocomposición o Unión Reflexiva (Self-Join)</u></a></p>
-                    <p><a href="#a324-composicion-de-tres-o-mas-tablas-y-rutas-de-interseccion"><u>3.2.4
-                            Composición de Tres o Más Tablas y Rutas de Intersección</u></a></p>
-                    <p><a href="#a33-composicion-externa-outer-join"><u>3.3 Composición Externa
-                            (OUTER JOIN)</u></a></p>
-                    <p><a href="#a331-composicion-externa-izquierda-left-join"><u>3.3.1
-                            Composición Externa Izquierda (LEFT JOIN)</u></a></p>
-                    <p><a href="#a3-3-2-composicion-externa-derecha-right-join"><u>3.3.2
-                            Composición Externa Derecha (RIGHT JOIN)</u></a></p>
-                    <p><a href="#a333-ausencia-de-full-outer-join-en-mysql"><u>3.3.3 Ausencia de
-                            FULL OUTER JOIN en MySQL y su Simulación vía UNION</u></a></p>
-                    <p><a href="#a334-composiciones-externas-naturales-y-sus-riesgos"><u>3.3.4
-                            Composiciones Externas Naturales y sus Riesgos</u></a></p>
-                    <p><a href="#a34-gestion-de-tablas-de-distintas-bases-de-datos-en-el-mismo-servidor"><u>3.4
-                            Gestión de Tablas de Distintas Bases de Datos en el Mismo
-                            Servidor</u></a></p>
-                    <p><a href="#a4-consultas-de-agregacion-y-resumen"><u>4. CONSULTAS DE
-                        AGREGACIÓN Y RESUMEN</u></a></p>
-                    4.1 Funciones de
-Agregación
-4.1.1
-Comportamiento y Diferencias entre COUNT(*) y COUNT(columna)
-4.1.2
-Agregación de Valores Únicos (COUNT DISTINCT)
-4.1.3
-Interacción de las Funciones de Agregación con Valores Nulos
-4.2
-Cláusula GROUP BY: Agrupamiento de Registros
-4.2.1 Mecánica de
-Particionado
-4.2.2
-Agrupamiento sobre Múltiples Atributos
-4.3 Cláusula HAVING:
-Filtrado de Grupos
-4.3.1
-Diferencias Críticas de Procesamiento: WHERE vs. HAVING
-4.4
-Errores Comunes en Consultas de Resumen y ONLY_FULL_GROUP_BY
-                    <p><a href="#a5-subconsultas-consultas-anidadas"><u>5. SUBCONSULTAS
-                        (CONSULTAS ANIDADAS)</u></a></p>
-                    5.1
-Introducción y Tipología de Subconsultas
-5.2 Subconsultas de Valor
-Escalar
-5.3
-Subconsultas de Fila o de Lista (Múltiples Filas)
-5.3.1
-Operadores de Comparación con Conjuntos: IN y NOT IN
-5.3.2
-Operadores de Cuantificación: ANY / SOME y ALL
-5.3.3
-El Peligro Crítico de NOT IN con Valores Nulos en la
-Subconsulta
-5.4
-Subconsultas de Tabla (Cláusula FROM / Derived Tables)
-5.5
-Subconsultas Correlacionadas vs. No Correlacionadas
-5.6
-Comprobación de Existencia (EXISTS y NOT EXISTS)
-5.7
-Errores Comunes de Execution en Subconsultas
-                    <p><a href="#a6-errores-comunes-y-guia-de-buenas-practicas"><u>6. ERRORES
-                        COMUNES Y GUÍA DE BUENAS PRÁCTICAS</u></a></p>
-                    <p><a href="#a7-anexo-i-funciones-de-mysql-mas-utilizadas"><u>7. ANEXO I:
-                        FUNCIONES DE MYSQL MÁS UTILIZADAS</u></a></p>
-                    <p><a href="#a71-funciones-de-cadenas-de-texto"><u>7.1 Funciones de Cadenas
-                            de Texto</u></a></p>
-                    <p><a href="#a72-funciones-matematicas"><u>7.2 Funciones
-                            Matemáticas</u></a></p>
-                    <p><a href="#a73-funciones-de-fecha-y-hora"><u>7.3 Funciones de Fecha y
-                            Hora</u></a></p>
-                    <p><a href="#a74-funciones-de-control-de-flujo-y-logica"><u>7.4 Funciones de
-                            Control de Flujo y Lógica</u></a></p>
-                    <p><a href="#a8-anexo-ii-script-sql"><u>8. ANEXO II: SCRIPT SQL DE CREACIÓN
-                        Y CARGA PRÁCTICA (practica_dml)</u></a></p>
-                </div>
-            </details>
-        </section>
-
-        <section>
             <details class="accordion" id="page-section-3">
-                <summary class="summary-title">1. INTRODUCCIÓN AL LENGUAJE DML</summary>
+                <summary class="summary-title">1. INTRODUCCIÓN AL LENGUAJE DML <a class="headerlink" href="#a1-introduccion-al-lenguaje-dml" title="Enlace permanente">¶</a></summary>
                 <article class="box-card">
                     <h1 id="a1-introduccion-al-lenguaje-dml">1. INTRODUCCIÓN AL LENGUAJE DML
-                <a class="headerlink" href="#a1-introduccion-al-lenguaje-dml" title="Enlace permanente">¶</a>
             </h1>
                     <p>A diferencia de los lenguajes de programación imperativos
                 tradicionales (C, Java, Python), donde el desarrollador define el
@@ -332,13 +192,11 @@ emplear en ORDER BY (paso ) y LIMIT (paso ).</code></pre>
 
         <section>
             <details class="accordion" id="page-section-4">
-                <summary class="summary-title">2. CONSULTAS BÁSICAS SOBRE UNA TABLA</summary>
+                <summary class="summary-title">2. CONSULTAS BÁSICAS SOBRE UNA TABLA <a class="headerlink" href="#a2-consultas-basicas-sobre-una-tabla" title="Enlace permanente">¶</a></summary>
                 <article class="box-card">
                     <h1 id="a2-consultas-basicas-sobre-una-tabla">2. CONSULTAS BÁSICAS SOBRE
-                UNA TABLA <a class="headerlink" href="#a2-consultas-basicas-sobre-una-tabla"
-                    title="Enlace permanente">¶</a></h1>
-                    <h2 id="a21-estructura-general">2.1 Estructura General <a class="headerlink" href="#a21-estructura-general"
-                    title="Enlace permanente">¶</a></h2>
+                UNA TABLA</h1>
+                    <h2 id="a21-estructura-general">2.1 Estructura General</h2>
                     <p>La sintaxis mínima para invocar una proyección de datos se compone
                 del comando SELECT acoplado al origen físico provisto por FROM.</p>
                     <h5 id="documentacion-oficial-consulta-la-sintaxis-gramatical-formal-y-todos-los-modificadores-disponibles-para-este-comando-de-proyeccion-en-mysql-manual-select-statement">
@@ -346,14 +204,10 @@ emplear en ORDER BY (paso ) y LIMIT (paso ).</code></pre>
                 <strong>Documentación Oficial:</strong> Consulta la sintaxis gramatical
                 formal y todos los modificadores disponibles para este comando de
                 proyección en <a href="https://dev.mysql.com/doc/refman/8.0/en/select.html"><u>MySQL
-                        Manual - SELECT Statement</u></a>. <a class="headerlink"
-                    href="#documentacion-oficial-consulta-la-sintaxis-gramatical-formal-y-todos-los-modificadores-disponibles-para-este-comando-de-proyeccion-en-mysql-manual-select-statement"
-                    title="Enlace permanente">¶</a>
+                        Manual - SELECT Statement</u></a>.
             </h5>
-                    <h2 id="a22-la-clausula-select">2.2 La Cláusula SELECT <a class="headerlink" href="#a22-la-clausula-select"
-                    title="Enlace permanente">¶</a></h2>
-                    <h3 id="a221-proyeccion-total-select">2.2.1 Proyección Total (SELECT *) <a class="headerlink"
-                    href="#a221-proyeccion-total-select" title="Enlace permanente">¶</a></h3>
+                    <h2 id="a22-la-clausula-select">2.2 La Cláusula SELECT</h2>
+                    <h3 id="a221-proyeccion-total-select">2.2.1 Proyección Total (SELECT *)</h3>
                     <p>Aunque el uso del asterisco comodín (*) es ampliamente recurrente en
                 entornos de desarrollo rápido, <strong>está estrictamente desaconsejado
                     en entornos de producción</strong> debido a:</p>
@@ -373,7 +227,7 @@ emplear en ORDER BY (paso ) y LIMIT (paso ).</code></pre>
                 </li>
             </ol>
                     <h3 id="a222-proyeccion-parcial-de-columnas">2.2.2 Proyección Parcial de
-                Columnas <a class="headerlink" href="#a222-proyeccion-parcial-de-columnas" title="Enlace permanente">¶</a>
+                Columnas
             </h3>
                     <p>Especifica explícitamente los campos requeridos, optimizando el
                 rendimiento físico de la consulta.</p>
@@ -384,7 +238,7 @@ FROM empleado;</code></pre>
 
 </div>
                     <h3 id="a223-comentarios-en-sentencias-sql">2.2.3 Comentarios en Sentencias
-                SQL <a class="headerlink" href="#a223-comentarios-en-sentencias-sql" title="Enlace permanente">¶</a></h3>
+                SQL</h3>
                     <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Comentario de línea única estándar SQL
 # Comentario de línea única específico de MySQL
@@ -395,8 +249,7 @@ de utilidad para documentar scripts SysAdmin complejos
 
 </div>
                     <h3 id="a224-expresiones-y-columnas-calculadas">2.2.4 Expresiones y Columnas
-                Calculadas <a class="headerlink" href="#a224-expresiones-y-columnas-calculadas"
-                    title="Enlace permanente">¶</a></h3>
+                Calculadas</h3>
                     <p>La cláusula SELECT puede computar expresiones matemáticas directas de
                 tipo constante o valores dinámicos derivados de los atributos de cada
                 registro.</p>
@@ -408,7 +261,7 @@ FROM producto;</code></pre>
 
 </div>
                     <h3 id="a225-renombrado-de-columnas-as">2.2.5 Renombrado de Columnas
-                (AS) <a class="headerlink" href="#a225-renombrado-de-columnas-as" title="Enlace permanente">¶</a></h3>
+                (AS)</h3>
                     <p>Para dotar de legibilidad semántica a las columnas calculadas, se
                 asignan alias mediante la cláusula AS.</p>
                     <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -418,8 +271,7 @@ FROM producto;</code></pre>
 
 </div>
                     <h3 id="a226-funciones-escalares-cadenas-matematicas-y-fechas">2.2.6
-                Funciones Escalares (Cadenas, Matemáticas y Fechas) <a class="headerlink"
-                    href="#a226-funciones-escalares-cadenas-matematicas-y-fechas" title="Enlace permanente">¶</a></h3>
+                Funciones Escalares (Cadenas, Matemáticas y Fechas)</h3>
                     <p>MySQL implementa un vasto catálogo de funciones de transformación
                 rápida en el hilo de ejecución de la consulta.</p>
                     <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -451,8 +303,7 @@ FROM producto;</code></pre>
                 origen de datos. Solo aquellas filas cuya evaluación resulta en TRUE
                 pasan al siguiente paso del flujo lógico.</p>
                     <h3 id="a231-operadores-de-comparacion-y-logicos">2.3.1 Operadores de
-                Comparación y Lógicos <a class="headerlink" href="#a231-operadores-de-comparacion-y-logicos"
-                    title="Enlace permanente">¶</a></h3>
+                Comparación y Lógicos</h3>
                     <ul>
                 <li>
                         <p><strong>Comparadores:</strong> =, &lt;&gt;, !=, &lt;, &lt;=, &gt;,
@@ -470,8 +321,7 @@ WHERE gama = 'Herramientas' AND precio_venta &gt;= 100.00;</code></pre>
 
 </div>
                     <h3 id="a232-evaluacion-de-rangos-between-y-listas-de-valores-in">2.3.2
-                Evaluación de Rangos (BETWEEN) y Listas de Valores (IN) <a class="headerlink"
-                    href="#a232-evaluacion-de-rangos-between-y-listas-de-valores-in" title="Enlace permanente">¶</a></h3>
+                Evaluación de Rangos (BETWEEN) y Listas de Valores (IN)</h3>
                     <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Filtrado por rango inclusivo (Equivale a precio_venta &gt;= 50
 AND precio_venta &lt;= 150)
@@ -485,8 +335,7 @@ WHERE gama IN ('Herramientas', 'Frutales', 'Ornamentales');</code></pre>
 
 </div>
                     <h3 id="a233-busqueda-de-patrones-de-texto-like">2.3.3 Búsqueda de Patrones
-                de Texto (LIKE) <a class="headerlink" href="#a233-busqueda-de-patrones-de-texto-like"
-                    title="Enlace permanente">¶</a></h3>
+                de Texto (LIKE)</h3>
                     <p>Permite la comparación parcial de strings mediante caracteres
                 comodín:</p>
                     <ul>
@@ -542,8 +391,7 @@ WHERE codigo_empleado_rep_ventas IS NULL;</code></pre>
                 </div>
             </div>
                     <h3 id="a235-filtrado-especiales-booleanos-horas-y-marcas-de-tiempo">2.3.5
-                Filtrado especiales (Booleanos, Horas y Marcas de Tiempo) <a class="headerlink"
-                    href="#a235-filtrado-especiales-booleanos-horas-y-marcas-de-tiempo" title="Enlace permanente">¶</a></h3>
+                Filtrado especiales (Booleanos, Horas y Marcas de Tiempo)</h3>
                     <p>Para un administrador de sistemas, es fundamental controlar el
                 filtrado de estados booleanos y rangos temporales específicos de tipo
                 TIME o DATETIME:</p>
@@ -572,13 +420,11 @@ WHERE fecha_alta &gt;= '2026-01-01 00:00:00';</code></pre>
 
 </div>
                     <h2 id="a24-clausula-order-by-clasificacion-fisica-de-resultados">2.4
-                Cláusula ORDER BY: Clasificación Física de Resultados <a class="headerlink"
-                    href="#a24-clausula-order-by-clasificacion-fisica-de-resultados" title="Enlace permanente">¶</a></h2>
+                Cláusula ORDER BY: Clasificación Física de Resultados</h2>
                     <p>Ordena el conjunto final de registros devueltos. Por defecto, si no
                 se especifica el sentido, el motor aplica un orden ascendente (ASC).</p>
                     <h3 id="a241-ordenacion-ascendente-asc-y-descendente-desc">2.4.1 Ordenación
-                Ascendente (ASC) y Descendente (DESC) <a class="headerlink"
-                    href="#a241-ordenacion-ascendente-asc-y-descendente-desc" title="Enlace permanente">¶</a></h3>
+                Ascendente (ASC) y Descendente (DESC)</h3>
                     <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Ordenación explícita descendente de precios
 SELECT nombre, precio_venta
@@ -588,8 +434,7 @@ ORDER BY precio_venta DESC;</code></pre>
 
 </div>
                     <h3 id="a242-ordenacion-por-multiples-atributos">2.4.2 Ordenación por
-                Múltiples Atributos <a class="headerlink" href="#a242-ordenacion-por-multiples-atributos"
-                    title="Enlace permanente">¶</a></h3>
+                Múltiples Atributos</h3>
                     <p>Permite la ordenación jerárquica: si hay valores idénticos en la
                 primera columna, se clasifican según los criterios de las columnas
                 sucesivas.</p>
@@ -602,8 +447,7 @@ ORDER BY apellido1 ASC, nombre DESC;</code></pre>
 
 </div>
                     <h2 id="a25-clausula-limit-paginacion-y-control-del-transito-de-red">2.5
-                Cláusula LIMIT: Paginación y Control del Tránsito de Red <a class="headerlink"
-                    href="#a25-clausula-limit-paginacion-y-control-del-transito-de-red" title="Enlace permanente">¶</a></h2>
+                Cláusula LIMIT: Paginación y Control del Tránsito de Red</h2>
                     <p>La cláusula LIMIT restringe la cantidad de tuplas enviadas de vuelta
                 al host cliente, lo cual es vital para estructurar consultas de
                 paginación en interfaces y limitar el consumo de RAM de los hilos de
@@ -634,15 +478,12 @@ LIMIT 10, 5;</code></pre>
 
         <section>
             <details class="accordion" id="page-section-5">
-                <summary class="summary-title">3. CONSULTAS SOBRE VARIAS TABLAS</summary>
+                <summary class="summary-title">3. CONSULTAS SOBRE VARIAS TABLAS <a class="headerlink" href="#a3-consultas-sobre-varias-tablas" title="Enlace permanente">¶</a></summary>
                 <article class="box-card">
                     <h1 id="a3-consultas-sobre-varias-tablas">3. CONSULTAS SOBRE VARIAS TABLAS
-                <a class="headerlink" href="#a3-consultas-sobre-varias-tablas" title="Enlace permanente">¶</a>
             </h1>
                     <h2 id="a31-concepto-de-producto-cartesiano-composicion-cruzada-o-cross-join">3.1
-                Concepto de Producto Cartesiano (Composición Cruzada o CROSS JOIN) <a class="headerlink"
-                    href="#a31-concepto-de-producto-cartesiano-composicion-cruzada-o-cross-join"
-                    title="Enlace permanente">¶</a></h2>
+                Concepto de Producto Cartesiano (Composición Cruzada o CROSS JOIN)</h2>
                     <p>Si intentamos consultar múltiples tablas en una sentencia
                 separándolas por comas en el FROM, o invocando explícitamente CROSS JOIN
                 sin especificar una condición de enlace, el motor ejecutará un
@@ -663,14 +504,13 @@ SELECT * FROM fabricante CROSS JOIN producto;</code></pre>
 
 </div>
                     <h2 id="a32-composicion-interna-inner-join">3.2 Composición Interna (INNER
-                JOIN) <a class="headerlink" href="#a32-composicion-interna-inner-join" title="Enlace permanente">¶</a></h2>
+                JOIN)</h2>
                     <p>La composición interna evalúa la intersección estricta de dos o más
                 conjuntos. El motor devolverá únicamente aquellas tuplas que tengan una
                 coincidencia real en ambas tablas basándose en la condición lógica de
                 emparejamiento.</p>
                     <h3 id="a321-sintaxis-explicita-on-using-vs-implicita-equi-join">3.2.1
-                Sintaxis Explícita (ON / USING) vs. Implícita (Equi-Join) <a class="headerlink"
-                    href="#a321-sintaxis-explicita-on-using-vs-implicita-equi-join" title="Enlace permanente">¶</a></h3>
+                Sintaxis Explícita (ON / USING) vs. Implícita (Equi-Join)</h3>
                     <p>Existen dos vías para implementar la unión física, siendo la
                 explícita mediante la cláusula INNER JOIN ... ON la estándar y
                 recomendada para preservar la legibilidad del código frente a filtros
@@ -697,8 +537,7 @@ WHERE producto.codigo_fabricante = fabricante.codigo;</code></pre>
                     href="https://dev.mysql.com/doc/refman/8.0/en/join.html">MySQL Manual -
                     JOIN Syntax</a>.</p>
                     <h3 id="a322-uniones-equivalentes-y-no-equivalentes">3.2.2 Uniones
-                Equivalentes y No Equivalentes <a class="headerlink" href="#a322-uniones-equivalentes-y-no-equivalentes"
-                    title="Enlace permanente">¶</a></h3>
+                Equivalentes y No Equivalentes</h3>
                     <ul>
                 <li>
                         <p><strong>Equi-Join:</strong> La condición de enlace utiliza
@@ -738,8 +577,7 @@ ON E.codigo_jefe = J.codigo_empleado;</code></pre>
 
 </div>
                     <h2 id="a324-composicion-de-tres-o-mas-tablas-y-rutas-de-interseccion">3.2.4
-                Composición de Tres o Más Tablas y Rutas de Intersección <a class="headerlink"
-                    href="#a324-composicion-de-tres-o-mas-tablas-y-rutas-de-interseccion" title="Enlace permanente">¶</a>
+                Composición de Tres o Más Tablas y Rutas de Intersección
             </h2>
                     <p>Al unir más de dos tablas, el orden semántico debe definir un camino
                 relacional coherente para evitar la aparición accidental de productos
@@ -758,14 +596,13 @@ INNER JOIN oficina O ON E.codigo_oficina = O.codigo_oficina;</code></pre>
 
 </div>
                     <h2 id="a33-composicion-externa-outer-join">3.3 Composición Externa (OUTER
-                JOIN) <a class="headerlink" href="#a33-composicion-externa-outer-join" title="Enlace permanente">¶</a></h2>
+                JOIN)</h2>
                     <p>En ocasiones, requerimos recuperar los registros de una tabla aunque
                 no tengan correspondencia o relación en la otra tabla (por ejemplo,
                 queremos listar todos los fabricantes, tengan o no productos en nuestro
                 catálogo). Para este fin se utilizan las composiciones externas.</p>
                     <h3 id="a331-composicion-externa-izquierda-left-join">3.3.1 Composición
-                Externa Izquierda (LEFT JOIN) <a class="headerlink" href="#a331-composicion-externa-izquierda-left-join"
-                    title="Enlace permanente">¶</a></h3>
+                Externa Izquierda (LEFT JOIN)</h3>
                     <p>Recupera absolutamente <strong>todas las filas de la tabla declarada
                     a la izquierda</strong> de la instrucción LEFT JOIN. Para aquellos
                 registros que no posean una correspondencia en la tabla de la derecha,
@@ -801,8 +638,7 @@ ON producto.codigo_fabricante = fabricante.codigo;</code></pre>
                 humana (procesamiento de izquierda a derecha), evitando la alternancia
                 confusa con RIGHT JOIN en el mismo bloque de código.</p>
                     <h3 id="a333-ausencia-de-full-outer-join-en-mysql">3.3.3 Ausencia de FULL
-                OUTER JOIN en MySQL <a class="headerlink" href="#a333-ausencia-de-full-outer-join-en-mysql"
-                    title="Enlace permanente">¶</a></h3>
+                OUTER JOIN en MySQL</h3>
                     <p>El estándar SQL define la sentencia FULL OUTER JOIN para recuperar la
                 unión externa de ambos extremos (coincidentes y no coincidentes). MySQL
                 <strong>no implementa de forma nativa</strong> esta composición. Sin
@@ -822,8 +658,7 @@ RIGHT JOIN departamento D ON E.codigo_departamento = D.codigo;</code></pre>
 
 </div>
                     <h3 id="a334-composiciones-externas-naturales-y-sus-riesgos">3.3.4
-                Composiciones Externas Naturales y sus Riesgos <a class="headerlink"
-                    href="#a334-composiciones-externas-naturales-y-sus-riesgos" title="Enlace permanente">¶</a></h3>
+                Composiciones Externas Naturales y sus Riesgos</h3>
                     <p>La instrucción NATURAL LEFT JOIN o NATURAL RIGHT JOIN asocia las
                 tablas buscando implícitamente columnas con nombres exactamente
                 idénticos en ambos extremos. <strong>Su uso en entornos corporativos
@@ -833,9 +668,7 @@ RIGHT JOIN departamento D ON E.codigo_departamento = D.codigo;</code></pre>
                 forma invisible e instantánea la condición de enlace del JOIN, rompiendo
                 la lógica de la aplicación.</p>
                     <h2 id="a34-gestion-de-tablas-de-distintas-bases-de-datos-en-el-mismo-servidor">3.4
-                Gestión de Tablas de Distintas Bases de Datos en el Mismo Servidor <a class="headerlink"
-                    href="#a34-gestion-de-tablas-de-distintas-bases-de-datos-en-el-mismo-servidor"
-                    title="Enlace permanente">¶</a></h2>
+                Gestión de Tablas de Distintas Bases de Datos en el Mismo Servidor</h2>
                     <p>Si el usuario de la conexión de base de datos posee los privilegios
                 globales necesarios (SELECT_PRIV), MySQL permite enlazar datos entre
                 esquemas distintos dentro de la misma instancia cualificando los objetos
@@ -856,22 +689,20 @@ ON F.codigo_articulo = I.id_articulo;</code></pre>
 
         <section>
             <details class="accordion" id="page-section-6">
-                <summary class="summary-title">4. CONSULTAS DE AGREGACIÓN Y RESUMEN</summary>
+                <summary class="summary-title">4. CONSULTAS DE AGREGACIÓN Y RESUMEN <a class="headerlink" href="#a4-consultas-de-agregacion-y-resumen" title="Enlace permanente">¶</a></summary>
                 <article class="box-card">
                     <h1 id="a4-consultas-de-agregacion-y-resumen">4. CONSULTAS DE AGREGACIÓN Y
-                RESUMEN <a class="headerlink" href="#a4-consultas-de-agregacion-y-resumen" title="Enlace permanente">¶</a>
+                RESUMEN
             </h1>
                     <p>Las consultas de resumen reducen la granularidad de los datos
                 individuales, transformando conjuntos masivos de filas en tuplas
                 analíticas consolidadas.</p>
-                    <h2 id="a41-funciones-de-agregacion">4.1 Funciones de Agregación <a class="headerlink"
-                    href="#a41-funciones-de-agregacion" title="Enlace permanente">¶</a></h2>
+                    <h2 id="a41-funciones-de-agregacion">4.1 Funciones de Agregación</h2>
                     <p>Las funciones de agregación operan sobre colecciones de valores de
                 una columna y devuelven un único valor escalar descriptivo del
                 conjunto.</p>
                     <h3 id="a411-comportamiento-y-diferencias-entre-count-y-countcolumna">4.1.1
-                Comportamiento y Diferencias entre COUNT(*) y COUNT(columna) <a class="headerlink"
-                    href="#a411-comportamiento-y-diferencias-entre-count-y-countcolumna" title="Enlace permanente">¶</a></h3>
+                Comportamiento y Diferencias entre COUNT(*) y COUNT(columna)</h3>
                     <ul>
                 <li>
                         <p>COUNT(*): Cuenta el número absoluto de filas físicas que componen el
@@ -895,8 +726,7 @@ los que no tengan NULL en esa columna</code></pre>
 
 </div>
                     <h3 id="a412-agregacion-de-valores-unicos-count-distinct">4.1.2 Agregación de
-                Valores Únicos (COUNT DISTINCT) <a class="headerlink"
-                    href="#a412-agregacion-de-valores-unicos-count-distinct" title="Enlace permanente">¶</a></h3>
+                Valores Únicos (COUNT DISTINCT)</h3>
                     <p>Permite omitir los valores duplicados antes de ejecutar la acción
                 aritmética de conteo de registros.</p>
                     <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -906,8 +736,7 @@ SELECT COUNT(DISTINCT pais) FROM cliente;</code></pre>
 
 </div>
                     <h3 id="a413-interaccion-de-las-funciones-de-agregacion-con-valores-nulos">4.1.3
-                Interacción de las Funciones de Agregación con Valores Nulos <a class="headerlink"
-                    href="#a413-interaccion-de-las-funciones-de-agregacion-con-valores-nulos" title="Enlace permanente">¶</a>
+                Interacción de las Funciones de Agregación con Valores Nulos
             </h3>
                     <p>Con la excepción de COUNT(*), todas las funciones de agregación (SUM,
                 AVG, MIN, MAX) <strong>ignoran por completo los valores NULL</strong>
@@ -921,13 +750,11 @@ SELECT AVG(comision) FROM empleado;</code></pre>
 
 </div>
                     <h2 id="a42-clausula-group-by-agrupamiento-de-registros">4.2 Cláusula GROUP
-                BY: Agrupamiento de Registros <a class="headerlink" href="#a42-clausula-group-by-agrupamiento-de-registros"
-                    title="Enlace permanente">¶</a></h2>
+                BY: Agrupamiento de Registros</h2>
                     <p>La cláusula GROUP BY subdivide el conjunto de datos de la tabla
                 original en pequeños subgrupos lógicos basados en el valor común de una
                 o más columnas especificadas.</p>
-                    <h3 id="a421-mecanica-de-particionado">4.2.1 Mecánica de Particionado <a class="headerlink"
-                    href="#a421-mecanica-de-particionado" title="Enlace permanente">¶</a></h3>
+                    <h3 id="a421-mecanica-de-particionado">4.2.1 Mecánica de Particionado</h3>
                     <p>Datos de entrada (Tabla Producto):<br>
                 [Gama: Htas, Precio: 10]<br>
                 [Gama: Htas, Precio: 20] GROUP BY Gama [Gama: Htas, Suma: 30]<br>
@@ -957,8 +784,7 @@ GROUP BY gama, codigo_fabricante;</code></pre>
                 consolidados <strong>después de que se ha ejecutado el agrupamiento
                     físico</strong> de los datos.</p>
                     <h3 id="a431-diferencias-criticas-de-procesamiento-where-vs-having">4.3.1
-                Diferencias Críticas de Procesamiento: WHERE vs. HAVING <a class="headerlink"
-                    href="#a431-diferencias-criticas-de-procesamiento-where-vs-having" title="Enlace permanente">¶</a></h3>
+                Diferencias Críticas de Procesamiento: WHERE vs. HAVING</h3>
                     <ul>
                 <li>
                         <p>WHERE: Se procesa <strong>antes</strong> de agrupar los datos (GROUP
@@ -1030,18 +856,17 @@ GROUP BY codigo_fabricante;</code></pre>
 
         <section>
             <details class="accordion" id="page-section-7">
-                <summary class="summary-title">5. SUBCONSULTAS (CONSULTAS ANIDADAS)</summary>
+                <summary class="summary-title">5. SUBCONSULTAS (CONSULTAS ANIDADAS) <a class="headerlink" href="#a5-subconsultas-consultas-anidadas" title="Enlace permanente">¶</a></summary>
                 <article class="box-card">
                     <h1 id="a5-subconsultas-consultas-anidadas">5. SUBCONSULTAS (CONSULTAS
-                ANIDADAS) <a class="headerlink" href="#a5-subconsultas-consultas-anidadas" title="Enlace permanente">¶</a>
+                ANIDADAS)
             </h1>
                     <p>Una subconsulta es una sentencia SELECT anidada dentro de otra
                 consulta de nivel superior (llamada consulta externa). Las subconsultas
                 permiten estructurar soluciones complejas sin requerir múltiples pasos o
                 llamadas desde el lenguaje de programación de backend.</p>
                     <h2 id="a51-introduccion-y-tipologia-de-subconsultas">5.1 Introducción y
-                Tipología de Subconsultas <a class="headerlink" href="#a51-introduccion-y-tipologia-de-subconsultas"
-                    title="Enlace permanente">¶</a></h2>
+                Tipología de Subconsultas</h2>
                     <p>Según el resultado que devuelve la consulta interna, las clasificamos
                 en:</p>
                     <ol type="1">
@@ -1067,7 +892,7 @@ GROUP BY codigo_fabricante;</code></pre>
                         href="https://dev.mysql.com/doc/refman/8.0/en/subqueries.html"><u>MySQL
                             Manual - Subquery Syntax</u></a>.</p>
                     <h2 id="a52-subconsultas-de-valor-escalar">5.2 Subconsultas de Valor
-                Escalar <a class="headerlink" href="#a52-subconsultas-de-valor-escalar" title="Enlace permanente">¶</a></h2>
+                Escalar</h2>
                     <p>Suelen acoplarse con operadores de comparación relacionales clásicos
                 en las cláusulas WHERE o HAVING.</p>
                     <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -1087,8 +912,7 @@ WHERE precio_venta = (SELECT MAX(precio_venta) FROM producto);</code></pre>
                     <h2 id="a5-3-subconsultas-de-fila-o-de-lista-multiples-filas">5.3
             Subconsultas de Fila o de Lista (Múltiples Filas)</h2>
                     <h4 id="a531-operadores-de-comparacion-con-conjuntos-in-y-not-in">5.3.1
-                Operadores de Comparación con Conjuntos: IN y NOT IN <a class="headerlink"
-                    href="#a531-operadores-de-comparacion-con-conjuntos-in-y-not-in" title="Enlace permanente">¶</a></h4>
+                Operadores de Comparación con Conjuntos: IN y NOT IN</h4>
                     <ul>
                 <li>
                         <p>IN: Evalúa si el atributo de la consulta externa coincide con alguno
@@ -1154,7 +978,7 @@ gama = 'Herramientas');</code></pre>
                     un solo registro con valor NULL, <strong>la consulta externa completa no
                         devolverá ninguna fila</strong>.</p>
                     <p>Esto se debe a que SQL evalúa la condición de exclusión como:</p>
-                    <p><img src="media_GBD_UT5_Teoria_Consultas/media/image2.png" alt="imagen" class="image-width-500">
+                    <p><img src="media_GBD_UT5_Teoria_Consultas/image2.png" alt="imagen" class="image-width-500">
             </p>
                     <p>Cualquier comparación de desigualdad física con NULL resulta en
                 UNKNOWN, invalidando toda la expresión lógica conectorizada con AND.
@@ -1257,8 +1081,7 @@ WHERE P_Int.gama = P_Ext.gama
                 href="https://dev.mysql.com/doc/refman/8.0/en/subquery-optimization.html"><u>MySQL
                     Manual - Optimizing Subqueries</u></a>
                     <h2 id="a56-comprobacion-de-existencia-exists-y-not-exists">5.6 Comprobación
-                de Existencia (EXISTS y NOT EXISTS) <a class="headerlink"
-                    href="#a56-comprobacion-de-existencia-exists-y-not-exists" title="Enlace permanente">¶</a></h2>
+                de Existencia (EXISTS y NOT EXISTS)</h2>
                     <p>El operador EXISTS devuelve TRUE si la subconsulta interna encuentra
                 al menos un registro que cumpla la condición. Es un operador altamente
                 optimizado por MySQL: una vez que el motor lo localiza, interrumpe
@@ -1290,8 +1113,7 @@ WHERE P.codigo_cliente = C.codigo_cliente
 </div>
                     <strong>Rendimiento:</strong>
                     <h2 id="a57-errores-comunes-de-execution-en-subconsultas">5.7 Errores
-                Comunes de Execution en Subconsultas <a class="headerlink"
-                    href="#a57-errores-comunes-de-execution-en-subconsultas" title="Enlace permanente">¶</a></h2>
+                Comunes de Execution en Subconsultas</h2>
                     <p><strong>Error 1242 (Subquery returns more than 1 row)</strong></p>
                     <p>Ocurre cuando una subconsulta asociada a un comparador unitario (como
                 =, &lt; o &gt;) devuelve dos o más registros en tiempo de ejecución de
@@ -1316,11 +1138,10 @@ FROM producto ORDER BY precio_venta DESC LIMIT 2);</code></pre>
 
         <section>
             <details class="accordion" id="page-section-8">
-                <summary class="summary-title">6. ERRORES COMUNES Y GUÍA DE BUENAS PRÁCTICAS</summary>
+                <summary class="summary-title">6. ERRORES COMUNES Y GUÍA DE BUENAS PRÁCTICAS <a class="headerlink" href="#a6-errores-comunes-y-guia-de-buenas-practicas" title="Enlace permanente">¶</a></summary>
                 <article class="box-card">
                     <h1 id="a6-errores-comunes-y-guia-de-buenas-practicas">6. ERRORES COMUNES Y
-                GUÍA DE BUENAS PRÁCTICAS <a class="headerlink" href="#a6-errores-comunes-y-guia-de-buenas-practicas"
-                    title="Enlace permanente">¶</a></h1>
+                GUÍA DE BUENAS PRÁCTICAS</h1>
                     <p>Para mantener un servidor MySQL con altas prestaciones bajo cargas de
                 trabajo corporativas, el Administrador de Sistemas debe vigilar el
                 comportamiento del DML:</p>
@@ -1366,11 +1187,10 @@ AND '2026-12-31'.</code></pre>
 
         <section>
             <details class="accordion" id="page-section-9">
-                <summary class="summary-title">7. ANEXO I: FUNCIONES DE MYSQL MÁS UTILIZADAS</summary>
+                <summary class="summary-title">7. ANEXO I: FUNCIONES DE MYSQL MÁS UTILIZADAS <a class="headerlink" href="#a7-anexo-i-funciones-de-mysql-mas-utilizadas" title="Enlace permanente">¶</a></summary>
                 <article class="box-card">
                     <h1 id="a7-anexo-i-funciones-de-mysql-mas-utilizadas">7. ANEXO I: FUNCIONES
-                DE MYSQL MÁS UTILIZADAS <a class="headerlink" href="#a7-anexo-i-funciones-de-mysql-mas-utilizadas"
-                    title="Enlace permanente">¶</a></h1>
+                DE MYSQL MÁS UTILIZADAS</h1>
                     <p>Este catálogo técnico detalla el comportamiento de las funciones
                 nativas indispensables para la transformación de datos directamente en
                 el motor de bases de datos.</p>
@@ -1379,7 +1199,7 @@ AND '2026-12-31'.</code></pre>
                     nativas de MySQL en <a href="https://dev.mysql.com/doc/refman/8.0/en/functions.html"><u>MySQL
                             Manual - Functions and Operators</u></a>.</p>
                     <h2 id="a71-funciones-de-cadenas-de-texto">7.1 Funciones de Cadenas de
-                Texto <a class="headerlink" href="#a71-funciones-de-cadenas-de-texto" title="Enlace permanente">¶</a></h2>
+                Texto</h2>
                     <ul>
                 <li></li>
             </ul>
@@ -1397,8 +1217,7 @@ SELECT TRIM(' Texto con espacios ') AS limpio;</code></pre>
                     <strong>Documentación Oficial:</strong>
                     <a href="https://dev.mysql.com/doc/refman/8.0/en/string-functions.html"><u>MySQL
                     Manual - String Functions</u></a>
-                    <h2 id="a72-funciones-matematicas">7.2 Funciones Matemáticas <a class="headerlink" href="#a72-funciones-matematicas"
-                    title="Enlace permanente">¶</a></h2>
+                    <h2 id="a72-funciones-matematicas">7.2 Funciones Matemáticas</h2>
                     <ul>
                 <li></li>
             </ul>
@@ -1413,8 +1232,7 @@ SELECT POW(2, 3) AS resultado_potencia;</code></pre>
                     <strong>Documentación Oficial:</strong>
                     <a href="https://dev.mysql.com/doc/refman/8.0/en/mathematical-functions.html"><u>MySQL
                     Manual - Numeric Functions</u></a>
-                    <h2 id="a73-funciones-de-fecha-y-hora">7.3 Funciones de Fecha y Hora <a class="headerlink"
-                    href="#a73-funciones-de-fecha-y-hora" title="Enlace permanente">¶</a></h2>
+                    <h2 id="a73-funciones-de-fecha-y-hora">7.3 Funciones de Fecha y Hora</h2>
                     <ul>
                 <li></li>
             </ul>
@@ -1432,8 +1250,7 @@ SELECT YEAR(fecha_esperada) AS anio_pedido FROM pedido;</code></pre>
                     <a href="https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html"><u>MySQL
                     Manual - Date and Time Functions</u></a>
                     <h2 id="a74-funciones-de-control-de-flujo-y-logica">7.4 Funciones de Control
-                de Flujo y Lógica <a class="headerlink" href="#a74-funciones-de-control-de-flujo-y-logica"
-                    title="Enlace permanente">¶</a></h2>
+                de Flujo y Lógica</h2>
                     <ul>
                 <li></li>
             </ul>
@@ -1456,10 +1273,9 @@ rango_precio FROM producto;</code></pre>
 
         <section>
             <details class="accordion" id="page-section-10">
-                <summary class="summary-title">8. ANEXO II: SCRIPT SQL</summary>
+                <summary class="summary-title">8. ANEXO II: SCRIPT SQL <a class="headerlink" href="#a8-anexo-ii-script-sql" title="Enlace permanente">¶</a></summary>
                 <article class="box-card">
-                    <h1 id="a8-anexo-ii-script-sql">8. ANEXO II: SCRIPT SQL <a class="headerlink" href="#a8-anexo-ii-script-sql"
-                    title="Enlace permanente">¶</a></h1>
+                    <h1 id="a8-anexo-ii-script-sql">8. ANEXO II: SCRIPT SQL</h1>
                     <p>Este script DDL y DML autoejecutable genera de forma íntegra el
                 esquema físico para que puedan probar la totalidad de consultas y
                 funciones explicadas en el tema.</p>

@@ -83,40 +83,11 @@
         </section>
 
         <section>
-            <details class="accordion" id="page-section-2">
-                <summary class="summary-title">Índice de Contenidos</summary>
-                <div class="box-card">
-                    <h3 id="indice-de-contenidos">ÍNDICE DE CONTENIDOS <a class="headerlink" href="#indice-de-contenidos" title="Enlace permanente">¶</a></h3>
-                    <p><a href="#a1-repaso-teorico"><u>1. Repaso Teórico: Programación en MySQL</u></a></p>
-                    <p><a href="#a10-directivas-basicas-y-variables"><u>1.1. Directivas Básicas y Tipos de Variables</u></a></p>
-                    <p><a href="#a11-procedimientos-almacenados-stored-procedures"><u>1.2. Procedimientos Almacenados (Stored Procedures)</u></a></p>
-                    <p><a href="#a12-funciones-almacenadas-stored-functions"><u>1.3. Funciones Almacenadas (Stored Functions)</u></a></p>
-                    <p><a href="#a13-estructuras-de-control-de-flujo"><u>1.4. Estructuras de Control de Flujo (Condicionales y Bucles)</u></a></p>
-                    <p><a href="#a14-cursores-procesamiento-secuencial"><u>1.5. Cursores (Procesamiento Secuencial de Filas)</u></a></p>
-                    <p><a href="#a15-control-de-excepciones-handlers-y-transacciones"><u>1.6. Control de Excepciones (Handlers) y Transacciones</u></a></p>
-                    <p><a href="#a16-disparadores-triggers"><u>1.7. Disparadores (Triggers)</u></a></p>
-                    <p><a href="#a17-casos-practicos-administracion-rutinas"><u>1.8. Casos Prácticos de Mantenimiento y Administración mediante Rutinas y Triggers</u></a></p>
-                    <p><a href="#a2-ventajas-de-la-programacion-en-la-administracion"><u>2. Ventajas de la programación en la administración</u></a></p>
-                    <p><a href="#a3-catalogo-del-sistema-metadatos"><u>3. Catálogo del Sistema (Metadatos)</u></a></p>
-                    <p><a href="#a31-informationschema-el-diccionario-de-datos"><u>3.1. information_schema (El Diccionario de Datos)</u></a></p>
-                    <p><a href="#a32-base-de-datos-mysql-el-repositorio-de-seguridad-y-privilegios"><u>3.2. Base de Datos mysql (El Repositorio de Seguridad y Privilegios)</u></a></p>
-                    <p><a href="#a33-base-de-datos-performanceschema"><u>3.3. Base de Datos performance_schema</u></a></p>
-                    <p><a href="#a34-base-de-datos-sys-la-abstraccion-simplificada"><u>3.4. Base de Datos sys (La Abstracción Simplificada)</u></a></p>
-                    <p><a href="#a4-automatizacion-mediante-scripts-externos-bash"><u>4. Automatización Mediante Scripts Externos (Bash)</u></a></p>
-                    <p><a href="#a5-ejemplos-practicos-de-scripts-de-administracion-sencillos-y-documentados"><u>5. Ejemplos Prácticos de Scripts de Administración (Sencillos y Documentados)</u></a></p>
-                </div>
-            </details>
-        </section>
-
-        <section>
             <details class="accordion" id="page-section-3">
-                <summary class="summary-title">1. Repaso Teórico: Programación en MySQL</summary>
+                <summary class="summary-title">1. Repaso <a class="headerlink" href="#a1-repaso-teorico" title="Enlace permanente">¶</a></summary>
                 <article class="box-card">
-                    <h1 id="a1-repaso-teorico">1. Repaso Teórico: Programación en MySQL<a class="headerlink" href="#a1-repaso-teorico"
-                    title="Enlace permanente">¶</a></h1>
                     <p>La administración moderna de bases de datos no se limita a ejecutar consultas interactivas. Para garantizar la eficiencia, seguridad y automatización, los SGBD permiten compilar y ejecutar lógica programada directamente en el servidor a través de procedimientos, funciones, cursores y disparadores.</p>
-                    <h2 id="a10-directivas-basicas-y-variables">1.1. Directivas Básicas y Tipos de Variables <a class="headerlink"
-                    href="#a10-directivas-basicas-y-variables" title="Enlace permanente">¶</a></h2>
+                    <h2 id="a10-directivas-basicas-y-variables">1.1. Directivas Básicas y Tipos de Variables</h2>
                     <ul>
                 <li>
                     <p><strong>Delimitador de Sentencias (<code>DELIMITER</code>):</strong> En MySQL, el terminador por defecto es el punto y coma (<code>;</code>). Al programar bloques de código con múltiples instrucciones internas, es obligatorio redefinir temporalmente este separador (habitualmente mediante <code>//</code> o <code>//</code>) para que el analizador no divida la rutina prematuramente.</p>
@@ -176,8 +147,7 @@ END //
 DELIMITER ;</code></pre>
             </div>
                     <h2 id="a11-procedimientos-almacenados-stored-procedures">1.2.
-                Procedimientos Almacenados (Stored Procedures) <a class="headerlink"
-                    href="#a11-procedimientos-almacenados-stored-procedures" title="Enlace permanente">¶</a></h2>
+                Procedimientos Almacenados (Stored Procedures)</h2>
                     <p>Son subprogramas que se compilan y almacenan en el SGBD. Permiten implementar operaciones complejas, modificar registros en múltiples tablas y ejecutar sentencias DDL (Data Definition Language) de forma dinámica.</p>
                     <ul>
                 <li>
@@ -252,8 +222,7 @@ CALL sp_admin_metricas_espacio_esquema('mysql', @total, @mb, @mayor_tabla);
 SELECT @total AS 'Tablas', @mb AS 'Megabytes', @mayor_tabla AS 'Tabla Mayor';</code></pre>
             </div>
                     <h2 id="a12-funciones-almacenadas-stored-functions">1.3. Funciones
-                Almacenadas (Stored Functions) <a class="headerlink" href="#a12-funciones-almacenadas-stored-functions"
-                    title="Enlace permanente">¶</a></h2>
+                Almacenadas (Stored Functions)</h2>
                     <p>A diferencia de los procedimientos, las funciones están diseñadas específicamente para <strong>calcular y devolver un único valor escalar</strong> (numérico, texto, fecha).</p>
                     <ul>
                 <li><p>Todos los parámetros recibidos son obligatoriamente de <strong>entrada</strong> (no se coloca la palabra <code>IN</code>).</p></li>
@@ -309,8 +278,7 @@ DELIMITER ;
 
 SELECT fn_sanitizar_identificador('Copia Seguridad_Producción 2026!') AS 'Identificador_Valido';</code></pre>
             </div>
-                    <h2 id="a13-estructuras-de-control-de-flujo">1.4. Estructuras de Control de Flujo (Condicionales y Bucles) <a class="headerlink"
-                    href="#a13-estructuras-de-control-de-flujo" title="Enlace permanente">¶</a></h2>
+                    <h2 id="a13-estructuras-de-control-de-flujo">1.4. Estructuras de Control de Flujo (Condicionales y Bucles)</h2>
                     <p>Permiten alterar el flujo secuencial de ejecución dentro de rutinas almacenadas:</p>
                     <ul>
                 <li>
@@ -494,8 +462,7 @@ DELIMITER ;
 CALL sp_sumar_alturas_repeat(1, 4.00, @altura_total, @num_jugadores);
 SELECT @altura_total AS 'Altura Acumulada (m)', @num_jugadores AS 'Jugadores Evaluados';</code></pre>
             </div>
-                    <h2 id="a14-cursores-procesamiento-secuencial">1.5. Cursores (Procesamiento Secuencial de Filas) <a class="headerlink"
-                    href="#a14-cursores-procesamiento-secuencial" title="Enlace permanente">¶</a></h2>
+                    <h2 id="a14-cursores-procesamiento-secuencial">1.5. Cursores (Procesamiento Secuencial de Filas)</h2>
                     <p>Los cursores permiten recorrer individualmente el conjunto de filas resultante de una consulta <code>SELECT</code>. En MySQL son de <strong>sólo lectura</strong> (<em>read-only</em>) y <strong>unidireccionales</strong> (<em>non-scrollable</em>).</p>
                     <p>Requieren completar cuatro fases obligatorias:</p>
                     <ol type="1">
@@ -566,8 +533,7 @@ BEGIN
 END //
 DELIMITER ;</code></pre>
             </div>
-                    <h2 id="a15-control-de-excepciones-handlers-y-transacciones">1.6. Control de Excepciones (Handlers) y Transacciones <a class="headerlink"
-                    href="#a15-control-de-excepciones-handlers-y-transacciones" title="Enlace permanente">¶</a></h2>
+                    <h2 id="a15-control-de-excepciones-handlers-y-transacciones">1.6. Control de Excepciones (Handlers) y Transacciones</h2>
                     <p>MySQL permite capturar incidencias en tiempo de ejecución mediante <code>DECLARE ... HANDLER</code>:</p>
                     <ul>
                 <li><strong>Acción del manejador:</strong> <code>CONTINUE</code> (ejecuta el bloque del handler y prosigue con la instrucción siguiente) o <code>EXIT</code> (ejecuta el handler y finaliza el bloque <code>BEGIN...END</code>).</li>
@@ -631,8 +597,7 @@ BEGIN
 END //
 DELIMITER ;</code></pre>
             </div>
-                    <h2 id="a16-disparadores-triggers">1.7. Disparadores (Triggers) <a class="headerlink"
-                    href="#a16-disparadores-triggers" title="Enlace permanente">¶</a></h2>
+                    <h2 id="a16-disparadores-triggers">1.7. Disparadores (Triggers)</h2>
                     <p>Un disparador es un bloque de código asociado a una tabla que se activa <strong>automáticamente</strong> en respuesta a un evento DML (<code>INSERT</code>, <code>UPDATE</code> o <code>DELETE</code>).</p>
                     <ul>
                 <li>
@@ -706,8 +671,7 @@ BEGIN
 END //
 DELIMITER ;</code></pre>
             </div>
-                    <h2 id="a17-casos-practicos-administracion-rutinas">1.8. Casos Prácticos de Mantenimiento y Administración mediante Rutinas y Triggers <a class="headerlink"
-                    href="#a17-casos-practicos-administracion-rutinas" title="Enlace permanente">¶</a></h2>
+                    <h2 id="a17-casos-practicos-administracion-rutinas">1.8. Casos Prácticos de Mantenimiento y Administración mediante Rutinas y Triggers</h2>
                     <p>En el trabajo cotidiano de un Administrador de Sistemas de Bases de Datos (DBA), los procedimientos, funciones y disparadores no se limitan a cálculos matemáticos; resuelven problemas de optimización física del almacenamiento, saneamiento por lotes y blindaje de seguridad interna:</p>
                     <h3 id="admin-caso-1-optimizacion-masiva">Caso 1 (Procedimiento): Desfragmentación y Optimización Masiva de Tablas</h3>
                     <p>Tras grandes operaciones de borrado o actualización, el espacio en disco queda fragmentado en los motores de almacenamiento (como InnoDB o MyISAM). Este procedimiento utiliza un cursor sobre el catálogo <code>information_schema.tables</code> y construye consultas preparadas dinámicas (<code>PREPARE / EXECUTE</code>) para desfragmentar de forma consecutiva todas las tablas de una base de datos específica:</p>
@@ -895,9 +859,8 @@ DELIMITER ;</code></pre>
 
         <section>
             <details class="accordion" id="page-section-4">
-                <summary class="summary-title">2. Ventajas de la programación en la administración</summary>
+                <summary class="summary-title">2. Ventajas <a class="headerlink" href="#a2-ventajas-de-la-programacion-en-la-administracion" title="Enlace permanente">¶</a></summary>
                 <article class="box-card">
-                    <h1 id="a2-ventajas-de-la-programacion-en-la-administracion">2. Ventajas de la programación en la administración <a class="headerlink" href="#a2-ventajas-de-la-programacion-en-la-administracion" title="Enlace permanente">¶</a></h1>
                     <p>El uso de estos elementos dentro del SGBD ofrece tres ventajas operativas críticas para un Administrador de Sistemas de Bases de Datos (ASGBD):</p>
                     <div class="table-wrapper">
                 <div class="table-wrapper">
@@ -935,12 +898,10 @@ DELIMITER ;</code></pre>
 
         <section>
             <details class="accordion" id="page-section-5">
-                <summary class="summary-title">3. Catálogo del Sistema (Metadatos)</summary>
+                <summary class="summary-title">3. Catálogo del Sistema <a class="headerlink" href="#a3-catalogo-del-sistema-metadatos" title="Enlace permanente">¶</a></summary>
                 <article class="box-card">
-                    <h1 id="a3-catalogo-del-sistema-metadatos">3. Catálogo del Sistema (Metadatos) <a class="headerlink" href="#a3-catalogo-del-sistema-metadatos" title="Enlace permanente">¶</a></h1>
                     <p>MySQL almacena la información sobre su propia estructura (metadatos) en esquemas específicos. Dominar estos catálogos es la herramienta más potente de un Administrador de Sistemas (SysAdmin), ya que permite auditar el servidor, monitorizar el almacenamiento y diagnosticar la degradación de rendimiento directamente mediante sentencias SQL.</p>
-                    <h2 id="a31-informationschema-el-diccionario-de-datos">3.1. information_schema (El Diccionario de Datos) <a class="headerlink"
-                    href="#a31-informationschema-el-diccionario-de-datos" title="Enlace permanente">¶</a></h2>
+                    <h2 id="a31-informationschema-el-diccionario-de-datos">3.1. information_schema (El Diccionario de Datos)</h2>
                     <p>Es una base de datos virtual de solo lectura definida por el estándar ANSI SQL. Actúa como el diccionario de datos del SGBD. No contiene archivos de datos físicos; en su lugar, MySQL genera sus tablas dinámicamente en memoria al consultarlas.</p>
                     <ul>
                 <li><p><strong>SCHEMATA:</strong> Información sobre las bases de datos existentes en el servidor (nombres, collation, etc.).</p></li>
@@ -976,8 +937,7 @@ WHERE tc.constraint_name IS NULL
 AND t.table_schema NOT IN ('information_schema', 'mysql', 'performance_schema', 'sys')
 AND t.table_type = 'BASE TABLE';</code></pre>
             </div>
-                    <h2 id="a32-base-de-datos-mysql-el-repositorio-de-seguridad-y-privilegios">3.2. Base de Datos mysql (El Repositorio de Seguridad y Privilegios) <a class="headerlink"
-                    href="#a32-base-de-datos-mysql-el-repositorio-de-seguridad-y-privilegios" title="Enlace permanente">¶</a></h2>
+                    <h2 id="a32-base-de-datos-mysql-el-repositorio-de-seguridad-y-privilegios">3.2. Base de Datos mysql (El Repositorio de Seguridad y Privilegios)</h2>
                     <p>A diferencia de information_schema, la base de datos mysql contiene tablas físicas persistentes en el disco. Es el núcleo de la seguridad y el control de accesos del servidor.</p>
                     <ul>
                 <li><p><strong>user:</strong> Cuentas de usuario, hosts autorizados, contraseñas cifradas y privilegios globales.</p></li>
@@ -996,8 +956,7 @@ password_lifetime AS 'Días de ciclo de vida'
 FROM mysql.user
 WHERE ssl_type != '' OR password_expired = 'Y' OR user != 'mysql.infoschema';</code></pre>
             </div>
-                    <h2 id="a33-base-de-datos-performanceschema">3.3. Base de Datos performance_schema <a class="headerlink"
-                    href="#a33-base-de-datos-performanceschema" title="Enlace permanente">¶</a></h2>
+                    <h2 id="a33-base-de-datos-performanceschema">3.3. Base de Datos performance_schema</h2>
                     <p>Se enfoca de forma estricta en el rendimiento y la instrumentación de recursos del servidor. Emplea <strong>Instrumentos</strong> (puntos de sondeo en el código fuente) y <strong>Consumidores</strong> (tablas en memoria de métricas agregadas).</p>
                     <ul>
                 <li><p><strong>events_statements_summary_by_digest:</strong> Estadísticas acumuladas por patrón de consulta SQL.</p></li>
@@ -1017,8 +976,7 @@ FROM performance_schema.events_errors_summary_by_user_by_error
 WHERE sum_error_raised > 0
 ORDER BY sum_error_raised DESC;</code></pre>
             </div>
-                    <h2 id="a34-base-de-datos-sys-la-abstraccion-simplificada">3.4. Base de Datos sys (La Abstracción Simplificada) <a class="headerlink"
-                    href="#a34-base-de-datos-sys-la-abstraccion-simplificada" title="Enlace permanente">¶</a></h2>
+                    <h2 id="a34-base-de-datos-sys-la-abstraccion-simplificada">3.4. Base de Datos sys (La Abstracción Simplificada)</h2>
                     <p>La complejidad de performance_schema dificulta su explotación diaria. El esquema sys proporciona vistas precalculadas y procedimientos para simplificar el diagnóstico rápido del rendimiento.</p>
                     <p><strong>Caso Práctico 5: Identificar las consultas SQL que provocan mayor latencia</strong></p>
                     <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
@@ -1049,9 +1007,8 @@ ORDER BY scans DESC;</code></pre>
 
         <section>
             <details class="accordion" id="page-section-6">
-                <summary class="summary-title">4. Automatización Mediante Scripts Externos (Bash)</summary>
+                <summary class="summary-title">4. Automatización con Scripts (Bash) <a class="headerlink" href="#a4-automatizacion-mediante-scripts-externos-bash" title="Enlace permanente">¶</a></summary>
                 <article class="box-card">
-                    <h1 id="a4-automatizacion-mediante-scripts-externos-bash">4. Automatización Mediante Scripts Externos (Bash) <a class="headerlink" href="#a4-automatizacion-mediante-scripts-externos-bash" title="Enlace permanente">¶</a></h1>
                     <p>La automatización de la administración se consolida al conectar el SGBD con el Sistema Operativo utilizando scripts de shell (Bash en Linux).</p>
                     <p>Para ejecutar consultas no interactivas se utiliza el cliente de MySQL con flags no interactivos:</p>
                     <p><code>mysql -u "usuario" -p"contraseña" -e "CONSULTA_SQL"</code></p>
@@ -1069,11 +1026,8 @@ BACKUP_DIR="/var/backups/mysql"</code></pre>
 
         <section>
             <details class="accordion" id="page-section-7">
-                <summary class="summary-title">5. Ejemplos Prácticos de Scripts de Administración (Sencillos y Documentados)</summary>
+                <summary class="summary-title">5. Ejemplos Prácticos <a class="headerlink" href="#a5-ejemplos-practicos-de-scripts-de-administracion-sencillos-y-documentados" title="Enlace permanente">¶</a></summary>
                 <article class="box-card">
-                    <h1 id="a5-ejemplos-practicos-de-scripts-de-administracion-sencillos-y-documentados">5. Ejemplos Prácticos de Scripts de Administración (Sencillos y Documentados) <a class="headerlink"
-                    href="#a5-ejemplos-practicos-de-scripts-de-administracion-sencillos-y-documentados"
-                    title="Enlace permanente">¶</a></h1>
                     <p>Scripts funcionales para tareas de administración operativa y mantenimiento automatizado en Linux/MySQL:</p>
                     <p><strong>Script 1: Comprobación de Salud del Servidor (Health Check)</strong></p>
                     <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
