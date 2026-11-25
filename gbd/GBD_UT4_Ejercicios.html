@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GBD - UT4 Actividades de Clase</title>
+  <link rel="stylesheet" href="../estilos.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="../script.js"></script>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-container">
+      <div class="header-bar">
+        <div class="site-title site-title-row">
+          <img src="logo.png" alt="Logo IES Celia Viñas" class="site-logo">
+          <span>GBD &ndash; UT4 Actividades de clase</span>
+        </div>
+        <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="7 7 12 12 17 7"></polyline><polyline points="7 13 12 18 17 13"></polyline></svg>
+          </button>
+          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(false)" title="Contraer todo" aria-label="Contraer todo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 17 12 12 7 17"></polyline></svg>
+          </button>
+          <button type="button" id="btn-pdf" class="btn-icon-header btn-pdf-accent" onclick="descargarPDF()" title="Descargar PDF" aria-label="Descargar PDF">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          </button>
+        </div>
+      </div>
+      <nav aria-label="Navegación por bloques temáticos" class="main-nav no-print">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Inicio</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section>
+      <header id="a5">
+        <h1 class="title" id="ut4-creacion-de-bases-de-datos-en-mysql-ddl">
+          <span id="a6" class="anchor"></span><br>
+          <br>
+          <strong>UT4 TAREA. CREACIÓN Y MODIFICACIÓN DE BASES DE DATOS EN MYSQL (DDL)</strong>
+        </h1>
+      </header>
+    </section>
+
+    <section>
+      <details class="accordion" id="page-section-1">
+        <summary class="summary-title">Ficha Técnica</summary>
+        <div class="box-card">
+          <h3 id="ficha-tecnica">FICHA TÉCNICA</h3>
+          <div class="table-wrapper">
+            <table>
+              <tbody>
+                <tr class="header">
+                  <td><strong>Unidad de Trabajo</strong></td>
+                  <td>UT4: Lenguaje de definición de datos (DDL) en MySQL</td>
+                </tr>
+                <tr class="odd">
+                  <td><strong>Resultado de Aprendizaje Asociado</strong></td>
+                  <td><strong>RA3:</strong> Realiza la estructura física de una base de datos utilizando lenguajes de definición de datos.</td>
+                </tr>
+                <tr class="header">
+                  <td><strong>Criterios de Evaluación</strong></td>
+                  <td>
+                    <p><strong>CE3.a:</strong> Se han identificado los tipos de datos disponibles en el SGBD de referencia.</p>
+                    <p><strong>CE3.b:</strong> Se han creado las tablas de la base de datos aplicando el lenguaje de definición de datos (DDL).</p>
+                    <p><strong>CE3.c:</strong> Se han definido las claves primarias, claves ajenas y sus comportamientos referenciales asociados.</p>
+                    <p><strong>CE3.d:</strong> Se han implementado restricciones semánticas adicionales de columna y tabla (<code>CHECK</code>, <code>UNIQUE</code>, <code>NOT NULL</code>).</p>
+                    <p><strong>CE3.e:</strong> Se han creado índices y vistas lógicas para optimizar el acceso y estructurar permisos.</p>
+                    <p><strong>CE3.f:</strong> Se han modificado y eliminado estructuras de la base de datos (<code>ALTER</code>, <code>DROP</code>).</p>
+                  </td>
+                </tr>
+                <tr class="odd">
+                  <td><strong>Tiempo Estimado</strong></td>
+                  <td>14 horas prácticas</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <section>
+      <details class="accordion" id="page-section-2">
+        <summary class="summary-title">Actividades de clase <a class="headerlink" href="#actividades-de-clase" title="Enlace permanente">¶</a></summary>
+
+        <article class="box-card">
+          <h1 id="actividades-de-clase">Actividades de clase</h1>
+          <nav id="a8" class="contents-panel" aria-label="Índice de apartados">
+            <h2 id="indice-de-apartados" class="heading-compact">Índice de apartados</h2>
+            <ul class="list-compact">
+              <li>
+                <a href="#bloque-1-ddl-basico-y-avanzado" class="link-primary">1. Creación y modificación de bases de datos en MySQL (DDL)</a>
+                <ul class="list-compact-nested">
+                  <li><a href="#b1-ej-1-3" class="link-muted">Ejercicios 1&ndash;3: Base de datos biblioteca</a></li>
+                  <li><a href="#b1-ej-4" class="link-muted">Ejercicio 4: Base de datos tienda_online</a></li>
+                  <li><a href="#b1-ej-5" class="link-muted">Ejercicio 5: Sistema para una universidad</a></li>
+                  <li><a href="#b1-ej-6-13" class="link-muted">Ejercicios 6&ndash;13: Sistema de reservas de hotel y modificaciones</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#bloque-2-albaran-y-pubs" class="link-primary">2. Análisis de documentos e implementación de esquemas</a>
+                <ul class="list-compact-nested">
+                  <li><a href="#b2-ej-1" class="link-muted">Ejercicio 1: Análisis, diseño y construcción de una BD de albaranes</a></li>
+                  <li><a href="#b2-ej-2-5" class="link-muted">Ejercicios 2&ndash;5: Base de datos de gestión de pubs</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#bloque-3-diseno-completo-sql" class="link-primary">3. Diseño completo: Diagrama E-R, paso a tablas y creación en MySQL</a>
+                <ul class="list-compact-nested">
+                  <li><a href="#b3-act-1" class="link-muted">Actividad 1: Informatización de una consultora</a></li>
+                  <li><a href="#b3-act-2" class="link-muted">Actividad 2: Gestión de empresa (administrativos y técnicos)</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#bloque-4-teoria-y-practica-mysql" class="link-primary">4. Cuestiones teóricas y práctica con MySQL</a>
+                <ul class="list-compact-nested">
+                  <li><a href="#b4-teoria" class="link-muted">4.1 Teoría (Preguntas 1&ndash;26)</a></li>
+                  <li><a href="#b4-practica" class="link-muted">4.2 Práctica con MySQL: Base de datos ventas</a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+
+          <p><strong>TODOS los ejercicios se resolverán y corregirán en clase, pero únicamente se entregarán a través de la plataforma aquellos que se indiquen expresamente.</strong></p>
+
+          <h2 id="bloque-1-ddl-basico-y-avanzado">1. Creación y modificación de bases de datos en MySQL (DDL)</h2>
+          <p><em><strong>NOTA:</strong> Las cadenas de texto serán de longitud 30 (<code>VARCHAR(30)</code>), excepto cuando sepamos o se indique expresamente la longitud.</em></p>
+
+          <div class="exercise-item" id="b1-ej-1-3">
+            <p><strong>Ejercicio 1.</strong> Crea una base de datos llamada <code>biblioteca</code> con las siguientes tablas:</p>
+            <ul>
+              <li><code>libros</code>: <code>id_libro</code> (clave primaria), <code>titulo</code>, <code>autor</code>, <code>año_publicacion</code> (tipo <code>YEAR</code>).</li>
+              <li><code>usuarios</code>: <code>id_usuario</code> (clave primaria), <code>nombre</code>, <code>email</code>, <code>fecha_registro</code>.</li>
+            </ul>
+
+            <p><strong>Ejercicio 2.</strong> A la tabla <code>libros</code> del ejercicio anterior, añade las columnas:</p>
+            <ul>
+              <li><code>editorial</code> (<code>VARCHAR(100)</code>).</li>
+              <li><code>precio</code> (<code>DECIMAL(10,2)</code>).</li>
+            </ul>
+
+            <p><strong>Ejercicio 3.</strong> Elimina la columna <code>año_publicacion</code> y renombra la tabla a <code>libros_disponibles</code>.</p>
+          </div>
+
+          <div class="exercise-item" id="b1-ej-4">
+            <p><strong>Ejercicio 4.</strong> Crea una base de datos <code>tienda_online</code> con estas tablas:</p>
+            <p><strong>Clientes:</strong></p>
+            <ul>
+              <li><code>id_cliente</code> (<code>INT</code>, <code>PK</code>, <code>AUTO_INCREMENT</code>)</li>
+              <li><code>dni</code> (<code>UNIQUE</code>, <code>NOT NULL</code>)</li>
+              <li><code>nombre</code> (<code>NOT NULL</code>)</li>
+              <li><code>fecha_nacimiento</code> (tiene que ser mayor de edad)</li>
+            </ul>
+            <p><strong>Productos:</strong></p>
+            <ul>
+              <li><code>id_producto</code> (<code>INT</code>, <code>PK</code>, <code>AUTO_INCREMENT</code>)</li>
+              <li><code>nombre</code> (<code>NOT NULL</code>)</li>
+              <li><code>categoria</code>: puede tomar los valores <code>'electrónica'</code>, <code>'ropa'</code>, <code>'alimentación'</code></li>
+              <li><code>precio</code> <code>DECIMAL(10,2)</code> (tiene que ser mayor de 0)</li>
+              <li><code>stock</code> <code>INT DEFAULT 0</code></li>
+            </ul>
+            <p><strong>Pedidos:</strong></p>
+            <ul>
+              <li><code>id_pedido</code> (<code>INT</code>, <code>PK</code>, <code>AUTO_INCREMENT</code>)</li>
+              <li><code>id_cliente</code> (<code>FK</code> a <code>clientes</code>)</li>
+              <li><code>fecha_pedido</code> (incluye la hora)</li>
+              <li><code>estado</code>: puede tomar los valores <code>'pendiente'</code>, <code>'enviado'</code>, <code>'entregado'</code></li>
+            </ul>
+          </div>
+
+          <div class="exercise-item" id="b1-ej-5">
+            <p><strong>Ejercicio 5.</strong> Crea un sistema para una universidad con:</p>
+            <ul>
+              <li>Tabla <code>carreras</code> (<code>id</code>, <code>nombre</code>, <code>duracion_años</code>)</li>
+              <li>Tabla <code>estudiantes</code> (<code>id</code>, <code>nombre</code>, <code>id_carrera</code>, <code>fecha_ingreso</code>)</li>
+              <li>Tabla <code>cursos</code> (<code>id</code>, <code>nombre</code>, <code>creditos</code>, <code>id_carrera</code>)</li>
+              <li>Tabla <code>matriculas</code> (<code>id_estudiante</code>, <code>id_curso</code>, <code>año</code>, <code>semestre</code>, <code>nota</code>)</li>
+            </ul>
+            <p><em>Implementa:</em></p>
+            <ul>
+              <li>Identifica las claves y <code>FK</code>. Clave primaria compuesta en <code>matriculas</code>.</li>
+              <li><code>ON DELETE CASCADE</code> para <code>estudiantes</code>&ndash;<code>carreras</code>.</li>
+              <li><code>ON UPDATE RESTRICT</code> para <code>cursos</code>&ndash;<code>carreras</code>.</li>
+              <li><code>CHECK (nota BETWEEN 0 AND 10)</code>.</li>
+            </ul>
+          </div>
+
+          <div class="exercise-item" id="b1-ej-6-13">
+            <p><strong>Ejercicio 6.</strong> Diseña e implementa una base de datos para un sistema de reservas de hotel que incluya:</p>
+            <ul>
+              <li>Tabla <code>hoteles</code> con información del hotel (<code>identificador</code>, <code>nombre</code>, <code>dirección</code>, <code>estrellas</code>).</li>
+              <li>Tabla <code>habitaciones</code> con: <code>id</code>, <code>tipo de habitación</code> (<code>individual</code>, <code>doble</code>, <code>suite</code>) y <code>precios por noche</code>.</li>
+              <li>Tabla <code>clientes</code> con: <code>id</code>, <code>nombre</code>, <code>apellidos</code>, <code>nif</code> y <code>preferencias</code> (texto corto).</li>
+              <li>Tabla <code>reservas</code> que registre: <code>cliente</code>, <code>habitación</code>, <code>fecha entrada</code>, <code>fecha de salida</code>, <code>estado de la reserva</code> (si está pagada o no).</li>
+              <li>Tabla <code>servicios adicionales</code> con: <code>id</code>, <code>tipo servicio</code> (<code>spa</code>, <code>restaurante</code>, <code>gimnasio</code>, <code>piscina</code>), <code>precio</code>.</li>
+            </ul>
+            <p><em>Restricciones a implementar:</em></p>
+            <ul>
+              <li>Una habitación no puede ser reservada dos veces en las mismas fechas.</li>
+              <li>Los precios deben ser positivos.</li>
+              <li>Las fechas de salida deben ser posteriores a las de entrada.</li>
+              <li>El campo <code>email</code> debe ser único por cliente.</li>
+            </ul>
+
+            <p><strong>Ejercicio 7.</strong> Añadir un campo llamado <code>descripción</code> para una información detallada del hotel (<code>TEXT</code>).</p>
+            <p><strong>Ejercicio 8.</strong> Añadir campos para guardar horarios oficiales de check-in y check-out en el hotel.</p>
+            <p><strong>Ejercicio 9.</strong> Modificar el campo <code>teléfono</code> para incluir código de país (<code>+34</code>).</p>
+            <p><strong>Ejercicio 10.</strong> Renombrar el campo <code>email</code> a <code>email_contacto</code>.</p>
+            <p><strong>Ejercicio 11.</strong> En la tabla <code>habitaciones</code> añadir un campo <code>en_mantenimiento</code> para indicar si está en mantenimiento o no. El valor por defecto será <code>FALSE</code>.</p>
+            <p><strong>Ejercicio 12.</strong> Añadir un campo para saber el número de planta, tener en cuenta que son valores muy pequeños.</p>
+            <p><strong>Ejercicio 13.</strong> Añadir un campo llamado <code>motivo_mantenimiento</code> para indicar si es por pintura, reparación, limpieza u otro motivo.</p>
+          </div>
+        </article>
+
+        <article class="box-card">
+          <h2 id="bloque-2-albaran-y-pubs">2. Análisis de documentos e implementación de esquemas</h2>
+
+          <div class="exercise-item" id="b2-ej-1">
+            <p><strong>Ejercicio 1.</strong> Analizar el siguiente albarán. El albarán o nota de entrega es un documento mercantil que acredita la entrega de un pedido. Al comprador le sirve para comprobar que lo que ha recibido coincide con lo que solicitó y verificarlo con la facturación del pedido cuando ésta sea posterior. Realizar todo el proceso de análisis, diseño y construcción de una base de datos para que pueda recoger toda la información necesaria para almacenar los albaranes de una empresa.</p>
+            <figure class="diagram-figure">
+              <img src="media_GBD_UT4_Ejercicios/albaran.png" alt="Modelo de albarán de Distribuciones del Centro S.A." class="responsive-diagram">
+            </figure>
+            <p><em>Nota:</em> La forma de pago puede ser en metálico o transferencia. Recargo Equivalencia es un tipo especial de impuesto que en algunos casos es necesario realizar.</p>
+          </div>
+
+          <div class="exercise-item" id="b2-ej-2-5">
+            <p><strong>Ejercicio 2.</strong> Disponemos de la siguiente Base de Datos para gestionar la información de los pubs de una determinada provincia:</p>
+            <figure class="diagram-figure">
+              <img src="media_GBD_UT4_Ejercicios/esquema_pubs.png" alt="Esquema relacional de la base de datos de pubs" class="responsive-diagram">
+            </figure>
+            <p>Se pide escribir los comandos SQL que permitan la creación de las tablas anteriores teniendo en cuenta las siguientes restricciones:</p>
+            <ul>
+              <li>No definir las <code>FOREIGN KEY</code> en la creación de las tablas.</li>
+              <li>Todos los valores son de tipo carácter excepto los campos <code>FECHA_APERTURA</code> (fecha), <code>CANTIDAD</code>, <code>PRECIO</code> y <code>COD_LOCALIDAD</code> (numéricos).</li>
+              <li>Los únicos campos que no son obligatorios son los campos <code>DOMICILIO</code>.</li>
+              <li>Los valores del campo <code>horario</code> sólo pueden ser <code>HOR1</code>, <code>HOR2</code> y <code>HOR3</code>.</li>
+              <li>No es posible dar de alta <code>EXISTENCIAS</code> a precio 0.</li>
+              <li>El campo <code>función</code> de la tabla <code>PUB_EMPLEADO</code> sólo puede tener los valores <code>CAMARERO</code>, <code>SEGURIDAD</code>, <code>LIMPIEZA</code>.</li>
+              <li>Las claves primarias vienen marcadas con el símbolo <code>#</code>.</li>
+            </ul>
+
+            <p><strong>Ejercicio 3.</strong> Se ha de mantener la integridad referencial entre las tablas. Modifica las tablas para añadir las <code>FOREIGN KEY</code>. Ejemplo:</p>
+            <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
+              <pre><code>ALTER TABLE existencias ADD CONSTRAINT fk_existencias_pub FOREIGN KEY (cod_pub) REFERENCES pub (cod_pub);</code></pre>
+            </div>
+
+            <p><strong>Ejercicio 4.</strong> El campo <code>Licencia_fiscal</code> de la tabla <code>pub</code> es un campo con valores únicos. Crea la sentencia correspondiente para modificar la tabla.</p>
+            <p><strong>Ejercicio 5.</strong> Cambia la longitud del campo <code>nombre</code> de la tabla <code>existencias</code>.</p>
+          </div>
+        </article>
+
+        <article class="box-card">
+          <h2 id="bloque-3-diseno-completo-sql">3. Diseño completo: Diagrama E-R, paso a tablas y creación en MySQL</h2>
+
+          <div class="exercise-item" id="b3-act-1">
+            <p><strong>ACTIVIDAD 1. Informatización de una consultora</strong></p>
+            <p>Diseñar una base de datos para informatizar una consultora, sabiendo que:</p>
+            <ul>
+              <li><strong>a)</strong> De cada empleado se desea almacenar su NIF, nombre y apellidos, fecha de nacimiento y titulación.</li>
+              <li><strong>b)</strong> Cada empleado pertenecerá a un solo departamento de la empresa. De cada departamento debemos registrar su código y nombre.</li>
+              <li><strong>c)</strong> Cada departamento tendrá, al menos, 3 empleados.</li>
+              <li><strong>d)</strong> Cada empleado trabajará en diferentes proyectos, de los que se almacenan su código y descripción.</li>
+              <li><strong>e)</strong> Cada vez que un empleado trabaje en un proyecto, es necesario almacenar la fecha de incorporación al mismo, así como si hace funciones de coordinación del mismo.</li>
+            </ul>
+            <p><em>Realiza:</em></p>
+            <ol>
+              <li>Diagrama E-R (entrega en formato digital).</li>
+              <li>Paso a tabla.</li>
+              <li>Creación en MySQL de las tablas. Deben declararse los campos con el tipo de datos más adecuado, las claves principales, claves foráneas y las restricciones más adecuadas sobre las columnas de la tabla.</li>
+            </ol>
+            <p><em>No se subirá ningún archivo; se entregará en el foro copiando y pegando la imagen, el paso a tablas y el script SQL.</em></p>
+          </div>
+
+          <div class="exercise-item" id="b3-act-2">
+            <p><strong>ACTIVIDAD 2. Gestión de empresa (administrativos y técnicos)</strong></p>
+            <p>Dentro de nuestra empresa tenemos dos tipos de empleados: administrativos y técnicos. De todos los empleados tenemos un identificador, su nombre y apellidos, fecha de nacimiento, sueldo y su dirección de correo electrónico (si la tiene). De los técnicos necesitamos saber su nivel de estudios (<code>ESO</code>, <code>Bachillerato</code>, <code>CFGM</code>, <code>CFGS</code>, <code>Universitarios</code>). De los administrativos necesitamos saber su fecha de incorporación.</p>
+            <p>Los empleados pertenecen a un solo departamento. De los departamentos sabemos su código, formado por tres letras, y el nombre. Tenemos que saber la fecha de incorporación del empleado al departamento.</p>
+            <p>Los técnicos pueden trabajar en distintos proyectos con una fecha de asignación y fecha de cese. De los proyectos sabemos el identificador, nombre, fecha de inicio y fin del proyecto.</p>
+            <p><em>Realiza:</em></p>
+            <ol>
+              <li>Diagrama E-R (entrega en formato digital en alguna aplicación en PDF).</li>
+              <li>Paso a tabla (entrega en PDF). Justificar por qué cumple hasta la tercera forma normal.</li>
+              <li>Creación en MySQL de las tablas (entrega del script de sentencias SQL). Deben declararse los campos con el tipo de datos más adecuado, las claves principales, claves foráneas y las restricciones más adecuadas sobre las columnas de la tabla.</li>
+            </ol>
+          </div>
+        </article>
+
+        <article class="box-card">
+          <h2 id="bloque-4-teoria-y-practica-mysql">4. Cuestiones teóricas y práctica con MySQL</h2>
+
+          <h3 id="b4-teoria">4.1 Teoría</h3>
+          <ol>
+            <li>Defina brevemente el significado de las siglas <strong>SQL</strong>.</li>
+            <li>El lenguaje <strong>SQL</strong> se divide en tres partes <strong>DDL</strong>, <strong>DML</strong> y <strong>DCL</strong>. Defina brevemente en qué consiste cada una de las partes.</li>
+            <li>Defina brevemente qué es <strong>MySQL Server</strong>.</li>
+            <li>Defina brevemente qué es <strong>MySQL WorkBench</strong>.</li>
+            <li>Defina brevemente qué es <strong>phpMyAdmin</strong>.</li>
+            <li>Defina brevemente el significado de <strong>LAMP Stack</strong>.</li>
+            <li>Define para qué sirven las siguientes palabras reservadas de la creación de tablas en <strong>MySQL</strong>:
+              <ul>
+                <li><code>AUTO_INCREMENT</code></li>
+                <li><code>CHARACTER SET</code></li>
+                <li><code>COLLATE</code></li>
+                <li><code>ENGINE</code></li>
+              </ul>
+            </li>
+            <li>¿Qué diferencias existen entre los motores de almacenamiento <strong>InnoDB</strong> y <strong>MyISAM</strong> de <strong>MySQL</strong>? ¿Cuál de los dos es el que se usa por defecto?</li>
+            <li>¿Qué diferencia existe entre los set de caracteres <code>utf8</code> y <code>utf8mb4</code> en <strong>MySQL</strong>?</li>
+            <li>¿Qué diferencia hay entre los tipos de datos <code>VARCHAR</code> y <code>CHAR</code>?</li>
+            <li>¿Qué diferencia hay entre los tipos de datos <code>TEXT</code> y <code>BLOB</code>?</li>
+            <li>¿Qué diferencia hay entre los tipos de datos <code>DATETIME</code> y <code>TIMESTAMP</code>?</li>
+            <li>¿Qué diferencia hay entre <code>ENUM</code> y <code>SET</code>?</li>
+            <li>¿Qué tipo de dato usarías si necesitas almacenar un número real exacto sin redondeo?</li>
+            <li>Explica brevemente para qué sirven las cláusulas <code>ON DELETE</code> y <code>ON UPDATE</code>.</li>
+            <li>Explica brevemente para qué sirven las siguientes opciones que podemos usar junto a las cláusulas <code>ON DELETE</code> y <code>ON UPDATE</code>:
+              <ul>
+                <li><code>RESTRICT</code></li>
+                <li><code>CASCADE</code></li>
+                <li><code>SET NULL</code></li>
+                <li><code>NO ACTION</code></li>
+              </ul>
+            </li>
+            <li>¿Qué diferencia existe entre <code>TRUNCATE</code> y <code>DELETE</code>?</li>
+            <li>¿Para qué se utiliza el atributo <code>UNIQUE</code>?</li>
+            <li>¿Qué diferencia hay entre <code>INDEX</code> y <code>KEY</code>? ¿Para qué se utilizan?</li>
+            <li>¿Para qué se utiliza el atributo <code>ZEROFILL</code>?</li>
+            <li>¿Qué diferencia existe entre declarar una columna como <code>INT(11)</code> y <code>INT(11) ZEROFILL</code>?</li>
+            <li>¿Qué significan las llaves y los corchetes en la siguiente descripción de notación?
+              <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                <pre><code>CREATE {DATABASE | SCHEMA} [IF NOT EXISTS] nombre_base_datos;</code></pre>
+              </div>
+            </li>
+            <li>¿Qué comando tendría que escribir desde un terminal para conectarnos con el usuario <code>root</code> con contraseña <code>1234</code>, a un <strong>MySQL Server</strong> remoto que se está ejecutando en una máquina con la IP <code>10.10.1.5</code>?</li>
+            <li>¿Qué puerto es el que utiliza por defecto el servicio de <strong>MySQL Server</strong>?</li>
+            <li>Cuando instalamos <strong>MySQL Server</strong> está configurado por defecto para que sólo acepte conexiones locales y que no permita conexiones remotas. ¿Qué valor tendríamos que poner en la directiva de configuración <code>bind-address</code> para permitir conexiones remotas?
+              <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                <pre><code>[mysqld]
+bind-address = 127.0.0.1</code></pre>
+              </div>
+            </li>
+            <li>Los usuarios de <strong>MySQL Server</strong> se almacenan en la tabla <code>mysql.user</code>. La clave primaria de esta tabla está formada por los valores <code>user</code> y <code>host</code>, de modo que cada fila vendrá identificada por un nombre de usuario y el host desde el que puede conectarse. Según la siguiente tabla, ¿desde qué máquinas se podrá conectar el usuario <code>root@'%'</code>?
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr class="header">
+                      <th>user</th>
+                      <th>host</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>root</code></td>
+                      <td><code>%</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>root</code></td>
+                      <td><code>localhost</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>debian-sys-maint</code></td>
+                      <td><code>localhost</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>mysql.session</code></td>
+                      <td><code>localhost</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>mysql.sys</code></td>
+                      <td><code>localhost</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </li>
+          </ol>
+
+          <h3 id="b4-practica">4.2 Práctica con MySQL: Base de datos <code>ventas</code></h3>
+          <p>Ejecute el siguiente script para crear una base de datos llamada <code>ventas</code>:</p>
+          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
+            <pre><code>DROP DATABASE IF EXISTS ventas;
+CREATE DATABASE ventas CHARACTER SET latin1;
+USE ventas;
+
+CREATE TABLE cliente (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(25),
+  primer_apellido VARCHAR(15) NOT NULL,
+  ciudad VARCHAR(100),
+  categoria INT UNSIGNED
+);
+
+CREATE TABLE comercial (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL,
+  apellido1 VARCHAR(100) NOT NULL,
+  apellido2 VARCHAR(100),
+  ciudad VARCHAR(100),
+  comision FLOAT
+);</code></pre>
+          </div>
+
+          <ol>
+            <li>Una vez que ha ejecutado el script y ha creado la base de datos en MySQL Server, ¿qué sentencia SQL debería ejecutar para modificar el encoding de la base de datos y utilizar <code>utf8mb4</code> en lugar de <code>latin1</code>?</li>
+            <li>Modifique la columna <code>nombre</code> de la tabla <code>cliente</code> para que pueda almacenar cadenas de hasta <code>100</code> caracteres y para que no pueda ser <code>NULL</code>.</li>
+            <li>¿Qué comando puede ejecutar para comprobar que el cambio que se ha realizado en el paso anterior se ha ejecutado correctamente?</li>
+            <li>Modifique el nombre de la columna <code>primer_apellido</code> y asígnele <code>apellido1</code>. También tendrá que permitir que pueda almacenar hasta <code>100</code> caracteres y que no pueda ser un valor <code>NULL</code>.</li>
+            <li>Añada una nueva columna a la tabla <code>cliente</code> para poder almacenar el segundo apellido. La columna se debe llamar <code>apellido2</code>, debe estar entre la columna <code>apellido1</code> y <code>ciudad</code>, puede almacenar hasta <code>100</code> caracteres y puede ser <code>NULL</code>.</li>
+            <li>Elimine la columna <code>categoria</code> de la tabla <code>cliente</code>.</li>
+            <li>Modifique la columna <code>comision</code> de la tabla <code>comercial</code> para que almacene por defecto el valor <code>10</code>.</li>
+          </ol>
+
+        
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col"><strong>Nota:</strong> Todos los ejercicios se resolverán y corregirán en clase, pero únicamente se entregarán a través de la plataforma aquellos que se indiquen expresamente. Recuerda probar todos tus scripts DDL en MySQL, verificar que no producen errores de sintaxis ni de integridad referencial y documentar cualquier restricción de negocio adicional.</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <p class="footer-text">Curso 2026/2027</p>
+    </div>
+  </footer>
+</body>
+
+</html>

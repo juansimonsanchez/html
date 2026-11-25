@@ -955,7 +955,7 @@ function descargarPDF() {
 const ASISTENTE_CONFIG = {
     url: 'http://localhost:11434/api/chat',
     urlEstado: 'http://localhost:11434/api/tags', // se usa para comprobar si Ollama está disponible
-    modelo: 'gemma4-16k:latest',
+    modelo: 'gemma4:e4b',
     intervaloComprobacion: 30000, // ms entre comprobaciones de disponibilidad
     maxCaracteresContexto: 30000, // ~8k tokens, cabe en un contexto de 16k
     temperatura: 0.2,             // baja = se ciñe más al texto y divaga menos
