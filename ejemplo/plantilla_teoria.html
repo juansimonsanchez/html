@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MÓDULO - UTX Teoría (Plantilla de Estilos)</title>
+    <!-- Rutas relativas desde una subcarpeta (ej. ejemplo/, gbd/, ogs/, apl/) -->
+    <link rel="stylesheet" href="../estilos.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="../script.js"></script>
+    <!-- Opcional para laboratorios interactivos externos: <script src="laboratorios_utX.js" defer></script> -->
+</head>
+
+<body>
+    <!-- ======================================================================
+         1. CABECERA (.site-header) Y NAVEGACIÓN (.main-nav)
+         - script.js mueve automáticamente el enlace "Inicio" a .header-actions (.btn-home)
+         - script.js genera automáticamente los enlaces de .nav-list a partir de cada
+           <details> de primer nivel dentro de <main> (excepto Ficha Técnica e Índice)
+         ====================================================================== -->
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-bar">
+                <div class="site-title site-title-row">
+                    <img src="../logo.png" alt="Logo IES Celia Viñas" class="site-logo">
+                    <span>MÓDULO &ndash; UTX Plantilla de Teoría</span>
+                </div>
+
+                <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
+                    <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <polyline points="7 7 12 12 17 7"></polyline>
+                            <polyline points="7 13 12 18 17 13"></polyline>
+                        </svg>
+                    </button>
+                    <button type="button" class="btn-icon-header" onclick="toggleAllDetails(false)" title="Contraer todo" aria-label="Contraer todo">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <polyline points="17 11 12 6 7 11"></polyline>
+                            <polyline points="17 17 12 12 7 17"></polyline>
+                        </svg>
+                    </button>
+                    <button type="button" id="btn-pdf" class="btn-icon-header btn-pdf-accent" onclick="descargarPDF()" title="Descargar PDF" aria-label="Descargar PDF">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <nav aria-label="Navegación por bloques temáticos" class="main-nav no-print">
+                <ul class="nav-list">
+                    <li><a href="../index.html" class="nav-link">Inicio</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ======================================================================
+         2. CONTENIDO PRINCIPAL (<main class="main-content">)
+         ====================================================================== -->
+    <main class="main-content">
+
+        <!-- TÍTULO PRINCIPAL DE LA UNIDAD -->
+        <section>
+            <header>
+                <h1 class="title h1-tight" id="unidad-x-plantilla-de-teoria">
+                    <span id="a0" class="anchor"></span>
+                    UNIDAD X<br>
+                    PLANTILLA DE TEORÍA Y CATÁLOGO DE ESTILOS
+                </h1>
+            </header>
+        </section>
+
+        <!-- ==================================================================
+             FICHA TÉCNICA
+             - script.js detecta un <summary> que empiece por "Ficha", convierte el
+               <details> en .ficha-tecnica.card siempre abierta, extrae Unidad, Tiempo,
+               RA y CE a badges/tarjetas (.badge-group, .ficha-grid, .sub-box, .ce-list)
+               y deja las filas adicionales en .ficha-extra.
+             ================================================================== -->
+        <section>
+            <details class="accordion" id="page-section-1">
+                <summary class="summary-title">Ficha Técnica</summary>
+                <div class="box-card">
+                    <h3 id="ficha-tecnica-de-la-unidad-didactica">FICHA TÉCNICA DE LA UNIDAD DIDÁCTICA</h3>
+                    <div class="table-wrapper">
+                        <table>
+                            <tbody>
+                                <tr class="header">
+                                    <td><strong>Unidad de Trabajo</strong></td>
+                                    <td>UTX: Título descriptivo de la unidad de trabajo</td>
+                                </tr>
+                                <tr class="odd">
+                                    <td><strong>Resultado de Aprendizaje Asociado</strong></td>
+                                    <td><strong>RA1:</strong> Describe aquí el resultado de aprendizaje oficial asociado a la unidad didáctica.</td>
+                                </tr>
+                                <tr class="header">
+                                    <td><strong>Criterios de Evaluación</strong></td>
+                                    <td>
+                                        <p><strong>CE1.a:</strong> Se han identificado los conceptos fundamentales y la arquitectura de la unidad.</p>
+                                        <p><strong>CE1.b:</strong> Se han aplicado los procedimientos, sintaxis y buenas prácticas descritas en los apuntes.</p>
+                                        <p><strong>CE1.c:</strong> Se han verificado los resultados mediante pruebas controladas y documentación técnica.</p>
+                                    </td>
+                                </tr>
+                                <tr class="odd">
+                                    <td><strong>Tiempo Estimado</strong></td>
+                                    <td>20 horas lectivas</td>
+                                </tr>
+                                <tr class="header">
+                                    <td><strong>Módulo / Curso</strong></td>
+                                    <td>Módulo Profesional &ndash; 1º / 2º Ciclo Formativo (fila extra conservada en <code>.ficha-extra</code>)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </details>
+        </section>
+
+        <!-- ==================================================================
+             SECCIÓN 1: INTRODUCCIÓN, TIPOGRAFÍA, AVISOS Y UTILIDADES
+             ================================================================== -->
+        <section>
+            <details class="accordion" open id="page-section-2">
+                <summary class="summary-title">1. Introducción, Tipografía y Avisos <a class="headerlink" href="#sec-1-introduccion" title="Enlace permanente">¶</a></summary>
+                <article class="box-card">
+                    <h1 id="sec-1-introduccion">1. Introducción, Tipografía y Avisos</h1>
+
+                    <p>
+                        Este documento sirve como <strong>plantilla base de apuntes teóricos</strong> y como página de verificación
+                        visual de todas las clases de <code>../estilos.css</code> y funcionalidades automáticas de <code>../script.js</code>.
+                        Observa que el <code>&lt;h1&gt;</code> interno dentro de <code>&lt;article&gt;</code> se integra automáticamente
+                        en el <code>&lt;summary&gt;</code> con la insignia numerada (<code>.sec-num</code>) y el icono desplegable
+                        (<code>.chevron-icon</code>).
+                    </p>
+
+                    <div class="doc-callout">
+                        <p>🔗 <strong>Aviso informativo (<code>.doc-callout</code>):</strong> Utiliza este bloque azul para enlazar documentación oficial, notas técnicas o referencias complementarias. Ejemplo: <a href="#sec-3-codigo" class="link-primary"><u>Ir a la sección de bloques de código</u></a>.</p>
+                    </div>
+
+                    <div class="alert-callout">
+                        <p>⚠️ <strong>Aviso crítico (<code>.alert-callout</code>):</strong> Utiliza este bloque rojo para advertencias importantes, errores frecuentes en producción o precauciones de seguridad.</p>
+                    </div>
+
+                    <h2 id="sec-1-1-jerarquia">1.1. Jerarquía de Encabezados y Listas <a class="headerlink" href="#sec-1-1-jerarquia" title="Enlace permanente">¶</a></h2>
+                    <h3>Encabezado de tercer nivel (h3)</h3>
+                    <h4>Encabezado de cuarto nivel (h4)</h4>
+                    <h5>Encabezado de quinto nivel (h5)</h5>
+                    <h6>Encabezado de sexto nivel (h6)</h6>
+
+                    <p>
+                        Ejemplo de formatos de texto en línea: <strong>negrita</strong>, <em>cursiva</em>, <u>subrayado</u>,
+                        código en línea <code>SELECT * FROM tabla;</code> y texto de alerta con <span class="text-danger">clase .text-danger</span>.
+                    </p>
+
+                    <ul>
+                        <li>Elemento de lista desordenada con código en línea: <code>li code</code>.</li>
+                        <li>
+                            Elemento con lista anidada:
+                            <ul>
+                                <li>Subelemento A con etiqueta <span class="label-info">.label-info</span>.</li>
+                                <li>Subelemento B con etiqueta <span class="tag label-info">.tag.label-info</span>.</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <ol>
+                        <li>Primer paso de un procedimiento ordenado.</li>
+                        <li>Segundo paso con enlace principal <a href="#sec-2-tablas" class="link-primary">.link-primary</a> y secundario <a href="#sec-4-multimedia" class="link-muted">.link-muted</a>.</li>
+                    </ol>
+
+                    <h2 id="sec-1-2-badges">1.2. Badges y Bloque Ligero <code>code.code-pre</code></h2>
+                    <div class="badge-group">
+                        <span class="badge badge-dark">.badge.badge-dark</span>
+                        <span class="badge badge-yellow">.badge.badge-yellow</span>
+                        <span class="badge badge-blue">.badge.badge-blue</span>
+                        <span class="tag label-info">.tag.label-info</span>
+                    </div>
+
+                    <p>Sintaxis destacada en fondo claro usando <code>&lt;code class="code-pre"&gt;</code>:</p>
+                    <p><code class="code-pre">CREATE TABLE ejemplo (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100) NOT NULL
+);</code></p>
+                </article>
+            </details>
+        </section>
+
+        <!-- ==================================================================
+             SECCIÓN 2: PANEL DE CONTENIDOS Y TABLAS
+             ================================================================== -->
+        <section>
+            <details class="accordion" id="page-section-3">
+                <summary class="summary-title">2. Panel de Contenidos y Tablas <a class="headerlink" href="#sec-2-tablas" title="Enlace permanente">¶</a></summary>
+                <article class="box-card">
+                    <h1 id="sec-2-tablas">2. Panel de Contenidos y Tablas</h1>
+
+                    <h2 id="sec-2-1-panel">2.1. Panel de Contenidos (<code>.contents-panel</code>)</h2>
+                    <nav class="contents-panel" aria-label="Índice rápido de apartados">
+                        <h3 class="heading-compact">Índice rápido de la unidad (<code>.heading-compact</code>)</h3>
+                        <ul class="list-compact">
+                            <li>
+                                <a href="#sec-1-introduccion" class="link-primary">1. Introducción, Tipografía y Avisos</a>
+                                <ul class="list-compact-nested">
+                                    <li><a href="#sec-1-1-jerarquia" class="link-muted">1.1. Jerarquía de Encabezados y Listas</a></li>
+                                    <li><a href="#sec-1-2-badges" class="link-muted">1.2. Badges y Bloque Ligero</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#sec-3-codigo" class="link-primary">3. Bloques de Código y Detección Automática</a></li>
+                            <li><a href="#sec-4-multimedia" class="link-primary">4. Acordeones Anidados, Imágenes y PDF</a></li>
+                            <li><a href="#sec-6-test" class="link-primary">6. Test y Comprobación de Funcionalidades JS</a></li>
+                        </ul>
+                    </nav>
+
+                    <h2 id="sec-2-2-tabla-estandar">2.2. Tabla con Cabecera, Anchos de Columna y Alineación</h2>
+                    <p>
+                        Combina <code>.table-wrapper</code>, <code>.table-width-97</code>, <code>.column-width-10</code> a
+                        <code>.column-width-40</code>, <code>.text-center</code>, <code>.text-left</code> y primera columna destacada
+                        automáticamente cuando contiene <code>&lt;strong&gt;</code>.
+                    </p>
+
+                    <div class="table-wrapper">
+                        <table class="table-width-97">
+                            <colgroup>
+                                <col class="column-width-10">
+                                <col class="column-width-20">
+                                <col class="column-width-30">
+                                <col class="column-width-40">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th class="text-center">ID</th>
+                                    <th>Clase CSS</th>
+                                    <th>Aplicación</th>
+                                    <th>Ejemplo / Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center"><strong>#01</strong></td>
+                                    <td class="text-left"><code>.column-width-20</code></td>
+                                    <td class="text-left">Primera celda con <code>&lt;strong&gt;</code> toma fondo azul suave.</td>
+                                    <td class="text-center"><span class="tag label-info">Activo</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">#02</td>
+                                    <td class="text-left"><code>.column-width-30</code></td>
+                                    <td class="text-left">Fila par con sombreado alterno automático y efecto hover.</td>
+                                    <td class="text-left">Alineación izquierda (<code>.text-left</code>)</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center">#03</td>
+                                    <td class="text-left"><code>.column-width-40</code></td>
+                                    <td class="text-left">Múltiples párrafos dentro de una celda se ajustan sin margen extra.</td>
+                                    <td class="text-left">
+                                        <p>Línea 1 de ejemplo.</p>
+                                        <p>Línea 2 de ejemplo.</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3 id="sec-2-3-tabla-50">2.3. Tabla Comparativa al 50% (<code>.column-width-50</code>)</h3>
+                    <div class="table-wrapper">
+                        <table>
+                            <colgroup>
+                                <col class="column-width-50">
+                                <col class="column-width-50">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>Ventajas</th>
+                                    <th>Limitaciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Diseño uniforme y responsivo en escritorio y móvil.</td>
+                                    <td>Requiere respetar la estructura semántica de etiquetas.</td>
+                                </tr>
+                                <tr>
+                                    <td>Exportación limpia a PDF e impresión A4 automática.</td>
+                                    <td>Los elementos interactivos se ocultan en impresión (<code>.no-print</code>).</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+            </details>
+        </section>
+
+        <!-- ==================================================================
+             SECCIÓN 3: BLOQUES DE CÓDIGO Y DETECCIÓN AUTOMÁTICA (script.js)
+             ================================================================== -->
+        <section>
+            <details class="accordion" id="page-section-4">
+                <summary class="summary-title">3. Bloques de Código y Detección Automática <a class="headerlink" href="#sec-3-codigo" title="Enlace permanente">¶</a></summary>
+                <article class="box-card">
+                    <h1 id="sec-3-codigo">3. Bloques de Código y Detección Automática</h1>
+                    <p>
+                        <code>script.js</code> envuelve automáticamente cada <code>&lt;pre&gt;&lt;code&gt;</code> dentro de
+                        <code>.code-wrapper</code>, detecta el lenguaje y añade los botones de <strong>Copiar</strong> y
+                        <strong>Descargar</strong> según el tipo de contenido.
+                    </p>
+
+                    <h2 id="sec-3-1-sql">3.1. SQL (auto-detectado <code>.sql</code> con descarga)</h2>
+                    <pre><code>-- Ejemplo de consulta DDL/DML en MySQL
+CREATE DATABASE IF NOT EXISTS academia
+    CHARACTER SET utf8mb4
+    COLLATE utf8mb4_unicode_ci;
+
+SELECT nombre, email
+FROM alumnos
+WHERE activo = 1
+ORDER BY nombre ASC;</code></pre>
+
+                    <h2 id="sec-3-2-python">3.2. Python (auto-detectado <code>.py</code> con descarga)</h2>
+                    <pre><code>#!/usr/bin/env python3
+def comprobar_servicio(nombre, puerto=80):
+    print(f"Verificando {nombre} en el puerto {puerto}...")
+    return True
+
+if __name__ == "__main__":
+    comprobar_servicio("nginx", 443)</code></pre>
+
+                    <h2 id="sec-3-3-bash">3.3. Script Bash completo (auto-detectado <code>.sh</code> con descarga)</h2>
+                    <pre><code>#!/bin/bash
+set -euo pipefail
+echo "Iniciando copia de seguridad..."
+tar -czf backup_$(date +%F).tar.gz /etc/nginx</code></pre>
+
+                    <h2 id="sec-3-4-terminal">3.4. Comandos de terminal (cabecera mínima <code>.code-header-minimal</code>, solo Copiar)</h2>
+                    <pre><code>sudo apt update
+sudo apt install -y nginx mysql-server
+sudo systemctl status nginx</code></pre>
+
+                    <h2 id="sec-3-5-html-css">3.5. Fragmento CSS / HTML (solo Copiar) y HTML completo (con Descargar)</h2>
+                    <pre><code>.tarjeta-destacada {
+    border: 1px solid #cbd5e1;
+    border-radius: 0.75rem;
+    padding: 1rem;
+}</code></pre>
+
+                    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Ejemplo Completo&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hola mundo&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+                    <h2 id="sec-3-6-personalizado">3.6. Nombre de archivo personalizado y bloque sin descarga (<code>data-no-download="true"</code>)</h2>
+                    <div class="code-wrapper">
+                        <div class="code-header">
+                            <span class="code-filename">configuracion_servidor.json</span>
+                        </div>
+                        <pre><code>{
+  "servidor": "iescelia-app",
+  "puerto": 8080,
+  "ssl": true
+}</code></pre>
+                    </div>
+
+                    <pre data-no-download="true"><code>Salida esperada en consola (bloque sin botón de descarga):
+[OK] Servicio iniciado correctamente en http://localhost:8080</code></pre>
+                </article>
+            </details>
+        </section>
+
+        <!-- ==================================================================
+             SECCIÓN 4: ACORDEONES ANIDADOS, IMÁGENES Y VISOR PDF
+             ================================================================== -->
+        <section>
+            <details class="accordion" id="page-section-5">
+                <summary class="summary-title">4. Acordeones Anidados, Imágenes y Visor PDF <a class="headerlink" href="#sec-4-multimedia" title="Enlace permanente">¶</a></summary>
+                <article class="box-card">
+                    <h1 id="sec-4-multimedia">4. Acordeones Anidados, Imágenes y Visor PDF</h1>
+
+                    <h2 id="sec-4-1-anidado">4.1. Acordeón Anidado (<code>&lt;details&gt;</code> interno)</h2>
+                    <p>Los <code>&lt;details&gt;</code> internos conservan el triángulo clásico <code>▼</code> y no se añaden a la barra de navegación superior:</p>
+                    <details>
+                        <summary>Ver ampliación o ejemplo adicional</summary>
+                        <div class="box-card">
+                            <p>Contenido desplegable secundario útil para notas ampliadas, demostraciones paso a paso o soluciones colapsables.</p>
+                        </div>
+                    </details>
+
+                    <h2 id="sec-4-2-imagenes">4.2. Clases de Escalado de Imágenes (<code>.image-width-100</code> a <code>.image-width-800</code>)</h2>
+                    <p>
+                        Las imágenes dentro de <code>.main-content</code> se centran automáticamente y mantienen su relación de aspecto.
+                        Clases disponibles: <code>.image-width-100</code>, <code>.image-width-200</code>, <code>.image-width-300</code>,
+                        <code>.image-width-400</code>, <code>.image-width-500</code>, <code>.image-width-600</code>,
+                        <code>.image-width-700</code> y <code>.image-width-800</code>.
+                    </p>
+                    <figure>
+                        <img src="../logo.png" alt="Ejemplo de imagen con .image-width-100" class="image-width-100">
+                        <figcaption class="text-center">Ejemplo con <code>.image-width-100</code></figcaption>
+                    </figure>
+                    <figure>
+                        <img src="../logo.png" alt="Ejemplo de imagen con .image-width-200" class="image-width-200">
+                        <figcaption class="text-center">Ejemplo con <code>.image-width-200</code></figcaption>
+                    </figure>
+
+                    <h2 id="sec-4-3-pdf">4.3. Contenedor de Visor PDF Embebido (<code>.pdf-embed-shell</code> y <code>.pdf-embed</code>)</h2>
+                    <div class="pdf-embed-shell">
+                        <iframe class="pdf-embed" title="Vista previa del visor PDF embebido" srcdoc="<!DOCTYPE html><html lang='es'><body style='font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:90vh;margin:0;background:#f1f5f9;color:#334155;text-align:center;padding:1rem;'><div><strong>Contenedor .pdf-embed-shell + iframe.pdf-embed</strong><br><small>Sustituye srcdoc por src=&quot;documento.pdf&quot; para incrustar un PDF real.</small></div></body></html>"></iframe>
+                    </div>
+                </article>
+            </details>
+        </section>
+
+        <!-- ==================================================================
+             SECCIÓN 5: PANEL DE RECURSOS (.resource-panel)
+             ================================================================== -->
+        <section>
+            <details class="accordion" id="page-section-6">
+                <summary class="summary-title">5. Panel de Recursos y Enlaces <a class="headerlink" href="#sec-5-recursos" title="Enlace permanente">¶</a></summary>
+                <article class="box-card">
+                    <h1 id="sec-5-recursos">5. Panel de Recursos y Enlaces</h1>
+                    <article class="resource-panel">
+                        <h2>Material Complementario de la Unidad</h2>
+                        <ul class="resource-list">
+                            <li class="resource-item">
+                                <a href="plantilla_ejercicios.html" class="resource-link">🛠️ Plantilla de Ejercicios y Actividades (.resource-link)</a>
+                            </li>
+                            <li class="resource-item">
+                                <a href="../index.html" class="resource-link">📚 Índice General de Módulos (.resource-link)</a>
+                            </li>
+                        </ul>
+                        <p><a href="../index.html" class="module-link">Volver al portal del módulo (.module-link) &rarr;</a></p>
+                    </article>
+                </article>
+            </details>
+        </section>
+
+        <!-- ==================================================================
+             SECCIÓN 6: TEST Y COMPROBACIÓN DE FUNCIONALIDADES JS
+             - Al contener la palabra "Test" en el <summary>, script.js aplica
+               automáticamente .nav-link-test al enlace de la barra superior.
+             ================================================================== -->
+        <section>
+            <details class="accordion" id="page-section-7">
+                <summary class="summary-title">6. Test y Comprobación de Funcionalidades JS <a class="headerlink" href="#sec-6-test" title="Enlace permanente">¶</a></summary>
+                <article class="box-card">
+                    <h1 id="sec-6-test">6. Test y Comprobación de Funcionalidades JS</h1>
+                    <p>
+                        Esta sección incluye la palabra <strong>Test</strong> en su título para verificar el estilo destacado
+                        <code>.nav-link-test</code> en la barra de navegación superior. Además, permite comprobar las utilidades
+                        de <code>../script.js</code>:
+                    </p>
+                    <ul>
+                        <li><strong>Navegación superior automática:</strong> generada a partir de cada <code>&lt;details&gt;</code> principal.</li>
+                        <li><strong>Botón Inicio en cabecera:</strong> movido automáticamente a <code>.header-actions</code> como <code>.btn-home</code>.</li>
+                        <li><strong>Botón flotante Subir (<code>#btn-scroll-top</code>):</strong> visible en la esquina inferior derecha.</li>
+                        <li><strong>Asistente IA flotante (<code>#assist-btn</code> / <code>#assist-panel</code>):</strong> visible en la esquina inferior izquierda (comprueba Ollama local).</li>
+                        <li><strong>Notificación Toast (<code>.page-toast</code>):</strong> se muestra al copiar o descargar código, o pulsando el botón siguiente:</li>
+                    </ul>
+                    <p>
+                        <button type="button" class="btn-code-action" onclick="showToast('Notificación .page-toast verificada correctamente')">
+                            Probar notificación showToast()
+                        </button>
+                    </p>
+
+                    <!-- Ejemplo de tarjeta independiente .ficha-tecnica-card (detectada por script.js al empezar por "Ficha") -->
+                    <div class="box-card">
+                        <h4>Ficha de Verificación de Exportación</h4>
+                        <p>
+                            Este bloque demuestra el estilo <code>.ficha-tecnica-card</code> aplicado automáticamente por
+                            <code>script.js</code> cuando un encabezado dentro de <code>.box-card</code> comienza por «Ficha».
+                        </p>
+                    </div>
+                </article>
+            </details>
+        </section>
+
+    </main>
+
+    <!-- ======================================================================
+         3. PIE DE PÁGINA (<footer> -> script.js añade .site-footer)
+         ====================================================================== -->
+    <footer>
+        <div class="footer-container">
+            <p class="footer-text">Curso 2026/2027</p>
+        </div>
+    </footer>
+</body>
+
+</html>

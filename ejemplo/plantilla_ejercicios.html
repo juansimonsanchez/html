@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MÓDULO - UTX Ejercicios y Actividades (Plantilla de Estilos)</title>
+    <!-- Rutas relativas desde una subcarpeta (ej. ejemplo/, gbd/, ogs/, apl/) -->
+    <link rel="stylesheet" href="../estilos.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="../script.js"></script>
+</head>
+
+<body>
+    <!-- ======================================================================
+         1. CABECERA (.site-header) Y NAVEGACIÓN (.main-nav)
+         ====================================================================== -->
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-bar">
+                <div class="site-title site-title-row">
+                    <img src="../logo.png" alt="Logo IES Celia Viñas" class="site-logo">
+                    <span>MÓDULO &ndash; UTX Plantilla de Ejercicios</span>
+                </div>
+
+                <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
+                    <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <polyline points="7 7 12 12 17 7"></polyline>
+                            <polyline points="7 13 12 18 17 13"></polyline>
+                        </svg>
+                    </button>
+                    <button type="button" class="btn-icon-header" onclick="toggleAllDetails(false)" title="Contraer todo" aria-label="Contraer todo">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <polyline points="17 11 12 6 7 11"></polyline>
+                            <polyline points="17 17 12 12 7 17"></polyline>
+                        </svg>
+                    </button>
+                    <button type="button" id="btn-pdf" class="btn-icon-header btn-pdf-accent" onclick="descargarPDF()" title="Descargar PDF" aria-label="Descargar PDF">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <nav aria-label="Navegación por bloques temáticos" class="main-nav no-print">
+                <ul class="nav-list">
+                    <li><a href="../index.html" class="nav-link">Inicio</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ======================================================================
+         2. CONTENIDO PRINCIPAL (<main class="main-content">)
+         ====================================================================== -->
+    <main class="main-content">
+
+        <!-- TÍTULO PRINCIPAL DE LA RELACIÓN DE EJERCICIOS -->
+        <section>
+            <header>
+                <h1 class="title h1-tight" id="utx-ejercicios-y-actividades">
+                    <span id="a0" class="anchor"></span>
+                    <strong>UTX TAREA Y ACTIVIDADES DE CLASE (PLANTILLA DE EJERCICIOS)</strong>
+                </h1>
+            </header>
+        </section>
+
+        <!-- ==================================================================
+             FICHA TÉCNICA DE LA ACTIVIDAD
+             ================================================================== -->
+        <section>
+            <details class="accordion" id="page-section-1">
+                <summary class="summary-title">Ficha Técnica</summary>
+                <div class="box-card">
+                    <h3 id="ficha-tecnica">FICHA TÉCNICA DE LA ACTIVIDAD</h3>
+                    <div class="table-wrapper">
+                        <table>
+                            <tbody>
+                                <tr class="header">
+                                    <td><strong>Unidad de Trabajo</strong></td>
+                                    <td>UTX: Relación de ejercicios prácticos y actividades evaluables</td>
+                                </tr>
+                                <tr class="odd">
+                                    <td><strong>Resultado de Aprendizaje Asociado</strong></td>
+                                    <td><strong>RA2:</strong> Aplica los conocimientos teóricos de la unidad resolviendo supuestos prácticos reales.</td>
+                                </tr>
+                                <tr class="header">
+                                    <td><strong>Criterios de Evaluación</strong></td>
+                                    <td>
+                                        <p><strong>CE2.a:</strong> Se han analizado los requisitos del enunciado y diseñado una solución adecuada.</p>
+                                        <p><strong>CE2.b:</strong> Se ha implementado el código o la configuración respetando las restricciones indicadas.</p>
+                                        <p><strong>CE2.c:</strong> Se han verificado los resultados mediante pruebas y capturas documentadas.</p>
+                                    </td>
+                                </tr>
+                                <tr class="odd">
+                                    <td><strong>Tiempo Estimado</strong></td>
+                                    <td>10 horas prácticas</td>
+                                </tr>
+                                <tr class="header">
+                                    <td><strong>Herramientas</strong></td>
+                                    <td>Visual Studio Code, terminal Linux, SGBD / intérprete correspondiente</td>
+                                </tr>
+                                <tr class="odd">
+                                    <td><strong>Formato de Entrega</strong></td>
+                                    <td>Archivo <code>Apellido_Nombre_UTX.zip</code> con scripts y memoria en PDF</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </details>
+        </section>
+
+        <!-- ==================================================================
+             SECCIÓN 1: ÍNDICE DE BLOQUES E INSTRUCCIONES GENERALES
+             ================================================================== -->
+        <section>
+            <details class="accordion" open id="page-section-2">
+                <summary class="summary-title">1. Instrucciones e Índice de Ejercicios <a class="headerlink" href="#sec-1-instrucciones" title="Enlace permanente">¶</a></summary>
+                <article class="box-card">
+                    <h1 id="sec-1-instrucciones">1. Instrucciones e Índice de Ejercicios</h1>
+
+                    <nav class="contents-panel" aria-label="Índice de apartados">
+                        <h2 id="indice-de-apartados" class="heading-compact">Índice de bloques y ejercicios</h2>
+                        <ul class="list-compact">
+                            <li>
+                                <a href="#bloque-1-ejercicios-guiados" class="link-primary">2. Bloque 1: Ejercicios guiados y código base</a>
+                                <ul class="list-compact-nested">
+                                    <li><a href="#ej-1" class="link-muted">Ejercicio 1: Creación y estructura inicial</a></li>
+                                    <li><a href="#ej-2" class="link-muted">Ejercicio 2: Script con validaciones</a></li>
+                                    <li><a href="#ej-3" class="link-muted">Ejercicio 3: Comandos de comprobación en consola</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#bloque-2-casos-practicos" class="link-primary">3. Bloque 2: Análisis de esquemas y tablas</a>
+                                <ul class="list-compact-nested">
+                                    <li><a href="#ej-4" class="link-muted">Ejercicio 4: Diseño a partir de diagrama</a></li>
+                                    <li><a href="#ej-5" class="link-muted">Ejercicio 5: Especificación de requisitos en tabla</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#bloque-3-test-repaso" class="link-primary">4. Cuestiones teóricas y Test de repaso</a></li>
+                            <li><a href="#bloque-4-rubrica" class="link-primary">5. Rúbrica de evaluación y recursos de apoyo</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="doc-callout">
+                        <p>ℹ️ <strong>Normas generales de trabajo:</strong> Todos los ejercicios se resolverán y corregirán en clase. Se recomienda consultar previamente los apuntes en <a href="plantilla_teoria.html" class="link-primary"><u>Plantilla de Teoría</u></a>.</p>
+                    </div>
+
+                    <div class="alert-callout">
+                        <p>⚠️ <strong>Importante antes de entregar:</strong> No se admitirán entregas sin probar. Revisa que los archivos sigan el convenio de nombres y <span class="text-danger">no incluyas archivos temporales ni contraseñas reales</span>.</p>
+                    </div>
+
+                    <div class="badge-group">
+                        <span class="badge badge-dark">Modalidad: Individual</span>
+                        <span class="badge badge-yellow">Nivel: Básico &ndash; Avanzado</span>
+                        <span class="badge badge-blue">Entrega en Moodle</span>
+                        <span class="tag label-info">Corregible en clase</span>
+                    </div>
+                </article>
+            </details>
+        </section>
+
+        <!-- ==================================================================
+             SECCIÓN 2: BLOQUE 1 - EJERCICIOS GUIADOS Y CÓDIGO
+             ================================================================== -->
+        <section>
+            <details class="accordion" id="page-section-3">
+                <summary class="summary-title">2. Bloque 1: Ejercicios Guiados y Código <a class="headerlink" href="#bloque-1-ejercicios-guiados" title="Enlace permanente">¶</a></summary>
+                <article class="box-card">
+                    <h1 id="bloque-1-ejercicios-guiados">2. Bloque 1: Ejercicios Guiados y Código</h1>
+
+                    <h2 id="ej-1">Ejercicio 1. Definición de esquema y restricciones <span class="tag label-info">Básico</span></h2>
+                    <p>
+                        Crea una base de datos llamada <code>gestion_curso</code> con juego de caracteres <code>utf8mb4</code>
+                        y las siguientes tablas:
+                    </p>
+                    <ul>
+                        <li><code>modulos</code>: <code>id_modulo</code> (<code>INT</code>, <code>PK</code>, <code>AUTO_INCREMENT</code>), <code>nombre</code> (<code>VARCHAR(80)</code>, <code>NOT NULL</code>), <code>horas</code> (<code>INT</code>, mayor que 0).</li>
+                        <li><code>alumnos</code>: <code>id_alumno</code> (<code>INT</code>, <code>PK</code>), <code>dni</code> (<code>CHAR(9)</code>, <code>UNIQUE</code>), <code>email</code> (<code>VARCHAR(120)</code>).</li>
+                    </ul>
+                    <p><em>Plantilla SQL de partida (con botones automáticos de Copiar y Descargar):</em></p>
+                    <pre><code>CREATE DATABASE IF NOT EXISTS gestion_curso
+    CHARACTER SET utf8mb4
+    COLLATE utf8mb4_unicode_ci;
+
+USE gestion_curso;
+
+-- Completa aquí la creación de las tablas modulos y alumnos</code></pre>
+
+                    <details>
+                        <summary>Ver pista / solución orientativa del Ejercicio 1</summary>
+                        <div class="box-card">
+                            <p>Recuerda añadir la restricción <code>CHECK (horas &gt; 0)</code> y definir <code>PRIMARY KEY</code> explícitamente.</p>
+                            <p><code class="code-pre">CREATE TABLE modulos (
+    id_modulo INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(80) NOT NULL,
+    horas INT CHECK (horas &gt; 0)
+);</code></p>
+                        </div>
+                    </details>
+
+                    <h2 id="ej-2">Ejercicio 2. Automatización mediante script Python <span class="label-info">Intermedio</span></h2>
+                    <p>
+                        Desarrolla un programa que lea un listado de notas, calcule la media aritmética y muestre un aviso si
+                        algún valor está fuera del rango <code>[0, 10]</code>.
+                    </p>
+                    <ol>
+                        <li>Solicita al usuario las calificaciones separadas por comas.</li>
+                        <li>Valida que cada entrada sea numérica y esté comprendida entre 0 y 10.</li>
+                        <li>Muestra la nota media redondeada a dos decimales y el número total de aprobados.</li>
+                    </ol>
+
+                    <div class="code-wrapper">
+                        <div class="code-header">
+                            <span class="code-filename">ejercicio2_notas.py</span>
+                        </div>
+                        <pre><code>#!/usr/bin/env python3
+def calcular_media(notas):
+    if not notas:
+        return 0.0
+    return round(sum(notas) / len(notas), 2)
+
+# Completa la lectura y validación de datos</code></pre>
+                    </div>
+
+                    <h2 id="ej-3">Ejercicio 3. Verificación en terminal Linux <span class="tag label-info">Práctico</span></h2>
+                    <p>
+                        Ejecuta los siguientes comandos de comprobación y adjunta una captura de la salida en la memoria:
+                    </p>
+                    <pre><code>sudo systemctl status mysql
+ls -la /var/lib/mysql</code></pre>
+                    <pre data-no-download="true"><code>Ejemplo de salida esperada:
+● mysql.service - MySQL Community Server
+     Active: active (running)</code></pre>
+                </article>
+            </details>
+        </section>
+
+        <!-- ==================================================================
+             SECCIÓN 3: BLOQUE 2 - ANÁLISIS DE ESQUEMAS Y TABLAS
+             ================================================================== -->
+        <section>
+            <details class="accordion" id="page-section-4">
+                <summary class="summary-title">3. Bloque 2: Análisis de Esquemas y Tablas <a class="headerlink" href="#bloque-2-casos-practicos" title="Enlace permanente">¶</a></summary>
+                <article class="box-card">
+                    <h1 id="bloque-2-casos-practicos">3. Bloque 2: Análisis de Esquemas y Tablas</h1>
+
+                    <h2 id="ej-4">Ejercicio 4. Análisis de diagrama o documento de referencia</h2>
+                    <p>
+                        Observa el siguiente esquema de ejemplo y redacta el modelo lógico junto con las sentencias necesarias para
+                        implementarlo:
+                    </p>
+                    <figure>
+                        <img src="../logo.png" alt="Imagen de ejemplo para enunciado de ejercicio" class="image-width-200">
+                        <figcaption class="text-center">Sustituye esta imagen de muestra por el diagrama del ejercicio (clases <code>.image-width-100</code> a <code>.image-width-800</code>).</figcaption>
+                    </figure>
+
+                    <h2 id="ej-5">Ejercicio 5. Tabla de especificación de requisitos</h2>
+                    <p>Implementa los campos descritos en la siguiente tabla respetando el tipo, obligatoriedad y validación:</p>
+                    <div class="table-wrapper">
+                        <table class="table-width-97">
+                            <colgroup>
+                                <col class="column-width-10">
+                                <col class="column-width-20">
+                                <col class="column-width-30">
+                                <col class="column-width-40">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Nº</th>
+                                    <th>Campo</th>
+                                    <th>Tipo / Restricción</th>
+                                    <th>Observaciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center"><strong>1</strong></td>
+                                    <td class="text-left"><code>codigo</code></td>
+                                    <td class="text-left"><code>VARCHAR(12) PK</code></td>
+                                    <td class="text-left">Identificador único del registro.</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center"><strong>2</strong></td>
+                                    <td class="text-left"><code>estado</code></td>
+                                    <td class="text-left"><code>ENUM('pendiente','ok')</code></td>
+                                    <td class="text-center"><span class="tag label-info">Valor por defecto: pendiente</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center"><strong>3</strong></td>
+                                    <td class="text-left"><code>importe</code></td>
+                                    <td class="text-left"><code>DECIMAL(10,2) NOT NULL</code></td>
+                                    <td class="text-left">Debe ser estrictamente positivo (<span class="text-danger">no se admiten negativos</span>).</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>Comparativa de casos de prueba (<code>.column-width-50</code>)</h3>
+                    <div class="table-wrapper">
+                        <table>
+                            <colgroup>
+                                <col class="column-width-50">
+                                <col class="column-width-50">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>Entrada válida</th>
+                                    <th>Entrada que debe rechazarse</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>('A-001', 'pendiente', 45.50)</code></td>
+                                    <td><code>('A-001', 'cancelado', -10.00)</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+            </details>
+        </section>
+
+        <!-- ==================================================================
+             SECCIÓN 4: CUESTIONES TEÓRICAS Y TEST DE REPASO
+             - Contiene "Test" en el <summary> para verificar .nav-link-test.
+             ================================================================== -->
+        <section>
+            <details class="accordion" id="page-section-5">
+                <summary class="summary-title">4. Cuestiones Teóricas y Test de Repaso <a class="headerlink" href="#bloque-3-test-repaso" title="Enlace permanente">¶</a></summary>
+                <article class="box-card">
+                    <h1 id="bloque-3-test-repaso">4. Cuestiones Teóricas y Test de Repaso</h1>
+                    <p>Responde razonadamente a las siguientes cuestiones breves antes de entregar la práctica:</p>
+                    <ol>
+                        <li>¿Qué diferencia existe entre una restricción <code>UNIQUE</code> y una <code>PRIMARY KEY</code>?</li>
+                        <li>¿Por qué conviene usar <code>utf8mb4</code> en lugar de <code>utf8mb3</code> en bases de datos modernas?</li>
+                        <li>¿Qué ocurre al eliminar un registro padre cuando una clave ajena tiene <code>ON DELETE CASCADE</code> frente a <code>ON DELETE RESTRICT</code>?</li>
+                    </ol>
+
+                    <details>
+                        <summary>Comprobar respuestas clave de autoevaluación</summary>
+                        <div class="box-card">
+                            <ul>
+                                <li><strong>Pregunta 1:</strong> <code>PRIMARY KEY</code> no admite valores <code>NULL</code> y solo puede haber una por tabla; <code>UNIQUE</code> sí puede admitir <code>NULL</code> y pueden existir varias.</li>
+                                <li><strong>Pregunta 2:</strong> <code>utf8mb4</code> soporta caracteres Unicode completos de hasta 4 bytes (incluidos emojis y símbolos extendidos).</li>
+                                <li><strong>Pregunta 3:</strong> <code>CASCADE</code> elimina automáticamente las filas hijas dependientes; <code>RESTRICT</code> impide el borrado si existen filas hijas asociadas.</li>
+                            </ul>
+                        </div>
+                    </details>
+                </article>
+            </details>
+        </section>
+
+        <!-- ==================================================================
+             SECCIÓN 5: RÚBRICA DE EVALUACIÓN, ANEXO PDF Y RECURSOS
+             ================================================================== -->
+        <section>
+            <details class="accordion" id="page-section-6">
+                <summary class="summary-title">5. Rúbrica de Evaluación y Recursos <a class="headerlink" href="#bloque-4-rubrica" title="Enlace permanente">¶</a></summary>
+                <article class="box-card">
+                    <h1 id="bloque-4-rubrica">5. Rúbrica de Evaluación y Recursos</h1>
+
+                    <h2>5.1. Criterios de Calificación</h2>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Apartado</th>
+                                    <th>Descripción</th>
+                                    <th class="text-center">Peso</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Bloque 1</strong></td>
+                                    <td>Corrección sintáctica, ejecución sin errores y cumplimiento de restricciones.</td>
+                                    <td class="text-center">40%</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Bloque 2</strong></td>
+                                    <td>Diseño completo del esquema, normalización y casos de prueba documentados.</td>
+                                    <td class="text-center">40%</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Cuestiones y Memoria</strong></td>
+                                    <td>Claridad en las respuestas teóricas, orden y presentación de la entrega.</td>
+                                    <td class="text-center">20%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h2>5.2. Enunciado o Anexo en PDF (<code>.pdf-embed-shell</code>)</h2>
+                    <div class="pdf-embed-shell">
+                        <iframe class="pdf-embed" title="Anexo PDF de ejemplo" srcdoc="<!DOCTYPE html><html lang='es'><body style='font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:90vh;margin:0;background:#f1f5f9;color:#334155;text-align:center;padding:1rem;'><div><strong>Visor de Anexo PDF (.pdf-embed-shell + .pdf-embed)</strong><br><small>Sustituye srcdoc por src=&quot;anexo.pdf&quot; si la tarea incluye un documento adjunto.</small></div></body></html>"></iframe>
+                    </div>
+
+                    <h2>5.3. Recursos de Apoyo (<code>.resource-panel</code>)</h2>
+                    <article class="resource-panel">
+                        <h2>Enlaces de Referencia</h2>
+                        <ul class="resource-list">
+                            <li class="resource-item">
+                                <a href="plantilla_teoria.html" class="resource-link">📄 Apuntes de Teoría de la Unidad (.resource-link)</a>
+                            </li>
+                            <li class="resource-item">
+                                <a href="../index.html" class="resource-link">📚 Índice del Módulo (.resource-link)</a>
+                            </li>
+                        </ul>
+                        <p><a href="plantilla_teoria.html" class="module-link">Consultar la plantilla de teoría completa (.module-link) &rarr;</a></p>
+                    </article>
+
+                    <!-- Ejemplo de tarjeta .ficha-tecnica-card (detectada por script.js al empezar por "Ficha") -->
+                    <div class="box-card">
+                        <h3>Ficha de Comprobación Previa a la Entrega</h3>
+                        <ul>
+                            <li>Los scripts se ejecutan de principio a fin sin errores de sintaxis.</li>
+                            <li>Se ha incluido el nombre y apellidos en la portada de la memoria.</li>
+                            <li><button type="button" class="btn-code-action" onclick="showToast('Lista de comprobación revisada')">Marcar revisión (showToast)</button></li>
+                        </ul>
+                    </div>
+                </article>
+            </details>
+        </section>
+
+    </main>
+
+    <!-- ======================================================================
+         3. PIE DE PÁGINA (<footer>)
+         ====================================================================== -->
+    <footer>
+        <div class="footer-container">
+            <p class="footer-text">Curso 2026/2027</p>
+        </div>
+    </footer>
+</body>
+
+</html>
