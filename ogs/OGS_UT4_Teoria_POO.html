@@ -158,7 +158,7 @@ Datos</h1>
       referencia directa a la propia instancia sobre la cual se está
       ejecutando el bloque de código, permitiendo manipular sus atributos
       internos.</p>
-      <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code># Ejemplo de declaración de clase base e instanciación básica
+      <pre><code># Ejemplo de declaración de clase base e instanciación básica
 class Persona:
     nombre = ""
     apellidos = ""
@@ -177,7 +177,7 @@ pedro.nombre = "Pedro"
 pedro.apellidos = "Ruiz Serrano"
 pedro.cambiaPeso(87)
 if pedro.edad &lt; 18:
-    print("Es menor de edad")</code></pre></div>
+    print("Es menor de edad")</code></pre>
     </article>
   </details>
 </section>
@@ -195,7 +195,7 @@ if pedro.edad &lt; 18:
       Para automatizar este proceso y garantizar que toda instancia cuente con
       valores de arranque válidos desde su nacimiento, se utiliza el método
       especial constructor __init__.</p>
-      <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>class Persona:
+      <pre><code>class Persona:
     def __init__(self, nombre, apellidos, dni, edad, peso, altura):
         # Inicialización de los atributos de instancia mediante el parámetro self
         self.nombre = nombre
@@ -206,7 +206,7 @@ if pedro.edad &lt; 18:
         self.altura = altura
 
 # Creación de la instancia pasando los argumentos requeridos por el constructor
-pedro = Persona('Pedro', 'Ruiz Serrano', '87654321G', 21, 78, 1.67)</code></pre></div>
+pedro = Persona('Pedro', 'Ruiz Serrano', '87654321G', 21, 78, 1.67)</code></pre>
 
       <h2 id="a18">2.2. Colecciones
       de Objetos (Listas de Instancias)</h2>
@@ -215,13 +215,13 @@ pedro = Persona('Pedro', 'Ruiz Serrano', '87654321G', 21, 78, 1.67)</code></pre>
       simulando el comportamiento organizativo de los registros de una base de
       datos relacional y permitiendo aplicar métodos nativos como append(),
       pop() o insert().</p>
-      <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>personas = []
+      <pre><code>personas = []
 personas.append(Persona('Pedro', 'Ruiz Serrano', '87654321G', 21, 78, 1.67))
 personas.append(Persona('Ana', 'Cobo Sánchez', '12345678T', 26, 65, 1.77))
 personas.append(Persona('Juan Luis', 'Rodríguez Pérez', '87453433O', 45, 67, 1.87))
 # Acceso al atributo de un objeto específico dentro de la lista
 # Imprime: "Juan Luis"
-print(personas[2].nombre)</code></pre></div>
+print(personas[2].nombre)</code></pre>
 
       <h2 id="a19">2.3.
       Encapsulamiento y Control de Acceso (Getters y Setters)</h2>
@@ -233,7 +233,7 @@ print(personas[2].nombre)</code></pre></div>
       error de tipo AttributeError). Para gestionarlos con elegancia sin
       perder la sintaxis limpia de atributos, se emplean los decoradores
       @property (Getters) y @&lt;atributo&gt;.setter (Setters).</p>
-      <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>class Circulo:
+      <pre><code>class Circulo:
     def __init__(self, radio):
         self.radio = radio  # Invoca automáticamente al setter para su validación
 
@@ -255,7 +255,7 @@ print(personas[2].nombre)</code></pre></div>
 # Prueba de ejecución en consola interactiva
 c1 = Circulo(3)  # Inicializa
 print(c1.radio)  # Llama al getter. Imprime 3
-c1.radio = -1    # Llama al setter. Muestra el mensaje de error y lo fija en 0</code></pre></div>
+c1.radio = -1    # Llama al setter. Muestra el mensaje de error y lo fija en 0</code></pre>
     </article>
   </details>
 </section>
@@ -273,7 +273,7 @@ c1.radio = -1    # Llama al setter. Muestra el mensaje de error y lo fija en 0</
       función integrada super() proporciona una referencia directa a la clase
       base, posibilitando la reutilización o extensión de sus métodos mediante
       la técnica de sobreescritura.</p>
-      <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>import math
+      <pre><code>import math
 
 class Punto:
     def __init__(self, x=0, y=0):
@@ -296,14 +296,14 @@ class Punto3D(Punto):
 
     def mostrar(self):
         # Reutiliza el método de la clase base y añade la dimensión Z
-        return f"{super().mostrar()}:{self.z}"</code></pre></div>
+        return f"{super().mostrar()}:{self.z}"</code></pre>
 
       <h2 id="a21">3.2. Delegación / Composición</h2>
       <p>Ocurre cuando una clase no hereda de otra, sino que incorpora una o
       más instancias de otras clases como atributos internos, delegando en
       ellas parte de su comportamiento lógico o responsabilidades de
       cálculo.</p>
-      <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>class CirculoCentro:
+      <pre><code>class CirculoCentro:
     def __init__(self, centro, radio):
         # 'centro' se espera que sea una instancia previamente creada de la clase Punto
         self.centro = centro
@@ -311,14 +311,14 @@ class Punto3D(Punto):
 
     def mostrar(self):
         # Delega en el método mostrar de la instancia de Punto almacenada en self.centro
-        return f"Centro: {self.centro.mostrar()} - Radio: {self.radio}"</code></pre></div>
+        return f"Centro: {self.centro.mostrar()} - Radio: {self.radio}"</code></pre>
 
       <h2 id="a22">3.3. Herencia Múltiple</h2>
       <p>Python permite de forma nativa que una clase derivada provenga de
       múltiples clases superiores. En este escenario, es crítico estructurar y
       nombrar los métodos con claridad para evitar colisiones de nombres o
       ambigüedades en la resolución.</p>
-      <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>class Telefono:
+      <pre><code>class Telefono:
     def __init__(self, numero):
         self.numero = numero
     def telefonear(self): print("Llamando...")
@@ -334,7 +334,7 @@ class Movil(Telefono, Camara, Reproductor):
     def __init__(self, numero, mpx, capacidad):
         Telefono.__init__(self, numero)
         Camara.__init__(self, mpx)
-        Reproductor.__init__(self, capacidad)</code></pre></div>
+        Reproductor.__init__(self, capacidad)</code></pre>
 
       <h2 id="a23">3.4. Atributos y
       Métodos Estáticos (de Clase)</h2>
@@ -349,14 +349,14 @@ class Movil(Telefono, Camara, Reproductor):
       conceptual, pero que no requieren leer ni modificar datos específicos
       del objeto (no reciben self).</p></li>
       </ul>
-      <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>class Calculadora:
+      <pre><code>class Calculadora:
     def __init__(self, modelo):
         self.modelo = modelo
     @staticmethod
     def sumar(x, y):
         """ Operación puramente lógica que no depende de atributos de
         instancia """
-        return x + y</code></pre></div>
+        return x + y</code></pre>
 
       <h2 id="a24">3.5. Métodos Especiales
       (Mágicos / Dunder)</h2>
@@ -473,7 +473,7 @@ class Movil(Telefono, Camara, Reproductor):
       interactiva, utilizando el método .grid() para asegurar un diseño limpio
       y enlazando eventos a funciones (callbacks) utilizando el parámetro
       command.</p>
-      <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>import tkinter as tk
+      <pre><code>import tkinter as tk
 
 def procesarSuma():
     # .get() extrae la cadena del Entry; se castea a int para operar aritméticamente
@@ -505,7 +505,7 @@ etiqueta_resultado = tk.Label(app, text="Resultado: 0", font=("Arial", 10, "bold
 etiqueta_resultado.grid(row=3, column=0, columnspan=2, pady=5)
 
 # Lanzamiento del bucle de escucha activa
-app.mainloop()</code></pre></div>
+app.mainloop()</code></pre>
     </article>
   </details>
 </section>
@@ -578,7 +578,7 @@ app.mainloop()</code></pre></div>
       </tr>
       </tbody>
       </table>
-      <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button><pre><code>import mysql.connector
+      <pre><code>import mysql.connector
 from mysql.connector import Error, errorcode
 
 try:
@@ -629,7 +629,7 @@ finally:
     if 'conexion' in locals() and conexion.is_connected():
         cursor.close()
         conexion.close()
-        print("Recursos liberados. Conexión cerrada de forma limpia.")</code></pre></div>
+        print("Recursos liberados. Conexión cerrada de forma limpia.")</code></pre>
     </article>
   </details>
 </section>

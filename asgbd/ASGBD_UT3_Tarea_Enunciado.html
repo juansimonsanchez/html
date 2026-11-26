@@ -179,9 +179,7 @@
                     Crea un rol administrativo denominado
                     <code>rol_competicion_admin</code>
                     :
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>CREATE ROLE IF NOT EXISTS 'rol_competicion_admin';</code></pre>
-                </div>
                     <strong>Dotación de Privilegios al Rol:</strong>
                     Concede al rol permisos completos de manipulación
                 (
@@ -206,22 +204,16 @@
                 con
                     <code>mysql_native_password</code>
                     y vincúlale el rol:
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>GRANT 'rol_competicion_admin' TO 'gestor_liga'@'localhost';</code></pre>
-                </div>
                     <strong>Activación por Defecto:</strong>
                     Configura la cuenta para que el rol se active de manera
                 automática en cada inicio de sesión:
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>SET DEFAULT ROLE 'rol_competicion_admin' TO 'gestor_liga'@'localhost';</code></pre>
-                </div>
                     <strong>Verificación de Sesión:</strong>
                     Inicia sesión interactiva con el usuario
                     <code>gestor_liga</code>
                     y aporta una captura donde se visualice:
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>SELECT CURRENT_USER(), CURRENT_ROLE();</code></pre>
-                </div>
                     <em>Debe apreciarse de forma inequívoca el rol <code>`rol_competicion_admin`@`%`</code> en estado
                     activo.</em>
                     <h3 id="actividad-5-delegacion-y-revocacion-estricta-de-accesos-ce-3d-3f-3g">Actividad 5: Delegación y Revocación Estricta de Accesos <span class="tag label-info">CE
@@ -278,18 +270,14 @@
                     Crea la vista actualizable
                     <code>v_pivots_candidatos</code>
                     :
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>CREATE OR REPLACE VIEW v_pivots_candidatos AS
 SELECT id_jugador, nombre, apellido, puesto, altura, id_equipo
 FROM jugadores
 WHERE puesto = 'Pívot' AND altura >= 2.00
 WITH CHECK OPTION;</code></pre>
-                </div>
                     Inserta un jugador válido a través de la vista:
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>INSERT INTO v_pivots_candidatos (nombre, apellido, puesto, altura, id_equipo)
 VALUES ('Pau', 'Gasol', 'Pívot', 2.15, 1);</code></pre>
-                </div>
                     <em>Aporta captura comprobando que el registro se ha persistido correctamente en la tabla física
                     <code>jugadores</code>.</em>
                     Intenta insertar un registro que incumpla las condiciones de la vista (por ejemplo, con puesto
@@ -297,10 +285,8 @@ VALUES ('Pau', 'Gasol', 'Pívot', 2.15, 1);</code></pre>
                     o altura
                     <code>1.92</code>
                     ):
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>INSERT INTO v_pivots_candidatos (nombre, apellido, puesto, altura, id_equipo)
 VALUES ('Ricky', 'Rubio', 'Base', 1.92, 1);</code></pre>
-                </div>
                     Documenta mediante captura el error de bloqueo (
                     <strong>Error 1369</strong>
                     ) y explica el papel de

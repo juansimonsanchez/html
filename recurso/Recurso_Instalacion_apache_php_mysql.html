@@ -50,12 +50,9 @@
                     <details class="accordion" id="page-section-1">
                         <summary class="summary-title">Instalación<a class="headerlink" href="#page-section-1" title="Enlace permanente">¶</a></summary>
                         <p>Ejecutar</p>
-                        <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                            <pre><code>sudo apt update</code></pre>
-                        </div>
+                        <pre><code>sudo apt update</code></pre>
                         <p>y después ejecutar lo siguiente</p>
-                        <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                            <pre><code>sudo apt install apache2 \
+                        <pre><code>sudo apt install apache2 \
             ghostscript \
             libapache2-mod-php \
             mysql-server \
@@ -69,7 +66,6 @@
             php-mysql \
             php-xml \
             php-zip</code></pre>
-                        </div>
                         <p>Cuidado al copiar y pegar, se tiene que ejecutar todo el proceso de instalación sin ningún error.</p>
                     </details>
                 </article>
@@ -81,22 +77,14 @@
                         <p><strong>scp [origen] [destino]</strong></p>
                         <p>donde para hacer referencia a nuestra instancia utilizaremos ubuntu@ip_flotante:/ruta</p>
                         <p>Previamente tendremos que asegurándonos de que <em>/var/www/html</em> pertenezca al grupo www-data en nuestra instancia:</p>
-                        <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                            <pre><code>sudo chgrp www-data /var/www/html</code></pre>
-                        </div>
+                        <pre><code>sudo chgrp www-data /var/www/html</code></pre>
                         <p>Nos aseguramos también que nuestro usuario pertenezca al mismo grupo:</p>
-                        <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                            <pre><code>sudo usermod -a -G www-data ubuntu</code></pre>
-                        </div>
+                        <pre><code>sudo usermod -a -G www-data ubuntu</code></pre>
                         <p>Asignamos los permisos adecuados:</p>
-                        <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                            <pre><code>sudo chmod -R 775 /var/www/html
+                        <pre><code>sudo chmod -R 775 /var/www/html
 sudo chmod -R g+s /var/www/html</code></pre>
-                        </div>
                         <p>Y por último nos aseguramos de ser los propietarios del directorio:</p>
-                        <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                            <pre><code>sudo chown -R ubuntu /var/www/html</code></pre>
-                        </div>
+                        <pre><code>sudo chown -R ubuntu /var/www/html</code></pre>
                         <p>En este punto ya tenemos los permisos de usuario correctamente configurados</p>
                     </details>
                 </article>

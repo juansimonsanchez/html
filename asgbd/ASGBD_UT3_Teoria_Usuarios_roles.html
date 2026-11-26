@@ -151,11 +151,9 @@
                 'nombre_usuario'@'host'. La omisión o alteración de cualquiera de estas
                 dos partes rompe el esquema de validación de accesos del motor de base
                 de datos.</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>-- Sintaxis general base para la provisión de cuentas de usuario
+                    <pre><code>-- Sintaxis general base para la provisión de cuentas de usuario
 CREATE USER 'nombre_usuario'@'host' IDENTIFIED WITH
 mysql_native_password BY 'contraseña';</code></pre>
-            </div>
                     <ul>
                 <li>
                         <p><strong>nombre_usuario:</strong> Identificador alfanumérico que
@@ -240,15 +238,13 @@ mysql_native_password BY 'contraseña';</code></pre>
                     </table>
                 </div>
             </div>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>-- EJEMPLO PRÁCTICO: Creación de cuentas con diferentes directivas de autenticación
+                    <pre><code>-- EJEMPLO PRÁCTICO: Creación de cuentas con diferentes directivas de autenticación
 -- 1. Cuenta para una aplicación interna que requiere compatibilidad con el formato clásico de hashes
 CREATE USER 'app_legacy'@'172.16.11.10'
 IDENTIFIED WITH mysql_native_password BY 'ClaveSegura2026!';
 -- 2. Cuenta de administración temporal con contraseña autogenerada por el motor
 CREATE USER 'admin_temp'@'%'
 IDENTIFIED BY RANDOM PASSWORD;</code></pre>
-            </div>
                     <p><em>Nota de administración histórica:</em> En versiones antiguas de
                 MySQL se utilizaba la sentencia SET PASSWORD = PASSWORD('new_secret')
                 para cambiar claves; sin embargo, en MySQL 8.0 esta sintaxis está
@@ -267,10 +263,8 @@ IDENTIFIED BY RANDOM PASSWORD;</code></pre>
                 (DROP USER)</h2>
                     <p>Para revocar el acceso permanente de un usuario en el servidor, se
                 debe purgar su registro del diccionario mediante la sentencia:</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>-- Eliminación explícita de una cuenta de usuario
+                    <pre><code>-- Eliminación explícita de una cuenta de usuario
 DROP USER 'nombre_usuario'@'host';</code></pre>
-            </div>
                 </article>
             </details>
         </section>
@@ -300,10 +294,8 @@ DROP USER 'nombre_usuario'@'host';</code></pre>
                     <p>Estos privilegios impactan sobre la totalidad de los objetos
                 residentes dentro de un esquema (base de datos) determinado utilizando
                 la nomenclatura base_de_datos.*.</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>-- Estructura base para la concesión a nivel de esquema
+                    <pre><code>-- Estructura base para la concesión a nivel de esquema
 GRANT tipo_de_permiso ON base_de_datos.* TO 'nombre_usuario'@'host';</code></pre>
-            </div>
                     <p>Los privilegios que se pueden acotar a nivel de esquema son:</p>
                     <ul>
                 <li>
@@ -350,12 +342,10 @@ GRANT tipo_de_permiso ON base_de_datos.* TO 'nombre_usuario'@'host';</code></pre
                 <strong>mysql.tables_priv</strong>, aplicando las validaciones de acceso
                 de forma directa sobre esa entidad.
             </p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>-- Concesión de control absoluto sobre una tabla concreta
+                    <pre><code>-- Concesión de control absoluto sobre una tabla concreta
 GRANT ALL ON mydb.mytbl TO 'someuser'@'somehost';
 -- Concesión de accesos de manipulación acotados
 GRANT SELECT, INSERT ON mydb.mytbl TO 'someuser'@'somehost';</code></pre>
-            </div>
                     <p>Los privilegios aplicables a este nivel funcional se desglosan en:</p>
                     <ul>
                 <li>
@@ -388,11 +378,9 @@ GRANT SELECT, INSERT ON mydb.mytbl TO 'someuser'@'somehost';</code></pre>
                 columnas de una tabla. Estos permisos generan apuntes en la tabla del
                 sistema <strong>mysql.columns_priv</strong> y, de forma concurrente,
                 actualizan los descriptores en mysql.tables_priv.</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>-- Concesión DML restringida por columnas específicas de datos
+                    <pre><code>-- Concesión DML restringida por columnas específicas de datos
 GRANT SELECT (col1), INSERT (col1, col2) ON mydb.mytbl TO
 'someuser'@'somehost';</code></pre>
-            </div>
                     <p>Los únicos cuatro privilegios aceptados por la sintaxis a este nivel
                 atómico son de forma estricta: SELECT, INSERT, UPDATE y REFERENCES.</p>
                     <h3 id="a314-privilegios-sobre-rutinas-y-procedimientos-mysqlprocspriv">3.1.4.
@@ -403,12 +391,10 @@ GRANT SELECT (col1), INSERT (col1, col2) ON mydb.mytbl TO
                 del comando, los cambios alteran la tabla mysql.procs_priv (para un
                 elemento determinado), mysql.db (esquema completo) o mysql.user
                 (global).</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>-- Otorgar derechos globales de creación sobre el esquema de datos
+                    <pre><code>-- Otorgar derechos globales de creación sobre el esquema de datos
 GRANT CREATE ROUTINE ON mydb.* TO 'someuser'@'somehost';
 -- Otorgar derechos de ejecución individuales para una rutina crítica
 GRANT EXECUTE ON PROCEDURE mydb.myproc TO 'someuser'@'somehost';</code></pre>
-            </div>
                     <p>Clasificación de privilegios de rutinas:</p>
                     <ul>
                 <li>
@@ -429,24 +415,20 @@ GRANT EXECUTE ON PROCEDURE mydb.myproc TO 'someuser'@'somehost';</code></pre>
                 sentencia de privilegios faculta al usuario receptor para transferir a
                 terceros los mismos permisos exactos que él ha recibido, delegando de
                 esta manera la cadena de control.</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>-- Concesión de privilegios administrativos de rutinas con capacidad de delegación
+                    <pre><code>-- Concesión de privilegios administrativos de rutinas con capacidad de delegación
 GRANT CREATE ROUTINE, ALTER ROUTINE ON mydb.* TO
 'someuser'@'somehost' WITH GRANT OPTION;</code></pre>
-            </div>
                     <h2 id="a33-revocacion-de-permisos-revoke">3.3. Revocación de Permisos
                 (REVOKE)</h2>
                     <p>Para retirar accesos operativos de forma parcial o total a una cuenta
                 sin necesidad de destruir su identidad en el servidor, se utiliza el
                 comando REVOKE. La declaración del espacio de nombres y los objetos debe
                 guardar una correspondencia exacta con el GRANT inicial:</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>-- Sintaxis general base para revocar accesos
+                    <pre><code>-- Sintaxis general base para revocar accesos
 REVOKE tipo_de_permiso ON base_de_datos.tabla FROM
 'nombre_usuario'@'host';
 -- EJEMPLO PRÁCTICO SYSADMIN: Revocar privilegios DML globales
 REVOKE INSERT ON *.* FROM 'usuario'@'localhost';</code></pre>
-            </div>
                     <p><strong>Reglas de Control para la Revocación:</strong></p>
                     <ol type="1">
                 <li>
@@ -460,19 +442,15 @@ REVOKE INSERT ON *.* FROM 'usuario'@'localhost';</code></pre>
                             permisos de una cuenta mediante la sentencia:</p>
                 </li>
             </ol>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>-- Purga absoluta de privilegios y facultades de delegación de una cuenta
+                    <pre><code>-- Purga absoluta de privilegios y facultades de delegación de una cuenta
 REVOKE ALL PRIVILEGES, GRANT OPTION FROM 'user'@'localhost';</code></pre>
-            </div>
                     <h2 id="a34-auditoria-de-concesiones-show-grants">3.4. Auditoría de
                 Concesiones (SHOW GRANTS)</h2>
                     <p>Todo SysAdmin debe auditar con regularidad el estado consolidado de
                 los accesos del servidor. Para inspeccionar los permisos efectivos de
                 una cuenta o de un rol determinado se ejecuta:</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>-- Inspección de permisos de una cuenta de usuario
+                    <pre><code>-- Inspección de permisos de una cuenta de usuario
 SHOW GRANTS FOR 'nombre_usuario'@'host';</code></pre>
-            </div>
                     <h2 id="a35-sincronizacion-de-tablas-de-concesion-flush-privileges">3.5.
                 Sincronización de Tablas de Concesión (FLUSH PRIVILEGES)</h2>
                     <p>Cuando los privilegios se asignan mediante los comandos estándar de
@@ -483,10 +461,8 @@ SHOW GRANTS FOR 'nombre_usuario'@'host';</code></pre>
                 nativa mysql de forma directa), los cambios no surtirán efecto de
                 inmediato. En tales escenarios, es de obligado cumplimiento
                 ejecutar:</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>-- Forzar la recarga en memoria de las tablas de privilegios
+                    <pre><code>-- Forzar la recarga en memoria de las tablas de privilegios
 FLUSH PRIVILEGES;</code></pre>
-            </div>
                     <p>Este comando sincroniza la memoria interna del servidor con los
                 registros físicos del diccionario de datos de forma instantánea,
                 aplicando los nuevos controles de seguridad sin interrumpir las
@@ -598,11 +574,9 @@ FLUSH PRIVILEGES;</code></pre>
                     <p><strong>Paso 1: Creación del Rol en el Servidor</strong></p>
                     <p>Se utiliza el comando CREATE ROLE, pudiendo opcionalmente verificar
                 su existencia previa.</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>-- Provisión de nuevos contenedores de privilegios (Roles)
+                    <pre><code>-- Provisión de nuevos contenedores de privilegios (Roles)
 CREATE ROLE IF NOT EXISTS mantenimiento_basico, mantenimiento_total,
 consulta_basica;</code></pre>
-            </div>
                     <p><em>Regla de nomenclatura y comportamiento interno:</em> Es posible
                 definir un rol siguiendo el patrón 'nombre_rol'@'host'. Sin embargo, a
                 diferencia de las cuentas de usuario, el uso del carácter % se
@@ -616,30 +590,24 @@ consulta_basica;</code></pre>
                     nace bloqueada y su contraseña expirada de forma permanente</strong>,
                 anulando cualquier posibilidad de inicio de sesión directo con la
                 identidad de dicho rol.</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>-- Creación de un rol con host de conexión de red explícito
+                    <pre><code>-- Creación de un rol con host de conexión de red explícito
 CREATE ROLE IF NOT EXISTS 'rol_dev'@'%';</code></pre>
-            </div>
                     <p><strong>Paso 2: Dotación de Privilegios al Rol</strong></p>
                     <p>Se asocian los permisos necesarios al rol utilizando la sintaxis
                 estándar de GRANT, pero situando el rol como el elemento destino del
                 comando.</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>-- Ejemplos de asignación a diferentes niveles de granularidad
+                    <pre><code>-- Ejemplos de asignación a diferentes niveles de granularidad
 GRANT EXECUTE ON *.* TO mantenimiento_total; -- Ámbito Global de Sistema
 GRANT SELECT ON employees.* TO mantenimiento_basico; -- Ámbito de Base de Datos
 GRANT SELECT ON employees.departments TO consulta_basica; -- Ámbito de Tabla</code></pre>
-            </div>
                     <p><strong>Paso 3: Vinculación del Rol a las Cuentas de
                     Usuario</strong></p>
                     <p>Una vez configurado el rol con sus respectivos permisos, se procede a
                 conceder dicho rol a los técnicos u operarios de datos que lo
                 requieran.</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>-- Vincular los roles a cuentas de usuario preexistentes en el sistema
+                    <pre><code>-- Vincular los roles a cuentas de usuario preexistentes en el sistema
 GRANT mantenimiento_basico, consulta_basica TO 'user1'@'%';
 GRANT mantenimiento_total TO 'user2'@'%';</code></pre>
-            </div>
                     <p><em>Concepto Avanzado (Mandatory Roles):</em> El administrador del
                 sistema puede definir directivas de roles obligatorios
                 (mandatory_roles), forzando al motor a asignar de forma automática
@@ -650,10 +618,8 @@ GRANT mantenimiento_total TO 'user2'@'%';</code></pre>
                 usuario tenga un rol asignado no implica que disponga de sus privilegios
                 inmediatamente al abrir una conexión. Si el usuario inicia sesión y
                 ejecuta la función de diagnóstico de contexto:</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>-- Comprobación de roles activos en el hilo de conexión actual
+                    <pre><code>-- Comprobación de roles activos en el hilo de conexión actual
 SELECT CURRENT_ROLE();</code></pre>
-            </div>
                     <p>El motor del sistema devolverá inicialmente el valor NONE. Por lo
                 tanto, para poder hacer uso de las capacidades heredadas del rol, es
                 imperativo proceder con su <strong>activación</strong>.</p>
@@ -671,12 +637,10 @@ SELECT CURRENT_ROLE();</code></pre>
                     <p>Esta operación requiere ser ejecutada por un administrador del
                 sistema que posea el privilegio CREATE USER (o derechos de modificación
                 directa sobre la tabla del sistema mysql.default_roles):</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>-- 1. Forzar la activación automática de TODOS los roles asignados al iniciar sesión
+                    <pre><code>-- 1. Forzar la activación automática de TODOS los roles asignados al iniciar sesión
 SET DEFAULT ROLE ALL TO 'user1'@'%', 'user2'@'%';
 -- 2. Configurar la activación automática por defecto de un único rol determinado
 SET DEFAULT ROLE mantenimiento_total TO 'user2'@'%';</code></pre>
-            </div>
                     <p><strong>B. Estrategia de Activación Manual (Por Sesión en Tiempo de
                     Ejecución)</strong></p>
                     <p>Otorga al usuario el control operativo para activar o desactivar sus
@@ -685,12 +649,10 @@ SET DEFAULT ROLE mantenimiento_total TO 'user2'@'%';</code></pre>
                 compartimentación de privilegios. Para interactuar con sus perfiles en
                 tiempo de ejecución, el propio usuario conectado utiliza la instrucción
                 SET ROLE:</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>-- Cambiar el contexto de la sesión actual de forma manual (Ejecutado por el usuario)
+                    <pre><code>-- Cambiar el contexto de la sesión actual de forma manual (Ejecutado por el usuario)
 SET ROLE 'mantenimiento_total'; -- Activa el rol indicado y suspende el resto
 SET ROLE ALL; -- Activa de forma simultánea todos los roles asignados
 SET ROLE NONE; -- Desactiva todos los roles, devolviendo la sesión a mínimos privilegios</code></pre>
-            </div>
                     <p>Existen variantes avanzadas aplicables a entornos complejos que
                 permiten activar de forma masiva todos los perfiles de la cuenta a
                 excepción de algunos explícitamente excluidos (SET ROLE ALL EXCEPT
@@ -720,8 +682,7 @@ SET ROLE NONE; -- Desactiva todos los roles, devolviendo la sesión a mínimos p
             </ul>
                     <h2 id="a52-crear-o-modificar-una-vista-create-view">5.2. Crear o Modificar una Vista (CREATE VIEW)</h2>
                     <p>En MySQL, la instrucción <code>CREATE VIEW</code> permite registrar la especificación de una vista virtual. Para actualizar una vista preexistente sin necesidad de eliminarla previamente se emplea la cláusula complementaria <code>OR REPLACE</code>.</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>-- Sintaxis formal general en MySQL
+                    <pre><code>-- Sintaxis formal general en MySQL
 CREATE
     [OR REPLACE]
     [ALGORITHM = {UNDEFINED | MERGE | TEMPTABLE}]
@@ -730,7 +691,6 @@ CREATE
     VIEW nombre_vista [(lista_columnas)]
     AS sentencia_select
     [WITH [CASCADED | LOCAL] CHECK OPTION];</code></pre>
-            </div>
                     <div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>
@@ -759,8 +719,7 @@ CREATE
                     </table>
                 </div>
             </div>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>-- Ejemplo de definición con renombrado explícito de columnas:
+                    <pre><code>-- Ejemplo de definición con renombrado explícito de columnas:
 CREATE OR REPLACE VIEW vista_pedidos_totales (id_pedido, fecha, cliente, importe_total) AS
 SELECT
     p.codigo_pedido,
@@ -771,23 +730,17 @@ FROM cliente c
 INNER JOIN pedido p ON c.codigo_cliente = p.codigo_cliente
 INNER JOIN detalle_pedido dp ON p.codigo_pedido = dp.codigo_pedido
 GROUP BY p.codigo_pedido;</code></pre>
-            </div>
                     <h2 id="a53-eliminar-una-vista-drop-view">5.3. Eliminar una Vista (DROP VIEW)</h2>
                     <p>Para suprimir una o varias vistas del catálogo del sistema sin alterar los datos persistidos en las tablas base, se utiliza la sentencia <code>DROP VIEW</code>. Se recomienda incluir la cláusula preventiva <code>IF EXISTS</code>:</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>-- Eliminación segura de una o más vistas
+                    <pre><code>-- Eliminación segura de una o más vistas
 DROP VIEW IF EXISTS nombre_vista [, otra_vista] [RESTRICT | CASCADE];</code></pre>
-            </div>
                     <h2 id="a54-renombrar-una-vista-rename-table">5.4. Renombrar una Vista (RENAME TABLE)</h2>
                     <p>Dado que en el diccionario de datos de MySQL las vistas comparten espacio de nombres con las tablas, la modificación de su identificador se realiza mediante el comando <code>RENAME TABLE</code>:</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>-- Renombrar una vista en el catálogo
+                    <pre><code>-- Renombrar una vista en el catálogo
 RENAME TABLE nombre_antiguo_vista TO nuevo_nombre_vista;</code></pre>
-            </div>
                     <h2 id="a55-consultar-vistas-y-su-definicion-show">5.5. Consultar Vistas y su Definición (SHOW)</h2>
                     <p>Para auditar qué vistas están desplegadas y examinar la sentencia SQL con la que fueron creadas, MySQL proporciona sentencias de introspección directas:</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>-- 1. Listar todas las tablas y vistas indicando su tipo (BASE TABLE o VIEW)
+                    <pre><code>-- 1. Listar todas las tablas y vistas indicando su tipo (BASE TABLE o VIEW)
 SHOW FULL TABLES;
 
 -- 2. Filtrar para inspeccionar únicamente los objetos de tipo VIEW
@@ -795,7 +748,6 @@ SHOW FULL TABLES WHERE Table_type = 'VIEW';
 
 -- 3. Visualizar la sentencia completa de definición DDL de una vista
 SHOW CREATE VIEW nombre_vista;</code></pre>
-            </div>
                     <h2 id="a56-vistas-con-contenido-actualizable-insert-update-delete">5.6. Vistas con Contenido Actualizable (INSERT, UPDATE, DELETE)</h2>
                     <p>En determinados casos y bajo condiciones estrictas, el SGBD permite ejecutar sentencias de manipulación de datos (<code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>) a través de una vista para modificar directamente los datos de la tabla base subyacente.</p>
                     <p>Para que una vista sea <strong>actualizable</strong> (<em>updatable view</em>), debe existir una relación uno a uno entre las filas de la vista y las de la tabla original. La vista <strong>no</strong> puede contener:</p>

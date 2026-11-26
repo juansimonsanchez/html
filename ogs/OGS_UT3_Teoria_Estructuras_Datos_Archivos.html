@@ -123,8 +123,7 @@
             Declaración de Listas</h2>
           <p>Para crear una lista en Python se utilizan los caracteres de
             corchetes [ y ].</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Sintaxis general
+          <pre><code># Sintaxis general
 lista = [valor1, valor2, ...]
 # Ejemplos de declaración
 lista_vacia = [] # Crea una lista vacía
@@ -133,7 +132,6 @@ decimales = [1.4, 4, 56.5, 78, 100.3] # Lista de números decimales
 cadenas = ['hola', 'adios', 'buena suerte'] # Lista de cadenas de caracteres
 mixta = ["a", 1, True] # Lista con distintos tipos de datos
 inicializada = [0, 0, 0, 0, 0, 0] # Lista de 6 elementos inicializados a 0</code></pre>
-          </div>
 
           <h2 id="a9">3.2.2. Indexación y Acceso</h2>
           <p>Cada uno de los elementos de una lista está indexado por una
@@ -141,20 +139,16 @@ inicializada = [0, 0, 0, 0, 0, 0] # Lista de 6 elementos inicializados a 0</code
             elementos menos 1.</p>
           <p>También se pueden utilizar índices negativos para acceder desde el
             final de la lista hacia atrás (donde -1 es el último elemento).</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>loteria = [3, 32, 12, 21, 16, 33]
+          <pre><code>loteria = [3, 32, 12, 21, 16, 33]
 print(loteria[0]) # Muestra 3
 print(loteria[5]) # Muestra 33
 print(loteria[-1]) # Muestra 33 (índice negativo)
 # ERROR DE ÍNDICE
 print(loteria[6]) # Produce un error IndexError: list index out of range</code></pre>
-          </div>
           <p>Si intentamos asignar directamente un valor a una posición que no
             existe para expandir la lista, Python lanzará un error:</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>valores = [1, 2, 3, 4, 5]
+          <pre><code>valores = [1, 2, 3, 4, 5]
 valores[5] = 6 # ERROR: La posición 5 no existe en una lista de longitud 5</code></pre>
-          </div>
 
           <h2 id="a10">3.2.3. Operaciones Básicas con Listas</h2>
           <p>Las listas son secuencias y permiten realizar operaciones directas
@@ -162,76 +156,59 @@ valores[5] = 6 # ERROR: La posición 5 no existe en una lista de longitud 5</cod
           <ul>
             <li>Recorrido simple (for):</li>
           </ul>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>lista = [1, 2, 3, 4, 5, 6]
+          <pre><code>lista = [1, 2, 3, 4, 5, 6]
 for num in lista:
     print(num, end="") # Resultado: 123456</code></pre>
-          </div>
           <p>Recorrido múltiple (zip): Permite recorrer más de una lista
             simultáneamente en el mismo ciclo.</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>lista = [1, 2, 3, 4, 5, 6]
+          <pre><code>lista = [1, 2, 3, 4, 5, 6]
 lista2 = ["a", "b", "c", "d", "e"]
 for num, letra in zip(lista, lista2):
     print(num, letra)
 # Resultado: 1 a / 2 b / 3 c / 4 d / 5 e</code></pre>
-          </div>
           <p>Operadores de pertenencia (in y not in): Comprueban si un
             elemento pertenece o no a la lista.</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>2 in lista # Devuelve True
+          <pre><code>2 in lista # Devuelve True
 8 not in lista # Devuelve True</code></pre>
-          </div>
           <p>Concatenación (+): Permite unir dos listas en una nueva.</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>lista + [7, 8, 9] # Resultado: [1, 2, 3, 4, 5, 6, 7, 8, 9]</code></pre>
-          </div>
+          <pre><code>lista + [7, 8, 9] # Resultado: [1, 2, 3, 4, 5, 6, 7, 8, 9]</code></pre>
           <p>Repetición (*): Repite los elementos de la lista un número de
             veces.</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>lista * 2 # Resultado: [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6]</code></pre>
-          </div>
+          <pre><code>lista * 2 # Resultado: [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6]</code></pre>
           <p>Slicing / Rebanadas ([inicio:fin:paso]): Obtiene una
             subsecuencia de la lista.</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>lista = [1, 2, 3, 4, 5, 6]
+          <pre><code>lista = [1, 2, 3, 4, 5, 6]
 print(lista[2:4]) # [3, 4] (desde posición 2 hasta 4, sin incluir la 4)
 print(lista[1:4:2]) # [2, 4] (desde 1 hasta 4, de 2 en 2)
 print(lista[:5]) # [1, 2, 3, 4, 5] (desde el inicio hasta la posición 5)
 print(lista[5:]) # [6] (desde la posición 5 hasta el final)
 print(lista[::-1]) # [6, 5, 4, 3, 2, 1] (invierte la lista usando paso negativo)</code></pre>
-          </div>
 
           <h2 id="a11">3.2.4. Funciones Globales Predefinidas</h2>
           <p>Funciones nativas de Python que aceptan una lista como argumento:</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>lista1 = [20, 40, 10, 40, 50]
+          <pre><code>lista1 = [20, 40, 10, 40, 50]
 len(lista1) # 5 -&gt; Devuelve la longitud/número de elementos
 max(lista1) # 50 -&gt; Devuelve el valor máximo
 min(lista1) # 10 -&gt; Devuelve el valor mínimo
 sum(lista1) # 160 -&gt; Devuelve la suma de todos los elementos
 sorted(lista1) # [10, 20, 40, 40, 50] -&gt; Devuelve una NUEVA lista ordenada sin modificar la original
 sorted(lista1, reverse=True) # [50, 40, 40, 20, 10] -&gt; Nueva lista ordenada de mayor a menor</code></pre>
-          </div>
 
           <h2 id="a12">3.2.5. Concepto de Mutabilidad y Copia de Listas</h2>
           <p>Las listas son objetos pertenecientes a una clase y son mutables, lo
             que significa que sus elementos pueden modificarse directamente en
             memoria.</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>lista1 = [1, 2, 3]
+          <pre><code>lista1 = [1, 2, 3]
 lista1[2] = 4 # Modifica el elemento en la posición 2
 print(lista1) # [1, 2, 4]
 del lista1[2] # Borra el elemento en la posición 2 usando la instrucción 'del'
 print(lista1) # [1, 2]</code></pre>
-          </div>
           <p>¿Cómo se copian las listas correctamente?</p>
           <p>No se puede utilizar el operador de asignación (=) para copiar una
             lista. Este operador no crea una lista nueva, sino que crea una
             referencia adicional (un alias) apuntando al mismo objeto en
             memoria.</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Intento incorrecto de copia (Asignación de referencia)
+          <pre><code># Intento incorrecto de copia (Asignación de referencia)
 lista1 = [1, 2, 3]
 lista2 = lista1
 lista1[1] = 10
@@ -241,7 +218,6 @@ lista1 = [1, 2, 3]
 lista2 = lista1[:] # Se extrae una rebanada completa generando un nuevo objeto
 lista1[1] = 10
 print(lista2) # [1, 2, 3] -&gt; La lista original cambia, pero la copia se mantiene intacta</code></pre>
-          </div>
 
           <h2 id="a13">3.2.6. Métodos Propios del Objeto Lista</h2>
           <p>Los métodos se invocan usando la nomenclatura lista.metodo() y
@@ -250,56 +226,43 @@ print(lista2) # [1, 2, 3] -&gt; La lista original cambia, pero la copia se manti
           <ul>
             <li>append(valor): Añade un único elemento al final de la lista.</li>
           </ul>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>valores = [1, 2, 3, 4, 5]
+          <pre><code>valores = [1, 2, 3, 4, 5]
 valores.append(6)
 print(valores) # [1, 2, 3, 4, 5, 6]</code></pre>
-          </div>
           <p>extend(lista_a_unir): Une una lista al final de otra
             (concatenación in-place).</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>lista = [1, 2, 3, 4]
+          <pre><code>lista = [1, 2, 3, 4]
 lista.extend([5, 6])
 print(lista) # [1, 2, 3, 4, 5, 6]</code></pre>
-          </div>
           <p>insert(posicion, valor): Inserta un elemento en una posición
             concreta, desplazando los siguientes.</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>valores = [1, 2, 3, 4, 5]
+          <pre><code>valores = [1, 2, 3, 4, 5]
 valores.insert(1, 12) # Inserta el 12 en la posición 1
 print(valores) # [1, 12, 2, 3, 4, 5]</code></pre>
-          </div>
           <p><strong>Métodos de Eliminación</strong></p>
           <ul>
             <li>pop([indice]): Elimina un elemento de la lista y lo devuelve. Si
               no se indica parámetro, saca el último elemento.</li>
           </ul>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>valores = [1, 2, 3, 4, 5]
+          <pre><code>valores = [1, 2, 3, 4, 5]
 valores.pop() # Devuelve 5, la lista queda [1, 2, 3, 4]
 valores.pop(0) # Devuelve 1 (saca la posición 0), la lista queda [2, 3, 4]</code></pre>
-          </div>
           <p>remove(valor): Busca y elimina el primer elemento cuyo valor
             coincida con el argumento dado.</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>valores = [1, 2, 3, 5]
+          <pre><code>valores = [1, 2, 3, 5]
 valores.remove(3) # Quita el número 3
 print(valores) # [1, 2, 5]</code></pre>
-          </div>
           <p><strong>Métodos de Ordenación</strong></p>
           <ul>
             <li>reverse(): Invierte el orden de los elementos de la lista en el
               lugar.</li>
           </ul>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>lista = [1, 2, 4, 5]
+          <pre><code>lista = [1, 2, 4, 5]
 lista.reverse()
 print(lista) # [5, 4, 2, 1]</code></pre>
-          </div>
           <p>sort([reverse=True]): Ordena los elementos de la lista de forma
             definitiva.</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>lista = [5, 4, 2, 1]
+          <pre><code>lista = [5, 4, 2, 1]
 lista.sort() # Ordena de menor a mayor
 print(lista) # [1, 2, 4, 5]
 lista.sort(reverse=True) # Ordena de mayor a menor
@@ -308,33 +271,27 @@ print(lista) # [5, 4, 2, 1]
 texto = ["hola", "que", "tal", "Hola", "Que", "Tal"]
 texto.sort()
 print(texto) # ['Hola', 'Que', 'Tal', 'hola', 'que', 'tal']</code></pre>
-          </div>
           <p><strong>Métodos de Búsqueda</strong></p>
           <ul>
             <li>count(valor): Devuelve el número de veces que aparece un valor en
               la lista.</li>
           </ul>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>valores = [5, 4, 2, 1, 5]
+          <pre><code>valores = [5, 4, 2, 1, 5]
 print(valores.count(5)) # Devuelve 2</code></pre>
-          </div>
           <p>index(valor[, inicio, fin]): Devuelve la posición de la primera
             aparición de un valor. Se puede acotar el rango de búsqueda con los
             parámetros opcionales inicio y fin. Si el elemento no existe, lanza un
             error/excepción.</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>valores = [5, 4, 2, 1, 5]
+          <pre><code>valores = [5, 4, 2, 1, 5]
 valores.index(5) # Devuelve 0 (primera aparición)
 valores.index(5, 1) # Devuelve 4 (busca a partir del índice 1)
 valores.index(5, 1, 4) # ERROR ValueError: 5 is not in list</code></pre>
-          </div>
 
           <h2 id="a14">3.2.7. Listas Multidimensionales</h2>
           <p>Dado que las listas aceptan cualquier tipo de datos, es perfectamente
             posible anidar listas dentro de listas, creando matrices o tablas
             bidimensionales.</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Definición de una matriz de 3x3
+          <pre><code># Definición de una matriz de 3x3
 tabla = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 # Acceso (Fila, Columna)
 print(tabla[1][1]) # Accede a la fila 1, columna 1 -&gt; Devuelve 5
@@ -347,7 +304,6 @@ for fila in tabla:
 # 123
 # 456
 # 789</code></pre>
-          </div>
         </article>
       </details>
     </section>
@@ -366,10 +322,8 @@ for fila in tabla:
           <h2 id="a331-construccion-de-tuplas">3.3.1. Construcción de Tuplas</h2>
           <p>Para crear una tupla se utilizan los caracteres de paréntesis ( y
             ).</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>tupla1 = () # Tupla vacía
+          <pre><code>tupla1 = () # Tupla vacía
 tupla2 = ("a", 1, True) # Tupla con tres elementos heterogéneos</code></pre>
-          </div>
 
           <h2 id="a16">3.3.2. Operaciones Permitidas e Inmutabilidad</h2>
           <p>Se pueden realizar operaciones de lectura idénticas a las listas:</p>
@@ -381,19 +335,15 @@ tupla2 = ("a", 1, True) # Tupla con tres elementos heterogéneos</code></pre>
             <li>Funciones globales: len(), max(), min(), sum(), sorted().</li>
           </ul>
           <p>Demostración de Inmutabilidad:</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>tupla = (1, 2, 3)
+          <pre><code>tupla = (1, 2, 3)
 tupla[1] = 5 # ERROR: TypeError: 'tuple' object does not support item assignment</code></pre>
-          </div>
 
           <h2 id="a17">3.3.3. Métodos de Búsqueda de las Tuplas</h2>
           <p>Al no ser modificables, solo poseen los métodos de búsqueda:</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>tupla = (1, 2, 3, 4, 1, 2, 3)
+          <pre><code>tupla = (1, 2, 3, 4, 1, 2, 3)
 print(tupla.count(1)) # Devuelve 2
 print(tupla.index(2)) # Devuelve 1 (primera aparición)
 print(tupla.index(2, 2)) # Devuelve 5 (busca a partir de la posición 2)</code></pre>
-          </div>
         </article>
       </details>
     </section>
@@ -412,19 +362,16 @@ print(tupla.index(2, 2)) # Devuelve 5 (busca a partir de la posición 2)</code><
           <h2 id="a341-definicion-y-construccion-de-diccionarios">3.4.1. Definición y
             Construcción de Diccionarios</h2>
           <p>Se definen utilizando llaves {} y declarando pares clave: valor.</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Creación directa con elementos
+          <pre><code># Creación directa con elementos
 diccionario = {'one': 1, 'two': 2, 'three': 3}
 # Construcción progresiva a partir de un diccionario vacío
 dict1 = {}
 dict1["one"] = 1
 dict1["two"] = 2
 dict1["three"] = 3</code></pre>
-          </div>
 
           <h2 id="a19">3.4.2. Operaciones Básicas</h2>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>a = {'one': 1, 'two': 2, 'three': 3}
+          <pre><code>a = {'one': 1, 'two': 2, 'three': 3}
 # len(): Devuelve el número de elementos (pares clave-valor)
 print(len(a)) # Devuelve 3
 # Indexación para lectura o modificación
@@ -435,14 +382,12 @@ a["one"] += 1 # Modifica el valor asociado a la clave
 del a["one"] # Elimina la clave "one" y su valor
 # Operadores de pertenencia: Comprueban si una CLAVE existe en el diccionario
 "two" in a # Devuelve True</code></pre>
-          </div>
 
           <h2 id="a20">3.4.3. Mutabilidad y Copia de Diccionarios</h2>
           <p>Al igual que las listas, si asignamos un diccionario a otra variable
             usando =, ambas apuntarán al mismo objeto. Para duplicar un diccionario
             de forma independiente se debe utilizar el método .copy().</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Copia incorrecta por referencia
+          <pre><code># Copia incorrecta por referencia
 a = {'one': 1, 'two': 2}
 b = a
 del a["one"]
@@ -452,7 +397,6 @@ a = {'one': 1, 'two': 2, 'three': 3}
 b = a.copy()
 a["one"] = 1000
 print(b) # {'three': 3, 'one': 1, 'two': 2} -&gt; El diccionario 'b' se mantiene intacto</code></pre>
-          </div>
 
           <h2 id="a21">3.4.4. Métodos Principales de los Diccionarios</h2>
           <ul>
@@ -462,45 +406,36 @@ print(b) # {'three': 3, 'one': 1, 'two': 2} -&gt; El diccionario 'b' se mantiene
               </ul>
             </li>
           </ul>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>dict1 = {'one': 1, 'two': 2}
+          <pre><code>dict1 = {'one': 1, 'two': 2}
 dict1.clear() # La variable queda como {}</code></pre>
-          </div>
           <p>Agregado y Actualización:</p>
           <ul>
             <li>update(otro_dict): Agrega elementos o actualiza los valores
               existentes a partir de otro diccionario.</li>
           </ul>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>dict1 = {'one': 1, 'two': 2}
+          <pre><code>dict1 = {'one': 1, 'two': 2}
 dict2 = {'three': 3, 'four': 4}
 dict1.update(dict2) # dict1 ahora contiene las claves de ambos</code></pre>
-          </div>
           <p>Retorno Seguro y Extracción:</p>
           <ul>
             <li>get(clave[, valor_por_defecto]): Devuelve el valor de una clave.
               Si la clave no existe, no lanza un error, sino que devuelve None o el
               valor por defecto indicado.</li>
           </ul>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>dict1 = {'one': 1, 'two': 2}
+          <pre><code>dict1 = {'one': 1, 'two': 2}
 dict1.get("one") # Devuelve 1
 dict1.get("four") # Devuelve None
 dict1.get("four", "no existe") # Devuelve la cadena 'no existe'</code></pre>
-          </div>
           <p>pop(clave[, valor_por_defecto]): Devuelve el valor asociado a la
             clave y elimina el elemento. Si no existe la clave, lanza KeyError a
             menos que se indique un valor por defecto.</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>dict1.pop("one") # Devuelve 1 y lo borra del diccionario
+          <pre><code>dict1.pop("one") # Devuelve 1 y lo borra del diccionario
 dict1.pop("four", "no existe") # Devuelve 'no existe' de manera segura</code></pre>
-          </div>
 
           <h2 id="a22">3.4.5. Recorrido de Diccionarios</h2>
           <p>Existen tres métodos fundamentales para iterar sobre un
             diccionario:</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>dict1 = {'one': 1, 'two': 2, 'three': 3}
+          <pre><code>dict1 = {'one': 1, 'two': 2, 'three': 3}
 # 1. .keys(): Recorrer solo las claves
 for clave in dict1.keys():
     print(clave) # Imprime: one, two, three
@@ -510,7 +445,6 @@ for valor in dict1.values():
 # 3. .items(): Recorrer clave y valor simultáneamente
 for clave, valor in dict1.items():
     print(clave, "-&gt;", valor)</code></pre>
-          </div>
         </article>
       </details>
     </section>
@@ -528,24 +462,16 @@ for clave, valor in dict1.items():
             la última es su longitud menos 1.</p>
           <h2 id="a351-funciones-y-operaciones-basicas">3.5.1. Funciones y Operaciones
             Básicas</h2>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Longitud (len): Retorna el conteo total de caracteres.
+          <pre><code># Longitud (len): Retorna el conteo total de caracteres.
 cadena = "Hola mundo"
 print(len(cadena)) # Resultado: 10 (incluye el espacio)</code></pre>
-          </div>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Acceso por Posición:
+          <pre><code># Acceso por Posición:
 print(cadena[2]) # Resultado: 'l'</code></pre>
-          </div>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Concatenación (+ y +=): Une cadenas de caracteres de forma secuencial.
+          <pre><code># Concatenación (+ y +=): Une cadenas de caracteres de forma secuencial.
 cadena = "Hola" + " " + "mundo" # Resultado: 'Hola mundo'</code></pre>
-          </div>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Conversión a cadena (str()): Es obligatorio convertir datos numéricos a texto si se desea concatenarlos con strings.
+          <pre><code># Conversión a cadena (str()): Es obligatorio convertir datos numéricos a texto si se desea concatenarlos con strings.
 precio = 34
 cadena = "El precio del producto serían " + str(precio) + " euros" # Correcto</code></pre>
-          </div>
 
           <h2 id="a24">3.5.2. Métodos Principales de Cadenas</h2>
           <ul>
@@ -562,34 +488,26 @@ cadena = "El precio del producto serían " + str(precio) + " euros" # Correcto</
               </ul>
             </li>
           </ul>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>cadena = "Hola mundo"
+          <pre><code>cadena = "Hola mundo"
 print(cadena.find("mundo")) # 5
 print(cadena.find("mondo")) # -1
 print(cadena.find("o")) # 1 (posición de la primera 'o')</code></pre>
-          </div>
           <p>Reemplazo:</p>
           <ul>
             <li>replace(antiguo, nuevo): Reemplaza las apariciones de una subcadena por otra.</li>
           </ul>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>cadena = "Hola mundo"
+          <pre><code>cadena = "Hola mundo"
 cadena2 = cadena.replace("Hola", "Ostras") # "Ostras mundo"</code></pre>
-          </div>
           <p>Troceado y Segmentación:</p>
           <ul>
             <li>Por Slicing ([inicio:fin]): Corta seleccionando una parte basada en posiciones.</li>
           </ul>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>cadena = "Hola mundo"
+          <pre><code>cadena = "Hola mundo"
 cadena2 = cadena[1:7]
 print(cadena2) # "ola mu" (desde índice 1 al 6)</code></pre>
-          </div>
           <p>Por método split(): Parte la cadena en trozos basándose en un delimitador (por defecto, espacios) y los devuelve en una lista.</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>cadena = "Hola mundo"
+          <pre><code>cadena = "Hola mundo"
 print(cadena.split()) # ['Hola', 'mundo']</code></pre>
-          </div>
         </article>
       </details>
     </section>
@@ -605,15 +523,11 @@ print(cadena.split()) # ['Hola', 'mundo']</code></pre>
           <ul>
             <li>Errores Sintácticos (SyntaxError): Se producen cuando el código está mal escrito formalmente y el intérprete no puede iniciar el programa.</li>
           </ul>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>while True print('Hello world') # ERROR: SyntaxError: invalid syntax (faltan los ':')</code></pre>
-          </div>
+          <pre><code>while True print('Hello world') # ERROR: SyntaxError: invalid syntax (faltan los ':')</code></pre>
           <p>Excepciones / Errores de ejecución: Errores que ocurren mientras el programa ya se está ejecutando. Si no se manejan, detienen el programa de inmediato.</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>4 / 0 # ZeroDivisionError: division by zero
+          <pre><code>4 / 0 # ZeroDivisionError: division by zero
 a + 4 # NameError: name 'a' is not defined
 "2" + 2 # TypeError: Can't convert 'int' object to str implicitly</code></pre>
-          </div>
 
           <h2 id="a26">6.2. El Bloque try - except - else - finally</h2>
           <p>Para capturar y manejar estas situaciones de forma controlada se utiliza la estructura estructurada de bloques:</p>
@@ -623,8 +537,7 @@ a + 4 # NameError: name 'a' is not defined
             <li>else: Bloque opcional. Se ejecuta únicamente si el bloque try se completó con éxito.</li>
             <li>finally: Bloque opcional. Se ejecuta siempre, independientemente de si ocurrió un error o no.</li>
           </ol>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>while True:
+          <pre><code>while True:
     try:
         x = int(input("Introduce un número:"))
         break
@@ -640,7 +553,6 @@ except ZeroDivisionError:
     print("No se puede dividir por cero")
 except:
     print("Otro error no especificado")</code></pre>
-          </div>
         </article>
       </details>
     </section>
@@ -656,11 +568,9 @@ except:
           <p>La función open() se utiliza para abrir un archivo, requiriendo
             normalmente la ruta del archivo y el modo de acceso. Todo archivo
             abierto manualmente debe cerrarse explícitamente con .close().</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>f = open("ejemplo.txt", "w") # Abre un fichero en modo escritura
+          <pre><code>f = open("ejemplo.txt", "w") # Abre un fichero en modo escritura
 print(type(f)) # Muestra &lt;class '_io.TextIOWrapper'&gt;
 f.close() # Cierra el archivo</code></pre>
-          </div>
           <p><strong>Tabla Resumen de Modos de Acceso:</strong></p>
           <table>
             <colgroup>
@@ -754,10 +664,8 @@ f.close() # Cierra el archivo</code></pre>
           <p>Al abrir archivos de texto, es recomendable usar el parámetro
             encoding="utf-8" para garantizar la correcta interpretación de
             caracteres especiales.</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>import locale
+          <pre><code>import locale
 print(locale.getpreferredencoding()) # Retorna la codificación por defecto del sistema</code></pre>
-          </div>
           <p>Propiedades de inspección básicas:</p>
           <ul>
             <li>.closed: Retorna True si el archivo ha sido cerrado con éxito.</li>
@@ -775,14 +683,12 @@ print(locale.getpreferredencoding()) # Retorna la codificación por defecto del 
             <li>tell(): Informa la posición numérica exacta en bytes en la que se encuentra el cursor.</li>
             <li>seek(posicion): Desplaza el cursor de forma manual a la posición especificada (ej: seek(0) vuelve al inicio).</li>
           </ul>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>f = open("ejemplo.txt", "r")
+          <pre><code>f = open("ejemplo.txt", "r")
 print(f.read(4)) # Imprime los primeros 4 caracteres
 print(f.tell()) # Muestra la posición del cursor
 f.seek(0) # Reubica el puntero al inicio absoluto
 lineas = f.readlines()
 f.close()</code></pre>
-          </div>
 
           <h2 id="a28">7.4. Métodos de Escritura</h2>
           <ul>
@@ -790,20 +696,17 @@ f.close()</code></pre>
             <li>writelines(lista_de_cadenas): Toma una lista de textos e inyecta todos los elementos seguidos en el archivo.</li>
             <li>Redirección de print(): Es posible usar print(..., file=objeto_fichero).</li>
           </ul>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>f = open("ejemplo3.txt", "w")
+          <pre><code>f = open("ejemplo3.txt", "w")
 f.write("Prueba 1\n")
 print("Prueba 2\n", file=f)
 f.writelines(["Prueba 3", "Prueba 4"])
 f.close()</code></pre>
-          </div>
 
           <h2 id="a29">7.5. Buenas Prácticas: La Sentencia with open</h2>
           <p>La forma estándar y recomendada para manipular archivos en Python es
             utilizar el gestor de contexto mediante la cláusula with open(...) as
             alias:.</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>try:
+          <pre><code>try:
     with open("archivo_datos.txt", "r", encoding="utf-8") as f:
         for linea in f: # Recorrido directo y eficiente línea a línea sin saturar la RAM
             print(linea)
@@ -811,7 +714,6 @@ except FileNotFoundError:
     print("Error: El archivo no se encontró.")
 except Exception as e:
     print(f"Ocurrió un error inesperado: {e}")</code></pre>
-          </div>
         </article>
       </details>
     </section>
@@ -826,30 +728,25 @@ except Exception as e:
             sencillos en texto plano. Para gestionarlos correctamente, Python
             incluye de manera nativa el módulo csv.</p>
           <h2 id="a381-lectura-de-archivos-csv">3.8.1. Lectura de Archivos CSV</h2>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>import csv
+          <pre><code>import csv
 
 with open("ejemplo1.csv", "r", encoding="utf-8") as fichero:
     contenido = csv.reader(fichero) # Genera un objeto iterador
     # Opción A: Convertir todo directamente a una lista de listas
     datos = list(contenido)
     print(datos[0][0]) # Acceso directo a Fila 0, Columna 0</code></pre>
-          </div>
           <p>Lectura avanzada con parámetros adicionales (quotechar):</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>with open("ejemplo2.csv", "r") as fichero:
+          <pre><code>with open("ejemplo2.csv", "r") as fichero:
     contenido = csv.reader(fichero, quotechar='"')
     for row in contenido:
         print(f"Fila {contenido.line_num}: {row}")</code></pre>
-          </div>
 
           <h2 id="a31">8.2. Escritura de Archivos CSV</h2>
           <ul>
             <li>writerow(lista): Escribe una única fila a partir de una lista de elementos.</li>
             <li>writerows(lista_de_listas): Recibe una colección de filas y las escribe todas consecutivamente.</li>
           </ul>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>import csv
+          <pre><code>import csv
 
 with open("ejemplo3.csv", "w", newline="", encoding="utf-8") as fichero:
     contenido = csv.writer(fichero)
@@ -858,7 +755,6 @@ with open("ejemplo3.csv", "w", newline="", encoding="utf-8") as fichero:
         ['4/5/2015 3:41', 'Cherries', '85'],
         ['4/6/2015 12:46', 'Pears', '14']
     ])</code></pre>
-          </div>
         </article>
       </details>
     </section>
@@ -881,8 +777,7 @@ with open("ejemplo3.csv", "w", newline="", encoding="utf-8") as fichero:
             <li>json.loads(cadena_texto): Decodifica e interpreta una estructura JSON contenida dentro de una variable de texto (String).</li>
             <li>json.load(objeto_fichero): Decodifica e interpreta los datos directamente leyendo desde un archivo físico en disco.</li>
           </ul>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>import json
+          <pre><code>import json
 
 # Caso 1: Desde una cadena de texto (String)
 datos_json = '{"nombre":"carlos", "edad":23}'
@@ -894,14 +789,12 @@ print(datos["nombre"]) # Acceso por clave -&gt; 'carlos'
 with open("ejemplo1.json", "r", encoding="utf-8") as fichero:
     datos_archivo = json.load(fichero)
     print(type(datos_archivo)) # &lt;class 'dict'&gt;</code></pre>
-          </div>
 
           <h2 id="a33">9.2. Escritura de Estructuras JSON</h2>
           <p>Para exportar un diccionario o estructura de Python a un archivo en
             formato JSON se utiliza la función json.dump(estructura,
             objeto_fichero).</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>import json
+          <pre><code>import json
 
 datos_gato = {
     'isCat': True,
@@ -912,7 +805,6 @@ datos_gato = {
 
 with open("ejemplo2.json", "w", encoding="utf-8") as fichero:
     json.dump(datos_gato, fichero)</code></pre>
-          </div>
           <p>Nota de Traducción de Tipos: Al realizarse la exportación, Python
             traduce automáticamente sus palabras clave a los equivalentes
             universales de JSON (por ejemplo, el booleano True pasa a ser true, y el

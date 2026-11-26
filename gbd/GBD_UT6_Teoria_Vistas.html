@@ -147,7 +147,6 @@
                     <p>La creación de vistas en MySQL permite definir modificadores que
                 influyen directamente en la optimización y en los privilegios de
                 ejecución del motor.</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>CREATE
 [OR REPLACE]
 [ALGORITHM = {UNDEFINED | MERGE | TEMPTABLE}]
@@ -156,14 +155,7 @@
 VIEW view_name [(column_list)]
 AS select_statement
 [WITH [CASCADED | LOCAL] CHECK OPTION];</code></pre>
-
-</div>
-                    <h5 id="documentacion-oficial-consulta-la-sintaxis-gramatical-formal-y-todos-los-modificadores-disponibles-para-este-comando-create-view-en-mysql-reference-manual-create-view-syntax">
-                🔗
-                Documentación Oficial: Consulta la sintaxis gramatical formal y todos
-                los modificadores disponibles para este comando CREATE VIEW en <a
-                    href="https://dev.mysql.com/doc/refman/8.0/en/create-view.html"><u>MySQL
-                        Reference Manual - CREATE VIEW Syntax</u></a></h5>
+                    <div class="doc-callout">🔗 Documentación Oficial: Consulta la sintaxis gramatical formal y todos los modificadores disponibles para este comando CREATE VIEW en <a href="https://dev.mysql.com/doc/refman/8.0/en/create-view.html"><u>MySQL Reference Manual - CREATE VIEW Syntax</u></a></div>
                     <h3 id="a212-algoritmos-de-procesamiento-de-vistas">2.1.2 Algoritmos de
                 Procesamiento de Vistas</h3>
                     <p>El parámetro ALGORITHM determina el método físico que utilizará el
@@ -200,7 +192,6 @@ AS select_statement
                     <p>Si deseamos proyectar el personal de la oficina de Madrid ocultando
                 sus atributos sensibles de salario, podemos definir alias en la cabecera
                 del SELECT:</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>USE practica_dml;
 CREATE OR REPLACE VIEW v_personal_madrid (ID, Empleado, Correo,
 Ciudad) AS
@@ -211,39 +202,25 @@ email,
 'Madrid'
 FROM empleado
 WHERE codigo_oficina = 'OFI-MAD';</code></pre>
-
-</div>
                     <h2 id="a22-eliminacion-de-vistas-drop-view">2.2 Eliminación de Vistas (DROP
                 VIEW)</h2>
                     <p>Al eliminar una vista, únicamente se destruye su definición en el
                 catálogo de metadatos. Las tablas físicas y los datos subyacentes
                 permanecen inalterados.</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>DROP VIEW [IF EXISTS]
 view_name [, view_name] ...
 [RESTRICT | CASCADE];</code></pre>
-
-</div>
                     <p><strong>Ejemplo de uso práctico:</strong></p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>DROP VIEW IF EXISTS v_personal_madrid;</code></pre>
-
-</div>
                     <h2 id="a23-renombrado-de-vistas-rename-table">2.3 Renombrado de Vistas
                 (RENAME TABLE)</h2>
                     <p>Dado que las vistas se comportan en gran medida como tablas lógicas
                 en el espacio de nombres de la base de datos, se utiliza el comando
                 estándar de renombrado de tablas para modificar su identificador en el
                 esquema.</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>RENAME TABLE old_view_name TO new_view_name;</code></pre>
-
-</div>
                     <strong>Ejemplo de uso práctico:</strong>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>RENAME TABLE v_personal_madrid TO v_empleados_capital;</code></pre>
-
-</div>
                     <h2 id="a24-metadatos-e-inspeccion-de-vistas">2.4 Metadatos e Inspección de
                 Vistas
             </h2>
@@ -251,7 +228,6 @@ view_name [, view_name] ...
                 necesita auditar y verificar el catálogo físico de tablas para aislar
                 exclusivamente las vistas del esquema y consultar su código fuente DDL
                 de creación.</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Listar todos los objetos indicando si son tablas base o
 vistas
 SHOW FULL TABLES;
@@ -259,8 +235,6 @@ SHOW FULL TABLES;
 SHOW FULL TABLES WHERE Table_type = 'VIEW';
 -- Consultar la sentencia exacta de creación (auditoría lógica)
 SHOW CREATE VIEW v_empleados_capital;</code></pre>
-
-</div>
                 </article>
             </details>
         </section>
@@ -303,11 +277,7 @@ SHOW CREATE VIEW v_empleados_capital;</code></pre>
                             escalares (no son actualizables sus valores derivados).</p>
                 </li>
             </ol>
-                    <h5 id="documentacion-oficial-consulta-la-documentacion-sobre-las-vistas-actualizables-en-mysql-reference-manual-updatable-views">
-                🔗
-                Documentación Oficial: Consulta la documentación sobre las vistas
-                actualizables en <a href="https://dev.mysql.com/doc/refman/8.0/en/view-updatable.html"><u>MySQL
-                        Reference Manual - Updatable Views</u></a></h5>
+                    <div class="doc-callout">🔗 Documentación Oficial: Consulta la documentación sobre las vistas actualizables en <a href="https://dev.mysql.com/doc/refman/8.0/en/view-updatable.html"><u>MySQL Reference Manual - Updatable Views</u></a></div>
                     <h2 id="a32-la-clausula-with-check-option">3.2 La Cláusula WITH CHECK
                 OPTION</h2>
                     <h3 id="a321-prevencion-de-inconsistencias-logicas">3.2.1 Prevención de
@@ -355,7 +325,6 @@ SHOW CREATE VIEW v_empleados_capital;</code></pre>
                 para el personal técnico que muestre información del empleado, su email,
                 fecha de contratación y oficina, ocultando sus campos sensibles de
                 nómina (salario y comision).</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Creación de la vista segura
 CREATE OR REPLACE VIEW v_empleados_publico AS
 SELECT
@@ -370,8 +339,6 @@ WHERE activo = TRUE;
 -- Consulta plana realizada por el usuario de soporte técnico
 SELECT * FROM v_empleados_publico WHERE codigo_oficina =
 'OFI-BAR';</code></pre>
-
-</div>
                     <p><em>Análisis técnico:</em> Al conceder privilegios únicamente sobre
                 v_empleados_publico y no sobre la tabla física empleado, se impide que
                 usuarios con privilegios limitados conozcan el costo salarial
@@ -382,7 +349,6 @@ SELECT * FROM v_empleados_publico WHERE codigo_oficina =
                 necesita pintar de forma unificada el catálogo de productos con sus
                 respectivos fabricantes asociados sin tener que escribir consultas INNER
                 JOIN repetidamente en el código de la aplicación.</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Creación de la vista integradora de inventario
 CREATE OR REPLACE VIEW v_inventario_fabricantes AS
 SELECT
@@ -394,13 +360,8 @@ f.nombre AS Fabricante,
 f.pais AS Pais_Origen
 FROM producto p
 INNER JOIN fabricante f ON p.codigo_fabricante = f.codigo;</code></pre>
-
-</div>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Consulta unificada directa desde la aplicación cliente
 SELECT * FROM v_inventario_fabricantes WHERE PVP &lt; 50.00;</code></pre>
-
-</div>
                     <em>Análisis técnico:</em>
                     <strong>No es actualizable con INSERT</strong>
                     <h2 id="a43-ejemplo-3-prevencion-de-inconsistencias-de-tipo">4.3 Ejemplo 3:
@@ -411,7 +372,6 @@ SELECT * FROM v_inventario_fabricantes WHERE PVP &lt; 50.00;</code></pre>
                 través de dicho canal de edición, no sea posible agregar o renombrar un
                 producto hacia otra gama distinta (como 'Ornamentales' o
                 'Frutales').</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Creación de la vista restrictiva de gama
 CREATE OR REPLACE VIEW v_gestion_herramientas AS
 SELECT
@@ -438,8 +398,6 @@ VALUES ('PROD-O99', 'Ficus Benjamina Gigante', 45.00, 'Ornamentales',
 -- Error esperado en el motor de base de datos:
 -- ERROR 1369 (HY000): CHECK OPTION failed
 'practica_dml.v_gestion_herramientas'</code></pre>
-
-</div>
                     <h2 id="a7">4.4
             Ejemplo 4: Análisis de una Vista de Terceros No Actualizable</h2>
                     <p>La base de datos Sakila de MySQL utiliza de forma extensa vistas para
@@ -447,7 +405,6 @@ VALUES ('PROD-O99', 'Ficus Benjamina Gigante', 45.00, 'Ornamentales',
                 de informes de películas.</p>
                     <p>Analicemos la estructura sintáctica de la vista de producción
                 customer_list:</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>CREATE VIEW customer_list AS
 SELECT
 cu.customer_id AS ID,
@@ -463,8 +420,6 @@ FROM customer AS cu
 JOIN address AS a ON cu.address_id = a.address_id
 JOIN city ON a.city_id = city.city_id
 JOIN country ON city.country_id = country.country_id;</code></pre>
-
-</div>
                     <p><em>Análisis técnico para debate y auditoría:</em></p>
                     <ul>
                 <li>

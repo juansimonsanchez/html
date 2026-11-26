@@ -290,11 +290,8 @@
                 solo podrá utilizar este índice en consultas que filtren:</p>
                     <ol type="1">
                 <li>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                            <pre><code>Por el apellido y nombre simultáneamente (WHERE apellido_contacto =
+                    <pre><code>Por el apellido y nombre simultáneamente (WHERE apellido_contacto =
 'Gómez' AND nombre_contacto = 'Ana').</code></pre>
-
-</div>
                 </li>
                 <li>
                         <p>Únicamente por la columna del prefijo izquierdo (WHERE
@@ -496,8 +493,7 @@
                 Interpretación de Columnas Clave</h2>
                     <p>Al ejecutar EXPLAIN, el SGBD devuelve una fila por cada tabla
                 implicada en la consulta con la siguiente estructura de columnas:</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                        <pre><code>Columna
+                    <pre><code>Columna
 Significado Técnico e Impacto en el
 Rendimiento
 
@@ -564,9 +560,6 @@ ejemplo: Using index indica que la consulta se resuelve íntegramente
 leyendo el índice sin consultar la tabla física; Using filesort indica
 un coste de CPU muy alto debido a ordenaciones en memoria sin índices;
 Using temporary indica la creación de tablas temporales internas).</code></pre>
-
-
-</div>
                     <p><strong>Valores de la Columna type (Ordenados de mejor a peor
                     rendimiento):</strong></p>
                     <ol type="1">

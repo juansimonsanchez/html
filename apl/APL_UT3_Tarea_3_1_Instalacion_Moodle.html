@@ -126,70 +126,46 @@
       </ol>
                     <p>Vaya al directorio "opt" y con git vamos a clonar lo que
         necesitamos:</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-          <pre><code>cd /opt
+                    <pre><code>cd /opt
 sudo git clone git://git.moodle.org/moodle.git</code></pre>
-
-</div>
                     <p><img src="media_APL_UT3_Tarea_3_1_Instalacion_Moodle/image6.png" alt="imagen" class="image-width-600"></p>
                     <p>Una vez instalado, navegue hasta la carpeta donde vamos a descargar
         los archivos deseados.</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-          <pre><code>cd moodle</code></pre>
-
-</div>
+                    <pre><code>cd moodle</code></pre>
                     <p>Enumere las versiones disponibles, si es necesario:</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-          <pre><code>sudo git branch -a</code></pre>
-
-</div>
+                    <pre><code>sudo git branch -a</code></pre>
                     <p><img src="media_APL_UT3_Tarea_3_1_Instalacion_Moodle/image4.png" alt="imagen" class="image-width-300"></p>
                     <p>Pulsar ENTER para verlas todas y CTRL+Z para finalizar.</p>
                     <p>Después de eso, seleccionamos una rama en particular y la
         instalamos.</p>
                     <p>En nuestro caso será la última versión estable y con soporte
         ampliado.</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-          <pre><code>sudo git branch --track MOODLE_405_STABLE
+                    <pre><code>sudo git branch --track MOODLE_405_STABLE
 origin/MOODLE_405_STABLE</code></pre>
-
-</div>
                     <p><img src="media_APL_UT3_Tarea_3_1_Instalacion_Moodle/image12.png" alt="imagen" class="image-width-600"></p>
                     <p>Las nuevas versiones 500 y 501 son distintas en cuanto a los
         requisitos y proceso de instalación.</p>
                     <p>Verifique la versión instalada de Moodle en nuestro servidor :</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-          <pre><code>sudo git checkout MOODLE_405_STABLE</code></pre>
-
-</div>
+                    <pre><code>sudo git checkout MOODLE_405_STABLE</code></pre>
                     <p><img src="media_APL_UT3_Tarea_3_1_Instalacion_Moodle/image8.png" alt="imagen" class="image-width-600"></p>
                     <p>Vamos a copiar el contenido de la carpeta donde hemos descargado
         Moodle (en nuestro caso <strong>/opt/moodle)</strong>, al directorio
         donde será accesible para apache. En nuestro caso, Wordpress lo
         instalamos en la carpeta <strong>/var/www/html</strong>. Ejecutar el
         siguiente comando:</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-          <pre><code>sudo cp -R /opt/moodle /var/www/html</code></pre>
-
-</div>
+                    <pre><code>sudo cp -R /opt/moodle /var/www/html</code></pre>
                     <p>Vamos a crear una carpeta donde se almacenarán los datos de
         Moodle:</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-          <pre><code>sudo mkdir /var/www/moodledata</code></pre>
-
-</div>
+                    <pre><code>sudo mkdir /var/www/moodledata</code></pre>
                     <p><strong>IMPORTANTE</strong>: esta carpeta no puede ser accesible
         desde la web. Se guardarán archivos de los cursos, no de
         configuración.</p>
                     <p>No olvides darle ciertos permisos:</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-          <pre><code>sudo chown -R www-data
+                    <pre><code>sudo chown -R www-data
 /var/www/moodledata
 sudo chmod -R 777 /var/www/moodledata
 sudo chmod ugoa=rwx /var/www/moodledata
 sudo chmod -R 0755 /var/www/html/moodle</code></pre>
-
-</div>
                     <p>Explicar los pasos que se han realizado (no hace falta indicar los
         comandos utilizados) (1)</p>
                     <p>¿El comando git para que sirve? Incluir una pequeña explicación.
@@ -215,17 +191,11 @@ sudo chmod -R 0755 /var/www/html/moodle</code></pre>
         a incluir tal y como se aprecia en la siguiente captura.</p>
                     <p><img src="media_APL_UT3_Tarea_3_1_Instalacion_Moodle/image10.png" alt="imagen" class="image-width-600"></p>
                     <p>Guarde el archivo de configuración y reinicie la base de datos</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-          <pre><code>sudo systemctl restart mysql</code></pre>
-
-</div>
+                    <pre><code>sudo systemctl restart mysql</code></pre>
                     <h3 id="para-crear-la-base-de-datos-ejecutamos-el-siguiente-comando-nos-conecta-a-mysql">Para
         crear la base de datos, ejecutamos el siguiente comando nos conecta a
         mysql:</h3>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-          <pre><code>sudo mysql -u root</code></pre>
-
-</div>
+                    <pre><code>sudo mysql -u root</code></pre>
                     <p>Active la compatibilidad con UTF 4 de 8 bytes:</p>
                     <p><em><strong>CREATE DATABASE moodle DEFAULT CHARACTER SET utf8mb4
               COLLATE utf8mb4_unicode_ci;</strong></em></p>
@@ -248,15 +218,9 @@ sudo chmod -R 0755 /var/www/html/moodle</code></pre>
                     <p>Ya nos podemos salir de la consola de MySQL:</p>
                     <p><em><strong>quit;</strong></em></p>
                     <p>Otorgar derechos de acceso a la carpeta "moodle":</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-          <pre><code>sudo chmod -R 777 /var/www/html/moodle</code></pre>
-
-</div>
+                    <pre><code>sudo chmod -R 777 /var/www/html/moodle</code></pre>
                     <p>Reinicie su servidor:</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-          <pre><code>sudo systemctl restart apache2</code></pre>
-
-</div>
+                    <pre><code>sudo systemctl restart apache2</code></pre>
                     <ol start="3" type="1">
         <li>
             <p><strong>ARCHIVO DE CONFIGURACIÓN DE MOODLE:</strong></p>

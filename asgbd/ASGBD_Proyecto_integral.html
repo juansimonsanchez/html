@@ -315,13 +315,9 @@
                         </li>
                         <li>
 
-                                <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋
-                                        Copiar</button>
-                                    <pre><code>Rol aerodata_operator: Permiso para consultar,
+                                <pre><code>Rol aerodata_operator: Permiso para consultar,
 insertar y actualizar reservas y tickets, pero con bloqueo estricto de
 borrado (DELETE denegado).</code></pre>
-
-</div>
                         </li>
                         <li>
                                 <p><strong>Rol aerodata_admin:</strong> Administrador secundario del
@@ -780,8 +776,7 @@ borrado (DELETE denegado).</code></pre>
                             disco.</p>
                 </li>
                 <li>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                            <pre><code>Diagnóstico Técnico mediante EXPLAIN: Analiza la
+                    <pre><code>Diagnóstico Técnico mediante EXPLAIN: Analiza la
 siguiente consulta que asocia vuelos y pasajeros para calcular ingresos
 por aeropuerto con precios superiores a la media global:
 SELECT a.airport_code, COUNT(f.flight_id) FROM airport a
@@ -789,8 +784,6 @@ JOIN flight f ON a.airport_code = f.from_airport
 JOIN booking b ON f.flight_id = b.flight_id
 GROUP BY a.airport_code HAVING SUM(b.price) &gt; (SELECT AVG(price) FROM
 booking);</code></pre>
-
-</div>
                     <ul>
                         <li>
                                 <p>Ejecuta la consulta usando el prefijo EXPLAIN ANALYZE o EXPLAIN

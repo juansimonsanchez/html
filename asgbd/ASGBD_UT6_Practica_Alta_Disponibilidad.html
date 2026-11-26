@@ -137,12 +137,9 @@
                             SET GLOBAL group_replication_bootstrap_group=OFF;</p>
                 </li>
                 <li>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                            <pre><code>Entrega: Captura del comando SELECT * FROM
+                    <pre><code>Entrega: Captura del comando SELECT * FROM
 performance_schema.replication_group_members; mostrando el nodo 1 como
 ONLINE.</code></pre>
-
-</div>
                 </li>
             </ol>
                 </article>
@@ -174,23 +171,17 @@ ONLINE.</code></pre>
                     puntos)</strong></p>
 <ol type="1">
                 <li>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                            <pre><code>En el Primario (normalmente mysql1), crea
+                    <pre><code>En el Primario (normalmente mysql1), crea
 datos:
 CREATE DATABASE alta_disponibilidad;
 USE alta_disponibilidad;
 CREATE TABLE nodos (id INT PRIMARY KEY, nombre VARCHAR(50));
 INSERT INTO nodos VALUES (1, 'Nodo Primario Inicial');</code></pre>
-
-</div>
                 </li>
                 <li>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                            <pre><code>Accede a mysql3 (Secundario) y verifica la recepción
+                    <pre><code>Accede a mysql3 (Secundario) y verifica la recepción
 inmediata:
 SELECT * FROM alta_disponibilidad.nodos;</code></pre>
-
-</div>
                 </li>
                 <li>
                         <p><strong>Entrega:</strong> Captura de la consulta en el nodo 3 y
@@ -243,11 +234,7 @@ SELECT * FROM alta_disponibilidad.nodos;</code></pre>
 
                 <article class="box-card">
                     <h2 id="a4-calificacion">4. CALIFICACIÓN</h2>
-<p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
-                    través de la plataforma, la entrega del documento en formatos editables
-                    no permitidos (como .docx), capturas con identificación del alumno/a o
-                    la omisión de los enlaces de las fuentes documentales utilizadas
-                    penalizará gravemente la nota o invalidará la práctica.</p>
+<div class="alert-callout">⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a través de la plataforma, la entrega del documento en formatos editables no permitidos (como .docx), capturas con identificación del alumno/a o la omisión de los enlaces de las fuentes documentales utilizadas penalizará gravemente la nota o invalidará la práctica.</div>
 <div class="table-wrapper">
                 <div class="table-wrapper">
                     <table>

@@ -47,36 +47,26 @@
         <article class="content-article">
           <details class="accordion" id="page-section-2">
             <summary class="summary-title">1. Instalación  <a class="headerlink" href="#a1instalacion-de-docker-en-ubuntu" title="Enlace permanente">¶</a></summary>
-            <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" type="button" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code># Añade la clave GPG oficial de Docker:
+            <pre><code># Añade la clave GPG oficial de Docker:
 sudo apt update
 sudo apt install -y ca-certificates curl
 sudo install -m 0755 -d /etc/apt/keyrings
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
 sudo chmod a+r /etc/apt/keyrings/docker.asc</code></pre>
-            </div>
-            <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" type="button" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code># Añadir el repositorio a las fuentes de APT:
+            <pre><code># Añadir el repositorio a las fuentes de APT:
 echo \
 "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
 $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
 sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt update</code></pre>
-            </div>
-            <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" type="button" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code># Instalar los paquetes necesarios:
+            <pre><code># Instalar los paquetes necesarios:
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</code></pre>
-            </div>
-            <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" type="button" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code># Verificar que el servicio esté activo:
+            <pre><code># Verificar que el servicio esté activo:
 sudo systemctl status docker</code></pre>
-            </div>
             <p>Deberías ver el estado resaltado en verde como active (running).</p>
-            <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" type="button" onclick="copyCode(this)">📋 Copiar</button>
-                <pre><code># Ejecutar Docker sin 'sudo' (opcional):
+            <pre><code># Ejecutar Docker sin 'sudo' (opcional):
 sudo usermod -aG docker $USER
 newgrp docker</code></pre>
-            </div>
             <p>Ejecuta docker run hello-world sin anteceder sudo. Deberías ver un mensaje de bienvenida confirmando la instalación.</p>
           </details>
         </article>

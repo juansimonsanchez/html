@@ -539,14 +539,11 @@
                             (<em>regex</em>).</p>
                 </li>
                 <li>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                            <pre><code>Cuando recibe una consulta (ej: SELECT * FROM clientes WHERE id =
+                    <pre><code>Cuando recibe una consulta (ej: SELECT * FROM clientes WHERE id =
 45;), analiza el texto de la consulta, detecta el ID utilizando patrones
 regex, comprueba su tabla de reglas de enrutamiento y redirige
 silenciosamente la consulta al Shard correspondiente, devolviendo el
 resultado de forma transparente al usuario.</code></pre>
-
-</div>
                 </li>
             </ul>
                 </article>
@@ -565,7 +562,6 @@ resultado de forma transparente al usuario.</code></pre>
                     <p>Como administradores de sistemas, no podemos vigilar manualmente las
                 consolas de base de datos a diario. Debemos automatizar alarmas que nos
                 alerten inmediatamente de desincronizaciones en la réplica de MySQL.</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>#!/bin/bash
 # ==============================================================================
 # SCRIPT DE MONITORIZACIÓN PARA MYSQL REPLICA - ASGBD (UD 6)
@@ -611,8 +607,6 @@ else
         echo "$(date '+%Y-%m-%d %H:%M:%S') [OK] Réplica funcionando correctamente sin retrasos." &gt;&gt; "$LOG_FILE"
     fi
 fi</code></pre>
-
-</div>
                     <strong>Replica_IO_Running</strong>
                     <strong>Replica_SQL_Running</strong>
                     <h2 id="a62-configuracion-gtid-en-mysqldcnf-para-alta-disponibilidad">6.2.
@@ -623,7 +617,6 @@ fi</code></pre>
                 parámetros adecuados en el fichero de configuración de MySQL
                 (normalmente ubicado en /etc/mysql/mysql.conf.d/mysqld.cnf en sistemas
                 basados en Debian/Ubuntu).</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>[mysqld]
 # Identificador único de nodo (Entero entre 1 y 4294967295)
 # Debe ser diferente en cada uno de los servidores del clúster
@@ -649,8 +642,6 @@ log_replica_updates = ON
 # Forzar consistencia de escrituras en disco ante caídas de energía eléctrica (batería RAID)
 sync_binlog = 1
 innodb_flush_log_at_trx_commit = 1</code></pre>
-
-</div>
                 </article>
             </details>
         </section>

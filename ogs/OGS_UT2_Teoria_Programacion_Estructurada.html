@@ -165,17 +165,14 @@
           </ul>
 
           <p><strong>A) Ejemplo Básico:</strong></p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Definición de dos tipos de números simples
+          <pre><code># Definición de dos tipos de números simples
 edad_usuario = 25
 altura_metros = 1.78
 print(type(edad_usuario)) # Imprime: &lt;class 'int'&gt;
 print(type(altura_metros)) # Imprime: &lt;class 'float'&gt;</code></pre>
-          </div>
 
           <p><strong>B) Ejemplo Práctico (Perfil ASIR):</strong></p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Script: inventario_servidor.py
+          <pre><code># Script: inventario_servidor.py
 # Guardamos valores para monitorizar el estado físico de un nodo
 servidores_en_rack = 14 # Tipo 'int': Unidades enteras indivisibles
 consumo_electrico_amperios = 4.85 # Tipo 'float': Medición precisa con decimales
@@ -183,7 +180,6 @@ print("Tipo de la variable servidores_en_rack:")
 print(type(servidores_en_rack))
 print("Tipo de la variable consumo_electrico_amperios:")
 print(type(consumo_electrico_amperios))</code></pre>
-          </div>
 
           <h3 id="a32-operadores-aritmeticos-de-sistemas">3.2. Operadores Aritméticos de Sistemas</h3>
           <p>Símbolos matemáticos utilizados para manipular los valores numéricos:</p>
@@ -248,19 +244,16 @@ print(type(consumo_electrico_amperios))</code></pre>
           <p><em>(Nota: Los operadores unarios + y - actúan para representar la polaridad positiva o negativa de un valor numérico).</em></p>
 
           <p><strong>A) Ejemplo Básico:</strong></p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Operaciones matemáticas directas con variables
+          <pre><code># Operaciones matemáticas directas con variables
 dividendo = 13
 divisor = 4
 resultado_division_entera = dividendo // divisor
 resto_sobrante = dividendo % divisor
 print(resultado_division_entera) # Muestra: 3
 print(resto_sobrante) # Muestra: 1</code></pre>
-          </div>
 
           <p><strong>B) Ejemplo Práctico (Perfil ASIR):</strong></p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Script: particionamiento_disco.py
+          <pre><code># Script: particionamiento_disco.py
 # Propósito: Evaluar el espacio libre sobrante de una cabina tras realizar backups
 capacidad_total_bloques = 175
 bloques_usados_por_backup = 30
@@ -271,7 +264,6 @@ print("backups que se pueden almacenar en la cabina:")
 print(backups_posibles) # Muestra: 5
 print("Bloques de almacenamiento que quedan vacíos al final:")
 print(bloques_sobrantes) # Muestra: 25 (el resto de la división)</code></pre>
-          </div>
 
           <h3 id="a33-funciones-numericas-predefinidas">3.3. Funciones Numéricas Predefinidas</h3>
           <p>Python tiene funciones cargadas en su núcleo para manipular datos numéricos directamente:</p>
@@ -285,16 +277,13 @@ print(bloques_sobrantes) # Muestra: 25 (el resto de la división)</code></pre>
           </ul>
 
           <p><strong>A) Ejemplo Básico:</strong></p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Redondeo simple y valor absoluto
+          <pre><code># Redondeo simple y valor absoluto
 numero_negativo = -15.678
 print(abs(numero_negativo)) # Muestra: 15.678
 print(round(numero_negativo, 2)) # Muestra: -15.68</code></pre>
-          </div>
 
           <p><strong>B) Ejemplo Práctico (Perfil ASIR):</strong></p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Script: analisis_red.py
+          <pre><code># Script: analisis_red.py
 # Propósito: Convertir parámetros de red decimales a binario/hex para análisis manual
 primer_octeto_ip = 192
 latencia_ping_ms = 45.728
@@ -304,12 +293,9 @@ print("Octeto IP convertido a Hexadecimal:")
 print(hex(primer_octeto_ip)) # Muestra: '0xc0'
 print("Latencia media de la red redondeada a un único decimal:")
 print(round(latencia_ping_ms, 1)) # Muestra: 45.7</code></pre>
-          </div>
           <p>Quizás eches en falta más operaciones que podemos realizar sobre los números. En el módulo <code>math</code> encontramos muchas de estas operaciones. Para utilizarlas vamos a importar el módulo, por ejemplo para realizar una raíz cuadrada:</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>import math
+          <pre><code>import math
 math.sqrt(9)</code></pre>
-          </div>
 
           <h3 id="a34-datos-booleanos-y-operaciones-logicasrelacionales">3.4. Datos Booleanos y Operaciones Lógicas/Relacionales</h3>
           <p>Un <strong>booleano</strong> (<code>bool</code>) es un tipo de dato que solo puede tomar uno de dos estados posibles: <code>True</code> (Verdadero) o <code>False</code> (Falso). Son fundamentales para definir condiciones de seguridad y saltos de flujo lógico.</p>
@@ -320,22 +306,18 @@ math.sqrt(9)</code></pre>
           <p>Cuando se evalúa una expresión, hay determinados valores que se interpretan como <code>False</code>: <code>False</code>, cualquier número 0 (<code>0</code>, <code>0.0</code>), cualquier secuencia vacía (<code>[]</code>, <code>()</code>, <code>''</code>) y cualquier diccionario vacío (<code>{}</code>).</p>
 
           <p><strong>A) Ejemplo Básico:</strong></p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Comparación lógica de variables numéricas
+          <pre><code># Comparación lógica de variables numéricas
 limite_edad = 18
 edad_usuario = 16
 puede_entrar = edad_usuario &gt;= limite_edad
 print(puede_entrar) # Muestra: False</code></pre>
-          </div>
 
           <p><strong>B) Ejemplo Práctico (Perfil ASIR):</strong></p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Script: auditoria_firewall.py
+          <pre><code># Script: auditoria_firewall.py
 # Comprobamos si un puerto solicitado por una aplicación es seguro
 puerto_solicitado = 80
 puerto_ssh = 22
 puerto_https = 443</code></pre>
-          </div>
 
           <h3 id="a35-datos-de-texto-cadenas-de-caracteres-strings">3.5. Datos de Texto: Cadenas de Caracteres (strings)</h3>
           <p>Las cadenas de texto se identifican por ir encerradas entre comillas simples (<code>'</code>) o dobles (<code>"</code>).</p>
@@ -345,17 +327,14 @@ puerto_https = 443</code></pre>
           </ul>
 
           <p><strong>A) Ejemplo Básico:</strong></p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Concatenación simple de palabras
+          <pre><code># Concatenación simple de palabras
 saludo = "Hola"
 destino = "Mundo"
 mensaje_completo = saludo + " " + destino
 print(mensaje_completo) # Muestra: Hola Mundo</code></pre>
-          </div>
 
           <p><strong>B) Ejemplo Práctico (Perfil ASIR):</strong></p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Script: constructor_rutas.py
+          <pre><code># Script: constructor_rutas.py
 # Propósito: Generar automáticamente la ruta de volcado de logs para una máquina virtual
 directorio_base_linux = "/var/log/nginx"
 nombre_archivo_log = "error.log"
@@ -363,7 +342,6 @@ nombre_archivo_log = "error.log"
 ruta_completa_sistema = directorio_base_linux + "/" + nombre_archivo_log
 print("El archivo de registro se guardará en:")
 print(ruta_completa_sistema) # Muestra: /var/log/nginx/error.log</code></pre>
-          </div>
           <p><strong>Indexación:</strong> Se puede obtener el dato de una secuencia indicando su índice. En este caso es posible obtener un carácter de la cadena indicando su posición (empezando por el índice 0); por ejemplo: <code>cadena[0]</code>.</p>
           <p>Para obtener la longitud de una cadena (número de caracteres que contiene), utilizamos la función <code>len()</code>.</p>
           <p>Las cadenas se comparan carácter a carácter: en el momento en que dos caracteres no son iguales se comparan alfabéticamente (se evalúa según su código Unicode).</p>
@@ -386,17 +364,14 @@ print(ruta_completa_sistema) # Muestra: /var/log/nginx/error.log</code></pre>
           </ul>
 
           <p><strong>A) Ejemplo Básico:</strong></p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Lectura de un número y cálculo de su cuadrado
+          <pre><code># Lectura de un número y cálculo de su cuadrado
 numero_texto = input("Introduce un número entero: ")
 numero_entero = int(numero_texto) # Casteo a entero obligatorio
 resultado_cuadrado = numero_entero ** 2
 print(resultado_cuadrado)</code></pre>
-          </div>
 
           <p><strong>B) Ejemplo Práctico (Perfil ASIR):</strong></p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Script: aprovisionamiento_cuotas.py
+          <pre><code># Script: aprovisionamiento_cuotas.py
 # Propósito: Calcular el espacio total en disco requerido para dar de alta varios usuarios
 cuota_por_usuario_gb = 15
 usuarios_nuevos_texto = input("Introduce la cantidad de usuarios que se darán de alta en el sistema: ")
@@ -404,35 +379,28 @@ usuarios_nuevos = int(usuarios_nuevos_texto) # Casteo a entero para poder multip
 espacio_total_necesario_gb = usuarios_nuevos * cuota_por_usuario_gb
 print("Espacio total aproximado que se debe reservar en la partición (GB):")
 print(espacio_total_necesario_gb)</code></pre>
-          </div>
 
           <h3 id="a42-visualizacion-con-print-y-formateo-basico">4.2. Visualización con print() y Formateo Básico</h3>
           <p>La función <code>print()</code> envía información al canal de salida estándar (la terminal). Podemos formatear o estructurar la salida mediante comas (<code>,</code>) o concatenando con el signo <code>+</code> (lo que requiere usar <code>str()</code> en las partes numéricas).</p>
 
           <p><strong>A) Ejemplo Básico:</strong></p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Diferentes formas de mostrar variables juntas
+          <pre><code># Diferentes formas de mostrar variables juntas
 anio = 2026
 print("El año actual es", anio)
 print("El año actual es " + str(anio))</code></pre>
-          </div>
 
           <p><strong>B) Ejemplo Práctico (Perfil ASIR):</strong></p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Script: telemetria_servidores.py
+          <pre><code># Script: telemetria_servidores.py
 temperatura_cpd_grados = 21.5
 cantidad_servidores_activos = 8
 # Formateo de salida combinando cadenas y valores de monitorización
 print("Estado del CPD: Servidores encendidos:",
       cantidad_servidores_activos, "| Temperatura del CPD:",
       temperatura_cpd_grados, "grados Celsius.")</code></pre>
-          </div>
 
           <p>Con la función <code>print()</code> podemos indicar el formato con el que se van a mostrar los datos, por ejemplo:</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>&gt;&gt;&gt; print("El producto %s cantidad=%d precio=%.2f" % ("cesta", 23, 13.456))
+          <pre><code>&gt;&gt;&gt; print("El producto %s cantidad=%d precio=%.2f" % ("cesta", 23, 13.456))
 El producto cesta cantidad=23 precio=13.46</code></pre>
-          </div>
         </article>
       </details>
     </section>
@@ -445,29 +413,24 @@ El producto cesta cantidad=23 precio=13.46</code></pre>
           <p>A diferencia de otros lenguajes de programación como C, Java o PHP (que delimitan los bloques internos de control mediante el uso de llaves <code>{ }</code>), <strong>Python utiliza la indentación (el sangrado o espacios en blanco)</strong> como un requisito de sintaxis obligatorio.</p>
           <p>Todas las instrucciones de un bloque de código común deben estar perfectamente alineadas a la derecha con el mismo número de espacios (la norma internacional de estilo fija de forma preferente <strong>4 espacios en blanco</strong>).</p>
 
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>if condicion_analizada:
+          <pre><code>if condicion_analizada:
     instruccion_dentro_del_bloque_1
     instruccion_dentro_del_bloque_1
 instruccion_fuera_del_bloque # Al volver al margen inicial, termina el bloque anterior</code></pre>
-          </div>
 
           <h3 id="a52-alternativa-condicional-if-elif-else">5.2. Alternativa Condicional (if - elif - else)</h3>
           <p>Permite desviar la ejecución secuencial del script. Evalúa condiciones booleanas de forma jerárquica y secuencial. En el momento en que una condición es verdadera, ejecuta el bloque de instrucciones indentado correspondiente y salta al final de la estructura de control condicional.</p>
 
           <p><strong>A) Ejemplo Básico:</strong></p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Determinación simple de rangos numéricos
+          <pre><code># Determinación simple de rangos numéricos
 nota = int(input("Introduce tu nota del examen (1-10): "))
 if nota &gt;= 5:
     print("Has aprobado el examen.")
 else:
     print("Has suspendido el examen.")</code></pre>
-          </div>
 
           <p><strong>B) Ejemplo Práctico (Perfil ASIR):</strong></p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Script: analizador_http.py
+          <pre><code># Script: analizador_http.py
 # Propósito: Evaluar el comportamiento de un servidor web según el código de respuesta devuelto
 codigo_estado_http = int(input("Introduce el código de estado HTTP recibido del servidor web: "))
 if codigo_estado_http == 200:
@@ -480,7 +443,6 @@ elif codigo_estado_http == 500:
     print("Diagnóstico: Error crítico interno del servidor web.")
 else:
     print("Diagnóstico: Código de respuesta HTTP no reconocido o alternativo.")</code></pre>
-          </div>
 
           <h3 id="a53-bucle-iterativo-condicional-while-y-controladores-break">5.3. Bucle Iterativo Condicional (while) y Controladores (break)</h3>
           <p>El bucle <code>while</code> evalúa una condición booleana y, <strong>mientras esta condición se mantenga verdadera (True)</strong>, repite indefinidamente la ejecución del bloque de código indentado a su derecha.</p>
@@ -490,17 +452,14 @@ else:
           </ul>
 
           <p><strong>A) Ejemplo Básico:</strong></p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Un bucle que cuenta de forma progresiva del 1 al 5
+          <pre><code># Un bucle que cuenta de forma progresiva del 1 al 5
 contador = 1
 while contador &lt;= 5:
     print(contador)
     contador = contador + 1 # Incremento básico de la variable de control</code></pre>
-          </div>
 
           <p><strong>B) Ejemplo Práctico (Perfil ASIR):</strong></p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Script: shell_segura.py
+          <pre><code># Script: shell_segura.py
 # Propósito: Simular la solicitud persistente de una credencial para acceder a la terminal de red
 contrasena_correcta = "smr2023"
 intentos_restantes = 3
@@ -516,12 +475,10 @@ while intentos_restantes &gt; 0:
         print("Intentos de acceso restantes:", intentos_restantes)
         if intentos_restantes == 0:
             print("SISTEMA BLOQUEADO: Se ha superado el número máximo de intentos permitidos.")</code></pre>
-          </div>
 
           <p>En pseudocódigo podemos encontrar una instrucción <em>Repetir - Hasta Que</em> que nos permite ejecutar una secuencia de instrucciones hasta que la condición sea verdadera. Con esta estructura la secuencia de instrucciones que forma el cuerpo del ciclo se ejecuta una vez y luego se evalúa la condición. Esta estructura de control la podemos encontrar en muchos lenguajes de programación, pero en Python no existe nativamente. Podemos simular su comportamiento utilizando un bucle con <code>while True</code> y la instrucción <code>break</code>:</p>
 
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>secreto = "asdasd"
+          <pre><code>secreto = "asdasd"
 while True:
     clave = input("Dime la clave: ")
     if clave != secreto:
@@ -530,7 +487,6 @@ while True:
         break
 print("Bienvenido!!!")
 print("Programa terminado")</code></pre>
-          </div>
 
           <h3 id="a54-bucle-iterativo-for-y-controladores-breakcontinue">5.4. Bucle Iterativo (for) y Controladores (break/continue)</h3>
           <p>El bucle <code>for</code> se emplea cuando sabemos de antemano cuántas veces queremos repetir una acción o cuando queremos recorrer elementos de una secuencia, como una cadena, una lista o un rango numérico.</p>
@@ -540,15 +496,12 @@ print("Programa terminado")</code></pre>
           </ul>
 
           <p><strong>A) Ejemplo Básico:</strong></p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Un bucle que recorre los valores del 1 al 5
+          <pre><code># Un bucle que recorre los valores del 1 al 5
 for contador in range(1, 6):
     print(contador)</code></pre>
-          </div>
 
           <p><strong>B) Ejemplo Práctico (Perfil ASIR):</strong></p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Script: auditoria_servicios.py
+          <pre><code># Script: auditoria_servicios.py
 # Propósito: Revisar el estado de varios servicios de red y marcar los problemas
 servicios = ["ssh", "apache2", "mysql", "docker"]
 for servicio in servicios:
@@ -557,12 +510,10 @@ for servicio in servicios:
         print("Advertencia: el servicio mysql requiere revisión manual.")
         continue
     print("Estado OK: servicio disponible.")</code></pre>
-          </div>
 
           <p>La función <code>range()</code> es la forma más habitual de generar secuencias numéricas para un bucle <code>for</code>. Por ejemplo, <code>range(1, 6)</code> genera los valores 1, 2, 3, 4 y 5. Esto resulta especialmente útil para recorrer listas, ejecutar acciones repetidas un número concreto de veces o automatizar tareas de monitorización en sistemas.</p>
 
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Ejemplo de recorrido con números y pausa de control
+          <pre><code># Ejemplo de recorrido con números y pausa de control
 for numero in range(1, 11):
     if numero % 2 == 0:
         continue
@@ -570,7 +521,6 @@ for numero in range(1, 11):
     if numero == 7:
         print("Se ha alcanzado el límite de revisión.")
         break</code></pre>
-          </div>
         </article>
       </details>
     </section>
@@ -583,26 +533,21 @@ for numero in range(1, 11):
 
           <h3 id="a61-definicion-de-funciones">6.1. Definición de Funciones</h3>
           <p>Veamos un ejemplo de definición de función:</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>def factorial(n):
+          <pre><code>def factorial(n):
     """Calcula el factorial de un número"""
     resultado = 1
     for i in range(1, n + 1):
         resultado *= i
     return resultado</code></pre>
-          </div>
 
           <p>Y para utilizar la función:</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>&gt;&gt;&gt; factorial(5)
+          <pre><code>&gt;&gt;&gt; factorial(5)
 120</code></pre>
-          </div>
 
           <h3 id="a62-ambito-de-variables-variables-locales-y-globales">6.2. Ámbito de Variables: Variables Locales y Globales</h3>
           <p>El ámbito de una variable es el lugar en el código fuente donde esta variable se puede usar. Una variable local declarada dentro de una función no se puede utilizar fuera de esa función. Veamos un ejemplo:</p>
 
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>&gt;&gt;&gt; def operar(a, b):
+          <pre><code>&gt;&gt;&gt; def operar(a, b):
 ...     suma = a + b
 ...     resta = a - b
 ...     print(suma, resta)
@@ -613,17 +558,14 @@ for numero in range(1, 11):
 Traceback (most recent call last):
   File "&lt;stdin&gt;", line 1, in &lt;module&gt;
 NameError: name 'resta' is not defined</code></pre>
-          </div>
 
           <p>Podemos definir variables globales, que serán visibles en todo el módulo. Se recomienda declararlas en mayúsculas por convención:</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>&gt;&gt;&gt; PI = 3.1415
+          <pre><code>&gt;&gt;&gt; PI = 3.1415
 &gt;&gt;&gt; def area(radio):
 ...     return PI * radio ** 2
 ...
 &gt;&gt;&gt; area(2)
 12.566</code></pre>
-          </div>
 
           <h3 id="parametros-formales-y-reales">Parámetros formales y reales</h3>
           <ul>
@@ -634,25 +576,21 @@ NameError: name 'resta' is not defined</code></pre>
           <h3 id="paso-de-parametros-por-valor-o-por-referencia">Paso de parámetros por valor o por referencia</h3>
           <p>En Python el paso de parámetros es siempre por asignación de referencias de objetos. El lenguaje no trabaja con el concepto clásico de variables contenedoras, sino con <strong>objetos y referencias</strong>. Al realizar la asignación <code>a = 1</code> no se considera que <em>"a contiene el valor 1"</em>, sino que <em>"a referencia al objeto 1"</em>. De este modo, en comparación con otros lenguajes, suele considerarse que en Python los parámetros se pasan por referencia.</p>
           <p>Evidentemente, si se pasa un valor de un <strong>objeto inmutable</strong> (como enteros, floats, cadenas o tuplas), su valor no se podrá alterar fuera de la función:</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>&gt;&gt;&gt; def f(a):
+          <pre><code>&gt;&gt;&gt; def f(a):
 ...     a = 5
 &gt;&gt;&gt; a = 1
 &gt;&gt;&gt; f(a)
 &gt;&gt;&gt; a
 1</code></pre>
-          </div>
 
           <p>Sin embargo, si pasamos un <strong>objeto mutable</strong> (como listas o diccionarios), sí podremos alterar su estado interno:</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>&gt;&gt;&gt; def f(lista):
+          <pre><code>&gt;&gt;&gt; def f(lista):
 ...     lista.append(5)
 ...
 &gt;&gt;&gt; l = [1, 2]
 &gt;&gt;&gt; f(l)
 &gt;&gt;&gt; l
 [1, 2, 5]</code></pre>
-          </div>
           <p>Aunque podemos modificar el parámetro real cuando los objetos pasados son mutables, no suele ser recomendable hacerlo directamente como efecto secundario. En otros lenguajes es necesario porque no existe la opción de retornar múltiples valores, pero en Python podemos retornar cómodamente tuplas o listas mediante la instrucción <code>return</code>.</p>
 
           <h3 id="devolucion-de-informacion">Devolución de información</h3>
@@ -660,8 +598,7 @@ NameError: name 'resta' is not defined</code></pre>
 
           <h3 id="llamadas-a-una-funcion">Llamadas a una función</h3>
           <p>Cuando se llama a una función se deben indicar los parámetros reales necesarios. La llamada a una función se evalúa como una expresión cuyo valor y tipo corresponden al valor retornado. Si la función no incluye una instrucción <code>return</code> explícita, devolverá por defecto <code>None</code>.</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>&gt;&gt;&gt; def cuadrado(n):
+          <pre><code>&gt;&gt;&gt; def cuadrado(n):
 ...     return n * n
 ...
 &gt;&gt;&gt; a = cuadrado(2)
@@ -671,34 +608,28 @@ NameError: name 'resta' is not defined</code></pre>
 256
 &gt;&gt;&gt; type(cuadrado(2))
 &lt;class 'int'&gt;</code></pre>
-          </div>
 
           <h3 id="a63-funciones-recursivas">6.3. Funciones Recursivas</h3>
           <p>La versión iterativa de esta función se ha mostrado en el apartado 6.1; a continuación se implementa de forma recursiva.</p>
 
           <p>El factorial de un número también puede ser calculado de forma recursiva: el factorial de 0 o de 1 es 1, y el factorial de cualquier otro número es igual a dicho número multiplicado por el factorial del número anterior (<code>n - 1</code>).</p>
           <p>Una <strong>función recursiva</strong> es aquella que durante su ejecución realiza llamadas a sí misma. Por ello, siempre es imprescindible definir un <strong>caso base</strong> que detenga la cadena de llamadas sucesivas:</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>def factorial(num):
+          <pre><code>def factorial(num):
     if num == 0 or num == 1:
         return 1
     else:
         return num * factorial(num - 1)</code></pre>
-          </div>
 
           <p>Invocación de la función:</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>&gt;&gt;&gt; factorial(6)
+          <pre><code>&gt;&gt;&gt; factorial(6)
 720</code></pre>
-          </div>
 
           <h3 id="a64-devolucion-de-multiples-valores-en-funciones">6.4. Devolución de Múltiples Valores en Funciones</h3>
           <p>A diferencia de la mayoría de los lenguajes de programación tradicionales, en Python una función puede retornar más de un valor simultáneamente dentro de la misma sentencia <code>return</code>.</p>
           <p>Para ello, basta con separar los valores o variables devueltas mediante comas. Internamente, Python empaqueta automáticamente estos datos en una <strong>tupla</strong> inmutable. Al recibir el resultado en la llamada a la función, podemos desempaquetar cada valor de forma directa en variables independientes.</p>
 
           <p><strong>Ejemplo Práctico:</strong></p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>def calcular_operaciones(a, b):
+          <pre><code>def calcular_operaciones(a, b):
     """Devuelve la suma, la resta y la multiplicación de dos números"""
     suma = a + b
     resta = a - b
@@ -715,7 +646,6 @@ print("Multiplicación:", res_mult) # Muestra: Multiplicación: 50
 resultado_tupla = calcular_operaciones(10, 5)
 print(resultado_tupla)             # Muestra: (15, 5, 50)
 print(type(resultado_tupla))       # Muestra: &lt;class 'tuple'&gt;</code></pre>
-          </div>
 
           <h3 id="a65-identificacion-del-programa-principal-main-y-control-de-ejecucion">6.5. Identificación del Programa Principal (main) y Control de Ejecución</h3>
           <p>Cuando un programa en Python comienza a crecer y definimos múltiples funciones auxiliares, surge una pregunta clave: <strong>¿cómo distinguimos el código de las funciones de la parte principal del script encargada de iniciar la ejecución?</strong></p>
@@ -735,8 +665,7 @@ print(type(resultado_tupla))       # Muestra: &lt;class 'tuple'&gt;</code></pre>
           <p>Al utilizar la condición <code>if __name__ == "__main__":</code> para invocar a <code>main()</code>, garantizamos que el programa principal solo se ejecutará cuando el usuario lance ese fichero directamente, evitando que se ejecute de manera accidental si en el futuro otro script decide importar alguna de sus funciones.</p>
 
           <p><strong>Estructura canónica de un script en Python con funciones y <code>main()</code>:</strong></p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># =====================================================================
+          <pre><code># =====================================================================
 # 1. DEFINICIÓN DE FUNCIONES AUXILIARES (LÓGICA REUTILIZABLE)
 # =====================================================================
 def calcular_iva(precio, porcentaje=21):
@@ -767,7 +696,6 @@ def main():
 if __name__ == "__main__":
     # Solo se ejecuta si el script se ejecuta de forma directa
     main()</code></pre>
-          </div>
         </article>
       </details>
     </section>
@@ -783,18 +711,14 @@ if __name__ == "__main__":
           <p>Python cuenta con una extensa colección de módulos preinstalados que conforman su <strong>biblioteca estándar</strong>. Para utilizarlos en nuestros programas debemos recurrir a la sentencia <code>import</code>.</p>
 
           <p>Podemos importar un módulo completo y hacer referencia a sus funciones mediante la notación de punto. Por ejemplo, para calcular una raíz cuadrada con el módulo matemático <code>math</code>:</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>&gt;&gt;&gt; import math
+          <pre><code>&gt;&gt;&gt; import math
 &gt;&gt;&gt; math.sqrt(9)
 3.0</code></pre>
-          </div>
 
           <p>Si solo necesitamos una función concreta, podemos importarla directamente con <code>from ... import ...</code>, eliminando la necesidad de prefijar el nombre del módulo en cada invocación:</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>&gt;&gt;&gt; from math import sqrt
+          <pre><code>&gt;&gt;&gt; from math import sqrt
 &gt;&gt;&gt; sqrt(9)
 3.0</code></pre>
-          </div>
 
           <h3 id="a72-principales-modulos-estandar-de-python">7.2. Principales Módulos Estándar de Python</h3>
 
@@ -809,8 +733,7 @@ if __name__ == "__main__":
                 <li><code>math.floor(x)</code>: Redondea hacia abajo al entero más cercano (suelo).</li>
                 <li><code>math.pi</code> / <code>math.e</code>: Constantes matemáticas de uso común ($\pi$ y número $e$).</li>
               </ul>
-              <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>import math
+              <pre><code>import math
 
 # Ejemplo general: Cálculo de área y redondeos de un producto
 radio = 5
@@ -818,7 +741,6 @@ area_circulo = math.pi * math.pow(radio, 2)
 print("Área exacta del círculo:", area_circulo)
 print("Redondeo hacia arriba (ceil):", math.ceil(area_circulo))  # 79
 print("Redondeo hacia abajo (floor):", math.floor(area_circulo)) # 78</code></pre>
-              </div>
             </li>
             <li>
               <p><strong>Módulo <code>random</code>:</strong> Generación de números aleatorios y selecciones al azar, útil para juegos, sorteos, simulación de datos o asignación aleatoria de tareas.</p>
@@ -828,8 +750,7 @@ print("Redondeo hacia abajo (floor):", math.floor(area_circulo)) # 78</code></pr
                 <li><code>random.sample(secuencia, k)</code>: Selecciona $k$ elementos aleatorios de una lista sin repetir.</li>
                 <li><code>random.shuffle(lista)</code>: Mezcla o desordena de forma aleatoria los elementos de una lista in situ.</li>
               </ul>
-              <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>import random
+              <pre><code>import random
 
 # Ejemplo general: Juego de dados y sorteo de alumnos
 dado = random.randint(1, 6)
@@ -838,7 +759,6 @@ ganador = random.choice(estudiantes)
 
 print("Resultado del dado:", dado)
 print("Estudiante seleccionado al azar:", ganador)</code></pre>
-              </div>
             </li>
           </ul>
 
@@ -850,8 +770,7 @@ print("Estudiante seleccionado al azar:", ganador)</code></pre>
                 <li><code>time.sleep(segundos)</code>: Pausa la ejecución del script durante los segundos indicados.</li>
                 <li><code>time.time()</code>: Obtiene la marca de tiempo actual en segundos; muy útil para medir cuánto tarda en ejecutarse un trozo de código.</li>
               </ul>
-              <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>import time
+              <pre><code>import time
 
 # Ejemplo general: Medición del tiempo de ejecución de un proceso
 inicio = time.time()
@@ -859,7 +778,6 @@ print("Procesando datos...")
 time.sleep(1.5)  # Simula una tarea pesada pausando 1.5 segundos
 fin = time.time()
 print("Tiempo total transcurrido:", round(fin - inicio, 2), "segundos.")</code></pre>
-              </div>
             </li>
             <li>
               <p><strong>Módulo <code>datetime</code>:</strong> Manipulación amigable de fechas, horas y cálculos de intervalos entre días u horas.</p>
@@ -868,8 +786,7 @@ print("Tiempo total transcurrido:", round(fin - inicio, 2), "segundos.")</code><
                 <li><code>strftime(formato)</code>: Convierte una fecha en una cadena de texto personalizada.</li>
                 <li><code>timedelta(days, hours, ...)</code>: Permite sumar o restar días y horas a una fecha.</li>
               </ul>
-              <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>from datetime import datetime, timedelta
+              <pre><code>from datetime import datetime, timedelta
 
 # Ejemplo general: Cálculo de fecha de vencimiento
 hoy = datetime.now()
@@ -878,7 +795,6 @@ fecha_limite = hoy + plazo_devolucion
 
 print("Fecha actual:", hoy.strftime("%d/%m/%Y"))
 print("Fecha límite de devolución (+15 días):", fecha_limite.strftime("%d/%m/%Y"))</code></pre>
-              </div>
             </li>
           </ul>
 
@@ -892,8 +808,7 @@ print("Fecha límite de devolución (+15 días):", fecha_limite.strftime("%d/%m/
                 <li><code>os.path.exists(ruta)</code>: Comprueba si existe un archivo o directorio en la ruta indicada.</li>
                 <li><code>os.mkdir(nombre)</code>: Crea una nueva carpeta en la ruta de trabajo.</li>
               </ul>
-              <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>import os
+              <pre><code>import os
 
 # Ejemplo general: Comprobación y creación automática de carpetas
 carpeta_destino = "mis_documentos"
@@ -902,7 +817,6 @@ if not os.path.exists(carpeta_destino):
     print("Carpeta creada correctamente:", carpeta_destino)
 else:
     print("La carpeta ya existe. Contenido actual:", os.listdir(carpeta_destino))</code></pre>
-              </div>
             </li>
           </ul>
 
@@ -937,8 +851,7 @@ else:
           </ul>
 
           <p><strong>Ejemplo Práctico de Formateo y Normalización de Texto (Uso General):</strong></p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Entrada de datos sin formatear desde un formulario de usuario
+          <pre><code># Entrada de datos sin formatear desde un formulario de usuario
 entrada_usuario = "  juan carlos pérez  "
 
 # 1. Limpieza de espacios en los extremos y formateo de nombre propio
@@ -959,7 +872,6 @@ print(frase_modificada) # Muestra: Aprender Python es divertido
 archivo = "documento_presentacion.pdf"
 if archivo.endswith(".pdf"):
     print("El archivo es un documento PDF válido.")</code></pre>
-          </div>
 
           <h3 id="a73-creacion-y-uso-de-librerias-propias-modulos-personalizados">7.3. Creación y Uso de Librerías Propias (Módulos Personalizados)</h3>
           <p>Crear nuestra propia librería de funciones en Python es tan sencillo como agrupar funciones reutilizables dentro de un fichero con extensión <code>.py</code> y guardarlo en el mismo directorio de trabajo desde donde vayamos a ejecutar nuestro programa principal.</p>
@@ -968,8 +880,7 @@ if archivo.endswith(".pdf"):
           Para que la sentencia <code>import mi_libreria</code> funcione correctamente, el intérprete de Python debe saber en qué directorio buscar el archivo. Por defecto, Python busca de forma prioritaria en la <strong>misma carpeta donde reside el script principal que estamos ejecutando</strong> (es la primera entrada registrada en su lista de rutas <code>sys.path</code>). Si organizamos nuestras librerías en una subcarpeta (por ejemplo, dentro de una carpeta llamada <code>modulos/</code> o <code>librerias/</code>), debemos importarla indicando la ruta mediante la notación de punto: <code>import modulos.mi_libreria</code> o <code>from modulos import mi_libreria</code>. Si la librería se encontrase en una carpeta externa completamente separada del proyecto, Python no la encontrará y devolverá un error <code>ModuleNotFoundError</code>, a menos que dicha carpeta se agregue a la variable de entorno <code>PYTHONPATH</code> del sistema operativo o se añada dinámicamente en tiempo de ejecución mediante <code>sys.path.append("/ruta/a/la/carpeta")</code>.</p>
 
           <p><strong>Paso 1: Crear la librería propia con funciones generales (<code>mi_libreria.py</code>)</strong></p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Archivo: mi_libreria.py
+          <pre><code># Archivo: mi_libreria.py
 # Librería reutilizable de utilidades generales
 
 def es_monto_valido(cantidad):
@@ -999,11 +910,9 @@ if __name__ == "__main__":
     formatear_titulo("TEST DE LIBRERÍA")
     print("¿100 es válido?:", es_monto_valido(100))
     print("Precio con descuento:", calcular_precio_final(100, 20))</code></pre>
-          </div>
 
           <p><strong>Paso 2: Importar y reutilizar la librería en el script principal (<code>main.py</code>)</strong></p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code># Archivo: main.py
+          <pre><code># Archivo: main.py
 import mi_libreria
 
 # Uso de las funciones generales importadas
@@ -1016,7 +925,6 @@ if mi_libreria.es_monto_valido(precio_producto):
     total = mi_libreria.calcular_precio_final(precio_producto, descuento_aplicado)
     print("Precio base:", precio_producto, "€")
     print("Precio final con descuento:", total, "€")</code></pre>
-          </div>
 
           <h2 id="a74-ejemplos-practicos-de-modulos-comunes-de-propósito-general-y-sistemas">7.4. Ejemplos Prácticos de Módulos Comunes de Propósito General y Sistemas</h2>
           <p>A continuación se detallan las librerías estándar de Python más utilizadas tanto en la resolución de tareas generales de programación como en la administración de redes y sistemas:</p>
@@ -1025,8 +933,7 @@ if mi_libreria.es_monto_valido(precio_producto):
             <li>
               <p><strong>Módulo <code>sys</code> (Información del Intérprete y Parámetros de Entrada):</strong></p>
               <p>Permite capturar argumentos pasados al programa desde la terminal de comandos (<code>sys.argv</code>) o detener limpiamente la ejecución del script (<code>sys.exit()</code>).</p>
-              <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>import sys
+              <pre><code>import sys
 
 # Captura de argumentos recibidos por consola: python3 main.py Juan 25
 print("Nombre del programa:", sys.argv[0])
@@ -1037,14 +944,12 @@ if len(sys.argv) &lt; 2:
 
 nombre_usuario = sys.argv[1]
 print("Bienvenido al programa,", nombre_usuario)</code></pre>
-              </div>
             </li>
 
             <li>
               <p><strong>Módulo <code>math</code> / <code>statistics</code> (Cálculos Estadísticos y Matemáticos):</strong></p>
               <p>Ideal para realizar análisis de datos sencillos como calcular medias, medianas y desviaciones sin necesidad de librerías externas.</p>
-              <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>import statistics
+              <pre><code>import statistics
 
 # Análisis de calificaciones o datos numéricos
 notas = [7.5, 9.0, 6.0, 8.5, 10.0]
@@ -1053,14 +958,12 @@ mediana = statistics.median(notas)
 
 print("Nota media de la clase:", media)     # Muestra: 8.2
 print("Mediana de las notas:", mediana)     # Muestra: 8.5</code></pre>
-              </div>
             </li>
 
             <li>
               <p><strong>Módulo <code>json</code> (Intercambio de Datos y Ficheros de Configuración):</strong></p>
               <p>Utilizado para guardar información de programas en formato JSON o consumir datos procedentes de APIs web públicas o bases de datos.</p>
-              <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>import json
+              <pre><code>import json
 
 # Convertir un diccionario de Python a formato de texto JSON
 datos_usuario = {
@@ -1073,27 +976,23 @@ datos_usuario = {
 json_resultado = json.dumps(datos_usuario, indent=4)
 print("Representación en formato JSON:")
 print(json_resultado)</code></pre>
-              </div>
             </li>
 
             <li>
               <p><strong>Módulo <code>platform</code> (Información del Entorno de Ejecución):</strong></p>
               <p>Permite conocer en qué sistema operativo y arquitectura se está ejecutando el programa para adaptar su comportamiento.</p>
-              <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>import platform
+              <pre><code>import platform
 
 print("Sistema Operativo:", platform.system())
 print("Versión del Sistema:", platform.release())
 print("Arquitectura de la CPU:", platform.machine())
 print("Versión de Python utilizada:", platform.python_version())</code></pre>
-              </div>
             </li>
 
             <li>
               <p><strong>Módulo <code>subprocess</code> (Ejecución de Comandos Externos):</strong></p>
               <p>Permite ejecutar programas externos o comandos de la consola del sistema operativo directamente desde Python y capturar su resultado.</p>
-              <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>import subprocess
+              <pre><code>import subprocess
 
 # Ejecutar un comando externo según el sistema operativo
 resultado = subprocess.run(["ping", "-c", "1", "127.0.0.1"], capture_output=True, text=True)
@@ -1102,7 +1001,6 @@ if resultado.returncode == 0:
     print("La prueba de red ha respondido con éxito.")
 else:
     print("Error al ejecutar la comprobación de red.")</code></pre>
-              </div>
             </li>
           </ul>
         </article>

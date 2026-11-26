@@ -248,9 +248,7 @@
             </ul>
 
             <p><strong>Ejercicio 3.</strong> Se ha de mantener la integridad referencial entre las tablas. Modifica las tablas para añadir las <code>FOREIGN KEY</code>. Ejemplo:</p>
-            <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-              <pre><code>ALTER TABLE existencias ADD CONSTRAINT fk_existencias_pub FOREIGN KEY (cod_pub) REFERENCES pub (cod_pub);</code></pre>
-            </div>
+            <pre><code>ALTER TABLE existencias ADD CONSTRAINT fk_existencias_pub FOREIGN KEY (cod_pub) REFERENCES pub (cod_pub);</code></pre>
 
             <p><strong>Ejercicio 4.</strong> El campo <code>Licencia_fiscal</code> de la tabla <code>pub</code> es un campo con valores únicos. Crea la sentencia correspondiente para modificar la tabla.</p>
             <p><strong>Ejercicio 5.</strong> Cambia la longitud del campo <code>nombre</code> de la tabla <code>existencias</code>.</p>
@@ -334,17 +332,13 @@
             <li>¿Para qué se utiliza el atributo <code>ZEROFILL</code>?</li>
             <li>¿Qué diferencia existe entre declarar una columna como <code>INT(11)</code> y <code>INT(11) ZEROFILL</code>?</li>
             <li>¿Qué significan las llaves y los corchetes en la siguiente descripción de notación?
-              <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>CREATE {DATABASE | SCHEMA} [IF NOT EXISTS] nombre_base_datos;</code></pre>
-              </div>
+              <pre><code>CREATE {DATABASE | SCHEMA} [IF NOT EXISTS] nombre_base_datos;</code></pre>
             </li>
             <li>¿Qué comando tendría que escribir desde un terminal para conectarnos con el usuario <code>root</code> con contraseña <code>1234</code>, a un <strong>MySQL Server</strong> remoto que se está ejecutando en una máquina con la IP <code>10.10.1.5</code>?</li>
             <li>¿Qué puerto es el que utiliza por defecto el servicio de <strong>MySQL Server</strong>?</li>
             <li>Cuando instalamos <strong>MySQL Server</strong> está configurado por defecto para que sólo acepte conexiones locales y que no permita conexiones remotas. ¿Qué valor tendríamos que poner en la directiva de configuración <code>bind-address</code> para permitir conexiones remotas?
-              <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>[mysqld]
+              <pre><code>[mysqld]
 bind-address = 127.0.0.1</code></pre>
-              </div>
             </li>
             <li>Los usuarios de <strong>MySQL Server</strong> se almacenan en la tabla <code>mysql.user</code>. La clave primaria de esta tabla está formada por los valores <code>user</code> y <code>host</code>, de modo que cada fila vendrá identificada por un nombre de usuario y el host desde el que puede conectarse. Según la siguiente tabla, ¿desde qué máquinas se podrá conectar el usuario <code>root@'%'</code>?
               <div class="table-wrapper">
@@ -384,8 +378,7 @@ bind-address = 127.0.0.1</code></pre>
 
           <h3 id="b4-practica">4.2 Práctica con MySQL: Base de datos <code>ventas</code></h3>
           <p>Ejecute el siguiente script para crear una base de datos llamada <code>ventas</code>:</p>
-          <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-            <pre><code>DROP DATABASE IF EXISTS ventas;
+          <pre><code>DROP DATABASE IF EXISTS ventas;
 CREATE DATABASE ventas CHARACTER SET latin1;
 USE ventas;
 
@@ -405,7 +398,6 @@ CREATE TABLE comercial (
   ciudad VARCHAR(100),
   comision FLOAT
 );</code></pre>
-          </div>
 
           <ol>
             <li>Una vez que ha ejecutado el script y ha creado la base de datos en MySQL Server, ¿qué sentencia SQL debería ejecutar para modificar el encoding de la base de datos y utilizar <code>utf8mb4</code> en lugar de <code>latin1</code>?</li>

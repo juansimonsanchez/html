@@ -13,26 +13,40 @@
 <body>
     <header class="site-header">
         <div class="header-container">
-        <div class="header-bar">
-            <div class="site-title site-title-row"><img src="logo.png" alt="Logo IES Celia Viñas" class="site-logo"><span>GBD
-                    &ndash; UT4 Teoria DDL</span></div>
-        <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
-          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo" aria-label="Expandir todo">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="7 7 12 12 17 7"></polyline><polyline points="7 13 12 18 17 13"></polyline></svg>
-          </button>
-          <button type="button" class="btn-icon-header" onclick="toggleAllDetails(false)" title="Contraer todo" aria-label="Contraer todo">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="17 11 12 6 7 11"></polyline><polyline points="17 17 12 12 7 17"></polyline></svg>
-          </button>
-          <button type="button" id="btn-pdf" class="btn-icon-header btn-pdf-accent" onclick="descargarPDF()" title="Descargar PDF" aria-label="Descargar PDF">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-          </button>
-        </div>
-      </div>
-      <nav aria-label="Navegación por bloques temáticos" class="main-nav no-print">
-        <ul class="nav-list">
-          <li><a href="index.html" class="nav-link">Inicio</a></li>
-        </ul>
-      </nav>
+            <div class="header-bar">
+                <div class="site-title site-title-row"><img src="logo.png" alt="Logo IES Celia Viñas"
+                        class="site-logo"><span>GBD
+                        &ndash; UT4 Teoria DDL</span></div>
+                <div class="header-actions no-print" role="group" aria-label="Controles de visualización y descarga">
+                    <button type="button" class="btn-icon-header" onclick="toggleAllDetails(true)" title="Expandir todo"
+                        aria-label="Expandir todo">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <polyline points="7 7 12 12 17 7"></polyline>
+                            <polyline points="7 13 12 18 17 13"></polyline>
+                        </svg>
+                    </button>
+                    <button type="button" class="btn-icon-header" onclick="toggleAllDetails(false)"
+                        title="Contraer todo" aria-label="Contraer todo">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <polyline points="17 11 12 6 7 11"></polyline>
+                            <polyline points="17 17 12 12 7 17"></polyline>
+                        </svg>
+                    </button>
+                    <button type="button" id="btn-pdf" class="btn-icon-header btn-pdf-accent" onclick="descargarPDF()"
+                        title="Descargar PDF" aria-label="Descargar PDF">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <nav aria-label="Navegación por bloques temáticos" class="main-nav no-print">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
@@ -41,18 +55,18 @@
             <header>
                 <h1 class="title" id="unidad-4-creacion-de-bases-de-datos-en-mysql-ddl">
                     <span id="a5" class="anchor"></span>
-                        UNIDAD 4<br><span id="a6" class="anchor"></span>CREACIÓN DE BASES DE
-                        DATOS EN MYSQL (DDL)
+                    UNIDAD 4<br><span id="a6" class="anchor"></span>CREACIÓN DE BASES DE
+                    DATOS EN MYSQL (DDL)
                 </h1>
             </header>
         </section>
 
-                <section>
+        <section>
             <details class="accordion" id="page-section-1">
                 <summary class="summary-title">Ficha Técnica</summary>
                 <div class="box-card">
                     <h3 id="ficha-tecnica-de-la-unidad-didactica">FICHA TÉCNICA DE LA UNIDAD
-                DIDÁCTICA</h3>
+                        DIDÁCTICA</h3>
                     <div class="table-wrapper">
                         <table>
                             <tbody>
@@ -62,16 +76,25 @@
                                 </tr>
                                 <tr class="odd">
                                     <td><strong>Resultado de Aprendizaje Asociado</strong></td>
-                                    <td><strong>RA3:</strong> Realiza la estructura física de una base de datos utilizando lenguajes de definición de datos.</td>
+                                    <td><strong>RA3:</strong> Realiza la estructura física de una base de datos
+                                        utilizando lenguajes de definición de datos.</td>
                                 </tr>
                                 <tr class="header">
                                     <td><strong>Criterios de Evaluación</strong></td>
-                                    <td><p><strong>CE3.a:</strong> Se han identificado los tipos de datos disponibles en el SGBD de referencia.</p>
-                                    <p><strong>CE3.b:</strong> Se han creado las tablas de la base de datos aplicando el lenguaje de definición de datos (DDL).</p>
-                                    <p><strong>CE3.c:</strong> Se han definido las claves primarias, claves ajenas y sus comportamientos referenciales asociados.</p>
-                                    <p><strong>CE3.d:</strong> Se han implementado restricciones semánticas adicionales de columna y tabla (CHECK, UNIQUE, NOT NULL).</p>
-                                    <p><strong>CE3.e:</strong> Se han creado índices y vistas lógicas para optimizar el acceso y estructurar permisos.</p>
-                                    <p><strong>CE3.f:</strong> Se han modificado y eliminado estructuras de la base de datos (ALTER, DROP).</p></td>
+                                    <td>
+                                        <p><strong>CE3.a:</strong> Se han identificado los tipos de datos disponibles en
+                                            el SGBD de referencia.</p>
+                                        <p><strong>CE3.b:</strong> Se han creado las tablas de la base de datos
+                                            aplicando el lenguaje de definición de datos (DDL).</p>
+                                        <p><strong>CE3.c:</strong> Se han definido las claves primarias, claves ajenas y
+                                            sus comportamientos referenciales asociados.</p>
+                                        <p><strong>CE3.d:</strong> Se han implementado restricciones semánticas
+                                            adicionales de columna y tabla (CHECK, UNIQUE, NOT NULL).</p>
+                                        <p><strong>CE3.e:</strong> Se han creado índices y vistas lógicas para optimizar
+                                            el acceso y estructurar permisos.</p>
+                                        <p><strong>CE3.f:</strong> Se han modificado y eliminado estructuras de la base
+                                            de datos (ALTER, DROP).</p>
+                                    </td>
                                 </tr>
                                 <tr class="odd">
                                     <td><strong>Tiempo Estimado</strong></td>
@@ -86,104 +109,112 @@
 
         <section>
             <details class="accordion" id="page-section-3">
-                <summary class="summary-title">1. INTRODUCCIÓN Y CONTEXTUALIZACIÓN <a class="headerlink" href="#a1-introduccion-y-contextualizacion" title="Enlace permanente">¶</a></summary>
+                <summary class="summary-title">1. INTRODUCCIÓN Y CONTEXTUALIZACIÓN <a class="headerlink"
+                        href="#a1-introduccion-y-contextualizacion" title="Enlace permanente">¶</a></summary>
                 <article class="box-card">
                     <h1 id="a1-introduccion-y-contextualizacion">1. INTRODUCCIÓN Y
-                CONTEXTUALIZACIÓN</h1>
+                        CONTEXTUALIZACIÓN</h1>
                     <p>El objetivo primordial de esta unidad es capacitar al futuro
-                administrador de sistemas en la implementación, modificación y
-                optimización de las estructuras lógicas de datos sobre el motor de base
-                de datos MySQL. Se busca no solo que el alumno domine la sintaxis
-                estándar de SQL-DDL, sino que comprenda las implicaciones a nivel de
-                rendimiento en disco, r</p>
+                        administrador de sistemas en la implementación, modificación y
+                        optimización de las estructuras lógicas de datos sobre el motor de base
+                        de datos MySQL. Se busca no solo que el alumno domine la sintaxis
+                        estándar de SQL-DDL, sino que comprenda las implicaciones a nivel de
+                        rendimiento en disco, r</p>
                     <p>Esta unidad se conecta directamente con los módulos profesionales de
-                <strong>Administración de Sistemas Operativos en Red (ASO)</strong> e
-                <strong>Implantación de Aplicaciones Web (IAW)</strong>. El
-                aprovisionamiento de infraestructuras para aplicaciones como CMS
-                (WordPress, Drupal) o plataformas empresariales requiere que el
-                administrador configure de forma óptima el servidor de bases de datos
-                relacionales, modificando variables globales de ejecución (sql_mode),
-                definiendo esquemas eficientes y aislando el almacenamiento físico de la
-                base de datos para garantizar la alta disponibilidad y la integridad
-                referencial de los servicios corporativos.
-            </p>
+                        <strong>Administración de Sistemas Operativos en Red (ASO)</strong> e
+                        <strong>Implantación de Aplicaciones Web (IAW)</strong>. El
+                        aprovisionamiento de infraestructuras para aplicaciones como CMS
+                        (WordPress, Drupal) o plataformas empresariales requiere que el
+                        administrador configure de forma óptima el servidor de bases de datos
+                        relacionales, modificando variables globales de ejecución (sql_mode),
+                        definiendo esquemas eficientes y aislando el almacenamiento físico de la
+                        base de datos para garantizar la alta disponibilidad y la integridad
+                        referencial de los servicios corporativos.
+                    </p>
                 </article>
             </details>
         </section>
 
         <section>
             <details class="accordion" id="page-section-4">
-                <summary class="summary-title">2. EL LENGUAJE DDL DE SQL <a class="headerlink" href="#a2-el-lenguaje-ddl-de-sql" title="Enlace permanente">¶</a></summary>
+                <summary class="summary-title">2. EL LENGUAJE DDL DE SQL <a class="headerlink"
+                        href="#a2-el-lenguaje-ddl-de-sql" title="Enlace permanente">¶</a></summary>
                 <article class="box-card">
                     <h1 id="a2-el-lenguaje-ddl-de-sql">2. EL LENGUAJE DDL DE SQL</h1>
                     <p>El DDL (data definition language) es la especificación de SQL
-                encargada de definir las estructuras que almacenan los datos del
-                sistema. Las sentencias de esta especificación se ejecutan de forma
-                síncrona en el diccionario de datos de MySQL e impactan directamente
-                sobre el sistema de archivos del servidor (por ejemplo, ficheros .ibd en
-                motores InnoDB).</p>
-                    <div class="table-wrapper">
-                <div class="table-wrapper">
-                    <table>
-                        <tbody>
-                            <tr class="header">
-                                <td></td>
-                                <td>
-                                    <h6 id="documentacion-oficia-l-para-consultar-la-lista-de-todas-las-sentencias-de-definicion-de-datos-y-la-gestion-del-diccionario-de-datos-de-mysql-accede-a-mysql-manual-data-definition-statements">
-                                        🔗 <strong>Documentación Oficial:</strong> Para consultar la lista de todas las sentencias de definición de datos y la gestión del diccionario de datos de MySQL, accede a <a href="https://dev.mysql.com/doc/refman/8.0/en/sql-data-definition-statements.html"><u>MySQL Manual - Data Definition Statements</u></a>.
-                                    </h6>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+                        encargada de definir las estructuras que almacenan los datos del
+                        sistema. Las sentencias de esta especificación se ejecutan de forma
+                        síncrona en el diccionario de datos de MySQL e impactan directamente
+                        sobre el sistema de archivos del servidor (por ejemplo, ficheros .ibd en
+                        motores InnoDB).</p>
+                    <div class="doc-callout">🔗 <strong>Documentación Oficial:</strong> Para consultar la lista de todas las sentencias de definición de datos y la gestión del diccionario de datos de MySQL, accede a <a href="https://dev.mysql.com/doc/refman/8.0/en/sql-data-definition-statements.html"><u>MySQL Manual - Data Definition Statements</u></a>.</div>
                     <p>Estructura jerárquica de comandos SQL de definición</p>
                     <ul>
-                <li>
-                        <p>CREATE: Instancia nuevas estructuras (DATABASE, TABLE, INDEX, VIEW,
-                            USER)</p>
-                </li>
-                <li>
-                        <p>ALTER: Modifica metadatos y estructuras físicas existentes</p>
-                </li>
-                <li>
-                        <p>DROP: Elimina permanentemente estructuras físicas y sus
-                            contenidos</p>
-                </li>
-                <li>
-                        <p>SHOW: Consulta el estado del diccionario de datos y variables de
-                            sesión/global</p>
-                </li>
-            </ul>
+                        <li>
+                            <p>CREATE: Instancia nuevas estructuras (DATABASE, TABLE, INDEX, VIEW,
+                                USER)</p>
+                        </li>
+                        <li>
+                            <p>ALTER: Modifica metadatos y estructuras físicas existentes</p>
+                        </li>
+                        <li>
+                            <p>DROP: Elimina permanentemente estructuras físicas y sus
+                                contenidos</p>
+                        </li>
+                        <li>
+                            <p>SHOW: Consulta el estado del diccionario de datos y variables de
+                                sesión/global</p>
+                        </li>
+                    </ul>
                     <p>Sentencias de utilidad</p>
                     <ul>
-                <li>
-                        <p>USE &lt;nombre_bd&gt; Selecciona el esquema activo en el hilo de
-                            conexión actual.</p>
-                </li>
-                <li>
-                        <p>DESCRIBE &lt;nombre_tabla&gt;; o DESC &lt;nombre_tabla&gt;;: Recupera
-                            los metadatos de las columnas de una tabla para validar el esquema.</p>
-                </li>
-            </ul>
+                        <li>
+                            <p>USE &lt;nombre_bd&gt; Selecciona el esquema activo en el hilo de
+                                conexión actual.</p>
+                        </li>
+                        <li>
+                            <p>DESCRIBE &lt;nombre_tabla&gt;; o DESC &lt;nombre_tabla&gt;;: Recupera
+                                los metadatos de las columnas de una tabla para validar el esquema.</p>
+                        </li>
+                    </ul>
                 </article>
             </details>
         </section>
 
         <section>
             <details class="accordion" id="page-section-5">
-                <summary class="summary-title">3. MANIPULACIÓN DE BASES DE DATOS EN MYSQL <a class="headerlink" href="#a3-manipulacion-de-bases-de-datos-en-mysql" title="Enlace permanente">¶</a></summary>
+                <summary class="summary-title">3. MANIPULACIÓN DE BASES DE DATOS EN MYSQL <a class="headerlink"
+                        href="#a3-manipulacion-de-bases-de-datos-en-mysql" title="Enlace permanente">¶</a></summary>
                 <article class="box-card">
                     <h1 id="a3-manipulacion-de-bases-de-datos-en-mysql">3. MANIPULACIÓN DE
-                BASES DE DATOS EN MYSQL</h1>
+                        BASES DE DATOS EN MYSQL</h1>
                     <h2 id="a31-creacion-de-bases-de-datos-parametros-del-sistema">3.1 Creación
-                de Bases de Datos: Parámetros del Sistema</h2>
-                    <p>En MySQL, las palabras clave DATABASE y SCHEMA son sinónimos
-                absolutos. La directiva IF NOT EXISTS evita que se interrumpa la
-                ejecución de scripts automatizados de despliegue (como Ansible o scripts
-                de Shell) si el esquema ya se encuentra en el servidor.</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                        de Bases de Datos: Parámetros del Sistema</h2>
+                    <p><strong>Sintaxis:</strong>
+                    <code>CREATE {DATABASE | SCHEMA} [IF NOT EXISTS] nombre_base_datos;</code></p>
+                    <ul>
+                        <li>
+                            <p><code>DATABASE</code> y <code>SCHEMA</code> son sinónimos.</p>
+                        </li>
+                        <li>
+                            <p><code>IF NOT EXISTS</code> crea la base de datos sólo si no existe una base de datos con
+                                el mismo nombre. Evita que se interrumpa la ejecución de scripts automatizados de
+                                despliegue (como Ansible o scripts de Shell) si el esquema ya se encuentra en el
+                                servidor.</p>
+                        </li>
+                    </ul>
+                    <p><strong>Ejemplos:</strong></p>
+                    <p>Si no especificamos el set de caracteres en la creación de la base de datos, se usará
+                        <code>latin1</code> por defecto (o el configurado por defecto en el servidor):</p>
+                    <pre><code>CREATE DATABASE nombre_base_datos;</code></pre>
+                    <p>Las bases de datos que vamos a crear durante el curso usarán el set de caracteres
+                        <code>utf8</code> o <code>utf8mb4</code>:</p>
+                    <pre><code>CREATE DATABASE nombre_base_datos CHARACTER SET utf8;</code></pre>
+                    <p>El cotejamiento es el criterio que vamos a utilizar para ordenar las cadenas de caracteres de la
+                        base de datos. Si no especificamos ninguno se usará el que tenga asignado por defecto el set de
+                        caracteres escogido (por ejemplo, para <code>utf8</code> se usa <code>utf8_general_ci</code>).
+                        Para especificarlo de forma explícita:</p>
+                    <pre><code>CREATE DATABASE nombre_base_datos CHARACTER SET utf8 COLLATE utf8_general_ci;</code></pre>
                     <pre><code>-- Creación básica (Aplica el juego de caracteres del servidor por defecto)
 CREATE DATABASE IF NOT EXISTS sysadmin_prod;
 
@@ -191,81 +222,64 @@ CREATE DATABASE IF NOT EXISTS sysadmin_prod;
 CREATE DATABASE IF NOT EXISTS sysadmin_prod
     CHARACTER SET utf8mb4
     COLLATE utf8mb4_unicode_ci;</code></pre>
-                </div>
                     <h4 id="a311-conceptos-de-codificacion-de-caracteres-estandar-unicode">3.1.1
-                Conceptos de Codificación de Caracteres: Estándar Unicode
-            </h4>
+                        Conceptos de Codificación de Caracteres: Estándar Unicode
+                    </h4>
                     <p>Unicode define un conjunto universal de caracteres mapeado
-                numéricamente. La codificación UTF-8 representa este conjunto usando
-                bloques dinámicos de bytes:</p>
-                    <ul>
-                <li>
-                        <p>Caracteres ASCII clásicos: 1 byte.</p>
-                </li>
-                <li>
-                        <p>Bloques alfabéticos adicionales: 2 bytes.</p>
-                </li>
-                <li>
-                        <p>Resto del BMP (Basic Multilingual Plane): 3 bytes.</p>
-                </li>
-                <li>
-                        <p>Caracteres complementarios (Emojis, caracteres ideográficos): 4
-                            bytes.</p>
-                </li>
-            </ul>
-                    <h4 id="a312-gestion-de-utf8-alias-utf8mb3-vs-utf8mb4-en-entornos-de-produccion">3.1.2
-                Gestión de utf8 (alias utf8mb3) vs utf8mb4 en Entornos de
-                Producción</h4>
-                    <p>En las versiones heredadas de MySQL, la codificación denominada utf8
-                utiliza únicamente un máximo de 3 bytes por carácter. Esto imposibilita
-                almacenar de forma nativa caracteres fuera del BMP, como la simbología
-                emoji o caracteres asiáticos complejos. Para evitar fallas de inserción
-                y truncado de strings en entornos corporativos modernos, es mandatorio
-                utilizar el juego de caracteres utf8mb4, el cual sí soporta hasta 4
-                bytes.</p>
-                    <h3 id="a313-definicion-de-character-set-y-colaciones-collate">3.1.3
-                Definición de CHARACTER SET y Colaciones (COLLATE)</h3>
-                    <ul>
-                <li>
-                        <p><strong>CHARACTER SET:</strong> Indica qué codificación binaria se
-                            usa para mapear caracteres a bytes en disco.</p>
-                </li>
-                <li>
-                        <p><strong>COLLATE:</strong> Determina las reglas lógicas para la
-                            ordenación física y las comparaciones de igualdad entre strings.</p>
+                        numéricamente. La codificación UTF-8 representa este conjunto usando
+                        bloques dinámicos de bytes:</p>
                     <ul>
                         <li>
-                                <p>_cs (Case Sensitive): Diferencia entre mayúsculas y minúsculas (Ej: a
-                                    distinto de A).</p>
+                            <p>Caracteres ASCII clásicos: 1 byte.</p>
                         </li>
                         <li>
-                                <p>_ci (Case Insensitive): No diferencia mayúsculas de minúsculas (Ej: a
-                                    igua A).</p>
+                            <p>Bloques alfabéticos adicionales: 2 bytes.</p>
                         </li>
                         <li>
-                                <p>_bin (Binary): Las comparaciones se ejecutan directamente sobre el
-                                    valor de la representación numérica binaria en memoria del carácter.</p>
+                            <p>Resto del BMP (Basic Multilingual Plane): 3 bytes.</p>
+                        </li>
+                        <li>
+                            <p>Caracteres complementarios (Emojis, caracteres ideográficos): 4
+                                bytes.</p>
                         </li>
                     </ul>
-                </li>
-            </ul>
-                    <div class="table-wrapper">
-                <div class="table-wrapper">
-                    <table>
-                        <tbody>
-                            <tr class="header">
-                                <td></td>
-                                <td>
-                                    <h6 id="documentacion-oficial-para-profundizar-sobre-como-mysql-maneja-los-juegos-de-caracteres-dinamicos-y-la-compatibilidad-con-unicode-completo-revisa-mysql-manual-character-sets-collations-unicode">
-                                        🔗 <strong>Documentación Oficial:</strong> Para profundizar sobre cómo MySQL maneja los juegos de caracteres dinámicos y la compatibilidad con Unicode completo, revisa <a href="https://dev.mysql.com/doc/refman/8.0/en/charset.html"><u>MySQL Manual - Character Sets, Collations, Unicode</u></a>.
-                                    </h6>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                    <h4 id="a312-gestion-de-utf8-alias-utf8mb3-vs-utf8mb4-en-entornos-de-produccion">3.1.2
+                        Gestión de utf8 (alias utf8mb3) vs utf8mb4 en Entornos de
+                        Producción</h4>
+                    <p>En las versiones heredadas de MySQL, la codificación denominada utf8
+                        utiliza únicamente un máximo de 3 bytes por carácter. Esto imposibilita
+                        almacenar de forma nativa caracteres fuera del BMP, como la simbología
+                        emoji o caracteres asiáticos complejos. Para evitar fallas de inserción
+                        y truncado de strings en entornos corporativos modernos, es mandatorio
+                        utilizar el juego de caracteres utf8mb4, el cual sí soporta hasta 4
+                        bytes.</p>
+                    <h3 id="a313-definicion-de-character-set-y-colaciones-collate">3.1.3
+                        Definición de CHARACTER SET y Colaciones (COLLATE)</h3>
+                    <ul>
+                        <li>
+                            <p><strong>CHARACTER SET:</strong> Indica qué codificación binaria se
+                                usa para mapear caracteres a bytes en disco.</p>
+                        </li>
+                        <li>
+                            <p><strong>COLLATE:</strong> Determina las reglas lógicas para la
+                                ordenación física y las comparaciones de igualdad entre strings.</p>
+                            <ul>
+                                <li>
+                                    <p>_cs (Case Sensitive): Diferencia entre mayúsculas y minúsculas (Ej: a
+                                        distinto de A).</p>
+                                </li>
+                                <li>
+                                    <p>_ci (Case Insensitive): No diferencia mayúsculas de minúsculas (Ej: a
+                                        igua A).</p>
+                                </li>
+                                <li>
+                                    <p>_bin (Binary): Las comparaciones se ejecutan directamente sobre el
+                                        valor de la representación numérica binaria en memoria del carácter.</p>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="doc-callout">🔗 <strong>Documentación Oficial:</strong> Para profundizar sobre cómo MySQL maneja los juegos de caracteres dinámicos y la compatibilidad con Unicode completo, revisa <a href="https://dev.mysql.com/doc/refman/8.0/en/charset.html"><u>MySQL Manual - Character Sets, Collations, Unicode</u></a>.</div>
                     <pre><code>-- Inspección del juego de caracteres y colaciones disponibles en el motor
 SHOW CHARACTER SET;
 SHOW COLLATION LIKE "utf8mb4%";
@@ -273,15 +287,13 @@ SHOW COLLATION LIKE "utf8mb4%";
 -- Consulta del juego de caracteres y la colación configurados en la base de datos actual
 USE sysadmin_prod;
 SELECT @@character_set_database, @@collation_database;</code></pre>
-                </div>
                     <h3 id="a314-impacto-del-cotejamiento-en-la-ordenacion-fisica-de-tablas">3.1.4
-                Impacto del Cotejamiento en la Ordenación Física de Tablas
-            </h3>
+                        Impacto del Cotejamiento en la Ordenación Física de Tablas
+                    </h3>
                     <p>El cotejamiento afecta de forma radical a consultas ordenadas (ORDER
-                BY). A continuación se ejemplifica cómo se almacena y ordena el
-                diccionario de datos en base al cotejamiento asignado a la columna o
-                tabla:</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                        BY). A continuación se ejemplifica cómo se almacena y ordena el
+                        diccionario de datos en base al cotejamiento asignado a la columna o
+                        tabla:</p>
                     <pre><code>-- Creación de tabla de prueba con codificación clásica latina
 CREATE TABLE tabla_cotejo (
     cadena CHAR(3) CHARACTER SET latin1
@@ -301,55 +313,96 @@ SELECT cadena FROM tabla_cotejo ORDER BY cadena COLLATE latin1_swedish_ci;
 -- Ordena rigurosamente según el valor del byte ASCII (Mayúsculas tienen códigos menores que minúsculas)
 -- Salida esperada: AAA -&gt; BBB -&gt; aaa -&gt; bbb
 SELECT cadena FROM tabla_cotejo ORDER BY cadena COLLATE latin1_bin;</code></pre>
-                </div>
                     <h2 id="a32-modificacion-de-bases-de-datos-alter-database">3.2 Modificación
-                de Bases de Datos (ALTER DATABASE)</h2>
+                        de Bases de Datos (ALTER DATABASE)</h2>
                     <p>Permite alterar los parámetros estructurales por defecto del esquema
-                sin necesidad de recrear los objetos internos.</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                    <pre><code>-- Cambio de codificación en caliente para dar soporte a Unicode completo
+                        sin necesidad de recrear los objetos internos.</p>
+                    <p><strong>Sintaxis:</strong>
+                    <code>ALTER {DATABASE | SCHEMA} [nombre_base_datos] alter_specification [, alter_specification] ...</code></p>
+                    <p><strong>Ejemplos:</strong></p>
+                    <pre><code>ALTER DATABASE nombre_base_datos CHARACTER SET utf8;
+
+-- Cambio de codificación en caliente para dar soporte a Unicode completo
 ALTER DATABASE sysadmin_prod CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;</code></pre>
-                </div>
                     <h2 id="a33-eliminacion-segura-drop-database">3.3 Eliminación Segura (DROP
-                DATABASE)
-            </h2>
+                        DATABASE)
+                    </h2>
                     <p>Elimina físicamente el directorio que contiene los ficheros de la
-                base de datos y todas sus tablas. Debe usarse con extrema precaución en
-                scripts de automatización.</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                    <pre><code>-- Eliminación controlada de un esquema de datos
+                        base de datos y todas sus tablas. Debe usarse con extrema precaución en
+                        scripts de automatización.</p>
+                    <p><strong>Sintaxis:</strong>
+                    <code>DROP {DATABASE | SCHEMA} [IF EXISTS] nombre_base_datos;</code></p>
+                    <ul>
+                        <li>
+                            <p><code>DATABASE</code> y <code>SCHEMA</code> son sinónimos.</p>
+                        </li>
+                        <li>
+                            <p><code>IF EXISTS</code> elimina la base de datos sólo si ya existe.</p>
+                        </li>
+                    </ul>
+                    <p><strong>Ejemplos:</strong></p>
+                    <pre><code>DROP DATABASE nombre_base_datos;
+
+-- Eliminación controlada de un esquema de datos
 DROP DATABASE IF EXISTS sysadmin_prod;</code></pre>
-                </div>
+                    <h2 id="a34-consultar-el-listado-de-bases-de-datos-disponibles">3.4 Consultar el listado de bases de
+                        datos disponibles</h2>
+                    <p><code>SHOW DATABASES;</code> Muestra un listado con todas las bases de datos a las que tiene acceso el usuario con el que
+                        hemos conectado a MySQL.</p>
+                    <h2 id="a35-seleccionar-una-base-de-datos">3.5 Seleccionar una base de datos</h2>
+                    <p><code>USE nombre_base_datos;</code> Se utiliza para indicar la base de datos con la que queremos trabajar.</p>
+                    <h2 id="a36-mostrar-la-sentencia-sql-de-creacion-de-una-base-de-datos">3.6 Mostrar la sentencia SQL
+                        de creación de una base de datos</h2>
+                    <p><code>SHOW CREATE DATABASE nombre_base_datos;</code> Se puede utilizar para visualizar la sentencia SQL que sería necesaria ejecutar para crear la
+                        base de datos que le estamos indicando como parámetro.</p>
                 </article>
             </details>
         </section>
 
         <section>
             <details class="accordion" id="page-section-6">
-                <summary class="summary-title">4. MANIPULACIÓN DE TABLAS <a class="headerlink" href="#a4-manipulacion-de-tablas" title="Enlace permanente">¶</a></summary>
+                <summary class="summary-title">4. MANIPULACIÓN DE TABLAS <a class="headerlink"
+                        href="#a4-manipulacion-de-tablas" title="Enlace permanente">¶</a></summary>
                 <article class="box-card">
                     <h1 id="a4-manipulacion-de-tablas">4. MANIPULACIÓN DE TABLAS</h1>
                     <h2 id="a41-sentencia-de-creacion-create-table">4.1 Sentencia de Creación
-                (CREATE TABLE)</h2>
-                    <p>A continuación se detalla la sintaxis estructurada para instanciar
-                tablas físicas aplicando restricciones del modelo relacional:</p>
-                    <div class="table-wrapper">
-                <div class="table-wrapper">
-                    <table>
-                        <tbody>
-                            <tr class="header">
-                                <td></td>
-                                <td>
-                                    <h6 id="documentacion-oficial-la-sintaxis-formal-opciones-avanzadas-y-limitaciones-de-la-sentencia-de-creacion-se-detallan-en-mysql-manual-create-table-statement">
-                                        🔗 <strong>Documentación Oficial:</strong> La sintaxis formal, opciones avanzadas y limitaciones de la sentencia de creación se detallan en <a href="https://dev.mysql.com/doc/refman/8.0/en/create-table.html"><u>MySQL Manual - CREATE TABLE Statement</u></a>.
-                                    </h6>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                        (CREATE TABLE)</h2>
+                    <p>A continuación se muestra una versión simplificada de la sintaxis necesaria para la creación de
+                        una tabla en MySQL:</p>
+                    <code class="code-pre">CREATE [TEMPORARY] TABLE [IF NOT EXISTS] tbl_name
+    (create_definition,...)
+    [table_options]
+
+create_definition:
+    col_name column_definition
+  | [CONSTRAINT [symbol]] PRIMARY KEY (index_col_name,...)
+  | [CONSTRAINT [symbol]] FOREIGN KEY (index_col_name,...)
+      reference_definition
+  | CHECK (expr)
+
+column_definition:
+    data_type [NOT NULL | NULL] [DEFAULT default_value]
+    [AUTO_INCREMENT] [UNIQUE [KEY] | [PRIMARY] KEY]
+
+reference_definition:
+    REFERENCES tbl_name (index_col_name,...)
+      [ON DELETE reference_option]
+      [ON UPDATE reference_option]
+
+reference_option:
+    RESTRICT | CASCADE | SET NULL | NO ACTION | SET DEFAULT
+
+table_options:
+    table_option [[,] table_option] ...
+
+table_option:
+    AUTO_INCREMENT [=] value
+  | [DEFAULT] CHARACTER SET [=] charset_name
+  | [DEFAULT] COLLATE [=] collation_name
+  | ENGINE [=] engine_name</code>
+                    <p>A continuación se detalla un ejemplo práctico para instanciar
+                        tablas físicas aplicando restricciones del modelo relacional:</p>
+                    <div class="doc-callout">🔗 <strong>Documentación Oficial:</strong> La sintaxis formal, opciones avanzadas y limitaciones de la sentencia de creación se detallan en <a href="https://dev.mysql.com/doc/refman/8.0/en/create-table.html"><u>MySQL Manual - CREATE TABLE Statement</u></a>.</div>
                     <pre><code>-- Creación de la base de datos para el despliegue del esquema
 CREATE DATABASE IF NOT EXISTS logistica_empresa CHARSET utf8mb4;
 USE logistica_empresa;
@@ -377,72 +430,64 @@ CREATE TABLE pieza (
     CONSTRAINT fk_pieza_categoria FOREIGN KEY (id_categoria)
         REFERENCES categoria(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;</code></pre>
-                </div>
                     <h3 id="a411-restricciones-de-integridad-y-atributos-de-columna">4.1.1
-                Restricciones de Integridad y Atributos de Columna</h3>
+                        Restricciones de Integridad y Atributos de Columna</h3>
                     <ul>
-                <li>
-                        <p>NOT NULL / NULL: Indica obligatoriedad de valor.</p>
-                </li>
-                <li>
-                        <p>DEFAULT &lt;valor&gt;: Asigna un valor por defecto si se omite en la
-                            sentencia INSERT.</p>
-                </li>
-                <li>
-                        <p>AUTO_INCREMENT: Autonumérico incremental de enteros. Requiere que la
-                            columna sea clave primaria o índice único.</p>
-                </li>
-                <li>
-                        <p>UNIQUE: Impide la duplicidad de valores en la columna.</p>
-                </li>
-                <li>
-                        <p>PRIMARY KEY: Restringe el campo como identificador único de la tupla
-                            (implica indexación física por árbol B+ B-tree y restricción NOT
-                            NULL).</p>
-                </li>
-            </ul>
+                        <li>
+                            <p>NOT NULL / NULL: Indica obligatoriedad de valor.</p>
+                        </li>
+                        <li>
+                            <p>DEFAULT &lt;valor&gt;: Asigna un valor por defecto si se omite en la
+                                sentencia INSERT.</p>
+                        </li>
+                        <li>
+                            <p>AUTO_INCREMENT: Autonumérico incremental de enteros. Requiere que la
+                                columna sea clave primaria o índice único.</p>
+                        </li>
+                        <li>
+                            <p>UNIQUE: Impide la duplicidad de valores en la columna.</p>
+                        </li>
+                        <li>
+                            <p>PRIMARY KEY: Restringe el campo como identificador único de la tupla
+                                (implica indexación física por árbol B+ B-tree y restricción NOT
+                                NULL).</p>
+                        </li>
+                        <li>
+                            <p>CHECK: Nos permite realizar restricciones sobre una columna. En las versiones previas a
+                                MySQL 8.0 estas restricciones no se aplicaban (sólo se parseaba la sintaxis pero eran
+                                ignoradas por el SGBD); a partir de MySQL 8.0 ya sí se aplican.</p>
+                        </li>
+                    </ul>
                     <h3 id="a412-integridad-referencial-opciones-en-claves-ajenas-foreign-key">4.1.2
-                Integridad Referencial: Opciones en Claves Ajenas (FOREIGN KEY)
-            </h3>
+                        Integridad Referencial: Opciones en Claves Ajenas (FOREIGN KEY)
+                    </h3>
                     <p>Las cláusulas ON DELETE y ON UPDATE controlan el comportamiento del
-                sistema ante la manipulación de datos maestros en cascada:</p>
+                        sistema ante la manipulación de datos maestros en cascada:</p>
                     <ul>
-                <li>
-                        <p>RESTRICT: Deniega el borrado o actualización en la tabla padre si
-                            existen registros huérfanos asociados en la tabla hija. Es la opción por
-                            defecto.</p>
-                </li>
-                <li>
-                        <p>CASCADE: Sincroniza de forma recursiva los cambios. Si se borra la
-                            categoría con id = 1, se eliminarán de forma automatizada todas las
-                            piezas pertenecientes a dicha categoría.</p>
-                </li>
-                <li>
-                        <p>SET NULL: Si se modifica o elimina el registro padre, actualiza las
-                            claves foráneas de la tabla hija a valor NULL (requiere que la columna
-                            no tenga restricción NOT NULL).</p>
-                </li>
-                <li>
-                        <p>NO ACTION: Equivale semánticamente a RESTRICT en motores MySQL.</p>
-                </li>
-            </ul>
-                    <div class="table-wrapper">
-                <div class="table-wrapper">
-                    <table>
-                        <tbody>
-                            <tr class="header">
-                                <td></td>
-                                <td>
-                                    <h6 id="documentacion-oficial-para-comprender-a-fondo-el-funcionamiento-restricciones-e-impacto-de-rendimiento-de-las-restricciones-de-clave-ajena-visita-mysql-manual-foreign-key-constraints">
-                                        🔗 <strong>Documentación Oficial:</strong> Para comprender a fondo el funcionamiento, restricciones e impacto de rendimiento de las restricciones de clave ajena, visita <a href="https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html"><u>MySQL Manual - FOREIGN KEY Constraints</u></a>.
-                                    </h6>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                        <li>
+                            <p>RESTRICT: Deniega el borrado o actualización en la tabla padre si
+                                existen registros huérfanos asociados en la tabla hija. Es la opción por
+                                defecto.</p>
+                        </li>
+                        <li>
+                            <p>CASCADE: Sincroniza de forma recursiva los cambios. Si se borra la
+                                categoría con id = 1, se eliminarán de forma automatizada todas las
+                                piezas pertenecientes a dicha categoría.</p>
+                        </li>
+                        <li>
+                            <p>SET NULL: Si se modifica o elimina el registro padre, actualiza las
+                                claves foráneas de la tabla hija a valor NULL (requiere que la columna
+                                no tenga restricción NOT NULL).</p>
+                        </li>
+                        <li>
+                            <p>NO ACTION: Equivale semánticamente a RESTRICT en motores MySQL.</p>
+                        </li>
+                        <li>
+                            <p>SET DEFAULT: No es posible utilizar esta opción cuando trabajamos con el motor de
+                                almacenamiento InnoDB.</p>
+                        </li>
+                    </ul>
+                    <div class="doc-callout">🔗 <strong>Documentación Oficial:</strong> Para comprender a fondo el funcionamiento, restricciones e impacto de rendimiento de las restricciones de clave ajena, visita <a href="https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html"><u>MySQL Manual - FOREIGN KEY Constraints</u></a>.</div>
                     <pre><code>-- Ejemplo de configuración relacional con Cascade para gestión automatizada
 CREATE TABLE pieza_cascade (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -453,82 +498,169 @@ CREATE TABLE pieza_cascade (
         ON DELETE CASCADE
         ON UPDATE CASCADE
 ) ENGINE=InnoDB;</code></pre>
-                </div>
                     <h3 id="a413-configuracion-de-opciones-de-tabla">4.1.3 Configuración de
-                Opciones de Tabla</h3>
+                        Opciones de Tabla</h3>
                     <p>Al final de la sentencia de creación se definen opciones físicas de
-                almacenamiento:</p>
+                        almacenamiento:</p>
                     <ul>
-                <li>
-                        <p>ENGINE=InnoDB: Motor transaccional ACID nativo de MySQL con bloqueo a
-                            nivel de fila e integridad referencial real.</p>
-                </li>
-                <li>
-                        <p>AUTO_INCREMENT = &lt;valor_inicial&gt;: Configura el puntero de
-                            inserción autonumérico.</p>
-                </li>
-            </ul>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                        <li>
+                            <p>AUTO_INCREMENT = &lt;valor_inicial&gt;: Configura el valor inicial (puntero de inserción)
+                                que vamos a usar en el campo definido como <code>AUTO_INCREMENT</code>.</p>
+                        </li>
+                        <li>
+                            <p>CHARACTER SET: Especifica el set de caracteres que vamos a utilizar en la tabla.</p>
+                        </li>
+                        <li>
+                            <p>COLLATE: Especifica el tipo de cotejamiento que vamos a utilizar en la tabla.</p>
+                        </li>
+                        <li>
+                            <p>ENGINE=InnoDB: Especifica el motor de almacenamiento para la tabla (los más habituales
+                                son InnoDB y MyISAM; por defecto InnoDB, motor transaccional ACID nativo de MySQL con
+                                bloqueo a nivel de fila e integridad referencial real).</p>
+                        </li>
+                    </ul>
                     <pre><code>-- Configuración avanzada de almacenamiento
 CREATE TABLE usuarios_logs (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     accion VARCHAR(255) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8mb4;</code></pre>
-                </div>
                     <h2 id="a7">4.2 Modificación
-            Estructural (ALTER TABLE)</h2>
-                    <p>Esencial para aplicar parches de migración de datos en entornos de
-                producción sin pérdida de registros existentes.</p>
-                    <div class="table-wrapper">
-                <div class="table-wrapper">
-                    <table>
-                        <tbody>
-                            <tr class="header">
-                                <td></td>
-                                <td>
-                                    <h6 id="documentacion-oficial-consulta-la-sintaxis-completa-y-las-operaciones-en-caliente-online-ddl-que-se-pueden-realizar-en-el-motor-innodb-mediante-mysql-manual-alter-table-statement">
-                                        🔗 <strong>Documentación Oficial:</strong> Consulta la sintaxis completa y las operaciones en caliente (<em>Online DDL</em>) que se pueden realizar en el motor InnoDB mediante <a href="https://dev.mysql.com/doc/refman/8.0/en/alter-table.html"><u>MySQL Manual - ALTER TABLE Statement</u></a>.
-                                    </h6>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+                        Estructural (ALTER TABLE)</h2>
+                    <p>En muchas ocasiones es necesario modificar los atributos de una tabla, añadir nuevos campos o
+                        eliminar otros. Si la tabla ya contiene datos, es esencial hacer uso de la sentencia
+                        <code>ALTER TABLE</code> para aplicar cambios estructurales sin pérdida de registros existentes.
+                    </p>
+                    <p><strong>Sintaxis:</strong></p>
+                    <code class="code-pre">ALTER TABLE tbl_name
+    [alter_specification [, alter_specification] ...]
+    [partition_options]
+
+alter_specification:
+    table_options
+  | ADD [COLUMN] col_name column_definition
+      [FIRST | AFTER col_name]
+  | ADD [COLUMN] (col_name column_definition,...)
+  | ADD {INDEX|KEY} [index_name]
+      [index_type] (index_col_name,...) [index_option] ...
+  | ADD [CONSTRAINT [symbol]] PRIMARY KEY
+      [index_type] (index_col_name,...) [index_option] ...
+  | ADD [CONSTRAINT [symbol]]
+      UNIQUE [INDEX|KEY] [index_name]
+      [index_type] (index_col_name,...) [index_option] ...
+  | ADD FULLTEXT [INDEX|KEY] [index_name]
+      (index_col_name,...) [index_option] ...
+  | ADD SPATIAL [INDEX|KEY] [index_name]
+      (index_col_name,...) [index_option] ...
+  | ADD [CONSTRAINT [symbol]]
+      FOREIGN KEY [index_name] (index_col_name,...)
+      reference_definition
+  | ALGORITHM [=] {DEFAULT|INPLACE|COPY}
+  | ALTER [COLUMN] col_name {SET DEFAULT literal | DROP DEFAULT}
+  | CHANGE [COLUMN] old_col_name new_col_name column_definition
+      [FIRST|AFTER col_name]
+  | [DEFAULT] CHARACTER SET [=] charset_name [COLLATE [=] collation_name]
+  | CONVERT TO CHARACTER SET charset_name [COLLATE collation_name]
+  | {DISABLE|ENABLE} KEYS
+  | {DISCARD|IMPORT} TABLESPACE
+  | DROP [COLUMN] col_name
+  | DROP {INDEX|KEY} index_name
+  | DROP PRIMARY KEY
+  | DROP FOREIGN KEY fk_symbol
+  | FORCE
+  | LOCK [=] {DEFAULT|NONE|SHARED|EXCLUSIVE}
+  | MODIFY [COLUMN] col_name column_definition
+      [FIRST | AFTER col_name]
+  | ORDER BY col_name [, col_name] ...
+  | RENAME {INDEX|KEY} old_index_name TO new_index_name
+  | RENAME [TO|AS] new_tbl_name
+  | {WITHOUT|WITH} VALIDATION
+  | ADD PARTITION (partition_definition)
+  | DROP PARTITION partition_names
+  | DISCARD PARTITION {partition_names | ALL} TABLESPACE
+  | IMPORT PARTITION {partition_names | ALL} TABLESPACE
+  | TRUNCATE PARTITION {partition_names | ALL}
+  | COALESCE PARTITION number
+  | REORGANIZE PARTITION partition_names INTO (partition_definitions)
+  | EXCHANGE PARTITION partition_name WITH TABLE tbl_name [{WITH|WITHOUT} VALIDATION]
+  | ANALYZE PARTITION {partition_names | ALL}
+  | CHECK PARTITION {partition_names | ALL}
+  | OPTIMIZE PARTITION {partition_names | ALL}
+  | REBUILD PARTITION {partition_names | ALL}
+  | REPAIR PARTITION {partition_names | ALL}
+  | REMOVE PARTITIONING
+  | UPGRADE PARTITIONING
+
+index_col_name:
+    col_name [(length)] [ASC | DESC]
+
+index_type:
+    USING {BTREE | HASH}
+
+index_option:
+    KEY_BLOCK_SIZE [=] value
+  | index_type
+  | WITH PARSER parser_name
+  | COMMENT 'string'
+
+table_options:
+    table_option [[,] table_option] ...
+
+table_option:
+    AUTO_INCREMENT [=] value
+  | AVG_ROW_LENGTH [=] value
+  | [DEFAULT] CHARACTER SET [=] charset_name
+  | CHECKSUM [=] {0 | 1}
+  | [DEFAULT] COLLATE [=] collation_name
+  | COMMENT [=] 'string'
+  | COMPRESSION [=] {'ZLIB'|'LZ4'|'NONE'}
+  | CONNECTION [=] 'connect_string'
+  | {DATA|INDEX} DIRECTORY [=] 'absolute path to directory'
+  | DELAY_KEY_WRITE [=] {0 | 1}
+  | ENCRYPTION [=] {'Y' | 'N'}
+  | ENGINE [=] engine_name
+  | INSERT_METHOD [=] { NO | FIRST | LAST }
+  | KEY_BLOCK_SIZE [=] value
+  | MAX_ROWS [=] value
+  | MIN_ROWS [=] value
+  | PACK_KEYS [=] {0 | 1 | DEFAULT}
+  | PASSWORD [=] 'string'
+  | ROW_FORMAT [=] {DEFAULT|DYNAMIC|FIXED|COMPRESSED|REDUNDANT|COMPACT}
+  | STATS_AUTO_RECALC [=] {DEFAULT|0|1}
+  | STATS_PERSISTENT [=] {DEFAULT|0|1}
+  | STATS_SAMPLE_PAGES [=] value
+  | TABLESPACE tablespace_name [STORAGE {DISK|MEMORY|DEFAULT}]
+  | UNION [=] (tbl_name[,tbl_name]...)
+
+partition_options:
+    (see CREATE TABLE options)</code>
+                    <div class="doc-callout">🔗 <strong>Documentación Oficial:</strong> Consulta la sintaxis completa y las operaciones en caliente (<em>Online DDL</em>) que se pueden realizar en el motor InnoDB mediante <a href="https://dev.mysql.com/doc/refman/8.0/en/alter-table.html"><u>MySQL Manual - ALTER TABLE Statement</u></a>.</div>
                     <h3 id="a421-redefinicion-de-atributos-modify">4.2.1 Redefinición de
-                Atributos (MODIFY)</h3>
+                        Atributos (MODIFY)</h3>
                     <p>Modifica el tipo de dato o las restricciones asociadas a una columna
-                existente, manteniendo el nombre de esta.</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                        existente, manteniendo el nombre de esta.</p>
                     <pre><code>-- Cambiar la columna "nombre" para aceptar más caracteres y hacerla obligatoria
 ALTER TABLE categoria MODIFY nombre VARCHAR(150) NOT NULL;</code></pre>
-                </div>
                     <h3 id="a422-renombrado-y-cambio-estructurado-change">4.2.2 Renombrado y
-                Cambio Estructurado (CHANGE)</h3>
+                        Cambio Estructurado (CHANGE)</h3>
                     <p>Permite renombrar una columna física además de redefinir su tipo de
-                dato de forma simultánea.</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                        dato de forma simultánea.</p>
                     <pre><code>-- Modifica el nombre de la columna "nombre" a "nombre_categoria"
 ALTER TABLE categoria CHANGE nombre nombre_categoria VARCHAR(100) NOT NULL;</code></pre>
-                </div>
                     <h3 id="a423-gestion-de-valores-por-defecto-alter-setdrop-default">4.2.3
-                Gestión de Valores por Defecto (ALTER ... SET/DROP DEFAULT)
-            </h3>
+                        Gestión de Valores por Defecto (ALTER ... SET/DROP DEFAULT)
+                    </h3>
                     <p>Permite la modificación del metadato por defecto sin modificar el
-                tipo de columna.</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                        tipo de columna.</p>
                     <pre><code>-- Añadir rol por defecto al registrar un usuario nuevo
 ALTER TABLE usuarios_logs ADD COLUMN rol ENUM("SysAdmin", "Operador") NOT NULL;
 ALTER TABLE usuarios_logs ALTER rol SET DEFAULT "Operador";
 
 -- Eliminar valor por defecto
 ALTER TABLE usuarios_logs ALTER rol DROP DEFAULT;</code></pre>
-                </div>
                     <h3 id="a8">4.2.4
-            Adición y Eliminación de Atributos (ADD / DROP COLUMN)</h3>
+                        Adición y Eliminación de Atributos (ADD / DROP COLUMN)</h3>
                     <p>Define las reglas físicas de ubicación de nuevas columnas dentro de
-                la estructura de la tupla física en disco.</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                        la estructura de la tupla física en disco.</p>
                     <pre><code>-- Añade una columna al final de la tabla
 ALTER TABLE usuarios_logs ADD COLUMN timestamp_registro TIMESTAMP NOT NULL;
 
@@ -538,101 +670,106 @@ ALTER TABLE usuarios_logs ADD COLUMN id_interno INT FIRST;
 
 -- Eliminar columna física y sus datos asociados permanentemente
 ALTER TABLE usuarios_logs DROP COLUMN id_interno;</code></pre>
-                </div>
                     <h2 id="a43-eliminacion-de-tablas-drop-table">4.3 Eliminación de Tablas
-                (DROP TABLE)</h2>
+                        (DROP TABLE)</h2>
                     <p>Elimina la estructura de metadatos, los índices físicos y los datos
-                contenidos de la tabla del disco.</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                    <pre><code>-- Borrado unitario y múltiple controlado
+                        contenidos de la tabla del disco.</p>
+                    <p><strong>Sintaxis:</strong>
+                    <code>DROP [TEMPORARY] TABLE [IF EXISTS] nombre_tabla [, nombre_tabla];</code></p>
+                    <p><strong>Ejemplos:</strong></p>
+                    <pre><code>DROP TABLE nombre_tabla;
+DROP TABLE IF EXISTS nombre_tabla;
+DROP TABLE nombre_tabla_1, nombre_tabla_2;
+
+-- Borrado unitario y múltiple controlado
 DROP TABLE IF EXISTS pieza;
 DROP TABLE IF EXISTS pieza_cascade, usuarios_logs;</code></pre>
-                </div>
+                    <h2 id="a44-consultar-el-listado-de-tablas-disponibles">4.4 Consultar el listado de tablas
+                        disponibles</h2>
+                    <p><strong>Sintaxis:</strong><code>SHOW TABLES;</code>
+                    Muestra un listado de todas las tablas que existen en la base de datos con la que estamos
+                        trabajando.</p>
+                    <h2 id="a45-mostrar-informacion-sobre-la-estructura-de-una-tabla">4.5 Mostrar información sobre la
+                        estructura de una tabla</h2>
+                    <p><strong>Sintaxis:</strong><code>DESCRIBE nombre_tabla;</code></p>
+                    <p>También podemos utilizar:<code>DESC nombre_tabla;</code></p>
+                    <p>Esta sentencia se utiliza para mostrar información sobre la estructura de una tabla.</p>
+                    <h2 id="a46-mostrar-la-sentencia-sql-de-creacion-de-una-tabla">4.6 Mostrar la sentencia SQL de
+                        creación de una tabla</h2>
+                    <p><strong>Sintaxis:</strong> <code>SHOW CREATE TABLE nombre_tabla;</code></p>
+                    
+                    <p>Se puede utilizar para visualizar la sentencia SQL que sería necesaria ejecutar para crear la
+                        tabla que le estamos indicando como parámetro.</p>
                 </article>
             </details>
         </section>
 
         <section>
             <details class="accordion" id="page-section-7">
-                <summary class="summary-title">5. TIPOS DE DATOS EN MYSQL <a class="headerlink" href="#a5-tipos-de-datos-en-mysql" title="Enlace permanente">¶</a></summary>
+                <summary class="summary-title">5. TIPOS DE DATOS EN MYSQL <a class="headerlink"
+                        href="#a5-tipos-de-datos-en-mysql" title="Enlace permanente">¶</a></summary>
                 <article class="box-card">
                     <h1 id="a5-tipos-de-datos-en-mysql">5. TIPOS DE DATOS EN MYSQL</h1>
                     <p>Elegir de forma óptima el tipo de dato previene el desperdicio de
-                almacenamiento en disco y la saturación del pool de memoria (Buffer Pool
-                de InnoDB).</p>
-                    <div class="table-wrapper">
-                <div class="table-wrapper">
-                    <table>
-                        <tbody>
-                            <tr class="header">
-                                <td></td>
-                                <td>
-                                    <h6 id="documentacion-oficial-para-consultar-la-referencia-tecnica-de-todos-los-tipos-de-datos-disponibles-rangos-y-almacenamiento-fisico-en-bytes-revisa-mysql-manual-data-types">
-                                        🔗 <strong>Documentación Oficial:</strong> Para consultar la referencia técnica de todos los tipos de datos disponibles, rangos y almacenamiento físico en bytes, revisa <a href="https://dev.mysql.com/doc/refman/8.0/en/data-types.html"><u>MySQL Manual - Data Types</u></a>.
-                                    </h6>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+                        almacenamiento en disco y la saturación del pool de memoria (Buffer Pool
+                        de InnoDB).</p>
+                    <div class="doc-callout">🔗 <strong>Documentación Oficial:</strong> Para consultar la referencia técnica de todos los tipos de datos disponibles, rangos y almacenamiento físico en bytes, revisa <a href="https://dev.mysql.com/doc/refman/8.0/en/data-types.html"><u>MySQL Manual - Data Types</u></a>.</div>
                     <h2 id="a51-clasificacion-y-representacion-en-memoria-de-enteros">5.1
-                Clasificación y Representación en Memoria de Enteros</h2>
+                        Clasificación y Representación en Memoria de Enteros</h2>
                     <div class="table-wrapper">
-                <div class="table-wrapper">
-                    <table>
-                        <thead>
-                            <tr class="header">
-                                <th scope="col"><strong>Tipo de Dato</strong></th>
-                                <th scope="col"><strong>Tamaño en Disco</strong></th>
-                                <th scope="col"><strong>Rango (Signed)</strong></th>
-                                <th scope="col"><strong>Rango (Unsigned)</strong></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="odd">
-                                <td>TINYINT</td>
-                                <td>1 Byte</td>
-                                <td>[-128,127]</td>
-                                <td>[0,255]</td>
-                            </tr>
-                            <tr class="header">
-                                <td>SMALLINT</td>
-                                <td>2 Byte</td>
-                                <td>[-32768, 32767]</td>
-                                <td>[0,65535]</td>
-                            </tr>
-                            <tr class="odd">
-                                <td>MEDIUMINT</td>
-                                <td>3 Byte</td>
-                                <td>[-8388608, 8388607]</td>
-                                <td>[0, 16777215]</td>
-                            </tr>
-                            <tr class="header">
-                                <td>INT / INTEGER</td>
-                                <td>4 Byte</td>
-                                <td>-2³¹ a 2³¹-1</td>
-                                <td>0 a 2³²-1</td>
-                            </tr>
-                            <tr class="odd">
-                                <td>BIGINT</td>
-                                <td>8 Byte</td>
-                                <td>-2⁶³ a 2⁶³-1</td>
-                                <td>0 a 2⁶⁴-1</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+                        <div class="table-wrapper">
+                            <table>
+                                <thead>
+                                    <tr class="header">
+                                        <th scope="col"><strong>Tipo de Dato</strong></th>
+                                        <th scope="col"><strong>Tamaño en Disco</strong></th>
+                                        <th scope="col"><strong>Rango (Signed)</strong></th>
+                                        <th scope="col"><strong>Rango (Unsigned)</strong></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="odd">
+                                        <td>TINYINT</td>
+                                        <td>1 Byte</td>
+                                        <td>[-128,127]</td>
+                                        <td>[0,255]</td>
+                                    </tr>
+                                    <tr class="header">
+                                        <td>SMALLINT</td>
+                                        <td>2 Byte</td>
+                                        <td>[-32768, 32767]</td>
+                                        <td>[0,65535]</td>
+                                    </tr>
+                                    <tr class="odd">
+                                        <td>MEDIUMINT</td>
+                                        <td>3 Byte</td>
+                                        <td>[-8388608, 8388607]</td>
+                                        <td>[0, 16777215]</td>
+                                    </tr>
+                                    <tr class="header">
+                                        <td>INT / INTEGER</td>
+                                        <td>4 Byte</td>
+                                        <td>-2³¹ a 2³¹-1</td>
+                                        <td>0 a 2³²-1</td>
+                                    </tr>
+                                    <tr class="odd">
+                                        <td>BIGINT</td>
+                                        <td>8 Byte</td>
+                                        <td>-2⁶³ a 2⁶³-1</td>
+                                        <td>0 a 2⁶⁴-1</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                     <h3 id="a511-atributo-zerofill-y-el-mito-de-int-11">5.1.1 Atributo ZEROFILL y
-                el mito de INT (11)</h3>
+                        el mito de INT (11)</h3>
                     <p>La declaración de un tipo de dato como INT(11) no restringe el
-                almacenamiento ni el valor del entero a 11 dígitos numéricos; es
-                exclusivamente un metadato de formato de salida visual. Cuando se
-                utiliza conjuntamente con el modificador ZEROFILL, MySQL rellenará con
-                ceros a la izquierda de forma visual en las terminales que soporten este
-                atributo hasta alcanzar el tamaño especificado.</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                        almacenamiento ni el valor del entero a 11 dígitos numéricos; es
+                        exclusivamente un metadato de formato de salida visual. Cuando se
+                        utiliza conjuntamente con el modificador ZEROFILL, MySQL rellenará con
+                        ceros a la izquierda de forma visual en las terminales que soporten este
+                        atributo hasta alcanzar el tamaño especificado.</p>
                     <pre><code>-- Ejemplo práctico de visualización
 CREATE TABLE demo_zerofill (
     numero INT(4) ZEROFILL
@@ -640,210 +777,169 @@ CREATE TABLE demo_zerofill (
 
 INSERT INTO demo_zerofill VALUES (5);
 -- Al hacer SELECT, la salida mostrada será: "0005"</code></pre>
-                </div>
                     <h3 id="a512-tipos-especiales-bit-bool-serial">5.1.2 Tipos Especiales (BIT,
-                BOOL, SERIAL)</h3>
+                        BOOL, SERIAL)</h3>
                     <ul>
-                <li>
-                        <p>BIT(M): Almacena valores a nivel de bits, donde 1 a 2⁶ (64).</p>
-                </li>
-                <li>
-                        <p>BOOL / BOOLEAN: Alias del motor para TINYINT(1). El valor 0 equivale
-                            a FALSE y cualquier entero se asume como TRUE.</p>
-                </li>
-                <li>
-                        <p>SERIAL: Alias que equivale de forma explícita a: BIGINT UNSIGNED NOT
-                            NULL AUTO_INCREMENT UNIQUE.</p>
-                </li>
-            </ul>
+                        <li>
+                            <p>BIT(M): Almacena valores a nivel de bits, donde 1 a 2⁶ (64).</p>
+                        </li>
+                        <li>
+                            <p>BOOL / BOOLEAN: Alias del motor para TINYINT(1). El valor 0 equivale
+                                a FALSE y cualquier entero se asume como TRUE.</p>
+                        </li>
+                        <li>
+                            <p>SERIAL: Alias que equivale de forma explícita a: BIGINT UNSIGNED NOT
+                                NULL AUTO_INCREMENT UNIQUE.</p>
+                        </li>
+                    </ul>
                     <h2 id="a52-datos-en-punto-flotante-valores-aproximados-y-precision-computacional">5.2
-                Datos en Punto Flotante (Valores Aproximados y Precisión
-                Computacional)</h2>
+                        Datos en Punto Flotante (Valores Aproximados y Precisión
+                        Computacional)</h2>
                     <p>Los tipos FLOAT y DOUBLE representan aproximaciones de números reales
-                en punto flotante bajo el estándar IEEE-754. <strong>Nunca</strong>
-                deben usarse en sistemas transaccionales monetarios debido a los
-                redondeos e imprecisiones intrínsecas de las operaciones binarias
-                internas de la CPU.</p>
+                        en punto flotante bajo el estándar IEEE-754. <strong>Nunca</strong>
+                        deben usarse en sistemas transaccionales monetarios debido a los
+                        redondeos e imprecisiones intrínsecas de las operaciones binarias
+                        internas de la CPU.</p>
                     <ul>
-                <li>
-                        <p>FLOAT(M, D): Simple precisión (4 bytes), con precisión de rango de
-                            aprox. ±1.1x10³⁸ a aprox. ±3.7540x10³⁸.</p>
-                </li>
-                <li>
-                        <p>DOUBLE(M, D): Doble precisión (8 Bytes), con rango de aprox.
-                            ±2,23x10<sup>-</sup>³⁰⁸ a aprox. ±1.79x10³⁰⁸.</p>
-                </li>
-            </ul>
+                        <li>
+                            <p>FLOAT(M, D): Simple precisión (4 bytes), con precisión de rango de
+                                aprox. ±1.1x10³⁸ a aprox. ±3.7540x10³⁸.</p>
+                        </li>
+                        <li>
+                            <p>DOUBLE(M, D): Doble precisión (8 Bytes), con rango de aprox.
+                                ±2,23x10<sup>-</sup>³⁰⁸ a aprox. ±1.79x10³⁰⁸.</p>
+                        </li>
+                    </ul>
                     <h2 id="a53-datos-en-punto-fijo-valores-exactos-para-datos-financieros">5.3
-                Datos en Punto Fijo (Valores Exactos para Datos Financieros)
-            </h2>
+                        Datos en Punto Fijo (Valores Exactos para Datos Financieros)
+                    </h2>
                     <p>Los tipos DECIMAL y NUMERIC son equivalentes. Almacenan los números
-                de forma exacta (conversión a cadenas binarias empaquetadas por bloques
-                de 9 dígitos en MySQL), preservando la precisión monetaria de las
-                operaciones.</p>
+                        de forma exacta (conversión a cadenas binarias empaquetadas por bloques
+                        de 9 dígitos en MySQL), preservando la precisión monetaria de las
+                        operaciones.</p>
                     <ul>
-                <li>
-                        <p>DECIMAL(M, D): M representa la precisión total de dígitos de la que
-                            se compone el número entero (rango de 1 a 65), D representa el número de
-                            cifras decimales (rango de 0 a 30).</p>
-                </li>
-            </ul>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                        <li>
+                            <p>DECIMAL(M, D): M representa la precisión total de dígitos de la que
+                                se compone el número entero (rango de 1 a 65), D representa el número de
+                                cifras decimales (rango de 0 a 30).</p>
+                        </li>
+                    </ul>
                     <pre><code>-- Definición idónea para transacciones bancarias o e-commerce
 CREATE TABLE transaccion (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     -- Permite hasta 8 dígitos enteros y 2 decimales
     importe DECIMAL(10,2) NOT NULL
 );</code></pre>
-                </div>
                     <h2 id="a9">5.4 Fechas y Tiempo </h2>
                     <div class="table-wrapper">
-                <div class="table-wrapper">
-                    <table>
-                        <thead>
-                            <tr class="header">
-                                <th scope="col"><strong>Tipo de Dato</strong></th>
-                                <th scope="col"><strong>Tamaño</strong></th>
-                                <th scope="col"><strong>Formato por Defecto</strong></th>
-                                <th scope="col"><strong>Rango Soportado</strong></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="odd">
-                                <td>DATE</td>
-                                <td>3 Bytes</td>
-                                <td>YYYY-MM-DD</td>
-                                <td>1000-01-01 a 9999-12-31</td>
-                            </tr>
-                            <tr class="header">
-                                <td>DATETIME</td>
-                                <td>8 Bytes</td>
-                                <td>YYYY-MM-DD HH:MM:SS</td>
-                                <td>1000-01-01 00:00:00 a 9999-12-31 23:59:59</td>
-                            </tr>
-                            <tr class="odd">
-                                <td>TIMESTAMP</td>
-                                <td>4 Bytes</td>
-                                <td>YYYY-MM-DD HH:MM:SS</td>
-                                <td>1970-01-01 00:00:01 UTC a 2038-01-19 03:14:07 UTC</td>
-                            </tr>
-                            <tr class="header">
-                                <td>TIME</td>
-                                <td>3 Bytes</td>
-                                <td>HH:MM:SS</td>
-                                <td>-838:59:59 a 838:59:59</td>
-                            </tr>
-                            <tr class="odd">
-                                <td>YEAR</td>
-                                <td>1 Byte</td>
-                                <td>YYYY</td>
-                                <td>1901 a 2155</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-                    <p>⚠️ <strong>El problema del año 2038:</strong> Los campos TIMESTAMP
-                almacenan los datos internamente como el número de segundos
-                transcurridos desde la época Unix (1970-01-01 00:00:00 UTC). Al ser un
-                entero de 32 bits con signo, el valor máximo alcanzable expirará el
-                martes 19 de enero de 2038 a las 03:14:07 UTC. A partir de ese instante
-                el valor desbordará provocando errores críticos. Para nuevos diseños
-                lógicos que almacenen fechas lejanas en el futuro, es obligatorio
-                planificar la migración estructural a DATETIME (8 bytes).</p>
-                    <div class="table-wrapper">
-                <div class="table-wrapper">
-                    <table>
-                        <tbody>
-                            <tr class="header">
-                                <td></td>
-                                <td>
-                                    <h6 id="documentacion-oficial-para-conocer-las-ventajas-y-diferencias-operativas-entre-datetime-y-timestamp-lee-mysql-manual-date-and-time-types">
-                                        🔗 <strong>Documentación Oficial:</strong> Para conocer las ventajas y diferencias operativas entre DATETIME y TIMESTAMP, lee <a href="https://dev.mysql.com/doc/refman/8.0/en/date-and-time-types.html"><u>MySQL Manual - Date and Time Types</u></a>.
-                                    </h6>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+                        <div class="table-wrapper">
+                            <table>
+                                <thead>
+                                    <tr class="header">
+                                        <th scope="col"><strong>Tipo de Dato</strong></th>
+                                        <th scope="col"><strong>Tamaño</strong></th>
+                                        <th scope="col"><strong>Formato por Defecto</strong></th>
+                                        <th scope="col"><strong>Rango Soportado</strong></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="odd">
+                                        <td>DATE</td>
+                                        <td>3 Bytes</td>
+                                        <td>YYYY-MM-DD</td>
+                                        <td>1000-01-01 a 9999-12-31</td>
+                                    </tr>
+                                    <tr class="header">
+                                        <td>DATETIME</td>
+                                        <td>8 Bytes</td>
+                                        <td>YYYY-MM-DD HH:MM:SS</td>
+                                        <td>1000-01-01 00:00:00 a 9999-12-31 23:59:59</td>
+                                    </tr>
+                                    <tr class="odd">
+                                        <td>TIMESTAMP</td>
+                                        <td>4 Bytes</td>
+                                        <td>YYYY-MM-DD HH:MM:SS</td>
+                                        <td>1970-01-01 00:00:01 UTC a 2038-01-19 03:14:07 UTC</td>
+                                    </tr>
+                                    <tr class="header">
+                                        <td>TIME</td>
+                                        <td>3 Bytes</td>
+                                        <td>HH:MM:SS</td>
+                                        <td>-838:59:59 a 838:59:59</td>
+                                    </tr>
+                                    <tr class="odd">
+                                        <td>YEAR</td>
+                                        <td>1 Byte</td>
+                                        <td>YYYY</td>
+                                        <td>1901 a 2155</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="alert-callout">⚠️ <strong>El problema del año 2038:</strong> Los campos TIMESTAMP almacenan los datos internamente como el número de segundos transcurridos desde la época Unix (1970-01-01 00:00:00 UTC). Al ser un entero de 32 bits con signo, el valor máximo alcanzable expirará el martes 19 de enero de 2038 a las 03:14:07 UTC. A partir de ese instante el valor desbordará provocando errores críticos. Para nuevos diseños lógicos que almacenen fechas lejanas en el futuro, es obligatorio planificar la migración estructural a DATETIME (8 bytes).</div>
+                    <div class="doc-callout">🔗 <strong>Documentación Oficial:</strong> Para conocer las ventajas y diferencias operativas entre DATETIME y TIMESTAMP, lee <a href="https://dev.mysql.com/doc/refman/8.0/en/date-and-time-types.html"><u>MySQL Manual - Date and Time Types</u></a>.</div>
                     <h2 id="a55-cadenas-de-caracteres">5.5 Cadenas de Caracteres</h2>
                     <ul>
-                <li>
-                        <p>CHAR(M): Cadena de longitud fija, donde 0 a 255. Si el string
-                            introducido es de longitud inferior a M, el motor rellena físicamente el
-                            espacio sobrante con espacios en disco. Es ideal para hashes (MD5,
-                            SHA-256) o identificadores uniformes.</p>
-                </li>
-                <li>
-                        <p>VARCHAR(M): Cadena de longitud variable, donde 0 a 65535. Utiliza 1 o
-                            2 Bytes adicionales como prefijo para almacenar la longitud lógica en
-                            bytes de la cadena ingresada. Ideal para nombres, correos y
-                            descripciones.</p>
-                </li>
-                <li>
-                        <p>TEXT: Para almacenamiento de texto plano a gran escala. No almacena
-                            los datos directamente en la página del índice clustered si exceden
-                            ciertos límites, sino en páginas externas de desbordamiento.</p>
-                    <ul>
                         <li>
-                                <p>TEXT (Soporta hasta 2¹⁶Bytes = 64 KB.</p>
+                            <p>CHAR(M): Cadena de longitud fija, donde 0 a 255. Si el string
+                                introducido es de longitud inferior a M, el motor rellena físicamente el
+                                espacio sobrante con espacios en disco. Es ideal para hashes (MD5,
+                                SHA-256) o identificadores uniformes.</p>
                         </li>
                         <li>
-                                <p>MEDIUMTEXT (Soporta hasta 2²⁴ Bytes = 16 MB.</p>
+                            <p>VARCHAR(M): Cadena de longitud variable, donde 0 a 65535. Utiliza 1 o
+                                2 Bytes adicionales como prefijo para almacenar la longitud lógica en
+                                bytes de la cadena ingresada. Ideal para nombres, correos y
+                                descripciones.</p>
                         </li>
                         <li>
-                                <p>LONGTEXT (Soporta hasta 2³²Bytes = 4 GB</p>
+                            <p>TEXT: Para almacenamiento de texto plano a gran escala. No almacena
+                                los datos directamente en la página del índice clustered si exceden
+                                ciertos límites, sino en páginas externas de desbordamiento.</p>
+                            <ul>
+                                <li>
+                                    <p>TEXT (Soporta hasta 2¹⁶Bytes = 64 KB.</p>
+                                </li>
+                                <li>
+                                    <p>MEDIUMTEXT (Soporta hasta 2²⁴ Bytes = 16 MB.</p>
+                                </li>
+                                <li>
+                                    <p>LONGTEXT (Soporta hasta 2³²Bytes = 4 GB</p>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
-                </li>
-            </ul>
                     <h2 id="a56-datos-binarios">5.6 Datos Binarios</h2>
                     <p>La familia BLOB (Binary Large Object) se comporta igual que TEXT pero
-                para bytes planos (archivos binarios, imágenes, cifrados binarios). En
-                arquitectura e ingeniería de sistemas, <strong>no se recomienda</strong>
-                almacenar archivos directamente en el motor de base de datos debido a
-                que degrada el rendimiento de lectura del disco y satura el sistema de
-                copias de seguridad (mysqldump). Es mejor guardar el archivo en el
-                sistema de almacenamiento de archivos del servidor y registrar
-                únicamente la ruta de acceso en una columna VARCHAR.</p>
+                        para bytes planos (archivos binarios, imágenes, cifrados binarios). En
+                        arquitectura e ingeniería de sistemas, <strong>no se recomienda</strong>
+                        almacenar archivos directamente en el motor de base de datos debido a
+                        que degrada el rendimiento de lectura del disco y satura el sistema de
+                        copias de seguridad (mysqldump). Es mejor guardar el archivo en el
+                        sistema de almacenamiento de archivos del servidor y registrar
+                        únicamente la ruta de acceso en una columna VARCHAR.</p>
                     <h2 id="a57-tipos-estructurados-especiales-enum-set">5.7 Tipos Estructurados
-                Especiales (ENUM, SET)</h2>
+                        Especiales (ENUM, SET)</h2>
                     <ul>
-                <li>
-                        <p>ENUM('val1', 'val2', ...): Permite almacenar únicamente un único
-                            valor de una lista restringida predefinida de strings (almacenado de
-                            forma interna de forma eficiente como un entero). Máximo de 65535
-                            valores posibles.</p>
-                </li>
-                <li>
-                        <p>SET('val1', 'val2', ...): Permite almacenar de cero a múltiples
-                            valores simultáneos de la lista de strings permitidos. Máximo de 64
-                            valores permitidos en la lista.</p>
-                </li>
-            </ul>
+                        <li>
+                            <p>ENUM('val1', 'val2', ...): Permite almacenar únicamente un único
+                                valor de una lista restringida predefinida de strings (almacenado de
+                                forma interna de forma eficiente como un entero). Máximo de 65535
+                                valores posibles.</p>
+                        </li>
+                        <li>
+                            <p>SET('val1', 'val2', ...): Permite almacenar de cero a múltiples
+                                valores simultáneos de la lista de strings permitidos. Máximo de 64
+                                valores permitidos en la lista.</p>
+                        </li>
+                    </ul>
                     <h2 id="a58-tipos-no-relacionales-almacenamiento-y-operaciones-json">5.8
-                Tipos No Relacionales: Almacenamiento y Operaciones JSON</h2>
+                        Tipos No Relacionales: Almacenamiento y Operaciones JSON</h2>
                     <p>Nativo desde MySQL 5.7 y optimizado en 8.0, permite validar
-                sintácticamente documentos JSON estructurados guardándolos de forma
-                binaria transparente en disco.</p>
-                    <div class="table-wrapper">
-                <div class="table-wrapper">
-                    <table>
-                        <tbody>
-                            <tr class="header">
-                                <td></td>
-                                <td>
-                                    <h6 id="documentacion-oficial-conoce-todas-las-funciones-y-ventajas-operativas-de-almacenar-documentos-no-relacionales-de-forma-nativa-en-mysql-manual-json-data-type">
-                                        🔗 <strong>Documentación Oficial:</strong> Conoce todas las funciones y ventajas operativas de almacenar documentos no relacionales de forma nativa en <a href="https://dev.mysql.com/doc/refman/8.0/en/json.html"><u>MySQL Manual - JSON Data Type</u></a>.
-                                    </h6>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                        sintácticamente documentos JSON estructurados guardándolos de forma
+                        binaria transparente en disco.</p>
+                    <div class="doc-callout">🔗 <strong>Documentación Oficial:</strong> Conoce todas las funciones y ventajas operativas de almacenar documentos no relacionales de forma nativa en <a href="https://dev.mysql.com/doc/refman/8.0/en/json.html"><u>MySQL Manual - JSON Data Type</u></a>.</div>
                     <pre><code>-- Creación de tabla para almacenamiento no relacional estructurado
 CREATE TABLE auditoria_config (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -859,29 +955,12 @@ SELECT
     metadatos-&gt;"$.servidor" AS servidor,
     metadatos-&gt;"$.servicios[0]" AS puerto_principal
 FROM auditoria_config;</code></pre>
-                </div>
                     <h2 id="a59-configuracion-y-gestion-de-sqlmode">5.9 Configuración y Gestión
-                de sql_mode</h2>
+                        de sql_mode</h2>
                     <p>La variable del sistema sql_mode define el nivel de rigor del motor a
-                la hora de procesar excepciones, desbordamiento de enteros y conversión
-                implícita de tipos.</p>
-                    <div class="table-wrapper">
-                <div class="table-wrapper">
-                    <table>
-                        <tbody>
-                            <tr class="header">
-                                <td></td>
-                                <td>
-                                    <h6 id="documentacion-oficial-para-comprender-los-efectos-del-modo-estricto-en-la-prevencion-de-la-insercion-de-datos-corruptos-o-fuera-de-rango-en-produccion-consulta-mysql-manual-server-sql-modes">
-                                        🔗 <strong>Documentación Oficial:</strong> Para comprender los efectos del modo estricto en la prevención de la inserción de datos corruptos o fuera de rango en producción, consulta <a href="https://dev.mysql.com/doc/refman/8.0/en/sql-mode.html"><u>MySQL Manual - Server SQL Modes</u></a>.
-                                    </h6>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
+                        la hora de procesar excepciones, desbordamiento de enteros y conversión
+                        implícita de tipos.</p>
+                    <div class="doc-callout">🔗 <strong>Documentación Oficial:</strong> Para comprender los efectos del modo estricto en la prevención de la inserción de datos corruptos o fuera de rango en producción, consulta <a href="https://dev.mysql.com/doc/refman/8.0/en/sql-mode.html"><u>MySQL Manual - Server SQL Modes</u></a>.</div>
                     <pre><code>-- Consulta del valor actual de sql_mode del servidor
 SELECT @@GLOBAL.sql_mode;
 SELECT @@SESSION.sql_mode;
@@ -898,10 +977,11 @@ CREATE TABLE test_overflow (
 -- Si sql_mode es estricto (STRICT_TRANS_TABLES): Lanza ERROR 1264 e impide la inserción
 -- Si sql_mode es vacío (" "): Inserta el valor máximo representable (255) y muestra un WARNING
 INSERT INTO test_overflow VALUES (300);</code></pre>
-                </div>
                 </article>
             </details>
         </section>
+
+ 
     </main>
 
     <footer>
@@ -909,5 +989,8 @@ INSERT INTO test_overflow VALUES (300);</code></pre>
             <p class="footer-text">Curso 2026/2027</p>
         </div>
     </footer>
+
+    
 </body>
+
 </html>

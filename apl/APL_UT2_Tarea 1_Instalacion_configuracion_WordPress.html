@@ -184,55 +184,37 @@
                     <p><strong>Paso 2: Descarga y preparación del gestor de
           contenidos</strong></p>
                     <p>Vamos a ejecutar los siguientes comandos</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-          <pre><code>sudo mkdir -p /srv/www
+                    <pre><code>sudo mkdir -p /srv/www
 sudo chown -R www-data: /srv/www
 curl https://wordpress.org/latest.tar.gz | sudo -u www-data tar zx -C /srv/www</code></pre>
-
-</div>
                     <p>Con el último comando saldrá algo así:</p>
                     <p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/image1.png" alt="imagen" class="image-width-600"></p>
                     <p><strong>Paso 3: Creación de la Base de datos</strong></p>
                     <p>Para configurar WordPress, necesitamos crear una base de datos en
         MySQL. Vamos a crearla. Entramos en la consola de MySQL y ejecutamos
         unas sentencias SQL.</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-          <pre><code>sudo mysql -u root</code></pre>
-
-</div>
+                    <pre><code>sudo mysql -u root</code></pre>
                     <p>Está marcado en negrita lo que se tiene que introducir, así como los
         mensajes que salen al introducirlos. <strong>IMPORTANTE</strong>: Donde
         aparece <strong>'your-password'</strong> cambiarlo por la
         contraseña de vuestra elección sin poner los signos &lt; y &gt;. Vuestra
         contraseña entre comillas simples. No copies. Los “;” son importantes al
         final de cada sentencia.</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-          <pre><code>CREATE DATABASE wordpress;
+                    <pre><code>CREATE DATABASE wordpress;
 CREATE USER wordpress@localhost IDENTIFIED BY 'your-password';
 GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER ON wordpress.* TO wordpress@localhost;
 FLUSH PRIVILEGES;
 QUIT;</code></pre>
-
-</div>
                     <p>Hacer capturas de la ejecución de esos comandos.</p>
                     <p>Reiniciamos MySQL con:</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-          <pre><code>sudo systemctl restart mysql</code></pre>
-
-</div>
+                    <pre><code>sudo systemctl restart mysql</code></pre>
                     <p><strong>Paso 4. Creamos un archivo con la configuración para
           Wordpress.</strong></p>
                     <p>Hacemos una copia del archivo wp-config-sample.php con el nombre
         wp-config.php.</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-          <pre><code>sudo cp /srv/www/wordpress/wp-config-sample.php /srv/www/wordpress/wp-config.php</code></pre>
-
-</div>
+                    <pre><code>sudo cp /srv/www/wordpress/wp-config-sample.php /srv/www/wordpress/wp-config.php</code></pre>
                     <p>Vamos a modificar este archivo teniendo en cuenta lo siguiente:</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-          <pre><code>sudo nano /srv/www/wordpress/wp-config.php</code></pre>
-
-</div>
+                    <pre><code>sudo nano /srv/www/wordpress/wp-config.php</code></pre>
                     <p>Buscamos</p>
                     <p><img src="media_APL_UT2_Tarea 1_Instalacion_configuracion_WordPress/image6.png" alt="imagen" class="image-width-600"></p>
                     <p>y tenemos que indicar el nombre de la base de datos (wordpress),
@@ -263,10 +245,7 @@ QUIT;</code></pre>
               web. Nosotros vamos a hacer esto, pero con la carpeta “iescelia”.</p>
         </li>
       </ol>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-          <pre><code>sudo mv /srv/www/wordpress /var/www/html/iescelia</code></pre>
-
-</div>
+                    <pre><code>sudo mv /srv/www/wordpress /var/www/html/iescelia</code></pre>
                     <p><strong>Paso 5: Primer acceso a Wordpress</strong></p>
                     <p>Ya podemos acceder a nuestro Wordpress desde el navegador con la
         URL</p>

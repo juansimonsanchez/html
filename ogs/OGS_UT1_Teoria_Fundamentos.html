@@ -461,29 +461,24 @@
                         condicional booleana (cuyo resultado solo puede ser Verdadero o
                         Falso).</p>
                     <p><strong>Sintaxis abstracta:</strong></p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                            <pre><code>Si (Expresión_Condicional) Entonces
+                    <pre><code>Si (Expresión_Condicional) Entonces
     Bloque_de_sentencias_1
 SiNo
     Bloque_de_sentencias_2
 Fin Si</code></pre>
-                    </div>
                     <p><strong>Ejemplo de implementación:</strong></p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                            <pre><code>Escribir "Introduzca la calificación del alumno/a:"
+                    <pre><code>Escribir "Introduzca la calificación del alumno/a:"
 Leer nota
 Si nota &lt; 5 Entonces
     Escribir "Estado: Suspenso"
 SiNo
     Escribir "Estado: Aprobado"
 Fin Si</code></pre>
-                    </div>
                     <p><strong>B) Estructuras Condicionales Anidadas</strong></p>
                     <p>Permite encadenar condiciones lógicas secuenciales para evaluar
                         múltiples escenarios posibles.</p>
                     <p><strong>Ejemplo de anidamiento de calificaciones:</strong></p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                            <pre><code>Escribir "Introduzca la nota numérica de la prueba:"
+                    <pre><code>Escribir "Introduzca la nota numérica de la prueba:"
 Leer nota
 Si nota &lt; 5 Entonces
     Escribir "Calificación final: Suspenso"
@@ -498,15 +493,13 @@ SiNo
         Fin Si
     Fin Si
 Fin Si</code></pre>
-                    </div>
                     <p><strong>C) Estructura Condicional Múltiple (Según-Hacer /
                         Select-Case)</strong></p>
                     <p>Es una alternativa elegante y legible para sustituir el anidamiento
                         excesivo de condicionales Si-Entonces-Sino cuando se evalúa una única
                         variable o expresión frente a diferentes valores fijos o constantes.</p>
                     <p><strong>Sintaxis abstracta:</strong></p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                            <pre><code>Segun variable Hacer
+                    <pre><code>Segun variable Hacer
 opcion_1:
     secuencia_de_acciones_1
 opcion_2:
@@ -516,10 +509,8 @@ opcion_3:
 De Otro Modo:
     secuencia_de_acciones_de_otro_modo
 Fin Segun</code></pre>
-                    </div>
                     <p><strong>Ejemplo práctico:</strong></p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                            <pre><code>Escribir "Introduzca el descriptor cualitativo de la nota (suspenso,
+                    <pre><code>Escribir "Introduzca el descriptor cualitativo de la nota (suspenso,
 aprobado, notable, sobresaliente):"
 Leer calificacion
 Segun calificacion Hacer
@@ -534,21 +525,17 @@ Segun calificacion Hacer
 De Otro Modo:
     Escribir "Error: La calificación introducida no coincide con los valores del sistema."
 Fin Segun</code></pre>
-                    </div>
                     <h2 id="a52-estructuras-iterativas-o-bucles">5.2. Estructuras Iterativas o
                         Bucles</h2>
                     <p><strong>A) Estructura Mientras (While)</strong></p>
                     <p>Bucle pre-test. Evalúa la condición booleana <strong>antes</strong>
                         de entrar a ejecutar el bloque de instrucciones interno.</p>
                     <p><strong>Sintaxis:</strong></p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                            <pre><code>Mientras condicion Hacer
+                    <pre><code>Mientras condicion Hacer
     Secuencia_de_acciones
 Fin Mientras</code></pre>
-                    </div>
                     <p><strong>Ejemplo (Búsqueda del número secreto):</strong></p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                            <pre><code>secreto &lt;- 3
+                    <pre><code>secreto &lt;- 3
 Escribir "Intente adivinar el número secreto. Introduzca un número del 0 al 10:"
 Leer num_secreto
 Mientras num_secreto != secreto Hacer
@@ -557,45 +544,36 @@ Mientras num_secreto != secreto Hacer
     Leer num_secreto
 Fin Mientras
 Escribir "¡Felicidades! Ha acertado. El número secreto era ", secreto</code></pre>
-                    </div>
                     <p><strong>B) Estructura Repetir-Hasta Que (Do-While /
                         Repeat-Until)</strong></p>
                     <p>Bucle post-test. Ejecuta el cuerpo de instrucciones internas al menos
                         <strong>una vez</strong>.</p>
                     <p><strong>Sintaxis:</strong></p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                            <pre><code>Repetir
+                    <pre><code>Repetir
     Secuencia_de_acciones
 Hasta Que condicion</code></pre>
-                    </div>
                     <p><strong>Ejemplo (Búsqueda del número secreto con validación
                         inicial):</strong></p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                            <pre><code>secreto &lt;- 3
+                    <pre><code>secreto &lt;- 3
 Repetir
     Escribir "Por favor, introduzca un número entero de prueba entre el 0 y el 10:"
     Leer num_secreto
 Hasta Que num_secreto = secreto
 Escribir "¡Felicidades! Ha acertado. El número secreto era ",secreto</code></pre>
-                    </div>
                     <p><strong>C) Estructura Para-Hasta-Con Paso (For-To-Step)</strong></p>
                     <p>Bucle de iteración controlada.</p>
                     <p><strong>Sintaxis:</strong></p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                            <pre><code>Para variable_numerica &lt;- valor_inicial Hasta valor_final Con Paso paso Hacer
+                    <pre><code>Para variable_numerica &lt;- valor_inicial Hasta valor_final Con Paso paso Hacer
     secuencia_de_acciones
 Fin Para</code></pre>
-                    </div>
                     <p><strong>Ejemplo:</strong></p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                            <pre><code>Escribir "Introduzca el límite inferior del rango numérico:"
+                    <pre><code>Escribir "Introduzca el límite inferior del rango numérico:"
 Leer menor
 Escribir "Introduzca el límite superior del rango numérico:"
 Leer mayor
 Para contador &lt;- menor Hasta mayor Con Paso 1 Hacer
     Escribir "Valor actual del contador: ", contador
 Fin Para</code></pre>
-                    </div>
                 </article>
 </details>
     </section>
@@ -614,8 +592,7 @@ Fin Para</code></pre>
                     </h2>
                     <p><strong>Ejemplo de Declaración y Asignación de Valores de un Array de
                             5 posiciones:</strong></p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                            <pre><code>Dimension array[5]
+                    <pre><code>Dimension array[5]
 array[1] &lt;- 5
 array[2] &lt;- 10
 array[3] &lt;- 15
@@ -624,7 +601,6 @@ array[5] &lt;- 25
 Para i &lt;- 1 Hasta 5 Con Paso 1 Hacer
     Escribir "Elemento en el índice ", i, " es igual a: ", array[i]
 Fin Para</code></pre>
-                    </div>
                 </article>
 </details>
     </section>
@@ -640,11 +616,9 @@ Fin Para</code></pre>
                         Parámetros y Valores de Retorno</h2>
                     <p>Una <strong>función</strong> es un bloque estructurado de instrucciones
                         de código con un nombre único asociado.</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                            <pre><code>Funcion variable_de_retorno &lt;- Nombre_funcion ( Parámetros )
+                    <pre><code>Funcion variable_de_retorno &lt;- Nombre_funcion ( Parámetros )
     Instrucciones_del_subprograma
 Fin Funcion</code></pre>
-                    </div>
                 </article>
 </details>
     </section>
@@ -657,8 +631,7 @@ Fin Funcion</code></pre>
                         Prácticas con Arrays</h2>
                     <p><strong>Práctica 1: Diseñar un algoritmo que solicite la carga de 10
                             números por teclado al usuario...</strong></p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                            <pre><code>Algoritmo CalcularMenorDeDiezNumeros
+                    <pre><code>Algoritmo CalcularMenorDeDiezNumeros
 Dimension coleccion[10]
 Para i &lt;- 1 Hasta 10 Con Paso 1 Hacer
     Escribir "Introduzca el valor del registro ", i, ":"
@@ -672,16 +645,13 @@ Para i &lt;- 2 Hasta 10 Con Paso 1 Hacer
 Fin Para
 Escribir "El menor número de la colección introducida es: ", menor
 FinAlgoritmo</code></pre>
-                    </div>
                     <h2 id="a82-solucionario-de-practicas-con-funciones">8.2. Solucionario de
                         Prácticas con Funciones</h2>
                     <p><strong>Práctica 1: Crear una función que reciba un número y devuelva
                             su cuadrado...</strong></p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                            <pre><code>Funcion retorno_cuadrado &lt;- calcular_cuadrado ( valor )
+                    <pre><code>Funcion retorno_cuadrado &lt;- calcular_cuadrado ( valor )
     retorno_cuadrado &lt;- valor * valor
 Fin Funcion</code></pre>
-                    </div>
                 </article>
 
             </details>

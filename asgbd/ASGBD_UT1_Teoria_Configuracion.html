@@ -325,12 +325,10 @@
                 /etc/mysql/my.cnf. Sin embargo, para mantener el orden, este archivo
                 incluye de forma recursiva todos los subficheros con extensión .cnf
                 alojados en directorios específicos:</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code># Directorio para configuraciones del cliente local (mysql,mysqldump)
+                    <pre><code># Directorio para configuraciones del cliente local (mysql,mysqldump)
 /etc/mysql/conf.d/
 # Directorio de configuración específico para el servicio demonio del servidor (mysqld)
 /etc/mysql/mysql.conf.d/</code></pre>
-            </div>
                     <h3 id="regla-de-precedencia-y-sobrescritura">Regla de Precedencia y
                 Sobrescritura:</h3>
                     <p>Si una misma variable se define en múltiples archivos de
@@ -358,8 +356,7 @@
                     <p>A continuación, se define un archivo de configuración de producción
                 optimizado para el servidor que los alumnos montarán dentro de la
                 carpeta local ./config/custom_mysqld.cnf asociada a su contenedor:</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>[mysqld]
+                    <pre><code>[mysqld]
 # Red y Puertos
 bind-address = 0.0.0.0
 port = 3306
@@ -380,7 +377,6 @@ slow_query_log = ON
 slow_query_log_file = /var/log/mysql/slow.log
 long_query_time = 2.000000
 log_queries_not_using_indexes = ON</code></pre>
-            </div>
                 </article>
             </details>
         </section>
@@ -393,12 +389,10 @@ log_queries_not_using_indexes = ON</code></pre>
                 su comportamiento. Para consultarlas desde la línea de comandos de
                 manera rápida, un SysAdmin utiliza sentencias SQL basadas en patrones de
                 filtrado:</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                <pre><code>-- Obtener el valor de las conexiones máximas configuradas
+                    <pre><code>-- Obtener el valor de las conexiones máximas configuradas
 SHOW VARIABLES LIKE 'max_connections';
 -- Alternativa directa consultando las variables del sistema
 SELECT @@global.max_connections;</code></pre>
-            </div>
                     <p>El archivo de configuración de MySQL puede contener una amplia variedad de parámetros que permiten
                 ajustar y personalizar el comportamiento del servidor MySQL. Estos parámetros se dividen en varias
                 categorías, y algunos de los parámetros más comunes incluyen:</p>
@@ -500,16 +494,13 @@ SELECT @@global.max_connections;</code></pre>
                     scripts legados de administración:</p>
                     <h3 id="sintaxis-de-variables-globales-global">Sintaxis de Variables
                     Globales (GLOBAL):</h3>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Forma 1: Directa mediante modificador de palabra clave
 SET GLOBAL max_connections = 1000;
 
 -- Forma 2: Uso del calificador de ámbito con doble arroba (@@)
 SET @@GLOBAL.max_connections = 1000;</code></pre>
-                </div>
                     <h3 id="sintaxis-de-variables-de-sesion-session-o-local">Sintaxis de
                     Variables de Sesión (SESSION o LOCAL):</h3>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Forma 1: Asignación explícita mediante SESSION
 SET SESSION sql_mode = 'TRADITIONAL';
 
@@ -530,7 +521,6 @@ SET @@sql_mode = 'TRADITIONAL';
 
 -- Forma 6: Asignación implícita de sesión
 SET sql_mode = 'TRADITIONAL';</code></pre>
-                </div>
                     <h2 id="a53-set-persist-y-set-persistonly"><strong>5.3</strong> SET PERSIST
                     y SET PERSIST_ONLY</h2>
                     <p>Tradicionalmente, para fijar un cambio de forma definitiva, el
@@ -541,12 +531,10 @@ SET sql_mode = 'TRADITIONAL';</code></pre>
                     <strong>persistencia SQL nativa sin necesidad de acceder al Shell del
                         sistema operativo</strong>.
                 </p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Persistir un cambio en caliente en la memoria del gestor y escribirlo en disco de forma concurrente
 SET PERSIST max_connections = 250;
 -- Sintaxis alternativa equivalente
 SET @@PERSIST.max_connections = 250;</code></pre>
-                </div>
                     <p><strong>¿Cómo funciona internamente?</strong></p>
                     <p>Al ejecutar la instrucción SET PERSIST, MySQL realiza dos acciones
                     automáticas en un solo paso:</p>
@@ -561,7 +549,6 @@ SET @@PERSIST.max_connections = 250;</code></pre>
                                 /var/lib/mysql/mysqld-auto.cnf.</p>
                     </li>
                 </ol>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>{
     "Version": 2,
     "mysql_server": {
@@ -575,7 +562,6 @@ SET @@PERSIST.max_connections = 250;</code></pre>
         }
     }
 }</code></pre>
-                </div>
                     <p>Al arrancar, MySQL carga primero el archivo /etc/mysql/my.cnf
                     tradicional y, como última aetpa del proceso de inicialización, lee el
                     archivo JSON /var/lib/mysql/mysqld-auto.cnf para <strong>sobrescribir
@@ -588,22 +574,18 @@ SET @@PERSIST.max_connections = 250;</code></pre>
                     asignación de memoria estática innodb_buffer_pool_size). Intentar usar
                     SET GLOBAL sobre ellos lanzará un error crítico de ejecución.</p>
                     <p>Para estos casos, utilizamos:</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Escribe la variable en el archivo de autoconfiguración persistente de disco pero NO intenta aplicarla en caliente en RAM
 SET PERSIST_ONLY innodb_buffer_pool_size = 1073741824;
 -- Escribe la variable en el archivo de autoconfiguración persistente de disco pero NO intenta aplicarla en caliente en RAM
 SET PERSIST_ONLY innodb_buffer_pool_size = 1073741824;</code></pre>
-                </div>
                     <h4 id="a21"></h4>
                     <p>El cambio tomará efectos reales en el siguiente reinicio del
                     servicio.</p>
                     <p>Comando para limpiar y revocar la persistencia:</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Eliminar la persistencia de una variable concreta (volverá a heredar el valor del fichero my.cnf en el próximo reinicio)
 RESET PERSIST max_connections;
 -- Limpiar completamente todas las variables añadidas dinámicamente al fichero mysqld-auto.cnf
 RESET PERSIST;</code></pre>
-                </div>
                 </article>
             </details>
         </section>
@@ -658,24 +640,20 @@ RESET PERSIST;</code></pre>
                     visualización en paneles externos.</p>
                     <p>Para activarlo en caliente, debemos cargar el componente filter
                     correspondiente del motor:</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Instalar el cargador de logs JSON
 INSTALL COMPONENT 'file://component_log_sink_json';
 -- Configurar los logs de errores para que escriban tanto en texto tradicional como en formato estructurado JSON
 SET PERSIST log_error_services = 'log_filter_internal;
 log_sink_internal; log_sink_json';</code></pre>
-                </div>
                     <h2 id="a63-registro-general-de-consultas-general-query-log"><strong>6.3</strong>
                     Registro General de Consultas (General Query Log)</h2>
                     <p>Es una bitácora exhaustiva que registra el momento exacto en el que
                     cualquier cliente se conecta o desconecta del servidor de bases de
                     datos, junto con <strong>todas las sentencias SQL</strong> enviadas al
                     motor por el cliente.</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code># Configuración física requerida en /etc/mysql/mysql.conf.d/mysqld.cnf
 general_log = ON
 general_log_file = /var/log/mysql/query.log</code></pre>
-                </div>
                     <p>Advertencia Crítica de Seguridad y Rendimiento en Producción:</p>
                     <ul>
                     <li>
@@ -715,7 +693,6 @@ general_log_file = /var/log/mysql/query.log</code></pre>
                     umbral de tiempo especificado en milisegundos en la variable de sistema
                     long_query_time.</p>
                     <p><strong>Configuración e Implementación:</strong></p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Activar el motor de registro de consultas lentas a nivel global y persistente
 SET PERSIST slow_query_log = ON;
 SET PERSIST slow_query_log_file = '/var/log/mysql/slow.log';
@@ -723,20 +700,16 @@ SET PERSIST slow_query_log_file = '/var/log/mysql/slow.log';
 SET PERSIST long_query_time = 2.000000;
 -- Capturar también todas aquellas consultas ineficientes que no utilizan índices para su ejecución
 SET PERSIST log_queries_not_using_indexes = ON;</code></pre>
-                </div>
                     <h5 id="generacion-de-prueba-y-simulacion-de-latencia">Generación de
                     Prueba y Simulación de Latencia:</h5>
                     <p>Para comprobar que el registro de consultas lentas funciona
                     correctamente, el administrador simula una parada del hilo de ejecución
                     mediante la función de pausa de MySQL:</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>-- Provocar de forma artificial una ejecución lenta controlada de 3 segundos
 SELECT NOW(), SLEEP(3);</code></pre>
-                </div>
                     <h5 id="parseo-tecnico-del-registro">Parseo Técnico del Registro:</h5>
                     <p>Al abrir el fichero /var/log/mysql/slow.log en el host o contenedor,
                     el administrador observará la siguiente estructura detallada:</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code># Time: 2026-06-07T11:42:01.354210Z
 # User@Host: root[root] @ localhost [] Id: 12
 # Query_time: 3.001240 Lock_time: 0.000000 Rows_sent: 1
@@ -748,7 +721,6 @@ SELECT NOW(), SLEEP(3);
 # Query_time: 3.001240 Lock_time: 0.000000 Rows_sent: 1 Rows_examined:1
 SET timestamp=1778235721;
 SELECT NOW(), SLEEP(3);</code></pre>
-                </div>
                     <p><strong>Métricas Clave de Análisis:</strong></p>
                     <ul>
                     <li>
@@ -818,24 +790,20 @@ SELECT NOW(), SLEEP(3);</code></pre>
                     perfiles de usuario. La siguiente consulta devuelve un desglose de los
                     últimos 20 errores registrados para detectar posibles ataques de fuerza
                     bruta o desajustes de conexión:</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>SELECT USER,ERROR_NUMBER, ERROR_NAME, COUNT_STAR AS TOTAL_OCURRENCIAS, FIRST_SEEN AS PRIMERA_VEZ, LAST_SEEN AS ULTIMA_VEZ
 FROM performance_schema.events_errors_summary_by_user_by_error
 WHERE USER IS NOT NULL AND COUNT_STAR &gt; 0
 ORDER BY LAST_SEEN DESC
 LIMIT 20;</code></pre>
-                </div>
                     <p>Comprobación de Actividad SQL y Contador de consultas realizadas:</p>
                     <p>La tabla status_by_user muestra las variables de estado acumuladas
                     por hilos de conexión individuales. Para obtener una visión cuantitativa
                     de cuántas lecturas de datos (SELECT) ha realizado el usuario root para
                     evaluar la carga de trabajo en el servidor:</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code>SELECT USER, VARIABLE_NAME, VARIABLE_VALUE
 FROM performance_schema.status_by_user
 WHERE USER = 'root' AND VARIABLE_NAME LIKE 'Handler_read%'
 ORDER BY CAST(VARIABLE_VALUE AS UNSIGNED) DESC;</code></pre>
-                </div>
                 </article>
             </details>
         </section>
@@ -851,13 +819,11 @@ ORDER BY CAST(VARIABLE_VALUE AS UNSIGNED) DESC;</code></pre>
                     <p>Los archivos de logs contienen metadatos y en ocasiones credenciales
                     que nunca deben ser expuestos a usuarios locales del sistema operativo
                     que no pertenezcan al grupo de administración de la base de datos.</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code># Asignar la propiedad al usuario y grupo del demonio mysqld
 sudo chown -R mysql:mysql /var/log/mysql
 # Restringir permisos de lectura/escritura únicamente al propietario
 sudo chmod 750 /var/log/mysql
 sudo chmod 640 /var/log/mysql/*.log</code></pre>
-                </div>
                     <p>2. Rotación de Logs para Evitar que el Disco se Llene:</p>
                     <p>Un query.log mal gestionado en producción puede acumular cientos de
                     gigabytes en cuestión de días y provocar un fallo total del sistema de
@@ -865,7 +831,6 @@ sudo chmod 640 /var/log/mysql/*.log</code></pre>
                     del servidor físico.</p>
                     <p>Para evitarlo, se configura el servicio logrotate en Linux agregando
                     un archivo de configuración específico:</p>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
                     <pre><code># Archivo de Configuración del Rotador de Logs del Sistema Linux: /etc/logrotate.d/mysql-server
 /var/log/mysql/*.log {
     weekly
@@ -881,7 +846,6 @@ sudo chmod 640 /var/log/mysql/*.log</code></pre>
         /usr/bin/mysqladmin flush-logs
     endscript
 }</code></pre>
-                </div>
                 </article>
             </details>
         </section>

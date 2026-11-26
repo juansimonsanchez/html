@@ -147,11 +147,8 @@
                             rangos).</p>
                 </li>
                 <li>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                            <pre><code>Entrega: Capturas de SELECT * FROM users; en ambos
+                    <pre><code>Entrega: Capturas de SELECT * FROM users; en ambos
 contenedores.</code></pre>
-
-</div>
                 </li>
             </ul>
                 </article>
@@ -166,35 +163,26 @@ contenedores.</code></pre>
                             -it proxysql mysql -u admin -padmin -h 127.0.0.1 -P 6032</p>
                 </li>
                 <li>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                            <pre><code>Configurar Backends (Hostgroups):
+                    <pre><code>Configurar Backends (Hostgroups):
 -- Shard 1 (ID 1-50) -&gt; HG 1 | Shard 2 (ID &gt; 50) -&gt; HG 2
 INSERT INTO mysql_servers(hostgroup_id, hostname, port) VALUES (1,
 'mysql-shard-1', 3306), (2, 'mysql-shard-2', 3306);
 LOAD MYSQL SERVERS TO RUNTIME; SAVE MYSQL SERVERS TO DISK;</code></pre>
-
-</div>
                 </li>
                 <li>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                            <pre><code>Configurar Usuario de Tráfico:
+                    <pre><code>Configurar Usuario de Tráfico:
 INSERT INTO mysql_users(username, password, default_hostgroup) VALUES
 ('root', 'root_password', 1);
 LOAD MYSQL USERS TO RUNTIME; SAVE MYSQL USERS TO DISK;</code></pre>
-
-</div>
                 </li>
                 <li>
-                    <div class="code-wrapper code-container" role="group" aria-label="Bloque de código"><button class="copy-btn btn-code-action" onclick="copyCode(this)" type="button">📋 Copiar</button>
-                            <pre><code>Reglas de Enrutamiento (Sharding Logic):
+                    <pre><code>Reglas de Enrutamiento (Sharding Logic):
 -- Redirigir según el ID en la consulta (Regex)
 INSERT INTO mysql_query_rules (rule_id, active, match_digest,
 destination_hostgroup, apply)
 VALUES (1, 1, 'id\s*=\s*([1-9]|[1-4][0-9]|50)', 1, 1),
 (2, 1, 'id\s*=\s*([5-9][0-9]|[1-9][0-9]{2,})', 2, 1);
 LOAD MYSQL QUERY RULES TO RUNTIME; SAVE MYSQL QUERY RULES TO DISK;</code></pre>
-
-</div>
                 </li>
             </ol>
                 </article>
@@ -225,11 +213,7 @@ LOAD MYSQL QUERY RULES TO RUNTIME; SAVE MYSQL QUERY RULES TO DISK;</code></pre>
 
                 <article class="box-card">
                     <h2 id="a3-calificacion">3. CALIFICACIÓN</h2>
-<p>⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a
-                    través de la plataforma, la entrega del documento en formatos editables
-                    no permitidos (como .docx), capturas con identificación del alumno/a o
-                    la omisión de los enlaces de las fuentes documentales utilizadas
-                    penalizará gravemente la nota o invalidará la práctica.</p>
+<div class="alert-callout">⚠️ <strong>IMPORTANTE:</strong> El retraso en el plazo de entrega a través de la plataforma, la entrega del documento en formatos editables no permitidos (como .docx), capturas con identificación del alumno/a o la omisión de los enlaces de las fuentes documentales utilizadas penalizará gravemente la nota o invalidará la práctica.</div>
 <h3 id="a12"></h3>
 <div class="table-wrapper">
                 <div class="table-wrapper">
